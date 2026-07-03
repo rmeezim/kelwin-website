@@ -1,0 +1,357 @@
+/* ─── Methodology — scoped to .method-section ──────────────────────────── */
+
+.method-section {
+  --bone: #F4F0E7;
+  --bone-deep: #ECE6DA;
+  --obsidian: #0A0805;
+  --ink: #0A0805;
+  --lead: #5E574F;
+  --ash: #8E867D;
+  --headline-mute: #A8A09A;
+  --dusk: #7A7268;
+  --bronze: #D18E53;
+  --bronze-ink: #7E4D24;
+  --bronze-mid: #A66B33;
+  --bronze-ink-70: rgba(126, 77, 36, 0.70);
+  --bronze-ink-55: rgba(126, 77, 36, 0.55);
+  --bronze-ink-28: rgba(126, 77, 36, 0.28);
+  --bronze-55: rgba(209, 142, 83, 0.55);
+  --bronze-45: rgba(209, 142, 83, 0.45);
+  --bronze-15: rgba(209, 142, 83, 0.15);
+  --hairline: rgba(10, 8, 5, 0.10);
+  --hairline-soft: rgba(10, 8, 5, 0.055);
+  --f-display: var(--font-instrument-sans), serif;
+  --f-body: var(--font-inter), sans-serif;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  position: relative;
+  background: var(--bone);
+  background-image:
+    radial-gradient(ellipse 55% 38% at 12% 16%, rgba(120, 95, 65, 0.045) 0%, transparent 60%),
+    radial-gradient(ellipse 48% 44% at 90% 84%, rgba(209, 142, 83, 0.038) 0%, transparent 60%);
+  color: var(--ink);
+  font-family: var(--f-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.method-section .method-stage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(72px, 9vh, 104px) clamp(28px, 5vw, 64px);
+}
+
+/* ── scaffold header (shared system) ── */
+.method-section .scaffold-label {
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bronze-ink);
+  margin-bottom: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.method-section .scaffold-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.75;
+}
+.method-section .scaffold-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: clamp(50px, 6vw, 80px);
+}
+@media (max-width: 1024px) {
+  .method-section .scaffold-row { grid-template-columns: 1fr; gap: 30px; margin-bottom: 48px; }
+}
+.method-section .scaffold-heading {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+.method-section .scaffold-heading .line-1 { display: block; color: var(--ink); }
+.method-section .scaffold-heading .line-2 { display: block; color: var(--headline-mute); }
+.method-section .scaffold-right { padding-top: 10px; }
+.method-section .scaffold-body {
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--lead);
+  max-width: 46ch;
+}
+.method-section .scaffold-body .coda {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--f-display);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* ── installation flow ── */
+.method-section .method-flow { position: relative; }
+
+.method-section .method-spine {
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+}
+.method-section .spine-track {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(to bottom, var(--bronze-ink-55) 0 4px, transparent 4px 9px);
+}
+.method-section .spine-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--bronze-ink);
+  box-shadow: 0 0 6px rgba(126, 77, 36, 0.35);
+  transform: scaleY(1);
+  transform-origin: top center;
+}
+
+.method-section .phase {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(96px, 11.5vw, 148px) minmax(0, 1fr) clamp(208px, 19vw, 286px);
+  gap: clamp(26px, 3.2vw, 52px);
+  align-items: start;
+  padding: clamp(40px, 5vw, 70px) clamp(40px, 4vw, 60px) clamp(40px, 5vw, 70px) clamp(40px, 4vw, 60px);
+  border-top: 1px solid var(--hairline);
+  /* Critical: the cursor-following ghost-word inside the phase must
+     be clipped by the card boundary so the giant translucent word
+     stays sealed inside the dark panel rather than overflowing onto
+     the page background. */
+  overflow: hidden;
+  /* Smooth crossfade between the bone idle state and the obsidian
+     hover state. Box-shadow and color transitions stay subtle enough
+     to feel intentional, not flashy. */
+  transition:
+    background-color 0.45s var(--ease-out),
+    box-shadow 0.45s var(--ease-out),
+    border-color 0.45s var(--ease-out);
+}
+.method-section .phase:last-child { border-bottom: 1px solid var(--hairline); }
+
+/* ── Phase hover state — obsidian inversion ────────────────────────────
+   On hover the entire card pops dark, text re-colors for readability on
+   the inverted background, and the brand bronze accents brighten. The
+   ghost-word layer fades in on top of this and tracks the cursor (see
+   `.phase-ghost-word` below). */
+.method-section .phase:hover {
+  background-color: var(--obsidian);
+  box-shadow:
+    0 28px 56px -28px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(209, 142, 83, 0.18);
+}
+.method-section .phase:hover .phase-kicker        { color: var(--bronze); }
+.method-section .phase:hover .phase-num           { color: rgba(209, 142, 83, 0.55); }
+.method-section .phase:hover .phase-title         { color: var(--bone); }
+.method-section .phase:hover .phase-method        { color: rgba(244, 240, 231, 0.72); }
+.method-section .phase:hover .phase-output        { border-left-color: var(--bronze); }
+.method-section .phase:hover .phase-output-label  { color: var(--bronze); }
+.method-section .phase:hover .phase-output-value  { color: var(--bone); }
+.method-section .phase:hover .phase-node          { background: var(--bronze); border-color: var(--bronze); }
+.method-section .phase:hover .phase-corner        { opacity: 1; border-color: var(--bronze); }
+
+/* Keep the structured content layered above the ghost-word so the
+   ghost stays atmospheric and the text stays readable. Without this
+   the absolutely-positioned ghost would render on top of the static
+   grid children. */
+.method-section .phase-index,
+.method-section .phase-body,
+.method-section .phase-output {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Ghost-word — atmospheric cursor-following layer ──────────────────
+   Giant translucent uppercase word that lives on the obsidian card. On
+   idle it's invisible; on hover it fades in and tracks the cursor via
+   the `--ghost-x` / `--ghost-y` variables set by the mousemove handler
+   in Methodology.tsx. The transition on `transform` provides the
+   "spring lag" follow — the word eases toward the cursor rather than
+   snapping to it, creating the ghostly trailing feel. */
+.method-section .phase-ghost-word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(56px, 10vw, 168px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(244, 240, 231, 0.10);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  opacity: 0;
+  /* `translate(var(...), var(...))` puts the word's top-left corner at
+     the cursor position; the second `translate(-50%, -50%)` then
+     re-centers the word on that point. */
+  transform:
+    translate(var(--ghost-x, 50%), var(--ghost-y, 50%))
+    translate(-50%, -50%);
+  transition:
+    opacity 0.4s var(--ease-out),
+    transform 0.35s var(--ease-out);
+}
+.method-section .phase:hover .phase-ghost-word {
+  opacity: 1;
+}
+
+/* Phase corner reticles — small bronze L's anchored only on the
+   right edge (top-right + bottom-right) of each phase, per design call. */
+.method-section .phase-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--bronze-ink);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+}
+.method-section .phase-corner-tr { top: 10px;    right: 10px;   border-top-width: 1px;    border-right-width: 1px; }
+.method-section .phase-corner-br { bottom: 10px; right: 10px;   border-bottom-width: 1px; border-right-width: 1px; }
+.method-section .phase:hover .phase-corner { opacity: 1; }
+
+.method-section .phase-node {
+  position: absolute;
+  left: 8px;
+  top: clamp(50px, 5.6vw, 80px);
+  width: 9px;
+  height: 9px;
+  background: var(--bronze);
+  border: 1.5px solid var(--bronze);
+  transform: translateX(-50%);
+}
+
+.method-section .phase-kicker {
+  display: block;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 15px;
+}
+.method-section .phase-num {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(54px, 6.8vw, 100px);
+  line-height: 0.92;
+  letter-spacing: -0.025em;
+  color: var(--bronze-45);
+  font-variant-numeric: tabular-nums;
+}
+
+.method-section .phase-body { max-width: 56ch; }
+.method-section .phase-title {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(23px, 2.5vw, 33px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: clamp(12px, 1.2vw, 16px);
+  text-wrap: balance;
+}
+.method-section .phase-method {
+  font-family: var(--f-body);
+  font-size: clamp(14.5px, 1.05vw, 16px);
+  font-weight: 400;
+  line-height: 1.68;
+  color: var(--lead);
+  text-wrap: pretty;
+}
+.method-section .phase-output {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-left: 1px solid var(--bronze-mid);
+  padding-left: clamp(16px, 1.4vw, 22px);
+}
+.method-section .phase-output-label {
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bronze-ink);
+}
+.method-section .phase-output-value {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.42;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+/* armed = JS motion enabled; nodes start hollow until their phase enters */
+.method-section .method-flow.armed .phase-node { background: var(--bone); }
+.method-section .method-flow.armed .phase.is-in .phase-node { background: var(--bronze); }
+
+/* CTA row — bracketed DiagnosticMethodCTA is rendered inside this
+   container. The container is the GSAP target so the reveal still works. */
+.method-section .method-cta-row {
+  margin-top: clamp(40px, 4.5vw, 64px);
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 980px) {
+  .method-section .phase { grid-template-columns: clamp(90px, 11vw, 140px) minmax(0, 1fr); }
+  .method-section .phase-output {
+    grid-column: 2;
+    align-self: auto;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 16px;
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--hairline-soft);
+    padding-top: 15px;
+    margin-top: clamp(20px, 2vw, 26px);
+  }
+}
+@media (max-width: 620px) {
+  .method-section .phase { grid-template-columns: 1fr; gap: 12px; }
+  .method-section .phase-output { grid-column: 1; }
+  .method-section .phase-num { font-size: clamp(46px, 15vw, 72px); }
+  .method-section .phase-node { top: clamp(40px, 11vw, 56px); }
+  .method-section .method-spine { top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .method-section .phase { opacity: 1 !important; }
+  .method-section .spine-fill { transform: scaleY(1) !important; }
+  /* Disable the cursor-tracking transform on the ghost-word so motion
+     reduce users don't get a chasing animation. The phase itself still
+     inverts on hover (color/shadow change), which isn't motion. */
+  .method-section .phase-ghost-word {
+    transition: opacity 0.4s var(--ease-out);
+    transform: translate(50%, 50%) translate(-50%, -50%) !important;
+  }
+}

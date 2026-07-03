@@ -1,26 +1,110 @@
 @import "tailwindcss";
+@import "../components/ui/SystemFurniture.css";
 
+/* ─── Kelwin Design Tokens ─────────────────────────────────────── */
+@theme {
+  --color-surface: #110F0A;
+  --color-near-black: #08090A;
+  --color-canvas: #ECE8DF;
+  --color-cream: #FFF8F5;
+  --color-bronze: #D18E53;
+  --color-action-red: #BF3A36;
+
+  --font-heading: var(--font-instrument-sans);
+  --font-body: var(--font-inter);
+}
+
+/* ─── CSS Properties for rgba values ──────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --text-muted: rgba(255, 248, 245, 0.78);
+  --text-faint: rgba(255, 248, 245, 0.38);
+  --border-subtle: rgba(255, 248, 245, 0.12);
+  --border-warm: rgba(209, 142, 83, 0.32);
+  --grid-line: rgba(255, 248, 245, 0.07);
+  --node-color: rgba(209, 142, 83, 0.55);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ────────────────────────────────────────────────────── */
+html {
+  background-color: #110F0A;
+  color: #FFF8F5;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body, "Inter", sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Keyframes ────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+@keyframes scroll-indicator {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(300%); opacity: 0; }
+}
+
+/* Dot travels within the rail (41px). Starts 6px above, ends when bottom touches rail bottom (35px). */
+@keyframes dot-scroll {
+  0%   { transform: translateY(-6px); opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { transform: translateY(35px); opacity: 0; }
+}
+
+@keyframes kelwin-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── Custom scrollbar ─────────────────────────────────────────────
+   Thin bronze scrollbar with a faint warm track. Bronze is visible on
+   both the dark surface and the cream/bone reframe sections, so one
+   styling works across the whole site.
+   - `html` selectors target the main page scrollbar with high
+     specificity, ensuring the styles override the OS overlay default.
+   - `overflow-y: scroll` forces the scrollbar to always be present
+     (instead of auto-hiding), so custom styling is always visible.   */
+html {
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(209, 142, 83, 0.62) rgba(255, 248, 245, 0.04);
+}
+html::-webkit-scrollbar,
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+html::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+  background: rgba(255, 248, 245, 0.04);
+}
+html::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: rgba(209, 142, 83, 0.62);
+  border-radius: 0;
+  border: none;
+  transition: background 0.2s ease;
+}
+html::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(209, 142, 83, 0.92);
+}
+html::-webkit-scrollbar-corner,
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ─── Reduced motion ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

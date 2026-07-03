@@ -1,0 +1,702 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import "./RevenueOS.css";
+
+// ── Radar chart — 4 axes for the NEI sub-scores. Polygon area + dots. ──
+const RADAR_DIMENSIONS = [
+  { label: "Positioning",   short: "POS",  value: 64 },
+  { label: "Coherence",     short: "COH",  value: 78 },
+  { label: "Articulation",  short: "ART",  value: 85 },
+  { label: "Defensibility", short: "DEF",  value: 62 },
+];
+const RADAR_CENTER = 160;
+const RADAR_RADIUS = 110;
+const RADAR_LABEL_OFFSET = 24;
+
+function radarPoint(idx: number, magnitude: number) {
+  const angle = -Math.PI / 2 + (idx * Math.PI) / 2;
+  const r = (magnitude / 100) * RADAR_RADIUS;
+  return [
+    RADAR_CENTER + Math.cos(angle) * r,
+    RADAR_CENTER + Math.sin(angle) * r,
+  ];
+}
+function radarAxisLabelPoint(idx: number) {
+  const angle = -Math.PI / 2 + (idx * Math.PI) / 2;
+  const r = RADAR_RADIUS + RADAR_LABEL_OFFSET;
+  return [
+    RADAR_CENTER + Math.cos(angle) * r,
+    RADAR_CENTER + Math.sin(angle) * r,
+  ];
+}
+
+function sparkPath(values: number[], width: number, height: number): string {
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  const step = width / (values.length - 1);
+  return values
+    .map((v, i) => {
+      const x = i * step;
+      const y = height - ((v - min) / range) * (height - 2) - 1;
+      return `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
+    })
+    .join(" ");
+}
+
+const SPARK_CADENCE   = [4, 5, 4, 6, 5, 6, 7, 6, 6, 7];
+const SPARK_CHANNELS  = [2, 3, 3, 3, 3];
+const SPARK_RESPONSE  = [5.1, 4.6, 4.3, 4.2, 3.9, 4.0, 4.2];
+const SPARK_CONVERT   = [9, 10, 11, 11, 12, 12.4];
+
+const SIGNAL_SPARK_SAMPLE     = [4.2, 4.5, 4.6, 4.7, 4.7, 4.6, 4.7];
+const SIGNAL_SPARK_ACCOUNTS   = [210, 218, 226, 234, 240, 244, 247];
+const SIGNAL_SPARK_LAST       = [840, 855, 880, 870, 885, 890, 900];
+const SIGNAL_SPARK_COHERENCE  = [0.79, 0.81, 0.82, 0.83, 0.84, 0.84, 0.84];
+
+export default function RevenueOS() {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const neiPlayedRef = useRef(false);
+
+  // ── Comet animation in the protocol panel — perpetual, mount once.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const svg = wrap.querySelector<SVGSVGElement>(".protocol-panel .loop-svg");
+    const track = svg && svg.querySelector<SVGPathElement>("#loopTrackPath");
+    if (!svg || !track) return;
+    const len = track.getTotalLength();
+    const d = track.getAttribute("d");
+    if (!d) return;
+    const NS = "http://www.w3.org/2000/svg";
+
+    const N = 18;
+    const SPACING = 2.0;
+    const DASH = 2.4;
+
+    const grp = document.createElementNS(NS, "g");
+    grp.setAttribute("class", "loop-comet");
+    const segs: SVGPathElement[] = [];
+    for (let i = 0; i < N; i++) {
+      const t = i / (N - 1);
+      const p = document.createElementNS(NS, "path");
+      p.setAttribute("d", d);
+      p.setAttribute("class", "comet-seg");
+      p.style.strokeWidth = (2.0 - 1.4 * t).toFixed(2);
+      p.style.opacity = (0.5 * Math.pow(1 - t, 1.4)).toFixed(3);
+      p.style.strokeDasharray = DASH + " " + len;
+      grp.appendChild(p);
+      segs.push(p);
+    }
+    track.parentNode!.insertBefore(grp, track.nextSibling);
+
+    const dots = Array.from(svg.querySelectorAll<SVGGElement>(".loop-dot"));
+    const labels = Array.from(svg.querySelectorAll<SVGGElement>(".loop-label"));
+    const n = dots.length;
+    const SAMPLES = 1000;
+    const sx: number[] = [];
+    const sy: number[] = [];
+    const sd: number[] = [];
+    for (let s = 0; s <= SAMPLES; s++) {
+      const dist = (s / SAMPLES) * len;
+      const pt = track.getPointAtLength(dist);
+      sd.push(dist);
+      sx.push(pt.x);
+      sy.push(pt.y);
+    }
+    const dotDist = dots.map((g) => {
+      const r = g.querySelector<SVGRectElement>(".ring")!;
+      const cx = parseFloat(r.getAttribute("x") || "0") + 6;
+      const cy = parseFloat(r.getAttribute("y") || "0") + 6;
+      let best = 0;
+      let bd = Infinity;
+      for (let s = 0; s <= SAMPLES; s++) {
+        const dx = sx[s] - cx;
+        const dy = sy[s] - cy;
+        const dd = dx * dx + dy * dy;
+        if (dd < bd) { bd = dd; best = sd[s]; }
+      }
+      return best;
+    });
+    const FADE_DOTS = 4;
+    const thresh = dotDist.map((dd, i) =>
+      (((dotDist[(i + FADE_DOTS) % n] - dd) % len) + len) % len
+    );
+
+    const proxy = { p: 0 };
+    const tween = gsap.to(proxy, {
+      p: len,
+      duration: 7.5,
+      ease: "none",
+      repeat: -1,
+      onUpdate: () => {
+        for (let i = 0; i < N; i++) {
+          segs[i].style.strokeDashoffset = (-(proxy.p - i * SPACING)).toFixed(2);
+        }
+        const head = proxy.p % len;
+        for (let k = 0; k < n; k++) {
+          const fwd = (((head - dotDist[k]) % len) + len) % len;
+          const active = fwd < thresh[k];
+          dots[k].classList.toggle("is-active", active);
+          labels[k]?.classList.toggle("is-active", active);
+        }
+      },
+    });
+    return () => {
+      tween.kill();
+      grp.parentNode?.removeChild(grp);
+    };
+  }, []);
+
+  // ── NEI animation — counts up + radar fades in once layer 1 is in view.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const valEl = wrap.querySelector<HTMLElement>('[data-layer="1"] .nei-value');
+      if (valEl) valEl.textContent = "72.4";
+      wrap.querySelectorAll<SVGPathElement>(".radar-area").forEach((el) => (el.style.opacity = "1"));
+      wrap.querySelectorAll<SVGCircleElement>(".radar-point").forEach((el) => (el.style.opacity = "1"));
+      return;
+    }
+
+    const valEl = wrap.querySelector<HTMLElement>('[data-layer="1"] .nei-value');
+    const area = wrap.querySelector<SVGPathElement>('[data-layer="1"] .radar-area');
+    const points = wrap.querySelectorAll<SVGCircleElement>('[data-layer="1"] .radar-point');
+    const axisValues = wrap.querySelectorAll<SVGTextElement>('[data-layer="1"] .radar-axis-value');
+
+    if (valEl) valEl.textContent = "0.0";
+    if (area) area.style.opacity = "0";
+    points.forEach((p) => (p.style.opacity = "0"));
+    axisValues.forEach((l) => (l.style.opacity = "0"));
+
+    const layer1 = wrap.querySelector<HTMLElement>('[data-layer="1"]');
+    if (!layer1) return;
+
+    const play = () => {
+      if (neiPlayedRef.current) return;
+      neiPlayedRef.current = true;
+
+      if (valEl) {
+        const obj = { v: 0 };
+        gsap.to(obj, {
+          v: 72.4,
+          duration: 1.4,
+          ease: "power2.out",
+          onUpdate: () => { valEl.textContent = obj.v.toFixed(1); },
+        });
+      }
+      if (area) gsap.to(area, { opacity: 1, duration: 0.7, delay: 0.25, ease: "power2.out" });
+      points.forEach((p, i) =>
+        gsap.to(p, { opacity: 1, duration: 0.4, delay: 0.4 + i * 0.1, ease: "power2.out" })
+      );
+      axisValues.forEach((l, i) =>
+        gsap.to(l, { opacity: 1, duration: 0.4, delay: 0.55 + i * 0.1, ease: "power2.out" })
+      );
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) play(); }),
+      { threshold: 0.3 }
+    );
+    io.observe(layer1);
+    return () => io.disconnect();
+  }, []);
+
+  // ── Cursor-following bronze glow inside each artifact panel.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+    const panels = wrap.querySelectorAll<HTMLElement>(".artifact-panel");
+    const cleanups: Array<() => void> = [];
+    panels.forEach((panel) => {
+      const onMove = (e: MouseEvent) => {
+        const rect = panel.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        panel.style.setProperty("--cursor-x", `${x}%`);
+        panel.style.setProperty("--cursor-y", `${y}%`);
+      };
+      const onLeave = () => {
+        panel.style.setProperty("--cursor-x", "-50%");
+        panel.style.setProperty("--cursor-y", "-50%");
+      };
+      panel.addEventListener("mousemove", onMove);
+      panel.addEventListener("mouseleave", onLeave);
+      cleanups.push(() => {
+        panel.removeEventListener("mousemove", onMove);
+        panel.removeEventListener("mouseleave", onLeave);
+      });
+    });
+    return () => cleanups.forEach((fn) => fn());
+  }, []);
+
+  // ── Layer state tracking — fade layers above the currently-active one,
+  // and update the spine nodes' is-active / is-passed states. Tracked via
+  // IO so the active layer follows scroll position instead of relying on
+  // an interaction.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+    const stages = Array.from(wrap.querySelectorAll<HTMLElement>(".layer-stage"));
+    const nodes = Array.from(wrap.querySelectorAll<HTMLElement>(".layer-spine-node"));
+    if (!stages.length) return;
+
+    let activeLayer = 0;
+    const applyStates = () => {
+      stages.forEach((stage, i) => {
+        stage.classList.toggle("is-active", i === activeLayer);
+        stage.classList.toggle("is-passed", i < activeLayer);
+      });
+      nodes.forEach((node, i) => {
+        node.classList.toggle("is-active", i === activeLayer);
+        node.classList.toggle("is-passed", i < activeLayer);
+      });
+    };
+
+    const visible = new Set<number>();
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          const i = stages.indexOf(e.target as HTMLElement);
+          if (i < 0) return;
+          if (e.isIntersecting) visible.add(i);
+          else visible.delete(i);
+        });
+        if (visible.size > 0) {
+          const next = Math.max(...visible);
+          if (next !== activeLayer) {
+            activeLayer = next;
+            applyStates();
+          }
+        }
+      },
+      { rootMargin: "-30% 0px -45% 0px", threshold: 0 }
+    );
+    stages.forEach((s) => io.observe(s));
+    applyStates();
+    return () => io.disconnect();
+  }, []);
+
+  // ── Vertical spine — dotted bronze track with a solid fill scaled by
+  // scroll progress through the 3 layers. Same vocabulary as Methodology.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+    if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const fill = wrap.querySelector<HTMLElement>(".layer-spine-fill");
+      if (fill) fill.style.transform = "scaleY(1)";
+      return;
+    }
+    gsap.registerPlugin(ScrollTrigger);
+    const fill = wrap.querySelector<HTMLElement>(".layer-spine-fill");
+    const zone = wrap.querySelector<HTMLElement>(".layers-zone");
+    if (!fill || !zone) return;
+
+    gsap.set(fill, { scaleY: 0, transformOrigin: "top center" });
+    const tween = gsap.to(fill, {
+      scaleY: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: zone,
+        start: "top center",
+        end: "bottom center",
+        scrub: 0.4,
+      },
+    });
+    return () => {
+      tween.scrollTrigger?.kill();
+      tween.kill();
+    };
+  }, []);
+
+  // ── Recalibration progress.
+  const recalDaysElapsed = 43;
+  const recalDaysTotal = 90;
+  const recalRemaining = recalDaysTotal - recalDaysElapsed;
+  const recalFill = (recalDaysElapsed / recalDaysTotal) * 100;
+
+  return (
+    <div className="revos-pin" id="revenue-os" ref={wrapRef}>
+      <div className="revos-bg" />
+
+      <div className="revos-stage">
+        <div className="scaffold-row">
+          <div className="scaffold-left">
+            <h2 className="scaffold-heading">
+              <span className="line-1">Kelwin doesn&rsquo;t deliver work.</span>
+              <span className="line-2">We install systems.</span>
+            </h2>
+            <div className="scaffold-cta">
+              <DiagnosticMethodCTA
+                href="#audit"
+                label="Initiate System Audit"
+                variant="obsidian"
+              />
+            </div>
+          </div>
+          <div className="scaffold-right">
+            <p className="scaffold-body">
+              The Revenue Operating System is the architecture we build into your company — three infrastructure layers that produce pipeline as a compounding structural output, not a one-time deliverable.
+              <span className="body-coda">Services end. Architecture compounds.</span>
+            </p>
+          </div>
+        </div>
+
+        <div className="layers-zone">
+
+        <div className="layer-spine" aria-hidden="true">
+          <span className="layer-spine-track" />
+          <span className="layer-spine-fill" />
+          <span className="layer-spine-node" data-pos="1" />
+          <span className="layer-spine-node" data-pos="2" />
+          <span className="layer-spine-node" data-pos="3" />
+        </div>
+
+        {/* LAYER 01 — Narrative */}
+        <div className="layer-stage" data-layer="1">
+          <div className="layer-info">
+            <div className="layer-eyebrow">Infrastructure Layer · 01 / 03</div>
+            <h3 className="layer-name">Narrative<br />Infrastructure</h3>
+            <div className="layer-divider"></div>
+            <p className="layer-definition">The positioning and language architecture that determines whether prospects can clearly explain what you do — using their own words. If this layer is muddy, every channel downstream inherits that unclarity.</p>
+            <div className="layer-output">
+              <div className="output-label">Structural Output</div>
+              <div className="output-text">A narrative that stays coherent from your homepage to a buyer pitching internally — without degrading as it moves through channels, reps, or decision-makers.</div>
+            </div>
+          </div>
+
+          <div className="artifact-panel nei-specimen">
+            <span className="panel-glow" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-tl" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-tr" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-bl" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-br" aria-hidden="true"></span>
+            <div className="nei-header">
+              <div>
+                <span className="nei-protocol-label">Protocol 01 Output</span>
+                <span className="nei-slash">/</span>
+                <span className="nei-title">Narrative Entropy Index</span>
+              </div>
+              <div className="nei-meta">
+                <span className="nei-version">v2.4</span>
+                <span className="nei-acronym">NEI</span>
+              </div>
+            </div>
+            <div className="nei-body-grid">
+              <div className="nei-index-display">
+                <div className="nei-value-row">
+                  <span className="nei-value" data-target="72.4">0.0</span>
+                  <span className="nei-unit">%</span>
+                </div>
+                <div className="nei-status-row">
+                  <span className="nei-status-dot"></span>
+                  <span>Entropic — recalibration required</span>
+                </div>
+                <div className="nei-rule"></div>
+                <div className="nei-caption">Composite reading across four signal dimensions. Lower values indicate greater coherence.</div>
+              </div>
+
+              <div className="nei-radar">
+                <svg viewBox="0 0 320 320" preserveAspectRatio="xMidYMid meet">
+                  {[0.25, 0.5, 0.75, 1].map((r) => (
+                    <circle
+                      key={r}
+                      className={`radar-ring ${r === 1 ? "is-outer" : ""}`}
+                      cx={RADAR_CENTER}
+                      cy={RADAR_CENTER}
+                      r={RADAR_RADIUS * r}
+                    />
+                  ))}
+                  {RADAR_DIMENSIONS.map((_, i) => {
+                    const angle = -Math.PI / 2 + (i * Math.PI) / 2;
+                    const x2 = RADAR_CENTER + Math.cos(angle) * RADAR_RADIUS;
+                    const y2 = RADAR_CENTER + Math.sin(angle) * RADAR_RADIUS;
+                    return (
+                      <line
+                        key={i}
+                        className="radar-axis"
+                        x1={RADAR_CENTER}
+                        y1={RADAR_CENTER}
+                        x2={x2}
+                        y2={y2}
+                      />
+                    );
+                  })}
+                  <path
+                    className="radar-area"
+                    d={
+                      RADAR_DIMENSIONS.map((d, i) => {
+                        const [x, y] = radarPoint(i, d.value);
+                        return `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
+                      }).join(" ") + " Z"
+                    }
+                  />
+                  {RADAR_DIMENSIONS.map((d, i) => {
+                    const [x, y] = radarPoint(i, d.value);
+                    return <circle key={i} className="radar-point" cx={x} cy={y} r={3.2} />;
+                  })}
+                  {RADAR_DIMENSIONS.map((d, i) => {
+                    const [lx, ly] = radarAxisLabelPoint(i);
+                    const anchor = i === 1 ? "start" : i === 3 ? "end" : "middle";
+                    return (
+                      <g key={i}>
+                        <text className="radar-axis-label" x={lx} y={ly - 6} textAnchor={anchor}>
+                          {d.short}
+                        </text>
+                        <text className="radar-axis-value" x={lx} y={ly + 8} textAnchor={anchor}>
+                          {d.value}
+                        </text>
+                      </g>
+                    );
+                  })}
+                </svg>
+              </div>
+            </div>
+            <div className="nei-footer">
+              <div>
+                <span className="nei-meth-label">Methodology</span>
+                <span>Composite of four sub-readings from 14 signal sources. Recalibrated quarterly by The Lab.</span>
+              </div>
+              <a href="#" className="nei-spec-cta">
+                View Full Specimen
+                <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
+                  <path d="M0 4h12M12 4L9 1M12 4L9 7" stroke="currentColor" strokeWidth="1" strokeLinecap="square" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* LAYER 02 — Outbound */}
+        <div className="layer-stage" data-layer="2">
+          <div className="layer-info">
+            <div className="layer-eyebrow">Infrastructure Layer · 02 / 03</div>
+            <h3 className="layer-name">Outbound<br />Infrastructure</h3>
+            <div className="layer-divider"></div>
+            <p className="layer-definition">The system that runs your outbound — sequencing, channels, targeting, response logic — built as an installable protocol rather than a list of activities your team performs. The protocol persists; reps operate it.</p>
+            <div className="layer-output">
+              <div className="output-label">Structural Output</div>
+              <div className="output-text">Pipeline that compounds rather than restarting every time a rep leaves or a campaign rotates. The system holds; only the operators change.</div>
+            </div>
+          </div>
+
+          <div className="artifact-panel protocol-panel">
+            <span className="panel-glow" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-tl" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-tr" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-bl" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-br" aria-hidden="true"></span>
+            <div className="pmap-header">
+              <span className="pmap-header-label">Protocol Sequence — Enterprise Account Standard</span>
+              <span className="pmap-header-spec">v.PROTO/02.A</span>
+            </div>
+            <div className="pmap-loop">
+              <svg className="loop-svg" viewBox="0 0 600 238" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <path id="loopTrackPath" className="loop-track" d="M 80,81 L 520,81 A 38.5,38.5 0 0 1 520,158 L 80,158 A 38.5,38.5 0 0 1 80,81 Z" />
+
+                <g className="loop-label">
+                  <text className="loop-time" x="120" y="17">T+0</text>
+                  <text className="loop-stage" x="120" y="38">Primer</text>
+                  <text className="loop-channel" x="120" y="59">Email touch</text>
+                </g>
+                <g className="loop-label">
+                  <text className="loop-time" x="300" y="17">T+2d</text>
+                  <text className="loop-stage" x="300" y="38">Surface</text>
+                  <text className="loop-channel" x="300" y="59">LinkedIn outreach</text>
+                </g>
+                <g className="loop-label">
+                  <text className="loop-time" x="480" y="17">T+5d</text>
+                  <text className="loop-stage" x="480" y="38">Context</text>
+                  <text className="loop-channel" x="480" y="59">Email follow-up</text>
+                </g>
+                <g className="loop-label">
+                  <text className="loop-channel" x="480" y="187">Cold outreach</text>
+                  <text className="loop-stage" x="480" y="208">Pursue</text>
+                  <text className="loop-time" x="480" y="229">T+9d</text>
+                </g>
+                <g className="loop-label">
+                  <text className="loop-channel" x="300" y="187">Signal trigger</text>
+                  <text className="loop-stage" x="300" y="208">Re-engage</text>
+                  <text className="loop-time" x="300" y="229">T+14d</text>
+                </g>
+                <g className="loop-label">
+                  <text className="loop-channel" x="120" y="187">Loop / re-enter</text>
+                  <text className="loop-stage" x="120" y="208">Cycle</text>
+                  <text className="loop-time" x="120" y="229">T+21d</text>
+                </g>
+
+                <g className="loop-dot"><rect className="ring" x="114" y="75" width="12" height="12" /><rect className="core" x="117" y="78" width="6" height="6" /></g>
+                <g className="loop-dot"><rect className="ring" x="294" y="75" width="12" height="12" /><rect className="core" x="297" y="78" width="6" height="6" /></g>
+                <g className="loop-dot"><rect className="ring" x="474" y="75" width="12" height="12" /><rect className="core" x="477" y="78" width="6" height="6" /></g>
+                <g className="loop-dot"><rect className="ring" x="474" y="152" width="12" height="12" /><rect className="core" x="477" y="155" width="6" height="6" /></g>
+                <g className="loop-dot"><rect className="ring" x="294" y="152" width="12" height="12" /><rect className="core" x="297" y="155" width="6" height="6" /></g>
+                <g className="loop-dot"><rect className="ring" x="114" y="152" width="12" height="12" /><rect className="core" x="117" y="155" width="6" height="6" /></g>
+              </svg>
+            </div>
+            <div className="pmap-stats">
+              <div>
+                <div className="pmap-stat-label">Cadence</div>
+                <div className="pmap-stat-value">
+                  6 touches / 21d
+                  <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
+                    <path d={sparkPath(SPARK_CADENCE, 60, 14)} />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <div className="pmap-stat-label">Channels</div>
+                <div className="pmap-stat-value">
+                  3 active
+                  <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
+                    <path d={sparkPath(SPARK_CHANNELS, 60, 14)} />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <div className="pmap-stat-label">Avg Response</div>
+                <div className="pmap-stat-value">
+                  4.2 days
+                  <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
+                    <path d={sparkPath(SPARK_RESPONSE, 60, 14)} />
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <div className="pmap-stat-label">Conversion</div>
+                <div className="pmap-stat-value">
+                  12.4%
+                  <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
+                    <path d={sparkPath(SPARK_CONVERT, 60, 14)} />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* LAYER 03 — Intelligence */}
+        <div className="layer-stage" data-layer="3">
+          <div className="layer-info">
+            <div className="layer-eyebrow">Infrastructure Layer · 03 / 03</div>
+            <h3 className="layer-name">GTM<br />Intelligence</h3>
+            <div className="layer-divider"></div>
+            <p className="layer-definition">The observation layer that watches every interaction, identifies what&apos;s actually working at a structural level, and feeds those insights back into narrative and outbound — so the system keeps learning instead of decaying.</p>
+            <div className="layer-output">
+              <div className="output-label">Structural Output</div>
+              <div className="output-text">A revenue system that gets sharper every quarter, rather than depreciating the moment its installers leave. Every interaction strengthens the next.</div>
+            </div>
+          </div>
+
+          <div className="artifact-panel signal-panel">
+            <span className="panel-glow" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-tl" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-tr" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-bl" aria-hidden="true"></span>
+            <span className="panel-corner panel-corner-br" aria-hidden="true"></span>
+            <div className="signal-header">
+              <span className="signal-header-label"><span className="signal-live-dot"></span>Signal Acquisition — Live Feed</span>
+              <span className="signal-header-meta">CYCLE Q4·24</span>
+            </div>
+            <div className="signal-canvas">
+              <div className="signal-rows">
+                <div className="signal-row">
+                  <div className="signal-row-label"><span className="signal-row-icon"></span>Engagement Signal</div>
+                  <div className="signal-waveform signal-waveform-1">
+                    <svg viewBox="0 0 400 32" preserveAspectRatio="none" fill="none">
+                      <path d="M0 16 Q 10 6, 20 16 T 40 16 T 60 10 T 80 20 T 100 16 T 120 8 T 140 22 T 160 14 T 180 16 T 200 16 Q 210 6, 220 16 T 240 16 T 260 10 T 280 20 T 300 16 T 320 8 T 340 22 T 360 14 T 380 16 T 400 16" stroke="#D18E53" strokeWidth="1" />
+                    </svg>
+                    <span className="signal-now-tick" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <div className="signal-row">
+                  <div className="signal-row-label"><span className="signal-row-icon"></span>Pipeline Velocity</div>
+                  <div className="signal-waveform signal-waveform-2">
+                    <svg viewBox="0 0 400 32" preserveAspectRatio="none" fill="none">
+                      <path d="M0 18 L 30 18 L 40 6 L 60 6 L 70 24 L 100 24 L 110 12 L 140 12 L 150 18 L 200 18 L 230 18 L 240 6 L 260 6 L 270 24 L 300 24 L 310 12 L 340 12 L 350 18 L 400 18" stroke="#D18E53" strokeWidth="1" />
+                    </svg>
+                    <span className="signal-now-tick" aria-hidden="true"></span>
+                  </div>
+                </div>
+                <div className="signal-row">
+                  <div className="signal-row-label"><span className="signal-row-icon"></span>Conversion Quality</div>
+                  <div className="signal-waveform signal-waveform-3">
+                    <svg viewBox="0 0 400 32" preserveAspectRatio="none" fill="none">
+                      <path d="M0 16 C 20 16, 30 4, 50 16 S 80 16, 100 10 S 130 22, 150 16 S 180 4, 200 16 C 220 16, 230 4, 250 16 S 280 16, 300 10 S 330 22, 350 16 S 380 4, 400 16" stroke="#D18E53" strokeWidth="1" />
+                    </svg>
+                    <span className="signal-now-tick" aria-hidden="true"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="signal-footer">
+              <div className="signal-footer-grid">
+                <div>
+                  <div className="signal-stat-label">Sample Rate</div>
+                  <div className="signal-stat-value">
+                    4.7 Hz
+                    <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
+                      <path d={sparkPath(SIGNAL_SPARK_SAMPLE, 60, 14)} />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <div className="signal-stat-label">Active Accounts</div>
+                  <div className="signal-stat-value">
+                    247
+                    <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
+                      <path d={sparkPath(SIGNAL_SPARK_ACCOUNTS, 60, 14)} />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <div className="signal-stat-label">Last Acquisition</div>
+                  <div className="signal-stat-value">
+                    14:23:47 GMT
+                    <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
+                      <path d={sparkPath(SIGNAL_SPARK_LAST, 60, 14)} />
+                    </svg>
+                  </div>
+                </div>
+                <div>
+                  <div className="signal-stat-label">Signal Coherence</div>
+                  <div className="signal-stat-value">
+                    84%
+                    <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
+                      <path d={sparkPath(SIGNAL_SPARK_COHERENCE, 60, 14)} />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div className="signal-recalibration">
+                <div className="recal-header">
+                  <span className="recal-label">Next Recalibration</span>
+                  <span className="recal-eta">T-{recalRemaining}D</span>
+                </div>
+                <div className="recal-bar">
+                  <span
+                    className="recal-fill"
+                    style={{ transform: `scaleX(${recalFill / 100})` }}
+                  />
+                </div>
+                <div className="recal-meta">Q4·2024 Signal Review — cycle {Math.round(recalFill)}% complete</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+}

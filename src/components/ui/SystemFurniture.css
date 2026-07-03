@@ -1,0 +1,565 @@
+/* ─── System Furniture — shared HUD vocabulary ─────────────────────────────
+   One stylesheet for the cross-section command-center components:
+   SectionHUD, DiagnosticStream, MethodologyMetaBar, BracketFrame, Spine.
+   All token names line up with what the section CSS files already use so
+   the components feel native wherever they land.
+─────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --hud-bronze:        #D18E53;
+  --hud-bronze-mid:    #A66B33;
+  --hud-bronze-ink:    #7E4D24;
+  --hud-cream:         #FFF8F5;
+  --hud-cream-dim:     rgba(255, 248, 245, 0.62);
+  --hud-cream-faint:   rgba(255, 248, 245, 0.42);
+  --hud-obsidian:      #0A0805;
+  --hud-bronze-70:     rgba(209, 142, 83, 0.70);
+  --hud-bronze-55:     rgba(209, 142, 83, 0.55);
+  --hud-bronze-32:     rgba(209, 142, 83, 0.32);
+  --hud-bronze-22:     rgba(209, 142, 83, 0.22);
+  --hud-mono:          "JetBrains Mono", "IBM Plex Mono", "Courier New", "Consolas", "Monaco", monospace;
+}
+
+/* ── SectionHUD ────────────────────────────────────────────────────────── */
+.sys-hud {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  font-family: var(--hud-mono);
+}
+
+.sys-hud.is-cream { --hud-stroke: var(--hud-bronze-ink); --hud-text: var(--hud-bronze-ink); --hud-text-dim: rgba(126, 77, 36, 0.62); }
+.sys-hud.is-dark  { --hud-stroke: rgba(209,142,83,0.78); --hud-text: rgba(209,142,83,0.92); --hud-text-dim: rgba(255,248,245,0.62); }
+
+.sys-hud .sys-corner {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border: 0 solid var(--hud-stroke);
+}
+.sys-hud .sys-corner-tl { top: 24px;    left: 24px;    border-top-width:    2px; border-left-width:  2px; }
+.sys-hud .sys-corner-tr { top: 24px;    right: 24px;   border-top-width:    2px; border-right-width: 2px; }
+.sys-hud .sys-corner-bl { bottom: 24px; left: 24px;    border-bottom-width: 2px; border-left-width:  2px; }
+.sys-hud .sys-corner-br { bottom: 24px; right: 24px;   border-bottom-width: 2px; border-right-width: 2px; }
+
+.sys-hud .sys-header {
+  position: absolute;
+  top: 54px;
+  left: 54px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.sys-hud .sys-header-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.sys-hud .sys-header-secondary {
+  padding-left: 17px;
+}
+.sys-hud .sys-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--hud-bronze);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+.sys-hud .sys-status {
+  position: absolute;
+  top: 54px;
+  right: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+.sys-hud .sys-counter {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--hud-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.sys-hud .sys-label-primary {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--hud-text);
+  text-transform: uppercase;
+}
+.sys-hud .sys-label-secondary {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--hud-text-dim);
+  text-transform: uppercase;
+}
+
+.sys-hud .sys-scroll-prompt {
+  position: absolute;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.sys-hud .sys-scroll-track {
+  position: relative;
+  width: 1px;
+  height: 32px;
+  background-color: rgba(209,142,83,0.32);
+  overflow: hidden;
+}
+.sys-hud .sys-scroll-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background-color: var(--hud-bronze);
+  animation: scroll-indicator 2.4s ease-in-out infinite;
+}
+.sys-hud .sys-scroll-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--hud-text);
+  text-transform: uppercase;
+}
+
+@media (max-width: 1200px) {
+  .sys-hud .sys-header { top: 36px; left: 32px; }
+  .sys-hud .sys-status { top: 36px; right: 32px; }
+  .sys-hud .sys-corner { width: 24px; height: 24px; }
+  .sys-hud .sys-corner-tl, .sys-hud .sys-corner-tr { top: 16px; }
+  .sys-hud .sys-corner-bl, .sys-hud .sys-corner-br { bottom: 16px; }
+  .sys-hud .sys-corner-tl, .sys-hud .sys-corner-bl { left: 16px; }
+  .sys-hud .sys-corner-tr, .sys-hud .sys-corner-br { right: 16px; }
+}
+@media (max-width: 768px) {
+  .sys-hud { display: none; }
+}
+
+/* ── DiagnosticStream ──────────────────────────────────────────────────── */
+.sys-stream {
+  font-family: var(--hud-mono);
+  pointer-events: none;
+}
+.sys-stream.is-floating {
+  position: absolute;
+  bottom: 54px;
+  left: 54px;
+  width: 320px;
+  z-index: 3;
+}
+.sys-stream.is-cream { --stream-text: rgba(10,8,5,0.78); --stream-time: rgba(10,8,5,0.42); --stream-code: var(--hud-bronze-ink); --stream-value: rgba(10,8,5,0.78); --stream-border: rgba(126,77,36,0.22); }
+.sys-stream.is-dark  { --stream-text: rgba(255,248,245,0.78); --stream-time: rgba(255,248,245,0.48); --stream-code: rgba(209,142,83,0.82); --stream-value: rgba(255,248,245,0.78); --stream-border: rgba(209,142,83,0.22); }
+
+.sys-stream-header {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--stream-code);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--stream-border);
+}
+.sys-stream-body {
+  position: relative;
+  max-height: 70px;
+  overflow: hidden;
+}
+.sys-stream-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 7px;
+  font-size: 11px;
+}
+.sys-stream-time {
+  color: var(--stream-time);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.sys-stream-code {
+  color: var(--stream-code);
+  letter-spacing: 0.04em;
+  flex: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sys-stream-value {
+  color: var(--stream-value);
+  flex-shrink: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 1200px) {
+  .sys-stream.is-floating { display: none; }
+}
+
+/* ── MethodologyMetaBar ────────────────────────────────────────────────── */
+.sys-meta-bar {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(126, 77, 36, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.sys-meta-bar.is-dark { border-top-color: rgba(209,142,83,0.20); }
+.sys-meta-segment {
+  font-family: var(--hud-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(126, 77, 36, 0.66);
+}
+.sys-meta-bar.is-dark .sys-meta-segment { color: rgba(209,142,83,0.62); }
+.sys-meta-segment strong {
+  color: var(--hud-bronze-ink);
+  font-weight: 600;
+}
+.sys-meta-bar.is-dark .sys-meta-segment strong { color: var(--hud-bronze); }
+
+/* ── BracketFrame ──────────────────────────────────────────────────────── */
+.sys-bracket {
+  position: absolute;
+  pointer-events: none;
+  border: 0 solid var(--hud-bronze);
+  width: var(--bracket-size, 14px);
+  height: var(--bracket-size, 14px);
+  z-index: 2;
+}
+.sys-bracket.is-tl { top: var(--bracket-inset, -1px); left:  var(--bracket-inset, -1px); border-top-width:    var(--bracket-weight, 1px); border-left-width:  var(--bracket-weight, 1px); }
+.sys-bracket.is-tr { top: var(--bracket-inset, -1px); right: var(--bracket-inset, -1px); border-top-width:    var(--bracket-weight, 1px); border-right-width: var(--bracket-weight, 1px); }
+.sys-bracket.is-bl { bottom: var(--bracket-inset, -1px); left:  var(--bracket-inset, -1px); border-bottom-width: var(--bracket-weight, 1px); border-left-width:  var(--bracket-weight, 1px); }
+.sys-bracket.is-br { bottom: var(--bracket-inset, -1px); right: var(--bracket-inset, -1px); border-bottom-width: var(--bracket-weight, 1px); border-right-width: var(--bracket-weight, 1px); }
+
+/* ── Spine ─────────────────────────────────────────────────────────────── */
+.sys-spine {
+  position: relative;
+  width: var(--spine-width, 1px);
+}
+.sys-spine-track {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(to bottom, rgba(126, 77, 36, 0.28) 0 4px, transparent 4px 9px);
+}
+.sys-spine.is-dark .sys-spine-track {
+  background-image: repeating-linear-gradient(to bottom, rgba(209, 142, 83, 0.32) 0 4px, transparent 4px 9px);
+}
+.sys-spine-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--hud-bronze-ink);
+  transform: scaleY(0);
+  transform-origin: top center;
+}
+.sys-spine.is-dark .sys-spine-fill {
+  background: var(--hud-bronze);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sys-hud .sys-dot,
+  .sys-hud .sys-scroll-dot { animation: none !important; }
+}
+
+/* ── AmbientGrid — site-wide dot pattern + cursor halo ────────────────── */
+.ambient-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  isolation: isolate;
+}
+.ambient-grid-dots {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle 1px at 1px 1px, rgba(209, 142, 83, 0.07) 1px, transparent 2px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.7) 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.7) 65%, transparent 100%);
+}
+.ambient-grid-halo {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 1px at 1px 1px, rgba(209, 142, 83, 0.18) 1px, transparent 2px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 50%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 50%, transparent 80%);
+  opacity: 0.9;
+}
+@media (max-width: 768px), (hover: none), (prefers-reduced-motion: reduce) {
+  .ambient-grid-halo { display: none; }
+}
+
+/* ── SystemStatusPill — fixed bottom-left persistent identity ────────
+   Bottom-left avoids the navbar (top-area), each section's HUD corners
+   (top + bottom corners at 24px inset), the floating Diagnostic Stream
+   (anchored higher inside HUD), and the section-jump rail (right edge). */
+.sys-status-pill {
+  position: fixed;
+  bottom: 16px;
+  left: 18px;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  font-family: var(--hud-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 248, 245, 0.55);
+  background: rgba(8, 9, 10, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(209, 142, 83, 0.20);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  user-select: none;
+}
+.sys-status-pill[data-armed="true"] { opacity: 1; }
+.sys-status-pill-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--hud-bronze);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(209, 142, 83, 0.45);
+  animation: blink 1.6s ease-in-out infinite;
+}
+.sys-status-pill-label  { color: var(--hud-bronze); font-weight: 600; }
+.sys-status-pill-state  { color: rgba(255, 248, 245, 0.78); }
+.sys-status-pill-time   { color: rgba(255, 248, 245, 0.62); font-variant-numeric: tabular-nums; }
+.sys-status-pill-frame  { color: rgba(209, 142, 83, 0.62); }
+.sys-status-pill-divider {
+  width: 1px;
+  height: 12px;
+  background: rgba(209, 142, 83, 0.30);
+}
+@media (max-width: 1200px) {
+  .sys-status-pill-state,
+  .sys-status-pill-frame { display: none; }
+  .sys-status-pill-divider:nth-of-type(2),
+  .sys-status-pill-divider:nth-of-type(4) { display: none; }
+}
+@media (max-width: 768px) {
+  .sys-status-pill { display: none; }
+}
+
+/* ── SectionJumpRail — right-edge tick wayfinding ────────────────────── */
+.sys-jump-rail {
+  position: fixed;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 38;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 12px 0;
+}
+.sys-jump-tick {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: 0;
+  padding: 4px 8px;
+  cursor: pointer;
+  color: rgba(255, 248, 245, 0.55);
+  transition: color 0.25s ease;
+}
+.sys-jump-tick:hover { color: var(--hud-bronze); }
+.sys-jump-mark {
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: rgba(209, 142, 83, 0.32);
+  transition: width 0.3s var(--ease-out, ease), background-color 0.3s ease;
+}
+.sys-jump-tick:hover .sys-jump-mark { background: var(--hud-bronze); width: 22px; }
+.sys-jump-tick.is-active .sys-jump-mark {
+  background: var(--hud-bronze);
+  width: 24px;
+}
+.sys-jump-label {
+  position: absolute;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-family: var(--hud-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--hud-bronze);
+  padding: 4px 10px;
+  background: rgba(8, 9, 10, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(209, 142, 83, 0.20);
+  pointer-events: none;
+}
+@media (max-width: 1100px) {
+  .sys-jump-rail { display: none; }
+}
+
+/* ── DiagnosticManualOverlay — D-key easter egg ─────────────────────── */
+.sys-manual-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 9, 10, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 24px;
+}
+.sys-manual-frame {
+  width: min(640px, 96vw);
+  max-height: 80vh;
+  background: rgba(10, 8, 5, 0.96);
+  border: 1px solid rgba(209, 142, 83, 0.45);
+  box-shadow:
+    0 -1px 0 0 rgba(209, 142, 83, 0.22) inset,
+    0 32px 64px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.sys-manual-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(209, 142, 83, 0.22);
+  font-family: var(--hud-mono);
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+}
+.sys-manual-head-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--hud-bronze);
+  border-radius: 50%;
+  animation: blink 1.6s ease-in-out infinite;
+}
+.sys-manual-head-label {
+  color: var(--hud-bronze);
+  flex: 1;
+}
+.sys-manual-close {
+  background: transparent;
+  border: 1px solid rgba(209, 142, 83, 0.25);
+  color: rgba(255, 248, 245, 0.62);
+  padding: 4px 8px;
+  font-family: var(--hud-mono);
+  font-size: 10px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.sys-manual-close:hover {
+  color: var(--hud-bronze);
+  border-color: var(--hud-bronze);
+}
+.sys-manual-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 22px 28px;
+  font-family: var(--hud-mono);
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(255, 248, 245, 0.78);
+}
+.sys-manual-row { margin-bottom: 4px; white-space: pre-wrap; }
+.sys-manual-row-head {
+  color: var(--hud-bronze);
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.sys-manual-row-section {
+  color: var(--hud-bronze);
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.sys-manual-row-body { color: rgba(255, 248, 245, 0.78); }
+.sys-manual-rule {
+  height: 1px;
+  background: rgba(209, 142, 83, 0.22);
+  margin: 10px 0;
+}
+.sys-manual-caret {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: var(--hud-bronze);
+  vertical-align: -2px;
+  margin-left: 4px;
+  animation: blink 1.2s step-end infinite;
+}
+
+/* ── CustomCursor — bronze trailing ring (mounted by CustomCursor.tsx) ─ */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(209, 142, 83, 0.55);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition:
+    width  0.2s ease,
+    height 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+  will-change: transform;
+}
+.custom-cursor.is-hover {
+  width: 34px;
+  height: 34px;
+  border-color: var(--hud-bronze);
+}
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .custom-cursor { display: none; }
+}
+
+/* ── Live pulse-dot on every section scaffold-label eyebrow ──────────── */
+.scaffold-label {
+  position: relative;
+}
+.scaffold-label .scaffold-pulse {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: var(--hud-bronze);
+  border-radius: 50%;
+  margin-left: 4px;
+  animation: blink 1.8s ease-in-out infinite;
+  box-shadow: 0 0 6px rgba(209, 142, 83, 0.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .scaffold-label .scaffold-pulse { animation: none; }
+}
+

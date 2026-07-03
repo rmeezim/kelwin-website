@@ -1,0 +1,821 @@
+/* ─── Diagnostic Reframe — scoped to .reframe-pin-wrap ────────────────────
+   All selectors prefixed with .reframe-pin-wrap so tokens/styles cannot
+   collide with other sections that share class names (scaffold-*, etc).
+   Tokens originally declared in :root now live on the section root.
+─────────────────────────────────────────────────────────────────────────── */
+
+.reframe-pin-wrap {
+  --bone:                  #F4F0E7;
+  --bone-deep:             #ECE6DA;
+  --obsidian:              #0A0805;
+  --graphite:              #1A1612;
+  --graphite-hover:        #221E1A;
+  --graphite-inner-line:   rgba(247, 244, 238, 0.06);
+
+  --ink:                   #0A0805;
+  --lead:                  #5E574F;
+  --ash:                   #8E867D;
+  --headline-mute:         #A8A09A;
+  --headline-mute-dark:    #9C948A;
+  --dusk:                  #7A7268;
+
+  --card-text:             #F4F0E7;
+  --card-text-muted:       #9C948A;
+  --card-label-dusk:       #7A716A;
+
+  --bronze:                #D18E53;
+  --bronze-ink:            #7E4D24;
+  --bronze-mid:            #A66B33;
+
+  --bronze-ink-70:         rgba(126, 77, 36, 0.70);
+  --bronze-ink-55:         rgba(126, 77, 36, 0.55);
+  --bronze-70:             rgba(209, 142, 83, 0.70);
+  --bronze-55:             rgba(209, 142, 83, 0.55);
+  --bronze-35:             rgba(209, 142, 83, 0.35);
+  --bronze-15:             rgba(209, 142, 83, 0.15);
+
+  --hairline:              rgba(10, 8, 5, 0.10);
+
+  --f-display:             var(--font-instrument-sans), serif;
+  --f-body:                var(--font-inter), sans-serif;
+
+  --ease-out:              cubic-bezier(0.2, 0.7, 0.3, 1);
+  --ease-line:             cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── PIN WRAPPER ───────────────────────────────────────────────────────── */
+.reframe-pin-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  overflow: hidden;
+  visibility: hidden;
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.reframe-pin-wrap.js-ready { visibility: visible; }
+
+/* Decorative gradient (was body::before in original) — moved to section root */
+.reframe-pin-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 40% at 12% 25%, rgba(120, 95, 65, 0.045) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 45% at 88% 75%, rgba(209, 142, 83, 0.035) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.reframe-pin-wrap .reframe-bg-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--color-surface);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.reframe-pin-wrap .section-reframe {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 64px;
+}
+@media (max-width: 900px) {
+  .reframe-pin-wrap .section-reframe { padding: 0 28px; }
+  .reframe-pin-wrap { padding: 56px 0; }
+}
+
+/* ─── TOP BLOCK ─────────────────────────────────────────────────────────── */
+.reframe-pin-wrap .reframe-top {
+  display: grid;
+  grid-template-columns: 1.85fr 1fr;
+  gap: 88px;
+  margin-bottom: 32px;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .reframe-pin-wrap .reframe-top { grid-template-columns: 1fr; gap: 48px; margin-bottom: 48px; }
+}
+
+.reframe-pin-wrap .section-label {
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bronze-ink);
+  margin-bottom: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.reframe-pin-wrap .section-label::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--bronze-ink-70);
+}
+
+.reframe-pin-wrap .headline-display {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(26px, 3.3vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: pretty;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+.reframe-pin-wrap .headline-display .line-1,
+.reframe-pin-wrap .headline-display .line-2 {
+  display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.reframe-pin-wrap .headline-display .line-2 { color: var(--headline-mute); }
+
+/* Typewriter — per-character snap-on reveal. Words stay atomic (no mid-word
+   breaks) via .tw-word's nowrap wrapper; chars appear instantly one at a
+   time. A bronze caret follows the typing position and blinks at the same
+   1.6s cadence as the hero's LocationTime dot — terminal-vibe consistency. */
+.reframe-pin-wrap .headline-display .tw-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+.reframe-pin-wrap .headline-display .tw-char {
+  display: inline-block;
+}
+.reframe-pin-wrap .headline-display .tw-caret {
+  display: inline-block;
+  width: 0.06em;
+  height: 0.86em;
+  margin-left: 0.04em;
+  margin-right: -0.02em;
+  background-color: var(--bronze);
+  vertical-align: -0.08em;
+  opacity: 0;
+}
+/* Hard square-wave blink — same step-end cadence as the HUD terminal
+   cursor in the hero. The global `blink` keyframe is defined in
+   globals.css (0%,100% → 1; 50% → 0.2). step-end means no interpolation
+   between keyframes: the caret holds full bronze for 0.6s, snaps dim
+   for 0.6s, snaps back. Reads as a terminal cursor, not a soft pulse. */
+.reframe-pin-wrap .headline-display .tw-caret.is-blinking {
+  animation: blink 1.2s step-end infinite;
+}
+@media (max-width: 600px) {
+  .reframe-pin-wrap .headline-display { font-size: 26px; line-height: 1.15; }
+}
+
+/* CTA wrapper — bracketed obsidian CTA component handles its own
+   visual styling; this class is just for GSAP targeting + layout
+   spacing (margin-top) so the reveal timeline still drives it.    */
+.reframe-pin-wrap .reframe-cta {
+  margin-top: 32px;
+  width: fit-content;
+}
+
+/* Body subtext top aligns with the heading's first-line top edge. The
+   left column eats: section-label (~13px) + margin-bottom 32px + the
+   heading's own ascender area (~10px on a 46px font) before its cap
+   height starts. ~62px lands the body's cap height at the same y as
+   the heading's. Scaled up on taller viewports below.                  */
+.reframe-pin-wrap .reframe-right { padding-top: 62px; }
+@media (max-width: 1024px) { .reframe-pin-wrap .reframe-right { padding-top: 0; } }
+
+.reframe-pin-wrap .reframe-body {
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--lead);
+  max-width: 430px;
+}
+.reframe-pin-wrap .reframe-body .body-coda {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--f-display);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* ─── CONNECTOR LINE ────────────────────────────────────────────────────── */
+.reframe-pin-wrap .connector-strip {
+  position: relative;
+  height: 14px;
+}
+.reframe-pin-wrap .connector-line {
+  position: absolute;
+  top: 50%;
+  left: 220px;
+  right: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, var(--bronze-ink-55) 50%, transparent 50%);
+  background-size: 5px 1px;
+  background-repeat: repeat-x;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* Connector flow pulse — small bright bronze comet that travels left
+   → right along the connector line. Slow, ambient, looping (~6s cycle).
+   Indicates directional flow without being flashy. Position is relative
+   to .connector-line, so the line's clip-path keeps the pulse hidden
+   until the connector has finished drawing in. */
+.reframe-pin-wrap .connector-line {
+  /* required so the absolutely-positioned pulse anchors here */
+  overflow: visible;
+}
+.reframe-pin-wrap .connector-pulse {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 90px;
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(209, 142, 83, 0.05) 25%,
+    rgba(209, 142, 83, 0.45) 70%,
+    rgba(209, 142, 83, 0.85) 100%
+  );
+  pointer-events: none;
+  animation: connectorPulse 6s linear infinite;
+}
+@keyframes connectorPulse {
+  0%   { left: -8%;  opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { left: 108%; opacity: 0; }
+}
+.reframe-pin-wrap .connector-marker {
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--bronze-ink);
+  background: var(--bone);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 3;
+}
+
+/* Connector marker labels — small category tags that turn the connector
+   from decorative into a directional flow: NARRATIVE · PROTOCOL ·
+   INTELLIGENCE. Sit below each marker, in the dark padding above each
+   card, so they label what each card represents at a glance. */
+.reframe-pin-wrap .connector-marker-label {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Courier New", "Consolas", "Monaco", monospace;
+  font-size: 9px;
+  letter-spacing: 0.20em;
+  color: rgba(209, 142, 83, 0.62);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.reframe-pin-wrap .connector-marker.m1 { left: calc(220px + ((100% - 220px) / 6) * 1); }
+.reframe-pin-wrap .connector-marker.m2 { left: calc(220px + ((100% - 220px) / 6) * 3); }
+.reframe-pin-wrap .connector-marker.m3 { left: calc(220px + ((100% - 220px) / 6) * 5); }
+
+@media (max-width: 1100px) {
+  .reframe-pin-wrap .connector-line { left: 0; }
+  .reframe-pin-wrap .connector-marker.m1 { left: calc((100% / 6) * 1); }
+  .reframe-pin-wrap .connector-marker.m2 { left: calc((100% / 6) * 3); }
+  .reframe-pin-wrap .connector-marker.m3 { left: calc((100% / 6) * 5); }
+}
+@media (max-width: 768px) {
+  .reframe-pin-wrap .connector-strip { display: none; }
+}
+
+/* ─── REFRAME GRID ──────────────────────────────────────────────────────── */
+.reframe-pin-wrap .reframe-grid {
+  display: grid;
+  grid-template-columns: 220px repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+.reframe-pin-wrap .reframe-grid::before,
+.reframe-pin-wrap .reframe-grid::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background: var(--bronze-ink-55);
+  transform-origin: left center;
+  transform: scaleX(var(--hairline-top, 0));
+  pointer-events: none;
+}
+.reframe-pin-wrap .reframe-grid::before { top: 0; }
+.reframe-pin-wrap .reframe-grid::after {
+  bottom: 0;
+  transform: scaleX(var(--hairline-bot, 0));
+}
+@media (max-width: 1100px) {
+  .reframe-pin-wrap .reframe-grid { grid-template-columns: repeat(3, 1fr); }
+  .reframe-pin-wrap .grid-label-cell { display: none; }
+}
+@media (max-width: 768px) {
+  .reframe-pin-wrap .reframe-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+
+.reframe-pin-wrap .grid-label-cell {
+  padding: 44px 32px 44px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* Eyebrow — small bronze HUD-style marker with hairline accent. Same
+   vocabulary as the dark-phase protocol header so the label reads as
+   part of the same system, not a generic gray subtitle. */
+.reframe-pin-wrap .grid-label-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+  font-family: "Courier New", "Consolas", "Monaco", monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--bronze-ink);
+  text-transform: uppercase;
+}
+.reframe-pin-wrap .grid-label-eyebrow .eyebrow-dash {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--bronze-ink);
+}
+
+/* Main subheading — display font, larger, obsidian. Reads as a chapter
+   title for the three cards below, with real typographic weight. */
+.reframe-pin-wrap .grid-label-headline {
+  font-family: var(--f-display);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.22;
+  margin: 0;
+  max-width: 200px;
+}
+
+.reframe-pin-wrap .reframe-card {
+  padding: 44px 36px;
+  background: var(--graphite);
+  border-right: 0.5px solid var(--graphite-inner-line);
+  position: relative;
+  overflow: hidden;
+  color: var(--card-text);
+  transition: background-color 0.28s ease;
+}
+.reframe-pin-wrap .reframe-card:last-child { border-right: none; }
+.reframe-pin-wrap .reframe-card:hover { background-color: var(--graphite-hover); }
+@media (max-width: 768px) {
+  .reframe-pin-wrap .reframe-card { border-right: none; padding: 44px 32px; }
+}
+
+/* Card glow — radial bronze gradient that follows the cursor inside
+   each card on hover. Position driven by --cursor-x / --cursor-y CSS
+   vars updated from JS mousemove. Underlay below all card content. */
+.reframe-pin-wrap .card-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 200px at var(--cursor-x, 50%) var(--cursor-y, 50%),
+    rgba(209, 142, 83, 0.13) 0%,
+    rgba(209, 142, 83, 0.04) 35%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+.reframe-pin-wrap .reframe-card:hover .card-glow { opacity: 1; }
+
+/* Card corners — small bronze L-bracket reticles at each card's four
+   corners. Visual continuity with the dark-phase viewport corner marks
+   in miniature. Brighten on hover for tactile feedback. */
+.reframe-pin-wrap .card-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid rgba(209, 142, 83, 0.42);
+  pointer-events: none;
+  z-index: 2;
+  transition: border-color 0.3s ease;
+}
+.reframe-pin-wrap .card-corner-tl {
+  top: 10px;    left: 10px;
+  border-top-width: 1px; border-left-width: 1px;
+}
+.reframe-pin-wrap .card-corner-tr {
+  top: 10px;    right: 10px;
+  border-top-width: 1px; border-right-width: 1px;
+}
+.reframe-pin-wrap .card-corner-bl {
+  bottom: 10px; left: 10px;
+  border-bottom-width: 1px; border-left-width: 1px;
+}
+.reframe-pin-wrap .card-corner-br {
+  bottom: 10px; right: 10px;
+  border-bottom-width: 1px; border-right-width: 1px;
+}
+.reframe-pin-wrap .reframe-card:hover .card-corner {
+  border-color: rgba(209, 142, 83, 0.82);
+}
+
+/* On card hover, brighten the number badge too — small tactile lift. */
+.reframe-pin-wrap .reframe-card:hover .card-number {
+  background: rgba(209, 142, 83, 0.12);
+  border-color: var(--bronze);
+}
+
+/* Keep card content above the glow underlay. */
+.reframe-pin-wrap .reframe-card > *:not(.card-glow):not(.card-corner) {
+  position: relative;
+  z-index: 1;
+}
+
+.reframe-pin-wrap .card-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--bronze-55);
+  font-family: var(--f-display);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--bronze);
+  margin-bottom: 26px;
+  letter-spacing: 0.02em;
+  background: transparent;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+.reframe-pin-wrap .card-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--bronze);
+  margin-bottom: 22px;
+  display: block;
+  opacity: 0.95;
+}
+.reframe-pin-wrap .card-label-top {
+  font-family: var(--f-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--card-label-dusk);
+  margin-bottom: 10px;
+}
+.reframe-pin-wrap .card-claim {
+  font-family: var(--f-display);
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--card-text);
+  letter-spacing: -0.01em;
+  margin-bottom: 26px;
+}
+.reframe-pin-wrap .card-divider {
+  width: 28px;
+  height: 1px;
+  background: var(--bronze-55);
+  margin-bottom: 18px;
+}
+.reframe-pin-wrap .card-label-bottom {
+  font-family: var(--f-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 10px;
+}
+.reframe-pin-wrap .card-truth {
+  font-family: var(--f-body);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--card-text-muted);
+}
+
+/* ─── METADATA BAR ──────────────────────────────────────────────────────────
+   Small monospace footer under the card grid — frames the section as the
+   output of a versioned, calibrated diagnostic system. Same vocabulary as
+   the dark-phase HUD (protocol header, T+ counter, log feed values).      */
+.reframe-pin-wrap .reframe-meta-bar {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(126, 77, 36, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.reframe-pin-wrap .meta-segment {
+  font-family: "Courier New", "Consolas", "Monaco", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(126, 77, 36, 0.66);
+  text-transform: uppercase;
+}
+.reframe-pin-wrap .meta-segment strong {
+  color: var(--bronze-ink);
+  font-weight: 600;
+}
+
+/* ─── LARGER VIEWPORTS — scaled-up vertical spacing ────────────────────── */
+@media (min-width: 1500px) and (min-height: 900px) {
+  .reframe-pin-wrap .reframe-top         { margin-bottom: 80px; }
+  .reframe-pin-wrap .reframe-card        { padding: 50px 36px; }
+  .reframe-pin-wrap .card-number         { margin-bottom: 30px; }
+  .reframe-pin-wrap .card-icon           { margin-bottom: 26px; }
+  .reframe-pin-wrap .card-claim          { margin-bottom: 30px; }
+  .reframe-pin-wrap .card-divider        { margin-bottom: 20px; }
+  .reframe-pin-wrap .section-label       { margin-bottom: 34px; }
+  .reframe-pin-wrap .reframe-cta         { margin-top: 38px; }
+  .reframe-pin-wrap .reframe-right       { padding-top: 64px; }
+  .reframe-pin-wrap .grid-label-cell     { padding: 50px 32px 50px 0; }
+}
+
+@media (min-width: 1800px) and (min-height: 1050px) {
+  .reframe-pin-wrap .reframe-top         { margin-bottom: 112px; }
+  .reframe-pin-wrap .reframe-card        { padding: 56px 36px; }
+  .reframe-pin-wrap .card-number         { margin-bottom: 32px; }
+  .reframe-pin-wrap .card-icon           { margin-bottom: 28px; }
+  .reframe-pin-wrap .card-claim          { margin-bottom: 32px; }
+  .reframe-pin-wrap .card-divider        { margin-bottom: 22px; }
+  .reframe-pin-wrap .section-label       { margin-bottom: 36px; }
+  .reframe-pin-wrap .reframe-cta         { margin-top: 44px; }
+  .reframe-pin-wrap .reframe-right       { padding-top: 66px; }
+  .reframe-pin-wrap .grid-label-cell     { padding: 56px 32px 56px 0; }
+}
+
+/* ─── PULSE LAYER — concentric sonar rings ─────────────────────────────────
+   Three bronze hairline circles emanating from viewport center, staggered
+   so 1–3 are visible at any moment. Sits at z:0 so the headline (z:1)
+   renders on top — rings provide ambient backdrop, not foreground.
+─────────────────────────────────────────────────────────────────────────── */
+.reframe-pin-wrap .reframe-pulse-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.reframe-pin-wrap .hud-pulse-svg {
+  width: min(960px, 70vw);
+  height: min(960px, 70vw);
+  max-height: 80vh;
+  overflow: visible;
+}
+.reframe-pin-wrap .hud-pulse-ring {
+  fill: none;
+  stroke: var(--bronze);
+  stroke-width: 1;
+  opacity: 0;
+  /* Animation + per-frame path deformation driven from JS — see
+     DiagnosticReframe.tsx (look for "Cursor-reactive pulse rings"). */
+}
+
+/* ─── DARK-PHASE HUD OVERLAY ───────────────────────────────────────────────
+   System instrumentation that frames the typewriter phase as a calibrated
+   diagnostic workspace. All elements use the hero's terminal vocabulary —
+   monospace, bronze accents, square-wave blink. Lives only during the
+   dark phase; fades out at scroll-progress 0.18 alongside the bg crossfade.
+─────────────────────────────────────────────────────────────────────────── */
+.reframe-pin-wrap .reframe-hud-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  font-family: "Courier New", "Consolas", "Monaco", monospace;
+}
+
+/* Four corner registration marks — viewfinder reticles. Longer arms and
+   a thicker stroke than the previous pass; they should read as a clear
+   frame, not whisper-thin afterthoughts. */
+.reframe-pin-wrap .hud-corner {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border: 0 solid rgba(209,142,83,0.78);
+}
+.reframe-pin-wrap .hud-corner-tl { top: 24px;    left: 24px;    border-top-width:    2px; border-left-width:  2px; }
+.reframe-pin-wrap .hud-corner-tr { top: 24px;    right: 24px;   border-top-width:    2px; border-right-width: 2px; }
+.reframe-pin-wrap .hud-corner-bl { bottom: 24px; left: 24px;    border-bottom-width: 2px; border-left-width:  2px; }
+.reframe-pin-wrap .hud-corner-br { bottom: 24px; right: 24px;   border-bottom-width: 2px; border-right-width: 2px; }
+
+/* Top-left system header — protocol identifier with pulsing bronze dot.
+   Tucked inside the L-bracket corner mark — 30px from both the L's top
+   horizontal line (y=24) and its left vertical line (x=24). Equal in
+   both axes so the framing reads balanced. */
+.reframe-pin-wrap .hud-header-tl {
+  position: absolute;
+  top: 54px;
+  left: 54px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.reframe-pin-wrap .hud-header-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.reframe-pin-wrap .hud-header-row-secondary {
+  padding-left: 17px;
+}
+.reframe-pin-wrap .hud-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--bronze);
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+/* Top-right status — analysis mode + live T+ counter. Mirrors top-left:
+   30px from both the L's top horizontal line and its right vertical line. */
+.reframe-pin-wrap .hud-status-tr {
+  position: absolute;
+  top: 54px;
+  right: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 7px;
+}
+.reframe-pin-wrap .hud-counter {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: rgba(255,248,245,0.88);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shared label vocabulary. Sized to be readable at a glance — these are
+   wayfinding signals, not decorative whispers. */
+.reframe-pin-wrap .hud-label-primary {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: rgba(209,142,83,0.92);
+  text-transform: uppercase;
+}
+.reframe-pin-wrap .hud-label-secondary {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: rgba(255,248,245,0.62);
+  text-transform: uppercase;
+}
+
+/* Bottom-center scroll prompt — animated drop indicator + label. */
+.reframe-pin-wrap .hud-scroll-prompt {
+  position: absolute;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.reframe-pin-wrap .hud-scroll-track {
+  position: relative;
+  width: 1px;
+  height: 32px;
+  background-color: rgba(209,142,83,0.32);
+  overflow: hidden;
+}
+.reframe-pin-wrap .hud-scroll-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background-color: var(--bronze);
+  animation: scroll-indicator 2.4s ease-in-out infinite;
+}
+.reframe-pin-wrap .hud-scroll-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: rgba(209,142,83,0.88);
+  text-transform: uppercase;
+}
+
+/* Diagnostic stream — live log feed anchored bottom-left, sitting just
+   above the bottom-left corner mark and beside the centered scroll prompt.
+   Echoes the hero HUD's log vocabulary (timestamp + code + value) so the
+   section reads as "the same system, different screen." */
+.reframe-pin-wrap .hud-log-feed {
+  position: absolute;
+  bottom: 54px;
+  left: 54px;
+  width: 320px;
+}
+.reframe-pin-wrap .hud-log-header {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: rgba(209,142,83,0.82);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(209,142,83,0.22);
+}
+.reframe-pin-wrap .hud-log-body {
+  position: relative;
+  max-height: 70px;
+  overflow: hidden;
+}
+.reframe-pin-wrap .hud-log-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 7px;
+  font-size: 11px;
+}
+.reframe-pin-wrap .hud-log-time {
+  color: rgba(255,248,245,0.48);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.reframe-pin-wrap .hud-log-code {
+  color: rgba(209,142,83,0.82);
+  letter-spacing: 0.04em;
+  flex: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.reframe-pin-wrap .hud-log-value {
+  color: rgba(255,248,245,0.78);
+  flex-shrink: 0;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hide the log feed on narrower viewports where it would crowd / overlap
+   the centered headline. Corners + headers + status remain visible. */
+@media (max-width: 1200px) {
+  .reframe-pin-wrap .hud-log-feed { display: none; }
+}
+
+/* Mobile: skip the HUD entirely — the cinematic phase doesn't run, so the
+   instrumentation has no narrative to frame. Mobile uses a simple reveal. */
+@media (max-width: 768px) {
+  .reframe-pin-wrap .reframe-hud-overlay { display: none; }
+  .reframe-pin-wrap .reframe-pulse-layer { display: none; }
+}
+
+/* ─── REDUCED MOTION FALLBACK ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reframe-pin-wrap { visibility: visible !important; }
+  .reframe-pin-wrap .reframe-bg-fill { background: var(--bone) !important; }
+  .reframe-pin-wrap .reframe-hud-overlay { display: none !important; }
+  .reframe-pin-wrap .reframe-pulse-layer { display: none !important; }
+  .reframe-pin-wrap .headline-display { transform: none !important; color: var(--ink) !important; }
+  .reframe-pin-wrap .headline-display .line-1,
+  .reframe-pin-wrap .headline-display .line-2 { transform: none !important; }
+  .reframe-pin-wrap .headline-display .line-2 { color: var(--headline-mute) !important; }
+  .reframe-pin-wrap .section-label,
+  .reframe-pin-wrap .reframe-cta,
+  .reframe-pin-wrap .reframe-right,
+  .reframe-pin-wrap .grid-label-cell,
+  .reframe-pin-wrap .reframe-card,
+  .reframe-pin-wrap .reframe-meta-bar {
+    opacity: 1 !important; transform: none !important;
+  }
+  .reframe-pin-wrap .connector-line { clip-path: inset(0 0 0 0) !important; }
+  .reframe-pin-wrap .connector-marker { opacity: 1 !important; }
+  .reframe-pin-wrap .connector-pulse { animation: none !important; opacity: 0 !important; }
+  .reframe-pin-wrap .reframe-grid { --hairline-top: 1; --hairline-bot: 1; }
+}

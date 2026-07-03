@@ -17,11 +17,11 @@ The website must feel:
 - Not crypto/gaming/cyberpunk
 
 The visual direction is inspired by a dark command-center interface:
-- Black/deep charcoal background
+- Deep charcoal (#110F0A) background
 - Fine grid lines
 - Small protocol labels
 - Thin borders
-- Bronze/red accent details
+- Bronze (#D18E53) /red (BF3A36) accent details
 - Large elegant typography
 - Subtle technical HUD details
 - Slow, restrained motion
@@ -73,15 +73,17 @@ Use:
 Build the homepage in this order:
 1. Hero / system command interface
 2. The Problem: revenue entropy
-3. The Kelwin Methodology / MFS Foundry
-4. Infrastructure Layer: narrative, data, deliverability, systems
-5. Who Kelwin is for
-6. Operating Model / Pod structure
-7. The Lab / GTM intelligence product vision
-8. Proof / credibility / founder note placeholder
-9. Insights preview
-10. Final CTA
-11. Footer
+3. The Kelwin MFS Foundry
+4. Kelwin Operating principles
+5. System implementation methodology
+6. Infrastructure Layer: narrative, data, deliverability, systems
+7. Who Kelwin is for
+8. Operating Model / Pod structure
+9. The Lab / GTM intelligence product vision
+10. Proof / credibility / founder note placeholder
+11. Insights preview
+12. Final CTA
+13. Footer
 
 ## Animation Direction
 Use restrained animations only:

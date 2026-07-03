@@ -1,0 +1,646 @@
+/* ─── Revenue Operating System — scoped to .revos-pin ────────────────────
+   Cream throughout. 3 infrastructure layers stack vertically as natural
+   page rows — no pin, no carousel, no reveal animation. Each layer has
+   a left info column and a right artifact panel.
+─────────────────────────────────────────────────────────────────────────── */
+
+.revos-pin {
+  --bone:                #F4F0E7;
+  --bone-deep:           #ECE6DA;
+  --obsidian:            #0A0805;
+  --panel-base:          #14110D;
+  --panel-elev:          #1A1612;
+
+  --bone-primary:        #F4F0E7;
+  --bone-muted:          #9C948A;
+  --bone-dusk:           #7A7268;
+  --bone-deep-dusk:      #5E574F;
+
+  --ink:                 #0A0805;
+  --lead:                #5E574F;
+  --ash:                 #8E867D;
+  --headline-mute:       #A8A09A;
+
+  --bronze:              #D18E53;
+  --bronze-mid:          #A66B33;
+  --bronze-ink:          #7E4D24;
+
+  --bronze-line:         rgba(166, 107, 51, 0.32);
+  --bronze-line-soft:    rgba(166, 107, 51, 0.18);
+  --bronze-line-strong:  rgba(166, 107, 51, 0.45);
+  --bronze-glow:         rgba(209, 142, 83, 0.20);
+  --bronze-highlight:    rgba(209, 142, 83, 0.15);
+
+  --ink-hairline:        rgba(10, 8, 5, 0.10);
+
+  --f-display:           var(--font-instrument-sans), serif;
+  --f-body:              var(--font-inter), sans-serif;
+  --ease-out:            cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+/* ─── SECTION WRAPPER ──────────────────────────────────────────────────── */
+.revos-pin {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bone);
+  color: var(--ink);
+  font-family: var(--f-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.revos-pin .revos-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--bone);
+  background-image:
+    radial-gradient(ellipse 55% 38% at 12% 16%, rgba(120, 95, 65, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 48% 44% at 90% 84%, rgba(209, 142, 83, 0.042) 0%, transparent 60%);
+  z-index: 0;
+  pointer-events: none;
+}
+.revos-pin .revos-stage {
+  position: relative;
+  z-index: 1;
+  padding: 80px 64px 80px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(80px, 10vh, 140px);
+}
+@media (max-width: 900px) {
+  .revos-pin .revos-stage { padding: 56px 28px 56px; gap: clamp(56px, 8vh, 96px); }
+}
+
+/* ─── LAYERS ZONE — wrapper for the 3 stacked layers + spine ─────────── */
+.revos-pin .layers-zone {
+  position: relative;
+  padding-left: clamp(40px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(80px, 10vh, 140px);
+}
+@media (max-width: 900px) {
+  .revos-pin .layers-zone { padding-left: 32px; gap: clamp(56px, 8vh, 96px); }
+}
+
+/* Spine — Methodology-style dotted track + solid bronze fill that scrubs
+   with scroll progress through the 3 layers. Phase nodes mark each
+   layer's vertical position and brighten as scroll passes them. */
+.revos-pin .layer-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 8px;
+  width: 2px;
+  pointer-events: none;
+}
+.revos-pin .layer-spine-track {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(126, 77, 36, 0.55) 0 4px,
+    transparent 4px 9px
+  );
+}
+.revos-pin .layer-spine-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--bronze-ink);
+  box-shadow: 0 0 6px rgba(126, 77, 36, 0.32);
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+.revos-pin .layer-spine-node {
+  position: absolute;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  background: var(--bone);
+  border: 1.5px solid var(--bronze-ink);
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: background 0.45s var(--ease-out), border-color 0.45s var(--ease-out), box-shadow 0.45s var(--ease-out);
+}
+.revos-pin .layer-spine-node[data-pos="1"] { top: 10%; }
+.revos-pin .layer-spine-node[data-pos="2"] { top: 50%; }
+.revos-pin .layer-spine-node[data-pos="3"] { top: 90%; }
+.revos-pin .layer-spine-node.is-passed {
+  background: var(--bronze-ink);
+  border-color: var(--bronze-ink);
+}
+.revos-pin .layer-spine-node.is-active {
+  background: var(--bronze);
+  border-color: var(--bronze);
+  box-shadow: 0 0 10px rgba(209, 142, 83, 0.45);
+}
+@media (max-width: 900px) {
+  .revos-pin .layer-spine { left: 4px; }
+}
+
+/* ─── TOP SCAFFOLD ─────────────────────────────────────────────────────── */
+.revos-pin .scaffold-row {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+@media (max-width: 1024px) {
+  .revos-pin .scaffold-row { grid-template-columns: 1fr; gap: 32px; }
+}
+
+.revos-pin .scaffold-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.revos-pin .scaffold-heading {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+.revos-pin .scaffold-heading .line-1,
+.revos-pin .scaffold-heading .line-2 { display: block; }
+.revos-pin .scaffold-heading .line-1 { color: var(--ink); }
+.revos-pin .scaffold-heading .line-2 { color: var(--headline-mute); }
+
+.revos-pin .scaffold-right { padding-top: 18px; }
+.revos-pin .scaffold-body {
+  font-family: var(--f-body);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--lead);
+  margin-bottom: 24px;
+}
+.revos-pin .scaffold-body .body-coda {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--f-display);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.revos-pin .scaffold-cta {
+  display: inline-flex;
+  margin-top: 28px;
+  width: fit-content;
+}
+
+/* ─── LAYER STAGE — each layer is one stacked row ──────────────────────── */
+/* Default opacity is faded — only the currently-active layer is fully
+   visible. Both passed (above) and upcoming (below) layers stay muted so
+   the user's focus stays on whichever layer they're actively reading. */
+.revos-pin .layer-stage {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 56px;
+  align-items: stretch;
+  opacity: 0.32;
+  transition: opacity 0.6s var(--ease-out);
+}
+.revos-pin .layer-stage.is-active { opacity: 1; }
+@media (max-width: 1100px) {
+  .revos-pin .layer-stage { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* Layer 02 — flipped layout: card on the LEFT, text column on the RIGHT.
+   Same column proportions as layers 1 + 3 (text gets the narrower 0.85fr
+   column, card gets the wider 1.15fr column) — only their positions swap. */
+.revos-pin .layer-stage[data-layer="2"] {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+.revos-pin .layer-stage[data-layer="2"] .artifact-panel { grid-column: 1; grid-row: 1; }
+.revos-pin .layer-stage[data-layer="2"] .layer-info     { grid-column: 2; grid-row: 1; }
+@media (max-width: 1100px) {
+  .revos-pin .layer-stage[data-layer="2"] { grid-template-columns: 1fr; }
+  .revos-pin .layer-stage[data-layer="2"] .artifact-panel { grid-column: 1; grid-row: 2; }
+  .revos-pin .layer-stage[data-layer="2"] .layer-info     { grid-column: 1; grid-row: 1; }
+}
+
+.revos-pin .layer-info {
+  padding-top: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.revos-pin .layer-eyebrow {
+  font-family: var(--f-body);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  width: fit-content;
+}
+.revos-pin .layer-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.75;
+}
+.revos-pin .layer-name {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(28px, 2.8vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 22px;
+}
+.revos-pin .layer-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--bronze);
+  margin-bottom: 24px;
+}
+.revos-pin .layer-definition {
+  font-family: var(--f-body);
+  font-size: 14.5px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--lead);
+  max-width: 460px;
+  margin-bottom: 28px;
+}
+.revos-pin .layer-output {
+  padding: 22px 0 0;
+  border-top: 0.5px solid var(--bronze-line-soft);
+  max-width: 460px;
+  margin-top: auto;
+}
+.revos-pin .output-label {
+  font-family: var(--f-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 10px;
+}
+.revos-pin .output-text {
+  font-family: var(--f-body);
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* ─── ARTIFACT PANEL ────────────────────────────────────────────────────
+   Fixed min-height across all 3 layers for visual consistency. Flex column
+   with space-between distributes content vertically. */
+.revos-pin .artifact-panel {
+  position: relative;
+  background: var(--panel-base);
+  border: 1px solid var(--bronze-line-strong);
+  box-shadow:
+    inset 0 1px 0 0 var(--bronze-highlight),
+    inset 0 -1px 0 0 rgba(0, 0, 0, 0.4),
+    0 28px 64px rgba(0, 0, 0, 0.22),
+    0 4px 12px rgba(0, 0, 0, 0.18);
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+}
+
+.revos-pin .artifact-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(209, 142, 83, 0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(209, 142, 83, 0.038) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+  opacity: 0.55;
+  z-index: 0;
+}
+.revos-pin .artifact-panel > * { position: relative; z-index: 1; }
+
+.revos-pin .artifact-panel .panel-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 320px at var(--cursor-x, -50%) var(--cursor-y, -50%),
+    rgba(209, 142, 83, 0.16) 0%,
+    rgba(209, 142, 83, 0.05) 35%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  z-index: 0;
+}
+.revos-pin .artifact-panel:hover .panel-glow { opacity: 1; }
+
+.revos-pin .panel-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--bronze);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.85;
+}
+.revos-pin .panel-corner-tl { top: -1px;    left: -1px;    border-top-width: 1px;    border-left-width: 1px;  }
+.revos-pin .panel-corner-tr { top: -1px;    right: -1px;   border-top-width: 1px;    border-right-width: 1px; }
+.revos-pin .panel-corner-bl { bottom: -1px; left: -1px;    border-bottom-width: 1px; border-left-width: 1px;  }
+.revos-pin .panel-corner-br { bottom: -1px; right: -1px;   border-bottom-width: 1px; border-right-width: 1px; }
+
+/* ─── LAYER 01 — NEI SPECIMEN ──────────────────────────────────────────── */
+.revos-pin .nei-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  border-bottom: 0.5px solid var(--bronze-line-soft);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.revos-pin .nei-protocol-label { font-family: var(--f-body); font-weight: 600; color: var(--bronze); }
+.revos-pin .nei-slash { margin: 0 10px; color: var(--bronze-line-strong); }
+.revos-pin .nei-title { font-family: var(--f-body); font-weight: 500; color: var(--bone-primary); }
+.revos-pin .nei-meta { display: inline-flex; align-items: center; gap: 12px; color: var(--bone-dusk); letter-spacing: 0.16em; font-weight: 500; }
+.revos-pin .nei-version { color: var(--bone-muted); }
+.revos-pin .nei-acronym { color: var(--bronze); padding-left: 12px; border-left: 0.5px solid var(--bronze-line-strong); }
+
+.revos-pin .nei-body-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  gap: 36px;
+  padding: 32px 28px;
+  align-items: center;
+  flex: 1;
+}
+@media (max-width: 768px) { .revos-pin .nei-body-grid { grid-template-columns: 1fr; gap: 28px; padding: 28px 24px; } }
+
+.revos-pin .nei-value-row { display: flex; align-items: baseline; gap: 4px; margin-bottom: 16px; }
+.revos-pin .nei-value {
+  font-family: var(--f-display);
+  font-size: clamp(56px, 6vw, 84px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--bronze);
+  font-variant-numeric: tabular-nums;
+}
+.revos-pin .nei-unit {
+  font-family: var(--f-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+  color: var(--bronze);
+  letter-spacing: -0.02em;
+}
+.revos-pin .nei-status-row {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+  font-family: var(--f-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--bronze);
+}
+.revos-pin .nei-status-dot {
+  width: 6px; height: 6px;
+  background: var(--bronze);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--bronze-glow);
+  animation: nei-pulse 2.4s ease-in-out infinite;
+}
+@keyframes nei-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.revos-pin .nei-rule { width: 56px; height: 1px; background: var(--bronze-line-strong); margin-bottom: 14px; }
+.revos-pin .nei-caption { font-family: var(--f-body); font-size: 11.5px; line-height: 1.6; color: var(--bone-muted); max-width: 260px; }
+
+.revos-pin .nei-radar {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+.revos-pin .nei-radar svg { width: 100%; height: 100%; overflow: visible; }
+.revos-pin .radar-ring { fill: none; stroke: rgba(166, 107, 51, 0.22); stroke-width: 0.6; }
+.revos-pin .radar-ring.is-outer { stroke: rgba(166, 107, 51, 0.38); }
+.revos-pin .radar-axis { stroke: rgba(166, 107, 51, 0.16); stroke-width: 0.6; }
+.revos-pin .radar-area {
+  fill: rgba(209, 142, 83, 0.16);
+  stroke: var(--bronze);
+  stroke-width: 1.1;
+  transition: opacity 0.6s var(--ease-out);
+}
+.revos-pin .radar-point { fill: var(--bronze); stroke: var(--panel-base); stroke-width: 1; }
+.revos-pin .radar-axis-label {
+  font-family: var(--f-body);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--bone-muted);
+}
+.revos-pin .radar-axis-value {
+  font-family: var(--f-display);
+  font-size: 11px;
+  font-weight: 500;
+  fill: var(--bronze);
+  font-variant-numeric: tabular-nums;
+}
+
+.revos-pin .nei-footer {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 16px 28px; border-top: 0.5px solid var(--bronze-line-soft);
+  font-family: var(--f-body); font-size: 11px; line-height: 1.55; color: var(--bone-dusk);
+}
+.revos-pin .nei-meth-label {
+  color: var(--bronze); font-weight: 600; letter-spacing: 0.10em;
+  text-transform: uppercase; margin-right: 8px;
+}
+.revos-pin .nei-spec-cta {
+  font-family: var(--f-body); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--bronze);
+  text-decoration: none; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: gap 0.28s var(--ease-out);
+}
+.revos-pin .nei-spec-cta:hover { gap: 16px; }
+@media (max-width: 900px) { .revos-pin .nei-footer { flex-direction: column; align-items: flex-start; } }
+
+/* ─── LAYER 02 — PROTOCOL MAP ──────────────────────────────────────────── */
+.revos-pin .protocol-panel { padding: 20px 32px 18px; justify-content: space-between; }
+.revos-pin .pmap-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px; font-family: var(--f-body); font-size: 11px;
+  font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.revos-pin .pmap-header-label { color: var(--bronze); }
+.revos-pin .pmap-header-spec { color: var(--bone-dusk); letter-spacing: 0.16em; }
+.revos-pin .pmap-loop {
+  width: 100%; aspect-ratio: 600 / 238; margin-bottom: 16px;
+}
+.revos-pin .loop-svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.revos-pin .loop-track {
+  fill: none; stroke: var(--bronze-line-strong); stroke-width: 1;
+  stroke-dasharray: 1.5 4.5; stroke-linecap: round;
+}
+.revos-pin .comet-seg { fill: none; stroke: var(--bronze); stroke-linecap: round; }
+.revos-pin .loop-dot .ring { fill: var(--panel-base); stroke: var(--bronze); stroke-width: 1; }
+.revos-pin .loop-dot .core { fill: var(--bronze); opacity: 0; transition: opacity 0.35s var(--ease-out); }
+.revos-pin .loop-dot.is-active .core { opacity: 1; }
+.revos-pin .loop-label text { text-anchor: middle; transition: fill 0.35s var(--ease-out), opacity 0.35s var(--ease-out); }
+.revos-pin .loop-label.is-active .loop-time   { fill: #F0C28A; }
+.revos-pin .loop-label.is-active .loop-stage  { fill: #FFFFFF; }
+.revos-pin .loop-label.is-active .loop-channel{ fill: rgba(255,248,245,0.92); }
+.revos-pin .loop-time {
+  fill: var(--bronze); font-family: var(--f-display); font-size: 15px;
+  font-weight: 500; letter-spacing: 0.04em;
+}
+.revos-pin .loop-stage {
+  fill: var(--bone-primary); font-family: var(--f-body); font-size: 12px;
+  font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase;
+}
+.revos-pin .loop-channel { fill: var(--bone-muted); font-family: var(--f-body); font-size: 12px; }
+
+.revos-pin .pmap-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  padding-top: 18px; border-top: 0.5px solid var(--bronze-line-soft);
+  margin-top: auto;
+}
+@media (max-width: 768px) { .revos-pin .pmap-stats { grid-template-columns: repeat(2, 1fr); } }
+.revos-pin .pmap-stat-label {
+  font-family: var(--f-body); font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--bronze); margin-bottom: 4px;
+}
+.revos-pin .pmap-stat-value {
+  font-family: var(--f-display); font-size: 16px; font-weight: 500;
+  color: var(--bone-primary); letter-spacing: -0.01em; font-variant-numeric: tabular-nums;
+  display: inline-flex; align-items: baseline; gap: 8px;
+}
+.revos-pin .stat-spark {
+  width: 60px;
+  height: 14px;
+  display: inline-block;
+}
+.revos-pin .stat-spark path {
+  fill: none;
+  stroke: var(--bronze);
+  stroke-width: 1;
+  opacity: 0.78;
+}
+
+/* ─── LAYER 03 — SIGNAL DISPLAY ────────────────────────────────────────── */
+.revos-pin .signal-panel { justify-content: space-between; }
+.revos-pin .signal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 28px; border-bottom: 0.5px solid var(--bronze-line-soft);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.revos-pin .signal-header-label { color: var(--bronze); display: inline-flex; align-items: center; gap: 10px; }
+.revos-pin .signal-live-dot {
+  width: 6px; height: 6px; background: var(--bronze); border-radius: 50%;
+  box-shadow: 0 0 6px var(--bronze-glow);
+  animation: signal-blink 2.4s ease-in-out infinite;
+}
+@keyframes signal-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.revos-pin .signal-header-meta { color: var(--bone-dusk); letter-spacing: 0.16em; }
+.revos-pin .signal-canvas { padding: 24px 28px; min-height: 200px; flex: 1; display: flex; align-items: center; }
+.revos-pin .signal-rows { display: flex; flex-direction: column; gap: 22px; width: 100%; }
+.revos-pin .signal-row { display: grid; grid-template-columns: 0.55fr 2fr; gap: 18px; align-items: center; }
+.revos-pin .signal-row-label {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--f-body); font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.10em; text-transform: uppercase; color: var(--bone-muted);
+}
+.revos-pin .signal-row-icon { width: 8px; height: 8px; background: var(--bronze); flex-shrink: 0; }
+.revos-pin .signal-waveform {
+  position: relative; height: 32px; overflow: hidden;
+  background: rgba(0, 0, 0, 0.35);
+  border: 0.5px solid var(--bronze-line-soft);
+}
+.revos-pin .signal-waveform svg { width: 200%; height: 100%; display: block; }
+.revos-pin .signal-waveform-1 svg path { stroke-opacity: 0.62; }
+.revos-pin .signal-waveform-2 svg path { stroke-opacity: 0.82; stroke-width: 1.05; }
+.revos-pin .signal-waveform-3 svg path { stroke-opacity: 1.00; stroke-width: 1.15; }
+.revos-pin .signal-waveform-1 svg { animation: signal-scroll 8s linear infinite; }
+.revos-pin .signal-waveform-2 svg { animation: signal-scroll 11s linear infinite; }
+.revos-pin .signal-waveform-3 svg { animation: signal-scroll 14s linear infinite; }
+@keyframes signal-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.revos-pin .signal-now-tick {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: 50%;
+  width: 1px;
+  background-color: var(--bronze);
+  opacity: 0.78;
+  box-shadow: 0 0 8px rgba(209, 142, 83, 0.32);
+  pointer-events: none;
+}
+
+.revos-pin .signal-footer { padding: 16px 28px; border-top: 0.5px solid var(--bronze-line-soft); }
+.revos-pin .signal-footer-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 14px; }
+.revos-pin .signal-stat-label {
+  font-family: var(--f-body); font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--bronze); margin-bottom: 3px;
+}
+.revos-pin .signal-stat-value {
+  font-family: var(--f-display); font-size: 13.5px; font-weight: 500;
+  color: var(--bone-primary); font-variant-numeric: tabular-nums;
+  display: inline-flex; align-items: baseline; gap: 8px;
+}
+
+.revos-pin .signal-recalibration {
+  padding-top: 14px;
+  border-top: 0.5px solid var(--bronze-line-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.revos-pin .recal-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-family: var(--f-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.revos-pin .recal-label { color: var(--bronze); }
+.revos-pin .recal-eta { color: var(--bone-primary); font-variant-numeric: tabular-nums; }
+.revos-pin .recal-bar {
+  position: relative;
+  height: 3px;
+  background: rgba(209, 142, 83, 0.16);
+}
+.revos-pin .recal-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--bronze);
+  transform-origin: left center;
+}
+.revos-pin .recal-meta {
+  font-family: var(--f-body);
+  font-size: 10px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--bone-dusk);
+}
+
+/* ─── REDUCED MOTION ───────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .revos-pin .nei-status-dot,
+  .revos-pin .signal-live-dot { animation: none !important; }
+  .revos-pin .signal-waveform svg { animation: none !important; }
+}
