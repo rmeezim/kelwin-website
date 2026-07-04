@@ -8,8 +8,8 @@ const FLICKER_TIMES    = [0, 0.10, 0.22, 0.42, 0.65, 1];
 const FLICKER_DURATION = 0.14;
 
 const SIGNAL       = "#BF3A36";
-const SIGNAL_HOVER = "#97302D"; // settled deeper shade while hovered
-const CREAM        = "#FFF8F5";
+const SIGNAL_HOVER = "#A8302C"; // settled deeper shade while hovered
+const CREAM        = "#FBFAF6";
 
 const CAP_REST  = 8;  // bracket arm length at rest (viewBox units)
 const CAP_HOVER = 11; // extends inward on hover

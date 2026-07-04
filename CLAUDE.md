@@ -24,8 +24,8 @@ The visual direction is inspired by a dark command-center interface:
 - Fine grid lines
 - Small protocol labels
 - Thin borders
-- Signal red (#BF3A36 / #D4524E on dark) leading accent, bronze
-  (#D18E53) instrument trim
+- Signal red (#BF3A36 / #D4524E on dark) leading accent, sand
+  (#C7B49D) instrument trim, clay (#A65A45) data layer
 - Large elegant typography
 - Subtle technical HUD details
 - Slow, restrained motion
@@ -36,30 +36,35 @@ Kelwin shares the bone canvas, ink, and signal red, but expresses them
 with sharp corners, corner brackets, mono protocol labels, and dense
 HUD instrumentation. Same ingredients, different posture.
 
-## Color System (v2 — "Signal Red")
-Use these tokens:
-- Surface: #110F0A
+## Color System (v3 — "Warm Instrument")
+Surfaces & text:
+- Surface (base): #110F0A
+- Surface elevated (panels, cards, hover): #20201E
 - Near Black: #08090A
-- Canvas: #ECE8DF
-- Text Primary: #FFF8F5
-- Text Muted: rgba(255,248,245,0.62)
-- Text Faint: rgba(255,248,245,0.38)
-- Signal Red: #BF3A36 (primary accent — action, live state, emphasis)
-- Signal Red Bright: #D4524E (red for small elements on dark surfaces)
-- Signal Red Deep: #97302D (hover/pressed shade on bone)
-- Intelligence Bronze: #D18E53 (demoted to instrument trim — hairlines,
-  calibration marks, secondary metadata; never signal duty)
-- Border Subtle: rgba(255,248,245,0.12)
-- Border Warm: rgba(209,142,83,0.32)
+- Canvas (bone — rare inverted moments): #ECE8DF
+- Text Primary / paper: #FBFAF6
+- Text Secondary (stone): #D8D2C8
+- Text Muted / captions (taupe): #8F8981
+- Text Faint: rgba(251,250,246,0.38)
 
-Red discipline:
-- On bone/canvas, red is a poster: confident fills, CTAs, stat moments,
-  the protocol seam strips between dark and light sections.
-- On charcoal, red is a signal: thin 2px edges, live dots, underlines,
-  one active element at a time — never a large fill or background.
-- Small red text on charcoal uses #D4524E; raw #BF3A36 sinks below
+Three-tier accent system — each color has exactly one job:
+- SAND #C7B49D = structure. Hairlines, protocol labels, glyphs, spines,
+  calibration marks, secondary metadata. The neutral trim (replaces the
+  old bronze #D18E53 entirely — never revert to it).
+- CLAY #A65A45 = data. Radar charts, waveforms, sparklines — a distinct
+  warm layer so live data never reads as structure.
+- SIGNAL RED #BF3A36 = action. CTAs, live dots, active edges, the red
+  band. Bright tint #D4524E for small red elements on charcoal; deep
+  #A8302C for hover/pressed. One red moment per viewport.
+
+Discipline:
+- Never mix the three jobs: a hairline is sand, a chart line is clay, a
+  CTA is red. Consistency across sections comes from role, not hue.
+- On the full-red CTA band, red is the poster and the accents invert:
+  cream/paper becomes the foreground signal, the CTA is a paper pill
+  with red text (the sister-brand gesture).
+- Small red text/dots on charcoal use #D4524E; raw #BF3A36 sinks below
   comfortable contrast on #110F0A.
-- One red moment per viewport. Two competing reds means neither signals.
 - Signature motif: dot-matrix (cell-built) numerals for one hero reading
   per section — technical, characterful, never used for body data.
 

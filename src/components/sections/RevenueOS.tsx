@@ -611,7 +611,7 @@ export default function RevenueOS() {
                   <div className="signal-row-label"><span className="signal-row-icon"></span>Engagement Signal</div>
                   <div className="signal-waveform signal-waveform-1">
                     <svg viewBox="0 0 400 32" preserveAspectRatio="none" fill="none">
-                      <path d="M0 16 Q 10 6, 20 16 T 40 16 T 60 10 T 80 20 T 100 16 T 120 8 T 140 22 T 160 14 T 180 16 T 200 16 Q 210 6, 220 16 T 240 16 T 260 10 T 280 20 T 300 16 T 320 8 T 340 22 T 360 14 T 380 16 T 400 16" stroke="#D18E53" strokeWidth="1" />
+                      <path d="M0 16 Q 10 6, 20 16 T 40 16 T 60 10 T 80 20 T 100 16 T 120 8 T 140 22 T 160 14 T 180 16 T 200 16 Q 210 6, 220 16 T 240 16 T 260 10 T 280 20 T 300 16 T 320 8 T 340 22 T 360 14 T 380 16 T 400 16" stroke="#A65A45" strokeWidth="1" />
                     </svg>
                     <span className="signal-now-tick" aria-hidden="true"></span>
                   </div>
@@ -620,7 +620,7 @@ export default function RevenueOS() {
                   <div className="signal-row-label"><span className="signal-row-icon"></span>Pipeline Velocity</div>
                   <div className="signal-waveform signal-waveform-2">
                     <svg viewBox="0 0 400 32" preserveAspectRatio="none" fill="none">
-                      <path d="M0 18 L 30 18 L 40 6 L 60 6 L 70 24 L 100 24 L 110 12 L 140 12 L 150 18 L 200 18 L 230 18 L 240 6 L 260 6 L 270 24 L 300 24 L 310 12 L 340 12 L 350 18 L 400 18" stroke="#D18E53" strokeWidth="1" />
+                      <path d="M0 18 L 30 18 L 40 6 L 60 6 L 70 24 L 100 24 L 110 12 L 140 12 L 150 18 L 200 18 L 230 18 L 240 6 L 260 6 L 270 24 L 300 24 L 310 12 L 340 12 L 350 18 L 400 18" stroke="#A65A45" strokeWidth="1" />
                     </svg>
                     <span className="signal-now-tick" aria-hidden="true"></span>
                   </div>
@@ -629,7 +629,7 @@ export default function RevenueOS() {
                   <div className="signal-row-label"><span className="signal-row-icon"></span>Conversion Quality</div>
                   <div className="signal-waveform signal-waveform-3">
                     <svg viewBox="0 0 400 32" preserveAspectRatio="none" fill="none">
-                      <path d="M0 16 C 20 16, 30 4, 50 16 S 80 16, 100 10 S 130 22, 150 16 S 180 4, 200 16 C 220 16, 230 4, 250 16 S 280 16, 300 10 S 330 22, 350 16 S 380 4, 400 16" stroke="#D18E53" strokeWidth="1" />
+                      <path d="M0 16 C 20 16, 30 4, 50 16 S 80 16, 100 10 S 130 22, 150 16 S 180 4, 200 16 C 220 16, 230 4, 250 16 S 280 16, 300 10 S 330 22, 350 16 S 380 4, 400 16" stroke="#A65A45" strokeWidth="1" />
                     </svg>
                     <span className="signal-now-tick" aria-hidden="true"></span>
                   </div>

@@ -286,9 +286,9 @@ export default function DiagnosticReframe() {
 
       function applyInitialState() {
         const o = computeOffsets();
-        gsap.set(headline, { y: o.elemTransY, scale: 1.25, color: "#F4F0E7", transformOrigin: "center center" });
+        gsap.set(headline, { y: o.elemTransY, scale: 1.25, color: "#FBFAF6", transformOrigin: "center center" });
         gsap.set(line1, { x: o.line1Tx });
-        gsap.set(line2, { x: o.line2Tx, color: "#9C948A" });
+        gsap.set(line2, { x: o.line2Tx, color: "#8F8981" });
         gsap.set(".section-label, .reframe-cta, .reframe-right, .grid-label-cell, .reframe-meta-bar", { opacity: 0, y: 16 });
         gsap.set(cards, { opacity: 0, y: 24 });
         gsap.set(grid, { "--hairline-top": 0, "--hairline-bot": 0 });
@@ -338,9 +338,9 @@ export default function DiagnosticReframe() {
         // typewriter has breathing room before settle begins. One dark
         // world: the background never crossfades to bone — the headline
         // settles into layout position while the surface stays charcoal.
-        tl.to(headline,  { y: 0, scale: 1, color: "#F4F0E7", duration: 0.22 }, 0.18);
+        tl.to(headline,  { y: 0, scale: 1, color: "#FBFAF6", duration: 0.22 }, 0.18);
         tl.to(line1,     { x: 0, duration: 0.22 }, 0.18);
-        tl.to(line2,     { x: 0, color: "rgba(255,248,245,0.45)", duration: 0.22 }, 0.18);
+        tl.to(line2,     { x: 0, color: "rgba(251, 250, 246,0.45)", duration: 0.22 }, 0.18);
 
         // Dark-phase HUD overlay + pulse layer fade out faster than the bg
         // crossfade — ends at 0.28, well before bg finishes going cream at

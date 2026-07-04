@@ -185,10 +185,10 @@ function AuditCTA({ onMenuClose }: { onMenuClose?: () => void }) {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Four corner brackets — always visible */}
-      <span className="absolute top-0 left-0 w-2 h-2 border-t border-l" style={{ borderColor: "rgba(209,142,83,0.55)" }} />
-      <span className="absolute top-0 right-0 w-2 h-2 border-t border-r" style={{ borderColor: "rgba(209,142,83,0.55)" }} />
-      <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l" style={{ borderColor: "rgba(209,142,83,0.55)" }} />
-      <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r" style={{ borderColor: "rgba(209,142,83,0.55)" }} />
+      <span className="absolute top-0 left-0 w-2 h-2 border-t border-l" style={{ borderColor: "rgba(199, 180, 157,0.55)" }} />
+      <span className="absolute top-0 right-0 w-2 h-2 border-t border-r" style={{ borderColor: "rgba(199, 180, 157,0.55)" }} />
+      <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l" style={{ borderColor: "rgba(199, 180, 157,0.55)" }} />
+      <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r" style={{ borderColor: "rgba(199, 180, 157,0.55)" }} />
 
       {/* Full border flickers in on hover */}
       <AnimatePresence>
@@ -353,7 +353,7 @@ export default function Navbar() {
                     top: "calc(100% + 14px)",
                     left: megaBounds.left,
                     width: megaBounds.width,
-                    border: "1px solid #D18E53",
+                    border: "1px solid #C7B49D",
                   }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, 0.9, 0.05, 1, 0.38, 1] }}

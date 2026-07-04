@@ -7,12 +7,12 @@
 .fcta {
   --signal:        #BF3A36;
   --signal-deep:   #A5322E;
-  --cream:         #FFF8F5;
-  --cream-90:      rgba(255, 248, 245, 0.90);
-  --cream-70:      rgba(255, 248, 245, 0.70);
-  --cream-55:      rgba(255, 248, 245, 0.55);
-  --cream-line:    rgba(255, 248, 245, 0.20);
-  --cream-line-soft: rgba(255, 248, 245, 0.12);
+  --cream:         #FBFAF6;
+  --cream-90:      rgba(251, 250, 246, 0.90);
+  --cream-70:      rgba(251, 250, 246, 0.70);
+  --cream-55:      rgba(251, 250, 246, 0.55);
+  --cream-line:    rgba(251, 250, 246, 0.20);
+  --cream-line-soft: rgba(251, 250, 246, 0.12);
   --f-display: var(--font-instrument-sans), serif;
   --f-body: var(--font-inter), sans-serif;
   --f-mono: "JetBrains Mono", "IBM Plex Mono", "Courier New", monospace;
@@ -116,7 +116,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--cream);
-  box-shadow: 0 0 8px rgba(255, 248, 245, 0.6);
+  box-shadow: 0 0 8px rgba(251, 250, 246, 0.6);
   animation: fcta-blink 2.2s ease-in-out infinite;
 }
 @keyframes fcta-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }

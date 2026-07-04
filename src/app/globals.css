@@ -1,24 +1,32 @@
 @import "tailwindcss";
 @import "../components/ui/SystemFurniture.css";
 
-/* ─── Kelwin Design Tokens — v2 "Signal Red" ──────────────────────
-   Accent hierarchy: signal red leads (action, live state, emphasis),
-   bronze retreats to instrument trim (hairlines, calibration marks,
-   secondary metadata). Red behaves differently per surface:
-   - on bone (#ECE8DF family) red is a poster — fills, CTAs, seams
-   - on charcoal (#110F0A family) red is a signal — thin edges, dots,
-     one active element at a time; use the brightened tint for small
-     elements so they hold contrast on the dark ground.              */
+/* ─── Kelwin Design Tokens — v3 "Warm Instrument" ─────────────────
+   Three-tier accent system, each with exactly one job:
+   - SAND (#C7B49D) = structure — hairlines, protocol labels, glyphs,
+     spines, calibration marks. The neutral trim (replaces bronze).
+   - CLAY (#A65A45) = data — radar, waveforms, sparklines. A distinct
+     warm layer so live data never gets confused with structure.
+   - SIGNAL RED (#BF3A36) = action — CTAs, live dots, active edges,
+     the red band. One red moment per viewport. On charcoal small red
+     elements use the brightened tint (#D4524E) for legibility.
+   Surfaces: base #110F0A, elevated #20201E, paper text #FBFAF6.      */
 @theme {
-  --color-surface: #110F0A;
+  --color-surface: #110F0A;      /* base — the one dark world */
+  --color-surface-2: #20201E;    /* elevated — panels, cards, hover */
   --color-near-black: #08090A;
-  --color-canvas: #ECE8DF;
-  --color-cream: #FFF8F5;
-  --color-bronze: #D18E53;
-  --color-signal: #BF3A36;        /* red on bone — posters, CTAs, seams */
-  --color-signal-bright: #D4524E; /* red on charcoal — dots, edges, small text */
-  --color-signal-deep: #97302D;   /* pressed/hover shade on bone */
-  --color-action-red: #BF3A36;    /* legacy alias — prefer --color-signal */
+  --color-canvas: #ECE8DF;       /* bone — rare inverted moments */
+  --color-paper: #FBFAF6;        /* brightest paper white / primary text */
+  --color-cream: #FBFAF6;        /* alias — legacy usage */
+  --color-sand: #C7B49D;         /* structure trim (was bronze) */
+  --color-bronze: #C7B49D;       /* alias — legacy usage */
+  --color-clay: #A65A45;         /* data-viz warm accent */
+  --color-stone: #D8D2C8;        /* secondary text on dark */
+  --color-taupe: #8F8981;        /* muted text / captions */
+  --color-signal: #BF3A36;       /* action — posters, CTAs */
+  --color-signal-bright: #D4524E;/* red on charcoal — dots, small text */
+  --color-signal-deep: #A8302C;  /* pressed/hover shade */
+  --color-action-red: #BF3A36;   /* legacy alias — prefer --color-signal */
 
   --font-heading: var(--font-instrument-sans);
   --font-body: var(--font-inter);
@@ -26,15 +34,22 @@
 
 /* ─── CSS Properties for rgba values ──────────────────────────── */
 :root {
-  --text-muted: rgba(255, 248, 245, 0.78);
-  --text-faint: rgba(255, 248, 245, 0.38);
-  --border-subtle: rgba(255, 248, 245, 0.12);
-  --border-warm: rgba(209, 142, 83, 0.32);
-  --grid-line: rgba(255, 248, 245, 0.07);
-  --node-color: rgba(209, 142, 83, 0.55);
+  --text-primary: #FBFAF6;
+  --text-secondary: #D8D2C8;
+  --text-muted: rgba(251, 250, 246, 0.78);
+  --text-faint: rgba(251, 250, 246, 0.38);
+  --border-subtle: rgba(251, 250, 246, 0.12);
+  --border-warm: rgba(199, 180, 157, 0.32);
+  --grid-line: rgba(251, 250, 246, 0.07);
+  --node-color: rgba(199, 180, 157, 0.55);
+  --surface-2: #20201E;
+  --sand: #C7B49D;
+  --clay: #A65A45;
+  --stone: #D8D2C8;
+  --taupe: #8F8981;
   --signal: #BF3A36;
   --signal-bright: #D4524E;
-  --signal-deep: #97302D;
+  --signal-deep: #A8302C;
   --signal-glow: rgba(191, 58, 54, 0.35);
   --signal-line: rgba(191, 58, 54, 0.32);
 }
@@ -42,7 +57,7 @@
 /* ─── Base ────────────────────────────────────────────────────── */
 html {
   background-color: #110F0A;
-  color: #FFF8F5;
+  color: #FBFAF6;
 }
 
 body {
@@ -88,7 +103,7 @@ body {
 html {
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: rgba(191, 58, 54, 0.62) rgba(255, 248, 245, 0.04);
+  scrollbar-color: rgba(191, 58, 54, 0.62) rgba(251, 250, 246, 0.04);
 }
 html::-webkit-scrollbar,
 ::-webkit-scrollbar {
@@ -97,7 +112,7 @@ html::-webkit-scrollbar,
 }
 html::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track {
-  background: rgba(255, 248, 245, 0.04);
+  background: rgba(251, 250, 246, 0.04);
 }
 html::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-thumb {

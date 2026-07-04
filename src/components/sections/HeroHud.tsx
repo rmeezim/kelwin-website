@@ -49,9 +49,9 @@ const ALL_LOG_ENTRIES = [
 
 const TYPE_COLORS: Record<string, string> = {
   SIGNAL: "#D4524E",
-  INTEL:  "rgba(255,248,245,0.65)",
-  STATUS: "rgba(255,248,245,0.4)",
-  SYSTEM: "rgba(255,248,245,0.35)",
+  INTEL:  "rgba(251, 250, 246,0.65)",
+  STATUS: "rgba(251, 250, 246,0.4)",
+  SYSTEM: "rgba(251, 250, 246,0.35)",
 };
 
 // Phase state machine:
@@ -151,7 +151,7 @@ export default function HeroHud() {
                     width: 3,
                     height: 3,
                     borderRadius: "1px",
-                    backgroundColor: "rgba(209,142,83,0.72)",
+                    backgroundColor: "rgba(199, 180, 157,0.72)",
                     marginLeft: -1.5,
                     marginTop:  -1.5,
                     // Chaos: CSS keyframe drift runs freely
@@ -203,10 +203,10 @@ export default function HeroHud() {
         >
           {/* [1] Header bar */}
           <div style={{ display: "flex", alignItems: "center", gap: 10, paddingBottom: 14, flexShrink: 0 }}>
-            <span style={{ color: "#D18E53", letterSpacing: "0.2em", fontSize: 12 }}>
+            <span style={{ color: "#C7B49D", letterSpacing: "0.2em", fontSize: 12 }}>
               KELWIN/OS
             </span>
-            <div style={{ flex: 1, height: 1, backgroundColor: "rgba(255,248,245,0.1)" }} />
+            <div style={{ flex: 1, height: 1, backgroundColor: "rgba(251, 250, 246,0.1)" }} />
             <span style={{ color: "rgba(212,82,78,0.9)", fontSize: 8 }}>●</span>
             <span style={{ color: "rgba(212,82,78,0.8)", letterSpacing: "0.18em", fontSize: 11 }}>
               LIVE
@@ -227,7 +227,7 @@ export default function HeroHud() {
               >
                 <span style={{
                   width: 110,
-                  color: "rgba(255,248,245,0.55)",
+                  color: "rgba(251, 250, 246,0.55)",
                   letterSpacing: "0.12em",
                   fontSize: 10,
                   textTransform: "uppercase",
@@ -238,7 +238,7 @@ export default function HeroHud() {
                 <div style={{
                   flex: 1,
                   height: 3,
-                  backgroundColor: "rgba(255,248,245,0.08)",
+                  backgroundColor: "rgba(251, 250, 246,0.08)",
                   position: "relative",
                 }}>
                   <div style={{
@@ -247,13 +247,13 @@ export default function HeroHud() {
                     top: 0,
                     height: "100%",
                     width: `${m.fill * 100}%`,
-                    backgroundColor: "rgba(209,142,83,0.55)",
+                    backgroundColor: "rgba(199, 180, 157,0.55)",
                   }} />
                 </div>
                 <span style={{
                   width: 42,
                   textAlign: "right",
-                  color: "rgba(255,248,245,0.88)",
+                  color: "rgba(251, 250, 246,0.88)",
                   letterSpacing: "0.1em",
                   fontSize: 10,
                   flexShrink: 0,
@@ -265,7 +265,7 @@ export default function HeroHud() {
           </motion.div>
 
           {/* [3] Divider */}
-          <div style={{ height: 1, backgroundColor: "rgba(255,248,245,0.08)", margin: "12px 0", flexShrink: 0 }} />
+          <div style={{ height: 1, backgroundColor: "rgba(251, 250, 246,0.08)", margin: "12px 0", flexShrink: 0 }} />
 
           {/* [4] Log feed — flex:1 fills all remaining vertical space */}
           <div style={{ flex: 1, overflow: "hidden", minHeight: 0 }}>
@@ -279,13 +279,13 @@ export default function HeroHud() {
                   transition={{ duration: 0.35 }}
                   style={{ display: "flex", gap: 10, alignItems: "flex-start", marginBottom: 6 }}
                 >
-                  <span style={{ color: "rgba(255,248,245,0.38)", minWidth: 58, flexShrink: 0 }}>
+                  <span style={{ color: "rgba(251, 250, 246,0.38)", minWidth: 58, flexShrink: 0 }}>
                     {entry.time}
                   </span>
-                  <span style={{ color: TYPE_COLORS[entry.type] ?? "rgba(255,248,245,0.5)", minWidth: 48, flexShrink: 0 }}>
+                  <span style={{ color: TYPE_COLORS[entry.type] ?? "rgba(251, 250, 246,0.5)", minWidth: 48, flexShrink: 0 }}>
                     {entry.type}
                   </span>
-                  <span style={{ color: "rgba(255,248,245,0.68)", flex: 1 }}>
+                  <span style={{ color: "rgba(251, 250, 246,0.68)", flex: 1 }}>
                     {entry.msg}
                   </span>
                 </motion.div>
@@ -311,7 +311,7 @@ export default function HeroHud() {
             className="absolute top-0 h-full pointer-events-none"
             style={{
               width: 1,
-              background: "linear-gradient(to bottom, transparent 0%, rgba(255,248,245,0.04) 35%, rgba(255,248,245,0.04) 65%, transparent 100%)",
+              background: "linear-gradient(to bottom, transparent 0%, rgba(251, 250, 246,0.04) 35%, rgba(251, 250, 246,0.04) 65%, transparent 100%)",
               zIndex: 10,
             }}
             initial={{ left: "-1%" }}

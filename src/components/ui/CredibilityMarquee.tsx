@@ -47,14 +47,14 @@ export default function CredibilityMarquee({ className = "mt-12 md:mt-14" }: { c
             >
               <span
                 className="text-[11px] tracking-[0.26em] font-body font-medium"
-                style={{ color: "rgba(255,248,245,0.3)" }}
+                style={{ color: "rgba(251, 250, 246,0.3)" }}
               >
                 {mark}
               </span>
               {/* Subtle bronze separator dot */}
               <span
                 className="text-[8px] shrink-0"
-                style={{ color: "rgba(209,142,83,0.35)" }}
+                style={{ color: "rgba(199, 180, 157,0.35)" }}
                 aria-hidden="true"
               >
                 ·

@@ -4,12 +4,12 @@
 
 .site-footer {
   --surface:      #0C0A07;
-  --cream:        #F4F0E7;
-  --cream-70:     rgba(255, 248, 245, 0.66);
-  --cream-45:     rgba(255, 248, 245, 0.45);
-  --cream-30:     rgba(255, 248, 245, 0.30);
-  --hairline:     rgba(255, 248, 245, 0.10);
-  --bronze:       #D18E53;
+  --cream:        #FBFAF6;
+  --cream-70:     rgba(251, 250, 246, 0.66);
+  --cream-45:     rgba(251, 250, 246, 0.45);
+  --cream-30:     rgba(251, 250, 246, 0.30);
+  --hairline:     rgba(251, 250, 246, 0.10);
+  --bronze:       #C7B49D;
   --signal-bright:#D4524E;
   --f-display: var(--font-instrument-sans), serif;
   --f-body: var(--font-inter), sans-serif;

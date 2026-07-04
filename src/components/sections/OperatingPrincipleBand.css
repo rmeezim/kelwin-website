@@ -9,12 +9,12 @@
 
 .principle-band {
   --bone: #110F0A; /* one dark world — band background renders charcoal */
-  --ink: #F4F0E7;
-  --ink-muted: rgba(255, 248, 245, 0.42);
+  --ink: #FBFAF6;
+  --ink-muted: rgba(251, 250, 246, 0.42);
   /* Echo lines sit at a much softer cream so the main stays primary. The
      echoes read as the texture the main line sits on top of, not as
      additional headlines competing for attention. */
-  --ink-echo: rgba(255, 248, 245, 0.14);
+  --ink-echo: rgba(251, 250, 246, 0.14);
   --f-display: var(--font-instrument-sans), serif;
 
   position: relative;

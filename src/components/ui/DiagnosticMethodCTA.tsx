@@ -16,8 +16,8 @@ import { motion } from "motion/react";
 //   "bone"     — cream fill, red text — the primary action on the red band.
 //   "bronze"   — bronze fill, dark text (legacy).
 const OBSIDIAN = "#0A0805";
-const CREAM    = "#F4F0E7";
-const BRONZE   = "#D18E53";
+const CREAM    = "#FBFAF6";
+const BRONZE   = "#C7B49D";
 const SIGNAL   = "#BF3A36";
 
 // Flicker pattern — same opacity ramp and timing as HeroCTA's primary

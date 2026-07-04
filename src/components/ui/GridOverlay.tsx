@@ -11,7 +11,7 @@ const CW = W / COLS; // ~80
 const CH = H / ROWS; // ~88.5
 
 const GRID_COLOR = "var(--grid-line)";
-const BRONZE = "#D18E53";
+const BRONZE = "#C7B49D";
 const NODE_COLOR = "var(--node-color)";
 const FAINT = "var(--text-faint)";
 const MUTED = "var(--text-muted)";
