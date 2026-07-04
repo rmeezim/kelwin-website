@@ -85,7 +85,7 @@ export default function HeroSection() {
           <FadeIn delay={0.5} duration={0.6} y={0}>
             <div
               className="w-10 h-0.5 mt-[42px] mb-[24px]"
-              style={{ backgroundColor: "#D18E53" }}
+              style={{ backgroundColor: "#D4524E" }}
             />
           </FadeIn>
 

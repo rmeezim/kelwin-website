@@ -13,6 +13,11 @@
   --bronze: #D18E53;
   --bronze-mid: #A66B33;
   --bronze-ink: #7E4D24;
+
+  --signal:                #BF3A36;
+  --signal-bright:         #D4524E;
+  --signal-deep:           #97302D;
+  --signal-glow:           rgba(191, 58, 54, 0.35);
   --bronze-line: rgba(166, 107, 51, 0.55);
   --bronze-line-soft: rgba(166, 107, 51, 0.20);
   --bronze-line-faint: rgba(166, 107, 51, 0.12);
@@ -76,8 +81,8 @@
   top: 0;
   left: 0;
   height: 100%;
-  background: var(--bronze);
-  box-shadow: 0 0 8px rgba(209, 142, 83, 0.35);
+  background: var(--signal-bright);
+  box-shadow: 0 0 8px var(--signal-glow);
   transition: width 0.55s var(--ease-out);
 }
 
@@ -167,7 +172,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  border: 0 solid var(--bronze);
+  border: 0 solid var(--signal-bright);
 }
 .principles-section .lx-index-bracket-tl { top: 0;    left: 0;  border-top-width:    2px; border-left-width:  2px; }
 .principles-section .lx-index-bracket-tr { top: 0;    right: 0; border-top-width:    2px; border-right-width: 2px; }
@@ -197,7 +202,7 @@
   border-bottom-color: var(--bronze-line);
 }
 .principles-section .lx-index-item.is-active .lx-index-num {
-  color: var(--bronze);
+  color: var(--signal-bright);
 }
 .principles-section .lx-index-item.is-active .lx-index-title {
   color: var(--bone-primary);
@@ -303,7 +308,7 @@
   bottom: 0;
   left: -1px;
   width: 2px;
-  background: var(--bronze);
+  background: var(--signal-bright);
   transform: scaleY(0);
   transform-origin: center top;
   transition: transform 0.5s var(--ease-out);
@@ -326,7 +331,7 @@
   position: absolute;
   width: 18px;
   height: 18px;
-  border: 0 solid var(--bronze);
+  border: 0 solid var(--signal-bright);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s var(--ease-out);

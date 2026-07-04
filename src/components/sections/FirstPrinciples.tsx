@@ -419,12 +419,14 @@ export default function FirstPrinciples() {
                       <span className="lx-card-bracket lx-card-bracket-br" aria-hidden="true" />
                       <span className="lx-card-mark" aria-hidden="true">{nn}</span>
 
-                      <div className="lx-card-glyph" aria-hidden="true">{d.glyph}</div>
-
+                      {/* Head row renders first so the 48px stacked-peek
+                          tab of each card shows the tag + spec line — a
+                          readable file-tab — instead of a cut-off glyph. */}
                       <div className="lx-card-head">
                         <span className="lx-card-tag">{d.tag}</span>
                         <span className="lx-card-spec">Principle {nn} / 06</span>
                       </div>
+                      <div className="lx-card-glyph" aria-hidden="true">{d.glyph}</div>
                       <h3 className="lx-card-title">{d.title}</h3>
                       <p className="lx-card-support">{d.support}</p>
 

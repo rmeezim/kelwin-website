@@ -48,7 +48,7 @@ const ALL_LOG_ENTRIES = [
 ];
 
 const TYPE_COLORS: Record<string, string> = {
-  SIGNAL: "#D18E53",
+  SIGNAL: "#D4524E",
   INTEL:  "rgba(255,248,245,0.65)",
   STATUS: "rgba(255,248,245,0.4)",
   SYSTEM: "rgba(255,248,245,0.35)",
@@ -207,8 +207,8 @@ export default function HeroHud() {
               KELWIN/OS
             </span>
             <div style={{ flex: 1, height: 1, backgroundColor: "rgba(255,248,245,0.1)" }} />
-            <span style={{ color: "rgba(74,222,128,0.85)", fontSize: 8 }}>●</span>
-            <span style={{ color: "rgba(74,222,128,0.75)", letterSpacing: "0.18em", fontSize: 11 }}>
+            <span style={{ color: "rgba(212,82,78,0.9)", fontSize: 8 }}>●</span>
+            <span style={{ color: "rgba(212,82,78,0.8)", letterSpacing: "0.18em", fontSize: 11 }}>
               LIVE
             </span>
           </div>
@@ -295,12 +295,12 @@ export default function HeroHud() {
 
           {/* [5] Cursor — pinned to bottom by flex column */}
           <div style={{ display: "flex", alignItems: "center", gap: 4, paddingTop: 10, flexShrink: 0 }}>
-            <span style={{ color: "#D18E53", letterSpacing: "0.1em" }}>{">"}</span>
+            <span style={{ color: "#D4524E", letterSpacing: "0.1em" }}>{">"}</span>
             <span style={{
               display: "inline-block",
               width: 7,
               height: 13,
-              backgroundColor: "#D18E53",
+              backgroundColor: "#D4524E",
               opacity: 0.85,
               animation: "blink 1.2s step-end infinite",
             }} />

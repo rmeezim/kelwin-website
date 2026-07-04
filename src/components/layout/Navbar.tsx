@@ -47,7 +47,7 @@ function FlickerLine({ position = "bottom" }: { position?: "top" | "bottom" }) {
   return (
     <motion.span
       className={cn(
-        "absolute left-0 h-[2px] w-full bg-bronze pointer-events-none",
+        "absolute left-0 h-[2px] w-full bg-signal-bright pointer-events-none",
         position === "bottom" ? "-bottom-1" : "-top-[5px]"
       )}
       initial={{ opacity: 0, scaleX: 0 }}
@@ -77,7 +77,7 @@ function HoverLink({
     <Link
       href={href}
       className={cn("transition-colors duration-150", className)}
-      style={{ color: hovered ? "#D18E53" : "var(--text-muted)" }}
+      style={{ color: hovered ? "#D4524E" : "var(--text-muted)" }}
       onMouseEnter={() => { setHovered(true); onMenuClose?.(); }}
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
@@ -108,7 +108,7 @@ function MegaMenuLink({
     <Link
       href={href}
       className="flex items-center gap-2.5 py-3.5 px-5 text-[12px] tracking-[0.16em] font-body font-medium transition-colors duration-150"
-      style={{ color: hovered ? "#D18E53" : "var(--text-muted)" }}
+      style={{ color: hovered ? "#D4524E" : "var(--text-muted)" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
@@ -121,7 +121,7 @@ function MegaMenuLink({
         <AnimatePresence>
           {hovered && (
             <motion.span
-              className="absolute -bottom-0.5 left-0 h-[2px] bg-bronze pointer-events-none"
+              className="absolute -bottom-0.5 left-0 h-[2px] bg-signal-bright pointer-events-none"
               initial={{ opacity: 0, scaleX: 0 }}
               animate={FLICKER_ANIMATE}
               exit={{ opacity: 0, transition: { duration: 0.1 } }}
@@ -155,7 +155,7 @@ function HoverButton({
   return (
     <button
       className={cn("transition-colors duration-150", className)}
-      style={{ color: active ? "#D18E53" : "var(--text-muted)" }}
+      style={{ color: active ? "#D4524E" : "var(--text-muted)" }}
       onMouseEnter={() => { setHovered(true); onMouseEnter(); }}
       onMouseLeave={() => { setHovered(false); onMouseLeave(); }}
       onClick={onClick}
@@ -180,7 +180,7 @@ function AuditCTA({ onMenuClose }: { onMenuClose?: () => void }) {
     <Link
       href="#audit"
       className="relative ml-2 px-4 py-2 text-[11px] tracking-[0.18em] font-body font-medium transition-colors duration-150 select-none"
-      style={{ color: hovered ? "#D18E53" : "var(--text-muted)" }}
+      style={{ color: hovered ? "#D4524E" : "var(--text-muted)" }}
       onMouseEnter={() => { setHovered(true); onMenuClose?.(); }}
       onMouseLeave={() => setHovered(false)}
     >
@@ -195,7 +195,7 @@ function AuditCTA({ onMenuClose }: { onMenuClose?: () => void }) {
         {hovered && (
           <motion.span
             className="absolute inset-0 border pointer-events-none"
-            style={{ borderColor: "#D18E53" }}
+            style={{ borderColor: "#D4524E" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.9, 0.05, 1, 0.38, 1] }}
             exit={{ opacity: 0, transition: { duration: 0.1 } }}
@@ -436,7 +436,7 @@ export default function Navbar() {
                             <Link
                               key={sub.label}
                               href={sub.href}
-                              className="py-2.5 text-[12px] tracking-[0.14em] font-body hover:text-bronze"
+                              className="py-2.5 text-[12px] tracking-[0.14em] font-body hover:text-signal-bright"
                               style={{ color: "var(--text-faint)" }}
                               onClick={() => {
                                 setMobileOpen(false);

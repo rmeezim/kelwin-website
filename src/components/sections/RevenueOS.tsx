@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import DotMatrixReading from "@/components/ui/DotMatrixReading";
 import "./RevenueOS.css";
 
 // ── Radar chart — 4 axes for the NEI sub-scores. Polygon area + dots. ──
@@ -155,25 +156,26 @@ export default function RevenueOS() {
     };
   }, []);
 
-  // ── NEI animation — counts up + radar fades in once layer 1 is in view.
+  // ── NEI animation — dot-matrix cells sweep in + radar fades in once
+  // layer 1 is in view. The value row carries `dm-armed` in markup (cells
+  // start hidden); adding `dm-live` triggers the per-cell staggered
+  // reveal defined in SystemFurniture.css. Reduced-motion users get the
+  // cells immediately via the CSS override.
   useEffect(() => {
     const wrap = wrapRef.current;
     if (!wrap) return;
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const valEl = wrap.querySelector<HTMLElement>('[data-layer="1"] .nei-value');
-      if (valEl) valEl.textContent = "72.4";
       wrap.querySelectorAll<SVGPathElement>(".radar-area").forEach((el) => (el.style.opacity = "1"));
       wrap.querySelectorAll<SVGCircleElement>(".radar-point").forEach((el) => (el.style.opacity = "1"));
       return;
     }
 
-    const valEl = wrap.querySelector<HTMLElement>('[data-layer="1"] .nei-value');
+    const valueRow = wrap.querySelector<HTMLElement>('[data-layer="1"] .nei-value-row');
     const area = wrap.querySelector<SVGPathElement>('[data-layer="1"] .radar-area');
     const points = wrap.querySelectorAll<SVGCircleElement>('[data-layer="1"] .radar-point');
     const axisValues = wrap.querySelectorAll<SVGTextElement>('[data-layer="1"] .radar-axis-value');
 
-    if (valEl) valEl.textContent = "0.0";
     if (area) area.style.opacity = "0";
     points.forEach((p) => (p.style.opacity = "0"));
     axisValues.forEach((l) => (l.style.opacity = "0"));
@@ -185,15 +187,7 @@ export default function RevenueOS() {
       if (neiPlayedRef.current) return;
       neiPlayedRef.current = true;
 
-      if (valEl) {
-        const obj = { v: 0 };
-        gsap.to(obj, {
-          v: 72.4,
-          duration: 1.4,
-          ease: "power2.out",
-          onUpdate: () => { valEl.textContent = obj.v.toFixed(1); },
-        });
-      }
+      valueRow?.classList.add("dm-live");
       if (area) gsap.to(area, { opacity: 1, duration: 0.7, delay: 0.25, ease: "power2.out" });
       points.forEach((p, i) =>
         gsap.to(p, { opacity: 1, duration: 0.4, delay: 0.4 + i * 0.1, ease: "power2.out" })
@@ -340,7 +334,7 @@ export default function RevenueOS() {
               <DiagnosticMethodCTA
                 href="#audit"
                 label="Initiate System Audit"
-                variant="obsidian"
+                variant="signal"
               />
             </div>
           </div>
@@ -394,8 +388,12 @@ export default function RevenueOS() {
             </div>
             <div className="nei-body-grid">
               <div className="nei-index-display">
-                <div className="nei-value-row">
-                  <span className="nei-value" data-target="72.4">0.0</span>
+                <div className="nei-value-row dm-armed">
+                  <DotMatrixReading
+                    value="72.4"
+                    cell={10}
+                    label="Narrative Entropy Index: 72.4 percent"
+                  />
                   <span className="nei-unit">%</span>
                 </div>
                 <div className="nei-status-row">

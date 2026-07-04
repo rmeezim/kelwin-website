@@ -21,12 +21,18 @@ The visual direction is inspired by a dark command-center interface:
 - Fine grid lines
 - Small protocol labels
 - Thin borders
-- Bronze (#D18E53) /red (BF3A36) accent details
+- Signal red (#BF3A36) leading accent, bronze (#D18E53) instrument trim
 - Large elegant typography
 - Subtle technical HUD details
 - Slow, restrained motion
 
-## Color System
+Kelwin is the sister company of Plurel (creative/performance division —
+bone canvas, near-black ink, the same deep red, rounded & friendly).
+Kelwin shares the bone canvas, ink, and signal red, but expresses them
+with sharp corners, corner brackets, mono protocol labels, and dense
+HUD instrumentation. Same ingredients, different posture.
+
+## Color System (v2 — "Signal Red")
 Use these tokens:
 - Surface: #110F0A
 - Near Black: #08090A
@@ -34,10 +40,24 @@ Use these tokens:
 - Text Primary: #FFF8F5
 - Text Muted: rgba(255,248,245,0.62)
 - Text Faint: rgba(255,248,245,0.38)
-- Intelligence Bronze: #D18E53
-- Action Red: #BF3A36
+- Signal Red: #BF3A36 (primary accent — action, live state, emphasis)
+- Signal Red Bright: #D4524E (red for small elements on dark surfaces)
+- Signal Red Deep: #97302D (hover/pressed shade on bone)
+- Intelligence Bronze: #D18E53 (demoted to instrument trim — hairlines,
+  calibration marks, secondary metadata; never signal duty)
 - Border Subtle: rgba(255,248,245,0.12)
 - Border Warm: rgba(209,142,83,0.32)
+
+Red discipline:
+- On bone/canvas, red is a poster: confident fills, CTAs, stat moments,
+  the protocol seam strips between dark and light sections.
+- On charcoal, red is a signal: thin 2px edges, live dots, underlines,
+  one active element at a time — never a large fill or background.
+- Small red text on charcoal uses #D4524E; raw #BF3A36 sinks below
+  comfortable contrast on #110F0A.
+- One red moment per viewport. Two competing reds means neither signals.
+- Signature motif: dot-matrix (cell-built) numerals for one hero reading
+  per section — technical, characterful, never used for body data.
 
 ## Typography
 Use:

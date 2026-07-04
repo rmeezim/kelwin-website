@@ -10,12 +10,14 @@ import { motion } from "motion/react";
 // opacity (oscillating without fully clearing) so the user gets a clear
 // tactile feedback signal without losing the visible button surface.
 //
-// Two color variants:
-//   "obsidian" — dark fill, cream text (default).
-//   "bronze"   — bronze fill, dark text.
+// Three color variants:
+//   "obsidian" — dark fill, cream text (default) — secondary actions.
+//   "signal"   — red fill, cream text — the primary action on bone.
+//   "bronze"   — bronze fill, dark text (legacy).
 const OBSIDIAN = "#0A0805";
 const CREAM    = "#F4F0E7";
 const BRONZE   = "#D18E53";
+const SIGNAL   = "#BF3A36";
 
 // Flicker pattern — same opacity ramp and timing as HeroCTA's primary
 // audit button, so all three bracketed CTAs share one tactile vocabulary.
@@ -29,7 +31,7 @@ interface Props {
   href: string;
   label: string;
   className?: string;
-  variant?: "obsidian" | "bronze";
+  variant?: "obsidian" | "bronze" | "signal";
 }
 
 export default function DiagnosticMethodCTA({
@@ -42,8 +44,8 @@ export default function DiagnosticMethodCTA({
 
   // Variant palette — text is always the "on-fill" color since the fill
   // is always present.
-  const stroke = variant === "bronze" ? BRONZE : OBSIDIAN;
-  const fill   = variant === "bronze" ? BRONZE : OBSIDIAN;
+  const stroke = variant === "bronze" ? BRONZE : variant === "signal" ? SIGNAL : OBSIDIAN;
+  const fill   = stroke;
   const text   = variant === "bronze" ? OBSIDIAN : CREAM;
 
   return (

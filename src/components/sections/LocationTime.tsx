@@ -58,7 +58,7 @@ export default function LocationTime() {
     >
       {/* Blinking bronze dot to the left of the city name */}
       <span
-        className="inline-block w-1.5 h-1.5 rounded-full bg-bronze shrink-0"
+        className="inline-block w-1.5 h-1.5 rounded-full bg-signal-bright shrink-0"
         style={{ animation: "blink 1.6s ease-in-out infinite" }}
       />
       {location.city}

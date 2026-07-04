@@ -1,14 +1,24 @@
 @import "tailwindcss";
 @import "../components/ui/SystemFurniture.css";
 
-/* ─── Kelwin Design Tokens ─────────────────────────────────────── */
+/* ─── Kelwin Design Tokens — v2 "Signal Red" ──────────────────────
+   Accent hierarchy: signal red leads (action, live state, emphasis),
+   bronze retreats to instrument trim (hairlines, calibration marks,
+   secondary metadata). Red behaves differently per surface:
+   - on bone (#ECE8DF family) red is a poster — fills, CTAs, seams
+   - on charcoal (#110F0A family) red is a signal — thin edges, dots,
+     one active element at a time; use the brightened tint for small
+     elements so they hold contrast on the dark ground.              */
 @theme {
   --color-surface: #110F0A;
   --color-near-black: #08090A;
   --color-canvas: #ECE8DF;
   --color-cream: #FFF8F5;
   --color-bronze: #D18E53;
-  --color-action-red: #BF3A36;
+  --color-signal: #BF3A36;        /* red on bone — posters, CTAs, seams */
+  --color-signal-bright: #D4524E; /* red on charcoal — dots, edges, small text */
+  --color-signal-deep: #97302D;   /* pressed/hover shade on bone */
+  --color-action-red: #BF3A36;    /* legacy alias — prefer --color-signal */
 
   --font-heading: var(--font-instrument-sans);
   --font-body: var(--font-inter);
@@ -22,6 +32,11 @@
   --border-warm: rgba(209, 142, 83, 0.32);
   --grid-line: rgba(255, 248, 245, 0.07);
   --node-color: rgba(209, 142, 83, 0.55);
+  --signal: #BF3A36;
+  --signal-bright: #D4524E;
+  --signal-deep: #97302D;
+  --signal-glow: rgba(191, 58, 54, 0.35);
+  --signal-line: rgba(191, 58, 54, 0.32);
 }
 
 /* ─── Base ────────────────────────────────────────────────────── */
@@ -63,9 +78,9 @@ body {
 }
 
 /* ─── Custom scrollbar ─────────────────────────────────────────────
-   Thin bronze scrollbar with a faint warm track. Bronze is visible on
-   both the dark surface and the cream/bone reframe sections, so one
-   styling works across the whole site.
+   Thin signal-red scrollbar with a faint warm track. The red thumb is
+   the family thread shared with Plurel and is visible on both the dark
+   surface and the cream/bone sections, so one styling works site-wide.
    - `html` selectors target the main page scrollbar with high
      specificity, ensuring the styles override the OS overlay default.
    - `overflow-y: scroll` forces the scrollbar to always be present
@@ -73,7 +88,7 @@ body {
 html {
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: rgba(209, 142, 83, 0.62) rgba(255, 248, 245, 0.04);
+  scrollbar-color: rgba(191, 58, 54, 0.62) rgba(255, 248, 245, 0.04);
 }
 html::-webkit-scrollbar,
 ::-webkit-scrollbar {
@@ -86,14 +101,14 @@ html::-webkit-scrollbar-track,
 }
 html::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-thumb {
-  background: rgba(209, 142, 83, 0.62);
+  background: rgba(191, 58, 54, 0.62);
   border-radius: 0;
   border: none;
   transition: background 0.2s ease;
 }
 html::-webkit-scrollbar-thumb:hover,
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(209, 142, 83, 0.92);
+  background: rgba(212, 82, 78, 0.92);
 }
 html::-webkit-scrollbar-corner,
 ::-webkit-scrollbar-corner {

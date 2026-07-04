@@ -27,6 +27,11 @@
   --bronze-ink:            #7E4D24;
   --bronze-mid:            #A66B33;
 
+  --signal:                #BF3A36;
+  --signal-bright:         #D4524E;
+  --signal-deep:           #97302D;
+  --signal-glow:           rgba(191, 58, 54, 0.35);
+
   --bronze-ink-70:         rgba(126, 77, 36, 0.70);
   --bronze-ink-55:         rgba(126, 77, 36, 0.55);
   --bronze-70:             rgba(209, 142, 83, 0.70);
@@ -114,7 +119,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--bronze-ink);
+  color: var(--signal);
   margin-bottom: 32px;
   display: inline-flex;
   align-items: center;
@@ -125,7 +130,8 @@
   display: inline-block;
   width: 28px;
   height: 1px;
-  background: var(--bronze-ink-70);
+  background: var(--signal);
+  opacity: 0.7;
 }
 
 .reframe-pin-wrap .headline-display {
@@ -165,7 +171,7 @@
   height: 0.86em;
   margin-left: 0.04em;
   margin-right: -0.02em;
-  background-color: var(--bronze);
+  background-color: var(--signal-bright);
   vertical-align: -0.08em;
   opacity: 0;
 }
@@ -252,9 +258,9 @@
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(209, 142, 83, 0.05) 25%,
-    rgba(209, 142, 83, 0.45) 70%,
-    rgba(209, 142, 83, 0.85) 100%
+    rgba(191, 58, 54, 0.05) 25%,
+    rgba(191, 58, 54, 0.5) 70%,
+    rgba(212, 82, 78, 0.9) 100%
   );
   pointer-events: none;
   animation: connectorPulse 6s linear infinite;
@@ -444,13 +450,13 @@
   border-bottom-width: 1px; border-right-width: 1px;
 }
 .reframe-pin-wrap .reframe-card:hover .card-corner {
-  border-color: rgba(209, 142, 83, 0.82);
+  border-color: rgba(212, 82, 78, 0.85);
 }
 
 /* On card hover, brighten the number badge too — small tactile lift. */
 .reframe-pin-wrap .reframe-card:hover .card-number {
-  background: rgba(209, 142, 83, 0.12);
-  border-color: var(--bronze);
+  background: rgba(191, 58, 54, 0.14);
+  border-color: var(--signal-bright);
 }
 
 /* Keep card content above the glow underlay. */
@@ -513,7 +519,7 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--bronze);
+  color: var(--signal-bright);
   margin-bottom: 10px;
 }
 .reframe-pin-wrap .card-truth {
@@ -660,7 +666,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--bronze);
+  background-color: var(--signal-bright);
   animation: blink 1.6s ease-in-out infinite;
 }
 
@@ -721,7 +727,7 @@
   left: 0;
   width: 100%;
   height: 7px;
-  background-color: var(--bronze);
+  background-color: var(--signal-bright);
   animation: scroll-indicator 2.4s ease-in-out infinite;
 }
 .reframe-pin-wrap .hud-scroll-label {

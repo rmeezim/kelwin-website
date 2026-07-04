@@ -17,6 +17,12 @@
   --hud-bronze-55:     rgba(209, 142, 83, 0.55);
   --hud-bronze-32:     rgba(209, 142, 83, 0.32);
   --hud-bronze-22:     rgba(209, 142, 83, 0.22);
+  /* Signal red — live state + action. Bright tint for dark surfaces,
+     base for bone surfaces (see globals.css for the full discipline). */
+  --hud-signal:        #BF3A36;
+  --hud-signal-bright: #D4524E;
+  --hud-signal-deep:   #97302D;
+  --hud-signal-glow:   rgba(191, 58, 54, 0.4);
   --hud-mono:          "JetBrains Mono", "IBM Plex Mono", "Courier New", "Consolas", "Monaco", monospace;
 }
 
@@ -64,7 +70,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background-color: var(--hud-bronze);
+  background-color: var(--hud-signal-bright);
   animation: blink 1.6s ease-in-out infinite;
 }
 
@@ -120,7 +126,7 @@
   left: 0;
   width: 100%;
   height: 7px;
-  background-color: var(--hud-bronze);
+  background-color: var(--hud-signal-bright);
   animation: scroll-indicator 2.4s ease-in-out infinite;
 }
 .sys-hud .sys-scroll-label {
@@ -259,12 +265,12 @@
 .sys-spine-fill {
   position: absolute;
   inset: 0;
-  background: var(--hud-bronze-ink);
+  background: var(--hud-signal);
   transform: scaleY(0);
   transform-origin: top center;
 }
 .sys-spine.is-dark .sys-spine-fill {
-  background: var(--hud-bronze);
+  background: var(--hud-signal-bright);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -334,9 +340,9 @@
 .sys-status-pill-dot {
   width: 6px;
   height: 6px;
-  background: var(--hud-bronze);
+  background: var(--hud-signal-bright);
   border-radius: 50%;
-  box-shadow: 0 0 6px rgba(209, 142, 83, 0.45);
+  box-shadow: 0 0 6px var(--hud-signal-glow);
   animation: blink 1.6s ease-in-out infinite;
 }
 .sys-status-pill-label  { color: var(--hud-bronze); font-weight: 600; }
@@ -392,7 +398,7 @@
 }
 .sys-jump-tick:hover .sys-jump-mark { background: var(--hud-bronze); width: 22px; }
 .sys-jump-tick.is-active .sys-jump-mark {
-  background: var(--hud-bronze);
+  background: var(--hud-signal-bright);
   width: 24px;
 }
 .sys-jump-label {
@@ -456,7 +462,7 @@
 .sys-manual-head-dot {
   width: 7px;
   height: 7px;
-  background: var(--hud-bronze);
+  background: var(--hud-signal-bright);
   border-radius: 50%;
   animation: blink 1.6s ease-in-out infinite;
 }
@@ -511,7 +517,7 @@
   display: inline-block;
   width: 8px;
   height: 14px;
-  background: var(--hud-bronze);
+  background: var(--hud-signal-bright);
   vertical-align: -2px;
   margin-left: 4px;
   animation: blink 1.2s step-end infinite;
@@ -553,13 +559,88 @@
   display: inline-block;
   width: 5px;
   height: 5px;
-  background-color: var(--hud-bronze);
+  background-color: var(--hud-signal);
   border-radius: 50%;
   margin-left: 4px;
   animation: blink 1.8s ease-in-out infinite;
-  box-shadow: 0 0 6px rgba(209, 142, 83, 0.35);
+  box-shadow: 0 0 6px var(--hud-signal-glow);
 }
 @media (prefers-reduced-motion: reduce) {
   .scaffold-label .scaffold-pulse { animation: none; }
 }
 
+
+/* ── ProtocolSeam — red strip stitching dark ↔ light sections ─────────
+   The one place red is allowed to be a full-bleed fill. Compresses the
+   sister-brand's red-card gesture into Kelwin's instrument form: a thin
+   protocol strip with a mono label left and a live reading right.      */
+.sys-seam {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px clamp(28px, 5vw, 64px);
+  background: var(--hud-signal);
+  font-family: var(--hud-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--hud-cream);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 245, 0.14),
+    inset 0 -1px 0 rgba(10, 8, 5, 0.25);
+}
+.sys-seam-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+.sys-seam-label::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--hud-cream);
+  flex-shrink: 0;
+}
+.sys-seam-reading {
+  color: rgba(255, 248, 245, 0.75);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+@media (max-width: 600px) {
+  .sys-seam { font-size: 9px; letter-spacing: 0.14em; }
+}
+
+/* ── DotMatrixReading — cell-built flip-board numerals ────────────────
+   Signature motif for one hero reading per section. Cells are square
+   with a small radius (the only rounded element in the Kelwin system —
+   borrowed from the flip-board reference, where the radius belongs to
+   the physical cell, not to UI chrome). Color via --dm-color; size via
+   --dm-cell. Reveal: parent gains .dm-armed on mount (cells hidden),
+   then .dm-live when in view — cells fade in on per-cell delays.      */
+.sys-dotmatrix {
+  display: inline-flex;
+  gap: calc(var(--dm-cell, 12px) * 0.55);
+}
+.sys-dotmatrix .dm-glyph {
+  display: grid;
+  gap: calc(var(--dm-cell, 12px) * 0.3);
+}
+.sys-dotmatrix .dm-cell {
+  width: var(--dm-cell, 12px);
+  height: var(--dm-cell, 12px);
+  border-radius: calc(var(--dm-cell, 12px) * 0.32);
+  background: transparent;
+}
+.sys-dotmatrix .dm-cell.on {
+  background: var(--dm-color, var(--hud-signal-bright));
+  transition: opacity 0.5s ease;
+}
+.dm-armed .sys-dotmatrix .dm-cell.on { opacity: 0; }
+.dm-armed.dm-live .sys-dotmatrix .dm-cell.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .dm-armed .sys-dotmatrix .dm-cell.on { opacity: 1 !important; transition: none; }
+}

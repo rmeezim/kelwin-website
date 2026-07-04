@@ -7,9 +7,9 @@ const FLICKER_OPACITY  = [0, 0.9, 0.05, 1, 0.38, 1];
 const FLICKER_TIMES    = [0, 0.10, 0.22, 0.42, 0.65, 1];
 const FLICKER_DURATION = 0.14;
 
-const BRONZE       = "#D18E53";
-const BRONZE_HOVER = "#A46A33"; // settled darker tone while hovered
-const SURFACE      = "#110F0A";
+const SIGNAL       = "#BF3A36";
+const SIGNAL_HOVER = "#97302D"; // settled deeper shade while hovered
+const CREAM        = "#FFF8F5";
 
 const CAP_REST  = 8;  // bracket arm length at rest (viewBox units)
 const CAP_HOVER = 11; // extends inward on hover
@@ -29,7 +29,7 @@ export default function HeroCTA() {
     // Only darken if the cursor hasn't already left during the flicker.
     if (hoveredRef.current) {
       fillControls.start({
-        backgroundColor: BRONZE_HOVER,
+        backgroundColor: SIGNAL_HOVER,
         transition: { duration: 0.25, ease: "easeOut" },
       });
     }
@@ -40,7 +40,7 @@ export default function HeroCTA() {
     setHovered(false);
     fillControls.start({
       opacity: 1,
-      backgroundColor: BRONZE,
+      backgroundColor: SIGNAL,
       transition: { duration: 0.2, ease: "easeOut" },
     });
   };
@@ -57,11 +57,11 @@ export default function HeroCTA() {
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
-      {/* Bronze fill — always present; flickers then darkens on hover */}
+      {/* Signal-red fill — always present; flickers then deepens on hover */}
       <motion.span
         className="absolute pointer-events-none"
         style={{ top: 5, right: 5, bottom: 5, left: 5 }}
-        initial={{ opacity: 1, backgroundColor: BRONZE }}
+        initial={{ opacity: 1, backgroundColor: SIGNAL }}
         animate={fillControls}
       />
 
@@ -73,8 +73,8 @@ export default function HeroCTA() {
         aria-hidden="true"
       >
         {/* Static verticals */}
-        <line x1="0"   y1="0" x2="0"   y2="100" stroke={BRONZE} strokeWidth="2.4" vectorEffect="non-scaling-stroke" />
-        <line x1="100" y1="0" x2="100" y2="100" stroke={BRONZE} strokeWidth="2.4" vectorEffect="non-scaling-stroke" />
+        <line x1="0"   y1="0" x2="0"   y2="100" stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke" />
+        <line x1="100" y1="0" x2="100" y2="100" stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke" />
 
         {/* Corner caps — extend inward after flicker, retract immediately on leave */}
         <motion.line
@@ -82,37 +82,37 @@ export default function HeroCTA() {
           initial={{ x2: CAP_REST }}
           animate={{ x2: hovered ? CAP_HOVER : CAP_REST }}
           transition={capTransition}
-          stroke={BRONZE} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
+          stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
         />
         <motion.line
           x2={100} y1={0} y2={0}
           initial={{ x1: 100 - CAP_REST }}
           animate={{ x1: hovered ? 100 - CAP_HOVER : 100 - CAP_REST }}
           transition={capTransition}
-          stroke={BRONZE} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
+          stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
         />
         <motion.line
           x1={0} y1={100} y2={100}
           initial={{ x2: CAP_REST }}
           animate={{ x2: hovered ? CAP_HOVER : CAP_REST }}
           transition={capTransition}
-          stroke={BRONZE} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
+          stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
         />
         <motion.line
           x2={100} y1={100} y2={100}
           initial={{ x1: 100 - CAP_REST }}
           animate={{ x1: hovered ? 100 - CAP_HOVER : 100 - CAP_REST }}
           transition={capTransition}
-          stroke={BRONZE} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
+          stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
         />
       </svg>
 
-      <span className="relative z-10" style={{ color: SURFACE }}>
+      <span className="relative z-10" style={{ color: CREAM }}>
         INITIATE SYSTEM AUDIT
       </span>
       <span
         className="relative z-10 transition-transform duration-200 group-hover:translate-x-1"
-        style={{ color: SURFACE }}
+        style={{ color: CREAM }}
       >
         →
       </span>

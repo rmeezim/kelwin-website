@@ -12,6 +12,11 @@
   --bronze: #D18E53;
   --bronze-ink: #7E4D24;
   --bronze-mid: #A66B33;
+
+  --signal:                #BF3A36;
+  --signal-bright:         #D4524E;
+  --signal-deep:           #97302D;
+  --signal-glow:           rgba(191, 58, 54, 0.35);
   --bronze-ink-70: rgba(126, 77, 36, 0.70);
   --bronze-ink-55: rgba(126, 77, 36, 0.55);
   --bronze-ink-28: rgba(126, 77, 36, 0.28);
@@ -49,7 +54,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--bronze-ink);
+  color: var(--signal);
   margin-bottom: 28px;
   display: inline-flex;
   align-items: center;
@@ -120,8 +125,8 @@
 .method-section .spine-fill {
   position: absolute;
   inset: 0;
-  background: var(--bronze-ink);
-  box-shadow: 0 0 6px rgba(126, 77, 36, 0.35);
+  background: var(--signal);
+  box-shadow: 0 0 6px var(--signal-glow);
   transform: scaleY(1);
   transform-origin: top center;
 }
@@ -161,14 +166,14 @@
     0 0 0 1px rgba(209, 142, 83, 0.18);
 }
 .method-section .phase:hover .phase-kicker        { color: var(--bronze); }
-.method-section .phase:hover .phase-num           { color: rgba(209, 142, 83, 0.55); }
+.method-section .phase:hover .phase-num           { color: rgba(212, 82, 78, 0.6); }
 .method-section .phase:hover .phase-title         { color: var(--bone); }
 .method-section .phase:hover .phase-method        { color: rgba(244, 240, 231, 0.72); }
-.method-section .phase:hover .phase-output        { border-left-color: var(--bronze); }
-.method-section .phase:hover .phase-output-label  { color: var(--bronze); }
+.method-section .phase:hover .phase-output        { border-left-color: var(--signal-bright); }
+.method-section .phase:hover .phase-output-label  { color: var(--signal-bright); }
 .method-section .phase:hover .phase-output-value  { color: var(--bone); }
-.method-section .phase:hover .phase-node          { background: var(--bronze); border-color: var(--bronze); }
-.method-section .phase:hover .phase-corner        { opacity: 1; border-color: var(--bronze); }
+.method-section .phase:hover .phase-node          { background: var(--signal-bright); border-color: var(--signal-bright); }
+.method-section .phase:hover .phase-corner        { opacity: 1; border-color: var(--signal-bright); }
 
 /* Keep the structured content layered above the ghost-word so the
    ghost stays atmospheric and the text stays readable. Without this
@@ -240,8 +245,8 @@
   top: clamp(50px, 5.6vw, 80px);
   width: 9px;
   height: 9px;
-  background: var(--bronze);
-  border: 1.5px solid var(--bronze);
+  background: var(--signal);
+  border: 1.5px solid var(--signal);
   transform: translateX(-50%);
 }
 
@@ -262,7 +267,7 @@
   font-size: clamp(54px, 6.8vw, 100px);
   line-height: 0.92;
   letter-spacing: -0.025em;
-  color: var(--bronze-45);
+  color: rgba(191, 58, 54, 0.38);
   font-variant-numeric: tabular-nums;
 }
 
@@ -312,7 +317,7 @@
 
 /* armed = JS motion enabled; nodes start hollow until their phase enters */
 .method-section .method-flow.armed .phase-node { background: var(--bone); }
-.method-section .method-flow.armed .phase.is-in .phase-node { background: var(--bronze); }
+.method-section .method-flow.armed .phase.is-in .phase-node { background: var(--signal); }
 
 /* CTA row — bracketed DiagnosticMethodCTA is rendered inside this
    container. The container is the GSAP target so the reveal still works. */

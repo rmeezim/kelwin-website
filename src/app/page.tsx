@@ -9,6 +9,7 @@ import RevenueOS from "@/components/sections/RevenueOS";
 import FirstPrinciples from "@/components/sections/FirstPrinciples";
 import OperatingPrincipleBand from "@/components/sections/OperatingPrincipleBand";
 import Methodology from "@/components/sections/Methodology";
+import ProtocolSeam from "@/components/ui/ProtocolSeam";
 
 export default function Home() {
   useEffect(() => {
@@ -24,7 +25,15 @@ export default function Home() {
       <HeroSection />
       <DiagnosticReframe />
       <RevenueOS />
+      <ProtocolSeam
+        label="Protocol 02 / Operating Principles"
+        reading="06 Principles · V2.4"
+      />
       <FirstPrinciples />
+      <ProtocolSeam
+        label="Protocol 03 / System Implementation"
+        reading="04 Phases · Continuous"
+      />
       <OperatingPrincipleBand />
       <Methodology />
     </main>
