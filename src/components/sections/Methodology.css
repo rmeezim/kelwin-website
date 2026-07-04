@@ -1,34 +1,25 @@
-/* ─── Methodology — scoped to .method-section ──────────────────────────── */
+/* ─── Methodology — scoped to .method-section ─────────────────────────────
+   The four phases render as an animated signal pipeline (subway-map flow)
+   with a synced detail readout — only the active phase's text is shown, so
+   the section reads as a diagram, not a wall of copy.                       */
 
 .method-section {
   --surface: #110F0A;
   --surface-elev: #20201E;
-  --bone: #FBFAF6;
-  --bone-deep: #ECE6DA;
-  --obsidian: #0A0805;
   --ink: #FBFAF6;
   --lead: rgba(251, 250, 246, 0.66);
-  --ash: rgba(251, 250, 246, 0.5);
   --headline-mute: rgba(251, 250, 246, 0.42);
-  --dusk: rgba(251, 250, 246, 0.5);
-  --bronze: #C7B49D;
-  --bronze-ink: #A65A45;
-  --bronze-mid: #8F8981;
-
-  --signal:                #BF3A36;
-  --signal-bright:         #D4524E;
-  --signal-deep:           #A8302C;
-  --signal-glow:           rgba(191, 58, 54, 0.35);
-  --bronze-ink-70: rgba(166, 90, 69, 0.70);
-  --bronze-ink-55: rgba(166, 90, 69, 0.55);
-  --bronze-ink-28: rgba(166, 90, 69, 0.28);
-  --bronze-55: rgba(199, 180, 157, 0.55);
-  --bronze-45: rgba(199, 180, 157, 0.45);
-  --bronze-15: rgba(199, 180, 157, 0.15);
+  --sand: #C7B49D;
+  --sand-faint: rgba(199, 180, 157, 0.22);
+  --sand-line: rgba(199, 180, 157, 0.14);
+  --clay: #A65A45;
+  --taupe: #8F8981;
+  --signal-bright: #D4524E;
+  --signal-glow: rgba(191, 58, 54, 0.4);
   --hairline: rgba(251, 250, 246, 0.09);
-  --hairline-soft: rgba(251, 250, 246, 0.05);
   --f-display: var(--font-instrument-sans), serif;
   --f-body: var(--font-inter), sans-serif;
+  --f-mono: "JetBrains Mono", "IBM Plex Mono", "Courier New", monospace;
   --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
 
   position: relative;
@@ -49,32 +40,13 @@
   padding: clamp(72px, 9vh, 104px) clamp(28px, 5vw, 64px);
 }
 
-/* ── scaffold header (shared system) ── */
-.method-section .scaffold-label {
-  font-family: var(--f-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--signal-bright);
-  margin-bottom: 28px;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-}
-.method-section .scaffold-label::before {
-  content: '';
-  width: 28px;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.75;
-}
+/* ── Header ── */
 .method-section .scaffold-row {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   gap: 80px;
   align-items: start;
-  margin-bottom: clamp(50px, 6vw, 80px);
+  margin-bottom: clamp(48px, 6vw, 88px);
 }
 @media (max-width: 1024px) {
   .method-section .scaffold-row { grid-template-columns: 1fr; gap: 30px; margin-bottom: 48px; }
@@ -109,256 +81,251 @@
   line-height: 1.5;
 }
 
-/* ── installation flow ── */
-.method-section .method-flow { position: relative; }
-
-.method-section .method-spine {
-  position: absolute;
-  left: 8px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-}
-.method-section .spine-track {
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(to bottom, rgba(199, 180, 157, 0.35) 0 4px, transparent 4px 9px);
-}
-.method-section .spine-fill {
-  position: absolute;
-  inset: 0;
-  background: var(--signal-bright);
-  box-shadow: 0 0 6px var(--signal-glow);
-  transform: scaleY(1);
-  transform-origin: top center;
-}
-
-.method-section .phase {
+/* ── Pipeline ── */
+.method-section .mflow {
   position: relative;
-  display: grid;
-  grid-template-columns: clamp(96px, 11.5vw, 148px) minmax(0, 1fr) clamp(208px, 19vw, 286px);
-  gap: clamp(26px, 3.2vw, 52px);
-  align-items: start;
-  padding: clamp(40px, 5vw, 70px) clamp(40px, 4vw, 60px) clamp(40px, 5vw, 70px) clamp(40px, 4vw, 60px);
-  border-top: 1px solid var(--hairline);
-  /* Critical: the cursor-following ghost-word inside the phase must
-     be clipped by the card boundary so the giant translucent word
-     stays sealed inside the dark panel rather than overflowing onto
-     the page background. */
-  overflow: hidden;
-  /* Smooth crossfade between the bone idle state and the obsidian
-     hover state. Box-shadow and color transitions stay subtle enough
-     to feel intentional, not flashy. */
-  transition:
-    background-color 0.45s var(--ease-out),
-    box-shadow 0.45s var(--ease-out),
-    border-color 0.45s var(--ease-out);
-}
-.method-section .phase:last-child { border-bottom: 1px solid var(--hairline); }
-
-/* ── Phase hover state — obsidian inversion ────────────────────────────
-   On hover the entire card pops dark, text re-colors for readability on
-   the inverted background, and the brand bronze accents brighten. The
-   ghost-word layer fades in on top of this and tracks the cursor (see
-   `.phase-ghost-word` below). */
-.method-section .phase:hover {
-  background-color: var(--surface-elev);
-  box-shadow:
-    inset 2px 0 0 var(--signal-bright),
-    0 0 0 1px rgba(199, 180, 157, 0.14);
-}
-.method-section .phase:hover .phase-kicker        { color: var(--bronze); }
-.method-section .phase:hover .phase-num           { color: rgba(212, 82, 78, 0.65); }
-.method-section .phase:hover .phase-title         { color: var(--bone); }
-.method-section .phase:hover .phase-method        { color: rgba(244, 240, 231, 0.72); }
-.method-section .phase:hover .phase-output        { border-left-color: var(--signal-bright); }
-.method-section .phase:hover .phase-output-label  { color: var(--signal-bright); }
-.method-section .phase:hover .phase-output-value  { color: var(--bone); }
-.method-section .phase:hover .phase-node          { background: var(--signal-bright); border-color: var(--signal-bright); }
-.method-section .phase:hover .phase-corner        { opacity: 1; border-color: var(--signal-bright); }
-
-/* Keep the structured content layered above the ghost-word so the
-   ghost stays atmospheric and the text stays readable. Without this
-   the absolutely-positioned ghost would render on top of the static
-   grid children. */
-.method-section .phase-index,
-.method-section .phase-body,
-.method-section .phase-output {
-  position: relative;
-  z-index: 2;
+  margin: clamp(8px, 2vw, 24px) 0 0;
 }
 
-/* ── Ghost-word — atmospheric cursor-following layer ──────────────────
-   Giant translucent uppercase word that lives on the obsidian card. On
-   idle it's invisible; on hover it fades in and tracks the cursor via
-   the `--ghost-x` / `--ghost-y` variables set by the mousemove handler
-   in Methodology.tsx. The transition on `transform` provides the
-   "spring lag" follow — the word eases toward the cursor rather than
-   snapping to it, creating the ghostly trailing feel. */
-.method-section .phase-ghost-word {
+/* Track — spans first→last dot center (nodes are 4 equal columns, so the
+   dots sit at 12.5% / 37.5% / 62.5% / 87.5%). */
+.method-section .mflow-line {
   position: absolute;
-  left: 0;
-  top: 0;
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: clamp(56px, 10vw, 168px);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: rgba(244, 240, 231, 0.10);
-  pointer-events: none;
-  user-select: none;
+  left: 12.5%;
+  right: 12.5%;
+  top: 64px;
+  height: 2px;
   z-index: 1;
-  opacity: 0;
-  /* `translate(var(...), var(...))` puts the word's top-left corner at
-     the cursor position; the second `translate(-50%, -50%)` then
-     re-centers the word on that point. */
-  transform:
-    translate(var(--ghost-x, 50%), var(--ghost-y, 50%))
-    translate(-50%, -50%);
-  transition:
-    opacity 0.4s var(--ease-out),
-    transform 0.35s var(--ease-out);
 }
-.method-section .phase:hover .phase-ghost-word {
-  opacity: 1;
-}
-
-/* Phase corner reticles — small bronze L's anchored only on the
-   right edge (top-right + bottom-right) of each phase, per design call. */
-.method-section .phase-corner {
+.method-section .mflow-rail { position: absolute; inset: 0; background: var(--sand-faint); }
+.method-section .mflow-fill {
   position: absolute;
-  width: 14px;
-  height: 14px;
-  border: 0 solid var(--bronze);
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.45;
-  transition: opacity 0.3s ease;
-}
-.method-section .phase-corner-tr { top: 10px;    right: 10px;   border-top-width: 1px;    border-right-width: 1px; }
-.method-section .phase-corner-br { bottom: 10px; right: 10px;   border-bottom-width: 1px; border-right-width: 1px; }
-.method-section .phase:hover .phase-corner { opacity: 1; }
-
-.method-section .phase-node {
-  position: absolute;
-  left: 8px;
-  top: clamp(50px, 5.6vw, 80px);
-  width: 9px;
-  height: 9px;
+  left: 0; top: 0; height: 100%;
+  width: calc(100% * var(--af, 0));
   background: var(--signal-bright);
-  border: 1.5px solid var(--signal-bright);
+  box-shadow: 0 0 8px var(--signal-glow);
+  transition: width 0.6s var(--ease-out);
+}
+/* Clay signal pulse — the "system running" motion, slow and continuous. */
+.method-section .mflow-pulse {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 46px;
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, var(--clay));
+  filter: drop-shadow(0 0 5px rgba(166, 90, 69, 0.55));
+  animation: m-pulse 4.6s linear infinite;
+}
+@keyframes m-pulse {
+  0%   { left: -46px; opacity: 0; }
+  10%  { opacity: 0.95; }
+  90%  { opacity: 0.95; }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* Feedback loop 04 → 01 — the system never stops calibrating. */
+.method-section .mflow-fb {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 46px;
+  overflow: visible;
+}
+.method-section .mflow-fb-path,
+.method-section .mflow-fb-head {
+  fill: none;
+  stroke: var(--sand-line);
+  stroke-width: 1.2;
+}
+.method-section .mflow-fb-path { stroke-dasharray: 3 4; }
+.method-section .mflow.is-looping .mflow-fb-path {
+  stroke: var(--clay);
+  animation: m-march 1s linear infinite;
+}
+.method-section .mflow.is-looping .mflow-fb-head { stroke: var(--clay); }
+@keyframes m-march { to { stroke-dashoffset: -14; } }
+.method-section .mflow-fb-label {
+  position: absolute;
+  left: 50%;
+  top: 50px;
   transform: translateX(-50%);
-}
-
-.method-section .phase-kicker {
-  display: block;
-  font-family: var(--f-body);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ash);
-  margin-bottom: 15px;
+  color: var(--taupe);
+  transition: color 0.4s var(--ease-out);
 }
-.method-section .phase-num {
-  display: block;
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(54px, 6.8vw, 100px);
-  line-height: 0.92;
-  letter-spacing: -0.025em;
-  color: rgba(212, 82, 78, 0.42);
-  font-variant-numeric: tabular-nums;
-}
+.method-section .mflow.is-looping .mflow-fb-label { color: var(--clay); }
 
-.method-section .phase-body { max-width: 56ch; }
-.method-section .phase-title {
+/* Nodes */
+.method-section .mflow-nodes {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  padding-bottom: 64px; /* room for the feedback arc + label below the line */
+}
+.method-section .mnode {
+  flex: 1;
+  min-width: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+}
+.method-section .mnode-label {
+  height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.method-section .mnode-num {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--taupe);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.35s var(--ease-out);
+}
+.method-section .mnode-title {
   font-family: var(--f-display);
   font-weight: 500;
-  font-size: clamp(23px, 2.5vw, 33px);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-  margin-bottom: clamp(12px, 1.2vw, 16px);
-  text-wrap: balance;
+  font-size: clamp(15px, 1.5vw, 20px);
+  letter-spacing: -0.01em;
+  color: var(--headline-mute);
+  transition: color 0.35s var(--ease-out);
 }
-.method-section .phase-method {
-  font-family: var(--f-body);
-  font-size: clamp(14.5px, 1.05vw, 16px);
+.method-section .mnode-dot {
+  margin-top: 6px;
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  background: var(--surface);
+  border: 1.5px solid var(--sand-faint);
+  transition: background 0.35s var(--ease-out), border-color 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+.method-section .mnode.is-done .mnode-dot { background: var(--sand); border-color: var(--sand); }
+.method-section .mnode.is-done .mnode-num { color: var(--sand); }
+.method-section .mnode.is-active .mnode-dot {
+  background: var(--signal-bright);
+  border-color: var(--signal-bright);
+  box-shadow: 0 0 0 4px rgba(191, 58, 54, 0.12), 0 0 12px var(--signal-glow);
+}
+.method-section .mnode.is-active .mnode-num { color: var(--signal-bright); }
+.method-section .mnode.is-active .mnode-title { color: var(--ink); }
+.method-section .mnode:hover .mnode-title { color: var(--ink); }
+.method-section .mnode:focus-visible { outline: 1px solid var(--signal-bright); outline-offset: 6px; }
+
+/* ── Synced detail readout ── */
+.method-section .mdetail {
+  position: relative;
+  overflow: hidden;
+  margin-top: clamp(24px, 3vw, 40px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) clamp(200px, 22vw, 300px);
+  gap: clamp(24px, 3.4vw, 60px);
+  align-items: start;
+  padding: clamp(28px, 3vw, 44px) clamp(26px, 3vw, 44px);
+  background: var(--surface-elev);
+  border: 1px solid var(--hairline);
+  box-shadow: inset 2px 0 0 var(--signal-bright);
+  animation: m-detail 0.55s var(--ease-out);
+}
+@keyframes m-detail {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+.method-section .mdetail-ghost {
+  font-family: var(--f-display);
   font-weight: 400;
-  line-height: 1.68;
+  font-size: clamp(56px, 7vw, 104px);
+  line-height: 0.8;
+  letter-spacing: -0.03em;
+  color: rgba(216, 210, 200, 0.10);
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+.method-section .mdetail-kicker {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-bottom: clamp(14px, 1.6vw, 20px);
+}
+.method-section .mdetail-kicker strong { color: var(--sand); font-weight: 600; }
+.method-section .mdetail-method {
+  font-family: var(--f-body);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.7;
   color: var(--lead);
+  max-width: 54ch;
   text-wrap: pretty;
 }
-.method-section .phase-output {
-  align-self: start;
+.method-section .mdetail-output {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  border-left: 1px solid var(--bronze-mid);
-  padding-left: clamp(16px, 1.4vw, 22px);
+  border-left: 1px solid var(--sand-line);
+  padding-left: clamp(18px, 1.6vw, 24px);
 }
-.method-section .phase-output-label {
-  font-family: var(--f-body);
-  font-size: 11px;
+.method-section .mdetail-output-label {
+  font-family: var(--f-mono);
+  font-size: 9.5px;
   font-weight: 600;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--bronze);
+  color: var(--sand);
 }
-.method-section .phase-output-value {
+.method-section .mdetail-output-value {
   font-family: var(--f-display);
   font-weight: 500;
   font-size: clamp(15px, 1.1vw, 17px);
-  line-height: 1.42;
-  letter-spacing: -0.005em;
+  line-height: 1.45;
   color: var(--ink);
 }
 
-/* armed = JS motion enabled; nodes start hollow until their phase enters */
-.method-section .method-flow.armed .phase-node { background: var(--surface); }
-.method-section .method-flow.armed .phase.is-in .phase-node { background: var(--signal-bright); }
-
-/* CTA row — bracketed DiagnosticMethodCTA is rendered inside this
-   container. The container is the GSAP target so the reveal still works. */
 .method-section .method-cta-row {
-  margin-top: clamp(40px, 4.5vw, 64px);
+  margin-top: clamp(36px, 4vw, 56px);
   display: flex;
   justify-content: flex-end;
 }
 
-@media (max-width: 980px) {
-  .method-section .phase { grid-template-columns: clamp(90px, 11vw, 140px) minmax(0, 1fr); }
-  .method-section .phase-output {
-    grid-column: 2;
-    align-self: auto;
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .method-section .mdetail {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .method-section .mdetail-ghost { display: none; }
+  .method-section .mdetail-output {
+    border-left: 0;
+    border-top: 1px solid var(--sand-line);
+    padding-left: 0;
+    padding-top: 16px;
     flex-direction: row;
     align-items: baseline;
     gap: 16px;
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid var(--hairline-soft);
-    padding-top: 15px;
-    margin-top: clamp(20px, 2vw, 26px);
   }
 }
 @media (max-width: 620px) {
-  .method-section .phase { grid-template-columns: 1fr; gap: 12px; }
-  .method-section .phase-output { grid-column: 1; }
-  .method-section .phase-num { font-size: clamp(46px, 15vw, 72px); }
-  .method-section .phase-node { top: clamp(40px, 11vw, 56px); }
-  .method-section .method-spine { top: 0; }
+  .method-section .mnode-label { height: 46px; }
+  .method-section .mnode-title { font-size: 13px; }
+  .method-section .mnode-num { font-size: 10px; }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .method-section .phase { opacity: 1 !important; }
-  .method-section .spine-fill { transform: scaleY(1) !important; }
-  /* Disable the cursor-tracking transform on the ghost-word so motion
-     reduce users don't get a chasing animation. The phase itself still
-     inverts on hover (color/shadow change), which isn't motion. */
-  .method-section .phase-ghost-word {
-    transition: opacity 0.4s var(--ease-out);
-    transform: translate(50%, 50%) translate(-50%, -50%) !important;
-  }
+  .method-section .mflow-pulse { animation: none; opacity: 0; }
+  .method-section .mflow.is-looping .mflow-fb-path { animation: none; }
+  .method-section .mdetail { animation: none; }
+  .method-section .mflow-fill { transition: none; }
 }

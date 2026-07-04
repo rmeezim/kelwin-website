@@ -1,110 +1,92 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
 import "./Methodology.css";
 
+interface Phase {
+  n: string;
+  title: string;
+  method: string;
+  output: string;
+}
+
+// Copy preserved verbatim from the previous phase list.
+const PHASES: Phase[] = [
+  {
+    n: "01",
+    title: "Diagnose",
+    method:
+      "We start by finding what's actually broken. It's rarely the thing you've been told to fix; most teams are busy optimizing a symptom a few steps downstream of the real constraint.",
+    output: "The real constraint, named — and the case for fixing it first.",
+  },
+  {
+    n: "02",
+    title: "Architect",
+    method:
+      "Then we design the system that decides what you build and what you ignore: the category you'll own, the language you'll use, the model the company runs on. Most firms skip this part. Most decks only gesture at it.",
+    output: "Your category defined, and the operating model written down.",
+  },
+  {
+    n: "03",
+    title: "Install",
+    method:
+      "Architecture that lives in a slide changes nothing. So we wire the system into how the company runs day to day — the motions, the words people actually use, the way a deal gets decided on a Tuesday.",
+    output: "A working operating layer, in use across the team.",
+  },
+  {
+    n: "04",
+    title: "Calibrate",
+    method:
+      "A revenue system drifts the moment the market moves. So we stay on the signal — watching what's working, retuning what slips, and keeping your language ahead of the category.",
+    output: "A standing signal review, and a system that keeps compounding.",
+  },
+];
+
+const AUTOPLAY_MS = 3800;
+
 export default function Methodology() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [active, setActive] = useState(0);
+  const [inView, setInView] = useState(false);
+  const [interacted, setInteracted] = useState(false);
 
-  useLayoutEffect(() => {
-    const sectionMaybe = sectionRef.current;
-    if (!sectionMaybe) return;
-    const section: HTMLElement = sectionMaybe;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const flow = section.querySelector<HTMLElement>("#methodFlow");
-    if (flow) flow.classList.add("armed");
-
-    const ctx = gsap.context(() => {
-      gsap.set([".scaffold-heading", ".scaffold-right"], { y: 26, opacity: 0 });
-      gsap.timeline({
-        scrollTrigger: { trigger: section, start: "top 74%", once: true },
-      }).to([".scaffold-heading", ".scaffold-right"], {
-        y: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: "power3.out",
-        stagger: 0.1,
-      });
-
-      // Spine scroll-draws topward to bottom, scrubbed.
-      gsap.set("#spineFill", { scaleY: 0, transformOrigin: "top center" });
-      gsap.to("#spineFill", {
-        scaleY: 1,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".method-spine",
-          start: "top center",
-          end: "bottom center",
-          scrub: 0.4,
-        },
-      });
-
-      // Each phase fades in + lights its node as it arrives.
-      gsap.utils.toArray<HTMLElement>(".phase").forEach((ph) => {
-        gsap.set(ph, { opacity: 0, y: 12 });
-        ScrollTrigger.create({
-          trigger: ph,
-          start: "top 84%",
-          once: true,
-          onEnter: () => {
-            gsap.to(ph, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" });
-            ph.classList.add("is-in");
-          },
-        });
-      });
-
-      gsap.set(".method-cta-row", { opacity: 0, y: 12 });
-      ScrollTrigger.create({
-        trigger: ".method-cta-row",
-        start: "top 90%",
-        once: true,
-        onEnter: () => {
-          gsap.to(".method-cta-row", { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" });
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // Cursor tracking for the per-phase ghost-word overlay. Each phase
-  // has a giant translucent word (DIAGNOSE / ARCHITECT / INSTALL /
-  // CALIBRATE) that follows the cursor when the phase is hovered. We
-  // set `--ghost-x` / `--ghost-y` (the cursor position relative to
-  // the phase's top-left corner) on the phase element; the ghost-word
-  // element reads them via CSS transform with a transition for the
-  // smooth "spring lag" follow.
+  // Reveal-on-enter + drive autoplay only while the section is on screen.
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-    const phases = section.querySelectorAll<HTMLElement>(".phase");
-    const cleanups: Array<() => void> = [];
-
-    phases.forEach((phase) => {
-      const onMove = (e: MouseEvent) => {
-        const rect = phase.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        phase.style.setProperty("--ghost-x", `${x}px`);
-        phase.style.setProperty("--ghost-y", `${y}px`);
-      };
-      phase.addEventListener("mousemove", onMove);
-      cleanups.push(() => phase.removeEventListener("mousemove", onMove));
-    });
-
-    return () => cleanups.forEach((c) => c());
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => setInView(e.isIntersecting)),
+      { threshold: 0.35 }
+    );
+    io.observe(section);
+    return () => io.disconnect();
   }, []);
+
+  // Autoplay: the console cycles through phases on its own until the user
+  // takes over (hover/focus/click), then it stays put. `interacted` is state
+  // so this effect re-runs and clears the interval the moment the user acts —
+  // a ref alone would leave the stale interval ticking. Off for reduced motion.
+  useEffect(() => {
+    if (!inView || interacted) return;
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = window.setInterval(() => {
+      setActive((a) => (a + 1) % PHASES.length);
+    }, AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [inView, interacted]);
+
+  const select = (i: number) => {
+    setInteracted(true);
+    setActive(i);
+  };
+
+  const phase = PHASES[active];
+  const af = active / (PHASES.length - 1);
 
   return (
     <section id="methodology" className="method-section" ref={sectionRef}>
       <div className="method-stage">
-
         <div className="scaffold-row">
           <h2 className="scaffold-heading">
             <span className="line-1">How we install the system.</span>
@@ -112,107 +94,75 @@ export default function Methodology() {
           </h2>
           <div className="scaffold-right">
             <p className="scaffold-body">
-              The first three run once, in order. The fourth keeps running — a system left alone drifts the moment the market moves.
+              The first three run once, in order. The fourth keeps running — a
+              system left alone drifts the moment the market moves.
               <span className="coda">A system, not a project.</span>
             </p>
           </div>
         </div>
 
-        <div className="method-flow" id="methodFlow">
-          <div className="method-spine">
-            <span className="spine-track"></span>
-            <span className="spine-fill" id="spineFill"></span>
+        {/* Signal pipeline — subway-map flow of the four phases. */}
+        <div className={`mflow ${active === 3 ? "is-looping" : ""}`}>
+          <div className="mflow-line" aria-hidden="true" style={{ ["--af" as string]: af }}>
+            <span className="mflow-rail" />
+            <span className="mflow-fill" />
+            <span className="mflow-pulse" />
+            {/* Feedback loop 04 → 01: the system never stops calibrating. */}
+            <svg className="mflow-fb" viewBox="0 0 100 44" preserveAspectRatio="none">
+              <path
+                className="mflow-fb-path"
+                d="M100 3 C 100 40, 0 40, 0 3"
+                vectorEffect="non-scaling-stroke"
+              />
+              <path
+                className="mflow-fb-head"
+                d="M-3 9 L0 3 L3 9"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
+            <span className="mflow-fb-label">Continuous</span>
           </div>
 
-          <article className="phase" data-i="0">
-            <span className="phase-ghost-word" aria-hidden="true">DIAGNOSE</span>
-            <span className="phase-node"></span>
-            <div className="phase-index">
-              <span className="phase-kicker">Phase</span>
-              <span className="phase-num">01</span>
-            </div>
-            <div className="phase-body">
-              <h3 className="phase-title">Diagnose</h3>
-              <p className="phase-method">
-                We start by finding what&apos;s actually broken. It&apos;s rarely the thing you&apos;ve been told to fix; most teams are busy optimizing a symptom a few steps downstream of the real constraint.
-              </p>
-            </div>
-            <div className="phase-output">
-              <span className="phase-output-label">Output</span>
-              <span className="phase-output-value">The real constraint, named — and the case for fixing it first.</span>
-            </div>
-            <span className="phase-corner phase-corner-tr" aria-hidden="true"></span>
-            <span className="phase-corner phase-corner-br" aria-hidden="true"></span>
-          </article>
+          <div className="mflow-nodes" role="tablist" aria-label="Methodology phases">
+            {PHASES.map((p, i) => (
+              <button
+                key={p.n}
+                type="button"
+                role="tab"
+                aria-selected={i === active}
+                className={`mnode ${i === active ? "is-active" : ""} ${i < active ? "is-done" : ""}`}
+                onMouseEnter={() => select(i)}
+                onFocus={() => select(i)}
+                onClick={() => select(i)}
+              >
+                <span className="mnode-label">
+                  <span className="mnode-num">{p.n}</span>
+                  <span className="mnode-title">{p.title}</span>
+                </span>
+                <span className="mnode-dot" aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+        </div>
 
-          <article className="phase" data-i="1">
-            <span className="phase-ghost-word" aria-hidden="true">ARCHITECT</span>
-            <span className="phase-node"></span>
-            <div className="phase-index">
-              <span className="phase-kicker">Phase</span>
-              <span className="phase-num">02</span>
-            </div>
-            <div className="phase-body">
-              <h3 className="phase-title">Architect</h3>
-              <p className="phase-method">
-                Then we design the system that decides what you build and what you ignore: the category you&apos;ll own, the language you&apos;ll use, the model the company runs on. Most firms skip this part. Most decks only gesture at it.
-              </p>
-            </div>
-            <div className="phase-output">
-              <span className="phase-output-label">Output</span>
-              <span className="phase-output-value">Your category defined, and the operating model written down.</span>
-            </div>
-            <span className="phase-corner phase-corner-tr" aria-hidden="true"></span>
-            <span className="phase-corner phase-corner-br" aria-hidden="true"></span>
-          </article>
-
-          <article className="phase" data-i="2">
-            <span className="phase-ghost-word" aria-hidden="true">INSTALL</span>
-            <span className="phase-node"></span>
-            <div className="phase-index">
-              <span className="phase-kicker">Phase</span>
-              <span className="phase-num">03</span>
-            </div>
-            <div className="phase-body">
-              <h3 className="phase-title">Install</h3>
-              <p className="phase-method">
-                Architecture that lives in a slide changes nothing. So we wire the system into how the company runs day to day — the motions, the words people actually use, the way a deal gets decided on a Tuesday.
-              </p>
-            </div>
-            <div className="phase-output">
-              <span className="phase-output-label">Output</span>
-              <span className="phase-output-value">A working operating layer, in use across the team.</span>
-            </div>
-            <span className="phase-corner phase-corner-tr" aria-hidden="true"></span>
-            <span className="phase-corner phase-corner-br" aria-hidden="true"></span>
-          </article>
-
-          <article className="phase" data-i="3">
-            <span className="phase-ghost-word" aria-hidden="true">CALIBRATE</span>
-            <span className="phase-node"></span>
-            <div className="phase-index">
-              <span className="phase-kicker">Phase</span>
-              <span className="phase-num">04</span>
-            </div>
-            <div className="phase-body">
-              <h3 className="phase-title">Calibrate</h3>
-              <p className="phase-method">
-                A revenue system drifts the moment the market moves. So we stay on the signal — watching what&apos;s working, retuning what slips, and keeping your language ahead of the category.
-              </p>
-            </div>
-            <div className="phase-output">
-              <span className="phase-output-label">Output</span>
-              <span className="phase-output-value">A standing signal review, and a system that keeps compounding.</span>
-            </div>
-            <span className="phase-corner phase-corner-tr" aria-hidden="true"></span>
-            <span className="phase-corner phase-corner-br" aria-hidden="true"></span>
-          </article>
+        {/* Synced readout — only the active phase's detail is shown. */}
+        <div className="mdetail" key={active}>
+          <span className="mdetail-ghost" aria-hidden="true">{phase.n}</span>
+          <div className="mdetail-main">
+            <span className="mdetail-kicker">
+              Phase {phase.n} · <strong>{phase.title}</strong>
+            </span>
+            <p className="mdetail-method">{phase.method}</p>
+          </div>
+          <div className="mdetail-output">
+            <span className="mdetail-output-label">Output</span>
+            <span className="mdetail-output-value">{phase.output}</span>
+          </div>
         </div>
 
         <div className="method-cta-row">
           <DiagnosticMethodCTA href="/methodology" label="View the full methodology" variant="signal" />
         </div>
-
       </div>
     </section>
   );
