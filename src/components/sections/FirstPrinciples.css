@@ -1,121 +1,99 @@
-/* ─── First Principles — scoped to .principles-section ──────────────────── */
+/* ─── First Principles — scoped to .principles-section ────────────────────
+   One dark world: a systematic hairline ledger of six principles on the
+   continuous charcoal surface. No pin, no card deck — restraint is the
+   design. Interaction: a quiet red live-edge + elevation on hover.       */
 
 .principles-section {
-  --bone: #F4F0E7;
-  --obsidian: #110F0A;
-  --panel-base: #14110D;
-  --graphite: #1A1612;
-  --bone-primary: #F4F0E7;
-  --bone-muted: #9C948A;
-  --bone-dusk: #7A7268;
-  --headline-mute: #A8A09A;
-  --lead: #B8B0A6;
-  --bronze: #D18E53;
-  --bronze-mid: #A66B33;
-  --bronze-ink: #7E4D24;
-
-  --signal:                #BF3A36;
-  --signal-bright:         #D4524E;
-  --signal-deep:           #97302D;
-  --signal-glow:           rgba(191, 58, 54, 0.35);
-  --bronze-line: rgba(166, 107, 51, 0.55);
-  --bronze-line-soft: rgba(166, 107, 51, 0.20);
-  --bronze-line-faint: rgba(166, 107, 51, 0.12);
+  --surface:        #110F0A;
+  --surface-elev:   #17130E;
+  --cream:          #F4F0E7;
+  --cream-muted:    rgba(255, 248, 245, 0.66);
+  --cream-dim:      rgba(255, 248, 245, 0.45);
+  --cream-faint:    rgba(255, 248, 245, 0.30);
+  --bronze:         #D18E53;
+  --bronze-line:      rgba(209, 142, 83, 0.30);
+  --bronze-line-soft: rgba(209, 142, 83, 0.16);
+  --hairline:       rgba(255, 248, 245, 0.09);
+  --signal-bright:  #D4524E;
+  --signal-glow:    rgba(191, 58, 54, 0.35);
   --f-display: var(--font-instrument-sans), serif;
   --f-body: var(--font-inter), sans-serif;
   --f-mono: "JetBrains Mono", "IBM Plex Mono", "Courier New", monospace;
   --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
 
   position: relative;
-  background: var(--obsidian);
+  background: var(--surface);
   background-image:
-    radial-gradient(ellipse 55% 38% at 12% 16%, rgba(209, 142, 83, 0.045) 0%, transparent 60%),
-    radial-gradient(ellipse 48% 44% at 90% 84%, rgba(209, 142, 83, 0.038) 0%, transparent 60%);
-  color: var(--bone-primary);
+    radial-gradient(ellipse 55% 38% at 12% 16%, rgba(209, 142, 83, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 48% 44% at 90% 84%, rgba(209, 142, 83, 0.035) 0%, transparent 60%);
+  color: var(--cream);
   font-family: var(--f-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-bottom: clamp(80px, 10vh, 140px);
-  /* Section must fully cover the viewport so the next (bone-colored)
-     section can never appear in the lower viewport while the pin is
-     engaged or while this section is in view. The empty obsidian space
-     below the card stack is intentional — it's the buffer that keeps
-     the next section hidden until the user actually scrolls past. */
-  min-height: 100vh;
 }
 
-.principles-section .principles-stage {
-  position: relative;
+.principles-section .pr-stage {
   max-width: 1440px;
   margin: 0 auto;
-  padding:
-    clamp(72px, 9vh, 104px)
-    clamp(28px, 5vw, 64px)
-    0;
+  padding: clamp(72px, 9vh, 112px) clamp(28px, 5vw, 64px) clamp(80px, 10vh, 128px);
 }
 
-/* ── Horizontal progress spine — placed inside the index column, below
-   the 6-row list. Dotted bronze rail spans the column width; a solid
-   bronze fill grows left-to-right as the user advances through the
-   principles. Visually balances the index column when the user reaches
-   the 6th card — no empty space below the last row. */
-.principles-section .lx-spine {
-  position: relative;
-  width: 100%;
-  height: 2px;
-  margin-top: clamp(20px, 2vw, 32px);
-  pointer-events: none;
+/* ── Reveal primitives ── */
+.principles-section .pr-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
-.principles-section .lx-spine-track {
-  position: absolute;
-  inset: 0;
-  background-image: repeating-linear-gradient(
-    to right,
-    rgba(209, 142, 83, 0.55) 0 4px,
-    transparent 4px 9px
-  );
+.principles-section .pr-reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
 }
-.principles-section .lx-spine-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background: var(--signal-bright);
-  box-shadow: 0 0 8px var(--signal-glow);
-  transition: width 0.55s var(--ease-out);
-}
-
-/* ── two-column layout: cards left, heading + index right ── */
-.principles-section .lx-redesign {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: clamp(36px, 4.5vw, 88px);
-  align-items: start;
-  position: relative;
-}
-@media (max-width: 980px) {
-  .principles-section .lx-redesign {
-    grid-template-columns: 1fr;
-    gap: clamp(28px, 4vw, 48px);
+@media (prefers-reduced-motion: reduce) {
+  .principles-section .pr-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
-/* ── RIGHT — heading + six-row index.
-   No longer sticky — the parent `.lx-redesign` grid is pinned by GSAP
-   ScrollTrigger, which keeps this column in viewport together with the
-   cards column. Pinning both columns as one unit guarantees they
-   release at the same scroll position; the previous sticky-per-column
-   setup let them desync at the exit because each column's content
-   height was different. */
-.principles-section .lx-side {
-  position: relative;
-  align-self: start;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(28px, 3vw, 44px);
+/* ── Section header ── */
+.principles-section .pr-head {
+  margin-bottom: clamp(40px, 5vw, 72px);
 }
-.principles-section .lx-side .scaffold-heading {
+.principles-section .pr-head-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.principles-section .pr-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-bright);
+}
+.principles-section .pr-eyebrow-dash {
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.75;
+}
+.principles-section .pr-head-meta {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(209, 142, 83, 0.62);
+  font-variant-numeric: tabular-nums;
+}
+.principles-section .pr-heading {
   font-family: var(--f-display);
   font-weight: 400;
   font-size: clamp(28px, 3.5vw, 52px);
@@ -123,399 +101,129 @@
   letter-spacing: -0.02em;
   text-wrap: pretty;
 }
-.principles-section .lx-side .scaffold-heading .line-1 {
-  display: block;
-  color: var(--bone-primary);
-}
-.principles-section .lx-side .scaffold-heading .line-2 {
-  display: block;
-  color: var(--headline-mute);
-}
+.principles-section .pr-heading .line-1 { display: block; color: var(--cream); }
+.principles-section .pr-heading .line-2 { display: block; color: var(--cream-dim); }
 
-.principles-section .lx-index {
+/* ── The ledger ── */
+.principles-section .pr-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--bronze-line-soft);
+  border-top: 1px solid var(--hairline);
+}
+.principles-section .pr-row {
   position: relative;
-}
-.principles-section .lx-index-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: clamp(14px, 1.4vw, 18px) 0 clamp(14px, 1.4vw, 18px) 22px;
-  border-bottom: 1px solid var(--bronze-line-soft);
-  transition: border-color 0.4s var(--ease-out);
-}
-
-/* Corner bracket frame — four C-shaped brackets at each corner of the
-   active row's TEXT content (num + title), not the full row. Spacing of
-   18px horizontal and 12px vertical (set in JS) gives the brackets clear
-   breathing room around the glyphs so the frame reads as intentional
-   editorial typography, not tight clipping. Same vocabulary as the
-   panel-corner brackets used elsewhere in the system.
-
-   The bracket snaps to its new geometry on each row change (no position
-   transitions) and the flicker animation plays via the React `key`
-   remount in FirstPrinciples.tsx — same flicker vocabulary as the
-   per-card brackets, so the system reads consistently. */
-.principles-section .lx-index-bracket {
-  position: absolute;
-  pointer-events: none;
-  animation: lx-card-bracket-flicker 0.38s linear;
-}
-.principles-section .lx-index-bracket-tl,
-.principles-section .lx-index-bracket-tr,
-.principles-section .lx-index-bracket-bl,
-.principles-section .lx-index-bracket-br {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border: 0 solid var(--signal-bright);
-}
-.principles-section .lx-index-bracket-tl { top: 0;    left: 0;  border-top-width:    2px; border-left-width:  2px; }
-.principles-section .lx-index-bracket-tr { top: 0;    right: 0; border-top-width:    2px; border-right-width: 2px; }
-.principles-section .lx-index-bracket-bl { bottom: 0; left: 0;  border-bottom-width: 2px; border-left-width:  2px; }
-.principles-section .lx-index-bracket-br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
-
-.principles-section .lx-index-num {
-  flex-shrink: 0;
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  color: var(--bronze-ink);
-  font-variant-numeric: tabular-nums;
-  transition: color 0.4s var(--ease-out);
-}
-.principles-section .lx-index-title {
-  font-family: var(--f-display);
-  font-weight: 500;
-  font-size: clamp(16px, 1.18vw, 18px);
-  line-height: 1.25;
-  color: var(--bone-dusk);
-  letter-spacing: -0.005em;
-  transition: color 0.4s var(--ease-out);
-}
-.principles-section .lx-index-item.is-active {
-  border-bottom-color: var(--bronze-line);
-}
-.principles-section .lx-index-item.is-active .lx-index-num {
-  color: var(--signal-bright);
-}
-.principles-section .lx-index-item.is-active .lx-index-title {
-  color: var(--bone-primary);
-}
-
-/* ── LEFT — stacked cards column.
-   Hosts the relative frame; pin distance is provided by GSAP's
-   pin-spacer, not by a trailing div in the DOM. */
-.principles-section .lx-cards-col {
-  position: relative;
-}
-
-/* Positioned ancestor for the six absolutely-positioned cards stacked
-   inside it. No opacity scrubbing — cards stay at full opacity through
-   the pin and scroll away naturally with the section once it releases. */
-.principles-section .lx-cards-frame {
-  position: relative;
-  width: 100%;
-  min-height: clamp(540px, 64vh, 640px);
-}
-
-/* Legacy trailing spacer — no longer needed now that GSAP's pin-spacer
-   provides the scroll distance. Hidden rather than removed so any
-   external selectors keep matching. */
-.principles-section .lx-cards-trailing {
-  display: none;
-}
-
-/* Outer wrapper — only positioning, perspective, and the entry-reveal
-   animation live here. All visual styling and the hover tilt are on
-   the `.lx-card-surface` child so the slow entry transition (0.6s) and
-   the responsive hover tilt (0.35s) don't have to share one timing on
-   the `transform` property. */
-.principles-section .lx-stack-card {
-  position: absolute;
-  top: var(--stack-top, 0);
-  left: 0;
-  right: 0;
-  opacity: 0;
-  transform: translateY(80px);
+  display: grid;
+  grid-template-columns: clamp(72px, 7vw, 104px) 1.15fr 1fr clamp(190px, 17vw, 250px);
+  gap: clamp(20px, 2.6vw, 44px);
+  align-items: start;
+  padding: clamp(26px, 2.8vw, 40px) clamp(14px, 1.4vw, 22px);
+  border-bottom: 1px solid var(--hairline);
   transition:
-    opacity 0.6s var(--ease-out),
-    transform 0.6s var(--ease-out);
-  perspective: 700px;
-  /* Critical: non-entered cards are invisible (opacity 0) but their
-     bounding rects still cover much of the visible card stack. Without
-     this, an invisible upcoming card sits on top of the currently
-     visible one in DOM/stacking order and silently intercepts every
-     mousemove, freezing the visible card's tilt. Pointer events come
-     back on once the card actually enters. */
-  pointer-events: none;
+    background-color 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out);
 }
-.principles-section .lx-stack-card.is-entered {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+.principles-section .pr-row:hover {
+  background-color: var(--surface-elev);
+  box-shadow: inset 2px 0 0 var(--signal-bright);
 }
 
-/* Inner visual surface — background, border, padding, shadow, and the
-   cursor-driven 3D tilt. Tilt values come from `--tilt-x` / `--tilt-y`
-   set in the mousemove handler on the outer wrapper (they inherit
-   down). On `mouseleave` the variables reset to 0 and the surface
-   eases back to flat. */
-.principles-section .lx-card-surface {
-  position: relative;
-  width: 100%;
-  background: linear-gradient(180deg,
-    rgba(26, 22, 18, 1) 0%,
-    rgba(20, 17, 13, 1) 100%);
-  border: 1px solid var(--bronze-line);
-  padding: clamp(30px, 2.6vw, 42px) clamp(72px, 6vw, 96px) clamp(30px, 2.6vw, 42px) clamp(32px, 2.8vw, 46px);
+.principles-section .pr-index {
   display: flex;
   flex-direction: column;
-  min-height: clamp(240px, 26vh, 320px);
-  overflow: hidden;
-  /* Read the inherited variables set by the JS handler on the outer
-     `.lx-stack-card`. `0deg` fallback keeps the card flat when no
-     pointer value is present. Critically: do NOT declare local
-     defaults on this element — a local declaration would shadow the
-     inherited value and pin the rotation to 0 regardless of what JS
-     sets on the parent.
-     `transform-origin` also comes from the parent: stacked cards
-     (0–4) use a near-bottom pivot so the visible top tab swings
-     through a large arc in both tilt directions; the last card uses
-     center pivot for symmetric tilt. */
-  transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
-  transform-origin: var(--tilt-origin, 50% 50%);
-  transform-style: preserve-3d;
-  transition:
-    transform 0.35s var(--ease-out),
-    border-color 0.55s var(--ease-out),
-    box-shadow 0.55s var(--ease-out);
-  box-shadow:
-    0 -1px 0 0 var(--bronze-line-soft) inset,
-    0 32px 64px -32px rgba(0, 0, 0, 0.55),
-    0 8px 18px -14px rgba(0, 0, 0, 0.4);
+  gap: 14px;
 }
-
-.principles-section .lx-card-surface::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: -1px;
-  width: 2px;
-  background: var(--signal-bright);
-  transform: scaleY(0);
-  transform-origin: center top;
-  transition: transform 0.5s var(--ease-out);
-  pointer-events: none;
-  z-index: 2;
-}
-.principles-section .lx-stack-card.is-active .lx-card-surface::before {
-  transform: scaleY(1);
-}
-
-.principles-section .lx-stack-card.is-active .lx-card-surface {
-  box-shadow:
-    0 -1px 0 0 var(--bronze-line) inset,
-    0 32px 64px -30px rgba(0, 0, 0, 0.65),
-    0 8px 20px -12px rgba(0, 0, 0, 0.5);
-  border-color: var(--bronze);
-}
-
-.principles-section .lx-card-bracket {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border: 0 solid var(--signal-bright);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s var(--ease-out);
-  z-index: 3;
-}
-.principles-section .lx-card-bracket-tl { top: -1px; left: -1px; border-top-width: 2px; border-left-width: 2px; }
-.principles-section .lx-card-bracket-tr { top: -1px; right: -1px; border-top-width: 2px; border-right-width: 2px; }
-.principles-section .lx-card-bracket-bl { bottom: -1px; left: -1px; border-bottom-width: 2px; border-left-width: 2px; }
-.principles-section .lx-card-bracket-br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
-.principles-section .lx-stack-card.is-active .lx-card-bracket {
-  opacity: 1;
-  animation: lx-card-bracket-flicker 0.38s linear;
-}
-@keyframes lx-card-bracket-flicker {
-  0%   { opacity: 0; }
-  10%  { opacity: 0.9; }
-  22%  { opacity: 0.08; }
-  42%  { opacity: 1; }
-  65%  { opacity: 0.45; }
-  100% { opacity: 1; }
-}
-
-/* Stacked positions inside the sticky frame — each card peeks 48px
-   below its predecessor, exposing the head row (tag + spec) as a tab. */
-.principles-section .lx-stack-card[data-i="0"] { --stack-top: 0px;   }
-.principles-section .lx-stack-card[data-i="1"] { --stack-top: 48px;  }
-.principles-section .lx-stack-card[data-i="2"] { --stack-top: 96px;  }
-.principles-section .lx-stack-card[data-i="3"] { --stack-top: 144px; }
-.principles-section .lx-stack-card[data-i="4"] { --stack-top: 192px; }
-.principles-section .lx-stack-card[data-i="5"] { --stack-top: 240px; }
-
-/* Card folio marker — sits in the bottom-right corner as a quiet
-   editorial "page number." Neutral warm gray, ~25% smaller than the
-   previous rotated bronze treatment, and held at very low alpha so it
-   reads as a system tag rather than a competing focal point. */
-.principles-section .lx-card-mark {
-  position: absolute;
-  right: clamp(20px, 2vw, 32px);
-  bottom: clamp(10px, 1.2vw, 18px);
-  font-family: var(--f-display);
-  font-weight: 300;
-  font-size: clamp(48px, 5.4vw, 88px);
-  line-height: 0.88;
-  letter-spacing: -0.02em;
-  color: rgba(168, 160, 154, 0.10);
+.principles-section .pr-num {
+  font-family: var(--f-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--cream-faint);
   font-variant-numeric: tabular-nums;
-  pointer-events: none;
-  transition: color 0.5s var(--ease-out);
-  z-index: 1;
+  transition: color 0.35s var(--ease-out);
 }
-.principles-section .lx-stack-card.is-active .lx-card-mark {
-  color: rgba(168, 160, 154, 0.20);
-}
-
-.principles-section .lx-card-glyph {
-  width: 28px;
-  height: 28px;
-  margin-bottom: 18px;
+.principles-section .pr-row:hover .pr-num { color: var(--signal-bright); }
+.principles-section .pr-glyph {
+  width: 22px;
+  height: 22px;
   color: var(--bronze);
-  position: relative;
-  z-index: 1;
+  opacity: 0.85;
 }
-.principles-section .lx-card-glyph svg { width: 100%; height: 100%; display: block; }
+.principles-section .pr-glyph svg { width: 100%; height: 100%; display: block; }
 
-.principles-section .lx-card-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--bronze-line-soft);
-  margin-bottom: clamp(22px, 2.2vw, 30px);
-  transition: border-color 0.5s var(--ease-out);
-  position: relative;
-  z-index: 1;
-}
-.principles-section .lx-stack-card.is-active .lx-card-head {
-  border-bottom-color: var(--bronze-line);
-}
-.principles-section .lx-card-tag {
+.principles-section .pr-main { min-width: 0; }
+.principles-section .pr-tag {
+  display: block;
   font-family: var(--f-body);
   font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--bronze);
+  margin-bottom: 12px;
 }
-.principles-section .lx-card-spec {
-  font-family: var(--f-body);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-  color: var(--bone-dusk);
-  font-variant-numeric: tabular-nums;
-}
-
-.principles-section .lx-card-title {
+.principles-section .pr-title {
   font-family: var(--f-display);
   font-weight: 500;
-  font-size: clamp(22px, 2.4vw, 34px);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  color: var(--bone-primary);
-  margin-bottom: clamp(14px, 1.4vw, 20px);
-  max-width: 24ch;
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--cream);
+  max-width: 22ch;
   text-wrap: balance;
-  position: relative;
-  z-index: 1;
 }
 
-.principles-section .lx-card-support {
+.principles-section .pr-support {
   font-family: var(--f-body);
-  font-size: clamp(14px, 1.05vw, 15.5px);
+  font-size: clamp(13.5px, 1vw, 15px);
   font-weight: 400;
   line-height: 1.7;
-  color: var(--bone-muted);
-  max-width: 46ch;
+  color: var(--cream-muted);
+  max-width: 44ch;
   text-wrap: pretty;
-  position: relative;
-  z-index: 1;
+  padding-top: 4px;
 }
 
-.principles-section .lx-card-ledger {
-  margin-top: clamp(18px, 1.8vw, 26px);
-  padding-top: clamp(14px, 1.4vw, 18px);
-  border-top: 1px dotted rgba(166, 107, 51, 0.28);
+.principles-section .pr-ledger {
+  margin: 0;
+  padding-top: 4px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(16px, 1.8vw, 28px);
-  max-width: 44ch;
-  position: relative;
-  z-index: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
-.principles-section .lx-ledger-cell {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.principles-section .lx-ledger-label {
+.principles-section .pr-ledger-cell { display: flex; flex-direction: column; gap: 5px; }
+.principles-section .pr-ledger-label {
   font-family: var(--f-mono);
   font-size: 9.5px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--bronze);
+  color: rgba(209, 142, 83, 0.62);
 }
-.principles-section .lx-ledger-value {
+.principles-section .pr-ledger-value {
+  margin: 0;
   font-family: var(--f-display);
   font-size: clamp(13px, 1vw, 15px);
   font-weight: 500;
   letter-spacing: -0.005em;
-  color: var(--bone-primary);
+  color: var(--cream);
   font-variant-numeric: tabular-nums;
 }
 
-/* Mobile fallback — no pin, no stacked deck; cards flow naturally. */
-@media (max-width: 980px) {
-  .principles-section .lx-side {
-    margin-bottom: clamp(28px, 4vw, 48px);
+@media (max-width: 1024px) {
+  .principles-section .pr-row {
+    grid-template-columns: clamp(56px, 8vw, 80px) 1fr;
   }
-  .principles-section .lx-cards-frame {
-    min-height: 0;
+  .principles-section .pr-support { grid-column: 2; max-width: 60ch; }
+  .principles-section .pr-ledger {
+    grid-column: 2;
+    max-width: 420px;
   }
-  .principles-section .lx-stack-card {
-    position: relative;
-    top: auto;
-    opacity: 1;
-    transform: none;
-    margin-bottom: 16px;
-  }
-  .principles-section .lx-card-surface {
-    min-height: auto;
-    transform: none;
-  }
-  .principles-section .lx-stack-card[data-i] { --stack-top: 0; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .principles-section .lx-side .scaffold-heading,
-  .principles-section .lx-stack-card {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-  .principles-section .lx-card-surface {
-    transform: none !important;
-  }
+@media (max-width: 560px) {
+  .principles-section .pr-row { grid-template-columns: 1fr; gap: 16px; }
+  .principles-section .pr-support,
+  .principles-section .pr-ledger { grid-column: 1; }
+  .principles-section .pr-index { flex-direction: row; align-items: center; }
 }

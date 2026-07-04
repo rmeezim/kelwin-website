@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
 import "./FirstPrinciples.css";
 
 interface Principle {
@@ -134,368 +132,79 @@ const DATA: Principle[] = [
   },
 ];
 
+// One dark world: the six principles render as a systematic hairline
+// ledger — no pin, no card deck. Each row reveals once on entry via an
+// IntersectionObserver; interaction is a quiet red live-edge on hover.
 export default function FirstPrinciples() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [bracket, setBracket] = useState({ top: 0, left: 0, width: 0, height: 48 });
 
-  // ── Scroll mechanics — one ScrollTrigger pins the entire `.lx-redesign`
-  // grid (both columns at once), and scrub drives card entry, the active
-  // index, the progress spine, and the exit fade off the pin's own
-  // progress value. Earlier iterations split this across two sticky
-  // ancestors plus a raw-scroll listener; that desynced the columns at
-  // the exit (different ancestors release sticky at different times) and
-  // let the entry interval overflow the sticky window so the last card
-  // tried to enter while the frame was already scrolling away. Pinning
-  // the grid keeps both columns locked together and lets the pin
-  // duration absorb the full entry + hold + fade sequence.
-  useLayoutEffect(() => {
+  useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const cards = section.querySelectorAll<HTMLElement>(".lx-stack-card");
-    const indexItems = section.querySelectorAll<HTMLElement>(".lx-index-item");
-    const spineEl = section.querySelector<HTMLElement>(".lx-spine-fill");
-    const frameEl = section.querySelector<HTMLElement>(".lx-cards-frame");
-
-    // Card 1 + the first index row enter immediately so the section is
-    // never visually empty when it first scrolls into view (the pin
-    // hasn't engaged yet at that point).
-    cards[0]?.classList.add("is-entered", "is-active");
-    indexItems[0]?.classList.add("is-active");
-    if (spineEl) spineEl.style.width = "0%";
-
-    const mm = gsap.matchMedia();
-
-    mm.add(
-      {
-        isDesktop: "(min-width: 981px) and (prefers-reduced-motion: no-preference)",
-      },
-      (context) => {
-        const conditions = context.conditions as { isDesktop: boolean };
-
-        gsap.set(".lx-side .scaffold-heading", { y: 28, opacity: 0 });
-        gsap.set(".lx-index-item", { x: -14, opacity: 0 });
-
-        gsap
-          .timeline({
-            scrollTrigger: { trigger: section, start: "top 72%", once: true },
-            defaults: { ease: "power3.out" },
-          })
-          .to(".lx-side .scaffold-heading", { y: 0, opacity: 1, duration: 0.7 })
-          .to(".lx-index-item", { x: 0, opacity: 1, duration: 0.45, stagger: 0.06 }, "-=0.45");
-
-        if (!conditions.isDesktop || cards.length < 2) return;
-
-        // The whole `.principles-section` is the pin target — not just
-        // the grid. Pinning the section together with `min-height: 100vh`
-        // guarantees the section fully covers the viewport for the
-        // entire pin window, so the next section (bone-colored
-        // OperatingPrincipleBand) can never travel up through the lower
-        // viewport mid-pin. ENTRY drives card 2–6 reveal; HOLD parks the
-        // completed stack until the pin releases. There is no exit fade
-        // — cards stay at full opacity and the section continues with
-        // normal page scroll once the pin lets go.
-        const ENTRY = 1100;
-        const HOLD = 500;
-        const PIN_DURATION = ENTRY + HOLD;
-        const ENTRY_END = ENTRY / PIN_DURATION;
-
-        // Belt-and-braces: clear any stale inline opacity from a prior
-        // build that used an exit fade.
-        if (frameEl) frameEl.style.opacity = "";
-
-        let prevActive = 0;
-
-        const trigger = ScrollTrigger.create({
-          trigger: section,
-          start: "top top",
-          end: `+=${PIN_DURATION}`,
-          pin: true,
-          pinSpacing: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            const p = self.progress;
-
-            const entryProgress = Math.min(p / ENTRY_END, 1);
-            const continuousIdx = entryProgress * (cards.length - 1);
-            // `Math.floor(... + 0.001)` lines up with the `is-entered`
-            // threshold (`i <= continuousIdx + 0.001`) so the bracket
-            // flips to row N at the exact moment card N enters — no
-            // more bracket leading the card.
-            const newActive = Math.min(
-              cards.length - 1,
-              Math.max(0, Math.floor(continuousIdx + 0.001))
-            );
-
-            cards.forEach((c, i) => {
-              c.classList.toggle("is-entered", i <= continuousIdx + 0.001);
-              c.classList.toggle("is-active", i === newActive);
-            });
-            indexItems.forEach((it, i) => {
-              it.classList.toggle("is-active", i === newActive);
-            });
-
-            if (spineEl) {
-              spineEl.style.width = `${entryProgress * 100}%`;
-            }
-
-            if (newActive !== prevActive) {
-              prevActive = newActive;
-              setActiveIdx(newActive);
-            }
-          },
+    const targets = section.querySelectorAll<HTMLElement>(".pr-reveal");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach((el) => el.classList.add("is-in"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add("is-in");
+            io.unobserve(e.target);
+          }
         });
-
-        return () => {
-          trigger.kill();
-          if (frameEl) frameEl.style.opacity = "";
-          if (spineEl) spineEl.style.width = "0%";
-        };
-      }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
     );
-
-    return () => mm.revert();
-  }, []);
-
-
-  // ── Sync active class + bracket geometry. The bracket frames the
-  // ACTIVE row's text (num + title), not the whole row, with generous
-  // spacing so the corner brackets read as an intentional frame, not
-  // tight clipping around the glyphs.
-  //
-  // Spacing: 18px horizontal padding on each side, 12px vertical. Tuned
-  // so the bracket arms sit clearly off the type and the frame reads as
-  // an editorial pull-quote treatment.
-  useEffect(() => {
-    const updateBracket = () => {
-      const section = sectionRef.current;
-      if (!section) return;
-
-      section.querySelectorAll<HTMLElement>(".lx-stack-card").forEach((c, i) => {
-        c.classList.toggle("is-active", i === activeIdx);
-      });
-      section.querySelectorAll<HTMLElement>(".lx-index-item").forEach((it, i) => {
-        it.classList.toggle("is-active", i === activeIdx);
-      });
-
-      const list = section.querySelector<HTMLElement>(".lx-index");
-      const rows = section.querySelectorAll<HTMLElement>(".lx-index-item");
-      if (!list || !rows[activeIdx]) return;
-
-      const num   = rows[activeIdx].querySelector<HTMLElement>(".lx-index-num");
-      const title = rows[activeIdx].querySelector<HTMLElement>(".lx-index-title");
-      if (!num || !title) return;
-
-      const listRect  = list.getBoundingClientRect();
-      const numRect   = num.getBoundingClientRect();
-      const titleRect = title.getBoundingClientRect();
-
-      const H_PAD = 18;
-      const V_PAD = 12;
-
-      const top    = Math.min(numRect.top, titleRect.top);
-      const bottom = Math.max(numRect.bottom, titleRect.bottom);
-
-      setBracket({
-        top:    top - listRect.top - V_PAD,
-        left:   numRect.left - listRect.left - H_PAD,
-        width:  titleRect.right - numRect.left + 2 * H_PAD,
-        height: bottom - top + 2 * V_PAD,
-      });
-    };
-
-    updateBracket();
-    window.addEventListener("resize", updateBracket);
-    return () => window.removeEventListener("resize", updateBracket);
-  }, [activeIdx]);
-
-  // ── Cursor-driven 3D tilt — the edge of the card closest to the
-  // cursor recedes into the page; the opposite edge lifts slightly
-  // toward the viewer. The card itself stays anchored at its center.
-  // Variables are set on the outer `.lx-stack-card` and inherit down to
-  // `.lx-card-surface`, where the actual rotateX/rotateY transform
-  // lives (the inner surface needs its own transition timing — fast
-  // enough to track the cursor — separate from the slower entry
-  // animation on the outer wrapper).
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    const cards = section.querySelectorAll<HTMLElement>(".lx-stack-card");
-    const cleanups: Array<() => void> = [];
-    // Tilt magnitude in degrees. Paired with `perspective: 700px` on
-    // the outer wrapper for a clearly visible 3D tilt without being
-    // theatrical.
-    const MAX_TILT = 2.5;
-    cards.forEach((card, idx) => {
-      // "Stacked tab" mode only applies while the next card is
-      // ACTUALLY entered and therefore actually obscuring this card.
-      // While the user is at `activeIdx === idx` and the next card
-      // hasn't entered yet, this card has its full surface exposed
-      // and should behave like the last card: full-height tilt range,
-      // center pivot. The check is done live on every mousemove
-      // because the next card's entered state flips as the user
-      // scrubs the pin.
-      const nextCard = cards[idx + 1];
-
-      const onMove = (e: MouseEvent) => {
-        const rect = card.getBoundingClientRect();
-        const nextIsEntered =
-          nextCard?.classList.contains("is-entered") ?? false;
-        const isStackedTab = nextCard !== undefined && nextIsEntered;
-
-        // Pivot near the hidden bottom for a stacked tab so the
-        // visible top edge swings through a large arc in both
-        // directions. Center pivot when the full surface is exposed.
-        card.style.setProperty(
-          "--tilt-origin",
-          isStackedTab ? "50% 85%" : "50% 50%"
-        );
-
-        // Tab height for stacked tab; full card height for an
-        // exposed surface. The 0.7 multiplier on tab mode lets `ny`
-        // saturate to its extremes a little before the cursor hits
-        // the next card's boundary, giving the user a reachable
-        // "max-bottom-recede" zone.
-        let heightForY: number;
-        if (isStackedTab && nextCard) {
-          const tabHeight = Math.max(
-            1,
-            nextCard.getBoundingClientRect().top - rect.top
-          );
-          heightForY = tabHeight * 0.7;
-        } else {
-          heightForY = rect.height;
-        }
-
-        const nx = (e.clientX - rect.left) / rect.width;
-        const ny = Math.min(
-          1,
-          Math.max(0, (e.clientY - rect.top) / heightForY)
-        );
-        // rotateX(+) = top edge recedes; rotateY(+) = right edge recedes.
-        const tiltX = -(ny - 0.5) * 2 * MAX_TILT;
-        const tiltY = (nx - 0.5) * 2 * MAX_TILT;
-        card.style.setProperty("--tilt-x", `${tiltX.toFixed(2)}deg`);
-        card.style.setProperty("--tilt-y", `${tiltY.toFixed(2)}deg`);
-      };
-      const onLeave = () => {
-        card.style.setProperty("--tilt-x", "0deg");
-        card.style.setProperty("--tilt-y", "0deg");
-      };
-      card.addEventListener("mousemove", onMove);
-      card.addEventListener("mouseleave", onLeave);
-      cleanups.push(() => {
-        card.removeEventListener("mousemove", onMove);
-        card.removeEventListener("mouseleave", onLeave);
-      });
-    });
-    return () => cleanups.forEach((fn) => fn());
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   }, []);
 
   return (
     <section id="principles" className="principles-section" ref={sectionRef}>
-      <div className="principles-stage">
-
-        <div className="lx-redesign">
-
-          <div className="lx-cards-col">
-            <div className="lx-cards-frame">
-              {DATA.map((d, i) => {
-                const nn = String(i + 1).padStart(2, "0");
-                return (
-                  <article className="lx-stack-card" data-i={i} key={i}>
-                    {/* Inner surface holds all visual styling and the
-                        hover tilt — split from the outer wrapper so the
-                        slow entry transition and the responsive tilt
-                        transition don't compete on the same property. */}
-                    <div className="lx-card-surface">
-                      <span className="lx-card-bracket lx-card-bracket-tl" aria-hidden="true" />
-                      <span className="lx-card-bracket lx-card-bracket-tr" aria-hidden="true" />
-                      <span className="lx-card-bracket lx-card-bracket-bl" aria-hidden="true" />
-                      <span className="lx-card-bracket lx-card-bracket-br" aria-hidden="true" />
-                      <span className="lx-card-mark" aria-hidden="true">{nn}</span>
-
-                      {/* Head row renders first so the 48px stacked-peek
-                          tab of each card shows the tag + spec line — a
-                          readable file-tab — instead of a cut-off glyph. */}
-                      <div className="lx-card-head">
-                        <span className="lx-card-tag">{d.tag}</span>
-                        <span className="lx-card-spec">Principle {nn} / 06</span>
-                      </div>
-                      <div className="lx-card-glyph" aria-hidden="true">{d.glyph}</div>
-                      <h3 className="lx-card-title">{d.title}</h3>
-                      <p className="lx-card-support">{d.support}</p>
-
-                      <div className="lx-card-ledger">
-                        {d.ledger.map((cell, ci) => (
-                          <div key={ci} className="lx-ledger-cell">
-                            <span className="lx-ledger-label">{cell.label}</span>
-                            <span className="lx-ledger-value">{cell.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-            <div className="lx-cards-trailing" aria-hidden="true" />
+      <div className="pr-stage">
+        <header className="pr-head pr-reveal">
+          <div className="pr-head-top">
+            <span className="pr-eyebrow">
+              <span className="pr-eyebrow-dash" aria-hidden="true"></span>
+              Operating Principles
+            </span>
+            <span className="pr-head-meta">06 Principles · V2.4</span>
           </div>
+          <h2 className="pr-heading">
+            <span className="line-1">One operating system.</span>
+            <span className="line-2">Six core principles.</span>
+          </h2>
+        </header>
 
-          <div className="lx-side">
-            <h2 className="scaffold-heading">
-              <span className="line-1">One operating system.</span>
-              <span className="line-2">Six core principles.</span>
-            </h2>
-
-            <ul className="lx-index">
-              {/* `key={activeIdx}` forces React to remount this span on
-                  every active-row change, which retriggers the
-                  `lx-card-bracket-flicker` animation. The bracket snaps
-                  to its new geometry and flickers in, instead of sliding
-                  smoothly between rows. */}
-              <span
-                key={activeIdx}
-                className="lx-index-bracket"
-                style={{
-                  top: `${bracket.top}px`,
-                  left: `${bracket.left}px`,
-                  width: `${bracket.width}px`,
-                  height: `${bracket.height}px`,
-                }}
-                aria-hidden="true"
-              >
-                <span className="lx-index-bracket-tl" />
-                <span className="lx-index-bracket-tr" />
-                <span className="lx-index-bracket-bl" />
-                <span className="lx-index-bracket-br" />
-              </span>
-              {DATA.map((d, i) => {
-                const nn = String(i + 1).padStart(2, "0");
-                return (
-                  <li className="lx-index-item" data-i={i} key={i}>
-                    <span className="lx-index-num">{nn}</span>
-                    <span className="lx-index-title">{d.title}</span>
-                  </li>
-                );
-              })}
-            </ul>
-
-            {/* Horizontal progress spine — dotted bronze track with a
-                solid bronze fill driven continuously by the pin's scroll
-                progress (set on the .lx-spine-fill element directly inside
-                the ScrollTrigger onUpdate above). */}
-            <div className="lx-spine" aria-hidden="true">
-              <span className="lx-spine-track" />
-              <span className="lx-spine-fill" />
-            </div>
-          </div>
-
-        </div>
+        <ol className="pr-list">
+          {DATA.map((d, i) => (
+            <li
+              className="pr-row pr-reveal"
+              key={d.tag}
+              style={{ transitionDelay: `${i * 70}ms` }}
+            >
+              <div className="pr-index">
+                <span className="pr-num">{String(i + 1).padStart(2, "0")}</span>
+                <span className="pr-glyph" aria-hidden="true">{d.glyph}</span>
+              </div>
+              <div className="pr-main">
+                <span className="pr-tag">{d.tag}</span>
+                <h3 className="pr-title">{d.title}</h3>
+              </div>
+              <p className="pr-support">{d.support}</p>
+              <dl className="pr-ledger">
+                {d.ledger.map((cell) => (
+                  <div key={cell.label} className="pr-ledger-cell">
+                    <dt className="pr-ledger-label">{cell.label}</dt>
+                    <dd className="pr-ledger-value">{cell.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

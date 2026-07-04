@@ -334,14 +334,13 @@ export default function DiagnosticReframe() {
           defaults: { ease: "power2.inOut" },
         });
 
-        // Headline shrink + bg crossfade pushed to scroll-progress 0.18
-        // (was 0.10) so typewriter has breathing room before settle begins.
-        // Duration shortened to 0.22 so end-point (0.40) is unchanged and
-        // downstream cues at 0.42+ still chain correctly.
-        tl.to(wrapBg,    { backgroundColor: "#F4F0E7", duration: 0.22 }, 0.18);
-        tl.to(headline,  { y: 0, scale: 1, color: "#0A0805", duration: 0.22 }, 0.18);
+        // Headline shrink pushed to scroll-progress 0.18 (was 0.10) so the
+        // typewriter has breathing room before settle begins. One dark
+        // world: the background never crossfades to bone — the headline
+        // settles into layout position while the surface stays charcoal.
+        tl.to(headline,  { y: 0, scale: 1, color: "#F4F0E7", duration: 0.22 }, 0.18);
         tl.to(line1,     { x: 0, duration: 0.22 }, 0.18);
-        tl.to(line2,     { x: 0, color: "#A8A09A", duration: 0.22 }, 0.18);
+        tl.to(line2,     { x: 0, color: "rgba(255,248,245,0.45)", duration: 0.22 }, 0.18);
 
         // Dark-phase HUD overlay + pulse layer fade out faster than the bg
         // crossfade — ends at 0.28, well before bg finishes going cream at
@@ -503,7 +502,7 @@ export default function DiagnosticReframe() {
 
       // ── MOBILE simple reveal ───────────────────────────────────────────
       mm.add("(max-width: 768px)", () => {
-        gsap.set(wrapBg, { backgroundColor: "#F4F0E7" });
+        gsap.set(wrapBg, { backgroundColor: "#110F0A" });
         gsap.set(".section-label, .headline-display, .reframe-cta, .reframe-right, .grid-label-cell, .reframe-meta-bar", { opacity: 0, y: 12 });
         gsap.set(cards, { opacity: 0, y: 20 });
         gsap.set(grid, { "--hairline-top": 1, "--hairline-bot": 1 });
@@ -629,6 +628,7 @@ export default function DiagnosticReframe() {
               href="#methodology"
               label="View the Diagnostic Method"
               className="reframe-cta"
+              variant="signal"
             />
           </div>
 

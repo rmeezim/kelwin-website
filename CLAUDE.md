@@ -17,11 +17,15 @@ The website must feel:
 - Not crypto/gaming/cyberpunk
 
 The visual direction is inspired by a dark command-center interface:
-- Deep charcoal (#110F0A) background
+- ONE DARK WORLD: every section lives on the deep charcoal (#110F0A)
+  surface — sections are separated by hairline rules and mono protocol
+  labels, never by background-color swaps. The bone canvas (#ECE8DF) is
+  reserved for rare inverted moments, not for whole sections.
 - Fine grid lines
 - Small protocol labels
 - Thin borders
-- Signal red (#BF3A36) leading accent, bronze (#D18E53) instrument trim
+- Signal red (#BF3A36 / #D4524E on dark) leading accent, bronze
+  (#D18E53) instrument trim
 - Large elegant typography
 - Subtle technical HUD details
 - Slow, restrained motion

@@ -210,7 +210,7 @@ export default function Methodology() {
         </div>
 
         <div className="method-cta-row">
-          <DiagnosticMethodCTA href="/methodology" label="View the full methodology" />
+          <DiagnosticMethodCTA href="/methodology" label="View the full methodology" variant="signal" />
         </div>
 
       </div>
