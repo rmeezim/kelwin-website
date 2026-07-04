@@ -1,0 +1,214 @@
+/* ─── Final CTA — scoped to .fcta ─────────────────────────────────────────
+   The page's single full-bleed red moment. Red is the poster here, so the
+   accents invert: cream becomes the foreground signal, the CTA is a cream
+   pill with red text (the sister-brand gesture), and all furniture is drawn
+   in low-opacity cream on the red field.                                    */
+
+.fcta {
+  --signal:        #BF3A36;
+  --signal-deep:   #A5322E;
+  --cream:         #FFF8F5;
+  --cream-90:      rgba(255, 248, 245, 0.90);
+  --cream-70:      rgba(255, 248, 245, 0.70);
+  --cream-55:      rgba(255, 248, 245, 0.55);
+  --cream-line:    rgba(255, 248, 245, 0.20);
+  --cream-line-soft: rgba(255, 248, 245, 0.12);
+  --f-display: var(--font-instrument-sans), serif;
+  --f-body: var(--font-inter), sans-serif;
+  --f-mono: "JetBrains Mono", "IBM Plex Mono", "Courier New", monospace;
+
+  position: relative;
+  overflow: hidden;
+  background: var(--signal);
+  /* subtle inner vignette so the type sits on a slightly deeper field */
+  background-image:
+    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(151, 48, 45, 0.35) 0%, transparent 70%);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Grid-cell furniture ── */
+.fcta-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: clamp(10px, 1.4vw, 22px);
+  padding: clamp(10px, 1.4vw, 22px);
+}
+.fcta-cell {
+  position: relative;
+  border: 1px solid var(--cream-line-soft);
+  border-radius: clamp(10px, 1.2vw, 18px);
+}
+.fcta-tick {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 7px;
+  height: 16px;
+  border-radius: 3px;
+  background: var(--cream-70);
+}
+@media (max-width: 720px) {
+  .fcta-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(6, 1fr); }
+}
+
+/* ── Corner brackets ── */
+.fcta-corner {
+  position: absolute;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  border: 0 solid var(--cream-70);
+  pointer-events: none;
+}
+.fcta-corner-tl { top: 22px;    left: 22px;    border-top-width: 2px;    border-left-width: 2px;  }
+.fcta-corner-tr { top: 22px;    right: 22px;   border-top-width: 2px;    border-right-width: 2px; }
+.fcta-corner-bl { bottom: 22px; left: 22px;    border-bottom-width: 2px; border-left-width: 2px;  }
+.fcta-corner-br { bottom: 22px; right: 22px;   border-bottom-width: 2px; border-right-width: 2px; }
+@media (max-width: 720px) { .fcta-corner { width: 16px; height: 16px; } }
+
+/* ── Stage ── */
+.fcta-stage {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(56px, 8vh, 104px) clamp(28px, 5vw, 72px);
+  min-height: clamp(560px, 82vh, 760px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 6vh, 72px);
+}
+
+.fcta-mono {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-70);
+  font-variant-numeric: tabular-nums;
+}
+.fcta-topbar,
+.fcta-botbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--cream-line);
+}
+.fcta-botbar {
+  margin-top: auto;
+  padding-bottom: 0;
+  padding-top: 14px;
+  border-bottom: 0;
+  border-top: 1px solid var(--cream-line);
+}
+.fcta-status { display: inline-flex; align-items: center; gap: 8px; color: var(--cream-90); }
+.fcta-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cream);
+  box-shadow: 0 0 8px rgba(255, 248, 245, 0.6);
+  animation: fcta-blink 2.2s ease-in-out infinite;
+}
+@keyframes fcta-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* ── Core ── */
+.fcta-core {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .fcta-core { grid-template-columns: 1fr; gap: clamp(36px, 6vh, 56px); align-items: start; }
+}
+
+.fcta-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cream-90);
+  margin-bottom: clamp(20px, 2.4vw, 30px);
+}
+.fcta-eyebrow-dash { width: 28px; height: 1px; background: var(--cream-70); }
+
+.fcta-headline {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(38px, 5.6vw, 82px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  text-wrap: balance;
+  margin: 0 0 clamp(20px, 2.4vw, 30px);
+}
+
+.fcta-sub {
+  font-family: var(--f-body);
+  font-size: clamp(14.5px, 1.2vw, 17px);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--cream-70);
+  max-width: 48ch;
+  margin: 0 0 clamp(28px, 3.2vw, 40px);
+  text-wrap: pretty;
+}
+
+.fcta-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 34px);
+  flex-wrap: wrap;
+}
+.fcta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream-90);
+  text-decoration: none;
+  transition: gap 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.fcta-secondary:hover { gap: 16px; }
+
+/* ── Readout ── */
+.fcta-readout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .fcta-readout { align-items: flex-start; }
+}
+.fcta-readout .sys-dotmatrix { --dm-color: var(--cream); }
+.fcta-readout-label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-70);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fcta-status-dot { animation: none; }
+}

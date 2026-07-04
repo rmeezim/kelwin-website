@@ -3,8 +3,10 @@
 // render statically; the reveal animation is driven by a parent adding
 // `dm-armed` / `dm-live` classes (see SystemFurniture.css).
 //
-// 5×7 dot font. Only the glyphs a reading needs: digits, '.', '-', '%'.
+// 5×7 dot font. Only the glyphs a reading needs: digits, '.', '-', '%',
+// plus 'T' for countdown readings (T-0, T-47).
 const GLYPHS: Record<string, string[]> = {
+  T: ["11111", "00100", "00100", "00100", "00100", "00100", "00100"],
   "0": ["01110", "10001", "10011", "10101", "11001", "10001", "01110"],
   "1": ["00100", "01100", "00100", "00100", "00100", "00100", "01110"],
   "2": ["01110", "10001", "00001", "00010", "00100", "01000", "11111"],

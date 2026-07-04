@@ -10,9 +10,10 @@ import { motion } from "motion/react";
 // opacity (oscillating without fully clearing) so the user gets a clear
 // tactile feedback signal without losing the visible button surface.
 //
-// Three color variants:
+// Four color variants:
 //   "obsidian" — dark fill, cream text (default) — secondary actions.
-//   "signal"   — red fill, cream text — the primary action on bone.
+//   "signal"   — red fill, cream text — the primary action on charcoal.
+//   "bone"     — cream fill, red text — the primary action on the red band.
 //   "bronze"   — bronze fill, dark text (legacy).
 const OBSIDIAN = "#0A0805";
 const CREAM    = "#F4F0E7";
@@ -31,7 +32,7 @@ interface Props {
   href: string;
   label: string;
   className?: string;
-  variant?: "obsidian" | "bronze" | "signal";
+  variant?: "obsidian" | "bronze" | "signal" | "bone";
 }
 
 export default function DiagnosticMethodCTA({
@@ -44,9 +45,16 @@ export default function DiagnosticMethodCTA({
 
   // Variant palette — text is always the "on-fill" color since the fill
   // is always present.
-  const stroke = variant === "bronze" ? BRONZE : variant === "signal" ? SIGNAL : OBSIDIAN;
-  const fill   = stroke;
-  const text   = variant === "bronze" ? OBSIDIAN : CREAM;
+  const stroke =
+    variant === "bronze" ? BRONZE
+    : variant === "signal" ? SIGNAL
+    : variant === "bone" ? CREAM
+    : OBSIDIAN;
+  const fill = stroke;
+  const text =
+    variant === "bronze" ? OBSIDIAN
+    : variant === "bone" ? SIGNAL
+    : CREAM;
 
   return (
     <Link

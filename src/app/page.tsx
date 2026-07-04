@@ -9,6 +9,8 @@ import RevenueOS from "@/components/sections/RevenueOS";
 import FirstPrinciples from "@/components/sections/FirstPrinciples";
 import OperatingPrincipleBand from "@/components/sections/OperatingPrincipleBand";
 import Methodology from "@/components/sections/Methodology";
+import FinalCTA from "@/components/sections/FinalCTA";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   useEffect(() => {
@@ -27,6 +29,8 @@ export default function Home() {
       <FirstPrinciples />
       <OperatingPrincipleBand />
       <Methodology />
+      <FinalCTA />
+      <Footer />
     </main>
   );
 }
