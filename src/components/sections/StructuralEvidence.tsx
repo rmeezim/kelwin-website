@@ -7,70 +7,79 @@ import "./StructuralEvidence.css";
 
 interface Metric {
   id: string;
-  index: string;
+  /** One-word axis chip — the facet of the problem this signal covers. */
+  dimension: string;
   /** Numeric value the tile counts up to. */
   value: number;
   suffix: string;
-  /** Fill fraction of the gauge (0–1) — the data layer reading. */
+  /** What the number measures — sits directly under it so the figure self-labels. */
+  unit: string;
+  /** The plain-language verdict. Skim only these four and you get the argument. */
+  takeaway: string;
+  /** The structural "so what" for the reader. */
+  support: string;
+  /** Fill fraction of the meter (0–1) — the data-layer reading. */
   fill: number;
   /** Count-up duration in ms — varied per tile for an organic settle. */
   duration: number;
-  claim: string;
-  reframe: string;
   source: string;
 }
 
 // Four signals, every one from a primary-grade B2B GTM source. Read as a
-// set they make one argument: the constraint is structural — narrative,
-// mental availability, buying architecture, decision experience — not
-// pipeline volume or rep effort. Numbers are verbatim from the citation.
+// set they make one argument: the constraint is structural — visibility,
+// timing, complexity, experience — not pipeline volume or rep effort.
+// Numbers are verbatim from the citation; the takeaway carries the meaning.
 const METRICS: Metric[] = [
   {
     id: "journey",
-    index: "S—01",
+    dimension: "Visibility",
     value: 17,
     suffix: "%",
+    unit: "of the buying journey is spent with sales",
+    takeaway: "The decision happens without you.",
+    support:
+      "By the time a rep is in the room, the thinking is mostly done. Your narrative did the selling — or it didn't.",
     fill: 0.17,
     duration: 1200,
-    claim: "of the buying journey is spent with your sales team.",
-    reframe:
-      "The rest is decided in your absence — on the strength of your narrative, not your reps.",
     source: "Gartner",
   },
   {
     id: "market",
-    index: "S—02",
+    dimension: "Timing",
     value: 95,
     suffix: "%",
+    unit: "of your market is out‑of‑market today",
+    takeaway: "Only 5% are ready to buy now.",
+    support:
+      "Chasing that 5% harder won't grow you. Being the name the other 95% remember will.",
     fill: 0.95,
     duration: 1650,
-    claim: "of your market is out‑of‑market at any given moment.",
-    reframe:
-      "More outreach can't close a positioning gap. You win by being the answer they already remember.",
     source: "Ehrenberg‑Bass",
   },
   {
     id: "complex",
-    index: "S—03",
+    dimension: "Complexity",
     value: 77,
     suffix: "%",
+    unit: "call their last purchase complex or hard",
+    takeaway: "Deciding is harder than pitching.",
+    support:
+      "That friction is built into how the choice gets made — not fixed by selling harder.",
     fill: 0.77,
     duration: 1450,
-    claim: "of buyers call their last purchase complex or difficult.",
-    reframe:
-      "That friction lives in the buying architecture — not in how hard the team is selling.",
     source: "Gartner",
   },
   {
     id: "loyalty",
-    index: "S—04",
+    dimension: "Experience",
     value: 53,
     suffix: "%",
+    unit: "of loyalty comes from the buying experience",
+    takeaway: "How you sell beats what you sell.",
+    support:
+      "More than brand, product and price combined. The experience is the product.",
     fill: 0.53,
     duration: 1350,
-    claim: "of loyalty comes from the buying experience — over brand, product and price combined.",
-    reframe:
-      "How the decision is shaped outweighs whatever sits in the pipeline.",
     source: "CEB · HBR",
   },
 ];
@@ -78,9 +87,9 @@ const METRICS: Metric[] = [
 export default function StructuralEvidence() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Staggered entrance + gauge fill, gated on scroll into view so the count
-  // and the meter animate together. Reduced motion resolves everything to
-  // its final state immediately (NumberTicker handles its own opt-out).
+  // Staggered entrance + meter fill, gated on scroll into view so the count
+  // and the bar animate together. Reduced motion resolves everything to its
+  // final state immediately (NumberTicker handles its own opt-out).
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -131,12 +140,13 @@ export default function StructuralEvidence() {
               <span className="ev-bracket ev-bracket-br" aria-hidden="true" />
 
               <div className="ev-tile-top">
-                <span className="ev-index">{m.index}</span>
+                <span className="ev-dimension">{m.dimension}</span>
                 <span className="ev-source">
                   <ScrambleOnView text={m.source} duration={520} />
                 </span>
               </div>
 
+              {/* Number + unit read as one self-labeling block. */}
               <div className="ev-figure">
                 <NumberTicker
                   value={m.value}
@@ -145,21 +155,19 @@ export default function StructuralEvidence() {
                   className="ev-num"
                 />
               </div>
+              <p className="ev-unit">{m.unit}</p>
 
-              <div className="ev-gauge" aria-hidden="true">
-                <span className="ev-gauge-track" />
-                <span className="ev-gauge-fill" />
-                <span className="ev-gauge-ticks" />
+              {/* Meter — the physical proof of the proportion. */}
+              <div className="ev-meter" aria-hidden="true">
+                <span className="ev-meter-track" />
+                <span className="ev-meter-fill" />
+                <span className="ev-meter-ticks" />
               </div>
 
-              <p className="ev-claim">{m.claim}</p>
-
-              <div className="ev-divider" aria-hidden="true" />
-
-              <p className="ev-reframe">
-                <span className="ev-reframe-label">Reframe</span>
-                {m.reframe}
-              </p>
+              {/* Takeaway — the instant meaning. Skim these four alone and
+                  you have the whole argument. */}
+              <p className="ev-takeaway">{m.takeaway}</p>
+              <p className="ev-support">{m.support}</p>
             </article>
           ))}
         </div>

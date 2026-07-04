@@ -1,13 +1,14 @@
 /* ─── Structural Evidence — scoped to .evidence ──────────────────────────
-   A four-tile instrument panel that sits right after the diagnostic
-   reframe: hard numbers that each look like a pipeline symptom but read
-   as a structural cause. Sand structure (brackets, hairlines, ticks,
-   index labels), clay gauges as the data layer, a single red moment on
-   the section eyebrow. Every figure counts up; every gauge fills on view. */
+   A four-tile KPI panel that sits right after the diagnostic reframe: hard
+   numbers that each look like a pipeline symptom but read as a structural
+   cause. Takeaway-led hierarchy — a self-labeling hero figure, a clay
+   meter as physical proof, then a bold plain-language verdict so the point
+   lands in one glance. Sand structure, clay data, one red moment. */
 
 .evidence {
   --surface: #110F0A;
   --surface-elev: #20201E;
+  --surface-hover: #262523;
   --cream: #FBFAF6;
   --cream-muted: rgba(251, 250, 246, 0.66);
   --cream-dim: rgba(251, 250, 246, 0.45);
@@ -16,6 +17,7 @@
   --sand-faint: rgba(199, 180, 157, 0.12);
   --clay: #A65A45;
   --clay-bright: #C06B50;
+  --clay-track: rgba(166, 90, 69, 0.16);
   --taupe: #8F8981;
   --signal: #BF3A36;
   --signal-bright: #D4524E;
@@ -32,8 +34,8 @@
   font-family: var(--f-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Hairline seams top & bottom keep the one-dark-world separation rule:
-     sections divide by rule, never by a background swap. */
+  /* Hairline seam keeps the one-dark-world separation rule: sections divide
+     by rule, never by a background swap. */
   border-top: 1px solid var(--hairline);
 }
 
@@ -111,7 +113,7 @@
 
 .ev-tile {
   position: relative;
-  padding: clamp(26px, 2.4vw, 36px) clamp(22px, 2vw, 30px) clamp(26px, 2.4vw, 34px);
+  padding: clamp(26px, 2.3vw, 34px) clamp(22px, 2vw, 30px) clamp(28px, 2.6vw, 36px);
   background: var(--surface-elev);
   border-right: 1px solid var(--sand-line);
   display: flex;
@@ -123,7 +125,7 @@
   /* Stagger the entrance across the row. */
   transition-delay: calc(var(--i) * 0.09s);
 }
-.ev-tile:hover { background-color: #262523; }
+.ev-tile:hover { background-color: var(--surface-hover); }
 /* 2-col + 1-col layouts add horizontal seams between wrapped rows. */
 @media (max-width: 1080px) {
   .ev-tile { border-bottom: 1px solid var(--sand-line); }
@@ -140,7 +142,7 @@
   width: 12px;
   height: 12px;
   border: 0 solid var(--sand);
-  opacity: 0.55;
+  opacity: 0.5;
   pointer-events: none;
   transition: border-color 0.3s ease, opacity 0.3s ease;
 }
@@ -148,18 +150,20 @@
 .ev-bracket-br { bottom: 8px; right: 8px; border-bottom-width: 1px; border-right-width: 1px; }
 .ev-tile:hover .ev-bracket { border-color: var(--signal-bright); opacity: 0.9; }
 
-/* Tile header row — index tag + source. */
+/* Tile header — one-word dimension chip + source. */
 .ev-tile-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: clamp(22px, 2.4vw, 32px);
+  margin-bottom: clamp(20px, 2.2vw, 28px);
 }
-.ev-index {
+.ev-dimension {
   font-family: var(--f-mono);
   font-size: 10px;
+  font-weight: 500;
   letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--sand);
 }
 .ev-source {
@@ -170,70 +174,80 @@
   color: var(--taupe);
 }
 
-/* Figure — the count-up hero reading. */
-.ev-figure {
-  display: flex;
-  align-items: baseline;
-  margin-bottom: 16px;
-}
+/* Hero figure — the number the eye lands on first. Proportional sans, big. */
+.ev-figure { display: flex; align-items: baseline; }
 .evidence .ev-num {
   font-family: var(--f-display);
   font-weight: 400;
-  font-size: clamp(46px, 4.4vw, 66px);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
+  font-size: clamp(52px, 5vw, 74px);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
   color: var(--cream);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums; /* stable width while counting up */
 }
 
-/* Gauge — the clay data layer. A sand-faint track, a clay fill that
-   animates to the stat's proportion on reveal, and fine calibration
-   ticks overlaid so it reads as an instrument, not a progress bar. */
-.ev-gauge {
+/* Unit — sits directly under the number so the figure self-labels. This is
+   the line that removes the "what does 17% mean?" decoding step. */
+.ev-unit {
+  font-family: var(--f-body);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--cream-muted);
+  margin: 12px 0 clamp(18px, 2vw, 22px);
+  max-width: 24ch;
+}
+
+/* Meter — the physical proof of the proportion. Clay fill on a faint-clay
+   track (same ramp, so state reads across the whole bar), with sand
+   calibration ticks overlaid as the scale (structure marking the data). */
+.ev-meter {
   position: relative;
-  height: 6px;
+  height: 8px;
   margin-bottom: clamp(22px, 2.4vw, 30px);
 }
-.ev-gauge-track {
+.ev-meter-track {
   position: absolute;
   inset: 0;
   top: 50%;
-  height: 2px;
+  height: 3px;
   transform: translateY(-50%);
-  background: var(--sand-faint);
+  background: var(--clay-track);
+  border-radius: 2px;
 }
-.ev-gauge-fill {
+.ev-meter-fill {
   position: absolute;
   left: 0;
   top: 50%;
-  height: 2px;
+  height: 3px;
   width: 0;
   transform: translateY(-50%);
+  border-radius: 2px;
   background: linear-gradient(to right, var(--clay), var(--clay-bright));
-  box-shadow: 0 0 8px rgba(166, 90, 69, 0.45);
+  box-shadow: 0 0 10px rgba(166, 90, 69, 0.5);
   transition: width 1.3s var(--ease-out);
   transition-delay: calc(var(--i) * 0.09s + 0.15s);
 }
-.ev-tile.is-in .ev-gauge-fill { width: calc(var(--pct) * 100%); }
-/* Endpoint node on the clay fill. */
-.ev-gauge-fill::after {
+.ev-tile.is-in .ev-meter-fill { width: calc(var(--pct) * 100%); }
+/* Bright node on the fill's leading edge. */
+.ev-meter-fill::after {
   content: "";
   position: absolute;
-  right: -1px;
+  right: -2px;
   top: 50%;
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   transform: translateY(-50%);
   background: var(--clay-bright);
-  box-shadow: 0 0 6px rgba(192, 107, 80, 0.7);
+  box-shadow: 0 0 8px rgba(192, 107, 80, 0.8);
 }
-/* Calibration marks — sand hairlines at 25/50/75%. */
-.ev-gauge-ticks {
+/* Calibration marks — faint sand hairlines at 25/50/75%, the scale behind
+   the data. */
+.ev-meter-ticks {
   position: absolute;
   inset: 0;
   top: 50%;
-  height: 8px;
+  height: 9px;
   transform: translateY(-50%);
   background-image: repeating-linear-gradient(
     to right,
@@ -242,47 +256,32 @@
     transparent 1px,
     transparent 25%
   );
-  opacity: 0.7;
+  opacity: 0.6;
   pointer-events: none;
 }
 
-/* Claim — display voice, the plain-language reading of the number. */
-.ev-claim {
+/* Takeaway — the instant meaning. This is the line a skimmer reads; the
+   four takeaways alone carry the whole argument. */
+.ev-takeaway {
   font-family: var(--f-display);
-  font-size: clamp(15px, 1.1vw, 16.5px);
+  font-size: clamp(17px, 1.35vw, 20px);
   font-weight: 500;
-  line-height: 1.34;
-  letter-spacing: -0.01em;
+  line-height: 1.24;
+  letter-spacing: -0.015em;
   color: var(--cream);
-  margin: 0 0 clamp(18px, 2vw, 24px);
+  margin: 0 0 12px;
   text-wrap: pretty;
 }
 
-.ev-divider {
-  width: 26px;
-  height: 1px;
-  background: var(--sand-line);
-  margin-bottom: 16px;
-}
-
-/* Reframe — the structural interpretation. Small, muted, mono kicker. */
-.ev-reframe {
+/* Support — the structural "so what", quiet and small. */
+.ev-support {
   font-family: var(--f-body);
   font-size: 12.5px;
-  line-height: 1.62;
+  line-height: 1.6;
   color: var(--cream-muted);
   margin: 0;
   margin-top: auto;
-}
-.ev-reframe-label {
-  display: block;
-  font-family: var(--f-mono);
-  font-size: 9px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--signal-bright);
-  margin-bottom: 8px;
-  opacity: 0.85;
+  padding-top: 4px;
 }
 
 /* ── Foot — editorial coda + source line ── */
