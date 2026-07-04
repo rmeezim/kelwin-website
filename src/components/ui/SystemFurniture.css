@@ -23,7 +23,7 @@
   --hud-signal-bright: #D4524E;
   --hud-signal-deep:   #A8302C;
   --hud-signal-glow:   rgba(191, 58, 54, 0.4);
-  --hud-mono:          "JetBrains Mono", "IBM Plex Mono", "Courier New", "Consolas", "Monaco", monospace;
+  --hud-mono:          var(--font-mono);
 }
 
 /* ── SectionHUD ────────────────────────────────────────────────────────── */

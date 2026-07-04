@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
 import "./Methodology.css";
 
@@ -43,43 +45,38 @@ const PHASES: Phase[] = [
   },
 ];
 
-const AUTOPLAY_MS = 3800;
-
 export default function Methodology() {
   const sectionRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
-  const [inView, setInView] = useState(false);
-  const [interacted, setInteracted] = useState(false);
 
-  // Reveal-on-enter + drive autoplay only while the section is on screen.
-  useEffect(() => {
+  // Scroll drives the active phase: as the section passes through the
+  // viewport, ScrollTrigger maps its progress to a step index, so the
+  // pipeline advances on its own — no hover required (that felt like a
+  // prototype). Hover/click/keyboard still let you jump to a step; the
+  // next scroll movement resumes control. Reduced motion opts out of the
+  // scroll wiring and leaves the nodes fully operable as tabs.
+  useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => setInView(e.isIntersecting)),
-      { threshold: 0.35 }
-    );
-    io.observe(section);
-    return () => io.disconnect();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const st = ScrollTrigger.create({
+      trigger: section,
+      start: "top 80%",
+      end: "bottom 20%",
+      onUpdate: (self) => {
+        const idx = Math.min(
+          PHASES.length - 1,
+          Math.max(0, Math.floor(self.progress * PHASES.length))
+        );
+        setActive((prev) => (prev === idx ? prev : idx));
+      },
+    });
+    return () => st.kill();
   }, []);
 
-  // Autoplay: the console cycles through phases on its own until the user
-  // takes over (hover/focus/click), then it stays put. `interacted` is state
-  // so this effect re-runs and clears the interval the moment the user acts —
-  // a ref alone would leave the stale interval ticking. Off for reduced motion.
-  useEffect(() => {
-    if (!inView || interacted) return;
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = window.setInterval(() => {
-      setActive((a) => (a + 1) % PHASES.length);
-    }, AUTOPLAY_MS);
-    return () => window.clearInterval(id);
-  }, [inView, interacted]);
-
-  const select = (i: number) => {
-    setInteracted(true);
-    setActive(i);
-  };
+  const select = (i: number) => setActive(i);
 
   const phase = PHASES[active];
   const af = active / (PHASES.length - 1);

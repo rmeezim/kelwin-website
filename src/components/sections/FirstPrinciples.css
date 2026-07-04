@@ -18,7 +18,7 @@
   --signal-glow:    rgba(191, 58, 54, 0.35);
   --f-display: var(--font-instrument-sans), serif;
   --f-body: var(--font-inter), sans-serif;
-  --f-mono: "JetBrains Mono", "IBM Plex Mono", "Courier New", monospace;
+  --f-mono: var(--font-mono);
   --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
 
   position: relative;

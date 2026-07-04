@@ -15,7 +15,7 @@
   --cream-line-soft: rgba(251, 250, 246, 0.12);
   --f-display: var(--font-instrument-sans), serif;
   --f-body: var(--font-inter), sans-serif;
-  --f-mono: "JetBrains Mono", "IBM Plex Mono", "Courier New", monospace;
+  --f-mono: var(--font-mono);
 
   position: relative;
   overflow: hidden;

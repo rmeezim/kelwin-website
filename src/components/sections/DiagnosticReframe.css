@@ -213,11 +213,12 @@
 }
 .reframe-pin-wrap .reframe-body .body-coda {
   display: block;
-  margin-top: 12px;
-  font-family: var(--f-display);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.005em;
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 0;
   color: var(--ink);
   line-height: 1.5;
 }
@@ -292,7 +293,7 @@
   top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: "Courier New", "Consolas", "Monaco", monospace;
+  font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 0.20em;
   color: rgba(199, 180, 157, 0.62);
@@ -361,7 +362,7 @@
   align-items: center;
   gap: 12px;
   width: fit-content;
-  font-family: "Courier New", "Consolas", "Monaco", monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.22em;
   color: var(--bronze);
@@ -546,7 +547,7 @@
   flex-wrap: wrap;
 }
 .reframe-pin-wrap .meta-segment {
-  font-family: "Courier New", "Consolas", "Monaco", monospace;
+  font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.18em;
   color: rgba(199, 180, 157, 0.55);
@@ -625,7 +626,7 @@
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  font-family: "Courier New", "Consolas", "Monaco", monospace;
+  font-family: var(--font-mono);
 }
 
 /* Four corner registration marks — viewfinder reticles. Longer arms and

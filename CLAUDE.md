@@ -71,9 +71,21 @@ Discipline:
 ## Typography
 Use:
 - Instrument Sans for headings and UI
-- Inter for body copy if needed
+- Inter for body copy
+- JetBrains Mono (self-hosted via next/font) for every protocol label,
+  timestamp, and HUD readout. Never leave mono to a system fallback —
+  unloaded mono rendering as Consolas/Courier is the #1 "cheap" tell.
+- Instrument Serif, italic, as the editorial accent voice — reserved for
+  the short pull-quote codas that punctuate each section. Used sparingly;
+  never for headlines or body.
 - Large headings should be elegant, spacious, and premium
 - Avoid overly rounded, childish, or startup-template typography
+
+## Texture
+A faint film-grain overlay (`.site-grain`) sits over the charcoal so the
+surface reads as a material rather than a flat digital fill. Keep it
+barely-there (~5% overlay); it is one of the quiet moves that separates
+"expensive" from "template". Disabled under prefers-reduced-motion.
 
 ## Technical Stack
 Use:

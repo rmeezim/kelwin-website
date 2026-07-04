@@ -188,11 +188,12 @@
 }
 .revos-pin .scaffold-body .body-coda {
   display: block;
-  margin-top: 12px;
-  font-family: var(--f-display);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.005em;
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 0;
   color: var(--ink);
   line-height: 1.5;
 }

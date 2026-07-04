@@ -192,7 +192,7 @@ export default function HeroHud() {
             ease: "linear",
           }}
           style={{
-            fontFamily: "'Courier New', 'Consolas', 'Monaco', monospace",
+            fontFamily: "var(--font-mono)",
             fontSize: 11,
             lineHeight: 1.6,
             padding: "14px 16px 18px",
