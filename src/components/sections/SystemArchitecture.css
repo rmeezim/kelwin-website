@@ -1,0 +1,238 @@
+/* ─── System Architecture — scoped to .sysarch ───────────────────────────
+   A GTM system schematic: the three infrastructure layers wired into one
+   closed, compounding loop. Sand modules, clay signal flowing the wires,
+   one red live-dot on the output. Connectors are drawn from the real node
+   positions (SystemArchitecture.tsx) so they always align, row or column. */
+
+.sysarch {
+  --surface: #110F0A;
+  --surface-elev: #20201E;
+  --cream: #FBFAF6;
+  --cream-muted: rgba(251, 250, 246, 0.66);
+  --cream-dim: rgba(251, 250, 246, 0.45);
+  --sand: #C7B49D;
+  --sand-line: rgba(199, 180, 157, 0.22);
+  --sand-faint: rgba(199, 180, 157, 0.12);
+  --clay: #A65A45;
+  --clay-line: rgba(166, 90, 69, 0.42);
+  --taupe: #8F8981;
+  --signal-bright: #D4524E;
+  --signal-glow: rgba(191, 58, 54, 0.4);
+  --hairline: rgba(251, 250, 246, 0.09);
+  --f-display: var(--font-instrument-sans), serif;
+  --f-body: var(--font-inter), sans-serif;
+  --f-mono: var(--font-mono);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  position: relative;
+  background: var(--surface);
+  background-image:
+    radial-gradient(ellipse 60% 44% at 50% 30%, rgba(199, 180, 157, 0.045) 0%, transparent 62%);
+  color: var(--cream);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sysarch-stage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(72px, 9vh, 112px) clamp(28px, 5vw, 64px) clamp(72px, 9vh, 108px);
+}
+
+/* ── Reveal ── */
+.sysarch .sa-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.sysarch .sa-reveal.is-in { opacity: 1; transform: translateY(0); }
+.sysarch .sa-reveal:nth-child(2) { transition-delay: 0.08s; }
+@media (prefers-reduced-motion: reduce) {
+  .sysarch .sa-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ── Header ── */
+.sysarch-head { margin-bottom: clamp(48px, 6vw, 88px); max-width: 760px; }
+.sysarch-head-top {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: clamp(20px, 2.4vw, 30px);
+}
+.sysarch-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-bright);
+}
+.sysarch-eyebrow-dash { width: 28px; height: 1px; background: currentColor; opacity: 0.75; }
+.sysarch-meta {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.62);
+}
+.sysarch-heading {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0 0 clamp(18px, 2vw, 26px);
+}
+.sysarch-heading .line-1 { color: var(--cream); }
+.sysarch-heading .line-2 { color: var(--cream-dim); }
+.sysarch-sub {
+  font-family: var(--f-body);
+  font-size: clamp(14.5px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: var(--cream-muted);
+  max-width: 62ch;
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* ── Diagram ── */
+.sysarch-diagram {
+  position: relative;
+  padding-top: 118px;  /* headroom for the feedback bow above the modules */
+  padding-bottom: 10px;
+}
+.sysarch-edges {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+.sysarch-edges .sa-edge-base { fill: none; stroke: var(--sand-line); stroke-width: 1; }
+.sysarch-edges .sa-edge-base.is-feedback { stroke: var(--clay-line); stroke-dasharray: 2 5; }
+.sysarch-edges .sa-edge-flow { fill: none; stroke: var(--clay); stroke-width: 1.7; stroke-linecap: round; }
+.sysarch-edges .sa-edge-flow.is-feedback { stroke-width: 1.5; opacity: 0.9; }
+.sysarch-edges .sa-edge-text {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  fill: var(--taupe);
+}
+.sysarch-edges .sa-edge-text.is-feedback { fill: var(--clay); letter-spacing: 0.2em; }
+
+.sysarch-nodes {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+}
+.sa-slot { flex: 1; display: flex; justify-content: center; }
+
+.sa-node {
+  position: relative;
+  width: clamp(150px, 15vw, 198px);
+  background: var(--surface-elev);
+  border: 1px solid var(--sand-line);
+  padding: 16px 16px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+}
+.sa-node-io { background: transparent; border-style: dashed; border-color: rgba(199, 180, 157, 0.34); box-shadow: none; }
+.sa-node-output { box-shadow: inset 2px 0 0 var(--signal-bright), 0 14px 34px rgba(0, 0, 0, 0.4); }
+
+.sa-node-bracket {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 0 solid var(--sand);
+  opacity: 0.8;
+  pointer-events: none;
+}
+.sa-node-io .sa-node-bracket { display: none; }
+.sa-bracket-tl { top: -1px; left: -1px; border-top-width: 1px; border-left-width: 1px; }
+.sa-bracket-br { bottom: -1px; right: -1px; border-bottom-width: 1px; border-right-width: 1px; }
+.sa-node-output .sa-node-bracket { border-color: var(--signal-bright); }
+
+.sa-node-label {
+  font-family: var(--f-mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.sa-node-io .sa-node-label { color: var(--taupe); }
+.sa-node-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: clamp(16px, 1.4vw, 19px);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--cream);
+}
+.sa-node-live {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal-bright);
+  box-shadow: 0 0 6px var(--signal-glow);
+  animation: sa-blink 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes sa-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.sa-node-sub {
+  font-family: var(--f-body);
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--cream-muted);
+}
+
+/* ── Legend ── */
+.sysarch-legend {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+  flex-wrap: wrap;
+  margin-top: clamp(40px, 5vw, 64px);
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline);
+}
+.sa-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-muted);
+}
+.sa-legend-flow, .sa-legend-loop { width: 26px; height: 0; border-top: 2px solid var(--clay); }
+.sa-legend-loop { border-top-style: dashed; opacity: 0.85; }
+.sa-legend-note {
+  margin-left: auto;
+  font-family: var(--f-body);
+  font-size: 12.5px;
+  color: var(--cream-dim);
+}
+
+/* ── Mobile: stack the pipeline vertically ── */
+@media (max-width: 860px) {
+  .sysarch-diagram { padding-top: 20px; padding-left: 46px; }
+  .sysarch-nodes { flex-direction: column; gap: 64px; align-items: stretch; }
+  .sa-slot { justify-content: flex-start; }
+  .sa-node { width: min(280px, 100%); }
+  .sysarch-edges .sa-edge-text { display: none; } /* verbs would crowd the vertical wires */
+  .sa-legend-note { margin-left: 0; flex-basis: 100%; }
+}

@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroSection from "@/components/sections/HeroSection";
 import DiagnosticReframe from "@/components/sections/DiagnosticReframe";
 import RevenueOS from "@/components/sections/RevenueOS";
+import SystemArchitecture from "@/components/sections/SystemArchitecture";
 import FirstPrinciples from "@/components/sections/FirstPrinciples";
 import OperatingPrincipleBand from "@/components/sections/OperatingPrincipleBand";
 import Methodology from "@/components/sections/Methodology";
@@ -26,6 +27,7 @@ export default function Home() {
       <HeroSection />
       <DiagnosticReframe />
       <RevenueOS />
+      <SystemArchitecture />
       <FirstPrinciples />
       <OperatingPrincipleBand />
       <Methodology />
