@@ -89,16 +89,17 @@ export default function HeroSection() {
             />
           </FadeIn>
 
-          {/* Subcopy — per-line L→R scramble */}
+          {/* Subcopy — per-line L→R scramble. Operational, not manifesto:
+              names who it's for, what we install, and what changes. */}
           <p
-            className="font-body leading-[1.75] max-w-[640px]"
+            className="font-body leading-[1.7] max-w-[660px]"
             style={{
-              color: "var(--text-muted)",
-              fontSize: "clamp(14px, calc(12.25px + 0.28vw), 16.5px)",
+              color: "var(--text-secondary)",
+              fontSize: "clamp(15px, calc(13px + 0.3vw), 17.5px)",
             }}
           >
             <ScrambleText
-              text="Kelwin builds revenue infrastructure and GTM intelligence systems designed to transition growth from instability to institutional permanence."
+              text="Kelwin is the GTM systems partner for B2B teams whose growth works — but not predictably. We install the positioning, outbound, and intelligence beneath your pipeline, so revenue compounds instead of resetting each quarter."
               delay={700}
               duration={500}
               lineStagger={200}
