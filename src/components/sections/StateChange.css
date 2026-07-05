@@ -36,7 +36,7 @@
 .sc-stage {
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(64px, 8vh, 104px) clamp(28px, 5vw, 64px) clamp(64px, 8vh, 100px);
+  padding: var(--space-section) clamp(28px, 5vw, 64px);
 }
 
 /* ── Reveal ── */
@@ -193,23 +193,6 @@
   margin: 14px 0 0;
   padding-top: 12px;
   border-top: 1px solid var(--hairline);
-}
-
-/* ── Coda ── */
-.sc-foot {
-  margin-top: clamp(36px, 4.4vw, 56px);
-  padding-top: 20px;
-  border-top: 1px solid var(--hairline);
-}
-.sc-coda {
-  font-family: var(--f-serif);
-  font-style: italic;
-  font-size: clamp(19px, 1.9vw, 26px);
-  font-weight: 400;
-  line-height: 1.45;
-  color: var(--cream);
-  margin: 0;
-  max-width: 44ch;
 }
 
 @media (prefers-reduced-motion: reduce) {

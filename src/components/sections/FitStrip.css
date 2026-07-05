@@ -30,7 +30,7 @@
 .fit-stage {
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(56px, 7vh, 88px) clamp(28px, 5vw, 64px);
+  padding: var(--space-section) clamp(28px, 5vw, 64px);
 }
 
 .fitstrip .fit-reveal {

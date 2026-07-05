@@ -37,7 +37,7 @@
 .method-section .method-stage {
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(72px, 9vh, 104px) clamp(28px, 5vw, 64px);
+  padding: var(--space-section) clamp(28px, 5vw, 64px);
 }
 
 /* ── Header ── */

@@ -82,7 +82,7 @@
   z-index: 1;
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(56px, 8vh, 104px) clamp(28px, 5vw, 72px);
+  padding: var(--space-section) clamp(28px, 5vw, 72px);
   min-height: clamp(560px, 82vh, 760px);
   display: flex;
   flex-direction: column;

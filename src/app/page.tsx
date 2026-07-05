@@ -9,6 +9,7 @@ import StructuralEvidence from "@/components/sections/StructuralEvidence";
 import RevenueOS from "@/components/sections/RevenueOS";
 import SystemArchitecture from "@/components/sections/SystemArchitecture";
 import StateChange from "@/components/sections/StateChange";
+import OperatingPrincipleBand from "@/components/sections/OperatingPrincipleBand";
 import Methodology from "@/components/sections/Methodology";
 import FitStrip from "@/components/sections/FitStrip";
 import AssetInventory from "@/components/sections/AssetInventory";
@@ -32,6 +33,7 @@ export default function Home() {
       <RevenueOS />
       <SystemArchitecture />
       <StateChange />
+      <OperatingPrincipleBand />
       <Methodology />
       <FitStrip />
       <AssetInventory />

@@ -41,7 +41,7 @@
 .ev-stage {
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(64px, 8vh, 104px) clamp(28px, 5vw, 64px) clamp(64px, 8vh, 100px);
+  padding: var(--space-section) clamp(28px, 5vw, 64px);
 }
 
 /* ── Reveal primitive ── */

@@ -69,6 +69,11 @@
 }
 .reframe-pin-wrap.js-ready { visibility: visible; }
 
+/* The pinned wrapper is exactly 100vh with no bottom padding of its own,
+   so without this the gap to the next section is half the site rhythm.
+   The margin sits outside the pin range, restoring the uniform 2× gap. */
+.reframe-pin-wrap { margin-bottom: var(--space-section); }
+
 /* Decorative gradient (was body::before in original) — moved to section root */
 .reframe-pin-wrap::before {
   content: '';

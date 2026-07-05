@@ -38,6 +38,9 @@
   --text-secondary: #D8D2C8;
   --text-muted: rgba(251, 250, 246, 0.78);
   --text-faint: rgba(251, 250, 246, 0.52);
+  /* One shared vertical rhythm: every section pads top+bottom with this,
+     so the gap between any two sections is exactly 2× this value. */
+  --space-section: clamp(84px, 10vh, 120px);
   --border-subtle: rgba(251, 250, 246, 0.12);
   --border-warm: rgba(199, 180, 157, 0.32);
   --grid-line: rgba(251, 250, 246, 0.07);

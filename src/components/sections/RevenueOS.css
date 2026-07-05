@@ -70,7 +70,7 @@
 .revos-pin .revos-stage {
   position: relative;
   z-index: 1;
-  padding: 100px 64px 104px;
+  padding: var(--space-section) 64px;
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
@@ -78,7 +78,7 @@
   gap: clamp(104px, 12vh, 168px);
 }
 @media (max-width: 900px) {
-  .revos-pin .revos-stage { padding: 56px 28px 56px; gap: clamp(56px, 8vh, 96px); }
+  .revos-pin .revos-stage { padding: var(--space-section) 28px; gap: clamp(56px, 8vh, 96px); }
 }
 
 /* ─── LAYERS ZONE — wrapper for the 3 stacked layers + spine ─────────── */
