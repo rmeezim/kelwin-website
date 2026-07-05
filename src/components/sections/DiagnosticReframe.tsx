@@ -595,7 +595,7 @@ export default function DiagnosticReframe() {
             Echoes the hero HUD's log vocabulary: timestamp + code + value.
             Cycles every 2.4s; AnimatePresence handles enter/exit. */}
         <div className="hud-log-feed">
-          <div className="hud-log-header">Diagnostic Stream</div>
+          <div className="hud-log-header">Diagnostic Stream · Specimen</div>
           <div className="hud-log-body">
             <AnimatePresence initial={false}>
               {visibleLogs.map((entry) => (

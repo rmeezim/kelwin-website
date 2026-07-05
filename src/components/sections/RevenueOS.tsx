@@ -462,11 +462,11 @@ export default function RevenueOS() {
             </div>
             <div className="nei-footer">
               <div>
-                <span className="nei-meth-label">Methodology</span>
-                <span>Composite of four sub-readings from 14 signal sources. Recalibrated quarterly by The Lab.</span>
+                <span className="nei-meth-label">Specimen</span>
+                <span>Illustrative readout. Your narrative layer ships with this index — first calibrated during the audit.</span>
               </div>
-              <a href="#" className="nei-spec-cta">
-                View Full Specimen
+              <a href="#audit" className="nei-spec-cta">
+                See the audit spec
                 <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
                   <path d="M0 4h12M12 4L9 1M12 4L9 7" stroke="currentColor" strokeWidth="1" strokeLinecap="square" />
                 </svg>
@@ -496,7 +496,7 @@ export default function RevenueOS() {
             <span className="panel-corner panel-corner-br" aria-hidden="true"></span>
             <div className="pmap-header">
               <span className="pmap-header-label">Protocol Sequence — Enterprise Account Standard</span>
-              <span className="pmap-header-spec">v.PROTO/02.A</span>
+              <span className="pmap-header-spec">Specimen · v.PROTO/02.A</span>
             </div>
             <div className="pmap-loop">
               <svg className="loop-svg" viewBox="0 0 600 238" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -579,6 +579,10 @@ export default function RevenueOS() {
                 </div>
               </div>
             </div>
+            <div className="panel-anchor">
+              Illustrative sequence. Yours is designed to your motion,
+              versioned, and installed with your team.
+            </div>
           </div>
         </div>
 
@@ -602,7 +606,7 @@ export default function RevenueOS() {
             <span className="panel-corner panel-corner-bl" aria-hidden="true"></span>
             <span className="panel-corner panel-corner-br" aria-hidden="true"></span>
             <div className="signal-header">
-              <span className="signal-header-label"><span className="signal-live-dot"></span>Signal Acquisition — Live Feed</span>
+              <span className="signal-header-label"><span className="signal-live-dot"></span>Signal Acquisition — Specimen Feed</span>
               <span className="signal-header-meta">CYCLE Q4·24</span>
             </div>
             <div className="signal-canvas">
@@ -687,6 +691,10 @@ export default function RevenueOS() {
                   />
                 </div>
                 <div className="recal-meta">Q4·2024 Signal Review — cycle {Math.round(recalFill)}% complete</div>
+              </div>
+              <div className="panel-anchor">
+                Illustrative feed. Once live, these readouts run on your
+                accounts — not a dashboard we keep.
               </div>
             </div>
           </div>

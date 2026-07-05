@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroSection from "@/components/sections/HeroSection";
+import AuditSpec from "@/components/sections/AuditSpec";
 import DiagnosticReframe from "@/components/sections/DiagnosticReframe";
 import StructuralEvidence from "@/components/sections/StructuralEvidence";
 import RevenueOS from "@/components/sections/RevenueOS";
@@ -26,6 +27,7 @@ export default function Home() {
   return (
     <main>
       <HeroSection />
+      <AuditSpec />
       <DiagnosticReframe />
       <StructuralEvidence />
       <RevenueOS />

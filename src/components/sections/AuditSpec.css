@@ -1,0 +1,221 @@
+/* ─── The System Audit — scoped to .auditspec ─────────────────────────────
+   The offer as a visible product: a two-column spec sheet directly below
+   the hero. Left = what this is + the one action; right = six spec rows
+   (scope, inputs, artifacts, timeline, fit, after). Sand structure, one
+   red moment (the CTA). Deliberately plain — in a page of instruments,
+   the spec sheet reads as the "real document," which is the point. */
+
+.auditspec {
+  --surface: #110F0A;
+  --surface-elev: #20201E;
+  --cream: #FBFAF6;
+  --cream-muted: rgba(251, 250, 246, 0.68);
+  --cream-dim: rgba(251, 250, 246, 0.45);
+  --sand: #C7B49D;
+  --sand-line: rgba(199, 180, 157, 0.22);
+  --sand-faint: rgba(199, 180, 157, 0.12);
+  --taupe: #8F8981;
+  --signal: #BF3A36;
+  --signal-bright: #D4524E;
+  --signal-deep: #A8302C;
+  --hairline: rgba(251, 250, 246, 0.09);
+  --f-display: var(--font-instrument-sans), serif;
+  --f-body: var(--font-inter), sans-serif;
+  --f-mono: var(--font-mono);
+  --f-serif: var(--font-serif);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  position: relative;
+  background: var(--surface);
+  color: var(--cream);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-top: 1px solid var(--hairline);
+  /* anchor target: land with air above when CTAs jump here */
+  scroll-margin-top: 24px;
+}
+
+.as-stage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(64px, 8vh, 104px) clamp(28px, 5vw, 64px) clamp(68px, 8vh, 108px);
+}
+
+/* ── Reveal ── */
+.auditspec .as-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.auditspec .as-reveal.is-in { opacity: 1; transform: translateY(0); }
+.auditspec .as-sheet.as-reveal { transition-delay: 0.1s; }
+@media (prefers-reduced-motion: reduce) {
+  .auditspec .as-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ── Two-column layout ── */
+.as-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(48px, 5.5vw, 96px);
+  align-items: start;
+}
+@media (max-width: 980px) {
+  .as-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ── Intro column ── */
+.as-head-top {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(18px, 2.2vw, 26px);
+}
+.as-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-bright);
+}
+.as-eyebrow-dash { width: 28px; height: 1px; background: var(--signal); opacity: 0.75; }
+.as-meta {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.62);
+}
+.as-heading {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(26px, 3.1vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0 0 clamp(16px, 1.8vw, 22px);
+}
+.as-heading .line-1 { color: var(--cream); }
+.as-heading .line-2 { color: var(--cream-dim); }
+.as-sub {
+  font-family: var(--f-body);
+  font-size: clamp(14.5px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: var(--cream-muted);
+  max-width: 46ch;
+  margin: 0 0 clamp(28px, 3.2vw, 40px);
+  text-wrap: pretty;
+}
+
+/* CTA — the section's one red moment. Bracketed red fill, cream text. */
+.as-cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+}
+.as-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 26px;
+  background: var(--signal);
+  color: var(--cream);
+  font-family: var(--f-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.25s ease;
+}
+.as-cta:hover { background: var(--signal-deep); }
+.as-cta-arrow { transition: transform 0.2s ease; }
+.as-cta:hover .as-cta-arrow { transform: translateX(4px); }
+.as-cta-bracket {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 0 solid var(--cream);
+  opacity: 0.9;
+}
+.as-cta-tl { top: 4px; left: 4px; border-top-width: 1px; border-left-width: 1px; }
+.as-cta-br { bottom: 4px; right: 4px; border-bottom-width: 1px; border-right-width: 1px; }
+.as-cta-note {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--taupe);
+}
+
+/* ── Spec sheet ── */
+.as-sheet {
+  position: relative;
+  border: 1px solid var(--sand-line);
+  background: var(--surface-elev);
+  padding: clamp(8px, 1vw, 14px) clamp(24px, 2.4vw, 36px);
+}
+.as-sheet-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--sand);
+  opacity: 0.7;
+  pointer-events: none;
+}
+.as-sheet-tl { top: -1px; left: -1px; border-top-width: 1px; border-left-width: 1px; }
+.as-sheet-br { bottom: -1px; right: -1px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.as-row {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: clamp(18px, 2vw, 32px);
+  padding: clamp(18px, 1.9vw, 24px) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.as-row:last-child { border-bottom: none; }
+@media (max-width: 560px) {
+  .as-row { grid-template-columns: 1fr; gap: 8px; }
+}
+
+.as-row-key {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.as-row-n {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: rgba(199, 180, 157, 0.55);
+}
+.as-row-label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.as-row-body {
+  font-family: var(--f-body);
+  font-size: clamp(13.5px, 1vw, 15px);
+  line-height: 1.65;
+  color: var(--cream-muted);
+  margin: 0;
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+.as-em {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 1.06em;
+  color: var(--cream);
+}

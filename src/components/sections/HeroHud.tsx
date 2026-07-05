@@ -209,7 +209,7 @@ export default function HeroHud() {
             <div style={{ flex: 1, height: 1, backgroundColor: "rgba(251, 250, 246,0.1)" }} />
             <span style={{ color: "rgba(212,82,78,0.9)", fontSize: 8 }}>●</span>
             <span style={{ color: "rgba(212,82,78,0.8)", letterSpacing: "0.18em", fontSize: 11 }}>
-              LIVE
+              SPECIMEN
             </span>
           </div>
 
@@ -293,7 +293,23 @@ export default function HeroHud() {
             </AnimatePresence>
           </div>
 
-          {/* [5] Cursor — pinned to bottom by flex column */}
+          {/* [5] Anchor caption — ties the specimen to the real deliverable
+              so the readout registers as product, not theater. */}
+          <div
+            style={{
+              flexShrink: 0,
+              paddingTop: 10,
+              fontSize: 9.5,
+              letterSpacing: "0.06em",
+              lineHeight: 1.5,
+              color: "rgba(251, 250, 246, 0.42)",
+            }}
+          >
+            Illustrative readout — the signal classes your intelligence layer
+            reports once installed.
+          </div>
+
+          {/* [6] Cursor — pinned to bottom by flex column */}
           <div style={{ display: "flex", alignItems: "center", gap: 4, paddingTop: 10, flexShrink: 0 }}>
             <span style={{ color: "#D4524E", letterSpacing: "0.1em" }}>{">"}</span>
             <span style={{

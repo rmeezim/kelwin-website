@@ -651,6 +651,19 @@
   color: var(--bone-dusk);
 }
 
+/* Panel anchor — one quiet line tying each specimen panel to the real
+   deliverable, so the instrumentation reads as product rather than
+   theater (site-audit "reality per inch" note). */
+.revos-pin .panel-anchor {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink-hairline);
+  font-family: var(--f-body);
+  font-size: 11px;
+  line-height: 1.55;
+  color: var(--ash);
+}
+
 /* ─── REDUCED MOTION ───────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .revos-pin .nei-status-dot,
