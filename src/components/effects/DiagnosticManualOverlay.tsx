@@ -13,7 +13,7 @@ const MANUAL = [
   { kind: "rule" },
   { kind: "section", text: "PROTOCOL 02 — REVENUE OPERATING SYSTEM" },
   { kind: "body", text: "[2.1] Layer 01 — Narrative Infrastructure. Composite NEI across four signal dimensions." },
-  { kind: "body", text: "[2.2] Layer 02 — Outbound Protocol. Sequenced, channel-mixed, installable as a system." },
+  { kind: "body", text: "[2.2] Layer 02 — Channel Orchestration. Omnichannel, signal-routed, installable as a system." },
   { kind: "body", text: "[2.3] Layer 03 — GTM Intelligence. Observation, recalibration, structural learning." },
   { kind: "rule" },
   { kind: "section", text: "PROTOCOL 03 — OPERATING PRINCIPLES" },

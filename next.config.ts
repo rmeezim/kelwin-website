@@ -8,6 +8,9 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const nextConfig: NextConfig = {
   output: "export",
   basePath,
+  // Emit route folders with index.html (audit/index.html) so nested routes
+  // resolve on GitHub Pages with or without a trailing slash.
+  trailingSlash: true,
   images: { unoptimized: true },
 };
 

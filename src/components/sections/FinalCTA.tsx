@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
 import DotMatrixReading from "@/components/ui/DotMatrixReading";
 import "./FinalCTA.css";
@@ -46,7 +47,7 @@ export default function FinalCTA() {
   }, []);
 
   return (
-    <section className="fcta" id="audit" ref={ref}>
+    <section className="fcta" ref={ref}>
       {/* Grid-cell furniture — rounded outlines with scattered ticks. */}
       <div className="fcta-grid" aria-hidden="true">
         {Array.from({ length: GRID_COLS * GRID_ROWS }).map((_, i) => (
@@ -90,15 +91,20 @@ export default function FinalCTA() {
             </p>
             <div className="fcta-actions">
               <DiagnosticMethodCTA
-                href="#audit"
+                href="/audit"
                 label="Initiate System Audit"
                 variant="bone"
               />
-              <a className="fcta-secondary" href="#audit">
+              <Link className="fcta-secondary" href="/audit">
                 Book a strategic call
                 <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
+            {/* Expectation-setting micro-copy — what the button actually
+                starts (Gemini audit: reduce CTA friction). */}
+            <p className="fcta-microcopy">
+              Fixed scope · ten working days · the readout is yours to keep.
+            </p>
           </div>
 
           <div className="fcta-readout dm-armed" aria-hidden="true">

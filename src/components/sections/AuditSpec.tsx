@@ -26,8 +26,8 @@ const ROWS: SpecRow[] = [
     body: (
       <>
         The three layers under your revenue: how your market repeats your
-        story, how your outbound actually runs, and what your GTM decisions
-        are based on.
+        story, how demand actually moves across your channels, and what your
+        GTM decisions are based on.
       </>
     ),
   },
@@ -38,7 +38,7 @@ const ROWS: SpecRow[] = [
       // [EDIT ME] placeholder inputs — confirm real session count + access
       <>
         Two 90‑minute working sessions and read‑only access to your CRM and
-        outbound stack. No prep decks, no homework.
+        channel stack. No prep decks, no homework.
       </>
     ),
   },
@@ -48,7 +48,7 @@ const ROWS: SpecRow[] = [
     body: (
       // [EDIT ME] placeholder artifacts — confirm the real deliverable list
       <>
-        A written diagnostic — narrative readout, outbound protocol map,
+        A written diagnostic — narrative readout, channel orchestration map,
         intelligence gap report — and a sequenced rebuild plan.{" "}
         <em className="as-em">Yours to keep, either way.</em>
       </>
@@ -129,9 +129,9 @@ export default function AuditSpec() {
               <span className="line-2">A diagnostic with a deliverable.</span>
             </h2>
             <p className="as-sub">
-              Every button on this page leads here. This is what happens when
-              you press one — fixed scope, fixed timeline, and a readout you
-              keep whether or not we go further.
+              This is what happens when you request the audit — fixed scope,
+              fixed timeline, and a readout you keep whether or not we go
+              further.
             </p>
 
             {/* [EDIT ME] placeholder contact — swap for the real booking

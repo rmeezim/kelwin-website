@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { motion, useAnimation } from "motion/react";
 
 const FLICKER_OPACITY  = [0, 0.9, 0.05, 1, 0.38, 1];
@@ -51,8 +52,8 @@ export default function HeroCTA() {
     : { duration: 0.2, ease: "easeOut" as const };
 
   return (
-    <a
-      href="#audit"
+    <Link
+      href="/audit"
       className="relative inline-flex items-center tracking-[0.08em] font-body font-semibold group select-none gap-[clamp(0.5rem,0.7vw,0.75rem)] text-[clamp(0.78rem,0.95vw,0.95rem)] px-[clamp(1rem,1.6vw,1.75rem)] py-[clamp(0.65rem,0.95vw,1rem)]"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
@@ -116,6 +117,6 @@ export default function HeroCTA() {
       >
         →
       </span>
-    </a>
+    </Link>
   );
 }

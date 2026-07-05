@@ -99,7 +99,7 @@ export default function HeroSection() {
             }}
           >
             <ScrambleText
-              text="Kelwin is the GTM systems partner for B2B teams whose growth works — but not predictably. We install the positioning, outbound, and intelligence beneath your pipeline, so revenue compounds instead of resetting each quarter."
+              text="Kelwin is the GTM systems partner for B2B teams whose growth works — but not predictably. We install the positioning, the omnichannel motion, and the intelligence beneath your pipeline, so revenue compounds instead of resetting each quarter."
               delay={700}
               duration={500}
               lineStagger={200}
@@ -131,6 +131,23 @@ export default function HeroSection() {
               <HeroCTA />
               <SecondaryHeroCTA />
             </motion.div>
+            {/* Expectation-setting micro-copy — tells a time-guarded exec
+                exactly what the button starts (Gemini audit: CTA friction). */}
+            <motion.p
+              className="font-mono mt-4"
+              style={{
+                fontSize: 11,
+                letterSpacing: "0.06em",
+                color: "var(--text-faint)",
+                fontFamily: "var(--font-mono)",
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: reduced ? 0 : 2.3, duration: 0.5 }}
+            >
+              A fixed-scope diagnostic — ten working days, and the readout is
+              yours to keep.
+            </motion.p>
           </div>
         </div>
 

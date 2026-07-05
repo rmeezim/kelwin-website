@@ -700,7 +700,7 @@ export default function DiagnosticReframe() {
             <div className="card-claim">A sales execution problem.</div>
             <div className="card-divider"></div>
             <div className="card-label-bottom">The structural truth</div>
-            <div className="card-truth">An outbound protocol problem. Reps execute what the system installs — never more, never less. Replacing the rep before the protocol replaces nothing.</div>
+            <div className="card-truth">An orchestration problem. Teams execute what the system installs — across every channel, never more, never less. Replacing the rep before the protocol replaces nothing.</div>
             <span className="card-corner card-corner-tl" aria-hidden="true"></span>
             <span className="card-corner card-corner-tr" aria-hidden="true"></span>
             <span className="card-corner card-corner-bl" aria-hidden="true"></span>

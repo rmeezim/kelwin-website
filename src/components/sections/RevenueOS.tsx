@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
@@ -50,9 +51,21 @@ function sparkPath(values: number[], width: number, height: number): string {
 }
 
 const SPARK_CADENCE   = [4, 5, 4, 6, 5, 6, 7, 6, 6, 7];
-const SPARK_CHANNELS  = [2, 3, 3, 3, 3];
+const SPARK_CHANNELS  = [2, 3, 4, 5, 6];
 const SPARK_RESPONSE  = [5.1, 4.6, 4.3, 4.2, 3.9, 4.0, 4.2];
 const SPARK_CONVERT   = [9, 10, 11, 11, 12, 12.4];
+
+// ── Omnichannel orchestration map (Layer 02 artifact) ──────────────────
+// Live buying signals (left) converge on the orchestrator, which routes
+// the next-best touch to whichever channel the signal warrants (right).
+const ORCH_SIGNALS = [
+  { label: "Intent spike",   sub: "topic research" },
+  { label: "Champion move",  sub: "job change" },
+  { label: "Funding event",  sub: "round closed" },
+  { label: "Engagement",     sub: "content + site" },
+  { label: "Hiring surge",   sub: "GTM roles open" },
+];
+const ORCH_CHANNELS = ["Email", "LinkedIn", "Phone", "Content", "Paid", "Events"];
 
 const SIGNAL_SPARK_SAMPLE     = [4.2, 4.5, 4.6, 4.7, 4.7, 4.6, 4.7];
 const SIGNAL_SPARK_ACCOUNTS   = [210, 218, 226, 234, 240, 244, 247];
@@ -364,6 +377,10 @@ export default function RevenueOS() {
             <div className="layer-divider"></div>
             <p className="layer-definition">The positioning and language architecture that determines whether prospects can clearly explain what you do — using their own words. If this layer is muddy, every channel downstream inherits that unclarity.</p>
             <div className="layer-output">
+              <div className="output-label">In Practice</div>
+              <div className="output-text">We rewrite the words your homepage, your deck, and your reps use — until a buyer can repeat them without you in the room.</div>
+            </div>
+            <div className="layer-output">
               <div className="output-label">Structural Output</div>
               <div className="output-text">A narrative that stays coherent from your homepage to a buyer pitching internally — without degrading as it moves through channels, reps, or decision-makers.</div>
             </div>
@@ -465,26 +482,30 @@ export default function RevenueOS() {
                 <span className="nei-meth-label">Specimen</span>
                 <span>Illustrative readout. Your narrative layer ships with this index — first calibrated during the audit.</span>
               </div>
-              <a href="#audit" className="nei-spec-cta">
+              <Link href="/audit" className="nei-spec-cta">
                 See the audit spec
                 <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
                   <path d="M0 4h12M12 4L9 1M12 4L9 7" stroke="currentColor" strokeWidth="1" strokeLinecap="square" />
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* LAYER 02 — Outbound */}
+        {/* LAYER 02 — Omnichannel */}
         <div className="layer-stage" data-layer="2">
           <div className="layer-info">
             <div className="layer-eyebrow">Infrastructure Layer · 02 / 03</div>
-            <h3 className="layer-name">Outbound<br />Infrastructure</h3>
+            <h3 className="layer-name">Omnichannel<br />Infrastructure</h3>
             <div className="layer-divider"></div>
-            <p className="layer-definition">The system that runs your outbound — sequencing, channels, targeting, response logic — built as an installable protocol rather than a list of activities your team performs. The protocol persists; reps operate it.</p>
+            <p className="layer-definition">The engine that runs your demand motion across every channel — email, LinkedIn, phone, content, paid, events — orchestrated by live buying signal rather than a static sequence. The system decides the next-best touch; your team runs it.</p>
+            <div className="layer-output">
+              <div className="output-label">In Practice</div>
+              <div className="output-text">We design the plays and triggers across your channels, install them in your stack, and run the first cycles with your team.</div>
+            </div>
             <div className="layer-output">
               <div className="output-label">Structural Output</div>
-              <div className="output-text">Pipeline that compounds rather than restarting every time a rep leaves or a campaign rotates. The system holds; only the operators change.</div>
+              <div className="output-text">Pipeline that doesn&apos;t depend on any single channel. Effort routes to wherever the signal is — and the system holds when a channel cools or a rep leaves.</div>
             </div>
           </div>
 
@@ -495,57 +516,75 @@ export default function RevenueOS() {
             <span className="panel-corner panel-corner-bl" aria-hidden="true"></span>
             <span className="panel-corner panel-corner-br" aria-hidden="true"></span>
             <div className="pmap-header">
-              <span className="pmap-header-label">Protocol Sequence — Enterprise Account Standard</span>
-              <span className="pmap-header-spec">Specimen · v.PROTO/02.A</span>
+              <span className="pmap-header-label">Signal Orchestration — Omnichannel Standard</span>
+              <span className="pmap-header-spec">Specimen · v.ORCH/02.B</span>
             </div>
+            {/* Signal → orchestrator → channel routing map. Live buying
+                signals converge on the orchestrator, which routes the
+                next-best touch to whichever channel the signal warrants —
+                the full omnichannel picture, not an outbound cadence. */}
             <div className="pmap-loop">
-              <svg className="loop-svg" viewBox="0 0 600 238" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-                <path id="loopTrackPath" className="loop-track" d="M 80,81 L 520,81 A 38.5,38.5 0 0 1 520,158 L 80,158 A 38.5,38.5 0 0 1 80,81 Z" />
+              <svg className="orch-svg" viewBox="0 0 640 320" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                {/* signal → orchestrator wires + flows */}
+                {ORCH_SIGNALS.map((s, i) => {
+                  const y = 56 + i * 52;
+                  const d = `M 168 ${y} C 214 ${y}, 216 160, 252 160`;
+                  return (
+                    <g key={s.label}>
+                      <path className="orch-wire" d={d} />
+                      <path className="orch-flow" d={d} style={{ animationDelay: `${i * 0.5}s` }} />
+                    </g>
+                  );
+                })}
+                {/* orchestrator → channel wires + flows */}
+                {ORCH_CHANNELS.map((c, i) => {
+                  const y = 40 + i * 48;
+                  const d = `M 400 160 C 438 160, 440 ${y}, 478 ${y}`;
+                  return (
+                    <g key={c}>
+                      <path className="orch-wire" d={d} />
+                      <path className="orch-flow" d={d} style={{ animationDelay: `${0.25 + i * 0.45}s` }} />
+                    </g>
+                  );
+                })}
 
-                <g className="loop-label">
-                  <text className="loop-time" x="120" y="17">T+0</text>
-                  <text className="loop-stage" x="120" y="38">Primer</text>
-                  <text className="loop-channel" x="120" y="59">Email touch</text>
-                </g>
-                <g className="loop-label">
-                  <text className="loop-time" x="300" y="17">T+2d</text>
-                  <text className="loop-stage" x="300" y="38">Surface</text>
-                  <text className="loop-channel" x="300" y="59">LinkedIn outreach</text>
-                </g>
-                <g className="loop-label">
-                  <text className="loop-time" x="480" y="17">T+5d</text>
-                  <text className="loop-stage" x="480" y="38">Context</text>
-                  <text className="loop-channel" x="480" y="59">Email follow-up</text>
-                </g>
-                <g className="loop-label">
-                  <text className="loop-channel" x="480" y="187">Cold outreach</text>
-                  <text className="loop-stage" x="480" y="208">Pursue</text>
-                  <text className="loop-time" x="480" y="229">T+9d</text>
-                </g>
-                <g className="loop-label">
-                  <text className="loop-channel" x="300" y="187">Signal trigger</text>
-                  <text className="loop-stage" x="300" y="208">Re-engage</text>
-                  <text className="loop-time" x="300" y="229">T+14d</text>
-                </g>
-                <g className="loop-label">
-                  <text className="loop-channel" x="120" y="187">Loop / re-enter</text>
-                  <text className="loop-stage" x="120" y="208">Cycle</text>
-                  <text className="loop-time" x="120" y="229">T+21d</text>
-                </g>
+                {/* signal labels (left) */}
+                {ORCH_SIGNALS.map((s, i) => {
+                  const y = 56 + i * 52;
+                  return (
+                    <g key={s.label}>
+                      <rect className="orch-sig-dot" x="14" y={y - 4} width="8" height="8" />
+                      <text className="orch-sig-text" x="30" y={y - 2}>{s.label}</text>
+                      <text className="orch-sig-sub" x="30" y={y + 11}>{s.sub}</text>
+                    </g>
+                  );
+                })}
 
-                <g className="loop-dot"><rect className="ring" x="114" y="75" width="12" height="12" /><rect className="core" x="117" y="78" width="6" height="6" /></g>
-                <g className="loop-dot"><rect className="ring" x="294" y="75" width="12" height="12" /><rect className="core" x="297" y="78" width="6" height="6" /></g>
-                <g className="loop-dot"><rect className="ring" x="474" y="75" width="12" height="12" /><rect className="core" x="477" y="78" width="6" height="6" /></g>
-                <g className="loop-dot"><rect className="ring" x="474" y="152" width="12" height="12" /><rect className="core" x="477" y="155" width="6" height="6" /></g>
-                <g className="loop-dot"><rect className="ring" x="294" y="152" width="12" height="12" /><rect className="core" x="297" y="155" width="6" height="6" /></g>
-                <g className="loop-dot"><rect className="ring" x="114" y="152" width="12" height="12" /><rect className="core" x="117" y="155" width="6" height="6" /></g>
+                {/* orchestrator node (center) */}
+                <rect className="orch-node" x="252" y="122" width="148" height="76" />
+                <path className="orch-node-bracket" d="M 252 134 L 252 122 L 264 122" />
+                <path className="orch-node-bracket" d="M 400 186 L 400 198 L 388 198" />
+                <circle className="orch-node-live" cx="388" cy="134" r="3" />
+                <text className="orch-node-title" x="326" y="156" textAnchor="middle">Orchestrator</text>
+                <text className="orch-node-sub" x="326" y="174" textAnchor="middle">next-best touch</text>
+
+                {/* channel chips (right) */}
+                {ORCH_CHANNELS.map((c, i) => {
+                  const y = 40 + i * 48;
+                  return (
+                    <g key={c}>
+                      <rect className="orch-chip" x="478" y={y - 16} width="148" height="32" />
+                      <text className="orch-chip-text" x="552" y={y + 4} textAnchor="middle">{c}</text>
+                    </g>
+                  );
+                })}
               </svg>
             </div>
             <div className="pmap-stats">
               <div>
-                <div className="pmap-stat-label">Cadence</div>
+                <div className="pmap-stat-label">Trigger</div>
                 <div className="pmap-stat-value">
-                  6 touches / 21d
+                  Signal-based
                   <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
                     <path d={sparkPath(SPARK_CADENCE, 60, 14)} />
                   </svg>
@@ -554,7 +593,7 @@ export default function RevenueOS() {
               <div>
                 <div className="pmap-stat-label">Channels</div>
                 <div className="pmap-stat-value">
-                  3 active
+                  6 orchestrated
                   <svg className="stat-spark" viewBox="0 0 60 14" preserveAspectRatio="none">
                     <path d={sparkPath(SPARK_CHANNELS, 60, 14)} />
                   </svg>
@@ -580,8 +619,8 @@ export default function RevenueOS() {
               </div>
             </div>
             <div className="panel-anchor">
-              Illustrative sequence. Yours is designed to your motion,
-              versioned, and installed with your team.
+              Illustrative orchestration. Your channel mix is designed to
+              your motion and routed by live signal — not a fixed cadence.
             </div>
           </div>
         </div>
@@ -592,7 +631,11 @@ export default function RevenueOS() {
             <div className="layer-eyebrow">Infrastructure Layer · 03 / 03</div>
             <h3 className="layer-name">GTM<br />Intelligence</h3>
             <div className="layer-divider"></div>
-            <p className="layer-definition">The observation layer that watches every interaction, identifies what&apos;s actually working at a structural level, and feeds those insights back into narrative and outbound — so the system keeps learning instead of decaying.</p>
+            <p className="layer-definition">The observation layer that watches every interaction, identifies what&apos;s actually working at a structural level, and feeds those insights back into narrative and channels — so the system keeps learning instead of decaying.</p>
+            <div className="layer-output">
+              <div className="output-label">In Practice</div>
+              <div className="output-text">We instrument every touch, then sit with you each quarter and retune the system against what the signal says.</div>
+            </div>
             <div className="layer-output">
               <div className="output-label">Structural Output</div>
               <div className="output-text">A revenue system that gets sharper every quarter, rather than depreciating the moment its installers leave. Every interaction strengthens the next.</div>

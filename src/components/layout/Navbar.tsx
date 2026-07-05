@@ -178,7 +178,7 @@ function AuditCTA({ onMenuClose }: { onMenuClose?: () => void }) {
   const [hovered, setHovered] = useState(false);
   return (
     <Link
-      href="#audit"
+      href="/audit"
       className="relative ml-2 px-4 py-2 text-[11px] tracking-[0.18em] font-body font-medium transition-colors duration-150 select-none"
       style={{ color: hovered ? "#D4524E" : "var(--text-muted)" }}
       onMouseEnter={() => { setHovered(true); onMenuClose?.(); }}

@@ -15,7 +15,7 @@ interface Node {
 const NODES: Node[] = [
   { id: "in",  kind: "io",     label: "Ingest",   title: "Market Signal",        sub: "ICP · intent · demand" },
   { id: "l1",  kind: "layer",  label: "Layer 01", title: "Narrative",            sub: "Positioning & language" },
-  { id: "l2",  kind: "layer",  label: "Layer 02", title: "Outbound",             sub: "Sequencing & channels" },
+  { id: "l2",  kind: "layer",  label: "Layer 02", title: "Channels",             sub: "Omnichannel orchestration" },
   { id: "l3",  kind: "layer",  label: "Layer 03", title: "Intelligence",         sub: "Observe & learn" },
   { id: "out", kind: "output", label: "Output",   title: "Compounding Pipeline", sub: "Institutional revenue", live: true },
 ];
@@ -200,10 +200,11 @@ export default function SystemArchitecture() {
             <span className="line-2">One closed loop.</span>
           </h2>
           <p className="sysarch-sub">
-            Narrative shapes what the market hears. Outbound puts it in motion.
-            Intelligence watches what actually works and feeds it back — so every
-            cycle sharpens the next. That returning signal is why the system
-            compounds instead of resetting each quarter.
+            Narrative shapes what the market hears. Channels put it in motion —
+            every channel, routed by signal. Intelligence watches what actually
+            works and feeds it back, so every cycle sharpens the next. That
+            returning signal is why the system compounds instead of resetting
+            each quarter.
           </p>
         </header>
 

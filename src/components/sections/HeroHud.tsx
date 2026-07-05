@@ -34,13 +34,13 @@ const METRICS = [
 
 const ALL_LOG_ENTRIES = [
   { time: "15:33:48", type: "SIGNAL", msg: "ICP match → Series B, 340 FTE" },
-  { time: "15:33:50", type: "INTEL",  msg: 'Intent cluster: "outbound infrastructure"' },
+  { time: "15:33:50", type: "INTEL",  msg: 'Intent cluster: "GTM infrastructure"' },
   { time: "15:33:51", type: "STATUS", msg: "MFS Foundry cadence: ACTIVE" },
   { time: "15:33:53", type: "SIGNAL", msg: "Entropy delta: −4.2% (12h window)" },
   { time: "15:33:55", type: "INTEL",  msg: "Narrative resonance: STRONG" },
   { time: "15:33:57", type: "SYSTEM", msg: "Pipeline integrity: 94.1% ▲" },
   { time: "15:33:59", type: "SIGNAL", msg: 'New trigger: "revenue operations"' },
-  { time: "15:34:01", type: "STATUS", msg: "Outbound velocity: NOMINAL" },
+  { time: "15:34:01", type: "STATUS", msg: "Channel routing: NOMINAL" },
   { time: "15:34:04", type: "INTEL",  msg: "ICP score: 91/100 → QUALIFIED" },
   { time: "15:34:06", type: "SYSTEM", msg: "GTM architecture layer: SYNCED" },
   { time: "15:34:09", type: "SIGNAL", msg: "Sequence open rate: +12.4% (7d)" },

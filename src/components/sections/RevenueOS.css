@@ -651,6 +651,95 @@
   color: var(--bone-dusk);
 }
 
+/* ─── OMNICHANNEL ORCHESTRATION MAP (Layer 02 artifact) ────────────────
+   Signals (sand, left) converge on the orchestrator; routed touches fan
+   out to channel chips (right). Clay carries the moving signal; sand is
+   structure; one red live-dot on the orchestrator. */
+.revos-pin .orch-svg { width: 100%; height: auto; display: block; }
+
+.revos-pin .orch-wire {
+  fill: none;
+  stroke: rgba(166, 90, 69, 0.32);
+  stroke-width: 1.2;
+}
+.revos-pin .orch-flow {
+  fill: none;
+  stroke: #C06B50;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-dasharray: 8 240;
+  animation: orch-flow 4.2s linear infinite;
+}
+@keyframes orch-flow { to { stroke-dashoffset: -248; } }
+
+.revos-pin .orch-sig-dot { fill: rgba(199, 180, 157, 0.65); }
+.revos-pin .orch-sig-text {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: var(--bronze);
+}
+.revos-pin .orch-sig-sub {
+  font-family: var(--f-body);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  fill: var(--bone-dusk);
+}
+
+.revos-pin .orch-node {
+  fill: #191815;
+  stroke: rgba(199, 180, 157, 0.35);
+  stroke-width: 1;
+}
+.revos-pin .orch-node-bracket {
+  fill: none;
+  stroke: var(--bronze);
+  stroke-width: 1.4;
+  opacity: 0.85;
+}
+.revos-pin .orch-node-live {
+  fill: var(--signal-bright);
+  animation: orch-live 2.2s ease-in-out infinite;
+}
+@keyframes orch-live { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.revos-pin .orch-node-title {
+  font-family: var(--f-display);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  fill: var(--ink);
+}
+.revos-pin .orch-node-sub {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: var(--bone-dusk);
+}
+
+.revos-pin .orch-chip {
+  fill: #20201E;
+  stroke: rgba(199, 180, 157, 0.28);
+  stroke-width: 1;
+}
+.revos-pin .orch-chip-text {
+  font-family: var(--f-body);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  fill: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revos-pin .orch-flow { animation: none; opacity: 0; }
+  .revos-pin .orch-node-live { animation: none; }
+}
+
+/* Stacked layer-output rows: only the first carries margin-top:auto (the
+   push-to-bottom); subsequent rows sit directly beneath with a gap. */
+.revos-pin .layer-output + .layer-output { margin-top: 18px; }
+
 /* Panel anchor — one quiet line tying each specimen panel to the real
    deliverable, so the instrumentation reads as product rather than
    theater (site-audit "reality per inch" note). */
