@@ -158,11 +158,13 @@ export default function SystemArchitecture() {
         }
 
         if (reduce) return;
-        // A single bright packet traverses the wire toward its target.
-        flow.style.strokeDasharray = `${feedback ? 3 : 5} ${len}`;
-        const dur = Math.max(900, len * (feedback ? 9 : 7));
+        // A bright comet traverses the wire toward its target — long enough
+        // to read as directional flow, not a flickering dot.
+        const packet = feedback ? 16 : 24;
+        flow.style.strokeDasharray = `${packet} ${len}`;
+        const dur = Math.max(1100, len * (feedback ? 9 : 7));
         const anim = flow.animate(
-          [{ strokeDashoffset: 0 }, { strokeDashoffset: -(len + (feedback ? 3 : 5)) }],
+          [{ strokeDashoffset: 0 }, { strokeDashoffset: -(len + packet) }],
           { duration: dur, iterations: Infinity, easing: "linear", delay: i * 260 }
         );
         anims.push(anim);

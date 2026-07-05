@@ -390,7 +390,7 @@
 }
 
 .reframe-pin-wrap .reframe-card {
-  padding: 44px 36px;
+  padding: 46px 40px;
   background: var(--graphite);
   border-right: 0.5px solid var(--graphite-inner-line);
   position: relative;

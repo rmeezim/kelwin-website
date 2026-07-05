@@ -70,12 +70,12 @@
 .revos-pin .revos-stage {
   position: relative;
   z-index: 1;
-  padding: 80px 64px 80px;
+  padding: 100px 64px 104px;
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(80px, 10vh, 140px);
+  gap: clamp(104px, 12vh, 168px);
 }
 @media (max-width: 900px) {
   .revos-pin .revos-stage { padding: 56px 28px 56px; gap: clamp(56px, 8vh, 96px); }
@@ -87,7 +87,7 @@
   padding-left: clamp(40px, 5vw, 64px);
   display: flex;
   flex-direction: column;
-  gap: clamp(80px, 10vh, 140px);
+  gap: clamp(112px, 13vh, 184px);
 }
 @media (max-width: 900px) {
   .revos-pin .layers-zone { padding-left: 32px; gap: clamp(56px, 8vh, 96px); }
@@ -211,7 +211,7 @@
 .revos-pin .layer-stage {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
-  gap: 56px;
+  gap: clamp(56px, 5vw, 80px);
   align-items: stretch;
 }
 /* Focus device: on the continuous dark surface the panels never dim —
