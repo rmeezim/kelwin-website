@@ -18,6 +18,8 @@ interface Metric {
   /** The diagnostic pivot: what it's mistaken for → what it actually is. */
   mistaken: string;
   actual: string;
+  /** The expanded read revealed on hover/focus — makes the point explicit. */
+  detail: string;
   /** Fill fraction of the arc (0–1) — the data-layer reading. */
   fill: number;
   /** Count-up duration in ms — varied per dial for an organic settle. */
@@ -26,9 +28,9 @@ interface Metric {
 }
 
 // Four signals, every one from a primary-grade B2B GTM source. Each dial
-// pairs the reading with a symptom→cause pivot, so the section doesn't just
-// list evidence — it re-states the diagnostic reframe four times over: the
-// thing you'd blame (pipeline, volume, reps, price) is never the constraint.
+// pairs the reading with a symptom→cause pivot, and a hover detail spells
+// the point out plainly — so the section re-states the diagnostic reframe
+// four times: the thing you'd blame is never the constraint.
 const METRICS: Metric[] = [
   {
     id: "journey",
@@ -39,6 +41,8 @@ const METRICS: Metric[] = [
     takeaway: "The decision happens without you.",
     mistaken: "Pipeline",
     actual: "Narrative",
+    detail:
+      "Buyers spend only 17% of a purchase with sales — and less with any single vendor. The decision is mostly made before a rep is in the room, on what the market already believes about you. That's narrative work, not more outreach.",
     fill: 0.17,
     duration: 1200,
     source: "Gartner",
@@ -52,6 +56,8 @@ const METRICS: Metric[] = [
     takeaway: "Only 5% are ready to buy now.",
     mistaken: "Volume",
     actual: "Memory",
+    detail:
+      "At any given moment only about 5% of your market is actively buying. You can't convert the 95% who aren't ready — you can only be the name they recall when they are. That's mental availability, not pipeline volume.",
     fill: 0.95,
     duration: 1650,
     source: "Ehrenberg‑Bass",
@@ -65,6 +71,8 @@ const METRICS: Metric[] = [
     takeaway: "Deciding is harder than pitching.",
     mistaken: "Weak reps",
     actual: "Architecture",
+    detail:
+      "More than three‑quarters of buyers call their last purchase complex or difficult. That friction is the buying process — too many stakeholders, no clear path — not your reps underperforming. You win by making the decision easier to make.",
     fill: 0.77,
     duration: 1450,
     source: "Gartner",
@@ -78,6 +86,8 @@ const METRICS: Metric[] = [
     takeaway: "How you sell beats what you sell.",
     mistaken: "Price",
     actual: "The sell",
+    detail:
+      "The biggest driver of B2B loyalty isn't brand, product, or price — it's the buying experience, at 53%. How you frame and guide the decision outweighs everything sitting in your pipeline. The way you sell is the product.",
     fill: 0.53,
     duration: 1350,
     source: "CEB · HBR",
@@ -87,6 +97,16 @@ const METRICS: Metric[] = [
 // Dial geometry — shared across all four so the fills compare cleanly.
 const R = 52;
 const CIRC = 2 * Math.PI * R;
+
+// Split into words for the blur-to-focus reveal; each word carries its
+// index so CSS can stagger it into existence.
+function words(text: string) {
+  return text.split(" ").map((w, i) => (
+    <span className="ev-word" style={{ ["--wi" as string]: i }} key={i}>
+      {w}{" "}
+    </span>
+  ));
+}
 
 export default function StructuralEvidence() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -131,6 +151,10 @@ export default function StructuralEvidence() {
             <span className="line-1">The symptoms look like pipeline.</span>{" "}
             <span className="line-2">The instruments read structure.</span>
           </h2>
+          <p className="ev-subhead">
+            Four numbers every team blames on the pipeline — and what each one is
+            really measuring. <span className="ev-subhead-hint">Hover a dial for the full read.</span>
+          </p>
         </header>
 
         <div className="ev-grid">
@@ -138,6 +162,8 @@ export default function StructuralEvidence() {
             <article
               className="ev-dial-cell ev-reveal"
               key={m.id}
+              tabIndex={0}
+              aria-label={`${m.dimension}: ${m.value}${m.suffix} — ${m.detail}`}
               style={{ ["--i" as string]: i, ["--pct" as string]: m.fill }}
             >
               <span className="ev-dimension">{m.dimension}</span>
@@ -184,12 +210,22 @@ export default function StructuralEvidence() {
               <p className="ev-takeaway">{m.takeaway}</p>
 
               {/* Diagnostic pivot — the mistaken read, struck out, resolving
-                  to the real constraint. This is what solidifies the reframe. */}
+                  to the real constraint. */}
               <p className="ev-pivot">
                 <span className="ev-pivot-wrong">{m.mistaken}</span>
                 <span className="ev-pivot-arrow" aria-hidden="true">→</span>
                 <span className="ev-pivot-right">{m.actual}</span>
               </p>
+
+              {/* Hover/focus detail — the point spelled out, words fading into
+                  focus. Overlays the cell on pointer devices; sits inline on
+                  touch (before the source) so the reading is never gated. */}
+              <div className="ev-detail" aria-hidden="true">
+                <span className="ev-detail-head">
+                  {m.dimension} · {m.value}{m.suffix}
+                </span>
+                <p className="ev-detail-body">{words(m.detail)}</p>
+              </div>
 
               <span className="ev-source">{m.source}</span>
             </article>

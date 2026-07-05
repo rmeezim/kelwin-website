@@ -1,14 +1,15 @@
 /* ─── Structural Evidence — scoped to .evidence ──────────────────────────
    A cluster of four diagnostic instrument dials that sits right after the
    reframe. Each radial gauge sweeps to a stat's proportion while the number
-   counts up in its center, so the reading lands at a glance before any text.
-   Beneath each dial, a symptom→cause pivot re-states the diagnostic reframe:
-   the thing you'd blame is never the real constraint. Sand structure (ticks,
-   bezel, labels), clay arcs (data), one red moment on the eyebrow. */
+   counts up in its center, so the reading lands at a glance. A symptom→cause
+   pivot re-states the reframe per dial; hovering (or focusing) a dial reveals
+   the point in full, words fading into focus. Sand structure, clay arcs, one
+   red moment. No glows — flat and clean on the charcoal. */
 
 .evidence {
   --surface: #110F0A;
   --surface-elev: #20201E;
+  --surface-panel: #191815;
   --cream: #FBFAF6;
   --cream-muted: rgba(251, 250, 246, 0.66);
   --cream-dim: rgba(251, 250, 246, 0.45);
@@ -34,9 +35,6 @@
   font-family: var(--f-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Ambient centre glow so the dial cluster reads as lit instrumentation. */
-  background-image:
-    radial-gradient(ellipse 58% 46% at 50% 42%, rgba(199, 180, 157, 0.05) 0%, transparent 64%);
   border-top: 1px solid var(--hairline);
 }
 
@@ -59,7 +57,7 @@
 }
 
 /* ── Header ── */
-.ev-head { margin-bottom: clamp(48px, 6vw, 76px); max-width: 780px; }
+.ev-head { margin-bottom: clamp(48px, 6vw, 76px); max-width: 820px; }
 .ev-head-top {
   display: flex;
   align-items: baseline;
@@ -97,6 +95,20 @@
 }
 .ev-heading .line-1 { color: var(--cream); }
 .ev-heading .line-2 { color: var(--cream-dim); }
+.ev-subhead {
+  font-family: var(--f-body);
+  font-size: clamp(14px, 1.05vw, 15.5px);
+  line-height: 1.6;
+  color: var(--cream-muted);
+  margin: clamp(16px, 1.8vw, 22px) 0 0;
+  max-width: 60ch;
+}
+.ev-subhead-hint {
+  color: var(--sand);
+  font-family: var(--f-mono);
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+}
 
 /* ── Instrument cluster ── */
 .ev-grid {
@@ -118,9 +130,10 @@
   text-align: center;
   padding: 0 clamp(6px, 1vw, 16px);
   position: relative;
+  cursor: default;
+  outline: none;
 }
-/* Hairline separators between dials on the desktop row — keeps the
-   one-dark-world rule (divide by rule, not by background). */
+/* Hairline separators between dials on the desktop row. */
 @media (min-width: 1081px) {
   .ev-dial-cell:not(:last-child)::after {
     content: "";
@@ -173,13 +186,10 @@
   stroke-dashoffset: var(--circ);
   transition: stroke-dashoffset 1.5s var(--ease-out);
   transition-delay: calc(var(--i) * 0.09s + 0.12s);
-  filter: drop-shadow(0 0 5px rgba(166, 90, 69, 0.55));
 }
 .ev-dial-cell.is-in .ev-dial-arc {
   stroke-dashoffset: calc(var(--circ) * (1 - var(--pct)));
 }
-/* Gradient-ish brighten toward the leading edge via a second faint arc could
-   go here; the round cap + glow already give the terminal a lit node. */
 
 .ev-dial-center {
   position: absolute;
@@ -206,8 +216,7 @@
   color: var(--cream-muted);
   margin: 0 0 clamp(14px, 1.6vw, 18px);
   max-width: 20ch;
-  /* reserve two lines so the takeaway + pivot align across the row */
-  min-height: 2.8em;
+  min-height: 2.8em; /* reserve two lines so the row aligns */
 }
 .ev-takeaway {
   font-family: var(--f-display);
@@ -219,17 +228,14 @@
   margin: 0 0 clamp(16px, 1.8vw, 20px);
   max-width: 20ch;
   text-wrap: balance;
-  /* reserve two lines so the pivot chips sit on one baseline */
   min-height: 2.48em;
 }
-/* On stacked layouts the reserved space just adds dead air — release it. */
 @media (max-width: 1080px) {
   .ev-unit { min-height: 0; }
   .ev-takeaway { min-height: 0; }
 }
 
-/* Diagnostic pivot — mistaken read (struck, muted) resolving to the real
-   constraint (lit). The one place the reframe is spelled out per instrument. */
+/* Diagnostic pivot — mistaken read (struck) resolving to the real cause. */
 .ev-pivot {
   display: inline-flex;
   align-items: center;
@@ -258,6 +264,117 @@
   text-transform: uppercase;
   color: var(--taupe);
   margin-top: auto;
+}
+
+/* ── Hover / focus detail overlay ─────────────────────────────────────────
+   On pointer devices the panel covers the cell and the explanation fades in
+   word by word (blur → focus). On touch, hover can't fire, so the detail
+   drops to a static block below the caption — the reading is never gated. */
+.ev-detail {
+  position: absolute;
+  inset: -6px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: clamp(20px, 2vw, 28px);
+  text-align: left;
+  background: var(--surface-panel);
+  border: 1px solid var(--sand-line);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transform: scale(0.985);
+  pointer-events: none;
+  transition: opacity 0.32s var(--ease-out), transform 0.32s var(--ease-out);
+}
+/* sand corner reticles on the panel */
+.ev-detail::before,
+.ev-detail::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 0 solid var(--sand);
+  opacity: 0.8;
+}
+.ev-detail::before { top: -1px; left: -1px; border-top-width: 1px; border-left-width: 1px; }
+.ev-detail::after { bottom: -1px; right: -1px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.ev-detail-head {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.ev-detail-body {
+  font-family: var(--f-body);
+  font-size: clamp(13px, 1.02vw, 14.5px);
+  line-height: 1.62;
+  color: var(--cream);
+  margin: 0;
+}
+
+/* Words materialise: blur → focus, staggered. Only inline opacity+filter so
+   text still wraps naturally. */
+.ev-word {
+  display: inline;
+  opacity: 0;
+  filter: blur(5px);
+  transition: opacity 0.45s ease, filter 0.45s ease;
+  transition-delay: 0s;
+}
+
+/* Reveal on hover or keyboard focus (pointer devices). */
+@media (hover: hover) and (pointer: fine) {
+  .ev-dial-cell { cursor: pointer; }
+  .ev-dial-cell:hover .ev-detail,
+  .ev-dial-cell:focus-visible .ev-detail,
+  .ev-dial-cell:focus-within .ev-detail {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+  .ev-dial-cell:hover .ev-word,
+  .ev-dial-cell:focus-visible .ev-word,
+  .ev-dial-cell:focus-within .ev-word {
+    opacity: 1;
+    filter: blur(0);
+    transition-delay: calc(var(--wi) * 0.028s);
+  }
+  /* keyboard focus ring on the cell for a11y */
+  .ev-dial-cell:focus-visible { outline: 1px solid var(--sand-line); outline-offset: 6px; }
+}
+
+/* Touch / no-hover: show the detail inline, always legible, no overlay. */
+@media (hover: none), (pointer: coarse) {
+  .ev-detail {
+    position: static;
+    inset: auto;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    box-shadow: none;
+    background: transparent;
+    border: none;
+    text-align: center;
+    align-items: center;
+    padding: 18px 0 0;
+    margin-top: 4px;
+    gap: 10px;
+  }
+  .ev-detail::before, .ev-detail::after { display: none; }
+  .ev-detail-head { display: none; } /* dimension + value already shown above */
+  .ev-detail-body { max-width: 34ch; }
+  .ev-word { opacity: 1; filter: none; }
+  .ev-source { margin-top: 16px; }
+  .ev-subhead-hint { display: none; } /* no hover on touch */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ev-detail { transition: opacity 0.2s ease; transform: none; }
+  .ev-word { filter: none; transition: opacity 0.2s ease; transition-delay: 0s !important; }
 }
 
 /* ── Foot — editorial coda + source line ── */
