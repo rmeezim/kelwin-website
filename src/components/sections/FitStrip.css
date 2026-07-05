@@ -1,0 +1,169 @@
+/* ─── Fit strip — scoped to .fitstrip ─────────────────────────────────────
+   Compact self-qualification band: built for / not for, three lines each.
+   Sand structure; the "not for" side dims with a red strike-mark. */
+
+.fitstrip {
+  --surface: #110F0A;
+  --cream: #FBFAF6;
+  --cream-muted: rgba(251, 250, 246, 0.66);
+  --cream-dim: rgba(251, 250, 246, 0.45);
+  --sand: #C7B49D;
+  --sand-line: rgba(199, 180, 157, 0.22);
+  --taupe: #8F8981;
+  --signal: #BF3A36;
+  --signal-bright: #D4524E;
+  --hairline: rgba(251, 250, 246, 0.09);
+  --f-display: var(--font-instrument-sans), serif;
+  --f-body: var(--font-inter), sans-serif;
+  --f-mono: var(--font-mono);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  position: relative;
+  background: var(--surface);
+  color: var(--cream);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-top: 1px solid var(--hairline);
+}
+
+.fit-stage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(56px, 7vh, 88px) clamp(28px, 5vw, 64px);
+}
+
+.fitstrip .fit-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.fitstrip .fit-reveal.is-in { opacity: 1; transform: translateY(0); }
+.fitstrip .fit-cols.fit-reveal { transition-delay: 0.08s; }
+@media (prefers-reduced-motion: reduce) {
+  .fitstrip .fit-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+.fit-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(40px, 5vw, 88px);
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .fit-grid { grid-template-columns: 1fr; gap: 36px; }
+}
+
+/* ── Header column ── */
+.fit-head-top {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(16px, 1.8vw, 22px);
+}
+.fit-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-bright);
+}
+.fit-eyebrow-dash { width: 28px; height: 1px; background: var(--signal); opacity: 0.75; }
+.fit-meta {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.62);
+}
+.fit-heading {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(24px, 2.8vw, 40px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 clamp(16px, 2vw, 24px);
+}
+.fit-heading .line-1 { color: var(--cream); }
+.fit-heading .line-2 { color: var(--cream-dim); }
+.fit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sand);
+  text-decoration: none;
+  transition: gap 0.25s var(--ease-out), color 0.2s ease;
+}
+.fit-link:hover { gap: 15px; color: var(--signal-bright); }
+
+/* ── Columns ── */
+.fit-cols {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(28px, 3.4vw, 56px);
+}
+@media (max-width: 620px) {
+  .fit-cols { grid-template-columns: 1fr; gap: 28px; }
+}
+.fit-col-label {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--sand-line);
+}
+.fit-col-label-not { color: var(--taupe); }
+
+.fit-list { list-style: none; margin: 0; padding: 0; }
+.fit-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--hairline);
+  font-family: var(--f-body);
+  font-size: clamp(13.5px, 1vw, 15px);
+  line-height: 1.55;
+  color: var(--cream-muted);
+}
+.fit-item:last-child { border-bottom: none; }
+.fit-item-not { color: var(--cream-dim); }
+
+.fit-mark {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  position: relative;
+  top: 1px;
+}
+.fit-mark-yes { background: var(--sand); opacity: 0.85; }
+.fit-mark-no {
+  background: transparent;
+}
+/* red strike mark — a small × drawn with two hairlines */
+.fit-mark-no::before,
+.fit-mark-no::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 50%;
+  height: 1px;
+  background: var(--signal-bright);
+  opacity: 0.8;
+}
+.fit-mark-no::before { transform: rotate(45deg); }
+.fit-mark-no::after { transform: rotate(-45deg); }

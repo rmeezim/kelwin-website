@@ -8,9 +8,10 @@ import DiagnosticReframe from "@/components/sections/DiagnosticReframe";
 import StructuralEvidence from "@/components/sections/StructuralEvidence";
 import RevenueOS from "@/components/sections/RevenueOS";
 import SystemArchitecture from "@/components/sections/SystemArchitecture";
-import FirstPrinciples from "@/components/sections/FirstPrinciples";
-import OperatingPrincipleBand from "@/components/sections/OperatingPrincipleBand";
+import StateChange from "@/components/sections/StateChange";
 import Methodology from "@/components/sections/Methodology";
+import FitStrip from "@/components/sections/FitStrip";
+import AssetInventory from "@/components/sections/AssetInventory";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/layout/Footer";
 
@@ -30,9 +31,10 @@ export default function Home() {
       <StructuralEvidence />
       <RevenueOS />
       <SystemArchitecture />
-      <FirstPrinciples />
-      <OperatingPrincipleBand />
+      <StateChange />
       <Methodology />
+      <FitStrip />
+      <AssetInventory />
       <FinalCTA />
       <Footer />
     </main>

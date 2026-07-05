@@ -148,12 +148,13 @@ export default function StructuralEvidence() {
             <span className="ev-meta">Diagnostic · four instruments</span>
           </div>
           <h2 className="ev-heading">
-            <span className="line-1">The symptoms look like pipeline.</span>{" "}
-            <span className="line-2">The instruments read structure.</span>
+            <span className="line-1">Four numbers.</span>{" "}
+            <span className="line-2">One diagnosis.</span>
           </h2>
           <p className="ev-subhead">
-            Four numbers every team blames on the pipeline — and what each one is
-            really measuring. <span className="ev-subhead-hint">Hover a dial for the full read.</span>
+            Every one of them gets blamed on the pipeline. Every one is
+            measuring something structural.{" "}
+            <span className="ev-subhead-hint">Hover a dial for the full read.</span>
           </p>
         </header>
 

@@ -621,8 +621,8 @@ export default function DiagnosticReframe() {
         <div className="reframe-top">
           <div className="reframe-left">
             <h2 className="headline-display">
-              <span className="line-1">What looks like a pipeline problem</span>
-              <span className="line-2">is rarely a pipeline problem.</span>
+              <span className="line-1">Most teams are fixing</span>
+              <span className="line-2">the wrong layer.</span>
             </h2>
             <DiagnosticMethodCTA
               href="#methodology"
@@ -732,8 +732,8 @@ export default function DiagnosticReframe() {
             system. Same vocabulary as the dark-phase HUD. */}
         <div className="reframe-meta-bar">
           <span className="meta-segment">Diagnostic Methodology · <strong>v2.4</strong></span>
-          <span className="meta-segment">Calibrated <strong>Q1·2026</strong></span>
-          <span className="meta-segment">Coherence <strong>0.847</strong></span>
+          <span className="meta-segment">Layers audited · <strong>03</strong></span>
+          <span className="meta-segment">Full spec · <strong>/audit</strong></span>
         </div>
       </section>
     </div>

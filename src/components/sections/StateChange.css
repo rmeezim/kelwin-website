@@ -1,0 +1,219 @@
+/* ─── State Change — scoped to .statechange ──────────────────────────────
+   One visual argument: the sawtooth GTM that resets vs the installed
+   system that compounds. Two panels on a shared axis; sand structure,
+   clay data, one red tip on the compounding curve. */
+
+.statechange {
+  --surface: #110F0A;
+  --surface-elev: #20201E;
+  --cream: #FBFAF6;
+  --cream-muted: rgba(251, 250, 246, 0.66);
+  --cream-dim: rgba(251, 250, 246, 0.45);
+  --sand: #C7B49D;
+  --sand-line: rgba(199, 180, 157, 0.22);
+  --sand-faint: rgba(199, 180, 157, 0.12);
+  --clay: #A65A45;
+  --clay-bright: #C06B50;
+  --taupe: #8F8981;
+  --signal: #BF3A36;
+  --signal-bright: #D4524E;
+  --hairline: rgba(251, 250, 246, 0.09);
+  --f-display: var(--font-instrument-sans), serif;
+  --f-body: var(--font-inter), sans-serif;
+  --f-mono: var(--font-mono);
+  --f-serif: var(--font-serif);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  position: relative;
+  background: var(--surface);
+  color: var(--cream);
+  font-family: var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border-top: 1px solid var(--hairline);
+}
+
+.sc-stage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(64px, 8vh, 104px) clamp(28px, 5vw, 64px) clamp(64px, 8vh, 100px);
+}
+
+/* ── Reveal ── */
+.statechange .sc-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.statechange .sc-reveal.is-in { opacity: 1; transform: translateY(0); }
+.statechange .sc-panel.sc-reveal:nth-child(2) { transition-delay: 0.1s; }
+@media (prefers-reduced-motion: reduce) {
+  .statechange .sc-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ── Header ── */
+.sc-head { margin-bottom: clamp(40px, 5vw, 64px); max-width: 780px; }
+.sc-head-top {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(18px, 2.2vw, 26px);
+}
+.sc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-bright);
+}
+.sc-eyebrow-dash { width: 28px; height: 1px; background: var(--signal); opacity: 0.75; }
+.sc-meta {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.62);
+}
+.sc-heading {
+  font-family: var(--f-display);
+  font-weight: 400;
+  font-size: clamp(26px, 3.3vw, 48px);
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0 0 clamp(14px, 1.6vw, 20px);
+}
+.sc-heading .line-1 { color: var(--cream); }
+.sc-heading .line-2 { color: var(--cream-dim); }
+.sc-sub {
+  font-family: var(--f-body);
+  font-size: clamp(14.5px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: var(--cream-muted);
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* ── Panels ── */
+.sc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+}
+@media (max-width: 860px) {
+  .sc-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.sc-panel {
+  margin: 0;
+  padding: clamp(20px, 2vw, 28px) clamp(20px, 2vw, 28px) clamp(18px, 1.8vw, 24px);
+  background: var(--surface-elev);
+  border: 1px solid var(--sand-line);
+}
+.sc-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.sc-panel-tag {
+  font-family: var(--f-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.sc-panel-mode {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.sc-mode-reset { color: var(--taupe); }
+.sc-mode-compound { color: var(--clay-bright); }
+
+.sc-chart { width: 100%; height: auto; display: block; }
+.sc-axis { stroke: var(--sand-line); stroke-width: 1; }
+.sc-tick { stroke: var(--sand-line); stroke-width: 1; }
+
+/* Lines draw in on reveal via normalized pathLength. */
+.sc-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.6s var(--ease-out) 0.2s;
+}
+.sc-panel.is-in .sc-line { stroke-dashoffset: 0; }
+.sc-line-reset { stroke: rgba(166, 90, 69, 0.55); }
+.sc-line-compound { stroke: var(--clay-bright); }
+
+.sc-drop {
+  stroke: rgba(143, 137, 129, 0.4);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+}
+.sc-area {
+  fill: rgba(166, 90, 69, 0.08);
+  opacity: 0;
+  transition: opacity 0.9s ease 1.2s;
+}
+.sc-panel.is-in .sc-area { opacity: 1; }
+.sc-tip {
+  fill: var(--signal-bright);
+  opacity: 0;
+  transition: opacity 0.4s ease 1.7s;
+  animation: sc-blink 2.2s ease-in-out 1.7s infinite;
+}
+.sc-panel.is-in .sc-tip { opacity: 1; }
+@keyframes sc-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+.sc-qlabels {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 2px 0;
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--taupe);
+}
+.sc-note {
+  font-family: var(--f-body);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--cream-muted);
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline);
+}
+
+/* ── Coda ── */
+.sc-foot {
+  margin-top: clamp(36px, 4.4vw, 56px);
+  padding-top: 20px;
+  border-top: 1px solid var(--hairline);
+}
+.sc-coda {
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: clamp(19px, 1.9vw, 26px);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--cream);
+  margin: 0;
+  max-width: 44ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-line { stroke-dashoffset: 0 !important; transition: none !important; }
+  .sc-area { opacity: 1 !important; transition: none !important; }
+  .sc-tip { opacity: 1 !important; animation: none !important; }
+}

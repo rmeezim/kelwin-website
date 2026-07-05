@@ -115,8 +115,8 @@ export default function FinalCTA() {
 
         {/* Bottom status bar. */}
         <div className="fcta-botbar">
-          <span className="fcta-mono">Protocol 04 · Ready</span>
-          <span className="fcta-mono">Coherence 0.847</span>
+          <span className="fcta-mono">Audit/Spec · v1.0</span>
+          <span className="fcta-mono">Fixed scope · Ten working days</span>
         </div>
       </div>
     </section>
