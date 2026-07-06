@@ -1,18 +1,21 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import ArrowLink from "@/components/ui/ArrowLink";
 import "./AssetInventory.css";
 
-// ─── Asset Inventory — "When we leave, the system stays." ─────────────────
-// The claim "the asset is yours" made tangible: six artifacts a buyer can
-// picture owning, shelved as specimen dossiers. Sits directly before the
-// final CTA — the last thing a visitor sees before the ask is the concrete
-// inventory of what they'd own.
+// ─── Asset Inventory — the Transfer Manifest ──────────────────────────────
+// "When we leave, the system stays" written like a handover document: a
+// manifest ledger of the six artifacts with their format and destination,
+// beside a Transfer Terms instrument card. Contract posture, not brochure
+// posture — the last thing a visitor reads before the ask is a list of
+// what they'd own.
 
 interface Asset {
   index: string;
   title: string;
   desc: string;
+  format: string;
 }
 
 const ASSETS: Asset[] = [
@@ -20,32 +23,45 @@ const ASSETS: Asset[] = [
     index: "A·01",
     title: "Narrative OS",
     desc: "Positioning, language system, and the message hierarchy every channel inherits.",
+    format: "Document",
   },
   {
     index: "A·02",
     title: "ICP & Signal Map",
     desc: "Who to reach — and the live signals that say when.",
+    format: "Living dataset",
   },
   {
     index: "A·03",
     title: "Channel Playbooks",
     desc: "The plays for email, LinkedIn, phone, content, paid, and events.",
+    format: "Playbook set",
   },
   {
     index: "A·04",
     title: "Orchestration Rules",
     desc: "The logic that routes every next-best touch.",
+    format: "Routing logic",
   },
   {
     index: "A·05",
     title: "Signal Dashboard",
     desc: "The readouts your GTM decisions run on.",
+    format: "Instrumentation",
   },
   {
     index: "A·06",
     title: "Rebuild Sequence",
     desc: "The prioritized plan, re-scored every quarter.",
+    format: "Quarterly plan",
   },
+];
+
+const TERMS = [
+  { label: "Ownership", value: "Yours, outright" },
+  { label: "Format", value: "Living documents, in your stack" },
+  { label: "Handover", value: "Included — the final phase" },
+  { label: "Deprecation risk", value: "Zero", patina: true },
 ];
 
 export default function AssetInventory() {
@@ -67,7 +83,7 @@ export default function AssetInventory() {
             io.unobserve(e.target);
           }
         }),
-      { threshold: 0.15 }
+      { threshold: 0.12 }
     );
     targets.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -90,42 +106,63 @@ export default function AssetInventory() {
           </h2>
           <p className="ai-sub">
             Everything we install lives in your stack and is documented in
-            your language. Six artifacts, yours outright.
+            your language. Six artifacts, listed the way they&apos;d appear
+            on the handover manifest.
           </p>
         </header>
 
-        <div className="ai-grid">
-          {ASSETS.map((a, i) => (
-            <article
-              className="ai-card ai-reveal"
-              key={a.index}
-              style={{ ["--i" as string]: i }}
-            >
-              <span className="ai-bracket ai-bracket-tl" aria-hidden="true" />
-              <span className="ai-bracket ai-bracket-br" aria-hidden="true" />
-              <div className="ai-card-top">
-                <span className="ai-index">{a.index}</span>
-                {/* dossier glyph — a document with a folded corner */}
-                <svg className="ai-glyph" viewBox="0 0 20 24" aria-hidden="true">
-                  <path d="M1 1 H 13 L 19 7 V 23 H 1 Z" />
-                  <path d="M13 1 V 7 H 19" />
-                  <line x1="5" y1="12" x2="15" y2="12" />
-                  <line x1="5" y1="16" x2="12" y2="16" />
-                </svg>
-              </div>
-              <h3 className="ai-title">{a.title}</h3>
-              <p className="ai-desc">{a.desc}</p>
-            </article>
-          ))}
-        </div>
+        <div className="ai-body ai-reveal">
+          {/* ── Manifest ledger ── */}
+          <div className="ai-manifest">
+            <div className="ai-mhead" aria-hidden="true">
+              <span>Ref</span>
+              <span>Asset</span>
+              <span className="ai-mhead-format">Format</span>
+              <span className="ai-mhead-to">Transfers to</span>
+            </div>
+            {ASSETS.map((a, i) => (
+              <article
+                className="ai-row ai-reveal"
+                key={a.index}
+                style={{ ["--i" as string]: i }}
+              >
+                <span className="ai-row-index">{a.index}</span>
+                <div className="ai-row-main">
+                  <h3 className="ai-row-title">{a.title}</h3>
+                  <p className="ai-row-desc">{a.desc}</p>
+                </div>
+                <span className="ai-row-format">{a.format}</span>
+                <span className="ai-row-to">
+                  <span className="ai-row-to-mark" aria-hidden="true" />
+                  You
+                </span>
+                <span className="ai-row-sweep" aria-hidden="true" />
+              </article>
+            ))}
+          </div>
 
-        <div className="ai-foot ai-reveal">
-          <p className="ai-coda">
-            If it stops working the day we leave, we built it wrong.
-          </p>
-          <span className="ai-foot-meta">
-            Asset transfer · Complete &nbsp;·&nbsp; Deprecation risk · Zero
-          </span>
+          {/* ── Transfer terms ── */}
+          <aside className="ai-terms">
+            <div className="ai-terms-head">
+              <span className="ai-terms-protocol">Transfer Terms</span>
+              <span className="ai-terms-line" aria-hidden="true" />
+            </div>
+            <dl className="ai-terms-list">
+              {TERMS.map((t) => (
+                <div className="ai-term" key={t.label}>
+                  <dt>{t.label}</dt>
+                  <dd className={t.patina ? "is-patina" : undefined}>
+                    {t.patina && <span className="ai-term-mark" aria-hidden="true" />}
+                    {t.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p className="ai-terms-coda">
+              If it stops working the day we leave, we built it wrong.
+            </p>
+            <ArrowLink href="/audit" label="See what the audit returns" tone="sand" />
+          </aside>
         </div>
       </div>
     </section>
