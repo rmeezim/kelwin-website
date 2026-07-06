@@ -27,11 +27,13 @@ export default function HeroSection() {
       if (!heading || !cta || !panel) return;
 
       const headingTop = heading.getBoundingClientRect().top;
-      const ctaBottom  = cta.getBoundingClientRect().bottom;
+      const ctaTop     = cta.getBoundingClientRect().top;
       const panelTop   = panel.getBoundingClientRect().top;
 
+      // End the panel above the CTA row (not below it) — the compacted
+      // HUD leaves the hero's lower-right corner to the blueprint visual.
       const top    = headingTop - panelTop;
-      const height = ctaBottom  - headingTop;
+      const height = ctaTop - headingTop;
       if (height > 0) { setHudTop(top); setHudHeight(height); }
     }
 
@@ -56,29 +58,43 @@ export default function HeroSection() {
   return (
     <section id="hero" className="relative bg-surface flex flex-col overflow-x-hidden">
       {/* Key visual — exploded blueprint of a layered system, the page's
-          argument in one image. Screen-blended so its black ground drops
-          out and only the linework floats on the charcoal; radially masked
-          so it dissolves before reaching the text column. */}
+          argument in one image. The asset's ground is crushed to true
+          black, so the screen blend drops it out entirely and only the
+          linework floats on the charcoal. Outer layer: blend + a vertical
+          fade so no line ever hard-cuts at the section edges; inner
+          layer: the image with a radial mask that dissolves it before
+          the text column. */}
       <motion.div
         aria-hidden="true"
         className="hidden md:block absolute inset-0 pointer-events-none select-none"
         style={{
-          backgroundImage: `url(${basePath}/hero-blueprint.webp)`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "min(1240px, 96%) auto",
-          backgroundPosition: "right -60px bottom -60px",
           mixBlendMode: "screen",
           maskImage:
-            "radial-gradient(ellipse 50% 70% at 76% 63%, black 30%, transparent 80%)",
+            "linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 150px), transparent calc(100% - 28px))",
           WebkitMaskImage:
-            "radial-gradient(ellipse 50% 70% at 76% 63%, black 30%, transparent 80%)",
+            "linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 150px), transparent calc(100% - 28px))",
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.55 }}
         transition={
           reduced ? { duration: 0 } : { delay: 1.1, duration: 1.8, ease: "easeOut" }
         }
-      />
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(${basePath}/hero-blueprint.webp)`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "min(1240px, 96%) auto",
+            backgroundPosition: "right -60px bottom -60px",
+            maskImage:
+              "radial-gradient(ellipse 50% 70% at 76% 63%, black 30%, transparent 80%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 50% 70% at 76% 63%, black 30%, transparent 80%)",
+          }}
+        />
+      </motion.div>
       <Navbar />
 
       {/* Centered content wrapper — caps horizontal sprawl on huge displays. */}
@@ -180,8 +196,8 @@ export default function HeroSection() {
         {/* Right — HUD panel */}
         <div ref={panelRef} className="hidden md:block md:w-[42%] relative">
           <div
-            className="absolute left-0 overflow-hidden"
-            style={{ top: px(hudTop), height: px(hudHeight), right: "15%" }}
+            className="absolute overflow-hidden"
+            style={{ top: px(hudTop), height: px(hudHeight), left: "4%", right: "17%" }}
           >
             <HeroHud />
           </div>
