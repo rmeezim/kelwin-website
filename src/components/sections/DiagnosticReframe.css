@@ -210,11 +210,11 @@
 
 .reframe-pin-wrap .reframe-body {
   font-family: var(--f-body);
-  font-size: 15px;
+  font-size: clamp(16px, 1.15vw, 17.5px);
   font-weight: 400;
-  line-height: 1.75;
+  line-height: 1.68;
   color: var(--lead);
-  max-width: 430px;
+  max-width: 460px;
 }
 .reframe-pin-wrap .reframe-body .body-coda {
   display: block;
@@ -488,14 +488,6 @@
   background: transparent;
   transition: background 0.4s ease, border-color 0.4s ease;
 }
-.reframe-pin-wrap .card-icon {
-  width: 24px;
-  height: 24px;
-  color: var(--bronze);
-  margin-bottom: 22px;
-  display: block;
-  opacity: 0.95;
-}
 .reframe-pin-wrap .card-label-top {
   font-family: var(--f-body);
   font-size: 10px;
@@ -526,41 +518,16 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--signal-bright);
+  /* sand, not red — labels are structure; red is reserved for action/live */
+  color: var(--bronze);
   margin-bottom: 10px;
 }
 .reframe-pin-wrap .card-truth {
   font-family: var(--f-body);
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.6;
   color: var(--card-text-muted);
-}
-
-/* ─── METADATA BAR ──────────────────────────────────────────────────────────
-   Small monospace footer under the card grid — frames the section as the
-   output of a versioned, calibrated diagnostic system. Same vocabulary as
-   the dark-phase HUD (protocol header, T+ counter, log feed values).      */
-.reframe-pin-wrap .reframe-meta-bar {
-  margin-top: 28px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(199, 180, 157, 0.22);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.reframe-pin-wrap .meta-segment {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: rgba(199, 180, 157, 0.55);
-  text-transform: uppercase;
-}
-.reframe-pin-wrap .meta-segment strong {
-  color: var(--bronze);
-  font-weight: 600;
 }
 
 /* ─── LARGER VIEWPORTS — scaled-up vertical spacing ────────────────────── */
@@ -568,7 +535,6 @@
   .reframe-pin-wrap .reframe-top         { margin-bottom: 80px; }
   .reframe-pin-wrap .reframe-card        { padding: 50px 36px; }
   .reframe-pin-wrap .card-number         { margin-bottom: 30px; }
-  .reframe-pin-wrap .card-icon           { margin-bottom: 26px; }
   .reframe-pin-wrap .card-claim          { margin-bottom: 30px; }
   .reframe-pin-wrap .card-divider        { margin-bottom: 20px; }
   .reframe-pin-wrap .section-label       { margin-bottom: 34px; }
@@ -581,7 +547,6 @@
   .reframe-pin-wrap .reframe-top         { margin-bottom: 112px; }
   .reframe-pin-wrap .reframe-card        { padding: 56px 36px; }
   .reframe-pin-wrap .card-number         { margin-bottom: 32px; }
-  .reframe-pin-wrap .card-icon           { margin-bottom: 28px; }
   .reframe-pin-wrap .card-claim          { margin-bottom: 32px; }
   .reframe-pin-wrap .card-divider        { margin-bottom: 22px; }
   .reframe-pin-wrap .section-label       { margin-bottom: 36px; }
@@ -823,8 +788,7 @@
   .reframe-pin-wrap .reframe-cta,
   .reframe-pin-wrap .reframe-right,
   .reframe-pin-wrap .grid-label-cell,
-  .reframe-pin-wrap .reframe-card,
-  .reframe-pin-wrap .reframe-meta-bar {
+  .reframe-pin-wrap .reframe-card {
     opacity: 1 !important; transform: none !important;
   }
   .reframe-pin-wrap .connector-line { clip-path: inset(0 0 0 0) !important; }

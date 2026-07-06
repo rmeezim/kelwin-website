@@ -135,7 +135,7 @@
   padding: 13px 0;
   border-bottom: 1px solid var(--hairline);
   font-family: var(--f-body);
-  font-size: clamp(13.5px, 1vw, 15px);
+  font-size: clamp(14.5px, 1.05vw, 15.5px);
   line-height: 1.55;
   color: var(--cream-muted);
 }

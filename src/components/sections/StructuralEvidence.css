@@ -97,11 +97,11 @@
 .ev-heading .line-2 { color: var(--cream-dim); }
 .ev-subhead {
   font-family: var(--f-body);
-  font-size: clamp(14px, 1.05vw, 15.5px);
-  line-height: 1.6;
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.65;
   color: var(--cream-muted);
   margin: clamp(16px, 1.8vw, 22px) 0 0;
-  max-width: 60ch;
+  max-width: 62ch;
 }
 .ev-subhead-hint {
   color: var(--sand);
@@ -211,11 +211,11 @@
 /* ── Caption stack ── */
 .ev-unit {
   font-family: var(--f-body);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.4;
   color: var(--cream-muted);
   margin: 0 0 clamp(14px, 1.6vw, 18px);
-  max-width: 20ch;
+  max-width: 22ch;
   min-height: 2.8em; /* reserve two lines so the row aligns */
 }
 .ev-takeaway {
@@ -310,7 +310,7 @@
 }
 .ev-detail-body {
   font-family: var(--f-body);
-  font-size: clamp(13px, 1.02vw, 14.5px);
+  font-size: clamp(14px, 1.05vw, 15px);
   line-height: 1.62;
   color: var(--cream);
   margin: 0;

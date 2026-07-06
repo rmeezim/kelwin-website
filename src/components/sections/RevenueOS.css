@@ -148,15 +148,8 @@
 }
 
 /* ─── TOP SCAFFOLD ─────────────────────────────────────────────────────── */
-.revos-pin .scaffold-row {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-@media (max-width: 1024px) {
-  .revos-pin .scaffold-row { grid-template-columns: 1fr; gap: 32px; }
-}
+/* Stacked header — one pattern site-wide: heading, lede beneath, action. */
+.revos-pin .scaffold-row { display: block; }
 
 .revos-pin .scaffold-left {
   display: flex;
@@ -177,14 +170,15 @@
 .revos-pin .scaffold-heading .line-1 { color: var(--ink); }
 .revos-pin .scaffold-heading .line-2 { color: var(--headline-mute); }
 
-.revos-pin .scaffold-right { padding-top: 18px; }
+.revos-pin .scaffold-right { padding-top: 0; }
 .revos-pin .scaffold-body {
   font-family: var(--f-body);
-  font-size: 15px;
+  font-size: clamp(16px, 1.15vw, 17.5px);
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.68;
   color: var(--lead);
-  margin-bottom: 24px;
+  max-width: 62ch;
+  margin: 20px 0 0;
 }
 .revos-pin .scaffold-body .body-coda {
   display: block;
@@ -282,11 +276,11 @@
 }
 .revos-pin .layer-definition {
   font-family: var(--f-body);
-  font-size: 14.5px;
+  font-size: clamp(16px, 1.15vw, 17.5px);
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.68;
   color: var(--lead);
-  max-width: 460px;
+  max-width: 480px;
   margin-bottom: 28px;
 }
 .revos-pin .layer-output {
@@ -301,12 +295,13 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--signal-bright);
+  /* sand, not red — labels are structure; red is reserved for action/live */
+  color: var(--bronze);
   margin-bottom: 10px;
 }
 .revos-pin .output-text {
   font-family: var(--f-body);
-  font-size: 13.5px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.6;
   color: var(--ink);
@@ -748,7 +743,7 @@
   padding-top: 12px;
   border-top: 1px solid var(--ink-hairline);
   font-family: var(--f-body);
-  font-size: 11px;
+  font-size: 12.5px;
   line-height: 1.55;
   color: var(--ash);
 }

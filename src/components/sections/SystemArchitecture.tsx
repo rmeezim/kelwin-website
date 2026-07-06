@@ -200,11 +200,9 @@ export default function SystemArchitecture() {
             <span className="line-2">One closed loop.</span>
           </h2>
           <p className="sysarch-sub">
-            Narrative shapes what the market hears. Channels put it in motion —
-            every channel, routed by signal. Intelligence watches what actually
-            works and feeds it back, so every cycle sharpens the next. That
-            returning signal is why the system compounds instead of resetting
-            each quarter.
+            Narrative shapes what the market hears. Channels put it in motion.
+            Intelligence feeds back what works — and that returning signal is
+            why the system compounds instead of resetting.
           </p>
         </header>
 

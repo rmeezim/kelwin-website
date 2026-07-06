@@ -289,7 +289,7 @@ export default function DiagnosticReframe() {
         gsap.set(headline, { y: o.elemTransY, scale: 1.25, color: "#FBFAF6", transformOrigin: "center center" });
         gsap.set(line1, { x: o.line1Tx });
         gsap.set(line2, { x: o.line2Tx, color: "#8F8981" });
-        gsap.set(".section-label, .reframe-cta, .reframe-right, .grid-label-cell, .reframe-meta-bar", { opacity: 0, y: 16 });
+        gsap.set(".section-label, .reframe-cta, .reframe-right, .grid-label-cell", { opacity: 0, y: 16 });
         gsap.set(cards, { opacity: 0, y: 24 });
         gsap.set(grid, { "--hairline-top": 0, "--hairline-bot": 0 });
         gsap.set(connectorMarkers, { opacity: 0 });
@@ -353,12 +353,9 @@ export default function DiagnosticReframe() {
         tl.to(".reframe-right", { opacity: 1, y: 0, duration: 0.12 }, 0.46);
         tl.to(".reframe-cta",   { opacity: 1, y: 0, duration: 0.10 }, 0.50);
 
-        // The two card-frame hairlines (top + bottom of grid) and the
-        // meta-bar's top hairline all draw in together at 0.55 — three
-        // parallel horizontal lines that form the structural frame the
-        // cards then fill in. Visually unified architectural reveal.
+        // The two card-frame hairlines (top + bottom of grid) draw in
+        // together at 0.55 — the structural frame the cards then fill in.
         tl.to(grid, { "--hairline-top": 1, "--hairline-bot": 1, duration: 0.12, ease: "power2.out" }, 0.55);
-        tl.to(".reframe-meta-bar", { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, 0.55);
         tl.to(".grid-label-cell", { opacity: 1, y: 0, duration: 0.10 }, 0.58);
         tl.to(connectorLine, { clipPath: "inset(0 0% 0 0)", duration: 0.14, ease: "power2.out" }, 0.55);
 
@@ -494,7 +491,7 @@ export default function DiagnosticReframe() {
           tl.scrollTrigger && tl.scrollTrigger.kill();
           tl.kill();
           gsap.set(
-            [headline, line1, line2, wrapBg, ".section-label", ".reframe-cta", ".reframe-right", ".grid-label-cell", ".reframe-meta-bar", cards, connectorMarkers, grid, connectorLine, ".reframe-hud-overlay", ".reframe-pulse-layer"],
+            [headline, line1, line2, wrapBg, ".section-label", ".reframe-cta", ".reframe-right", ".grid-label-cell", cards, connectorMarkers, grid, connectorLine, ".reframe-hud-overlay", ".reframe-pulse-layer"],
             { clearProps: "all" }
           );
         };
@@ -503,7 +500,7 @@ export default function DiagnosticReframe() {
       // ── MOBILE simple reveal ───────────────────────────────────────────
       mm.add("(max-width: 768px)", () => {
         gsap.set(wrapBg, { backgroundColor: "#110F0A" });
-        gsap.set(".section-label, .headline-display, .reframe-cta, .reframe-right, .grid-label-cell, .reframe-meta-bar", { opacity: 0, y: 12 });
+        gsap.set(".section-label, .headline-display, .reframe-cta, .reframe-right, .grid-label-cell", { opacity: 0, y: 12 });
         gsap.set(cards, { opacity: 0, y: 20 });
         gsap.set(grid, { "--hairline-top": 1, "--hairline-bot": 1 });
         gsap.set(connectorLine, { clipPath: "inset(0 0% 0 0)" });
@@ -521,8 +518,7 @@ export default function DiagnosticReframe() {
           .to(".grid-label-cell",   { opacity: 1, y: 0 }, "<+0.10")
           .to(cards[0],             { opacity: 1, y: 0 }, "<+0.10")
           .to(cards[1],             { opacity: 1, y: 0 }, "<+0.08")
-          .to(cards[2],             { opacity: 1, y: 0 }, "<+0.08")
-          .to(".reframe-meta-bar",  { opacity: 1, y: 0 }, "<+0.08");
+          .to(cards[2],             { opacity: 1, y: 0 }, "<+0.08");
 
         return () => {
           tl.scrollTrigger && tl.scrollTrigger.kill();
@@ -634,7 +630,9 @@ export default function DiagnosticReframe() {
 
           <div className="reframe-right">
             <p className="reframe-body">
-              Most firms diagnose at the surface — campaigns, conversion rates, rep performance. Kelwin diagnoses the architecture underneath. Surface diagnosis treats what is visible. Structural diagnosis treats what produces it.
+              Most firms diagnose the surface — campaigns, conversion, rep
+              performance. Kelwin diagnoses the architecture underneath: not
+              what&rsquo;s visible, but what produces it.
               <span className="body-coda">The first returns. The second compounds.</span>
             </p>
           </div>
@@ -672,69 +670,40 @@ export default function DiagnosticReframe() {
           <div className="reframe-card card-1">
             <span className="card-glow" aria-hidden="true"></span>
             <div className="card-number">01</div>
-            <svg className="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="square" strokeLinejoin="miter">
-              <path d="M4 6h16M4 11h12M4 16h8" />
-              <path d="M19 13l3 3-3 3" />
-            </svg>
             <div className="card-label-top">What the market sees</div>
             <div className="card-claim">A pipeline problem.</div>
             <div className="card-divider"></div>
             <div className="card-label-bottom">The structural truth</div>
-            <div className="card-truth">A narrative architecture problem. The market cannot repeat what it does not understand — and pipelines built on unclear positioning fail at the source.</div>
+            <div className="card-truth">A narrative architecture problem. The market can&rsquo;t repeat what it doesn&rsquo;t understand — pipeline built on unclear positioning fails at the source.</div>
             <span className="card-corner card-corner-tl" aria-hidden="true"></span>
-            <span className="card-corner card-corner-tr" aria-hidden="true"></span>
-            <span className="card-corner card-corner-bl" aria-hidden="true"></span>
             <span className="card-corner card-corner-br" aria-hidden="true"></span>
           </div>
 
           <div className="reframe-card card-2">
             <span className="card-glow" aria-hidden="true"></span>
             <div className="card-number">02</div>
-            <svg className="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="square" strokeLinejoin="miter">
-              <rect x="3" y="4" width="18" height="4" />
-              <rect x="3" y="10" width="12" height="4" />
-              <rect x="3" y="16" width="15" height="4" />
-              <circle cx="20" cy="12" r="1.5" fill="currentColor" />
-            </svg>
             <div className="card-label-top">What the market sees</div>
             <div className="card-claim">A sales execution problem.</div>
             <div className="card-divider"></div>
             <div className="card-label-bottom">The structural truth</div>
-            <div className="card-truth">An orchestration problem. Teams execute what the system installs — across every channel, never more, never less. Replacing the rep before the protocol replaces nothing.</div>
+            <div className="card-truth">An orchestration problem. Teams execute what the system installs — replacing the rep before the protocol replaces nothing.</div>
             <span className="card-corner card-corner-tl" aria-hidden="true"></span>
-            <span className="card-corner card-corner-tr" aria-hidden="true"></span>
-            <span className="card-corner card-corner-bl" aria-hidden="true"></span>
             <span className="card-corner card-corner-br" aria-hidden="true"></span>
           </div>
 
           <div className="reframe-card card-3">
             <span className="card-glow" aria-hidden="true"></span>
             <div className="card-number">03</div>
-            <svg className="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="square" strokeLinejoin="miter">
-              <path d="M3 18l5-5 4 3 6-8" />
-              <path d="M14 8h4v4" />
-              <path d="M3 21h18" />
-            </svg>
             <div className="card-label-top">What the market sees</div>
             <div className="card-claim">A tooling or tech-stack problem.</div>
             <div className="card-divider"></div>
             <div className="card-label-bottom">The structural truth</div>
-            <div className="card-truth">A GTM intelligence problem. Tools amplify what your data already knows — and expose what it doesn&apos;t. A new platform on a blind dataset multiplies the blindness.</div>
+            <div className="card-truth">A GTM intelligence problem. Tools amplify what your data already knows — a new platform on a blind dataset multiplies the blindness.</div>
             <span className="card-corner card-corner-tl" aria-hidden="true"></span>
-            <span className="card-corner card-corner-tr" aria-hidden="true"></span>
-            <span className="card-corner card-corner-bl" aria-hidden="true"></span>
             <span className="card-corner card-corner-br" aria-hidden="true"></span>
           </div>
         </div>
 
-        {/* Metadata footer bar — small monospace status line that frames
-            the cards as outputs of a versioned, calibrated diagnostic
-            system. Same vocabulary as the dark-phase HUD. */}
-        <div className="reframe-meta-bar">
-          <span className="meta-segment">Diagnostic Methodology · <strong>v2.4</strong></span>
-          <span className="meta-segment">Layers audited · <strong>03</strong></span>
-          <span className="meta-segment">Full spec · <strong>/audit</strong></span>
-        </div>
       </section>
     </div>
   );

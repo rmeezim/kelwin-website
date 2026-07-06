@@ -105,8 +105,8 @@
 .as-heading .line-2 { color: var(--cream-dim); }
 .as-sub {
   font-family: var(--f-body);
-  font-size: clamp(14.5px, 1.05vw, 16px);
-  line-height: 1.7;
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.65;
   color: var(--cream-muted);
   max-width: 46ch;
   margin: 0 0 clamp(28px, 3.2vw, 40px);
@@ -206,7 +206,7 @@
 }
 .as-row-body {
   font-family: var(--f-body);
-  font-size: clamp(13.5px, 1vw, 15px);
+  font-size: clamp(14.5px, 1.05vw, 15.5px);
   line-height: 1.65;
   color: var(--cream-muted);
   margin: 0;

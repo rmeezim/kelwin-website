@@ -338,24 +338,22 @@ export default function RevenueOS() {
 
       <div className="revos-stage">
         <div className="scaffold-row">
-          <div className="scaffold-left">
-            <h2 className="scaffold-heading">
-              <span className="line-1">Kelwin doesn&rsquo;t deliver work.</span>
-              <span className="line-2">We install systems.</span>
-            </h2>
-            <div className="scaffold-cta">
-              <DiagnosticMethodCTA
-                href="#audit"
-                label="Initiate System Audit"
-                variant="signal"
-              />
-            </div>
-          </div>
-          <div className="scaffold-right">
-            <p className="scaffold-body">
-              The Revenue Operating System is the architecture we build into your company — three infrastructure layers that produce pipeline as a compounding structural output, not a one-time deliverable.
-              <span className="body-coda">Services end. Architecture compounds.</span>
-            </p>
+          <h2 className="scaffold-heading">
+            <span className="line-1">Kelwin doesn&rsquo;t deliver work.</span>
+            <span className="line-2">We install systems.</span>
+          </h2>
+          <p className="scaffold-body">
+            The Revenue Operating System is the architecture we build into your
+            company — three layers that produce pipeline as a compounding
+            output, not a one-time deliverable.
+            <span className="body-coda">Services end. Architecture compounds.</span>
+          </p>
+          <div className="scaffold-cta">
+            <DiagnosticMethodCTA
+              href="/audit"
+              label="Initiate System Audit"
+              variant="signal"
+            />
           </div>
         </div>
 
@@ -375,7 +373,7 @@ export default function RevenueOS() {
             <div className="layer-eyebrow">Infrastructure Layer · 01 / 03</div>
             <h3 className="layer-name">Narrative<br />Infrastructure</h3>
             <div className="layer-divider"></div>
-            <p className="layer-definition">The positioning and language architecture that determines whether prospects can clearly explain what you do — using their own words. If this layer is muddy, every channel downstream inherits that unclarity.</p>
+            <p className="layer-definition">The positioning and language architecture that decides whether buyers can explain you in their own words. If it&rsquo;s muddy, every channel inherits the blur.</p>
             <div className="layer-output">
               <div className="output-label">In Practice</div>
               <div className="output-text">We rewrite the words your homepage, your deck, and your reps use — until a buyer can repeat them without you in the room.</div>
@@ -498,7 +496,7 @@ export default function RevenueOS() {
             <div className="layer-eyebrow">Infrastructure Layer · 02 / 03</div>
             <h3 className="layer-name">Omnichannel<br />Infrastructure</h3>
             <div className="layer-divider"></div>
-            <p className="layer-definition">The engine that runs your demand motion across every channel — email, LinkedIn, phone, content, paid, events — orchestrated by live buying signal rather than a static sequence. The system decides the next-best touch; your team runs it.</p>
+            <p className="layer-definition">One engine across email, LinkedIn, phone, content, paid, and events — routed by live buying signal, not a static sequence. The system decides the next-best touch.</p>
             <div className="layer-output">
               <div className="output-label">In Practice</div>
               <div className="output-text">We design the plays and triggers across your channels, install them in your stack, and run the first cycles with your team.</div>
@@ -631,7 +629,7 @@ export default function RevenueOS() {
             <div className="layer-eyebrow">Infrastructure Layer · 03 / 03</div>
             <h3 className="layer-name">GTM<br />Intelligence</h3>
             <div className="layer-divider"></div>
-            <p className="layer-definition">The observation layer that watches every interaction, identifies what&apos;s actually working at a structural level, and feeds those insights back into narrative and channels — so the system keeps learning instead of decaying.</p>
+            <p className="layer-definition">The observation layer that watches every interaction and feeds what works back into narrative and channels — so the system learns instead of decaying.</p>
             <div className="layer-output">
               <div className="output-label">In Practice</div>
               <div className="output-text">We instrument every touch, then sit with you each quarter and retune the system against what the signal says.</div>

@@ -94,8 +94,8 @@
 .sysarch-heading .line-2 { color: var(--cream-dim); }
 .sysarch-sub {
   font-family: var(--f-body);
-  font-size: clamp(14.5px, 1.05vw, 16px);
-  line-height: 1.7;
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.65;
   color: var(--cream-muted);
   max-width: 62ch;
   margin: 0;
@@ -202,7 +202,7 @@
 @keyframes sa-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 .sa-node-sub {
   font-family: var(--f-body);
-  font-size: 11.5px;
+  font-size: 12.5px;
   line-height: 1.4;
   color: var(--cream-muted);
 }
