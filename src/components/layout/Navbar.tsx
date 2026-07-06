@@ -22,7 +22,7 @@ type MegaDef = {
   featureCols?: 2 | 3;
   features: MegaLink[];
   smalls?: MegaLink[];
-  rail: MegaLink[];
+  rail?: MegaLink[];
 };
 type NavItem =
   | { label: string; href: string; mega?: never }
@@ -77,6 +77,7 @@ const navItems: NavItem[] = [
     label: "THE FIRM",
     mega: {
       protocol: "The Firm · Dossier",
+      featureCols: 3,
       features: [
         {
           tag: "F·01",
@@ -92,25 +93,12 @@ const navItems: NavItem[] = [
           desc: "The profile and industries we take on — and where we say no.",
           href: "/who-we-work-with",
         },
-      ],
-      smalls: [
         {
+          tag: "F·03",
+          glyph: "careers",
           title: "Careers",
           desc: "No open roles right now — we hire slowly, on purpose.",
           href: "/careers",
-        },
-      ],
-      rail: [
-        {
-          title: "Initiate a System Audit",
-          desc: "Fixed scope · ten working days · the readout is yours to keep.",
-          href: "/audit",
-          cta: true,
-        },
-        {
-          title: "Get in touch",
-          desc: "audit@kelwin.co — straight to the founding team.",
-          href: "mailto:audit@kelwin.co",
         },
       ],
     },
@@ -153,6 +141,7 @@ type GlyphName =
   | "intelligence"
   | "firm"
   | "fit"
+  | "careers"
   | "insights"
   | "reports";
 
@@ -199,9 +188,15 @@ function MegaGlyph({ name }: { name: GlyphName }) {
         <circle cx="18" cy="18" r="2" fill="currentColor" />
       </>
     ),
+    careers: (
+      <>
+        <circle cx="12" cy="7.5" r="3" />
+        <path d="M5 20a7 7 0 0 1 14 0" />
+      </>
+    ),
     insights: (
       <>
-        <path d="M4.5 7.5 9 12l-4.5 4.5M12 16.5h7.5" />
+        <path d="M3.5 13.5h3.5l2.5-6 3.5 9.5 2.5-6h5" />
       </>
     ),
     reports: (
@@ -386,12 +381,10 @@ function MegaCard({
           <span className="nmc-tag">{item.tag}</span>
         </span>
         <span className="nmc-body">
-          <span className="nmc-title">
-            {item.title}
-            <span className="nmc-arrow" aria-hidden="true">→</span>
-          </span>
+          <span className="nmc-title">{item.title}</span>
           <span className="nmc-desc">{item.desc}</span>
         </span>
+        <span className="nmc-sweep" aria-hidden="true" />
       </>
     ) : (
       <>
@@ -399,7 +392,7 @@ function MegaCard({
           <span className="nmc-title">{item.title}</span>
           <span className="nmc-desc">{item.desc}</span>
         </span>
-        <span className="nmc-arrow" aria-hidden="true">→</span>
+        <span className="nmc-sweep" aria-hidden="true" />
       </>
     );
 
@@ -493,16 +486,33 @@ export default function Navbar() {
     <header
       ref={navRef}
       className={cn(
-        "sticky top-0 z-50 w-full transition-colors duration-300 pt-[12px]",
-        scrolled ? "bg-near-black" : "bg-transparent"
+        "sticky top-0 z-50 w-full transition-all duration-300 ease-out",
+        scrolled ? "pt-0" : "pt-[12px]"
       )}
+      style={{
+        // Apple-style glass once scrolling starts: translucent charcoal +
+        // heavy backdrop blur. The rgba ground keeps legibility on browsers
+        // without backdrop-filter support.
+        backgroundColor: scrolled ? "rgba(11, 10, 8, 0.7)" : "transparent",
+        backdropFilter: scrolled ? "blur(18px) saturate(1.4)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(18px) saturate(1.4)" : "none",
+      }}
     >
-      {/* Decorative horizontal line above — matches the hero content width */}
+      {/* Decorative horizontal line above — fades out in the compact state */}
       <div className="max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20">
-        <div className="h-px" style={{ backgroundColor: "var(--border-subtle)" }} />
+        <div
+          className={cn("h-px transition-opacity duration-300", scrolled && "opacity-0")}
+          style={{ backgroundColor: "var(--border-subtle)" }}
+        />
       </div>
 
-      <nav className="flex items-center justify-between max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20 h-[56px]">
+      <nav
+        className={cn(
+          "flex items-center justify-between max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20",
+          "transition-all duration-300 ease-out",
+          scrolled ? "h-[46px]" : "h-[56px]"
+        )}
+      >
         {/* Logo */}
         <Link
           href="/"
@@ -581,7 +591,7 @@ export default function Navbar() {
                   <span className="nav-mega-headline" aria-hidden="true" />
                   <span className="nav-mega-count">KELWIN/OS</span>
                 </div>
-                <div className="nav-mega-grid">
+                <div className={cn("nav-mega-grid", !activeMega.rail?.length && "no-rail")}>
                   <div className="nav-mega-main">
                     <div className={cn("nav-mega-features", activeMega.featureCols === 3 && "cols-3")}>
                       {activeMega.features.map((f) => (
@@ -596,11 +606,13 @@ export default function Navbar() {
                       </div>
                     )}
                   </div>
-                  <div className="nav-mega-rail">
-                    {activeMega.rail.map((r) => (
-                      <MegaCard key={r.title} item={r} variant="rail" onNavigate={closeAll} />
-                    ))}
-                  </div>
+                  {activeMega.rail && activeMega.rail.length > 0 && (
+                    <div className="nav-mega-rail">
+                      {activeMega.rail.map((r) => (
+                        <MegaCard key={r.title} item={r} variant="rail" onNavigate={closeAll} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -630,7 +642,7 @@ export default function Navbar() {
                       {item.label}
                     </div>
                     <div className="pl-4 flex flex-col gap-0.5">
-                      {[...item.mega.features, ...(item.mega.smalls ?? []), ...item.mega.rail]
+                      {[...item.mega.features, ...(item.mega.smalls ?? []), ...(item.mega.rail ?? [])]
                         .filter((l) => l.href)
                         .map((l) =>
                           l.href!.startsWith("mailto:") ? (

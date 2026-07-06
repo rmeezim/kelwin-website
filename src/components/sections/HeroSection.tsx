@@ -2,7 +2,6 @@
 
 import { useRef, useLayoutEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import Navbar from "@/components/layout/Navbar";
 import FadeIn from "@/components/motion/FadeIn";
 import ScrambleText from "@/components/motion/ScrambleText";
 import HeroCTA from "@/components/ui/HeroCTA";
@@ -56,9 +55,10 @@ export default function HeroSection() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
-    // min-h-svh: the hero owns the first viewport outright — the next
-    // section starts below the fold instead of bleeding into frame.
-    <section id="hero" className="relative bg-surface flex flex-col overflow-x-hidden min-h-svh">
+    // The hero owns the first viewport outright: 100svh minus the navbar's
+    // resting height (70px), since the navbar now lives at page level so it
+    // can stay sticky for the whole scroll.
+    <section id="hero" className="relative bg-surface flex flex-col overflow-x-hidden min-h-[calc(100svh-70px)]">
       {/* Key visual — exploded blueprint of a layered system, the page's
           argument in one image. The asset's ground is crushed to true
           black, so the screen blend drops it out entirely and only the
@@ -97,8 +97,6 @@ export default function HeroSection() {
           }}
         />
       </motion.div>
-      <Navbar />
-
       {/* Centered content wrapper — caps horizontal sprawl on huge displays;
           flex-1 + justify-center holds the argument mid-viewport now that
           the section is full-height. */}

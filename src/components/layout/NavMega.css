@@ -52,7 +52,9 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(240px, 23vw, 310px);
   gap: 10px;
+  align-items: stretch;
 }
+.nav-mega-grid.no-rail { grid-template-columns: minmax(0, 1fr); }
 .nav-mega-main {
   display: flex;
   flex-direction: column;
@@ -62,7 +64,10 @@
 .nav-mega-features {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
   gap: 10px;
+  /* stretch to match the rail column so card bottoms align exactly */
+  flex: 1;
 }
 .nav-mega-features.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .nav-mega-smalls {
@@ -81,15 +86,21 @@
 .nmc {
   position: relative;
   display: flex;
+  overflow: hidden; /* keeps the sweep line inside the card frame */
   background-color: #14120d;
   border: 1px solid rgba(251, 250, 246, 0.08);
   padding: 15px 17px;
   text-decoration: none;
-  transition: border-color 0.22s ease, background-color 0.22s ease;
+  transition: border-color 0.22s ease, background-color 0.22s ease,
+    transform 0.22s ease;
 }
 .nmc:hover {
   border-color: rgba(199, 180, 157, 0.5);
   background-color: #1a1712;
+  transform: translateY(-1px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .nmc:hover { transform: none; }
 }
 
 /* Feature cards — dossier posture: glyph + mono tag up top, title low,
@@ -178,18 +189,24 @@
 }
 .nmc:hover .nmc-title { color: #fbfaf6; }
 
-/* Arrow — hidden at rest, slides in sand, warms red while pressed. */
-.nmc-arrow {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--sand);
-  opacity: 0;
-  transform: translateX(-5px);
-  transition: opacity 0.22s ease, transform 0.22s ease, color 0.15s ease;
-  flex-shrink: 0;
+/* Hover signature — a sand hairline draws along the card's bottom edge,
+   like a calibration line scanning the instrument. No arrows, no chevrons. */
+.nmc-sweep {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: rgba(199, 180, 157, 0.8);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.34s cubic-bezier(0.2, 0.7, 0.3, 1);
+  pointer-events: none;
 }
-.nmc:hover .nmc-arrow { opacity: 1; transform: translateX(0); }
-.nmc:active .nmc-arrow { color: var(--signal-bright); }
+.nmc:hover .nmc-sweep { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .nmc-sweep { transition: none; }
+}
 
 /* Small + rail cards — compact rows. */
 .nmc-small,
@@ -222,7 +239,7 @@
 }
 .nmc-cta .nmc-title { color: #fbfaf6; }
 .nmc-cta:hover { border-color: rgba(212, 82, 78, 0.55); }
-.nmc-cta:hover .nmc-arrow { color: var(--signal-bright); }
+.nmc-cta .nmc-sweep { background: rgba(212, 82, 78, 0.75); }
 
 /* Mid-width desktop: keep the grid intact but let cards breathe less. */
 @media (min-width: 1050px) and (max-width: 1280px) {

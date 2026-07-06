@@ -1,0 +1,152 @@
+/* ─── FAQ — scoped to .faq-section ────────────────────────────────────────
+   Hairline ledger accordion. Grid-rows animation (0fr → 1fr) for the
+   answers; the marker is a mono plus that rotates into a close mark. */
+
+.faq-section {
+  --ink: #fbfaf6;
+  --lead: rgba(251, 250, 246, 0.66);
+  --dim: rgba(251, 250, 246, 0.45);
+  --sand: #c7b49d;
+  --hairline: rgba(251, 250, 246, 0.09);
+  background: #110f0a;
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.faq-stage {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: var(--space-section) clamp(28px, 5vw, 64px);
+}
+
+/* Reveal */
+.faq-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.faq-reveal.is-in { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .faq-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* Header — stacked pattern, same as every section. */
+.faq-head { margin-bottom: clamp(36px, 5vh, 56px); }
+.faq-heading {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+.faq-heading .line-1 { display: block; color: var(--ink); }
+.faq-heading .line-2 { display: block; color: rgba(251, 250, 246, 0.42); }
+.faq-lede {
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.65;
+  color: var(--lead);
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* Ledger rows */
+.faq-list { border-top: 1px solid var(--hairline); }
+.faq-item { border-bottom: 1px solid var(--hairline); }
+
+.faq-q {
+  display: grid;
+  grid-template-columns: clamp(52px, 6vw, 76px) minmax(0, 1fr) 24px;
+  align-items: baseline;
+  gap: clamp(14px, 2vw, 24px);
+  width: 100%;
+  padding: clamp(18px, 2.4vh, 26px) 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+}
+.faq-index {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--sand);
+  transition: color 0.25s ease;
+}
+.faq-q-text {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 1.35vw, 19px);
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  color: rgba(251, 250, 246, 0.8);
+  transition: color 0.25s ease;
+}
+.faq-q:hover .faq-q-text,
+.faq-item.is-open .faq-q-text { color: var(--ink); }
+.faq-item.is-open .faq-index { color: #d4524e; }
+
+/* Marker — plus built from two hairlines; rotates 45° when open. */
+.faq-mark {
+  position: relative;
+  width: 13px;
+  height: 13px;
+  align-self: center;
+  justify-self: end;
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.faq-mark::before,
+.faq-mark::after {
+  content: "";
+  position: absolute;
+  background: var(--sand);
+  transition: background 0.25s ease;
+}
+.faq-mark::before { left: 0; right: 0; top: 6px; height: 1px; }
+.faq-mark::after { top: 0; bottom: 0; left: 6px; width: 1px; }
+.faq-item.is-open .faq-mark { transform: rotate(45deg); }
+.faq-item.is-open .faq-mark::before,
+.faq-item.is-open .faq-mark::after { background: #d4524e; }
+
+/* Answer — grid-rows trick for smooth height animation. */
+.faq-a-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.faq-item.is-open .faq-a-wrap { grid-template-rows: 1fr; }
+.faq-a-inner { overflow: hidden; }
+.faq-a {
+  margin: 0;
+  padding: 0 4px clamp(20px, 2.6vh, 28px);
+  padding-left: calc(clamp(52px, 6vw, 76px) + clamp(14px, 2vw, 24px));
+  font-size: clamp(14.5px, 1.05vw, 16px);
+  line-height: 1.7;
+  color: var(--lead);
+  max-width: 72ch;
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq-a-wrap { transition: none; }
+  .faq-mark { transition: none; }
+}
+@media (max-width: 640px) {
+  .faq-a { padding-left: 4px; }
+}
+
+/* Foot line */
+.faq-foot {
+  margin: clamp(28px, 4vh, 40px) 0 0;
+  font-size: 14px;
+  color: var(--dim);
+}
+.faq-foot-link {
+  color: var(--sand);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(199, 180, 157, 0.4);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.faq-foot-link:hover { color: #d4524e; border-color: rgba(212, 82, 78, 0.5); }
