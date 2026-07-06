@@ -77,11 +77,13 @@ export default function HeroHud() {
   // wait. The HUD starts its sequence in parallel with the left-column
   // entrance so both sides come alive together.
   const containerReady = true;
-  const [visibleLogs, setVisibleLogs] = useState<LogEntry[]>(() =>
-    ALL_LOG_ENTRIES.slice(0, 7).map((e, i) => ({ ...e, id: i }))
+  // Three static readout lines — no cycling. The panel reads as a live
+  // instrument without the row-swap flicker competing with the blueprint.
+  // Hand-picked for type variety: a signal, an intel read, a health line.
+  const [visibleLogs] = useState<LogEntry[]>(() =>
+    [ALL_LOG_ENTRIES[0], ALL_LOG_ENTRIES[1], ALL_LOG_ENTRIES[5]].map((e, i) => ({ ...e, id: i }))
   );
   const containerRef = useRef<HTMLDivElement>(null);
-  const logIndexRef  = useRef(7);
 
   // Phase state machine — runs immediately on mount.
   // settling (+2000ms): stops CSS drift, transition eases transform to 0.
@@ -98,18 +100,6 @@ export default function HeroHud() {
     const t2 = setTimeout(() => setPhase("terminal"), 3100);
     return () => { clearTimeout(t0); clearTimeout(t1); clearTimeout(t2); };
   }, [reduced]);
-
-  // Log cycling — starts once terminal is active
-  useEffect(() => {
-    if (phase !== "terminal") return;
-    const id = setInterval(() => {
-      const next = ALL_LOG_ENTRIES[logIndexRef.current % ALL_LOG_ENTRIES.length];
-      const entry: LogEntry = { ...next, id: logIndexRef.current };
-      logIndexRef.current += 1;
-      setVisibleLogs((prev) => [...prev.slice(1), entry]);
-    }, 3500);
-    return () => clearInterval(id);
-  }, [phase]);
 
   return (
     <div
@@ -269,8 +259,9 @@ export default function HeroHud() {
           {/* [3] Divider */}
           <div style={{ height: 1, backgroundColor: "rgba(251, 250, 246,0.08)", margin: "12px 0", flexShrink: 0 }} />
 
-          {/* [4] Log feed — flex:1 fills all remaining vertical space */}
-          <div style={{ flex: 1, overflow: "hidden", minHeight: 0 }}>
+          {/* [4] Log feed — three static lines, natural height so the panel
+              stays compact and the blueprint shows through below it. */}
+          <div style={{ flexShrink: 0 }}>
             <AnimatePresence initial={false}>
               {visibleLogs.map((entry) => (
                 <motion.div
