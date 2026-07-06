@@ -6,26 +6,28 @@ import "./Footer.css";
 // the navbar's nav taxonomy; carries the sister-company relationship.
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
-    heading: "System",
+    heading: "Capabilities",
     links: [
-      { label: "Methodology", href: "#methodology" },
-      { label: "Infrastructure", href: "#infrastructure" },
-      { label: "The Lab", href: "#the-lab" },
+      { label: "Narrative Systems", href: "/capabilities/narrative-systems" },
+      { label: "GTM Infrastructure", href: "/capabilities/gtm-infrastructure" },
+      { label: "GTM Intelligence", href: "/capabilities/gtm-intelligence" },
+      { label: "The System Audit", href: "/audit" },
     ],
   },
   {
     heading: "Firm",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Careers", href: "#careers" },
-      { label: "Contact", href: "#contact" },
+      { label: "About Us", href: "/about" },
+      { label: "Who We Work With", href: "/who-we-work-with" },
+      { label: "Careers", href: "/careers" },
     ],
   },
   {
     heading: "Resources",
     links: [
-      { label: "Insights", href: "#insights" },
-      { label: "Reports", href: "#reports" },
+      { label: "Insights", href: "/insights" },
+      { label: "Reports", href: "/reports" },
+      { label: "Methodology", href: "/#methodology" },
     ],
   },
 ];

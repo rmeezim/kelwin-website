@@ -7,18 +7,71 @@ import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import "./NavMega.css";
 
-/* Every href is real: home-page section anchors carry the leading slash so
-   they also resolve from /audit, /audit and mailto are the two conversion
-   paths, and the one not-yet-built destination (Insights) is marked `soon`
-   instead of pointing at a dead anchor. */
-type MegaLink = { title: string; desc: string; href?: string; tag?: string; soon?: boolean };
-type MegaDef = { protocol: string; features: MegaLink[]; smalls: MegaLink[]; rail: MegaLink[] };
+/* Every destination is a real page or section. The one red element per
+   panel is the audit CTA card (`cta: true`). */
+type MegaLink = {
+  title: string;
+  desc: string;
+  href?: string;
+  tag?: string;
+  glyph?: GlyphName;
+  cta?: boolean;
+};
+type MegaDef = {
+  protocol: string;
+  featureCols?: 2 | 3;
+  features: MegaLink[];
+  smalls?: MegaLink[];
+  rail: MegaLink[];
+};
 type NavItem =
   | { label: string; href: string; mega?: never }
   | { label: string; href?: never; mega: MegaDef };
 
 const navItems: NavItem[] = [
-  { label: "CAPABILITIES", href: "/#revenue-os" },
+  {
+    label: "CAPABILITIES",
+    mega: {
+      protocol: "Capabilities · Systems",
+      featureCols: 3,
+      features: [
+        {
+          tag: "C·01",
+          glyph: "narrative",
+          title: "Narrative Systems",
+          desc: "The message system, proof architecture, and category the market hears.",
+          href: "/capabilities/narrative-systems",
+        },
+        {
+          tag: "C·02",
+          glyph: "channels",
+          title: "GTM Infrastructure",
+          desc: "Signal-based orchestration across email, social, phone, content, events.",
+          href: "/capabilities/gtm-infrastructure",
+        },
+        {
+          tag: "C·03",
+          glyph: "intelligence",
+          title: "GTM Intelligence",
+          desc: "Instrumentation and quarterly calibration — the loop that compounds.",
+          href: "/capabilities/gtm-intelligence",
+        },
+      ],
+      rail: [
+        {
+          title: "The System Audit",
+          desc: "Where every engagement begins — fixed scope, ten working days.",
+          href: "/audit",
+          cta: true,
+        },
+        {
+          title: "The full stack, on one page",
+          desc: "How the three layers wire into one operating system.",
+          href: "/#revenue-os",
+        },
+      ],
+    },
+  },
   { label: "METHODOLOGY", href: "/#methodology" },
   {
     label: "THE FIRM",
@@ -27,31 +80,36 @@ const navItems: NavItem[] = [
       features: [
         {
           tag: "F·01",
-          title: "The operating principle",
-          desc: "Stop resetting. Start compounding — the argument in two curves.",
-          href: "/#state-change",
+          glyph: "firm",
+          title: "About Us",
+          desc: "Why Kelwin exists — and the rebuild cycle we're here to end.",
+          href: "/about",
         },
         {
           tag: "F·02",
-          title: "Who we work with",
-          desc: "Not for everyone, by design — the fit criteria, in both directions.",
-          href: "/#fit",
+          glyph: "fit",
+          title: "Who We Work With",
+          desc: "The profile and industries we take on — and where we say no.",
+          href: "/who-we-work-with",
         },
       ],
       smalls: [
-        { title: "What you keep", desc: "Six transferable assets", href: "/#assets" },
-        { title: "Fixing the wrong layer", desc: "The diagnostic reframe", href: "/#reframe" },
-        { title: "The revenue OS", desc: "Three layers, installed", href: "/#revenue-os" },
+        {
+          title: "Careers",
+          desc: "No open roles right now — we hire slowly, on purpose.",
+          href: "/careers",
+        },
       ],
       rail: [
         {
-          title: "Begin with the audit",
+          title: "Initiate a System Audit",
           desc: "Fixed scope · ten working days · the readout is yours to keep.",
           href: "/audit",
+          cta: true,
         },
         {
-          title: "Contact the founding team",
-          desc: "audit@kelwin.co — no sequence, no SDR.",
+          title: "Get in touch",
+          desc: "audit@kelwin.co — straight to the founding team.",
           href: "mailto:audit@kelwin.co",
         },
       ],
@@ -64,37 +122,113 @@ const navItems: NavItem[] = [
       features: [
         {
           tag: "R·01",
-          title: "The System Audit — specification",
-          desc: "Scope, inputs, deliverables, timeline. The full spec, before you commit.",
-          href: "/audit",
+          glyph: "insights",
+          title: "Insights",
+          desc: "Field notes from the install base — signal patterns, channel mechanics, narrative ops.",
+          href: "/insights",
         },
         {
           tag: "R·02",
-          title: "Structural evidence",
-          desc: "Four numbers, one diagnosis — why pipeline problems are architecture problems.",
-          href: "/#evidence",
+          glyph: "reports",
+          title: "Reports",
+          desc: "Engagement readouts, published as clients clear them for release.",
+          href: "/reports",
         },
-      ],
-      smalls: [
-        { title: "The architecture map", desc: "Three layers, one closed loop", href: "/#architecture" },
-        { title: "The methodology", desc: "Four phases, in order", href: "/#methodology" },
-        { title: "Insights", desc: "Field notes — in preparation", soon: true },
       ],
       rail: [
         {
-          title: "Book a strategic call",
-          desc: "Straight to the founders — start with the audit readout.",
-          href: "/audit",
-        },
-        {
-          title: "Write to the team",
-          desc: "audit@kelwin.co",
+          title: "Get in touch",
+          desc: "audit@kelwin.co — no sequence, no SDR, straight to the founders.",
           href: "mailto:audit@kelwin.co",
         },
       ],
     },
   },
 ];
+
+/* ── Line glyphs — 1px geometric marks in the site's instrument idiom. ── */
+type GlyphName =
+  | "narrative"
+  | "channels"
+  | "intelligence"
+  | "firm"
+  | "fit"
+  | "insights"
+  | "reports";
+
+function MegaGlyph({ name }: { name: GlyphName }) {
+  const art: Record<GlyphName, React.ReactNode> = {
+    narrative: (
+      <>
+        <path d="M4 7h13M4 12h9M4 17h5" />
+        <circle cx="18.5" cy="17" r="1.4" />
+      </>
+    ),
+    channels: (
+      <>
+        <circle cx="5" cy="5.5" r="1.4" />
+        <circle cx="5" cy="12" r="1.4" />
+        <circle cx="5" cy="18.5" r="1.4" />
+        <path d="M6.4 6.2 17 11.2M6.4 12h10M6.4 17.8 17 12.8" />
+        <circle cx="18.8" cy="12" r="1.8" />
+      </>
+    ),
+    intelligence: (
+      <>
+        <path d="M4.5 19a7.5 7.5 0 0 1 15 0M8 19a4 4 0 0 1 8 0" />
+        <path d="M12 19 16.2 9.6" />
+        <circle cx="16.6" cy="8.6" r="1.3" />
+      </>
+    ),
+    firm: (
+      <>
+        <path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4" />
+        <circle cx="12" cy="12" r="1.8" />
+      </>
+    ),
+    fit: (
+      <>
+        <circle cx="6" cy="6" r="1.2" />
+        <circle cx="12" cy="6" r="1.2" />
+        <circle cx="18" cy="6" r="1.2" />
+        <circle cx="6" cy="12" r="1.2" />
+        <circle cx="12" cy="12" r="2" fill="currentColor" />
+        <circle cx="18" cy="12" r="1.2" />
+        <circle cx="6" cy="18" r="1.2" />
+        <circle cx="12" cy="18" r="1.2" />
+        <circle cx="18" cy="18" r="2" fill="currentColor" />
+      </>
+    ),
+    insights: (
+      <>
+        <path d="M4.5 7.5 9 12l-4.5 4.5M12 16.5h7.5" />
+      </>
+    ),
+    reports: (
+      <>
+        <path d="M6.5 3.5h7l4 4v13h-11z" />
+        <path d="M13.5 3.5v4h4" />
+        <path d="M9.5 12h5M9.5 15.5h5" />
+      </>
+    ),
+  };
+  return (
+    <svg
+      className="nmc-glyph"
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {art[name]}
+    </svg>
+  );
+}
 
 const FLICKER_ANIMATE = {
   opacity: [0, 0.9, 0.05, 1, 0.38, 1],
@@ -231,9 +365,9 @@ function AuditCTA({ onMenuClose }: { onMenuClose?: () => void }) {
   );
 }
 
-/* One card, three postures. `feature` = large dossier card with mono tag +
-   corner brackets; `small` = compact index row; `rail` = right-column
-   conversion row. `soon` renders inert with a SOON chip. */
+/* One card, three postures. `feature` = large dossier card with glyph, mono
+   tag, corner brackets, and a blueprint-grid ground; `small` = compact index
+   row; `rail` = right-column row. `cta` carries the panel's one red edge. */
 function MegaCard({
   item,
   variant,
@@ -243,16 +377,19 @@ function MegaCard({
   variant: "feature" | "small" | "rail";
   onNavigate: () => void;
 }) {
-  const cls = cn("nmc", `nmc-${variant}`, item.soon && "nmc-soon");
+  const cls = cn("nmc", `nmc-${variant}`, item.cta && "nmc-cta");
   const inner =
     variant === "feature" ? (
       <>
         <span className="nmc-tagrow">
+          {item.glyph && <MegaGlyph name={item.glyph} />}
           <span className="nmc-tag">{item.tag}</span>
-          <span className="nmc-arrow" aria-hidden="true">→</span>
         </span>
         <span className="nmc-body">
-          <span className="nmc-title">{item.title}</span>
+          <span className="nmc-title">
+            {item.title}
+            <span className="nmc-arrow" aria-hidden="true">→</span>
+          </span>
           <span className="nmc-desc">{item.desc}</span>
         </span>
       </>
@@ -262,15 +399,11 @@ function MegaCard({
           <span className="nmc-title">{item.title}</span>
           <span className="nmc-desc">{item.desc}</span>
         </span>
-        {item.soon ? (
-          <span className="nmc-chip">Soon</span>
-        ) : (
-          <span className="nmc-arrow" aria-hidden="true">→</span>
-        )}
+        <span className="nmc-arrow" aria-hidden="true">→</span>
       </>
     );
 
-  if (item.soon || !item.href) return <div className={cls}>{inner}</div>;
+  if (!item.href) return <div className={cls}>{inner}</div>;
   if (item.href.startsWith("mailto:")) {
     return (
       <a href={item.href} className={cls} onClick={onNavigate}>
@@ -450,16 +583,18 @@ export default function Navbar() {
                 </div>
                 <div className="nav-mega-grid">
                   <div className="nav-mega-main">
-                    <div className="nav-mega-features">
+                    <div className={cn("nav-mega-features", activeMega.featureCols === 3 && "cols-3")}>
                       {activeMega.features.map((f) => (
                         <MegaCard key={f.title} item={f} variant="feature" onNavigate={closeAll} />
                       ))}
                     </div>
-                    <div className="nav-mega-smalls">
-                      {activeMega.smalls.map((s) => (
-                        <MegaCard key={s.title} item={s} variant="small" onNavigate={closeAll} />
-                      ))}
-                    </div>
+                    {activeMega.smalls && activeMega.smalls.length > 0 && (
+                      <div className="nav-mega-smalls">
+                        {activeMega.smalls.map((s) => (
+                          <MegaCard key={s.title} item={s} variant="small" onNavigate={closeAll} />
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <div className="nav-mega-rail">
                     {activeMega.rail.map((r) => (
@@ -489,14 +624,14 @@ export default function Navbar() {
                 item.mega ? (
                   <div key={item.label}>
                     <div
-                      className="py-3 text-[10px] tracking-[0.2em] font-mono uppercase"
+                      className="py-3 text-[10px] tracking-[0.2em] uppercase"
                       style={{ color: "var(--sand)", fontFamily: "var(--font-mono)" }}
                     >
                       {item.label}
                     </div>
                     <div className="pl-4 flex flex-col gap-0.5">
-                      {[...item.mega.features, ...item.mega.smalls, ...item.mega.rail]
-                        .filter((l) => !l.soon && l.href)
+                      {[...item.mega.features, ...(item.mega.smalls ?? []), ...item.mega.rail]
+                        .filter((l) => l.href)
                         .map((l) =>
                           l.href!.startsWith("mailto:") ? (
                             <a

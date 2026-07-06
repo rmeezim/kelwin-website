@@ -1,8 +1,8 @@
 /* ─── Navbar mega menus — scoped to .nav-mega* ────────────────────────────
-   Full-width command-palette panels for THE FIRM and RESOURCES. Same
-   ingredients as the site's dossier cards: charcoal elevated surfaces,
-   hairline borders, mono protocol labels, corner brackets, sand trim.
-   Red appears only as the hover state on a card's arrow. */
+   Full-width command-palette panels. Same ingredients as the site's dossier
+   cards: charcoal elevated surfaces, hairline borders, mono protocol labels,
+   corner brackets, sand line-glyphs, a faint blueprint grid inside the
+   feature cards. Red appears once per panel — the audit CTA card's edge. */
 
 .nav-mega-wrap {
   position: absolute;
@@ -13,7 +13,7 @@
 }
 
 .nav-mega {
-  background: #0B0A08;
+  background: #0b0a08;
   border: 1px solid rgba(199, 180, 157, 0.38);
   border-top: none; /* the navbar's bottom hairline reads as the top edge */
   padding: 12px;
@@ -64,9 +64,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
+.nav-mega-features.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .nav-mega-smalls {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 10px;
 }
 .nav-mega-rail {
@@ -80,8 +81,7 @@
 .nmc {
   position: relative;
   display: flex;
-  background: #131109;
-  background: #14120d;
+  background-color: #14120d;
   border: 1px solid rgba(251, 250, 246, 0.08);
   padding: 15px 17px;
   text-decoration: none;
@@ -89,16 +89,23 @@
 }
 .nmc:hover {
   border-color: rgba(199, 180, 157, 0.5);
-  background: #1a1712;
+  background-color: #1a1712;
 }
 
-/* Feature cards — dossier posture: mono tag + corner brackets, title low. */
+/* Feature cards — dossier posture: glyph + mono tag up top, title low,
+   corner brackets, and a faint blueprint grid as the ground. */
 .nmc-feature {
   flex-direction: column;
   justify-content: space-between;
-  gap: 34px;
-  min-height: 148px;
+  gap: 30px;
+  min-height: 150px;
+  background-image:
+    linear-gradient(rgba(199, 180, 157, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(199, 180, 157, 0.05) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-position: center;
 }
+.nav-mega-features.cols-3 .nmc-feature { min-height: 140px; }
 .nmc-feature::before,
 .nmc-feature::after {
   content: "";
@@ -127,7 +134,7 @@
 
 .nmc-tagrow {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   padding: 2px 4px 0;
 }
@@ -137,6 +144,12 @@
   letter-spacing: 0.18em;
   color: var(--sand);
 }
+.nmc-glyph {
+  color: rgba(199, 180, 157, 0.72);
+  transition: color 0.22s ease;
+  flex-shrink: 0;
+}
+.nmc:hover .nmc-glyph { color: #c7b49d; }
 
 .nmc-body {
   display: flex;
@@ -146,6 +159,9 @@
   padding: 0 4px;
 }
 .nmc-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-heading), sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -162,7 +178,7 @@
 }
 .nmc:hover .nmc-title { color: #fbfaf6; }
 
-/* Arrow — hidden at rest, slides in sand, warms red while pressed-ish. */
+/* Arrow — hidden at rest, slides in sand, warms red while pressed. */
 .nmc-arrow {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -191,35 +207,27 @@
 .nmc-small .nmc-desc,
 .nmc-rail .nmc-desc {
   font-size: 11.5px;
+}
+.nmc-small .nmc-desc {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.nmc-rail .nmc-desc { white-space: normal; }
 .nmc-small .nmc-body,
 .nmc-rail .nmc-body { padding: 0; gap: 3px; }
 
-/* "In preparation" card — present but visibly not yet a destination. */
-.nmc-soon,
-.nmc-soon:hover {
-  background: #14120d;
-  border-color: rgba(251, 250, 246, 0.08);
-  cursor: default;
+/* The one red element per panel — the audit CTA card's live edge. */
+.nmc-cta {
+  box-shadow: inset 2px 0 0 var(--signal-bright);
 }
-.nmc-soon .nmc-title { color: rgba(251, 250, 246, 0.45); }
-.nmc-soon .nmc-desc { color: rgba(251, 250, 246, 0.3); }
-.nmc-chip {
-  font-family: var(--font-mono);
-  font-size: 8.5px;
-  letter-spacing: 0.2em;
-  color: rgba(199, 180, 157, 0.7);
-  border: 1px solid rgba(199, 180, 157, 0.28);
-  padding: 3px 7px;
-  flex-shrink: 0;
-}
+.nmc-cta .nmc-title { color: #fbfaf6; }
+.nmc-cta:hover { border-color: rgba(212, 82, 78, 0.55); }
+.nmc-cta:hover .nmc-arrow { color: var(--signal-bright); }
 
 /* Mid-width desktop: keep the grid intact but let cards breathe less. */
 @media (min-width: 1050px) and (max-width: 1280px) {
   .nav-mega-grid { grid-template-columns: minmax(0, 1fr) 240px; }
-  .nmc-feature { min-height: 132px; gap: 24px; }
+  .nmc-feature { min-height: 128px; gap: 22px; }
+  .nav-mega-features.cols-3 .nmc-feature { min-height: 120px; }
+  .nmc-title { font-size: 14.5px; }
 }

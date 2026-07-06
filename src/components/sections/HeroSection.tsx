@@ -56,7 +56,9 @@ export default function HeroSection() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
-    <section id="hero" className="relative bg-surface flex flex-col overflow-x-hidden">
+    // min-h-svh: the hero owns the first viewport outright — the next
+    // section starts below the fold instead of bleeding into frame.
+    <section id="hero" className="relative bg-surface flex flex-col overflow-x-hidden min-h-svh">
       {/* Key visual — exploded blueprint of a layered system, the page's
           argument in one image. The asset's ground is crushed to true
           black, so the screen blend drops it out entirely and only the
@@ -97,8 +99,10 @@ export default function HeroSection() {
       </motion.div>
       <Navbar />
 
-      {/* Centered content wrapper — caps horizontal sprawl on huge displays. */}
-      <div className="max-w-[96rem] mx-auto w-full flex flex-col">
+      {/* Centered content wrapper — caps horizontal sprawl on huge displays;
+          flex-1 + justify-center holds the argument mid-viewport now that
+          the section is full-height. */}
+      <div className="max-w-[96rem] mx-auto w-full flex flex-col flex-1 justify-center">
 
       {/* Main content row */}
       <div className="flex">
