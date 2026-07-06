@@ -51,8 +51,34 @@ export default function HeroSection() {
   const px = (v: number | string) =>
     typeof v === "number" ? `${v}px` : v;
 
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
   return (
     <section id="hero" className="relative bg-surface flex flex-col overflow-x-hidden">
+      {/* Key visual — exploded blueprint of a layered system, the page's
+          argument in one image. Screen-blended so its black ground drops
+          out and only the linework floats on the charcoal; radially masked
+          so it dissolves before reaching the text column. */}
+      <motion.div
+        aria-hidden="true"
+        className="hidden md:block absolute inset-0 pointer-events-none select-none"
+        style={{
+          backgroundImage: `url(${basePath}/hero-blueprint.webp)`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "min(1240px, 96%) auto",
+          backgroundPosition: "right -60px bottom -60px",
+          mixBlendMode: "screen",
+          maskImage:
+            "radial-gradient(ellipse 50% 70% at 76% 63%, black 30%, transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 50% 70% at 76% 63%, black 30%, transparent 80%)",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.55 }}
+        transition={
+          reduced ? { duration: 0 } : { delay: 1.1, duration: 1.8, ease: "easeOut" }
+        }
+      />
       <Navbar />
 
       {/* Centered content wrapper — caps horizontal sprawl on huge displays. */}
