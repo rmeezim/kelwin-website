@@ -49,31 +49,47 @@ export default function Methodology() {
   const sectionRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
 
-  // Scroll drives the active phase: as the section passes through the
-  // viewport, ScrollTrigger maps its progress to a step index, so the
-  // pipeline advances on its own — no hover required (that felt like a
-  // prototype). Hover/click/keyboard still let you jump to a step; the
-  // next scroll movement resumes control. Reduced motion opts out of the
-  // scroll wiring and leaves the nodes fully operable as tabs.
+  // Scroll drives the active phase. On desktop the section is a tall
+  // runway with a sticky stage: the panel holds on screen while the four
+  // phases tick through with scroll, then releases — no more content
+  // drifting out of view mid-phase. On mobile (no pin) the old in-view
+  // progress mapping applies. Hover/click/keyboard still jump phases;
+  // reduced motion opts out and leaves the nodes operable as tabs.
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     gsap.registerPlugin(ScrollTrigger);
-    const st = ScrollTrigger.create({
-      trigger: section,
-      start: "top 80%",
-      end: "bottom 20%",
-      onUpdate: (self) => {
-        const idx = Math.min(
-          PHASES.length - 1,
-          Math.max(0, Math.floor(self.progress * PHASES.length))
-        );
-        setActive((prev) => (prev === idx ? prev : idx));
-      },
+    const toIdx = (progress: number) =>
+      Math.min(PHASES.length - 1, Math.max(0, Math.floor(progress * PHASES.length)));
+
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 901px)", () => {
+      const st = ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "bottom bottom",
+        onUpdate: (self) => {
+          const idx = toIdx(self.progress);
+          setActive((prev) => (prev === idx ? prev : idx));
+        },
+      });
+      return () => st.kill();
     });
-    return () => st.kill();
+    mm.add("(max-width: 900px)", () => {
+      const st = ScrollTrigger.create({
+        trigger: section,
+        start: "top 80%",
+        end: "bottom 20%",
+        onUpdate: (self) => {
+          const idx = toIdx(self.progress);
+          setActive((prev) => (prev === idx ? prev : idx));
+        },
+      });
+      return () => st.kill();
+    });
+    return () => mm.revert();
   }, []);
 
   const select = (i: number) => setActive(i);
@@ -83,6 +99,7 @@ export default function Methodology() {
 
   return (
     <section id="methodology" className="method-section" ref={sectionRef}>
+      <div className="method-pin">
       <div className="method-stage">
         <div className="scaffold-row">
           <h2 className="scaffold-heading">
@@ -95,6 +112,15 @@ export default function Methodology() {
               system left alone drifts the moment the market moves.
               <span className="coda">A system, not a project.</span>
             </p>
+          </div>
+          {/* Conversion path: the methodology convinces — the audit is
+              step one, so the action sits with the argument. */}
+          <div className="method-cta-row">
+            <DiagnosticMethodCTA
+              href="/audit"
+              label="Begin with the audit"
+              variant="signal"
+            />
           </div>
         </div>
 
@@ -157,9 +183,7 @@ export default function Methodology() {
           </div>
         </div>
 
-        <div className="method-cta-row">
-          <DiagnosticMethodCTA href="/methodology" label="View the full methodology" variant="signal" />
-        </div>
+      </div>
       </div>
     </section>
   );

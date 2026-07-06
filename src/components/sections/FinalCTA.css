@@ -178,20 +178,6 @@
   gap: clamp(20px, 2.4vw, 34px);
   flex-wrap: wrap;
 }
-.fcta-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--f-body);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--cream-90);
-  text-decoration: none;
-  transition: gap 0.28s cubic-bezier(0.2, 0.7, 0.3, 1);
-}
-.fcta-secondary:hover { gap: 16px; }
 
 /* Expectation-setting line under the actions (Gemini: CTA friction). */
 .fcta-microcopy {

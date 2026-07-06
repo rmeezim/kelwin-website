@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import ArrowLink from "@/components/ui/ArrowLink";
 import "./FitStrip.css";
 
 // ─── Fit strip — "Not for everyone. By design." ───────────────────────────
@@ -63,10 +63,7 @@ export default function FitStrip() {
               <span className="line-1">Not for everyone.</span>{" "}
               <span className="line-2">By design.</span>
             </h2>
-            <Link className="fit-link" href="/audit">
-              Sound like you? Start with the audit
-              <span aria-hidden="true">→</span>
-            </Link>
+            <ArrowLink href="/audit" label="Sound like you? Start with the audit" tone="sand" />
           </header>
 
           <div className="fit-cols fit-reveal">

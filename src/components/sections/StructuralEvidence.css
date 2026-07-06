@@ -208,54 +208,33 @@
   font-variant-numeric: tabular-nums; /* stable width while counting up */
 }
 
-/* ── Caption stack ── */
-.ev-unit {
-  font-family: var(--f-body);
-  font-size: 14px;
-  line-height: 1.4;
-  color: var(--cream-muted);
-  margin: 0 0 clamp(14px, 1.6vw, 18px);
-  max-width: 22ch;
-  min-height: 2.8em; /* reserve two lines so the row aligns */
-}
-.ev-takeaway {
+/* ── Two-beat caption stack — the finding, then the fix ── */
+.ev-claim {
   font-family: var(--f-display);
-  font-size: clamp(16px, 1.25vw, 18.5px);
+  font-size: clamp(16.5px, 1.3vw, 19px);
   font-weight: 500;
-  line-height: 1.24;
+  line-height: 1.3;
   letter-spacing: -0.015em;
   color: var(--cream);
-  margin: 0 0 clamp(16px, 1.8vw, 20px);
-  max-width: 20ch;
+  margin: 0 0 10px;
+  max-width: 24ch;
   text-wrap: balance;
-  min-height: 2.48em;
+  /* reserve two lines so the fix lines align across the row */
+  min-height: 2.6em;
+}
+.ev-so {
+  font-family: var(--f-body);
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--cream-muted);
+  margin: 0 0 clamp(16px, 1.8vw, 22px);
+  max-width: 26ch;
+  min-height: 4.65em; /* reserve three lines so sources align */
 }
 @media (max-width: 1080px) {
-  .ev-unit { min-height: 0; }
-  .ev-takeaway { min-height: 0; }
+  .ev-claim { min-height: 0; }
+  .ev-so { min-height: 0; }
 }
-
-/* Diagnostic pivot — mistaken read (struck) resolving to the real cause. */
-.ev-pivot {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  font-family: var(--f-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0 0 clamp(16px, 1.8vw, 22px);
-  padding: 7px 12px;
-  border: 1px solid var(--sand-line);
-}
-.ev-pivot-wrong {
-  color: var(--taupe);
-  text-decoration: line-through;
-  text-decoration-color: var(--signal-bright);
-  text-decoration-thickness: 1px;
-}
-.ev-pivot-arrow { color: var(--sand); }
-.ev-pivot-right { color: var(--clay-bright); font-weight: 500; }
 
 .ev-source {
   font-family: var(--f-mono);

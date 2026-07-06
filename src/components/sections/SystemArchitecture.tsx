@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef } from "react";
+import ArrowLink from "@/components/ui/ArrowLink";
 import "./SystemArchitecture.css";
 
 interface Node {
@@ -9,26 +10,33 @@ interface Node {
   label: string;
   title: string;
   sub: string;
+  /** Concrete elements inside the module — grounded in the layer sections. */
+  items?: string;
   live?: boolean;
 }
 
 const NODES: Node[] = [
   { id: "in",  kind: "io",     label: "Ingest",   title: "Market Signal",        sub: "ICP · intent · demand" },
-  { id: "l1",  kind: "layer",  label: "Layer 01", title: "Narrative",            sub: "Positioning & language" },
-  { id: "l2",  kind: "layer",  label: "Layer 02", title: "Channels",             sub: "Omnichannel orchestration" },
-  { id: "l3",  kind: "layer",  label: "Layer 03", title: "Intelligence",         sub: "Observe & learn" },
+  { id: "l1",  kind: "layer",  label: "Layer 01", title: "Narrative",            sub: "Positioning & language", items: "message system · proof · category" },
+  { id: "l2",  kind: "layer",  label: "Layer 02", title: "Channels",             sub: "Omnichannel orchestration", items: "email · social · phone · content · events" },
+  { id: "l3",  kind: "layer",  label: "Layer 03", title: "Intelligence",         sub: "Observe & learn", items: "instrumentation · quarterly retune" },
   { id: "out", kind: "output", label: "Output",   title: "Compounding Pipeline", sub: "Institutional revenue", live: true },
 ];
 
-// Forward chain + one feedback edge (Intelligence → Narrative = the loop
-// that makes the system compound instead of resetting each quarter).
+// Forward chain + two feedback edges — Intelligence feeds learning back to
+// Narrative (retune the language) AND to Channels (reroute the effort).
+// Both loops are real: they're the quarterly calibration described in the
+// Methodology and Intelligence sections.
 const FORWARD: [string, string, string][] = [
   ["in", "l1", "define"],
   ["l1", "l2", "activate"],
   ["l2", "l3", "measure"],
   ["l3", "out", "compound"],
 ];
-const FEEDBACK: [string, string, string] = ["l3", "l1", "learn & retune"];
+const FEEDBACK: [string, string, string, number][] = [
+  ["l3", "l1", "learn & retune the narrative", 120],
+  ["l3", "l2", "reroute effort", 52],
+];
 
 export default function SystemArchitecture() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -102,22 +110,21 @@ export default function SystemArchitecture() {
     };
 
     // Feedback: bow away from the forward line (up on desktop row, aside on
-    // a mobile column) so it reads as a distinct return path.
-    const feedbackPath = (a: string, b: string) => {
+    // a mobile column) so it reads as a distinct return path. `bow` sets the
+    // arc height so multiple return paths nest without colliding.
+    const feedbackPath = (a: string, b: string, bow: number) => {
       const A = rectOf(a), B = rectOf(b);
       if (!A || !B) return "";
       const horizontal = Math.abs(B.cx - A.cx) >= Math.abs(B.cy - A.cy);
       if (horizontal) {
-        const p1 = { x: A.cx, y: A.t };            // top of Intelligence
-        const p2 = { x: B.cx, y: B.t };            // top of Narrative
-        const bow = Math.min(96, 46 + Math.abs(p1.x - p2.x) * 0.12);
+        const p1 = { x: A.cx, y: A.t };            // top of the source module
+        const p2 = { x: B.cx, y: B.t };            // top of the target module
         const cy = Math.min(p1.y, p2.y) - bow;
         return `M ${p1.x} ${p1.y} C ${p1.x} ${cy}, ${p2.x} ${cy}, ${p2.x} ${p2.y}`;
       }
-      const p1 = { x: A.l, y: A.cy };              // left of Intelligence
-      const p2 = { x: B.l, y: B.cy };              // left of Narrative
-      const bow = 40;
-      const cx = Math.min(p1.x, p2.x) - bow;
+      const p1 = { x: A.l, y: A.cy };              // left of the source module
+      const p2 = { x: B.l, y: B.cy };              // left of the target module
+      const cx = Math.min(p1.x, p2.x) - Math.max(28, bow * 0.4);
       return `M ${p1.x} ${p1.y} C ${cx} ${p1.y}, ${cx} ${p2.y}, ${p2.x} ${p2.y}`;
     };
 
@@ -171,7 +178,9 @@ export default function SystemArchitecture() {
       };
 
       FORWARD.forEach(([a, b, label], i) => addEdge(straightPath(a, b), label, false, i));
-      addEdge(feedbackPath(FEEDBACK[0], FEEDBACK[1]), "continuous learning loop", true, 0);
+      FEEDBACK.forEach(([a, b, label, bow], i) =>
+        addEdge(feedbackPath(a, b, bow), label, true, i)
+      );
     };
 
     build();
@@ -221,19 +230,25 @@ export default function SystemArchitecture() {
                     {n.live && <span className="sa-node-live" aria-hidden="true" />}
                   </span>
                   <span className="sa-node-sub">{n.sub}</span>
+                  {n.items && <span className="sa-node-items">{n.items}</span>}
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="sysarch-legend sa-reveal" aria-hidden="true">
-          <span className="sa-legend-item"><span className="sa-legend-flow" /> Signal flow</span>
-          <span className="sa-legend-item"><span className="sa-legend-loop" /> Learning loop</span>
-          <span className="sa-legend-note">
-            The asset is yours — {nodeById("l1").title.toLowerCase()}, {nodeById("l2").title.toLowerCase()},{" "}
-            and {nodeById("l3").title.toLowerCase()} stay with your team.
-          </span>
+        <div className="sysarch-legend sa-reveal">
+          <span className="sa-legend-item" aria-hidden="true"><span className="sa-legend-flow" /> Signal flow</span>
+          <span className="sa-legend-item" aria-hidden="true"><span className="sa-legend-loop" /> Learning loop</span>
+          <div className="sa-legend-right">
+            <span className="sa-legend-note">
+              The asset is yours — {nodeById("l1").title.toLowerCase()}, {nodeById("l2").title.toLowerCase()},{" "}
+              and {nodeById("l3").title.toLowerCase()} stay with your team.
+            </span>
+            {/* Strategic CTA: after seeing the system, the next question is
+                "how does it get installed" — send them to the methodology. */}
+            <ArrowLink href="#methodology" label="See how we install it" tone="sand" />
+          </div>
         </div>
       </div>
     </section>

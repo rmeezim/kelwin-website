@@ -117,9 +117,11 @@
   position: absolute;
   inset: 0;
   background: var(--signal-bright);
-  box-shadow: 0 0 6px var(--signal-glow);
-  transform-origin: top center;
-  transform: scaleY(0);
+  /* Revealed by clip-path (not scaleY): a scaled transform rasterizes the
+     bar + glow and smears it wide/blurry at low progress. Clipping keeps
+     the 2px line pixel-crisp at every scroll position. Glow lives on the
+     nodes, not the line. */
+  clip-path: inset(0 0 100% 0);
 }
 .revos-pin .layer-spine-node {
   position: absolute;

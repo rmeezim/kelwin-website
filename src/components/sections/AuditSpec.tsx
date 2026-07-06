@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import HeroCTA from "@/components/ui/HeroCTA";
 import "./AuditSpec.css";
 
 // ─── The System Audit — the offer as a visible product ────────────────────
@@ -135,14 +136,13 @@ export default function AuditSpec() {
             </p>
 
             {/* [EDIT ME] placeholder contact — swap for the real booking
-                link (Cal.com / email) before outbound pushes. */}
+                link (Cal.com / email) before outbound pushes. Uses the
+                site-wide primary CTA (style #1). */}
             <div className="as-cta-row">
-              <a className="as-cta" href="mailto:audit@kelwin.co?subject=System%20Audit%20Request">
-                <span className="as-cta-bracket as-cta-tl" aria-hidden="true" />
-                <span className="as-cta-bracket as-cta-br" aria-hidden="true" />
-                Request the audit
-                <span className="as-cta-arrow" aria-hidden="true">→</span>
-              </a>
+              <HeroCTA
+                label="REQUEST THE AUDIT"
+                href="mailto:audit@kelwin.co?subject=System%20Audit%20Request"
+              />
               <span className="as-cta-note">
                 Goes straight to the founding team — no sequence, no SDR.
               </span>

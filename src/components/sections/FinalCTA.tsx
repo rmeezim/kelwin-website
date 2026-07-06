@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+import ArrowLink from "@/components/ui/ArrowLink";
 import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
 import DotMatrixReading from "@/components/ui/DotMatrixReading";
 import "./FinalCTA.css";
@@ -95,10 +95,7 @@ export default function FinalCTA() {
                 label="Initiate System Audit"
                 variant="bone"
               />
-              <Link className="fcta-secondary" href="/audit">
-                Book a strategic call
-                <span aria-hidden="true">→</span>
-              </Link>
+              <ArrowLink href="/audit" label="Book a strategic call" tone="cream" />
             </div>
             {/* Expectation-setting micro-copy — what the button actually
                 starts (Gemini audit: reduce CTA friction). */}

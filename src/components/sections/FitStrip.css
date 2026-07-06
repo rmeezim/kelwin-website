@@ -91,19 +91,6 @@
 }
 .fit-heading .line-1 { color: var(--cream); }
 .fit-heading .line-2 { color: var(--cream-dim); }
-.fit-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--f-mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--sand);
-  text-decoration: none;
-  transition: gap 0.25s var(--ease-out), color 0.2s ease;
-}
-.fit-link:hover { gap: 15px; color: var(--signal-bright); }
 
 /* ── Columns ── */
 .fit-cols {

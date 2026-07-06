@@ -301,7 +301,7 @@ export default function RevenueOS() {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const fill = wrap.querySelector<HTMLElement>(".layer-spine-fill");
-      if (fill) fill.style.transform = "scaleY(1)";
+      if (fill) fill.style.clipPath = "inset(0 0 0% 0)";
       return;
     }
     gsap.registerPlugin(ScrollTrigger);
@@ -309,9 +309,10 @@ export default function RevenueOS() {
     const zone = wrap.querySelector<HTMLElement>(".layers-zone");
     if (!fill || !zone) return;
 
-    gsap.set(fill, { scaleY: 0, transformOrigin: "top center" });
+    // clip-path reveal (not scaleY) — stays pixel-crisp at every progress.
+    gsap.set(fill, { clipPath: "inset(0% 0% 100% 0%)" });
     const tween = gsap.to(fill, {
-      scaleY: 1,
+      clipPath: "inset(0% 0% 0% 0%)",
       ease: "none",
       scrollTrigger: {
         trigger: zone,

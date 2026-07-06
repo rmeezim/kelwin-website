@@ -11,14 +11,11 @@ interface Metric {
   /** Numeric value the dial counts up to. */
   value: number;
   suffix: string;
-  /** What the number measures — a tight caption so the dial self-labels. */
-  unit: string;
-  /** The plain-language verdict. Skim only these four and you get the argument. */
-  takeaway: string;
-  /** The diagnostic pivot: what it's mistaken for → what it actually is. */
-  mistaken: string;
-  actual: string;
-  /** The expanded read revealed on hover/focus — makes the point explicit. */
+  /** The finding as one plain, complete sentence — no assembly required. */
+  claim: string;
+  /** The so-what, one line: what this means you should fix. */
+  so: string;
+  /** The expanded read revealed on hover/focus — depth for the curious. */
   detail: string;
   /** Fill fraction of the arc (0–1) — the data-layer reading. */
   fill: number;
@@ -27,20 +24,18 @@ interface Metric {
   source: string;
 }
 
-// Four signals, every one from a primary-grade B2B GTM source. Each dial
-// pairs the reading with a symptom→cause pivot, and a hover detail spells
-// the point out plainly — so the section re-states the diagnostic reframe
-// four times: the thing you'd blame is never the constraint.
+// Four signals, every one from a primary-grade B2B GTM source. Each tile
+// reads in two beats with zero decoding: a full-sentence finding (the
+// number restated in words, so the dial never needs interpreting), then
+// one line naming the real fix. Hover keeps the deeper read.
 const METRICS: Metric[] = [
   {
     id: "journey",
     dimension: "Visibility",
     value: 17,
     suffix: "%",
-    unit: "of the journey involves sales",
-    takeaway: "The decision happens without you.",
-    mistaken: "Pipeline",
-    actual: "Narrative",
+    claim: "Buyers spend just 17% of the journey with sales.",
+    so: "The deal is decided by your narrative — not your reps.",
     detail:
       "Buyers spend only 17% of a purchase with sales — and less with any single vendor. The decision is mostly made before a rep is in the room, on what the market already believes about you. That's narrative work, not more outreach.",
     fill: 0.17,
@@ -52,10 +47,8 @@ const METRICS: Metric[] = [
     dimension: "Timing",
     value: 95,
     suffix: "%",
-    unit: "of buyers aren't in‑market",
-    takeaway: "Only 5% are ready to buy now.",
-    mistaken: "Volume",
-    actual: "Memory",
+    claim: "95% of your market isn't buying right now.",
+    so: "You win by being remembered when they are — not by chasing harder.",
     detail:
       "At any given moment only about 5% of your market is actively buying. You can't convert the 95% who aren't ready — you can only be the name they recall when they are. That's mental availability, not pipeline volume.",
     fill: 0.95,
@@ -67,10 +60,8 @@ const METRICS: Metric[] = [
     dimension: "Complexity",
     value: 77,
     suffix: "%",
-    unit: "found buying complex or hard",
-    takeaway: "Deciding is harder than pitching.",
-    mistaken: "Weak reps",
-    actual: "Architecture",
+    claim: "77% of buyers say the purchase was hard to make.",
+    so: "The friction is your buying process — make deciding easier and you win.",
     detail:
       "More than three‑quarters of buyers call their last purchase complex or difficult. That friction is the buying process — too many stakeholders, no clear path — not your reps underperforming. You win by making the decision easier to make.",
     fill: 0.77,
@@ -82,10 +73,8 @@ const METRICS: Metric[] = [
     dimension: "Experience",
     value: 53,
     suffix: "%",
-    unit: "of loyalty is the experience",
-    takeaway: "How you sell beats what you sell.",
-    mistaken: "Price",
-    actual: "The sell",
+    claim: "53% of loyalty comes from the buying experience.",
+    so: "How you sell outweighs brand, product, and price combined.",
     detail:
       "The biggest driver of B2B loyalty isn't brand, product, or price — it's the buying experience, at 53%. How you frame and guide the decision outweighs everything sitting in your pipeline. The way you sell is the product.",
     fill: 0.53,
@@ -164,7 +153,7 @@ export default function StructuralEvidence() {
               className="ev-dial-cell ev-reveal"
               key={m.id}
               tabIndex={0}
-              aria-label={`${m.dimension}: ${m.value}${m.suffix} — ${m.detail}`}
+              aria-label={`${m.claim} ${m.detail}`}
               style={{ ["--i" as string]: i, ["--pct" as string]: m.fill }}
             >
               <span className="ev-dimension">{m.dimension}</span>
@@ -207,23 +196,18 @@ export default function StructuralEvidence() {
                 </div>
               </div>
 
-              <p className="ev-unit">{m.unit}</p>
-              <p className="ev-takeaway">{m.takeaway}</p>
-
-              {/* Diagnostic pivot — the mistaken read, struck out, resolving
-                  to the real constraint. */}
-              <p className="ev-pivot">
-                <span className="ev-pivot-wrong">{m.mistaken}</span>
-                <span className="ev-pivot-arrow" aria-hidden="true">→</span>
-                <span className="ev-pivot-right">{m.actual}</span>
-              </p>
+              {/* Two beats, zero decoding: the finding as a full sentence,
+                  then the one-line fix it points to. */}
+              <p className="ev-claim">{m.claim}</p>
+              <p className="ev-so">{m.so}</p>
 
               {/* Hover/focus detail — the point spelled out, words fading into
                   focus. Overlays the cell on pointer devices; sits inline on
                   touch (before the source) so the reading is never gated. */}
               <div className="ev-detail" aria-hidden="true">
                 <span className="ev-detail-head">
-                  {m.dimension} · {m.value}{m.suffix}
+                  {m.dimension} · {m.value}
+                  {m.suffix}
                 </span>
                 <p className="ev-detail-body">{words(m.detail)}</p>
               </div>

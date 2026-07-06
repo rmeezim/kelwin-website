@@ -40,6 +40,31 @@
   padding: var(--space-section) clamp(28px, 5vw, 64px);
 }
 
+/* Sticky runway (desktop): the section is a tall scroll track and the
+   stage holds on screen while the four phases tick through — the panel
+   no longer drifts out of view mid-phase. Mobile + reduced motion keep
+   the normal in-flow layout. */
+@media (min-width: 901px) {
+  .method-section .method-pin { height: 280vh; }
+  .method-section .method-stage {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .method-section .method-pin { height: auto !important; }
+  .method-section .method-stage {
+    position: static !important;
+    min-height: 0 !important;
+  }
+}
+
 /* ── Header ── */
 /* Stacked header — one pattern site-wide: heading, lede beneath. */
 .method-section .scaffold-row {
@@ -290,10 +315,11 @@
   color: var(--ink);
 }
 
+/* CTA lives in the header row, beside the argument it follows from. */
 .method-section .method-cta-row {
-  margin-top: clamp(36px, 4vw, 56px);
+  margin-top: 24px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 /* ── Responsive ── */

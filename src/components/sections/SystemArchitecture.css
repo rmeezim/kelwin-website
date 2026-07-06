@@ -105,7 +105,7 @@
 /* ── Diagram ── */
 .sysarch-diagram {
   position: relative;
-  padding-top: 118px;  /* headroom for the feedback bow above the modules */
+  padding-top: 158px;  /* headroom for the two nested feedback bows */
   padding-bottom: 10px;
 }
 .sysarch-edges {
@@ -145,10 +145,10 @@
 
 .sa-node {
   position: relative;
-  width: clamp(156px, 13.6vw, 198px);
+  width: clamp(168px, 14.6vw, 214px);
   background: var(--surface-elev);
   border: 1px solid var(--sand-line);
-  padding: 22px 20px 20px;
+  padding: 24px 22px 22px;
   display: flex;
   flex-direction: column;
   gap: 9px;
@@ -206,6 +206,17 @@
   line-height: 1.4;
   color: var(--cream-muted);
 }
+/* Concrete elements inside the module — mono, sand-dim, one line. */
+.sa-node-items {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: rgba(199, 180, 157, 0.6);
+  padding-top: 8px;
+  border-top: 1px solid var(--sand-faint);
+}
 
 /* ── Legend ── */
 .sysarch-legend {
@@ -229,19 +240,25 @@
 }
 .sa-legend-flow, .sa-legend-loop { width: 28px; height: 0; border-top: 2px solid var(--clay-bright); }
 .sa-legend-loop { border-top-style: dashed; opacity: 0.95; }
-.sa-legend-note {
+.sa-legend-right {
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 36px);
+  flex-wrap: wrap;
+}
+.sa-legend-note {
   font-family: var(--f-body);
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--cream-dim);
 }
 
 /* ── Mobile: stack the pipeline vertically ── */
 @media (max-width: 860px) {
-  .sysarch-diagram { padding-top: 20px; padding-left: 46px; }
+  .sysarch-diagram { padding-top: 20px; padding-left: 52px; }
   .sysarch-nodes { flex-direction: column; gap: 64px; align-items: stretch; }
   .sa-slot { justify-content: flex-start; }
-  .sa-node { width: min(280px, 100%); }
+  .sa-node { width: min(300px, 100%); }
   .sysarch-edges .sa-edge-text { display: none; } /* verbs would crowd the vertical wires */
-  .sa-legend-note { margin-left: 0; flex-basis: 100%; }
+  .sa-legend-right { margin-left: 0; flex-basis: 100%; }
 }

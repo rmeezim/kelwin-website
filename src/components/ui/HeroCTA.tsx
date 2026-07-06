@@ -15,7 +15,15 @@ const CREAM        = "#FBFAF6";
 const CAP_REST  = 8;  // bracket arm length at rest (viewBox units)
 const CAP_HOVER = 11; // extends inward on hover
 
-export default function HeroCTA() {
+// CTA style #1 — the primary action. Red fill, full-height side rails,
+// corner caps that extend on hover. One per view; reserved for the core
+// conversion action (audit request).
+interface Props {
+  label?: string;
+  href?: string;
+}
+
+export default function HeroCTA({ label = "INITIATE SYSTEM AUDIT", href = "/audit" }: Props) {
   const [hovered, setHovered] = useState(false);
   const hoveredRef  = useRef(false); // guards async post-flicker callback
   const fillControls = useAnimation();
@@ -51,9 +59,13 @@ export default function HeroCTA() {
     ? { duration: FLICKER_DURATION, delay: 0, ease: "linear" as const }
     : { duration: 0.2, ease: "easeOut" as const };
 
+  // mailto/http hrefs render a plain anchor; internal routes use Link.
+  const Tag: React.ElementType =
+    href.startsWith("mailto:") || href.startsWith("http") ? "a" : Link;
+
   return (
-    <Link
-      href="/audit"
+    <Tag
+      href={href}
       className="relative inline-flex items-center tracking-[0.08em] font-body font-semibold group select-none gap-[clamp(0.5rem,0.7vw,0.75rem)] text-[clamp(0.78rem,0.95vw,0.95rem)] px-[clamp(1rem,1.6vw,1.75rem)] py-[clamp(0.65rem,0.95vw,1rem)]"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
@@ -109,7 +121,7 @@ export default function HeroCTA() {
       </svg>
 
       <span className="relative z-10" style={{ color: CREAM }}>
-        INITIATE SYSTEM AUDIT
+        {label}
       </span>
       <span
         className="relative z-10 transition-transform duration-200 group-hover:translate-x-1"
@@ -117,6 +129,6 @@ export default function HeroCTA() {
       >
         →
       </span>
-    </Link>
+    </Tag>
   );
 }

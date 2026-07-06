@@ -1,0 +1,23 @@
+/* ─── ArrowLink — CTA style #4, shared site-wide ─────────────────────────
+   Uppercase label + arrow; the gap widens on hover. One visual voice for
+   every quiet conversion path. */
+
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: gap 0.28s cubic-bezier(0.2, 0.7, 0.3, 1), color 0.2s ease;
+}
+.arrow-link:hover { gap: 16px; }
+
+.arrow-link-cream { color: rgba(251, 250, 246, 0.9); }
+.arrow-link-cream:hover { color: #fbfaf6; }
+
+.arrow-link-sand { color: #c7b49d; }
+.arrow-link-sand:hover { color: #d4524e; }

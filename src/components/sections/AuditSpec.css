@@ -120,34 +120,6 @@
   gap: 14px;
   align-items: flex-start;
 }
-.as-cta {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 26px;
-  background: var(--signal);
-  color: var(--cream);
-  font-family: var(--f-body);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background-color 0.25s ease;
-}
-.as-cta:hover { background: var(--signal-deep); }
-.as-cta-arrow { transition: transform 0.2s ease; }
-.as-cta:hover .as-cta-arrow { transform: translateX(4px); }
-.as-cta-bracket {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border: 0 solid var(--cream);
-  opacity: 0.9;
-}
-.as-cta-tl { top: 4px; left: 4px; border-top-width: 1px; border-left-width: 1px; }
-.as-cta-br { bottom: 4px; right: 4px; border-bottom-width: 1px; border-right-width: 1px; }
 .as-cta-note {
   font-family: var(--f-mono);
   font-size: 10.5px;
