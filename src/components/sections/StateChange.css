@@ -1,23 +1,27 @@
 /* ─── State Change — scoped to .statechange ──────────────────────────────
    One visual argument: the sawtooth GTM that resets vs the installed
-   system that compounds. Two panels on a shared axis; sand structure,
-   clay data, one red tip on the compounding curve. */
+   system that compounds. THE PAGE'S ONE INVERTED MOMENT: this section
+   lives on the bone canvas (#ECE8DF) — the "daylight" beat the design
+   system reserves for rare emphasis. Everything else in the site stays
+   dark; the contrast is the creative tension. Same three-tier accent
+   rules, remapped for light: ink text, darkened sand structure, clay
+   data, raw #BF3A36 red for the one live tip. */
 
 .statechange {
-  --surface: #110F0A;
-  --surface-elev: #20201E;
-  --cream: #FBFAF6;
-  --cream-muted: rgba(251, 250, 246, 0.66);
-  --cream-dim: rgba(251, 250, 246, 0.45);
-  --sand: #C7B49D;
-  --sand-line: rgba(199, 180, 157, 0.22);
-  --sand-faint: rgba(199, 180, 157, 0.12);
+  --surface: #ECE8DF;                      /* bone canvas */
+  --surface-elev: #F5F1E8;                 /* raised panel on bone */
+  --cream: #1A1613;                        /* ink — text primary on bone */
+  --cream-muted: rgba(26, 22, 19, 0.72);
+  --cream-dim: rgba(26, 22, 19, 0.45);
+  --sand: #8F7A5C;                         /* sand structure, darkened for light */
+  --sand-line: rgba(107, 89, 65, 0.28);
+  --sand-faint: rgba(107, 89, 65, 0.13);
   --clay: #A65A45;
-  --clay-bright: #C06B50;
-  --taupe: #8F8981;
+  --clay-bright: #A65A45;
+  --taupe: #7A716A;
   --signal: #BF3A36;
-  --signal-bright: #D4524E;
-  --hairline: rgba(251, 250, 246, 0.09);
+  --signal-bright: #BF3A36;                /* raw red reads correctly on bone */
+  --hairline: rgba(26, 22, 19, 0.12);
   --f-display: var(--font-instrument-sans), serif;
   --f-body: var(--font-inter), sans-serif;
   --f-mono: var(--font-mono);
@@ -30,7 +34,6 @@
   font-family: var(--f-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border-top: 1px solid var(--hairline);
 }
 
 .sc-stage {
@@ -114,6 +117,7 @@
   padding: clamp(20px, 2vw, 28px) clamp(20px, 2vw, 28px) clamp(18px, 1.8vw, 24px);
   background: var(--surface-elev);
   border: 1px solid var(--sand-line);
+  box-shadow: 0 12px 32px rgba(26, 22, 19, 0.08);
 }
 .sc-panel-head {
   display: flex;
@@ -153,11 +157,11 @@
   transition: stroke-dashoffset 1.6s var(--ease-out) 0.2s;
 }
 .sc-panel.is-in .sc-line { stroke-dashoffset: 0; }
-.sc-line-reset { stroke: rgba(166, 90, 69, 0.55); }
+.sc-line-reset { stroke: rgba(166, 90, 69, 0.6); }
 .sc-line-compound { stroke: var(--clay-bright); }
 
 .sc-drop {
-  stroke: rgba(143, 137, 129, 0.4);
+  stroke: rgba(107, 89, 65, 0.45);
   stroke-width: 1;
   stroke-dasharray: 2 4;
 }

@@ -19,14 +19,14 @@ const PHASES: Phase[] = [
     n: "01",
     title: "Diagnose",
     method:
-      "We start by finding what's actually broken. It's rarely the thing you've been told to fix; most teams are busy optimizing a symptom a few steps downstream of the real constraint.",
+      "We start by finding what's actually broken. It's rarely the thing you've been told to fix — most teams are optimizing a symptom downstream of the real constraint.",
     output: "The real constraint, named — and the case for fixing it first.",
   },
   {
     n: "02",
     title: "Architect",
     method:
-      "Then we design the system that decides what you build and what you ignore: the category you'll own, the language you'll use, the model the company runs on. Most firms skip this part. Most decks only gesture at it.",
+      "Then we design the system that decides what you build and what you ignore — the category you'll own, the language you'll use, the model the company runs on. Most firms skip this part.",
     output: "Your category defined, and the operating model written down.",
   },
   {
@@ -154,8 +154,6 @@ export default function Methodology() {
                 role="tab"
                 aria-selected={i === active}
                 className={`mnode ${i === active ? "is-active" : ""} ${i < active ? "is-done" : ""}`}
-                onMouseEnter={() => select(i)}
-                onFocus={() => select(i)}
                 onClick={() => select(i)}
               >
                 <span className="mnode-label">
