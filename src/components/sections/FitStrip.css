@@ -136,7 +136,8 @@
   position: relative;
   top: 1px;
 }
-.fit-mark-yes { background: var(--sand); opacity: 0.85; }
+/* Patina = "yes, this fits" state; the red × opposite stays action-red. */
+.fit-mark-yes { background: var(--patina-bright); opacity: 0.9; }
 .fit-mark-no {
   background: transparent;
 }

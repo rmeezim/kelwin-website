@@ -111,7 +111,7 @@ export default function StateChange() {
             </figcaption>
             <svg className="sc-chart" viewBox="0 0 400 176" aria-hidden="true">
               <Axis />
-              {/* Soft area wash under the curve (clay data, whisper-level). */}
+              {/* Soft area wash under the curve (patina state, whisper-level). */}
               <path
                 className="sc-area"
                 d="M 16 150 L 31 148 L 46 149 L 62 146 L 77 147 L 92 143 L 108 144 L 123 139

@@ -17,6 +17,8 @@
   --clay-bright: #C06B50;
   --clay-wire: rgba(176, 98, 74, 0.62);
   --clay-line: rgba(166, 90, 69, 0.42);
+  --patina: #7C9C8A;
+  --patina-wire: rgba(94, 125, 108, 0.66);
   --taupe: #8F8981;
   --signal-bright: #D4524E;
   --signal-glow: rgba(191, 58, 54, 0.4);
@@ -118,14 +120,16 @@
 /* Persistent, clearly-visible clay wire — the connection reads on its own,
    not just when a packet passes over it. */
 .sysarch-edges .sa-edge-base { fill: none; stroke: var(--clay-wire); stroke-width: 1.75; }
+/* Feedback bows carry patina — the returning "it's working" signal is a
+   state, visually distinct from the clay payload flowing forward. */
 .sysarch-edges .sa-edge-base.is-feedback {
-  stroke: var(--clay-wire);
+  stroke: var(--patina-wire);
   stroke-dasharray: 5 5;
   stroke-width: 1.5;
 }
 /* Bright travelling packet rides on top of the wire. */
 .sysarch-edges .sa-edge-flow { fill: none; stroke: var(--clay-bright); stroke-width: 2.6; stroke-linecap: round; }
-.sysarch-edges .sa-edge-flow.is-feedback { stroke-width: 2.2; opacity: 1; }
+.sysarch-edges .sa-edge-flow.is-feedback { stroke: var(--patina); stroke-width: 2.2; opacity: 1; }
 .sysarch-edges .sa-edge-text {
   font-family: var(--f-mono);
   font-size: 8.5px;
@@ -133,7 +137,7 @@
   text-transform: uppercase;
   fill: rgba(199, 180, 157, 0.9);
 }
-.sysarch-edges .sa-edge-text.is-feedback { fill: var(--clay-bright); letter-spacing: 0.22em; font-size: 10px; }
+.sysarch-edges .sa-edge-text.is-feedback { fill: var(--patina); letter-spacing: 0.22em; font-size: 10px; }
 
 .sysarch-nodes {
   position: relative;
@@ -239,7 +243,7 @@
   color: var(--cream-muted);
 }
 .sa-legend-flow, .sa-legend-loop { width: 28px; height: 0; border-top: 2px solid var(--clay-bright); }
-.sa-legend-loop { border-top-style: dashed; opacity: 0.95; }
+.sa-legend-loop { border-top-style: dashed; border-top-color: var(--patina); opacity: 0.95; }
 .sa-legend-right {
   margin-left: auto;
   display: flex;

@@ -36,7 +36,7 @@ Kelwin shares the bone canvas, ink, and signal red, but expresses them
 with sharp corners, corner brackets, mono protocol labels, and dense
 HUD instrumentation. Same ingredients, different posture.
 
-## Color System (v3 — "Warm Instrument")
+## Color System (v4 — "Warm Instrument")
 Surfaces & text:
 - Surface (base): #110F0A
 - Surface elevated (panels, cards, hover): #20201E
@@ -47,7 +47,7 @@ Surfaces & text:
 - Text Muted / captions (taupe): #8F8981
 - Text Faint: rgba(251,250,246,0.38)
 
-Three-tier accent system — each color has exactly one job:
+Five-tier accent system — each color has exactly one job:
 - SAND #C7B49D = structure. Hairlines, protocol labels, glyphs, spines,
   calibration marks, secondary metadata. The neutral trim (replaces the
   old bronze #D18E53 entirely — never revert to it).
@@ -56,10 +56,20 @@ Three-tier accent system — each color has exactly one job:
 - SIGNAL RED #BF3A36 = action. CTAs, live dots, active edges, the red
   band. Bright tint #D4524E for small red elements on charcoal; deep
   #A8302C for hover/pressed. One red moment per viewport.
+- PATINA #5E7D6C = state. Completed phases, healthy readings,
+  compounding curves, the returning feedback signal — the "system is
+  working" green. Aged-bronze verdigris, never traffic-light green.
+  Bright tint #7C9C8A for small marks on charcoal; deep #435C4F on
+  bone. Small doses only — patina confirms, it never decorates.
+- STEEL #6E8091 = reference. Reserved for sales documents, spec
+  sheets, and collateral (diagram keys, callouts, page furniture) so
+  print/PDF artifacts share one palette with the site. Bright tint
+  #9BB0C1 on dark stock. Not currently deployed on the website.
 
 Discipline:
-- Never mix the three jobs: a hairline is sand, a chart line is clay, a
-  CTA is red. Consistency across sections comes from role, not hue.
+- Never mix the jobs: a hairline is sand, a chart line is clay, a
+  CTA is red, a "done/healthy" mark is patina, a document callout is
+  steel. Consistency across sections comes from role, not hue.
 - On the full-red CTA band, red is the poster and the accents invert:
   cream/paper becomes the foreground signal, the CTA is a paper pill
   with red text (the sister-brand gesture).

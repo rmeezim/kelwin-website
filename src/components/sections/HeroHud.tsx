@@ -25,10 +25,12 @@ const GRID_POS = [
 ];
 
 // ── Terminal data ──────────────────────────────────────────────────
-const METRICS = [
+// `tone` overrides the sand bar fill — patina marks the one healthy/state
+// reading so the cluster shows the palette's full instrument range.
+const METRICS: { label: string; value: string; fill: number; tone?: string }[] = [
   { label: "ENTROPY IDX",  value: "72.4%", fill: 0.724 },
   { label: "ICP MATCH",    value: "91.0%", fill: 0.910 },
-  { label: "SEQ. HEALTH",  value: "94.1%", fill: 0.941 },
+  { label: "SEQ. HEALTH",  value: "94.1%", fill: 0.941, tone: "rgba(124, 156, 138, 0.75)" },
   { label: "OUTBOUND VEL", value: "78.3%", fill: 0.783 },
 ];
 
@@ -247,7 +249,7 @@ export default function HeroHud() {
                     top: 0,
                     height: "100%",
                     width: `${m.fill * 100}%`,
-                    backgroundColor: "rgba(199, 180, 157,0.55)",
+                    backgroundColor: m.tone ?? "rgba(199, 180, 157,0.55)",
                   }} />
                 </div>
                 <span style={{

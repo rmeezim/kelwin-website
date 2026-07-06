@@ -125,25 +125,11 @@ export default function Methodology() {
         </div>
 
         {/* Signal pipeline — subway-map flow of the four phases. */}
-        <div className={`mflow ${active === 3 ? "is-looping" : ""}`}>
+        <div className="mflow">
           <div className="mflow-line" aria-hidden="true" style={{ ["--af" as string]: af }}>
             <span className="mflow-rail" />
             <span className="mflow-fill" />
             <span className="mflow-pulse" />
-            {/* Feedback loop 04 → 01: the system never stops calibrating. */}
-            <svg className="mflow-fb" viewBox="0 0 100 44" preserveAspectRatio="none">
-              <path
-                className="mflow-fb-path"
-                d="M100 3 C 100 40, 0 40, 0 3"
-                vectorEffect="non-scaling-stroke"
-              />
-              <path
-                className="mflow-fb-head"
-                d="M-3 9 L0 3 L3 9"
-                vectorEffect="non-scaling-stroke"
-              />
-            </svg>
-            <span className="mflow-fb-label">Continuous</span>
           </div>
 
           <div className="mflow-nodes" role="tablist" aria-label="Methodology phases">

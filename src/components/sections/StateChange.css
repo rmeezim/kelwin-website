@@ -18,6 +18,7 @@
   --sand-faint: rgba(107, 89, 65, 0.13);
   --clay: #A65A45;
   --clay-bright: #A65A45;
+  --patina: #4F6E5E;                       /* state green, tuned for bone */
   --taupe: #7A716A;
   --signal: #BF3A36;
   --signal-bright: #BF3A36;                /* raw red reads correctly on bone */
@@ -140,7 +141,7 @@
   text-transform: uppercase;
 }
 .sc-mode-reset { color: var(--taupe); }
-.sc-mode-compound { color: var(--clay-bright); }
+.sc-mode-compound { color: var(--patina); }
 
 .sc-chart { width: 100%; height: auto; display: block; }
 .sc-axis { stroke: var(--sand-line); stroke-width: 1; }
@@ -158,7 +159,9 @@
 }
 .sc-panel.is-in .sc-line { stroke-dashoffset: 0; }
 .sc-line-reset { stroke: rgba(166, 90, 69, 0.6); }
-.sc-line-compound { stroke: var(--clay-bright); }
+/* The compounding state wears patina — the palette's "system is working"
+   green — so the healthy curve reads as a different state, not more data. */
+.sc-line-compound { stroke: var(--patina); }
 
 .sc-drop {
   stroke: rgba(107, 89, 65, 0.45);
@@ -166,7 +169,7 @@
   stroke-dasharray: 2 4;
 }
 .sc-area {
-  fill: rgba(166, 90, 69, 0.08);
+  fill: rgba(79, 110, 94, 0.09);
   opacity: 0;
   transition: opacity 0.9s ease 1.2s;
 }

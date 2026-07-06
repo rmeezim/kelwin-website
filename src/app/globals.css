@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @import "../components/ui/SystemFurniture.css";
 
-/* ─── Kelwin Design Tokens — v3 "Warm Instrument" ─────────────────
-   Three-tier accent system, each with exactly one job:
+/* ─── Kelwin Design Tokens — v4 "Warm Instrument" ─────────────────
+   Five-tier accent system, each with exactly one job:
    - SAND (#C7B49D) = structure — hairlines, protocol labels, glyphs,
      spines, calibration marks. The neutral trim (replaces bronze).
    - CLAY (#A65A45) = data — radar, waveforms, sparklines. A distinct
@@ -10,6 +10,14 @@
    - SIGNAL RED (#BF3A36) = action — CTAs, live dots, active edges,
      the red band. One red moment per viewport. On charcoal small red
      elements use the brightened tint (#D4524E) for legibility.
+   - PATINA (#5E7D6C) = state — completed phases, healthy readings,
+     compounding curves, returning feedback signal. The "system is
+     working" green: aged-bronze verdigris, never traffic-light.
+     Bright tint #7C9C8A on charcoal; deep #435C4F on bone.
+   - STEEL (#6E8091) = reference — reserved for documents, spec sheets
+     and sales collateral (diagrams, callouts, page furniture). Not
+     yet deployed on the site; defined here so web + print share one
+     palette. Bright tint #9BB0C1 on dark stock.
    Surfaces: base #110F0A, elevated #20201E, paper text #FBFAF6.      */
 @theme {
   --color-surface: #110F0A;      /* base — the one dark world */
@@ -27,6 +35,11 @@
   --color-signal-bright: #D4524E;/* red on charcoal — dots, small text */
   --color-signal-deep: #A8302C;  /* pressed/hover shade */
   --color-action-red: #BF3A36;   /* legacy alias — prefer --color-signal */
+  --color-patina: #5E7D6C;       /* state — completed, healthy, compounding */
+  --color-patina-bright: #7C9C8A;/* patina on charcoal — small marks, text */
+  --color-patina-deep: #435C4F;  /* patina on bone / pressed shade */
+  --color-steel: #6E8091;        /* reference — documents & collateral only */
+  --color-steel-bright: #9BB0C1; /* steel on dark stock */
 
   --font-heading: var(--font-instrument-sans);
   --font-body: var(--font-inter);
@@ -55,6 +68,11 @@
   --signal-deep: #A8302C;
   --signal-glow: rgba(191, 58, 54, 0.35);
   --signal-line: rgba(191, 58, 54, 0.32);
+  --patina: #5E7D6C;
+  --patina-bright: #7C9C8A;
+  --patina-deep: #435C4F;
+  --steel: #6E8091;
+  --steel-bright: #9BB0C1;
 
   /* Type system — serif is the editorial accent voice; mono is now a real
      self-hosted face (JetBrains Mono) instead of a system fallback. */

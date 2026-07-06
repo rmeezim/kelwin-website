@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Instrument_Sans, Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import AmbientGrid from "@/components/effects/AmbientGrid";
-import CustomCursor from "@/components/effects/CustomCursor";
 import DiagnosticManualOverlay from "@/components/effects/DiagnosticManualOverlay";
 import SmoothScrollProvider from "@/components/effects/SmoothScrollProvider";
 
@@ -54,7 +53,6 @@ export default function RootLayout({
         <AmbientGrid />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
         <DiagnosticManualOverlay />
-        <CustomCursor />
         <div className="site-grain" aria-hidden="true" />
       </body>
     </html>
