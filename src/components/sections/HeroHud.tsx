@@ -77,11 +77,11 @@ export default function HeroHud() {
   // wait. The HUD starts its sequence in parallel with the left-column
   // entrance so both sides come alive together.
   const containerReady = true;
-  // Three static readout lines — no cycling. The panel reads as a live
+  // Two static readout lines — no cycling. The panel reads as a live
   // instrument without the row-swap flicker competing with the blueprint.
-  // Hand-picked for type variety: a signal, an intel read, a health line.
+  // Hand-picked for type variety: a signal and a system-health line.
   const [visibleLogs] = useState<LogEntry[]>(() =>
-    [ALL_LOG_ENTRIES[0], ALL_LOG_ENTRIES[1], ALL_LOG_ENTRIES[5]].map((e, i) => ({ ...e, id: i }))
+    [ALL_LOG_ENTRIES[0], ALL_LOG_ENTRIES[5]].map((e, i) => ({ ...e, id: i }))
   );
   const containerRef = useRef<HTMLDivElement>(null);
 

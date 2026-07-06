@@ -1,0 +1,225 @@
+/* ─── Navbar mega menus — scoped to .nav-mega* ────────────────────────────
+   Full-width command-palette panels for THE FIRM and RESOURCES. Same
+   ingredients as the site's dossier cards: charcoal elevated surfaces,
+   hairline borders, mono protocol labels, corner brackets, sand trim.
+   Red appears only as the hover state on a card's arrow. */
+
+.nav-mega-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 60;
+}
+
+.nav-mega {
+  background: #0B0A08;
+  border: 1px solid rgba(199, 180, 157, 0.38);
+  border-top: none; /* the navbar's bottom hairline reads as the top edge */
+  padding: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Slim protocol header — names the drawer like an instrument readout. */
+.nav-mega-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 2px 6px 12px;
+}
+.nav-mega-protocol {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.nav-mega-headline {
+  flex: 1;
+  height: 1px;
+  background: rgba(199, 180, 157, 0.18);
+}
+.nav-mega-count {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: rgba(251, 250, 246, 0.32);
+  white-space: nowrap;
+}
+
+.nav-mega-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(240px, 23vw, 310px);
+  gap: 10px;
+}
+.nav-mega-main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+.nav-mega-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.nav-mega-smalls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.nav-mega-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.nav-mega-rail .nmc { flex: 1; }
+
+/* ── Cards ── */
+.nmc {
+  position: relative;
+  display: flex;
+  background: #131109;
+  background: #14120d;
+  border: 1px solid rgba(251, 250, 246, 0.08);
+  padding: 15px 17px;
+  text-decoration: none;
+  transition: border-color 0.22s ease, background-color 0.22s ease;
+}
+.nmc:hover {
+  border-color: rgba(199, 180, 157, 0.5);
+  background: #1a1712;
+}
+
+/* Feature cards — dossier posture: mono tag + corner brackets, title low. */
+.nmc-feature {
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 34px;
+  min-height: 148px;
+}
+.nmc-feature::before,
+.nmc-feature::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  pointer-events: none;
+  transition: border-color 0.22s ease;
+}
+.nmc-feature::before {
+  top: 7px;
+  left: 7px;
+  border-top: 1px solid rgba(199, 180, 157, 0.45);
+  border-left: 1px solid rgba(199, 180, 157, 0.45);
+}
+.nmc-feature::after {
+  bottom: 7px;
+  right: 7px;
+  border-bottom: 1px solid rgba(199, 180, 157, 0.45);
+  border-right: 1px solid rgba(199, 180, 157, 0.45);
+}
+.nmc-feature:hover::before,
+.nmc-feature:hover::after {
+  border-color: rgba(199, 180, 157, 0.85);
+}
+
+.nmc-tagrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px 0;
+}
+.nmc-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--sand);
+}
+
+.nmc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  padding: 0 4px;
+}
+.nmc-title {
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: rgba(251, 250, 246, 0.92);
+  transition: color 0.22s ease;
+}
+.nmc-desc {
+  font-family: var(--font-body), sans-serif;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(251, 250, 246, 0.5);
+}
+.nmc:hover .nmc-title { color: #fbfaf6; }
+
+/* Arrow — hidden at rest, slides in sand, warms red while pressed-ish. */
+.nmc-arrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--sand);
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: opacity 0.22s ease, transform 0.22s ease, color 0.15s ease;
+  flex-shrink: 0;
+}
+.nmc:hover .nmc-arrow { opacity: 1; transform: translateX(0); }
+.nmc:active .nmc-arrow { color: var(--signal-bright); }
+
+/* Small + rail cards — compact rows. */
+.nmc-small,
+.nmc-rail {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 16px;
+}
+.nmc-small .nmc-title,
+.nmc-rail .nmc-title {
+  font-size: 13.5px;
+}
+.nmc-small .nmc-desc,
+.nmc-rail .nmc-desc {
+  font-size: 11.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nmc-rail .nmc-desc { white-space: normal; }
+.nmc-small .nmc-body,
+.nmc-rail .nmc-body { padding: 0; gap: 3px; }
+
+/* "In preparation" card — present but visibly not yet a destination. */
+.nmc-soon,
+.nmc-soon:hover {
+  background: #14120d;
+  border-color: rgba(251, 250, 246, 0.08);
+  cursor: default;
+}
+.nmc-soon .nmc-title { color: rgba(251, 250, 246, 0.45); }
+.nmc-soon .nmc-desc { color: rgba(251, 250, 246, 0.3); }
+.nmc-chip {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.2em;
+  color: rgba(199, 180, 157, 0.7);
+  border: 1px solid rgba(199, 180, 157, 0.28);
+  padding: 3px 7px;
+  flex-shrink: 0;
+}
+
+/* Mid-width desktop: keep the grid intact but let cards breathe less. */
+@media (min-width: 1050px) and (max-width: 1280px) {
+  .nav-mega-grid { grid-template-columns: minmax(0, 1fr) 240px; }
+  .nmc-feature { min-height: 132px; gap: 24px; }
+}

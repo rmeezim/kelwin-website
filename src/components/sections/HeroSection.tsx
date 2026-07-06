@@ -104,16 +104,16 @@ export default function HeroSection() {
       <div className="flex">
 
         {/* Left — text content */}
-        <div className="relative z-10 flex flex-col w-full md:w-[58%] px-6 md:px-14 lg:px-20 py-14 md:py-20">
+        <div className="relative z-10 flex flex-col w-full md:w-[58%] px-6 md:px-14 lg:px-20 py-10 md:py-12">
 
           {/* Location + Time — system status line, leads the page reveal */}
-          <FadeIn delay={0} duration={0.5} y={0} className="mb-7 md:mb-8">
+          <FadeIn delay={0} duration={0.5} y={0} className="mb-6">
             <LocationTime />
           </FadeIn>
 
           {/* Heading — forced 3-line layout, per-line L→R scramble */}
           <div ref={headingRef}>
-            <h1 className="font-heading font-normal text-cream leading-[0.95] tracking-[-0.03em] text-[clamp(2.52rem,6.48vw,6.12rem)] max-w-[720px]">
+            <h1 className="font-heading font-normal text-cream leading-[0.95] tracking-[-0.03em] text-[clamp(2.4rem,6vw,5.6rem)] max-w-[720px]">
               <ScrambleText
                 lines={["Revenue is an", "architectural", "problem."]}
                 delay={100}
@@ -126,7 +126,7 @@ export default function HeroSection() {
           {/* Bronze rule */}
           <FadeIn delay={0.5} duration={0.6} y={0}>
             <div
-              className="w-10 h-0.5 mt-[42px] mb-[24px]"
+              className="w-10 h-0.5 mt-[30px] mb-[20px]"
               style={{ backgroundColor: "#D4524E" }}
             />
           </FadeIn>
@@ -152,7 +152,7 @@ export default function HeroSection() {
           {/* CTAs — flicker in (no slide) */}
           <div ref={ctaRef}>
             <motion.div
-              className="mt-11 md:mt-14 flex items-center gap-8"
+              className="mt-8 md:mt-9 flex items-center gap-8"
               initial={{ opacity: 0 }}
               animate={
                 reduced

@@ -1,35 +1,99 @@
 "use client";
 
-import { useState, useRef, useEffect, useLayoutEffect, useCallback, Fragment } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import "./NavMega.css";
 
-type MegaItem = { label: string; href: string };
+/* Every href is real: home-page section anchors carry the leading slash so
+   they also resolve from /audit, /audit and mailto are the two conversion
+   paths, and the one not-yet-built destination (Insights) is marked `soon`
+   instead of pointing at a dead anchor. */
+type MegaLink = { title: string; desc: string; href?: string; tag?: string; soon?: boolean };
+type MegaDef = { protocol: string; features: MegaLink[]; smalls: MegaLink[]; rail: MegaLink[] };
 type NavItem =
-  | { label: string; href: string; megaMenu?: never }
-  | { label: string; href?: never; megaMenu: MegaItem[] };
+  | { label: string; href: string; mega?: never }
+  | { label: string; href?: never; mega: MegaDef };
 
 const navItems: NavItem[] = [
-  { label: "METHODOLOGY", href: "#methodology" },
-  { label: "INFRASTRUCTURE", href: "#infrastructure" },
+  { label: "CAPABILITIES", href: "/#revenue-os" },
+  { label: "METHODOLOGY", href: "/#methodology" },
   {
     label: "THE FIRM",
-    megaMenu: [
-      { label: "About", href: "#about" },
-      { label: "Careers", href: "#careers" },
-      { label: "Contact", href: "#contact" },
-    ],
+    mega: {
+      protocol: "The Firm · Dossier",
+      features: [
+        {
+          tag: "F·01",
+          title: "The operating principle",
+          desc: "Stop resetting. Start compounding — the argument in two curves.",
+          href: "/#state-change",
+        },
+        {
+          tag: "F·02",
+          title: "Who we work with",
+          desc: "Not for everyone, by design — the fit criteria, in both directions.",
+          href: "/#fit",
+        },
+      ],
+      smalls: [
+        { title: "What you keep", desc: "Six transferable assets", href: "/#assets" },
+        { title: "Fixing the wrong layer", desc: "The diagnostic reframe", href: "/#reframe" },
+        { title: "The revenue OS", desc: "Three layers, installed", href: "/#revenue-os" },
+      ],
+      rail: [
+        {
+          title: "Begin with the audit",
+          desc: "Fixed scope · ten working days · the readout is yours to keep.",
+          href: "/audit",
+        },
+        {
+          title: "Contact the founding team",
+          desc: "audit@kelwin.co — no sequence, no SDR.",
+          href: "mailto:audit@kelwin.co",
+        },
+      ],
+    },
   },
   {
     label: "RESOURCES",
-    megaMenu: [
-      { label: "Insights", href: "#insights" },
-      { label: "Reports", href: "#reports" },
-    ],
+    mega: {
+      protocol: "Resources · Index",
+      features: [
+        {
+          tag: "R·01",
+          title: "The System Audit — specification",
+          desc: "Scope, inputs, deliverables, timeline. The full spec, before you commit.",
+          href: "/audit",
+        },
+        {
+          tag: "R·02",
+          title: "Structural evidence",
+          desc: "Four numbers, one diagnosis — why pipeline problems are architecture problems.",
+          href: "/#evidence",
+        },
+      ],
+      smalls: [
+        { title: "The architecture map", desc: "Three layers, one closed loop", href: "/#architecture" },
+        { title: "The methodology", desc: "Four phases, in order", href: "/#methodology" },
+        { title: "Insights", desc: "Field notes — in preparation", soon: true },
+      ],
+      rail: [
+        {
+          title: "Book a strategic call",
+          desc: "Straight to the founders — start with the audit readout.",
+          href: "/audit",
+        },
+        {
+          title: "Write to the team",
+          desc: "audit@kelwin.co",
+          href: "mailto:audit@kelwin.co",
+        },
+      ],
+    },
   },
-  { label: "THE LAB", href: "#the-lab" },
 ];
 
 const FLICKER_ANIMATE = {
@@ -87,48 +151,6 @@ function HoverLink({
         <AnimatePresence>
           {hovered && <FlickerLine key="top" position="top" />}
           {hovered && <FlickerLine key="bot" />}
-        </AnimatePresence>
-      </span>
-    </Link>
-  );
-}
-
-// Mega menu item — arrow prefix slides in + underline flicker only (no top line)
-function MegaMenuLink({
-  href,
-  label,
-  onClick,
-}: {
-  href: string;
-  label: string;
-  onClick?: () => void;
-}) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <Link
-      href={href}
-      className="flex items-center gap-2.5 py-3.5 px-5 text-[12px] tracking-[0.16em] font-body font-medium transition-colors duration-150"
-      style={{ color: hovered ? "#D4524E" : "var(--text-muted)" }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={onClick}
-    >
-      <span className="text-bronze shrink-0 text-[20px]" aria-hidden="true">
-        ↳
-      </span>
-      <span className="relative inline-block">
-        {label.toUpperCase()}
-        <AnimatePresence>
-          {hovered && (
-            <motion.span
-              className="absolute -bottom-0.5 left-0 h-[2px] bg-signal-bright pointer-events-none"
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={FLICKER_ANIMATE}
-              exit={{ opacity: 0, transition: { duration: 0.1 } }}
-              transition={FLICKER_TRANSITION}
-              style={{ width: "calc(100% - 1px)", transformOrigin: "left" }}
-            />
-          )}
         </AnimatePresence>
       </span>
     </Link>
@@ -209,14 +231,65 @@ function AuditCTA({ onMenuClose }: { onMenuClose?: () => void }) {
   );
 }
 
+/* One card, three postures. `feature` = large dossier card with mono tag +
+   corner brackets; `small` = compact index row; `rail` = right-column
+   conversion row. `soon` renders inert with a SOON chip. */
+function MegaCard({
+  item,
+  variant,
+  onNavigate,
+}: {
+  item: MegaLink;
+  variant: "feature" | "small" | "rail";
+  onNavigate: () => void;
+}) {
+  const cls = cn("nmc", `nmc-${variant}`, item.soon && "nmc-soon");
+  const inner =
+    variant === "feature" ? (
+      <>
+        <span className="nmc-tagrow">
+          <span className="nmc-tag">{item.tag}</span>
+          <span className="nmc-arrow" aria-hidden="true">→</span>
+        </span>
+        <span className="nmc-body">
+          <span className="nmc-title">{item.title}</span>
+          <span className="nmc-desc">{item.desc}</span>
+        </span>
+      </>
+    ) : (
+      <>
+        <span className="nmc-body">
+          <span className="nmc-title">{item.title}</span>
+          <span className="nmc-desc">{item.desc}</span>
+        </span>
+        {item.soon ? (
+          <span className="nmc-chip">Soon</span>
+        ) : (
+          <span className="nmc-arrow" aria-hidden="true">→</span>
+        )}
+      </>
+    );
+
+  if (item.soon || !item.href) return <div className={cls}>{inner}</div>;
+  if (item.href.startsWith("mailto:")) {
+    return (
+      <a href={item.href} className={cls} onClick={onNavigate}>
+        {inner}
+      </a>
+    );
+  }
+  return (
+    <Link href={item.href} className={cls} onClick={onNavigate}>
+      {inner}
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [megaBounds, setMegaBounds] = useState<{ left: number; width: number } | null>(null);
   const navRef = useRef<HTMLElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -256,36 +329,32 @@ export default function Navbar() {
     };
   }, []);
 
+  // Close on outside click and on Escape.
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
+    const onDown = (e: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
         closeMenu();
       }
     };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
   }, [closeMenu]);
 
-  const activeMegaMenu = openMenu
-    ? (navItems.find((i) => i.label === openMenu)?.megaMenu ?? null)
+  const activeMega = openMenu
+    ? (navItems.find((i) => i.label === openMenu)?.mega ?? null)
     : null;
 
-  // Measure dropdown width from prev→next+1 buttons, then center it under the trigger
-  useLayoutEffect(() => {
-    if (!openMenu || !containerRef.current) { setMegaBounds(null); return; }
-    const idx = navItems.findIndex((i) => i.label === openMenu);
-    if (idx < 0) { setMegaBounds(null); return; }
-    const prevEl = itemRefs.current[Math.max(0, idx - 1)];
-    const nextEl = itemRefs.current[Math.min(navItems.length - 1, idx + 2)];
-    const triggerEl = itemRefs.current[idx];
-    if (!prevEl || !nextEl || !triggerEl) { setMegaBounds(null); return; }
-    const cRect = containerRef.current.getBoundingClientRect();
-    const width = nextEl.getBoundingClientRect().right - prevEl.getBoundingClientRect().left;
-    const triggerRect = triggerEl.getBoundingClientRect();
-    const triggerCenter = triggerRect.left + triggerRect.width / 2 - cRect.left;
-    const left = Math.max(0, triggerCenter - width / 2);
-    setMegaBounds({ left, width });
-  }, [openMenu]);
+  const closeAll = useCallback(() => {
+    closeMenu();
+    setMobileOpen(false);
+  }, [closeMenu]);
 
   return (
     <header
@@ -309,81 +378,40 @@ export default function Navbar() {
           KELWIN
         </Link>
 
-        {/* Right cluster — full nav (xl+) or hamburger (<xl), with AUDIT REQUEST always present */}
+        {/* Right cluster — full nav (≥1050px) or hamburger (<1050px) */}
         <div className="flex items-center gap-6">
-
-          {/* Desktop nav links — h-[85px] so top-full mega menu aligns to navbar bottom */}
           <div
-            ref={containerRef}
             className="hidden min-[1050px]:flex items-center gap-6 relative h-[56px]"
             onMouseLeave={scheduleClose}
             onMouseEnter={cancelClose}
           >
-            {navItems.map((item, idx) =>
-              item.megaMenu ? (
-                <span key={item.label} ref={(el) => { itemRefs.current[idx] = el; }}>
-                  <HoverButton
-                    label={item.label}
-                    isOpen={openMenu === item.label}
-                    className="text-[12px] tracking-[0.16em] font-body font-medium"
-                    onMouseEnter={() => { cancelClose(); setOpenMenu(item.label); }}
-                    onMouseLeave={() => {}}
-                    onClick={() => setOpenMenu(openMenu === item.label ? null : item.label)}
-                  />
-                </span>
+            {navItems.map((item) =>
+              item.mega ? (
+                <HoverButton
+                  key={item.label}
+                  label={item.label}
+                  isOpen={openMenu === item.label}
+                  className="text-[12px] tracking-[0.16em] font-body font-medium"
+                  onMouseEnter={() => { cancelClose(); setOpenMenu(item.label); }}
+                  onMouseLeave={() => {}}
+                  onClick={() => setOpenMenu(openMenu === item.label ? null : item.label)}
+                />
               ) : (
-                <span key={item.label} ref={(el) => { itemRefs.current[idx] = el; }}>
-                  <HoverLink
-                    href={item.href}
-                    label={item.label}
-                    className="text-[12px] tracking-[0.16em] font-body font-medium"
-                    onMenuClose={closeMenu}
-                  />
-                </span>
+                <HoverLink
+                  key={item.label}
+                  href={item.href}
+                  label={item.label}
+                  className="text-[12px] tracking-[0.16em] font-body font-medium"
+                  onMenuClose={closeMenu}
+                />
               )
             )}
-
-            {/* Mega menu — width spans exactly 3 buttons (prev + current + next) */}
-            <AnimatePresence>
-              {activeMegaMenu && megaBounds && (
-                <motion.div
-                  key={openMenu!}
-                  className="absolute bg-near-black"
-                  style={{
-                    top: "calc(100% + 14px)",
-                    left: megaBounds.left,
-                    width: megaBounds.width,
-                    border: "1px solid #C7B49D",
-                  }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.9, 0.05, 1, 0.38, 1] }}
-                  exit={{ opacity: 0, transition: { duration: 0.1 } }}
-                  transition={{ duration: 0.28, times: [0, 0.10, 0.22, 0.42, 0.65, 1], ease: "linear" }}
-                  onMouseEnter={cancelClose}
-                  onMouseLeave={scheduleClose}
-                >
-                  <div className="flex items-center justify-center">
-                    {activeMegaMenu.map((sub, i) => (
-                      <Fragment key={sub.label}>
-                        {i > 0 && (
-                          <span
-                            className="w-px h-4 shrink-0 self-center"
-                            style={{ backgroundColor: "var(--border-subtle)" }}
-                          />
-                        )}
-                        <MegaMenuLink href={sub.href} label={sub.label} onClick={closeMenu} />
-                      </Fragment>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
 
           {/* AUDIT REQUEST — always visible across all breakpoints */}
           <AuditCTA onMenuClose={closeMenu} />
 
-          {/* Hamburger — only below xl */}
+          {/* Hamburger — only below 1050px */}
           <button
             className="min-[1050px]:hidden text-cream p-1"
             onClick={() => setMobileOpen((v) => !v)}
@@ -399,6 +427,52 @@ export default function Navbar() {
         <div className="h-px" style={{ backgroundColor: "var(--border-subtle)" }} />
       </div>
 
+      {/* Mega menu — full-width command drawer under the navbar, spanning the
+          same container as the nav content. */}
+      <AnimatePresence>
+        {activeMega && (
+          <motion.div
+            key={openMenu!}
+            className="nav-mega-wrap hidden min-[1050px]:block"
+            onMouseEnter={cancelClose}
+            onMouseLeave={scheduleClose}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: [0, 0.9, 0.05, 1, 0.38, 1], y: 0 }}
+            exit={{ opacity: 0, y: -4, transition: { duration: 0.12 } }}
+            transition={{ duration: 0.28, times: [0, 0.10, 0.22, 0.42, 0.65, 1], ease: "linear" }}
+          >
+            <div className="max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20">
+              <div className="nav-mega">
+                <div className="nav-mega-head">
+                  <span className="nav-mega-protocol">{activeMega.protocol}</span>
+                  <span className="nav-mega-headline" aria-hidden="true" />
+                  <span className="nav-mega-count">KELWIN/OS</span>
+                </div>
+                <div className="nav-mega-grid">
+                  <div className="nav-mega-main">
+                    <div className="nav-mega-features">
+                      {activeMega.features.map((f) => (
+                        <MegaCard key={f.title} item={f} variant="feature" onNavigate={closeAll} />
+                      ))}
+                    </div>
+                    <div className="nav-mega-smalls">
+                      {activeMega.smalls.map((s) => (
+                        <MegaCard key={s.title} item={s} variant="small" onNavigate={closeAll} />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="nav-mega-rail">
+                    {activeMega.rail.map((r) => (
+                      <MegaCard key={r.title} item={r} variant="rail" onNavigate={closeAll} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Mobile drawer — overlays the hero (does not push it down) */}
       <AnimatePresence>
         {mobileOpen && (
@@ -412,43 +486,41 @@ export default function Navbar() {
           >
             <div className="px-6 py-6 flex flex-col gap-1">
               {navItems.map((item) =>
-                item.megaMenu ? (
+                item.mega ? (
                   <div key={item.label}>
-                    <button
-                      className="w-full text-left py-3 text-[12px] tracking-[0.16em] font-body font-medium"
-                      style={{ color: "var(--text-muted)" }}
-                      onClick={() =>
-                        setOpenMenu(openMenu === item.label ? null : item.label)
-                      }
+                    <div
+                      className="py-3 text-[10px] tracking-[0.2em] font-mono uppercase"
+                      style={{ color: "var(--sand)", fontFamily: "var(--font-mono)" }}
                     >
                       {item.label}
-                    </button>
-                    <AnimatePresence>
-                      {openMenu === item.label && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.16, ease: "easeOut" }}
-                          className="overflow-hidden pl-4 flex flex-col gap-0.5"
-                        >
-                          {item.megaMenu.map((sub) => (
-                            <Link
-                              key={sub.label}
-                              href={sub.href}
-                              className="py-2.5 text-[12px] tracking-[0.14em] font-body hover:text-signal-bright"
+                    </div>
+                    <div className="pl-4 flex flex-col gap-0.5">
+                      {[...item.mega.features, ...item.mega.smalls, ...item.mega.rail]
+                        .filter((l) => !l.soon && l.href)
+                        .map((l) =>
+                          l.href!.startsWith("mailto:") ? (
+                            <a
+                              key={l.title}
+                              href={l.href}
+                              className="py-2.5 text-[12px] tracking-[0.1em] font-body"
                               style={{ color: "var(--text-faint)" }}
-                              onClick={() => {
-                                setMobileOpen(false);
-                                closeMenu();
-                              }}
+                              onClick={closeAll}
                             >
-                              {sub.label.toUpperCase()}
+                              {l.title}
+                            </a>
+                          ) : (
+                            <Link
+                              key={l.title}
+                              href={l.href!}
+                              className="py-2.5 text-[12px] tracking-[0.1em] font-body"
+                              style={{ color: "var(--text-faint)" }}
+                              onClick={closeAll}
+                            >
+                              {l.title}
                             </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                          )
+                        )}
+                    </div>
                   </div>
                 ) : (
                   <Link
@@ -456,7 +528,7 @@ export default function Navbar() {
                     href={item.href}
                     className="py-3 text-[12px] tracking-[0.16em] font-body font-medium hover:text-cream"
                     style={{ color: "var(--text-muted)" }}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={closeAll}
                   >
                     {item.label}
                   </Link>
