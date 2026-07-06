@@ -1,10 +1,13 @@
 name: Deploy to GitHub Pages
 
+# Trigger on main only. Feature-branch pushes used to start a second run
+# that couldn't deploy (github-pages environment is main-only) but still
+# cancelled the real main run via the shared concurrency group — the
+# source of the recurring "flaky" deploy failures.
 on:
   push:
     branches:
       - main
-      - claude/kelwin-website-overview-x1fwsf
   workflow_dispatch:
 
 permissions:
