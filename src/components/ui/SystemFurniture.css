@@ -278,35 +278,21 @@
   .sys-hud .sys-scroll-dot { animation: none !important; }
 }
 
-/* ── AmbientGrid — site-wide dot pattern + cursor halo ────────────────── */
+/* ── AmbientGrid — site-wide drafting rules ───────────────────────────
+   Constant vertical hairlines, sand-tinted and barely-there. Uniform
+   across the whole page: no masks, no cursor halo, no patchy reveal. */
 .ambient-grid {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  isolation: isolate;
 }
-.ambient-grid-dots {
+.ambient-grid-rules {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle 1px at 1px 1px, rgba(199, 180, 157, 0.07) 1px, transparent 2px);
-  background-size: 32px 32px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.7) 65%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 0%, rgba(0,0,0,0.7) 65%, transparent 100%);
-}
-.ambient-grid-halo {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle 1px at 1px 1px, rgba(199, 180, 157, 0.18) 1px, transparent 2px);
-  background-size: 32px 32px;
-  mask-image: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 50%, transparent 80%);
-  -webkit-mask-image: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), rgba(0,0,0,1) 0%, rgba(0,0,0,0.45) 50%, transparent 80%);
-  opacity: 0.9;
-}
-@media (max-width: 768px), (hover: none), (prefers-reduced-motion: reduce) {
-  .ambient-grid-halo { display: none; }
+    linear-gradient(90deg, rgba(199, 180, 157, 0.05) 1px, transparent 1px);
+  background-size: 160px 100%;
 }
 
 /* ── SystemStatusPill — fixed bottom-left persistent identity ────────

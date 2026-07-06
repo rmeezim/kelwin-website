@@ -49,15 +49,17 @@
   .method-section .method-pin { height: 280vh; }
   .method-section .method-stage {
     position: sticky;
-    top: 0;
-    min-height: 100vh;
+    /* The glass navbar permanently overlays the top 48px of the viewport
+       (compact state while scrolled) — pin below it, not under it. */
+    top: 48px;
+    min-height: calc(100vh - 48px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     /* if content ever exceeds the viewport, pin from the top instead of
        clipping both ends */
     justify-content: safe center;
-    padding-top: 40px;
+    padding-top: 24px;
     padding-bottom: 40px;
   }
   /* Compact the pinned stage so the full panel — header, pipeline, and
@@ -70,10 +72,10 @@
   }
   .method-section .mdetail-ghost { font-size: clamp(48px, 6vw, 88px); }
 }
-/* Ordinary laptop/desktop viewports (≤1000px tall — i.e. most screens once
-   browser chrome is subtracted): compress further so nothing clips while
-   pinned. */
-@media (min-width: 901px) and (max-height: 1000px) {
+/* Ordinary laptop/desktop viewports (≤1120px tall — covers 1080p fullscreen
+   and everything smaller once browser chrome is subtracted): compress
+   further so nothing clips while pinned under the sticky navbar. */
+@media (min-width: 901px) and (max-height: 1120px) {
   .method-section .method-stage { padding-top: 24px; padding-bottom: 24px; }
   .method-section .scaffold-heading { font-size: 34px; }
   .method-section .scaffold-body { font-size: 15px; }
