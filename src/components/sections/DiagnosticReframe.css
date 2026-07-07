@@ -608,18 +608,22 @@
   height: 36px;
   border: 0 solid rgba(199, 180, 157,0.78);
 }
-.reframe-pin-wrap .hud-corner-tl { top: 24px;    left: 24px;    border-top-width:    2px; border-left-width:  2px; }
-.reframe-pin-wrap .hud-corner-tr { top: 24px;    right: 24px;   border-top-width:    2px; border-right-width: 2px; }
+/* The section pins at viewport top, but the glass navbar stays fixed over
+   the top 48px (compact state, always scrolled by the time this section is
+   reached). Drop the top corners below it so the frame isn't clipped by the
+   bar; the bottom corners stay put, squeezing the frame to fit. */
+.reframe-pin-wrap .hud-corner-tl { top: 60px;    left: 24px;    border-top-width:    2px; border-left-width:  2px; }
+.reframe-pin-wrap .hud-corner-tr { top: 60px;    right: 24px;   border-top-width:    2px; border-right-width: 2px; }
 .reframe-pin-wrap .hud-corner-bl { bottom: 24px; left: 24px;    border-bottom-width: 2px; border-left-width:  2px; }
 .reframe-pin-wrap .hud-corner-br { bottom: 24px; right: 24px;   border-bottom-width: 2px; border-right-width: 2px; }
 
 /* Top-left system header — protocol identifier with pulsing bronze dot.
-   Tucked inside the L-bracket corner mark — 30px from both the L's top
-   horizontal line (y=24) and its left vertical line (x=24). Equal in
-   both axes so the framing reads balanced. */
+   Tucked inside the L-bracket corner mark — ~28px below the corner's top
+   line (now y=60) and 30px right of its vertical line, so the framing
+   reads balanced while clearing the glass navbar. */
 .reframe-pin-wrap .hud-header-tl {
   position: absolute;
-  top: 54px;
+  top: 88px;
   left: 54px;
   display: flex;
   flex-direction: column;
@@ -642,11 +646,10 @@
   animation: blink 1.6s ease-in-out infinite;
 }
 
-/* Top-right status — analysis mode + live T+ counter. Mirrors top-left:
-   30px from both the L's top horizontal line and its right vertical line. */
+/* Top-right status — analysis mode + live T+ counter. Mirrors top-left. */
 .reframe-pin-wrap .hud-status-tr {
   position: absolute;
-  top: 54px;
+  top: 88px;
   right: 54px;
   display: flex;
   flex-direction: column;

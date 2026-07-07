@@ -64,28 +64,48 @@
   }
   /* Compact the pinned stage so the full panel — header, pipeline, and
      detail card — fits inside one viewport on ordinary laptop heights.
-     The pipeline sits close to the CTA so the panel reads as one block. */
-  .method-section .scaffold-heading { font-size: clamp(28px, 3vw, 44px); }
-  .method-section .scaffold-row { margin-bottom: clamp(14px, 2.4vh, 32px); }
-  .method-section .mflow { margin-top: clamp(4px, 1vh, 12px); }
-  .method-section .mdetail {
+     The pipeline sits close to the CTA so the panel reads as one block.
+     NOTE: these selectors carry `.method-stage` so they out-specify the
+     base `.method-section .*` rules that appear later in this file —
+     without it, source order would let the roomy defaults win here and
+     the CTA→pipeline gap would balloon past the fold. */
+  .method-section .method-stage .scaffold-heading { font-size: clamp(28px, 3vw, 44px); }
+  .method-section .method-stage .scaffold-row { margin-bottom: clamp(14px, 2.4vh, 32px); }
+  .method-section .method-stage .mflow { margin-top: clamp(4px, 1vh, 12px); }
+  .method-section .method-stage .mdetail {
     margin-top: clamp(12px, 1.8vh, 24px);
     padding: clamp(22px, 2.6vh, 36px) clamp(26px, 3vw, 44px);
   }
-  .method-section .mdetail-ghost { font-size: clamp(48px, 6vw, 88px); }
+  .method-section .method-stage .mdetail-ghost { font-size: clamp(48px, 6vw, 88px); }
 }
 /* Ordinary laptop/desktop viewports (≤1200px tall — covers 1080p-class
    screens with or without browser chrome): compress further so nothing
    clips while pinned under the sticky navbar. */
 @media (min-width: 901px) and (max-height: 1200px) {
   .method-section .method-stage { padding-top: 24px; padding-bottom: 24px; }
-  .method-section .scaffold-heading { font-size: 34px; }
-  .method-section .scaffold-body { font-size: 15px; }
-  .method-section .scaffold-row { margin-bottom: 20px; }
-  .method-section .method-cta-row { margin-top: 18px; }
-  .method-section .mdetail { padding: 20px 28px; }
-  .method-section .mdetail-method { font-size: 15px; line-height: 1.6; }
-  .method-section .mdetail-ghost { font-size: 44px; }
+  .method-section .method-stage .scaffold-heading { font-size: 34px; }
+  .method-section .method-stage .scaffold-body { font-size: 15px; }
+  .method-section .method-stage .scaffold-row { margin-bottom: 18px; }
+  .method-section .method-stage .method-cta-row { margin-top: 16px; }
+  .method-section .method-stage .mflow-nodes { padding-bottom: 20px; }
+  .method-section .method-stage .mdetail { margin-top: 14px; padding: 20px 28px; }
+  .method-section .method-stage .mdetail-method { font-size: 15px; line-height: 1.6; }
+  .method-section .method-stage .mdetail-ghost { font-size: 44px; }
+}
+/* Short laptops (≤850px tall inner height): squeeze to the bone so the
+   panel still clears the glass navbar and the detail card holds the fold. */
+@media (min-width: 901px) and (max-height: 850px) {
+  .method-section .method-stage { padding-top: 18px; padding-bottom: 18px; }
+  .method-section .method-stage .scaffold-heading { font-size: 30px; }
+  .method-section .method-stage .scaffold-body { font-size: 14px; }
+  .method-section .method-stage .scaffold-body .coda { font-size: 18px; margin-top: 10px; }
+  .method-section .method-stage .scaffold-row { margin-bottom: 14px; }
+  .method-section .method-stage .method-cta-row { margin-top: 12px; }
+  .method-section .method-stage .mflow { margin-top: 6px; }
+  .method-section .method-stage .mflow-nodes { padding-bottom: 14px; }
+  .method-section .method-stage .mdetail { margin-top: 10px; padding: 16px 26px; }
+  .method-section .method-stage .mdetail-method { font-size: 14.5px; line-height: 1.55; }
+  .method-section .method-stage .mdetail-ghost { font-size: 38px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .method-section .method-pin { height: auto !important; }
