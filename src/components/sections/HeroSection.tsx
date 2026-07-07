@@ -143,7 +143,7 @@ export default function HeroSection() {
             }}
           >
             <ScrambleText
-              text="Kelwin is the GTM systems partner for B2B teams whose growth works — but not predictably. Agencies rent you activity; we install revenue infrastructure you keep."
+              text="We are a GTM systems partner & advisory for B2B teams that want to turn narrative, omnichannel strategy, and market intelligence into repeatable pipeline systems."
               delay={700}
               duration={500}
               lineStagger={200}
