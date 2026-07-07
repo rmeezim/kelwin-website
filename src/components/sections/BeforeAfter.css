@@ -1,0 +1,264 @@
+/* ─── Before / After — the transformation ledger, scoped to .shift ────────
+   One instrument panel: six paired shifts from the entropy state (red ✕,
+   taupe) to the installed state (patina ✓, ink). A faint patina wash on the
+   "after" side of each row makes the transformation legible at a glance.
+   Reuses the Fit gate's mark vocabulary and the site's stacked-header +
+   hairline-panel patterns so it reads as native instrumentation.          */
+
+.shift {
+  --ink: #fbfaf6;
+  --lead: rgba(251, 250, 246, 0.66);
+  --dim: rgba(251, 250, 246, 0.45);
+  --sand: #c7b49d;
+  --sand-line: rgba(199, 180, 157, 0.3);
+  --taupe: #8f8981;
+  --patina: #7c9c8a;
+  --signal-bright: #d4524e;
+  --hairline: rgba(251, 250, 246, 0.09);
+  background: #110f0a;
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.shift-stage {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--space-section) clamp(28px, 5vw, 64px);
+}
+
+/* ── Reveal ── */
+.shift .ba-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.shift .ba-reveal.is-in { opacity: 1; transform: translateY(0); }
+/* Rows cascade in on their index — the transformation "prints" top to bottom. */
+.shift .shift-row.ba-reveal { transition-delay: calc(var(--i, 0) * 0.06s); }
+@media (prefers-reduced-motion: reduce) {
+  .shift .ba-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ── Header ── */
+.shift-head { margin-bottom: clamp(36px, 5vh, 56px); max-width: 720px; }
+.shift-head-top {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(18px, 2.2vw, 26px);
+}
+.shift-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-bright);
+}
+.shift-eyebrow-dash { width: 28px; height: 1px; background: #bf3a36; opacity: 0.75; }
+.shift-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.62);
+}
+.shift-heading {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height: 1.07;
+  letter-spacing: -0.02em;
+  margin: 0 0 clamp(14px, 1.6vw, 20px);
+}
+.shift-heading .line-1 { color: rgba(251, 250, 246, 0.42); }
+.shift-heading .line-2 { color: var(--ink); }
+.shift-lede {
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.65;
+  color: var(--lead);
+  max-width: 58ch;
+  margin: 0;
+}
+
+/* ── Panel ── */
+.shift-panel {
+  background: #0b0a08;
+  border: 1px solid var(--sand-line);
+  padding: clamp(16px, 2vw, 24px) clamp(18px, 2.2vw, 28px) clamp(20px, 2.4vw, 28px);
+}
+.shift-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: clamp(12px, 1.6vh, 18px);
+  margin-bottom: clamp(6px, 1vh, 12px);
+}
+.shift-protocol {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.shift-panel-line { flex: 1; height: 1px; background: rgba(199, 180, 157, 0.18); }
+.shift-stamp {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(251, 250, 246, 0.32);
+  white-space: nowrap;
+}
+
+/* ── Table ── */
+.shift-table { display: flex; flex-direction: column; }
+
+.shift-colhead,
+.shift-row {
+  display: grid;
+  grid-template-columns: minmax(88px, 128px) minmax(0, 1fr) 52px minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(12px, 1.6vw, 24px);
+}
+
+.shift-colhead {
+  padding: 4px 0 12px;
+  border-bottom: 1px solid var(--hairline);
+}
+.shift-collabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.shift-collabel.is-before { color: var(--taupe); }
+.shift-collabel.is-after {
+  color: var(--patina);
+  /* the after label spans the arrow + after cells so it centers over the
+     installed side */
+  grid-column: 3 / span 2;
+  padding-left: 4px;
+}
+
+.shift-row {
+  padding: clamp(14px, 1.8vh, 20px) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.shift-row:last-child { border-bottom: none; }
+
+.shift-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.7);
+}
+
+.shift-cell {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+}
+/* Faint patina wash + inset rule on the installed side — the row visibly
+   "enters" the working state as you read left to right. */
+.shift-after {
+  padding: clamp(10px, 1.4vh, 14px) 14px;
+  margin: clamp(-10px, -1.4vh, -14px) 0;
+  background: rgba(124, 156, 138, 0.05);
+  box-shadow: inset 2px 0 0 rgba(124, 156, 138, 0.4);
+}
+
+.shift-text {
+  font-size: clamp(14.5px, 1.05vw, 16px);
+  line-height: 1.5;
+}
+.shift-before .shift-text { color: var(--taupe); }
+.shift-after .shift-text { color: var(--ink); }
+
+/* Marks — same vocabulary as the Fit gate ledger. */
+.shift-mark {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  position: relative;
+  top: 2px;
+}
+.shift-mark-yes { background: var(--patina); opacity: 0.9; }
+.shift-mark-no { background: transparent; }
+.shift-mark-no::before,
+.shift-mark-no::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 50%;
+  height: 1px;
+  background: var(--signal-bright);
+  opacity: 0.85;
+}
+.shift-mark-no::before { transform: rotate(45deg); }
+.shift-mark-no::after { transform: rotate(-45deg); }
+
+.shift-arrow {
+  justify-self: center;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: rgba(199, 180, 157, 0.55);
+  line-height: 1;
+}
+
+/* ── Verdict ── */
+.shift-verdict {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: clamp(22px, 2.8vh, 32px);
+  padding-top: clamp(18px, 2.2vh, 24px);
+  border-top: 1px solid var(--hairline);
+}
+.shift-coda {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0;
+  max-width: 48ch;
+}
+
+/* ── Responsive: stack each shift into a mini-card ── */
+@media (max-width: 720px) {
+  .shift-colhead { display: none; }
+  /* the long nowrap stamp would push the panel past the viewport — drop it,
+     the protocol label alone carries the head on mobile */
+  .shift-stamp { display: none; }
+  .shift-panel-head { flex-wrap: wrap; }
+  .shift-row {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+    padding: 18px 0;
+  }
+  .shift-tag { color: var(--sand); }
+  .shift-arrow {
+    justify-self: start;
+    transform: rotate(90deg);
+    margin: 2px 0 2px 2px;
+  }
+  .shift-after {
+    margin: 0;
+    padding: 12px 14px;
+  }
+  .shift-cell { align-items: center; }
+}

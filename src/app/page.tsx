@@ -14,6 +14,7 @@ import OperatingPrincipleBand from "@/components/sections/OperatingPrincipleBand
 import Methodology from "@/components/sections/Methodology";
 import FitStrip from "@/components/sections/FitStrip";
 import AssetInventory from "@/components/sections/AssetInventory";
+import BeforeAfter from "@/components/sections/BeforeAfter";
 import FaqSection from "@/components/sections/FaqSection";
 import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/layout/Footer";
@@ -42,6 +43,7 @@ export default function Home() {
       <Methodology />
       <FitStrip />
       <AssetInventory />
+      <BeforeAfter />
       <FaqSection />
       <FinalCTA />
       <Footer />
