@@ -89,9 +89,18 @@ kit. Reuse these; never invent parallel ones:
 - Section header (home): eyebrow row (red label + 28px dash, mono meta
   right) → stacked 2-line heading (line-1 ink, line-2 rgba(251,250,246,
   0.42)) → lede clamp(16px,1.15vw,17.5px) max-width ~58–62ch.
-- Interior pages: 1140px stage (home sections use 1440px), protocol row
-  (mono sand label · hairline · faint stamp), same stacked title + lede.
-  Interior pages load like documents — reveal-on-scroll only, no pins.
+- Interior pages (v2, 2026-07): open on a PageCommand header — full-bleed
+  photograph behind the transparent resting navbar, left+bottom charcoal
+  scrim, protocol row, big 2-line title, lede, bottom-right mono readout,
+  calibrated baseline rule. Body runs the HOME section grammar (red
+  eyebrow + dash + mono meta) over instrument panels — spec sheets,
+  calibration grids, cadence rails, consoles, ledgers — on a 1440px
+  stage. Reading surfaces (/insights articles, /audit flow, /contact)
+  keep the quieter 1140px document stage. Reveal-on-scroll only, no
+  pins. Every firm/lab page ends on a ConvertPanel (red-edged decision
+  panel: title, sub, term chips, signal CTA + quiet second path) — pages
+  convert, they don't fade out. The old fp2 "chaptered dossier" text
+  posture is retired; never reintroduce text-only interior pages.
 - Ledger rows: hairline-divided grids; mono index numbers (A·01, R·01,
   FN·01); marks are 8px squares — patina ▪ = yes/healthy, red ✕ (two
   hairlines) = no/entropy.

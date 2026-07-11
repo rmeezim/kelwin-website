@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import ArrowLink from "@/components/ui/ArrowLink";
-import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import ConvertPanel from "@/components/ui/ConvertPanel";
 import "./LabConsole.css";
 
 // ─── The Lab — R&D arm ────────────────────────────────────────────────────
 // Where the practice becomes product: AI-native GTM software trained on
-// what the installs teach. The centerpiece is a product-surface mock built
-// entirely in code — the same instrument idiom as the site (mono labels,
-// sand structure, clay data, patina state, one red routing moment) so the
-// "software" and the "site" read as one system. Labeled Specimen; real
+// what the installs teach. Opens on a PageCommand photograph (page level),
+// then runs the home section grammar over the Signal Console — a product
+// surface mocked entirely in code (sand structure, clay data, patina
+// state, one red routing moment) — a build log that shows the work
+// actually moving, and the product principles. Labeled Specimen; real
 // build previews ship to the waitlist.
 
 const SIGNALS = [
@@ -28,6 +28,22 @@ const QUEUE = [
 ];
 
 const SPARK = "M0 34 L14 32 L28 33 L42 29 L56 30 L70 26 L84 27 L98 22 L112 24 L126 19 L140 20 L154 15 L168 16 L182 12 L196 9";
+
+// The build log — the page's proof of life. States use the shared accent
+// jobs: patina = shipped, red = actively in build, taupe = queued.
+const BUILDS = [
+  { v: "0.5", title: "Account timelines — the deal, argued in one view", state: "IN BUILD", tone: "red" as const },
+  { v: "0.4", title: "Routing queue autonomy — approved actions run unattended", state: "SHIPPED", tone: "patina" as const },
+  { v: "0.3", title: "Narrative resonance scoring across live installs", state: "SHIPPED", tone: "patina" as const },
+  { v: "0.2", title: "Entropy index — learning retained, as one number", state: "SHIPPED", tone: "patina" as const },
+  { v: "0.1", title: "Signal taxonomy drawn from the first installs", state: "SHIPPED", tone: "patina" as const },
+];
+
+const ROADMAP = [
+  { k: "Now", now: true, items: ["Console hardening", "Entropy calibration against live installs"] },
+  { k: "Next", items: ["Narrative telemetry API", "Routing rules your operators can edit"] },
+  { k: "Later", items: ["Standalone deployment — the console without the consulting"] },
+];
 
 const PRINCIPLES = [
   {
@@ -75,38 +91,14 @@ export default function LabConsole() {
   return (
     <main className="lab" ref={mainRef}>
       <div className="lab-stage">
-        {/* ── Head ── */}
-        <header className="lab-head lab-reveal">
-          <div className="lab-protocol-row">
-            <span className="lab-protocol">The Lab · R&amp;D</span>
-            <span className="lab-protocol-line" aria-hidden="true" />
-            <span className="lab-stamp">KELWIN/OS · BUILD 0.4</span>
+        {/* ── 01 · The console — product surface, in code ── */}
+        <section className="lab-section lab-reveal" aria-label="Product surface preview (specimen)">
+          <div className="lab-eyebrow-row">
+            <span className="lab-eyebrow">The console</span>
+            <span className="lab-eyebrow-dash" aria-hidden="true" />
+            <span className="lab-eyebrow-meta">LAB/01 · WHAT THE SOFTWARE SEES</span>
           </div>
-          <h1 className="lab-title">
-            <span className="lab-title-1">Where the practice</span>
-            <span className="lab-title-2">becomes product.</span>
-          </h1>
-          <p className="lab-lede">
-            The Lab is Kelwin&rsquo;s R&amp;D arm: everything our installs
-            teach us — signal patterns, narrative telemetry, routing logic —
-            is being built into AI-native GTM software. The consulting keeps
-            it honest; the product makes it permanent.
-          </p>
-          <div className="lab-chips" aria-label="Program status">
-            <span className="lab-chip is-live">
-              <span className="lab-chip-dot" aria-hidden="true" />
-              In development
-            </span>
-            <span className="lab-chip">AI-native</span>
-            <span className="lab-chip">Install-trained</span>
-          </div>
-        </header>
-
-        {/* ── The console — product surface, in code ── */}
-        <section
-          className="lab-shell lab-reveal"
-          aria-label="Product surface preview (specimen)"
-        >
+          <div className="lab-shell">
           {/* window chrome */}
           <div className="lab-bar">
             <span className="lab-bar-id">
@@ -206,36 +198,75 @@ export default function LabConsole() {
               </div>
             </div>
           </div>
-        </section>
-
-        {/* ── Principles ── */}
-        <section className="lab-principles lab-reveal" aria-label="Product principles">
-          {PRINCIPLES.map((p) => (
-            <div className="lab-principle" key={p.n}>
-              <span className="lab-principle-num">{p.n}</span>
-              <span className="lab-principle-title">{p.title}</span>
-              <span className="lab-principle-desc">{p.desc}</span>
-            </div>
-          ))}
-        </section>
-
-        {/* ── Waitlist ── */}
-        <footer className="lab-foot lab-reveal">
-          <p className="lab-close-line">
-            The Lab is tomorrow. <span>The audit is Tuesday.</span>
-          </p>
-          <div className="lab-foot-actions">
-            <DiagnosticMethodCTA
-              href="/contact?topic=lab&ref=Lab%20waitlist"
-              label="Join the waitlist"
-              variant="signal"
-            />
-            <ArrowLink href="/audit" label="Or start with the audit" tone="sand" />
           </div>
-          <p className="lab-foot-note">
-            Waitlist members see build previews first and shape what ships.
-          </p>
-        </footer>
+        </section>
+
+        {/* ── 02 · Build log + roadmap — proof the work is moving ── */}
+        <section className="lab-section lab-reveal" aria-label="Build log and roadmap">
+          <div className="lab-eyebrow-row">
+            <span className="lab-eyebrow">Build log</span>
+            <span className="lab-eyebrow-dash" aria-hidden="true" />
+            <span className="lab-eyebrow-meta">LAB/02 · SHIPPED IS THE ONLY STATUS THAT COUNTS</span>
+          </div>
+          <div className="lab-worklog">
+            <div className="lab-log">
+              <div className="lab-log-bar">
+                <span className="lab-log-id">BUILD.LOG</span>
+                <span className="lab-log-line" aria-hidden="true" />
+                <span className="lab-log-stamp">NEWEST FIRST</span>
+              </div>
+              {BUILDS.map((b) => (
+                <div className="lab-log-row" key={b.v}>
+                  <span className="lab-log-v">{b.v}</span>
+                  <span className="lab-log-title">{b.title}</span>
+                  <span className={`lab-log-state is-${b.tone}`}>
+                    <span className="lab-log-mark" aria-hidden="true" />
+                    {b.state}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="lab-road" aria-label="Roadmap">
+              {ROADMAP.map((r) => (
+                <div className={`lab-road-group${r.now ? " is-now" : ""}`} key={r.k}>
+                  <span className="lab-road-k">{r.k}</span>
+                  {r.items.map((it) => (
+                    <span className="lab-road-item" key={it}>{it}</span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 03 · Principles ── */}
+        <section className="lab-section lab-reveal" aria-label="Product principles">
+          <div className="lab-eyebrow-row">
+            <span className="lab-eyebrow">Product principles</span>
+            <span className="lab-eyebrow-dash" aria-hidden="true" />
+            <span className="lab-eyebrow-meta">LAB/03 · THREE, NON-NEGOTIABLE</span>
+          </div>
+          <div className="lab-principles">
+            {PRINCIPLES.map((p) => (
+              <div className="lab-principle" key={p.n}>
+                <span className="lab-principle-num">{p.n}</span>
+                <span className="lab-principle-title">{p.title}</span>
+                <span className="lab-principle-desc">{p.desc}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Close — the decision ── */}
+        <div className="lab-section lab-reveal">
+          <ConvertPanel
+            title="The Lab is tomorrow. The audit is Tuesday."
+            sub="Waitlist members see build previews first and shape what ships. And if pipeline is this quarter's problem, start with the audit — everything the Lab learns comes from those installs."
+            chips={["Install-trained", "Previews ship to waitlist first", "Your data stays yours"]}
+            primary={{ href: "/contact?topic=lab&ref=Lab%20waitlist", label: "Join the waitlist" }}
+            secondary={{ href: "/audit", label: "Or start with the audit" }}
+          />
+        </div>
       </div>
     </main>
   );

@@ -1,0 +1,59 @@
+/* ─── ConvertPanel — scoped to .cvp ───────────────────────────────────────
+   Red-edged closing decision panel (same posture as the insights convert
+   panel — one kit, everywhere). */
+
+.cvp {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) auto;
+  align-items: center;
+  gap: clamp(24px, 3.5vw, 56px);
+  padding: clamp(26px, 3.4vh, 40px) clamp(24px, 3vw, 40px);
+  background: #0b0a08;
+  border: 1px solid rgba(199, 180, 157, 0.3);
+  box-shadow: inset 2px 0 0 rgba(212, 82, 78, 0.55);
+}
+.cvp-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(21px, 2.1vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  color: #fbfaf6;
+  margin: 0 0 12px;
+}
+.cvp-sub {
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(14.5px, 1.05vw, 15.5px);
+  line-height: 1.62;
+  color: rgba(251, 250, 246, 0.6);
+  max-width: 54ch;
+  margin: 0;
+}
+.cvp-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: clamp(14px, 2vh, 20px);
+}
+.cvp-chip {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.78);
+  border: 1px solid rgba(199, 180, 157, 0.28);
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+.cvp-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+@media (max-width: 880px) {
+  .cvp { grid-template-columns: 1fr; }
+  .cvp-actions { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 20px; }
+}

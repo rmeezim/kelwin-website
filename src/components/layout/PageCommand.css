@@ -1,0 +1,199 @@
+/* ─── PageCommand — scoped to .pgc ────────────────────────────────────────
+   Full-bleed photographic command header for interior pages. The photo
+   runs behind the transparent resting navbar (the header sits at the top
+   of <main>, navbar is sticky at page level above it), a left-and-bottom
+   charcoal scrim keeps the identity block legible, and the frame closes
+   on a calibrated hairline. Entrance is pure CSS. */
+
+.pgc {
+  position: relative;
+  min-height: clamp(440px, 62vh, 660px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #110f0a;
+  overflow: hidden;
+  /* pull the header up behind the sticky navbar (56px pill + 12px header
+     pad) so the photograph runs edge-to-edge behind the transparent
+     resting nav — the interior pages open like the hero does */
+  margin-top: -68px;
+  padding-top: 68px;
+}
+
+/* media */
+.pgc-media { position: absolute; inset: 0; pointer-events: none; user-select: none; }
+.pgc-photo {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: pgc-media-in 1.3s ease-out both;
+}
+.pgc-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(17, 15, 10, 0.94) 0%, rgba(17, 15, 10, 0.8) 34%, rgba(17, 15, 10, 0.5) 66%, rgba(17, 15, 10, 0.36) 100%),
+    linear-gradient(to bottom, rgba(17, 15, 10, 0.84) 0%, rgba(17, 15, 10, 0.34) 22%, rgba(17, 15, 10, 0.14) 36%, rgba(17, 15, 10, 0.22) 58%, rgba(17, 15, 10, 0.92) 88%, #110f0a 100%);
+}
+@keyframes pgc-media-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* stage */
+.pgc-stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(28px, 5vw, 64px) clamp(36px, 5.5vh, 64px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+}
+.pgc-content {
+  animation: pgc-content-in 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) 0.15s both;
+  min-width: 0;
+}
+@keyframes pgc-content-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pgc-protocol-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(20px, 3vh, 32px);
+}
+.pgc-protocol {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c7b49d;
+  white-space: nowrap;
+}
+.pgc-protocol-line {
+  width: clamp(60px, 8vw, 140px);
+  height: 1px;
+  background: rgba(199, 180, 157, 0.3);
+}
+.pgc-stamp {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: rgba(251, 250, 246, 0.42);
+  white-space: nowrap;
+}
+
+.pgc-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(38px, 4.8vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+  margin: 0 0 clamp(16px, 2.4vh, 26px);
+}
+.pgc-title-1 { display: block; color: #fbfaf6; }
+.pgc-title-2 { display: block; color: rgba(251, 250, 246, 0.44); }
+
+.pgc-lede {
+  font-family: var(--font-inter), sans-serif;
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.65;
+  color: rgba(251, 250, 246, 0.72);
+  max-width: 56ch;
+  margin: 0;
+}
+
+.pgc-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: clamp(16px, 2.2vh, 22px);
+}
+.pgc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.85);
+  border: 1px solid rgba(199, 180, 157, 0.32);
+  background: rgba(17, 15, 10, 0.5);
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+.pgc-chip.is-live { color: #7c9c8a; border-color: rgba(124, 156, 138, 0.4); }
+.pgc-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7c9c8a;
+  animation: pgc-dot 2.4s ease-in-out infinite;
+}
+@keyframes pgc-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* bottom-right readout */
+.pgc-readout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+  animation: pgc-content-in 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) 0.3s both;
+}
+.pgc-readout-code {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  color: rgba(199, 180, 157, 0.7);
+  white-space: nowrap;
+}
+.pgc-readout-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pgc-readout-status.is-patina { color: #7c9c8a; }
+.pgc-readout-status.is-red { color: #d4524e; }
+.pgc-readout-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* baseline rule with calibration ticks */
+.pgc-baseline {
+  position: relative;
+  z-index: 1;
+  height: 1px;
+  background: rgba(199, 180, 157, 0.22);
+  display: flex;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  width: calc(100% - 2 * clamp(28px, 5vw, 64px));
+}
+.pgc-tick {
+  width: 1px;
+  height: 7px;
+  background: rgba(199, 180, 157, 0.4);
+  transform: translateY(-6px);
+}
+
+@media (max-width: 880px) {
+  .pgc { min-height: clamp(400px, 56vh, 560px); }
+  .pgc-stamp { display: none; }
+  .pgc-readout { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pgc-photo, .pgc-content, .pgc-readout { animation: none; }
+  .pgc-chip-dot { animation: none; }
+}
