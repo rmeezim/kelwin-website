@@ -525,26 +525,22 @@ export default function Navbar() {
     <header
       ref={navRef}
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300 ease-out",
-        scrolled ? "pt-0" : "pt-[12px]"
+        "site-navbar sticky top-0 z-50 w-full pt-[12px]",
+        scrolled && "is-scrolled"
       )}
-      style={{
-        // Apple-style glass once scrolling starts: translucent charcoal +
-        // heavy backdrop blur. The rgba ground keeps legibility on browsers
-        // without backdrop-filter support.
-        backgroundColor: scrolled ? "rgba(11, 10, 8, 0.7)" : "transparent",
-        backdropFilter: scrolled ? "blur(18px) saturate(1.4)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(18px) saturate(1.4)" : "none",
-      }}
     >
-      <nav
-        className={cn(
-          "nav-row max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20",
-          "transition-all duration-300 ease-out",
-          scrolled && "is-centered",
-          scrolled ? "h-[46px]" : "h-[56px]"
-        )}
-      >
+      {/* Outer band — full-width centering track; carries the content gutter.
+          Height is constant (no vertical shrink on scroll). */}
+      <div className="nav-outer max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20">
+        {/* The pill — edge-to-edge and transparent at rest; on scroll it
+            shrink-wraps to its content, centers, and the glass/blur appears
+            only around it (a floating island, not a full-width bar). Framer
+            `layout` animates the width + the two groups sliding together. */}
+        <motion.nav
+          layout={!reduced}
+          transition={layoutT}
+          className={cn("nav-pill", scrolled && "is-floating")}
+        >
         {/* Logo — bordered chip with the red diamond mark (the methodology
             node vocabulary, worn as insignia). Wrapped for the layout slide. */}
         <motion.div layout={!reduced} transition={layoutT} className="shrink-0">
@@ -603,7 +599,8 @@ export default function Navbar() {
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </motion.div>
-      </nav>
+        </motion.nav>
+      </div>
 
       {/* Mega menu — full-width command drawer under the navbar, spanning the
           same container as the nav content. */}
