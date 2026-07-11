@@ -1,16 +1,18 @@
-/* ─── Firm pages — scoped to .firm ────────────────────────────────────────
-   The editorial layer: About / Who We Work With / Careers. Same design
-   system, warmer register — first-person prose, serif turns, a bone
-   "daylight" panel for the founder's note. These pages are where the
-   company sounds like people; the instrument chrome stays quiet.        */
+/* ─── Firm pages v2 — chaptered dossiers, scoped to .fp2 ──────────────────
+   About / Who We Work With / Careers as editorial chapters: a sticky rail
+   carries an oversized ghost numeral + mono kicker per chapter, content
+   reads in a measured column beside it. Large statement typography, roomy
+   rhythm, zero serif, zero italics. The bone "letter" panel is the one
+   daylight moment; everything else is the dark instrument world.         */
 
-.firm {
+.fp2 {
   --ink: #fbfaf6;
-  --lead: rgba(251, 250, 246, 0.7);
-  --dim: rgba(251, 250, 246, 0.45);
-  --faint: rgba(251, 250, 246, 0.32);
+  --lead: rgba(251, 250, 246, 0.72);
+  --dim: rgba(251, 250, 246, 0.5);
+  --faint: rgba(251, 250, 246, 0.38);
   --sand: #c7b49d;
   --sand-line: rgba(199, 180, 157, 0.16);
+  --sand-ghost: rgba(199, 180, 157, 0.16);
   --taupe: #8f8981;
   --patina: #7c9c8a;
   --signal-bright: #d4524e;
@@ -22,273 +24,366 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.firm-stage {
-  max-width: 1020px;
+.fp2-stage {
+  max-width: 1200px;
   margin: 0 auto;
   padding: clamp(56px, 7vh, 88px) clamp(28px, 5vw, 64px) var(--space-section);
 }
 
-/* ── Head ── */
-.firm-protocol-row {
+/* ── Hero ── */
+.fp2-protocol-row {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: clamp(28px, 4vh, 48px);
+  margin-bottom: clamp(32px, 4.5vh, 56px);
 }
-.firm-protocol {
+.fp2-protocol {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--sand);
   white-space: nowrap;
 }
-.firm-protocol-line { flex: 1; height: 1px; background: var(--sand-line); }
-.firm-stamp {
+.fp2-protocol-line { flex: 1; height: 1px; background: var(--sand-line); }
+.fp2-stamp {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
   letter-spacing: 0.16em;
-  color: rgba(251, 250, 246, 0.3);
+  color: var(--faint);
   white-space: nowrap;
 }
-.firm-title {
+.fp2-title {
   font-family: var(--font-instrument-sans), sans-serif;
   font-weight: 400;
-  font-size: clamp(32px, 4vw, 56px);
-  line-height: 1.06;
-  letter-spacing: -0.02em;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
   text-wrap: balance;
-  margin: 0 0 clamp(16px, 2vw, 24px);
+  margin: 0 0 clamp(20px, 2.6vh, 30px);
+  max-width: 18ch;
 }
-.firm-title-1 { display: block; color: var(--ink); }
-.firm-title-2 { display: block; color: rgba(251, 250, 246, 0.42); }
-.firm-lede {
-  font-size: clamp(16.5px, 1.25vw, 18.5px);
+.fp2-title em {
+  font-style: normal;
+  color: rgba(251, 250, 246, 0.42);
+}
+.fp2-lede {
+  font-size: clamp(17px, 1.35vw, 19.5px);
   line-height: 1.65;
   color: var(--lead);
-  max-width: 58ch;
+  max-width: 56ch;
   margin: 0;
 }
 
-/* ── Founder's note — the bone daylight panel ── */
-.firm-note {
-  position: relative;
-  margin-top: clamp(40px, 5.5vh, 64px);
-  padding: clamp(28px, 3.6vh, 44px) clamp(26px, 3.4vw, 48px);
-  background: #ece8df;
-  color: #1a1613;
-}
-.firm-note-kicker {
+/* Chapter index — the hero's table of contents. */
+.fp2-toc {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: clamp(18px, 2.4vh, 26px);
+  flex-wrap: wrap;
+  gap: clamp(18px, 2.6vw, 36px);
+  margin-top: clamp(28px, 4vh, 44px);
+  padding-top: clamp(20px, 2.6vh, 28px);
+  border-top: 1px solid var(--hairline);
+}
+.fp2-toc-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.fp2-toc-item:hover { color: var(--signal-bright); }
+.fp2-toc-num { color: rgba(199, 180, 157, 0.6); }
+
+/* ── Chapters ── */
+.fp2-chapter {
+  display: grid;
+  grid-template-columns: clamp(150px, 18vw, 230px) minmax(0, 1fr);
+  gap: clamp(24px, 3.6vw, 64px);
+  margin-top: clamp(56px, 8vh, 96px);
+  padding-top: clamp(32px, 4.5vh, 48px);
+  border-top: 1px solid var(--hairline);
+  scroll-margin-top: 72px;
+}
+.fp2-rail {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+.fp2-rail-num {
+  display: block;
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(56px, 6.5vw, 92px);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--sand-ghost);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 14px;
+}
+.fp2-rail-kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #8f7a5c;
+  color: var(--sand);
+  max-width: 16ch;
+  line-height: 1.8;
 }
-.firm-note-kicker::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: rgba(107, 89, 65, 0.28);
-}
-.firm-note p {
-  font-family: var(--font-serif);
-  font-size: clamp(19px, 1.7vw, 23px);
-  line-height: 1.55;
-  color: #1a1613;
-  margin: 0 0 18px;
-  max-width: 56ch;
-}
-.firm-note p:last-of-type { margin-bottom: 0; }
-.firm-note-sign {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  margin-top: clamp(20px, 2.6vh, 28px);
-  padding-top: clamp(16px, 2vh, 22px);
-  border-top: 1px solid rgba(26, 22, 19, 0.12);
-}
-.firm-note-name {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(20px, 1.8vw, 24px);
-  color: #1a1613;
-}
-.firm-note-role {
+.fp2-rail-note {
+  display: block;
+  margin-top: 8px;
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  line-height: 1.7;
+  max-width: 18ch;
+}
+
+/* Chapter content primitives */
+.fp2-h {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  text-wrap: balance;
+  margin: 0 0 clamp(16px, 2.2vh, 24px);
+  max-width: 26ch;
+}
+.fp2-prose {
+  font-size: clamp(16px, 1.2vw, 17.5px);
+  line-height: 1.75;
+  color: var(--lead);
+  max-width: 62ch;
+  margin: 0 0 18px;
+}
+.fp2-prose:last-child { margin-bottom: 0; }
+.fp2-prose strong { color: rgba(251, 250, 246, 0.94); font-weight: 600; }
+
+/* ── The letter (bone daylight panel) ── */
+.fp2-letter {
+  background: #ece8df;
+  color: #1a1613;
+  padding: clamp(30px, 4vh, 48px) clamp(28px, 3.6vw, 52px);
+}
+.fp2-letter p {
+  font-size: clamp(16.5px, 1.3vw, 18.5px);
+  line-height: 1.75;
+  color: #1a1613;
+  margin: 0 0 20px;
+  max-width: 58ch;
+}
+.fp2-letter p:last-of-type { margin-bottom: 0; }
+.fp2-letter-sign {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: clamp(24px, 3vh, 32px);
+  padding-top: clamp(18px, 2.2vh, 24px);
+  border-top: 1px solid rgba(26, 22, 19, 0.14);
+}
+.fp2-letter-dash {
+  width: 28px;
+  height: 2px;
+  background: #bf3a36;
+}
+.fp2-letter-name {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 600;
+  font-size: clamp(17px, 1.4vw, 20px);
+  letter-spacing: -0.01em;
+  color: #1a1613;
+}
+.fp2-letter-role {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #7a716a;
 }
 
-/* ── Section blocks ── */
-.firm-section { margin-top: clamp(44px, 6vh, 68px); }
-.firm-section-head {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: clamp(18px, 2.4vh, 26px);
-}
-.firm-kicker {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--sand);
-  white-space: nowrap;
-}
-.firm-section-line { flex: 1; height: 1px; background: var(--hairline); align-self: center; }
-.firm-section-note {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--faint);
-  white-space: nowrap;
-}
-.firm-prose {
-  font-size: clamp(15.5px, 1.15vw, 17px);
-  line-height: 1.75;
-  color: var(--lead);
-  max-width: 66ch;
-  margin: 0 0 16px;
-}
-.firm-prose:last-child { margin-bottom: 0; }
-.firm-prose strong { color: rgba(251, 250, 246, 0.92); font-weight: 600; }
-
-/* ── Numbered manifesto rows ── */
-.firm-beliefs { list-style: none; margin: 0; padding: 0; }
-.firm-belief {
+/* ── Statement rows (beliefs / behaviors) ── */
+.fp2-statements { list-style: none; margin: 0; padding: 0; }
+.fp2-statement {
   display: grid;
-  grid-template-columns: 56px minmax(0, 1fr);
+  grid-template-columns: 52px minmax(0, 1fr);
   column-gap: clamp(16px, 2.4vw, 32px);
   align-items: baseline;
-  padding: clamp(18px, 2.4vh, 24px) 0;
+  padding: clamp(20px, 2.8vh, 30px) 0;
   border-bottom: 1px solid var(--hairline);
 }
-.firm-belief:last-child { border-bottom: none; }
-.firm-belief-num {
+.fp2-statement:first-child { padding-top: 0; }
+.fp2-statement:last-child { border-bottom: none; padding-bottom: 0; }
+.fp2-statement-num {
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  letter-spacing: 0.12em;
   color: rgba(199, 180, 157, 0.6);
   font-variant-numeric: tabular-nums;
+  transition: color 0.25s ease;
 }
-.firm-belief-title {
+.fp2-statement:hover .fp2-statement-num { color: var(--signal-bright); }
+.fp2-statement-title {
   display: block;
   font-family: var(--font-instrument-sans), sans-serif;
   font-weight: 500;
-  font-size: clamp(17px, 1.4vw, 20px);
-  letter-spacing: -0.01em;
+  font-size: clamp(19px, 1.9vw, 25px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
   color: rgba(251, 250, 246, 0.94);
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  text-wrap: balance;
 }
-.firm-belief-desc {
+.fp2-statement-desc {
   display: block;
-  font-size: clamp(14px, 1.05vw, 15px);
-  line-height: 1.6;
+  font-size: clamp(14.5px, 1.1vw, 16px);
+  line-height: 1.65;
   color: var(--dim);
-  max-width: 60ch;
+  max-width: 58ch;
 }
 
-/* ── Vignettes (Who We Work With) ── */
-.firm-vignettes {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(16px, 2vh, 22px);
+/* ── Facts (stat cards) ── */
+.fp2-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+  margin-top: clamp(22px, 3vh, 32px);
 }
-.firm-vignette {
-  padding: clamp(24px, 3vh, 34px) clamp(24px, 3vw, 38px);
+.fp2-fact {
+  padding: clamp(18px, 2.4vh, 26px) clamp(18px, 2.2vw, 26px);
   background: #0b0a08;
   border: 1px solid var(--sand-line);
-  box-shadow: inset 2px 0 0 rgba(199, 180, 157, 0.35);
 }
-.firm-vignette-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 14px;
+.fp2-fact-v {
+  display: block;
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 10px;
 }
-.firm-vignette-num {
+.fp2-fact-k {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--dim);
+}
+
+/* ── Vignettes ── */
+.fp2-vignettes { display: flex; flex-direction: column; gap: clamp(18px, 2.4vh, 26px); }
+.fp2-vignette {
+  position: relative;
+  padding: clamp(26px, 3.4vh, 40px) clamp(26px, 3.2vw, 44px);
+  background: #0b0a08;
+  border: 1px solid var(--sand-line);
+  overflow: hidden;
+}
+.fp2-vignette-ghost {
+  position: absolute;
+  top: clamp(10px, 1.6vh, 18px);
+  right: clamp(14px, 2vw, 26px);
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(48px, 5.5vw, 80px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: rgba(199, 180, 157, 0.1);
+  pointer-events: none;
+  user-select: none;
+}
+.fp2-vignette-tag {
+  display: inline-block;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  color: rgba(199, 180, 157, 0.6);
-}
-.firm-vignette-tag {
-  font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--taupe);
+  color: var(--sand);
+  margin-bottom: 14px;
 }
-.firm-vignette-title {
+.fp2-vignette-title {
   font-family: var(--font-instrument-sans), sans-serif;
   font-weight: 400;
-  font-size: clamp(20px, 1.9vw, 26px);
+  font-size: clamp(22px, 2.3vw, 30px);
+  line-height: 1.2;
   letter-spacing: -0.015em;
   color: var(--ink);
-  margin: 0 0 12px;
+  margin: 0 0 14px;
+  max-width: 24ch;
   text-wrap: balance;
 }
-.firm-vignette-body {
-  font-size: clamp(15px, 1.1vw, 16px);
+.fp2-vignette-body {
+  font-size: clamp(15px, 1.15vw, 16.5px);
   line-height: 1.7;
   color: var(--lead);
-  max-width: 62ch;
-  margin: 0 0 14px;
+  max-width: 60ch;
+  margin: 0 0 18px;
 }
-.firm-vignette-turn {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(17px, 1.4vw, 20px);
-  line-height: 1.45;
-  color: var(--ink);
+.fp2-vignette-turn {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
   margin: 0;
-  padding-left: clamp(16px, 2vw, 22px);
-  border-left: 2px solid rgba(124, 156, 138, 0.5);
-  max-width: 52ch;
+  max-width: 56ch;
+}
+.fp2-vignette-turn::before {
+  content: "";
+  flex-shrink: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--patina);
+  position: relative;
+  top: -4px;
+}
+.fp2-vignette-turn span {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: clamp(15.5px, 1.2vw, 17.5px);
+  line-height: 1.55;
+  color: rgba(251, 250, 246, 0.94);
 }
 
-/* ── Decline strip ── */
-.firm-declines {
+/* ── Declines ── */
+.fp2-declines {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(14px, 1.8vw, 22px);
 }
-.firm-decline {
-  padding: 16px 18px;
+.fp2-decline {
+  padding: 18px 20px;
   background: #0b0a08;
   border: 1px solid var(--hairline);
 }
-.firm-decline-title {
+.fp2-decline-title {
   display: flex;
   align-items: baseline;
   gap: 10px;
   font-family: var(--font-instrument-sans), sans-serif;
   font-weight: 500;
-  font-size: 14.5px;
-  color: rgba(251, 250, 246, 0.85);
-  margin-bottom: 5px;
+  font-size: 15.5px;
+  color: rgba(251, 250, 246, 0.9);
+  margin-bottom: 6px;
 }
-.firm-decline-mark {
+.fp2-decline-mark {
   flex-shrink: 0;
   width: 7px;
   height: 7px;
   position: relative;
-  top: 0;
 }
-.firm-decline-mark::before,
-.firm-decline-mark::after {
+.fp2-decline-mark::before,
+.fp2-decline-mark::after {
   content: "";
   position: absolute;
   left: -1px;
@@ -298,87 +393,50 @@
   background: var(--signal-bright);
   opacity: 0.85;
 }
-.firm-decline-mark::before { transform: rotate(45deg); }
-.firm-decline-mark::after { transform: rotate(-45deg); }
-.firm-decline-desc {
-  font-size: 12.5px;
-  line-height: 1.55;
+.fp2-decline-mark::before { transform: rotate(45deg); }
+.fp2-decline-mark::after { transform: rotate(-45deg); }
+.fp2-decline-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
   color: var(--dim);
   margin: 0;
 }
 
-/* ── Fact chips row (About: shape of the firm; Careers: terms) ── */
-.firm-facts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(14px, 1.8vw, 22px);
-}
-.firm-fact {
-  padding: 18px 20px;
-  background: #0b0a08;
-  border: 1px solid var(--sand-line);
-}
-.firm-fact-k {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--sand);
-  margin-bottom: 8px;
-}
-.firm-fact-v {
-  display: block;
-  font-family: var(--font-instrument-sans), sans-serif;
-  font-weight: 400;
-  font-size: clamp(15.5px, 1.2vw, 17.5px);
-  line-height: 1.45;
-  color: rgba(251, 250, 246, 0.9);
-}
-
-/* ── Terminal (Careers roles) ── */
-.firm-terminal {
+/* ── Terminal ── */
+.fp2-terminal {
   padding: clamp(16px, 2vh, 22px) clamp(16px, 2vw, 24px);
   background: #080706;
   border: 1px solid var(--hairline);
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 12.5px;
   line-height: 2;
-  color: rgba(251, 250, 246, 0.6);
+  color: rgba(251, 250, 246, 0.65);
 }
-.firm-terminal-line { display: flex; align-items: baseline; gap: 10px; }
-.firm-terminal-prompt { color: var(--signal-bright); }
+.fp2-terminal-line { display: flex; align-items: baseline; gap: 10px; }
+.fp2-terminal-prompt { color: var(--signal-bright); }
 
-/* ── Pull row — a serif statement between sections ── */
-.firm-pull {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(21px, 2vw, 27px);
-  line-height: 1.4;
-  color: var(--ink);
-  max-width: 44ch;
-  margin: clamp(44px, 6vh, 68px) 0 0;
-  padding-left: clamp(18px, 2.2vw, 26px);
-  border-left: 2px solid var(--sand);
-}
-
-/* ── Foot ── */
-.firm-foot {
-  margin-top: clamp(44px, 6vh, 68px);
-  padding-top: clamp(24px, 3vh, 32px);
+/* ── Close ── */
+.fp2-close {
+  margin-top: clamp(56px, 8vh, 96px);
+  padding-top: clamp(32px, 4.5vh, 48px);
   border-top: 1px solid var(--hairline);
 }
-.firm-coda {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(18px, 1.5vw, 22px);
-  line-height: 1.35;
+.fp2-close-line {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 2.8vw, 38px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--ink);
-  margin: 0 0 clamp(18px, 2.4vh, 26px);
-  max-width: 48ch;
+  text-wrap: balance;
+  margin: 0 0 clamp(24px, 3.2vh, 34px);
+  max-width: 28ch;
 }
-.firm-foot-actions {
+.fp2-close-line em {
+  font-style: normal;
+  color: rgba(251, 250, 246, 0.42);
+}
+.fp2-close-actions {
   display: flex;
   align-items: center;
   gap: clamp(24px, 3vw, 40px);
@@ -386,8 +444,20 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 760px) {
-  .firm-stamp { display: none; }
-  .firm-declines { grid-template-columns: 1fr; }
-  .firm-facts { grid-template-columns: 1fr; }
+@media (max-width: 860px) {
+  .fp2-stamp { display: none; }
+  .fp2-chapter {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .fp2-rail {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  .fp2-rail-num { font-size: 34px; margin-bottom: 0; }
+  .fp2-rail-note { display: none; }
+  .fp2-facts { grid-template-columns: 1fr; }
+  .fp2-declines { grid-template-columns: 1fr; }
 }

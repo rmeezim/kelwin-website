@@ -50,8 +50,20 @@ export default function ContactChannel() {
     if (t && TOPIC_PARAM_MAP[t]) setTopic(TOPIC_PARAM_MAP[t]);
     if (ref) setRegarding(ref);
     if (t || ref) {
-      // land the visitor on the form itself, not the page top
-      document.getElementById("write")?.scrollIntoView({ block: "start" });
+      // Land the visitor on the form itself. Delayed until after layout
+      // (fonts, reveals) settles so the scroll target is stable, then a
+      // brief pulse on the pinned reference shows what got preselected.
+      const timer = window.setTimeout(() => {
+        document
+          .getElementById("write")
+          ?.scrollIntoView({ block: "start", behavior: "smooth" });
+        window.setTimeout(() => {
+          document
+            .querySelector(".ctc-regarding")
+            ?.classList.add("is-pulsing");
+        }, 450);
+      }, 250);
+      return () => window.clearTimeout(timer);
     }
   }, []);
 

@@ -76,7 +76,7 @@
 
   /* Type system — serif is the editorial accent voice; mono is now a real
      self-hosted face (JetBrains Mono) instead of a system fallback. */
-  --font-serif: var(--font-instrument-serif), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-instrument-sans), "Helvetica Neue", sans-serif; /* accent voice — sans, never serif (serif banned 2026-07) */
   --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 

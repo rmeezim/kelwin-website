@@ -125,11 +125,24 @@ Use:
 - JetBrains Mono (self-hosted via next/font) for every protocol label,
   timestamp, and HUD readout. Never leave mono to a system fallback —
   unloaded mono rendering as Consolas/Courier is the #1 "cheap" tell.
-- Instrument Serif, italic, as the editorial accent voice — reserved for
-  the short pull-quote codas that punctuate each section. Used sparingly;
-  never for headlines or body.
+- SERIF IS BANNED (founder decision, 2026-07). No serif faces, no
+  italics — including browser-default <em> italics; restyle them to
+  font-style: normal + weight 600. The old --font-serif token now
+  resolves to Instrument Sans; never reintroduce a serif face.
+- Accent voice (replaces the old serif codas): Instrument Sans,
+  weight 400–500, set one step larger than body, ink color, often led
+  by a short sand or red dash. Same punctuation-moment job, no serif.
 - Large headings should be elegant, spacious, and premium
 - Avoid overly rounded, childish, or startup-template typography
+
+Legibility floors (hard minimums — audited 2026-07):
+- Body/reading copy: ≥15px. Secondary/support copy: ≥13.5px.
+- Mono captions that carry meaning (hints, notes, keys): ≥11px with
+  ≥rgba(251,250,246,0.5) on charcoal; letter-spacing ≤0.06em at these
+  sizes (wide tracking destroys small mono).
+- Decorative mono stamps/chips (non-essential): ≥10px, never below.
+- Never put meaningful copy in --text-faint/0.32-alpha — that tier is
+  for ornament only.
 
 ## Texture
 A faint film-grain overlay (`.site-grain`) sits over the charcoal so the

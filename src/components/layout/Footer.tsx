@@ -83,7 +83,7 @@ export default function Footer() {
               no template.
             </p>
             <p className="foot-colophon-line">
-              Set in Instrument Sans, Instrument Serif &amp; JetBrains Mono.
+              Set in Instrument Sans, Inter &amp; JetBrains Mono.
             </p>
             <a className="foot-colophon-mail" href="mailto:audit@kelwin.co">
               audit@kelwin.co

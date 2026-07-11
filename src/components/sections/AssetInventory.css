@@ -249,7 +249,6 @@
 .ai-terms-coda {
   margin: clamp(16px, 2vh, 22px) 0 clamp(14px, 1.8vh, 20px);
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: 17px;
   line-height: 1.45;
   color: var(--ink);

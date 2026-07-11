@@ -43,7 +43,7 @@
   text-wrap: balance;
 }
 .site-footer .foot-thesis em {
-  font-style: italic;
+  font-style: normal;
   color: var(--cream-45);
 }
 
@@ -66,9 +66,9 @@
 .site-footer .foot-colophon-line {
   margin: 0 0 10px;
   font-family: var(--f-body);
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.6;
-  color: var(--cream-45);
+  color: rgba(251, 250, 246, 0.55);
 }
 .site-footer .foot-colophon-mail {
   display: inline-block;
@@ -90,7 +90,6 @@
   display: block;
   margin-top: 18px;
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: 16px;
   color: var(--cream-70);
 }

@@ -297,7 +297,6 @@
 .fg-coda {
   margin: 0;
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: 19px;
   color: var(--ink);
   white-space: nowrap;

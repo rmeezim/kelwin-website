@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     "Kelwin is a GTM systems partner for B2B companies — revenue infrastructure you keep, not activity you rent. Built by people who got tired of the rebuild cycle.",
 };
 
+const CHAPTERS = [
+  { n: "01", id: "letter", label: "The letter" },
+  { n: "02", id: "what", label: "What Kelwin is" },
+  { n: "03", id: "beliefs", label: "What we believe" },
+  { n: "04", id: "shape", label: "The shape of the firm" },
+  { n: "05", id: "family", label: "The family" },
+];
+
 const BELIEFS = [
   {
     n: "B·01",
@@ -43,174 +51,181 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      <main className="firm">
-        <div className="firm-stage">
-          {/* ── Head ── */}
+      <main className="fp2">
+        <div className="fp2-stage">
+          {/* ── Hero ── */}
           <header>
-            <div className="firm-protocol-row">
-              <span className="firm-protocol">The Firm · About</span>
-              <span className="firm-protocol-line" aria-hidden="true" />
-              <span className="firm-stamp">KELWIN/OS · THE PEOPLE</span>
+            <div className="fp2-protocol-row">
+              <span className="fp2-protocol">The Firm · About</span>
+              <span className="fp2-protocol-line" aria-hidden="true" />
+              <span className="fp2-stamp">KELWIN/OS · THE PEOPLE</span>
             </div>
-            <h1 className="firm-title">
-              <span className="firm-title-1">Built to end</span>
-              <span className="firm-title-2">the rebuild cycle.</span>
+            <h1 className="fp2-title">
+              Built to end <em>the rebuild cycle.</em>
             </h1>
-            <p className="firm-lede">
+            <p className="fp2-lede">
               Most B2B companies rebuild their go-to-market from scratch every
               couple of years — new agency, new playbook, new pipeline, same
               ceiling. Kelwin exists because we think that cycle is an
               architecture problem, not an effort problem.
             </p>
+            <nav className="fp2-toc" aria-label="Page chapters">
+              {CHAPTERS.map((c) => (
+                <a className="fp2-toc-item" href={`#${c.id}`} key={c.n}>
+                  <span className="fp2-toc-num">{c.n}</span>
+                  {c.label}
+                </a>
+              ))}
+            </nav>
           </header>
 
-          {/* ── Founder's note — the page's daylight moment ──
-              [EDIT ME] Founder: this is written in your voice on purpose —
-              adjust wording, keep the register. */}
-          <section className="firm-note" aria-label="A note from the founder">
-            <div className="firm-note-kicker">A note from the founder</div>
-            <p>
-              I started Kelwin after watching the same movie too many times: a
-              good company, a real product, a founder writing every important
-              email themselves at 11pm — hiring an agency, getting a quarter
-              of activity, and ending up exactly where they started, minus the
-              budget.
-            </p>
-            <p>
-              Nobody in that movie is lazy. The problem is structural: the
-              learning leaves with the vendor, the language never gets written
-              down, and every quarter starts from zero. So we built the firm
-              we kept wishing existed — one that installs the system, then
-              hands you the keys.
-            </p>
-            <p>
-              If you write to us, a person answers. That isn&rsquo;t a
-              feature. That&rsquo;s the point.
-            </p>
-            <div className="firm-note-sign">
-              <span className="firm-note-name">Rameez</span>
-              <span className="firm-note-role">Founder, Kelwin</span>
+          {/* ── 01 · The letter ──
+              [EDIT ME] Founder: written in your voice on purpose — adjust
+              the wording, keep the register. */}
+          <section className="fp2-chapter" id="letter" aria-label="A letter from the founder">
+            <div className="fp2-rail">
+              <span className="fp2-rail-num" aria-hidden="true">01</span>
+              <span className="fp2-rail-kicker">The letter</span>
+              <span className="fp2-rail-note">From the founder</span>
+            </div>
+            <div className="fp2-letter">
+              <p>
+                I started Kelwin after watching the same movie too many times:
+                a good company, a real product, a founder writing every
+                important email themselves at 11pm — hiring an agency, getting
+                a quarter of activity, and ending up exactly where they
+                started, minus the budget.
+              </p>
+              <p>
+                Nobody in that movie is lazy. The problem is structural: the
+                learning leaves with the vendor, the language never gets
+                written down, and every quarter starts from zero. So we built
+                the firm we kept wishing existed — one that installs the
+                system, then hands you the keys.
+              </p>
+              <p>
+                If you write to us, a person answers. That isn&rsquo;t a
+                feature. That&rsquo;s the point.
+              </p>
+              <div className="fp2-letter-sign">
+                <span className="fp2-letter-dash" aria-hidden="true" />
+                <span className="fp2-letter-name">Rameez</span>
+                <span className="fp2-letter-role">Founder, Kelwin</span>
+              </div>
             </div>
           </section>
 
-          {/* ── What Kelwin is ── */}
-          <section className="firm-section">
-            <div className="firm-section-head">
-              <span className="firm-kicker">What Kelwin is</span>
-              <span className="firm-section-line" aria-hidden="true" />
+          {/* ── 02 · What Kelwin is ── */}
+          <section className="fp2-chapter" id="what" aria-label="What Kelwin is">
+            <div className="fp2-rail">
+              <span className="fp2-rail-num" aria-hidden="true">02</span>
+              <span className="fp2-rail-kicker">What Kelwin is</span>
             </div>
-            <p className="firm-prose">
-              Kelwin is a GTM systems partner and advisory firm for serious
-              B2B companies. We are <strong>not a lead generation agency</strong>:
-              agencies rent you activity — campaigns, sequences, SDR hours —
-              that stops the day the contract does. We install revenue
-              infrastructure your team owns and operates: the narrative system
-              that decides what the market hears, the omnichannel motion that
-              puts it in front of buyers, and the intelligence layer that
-              feeds back what works.
-            </p>
+            <div>
+              <h2 className="fp2-h">
+                A systems partner, not another agency.
+              </h2>
+              <p className="fp2-prose">
+                Kelwin is a GTM systems partner and advisory firm for serious
+                B2B companies. Agencies rent you activity — campaigns,
+                sequences, SDR hours — that stops the day the contract does.
+                We install <strong>revenue infrastructure your team owns and
+                operates</strong>: the narrative system that decides what the
+                market hears, the omnichannel motion that puts it in front of
+                buyers, and the intelligence layer that feeds back what works.
+              </p>
+            </div>
           </section>
 
-          {/* ── Beliefs ── */}
-          <section className="firm-section">
-            <div className="firm-section-head">
-              <span className="firm-kicker">What we believe</span>
-              <span className="firm-section-line" aria-hidden="true" />
-              <span className="firm-section-note">Five, held stubbornly</span>
+          {/* ── 03 · Beliefs ── */}
+          <section className="fp2-chapter" id="beliefs" aria-label="What we believe">
+            <div className="fp2-rail">
+              <span className="fp2-rail-num" aria-hidden="true">03</span>
+              <span className="fp2-rail-kicker">What we believe</span>
+              <span className="fp2-rail-note">Five, held stubbornly</span>
             </div>
-            <ol className="firm-beliefs">
+            <ol className="fp2-statements">
               {BELIEFS.map((b) => (
-                <li className="firm-belief" key={b.n}>
-                  <span className="firm-belief-num">{b.n}</span>
+                <li className="fp2-statement" key={b.n}>
+                  <span className="fp2-statement-num">{b.n}</span>
                   <span>
-                    <span className="firm-belief-title">{b.title}</span>
-                    <span className="firm-belief-desc">{b.desc}</span>
+                    <span className="fp2-statement-title">{b.title}</span>
+                    <span className="fp2-statement-desc">{b.desc}</span>
                   </span>
                 </li>
               ))}
             </ol>
           </section>
 
-          {/* ── The shape of the firm ── */}
-          <section className="firm-section">
-            <div className="firm-section-head">
-              <span className="firm-kicker">The shape of the firm</span>
-              <span className="firm-section-line" aria-hidden="true" />
+          {/* ── 04 · Shape ── */}
+          <section className="fp2-chapter" id="shape" aria-label="The shape of the firm">
+            <div className="fp2-rail">
+              <span className="fp2-rail-num" aria-hidden="true">04</span>
+              <span className="fp2-rail-kicker">The shape of the firm</span>
             </div>
-            <p className="firm-prose">
-              Small on purpose. Engagements run as senior pods — the people
-              who diagnose your system are the people who build it, and the
-              people you meet are the people who answer your email. No
-              account-management layer, no handoff to a delivery team
-              you&rsquo;ve never met.
-            </p>
-            <div className="firm-facts">
-              <div className="firm-fact">
-                <span className="firm-fact-k">Structure</span>
-                <span className="firm-fact-v">
-                  Small senior pods — no juniors learning on your budget
-                </span>
-              </div>
-              <div className="firm-fact">
-                <span className="firm-fact-k">Scope</span>
-                <span className="firm-fact-v">
-                  Fixed scopes, written deliverables, an exit built in
-                </span>
-              </div>
-              <div className="firm-fact">
-                <span className="firm-fact-k">Ownership</span>
-                <span className="firm-fact-v">
-                  Everything documented in your language, in your stack
-                </span>
+            <div>
+              <h2 className="fp2-h">Small on purpose.</h2>
+              <p className="fp2-prose">
+                Engagements run as senior pods — the people who diagnose your
+                system are the people who build it, and the people you meet
+                are the people who answer your email. No account-management
+                layer, no handoff to a delivery team you&rsquo;ve never met.
+              </p>
+              <div className="fp2-facts">
+                <div className="fp2-fact">
+                  <span className="fp2-fact-v">2–3 seniors</span>
+                  <span className="fp2-fact-k">
+                    per pod — no juniors learning on your budget
+                  </span>
+                </div>
+                <div className="fp2-fact">
+                  <span className="fp2-fact-v">Fixed scope</span>
+                  <span className="fp2-fact-k">
+                    written deliverables, an exit built in
+                  </span>
+                </div>
+                <div className="fp2-fact">
+                  <span className="fp2-fact-v">Your stack</span>
+                  <span className="fp2-fact-k">
+                    everything documented in your language, owned by you
+                  </span>
+                </div>
               </div>
             </div>
           </section>
 
-          {/* ── Sister company ── */}
-          <section className="firm-section">
-            <div className="firm-section-head">
-              <span className="firm-kicker">The sister company</span>
-              <span className="firm-section-line" aria-hidden="true" />
-              <span className="firm-section-note">Plurel</span>
+          {/* ── 05 · Family ── */}
+          <section className="fp2-chapter" id="family" aria-label="The family">
+            <div className="fp2-rail">
+              <span className="fp2-rail-num" aria-hidden="true">05</span>
+              <span className="fp2-rail-kicker">The family</span>
+              <span className="fp2-rail-note">Plurel · The Lab</span>
             </div>
-            <p className="firm-prose">
-              Kelwin is the sister company of <strong>Plurel</strong>, the
-              creative and performance division. Plurel makes brands seen;
-              Kelwin makes revenue systematic. The two share ingredients — the
-              same craft standards, the same refusal of template work —
-              expressed in different postures: Plurel warm and expressive,
-              Kelwin precise and infrastructural. Same family, different
-              instruments.
-            </p>
+            <div>
+              <h2 className="fp2-h">Two companies, one standard.</h2>
+              <p className="fp2-prose">
+                Kelwin is the sister company of <strong>Plurel</strong>, the
+                creative and performance division. Plurel makes brands seen;
+                Kelwin makes revenue systematic. Same craft standards, same
+                refusal of template work — expressed in different postures:
+                Plurel warm and expressive, Kelwin precise and infrastructural.
+              </p>
+              <p className="fp2-prose">
+                The advisory work funds a longer project: <strong>The Lab</strong>,
+                a GTM intelligence product that turns what we learn across
+                installs into standing instrumentation. It isn&rsquo;t public
+                yet — when it is, it will be announced here first.
+              </p>
+            </div>
           </section>
 
-          {/* ── Where we're headed ── */}
-          <section className="firm-section">
-            <div className="firm-section-head">
-              <span className="firm-kicker">Where we&rsquo;re headed</span>
-              <span className="firm-section-line" aria-hidden="true" />
-              <span className="firm-section-note">The Lab</span>
-            </div>
-            <p className="firm-prose">
-              The advisory work funds a longer project: The Lab, a GTM
-              intelligence product that turns what we learn across installs
-              into standing instrumentation. It isn&rsquo;t public yet — when
-              it is, it will be announced here first.
+          {/* ── Close ── */}
+          <footer className="fp2-close">
+            <p className="fp2-close-line">
+              People buy from people. <em>The system just makes sure what
+              those people say is worth repeating.</em>
             </p>
-          </section>
-
-          <p className="firm-pull">
-            People buy from people. The system just makes sure what those
-            people say is worth repeating.
-          </p>
-
-          {/* ── Foot ── */}
-          <footer className="firm-foot">
-            <p className="firm-coda">
-              The fastest way to know if we&rsquo;re your kind of firm is to
-              watch us diagnose.
-            </p>
-            <div className="firm-foot-actions">
+            <div className="fp2-close-actions">
               <DiagnosticMethodCTA
                 href="/audit"
                 label="Begin with the audit"

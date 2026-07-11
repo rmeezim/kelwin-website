@@ -192,7 +192,7 @@
 }
 .ctc-regarding-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -214,6 +214,15 @@
   transition: color 0.2s ease;
 }
 .ctc-regarding-clear:hover { color: var(--signal-bright); }
+/* Pulse when arriving via a deep link — "this is what you selected". */
+.ctc-regarding.is-pulsing { animation: ctc-reg-pulse 1.6s ease-out 2; }
+@keyframes ctc-reg-pulse {
+  0%, 100% { border-color: rgba(199, 180, 157, 0.3); }
+  40% { border-color: var(--signal-bright); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ctc-regarding.is-pulsing { animation: none; border-color: var(--signal-bright); }
+}
 
 .ctc-req {
   font-weight: 400;
@@ -223,10 +232,10 @@
 }
 .ctc-hint {
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  line-height: 1.6;
-  color: var(--faint);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  line-height: 1.65;
+  color: rgba(251, 250, 246, 0.55);
 }
 
 .ctc-form { display: flex; flex-direction: column; gap: 18px; }
@@ -313,10 +322,10 @@
   min-width: 240px;
   margin: 2px 0 0;
   font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.05em;
+  font-size: 11.5px;
+  letter-spacing: 0.03em;
   line-height: 1.7;
-  color: var(--faint);
+  color: rgba(251, 250, 246, 0.55);
   max-width: 52ch;
 }
 
@@ -332,7 +341,6 @@
 }
 .ctc-coda {
   font-family: var(--font-serif);
-  font-style: italic;
   font-size: clamp(17px, 1.4vw, 20px);
   color: var(--ink);
   margin: 0;
