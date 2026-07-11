@@ -11,6 +11,7 @@ import RevenueOS from "@/components/sections/RevenueOS";
 import SystemArchitecture from "@/components/sections/SystemArchitecture";
 import StateChange from "@/components/sections/StateChange";
 import OperatingPrincipleBand from "@/components/sections/OperatingPrincipleBand";
+import SectionBand from "@/components/ui/SectionBand";
 import Methodology from "@/components/sections/Methodology";
 import FitStrip from "@/components/sections/FitStrip";
 import AssetInventory from "@/components/sections/AssetInventory";
@@ -36,6 +37,14 @@ export default function Home() {
       <HeroSection />
       <DiagnosticReframe />
       <StructuralEvidence />
+      {/* the stack, as geology — strata photograph introduces the
+          four-layer infrastructure story */}
+      <SectionBand
+        image="/strata-layers.webp"
+        position="50% 48%"
+        caption="The stack · Four layers, one system"
+        stamp="KELWIN/OS · INFRASTRUCTURE"
+      />
       <RevenueOS />
       <SystemArchitecture />
       <StateChange />

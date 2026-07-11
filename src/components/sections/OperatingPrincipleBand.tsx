@@ -147,6 +147,8 @@ export default function OperatingPrincipleBand() {
   // seamless-loop range. -25% → 0% is exactly one unit width.
   const echoX = useTransform(baseX, (v) => `${wrap(-25, 0, v)}%`);
 
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
   return (
     <section
       ref={sectionRef}
@@ -154,6 +156,16 @@ export default function OperatingPrincipleBand() {
       className="principle-band"
       aria-label={PHRASE}
     >
+      {/* The principle, pictured: one beacon lit in a dark field. Heavy
+          scrim keeps the marquee lines primary. */}
+      <div className="principle-band__media" aria-hidden="true">
+        <div
+          className="principle-band__photo"
+          style={{ backgroundImage: `url(${basePath}/band-beacon.webp)` }}
+        />
+        <div className="principle-band__scrim" />
+      </div>
+
       {/* Top echo — infinite JS-driven marquee, accelerates with scroll. */}
       <EchoLine x={echoX} />
 

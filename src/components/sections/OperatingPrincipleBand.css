@@ -39,7 +39,32 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Photograph layer — the beacon in the dark field. Sits under the
+   marquee lines; vertical scrim melts it into the page charcoal. */
+.principle-band__media { position: absolute; inset: 0; pointer-events: none; }
+.principle-band__photo {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 62% 60%;
+}
+.principle-band__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #110f0a 0%,
+    rgba(17, 15, 10, 0.42) 26%,
+    rgba(17, 15, 10, 0.3) 55%,
+    rgba(17, 15, 10, 0.55) 80%,
+    #110f0a 100%
+  );
+}
+
 .principle-band__line {
+  position: relative;
+  z-index: 1;
   white-space: nowrap;
   font-weight: 400;
   line-height: 1;

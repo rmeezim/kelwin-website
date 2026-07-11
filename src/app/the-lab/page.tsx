@@ -14,8 +14,7 @@ export default function TheLabPage() {
   return (
     <>
       <Navbar />
-      {/* IMAGE SWAP: replace `image` with the dedicated Lab photograph
-          (night ridge, faint star trails, instrument light) when it lands. */}
+      {/* Dedicated Lab photograph: star trails over the instrument ridge. */}
       <PageCommand
         protocol="The Lab · R&D"
         stamp="KELWIN/OS · BUILD 0.5"
@@ -29,7 +28,8 @@ export default function TheLabPage() {
           { label: "AI-native" },
           { label: "Install-trained" },
         ]}
-        imagePosition="78% 30%"
+        image="/lab-startrails.webp"
+        imagePosition="70% 45%"
       />
       <LabConsole />
       <Footer />

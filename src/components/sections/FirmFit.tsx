@@ -50,6 +50,48 @@ const OUT_OF_RANGE = [
   },
 ];
 
+// The industry index — specialist positioning, stated as knowledge:
+// each sector carries its motion signature and the failure mode we keep
+// finding inside it. Same system underneath; different thing to fix first.
+const INDUSTRIES = [
+  {
+    n: "I·01",
+    name: "Enterprise SaaS",
+    chips: ["Sales-carried", "Committee buys"],
+    breaks: "The story that wins the champion dies in the committee — seven stakeholders, seven versions of what you do.",
+  },
+  {
+    n: "I·02",
+    name: "Cybersecurity",
+    chips: ["Trust-gated", "Crowded category"],
+    breaks: "Every vendor promises the same three outcomes in the same words. Differentiation is a language problem before it's a product one.",
+  },
+  {
+    n: "I·03",
+    name: "FinTech & payments",
+    chips: ["Regulated", "Risk-averse buyer"],
+    breaks: "Compliance vocabulary smothers the actual story, and deals stall in risk review because nobody armed the champion.",
+  },
+  {
+    n: "I·04",
+    name: "Developer & data infrastructure",
+    chips: ["Technical buyer", "PLG + sales"],
+    breaks: "The buyer reads docs, not decks. Outbound only works when it sounds like engineering wrote it.",
+  },
+  {
+    n: "I·05",
+    name: "Professional & B2B services",
+    chips: ["Relationship-led", "Referral ceiling"],
+    breaks: "Growth stalls where the partners' networks end — the firm's knowledge never became a sellable narrative.",
+  },
+  {
+    n: "I·06",
+    name: "Industrial & deep tech",
+    chips: ["Long cycle", "Legacy incumbents"],
+    breaks: "Twelve-month deals drift: the narrative that opened the deal isn't the one that closes it.",
+  },
+];
+
 const VIGNETTES = [
   {
     n: "01",
@@ -156,12 +198,50 @@ export default function FirmFit() {
           </div>
         </section>
 
-        {/* ── 02 · Three situations — told from inside ── */}
+        {/* ── 02 · Industries — specialist, not generalist ── */}
+        <section className="fp3-section fp3-reveal" aria-label="Industries we serve">
+          <div className="fp3-eyebrow-row">
+            <span className="fp3-eyebrow">Industries</span>
+            <span className="fp3-eyebrow-dash" aria-hidden="true" />
+            <span className="fp3-eyebrow-meta">FIT/02 · SPECIALIST, NOT GENERALIST</span>
+          </div>
+          <div className="fp3-inds">
+            {INDUSTRIES.map((ind, i) => (
+              <div
+                className="fp3-ind fp3-reveal"
+                style={{ ["--i" as string]: i }}
+                key={ind.n}
+              >
+                <span className="fp3-ind-head">
+                  <span className="fp3-ind-num">{ind.n}</span>
+                  <span className="fp3-ind-chips">
+                    {ind.chips.map((c) => (
+                      <span className="fp3-ind-chip" key={c}>{c}</span>
+                    ))}
+                  </span>
+                </span>
+                <span className="fp3-ind-name">{ind.name}</span>
+                <span className="fp3-ind-break">
+                  <span className="fp3-ind-break-k">Where it breaks</span>
+                  {ind.breaks}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="fp3-accent">
+            <span className="fp3-accent-dash" aria-hidden="true" />
+            The system underneath is the same. The failure modes aren&rsquo;t —
+            specialization is knowing which one is yours before spending a
+            quarter finding out.
+          </p>
+        </section>
+
+        {/* ── 03 · Three situations — told from inside ── */}
         <section className="fp3-section fp3-reveal" aria-label="Three situations">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">Three situations</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
-            <span className="fp3-eyebrow-meta">FIT/02 · TOLD FROM INSIDE</span>
+            <span className="fp3-eyebrow-meta">FIT/03 · TOLD FROM INSIDE</span>
           </div>
           <div className="fp3-vigs">
             {VIGNETTES.map((v, i) => (
@@ -196,12 +276,12 @@ export default function FirmFit() {
           </div>
         </section>
 
-        {/* ── 03 · The gate — terminal ── */}
+        {/* ── 04 · The gate — terminal ── */}
         <section className="fp3-section fp3-reveal" aria-label="The gate">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">The gate</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
-            <span className="fp3-eyebrow-meta">FIT/03 · THREE QUESTIONS</span>
+            <span className="fp3-eyebrow-meta">FIT/04 · THREE QUESTIONS</span>
           </div>
           <div className="fp3-terminal" role="note">
             <div className="fp3-terminal-line">

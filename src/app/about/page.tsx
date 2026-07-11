@@ -14,8 +14,7 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      {/* IMAGE SWAP: replace `image` with the dedicated About photograph
-          (pre-dawn dune field, left negative space) when it lands. */}
+      {/* Dedicated interior photograph: pre-dawn dune field. */}
       <PageCommand
         protocol="The Firm · About"
         stamp="KELWIN/OS · THE PEOPLE"
@@ -24,7 +23,8 @@ export default function AboutPage() {
         lede="Most B2B companies rebuild their go-to-market every couple of years — new agency, new playbook, new pipeline, same ceiling. Kelwin exists because that cycle is an architecture problem, not an effort problem."
         code="FILE 01 · THE FIRM"
         status="Operational"
-        imagePosition="26% 42%"
+        image="/dune-predawn.webp"
+        imagePosition="72% 40%"
       />
       <FirmAbout />
       <Footer />

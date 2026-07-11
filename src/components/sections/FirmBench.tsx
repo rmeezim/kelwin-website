@@ -167,25 +167,38 @@ export default function FirmBench() {
           </div>
         </section>
 
-        {/* ── 02 · A pod Tuesday — the day, instrumented ── */}
+        {/* ── 02 · A pod Tuesday — runtime log ── */}
         <section className="fp3-section fp3-reveal" aria-label="A pod Tuesday">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">The work</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
             <span className="fp3-eyebrow-meta">BENCH/02 · A POD TUESDAY · ONE PERSON, ALL OF IT</span>
           </div>
-          <div className="fp3-week fp3-day">
+          <div className="fp3-shift">
+            <div className="fp3-spec-bar">
+              <span className="fp3-spec-id">TUESDAY.LOG</span>
+              <span className="fp3-spec-line" aria-hidden="true" />
+              <span className="fp3-spec-stamp">POD RUNTIME · UNEDITED</span>
+            </div>
             {DAY.map((d, i) => (
               <div
-                className={`fp3-week-slot fp3-reveal${d.tone ? ` is-${d.tone}` : ""}`}
+                className={`fp3-shift-row fp3-reveal${d.tone ? ` is-${d.tone}` : ""}`}
                 style={{ ["--i" as string]: i }}
                 key={d.time}
               >
-                <span className="fp3-week-time">{d.time}</span>
-                <span className="fp3-week-title">{d.title}</span>
-                <span className="fp3-week-desc">{d.desc}</span>
+                <span className="fp3-shift-time">{d.time}</span>
+                <span className="fp3-shift-node" aria-hidden="true" />
+                <span className="fp3-shift-body">
+                  <span className="fp3-shift-title">{d.title}</span>
+                  <span className="fp3-shift-desc">{d.desc}</span>
+                </span>
               </div>
             ))}
+            <div className="fp3-shift-eof" aria-hidden="true">
+              <span className="fp3-terminal-prompt">&gt;</span>
+              eof — same head, all four entries
+              <span className="fp3-terminal-cursor" />
+            </div>
           </div>
           <p className="fp3-week-note">
             No bench of juniors, no account layer, nowhere to hide — which is
@@ -193,32 +206,30 @@ export default function FirmBench() {
           </p>
         </section>
 
-        {/* ── 03 · How we behave ── */}
+        {/* ── 03 · How we behave — protocol cards ── */}
         <section className="fp3-section fp3-reveal" aria-label="How we behave">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">How we behave</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
             <span className="fp3-eyebrow-meta">BENCH/03 · ENFORCED, NOT ASPIRATIONAL</span>
           </div>
-          <ol className="fp3-ledger">
+          <div className="fp3-protocards">
             {BEHAVIORS.map((b, i) => (
-              <li
-                className="fp3-row fp3-reveal"
+              <div
+                className="fp3-protocard fp3-reveal"
                 style={{ ["--i" as string]: i }}
                 key={b.n}
               >
-                <span className="fp3-row-num">{b.n}</span>
-                <span className="fp3-row-body">
-                  <span className="fp3-row-title">{b.title}</span>
-                  <span className="fp3-row-desc">{b.desc}</span>
-                </span>
-                <span className="fp3-row-state">
+                <span className="fp3-protocard-ghost" aria-hidden="true">{b.n}</span>
+                <span className="fp3-protocard-title">{b.title}</span>
+                <span className="fp3-protocard-desc">{b.desc}</span>
+                <span className="fp3-protocard-state">
                   <span className="fp3-mark-yes" aria-hidden="true" />
                   Enforced
                 </span>
-              </li>
+              </div>
             ))}
-          </ol>
+          </div>
         </section>
 
         {/* ── 04 · Honesty grid ── */}

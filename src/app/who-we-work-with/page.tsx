@@ -14,8 +14,7 @@ export default function WhoWeWorkWithPage() {
   return (
     <>
       <Navbar />
-      {/* IMAGE SWAP: replace `image` with the dedicated interior photograph
-          when it lands. */}
+      {/* Dedicated interior photograph: pre-dawn dune field, ridge crop. */}
       <PageCommand
         protocol="The Firm · Fit"
         stamp="KELWIN/OS · QUALIFICATION"
@@ -24,7 +23,8 @@ export default function WhoWeWorkWithPage() {
         lede="A revenue system only compounds inside a company built to carry it. Here are the three situations we keep being hired into — told the way they feel from inside — and the honest list of who we send away."
         code="FILE 02 · FIT"
         status="Gate open"
-        imagePosition="62% 46%"
+        image="/dune-predawn.webp"
+        imagePosition="86% 55%"
       />
       <FirmFit />
       <Footer />

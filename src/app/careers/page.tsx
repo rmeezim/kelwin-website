@@ -14,8 +14,7 @@ export default function CareersPage() {
   return (
     <>
       <Navbar />
-      {/* IMAGE SWAP: replace `image` with the dedicated interior photograph
-          when it lands. */}
+      {/* Dedicated interior photograph: pre-dawn dune field, low crop. */}
       <PageCommand
         protocol="The Firm · Careers"
         stamp="KELWIN/OS · THE BENCH"
@@ -24,7 +23,8 @@ export default function CareersPage() {
         lede="Kelwin runs on small senior pods, and every person on an engagement is accountable to the system it leaves behind. We add people rarely and deliberately — so this page is honest instead of aspirational."
         code="FILE 03 · BENCH"
         status="0 seats · bench open"
-        imagePosition="44% 36%"
+        image="/dune-predawn.webp"
+        imagePosition="60% 78%"
       />
       <FirmBench />
       <Footer />

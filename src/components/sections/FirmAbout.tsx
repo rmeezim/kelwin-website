@@ -6,10 +6,12 @@ import ConvertPanel from "@/components/ui/ConvertPanel";
 import "./FirmPages.css";
 
 // ─── About — the firm, instrumented ───────────────────────────────────────
-// Same aura as the homepage: registry panel with a mono spec sheet, the
-// founder's memo as a bone paper artifact, beliefs as an enforced ledger,
-// the operating week as a cadence rail, and the family as a node diagram.
-// Every section reinforces a homepage claim; the page closes on the audit.
+// Every artifact on this page exists only here: the firm registry spec
+// sheet, the reset-loop vs compounding-line diagram (the company thesis,
+// drawn), the founder memo on bone paper, the enforced-beliefs ledger,
+// the operating week as one continuous tape instrument, and the family
+// node map. Conversion thread: the diagram argues, the memo humanizes,
+// the ConvertPanel closes.
 
 const SPEC = [
   { k: "Founded", v: "2026 — deliberately late to the category" },
@@ -161,14 +163,87 @@ export default function FirmAbout() {
           </div>
         </section>
 
-        {/* ── 02 · The memo — bone paper artifact ──
+        {/* ── 02 · The argument, drawn — reset loop vs compounding line ── */}
+        <section className="fp3-section fp3-reveal" aria-label="The reset loop versus the compounding line">
+          <div className="fp3-eyebrow-row">
+            <span className="fp3-eyebrow">The argument</span>
+            <span className="fp3-eyebrow-dash" aria-hidden="true" />
+            <span className="fp3-eyebrow-meta">FIRM/02 · TWO WAYS A QUARTER CAN END</span>
+          </div>
+          <div className="fp3-loops">
+            <div className="fp3-loops-half">
+              <div className="fp3-loops-head is-loop">
+                <span className="fp3-mark-no" aria-hidden="true" />
+                The reset loop
+              </div>
+              <svg className="fp3-loop-svg" viewBox="0 0 420 260" aria-hidden="true">
+                {/* the cycle */}
+                <circle className="fp3-draw is-loop-path" cx="210" cy="132" r="82" pathLength={1} />
+                {/* direction chevrons */}
+                <path className="fp3-fade" d="M286 100 l7 9 -11 3" />
+                <path className="fp3-fade" d="M134 166 l-7 -9 11 -3" />
+                {/* the break — where the learning leaves */}
+                <g className="fp3-fade is-break">
+                  <line x1="262" y1="62" x2="280" y2="80" />
+                  <line x1="280" y1="62" x2="262" y2="80" />
+                </g>
+                <text className="fp3-svg-label" x="210" y="30" textAnchor="middle">New agency</text>
+                <text className="fp3-svg-label" x="310" y="136" textAnchor="start">Activity spike</text>
+                <text className="fp3-svg-label" x="210" y="240" textAnchor="middle">Plateau</text>
+                <text className="fp3-svg-label" x="110" y="136" textAnchor="end">Contract ends</text>
+                <text className="fp3-svg-label is-red" x="288" y="54" textAnchor="start">learning lost</text>
+              </svg>
+              <p className="fp3-loops-cap">
+                Q1 = Q5 = Q9. The loop conserves nothing — every cycle pays
+                full price to relearn what the last one knew.
+              </p>
+            </div>
+            <div className="fp3-loops-divider" aria-hidden="true" />
+            <div className="fp3-loops-half">
+              <div className="fp3-loops-head is-line">
+                <span className="fp3-mark-yes" aria-hidden="true" />
+                The compounding line
+              </div>
+              <svg className="fp3-loop-svg" viewBox="0 0 420 260" aria-hidden="true">
+                <path
+                  className="fp3-draw is-line-path"
+                  d="M30 225 L105 225 L105 180 L180 180 L180 135 L255 135 L255 90 L330 90 L330 45 L392 45"
+                  pathLength={1}
+                />
+                <path className="fp3-fade is-line-arrow" d="M384 38 l10 7 -10 7" />
+                <circle className="fp3-fade is-node" cx="105" cy="225" r="3" />
+                <circle className="fp3-fade is-node" cx="180" cy="180" r="3" />
+                <circle className="fp3-fade is-node" cx="255" cy="135" r="3" />
+                <circle className="fp3-fade is-node" cx="330" cy="90" r="3" />
+                <text className="fp3-svg-label is-q" x="67" y="247" textAnchor="middle">Q1</text>
+                <text className="fp3-svg-label is-q" x="142" y="202" textAnchor="middle">Q2</text>
+                <text className="fp3-svg-label is-q" x="217" y="157" textAnchor="middle">Q3</text>
+                <text className="fp3-svg-label is-q" x="292" y="112" textAnchor="middle">Q4</text>
+                <g className="fp3-fade">
+                  <rect className="fp3-kept-mark" x="113" y="158" width="6" height="6" />
+                  <text className="fp3-svg-label is-kept" x="125" y="165" textAnchor="start">language kept</text>
+                  <rect className="fp3-kept-mark" x="188" y="113" width="6" height="6" />
+                  <text className="fp3-svg-label is-kept" x="200" y="120" textAnchor="start">signal map kept</text>
+                  <rect className="fp3-kept-mark" x="263" y="68" width="6" height="6" />
+                  <text className="fp3-svg-label is-kept" x="275" y="75" textAnchor="start">objection intel kept</text>
+                </g>
+              </svg>
+              <p className="fp3-loops-cap">
+                Each quarter deposits into the next. That&rsquo;s the whole
+                architecture — everything else on this site is implementation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 03 · The memo — bone paper artifact ──
             [EDIT ME] Founder: written in your voice on purpose — adjust
             wording, keep the register. */}
         <section className="fp3-section fp3-reveal" aria-label="A memo from the founder">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">From the founder</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
-            <span className="fp3-eyebrow-meta">FIRM/02 · K-000 · KEPT VERBATIM</span>
+            <span className="fp3-eyebrow-meta">FIRM/03 · K-000 · KEPT VERBATIM</span>
           </div>
           <div className="fp3-memo">
             <div className="fp3-memo-bar">
@@ -209,12 +284,12 @@ export default function FirmAbout() {
           </div>
         </section>
 
-        {/* ── 03 · Beliefs — the enforced ledger ── */}
+        {/* ── 04 · Beliefs — the enforced ledger ── */}
         <section className="fp3-section fp3-reveal" aria-label="Operating beliefs">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">Operating beliefs</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
-            <span className="fp3-eyebrow-meta">FIRM/03 · FIVE · HELD STUBBORNLY</span>
+            <span className="fp3-eyebrow-meta">FIRM/04 · FIVE · HELD STUBBORNLY</span>
           </div>
           <ol className="fp3-ledger">
             {BELIEFS.map((b, i) => (
@@ -237,24 +312,27 @@ export default function FirmAbout() {
           </ol>
         </section>
 
-        {/* ── 04 · The week — cadence rail ── */}
+        {/* ── 05 · The week — one continuous tape instrument ── */}
         <section className="fp3-section fp3-reveal" aria-label="The operating week">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">The cadence</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
-            <span className="fp3-eyebrow-meta">FIRM/04 · A WEEK, INSTRUMENTED</span>
+            <span className="fp3-eyebrow-meta">FIRM/05 · A WEEK, INSTRUMENTED</span>
           </div>
-          <div className="fp3-week">
+          <div className="fp3-tape">
             {WEEK.map((w, i) => (
               <div
-                className={`fp3-week-slot fp3-reveal${w.tone ? ` is-${w.tone}` : ""}`}
+                className={`fp3-tape-cell fp3-reveal${w.tone ? ` is-${w.tone}` : ""}`}
                 style={{ ["--i" as string]: i }}
                 key={w.day}
               >
-                <span className="fp3-week-day">{w.day}</span>
-                <span className="fp3-week-time">{w.time}</span>
-                <span className="fp3-week-title">{w.title}</span>
-                <span className="fp3-week-desc">{w.desc}</span>
+                <span className="fp3-tape-top">
+                  <span className="fp3-tape-day">{w.day}</span>
+                  <span className="fp3-tape-ticks" aria-hidden="true" />
+                  <span className="fp3-tape-time">{w.time}</span>
+                </span>
+                <span className="fp3-tape-title">{w.title}</span>
+                <span className="fp3-tape-desc">{w.desc}</span>
               </div>
             ))}
           </div>
@@ -264,12 +342,12 @@ export default function FirmAbout() {
           </p>
         </section>
 
-        {/* ── 05 · The family — node diagram ── */}
+        {/* ── 06 · The family — node diagram ── */}
         <section className="fp3-section fp3-reveal" aria-label="The family">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">The family</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
-            <span className="fp3-eyebrow-meta">FIRM/05 · ONE STANDARD</span>
+            <span className="fp3-eyebrow-meta">FIRM/06 · ONE STANDARD</span>
           </div>
           <div className="fp3-family">
             <div className="fp3-family-node">
