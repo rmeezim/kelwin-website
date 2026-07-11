@@ -278,25 +278,6 @@
   .sys-hud .sys-scroll-dot { animation: none !important; }
 }
 
-/* ── AmbientGrid — the margin frame ───────────────────────────────────
-   Two vertical + two horizontal hairlines drawing a page margin around
-   the viewport, like trim marks on a printed sheet. Replaces the old
-   repeating column rules, which ran behind body copy and made the
-   text-dense pages read cluttered. */
-.ambient-grid {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.ambient-grid-rules {
-  position: absolute;
-  inset: 14px;
-  border: 1px solid rgba(199, 180, 157, 0.09);
-}
-@media (max-width: 760px) {
-  .ambient-grid-rules { inset: 8px; }
-}
 
 /* ── SystemStatusPill — fixed bottom-left persistent identity ────────
    Bottom-left avoids the navbar (top-area), each section's HUD corners

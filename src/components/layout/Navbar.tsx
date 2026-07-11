@@ -532,14 +532,6 @@ export default function Navbar() {
         WebkitBackdropFilter: scrolled ? "blur(18px) saturate(1.4)" : "none",
       }}
     >
-      {/* Decorative horizontal line above — fades out in the compact state */}
-      <div className="max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20">
-        <div
-          className={cn("h-px transition-opacity duration-300", scrolled && "opacity-0")}
-          style={{ backgroundColor: "var(--border-subtle)" }}
-        />
-      </div>
-
       <nav
         className={cn(
           "flex items-center justify-between max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20",
@@ -603,11 +595,6 @@ export default function Navbar() {
           </button>
         </div>
       </nav>
-
-      {/* Decorative horizontal line — matches the hero content width on every viewport */}
-      <div className="max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20">
-        <div className="h-px" style={{ backgroundColor: "var(--border-subtle)" }} />
-      </div>
 
       {/* Mega menu — full-width command drawer under the navbar, spanning the
           same container as the nav content. */}

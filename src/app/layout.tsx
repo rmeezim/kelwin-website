@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import AmbientGrid from "@/components/effects/AmbientGrid";
 import DiagnosticManualOverlay from "@/components/effects/DiagnosticManualOverlay";
 import SmoothScrollProvider from "@/components/effects/SmoothScrollProvider";
 
@@ -41,7 +40,6 @@ export default function RootLayout({
       className={`${instrumentSans.variable} ${jetbrainsMono.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-surface text-cream">
-        <AmbientGrid />
         <SmoothScrollProvider>{children}</SmoothScrollProvider>
         <DiagnosticManualOverlay />
         <div className="site-grain" aria-hidden="true" />
