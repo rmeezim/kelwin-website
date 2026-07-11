@@ -59,41 +59,37 @@ export default function HeroSection() {
     // resting height (70px), since the navbar now lives at page level so it
     // can stay sticky for the whole scroll.
     <section id="hero" className="relative bg-surface flex flex-col overflow-x-hidden min-h-[calc(100svh-70px)]">
-      {/* Key visual — exploded blueprint of a layered system, the page's
-          argument in one image. The asset's ground is crushed to true
-          black, so the screen blend drops it out entirely and only the
-          linework floats on the charcoal. Outer layer: blend + a vertical
-          fade so no line ever hard-cuts at the section edges; inner
-          layer: the image with a radial mask that dissolves it before
-          the text column. */}
+      {/* Key visual — a dune landscape at last light: the territory the site
+          keeps mapping, rendered as a cinematic photograph. The image fades
+          up from black on load; a heavy left-and-bottom charcoal scrim keeps
+          the text column and the section seam legible while the warm ridge
+          glows through on the right. Grain (site-wide) sits over it. */}
       <motion.div
         aria-hidden="true"
-        className="hidden md:block absolute inset-0 pointer-events-none select-none"
-        style={{
-          mixBlendMode: "screen",
-          maskImage:
-            "linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 150px), transparent calc(100% - 28px))",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, transparent 0, black 90px, black calc(100% - 150px), transparent calc(100% - 28px))",
-        }}
+        className="absolute inset-0 pointer-events-none select-none"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.55 }}
-        transition={
-          reduced ? { duration: 0 } : { delay: 1.1, duration: 1.8, ease: "easeOut" }
-        }
+        animate={{ opacity: 1 }}
+        transition={reduced ? { duration: 0 } : { duration: 1.3, ease: "easeOut" }}
       >
+        {/* the photograph */}
         <div
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: `url(${basePath}/hero-blueprint.webp)`,
+            backgroundImage: `url(${basePath}/hero-dune.webp)`,
             backgroundRepeat: "no-repeat",
-            backgroundSize: "min(1240px, 96%) auto",
-            backgroundPosition: "right -60px bottom -60px",
-            maskImage:
-              "radial-gradient(ellipse 50% 70% at 76% 63%, black 30%, transparent 80%)",
-            WebkitMaskImage:
-              "radial-gradient(ellipse 50% 70% at 76% 63%, black 30%, transparent 80%)",
+            backgroundSize: "cover",
+            backgroundPosition: "72% 58%",
+          }}
+        />
+        {/* scrim — left-heavy for the text, top for the navbar, bottom fade
+            into the charcoal so the hero dissolves into the next section */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(103deg, rgba(17,15,10,0.96) 0%, rgba(17,15,10,0.86) 32%, rgba(17,15,10,0.52) 64%, rgba(17,15,10,0.34) 100%), linear-gradient(to bottom, rgba(17,15,10,0.62) 0%, rgba(17,15,10,0) 20%, rgba(17,15,10,0) 62%, rgba(17,15,10,0.9) 92%, rgba(17,15,10,1) 100%)",
           }}
         />
       </motion.div>

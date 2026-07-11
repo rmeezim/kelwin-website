@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 import "./NavMega.css";
 
@@ -440,6 +440,11 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname() ?? "";
+  const reduced = useReducedMotion();
+
+  // Shared spring for the scroll-collapse: logo + cluster slide toward the
+  // horizontal center as one module the moment scrolling starts.
+  const layoutT = { layout: { duration: 0.42, ease: [0.4, 0, 0.2, 1] as const } };
 
   // Which nav section owns the current page — lights the cluster cell.
   const isSectionActive = (label: string) =>
@@ -534,22 +539,26 @@ export default function Navbar() {
     >
       <nav
         className={cn(
-          "flex items-center justify-between max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20",
+          "nav-row max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20",
           "transition-all duration-300 ease-out",
+          scrolled && "is-centered",
           scrolled ? "h-[46px]" : "h-[56px]"
         )}
       >
         {/* Logo — bordered chip with the red diamond mark (the methodology
-            node vocabulary, worn as insignia). */}
-        <Link href="/" className="nav-logo-chip shrink-0">
-          <span className="nav-logo-glyph" aria-hidden="true" />
-          <span className="text-cream text-[14px] tracking-[0.3em] font-heading font-medium">
-            KELWIN
-          </span>
-        </Link>
+            node vocabulary, worn as insignia). Wrapped for the layout slide. */}
+        <motion.div layout={!reduced} transition={layoutT} className="shrink-0">
+          <Link href="/" className="nav-logo-chip">
+            <span className="nav-logo-glyph" aria-hidden="true" />
+            <span className="text-cream text-[14px] tracking-[0.3em] font-heading font-medium">
+              KELWIN
+            </span>
+          </Link>
+        </motion.div>
 
-        {/* Right cluster — full nav (≥1050px) or hamburger (<1050px) */}
-        <div className="flex items-center gap-6">
+        {/* Right cluster — full nav (≥1050px) or hamburger (<1050px).
+            Slides toward center as one group on scroll. */}
+        <motion.div layout={!reduced} transition={layoutT} className="flex items-center gap-6">
           {/* Boxed link cluster — squared module container; the active
               page's cell holds an elevated fill. */}
           <div
@@ -593,7 +602,7 @@ export default function Navbar() {
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
-        </div>
+        </motion.div>
       </nav>
 
       {/* Mega menu — full-width command drawer under the navbar, spanning the

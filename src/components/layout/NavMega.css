@@ -286,3 +286,22 @@
 }
 .nav-cell:hover { background: #20201e; }
 .nav-cell-active { background: #20201e; }
+
+/* ─── Scroll-collapse: content slides to horizontal center ────────────────
+   At rest the nav is edge-to-edge (logo left, cluster right). On scroll the
+   `.is-centered` class flips justify to center and adds a gap; Framer's
+   `layout` on the two groups animates the actual slide. Gated off on phones,
+   where a centered hamburger would be awkward to reach. */
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 0;
+}
+.nav-row.is-centered {
+  justify-content: center;
+  column-gap: clamp(16px, 2vw, 30px);
+}
+@media (max-width: 767px) {
+  .nav-row.is-centered { justify-content: space-between; column-gap: 0; }
+}
