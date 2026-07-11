@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import ReportsLibrary from "@/components/sections/ReportsLibrary";
+import CaseStudies from "@/components/sections/CaseStudies";
 
 export const metadata: Metadata = {
   title: "Reports — Kelwin",
   description:
-    "The Kelwin document registry — research on the state of B2B GTM, field specs, and engagement readouts published with client permission.",
+    "Case dossiers from the install base — the state we found, what was installed, and what the instrumentation showed after. Published as clients clear them.",
 };
 
 export default function ReportsPage() {
   return (
     <>
       <Navbar />
-      <ReportsLibrary />
+      <CaseStudies />
       <Footer />
     </>
   );

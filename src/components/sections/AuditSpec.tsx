@@ -135,16 +135,13 @@ export default function AuditSpec() {
               further.
             </p>
 
-            {/* [EDIT ME] placeholder contact — swap for the real booking
-                link (Cal.com / email) before outbound pushes. Uses the
-                site-wide primary CTA (style #1). */}
+            {/* The request action is the qualification waterfall below —
+                three gating questions, then booking. */}
             <div className="as-cta-row">
-              <HeroCTA
-                label="REQUEST THE AUDIT"
-                href="mailto:audit@kelwin.co?subject=System%20Audit%20Request"
-              />
+              <HeroCTA label="BEGIN QUALIFICATION" href="#qualify" />
               <span className="as-cta-note">
-                Goes straight to the founding team — no sequence, no SDR.
+                Three questions, then straight to booking — no sequence, no
+                SDR.
               </span>
             </div>
           </div>

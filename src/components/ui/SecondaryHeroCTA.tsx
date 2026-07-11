@@ -18,14 +18,14 @@ export default function SecondaryHeroCTA() {
 
   return (
     <a
-      href="/insights"
+      href="/contact"
       className="inline-flex items-center tracking-[0.08em] font-body font-medium select-none transition-colors duration-150 text-[clamp(0.72rem,0.85vw,0.85rem)]"
       style={{ color: hovered ? "#D4524E" : "rgba(251, 250, 246, 0.65)" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <span className="relative inline-block">
-        EXPLORE INSIGHTS
+        TALK TO THE TEAM
         <AnimatePresence>
           {hovered && (
             <motion.span

@@ -1,0 +1,440 @@
+/* ─── Case dossiers — scoped to .cs ───────────────────────────────────────
+   Case studies as engagement readouts. Accent jobs: red ✕ = the entropy
+   state found; sand ▪ = what was installed (structure); patina = the
+   readout (the "system is working" numbers); steel = the document artifact
+   (glyph, request furniture). Every dossier carries a SPECIMEN chip until
+   real readouts clear. */
+
+.cs {
+  --ink: #fbfaf6;
+  --lead: rgba(251, 250, 246, 0.66);
+  --dim: rgba(251, 250, 246, 0.45);
+  --faint: rgba(251, 250, 246, 0.32);
+  --sand: #c7b49d;
+  --sand-line: rgba(199, 180, 157, 0.16);
+  --taupe: #8f8981;
+  --patina: #7c9c8a;
+  --steel: #6e8091;
+  --steel-bright: #9bb0c1;
+  --steel-line: rgba(110, 128, 145, 0.45);
+  --steel-faint: rgba(155, 176, 193, 0.14);
+  --signal-bright: #d4524e;
+  --hairline: rgba(251, 250, 246, 0.09);
+  background: #110f0a;
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cs-stage {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: clamp(56px, 7vh, 88px) clamp(28px, 5vw, 64px) var(--space-section);
+}
+
+/* ── Reveal ── */
+.cs .cs-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.cs .cs-reveal.is-in { opacity: 1; transform: translateY(0); }
+.cs .cs-dossier.cs-reveal { transition-delay: calc(var(--i, 0) * 0.08s); }
+@media (prefers-reduced-motion: reduce) {
+  .cs .cs-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ── Head ── */
+.cs-protocol-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(28px, 4vh, 48px);
+}
+.cs-protocol {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.cs-protocol-line { flex: 1; height: 1px; background: var(--sand-line); }
+.cs-stamp {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: rgba(251, 250, 246, 0.3);
+  white-space: nowrap;
+}
+.cs-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0 0 clamp(16px, 2vw, 24px);
+}
+.cs-title-1 { display: block; color: var(--ink); }
+.cs-title-2 { display: block; color: rgba(251, 250, 246, 0.42); }
+.cs-lede {
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.65;
+  color: var(--lead);
+  max-width: 62ch;
+  margin: 0;
+}
+.cs-key {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: clamp(18px, 2.4vh, 26px);
+  max-width: 72ch;
+}
+.cs-key-chip {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel-bright);
+  border: 1px solid var(--steel-line);
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+.cs-key-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+  color: var(--faint);
+}
+
+/* ── Dossiers ── */
+.cs-cases {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.6vh, 28px);
+  margin-top: clamp(36px, 5vh, 56px);
+}
+.cs-dossier {
+  background: #0b0a08;
+  border: 1px solid var(--sand-line);
+  padding: clamp(22px, 2.8vh, 32px) clamp(22px, 2.8vw, 36px);
+}
+
+.cs-dossier-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(18px, 2.4vw, 32px);
+  align-items: start;
+  padding-bottom: clamp(18px, 2.4vh, 24px);
+  border-bottom: 1px solid var(--hairline);
+}
+.cs-dossier-id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.cs-glyph { width: 30px; height: 37px; }
+.cs-glyph-sheet { fill: var(--steel-faint); stroke: var(--steel); stroke-width: 1.2; }
+.cs-glyph-fold { fill: none; stroke: var(--steel); stroke-width: 1.2; }
+.cs-glyph-rule { stroke: var(--steel-bright); stroke-width: 1; opacity: 0.55; }
+.cs-num {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: rgba(199, 180, 157, 0.7);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cs-client {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2vw, 27px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+.cs-profile {
+  display: flex;
+  gap: clamp(16px, 2.4vw, 32px);
+  flex-wrap: wrap;
+}
+.cs-profile-item { display: flex; flex-direction: column; gap: 2px; }
+.cs-profile-k {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.cs-profile-v {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(251, 250, 246, 0.72);
+}
+.cs-dossier-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.cs-specimen-chip {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel-bright);
+  border: 1px solid var(--steel-line);
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+.cs-window {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+/* ── Phases ── */
+.cs-phases {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(20px, 2.8vw, 40px);
+  padding: clamp(20px, 2.6vh, 28px) 0;
+}
+.cs-phase-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--hairline);
+}
+.cs-phase-label.is-found { color: var(--taupe); }
+.cs-phase-label.is-after { color: var(--patina); }
+
+.cs-list { list-style: none; margin: 0; padding: 0; }
+.cs-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-size: clamp(13.5px, 1vw, 14.5px);
+  line-height: 1.55;
+  color: var(--lead);
+  padding: 7px 0;
+}
+.cs-mark-no,
+.cs-mark-mid {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  position: relative;
+  top: 1px;
+}
+.cs-mark-no::before,
+.cs-mark-no::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 50%;
+  height: 1px;
+  background: var(--signal-bright);
+  opacity: 0.85;
+}
+.cs-mark-no::before { transform: rotate(45deg); }
+.cs-mark-no::after { transform: rotate(-45deg); }
+.cs-mark-mid { background: rgba(199, 180, 157, 0.55); }
+.cs-phase .cs-item { color: var(--dim); }
+.cs-phase:nth-child(2) .cs-item { color: var(--lead); }
+
+/* Readout metrics — the patina column, where the system reports. */
+.cs-phase.is-readout {
+  background: rgba(124, 156, 138, 0.04);
+  box-shadow: inset 2px 0 0 rgba(124, 156, 138, 0.4);
+  padding: 0 clamp(14px, 1.8vw, 22px);
+  margin: 0 calc(-1 * clamp(0px, 0.5vw, 8px));
+}
+.cs-phase.is-readout .cs-phase-label { padding-top: 0; }
+.cs-metrics { display: flex; flex-direction: column; gap: clamp(14px, 1.8vh, 20px); }
+.cs-metric { display: flex; flex-direction: column; gap: 3px; }
+.cs-metric-value {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--patina);
+  font-variant-numeric: tabular-nums;
+}
+.cs-metric-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+
+.cs-dossier-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding-top: clamp(14px, 1.8vh, 20px);
+  border-top: 1px solid var(--hairline);
+}
+.cs-foot-note {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+}
+
+/* ── Terminal ── */
+.cs-terminal {
+  margin-top: clamp(24px, 3vh, 32px);
+  padding: clamp(16px, 2vh, 22px) clamp(16px, 2vw, 24px);
+  background: #080706;
+  border: 1px solid var(--hairline);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 2;
+  color: rgba(251, 250, 246, 0.6);
+}
+.cs-terminal-line { display: flex; align-items: baseline; gap: 10px; }
+.cs-terminal-prompt { color: var(--signal-bright); }
+.cs-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: var(--signal-bright);
+  opacity: 0.85;
+  transform: translateY(2px);
+  animation: cs-blink 1.2s step-end infinite;
+}
+@keyframes cs-blink { 0%, 100% { opacity: 0.85; } 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .cs-cursor { animation: none; }
+}
+
+/* ── Research strip ── */
+.cs-research { margin-top: clamp(36px, 5vh, 52px); }
+.cs-research-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--hairline);
+}
+.cs-research-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.cs-research-line { flex: 1; }
+.cs-research-note {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+.cs-research-list { list-style: none; margin: 0; padding: 0; }
+.cs-research-row {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto auto;
+  column-gap: clamp(14px, 2vw, 28px);
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.cs-research-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: clamp(14.5px, 1.1vw, 16px);
+  color: rgba(251, 250, 246, 0.88);
+}
+.cs-research-status {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  white-space: nowrap;
+}
+.cs-research-req {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sand);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.cs-research-req:hover { color: var(--signal-bright); }
+
+/* ── Foot ── */
+.cs-foot {
+  margin-top: clamp(40px, 5.5vh, 64px);
+  padding-top: clamp(24px, 3vh, 32px);
+  border-top: 1px solid var(--hairline);
+}
+.cs-coda {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 clamp(18px, 2.4vh, 26px);
+  max-width: 48ch;
+}
+.cs-foot-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3vw, 40px);
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .cs-phases { grid-template-columns: 1fr; gap: 22px; }
+  .cs-phase.is-readout { margin: 0; }
+  .cs-metrics { flex-direction: row; flex-wrap: wrap; gap: 20px 32px; }
+}
+@media (max-width: 640px) {
+  .cs-stamp { display: none; }
+  .cs-dossier-head { grid-template-columns: auto minmax(0, 1fr); }
+  .cs-dossier-meta {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cs-research-row { grid-template-columns: 56px minmax(0, 1fr); row-gap: 6px; }
+  .cs-research-status { grid-column: 2; }
+  .cs-research-req { grid-column: 2; justify-self: start; }
+}

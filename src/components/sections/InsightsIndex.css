@@ -95,14 +95,37 @@
 }
 .insx-meta-div { width: 1px; height: 12px; background: var(--sand-line); }
 
-/* ── Featured note ── */
+/* ── Featured note (a link — the whole panel reads) ── */
 .insx-featured {
   position: relative;
+  display: block;
   margin-top: clamp(36px, 5vh, 56px);
   padding: clamp(24px, 3vh, 36px) clamp(24px, 3vw, 40px) clamp(22px, 2.8vh, 32px);
   background: #0b0a08;
   border: 1px solid rgba(199, 180, 157, 0.3);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
+.insx-featured:hover {
+  border-color: rgba(199, 180, 157, 0.5);
+  background: #0c0b09;
+}
+.insx-read-cue {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sand);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.25s ease;
+}
+.insx-featured:hover .insx-read-cue { color: var(--signal-bright); }
+.insx-read-arrow { transition: transform 0.25s ease; display: inline-block; }
+.insx-featured:hover .insx-read-arrow { transform: translateX(5px); }
 .insx-corner {
   position: absolute;
   width: 14px;
@@ -200,30 +223,74 @@
 
 /* ── Ledger ── */
 .insx-ledger { margin-top: clamp(36px, 5vh, 56px); }
-.insx-colhead,
+.insx-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--hairline);
+}
+.insx-group-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.insx-group-label.is-queue { color: var(--taupe); }
+.insx-group-line { flex: 1; height: 1px; background: transparent; }
+.insx-group-note {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
 .insx-row {
   display: grid;
   grid-template-columns: 64px minmax(0, 1fr) 130px 130px;
   column-gap: clamp(14px, 2vw, 28px);
   align-items: baseline;
-}
-.insx-colhead {
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--hairline);
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(199, 180, 157, 0.55);
-}
-.insx-row {
   padding: clamp(18px, 2.4vh, 26px) 0;
   border-bottom: 1px solid var(--hairline);
   transition: background 0.3s ease;
 }
-.insx-row:hover { background: rgba(251, 250, 246, 0.015); }
+/* Published rows are links — full-row hit area, arrow slides on hover. */
+.insx-row.is-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.insx-row.is-link:hover { background: rgba(251, 250, 246, 0.02); }
+.insx-row-arrow {
+  display: inline-block;
+  margin-left: 10px;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: rgba(199, 180, 157, 0.45);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+}
+.insx-row.is-link:hover .insx-row-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--signal-bright);
+}
+.insx-row.is-link:hover .insx-row-title { color: var(--ink); }
+/* Queued rows stay visibly unpublished. */
+.insx-row.is-queued .insx-row-title { color: rgba(251, 250, 246, 0.55); }
+.insx-row.is-queued .insx-row-dek { color: rgba(251, 250, 246, 0.32); }
+.insx-row.is-queued .insx-chip {
+  color: rgba(199, 180, 157, 0.45);
+  border-color: rgba(199, 180, 157, 0.16);
+}
+.insx-row-body { display: block; min-width: 0; }
 .insx-row-title {
+  display: block;
   font-family: var(--font-instrument-sans), sans-serif;
   font-weight: 500;
   font-size: clamp(16.5px, 1.3vw, 19px);
@@ -231,8 +298,10 @@
   letter-spacing: -0.01em;
   color: rgba(251, 250, 246, 0.92);
   margin: 0 0 6px;
+  transition: color 0.25s ease;
 }
 .insx-row-dek {
+  display: block;
   font-size: clamp(13.5px, 1vw, 14.5px);
   line-height: 1.6;
   color: var(--dim);
@@ -273,10 +342,10 @@
 
 /* ── Responsive ── */
 @media (max-width: 760px) {
-  .insx-colhead { display: none; }
   /* long mono stamp would push past the viewport — protocol label alone
      carries the row on small screens */
   .insx-stamp { display: none; }
+  .insx-group-note { display: none; }
   .insx-featured-head { flex-wrap: wrap; row-gap: 6px; }
   .insx-row {
     grid-template-columns: 1fr;

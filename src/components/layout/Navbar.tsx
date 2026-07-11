@@ -126,8 +126,8 @@ const navItems: NavItem[] = [
       rail: [
         {
           title: "Get in touch",
-          desc: "audit@kelwin.co — no sequence, no SDR, straight to the founders.",
-          href: "mailto:audit@kelwin.co",
+          desc: "General queries, information requests, press — straight to the founders.",
+          href: "/contact",
         },
       ],
     },

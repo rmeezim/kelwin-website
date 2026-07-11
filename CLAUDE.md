@@ -110,6 +110,13 @@ kit. Reuse these; never invent parallel ones:
 - Placeholder honesty: illustrative artifacts are labeled Specimen;
   unpublished content carries an explicit status chip — never fake a
   live artifact.
+- Conversion architecture (two doors, always): /audit is the
+  high-intent path — a 3-question qualification waterfall that gates,
+  then books the strategic call. /contact is the low-intent general
+  channel (questions, info requests, press) with a no-CRM mailto form.
+  Every red CTA leads to /audit; the hero secondary CTA and the
+  Resources rail lead to /contact. Never collapse the two doors into
+  one "Get in touch."
 
 ## Typography
 Use:

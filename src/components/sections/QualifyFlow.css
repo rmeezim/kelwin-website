@@ -1,0 +1,309 @@
+/* ─── Qualification waterfall — scoped to .qf ─────────────────────────────
+   The audit's intake gate. One instrument panel: mono head, diamond
+   progress rail (methodology vocabulary), one question at a time as
+   full-width option rows. Qualified → red booking action with the answers
+   attached; declined → honest no with sand exits. */
+
+.qf {
+  --ink: #fbfaf6;
+  --lead: rgba(251, 250, 246, 0.66);
+  --dim: rgba(251, 250, 246, 0.45);
+  --faint: rgba(251, 250, 246, 0.32);
+  --sand: #c7b49d;
+  --sand-line: rgba(199, 180, 157, 0.16);
+  --sand-faint: rgba(199, 180, 157, 0.22);
+  --taupe: #8f8981;
+  --patina: #7c9c8a;
+  --signal-bright: #d4524e;
+  --signal-deep: #a8302c;
+  --hairline: rgba(251, 250, 246, 0.09);
+  background: #110f0a;
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.qf-stage {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 clamp(28px, 5vw, 64px) var(--space-section);
+}
+
+.qf-panel {
+  background: #0b0a08;
+  border: 1px solid rgba(199, 180, 157, 0.3);
+  padding: clamp(22px, 2.8vh, 32px) clamp(22px, 2.8vw, 36px);
+  scroll-margin-top: 72px;
+}
+
+.qf-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(18px, 2.4vh, 24px);
+}
+.qf-protocol {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.qf-head-line { flex: 1; height: 1px; background: rgba(199, 180, 157, 0.18); }
+.qf-stamp {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(251, 250, 246, 0.38);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Progress rail ── */
+.qf-rail {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: clamp(20px, 2.6vh, 28px);
+}
+.qf-dot {
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background: transparent;
+  border: 1.5px solid var(--sand-faint);
+  transition: background 0.35s ease, border-color 0.35s ease;
+}
+.qf-dot.is-active {
+  background: var(--signal-bright);
+  border-color: var(--signal-bright);
+}
+.qf-dot.is-done { background: var(--patina); border-color: var(--patina); }
+.qf-dot.is-declined { background: var(--signal-bright); border-color: var(--signal-bright); }
+.qf-dot.is-terminal { border-style: dashed; }
+.qf-dot.is-terminal.is-done { border-style: solid; }
+
+/* ── Body ── */
+.qf-body { animation: qf-in 0.4s cubic-bezier(0.2, 0.7, 0.3, 1); }
+@keyframes qf-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .qf-body { animation: none; }
+}
+
+.qf-question {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(21px, 2.1vw, 28px);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 clamp(16px, 2.2vh, 22px);
+}
+
+.qf-options { display: flex; flex-direction: column; gap: 10px; }
+.qf-option {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 16px;
+  width: 100%;
+  text-align: left;
+  background: #080706;
+  border: 1px solid rgba(251, 250, 246, 0.1);
+  border-radius: 0;
+  padding: 14px 18px;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.qf-option:hover {
+  border-color: rgba(199, 180, 157, 0.5);
+  background: #0c0b09;
+}
+.qf-option:focus-visible {
+  outline: 1px solid var(--signal-bright);
+  outline-offset: 3px;
+}
+.qf-option-mark {
+  width: 9px;
+  height: 9px;
+  transform: rotate(45deg);
+  border: 1.5px solid var(--sand-faint);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.qf-option:hover .qf-option-mark {
+  background: var(--signal-bright);
+  border-color: var(--signal-bright);
+}
+.qf-option-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.qf-option-label {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.15vw, 17px);
+  color: rgba(251, 250, 246, 0.92);
+}
+.qf-option-detail {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--dim);
+}
+.qf-option-arrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: rgba(199, 180, 157, 0.4);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+}
+.qf-option:hover .qf-option-arrow {
+  opacity: 1;
+  transform: none;
+  color: var(--signal-bright);
+}
+
+/* ── Controls ── */
+.qf-controls {
+  display: flex;
+  gap: 22px;
+  margin-top: clamp(16px, 2.2vh, 22px);
+}
+.qf-back {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  transition: color 0.2s ease;
+}
+.qf-back:hover { color: var(--sand); }
+
+/* ── Declined ── */
+.qf-decline-copy {
+  font-size: clamp(15px, 1.1vw, 16.5px);
+  line-height: 1.7;
+  color: var(--lead);
+  max-width: 62ch;
+  margin: 0 0 12px;
+}
+.qf-decline-sub {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--dim);
+  max-width: 58ch;
+  margin: 0 0 clamp(18px, 2.4vh, 24px);
+}
+.qf-decline-actions {
+  display: flex;
+  gap: clamp(20px, 3vw, 36px);
+  flex-wrap: wrap;
+}
+
+/* ── Qualified / booking ── */
+.qf-summary {
+  list-style: none;
+  margin: 0 0 clamp(20px, 2.6vh, 26px);
+  padding: 0;
+}
+.qf-summary-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 16px;
+  align-items: baseline;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.qf-summary-row:last-child { border-bottom: none; }
+.qf-summary-q {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.qf-summary-a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: 14.5px;
+  color: rgba(251, 250, 246, 0.92);
+}
+.qf-summary-mark {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  background: var(--patina);
+  position: relative;
+  top: -1px;
+}
+
+.qf-book-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(20px, 3vw, 36px);
+  flex-wrap: wrap;
+}
+.qf-book {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--signal-bright);
+  padding: 14px 24px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fbfaf6;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.qf-book:hover { background: var(--signal-deep); }
+.qf-book-arrow { font-family: var(--font-mono); }
+.qf-book-note {
+  flex: 1;
+  min-width: 240px;
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  line-height: 1.7;
+  color: var(--faint);
+  max-width: 46ch;
+}
+
+/* ── Under-note ── */
+.qf-under-note {
+  margin: 16px 4px 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+}
+.qf-under-link {
+  color: var(--sand);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(199, 180, 157, 0.35);
+  transition: color 0.2s ease;
+}
+.qf-under-link:hover { color: var(--signal-bright); }
+
+@media (max-width: 640px) {
+  /* protocol + stamp can't share the row at phone widths — let them stack */
+  .qf-head { flex-wrap: wrap; row-gap: 6px; }
+  .qf-head-line { flex-basis: 100%; order: 3; }
+  .qf-summary-row { grid-template-columns: 1fr; gap: 4px; }
+  .qf-option { grid-template-columns: 12px minmax(0, 1fr); }
+  .qf-option-arrow { display: none; }
+}

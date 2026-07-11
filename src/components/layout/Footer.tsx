@@ -28,6 +28,7 @@ const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] =
       { label: "Insights", href: "/insights" },
       { label: "Reports", href: "/reports" },
       { label: "Methodology", href: "/#methodology" },
+      { label: "Get in Touch", href: "/contact" },
     ],
   },
 ];

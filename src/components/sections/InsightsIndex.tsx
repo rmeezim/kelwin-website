@@ -1,18 +1,29 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
 import ArrowLink from "@/components/ui/ArrowLink";
 import "./InsightsIndex.css";
 
-// ─── Insights — the field-notes index ─────────────────────────────────────
-// An editorial ledger, not a blog grid: one featured note in a bracketed
-// specimen panel, then numbered entries on hairline rows. Every entry
-// carries an honest status chip — nothing pretends to be live before it
-// ships. Notes go to the request list first, so the page converts on the
-// mailto and on the audit.
+// ─── Insights — the field-notes journal ───────────────────────────────────
+// A publication, not a blog grid: one featured essay in a bracketed panel,
+// then published notes as readable index rows (title, standfirst excerpt,
+// topic, date, read time), then the editorial queue. Published rows link to
+// full ArticleDoc pages; queued work stays visibly unpublished — status
+// chips, never fake links.
 
-interface Note {
+interface PublishedNote {
+  n: string;
+  slug: string;
+  title: string;
+  dek: string;
+  topic: string;
+  date: string;
+  read: string;
+}
+
+interface QueuedNote {
   n: string;
   title: string;
   dek: string;
@@ -22,27 +33,36 @@ interface Note {
 
 const FEATURED = {
   n: "FN·01",
+  slug: "/insights/revenue-entropy",
   title: "Revenue entropy: why pipeline problems rarely start in the pipeline",
-  dek: "The diagnostic we run before anything else — how unclear narrative, unrouted signal, and resetting campaigns all present as “not enough leads,” and how to read the difference before spending another quarter fixing the wrong layer.",
+  dek: "Every founder we audit says some version of the same sentence: “we need more pipeline.” It's almost never the diagnosis — it's the symptom that three different structural failures share, and the treatment for each one is different.",
   topics: ["Diagnostics", "Narrative"],
-  status: "First release · in preparation",
+  date: "June 2026",
+  read: "6 min read",
 };
 
-const NOTES: Note[] = [
+const PUBLISHED: PublishedNote[] = [
   {
     n: "FN·02",
+    slug: "/insights/the-17-percent-window",
     title: "The 17% window",
-    dek: "Buyers spend about a sixth of the journey with sales. What the narrative has to do in the other 83%.",
+    dek: "Buyers spend a sixth of the journey with sales — split across every vendor in the deal. The deal is argued in the other 83%, by people you'll never meet, using whatever words you left them.",
     topic: "Narrative",
-    status: "Drafting",
+    date: "June 2026",
+    read: "5 min",
   },
   {
     n: "FN·03",
+    slug: "/insights/deliverability-is-infrastructure",
     title: "Deliverability is infrastructure",
-    dek: "Domains, authentication, warmup, list discipline — the mechanics that decide whether the message exists at all.",
+    dek: "Before your message can be judged, it has to exist. For a growing share of B2B outbound, it doesn't — it dies in a filter while the dashboard reports it as delivered.",
     topic: "Channels",
-    status: "Drafting",
+    date: "May 2026",
+    read: "5 min",
   },
+];
+
+const QUEUE: QueuedNote[] = [
   {
     n: "FN·04",
     title: "Signal over sequence",
@@ -62,14 +82,7 @@ const NOTES: Note[] = [
     title: "Q1 resets are a choice",
     dek: "Instrumenting GTM so learning carries into the next cycle instead of evaporating with the campaign.",
     topic: "Systems",
-    status: "Scheduled",
-  },
-  {
-    n: "FN·07",
-    title: "Notes from the audit bench",
-    dek: "Patterns across recent system audits: the constraints that keep showing up, and the fixes that hold.",
-    topic: "Diagnostics",
-    status: "Recurring series",
+    status: "Drafting",
   },
 ];
 
@@ -106,7 +119,7 @@ export default function InsightsIndex() {
           <div className="insx-protocol-row">
             <span className="insx-protocol">Resources · Insights</span>
             <span className="insx-protocol-line" aria-hidden="true" />
-            <span className="insx-stamp">KELWIN/OS · FIELD NOTES</span>
+            <span className="insx-stamp">KELWIN/OS · FIELD NOTES · VOL 01</span>
           </div>
           <h1 className="insx-title">
             <span className="insx-title-1">Field notes</span>
@@ -127,8 +140,12 @@ export default function InsightsIndex() {
           </div>
         </header>
 
-        {/* ── Featured note ── */}
-        <article className="insx-featured insx-reveal" aria-label="Featured field note">
+        {/* ── Featured essay ── */}
+        <Link
+          href={FEATURED.slug}
+          className="insx-featured insx-reveal"
+          aria-label={`Read: ${FEATURED.title}`}
+        >
           <span className="insx-corner insx-corner-tl" aria-hidden="true" />
           <span className="insx-corner insx-corner-br" aria-hidden="true" />
           <div className="insx-featured-head">
@@ -138,7 +155,9 @@ export default function InsightsIndex() {
               Featured
             </span>
             <span className="insx-featured-line" aria-hidden="true" />
-            <span className="insx-status">{FEATURED.status}</span>
+            <span className="insx-status">
+              {FEATURED.date} · {FEATURED.read}
+            </span>
           </div>
           <h2 className="insx-featured-title">{FEATURED.title}</h2>
           <p className="insx-featured-dek">{FEATURED.dek}</p>
@@ -148,33 +167,62 @@ export default function InsightsIndex() {
                 <span className="insx-chip" key={t}>{t}</span>
               ))}
             </span>
-            <ArrowLink
-              href="mailto:audit@kelwin.co?subject=Field%20notes%20—%20send%20FN%C2%B701%20when%20it%20ships"
-              label="Get it when it ships"
-              tone="sand"
-            />
+            <span className="insx-read-cue" aria-hidden="true">
+              Read the note <span className="insx-read-arrow">→</span>
+            </span>
           </div>
-        </article>
+        </Link>
 
-        {/* ── Index ledger ── */}
-        <section className="insx-ledger" aria-label="Field notes index">
-          <div className="insx-colhead insx-reveal" aria-hidden="true">
-            <span>№</span>
-            <span>Note</span>
-            <span className="insx-colhead-topic">Topic</span>
-            <span className="insx-colhead-status">Status</span>
+        {/* ── Published notes ── */}
+        <section className="insx-ledger" aria-label="Published field notes">
+          <div className="insx-group-head insx-reveal">
+            <span className="insx-group-label">Published</span>
+            <span className="insx-group-line" aria-hidden="true" />
           </div>
-          {NOTES.map((note, i) => (
+          {PUBLISHED.map((note, i) => (
+            <Link
+              href={note.slug}
+              className="insx-row is-link insx-reveal"
+              key={note.n}
+              style={{ ["--i" as string]: i }}
+              aria-label={`Read: ${note.title}`}
+            >
+              <span className="insx-num">{note.n}</span>
+              <span className="insx-row-body">
+                <span className="insx-row-title">
+                  {note.title}
+                  <span className="insx-row-arrow" aria-hidden="true">→</span>
+                </span>
+                <span className="insx-row-dek">{note.dek}</span>
+              </span>
+              <span className="insx-chip insx-row-topic">{note.topic}</span>
+              <span className="insx-status insx-row-status">
+                {note.date} · {note.read}
+              </span>
+            </Link>
+          ))}
+        </section>
+
+        {/* ── Editorial queue ── */}
+        <section className="insx-ledger" aria-label="Notes in preparation">
+          <div className="insx-group-head insx-reveal">
+            <span className="insx-group-label is-queue">In the works</span>
+            <span className="insx-group-line" aria-hidden="true" />
+            <span className="insx-group-note">
+              Queued notes ship to the request list first
+            </span>
+          </div>
+          {QUEUE.map((note, i) => (
             <article
-              className="insx-row insx-reveal"
+              className="insx-row is-queued insx-reveal"
               key={note.n}
               style={{ ["--i" as string]: i }}
             >
               <span className="insx-num">{note.n}</span>
-              <div className="insx-row-body">
-                <h3 className="insx-row-title">{note.title}</h3>
-                <p className="insx-row-dek">{note.dek}</p>
-              </div>
+              <span className="insx-row-body">
+                <span className="insx-row-title">{note.title}</span>
+                <span className="insx-row-dek">{note.dek}</span>
+              </span>
               <span className="insx-chip insx-row-topic">{note.topic}</span>
               <span className="insx-status insx-row-status">{note.status}</span>
             </article>
@@ -184,8 +232,8 @@ export default function InsightsIndex() {
         {/* ── Foot / conversion ── */}
         <footer className="insx-foot insx-reveal">
           <p className="insx-coda">
-            The fastest way to read our thinking today is the audit readout
-            itself.
+            The fastest way to read our thinking is a note. The fastest way to
+            use it is the audit.
           </p>
           <div className="insx-foot-actions">
             <DiagnosticMethodCTA
