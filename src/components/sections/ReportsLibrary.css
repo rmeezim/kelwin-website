@@ -1,0 +1,335 @@
+/* ─── Reports library — scoped to .repx ───────────────────────────────────
+   The document registry: interior-page posture + report dossier cards.
+   THE PALETTE'S ONE STEEL DEPLOYMENT — steel (#6E8091 / bright #9BB0C1)
+   appears only on document artifacts: the doc glyphs, class chips, and
+   the registry key. Site chrome stays sand; action stays red; status
+   text stays taupe. */
+
+.repx {
+  --ink: #fbfaf6;
+  --lead: rgba(251, 250, 246, 0.66);
+  --dim: rgba(251, 250, 246, 0.45);
+  --faint: rgba(251, 250, 246, 0.32);
+  --sand: #c7b49d;
+  --sand-line: rgba(199, 180, 157, 0.16);
+  --taupe: #8f8981;
+  --steel: #6e8091;
+  --steel-bright: #9bb0c1;
+  --steel-line: rgba(110, 128, 145, 0.45);
+  --steel-faint: rgba(155, 176, 193, 0.14);
+  --signal-bright: #d4524e;
+  --hairline: rgba(251, 250, 246, 0.09);
+  background: #110f0a;
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.repx-stage {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: clamp(56px, 7vh, 88px) clamp(28px, 5vw, 64px) var(--space-section);
+}
+
+/* ── Reveal ── */
+.repx .repx-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.repx .repx-reveal.is-in { opacity: 1; transform: translateY(0); }
+.repx .repx-card.repx-reveal { transition-delay: calc(var(--i, 0) * 0.07s); }
+@media (prefers-reduced-motion: reduce) {
+  .repx .repx-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
+/* ── Head ── */
+.repx-protocol-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(28px, 4vh, 48px);
+}
+.repx-protocol {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.repx-protocol-line { flex: 1; height: 1px; background: var(--sand-line); }
+.repx-stamp {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: rgba(251, 250, 246, 0.3);
+  white-space: nowrap;
+}
+.repx-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0 0 clamp(16px, 2vw, 24px);
+}
+.repx-title-1 { display: block; color: var(--ink); }
+.repx-title-2 { display: block; color: rgba(251, 250, 246, 0.42); }
+.repx-lede {
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.65;
+  color: var(--lead);
+  max-width: 62ch;
+  margin: 0;
+}
+/* Registry key — the one line that explains steel's job on this page. */
+.repx-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: clamp(18px, 2.4vh, 26px);
+}
+.repx-key-swatch {
+  width: 8px;
+  height: 8px;
+  background: var(--steel-bright);
+  opacity: 0.85;
+}
+.repx-key-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(155, 176, 193, 0.7);
+}
+
+/* ── Class heads ── */
+.repx-class { margin-top: clamp(40px, 5.5vh, 64px); }
+.repx-class-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: clamp(18px, 2.4vh, 26px);
+}
+.repx-class-chip {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel-bright);
+  border: 1px solid var(--steel-line);
+  padding: 3px 8px;
+  white-space: nowrap;
+}
+.repx-class-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(19px, 1.8vw, 24px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+  white-space: nowrap;
+}
+.repx-class-line { flex: 1; height: 1px; background: var(--hairline); align-self: center; }
+.repx-class-note {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  white-space: nowrap;
+}
+
+/* ── Report cards ── */
+.repx-cards { display: flex; flex-direction: column; gap: 14px; }
+.repx-card {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) clamp(190px, 20vw, 230px);
+  gap: clamp(18px, 2.6vw, 36px);
+  padding: clamp(20px, 2.6vh, 30px) clamp(20px, 2.6vw, 32px);
+  background: #0b0a08;
+  border: 1px solid var(--sand-line);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.repx-card:hover {
+  border-color: rgba(199, 180, 157, 0.3);
+  background: #0c0b09;
+}
+
+.repx-card-glyph {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.repx-glyph { width: 34px; height: 42px; }
+.repx-glyph-sheet { fill: var(--steel-faint); stroke: var(--steel); stroke-width: 1.2; }
+.repx-glyph-fold { fill: none; stroke: var(--steel); stroke-width: 1.2; }
+.repx-glyph-rule { stroke: var(--steel-bright); stroke-width: 1; opacity: 0.55; }
+.repx-num {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: rgba(199, 180, 157, 0.7);
+  font-variant-numeric: tabular-nums;
+}
+
+.repx-card-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: rgba(251, 250, 246, 0.94);
+  margin: 0 0 10px;
+  text-wrap: balance;
+}
+.repx-card-abstract {
+  font-size: clamp(14px, 1.05vw, 15.5px);
+  line-height: 1.62;
+  color: var(--lead);
+  max-width: 56ch;
+  margin: 0 0 14px;
+}
+.repx-card-contents {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.6);
+}
+.repx-content-item { display: inline-flex; gap: 8px; align-items: baseline; }
+.repx-content-div { color: rgba(199, 180, 157, 0.35); }
+
+.repx-card-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 1px solid var(--hairline);
+  padding-left: clamp(16px, 1.8vw, 24px);
+}
+.repx-spec-list { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.repx-spec-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.repx-spec-row dt { color: var(--faint); }
+.repx-spec-row dd { color: rgba(251, 250, 246, 0.75); margin: 0; }
+.repx-status {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+}
+
+/* ── Readout panel (Class B) ── */
+.repx-readout-panel {
+  padding: clamp(20px, 2.6vh, 30px) clamp(20px, 2.6vw, 32px);
+  background: #0b0a08;
+  border: 1px solid var(--sand-line);
+}
+.repx-readout-body {
+  font-size: clamp(14.5px, 1.05vw, 16px);
+  line-height: 1.65;
+  color: var(--lead);
+  max-width: 66ch;
+  margin: 0 0 clamp(16px, 2vh, 22px);
+}
+.repx-terminal {
+  padding: clamp(16px, 2vh, 22px) clamp(16px, 2vw, 24px);
+  background: #080706;
+  border: 1px solid var(--hairline);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 2;
+  color: rgba(251, 250, 246, 0.6);
+}
+.repx-terminal-line { display: flex; align-items: baseline; gap: 10px; }
+.repx-terminal-prompt { color: var(--signal-bright); }
+.repx-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: var(--signal-bright);
+  opacity: 0.85;
+  transform: translateY(2px);
+  animation: repx-blink 1.2s step-end infinite;
+}
+@keyframes repx-blink { 0%, 100% { opacity: 0.85; } 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .repx-cursor { animation: none; }
+}
+
+/* ── Foot ── */
+.repx-foot {
+  margin-top: clamp(40px, 5.5vh, 64px);
+  padding-top: clamp(24px, 3vh, 32px);
+  border-top: 1px solid var(--hairline);
+}
+.repx-coda {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 clamp(18px, 2.4vh, 26px);
+  max-width: 48ch;
+}
+.repx-foot-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3vw, 40px);
+  flex-wrap: wrap;
+}
+.repx-foot-note {
+  margin: 16px 0 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--faint);
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .repx-card { grid-template-columns: 64px minmax(0, 1fr); }
+  .repx-card-spec {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--hairline);
+    padding-left: 0;
+    padding-top: 14px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .repx-spec-list { flex-direction: row; gap: 16px; flex-wrap: wrap; }
+  .repx-status { border-top: 0; padding-top: 0; }
+}
+@media (max-width: 560px) {
+  /* long mono stamp would push past the viewport on small screens */
+  .repx-stamp { display: none; }
+  .repx-card { grid-template-columns: 1fr; }
+  .repx-card-glyph { flex-direction: row; align-items: center; }
+  .repx-class-head { flex-wrap: wrap; row-gap: 8px; }
+  .repx-class-title { white-space: normal; }
+  .repx-class-note { display: none; }
+}

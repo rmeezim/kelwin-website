@@ -64,7 +64,9 @@ Five-tier accent system — each color has exactly one job:
 - STEEL #6E8091 = reference. Reserved for sales documents, spec
   sheets, and collateral (diagram keys, callouts, page furniture) so
   print/PDF artifacts share one palette with the site. Bright tint
-  #9BB0C1 on dark stock. Not currently deployed on the website.
+  #9BB0C1 on dark stock. On the website, steel appears ONLY where a
+  document artifact is represented — the /reports library (doc glyphs,
+  class chips, registry furniture). Never for site chrome.
 
 Discipline:
 - Never mix the jobs: a hairline is sand, a chart line is clay, a
@@ -77,6 +79,37 @@ Discipline:
   comfortable contrast on #110F0A.
 - Signature motif: dot-matrix (cell-built) numerals for one hero reading
   per section — technical, characterful, never used for body data.
+
+## Shared Patterns (design system v1)
+Every page — home sections and interior pages — is built from the same
+kit. Reuse these; never invent parallel ones:
+- Surfaces: page #110F0A; panel #0B0A08 with 1px sand-line border
+  (rgba(199,180,157,0.16–0.3)); nested card #14120D with faint white
+  border. Hover/elevated #20201E. No border-radius anywhere.
+- Section header (home): eyebrow row (red label + 28px dash, mono meta
+  right) → stacked 2-line heading (line-1 ink, line-2 rgba(251,250,246,
+  0.42)) → lede clamp(16px,1.15vw,17.5px) max-width ~58–62ch.
+- Interior pages: 1140px stage (home sections use 1440px), protocol row
+  (mono sand label · hairline · faint stamp), same stacked title + lede.
+  Interior pages load like documents — reveal-on-scroll only, no pins.
+- Ledger rows: hairline-divided grids; mono index numbers (A·01, R·01,
+  FN·01); marks are 8px squares — patina ▪ = yes/healthy, red ✕ (two
+  hairlines) = no/entropy.
+- Chips: mono 8.5–10px, 0.16–0.2em tracking, uppercase, 1px border,
+  2–6px padding, squared. Sand for topics/protocol, taupe for muted
+  status, steel only on document artifacts.
+- Corner brackets (tl/br) on featured cards; serif italic coda as the
+  closing line of a section; terminal blocks (mono, red > prompt,
+  blinking cursor) for live/empty states.
+- CTA hierarchy (exactly four): 1 HeroCTA (red pill, corner brackets),
+  2 SecondaryHeroCTA (underlined mono), 3 DiagnosticMethodCTA
+  (bracketed), 4 ArrowLink (uppercase + arrow, cream or sand tone).
+- Reveal pattern: IntersectionObserver adds .is-in; rows cascade with
+  --i index delays; everything instant under prefers-reduced-motion.
+- Rhythm: every section pads with var(--space-section) top+bottom.
+- Placeholder honesty: illustrative artifacts are labeled Specimen;
+  unpublished content carries an explicit status chip — never fake a
+  live artifact.
 
 ## Typography
 Use:

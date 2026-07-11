@@ -508,8 +508,8 @@
 .revos-pin .loop-dot .core { fill: var(--signal-bright); opacity: 0; transition: opacity 0.35s var(--ease-out); }
 .revos-pin .loop-dot.is-active .core { opacity: 1; }
 .revos-pin .loop-label text { text-anchor: middle; transition: fill 0.35s var(--ease-out), opacity 0.35s var(--ease-out); }
-.revos-pin .loop-label.is-active .loop-time   { fill: #E8807C; }
-.revos-pin .loop-label.is-active .loop-stage  { fill: #FFFFFF; }
+.revos-pin .loop-label.is-active .loop-time   { fill: var(--signal-bright); }
+.revos-pin .loop-label.is-active .loop-stage  { fill: var(--ink); }
 .revos-pin .loop-label.is-active .loop-channel{ fill: rgba(251, 250, 246,0.92); }
 .revos-pin .loop-time {
   fill: var(--bronze); font-family: var(--f-display); font-size: 15px;
