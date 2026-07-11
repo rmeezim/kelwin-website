@@ -602,8 +602,10 @@ export default function Navbar() {
         </motion.nav>
       </div>
 
-      {/* Mega menu — full-width command drawer under the navbar, spanning the
-          same container as the nav content. */}
+      {/* Mega menu — a floating glass command panel, centered under the pill:
+          same frosted treatment as the navbar island (translucent charcoal,
+          backdrop blur, sand hairline, warm top sheen), detached with a small
+          gap so it reads as a second floating surface, not a drawer. */}
       <AnimatePresence>
         {activeMega && (
           <motion.div
@@ -611,13 +613,14 @@ export default function Navbar() {
             className="nav-mega-wrap hidden min-[1050px]:block"
             onMouseEnter={cancelClose}
             onMouseLeave={scheduleClose}
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: [0, 0.9, 0.05, 1, 0.38, 1], y: 0 }}
-            exit={{ opacity: 0, y: -4, transition: { duration: 0.12 } }}
-            transition={{ duration: 0.28, times: [0, 0.10, 0.22, 0.42, 0.65, 1], ease: "linear" }}
+            initial={{ opacity: 0, y: -8, scale: 0.985 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.99, transition: { duration: 0.14 } }}
+            transition={{ duration: 0.32, ease: [0.2, 0.7, 0.3, 1] }}
           >
-            <div className="max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20">
+            <div className="nav-mega-center">
               <div className="nav-mega">
+                <span className="nav-mega-sheen" aria-hidden="true" />
                 <div className="nav-mega-head">
                   <span className="nav-mega-protocol">{activeMega.protocol}</span>
                   <span className="nav-mega-headline" aria-hidden="true" />

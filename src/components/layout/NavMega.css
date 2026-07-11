@@ -8,25 +8,55 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 100%;
+  top: calc(100% + 6px); /* detached from the pill — a second floating surface */
   z-index: 60;
+}
+/* Centers the panel under the navbar island rather than spanning full width. */
+.nav-mega-center {
+  display: flex;
+  justify-content: center;
+  padding: 0 clamp(16px, 4vw, 40px);
 }
 
 .nav-mega {
-  background: #0b0a08;
-  border: 1px solid rgba(199, 180, 157, 0.38);
-  border-top: none; /* the navbar's bottom hairline reads as the top edge */
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  overflow: hidden;
   padding: 12px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  /* Frosted glass — the same material as the navbar pill, a touch more
+     opaque since it carries content. */
+  background: rgba(11, 10, 8, 0.72);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  backdrop-filter: blur(22px) saturate(1.4);
+  border: 1px solid rgba(199, 180, 157, 0.24);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.5);
+}
+/* Warm top sheen — a whisper of the hero's dusk glow across the panel's
+   upper edge, tying the menu to the landscape. */
+.nav-mega-sheen {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 120px;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 100% at 50% 0%,
+    rgba(191, 90, 60, 0.12) 0%,
+    rgba(199, 180, 157, 0.05) 34%,
+    transparent 70%
+  );
 }
 
 /* Slim protocol header — names the drawer like an instrument readout. */
 .nav-mega-head {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 14px;
   padding: 2px 6px 12px;
 }
+.nav-mega-grid { position: relative; z-index: 1; }
 .nav-mega-protocol {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -87,8 +117,10 @@
   position: relative;
   display: flex;
   overflow: hidden; /* keeps the sweep line inside the card frame */
-  background-color: #14120d;
-  border: 1px solid rgba(251, 250, 246, 0.08);
+  /* Translucent so the panel's frost reads through the cards too — one
+     continuous glass surface rather than opaque tiles on glass. */
+  background-color: rgba(28, 24, 16, 0.5);
+  border: 1px solid rgba(251, 250, 246, 0.09);
   padding: 15px 17px;
   text-decoration: none;
   transition: border-color 0.22s ease, background-color 0.22s ease,
@@ -96,7 +128,7 @@
 }
 .nmc:hover {
   border-color: rgba(199, 180, 157, 0.5);
-  background-color: #1a1712;
+  background-color: rgba(38, 33, 22, 0.66);
   transform: translateY(-1px);
 }
 @media (prefers-reduced-motion: reduce) {
