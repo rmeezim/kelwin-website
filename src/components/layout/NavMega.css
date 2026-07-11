@@ -248,3 +248,41 @@
   .nav-mega-features.cols-3 .nmc-feature { min-height: 120px; }
   .nmc-title { font-size: 14.5px; }
 }
+
+/* ─── Boxed navbar (Dune-reference posture, squared) ──────────────────────
+   Logo chip + bordered link cluster between the sandwich hairlines. Cells
+   fill on hover; the active page's cell holds an elevated fill. Sharp
+   corners only — the reference's rounding is traded for the instrument
+   idiom. */
+.nav-logo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  border: 1px solid rgba(199, 180, 157, 0.24);
+  background: rgba(12, 10, 8, 0.55);
+  text-decoration: none;
+  transition: border-color 0.25s ease;
+}
+.nav-logo-chip:hover { border-color: rgba(199, 180, 157, 0.5); }
+.nav-logo-glyph {
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: #d4524e;
+  flex-shrink: 0;
+}
+
+.nav-cluster {
+  border: 1px solid rgba(199, 180, 157, 0.18);
+  background: rgba(12, 10, 8, 0.55);
+  padding: 4px;
+  gap: 2px;
+}
+.nav-cell {
+  padding: 8px 14px;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.nav-cell:hover { background: #20201e; }
+.nav-cell-active { background: #20201e; }

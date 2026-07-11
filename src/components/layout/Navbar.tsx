@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -258,19 +259,31 @@ function HoverLink({
   className,
   onClick,
   onMenuClose,
+  pageActive,
 }: {
   href: string;
   label: string;
   className?: string;
   onClick?: () => void;
   onMenuClose?: () => void;
+  pageActive?: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
   return (
     <Link
       href={href}
-      className={cn("transition-colors duration-150", className)}
-      style={{ color: hovered ? "#D4524E" : "var(--text-muted)" }}
+      className={cn(
+        "nav-cell transition-colors duration-150",
+        pageActive && "nav-cell-active",
+        className
+      )}
+      style={{
+        color: hovered
+          ? "#D4524E"
+          : pageActive
+          ? "var(--text-primary)"
+          : "var(--text-muted)",
+      }}
       onMouseEnter={() => { setHovered(true); onMenuClose?.(); }}
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
@@ -278,7 +291,6 @@ function HoverLink({
       <span className="relative inline-block">
         {label}
         <AnimatePresence>
-          {hovered && <FlickerLine key="top" position="top" />}
           {hovered && <FlickerLine key="bot" />}
         </AnimatePresence>
       </span>
@@ -293,6 +305,7 @@ function HoverButton({
   onMouseEnter,
   onMouseLeave,
   onClick,
+  pageActive,
 }: {
   label: string;
   isOpen: boolean;
@@ -300,13 +313,24 @@ function HoverButton({
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onClick: () => void;
+  pageActive?: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
   const active = hovered || isOpen;
   return (
     <button
-      className={cn("transition-colors duration-150", className)}
-      style={{ color: active ? "#D4524E" : "var(--text-muted)" }}
+      className={cn(
+        "nav-cell transition-colors duration-150",
+        (pageActive || isOpen) && "nav-cell-active",
+        className
+      )}
+      style={{
+        color: active
+          ? "#D4524E"
+          : pageActive
+          ? "var(--text-primary)"
+          : "var(--text-muted)",
+      }}
       onMouseEnter={() => { setHovered(true); onMouseEnter(); }}
       onMouseLeave={() => { setHovered(false); onMouseLeave(); }}
       onClick={onClick}
@@ -316,7 +340,6 @@ function HoverButton({
       <span className="relative inline-block">
         {label}
         <AnimatePresence>
-          {active && <FlickerLine key="top" position="top" />}
           {active && <FlickerLine key="bot" />}
         </AnimatePresence>
       </span>
@@ -416,6 +439,17 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname() ?? "";
+
+  // Which nav section owns the current page — lights the cluster cell.
+  const isSectionActive = (label: string) =>
+    label === "CAPABILITIES"
+      ? /^\/(capabilities|audit)/.test(pathname)
+      : label === "THE FIRM"
+      ? /^\/(about|who-we-work-with|careers)/.test(pathname)
+      : label === "RESOURCES"
+      ? /^\/(insights|reports|contact)/.test(pathname)
+      : false;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -513,18 +547,21 @@ export default function Navbar() {
           scrolled ? "h-[46px]" : "h-[56px]"
         )}
       >
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-cream text-[15px] tracking-[0.3em] font-heading font-medium shrink-0"
-        >
-          KELWIN
+        {/* Logo — bordered chip with the red diamond mark (the methodology
+            node vocabulary, worn as insignia). */}
+        <Link href="/" className="nav-logo-chip shrink-0">
+          <span className="nav-logo-glyph" aria-hidden="true" />
+          <span className="text-cream text-[14px] tracking-[0.3em] font-heading font-medium">
+            KELWIN
+          </span>
         </Link>
 
         {/* Right cluster — full nav (≥1050px) or hamburger (<1050px) */}
         <div className="flex items-center gap-6">
+          {/* Boxed link cluster — squared module container; the active
+              page's cell holds an elevated fill. */}
           <div
-            className="hidden min-[1050px]:flex items-center gap-6 relative h-[56px]"
+            className="nav-cluster hidden min-[1050px]:flex items-center relative"
             onMouseLeave={scheduleClose}
             onMouseEnter={cancelClose}
           >
@@ -534,6 +571,7 @@ export default function Navbar() {
                   key={item.label}
                   label={item.label}
                   isOpen={openMenu === item.label}
+                  pageActive={isSectionActive(item.label)}
                   className="text-[12px] tracking-[0.16em] font-body font-medium"
                   onMouseEnter={() => { cancelClose(); setOpenMenu(item.label); }}
                   onMouseLeave={() => {}}
@@ -544,6 +582,7 @@ export default function Navbar() {
                   key={item.label}
                   href={item.href}
                   label={item.label}
+                  pageActive={isSectionActive(item.label)}
                   className="text-[12px] tracking-[0.16em] font-body font-medium"
                   onMenuClose={closeMenu}
                 />
