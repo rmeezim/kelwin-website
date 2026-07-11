@@ -7,9 +7,9 @@
 
 .ctc {
   --ink: #fbfaf6;
-  --lead: rgba(251, 250, 246, 0.66);
-  --dim: rgba(251, 250, 246, 0.45);
-  --faint: rgba(251, 250, 246, 0.32);
+  --lead: rgba(251, 250, 246, 0.68);
+  --dim: rgba(251, 250, 246, 0.56);
+  --faint: rgba(251, 250, 246, 0.4);
   --sand: #c7b49d;
   --sand-line: rgba(199, 180, 157, 0.16);
   --taupe: #8f8981;
@@ -49,7 +49,7 @@
 }
 .ctc-protocol {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--sand);
@@ -58,9 +58,9 @@
 .ctc-protocol-line { flex: 1; height: 1px; background: var(--sand-line); }
 .ctc-stamp {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
   letter-spacing: 0.16em;
-  color: rgba(251, 250, 246, 0.3);
+  color: rgba(251, 250, 246, 0.34);
   white-space: nowrap;
 }
 .ctc-title {
@@ -107,15 +107,15 @@
 }
 .ctc-door-num {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.16em;
-  color: rgba(199, 180, 157, 0.6);
+  color: rgba(199, 180, 157, 0.7);
 }
 .ctc-door-tag {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--taupe);
 }
@@ -138,7 +138,7 @@
 .ctc-door-action { margin-top: auto; }
 .ctc-door-anchor {
   font-family: var(--font-inter), sans-serif;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -164,7 +164,7 @@
 }
 .ctc-form-protocol {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--sand);
@@ -173,10 +173,10 @@
 .ctc-form-line { flex: 1; height: 1px; background: rgba(199, 180, 157, 0.18); }
 .ctc-form-stamp {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(251, 250, 246, 0.32);
+  color: rgba(251, 250, 246, 0.38);
   white-space: nowrap;
 }
 
@@ -192,15 +192,15 @@
 }
 .ctc-regarding-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--taupe);
 }
 .ctc-regarding-ref {
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 12.5px;
   letter-spacing: 0.1em;
   color: var(--sand);
 }
@@ -209,8 +209,8 @@
   border: 0;
   padding: 0 2px;
   cursor: pointer;
-  font-size: 10px;
-  color: var(--faint);
+  font-size: 12px;
+  color: rgba(251, 250, 246, 0.55);
   transition: color 0.2s ease;
 }
 .ctc-regarding-clear:hover { color: var(--signal-bright); }
@@ -226,16 +226,16 @@
 
 .ctc-req {
   font-weight: 400;
-  letter-spacing: 0.12em;
-  color: rgba(212, 82, 78, 0.75);
+  letter-spacing: 0.08em;
+  color: rgba(212, 82, 78, 0.85);
   text-transform: none;
 }
 .ctc-hint {
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.02em;
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
   line-height: 1.65;
-  color: rgba(251, 250, 246, 0.55);
+  color: rgba(251, 250, 246, 0.66);
 }
 
 .ctc-form { display: flex; flex-direction: column; gap: 18px; }
@@ -247,9 +247,9 @@
 .ctc-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .ctc-label {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--sand);
 }
@@ -261,12 +261,12 @@
   border-radius: 0;
   padding: 12px 14px;
   font-family: var(--font-inter), sans-serif;
-  font-size: 14.5px;
+  font-size: 15px;
   line-height: 1.5;
   color: var(--ink);
   transition: border-color 0.2s ease;
 }
-.ctc-input::placeholder { color: rgba(251, 250, 246, 0.28); }
+.ctc-input::placeholder { color: rgba(251, 250, 246, 0.42); }
 .ctc-input:focus {
   outline: none;
   border-color: rgba(199, 180, 157, 0.55);
@@ -283,7 +283,7 @@
   top: 50%;
   transform: translateY(-50%);
   color: var(--sand);
-  font-size: 11px;
+  font-size: 12px;
   pointer-events: none;
 }
 .ctc-textarea { resize: vertical; min-height: 120px; }
@@ -306,7 +306,7 @@
   border-radius: 0;
   padding: 13px 22px;
   font-family: var(--font-inter), sans-serif;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -322,10 +322,10 @@
   min-width: 240px;
   margin: 2px 0 0;
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.03em;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
   line-height: 1.7;
-  color: rgba(251, 250, 246, 0.55);
+  color: rgba(251, 250, 246, 0.66);
   max-width: 52ch;
 }
 
@@ -347,7 +347,7 @@
 }
 .ctc-email {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 13.5px;
   letter-spacing: 0.08em;
   color: var(--sand);
   text-decoration: none;

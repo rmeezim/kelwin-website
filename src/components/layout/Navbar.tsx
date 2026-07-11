@@ -133,6 +133,9 @@ const navItems: NavItem[] = [
       ],
     },
   },
+  // The R&D arm — a plain link with a patina "live build" dot: where the
+  // practice becomes AI-native GTM software.
+  { label: "THE LAB", href: "/the-lab" },
 ];
 
 /* ── Line glyphs — 1px geometric marks in the site's instrument idiom. ── */
@@ -288,11 +291,16 @@ function HoverLink({
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
     >
-      <span className="relative inline-block">
-        {label}
-        <AnimatePresence>
-          {hovered && <FlickerLine key="bot" />}
-        </AnimatePresence>
+      <span className="relative inline-flex items-center gap-2">
+        {label === "THE LAB" && (
+          <span className="nav-lab-dot" aria-hidden="true" />
+        )}
+        <span className="relative inline-block">
+          {label}
+          <AnimatePresence>
+            {hovered && <FlickerLine key="bot" />}
+          </AnimatePresence>
+        </span>
       </span>
     </Link>
   );
@@ -404,7 +412,10 @@ function MegaCard({
           <span className="nmc-tag">{item.tag}</span>
         </span>
         <span className="nmc-body">
-          <span className="nmc-title">{item.title}</span>
+          <span className="nmc-title">
+            {item.title}
+            <span className="nmc-arrow" aria-hidden="true">→</span>
+          </span>
           <span className="nmc-desc">{item.desc}</span>
         </span>
         <span className="nmc-sweep" aria-hidden="true" />
@@ -415,6 +426,7 @@ function MegaCard({
           <span className="nmc-title">{item.title}</span>
           <span className="nmc-desc">{item.desc}</span>
         </span>
+        <span className="nmc-arrow" aria-hidden="true">→</span>
         <span className="nmc-sweep" aria-hidden="true" />
       </>
     );
@@ -454,6 +466,8 @@ export default function Navbar() {
       ? /^\/(about|who-we-work-with|careers)/.test(pathname)
       : label === "RESOURCES"
       ? /^\/(insights|reports|contact)/.test(pathname)
+      : label === "THE LAB"
+      ? /^\/the-lab/.test(pathname)
       : false;
 
   useEffect(() => {
