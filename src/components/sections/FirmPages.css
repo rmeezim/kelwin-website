@@ -1,0 +1,393 @@
+/* ─── Firm pages — scoped to .firm ────────────────────────────────────────
+   The editorial layer: About / Who We Work With / Careers. Same design
+   system, warmer register — first-person prose, serif turns, a bone
+   "daylight" panel for the founder's note. These pages are where the
+   company sounds like people; the instrument chrome stays quiet.        */
+
+.firm {
+  --ink: #fbfaf6;
+  --lead: rgba(251, 250, 246, 0.7);
+  --dim: rgba(251, 250, 246, 0.45);
+  --faint: rgba(251, 250, 246, 0.32);
+  --sand: #c7b49d;
+  --sand-line: rgba(199, 180, 157, 0.16);
+  --taupe: #8f8981;
+  --patina: #7c9c8a;
+  --signal-bright: #d4524e;
+  --hairline: rgba(251, 250, 246, 0.09);
+  background: #110f0a;
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.firm-stage {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: clamp(56px, 7vh, 88px) clamp(28px, 5vw, 64px) var(--space-section);
+}
+
+/* ── Head ── */
+.firm-protocol-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: clamp(28px, 4vh, 48px);
+}
+.firm-protocol {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.firm-protocol-line { flex: 1; height: 1px; background: var(--sand-line); }
+.firm-stamp {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: rgba(251, 250, 246, 0.3);
+  white-space: nowrap;
+}
+.firm-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  margin: 0 0 clamp(16px, 2vw, 24px);
+}
+.firm-title-1 { display: block; color: var(--ink); }
+.firm-title-2 { display: block; color: rgba(251, 250, 246, 0.42); }
+.firm-lede {
+  font-size: clamp(16.5px, 1.25vw, 18.5px);
+  line-height: 1.65;
+  color: var(--lead);
+  max-width: 58ch;
+  margin: 0;
+}
+
+/* ── Founder's note — the bone daylight panel ── */
+.firm-note {
+  position: relative;
+  margin-top: clamp(40px, 5.5vh, 64px);
+  padding: clamp(28px, 3.6vh, 44px) clamp(26px, 3.4vw, 48px);
+  background: #ece8df;
+  color: #1a1613;
+}
+.firm-note-kicker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(18px, 2.4vh, 26px);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #8f7a5c;
+}
+.firm-note-kicker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(107, 89, 65, 0.28);
+}
+.firm-note p {
+  font-family: var(--font-serif);
+  font-size: clamp(19px, 1.7vw, 23px);
+  line-height: 1.55;
+  color: #1a1613;
+  margin: 0 0 18px;
+  max-width: 56ch;
+}
+.firm-note p:last-of-type { margin-bottom: 0; }
+.firm-note-sign {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-top: clamp(20px, 2.6vh, 28px);
+  padding-top: clamp(16px, 2vh, 22px);
+  border-top: 1px solid rgba(26, 22, 19, 0.12);
+}
+.firm-note-name {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(20px, 1.8vw, 24px);
+  color: #1a1613;
+}
+.firm-note-role {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #7a716a;
+}
+
+/* ── Section blocks ── */
+.firm-section { margin-top: clamp(44px, 6vh, 68px); }
+.firm-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: clamp(18px, 2.4vh, 26px);
+}
+.firm-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+.firm-section-line { flex: 1; height: 1px; background: var(--hairline); align-self: center; }
+.firm-section-note {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+.firm-prose {
+  font-size: clamp(15.5px, 1.15vw, 17px);
+  line-height: 1.75;
+  color: var(--lead);
+  max-width: 66ch;
+  margin: 0 0 16px;
+}
+.firm-prose:last-child { margin-bottom: 0; }
+.firm-prose strong { color: rgba(251, 250, 246, 0.92); font-weight: 600; }
+
+/* ── Numbered manifesto rows ── */
+.firm-beliefs { list-style: none; margin: 0; padding: 0; }
+.firm-belief {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  column-gap: clamp(16px, 2.4vw, 32px);
+  align-items: baseline;
+  padding: clamp(18px, 2.4vh, 24px) 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.firm-belief:last-child { border-bottom: none; }
+.firm-belief-num {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(199, 180, 157, 0.6);
+  font-variant-numeric: tabular-nums;
+}
+.firm-belief-title {
+  display: block;
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: clamp(17px, 1.4vw, 20px);
+  letter-spacing: -0.01em;
+  color: rgba(251, 250, 246, 0.94);
+  margin-bottom: 5px;
+}
+.firm-belief-desc {
+  display: block;
+  font-size: clamp(14px, 1.05vw, 15px);
+  line-height: 1.6;
+  color: var(--dim);
+  max-width: 60ch;
+}
+
+/* ── Vignettes (Who We Work With) ── */
+.firm-vignettes {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vh, 22px);
+}
+.firm-vignette {
+  padding: clamp(24px, 3vh, 34px) clamp(24px, 3vw, 38px);
+  background: #0b0a08;
+  border: 1px solid var(--sand-line);
+  box-shadow: inset 2px 0 0 rgba(199, 180, 157, 0.35);
+}
+.firm-vignette-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.firm-vignette-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: rgba(199, 180, 157, 0.6);
+}
+.firm-vignette-tag {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--taupe);
+}
+.firm-vignette-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(20px, 1.9vw, 26px);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+.firm-vignette-body {
+  font-size: clamp(15px, 1.1vw, 16px);
+  line-height: 1.7;
+  color: var(--lead);
+  max-width: 62ch;
+  margin: 0 0 14px;
+}
+.firm-vignette-turn {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.45;
+  color: var(--ink);
+  margin: 0;
+  padding-left: clamp(16px, 2vw, 22px);
+  border-left: 2px solid rgba(124, 156, 138, 0.5);
+  max-width: 52ch;
+}
+
+/* ── Decline strip ── */
+.firm-declines {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+}
+.firm-decline {
+  padding: 16px 18px;
+  background: #0b0a08;
+  border: 1px solid var(--hairline);
+}
+.firm-decline-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: 14.5px;
+  color: rgba(251, 250, 246, 0.85);
+  margin-bottom: 5px;
+}
+.firm-decline-mark {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  position: relative;
+  top: 0;
+}
+.firm-decline-mark::before,
+.firm-decline-mark::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 50%;
+  height: 1px;
+  background: var(--signal-bright);
+  opacity: 0.85;
+}
+.firm-decline-mark::before { transform: rotate(45deg); }
+.firm-decline-mark::after { transform: rotate(-45deg); }
+.firm-decline-desc {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--dim);
+  margin: 0;
+}
+
+/* ── Fact chips row (About: shape of the firm; Careers: terms) ── */
+.firm-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 1.8vw, 22px);
+}
+.firm-fact {
+  padding: 18px 20px;
+  background: #0b0a08;
+  border: 1px solid var(--sand-line);
+}
+.firm-fact-k {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 8px;
+}
+.firm-fact-v {
+  display: block;
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(15.5px, 1.2vw, 17.5px);
+  line-height: 1.45;
+  color: rgba(251, 250, 246, 0.9);
+}
+
+/* ── Terminal (Careers roles) ── */
+.firm-terminal {
+  padding: clamp(16px, 2vh, 22px) clamp(16px, 2vw, 24px);
+  background: #080706;
+  border: 1px solid var(--hairline);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 2;
+  color: rgba(251, 250, 246, 0.6);
+}
+.firm-terminal-line { display: flex; align-items: baseline; gap: 10px; }
+.firm-terminal-prompt { color: var(--signal-bright); }
+
+/* ── Pull row — a serif statement between sections ── */
+.firm-pull {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(21px, 2vw, 27px);
+  line-height: 1.4;
+  color: var(--ink);
+  max-width: 44ch;
+  margin: clamp(44px, 6vh, 68px) 0 0;
+  padding-left: clamp(18px, 2.2vw, 26px);
+  border-left: 2px solid var(--sand);
+}
+
+/* ── Foot ── */
+.firm-foot {
+  margin-top: clamp(44px, 6vh, 68px);
+  padding-top: clamp(24px, 3vh, 32px);
+  border-top: 1px solid var(--hairline);
+}
+.firm-coda {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 clamp(18px, 2.4vh, 26px);
+  max-width: 48ch;
+}
+.firm-foot-actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3vw, 40px);
+  flex-wrap: wrap;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  .firm-stamp { display: none; }
+  .firm-declines { grid-template-columns: 1fr; }
+  .firm-facts { grid-template-columns: 1fr; }
+}

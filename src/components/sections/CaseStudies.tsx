@@ -236,10 +236,10 @@ export default function CaseStudies() {
 
               <div className="cs-dossier-foot">
                 <span className="cs-foot-note">
-                  Full dossier ships on request once cleared for release.
+                  Cleared dossiers ship to your company inbox.
                 </span>
                 <ArrowLink
-                  href={`mailto:audit@kelwin.co?subject=Case%20dossier%20request%20—%20${c.n}`}
+                  href={`/contact?topic=dossier&ref=${encodeURIComponent(c.n)}`}
                   label="Request the full dossier"
                   tone="sand"
                 />
@@ -279,7 +279,7 @@ export default function CaseStudies() {
                 <span className="cs-research-status">{r.status}</span>
                 <a
                   className="cs-research-req"
-                  href={`mailto:audit@kelwin.co?subject=${r.subject}`}
+                  href={`/contact?topic=research&ref=${encodeURIComponent(r.n)}`}
                 >
                   Request →
                 </a>

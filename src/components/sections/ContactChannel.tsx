@@ -6,29 +6,54 @@ import "./ContactChannel.css";
 
 // ─── Contact — the general channel ────────────────────────────────────────
 // The deliberate second door. The audit path is for teams ready to be
-// qualified; this channel is for everyone earlier than that — mapping the
-// space, requesting information, press, partnerships. Stating the split
-// out loud is the point: it self-segments visitors by intent instead of
-// funnelling everyone through one "Get in touch" button.
+// qualified; this channel is for everyone earlier than that. Company name +
+// company email are required — the polite gate that keeps the channel
+// usable for real requests without a CRM on the other side.
 //
-// Static site — the form composes a mailto so the message goes straight to
-// the team with no backend, which is also the brand promise: no CRM
-// sequence on the other side.
+// Deep-linkable: /contact?topic=dossier&ref=CS·01 preselects the topic and
+// pins a "regarding" reference (used by the case-dossier and research-doc
+// request links on /reports, and the careers bench list).
 
 const TOPICS = [
   "Understanding what Kelwin does",
-  "Requesting information or a document",
+  "Requesting a case dossier",
+  "Requesting a research document",
+  "Field notes & publications",
+  "Exploring a future engagement",
   "Partnerships",
-  "Press",
+  "Press & speaking",
+  "Careers & the bench list",
   "Something else",
 ];
+
+const TOPIC_PARAM_MAP: Record<string, string> = {
+  dossier: "Requesting a case dossier",
+  research: "Requesting a research document",
+  careers: "Careers & the bench list",
+  engagement: "Exploring a future engagement",
+};
 
 export default function ContactChannel() {
   const mainRef = useRef<HTMLElement>(null);
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
+  const [email, setEmail] = useState("");
   const [topic, setTopic] = useState(TOPICS[0]);
   const [message, setMessage] = useState("");
+  const [regarding, setRegarding] = useState<string | null>(null);
+
+  // Prefill from query params (static export — parse client-side).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const t = params.get("topic");
+    const ref = params.get("ref");
+    if (t && TOPIC_PARAM_MAP[t]) setTopic(TOPIC_PARAM_MAP[t]);
+    if (ref) setRegarding(ref);
+    if (t || ref) {
+      // land the visitor on the form itself, not the page top
+      document.getElementById("write")?.scrollIntoView({ block: "start" });
+    }
+  }, []);
 
   useEffect(() => {
     const root = mainRef.current;
@@ -54,14 +79,16 @@ export default function ContactChannel() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    const subject = `General query — ${topic}${company ? ` — ${company}` : ""}`;
+    const subject = `${topic}${regarding ? ` — ${regarding}` : ""} — ${company}`;
     const body = [
       message,
       "",
       "—",
-      name && `Name: ${name}`,
-      company && `Company: ${company}`,
+      `Name: ${name}`,
+      `Company: ${company}`,
+      `Company email: ${email}`,
       `Topic: ${topic}`,
+      regarding && `Regarding: ${regarding}`,
     ]
       .filter(Boolean)
       .join("\n");
@@ -69,6 +96,10 @@ export default function ContactChannel() {
       subject
     )}&body=${encodeURIComponent(body)}`;
   }
+
+  const isDocRequest =
+    topic === "Requesting a case dossier" ||
+    topic === "Requesting a research document";
 
   return (
     <main className="ctc" ref={mainRef}>
@@ -122,7 +153,7 @@ export default function ContactChannel() {
             </div>
             <h2 className="ctc-door-title">A conversation</h2>
             <p className="ctc-door-desc">
-              Questions, information requests, partnerships, press — or
+              Questions, document requests, partnerships, press — or
               you&rsquo;re just not sure yet what you need. That&rsquo;s a
               valid state. Write below.
             </p>
@@ -142,10 +173,27 @@ export default function ContactChannel() {
             <span className="ctc-form-stamp">No CRM · No sequence</span>
           </div>
 
+          {regarding && (
+            <div className="ctc-regarding" role="note">
+              <span className="ctc-regarding-label">Regarding</span>
+              <span className="ctc-regarding-ref">{regarding}</span>
+              <button
+                type="button"
+                className="ctc-regarding-clear"
+                onClick={() => setRegarding(null)}
+                aria-label="Remove reference"
+              >
+                ✕
+              </button>
+            </div>
+          )}
+
           <form className="ctc-form" onSubmit={submit}>
             <div className="ctc-grid">
               <label className="ctc-field">
-                <span className="ctc-label">Name</span>
+                <span className="ctc-label">
+                  Name <span className="ctc-req">· required</span>
+                </span>
                 <input
                   className="ctc-input"
                   type="text"
@@ -153,53 +201,92 @@ export default function ContactChannel() {
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your name"
                   autoComplete="name"
+                  required
                 />
               </label>
               <label className="ctc-field">
-                <span className="ctc-label">Company</span>
+                <span className="ctc-label">
+                  Company <span className="ctc-req">· required</span>
+                </span>
                 <input
                   className="ctc-input"
                   type="text"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  placeholder="Company (optional)"
+                  placeholder="Company name"
                   autoComplete="organization"
+                  required
                 />
               </label>
             </div>
 
-            <label className="ctc-field">
-              <span className="ctc-label">Topic</span>
-              <div className="ctc-select-wrap">
-                <select
-                  className="ctc-input ctc-select"
-                  value={topic}
-                  onChange={(e) => setTopic(e.target.value)}
-                >
-                  {TOPICS.map((t) => (
-                    <option value={t} key={t}>{t}</option>
-                  ))}
-                </select>
-                <span className="ctc-select-arrow" aria-hidden="true">▾</span>
-              </div>
-            </label>
+            <div className="ctc-grid">
+              <label className="ctc-field">
+                <span className="ctc-label">
+                  Company email <span className="ctc-req">· required</span>
+                </span>
+                <input
+                  className="ctc-input"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@company.com"
+                  autoComplete="work email"
+                  required
+                />
+                <span className="ctc-hint">
+                  We reply to company addresses — it keeps this channel usable
+                  for the real requests.
+                </span>
+              </label>
+              <label className="ctc-field">
+                <span className="ctc-label">
+                  Topic <span className="ctc-req">· required</span>
+                </span>
+                <div className="ctc-select-wrap">
+                  <select
+                    className="ctc-input ctc-select"
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    required
+                  >
+                    {TOPICS.map((t) => (
+                      <option value={t} key={t}>{t}</option>
+                    ))}
+                  </select>
+                  <span className="ctc-select-arrow" aria-hidden="true">▾</span>
+                </div>
+                {isDocRequest && (
+                  <span className="ctc-hint">
+                    Cleared documents ship to your company inbox — usually
+                    within two working days.
+                  </span>
+                )}
+              </label>
+            </div>
 
             <label className="ctc-field">
-              <span className="ctc-label">What&rsquo;s on your mind</span>
+              <span className="ctc-label">
+                {isDocRequest ? "Anything to add" : "What's on your mind"}
+                {!isDocRequest && <span className="ctc-req"> · required</span>}
+              </span>
               <textarea
                 className="ctc-input ctc-textarea"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="As rough as you like — bullet points are fine."
+                placeholder={
+                  isDocRequest
+                    ? "Optional — context for the request, or where to focus."
+                    : "As rough as you like — bullet points are fine."
+                }
                 rows={6}
-                required
+                required={!isDocRequest}
               />
             </label>
 
             <div className="ctc-submit-row">
               <button className="ctc-submit" type="submit">
-                <span className="ctc-submit-bracket" aria-hidden="true" />
-                Send the message
+                {isDocRequest ? "Request the document" : "Send the message"}
                 <span className="ctc-submit-arrow" aria-hidden="true">→</span>
               </button>
               <p className="ctc-submit-note">

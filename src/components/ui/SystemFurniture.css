@@ -278,9 +278,11 @@
   .sys-hud .sys-scroll-dot { animation: none !important; }
 }
 
-/* ── AmbientGrid — site-wide drafting rules ───────────────────────────
-   Constant vertical hairlines, sand-tinted and barely-there. Uniform
-   across the whole page: no masks, no cursor halo, no patchy reveal. */
+/* ── AmbientGrid — the margin frame ───────────────────────────────────
+   Two vertical + two horizontal hairlines drawing a page margin around
+   the viewport, like trim marks on a printed sheet. Replaces the old
+   repeating column rules, which ran behind body copy and made the
+   text-dense pages read cluttered. */
 .ambient-grid {
   position: fixed;
   inset: 0;
@@ -289,10 +291,11 @@
 }
 .ambient-grid-rules {
   position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(90deg, rgba(199, 180, 157, 0.05) 1px, transparent 1px);
-  background-size: 160px 100%;
+  inset: 14px;
+  border: 1px solid rgba(199, 180, 157, 0.09);
+}
+@media (max-width: 760px) {
+  .ambient-grid-rules { inset: 8px; }
 }
 
 /* ── SystemStatusPill — fixed bottom-left persistent identity ────────

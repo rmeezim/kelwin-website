@@ -1,9 +1,13 @@
 import Link from "next/link";
 import "./Footer.css";
 
-// Minimal dark footer sitting beneath the red CTA band, so the red reads as
-// the page's crescendo and the footer as a quiet system sign-off. Mirrors
-// the navbar's nav taxonomy; carries the sister-company relationship.
+// ─── Footer — the colophon ────────────────────────────────────────────────
+// Editorial sign-off rather than a link dump: a serif closing statement
+// (the site's thesis, restated once more on the way out), the nav taxonomy,
+// and a colophon column that says out loud that people made this — type
+// choices, the sister company, a signed line from the founder. The page
+// ends the way a good document does: with attribution.
+
 const COLUMNS: { heading: string; links: { label: string; href: string }[] }[] = [
   {
     heading: "Capabilities",
@@ -37,11 +41,18 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="foot-stage">
+        {/* Editorial close — the thesis, once more, in the accent voice. */}
+        <p className="foot-thesis">
+          In a noisy market, the clearest company wins —{" "}
+          <em>not the loudest, or the busiest.</em>
+        </p>
+
         <div className="foot-top">
           <div className="foot-brand">
             <Link href="/" className="foot-wordmark">KELWIN</Link>
             <p className="foot-tagline">
-              Revenue infrastructure &amp; GTM intelligence for serious B2B companies.
+              Revenue infrastructure &amp; GTM intelligence for serious B2B
+              companies.
             </p>
             <span className="foot-sister">
               <span className="foot-sister-dash" aria-hidden="true" />
@@ -63,6 +74,22 @@ export default function Footer() {
               </div>
             ))}
           </nav>
+
+          {/* Colophon — people made this, and it says so. */}
+          <div className="foot-colophon">
+            <span className="foot-col-heading">Colophon</span>
+            <p className="foot-colophon-line">
+              Written, designed &amp; built by the founding team — no theme,
+              no template.
+            </p>
+            <p className="foot-colophon-line">
+              Set in Instrument Sans, Instrument Serif &amp; JetBrains Mono.
+            </p>
+            <a className="foot-colophon-mail" href="mailto:audit@kelwin.co">
+              audit@kelwin.co
+            </a>
+            <span className="foot-sign">— Rameez, founder</span>
+          </div>
         </div>
 
         <div className="foot-bottom">
