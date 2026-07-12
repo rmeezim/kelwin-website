@@ -286,9 +286,9 @@
   padding-top: 10px;
   border-top: 1px solid var(--hairline);
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   color: var(--steel);
 }
 .cap-stat-ext { font-size: 11px; opacity: 0.7; }
@@ -394,4 +394,6 @@
   .cap-shape { grid-template-columns: 1fr; row-gap: 20px; }
   .cap-shape-link { width: 1px; height: 20px; justify-self: flex-start; margin-left: 26px; }
   .cap-stats { grid-template-columns: 1fr; }
+  .cap-phase-head { flex-wrap: wrap; row-gap: 4px; }
+  .cap-phase-meta { flex-basis: 100%; margin-left: 0; white-space: normal; }
 }

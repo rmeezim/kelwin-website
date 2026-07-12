@@ -87,7 +87,56 @@ export const NARRATIVE: CapabilityData = {
       artifact: "Telemetry spec",
     },
   ],
-  stats: [], // filled from verified research
+  stats: [
+    {
+      figure: "95:5",
+      claim:
+        "Up to 95% of category buyers aren't in-market at any one time — roughly 5% in a given quarter. The narrative has to build memory with buyers who aren't ready yet (published as a heuristic, not a measurement).",
+      source: "Ehrenberg-Bass · B2B Institute",
+      year: "2021",
+      url: "https://marketingscience.info/news-and-insights/advertising-effectiveness-and-the-95-5-rule-most-b2b-buyers-are-not-in-the-market-right-now",
+    },
+    {
+      figure: "17%",
+      claim:
+        "Share of the buying journey committees spend meeting all potential suppliers combined — any single rep may get 5–6%. Your documents argue in rooms you never enter.",
+      source: "Gartner",
+      year: "2019",
+      url: "https://www.gartner.com/en/sales/insights/b2b-buying-journey",
+    },
+    {
+      figure: "6–10",
+      claim:
+        "Decision makers in a typical complex B2B purchase — each armed with 4–5 independently gathered pieces of information the group must deconflict.",
+      source: "Gartner",
+      year: "2019",
+      url: "https://www.gartner.com/en/sales/insights/b2b-buying-journey",
+    },
+    {
+      figure: "81% → 31%",
+      claim:
+        "Purchase likelihood collapses as the buying group grows from one person to six or more. Consensus dies without shared language (CEB research; 5.4 formal sign-offs on average).",
+      source: "CEB · Harvard Business Review",
+      year: "2015",
+      url: "https://hbr.org/2015/03/making-the-consensus-sale",
+    },
+    {
+      figure: "~70%",
+      claim:
+        "How far through the purchase buyers are before they engage sellers at all — and 81% already hold a preferred vendor at first contact (2,509 buyers surveyed).",
+      source: "6sense Research",
+      year: "2024",
+      url: "https://6sense.com/science-of-b2b/2024-buyer-experience-report/",
+    },
+    {
+      figure: "80–90%",
+      claim:
+        "Buyers who start with a “day-one list” of vendors before doing any research — and roughly 90% ultimately choose from that list (1,208 buyers surveyed).",
+      source: "Bain & Company × Google",
+      year: "2022",
+      url: "https://hbr.org/2022/09/what-b2bs-need-to-know-about-their-buyers",
+    },
+  ],
   install: {
     weeks: "Weeks 1–6 · fixed scope",
     items: [
@@ -192,7 +241,56 @@ export const INFRASTRUCTURE: CapabilityData = {
       artifact: "Operator playbook",
     },
   ],
-  stats: [], // filled from verified research
+  stats: [
+    {
+      figure: "1 in 6",
+      claim:
+        "Legitimate marketing emails that never reach the inbox — global average placement fell to 83.5% in 2024, with 6.7% landing in spam and 9.8% going missing entirely.",
+      source: "Validity",
+      year: "2025",
+      url: "https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/",
+    },
+    {
+      figure: "$36 : $1",
+      claim:
+        "Average return per dollar spent on email — the highest-ROI channel there is, when it actually arrives (survey of 2,000+ marketers).",
+      source: "Litmus",
+      year: "2020",
+      url: "https://www.litmus.com/resources/email-marketing-roi",
+    },
+    {
+      figure: "28%",
+      claim:
+        "Share of the week reps actually spend selling. The rest disappears into deal management and data entry — the tax of a disconnected stack (7,775 sellers surveyed).",
+      source: "Salesforce",
+      year: "2022",
+      url: "https://www.salesforce.com/news/stories/sales-research-2023/",
+    },
+    {
+      figure: "$12.9M",
+      claim:
+        "Average annual cost of poor data quality per organization, per a Gartner survey of large enterprises. Hygiene isn't housekeeping — it's a P&L line.",
+      source: "Gartner",
+      year: "2021",
+      url: "https://www.gartner.com/smarterwithgartner/how-to-improve-your-data-quality",
+    },
+    {
+      figure: "8.5%",
+      claim:
+        "Outreach emails that get any reply at all, across 12 million sends — and a single follow-up may lift replies by ~66%. Volume without engineering is noise.",
+      source: "Backlinko × Pitchbox",
+      year: "2019",
+      url: "https://backlinko.com/email-outreach-study",
+    },
+    {
+      figure: "+32.7%",
+      claim:
+        "More replies for personalized message bodies — +30.5% for personalized subject lines — across the same 12M-email dataset (correlational, but directionally decisive).",
+      source: "Backlinko × Pitchbox",
+      year: "2019",
+      url: "https://backlinko.com/email-outreach-study",
+    },
+  ],
   install: {
     weeks: "Weeks 1–8 · fixed scope",
     items: [
@@ -297,7 +395,56 @@ export const INTELLIGENCE: CapabilityData = {
       artifact: "Calibration readout",
     },
   ],
-  stats: [], // filled from verified research
+  stats: [
+    {
+      figure: "84%",
+      claim:
+        "Deals won by the first vendor a buyer contacts. Knowing who's in-market before they call is most of the game (900+ B2B buyers surveyed).",
+      source: "6sense Research",
+      year: "2023",
+      url: "https://6sense.com/newsroom/84-of-b2b-deals-are-decided-before-marketers-even-know-about-them/",
+    },
+    {
+      figure: "7×",
+      claim:
+        "More likely to qualify a lead when contacting within an hour versus even an hour later — and 60× versus waiting 24 hours (audit of 2,241 companies).",
+      source: "Harvard Business Review",
+      year: "2011",
+      url: "https://hbr.org/2011/03/the-short-life-of-online-sales-leads",
+    },
+    {
+      figure: "up to 50%",
+      claim:
+        "Win-rate improvement seen by companies running comprehensive win/loss analysis programs — alongside 15–30% revenue gains (Gartner tech go-to-market research).",
+      source: "Gartner",
+      year: "2014",
+      url: "https://www.gartner.com/en/documents/2742417",
+    },
+    {
+      figure: "23×",
+      claim:
+        "More likely to clearly outperform competitors on new-customer acquisition when customer analytics is used intensively — and 9× on customer loyalty.",
+      source: "McKinsey & Company",
+      year: "2014",
+      url: "https://www.mckinsey.com/capabilities/growth-marketing-and-sales/our-insights/five-facts-how-customer-analytics-boosts-corporate-performance",
+    },
+    {
+      figure: "45%",
+      claim:
+        "Sales leaders and sellers with high confidence in their organization's forecast accuracy — and only 47% trust their own data quality.",
+      source: "Gartner",
+      year: "2020",
+      url: "https://www.gartner.com/en/newsroom/press-releases/2020-02-12-gartner-says-less-than-50--of-sales-leaders-and-selle",
+    },
+    {
+      figure: "60–73%",
+      claim:
+        "Share of enterprise data that goes unused for analytics. The evidence your motion produces mostly evaporates — unless something is built to keep it.",
+      source: "Forrester",
+      year: "2016",
+      url: "https://www.forrester.com/blogs/hadoop-is-datas-darling-for-a-reason/",
+    },
+  ],
   install: {
     weeks: "Weeks 1–6 · fixed scope",
     items: [
