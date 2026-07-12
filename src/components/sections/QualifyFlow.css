@@ -26,7 +26,10 @@
 .qf-stage {
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0 clamp(28px, 5vw, 64px) var(--space-section);
+  /* the flow now opens the page directly under the PageCommand header —
+     it needs the interior-page top rhythm so the on-ramp title clears
+     the header's calibrated baseline rule */
+  padding: clamp(44px, 6vh, 72px) clamp(28px, 5vw, 64px) var(--space-section);
 }
 
 .qf-panel {
