@@ -5,14 +5,15 @@ import ArrowLink from "@/components/ui/ArrowLink";
 import ConvertPanel from "@/components/ui/ConvertPanel";
 import "./FirmPages.css";
 
-// ─── Who we work with — the fit instrument ────────────────────────────────
-// A qualification page that behaves like one: a calibration panel that
-// reads in both directions (patina = in range, red = out of range), the
-// three situations as dossier panels that each end on their own audit
-// cue, and the gate as a terminal. Conversion-first: every block hands
-// the reader a way to say "this is me" and act on it.
+// ─── Who we work with — the targeting system ──────────────────────────────
+// Qualification rendered as instrumentation: a 2×2 deployment matrix
+// (one active zone, the rest restricted airspace), a representative
+// deployment ticker (SPECIMEN-labeled — environments are typical, not
+// live client data), industry tiles with abstract network topographies
+// (the red line is the narrative cutting the noise), the three
+// situations, and an anti-fit terminal that throws SYSTEM INCOMPATIBLE.
 
-const IN_RANGE = [
+const ZONE_CRITERIA = [
   {
     title: "Sales-carried deals",
     desc: "A human closes. Committees, calls, contracts — the motion our system instruments.",
@@ -23,7 +24,7 @@ const IN_RANGE = [
   },
   {
     title: "Founder still in the building",
-    desc: "The instincts exist — they're just trapped in one head. We write them down as a system.",
+    desc: "The instincts exist — trapped in one head. We write them down as a system.",
   },
   {
     title: "Someone will own it",
@@ -31,64 +32,87 @@ const IN_RANGE = [
   },
 ];
 
-const OUT_OF_RANGE = [
-  {
-    title: "Pre-revenue",
-    desc: "There's no working motion to instrument yet. Come back at first revenue — we mean it.",
-  },
-  {
-    title: "Pure self-serve / PLG",
-    desc: "Our system assumes a sales-carried deal. Different machinery, honestly not ours.",
-  },
-  {
-    title: "Lead-list shopping",
-    desc: "Renting activity is the cycle we exist to end. We'd be selling you the disease.",
-  },
-  {
-    title: "Outsource-it-forever",
-    desc: "If nobody inside will ever own the system, dependency isn't a risk — it's the plan. Not with us.",
-  },
+// [EDIT ME] Founder: representative environments — keep these typical of
+// the actual book. They render under a SPECIMEN chip, never as live data.
+const TELEMETRY = [
+  { node: "NODE 01", env: "Series B cybersecurity", obj: "Pipeline velocity", status: "CALIBRATING", tone: "sand" as const },
+  { node: "NODE 02", env: "Enterprise SaaS · $40K ACV", obj: "Committee narrative", status: "INSTALLING", tone: "sand" as const },
+  { node: "NODE 03", env: "FinTech infrastructure", obj: "Risk-review survival", status: "READOUT", tone: "patina" as const },
+  { node: "NODE 04", env: "Dev tools · PLG + sales", obj: "Signal discipline", status: "CALIBRATING", tone: "sand" as const },
+  { node: "NODE 05", env: "B2B services firm", obj: "Beyond-referral motion", status: "INSTALLING", tone: "sand" as const },
 ];
 
-// The industry index — specialist positioning, stated as knowledge:
-// each sector carries its motion signature and the failure mode we keep
-// finding inside it. Same system underneath; different thing to fix first.
-const INDUSTRIES = [
+// Industry topographies — abstract network graphs; the red path is the
+// narrative cutting a straight line through the sector's noise.
+type Topo = { nodes: [number, number][]; edges: [number, number][]; cut: string };
+const INDUSTRIES: {
+  n: string; name: string; chips: string[]; breaks: string; topo: Topo;
+}[] = [
   {
     n: "I·01",
     name: "Enterprise SaaS",
     chips: ["Sales-carried", "Committee buys"],
     breaks: "The story that wins the champion dies in the committee — seven stakeholders, seven versions of what you do.",
+    topo: {
+      nodes: [[30, 55], [70, 25], [95, 60], [70, 85], [120, 30], [130, 75], [160, 50], [105, 15], [150, 90], [175, 20]],
+      edges: [[0, 1], [1, 2], [2, 3], [3, 0], [1, 3], [0, 2], [2, 4], [4, 5], [5, 6], [4, 6], [2, 5], [6, 9], [4, 7], [7, 1], [5, 8], [8, 6], [2, 7]],
+      cut: "M8 92 L192 22",
+    },
   },
   {
     n: "I·02",
     name: "Cybersecurity",
     chips: ["Trust-gated", "Crowded category"],
     breaks: "Every vendor promises the same three outcomes in the same words. Differentiation is a language problem before it's a product one.",
+    topo: {
+      nodes: [[25, 25], [75, 20], [125, 25], [175, 30], [30, 60], [80, 55], [130, 60], [180, 55], [25, 90], [75, 95], [125, 88], [170, 92]],
+      edges: [[0, 5], [1, 4], [1, 6], [2, 5], [2, 7], [3, 6], [4, 9], [5, 8], [5, 10], [6, 9], [6, 11], [7, 10], [0, 1], [1, 2], [2, 3], [4, 5], [5, 6], [6, 7], [8, 9], [9, 10], [10, 11]],
+      cut: "M8 70 L192 40",
+    },
   },
   {
     n: "I·03",
     name: "FinTech & payments",
     chips: ["Regulated", "Risk-averse buyer"],
     breaks: "Compliance vocabulary smothers the actual story, and deals stall in risk review because nobody armed the champion.",
+    topo: {
+      nodes: [[40, 20], [40, 45], [40, 70], [40, 95], [100, 20], [100, 45], [100, 70], [100, 95], [160, 20], [160, 45], [160, 70], [160, 95]],
+      edges: [[0, 1], [1, 2], [2, 3], [4, 5], [5, 6], [6, 7], [8, 9], [9, 10], [10, 11], [1, 5], [6, 10], [2, 6]],
+      cut: "M8 85 L70 60 L130 45 L192 25",
+    },
   },
   {
     n: "I·04",
     name: "Developer & data infrastructure",
     chips: ["Technical buyer", "PLG + sales"],
     breaks: "The buyer reads docs, not decks. Outbound only works when it sounds like engineering wrote it.",
+    topo: {
+      nodes: [[20, 40], [60, 30], [100, 40], [140, 30], [180, 40], [40, 80], [80, 90], [120, 80], [160, 90]],
+      edges: [[0, 1], [1, 2], [2, 3], [3, 4], [5, 6], [6, 7], [7, 8], [0, 5], [1, 6], [2, 7], [3, 8], [1, 7]],
+      cut: "M8 60 L192 60",
+    },
   },
   {
     n: "I·05",
     name: "Professional & B2B services",
     chips: ["Relationship-led", "Referral ceiling"],
     breaks: "Growth stalls where the partners' networks end — the firm's knowledge never became a sellable narrative.",
+    topo: {
+      nodes: [[60, 55], [20, 25], [15, 70], [45, 95], [85, 20], [130, 60], [105, 95], [160, 25], [178, 80], [150, 98]],
+      edges: [[0, 1], [0, 2], [0, 3], [0, 4], [5, 6], [5, 7], [5, 8], [5, 9], [0, 5]],
+      cut: "M20 100 L60 55 L130 60 L192 30",
+    },
   },
   {
     n: "I·06",
     name: "Industrial & deep tech",
     chips: ["Long cycle", "Legacy incumbents"],
     breaks: "Twelve-month deals drift: the narrative that opened the deal isn't the one that closes it.",
+    topo: {
+      nodes: [[15, 70], [45, 45], [75, 75], [105, 40], [135, 78], [165, 45], [190, 70]],
+      edges: [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [1, 3], [3, 5]],
+      cut: "M15 58 L190 58",
+    },
   },
 ];
 
@@ -125,6 +149,31 @@ const VIGNETTES = [
   },
 ];
 
+const ANTIFIT = [
+  { probe: "pre-revenue", err: "no working motion to instrument — return at first revenue" },
+  { probe: "pure self-serve / PLG", err: "assumes a sales-carried deal — different machinery, not ours" },
+  { probe: "lead-list shopping", err: "renting activity is the disease we treat — we'd be selling it to you" },
+  { probe: "outsource-it-forever", err: "nobody inside will own the system — dependency by design, declined" },
+];
+
+function TopoGraph({ topo }: { topo: Topo }) {
+  return (
+    <svg className="fp3-topo" viewBox="0 0 200 110" aria-hidden="true">
+      {topo.edges.map(([a, b], i) => (
+        <line
+          key={i}
+          x1={topo.nodes[a][0]} y1={topo.nodes[a][1]}
+          x2={topo.nodes[b][0]} y2={topo.nodes[b][1]}
+        />
+      ))}
+      {topo.nodes.map(([x, y], i) => (
+        <circle key={i} cx={x} cy={y} r="2.4" />
+      ))}
+      <path className="fp3-topo-cut" d={topo.cut} pathLength={1} />
+    </svg>
+  );
+}
+
 export default function FirmFit() {
   const mainRef = useRef<HTMLElement>(null);
 
@@ -144,7 +193,7 @@ export default function FirmFit() {
             io.unobserve(e.target);
           }
         }),
-      { threshold: 0.12 }
+      { threshold: 0.1 }
     );
     targets.forEach((el) => io.observe(el));
     return () => io.disconnect();
@@ -153,55 +202,92 @@ export default function FirmFit() {
   return (
     <main className="fp3" ref={mainRef}>
       <div className="fp3-stage">
-        {/* ── 01 · Calibration — reads in both directions ── */}
-        <section className="fp3-section fp3-reveal" aria-label="Fit calibration">
+        {/* ── 01 · The deployment matrix ── */}
+        <section className="fp3-section fp3-reveal" aria-label="Qualification matrix">
           <div className="fp3-eyebrow-row">
-            <span className="fp3-eyebrow">Fit calibration</span>
+            <span className="fp3-eyebrow">Deployment zones</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
-            <span className="fp3-eyebrow-meta">FIT/01 · READS IN BOTH DIRECTIONS</span>
+            <span className="fp3-eyebrow-meta">FIT/01 · ONE ZONE, THREE RESTRICTED</span>
           </div>
-          <div className="fp3-cal">
-            <span className="fp3-corner fp3-corner-tl" aria-hidden="true" />
-            <span className="fp3-corner fp3-corner-br" aria-hidden="true" />
-            <div className="fp3-cal-col">
-              <div className="fp3-cal-head is-yes">
-                <span className="fp3-mark-yes" aria-hidden="true" />
-                In range
-              </div>
-              {IN_RANGE.map((r, i) => (
-                <div className="fp3-cal-row fp3-reveal" style={{ ["--i" as string]: i }} key={r.title}>
-                  <span className="fp3-cal-title">{r.title}</span>
-                  <span className="fp3-cal-desc">{r.desc}</span>
+          <div className="fp3-mtxwrap">
+            <div className="fp3-mtx">
+              <span className="fp3-mtx-yaxis">DEAL COMPLEXITY ▲</span>
+              <div className="fp3-mtx-grid">
+                <div className="fp3-mtx-cell is-restricted">
+                  <span className="fp3-mtx-tag">RESTRICTED</span>
+                  <span className="fp3-mtx-why">Complex + self-serve — a contradiction that resolves itself</span>
                 </div>
-              ))}
-            </div>
-            <div className="fp3-cal-divider" aria-hidden="true" />
-            <div className="fp3-cal-col">
-              <div className="fp3-cal-head is-no">
-                <span className="fp3-mark-no" aria-hidden="true" />
-                Out of range
-              </div>
-              {OUT_OF_RANGE.map((r, i) => (
-                <div className="fp3-cal-row fp3-reveal" style={{ ["--i" as string]: i }} key={r.title}>
-                  <span className="fp3-cal-title is-dim">{r.title}</span>
-                  <span className="fp3-cal-desc">{r.desc}</span>
+                <div className="fp3-mtx-cell is-active">
+                  <span className="fp3-corner fp3-corner-tl" aria-hidden="true" />
+                  <span className="fp3-corner fp3-corner-br" aria-hidden="true" />
+                  <span className="fp3-mtx-zone">
+                    <span className="fp3-mtx-dot" aria-hidden="true" />
+                    DEPLOYMENT ZONE
+                  </span>
+                  <span className="fp3-mtx-desc">
+                    Committee deals, human-closed, real revenue, felt ceiling
+                    — where the system compounds.
+                  </span>
                 </div>
-              ))}
-            </div>
-            <div className="fp3-cal-foot">
-              <span className="fp3-cal-foot-note">
-                The audit intake asks these three ways. Qualifying out costs
-                nothing — the no protects both calendars.
+                <div className="fp3-mtx-cell is-restricted">
+                  <span className="fp3-mtx-tag">RESTRICTED</span>
+                  <span className="fp3-mtx-why">Pure PLG — different machinery, honestly not ours</span>
+                </div>
+                <div className="fp3-mtx-cell is-restricted">
+                  <span className="fp3-mtx-tag">RESTRICTED</span>
+                  <span className="fp3-mtx-why">Simple transactional — doesn&rsquo;t need infrastructure</span>
+                </div>
+              </div>
+              <span className="fp3-mtx-xaxis">
+                <span>◀ PRODUCT-LED</span>
+                <span>GTM MOTION</span>
+                <span>SALES-LED ▶</span>
               </span>
+            </div>
+            <div className="fp3-mtx-criteria">
+              <span className="fp3-mtx-criteria-k">
+                <span className="fp3-mark-yes" aria-hidden="true" />
+                Zone criteria
+              </span>
+              {ZONE_CRITERIA.map((c, i) => (
+                <div className="fp3-mtx-crit fp3-reveal" style={{ ["--i" as string]: i }} key={c.title}>
+                  <span className="fp3-mtx-crit-title">{c.title}</span>
+                  <span className="fp3-mtx-crit-desc">{c.desc}</span>
+                </div>
+              ))}
               <ArrowLink href="/audit" label="Run the three questions" tone="sand" />
             </div>
           </div>
         </section>
 
-        {/* ── 02 · Industries — specialist, not generalist ── */}
+        {/* ── 02 · Deployment telemetry — representative, and it says so ── */}
+        <section className="fp3-section fp3-reveal" aria-label="Deployment telemetry">
+          <div className="fp3-ticker">
+            <div className="fp3-ticker-bar">
+              <span className="fp3-spec-id">DEPLOYMENT TELEMETRY</span>
+              <span className="fp3-spec-line" aria-hidden="true" />
+              <span className="fp3-ticker-chip">REPRESENTATIVE ENVIRONMENTS · SPECIMEN</span>
+            </div>
+            <div className="fp3-ticker-track" aria-hidden="true">
+              <div className="fp3-ticker-run">
+                {[...TELEMETRY, ...TELEMETRY].map((t, i) => (
+                  <span className="fp3-ticker-item" key={i}>
+                    <span className="fp3-ticker-node">{t.node}</span>
+                    {t.env} · OBJECTIVE: {t.obj} ·
+                    <span className={`fp3-ticker-status is-${t.tone}`}>
+                      <span className="fp3-ticker-mark" /> {t.status}
+                    </span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── 03 · Industry topographies ── */}
         <section className="fp3-section fp3-reveal" aria-label="Industries we serve">
           <div className="fp3-eyebrow-row">
-            <span className="fp3-eyebrow">Industries</span>
+            <span className="fp3-eyebrow">Industry topographies</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
             <span className="fp3-eyebrow-meta">FIT/02 · SPECIALIST, NOT GENERALIST</span>
           </div>
@@ -220,6 +306,7 @@ export default function FirmFit() {
                     ))}
                   </span>
                 </span>
+                <TopoGraph topo={ind.topo} />
                 <span className="fp3-ind-name">{ind.name}</span>
                 <span className="fp3-ind-break">
                   <span className="fp3-ind-break-k">Where it breaks</span>
@@ -230,13 +317,13 @@ export default function FirmFit() {
           </div>
           <p className="fp3-accent">
             <span className="fp3-accent-dash" aria-hidden="true" />
-            The system underneath is the same. The failure modes aren&rsquo;t —
-            specialization is knowing which one is yours before spending a
-            quarter finding out.
+            The tangle is the sector&rsquo;s noise. The red line is a
+            narrative cutting straight through it — same system underneath,
+            different noise to cut.
           </p>
         </section>
 
-        {/* ── 03 · Three situations — told from inside ── */}
+        {/* ── 04 · Three situations — told from inside ── */}
         <section className="fp3-section fp3-reveal" aria-label="Three situations">
           <div className="fp3-eyebrow-row">
             <span className="fp3-eyebrow">Three situations</span>
@@ -276,25 +363,26 @@ export default function FirmFit() {
           </div>
         </section>
 
-        {/* ── 04 · The gate — terminal ── */}
-        <section className="fp3-section fp3-reveal" aria-label="The gate">
+        {/* ── 05 · The anti-fit terminal ── */}
+        <section className="fp3-section fp3-reveal" aria-label="Where we say no">
           <div className="fp3-eyebrow-row">
-            <span className="fp3-eyebrow">The gate</span>
+            <span className="fp3-eyebrow">Anti-fit</span>
             <span className="fp3-eyebrow-dash" aria-hidden="true" />
-            <span className="fp3-eyebrow-meta">FIT/04 · THREE QUESTIONS</span>
+            <span className="fp3-eyebrow-meta">FIT/04 · HOVER A PROBE — THE SYSTEM ANSWERS</span>
           </div>
-          <div className="fp3-terminal" role="note">
-            <div className="fp3-terminal-line">
-              <span className="fp3-terminal-prompt" aria-hidden="true">&gt;</span>
-              gate.check — where revenue is · how deals close · what the
-              constraint feels like from inside
-            </div>
-            <div className="fp3-terminal-line">
-              <span className="fp3-terminal-prompt" aria-hidden="true">&gt;</span>
-              qualifying out costs nothing, and the yes means something when
-              we say it
-            </div>
-            <div className="fp3-terminal-line">
+          <div className="fp3-terminal fp3-antifit" role="note">
+            {ANTIFIT.map((a) => (
+              <div className="fp3-antifit-row" tabIndex={0} key={a.probe}>
+                <div className="fp3-terminal-line">
+                  <span className="fp3-terminal-prompt" aria-hidden="true">&gt;</span>
+                  fit.probe — {a.probe}
+                </div>
+                <div className="fp3-antifit-err">
+                  ERROR: SYSTEM INCOMPATIBLE — {a.err}
+                </div>
+              </div>
+            ))}
+            <div className="fp3-terminal-line is-quiet">
               <span className="fp3-terminal-prompt" aria-hidden="true">&gt;</span>
               unsure which side you&rsquo;re on: the general channel stays
               open<span className="fp3-terminal-cursor" aria-hidden="true" />
@@ -305,7 +393,7 @@ export default function FirmFit() {
         {/* ── Close — the decision ── */}
         <div className="fp3-section fp3-reveal">
           <ConvertPanel
-            title="If one of those read like your Tuesday,"
+            title="If you're in the zone,"
             sub="the audit reads like your diagnosis — ten working days against your numbers, your calls, your language. It gates before it books, so when it says go, it means it."
             chips={["3-question gate", "Fixed scope", "Honest in both directions"]}
             primary={{ href: "/audit", label: "See if the audit fits" }}
