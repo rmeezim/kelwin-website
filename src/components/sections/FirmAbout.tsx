@@ -16,7 +16,7 @@ const SPEC = [
   { k: "Founded", v: "2026 — deliberately late to the category" },
   { k: "Model", v: "Senior pods of 2–3, end to end" },
   { k: "Contracts", v: "Fixed scope, exit built in" },
-  { k: "Retainers", v: "None. Zero. That's the point." },
+  { k: "Engagements", v: "Install first, then an operating retainer — on a system you own" },
   { k: "Replies", v: "A founder, within a working day" },
 ];
 
@@ -58,8 +58,8 @@ const STACK = [
   },
   {
     n: "B·02",
-    title: "Assets, not retainers",
-    desc: "Six transferable artifacts, documented in your language, living in your stack. Dependency is a design flaw.",
+    title: "Assets first — then the retainer",
+    desc: "Everything we install is documented in your language and lives in your stack. The operating retainer compounds a system you own — it never becomes the thing you rent.",
   },
   {
     n: "B·03",

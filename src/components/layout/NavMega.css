@@ -192,6 +192,34 @@
 
 /* Action cue — an arrow that slides in on hover; the card reads as a
    button, not a brochure tile. */
+/* Service manifest inside capability feature cards — the catalog view. */
+.nmc-services {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 12px;
+  padding-top: 11px;
+  border-top: 1px solid rgba(199, 180, 157, 0.14);
+}
+.nmc-service {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  color: rgba(251, 250, 246, 0.62);
+}
+.nmc-service-mark {
+  width: 5px;
+  height: 5px;
+  background: rgba(199, 180, 157, 0.55);
+  flex-shrink: 0;
+  transform: translateY(-1px);
+}
+.nmc:hover .nmc-service { color: rgba(251, 250, 246, 0.78); }
+
 .nmc-arrow {
   font-family: var(--font-mono);
   font-size: 13px;

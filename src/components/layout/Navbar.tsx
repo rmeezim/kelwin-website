@@ -17,6 +17,8 @@ type MegaLink = {
   tag?: string;
   glyph?: GlyphName;
   cta?: boolean;
+  /** Sub-service catalog — renders as a mono manifest list on feature cards. */
+  services?: string[];
 };
 type MegaDef = {
   protocol: string;
@@ -40,22 +42,40 @@ const navItems: NavItem[] = [
           tag: "C·01",
           glyph: "narrative",
           title: "Narrative Systems",
-          desc: "The message system, proof architecture, and category the market hears.",
+          desc: "What the market hears, made deliberate.",
           href: "/capabilities/narrative-systems",
+          services: [
+            "Positioning & category design",
+            "ICP message matrix",
+            "Sales language & objection library",
+            "Proof & evidence architecture",
+          ],
         },
         {
           tag: "C·02",
           glyph: "channels",
           title: "GTM Infrastructure",
-          desc: "Signal-based orchestration across email, social, phone, content, events.",
+          desc: "The machine that carries it to buyers.",
           href: "/capabilities/gtm-infrastructure",
+          services: [
+            "Deliverability engineering",
+            "Outbound engine build",
+            "Omnichannel orchestration",
+            "CRM & data hygiene automation",
+          ],
         },
         {
           tag: "C·03",
           glyph: "intelligence",
           title: "GTM Intelligence",
-          desc: "Instrumentation and quarterly calibration — the loop that compounds.",
+          desc: "The loop that makes it compound.",
           href: "/capabilities/gtm-intelligence",
+          services: [
+            "Signal taxonomy & intent monitoring",
+            "Win/loss & objection intelligence",
+            "Narrative resonance telemetry",
+            "Quarterly calibration program",
+          ],
         },
       ],
       rail: [
@@ -414,6 +434,16 @@ function MegaCard({
             <span className="nmc-arrow" aria-hidden="true">→</span>
           </span>
           <span className="nmc-desc">{item.desc}</span>
+          {item.services && (
+            <span className="nmc-services">
+              {item.services.map((s) => (
+                <span className="nmc-service" key={s}>
+                  <span className="nmc-service-mark" aria-hidden="true" />
+                  {s}
+                </span>
+              ))}
+            </span>
+          )}
         </span>
         <span className="nmc-sweep" aria-hidden="true" />
       </>

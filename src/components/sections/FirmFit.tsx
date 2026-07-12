@@ -47,10 +47,13 @@ const TELEMETRY = [
 type Topo = { nodes: [number, number][]; edges: [number, number][]; cut: string };
 const INDUSTRIES: {
   n: string; name: string; chips: string[]; breaks: string; topo: Topo;
+  img?: string; pos?: string;
 }[] = [
   {
     n: "I·01",
     name: "Enterprise SaaS",
+    img: "/ind-saas.webp",
+    pos: "50% 55%",
     chips: ["Sales-carried", "Committee buys"],
     breaks: "The story that wins the champion dies in the committee — seven stakeholders, seven versions of what you do.",
     topo: {
@@ -62,6 +65,8 @@ const INDUSTRIES: {
   {
     n: "I·02",
     name: "Cybersecurity",
+    img: "/ind-cyber.webp",
+    pos: "50% 50%",
     chips: ["Trust-gated", "Crowded category"],
     breaks: "Every vendor promises the same three outcomes in the same words. Differentiation is a language problem before it's a product one.",
     topo: {
@@ -73,6 +78,7 @@ const INDUSTRIES: {
   {
     n: "I·03",
     name: "FinTech & payments",
+    // img pending — stacked stone tablets, prompt already issued
     chips: ["Regulated", "Risk-averse buyer"],
     breaks: "Compliance vocabulary smothers the actual story, and deals stall in risk review because nobody armed the champion.",
     topo: {
@@ -84,6 +90,8 @@ const INDUSTRIES: {
   {
     n: "I·04",
     name: "Developer & data infrastructure",
+    img: "/ind-devinfra.webp",
+    pos: "50% 60%",
     chips: ["Technical buyer", "PLG + sales"],
     breaks: "The buyer reads docs, not decks. Outbound only works when it sounds like engineering wrote it.",
     topo: {
@@ -95,6 +103,8 @@ const INDUSTRIES: {
   {
     n: "I·05",
     name: "Professional & B2B services",
+    img: "/ind-services.webp",
+    pos: "50% 42%",
     chips: ["Relationship-led", "Referral ceiling"],
     breaks: "Growth stalls where the partners' networks end — the firm's knowledge never became a sellable narrative.",
     topo: {
@@ -106,6 +116,8 @@ const INDUSTRIES: {
   {
     n: "I·06",
     name: "Industrial & deep tech",
+    img: "/ind-industrial.webp",
+    pos: "50% 35%",
     chips: ["Long cycle", "Legacy incumbents"],
     breaks: "Twelve-month deals drift: the narrative that opened the deal isn't the one that closes it.",
     topo: {
@@ -298,6 +310,16 @@ export default function FirmFit() {
                 style={{ ["--i" as string]: i }}
                 key={ind.n}
               >
+                {ind.img && (
+                  <span
+                    className="fp3-ind-img"
+                    style={{
+                      backgroundImage: `url(${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${ind.img})`,
+                      backgroundPosition: ind.pos,
+                    }}
+                    aria-hidden="true"
+                  />
+                )}
                 <span className="fp3-ind-head">
                   <span className="fp3-ind-num">{ind.n}</span>
                   <span className="fp3-ind-chips">

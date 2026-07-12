@@ -623,13 +623,33 @@
   gap: clamp(14px, 1.6vw, 20px);
 }
 .fp3-ind {
+  --ind-pad-y: clamp(18px, 2.4vh, 26px);
+  --ind-pad-x: clamp(18px, 2vw, 24px);
   display: flex;
   flex-direction: column;
   gap: 9px;
-  padding: clamp(18px, 2.4vh, 26px) clamp(18px, 2vw, 24px);
+  padding: var(--ind-pad-y) var(--ind-pad-x);
   background: var(--panel);
   border: 1px solid var(--sand-line);
   transition: border-color 0.25s ease;
+  overflow: hidden;
+}
+/* sector texture — bleeds to the tile edges above the instrumentation */
+.fp3-ind-img {
+  position: relative;
+  display: block;
+  height: clamp(96px, 8.5vw, 130px);
+  margin: calc(-1 * var(--ind-pad-y)) calc(-1 * var(--ind-pad-x)) 8px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid var(--sand-line);
+  filter: brightness(0.94) saturate(0.92);
+}
+.fp3-ind-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(11, 10, 8, 0.16) 0%, rgba(11, 10, 8, 0) 35%, rgba(11, 10, 8, 0.55) 100%);
 }
 .fp3-ind:hover { border-color: rgba(199, 180, 157, 0.4); }
 .fp3-ind-head {
