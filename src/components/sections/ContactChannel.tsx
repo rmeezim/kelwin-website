@@ -19,7 +19,7 @@ const TOPICS = [
   "Requesting a case dossier",
   "Requesting a research document",
   "Field notes & publications",
-  "The Lab & product waitlist",
+  "The Lab · early access application",
   "Exploring a future engagement",
   "Partnerships",
   "Press & speaking",
@@ -32,7 +32,7 @@ const TOPIC_PARAM_MAP: Record<string, string> = {
   research: "Requesting a research document",
   careers: "Careers & the bench list",
   engagement: "Exploring a future engagement",
-  lab: "The Lab & product waitlist",
+  lab: "The Lab · early access application",
 };
 
 export default function ContactChannel() {
@@ -114,10 +114,11 @@ export default function ContactChannel() {
   const isDocRequest =
     topic === "Requesting a case dossier" ||
     topic === "Requesting a research document";
-  const isLabWaitlist = topic === "The Lab & product waitlist";
-  // Doc requests and waitlist joins are complete without prose — the
-  // required fields already carry everything we need to act.
-  const messageOptional = isDocRequest || isLabWaitlist;
+  const isLabWaitlist = topic === "The Lab · early access application";
+  // Doc requests are complete without prose. The early-access application
+  // is deliberately not — it's an application, and the writing is the
+  // qualifying artifact.
+  const messageOptional = isDocRequest;
 
   return (
     <main className="ctc" ref={mainRef}>
@@ -264,8 +265,9 @@ export default function ContactChannel() {
                 )}
                 {isLabWaitlist && (
                   <span className="ctc-hint">
-                    Waitlist members see build previews first and shape what
-                    ships. We confirm to your company inbox.
+                    Applications are read by the builders — cohort one is
+                    capped small on purpose. We reply to your company inbox
+                    either way.
                   </span>
                 )}
               </label>
@@ -273,7 +275,11 @@ export default function ContactChannel() {
 
             <label className="ctc-field">
               <span className="ctc-label">
-                {messageOptional ? "Anything to add" : "What's on your mind"}
+                {isLabWaitlist
+                  ? "Your application"
+                  : messageOptional
+                    ? "Anything to add"
+                    : "What's on your mind"}
                 {!messageOptional && <span className="ctc-req"> · required</span>}
               </span>
               <textarea
@@ -284,7 +290,7 @@ export default function ContactChannel() {
                   isDocRequest
                     ? "Optional — context for the request, or where to focus."
                     : isLabWaitlist
-                      ? "Optional — what should the console do first?"
+                      ? "The strongest applications name the motion we'd instrument — team size, deal shape, what you'd want the console to read first."
                       : "As rough as you like — bullet points are fine."
                 }
                 rows={6}
@@ -297,7 +303,7 @@ export default function ContactChannel() {
                 {isDocRequest
                   ? "Request the document"
                   : isLabWaitlist
-                    ? "Join the waitlist"
+                    ? "Submit the application"
                     : "Send the message"}
                 <span className="ctc-submit-arrow" aria-hidden="true">→</span>
               </button>

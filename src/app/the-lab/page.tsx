@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PageCommand from "@/components/layout/PageCommand";
-import LabConsole from "@/components/sections/LabConsole";
+import LabBriefing from "@/components/sections/LabBriefing";
 
 export const metadata: Metadata = {
   title: "The Lab — Kelwin",
   description:
-    "Kelwin's R&D arm: AI-native GTM software trained on what real installs teach — signal detection, narrative telemetry, and routing in one console. In development; previews ship to the waitlist.",
+    "A briefing on the end of GTM software: Kelwin's thesis, the instruments being built against it, and the Early Access Protocol for operators who want in before the market does.",
 };
 
 export default function TheLabPage() {
@@ -16,12 +16,12 @@ export default function TheLabPage() {
       <Navbar />
       {/* Dedicated Lab photograph: star trails over the instrument ridge. */}
       <PageCommand
-        protocol="The Lab · R&D"
-        stamp="KELWIN/OS · BUILD 0.5"
-        titleTop="Where the practice"
-        titleBottom="becomes product."
-        lede="The Lab is Kelwin's R&D arm: everything our installs teach us — signal patterns, narrative telemetry, routing logic — is being built into AI-native GTM software. The consulting keeps it honest; the product makes it permanent."
-        code="KELWIN/OS · R&D"
+        protocol="The Lab · R&D Briefing"
+        stamp="K-LAB · CONTROLLED CIRCULATION"
+        titleTop="A briefing on the end"
+        titleBottom="of GTM software."
+        lede="What follows is Kelwin's working thesis, the instruments we're building against it, and the protocol for getting access before the market does. Read it as a memo, not a launch page."
+        code="K-LAB/BRIEF · 01"
         status="Build 0.5 · active"
         chips={[
           { label: "In development", live: true },
@@ -31,7 +31,7 @@ export default function TheLabPage() {
         image="/lab-startrails.webp"
         imagePosition="70% 45%"
       />
-      <LabConsole />
+      <LabBriefing />
       <Footer />
     </>
   );

@@ -99,9 +99,13 @@ kit. Reuse these; never invent parallel ones:
   open on a PageCommand photograph but keep their quieter 1140px
   document-stage bodies; only article pages (/insights/[slug]) stay
   headerless. Reveal-on-scroll only, no
-  pins. Every firm/lab page ends on a ConvertPanel (red-edged decision
+  pins. Every firm page ends on a ConvertPanel (red-edged decision
   panel: title, sub, term chips, signal CTA + quiet second path) — pages
-  convert, they don't fade out. The old fp2 "chaptered dossier" text
+  convert, they don't fade out. The Lab is a classified briefing
+  (manifesto theses → redacted telemetry specimens → dated-nothing
+  protocol rail → Early Access Protocol application panel); its EAP
+  panel is the bespoke ConvertPanel equivalent — keep the application
+  framing, never a generic subscribe form. The old fp2 "chaptered dossier" text
   posture is retired; never reintroduce text-only interior pages.
 - Ledger rows: hairline-divided grids; mono index numbers (A·01, R·01,
   FN·01); marks are 8px squares — patina ▪ = yes/healthy, red ✕ (two
