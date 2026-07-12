@@ -137,23 +137,9 @@ export default function CaseStudies() {
   return (
     <main className="cs" ref={mainRef}>
       <div className="cs-stage">
-        {/* ── Head ── */}
+        {/* Page head lives in the PageCommand header (page level);
+            the specimen-honesty key stays with the dossiers it governs. */}
         <header className="cs-head cs-reveal">
-          <div className="cs-protocol-row">
-            <span className="cs-protocol">Resources · Reports</span>
-            <span className="cs-protocol-line" aria-hidden="true" />
-            <span className="cs-stamp">KELWIN/OS · CASE DOSSIERS</span>
-          </div>
-          <h1 className="cs-title">
-            <span className="cs-title-1">The work, in readouts.</span>
-            <span className="cs-title-2">Not testimonials — telemetry.</span>
-          </h1>
-          <p className="cs-lede">
-            Every engagement produces a readout: the state we found, what was
-            installed, and what the instrumentation showed after — including
-            what didn&rsquo;t work. This is where those readouts publish, as
-            clients clear them.
-          </p>
           {/* Specimen honesty — the format is real; these numbers aren't yet. */}
           <div className="cs-key" aria-label="Index status">
             <span className="cs-key-chip">Specimen format</span>

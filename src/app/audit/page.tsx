@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/layout/Navbar";
+import PageCommand from "@/components/layout/PageCommand";
 import AuditSpec from "@/components/sections/AuditSpec";
 import QualifyFlow from "@/components/sections/QualifyFlow";
 import Footer from "@/components/layout/Footer";
@@ -19,6 +20,18 @@ export default function AuditPage() {
   return (
     <main>
       <Navbar />
+      {/* Dedicated audit photograph: the gate — one way in, lit. */}
+      <PageCommand
+        protocol="The System Audit"
+        stamp="KELWIN/OS · DIAGNOSTIC"
+        titleTop="One way in."
+        titleBottom="Three questions wide."
+        lede="Every red button on this site lands here. The audit is fixed scope — ten working days, a written readout you keep — and it starts with three questions that qualify in both directions."
+        code="AUDIT · GATE"
+        status="Gate active"
+        image="/audit-canyon.webp"
+        imagePosition="66% 50%"
+      />
       <AuditSpec />
       <QualifyFlow />
       <Footer />

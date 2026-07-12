@@ -122,26 +122,8 @@ export default function ContactChannel() {
   return (
     <main className="ctc" ref={mainRef}>
       <div className="ctc-stage">
-        {/* ── Head ── */}
-        <header className="ctc-head ctc-reveal">
-          <div className="ctc-protocol-row">
-            <span className="ctc-protocol">Contact · General channel</span>
-            <span className="ctc-protocol-line" aria-hidden="true" />
-            <span className="ctc-stamp">KELWIN/OS · INBOUND</span>
-          </div>
-          <h1 className="ctc-title">
-            <span className="ctc-title-1">Two doors.</span>
-            <span className="ctc-title-2">Take the one that fits.</span>
-          </h1>
-          <p className="ctc-lede">
-            If you already suspect something structural is off, the audit is
-            the serious door — fixed scope, qualification first. If
-            you&rsquo;re still mapping the space, this channel exists so you
-            don&rsquo;t have to pretend otherwise. Both land with the founding
-            team.
-          </p>
-        </header>
-
+        {/* Page head lives in the PageCommand header (page level) — the
+            stage opens straight onto the two doors. */}
         {/* ── The two doors ── */}
         <div className="ctc-doors ctc-reveal">
           <div className="ctc-door is-audit">

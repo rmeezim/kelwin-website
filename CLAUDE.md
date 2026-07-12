@@ -95,8 +95,10 @@ kit. Reuse these; never invent parallel ones:
   calibrated baseline rule. Body runs the HOME section grammar (red
   eyebrow + dash + mono meta) over instrument panels — spec sheets,
   calibration grids, cadence rails, consoles, ledgers — on a 1440px
-  stage. Reading surfaces (/insights articles, /audit flow, /contact)
-  keep the quieter 1140px document stage. Reveal-on-scroll only, no
+  stage. Reading surfaces (/insights, /reports, /audit, /contact) also
+  open on a PageCommand photograph but keep their quieter 1140px
+  document-stage bodies; only article pages (/insights/[slug]) stay
+  headerless. Reveal-on-scroll only, no
   pins. Every firm/lab page ends on a ConvertPanel (red-edged decision
   panel: title, sub, term chips, signal CTA + quiet second path) — pages
   convert, they don't fade out. The old fp2 "chaptered dossier" text

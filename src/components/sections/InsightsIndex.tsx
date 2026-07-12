@@ -123,25 +123,8 @@ export default function InsightsIndex() {
   return (
     <main className="insx" ref={mainRef}>
       <div className="insx-stage">
-        {/* ── Head ── */}
-        <header className="insx-head insx-reveal">
-          <div className="insx-protocol-row">
-            <span className="insx-protocol">Resources · Insights</span>
-            <span className="insx-protocol-line" aria-hidden="true" />
-            <span className="insx-stamp">KELWIN/OS · FIELD NOTES · VOL 01</span>
-          </div>
-          <h1 className="insx-title">
-            <span className="insx-title-1">Field notes</span>
-            <span className="insx-title-2">from the install base.</span>
-          </h1>
-          <p className="insx-lede">
-            Working notes from live systems — not thought leadership. What we
-            publish here is the operational residue of real installs: signal
-            patterns, deliverability mechanics, narrative decisions and what
-            they did to pipeline.
-          </p>
-        </header>
-
+        {/* Page head lives in the PageCommand header (page level) — the
+            stage opens straight onto the front page. */}
         {/* ── Front page: featured + stack ── */}
         <section className="insx-front insx-reveal" aria-label="Published field notes">
           <NoteCard note={FEATURED} big />
