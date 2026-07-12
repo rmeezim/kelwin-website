@@ -32,8 +32,10 @@ export default function AuditPage() {
         image="/audit-canyon.webp"
         imagePosition="66% 50%"
       />
-      <AuditSpec />
+      {/* Action first: the qualification waterfall is the page. The
+          full spec follows for the detail-readers. */}
       <QualifyFlow />
+      <AuditSpec />
       <Footer />
     </main>
   );

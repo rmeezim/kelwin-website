@@ -167,7 +167,23 @@
   color: var(--cream-30);
   font-variant-numeric: tabular-nums;
 }
-.site-footer .foot-status { display: inline-flex; align-items: center; gap: 8px; color: var(--cream-45); }
+.site-footer .foot-legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.foot-legal-link {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(199, 180, 157, 0.62);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.foot-legal-link:hover { color: #d4524e; }
+.foot-legal-div { width: 1px; height: 10px; background: rgba(199, 180, 157, 0.25); }
+.foot-status { display: inline-flex; align-items: center; gap: 8px; color: var(--cream-45); }
 .site-footer .foot-status-dot {
   width: 6px;
   height: 6px;

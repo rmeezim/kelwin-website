@@ -126,21 +126,21 @@ export default function AuditSpec() {
               <span className="as-meta">Audit/Spec · v1.0</span>
             </div>
             <h2 className="as-heading">
-              <span className="line-1">Not a sales call.</span>{" "}
+              <span className="line-1">What you&rsquo;re booking.</span>{" "}
               <span className="line-2">A diagnostic with a deliverable.</span>
             </h2>
             <p className="as-sub">
-              This is what happens when you request the audit — fixed scope,
-              fixed timeline, and a readout you keep whether or not we go
-              further.
+              For the detail-readers: the full spec of what happens after you
+              qualify — fixed scope, fixed timeline, and a readout you keep
+              whether or not we go further.
             </p>
 
             {/* The request action is the qualification waterfall below —
                 three gating questions, then booking. */}
             <div className="as-cta-row">
-              <HeroCTA label="BEGIN QUALIFICATION" href="#qualify" />
+              <HeroCTA label="QUALIFY IN 40 SECONDS" href="#qualify" />
               <span className="as-cta-note">
-                Three questions, then straight to booking — no sequence, no
+                Three taps above, then straight to booking — no sequence, no
                 SDR.
               </span>
             </div>

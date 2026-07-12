@@ -366,6 +366,7 @@
 }
 .fp3-reveal.is-in .fp3-loop-svg .fp3-fade { opacity: 1; }
 .fp3-loop-svg .fp3-fade.is-break { stroke: var(--signal-bright); stroke-width: 2; }
+.fp3-loop-svg .fp3-flowtri { fill: rgba(143, 137, 129, 0.7); stroke: none; }
 .fp3-loop-svg .fp3-fade.is-line-arrow { stroke: var(--patina-bright); }
 .fp3-loop-svg .fp3-fade.is-node { fill: var(--patina-bright); stroke: none; }
 .fp3-loop-svg g.fp3-fade { stroke: none; }

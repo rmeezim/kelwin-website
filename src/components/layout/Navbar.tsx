@@ -292,9 +292,6 @@ function HoverLink({
       onClick={onClick}
     >
       <span className="relative inline-flex items-center gap-2">
-        {label === "THE LAB" && (
-          <span className="nav-lab-dot" aria-hidden="true" />
-        )}
         <span className="relative inline-block">
           {label}
           <AnimatePresence>

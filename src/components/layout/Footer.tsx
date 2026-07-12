@@ -95,6 +95,11 @@ export default function Footer() {
 
         <div className="foot-bottom">
           <span className="foot-mono">© 2026 Kelwin · All rights reserved</span>
+          <span className="foot-legal">
+            <Link href="/privacy" className="foot-legal-link">Privacy</Link>
+            <span className="foot-legal-div" aria-hidden="true" />
+            <Link href="/terms" className="foot-legal-link">Terms</Link>
+          </span>
           <span className="foot-mono foot-status">
             <span className="foot-status-dot" aria-hidden="true" />
             KELWIN/OS · Operational

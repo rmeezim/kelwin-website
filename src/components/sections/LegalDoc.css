@@ -1,0 +1,113 @@
+/* ─── Legal documents — scoped to .lgl ────────────────────────────────────
+   The quiet document register: 780px reading stage, mono dossier
+   furniture, generous prose. Same posture as the article pages. */
+
+.lgl {
+  background: #110f0a;
+  color: #fbfaf6;
+  font-family: var(--font-inter), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.lgl-stage {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: clamp(44px, 6vh, 72px) clamp(28px, 5vw, 48px) var(--space-section);
+}
+.lgl-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(24px, 3.4vh, 36px);
+}
+.lgl-meta-id {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #c7b49d;
+  white-space: nowrap;
+}
+.lgl-meta-line { flex: 1; height: 1px; background: rgba(199, 180, 157, 0.16); }
+.lgl-meta-date {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: rgba(251, 250, 246, 0.45);
+  white-space: nowrap;
+}
+.lgl-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 400;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: #fbfaf6;
+  margin: 0 0 clamp(14px, 2vh, 20px);
+}
+.lgl-intro {
+  font-size: clamp(16px, 1.15vw, 17.5px);
+  line-height: 1.7;
+  color: rgba(251, 250, 246, 0.72);
+  max-width: 68ch;
+  margin: 0 0 clamp(32px, 4.5vh, 48px);
+}
+.lgl-section { margin-bottom: clamp(28px, 4vh, 40px); }
+.lgl-section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(251, 250, 246, 0.09);
+}
+.lgl-section-n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: rgba(199, 180, 157, 0.7);
+  font-variant-numeric: tabular-nums;
+}
+.lgl-section-title {
+  font-family: var(--font-instrument-sans), sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 1.5vw, 22px);
+  letter-spacing: -0.012em;
+  color: #fbfaf6;
+  margin: 0;
+}
+.lgl-para {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: rgba(251, 250, 246, 0.68);
+  max-width: 68ch;
+  margin: 0 0 1em;
+}
+.lgl-para:last-child { margin-bottom: 0; }
+.lgl-foot {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: clamp(32px, 4.5vh, 48px);
+  padding-top: clamp(20px, 2.8vh, 28px);
+  border-top: 1px solid rgba(251, 250, 246, 0.09);
+}
+.lgl-foot-k {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8f8981;
+}
+.lgl-foot-mail {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: #c7b49d;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(199, 180, 157, 0.35);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.lgl-foot-mail:hover { color: #d4524e; border-color: #d4524e; }

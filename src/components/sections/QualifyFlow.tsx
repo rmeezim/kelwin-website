@@ -139,6 +139,26 @@ export default function QualifyFlow() {
   return (
     <section className="qf" id="qualify" aria-label="Audit qualification">
       <div className="qf-stage">
+        {/* The on-ramp — tells a first-time visitor exactly what this is
+            and how little it costs before a single word of spec. */}
+        <div className="qf-intro">
+          <h2 className="qf-intro-title">
+            Qualify yourself <span>in three taps.</span>
+          </h2>
+          <p className="qf-intro-sub">
+            No form, no email, nothing to read first — the gate answers in
+            about forty seconds, and it works in both directions.
+          </p>
+          <div className="qf-intro-path" aria-hidden="true">
+            <span className="qf-intro-step">01 · REVENUE</span>
+            <span className="qf-intro-link" />
+            <span className="qf-intro-step">02 · MOTION</span>
+            <span className="qf-intro-link" />
+            <span className="qf-intro-step">03 · CONSTRAINT</span>
+            <span className="qf-intro-link" />
+            <span className="qf-intro-step is-book">BOOK THE CALL</span>
+          </div>
+        </div>
         <div className="qf-panel">
           <div className="qf-head">
             <span className="qf-protocol">Audit intake · Qualification</span>
@@ -237,14 +257,16 @@ export default function QualifyFlow() {
             <div className="qf-body" key={step}>
               <h3 className="qf-question">{STEPS[step].question}</h3>
               <div className="qf-options" role="group" aria-label={STEPS[step].question}>
-                {STEPS[step].options.map((opt) => (
+                {STEPS[step].options.map((opt, oi) => (
                   <button
                     key={opt.label}
                     type="button"
                     className="qf-option"
                     onClick={() => choose(opt)}
                   >
-                    <span className="qf-option-mark" aria-hidden="true" />
+                    <span className="qf-option-ix" aria-hidden="true">
+                      {String.fromCharCode(65 + oi)}
+                    </span>
                     <span className="qf-option-body">
                       <span className="qf-option-label">{opt.label}</span>
                       <span className="qf-option-detail">{opt.detail}</span>

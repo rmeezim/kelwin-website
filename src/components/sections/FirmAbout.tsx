@@ -127,27 +127,29 @@ export default function FirmAbout() {
                 <span className="fp3-mark-no" aria-hidden="true" />
                 The standard agency loop
               </div>
-              <svg className="fp3-loop-svg" viewBox="0 0 420 260" aria-hidden="true">
-                <circle className="fp3-draw is-loop-path" cx="210" cy="132" r="82" pathLength={1} />
-                <path className="fp3-fade" d="M286 100 l7 9 -11 3" />
-                <path className="fp3-fade" d="M134 166 l-7 -9 11 -3" />
-                {/* the break — where the learning leaves */}
+              <svg className="fp3-loop-svg" viewBox="0 0 420 290" aria-hidden="true">
+                <circle className="fp3-draw is-loop-path" cx="210" cy="135" r="78" pathLength={1} />
+                {/* clockwise flow markers */}
+                <path className="fp3-flowtri fp3-fade" d="M-4 -5 L6 0 L-4 5 Z" transform="translate(265 80) rotate(45)" />
+                <path className="fp3-flowtri fp3-fade" d="M-4 -5 L6 0 L-4 5 Z" transform="translate(265 190) rotate(135)" />
+                <path className="fp3-flowtri fp3-fade" d="M-4 -5 L6 0 L-4 5 Z" transform="translate(155 80) rotate(-45)" />
+                {/* the break — where the learning leaves the loop */}
                 <g className="fp3-fade is-break">
-                  <line x1="128" y1="192" x2="146" y2="210" />
-                  <line x1="146" y1="192" x2="128" y2="210" />
+                  <line x1="128" y1="177" x2="146" y2="195" />
+                  <line x1="146" y1="177" x2="128" y2="195" />
                 </g>
-                <text className="fp3-svg-label" x="210" y="30" textAnchor="middle">Capital in</text>
-                <text className="fp3-svg-label" x="310" y="136" textAnchor="start">Campaigns run</text>
-                <text className="fp3-svg-label" x="210" y="240" textAnchor="middle">Knowledge lost</text>
-                <text className="fp3-svg-label" x="110" y="136" textAnchor="end">Reset</text>
-                {/* error states */}
+                <text className="fp3-svg-label" x="210" y="34" textAnchor="middle">Capital in</text>
+                <text className="fp3-svg-label" x="304" y="139" textAnchor="start">Campaigns run</text>
+                <text className="fp3-svg-label" x="210" y="242" textAnchor="middle">Knowledge lost</text>
+                <text className="fp3-svg-label" x="116" y="139" textAnchor="end">Reset</text>
+                {/* error states — pinned beneath the stage they annotate */}
                 <g className="fp3-fade is-err">
-                  <rect x="238" y="222" width="118" height="17" />
-                  <text x="246" y="234" textAnchor="start">ERR · LEARNING LOST</text>
+                  <rect x="134" y="252" width="152" height="18" />
+                  <text x="210" y="265" textAnchor="middle">ERR · LEARNING LOST</text>
                 </g>
                 <g className="fp3-fade is-err">
-                  <rect x="8" y="88" width="96" height="17" />
-                  <text x="16" y="100" textAnchor="start">ERR · Q1 = Q9</text>
+                  <rect x="20" y="150" width="96" height="18" />
+                  <text x="68" y="163" textAnchor="middle">ERR · Q1 = Q9</text>
                 </g>
               </svg>
               <p className="fp3-loops-cap">
@@ -162,28 +164,30 @@ export default function FirmAbout() {
                 <span className="fp3-mark-yes" aria-hidden="true" />
                 The Kelwin compounding model
               </div>
-              <svg className="fp3-loop-svg" viewBox="0 0 420 260" aria-hidden="true">
+              <svg className="fp3-loop-svg" viewBox="0 0 420 290" aria-hidden="true">
                 <path
                   className="fp3-draw is-line-path"
-                  d="M30 225 L105 225 L105 180 L180 180 L180 135 L255 135 L255 90 L330 90 L330 45 L392 45"
+                  d="M30 240 L105 240 L105 195 L180 195 L180 150 L255 150 L255 105 L330 105 L330 60 L392 60"
                   pathLength={1}
                 />
-                <path className="fp3-fade is-line-arrow" d="M384 38 l10 7 -10 7" />
-                <circle className="fp3-fade is-node" cx="105" cy="225" r="3" />
-                <circle className="fp3-fade is-node" cx="180" cy="180" r="3" />
-                <circle className="fp3-fade is-node" cx="255" cy="135" r="3" />
-                <circle className="fp3-fade is-node" cx="330" cy="90" r="3" />
-                <text className="fp3-svg-label is-q" x="67" y="247" textAnchor="middle">Q1</text>
-                <text className="fp3-svg-label is-q" x="142" y="202" textAnchor="middle">Q2</text>
-                <text className="fp3-svg-label is-q" x="217" y="157" textAnchor="middle">Q3</text>
-                <text className="fp3-svg-label is-q" x="292" y="112" textAnchor="middle">Q4</text>
+                <path className="fp3-fade is-line-arrow" d="M384 53 l10 7 -10 7" />
+                <circle className="fp3-fade is-node" cx="105" cy="240" r="3" />
+                <circle className="fp3-fade is-node" cx="180" cy="195" r="3" />
+                <circle className="fp3-fade is-node" cx="255" cy="150" r="3" />
+                <circle className="fp3-fade is-node" cx="330" cy="105" r="3" />
+                <text className="fp3-svg-label is-q" x="67" y="262" textAnchor="middle">Q1</text>
+                <text className="fp3-svg-label is-q" x="142" y="217" textAnchor="middle">Q2</text>
+                <text className="fp3-svg-label is-q" x="217" y="172" textAnchor="middle">Q3</text>
+                <text className="fp3-svg-label is-q" x="292" y="127" textAnchor="middle">Q4</text>
+                {/* what carries forward — annotated above each tread, in the
+                    open air left of the climb */}
                 <g className="fp3-fade">
-                  <rect className="fp3-kept-mark" x="113" y="158" width="6" height="6" />
-                  <text className="fp3-svg-label is-kept" x="125" y="165" textAnchor="start">language kept</text>
-                  <rect className="fp3-kept-mark" x="188" y="113" width="6" height="6" />
-                  <text className="fp3-svg-label is-kept" x="200" y="120" textAnchor="start">signal map kept</text>
-                  <rect className="fp3-kept-mark" x="263" y="68" width="6" height="6" />
-                  <text className="fp3-svg-label is-kept" x="275" y="75" textAnchor="start">objection intel kept</text>
+                  <rect className="fp3-kept-mark" x="160" y="176" width="6" height="6" />
+                  <text className="fp3-svg-label is-kept" x="152" y="184" textAnchor="end">language kept</text>
+                  <rect className="fp3-kept-mark" x="235" y="131" width="6" height="6" />
+                  <text className="fp3-svg-label is-kept" x="227" y="139" textAnchor="end">signal map kept</text>
+                  <rect className="fp3-kept-mark" x="310" y="86" width="6" height="6" />
+                  <text className="fp3-svg-label is-kept" x="302" y="94" textAnchor="end">objection intel kept</text>
                 </g>
               </svg>
               <p className="fp3-loops-cap">
