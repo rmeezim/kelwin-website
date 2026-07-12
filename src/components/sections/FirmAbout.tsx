@@ -133,10 +133,11 @@ export default function FirmAbout() {
                 <path className="fp3-flowtri fp3-fade" d="M-4 -5 L6 0 L-4 5 Z" transform="translate(265 80) rotate(45)" />
                 <path className="fp3-flowtri fp3-fade" d="M-4 -5 L6 0 L-4 5 Z" transform="translate(265 190) rotate(135)" />
                 <path className="fp3-flowtri fp3-fade" d="M-4 -5 L6 0 L-4 5 Z" transform="translate(155 80) rotate(-45)" />
-                {/* the break — where the learning leaves the loop */}
+                {/* the break — sits ON the ring at the lower-left leak point
+                    (155,190 is on the r=78 circle), clear of the Q1=Q9 chip */}
                 <g className="fp3-fade is-break">
-                  <line x1="128" y1="177" x2="146" y2="195" />
-                  <line x1="146" y1="177" x2="128" y2="195" />
+                  <line x1="148" y1="183" x2="162" y2="197" />
+                  <line x1="162" y1="183" x2="148" y2="197" />
                 </g>
                 <text className="fp3-svg-label" x="210" y="34" textAnchor="middle">Capital in</text>
                 <text className="fp3-svg-label" x="304" y="139" textAnchor="start">Campaigns run</text>
