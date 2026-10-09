@@ -438,13 +438,6 @@ export default function FirmAbout() {
             <span className="fp3-eyebrow-meta">FIRM/07 · ONE STANDARD</span>
           </div>
           <div className="fp3-family">
-            <div className="fp3-family-node">
-              <span className="fp3-family-glyph is-plurel" aria-hidden="true" />
-              <span className="fp3-family-name">PLUREL</span>
-              <span className="fp3-family-role">Creative &amp; performance division</span>
-              <span className="fp3-family-line1">Makes brands seen.</span>
-            </div>
-            <span className="fp3-family-link" aria-hidden="true" />
             <div className="fp3-family-node is-kelwin">
               <span className="fp3-family-glyph is-kelwin" aria-hidden="true" />
               <span className="fp3-family-name">KELWIN</span>
@@ -460,9 +453,8 @@ export default function FirmAbout() {
             </Link>
           </div>
           <p className="fp3-family-note">
-            Same craft standards, same refusal of template work — Plurel warm
-            and expressive, Kelwin precise and infrastructural. The advisory
-            work funds The Lab; The Lab makes the advisory sharper.
+            The advisory work funds The Lab; The Lab makes the advisory
+            sharper.
           </p>
         </section>
 

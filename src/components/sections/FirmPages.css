@@ -741,10 +741,6 @@
   background: #0d0c0a;
 }
 .fp3-family-glyph { width: 9px; height: 9px; margin-bottom: 6px; }
-.fp3-family-glyph.is-plurel {
-  transform: rotate(45deg);
-  border: 1.5px solid var(--sand);
-}
 .fp3-family-glyph.is-kelwin {
   transform: rotate(45deg);
   background: #bf3a36;

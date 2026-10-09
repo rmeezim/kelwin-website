@@ -55,10 +55,6 @@ export default function Footer() {
               Revenue infrastructure &amp; GTM intelligence for serious B2B
               companies.
             </p>
-            <span className="foot-sister">
-              <span className="foot-sister-dash" aria-hidden="true" />
-              Sister company of Plurel
-            </span>
           </div>
 
           <nav className="foot-nav" aria-label="Footer">

@@ -111,18 +111,6 @@
   color: var(--cream-70);
   max-width: 34ch;
 }
-.site-footer .foot-sister {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 22px;
-  font-family: var(--f-mono);
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--bronze);
-}
-.site-footer .foot-sister-dash { width: 22px; height: 1px; background: currentColor; opacity: 0.7; }
 
 .site-footer .foot-nav {
   display: grid;
