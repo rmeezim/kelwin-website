@@ -25,7 +25,7 @@ export default function RevenueEntropyNote() {
       >
         <p>
           When growth stalls, the pipeline number is where the pain shows up
-          first, so it's where the spending goes first: more SDRs, a new
+          first, so it&rsquo;s where the spending goes first: more SDRs, a new
           agency, another tool. A quarter later the number hasn&rsquo;t moved,
           and the conclusion is usually &ldquo;we picked the wrong vendor&rdquo;
           — so the cycle restarts with a different one.

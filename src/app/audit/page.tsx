@@ -4,6 +4,8 @@ import PageCommand from "@/components/layout/PageCommand";
 import AuditSpec from "@/components/sections/AuditSpec";
 import QualifyFlow from "@/components/sections/QualifyFlow";
 import Footer from "@/components/layout/Footer";
+import Slot from "@/components/home/Slot";
+import Faq from "@/components/audit/faq";
 
 export const metadata: Metadata = {
   title: "The System Audit — Kelwin",
@@ -37,6 +39,10 @@ export default function AuditPage() {
           full spec follows for the detail-readers. */}
       <QualifyFlow />
       <AuditSpec />
+      {/* the founder's FAQ, answered before the call (round 4, D4: the FAQ lives on this page) */}
+      <Slot id="faq" behavior="faq">
+        <Faq />
+      </Slot>
       </main>
       <Footer />
     </>

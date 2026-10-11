@@ -12,7 +12,8 @@ import { init as method } from "./method/behavior";
 import { init as fit } from "./fit/behavior";
 import { init as cta } from "./cta/behavior";
 import { init as footer } from "@/components/layout/footer-behavior";
+import { init as faq } from "@/components/audit/faq/behavior";
 
-export const behaviors = { hero, reframe, evidence, letter, system, principle, handover, method, fit, cta, footer } satisfies Record<string, Behavior>;
+export const behaviors = { hero, reframe, evidence, letter, system, principle, handover, method, fit, cta, footer, faq } satisfies Record<string, Behavior>;
 
 export type BehaviorName = keyof typeof behaviors;

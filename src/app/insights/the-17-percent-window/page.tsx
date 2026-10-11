@@ -52,8 +52,8 @@ export default function SeventeenPercentNote() {
             grow faster&rdquo; dissolves on contact with a skeptic.
           </li>
           <li>
-            <strong>An answer to the risk question.</strong> The committee's
-            real question is rarely &ldquo;is this good?&rdquo; It's
+            <strong>An answer to the risk question.</strong> The committee&rsquo;s
+            real question is rarely &ldquo;is this good?&rdquo; It&rsquo;s
             &ldquo;what happens if this fails, and will it be my fault?&rdquo;
             Narratives that pre-answer it travel further.
           </li>
