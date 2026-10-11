@@ -1,0 +1,141 @@
+/* ── faq · "Questions": the ledger, answered plainly ─────────────────────────────────────────
+   Port of design/redesign/site/frag/faq/U (A×C, round 4, approved). Lives on the System Audit
+   page (founder decision D4).
+   · the head is the kit's grammar; the two-line statement runs wide on top, and the red rule
+     shares one line with the ledger's top hairline;
+   · deliberately drawing-free (DIRECTION-AC §5.2): the lead device is TYPE in a ledger that
+     opens in place. The kit's drawn + turns to −, a 1px --fg selection rule draws across the
+     open row, and the answer opens as plain body text directly under the question;
+   · the one red is the primary button (label square + rule are family punctuation).
+   Motion: keyframe entrances are declared under .km-motion (km-kit §10 holds them at their
+   first frame until the slot plays). Row 01's open state is hidden only while the slot waits,
+   so reduced motion / no JS shows the final state (01 open). */
+
+.km-faq {
+  overflow: hidden;                                  /* a hard surface cut */
+  --km-faq-idx: 56px;                                /* the ledger's index column */
+}
+/* the two-line statement's boxes are fractional (≈ 233.3px with the label row); at the stage
+   size hold the head on whole pixels so the rule and the ledger hairlines land crisp */
+@media (min-width: 1440px) { .km-faq__head { min-height: 234px; } }
+
+/* ── body: left column (cols 1–5) + ledger (cols 6–12), one shared top line ──
+   Source order is the reading order (rule → lede → ledger → doors), so focus and screen-reader
+   order follow what is seen at every width. At ≥1024 two rows rebuild the mockup's left column:
+   row 1 holds the rule + lede, row 2 the doors (36px under the lede, exactly as when they sat in
+   the same flex column), and the ledger spans both. Row 1 sizes to the lede alone (the ledger
+   crosses the flexible row, so it only feeds row 2). */
+.km-faq__body { margin-top: 36px; align-items: stretch; }
+.km-faq__side { display: flex; flex-direction: column; align-items: flex-start; }
+.km-faq__side > .ac-lede { margin-top: 28px; max-width: 24em; text-wrap: balance; }   /* two even lines; stops clear of the ledger */
+.km-faq .km-faq__doors { margin-top: 36px; display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
+@media (min-width: 1024px) {
+  .km-faq__body { grid-template-rows: auto 1fr; }
+  .km-faq__side { grid-row: 1; }
+  .km-faq .km-faq__list { grid-row: 1 / span 2; }
+  .km-faq .km-faq__doors { grid-row: 2; align-self: start; }
+}
+/* wraps (support line over the link) only where the column is too narrow to hold both */
+.km-faq__ask { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; }
+.km-faq__ask > .ac-support { color: var(--fg-3); }
+
+/* ── the ledger (kit .ac-ledger): index · question · toggle ── */
+.km-faq .ac-ledger {
+  --ac-row-cols: var(--km-faq-idx) minmax(0, 1fr) 20px; --ac-row-indent: calc(var(--km-faq-idx) + var(--gutter));
+  position: relative; border-top-color: transparent;
+}
+.km-faq__q { font: inherit; }
+.km-faq .ac-row { position: relative; border-bottom-color: transparent; }
+
+/* hairlines as drawn lines (static at rest; they draw in when the slot plays) */
+.km-faq .ac-ledger::before, .km-faq .ac-row::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1px; transform-origin: 0 50%; pointer-events: none;
+}
+.km-faq .ac-ledger::before { top: -1px; background: var(--line-2); }
+.km-faq .ac-row::after { bottom: -1px; background: var(--line); }
+
+/* the selection rule: 1px --fg across the open row's top edge, drawn left → right */
+.km-faq .ac-row::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; z-index: 1;
+  background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none;
+  transition: transform 280ms var(--ease-inout);
+}
+.km-faq .ac-row.is-open::before { transform: scaleX(1); transition: transform 640ms var(--ease-inout); }
+
+/* row states: the open row's index, question and toggle in --fg; closed questions one step quieter */
+.km-faq .ac-row__head .ac-idx { color: var(--fg-3); transition: color 300ms var(--ease-inout); }
+.km-faq .ac-row__head .ac-h4 { color: var(--fg-2); transition: transform 300ms var(--ease-out), color 300ms var(--ease-inout); }
+/* where a question wraps (below the stage size) its last line never strands one word */
+.km-faq .ac-h4 { text-wrap: pretty; }
+.km-faq .ac-row__head .ac-toggle { transition: color 300ms var(--ease-inout); }
+.km-faq .ac-row.is-open .ac-h4, .km-faq .ac-row.is-open .ac-idx, .km-faq .ac-row.is-open .ac-toggle { color: var(--fg); }
+/* hover lifts a closed question (pointer devices only, so a tap never leaves it stuck lit) */
+@media (hover: hover) { .km-faq .ac-row__head:hover .ac-h4 { color: var(--fg); } }
+.km-faq .ac-row__head:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* the answer: plain body text, directly under the question */
+.km-faq .ac-row__in { padding-top: 2px; padding-bottom: 30px; }
+.km-faq__p {
+  margin-top: 0; font-size: 17px; line-height: 1.55; color: var(--fg); max-width: 56ch;
+  opacity: 0; transform: translateY(8px); transition: opacity 200ms var(--ease-inout), transform 200ms var(--ease-inout);
+}
+.km-faq .ac-row.is-open .km-faq__p { opacity: 1; transform: none; transition: opacity 500ms var(--ease-out) 160ms, transform 600ms var(--ease-out) 160ms; }
+
+/* ── entrance. Travels the reading path:
+   label → statement (kit) → rule + the ledger's top line (one line, drawn together) → lede →
+   rows 01 → 06 (hairline draws, then index · question · toggle) → 01 opens (JS, 1.6s) →
+   the doors land last, as the answer settles: the action closes the path. ── */
+.km-motion .km-faq__side > .ac-rule { animation: ac-drawx 600ms var(--ease-out) 520ms both; }
+.km-motion .km-faq .ac-ledger::before { animation: ac-drawx 1000ms var(--ease-out) 520ms both; }
+.km-motion .km-faq__side > .ac-lede { animation: ac-up 600ms var(--ease-out) 600ms both; }
+.km-motion .km-faq .ac-row::after { animation: ac-drawx 700ms var(--ease-out) both; animation-delay: calc(700ms + var(--i) * 90ms); }
+/* opacity only: the question keeps its kit hover nudge (a transform fill would pin it) */
+.km-motion .km-faq .ac-row__head > * { animation: ac-fade 500ms var(--ease-out) both; animation-delay: calc(760ms + var(--i) * 90ms); }
+.km-motion .km-faq__doors > * { animation: km-faq-up 600ms var(--ease-out) both; }
+.km-motion .km-faq__doors > :first-child { animation-delay: 2200ms; }
+.km-motion .km-faq__doors > :last-child { animation-delay: 2320ms; }
+
+@keyframes km-faq-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* until the slot plays, the resting open row reads closed (the ledger draws in closed, then 01
+   opens as the last row lands); reduced motion / no JS never sees this — 01 simply rests open */
+.km-motion .km-slot:not(.is-play) .km-faq .ac-row.is-open::before { transform: scaleX(0); }
+.km-motion .km-slot:not(.is-play) .km-faq .ac-row.is-open > .ac-row__more { grid-template-rows: 0fr; }
+.km-motion .km-slot:not(.is-play) .km-faq .ac-row.is-open .ac-row__in { opacity: 0; }
+.km-motion .km-slot:not(.is-play) .km-faq .ac-row.is-open .km-faq__p { opacity: 0; transform: translateY(8px); }
+.km-motion .km-slot:not(.is-play) .km-faq .ac-row.is-open .ac-toggle::after { transform: rotate(90deg); }
+
+/* ── responsive ──
+   1024–1439: the stage layout, scaling with the kit's fluid tokens (questions may take two lines).
+   ≤1023: one column in source order — rule → lede → the ledger → the doors, so the path still
+   ends on the action and the focus order is the visual order. The left column dissolves
+   (display: contents) so the lede can take its own column span. */
+@media (max-width: 1023px) {
+  .km-faq__side { display: contents; }
+  .km-faq__side > .ac-rule { grid-column: 1 / -1; }
+  .km-faq__side > .ac-lede { grid-column: 1 / span 9; max-width: 30em; }
+  .km-faq .km-faq__list { grid-column: 1 / -1; margin-top: 48px; }
+  .km-faq .km-faq__doors { grid-column: 1 / -1; margin-top: 48px; }
+}
+@media (max-width: 767px) {
+  .km-faq { --km-faq-idx: 40px; }
+  .km-faq__body { margin-top: 28px; }
+  /* the lede fills the column like the answers below it (balance would hold it to three short lines) */
+  .km-faq__side > .ac-lede { grid-column: 1 / -1; margin-top: 20px; max-width: none; text-wrap: pretty; }
+  .km-faq .km-faq__list { margin-top: 40px; }
+  .km-faq .ac-ledger { --ac-row-cols-sm: var(--ac-row-cols); }
+  .km-faq .ac-row__in { padding-bottom: 24px; }
+  .km-faq .km-faq__doors { margin-top: 40px; gap: 24px; }
+}
+
+/* ── in page context. On the System Audit page the FAQ sits between graphite sections (the spec
+   sheet above, the footer below), so both cuts get the kit's margin-to-margin hairline
+   (km-kit §1: a graphite→graphite cut is one hairline). The approved mockup followed a paper
+   section — a hard surface cut, no rule — and so does the standalone preview. ── */
+* + .km-slot > .km-faq::before, * + .km-slot > .km-faq::after {
+  content: ""; position: absolute; left: var(--edge); right: var(--edge); height: 1px;
+  background: var(--line); transform-origin: 0 50%; pointer-events: none;
+}
+* + .km-slot > .km-faq::before { top: 0; }
+* + .km-slot > .km-faq::after { bottom: 0; }
+.km-motion * + .km-slot > .km-faq::before { animation: ac-drawx 900ms var(--ease-out) both; }
