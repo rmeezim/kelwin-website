@@ -11,9 +11,12 @@ import { D, W, geo, mesh, type Pt } from "./geometry";
      again in 900ms); the first interaction cancels the automatic switch. Tablist keyboard: the
      selected tab is the one tab stop; ←/→ (and Home/End) move to the other tab and select it.
    · Standalone (the preview) the plate plays on the mockup's timeline from the slot's play. On the
-     homepage (.km-home) the slot plays when only the head is on screen, so the body holds its first
-     frame ([data-wait]) until the plate is half in view, then runs the same timeline from the
-     plate's own entrance (--rf-shift ≤ 640ms) — the switch lands ≈ 2s later, as specified.
+     homepage (.km-home) the slot plays when only the head is on screen: the plate opens in Surface on
+     the slot's timeline (panel, readout, band, dashed construction), while the lattice, the tags and
+     the strips hold their first frame ([data-wait]) until the plate is half in view. Then the lattice
+     plots at once (--rf-shift ≤ 860ms), the tags pin and the switch lands ≈ 1.75s later, as specified
+     ("when it is 50% visible … the switch fires ≈ 1.8s later"). A click on the control, or a plate
+     already above the viewport (reached scrolling up), releases the hold too.
    · Reduced motion: the resolved Architecture state synchronously — no timers, no rAF; the control
      still switches the figure (instantly).
    Cleanup clears every timer, rAF, listener and observer and puts the figure back to the markup's
@@ -21,8 +24,8 @@ import { D, W, geo, mesh, type Pt } from "./geometry";
 
 type State = "surface" | "arch";
 
-const AUTO_AT = 2600; // the automatic switch, from the plate timeline's start
-const PLATE_AT = 640; // the plate's own entrance delay (reframe.css §6)
+const AUTO_AT = 2600; // the automatic switch, on the slot's timeline
+const LATTICE_AT = 860; // the lattice's first line starts plotting (reframe.css §2)
 
 export const init: Behavior = (root, { reduced }) => {
   const fig = root.querySelector<HTMLElement>(".km-reframe__fig");
@@ -41,6 +44,7 @@ export const init: Behavior = (root, { reduced }) => {
   let raf = 0;
   let auto = 0;
   let touched = false;
+  let release: (() => void) | null = null; // the homepage gate, while it holds
 
   const draw = (k: number) => {
     const V: Pt[][] = [];
@@ -109,6 +113,7 @@ export const init: Behavior = (root, { reduced }) => {
   const take = (b: HTMLButtonElement) => {
     touched = true;
     window.clearTimeout(auto); // the first interaction cancels the automatic switch
+    release?.(); // and, on the homepage, lets a held figure play (it is plainly being looked at)
     set(b.dataset.state === "surface" ? "surface" : "arch", false);
   };
 
@@ -166,28 +171,36 @@ export const init: Behavior = (root, { reduced }) => {
   };
 
   if (root.closest(".km-home") && "IntersectionObserver" in window) {
-    // homepage gate: hold the body until the plate is half in view (or fills half the viewport)
+    // homepage gate: the shell plays now; the lattice, the tags and the strips hold until the plate
+    // is half in view (or fills half the viewport), or already lies above it
     root.setAttribute("data-wait", "");
     const t0 = performance.now();
     const gate = new IntersectionObserver(
       (entries) => {
         const seen = entries.some(
           (e) =>
-            e.isIntersecting &&
-            (e.intersectionRatio >= 0.5 || e.intersectionRect.height >= window.innerHeight * 0.5),
+            (e.isIntersecting &&
+              (e.intersectionRatio >= 0.5 || e.intersectionRect.height >= window.innerHeight * 0.5)) ||
+            e.boundingClientRect.top < 0,
         );
-        if (!seen) return;
-        gate.disconnect();
-        // start the plate's own timeline now — but never before it would have started anyway
-        const shift = Math.round(Math.min(PLATE_AT, performance.now() - t0));
-        root.style.setProperty("--rf-shift", `${shift}ms`);
-        root.removeAttribute("data-wait");
-        schedule(shift);
+        if (seen) release?.();
       },
       { threshold: [0, 0.25, 0.5, 0.75, 1] },
     );
+    release = () => {
+      release = null;
+      gate.disconnect();
+      // the lattice plots now — but never before it would have on the slot's own timeline
+      const shift = Math.round(Math.min(LATTICE_AT, performance.now() - t0));
+      root.style.setProperty("--rf-shift", `${shift}ms`);
+      root.removeAttribute("data-wait");
+      schedule(shift);
+    };
     gate.observe(fig);
-    undo.push(() => gate.disconnect());
+    undo.push(() => {
+      release = null;
+      gate.disconnect();
+    });
   } else {
     schedule(0);
   }

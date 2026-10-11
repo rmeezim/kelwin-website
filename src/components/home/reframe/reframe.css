@@ -123,13 +123,15 @@
 
 /* ── §6 entrance (km-motion; held until the slot plays), travelling the reading path: the head runs first
       (label → statement → rule → lede → door, 0–700ms); the plate follows the lede in its SURFACE state:
-      construction, then the lattice plots left → right, then the symptom tags 01 → 03; the strips cascade
-      beneath. --rf-shift is 0 except on the homepage (behavior.ts), where the plate's timeline starts when
-      the plate is half in view instead of 640ms after the head. ── */
-.km-motion .km-reframe__fig { animation: km-reframe-fade 500ms var(--ease-out) calc(640ms - var(--rf-shift, 0ms)) both; }
-.km-motion .km-reframe__ro { animation: km-reframe-fade 500ms var(--ease-out) calc(760ms - var(--rf-shift, 0ms)) both; }
-.km-motion .km-reframe__fig .ac-capband { animation: km-reframe-fade 400ms var(--ease-out) calc(860ms - var(--rf-shift, 0ms)) both; }
-.km-motion .km-reframe__in { animation: km-reframe-fade 500ms var(--ease-out) calc(var(--d, 760ms) - var(--rf-shift, 0ms)) both; }
+      the plate, the readout, the band and the dashed construction (the shell), then the lattice plots
+      left → right and the symptom tags pin 01 → 03; the strips cascade beneath.
+      --rf-shift is 0 except on the homepage (behavior.ts): there the shell opens on the slot's timeline,
+      and the lattice, the tags and the strips wait until the plate is half in view; their timeline then
+      starts at once (the lattice at release, ≤ 860ms earlier than on the slot's clock). ── */
+.km-motion .km-reframe__fig { animation: km-reframe-fade 500ms var(--ease-out) 640ms both; }
+.km-motion .km-reframe__ro { animation: km-reframe-fade 500ms var(--ease-out) 760ms both; }
+.km-motion .km-reframe__fig .ac-capband { animation: km-reframe-fade 400ms var(--ease-out) 860ms both; }
+.km-motion .km-reframe__in { animation: km-reframe-fade 500ms var(--ease-out) var(--d, 760ms) both; }
 .km-motion .km-reframe__tags .ac-callout,
 .km-motion .km-reframe__pins--tags .km-reframe__pin {
   animation: km-reframe-fade 400ms var(--ease-out) both;
@@ -138,10 +140,12 @@
 
 @keyframes km-reframe-fade { from { opacity: 0; } to { opacity: 1; } }
 
-/* homepage gate: the body holds its first frame until the plate is half in view (behavior.ts) */
-.km-reframe[data-wait] .km-reframe__body *,
-.km-reframe[data-wait] .km-reframe__body *::before,
-.km-reframe[data-wait] .km-reframe__body *::after { animation-play-state: paused !important; }
+/* homepage gate (behavior.ts): the shell plays with the head; the lattice, the tags (pins and list)
+   and the strips hold their first frame until the plate is half in view */
+.km-reframe[data-wait] .km-reframe__m,
+.km-reframe[data-wait] .km-reframe__tags .ac-callout,
+.km-reframe[data-wait] .km-reframe__pins--tags .km-reframe__pin,
+.km-reframe[data-wait] .km-reframe__strips > * { animation-play-state: paused !important; }
 
 /* ── §7 control ── */
 /* local guard: keep the selected segment legible while hovered (the kit's :hover colour outranks it) */
@@ -157,7 +161,7 @@
    Phone (≤767): the drawing keeps its keys as pins (symptom codes hang above the surface, cause
    codes below the cut, one set at a time, as on the plate) and the labels read as a list beneath
    it, in the same crossfade; the dimensions stay in the drawing. Text never scales: codes 12px,
-   labels 14px, values 12px mono. */
+   labels 14px, values 12px mono. Below 360px the pin boxes square up to 22px (no side padding). */
 @media (max-width: 1023px) {
   .km-reframe .km-reframe__field { aspect-ratio: auto; }
   .km-reframe__ro { position: relative; left: auto; top: auto; margin: 24px 24px 0; }
@@ -225,4 +229,9 @@
   .km-reframe .km-reframe__co::before, .km-reframe .km-reframe__co::after { display: none; }
   /* the control: tighter segments so both fit the 320 plate without scrolling */
   .km-reframe .km-reframe__seg > button { padding: 0 clamp(10px, 3vw, 20px); }
+}
+@media (max-width: 359px) {
+  /* the narrowest phones: the drawing bottoms out near u 0.31, where neighbouring pins sit 26–28px
+     apart; the code boxes drop their side padding to the kit's 22px square so they stay clear */
+  .km-reframe__pin::after { padding: 0; }
 }
