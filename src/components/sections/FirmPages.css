@@ -21,7 +21,7 @@
   --patina-bright: #7c9c8a;
   --hairline: rgba(251, 250, 246, 0.09);
   --panel: #0b0a08;
-  background: #110f0a;
+  background: #141517;
   color: var(--ink);
   font-family: var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -372,7 +372,7 @@
 .fp3-loop-svg g.fp3-fade { stroke: none; }
 .fp3-loop-svg g.fp3-fade line { stroke: var(--signal-bright); stroke-width: 2; }
 .fp3-loop-svg .is-err rect {
-  fill: rgba(17, 15, 10, 0.85);
+  fill: rgba(20, 21, 23, 0.85);
   stroke: rgba(212, 82, 78, 0.55);
   stroke-width: 1;
 }
@@ -1098,7 +1098,7 @@
   letter-spacing: 0.22em;
   color: var(--signal-bright);
   border: 1px solid rgba(212, 82, 78, 0.55);
-  background: rgba(17, 15, 10, 0.85);
+  background: rgba(20, 21, 23, 0.85);
   padding: 6px 12px;
 }
 .fp3-arch-spec {
@@ -1696,4 +1696,9 @@
   .fp3-topo-cut { stroke-dashoffset: 0 !important; transition: none; }
   .fp3-radar-shape { opacity: 1 !important; transition: none; }
   .fp3-shift-caret { transition: none; }
+}
+
+/* narrow phones: let the chip wrap instead of pushing the page wider than the screen */
+@media (max-width: 400px) {
+  .fp3-memo-chip { white-space: normal; }
 }

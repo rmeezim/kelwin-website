@@ -20,7 +20,7 @@
   --signal-bright: #d4524e;
   --hairline: rgba(251, 250, 246, 0.09);
   --panel: #0b0a08;
-  background: #110f0a;
+  background: #141517;
   color: var(--ink);
   font-family: var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -495,7 +495,7 @@
   letter-spacing: 0.2em;
   color: var(--signal-bright);
   border: 1px solid rgba(212, 82, 78, 0.55);
-  background: rgba(17, 15, 10, 0.82);
+  background: rgba(20, 21, 23, 0.82);
   padding: 8px 14px;
   white-space: nowrap;
 }
@@ -724,4 +724,9 @@
   .lb-spark-tip { opacity: 1 !important; transition: none; }
   .lb-cursor, .lb-protocol.is-patina .lb-protocol-node,
   .lb-protocol-item.is-live .lb-protocol-item-mark { animation: none; }
+}
+
+/* narrow phones: let the chip wrap instead of pushing the page wider than the screen */
+@media (max-width: 400px) {
+  .lb-spec-chip { white-space: normal; }
 }

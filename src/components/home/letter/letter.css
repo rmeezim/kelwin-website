@@ -1,0 +1,176 @@
+/* ── letter · Memo K-000, signed (mockup slot S) ─────────────────────────────────────────────
+   A signed letter set in type alone — the page's first change of pace after the numbers.
+   Grid (1440 stage): label row 1–12 · memo keys hang in col 1 · the letter reads in cols 2–8 ·
+   col 9 is air · the margin sits in cols 10–12, top-aligned with paragraph 1.
+   Default CSS = the final, resting state. Keyframe entrances are declared under .km-motion (held at
+   their first frame until the slot plays, km-kit §10): the paragraphs rise line by line from their
+   masks (behavior.ts splits the real lines, then restores the plain text), the margin cascades at
+   80ms, the signature and P.S. follow, and the signature dash draws last. Red: the label square only.
+   Every rule is scoped under .km-letter so it outranks km-base's `.km :is(p, …)` / `.km a` resets. */
+
+.km-letter {
+  /* the letter's body size: 22px at the stage, scaled with the viewport below it, 19px floor */
+  --lt-fs: clamp(19px, 1.5278vw, 22px);
+}
+.km-letter .km-letter__g { grid-template-rows: repeat(7, auto); align-items: start; }
+
+/* ── placement ── */
+.km-letter .km-letter__labelrow { grid-column: 1 / -1; grid-row: 1; }
+.km-letter .km-letter__key--subj { grid-column: 1; grid-row: 2; align-self: baseline; }   /* the keys sit on their line's baseline */
+.km-letter .km-letter__subj      { grid-column: 2 / span 7; grid-row: 2; margin-top: 48px; align-self: baseline; }
+.km-letter .km-letter__p--1      { grid-column: 2 / span 7; grid-row: 3; margin-top: 40px; }
+.km-letter .km-letter__p--2      { grid-column: 2 / span 7; grid-row: 4; margin-top: 28px; }
+.km-letter .km-letter__p--3      { grid-column: 2 / span 7; grid-row: 5; margin-top: 28px; }
+.km-letter .km-letter__margin    { grid-column: 10 / span 3; grid-row: 3 / span 4; margin-top: 45px; }
+.km-letter .km-letter__sign      { grid-column: 2 / span 7; grid-row: 6; margin-top: 48px; }
+.km-letter .km-letter__key--ps   { grid-column: 1; grid-row: 7; align-self: baseline; }
+.km-letter .km-letter__ps        { grid-column: 2 / span 7; grid-row: 7; margin-top: 32px; align-self: baseline; }
+
+/* ── memo keys (mono apparatus: Memo K-000 · Subject · P.S.) ── */
+.km-letter .km-letter__key { margin: 0; }
+
+/* ── the letter: subject + body ── */
+/* the kit's h3-lg (42px at the stage) with the phone spec's 32px as its floor, so the subject never
+   shrinks as the screen widens (the kit token alone reads 28px at 768, under the phone's 32px) */
+.km-letter .km-letter__subj { margin-bottom: 0; font-size: max(32px, var(--ac-h3-lg)); }
+/* measure: ~60 characters a line (29em ≈ 638px at 22px), inside the founder's 34–68 rule */
+.km-letter .km-letter__p {
+  margin-bottom: 0; max-width: 29em;
+  font-family: var(--f-body); font-weight: var(--body-weight); font-size: var(--lt-fs); line-height: 1.55; color: var(--fg);
+  text-wrap: pretty; hanging-punctuation: first;
+}
+/* the coda wraps greedily, so "That’s the point." drops whole onto its own line */
+.km-letter .km-letter__p--3 { text-wrap: wrap; }
+/* line masks (built by behavior.ts for the entrance only, then removed) */
+.km-letter .km-letter__ln { display: block; overflow: hidden; white-space: nowrap; }
+.km-letter .km-letter__ln > span { display: inline-block; }
+
+/* ── the margin: told from inside ── */
+.km-letter .km-letter__mcap { margin-top: 16px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 34ch; }
+.km-letter .km-letter__sym { margin: 24px 0 0; padding: 0; list-style: none; }
+.km-letter .km-letter__sym > li {
+  display: grid; grid-template-columns: 28px minmax(0, 1fr); align-items: baseline;
+  padding: 12px 0 13px; border-top: 1px solid var(--line);
+}
+.km-letter .km-letter__sym > li:last-child { border-bottom: 1px solid var(--line); }
+.km-letter .km-letter__symt { font-size: var(--ac-body); line-height: 1.35; color: var(--fg); text-wrap: balance; }   /* one line at the stage; balanced when the column narrows */
+
+/* ── signature (no background line under the name: D11) ── */
+.km-letter .km-letter__sign { display: flex; flex-direction: column; align-items: flex-start; }
+.km-letter .km-letter__dash { display: block; width: 48px; height: 1px; margin-bottom: 20px; background: var(--fg); transform-origin: 0 50%; }
+.km-letter .km-letter__name {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 20px; line-height: 1.3; color: var(--fg);
+  text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: 5px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+.km-letter .km-letter__name:hover { text-decoration-color: currentColor; }
+.km-letter .km-letter__role { margin-top: 6px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+.km-letter .km-letter__name + .km-letter__role { margin-top: 8px; }
+.km-letter .km-letter__role + .km-letter__role { margin-top: 0; }
+
+/* ── P.S.: one door, then the reading list ── */
+.km-letter .km-letter__ps { display: flex; flex-direction: column; align-items: flex-start; }
+.km-letter .km-letter__nlabel { margin-top: 32px; }
+.km-letter .km-letter__notes { align-self: stretch; max-width: 532px; margin: 14px 0 0; padding: 0; list-style: none; }
+.km-letter .km-letter__notes > li { border-top: 1px solid var(--line); }
+.km-letter .km-letter__notes > li:last-child { border-bottom: 1px solid var(--line); }
+.km-letter .km-letter__notes a {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto 13px; align-items: baseline; column-gap: 24px;
+  padding: 12px 0 13px;
+}
+.km-letter .km-letter__nt {
+  font-size: var(--ac-support); line-height: 1.5; color: var(--fg);
+  text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: 4px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+.km-letter .km-letter__nm { color: var(--fg-3); transition: color 200ms var(--ease-out); }
+/* the kit's drawn → (same mask as .ac-link), quiet until hover */
+.km-letter .km-letter__notes a::after {
+  content: ""; align-self: center; width: 13px; height: 11px; background-color: var(--fg-3);
+  transition: transform 250ms var(--ease-out), background-color 200ms var(--ease-out);
+  -webkit-mask: var(--km-letter-arr) center / contain no-repeat; mask: var(--km-letter-arr) center / contain no-repeat;
+  --km-letter-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.km-letter .km-letter__notes a:hover .km-letter__nt { text-decoration-color: currentColor; }
+.km-letter .km-letter__notes a:hover .km-letter__nm { color: var(--fg-2); }
+.km-letter .km-letter__notes a:hover::after { transform: translateX(3px); background-color: var(--fg); }
+
+.km-letter a:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* ── entrance (km-motion only, held at frame 0 until the slot plays; no km-motion = the final state) ──
+   Reading order: label → subject → the letter, line by line → the margin (80ms cascade) →
+   signature → P.S. → the signature dash draws last. behavior.ts sets the late delays (--lt-*) from
+   the real line count. */
+.km-motion .km-letter .km-letter__labelrow { animation: ac-fade 300ms var(--ease-out) both; }
+.km-motion .km-letter .km-letter__subj .ac-line > span { animation: ac-rise 800ms var(--ease-out) 80ms both; }
+.km-motion .km-letter .km-letter__key--subj { animation: ac-fade 400ms var(--ease-out) 240ms both; }
+.km-motion .km-letter .km-letter__ln > span { animation: ac-rise 800ms var(--ease-out) var(--d, 360ms) both; }
+/* fallback if the lines were never split (the behaviour did not run): each paragraph rises whole */
+.km-motion .km-letter .km-letter__p:not(.is-lined) { animation: ac-up 700ms var(--ease-out) 400ms both; }
+.km-motion .km-letter .km-letter__p--2:not(.is-lined) { animation-delay: 560ms; }
+.km-motion .km-letter .km-letter__p--3:not(.is-lined) { animation-delay: 720ms; }
+
+.km-motion .km-letter .km-letter__mlabel { animation: ac-fade 400ms var(--ease-out) var(--lt-m, 640ms) both; }
+.km-motion .km-letter .km-letter__mcap { animation: ac-up 600ms var(--ease-out) calc(var(--lt-m, 640ms) + 80ms) both; }
+.km-motion .km-letter .km-letter__sym > li { animation: km-letter-row 500ms var(--ease-out) calc(var(--lt-m, 640ms) + 160ms + var(--i, 0) * 80ms) both; }
+
+.km-motion .km-letter .km-letter__sign > :not(.km-letter__dash) { animation: ac-up 600ms var(--ease-out) var(--lt-sig, 1700ms) both; }
+.km-motion .km-letter .km-letter__sign > :nth-child(3) { animation-delay: calc(var(--lt-sig, 1700ms) + 80ms); }
+.km-motion .km-letter .km-letter__sign > :nth-child(4) { animation-delay: calc(var(--lt-sig, 1700ms) + 160ms); }
+.km-motion .km-letter .km-letter__key--ps,
+.km-motion .km-letter .km-letter__write,
+.km-motion .km-letter .km-letter__nlabel { animation: ac-up 600ms var(--ease-out) var(--lt-ps, 1960ms) both; }
+.km-motion .km-letter .km-letter__nlabel { animation-delay: calc(var(--lt-ps, 1960ms) + 80ms); }
+.km-motion .km-letter .km-letter__notes > li { animation: km-letter-row 500ms var(--ease-out) calc(var(--lt-ps, 1960ms) + 160ms + var(--i, 0) * 80ms) both; }
+.km-motion .km-letter .km-letter__dash { animation: ac-drawx 700ms var(--ease-inout) var(--lt-dash, 2500ms) both; }
+
+@keyframes km-letter-row { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ── ≤ 1023px (tablet): col 1 is too narrow to hang the keys, and cols 10–12 too narrow for the
+   margin. The keys hang in cols 1–2, the letter reads across cols 3–12, and the margin drops in
+   after paragraph 2 (its DOM place, as on the phone), beside the movie it itemises. ── */
+@media (max-width: 1023px) {
+  .km-letter .km-letter__g { grid-template-rows: none; }
+  .km-letter .km-letter__g > * { grid-row: auto; }
+  .km-letter .km-letter__key { grid-column: 1 / span 2; }
+  .km-letter :is(.km-letter__subj, .km-letter__p, .km-letter__margin, .km-letter__sign, .km-letter__ps) { grid-column: 3 / -1; }
+  .km-letter .km-letter__margin { margin-top: 40px; margin-bottom: 12px; }
+  .km-letter .km-letter__mcap { max-width: 46ch; }
+  .km-letter .km-letter__sym { max-width: 532px; }   /* ends where the P.S. reading list ends */
+}
+
+/* ── ≤ 767px (phone): one column; the keys sit above what they key, and the margin drops in after
+   paragraph 2. ── */
+@media (max-width: 767px) {
+  .km-letter.ac-sec { padding-block: 88px; }   /* outranks the kit's .ac-sec padding whatever the chunk order */
+  .km-letter .km-letter__g { grid-template-columns: minmax(0, 1fr); }
+  .km-letter .km-letter__g > * { grid-column: 1 / -1; align-self: start; }
+  .km-letter .km-letter__key--subj { margin-top: 40px; }
+  .km-letter .km-letter__subj { margin-top: 10px; }
+  .km-letter .km-letter__p { font-size: 19px; max-width: none; }
+  .km-letter .km-letter__p--1 { margin-top: 28px; }
+  .km-letter .km-letter__p--2, .km-letter .km-letter__p--3 { margin-top: 24px; }
+  .km-letter .km-letter__margin { margin-top: 36px; margin-bottom: 12px; }
+  .km-letter .km-letter__mcap, .km-letter .km-letter__sym { max-width: none; }
+  .km-letter .km-letter__sign { margin-top: 40px; }
+  .km-letter .km-letter__key--ps { margin-top: 48px; }
+  .km-letter .km-letter__ps { margin-top: 8px; }
+  .km-letter .km-letter__notes { max-width: none; }
+  .km-letter .km-letter__notes a { grid-template-columns: minmax(0, 1fr) 13px; row-gap: 4px; }
+  .km-letter .km-letter__nm { grid-row: 2; grid-column: 1; }
+  .km-letter .km-letter__notes a::after { grid-row: 1 / span 2; grid-column: 2; }
+}
+/* the narrowest phones: the P.S. door keeps its one line (the kit's .18em tracking would push it past 280px) */
+@media (max-width: 359px) {
+  .km-letter .km-letter__write { letter-spacing: .13em; }
+}
+
+/* ── touch: the two short links get a ≥44px tall hit box without moving a pixel. The name's box
+   grows through its free ::before; the P.S. door's ::before/::after are the kit's hairline and
+   arrow, so it carries an empty absolute span instead (no flex item, no gap, nothing painted). ── */
+.km-letter .km-letter__hit { display: none; }
+@media (max-width: 767px), (pointer: coarse) {
+  .km-letter .km-letter__name { position: relative; }
+  .km-letter .km-letter__name::before { content: ""; position: absolute; inset: -10px 0 -8px; }   /* 26 → 44px; stops short of the role line */
+  .km-letter .km-letter__hit { display: block; position: absolute; inset: -8px 0; }                 /* 29 → 45px */
+}

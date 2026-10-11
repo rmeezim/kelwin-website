@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import HeroCTA from "@/components/ui/HeroCTA";
 import "./ContactChannel.css";
 
 // ─── Contact — the general channel ────────────────────────────────────────
@@ -139,11 +139,7 @@ export default function ContactChannel() {
               yours to keep.
             </p>
             <div className="ctc-door-action">
-              <DiagnosticMethodCTA
-                href="/audit"
-                label="Begin qualification"
-                variant="signal"
-              />
+              <HeroCTA href="/audit" label="Begin qualification" />
             </div>
           </div>
 

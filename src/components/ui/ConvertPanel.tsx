@@ -1,4 +1,4 @@
-import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import HeroCTA from "@/components/ui/HeroCTA";
 import ArrowLink from "@/components/ui/ArrowLink";
 import "./ConvertPanel.css";
 
@@ -44,11 +44,8 @@ export default function ConvertPanel({
         )}
       </div>
       <div className="cvp-actions">
-        <DiagnosticMethodCTA
-          href={primary.href}
-          label={primary.label}
-          variant="signal"
-        />
+        {/* the one primary action: button C, as on every page */}
+        <HeroCTA href={primary.href} label={primary.label} />
         {secondary && (
           <ArrowLink href={secondary.href} label={secondary.label} tone="sand" />
         )}

@@ -1,46 +1,65 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type FocusEvent,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
+  type ReactNode,
+} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { cn } from "@/lib/utils";
-import "./NavMega.css";
+import "./Navbar.css";
 
-/* Every destination is a real page or section. The one red element per
-   panel is the audit CTA card (`cta: true`). */
+/* ─── The v5 site bar (approved mockup: design/redesign/site/frag/hero/T — the header) ───
+   Lockup left, the five items in tracked caps (no separators), the outlined AUDIT REQUEST ↗
+   right, one margin-to-margin hairline with a + registration mark at each end.
+   · Homepage at rest it is the mockup header exactly, in normal flow; its entrance plays with
+     the hero (the bar fades, the hairline draws, the two marks register).
+   · Scrolled: the same bar, compact, on flat graphite with a bottom hairline. The header keeps
+     its flow height, so nothing below it moves.
+   · Capabilities / The Firm / Resources open flat graphite plates that hang from the hairline
+     (hover, click or keyboard). Each plate's one red is the System Audit door.
+   · ≤1023px: a menu button opens a full-screen graphite sheet with the same items; the three
+     plates become expandable groups. Focus is trapped, Escape closes, the page cannot scroll. */
+
+type GlyphName = "contour" | "trace" | "orbit" | "firm" | "fit" | "careers" | "insights" | "reports" | "contact";
+
 type MegaLink = {
   title: string;
   desc: string;
-  href?: string;
+  href: string;
   tag?: string;
   glyph?: GlyphName;
-  cta?: boolean;
-  /** Sub-service catalog — renders as a mono manifest list on feature cards. */
+  /** Sub-service catalog — the capability plates list four services per strip. */
   services?: string[];
 };
 type MegaDef = {
-  protocol: string;
-  featureCols?: 2 | 3;
-  features: MegaLink[];
-  smalls?: MegaLink[];
-  rail?: MegaLink[];
+  id: string;
+  /** One strip per column (three columns on the 12-column stage). */
+  strips: MegaLink[];
+  /** The plate's foot band: an optional quiet row, then the red System Audit door. */
+  rail?: MegaLink;
+  door?: MegaLink;
 };
 type NavItem =
   | { label: string; href: string; mega?: never }
   | { label: string; href?: never; mega: MegaDef };
 
-const navItems: NavItem[] = [
+const NAV: NavItem[] = [
   {
-    label: "CAPABILITIES",
+    label: "Capabilities",
     mega: {
-      protocol: "Capabilities · Systems",
-      featureCols: 3,
-      features: [
+      id: "capabilities",
+      strips: [
         {
           tag: "C·01",
-          glyph: "narrative",
+          glyph: "contour",
           title: "Narrative Systems",
           desc: "What the market hears, made deliberate.",
           href: "/capabilities/narrative-systems",
@@ -53,7 +72,7 @@ const navItems: NavItem[] = [
         },
         {
           tag: "C·02",
-          glyph: "channels",
+          glyph: "trace",
           title: "GTM Infrastructure",
           desc: "The machine that carries it to buyers.",
           href: "/capabilities/gtm-infrastructure",
@@ -66,7 +85,7 @@ const navItems: NavItem[] = [
         },
         {
           tag: "C·03",
-          glyph: "intelligence",
+          glyph: "orbit",
           title: "GTM Intelligence",
           desc: "The loop that makes it compound.",
           href: "/capabilities/gtm-intelligence",
@@ -78,28 +97,24 @@ const navItems: NavItem[] = [
           ],
         },
       ],
-      rail: [
-        {
-          title: "The System Audit",
-          desc: "Where every engagement begins — fixed scope, ten working days.",
-          href: "/audit",
-          cta: true,
-        },
-        {
-          title: "The full stack, on one page",
-          desc: "How the three layers wire into one operating system.",
-          href: "/#revenue-os",
-        },
-      ],
+      rail: {
+        title: "The full stack, on one page",
+        desc: "How the three layers wire into one operating system.",
+        href: "/#s-system", // the homepage's system section (the old #revenue-os anchor is gone)
+      },
+      door: {
+        title: "The System Audit",
+        desc: "Where every engagement begins — fixed scope, ten working days.",
+        href: "/audit",
+      },
     },
   },
-  { label: "METHODOLOGY", href: "/#methodology" },
+  { label: "Methodology", href: "/#methodology" },
   {
-    label: "THE FIRM",
+    label: "The Firm",
     mega: {
-      protocol: "The Firm · Dossier",
-      featureCols: 3,
-      features: [
+      id: "firm",
+      strips: [
         {
           tag: "F·01",
           glyph: "firm",
@@ -125,10 +140,10 @@ const navItems: NavItem[] = [
     },
   },
   {
-    label: "RESOURCES",
+    label: "Resources",
     mega: {
-      protocol: "Resources · Index",
-      features: [
+      id: "resources",
+      strips: [
         {
           tag: "R·01",
           glyph: "insights",
@@ -143,9 +158,8 @@ const navItems: NavItem[] = [
           desc: "Engagement readouts, published as clients clear them for release.",
           href: "/reports",
         },
-      ],
-      rail: [
         {
+          glyph: "contact",
           title: "Get in touch",
           desc: "General queries, information requests, press — straight to the founders.",
           href: "/contact",
@@ -153,614 +167,627 @@ const navItems: NavItem[] = [
       ],
     },
   },
-  // The R&D arm — a plain link with a patina "live build" dot: where the
-  // practice becomes AI-native GTM software.
-  { label: "THE LAB", href: "/the-lab" },
+  { label: "The Lab", href: "/the-lab" },
 ];
 
-/* ── Line glyphs — 1px geometric marks in the site's instrument idiom. ── */
-type GlyphName =
-  | "narrative"
-  | "channels"
-  | "intelligence"
-  | "firm"
-  | "fit"
-  | "careers"
-  | "insights"
-  | "reports";
+/* Which item owns the current page — it sits lit on the hairline. */
+function isCurrent(item: NavItem, pathname: string): boolean {
+  const key = item.mega?.id ?? item.href;
+  switch (key) {
+    case "capabilities":
+      return /^\/(capabilities|audit)(\/|$)/.test(pathname);
+    case "firm":
+      return /^\/(about|who-we-work-with|careers)(\/|$)/.test(pathname);
+    case "resources":
+      return /^\/(insights|reports|contact)(\/|$)/.test(pathname);
+    case "/the-lab":
+      return /^\/the-lab(\/|$)/.test(pathname);
+    default:
+      return false;
+  }
+}
 
-function MegaGlyph({ name }: { name: GlyphName }) {
-  const art: Record<GlyphName, React.ReactNode> = {
-    narrative: (
-      <>
-        <path d="M4 7h13M4 12h9M4 17h5" />
-        <circle cx="18.5" cy="17" r="1.4" />
-      </>
-    ),
-    channels: (
-      <>
-        <circle cx="5" cy="5.5" r="1.4" />
-        <circle cx="5" cy="12" r="1.4" />
-        <circle cx="5" cy="18.5" r="1.4" />
-        <path d="M6.4 6.2 17 11.2M6.4 12h10M6.4 17.8 17 12.8" />
-        <circle cx="18.8" cy="12" r="1.8" />
-      </>
-    ),
-    intelligence: (
-      <>
-        <path d="M4.5 19a7.5 7.5 0 0 1 15 0M8 19a4 4 0 0 1 8 0" />
-        <path d="M12 19 16.2 9.6" />
-        <circle cx="16.6" cy="8.6" r="1.3" />
-      </>
-    ),
-    firm: (
-      <>
-        <path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4" />
-        <circle cx="12" cy="12" r="1.8" />
-      </>
-    ),
-    fit: (
-      <>
-        <circle cx="6" cy="6" r="1.2" />
-        <circle cx="12" cy="6" r="1.2" />
-        <circle cx="18" cy="6" r="1.2" />
-        <circle cx="6" cy="12" r="1.2" />
-        <circle cx="12" cy="12" r="2" fill="currentColor" />
-        <circle cx="18" cy="12" r="1.2" />
-        <circle cx="6" cy="18" r="1.2" />
-        <circle cx="12" cy="18" r="1.2" />
-        <circle cx="18" cy="18" r="2" fill="currentColor" />
-      </>
-    ),
-    careers: (
-      <>
-        <circle cx="12" cy="7.5" r="3" />
-        <path d="M5 20a7 7 0 0 1 14 0" />
-      </>
-    ),
-    insights: (
-      <>
-        <path d="M3.5 13.5h3.5l2.5-6 3.5 9.5 2.5-6h5" />
-      </>
-    ),
-    reports: (
-      <>
-        <path d="M6.5 3.5h7l4 4v13h-11z" />
-        <path d="M13.5 3.5v4h4" />
-        <path d="M9.5 12h5M9.5 15.5h5" />
-      </>
-    ),
-  };
+/* ── Glyphs: 36×24, 1px, the hero's chapter marks (CONTOUR · TRACE · ORBIT) for the three
+      capabilities, and quiet marks in the same idiom for the firm and resources. ── */
+const GLYPHS: Record<GlyphName, ReactNode> = {
+  contour: (
+    <>
+      <path pathLength={1} d="M0 4.5C5 3.5 8 8 13 7.2S20 10.5 24 12H36" />
+      <path pathLength={1} d="M0 9.5C4 11.5 8 7.5 12.5 9.5S20 12 24 12" />
+      <path pathLength={1} d="M0 14.5C4 12.8 8 17 12.5 14.6S20 12 24 12" />
+      <path pathLength={1} d="M0 19.5C5 21 8 15.8 13 16.8S20 13.5 24 12" />
+    </>
+  ),
+  trace: (
+    <>
+      <path pathLength={1} d="M0 18.5H9.5V5.5H25.5V18.5H36" />
+      <rect className="kn-glyph__nd" x="8" y="4" width="3" height="3" />
+      <rect className="kn-glyph__nd" x="24" y="4" width="3" height="3" />
+      <rect className="kn-glyph__nd" x="24" y="17" width="3" height="3" />
+    </>
+  ),
+  orbit: (
+    <>
+      <path pathLength={1} d="M0 12.5H15" />
+      <path pathLength={1} d="M31.8 7.5A9 9 0 1 1 27.1 3.5" />
+      <rect className="kn-glyph__nd" x="28.3" y="3.6" width="3" height="3" />
+    </>
+  ),
+  firm: (
+    <>
+      <path pathLength={1} d="M10.5 6.5V2.5H14.5" />
+      <path pathLength={1} d="M21.5 2.5H25.5V6.5" />
+      <path pathLength={1} d="M25.5 17.5V21.5H21.5" />
+      <path pathLength={1} d="M14.5 21.5H10.5V17.5" />
+      <rect className="kn-glyph__nd" x="16.5" y="10.5" width="3" height="3" />
+    </>
+  ),
+  fit: (
+    <>
+      <rect className="kn-glyph__box" x="10.5" y="4.5" width="2" height="2" />
+      <rect className="kn-glyph__box" x="16.5" y="4.5" width="2" height="2" />
+      <rect className="kn-glyph__box" x="22.5" y="4.5" width="2" height="2" />
+      <rect className="kn-glyph__box" x="10.5" y="10.5" width="2" height="2" />
+      <rect className="kn-glyph__nd" x="16" y="10" width="3" height="3" />
+      <rect className="kn-glyph__box" x="22.5" y="10.5" width="2" height="2" />
+      <rect className="kn-glyph__box" x="10.5" y="16.5" width="2" height="2" />
+      <rect className="kn-glyph__box" x="16.5" y="16.5" width="2" height="2" />
+      <rect className="kn-glyph__nd" x="22" y="16" width="3" height="3" />
+    </>
+  ),
+  careers: (
+    <>
+      <path pathLength={1} d="M0 12.5H13" />
+      <path pathLength={1} d="M23 12.5H36" />
+      <rect className="kn-glyph__box" x="14.5" y="8.5" width="7" height="7" />
+    </>
+  ),
+  insights: <path pathLength={1} d="M0 14.5H8L11 6.5L15 18.5L18 10.5L20 14.5H36" />,
+  reports: (
+    <>
+      <path pathLength={1} d="M11.5 1.5H21.5L25.5 5.5V22.5H11.5Z" />
+      <path pathLength={1} d="M21.5 1.5V5.5H25.5" />
+      <path pathLength={1} d="M14.5 11.5H22.5" />
+      <path pathLength={1} d="M14.5 15.5H22.5" />
+    </>
+  ),
+  contact: (
+    <>
+      <path pathLength={1} d="M0 12.5H25" />
+      <rect className="kn-glyph__box" x="25.5" y="8.5" width="8" height="8" />
+      <rect className="kn-glyph__nd" x="28" y="11" width="3" height="3" />
+    </>
+  ),
+};
+
+const GLYPH_BOX = { "--w": "36px", "--h": "24px" } as CSSProperties;
+
+function Glyph({ name }: { name: GlyphName }) {
   return (
-    <svg
-      className="nmc-glyph"
-      viewBox="0 0 24 24"
-      width="24"
-      height="24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.1"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {art[name]}
+    <svg className="ac-glyph kn-glyph" style={GLYPH_BOX} viewBox="0 0 36 24" aria-hidden="true">
+      {GLYPHS[name]}
     </svg>
   );
 }
 
-const FLICKER_ANIMATE = {
-  opacity: [0, 0.9, 0.05, 1, 0.38, 1],
-  scaleX:  [0, 0.4, 0.4,  0.73, 0.9, 1],
-};
-const FLICKER_TRANSITION = {
-  duration: 0.28,
-  times: [0, 0.12, 0.26, 0.48, 0.72, 1],
-  ease: "linear" as const,
-};
-
-// h-[2px] on both positions so top and bottom render at identical thickness
-function FlickerLine({ position = "bottom" }: { position?: "top" | "bottom" }) {
+/* Drawn arrows — the brand fonts carry no arrow glyphs. */
+function ArrowGo({ className = "kn-arrow" }: { className?: string }) {
   return (
-    <motion.span
-      className={cn(
-        "absolute left-0 h-[2px] w-full bg-signal-bright pointer-events-none",
-        position === "bottom" ? "-bottom-1" : "-top-[5px]"
-      )}
-      initial={{ opacity: 0, scaleX: 0 }}
-      animate={FLICKER_ANIMATE}
-      exit={{ opacity: 0, transition: { duration: 0.1 } }}
-      transition={FLICKER_TRANSITION}
-      style={{ transformOrigin: position === "bottom" ? "left" : "right" }}
-    />
+    <svg className={className} viewBox="0 0 14 12" aria-hidden="true">
+      <path d="M1 6h12M8 1.5 12.5 6 8 10.5" />
+    </svg>
   );
 }
 
-function HoverLink({
-  href,
-  label,
-  className,
-  onClick,
-  onMenuClose,
-  pageActive,
-}: {
-  href: string;
-  label: string;
-  className?: string;
-  onClick?: () => void;
-  onMenuClose?: () => void;
-  pageActive?: boolean;
-}) {
-  const [hovered, setHovered] = useState(false);
+/* The service rows' index: C·02 → 02.1 … 02.4 */
+const serviceIdx = (tag: string | undefined, i: number) =>
+  `${(tag ?? "").replace(/\D/g, "").padStart(2, "0")}.${i + 1}`;
+
+/* One strip of a plate: glyph + mono index → title → descriptor → services. The whole strip is
+   the link. */
+function Strip({ item, onNavigate }: { item: MegaLink; onNavigate: () => void }) {
   return (
-    <Link
-      href={href}
-      className={cn(
-        "nav-cell transition-colors duration-150",
-        pageActive && "nav-cell-active",
-        className
-      )}
-      style={{
-        color: hovered
-          ? "#D4524E"
-          : pageActive
-          ? "var(--text-primary)"
-          : "var(--text-muted)",
-      }}
-      onMouseEnter={() => { setHovered(true); onMenuClose?.(); }}
-      onMouseLeave={() => setHovered(false)}
-      onClick={onClick}
-    >
-      <span className="relative inline-flex items-center gap-2">
-        <span className="relative inline-block">
-          {label}
-          <AnimatePresence>
-            {hovered && <FlickerLine key="bot" />}
-          </AnimatePresence>
+    <li className="kn-strip">
+      <Link href={item.href} className="kn-strip__a" onClick={onNavigate}>
+        <span className="kn-strip__top">
+          {item.glyph ? <Glyph name={item.glyph} /> : <span />}
+          {item.tag && <span className="ac-idx">{item.tag}</span>}
         </span>
-      </span>
-    </Link>
-  );
-}
-
-function HoverButton({
-  label,
-  isOpen,
-  className,
-  onMouseEnter,
-  onMouseLeave,
-  onClick,
-  pageActive,
-}: {
-  label: string;
-  isOpen: boolean;
-  className?: string;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-  onClick: () => void;
-  pageActive?: boolean;
-}) {
-  const [hovered, setHovered] = useState(false);
-  const active = hovered || isOpen;
-  return (
-    <button
-      className={cn(
-        "nav-cell transition-colors duration-150",
-        (pageActive || isOpen) && "nav-cell-active",
-        className
-      )}
-      style={{
-        color: active
-          ? "#D4524E"
-          : pageActive
-          ? "var(--text-primary)"
-          : "var(--text-muted)",
-      }}
-      onMouseEnter={() => { setHovered(true); onMouseEnter(); }}
-      onMouseLeave={() => { setHovered(false); onMouseLeave(); }}
-      onClick={onClick}
-      aria-expanded={isOpen}
-      aria-haspopup="true"
-    >
-      <span className="relative inline-block">
-        {label}
-        <AnimatePresence>
-          {active && <FlickerLine key="bot" />}
-        </AnimatePresence>
-      </span>
-    </button>
-  );
-}
-
-// Corner brackets at rest; full border flickers in on hover
-function AuditCTA({ onMenuClose }: { onMenuClose?: () => void }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <Link
-      href="/audit"
-      className="relative ml-2 px-4 py-2 text-[11px] tracking-[0.18em] font-body font-medium transition-colors duration-150 select-none"
-      style={{ color: hovered ? "#D4524E" : "var(--text-muted)" }}
-      onMouseEnter={() => { setHovered(true); onMenuClose?.(); }}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Four corner brackets — always visible */}
-      <span className="absolute top-0 left-0 w-2 h-2 border-t border-l" style={{ borderColor: "rgba(199, 180, 157,0.55)" }} />
-      <span className="absolute top-0 right-0 w-2 h-2 border-t border-r" style={{ borderColor: "rgba(199, 180, 157,0.55)" }} />
-      <span className="absolute bottom-0 left-0 w-2 h-2 border-b border-l" style={{ borderColor: "rgba(199, 180, 157,0.55)" }} />
-      <span className="absolute bottom-0 right-0 w-2 h-2 border-b border-r" style={{ borderColor: "rgba(199, 180, 157,0.55)" }} />
-
-      {/* Full border flickers in on hover */}
-      <AnimatePresence>
-        {hovered && (
-          <motion.span
-            className="absolute inset-0 border pointer-events-none"
-            style={{ borderColor: "#D4524E" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.9, 0.05, 1, 0.38, 1] }}
-            exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            transition={{ duration: 0.28, times: [0, 0.10, 0.22, 0.42, 0.65, 1], ease: "linear" }}
-          />
-        )}
-      </AnimatePresence>
-
-      AUDIT REQUEST
-    </Link>
-  );
-}
-
-/* One card, three postures. `feature` = large dossier card with glyph, mono
-   tag, corner brackets, and a blueprint-grid ground; `small` = compact index
-   row; `rail` = right-column row. `cta` carries the panel's one red edge. */
-function MegaCard({
-  item,
-  variant,
-  onNavigate,
-}: {
-  item: MegaLink;
-  variant: "feature" | "small" | "rail";
-  onNavigate: () => void;
-}) {
-  const cls = cn("nmc", `nmc-${variant}`, item.cta && "nmc-cta");
-  const inner =
-    variant === "feature" ? (
-      <>
-        <span className="nmc-tagrow">
-          {item.glyph && <MegaGlyph name={item.glyph} />}
-          <span className="nmc-tag">{item.tag}</span>
+        <span className="kn-strip__t">
+          {item.title}
+          <ArrowGo />
         </span>
-        <span className="nmc-body">
-          <span className="nmc-title">
-            {item.title}
-            <span className="nmc-arrow" aria-hidden="true">→</span>
+        <span className="kn-strip__d">{item.desc}</span>
+        {item.services && (
+          <span className="kn-strip__svc">
+            {item.services.map((s, i) => (
+              <span className="kn-strip__row" key={s}>
+                <span className="ac-idx">{serviceIdx(item.tag, i)}</span>
+                <span>{s}</span>
+              </span>
+            ))}
           </span>
-          <span className="nmc-desc">{item.desc}</span>
-          {item.services && (
-            <span className="nmc-services">
-              {item.services.map((s) => (
-                <span className="nmc-service" key={s}>
-                  <span className="nmc-service-mark" aria-hidden="true" />
-                  {s}
-                </span>
-              ))}
-            </span>
-          )}
-        </span>
-        <span className="nmc-sweep" aria-hidden="true" />
-      </>
-    ) : (
-      <>
-        <span className="nmc-body">
-          <span className="nmc-title">{item.title}</span>
-          <span className="nmc-desc">{item.desc}</span>
-        </span>
-        <span className="nmc-arrow" aria-hidden="true">→</span>
-        <span className="nmc-sweep" aria-hidden="true" />
-      </>
-    );
+        )}
+      </Link>
+    </li>
+  );
+}
 
-  if (!item.href) return <div className={cls}>{inner}</div>;
-  if (item.href.startsWith("mailto:")) {
-    return (
-      <a href={item.href} className={cls} onClick={onNavigate}>
-        {inner}
-      </a>
-    );
-  }
+/* The red System Audit door — button C's cut corner, sized as the plate's corner cell. */
+function Door({ item, onNavigate, className }: { item: MegaLink; onNavigate: () => void; className?: string }) {
   return (
-    <Link href={item.href} className={cls} onClick={onNavigate}>
-      {inner}
+    <Link href={item.href} className={`kn-door${className ? ` ${className}` : ""}`} onClick={onNavigate}>
+      <span className="kn-door__t">{item.title}</span>
+      <span className="kn-door__d">{item.desc}</span>
     </Link>
   );
 }
+
+const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export default function Navbar() {
-  const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname() ?? "";
-  const reduced = useReducedMotion();
+  const headerRef = useRef<HTMLElement>(null);
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
-  // Shared spring for the scroll-collapse: logo + cluster slide toward the
-  // horizontal center as one module the moment scrolling starts.
-  const layoutT = { layout: { duration: 0.42, ease: [0.4, 0, 0.2, 1] as const } };
+  const [open, setOpen] = useState<string | null>(null);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [group, setGroup] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Which nav section owns the current page — lights the cluster cell.
-  const isSectionActive = (label: string) =>
-    label === "CAPABILITIES"
-      ? /^\/(capabilities|audit)/.test(pathname)
-      : label === "THE FIRM"
-      ? /^\/(about|who-we-work-with|careers)/.test(pathname)
-      : label === "RESOURCES"
-      ? /^\/(insights|reports|contact)/.test(pathname)
-      : label === "THE LAB"
-      ? /^\/the-lab/.test(pathname)
-      : false;
+  const openedBy = useRef<"hover" | "click" | null>(null);
+  const closeTimer = useRef(0);
+  const focusFirst = useRef(false);
+  const restoreFocus = useRef(false);
 
-  useEffect(() => {
+  /* scrolled: the compact graphite bar. A page that opens already scrolled (reload, back/forward
+     restoring a mid-page position) takes the compact bar before the first paint after hydration
+     and without its transition, so the bar never visibly collapses on load. data-instant is not
+     owned by React, so a re-render never drops it early. */
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    let raf = 0;
+    if (header && window.scrollY > 8) {
+      header.dataset.instant = "";
+      setScrolled(true);
+      raf = requestAnimationFrame(() => {
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          delete header.dataset.instant;
+        });
+      });
+    }
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Hover-intent close: when the cursor leaves the trigger row, schedule a
-  // close instead of closing immediately. This gives the cursor time to
-  // traverse the gap into the mega menu, where `onMouseEnter` cancels the
-  // pending close so the menu stays open.
-  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const cancelClose = useCallback(() => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-  }, []);
-
-  const scheduleClose = useCallback(() => {
-    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-    closeTimeoutRef.current = setTimeout(() => {
-      setOpenMenu(null);
-      closeTimeoutRef.current = null;
-    }, 200);
-  }, []);
-
-  const closeMenu = useCallback(() => {
-    cancelClose();
-    setOpenMenu(null);
-  }, [cancelClose]);
-
-  useEffect(() => {
     return () => {
-      if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+      if (header) delete header.dataset.instant;
     };
   }, []);
 
-  // Close on outside click and on Escape.
+  /* homepage: the bar's entrance plays with the hero (its slot gains .is-play). The flag is a
+     data attribute React does not own, so a re-render never drops it. */
   useEffect(() => {
-    const onDown = (e: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        closeMenu();
+    const header = headerRef.current;
+    const hero = document.getElementById("s-hero");
+    if (!header || !hero) return;
+    const sync = () => {
+      if (!hero.classList.contains("is-play")) return false;
+      header.dataset.play = "";
+      return true;
+    };
+    if (sync()) return;
+    const mo = new MutationObserver(() => {
+      if (sync()) mo.disconnect();
+    });
+    mo.observe(hero, { attributes: true, attributeFilter: ["class"] });
+    return () => mo.disconnect();
+  }, []);
+
+  /* ── plates ── */
+  const cancelClose = useCallback(() => {
+    window.clearTimeout(closeTimer.current);
+    closeTimer.current = 0;
+  }, []);
+  const closePlate = useCallback(() => {
+    cancelClose();
+    openedBy.current = null;
+    setOpen(null);
+  }, [cancelClose]);
+  const scheduleClose = useCallback(() => {
+    cancelClose();
+    closeTimer.current = window.setTimeout(() => {
+      closeTimer.current = 0;
+      openedBy.current = null;
+      setOpen(null);
+    }, 200);
+  }, [cancelClose]);
+  useEffect(() => () => window.clearTimeout(closeTimer.current), []);
+
+  // hovering an item opens its plate (data-mega) or closes any open plate (plain links)
+  const onItemEnter = (e: ReactPointerEvent<HTMLElement>) => {
+    if (e.pointerType === "touch") return;
+    const id = e.currentTarget.dataset.mega ?? null;
+    window.clearTimeout(closeTimer.current);
+    if (id) {
+      if (open !== id) openedBy.current = "hover";
+      setOpen(id);
+    } else {
+      setOpen(null);
+    }
+  };
+  const onItemLeave = (e: ReactPointerEvent) => {
+    if (e.pointerType === "touch") return;
+    if (open) scheduleClose();
+  };
+  const onTrigger = (id: string) => {
+    cancelClose();
+    if (open === id) {
+      // a click right after a hover-open keeps the plate; a second click closes it
+      if (openedBy.current === "hover") {
+        openedBy.current = "click";
+        return;
       }
+      closePlate();
+      return;
+    }
+    openedBy.current = "click";
+    setOpen(id);
+  };
+  const onTriggerKey = (e: ReactKeyboardEvent<HTMLButtonElement>) => {
+    const id = e.currentTarget.dataset.mega;
+    if (id && e.key === "ArrowDown") {
+      e.preventDefault();
+      focusFirst.current = true;
+      openedBy.current = "click";
+      cancelClose();
+      if (open === id) {
+        document.getElementById(`kn-mega-${id}`)?.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+        focusFirst.current = false;
+      } else {
+        setOpen(id);
+      }
+    }
+  };
+  useEffect(() => {
+    if (!open || !focusFirst.current) return;
+    focusFirst.current = false;
+    document.getElementById(`kn-mega-${open}`)?.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+  }, [open]);
+
+  // focus leaving an open item (Tab past its plate) closes the plate
+  const onItemBlur = (e: FocusEvent<HTMLLIElement>) => {
+    const next = e.relatedTarget as Node | null;
+    if (next && !e.currentTarget.contains(next)) closePlate();
+  };
+
+  // outside pointer + Escape close the plate
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: PointerEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) closePlate();
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeMenu();
+      if (e.key !== "Escape") return;
+      // return focus to the trigger only when it was in the bar (keyboard, or a click that left
+      // focus on the page); a plate opened by hover never pulls focus out of, say, a form field
+      const active = document.activeElement;
+      const inBar = !!active && !!headerRef.current?.contains(active);
+      const refocus = inBar || ((!active || active === document.body) && openedBy.current === "click");
+      const id = open;
+      closePlate();
+      if (refocus) document.getElementById(`kn-trigger-${id}`)?.focus();
     };
-    document.addEventListener("mousedown", onDown);
+    document.addEventListener("pointerdown", onDown);
     document.addEventListener("keydown", onKey);
     return () => {
-      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("pointerdown", onDown);
       document.removeEventListener("keydown", onKey);
     };
-  }, [closeMenu]);
+  }, [open, closePlate]);
 
-  const activeMega = openMenu
-    ? (navItems.find((i) => i.label === openMenu)?.mega ?? null)
-    : null;
-
+  /* ── the sheet (≤1023px) ── */
+  const closeSheet = useCallback((refocus: boolean) => {
+    restoreFocus.current = refocus;
+    setSheetOpen(false);
+  }, []);
   const closeAll = useCallback(() => {
-    closeMenu();
-    setMobileOpen(false);
-  }, [closeMenu]);
+    closePlate();
+    closeSheet(false);
+  }, [closePlate, closeSheet]);
+
+  useEffect(() => {
+    if (!sheetOpen) {
+      if (restoreFocus.current) burgerRef.current?.focus();
+      restoreFocus.current = false;
+      return;
+    }
+    const sheet = sheetRef.current;
+    const html = document.documentElement;
+    const prev = { overflow: html.style.overflow, gutter: html.style.scrollbarGutter, body: document.body.style.overflow };
+    html.style.overflow = "hidden";
+    html.style.scrollbarGutter = "stable";
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeSheet(true);
+        return;
+      }
+      if (e.key !== "Tab" || !sheet) return;
+      const els = Array.from(sheet.querySelectorAll<HTMLElement>(FOCUSABLE)).filter(
+        (el) => !el.closest("[inert]") && el.getClientRects().length > 0,
+      );
+      if (!els.length) return;
+      const first = els[0];
+      const last = els[els.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || !sheet.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || !sheet.contains(active))) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onMq = () => {
+      if (mq.matches) closeSheet(false);
+    };
+    document.addEventListener("keydown", onKey);
+    mq.addEventListener("change", onMq);
+    return () => {
+      html.style.overflow = prev.overflow;
+      html.style.scrollbarGutter = prev.gutter;
+      document.body.style.overflow = prev.body;
+      document.removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onMq);
+    };
+  }, [sheetOpen, closeSheet]);
+
+  const openSheet = () => {
+    closePlate();
+    setGroup(null);
+    setSheetOpen(true);
+  };
+
+  const cls = ["km", "kn"];
+  if (scrolled) cls.push("is-scrolled");
+  if (open) cls.push("has-plate");
+  if (sheetOpen) cls.push("has-sheet");
 
   return (
-    <header
-      ref={navRef}
-      className={cn(
-        "site-navbar sticky top-0 z-50 w-full pt-[12px]",
-        scrolled && "is-scrolled"
-      )}
-    >
-      {/* Outer band — full-width centering track; carries the content gutter.
-          Height is constant (no vertical shrink on scroll). */}
-      <div className="nav-outer max-w-[96rem] mx-auto px-6 md:px-14 lg:px-20">
-        {/* The pill — edge-to-edge and transparent at rest; on scroll it
-            shrink-wraps to its content, centers, and the glass/blur appears
-            only around it (a floating island, not a full-width bar). Framer
-            `layout` animates the width + the two groups sliding together. */}
-        <motion.nav
-          layout={!reduced}
-          transition={layoutT}
-          className={cn("nav-pill", scrolled && "is-floating")}
-        >
-        {/* Logo — bordered chip with the red diamond mark (the methodology
-            node vocabulary, worn as insignia). Wrapped for the layout slide. */}
-        <motion.div layout={!reduced} transition={layoutT} className="shrink-0">
-          <Link href="/" className="nav-logo-chip">
-            <span className="nav-logo-glyph" aria-hidden="true" />
-            <span className="text-cream text-[14px] tracking-[0.3em] font-heading font-medium">
-              KELWIN
-            </span>
+    <header ref={headerRef} className={cls.join(" ")} data-surface="dark">
+      <div className="kn__bar" inert={sheetOpen}>
+        <div className="kn__row">
+          <Link className="kn__brand" href="/" onClick={closeAll}>
+            <span className="km-logo" role="img" aria-label="Kelwin" />
           </Link>
-        </motion.div>
 
-        {/* Right cluster — full nav (≥1050px) or hamburger (<1050px).
-            Slides toward center as one group on scroll. */}
-        <motion.div layout={!reduced} transition={layoutT} className="flex items-center gap-6">
-          {/* Boxed link cluster — squared module container; the active
-              page's cell holds an elevated fill. */}
-          <div
-            className="nav-cluster hidden min-[1050px]:flex items-center relative"
-            onMouseLeave={scheduleClose}
-            onMouseEnter={cancelClose}
-          >
-            {navItems.map((item) =>
-              item.mega ? (
-                <HoverButton
-                  key={item.label}
-                  label={item.label}
-                  isOpen={openMenu === item.label}
-                  pageActive={isSectionActive(item.label)}
-                  className="text-[12px] tracking-[0.16em] font-body font-medium"
-                  onMouseEnter={() => { cancelClose(); setOpenMenu(item.label); }}
-                  onMouseLeave={() => {}}
-                  onClick={() => setOpenMenu(openMenu === item.label ? null : item.label)}
-                />
-              ) : (
-                <HoverLink
-                  key={item.label}
-                  href={item.href}
-                  label={item.label}
-                  pageActive={isSectionActive(item.label)}
-                  className="text-[12px] tracking-[0.16em] font-body font-medium"
-                  onMenuClose={closeMenu}
-                />
-              )
-            )}
-          </div>
-
-          {/* AUDIT REQUEST — always visible across all breakpoints */}
-          <AuditCTA onMenuClose={closeMenu} />
-
-          {/* Hamburger — only below 1050px */}
-          <button
-            className="min-[1050px]:hidden text-cream p-1"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </motion.div>
-        </motion.nav>
-      </div>
-
-      {/* Mega menu — a floating glass command panel, centered under the pill:
-          same frosted treatment as the navbar island (translucent charcoal,
-          backdrop blur, sand hairline, warm top sheen), detached with a small
-          gap so it reads as a second floating surface, not a drawer. */}
-      <AnimatePresence>
-        {activeMega && (
-          <motion.div
-            key={openMenu!}
-            className="nav-mega-wrap hidden min-[1050px]:block"
-            onMouseEnter={cancelClose}
-            onMouseLeave={scheduleClose}
-            initial={{ opacity: 0, y: -8, scale: 0.985 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.99, transition: { duration: 0.14 } }}
-            transition={{ duration: 0.32, ease: [0.2, 0.7, 0.3, 1] }}
-          >
-            <div className="nav-mega-center">
-              <div className="nav-mega">
-                <span className="nav-mega-sheen" aria-hidden="true" />
-                <div className="nav-mega-head">
-                  <span className="nav-mega-protocol">{activeMega.protocol}</span>
-                  <span className="nav-mega-headline" aria-hidden="true" />
-                  <span className="nav-mega-count">KELWIN/OS</span>
-                </div>
-                <div className={cn("nav-mega-grid", !activeMega.rail?.length && "no-rail")}>
-                  <div className="nav-mega-main">
-                    <div className={cn("nav-mega-features", activeMega.featureCols === 3 && "cols-3")}>
-                      {activeMega.features.map((f) => (
-                        <MegaCard key={f.title} item={f} variant="feature" onNavigate={closeAll} />
-                      ))}
-                    </div>
-                    {activeMega.smalls && activeMega.smalls.length > 0 && (
-                      <div className="nav-mega-smalls">
-                        {activeMega.smalls.map((s) => (
-                          <MegaCard key={s.title} item={s} variant="small" onNavigate={closeAll} />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  {activeMega.rail && activeMega.rail.length > 0 && (
-                    <div className="nav-mega-rail">
-                      {activeMega.rail.map((r) => (
-                        <MegaCard key={r.title} item={r} variant="rail" onNavigate={closeAll} />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Mobile drawer — overlays the hero (does not push it down) */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.22, ease: [0.25, 0.1, 0.25, 1] }}
-            className="min-[1050px]:hidden overflow-hidden bg-near-black absolute left-0 right-0 top-full"
-            style={{ borderTop: "1px solid var(--border-subtle)" }}
-          >
-            <div className="px-6 py-6 flex flex-col gap-1">
-              {navItems.map((item) =>
-                item.mega ? (
-                  <div key={item.label}>
-                    <div
-                      className="py-3 text-[10px] tracking-[0.2em] uppercase"
-                      style={{ color: "var(--sand)", fontFamily: "var(--font-mono)" }}
+          <nav className="kn__menu" aria-label="Primary">
+            <ul className="kn__list">
+              {NAV.map((item) => {
+                const current = isCurrent(item, pathname);
+                if (!item.mega) {
+                  return (
+                    <li key={item.label} className="kn__li" onPointerEnter={onItemEnter}>
+                      <Link
+                        href={item.href}
+                        className={`kn__item${current ? " is-current" : ""}`}
+                        aria-current={current ? "page" : undefined}
+                        onClick={closeAll}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                }
+                const { id } = item.mega;
+                const isOpen = open === id;
+                return (
+                  <li
+                    key={item.label}
+                    className="kn__li"
+                    data-mega={id}
+                    onPointerEnter={onItemEnter}
+                    onPointerLeave={onItemLeave}
+                    onBlur={onItemBlur}
+                  >
+                    <button
+                      type="button"
+                      id={`kn-trigger-${id}`}
+                      data-mega={id}
+                      className={`kn__item${current ? " is-current" : ""}${isOpen ? " is-open" : ""}`}
+                      aria-expanded={isOpen}
+                      aria-controls={`kn-mega-${id}`}
+                      onClick={() => onTrigger(id)}
+                      onKeyDown={onTriggerKey}
                     >
                       {item.label}
-                    </div>
-                    <div className="pl-4 flex flex-col gap-0.5">
-                      {[...item.mega.features, ...(item.mega.smalls ?? []), ...(item.mega.rail ?? [])]
-                        .filter((l) => l.href)
-                        .map((l) =>
-                          l.href!.startsWith("mailto:") ? (
-                            <a
-                              key={l.title}
-                              href={l.href}
-                              className="py-2.5 text-[12px] tracking-[0.1em] font-body"
-                              style={{ color: "var(--text-faint)" }}
-                              onClick={closeAll}
-                            >
-                              {l.title}
-                            </a>
-                          ) : (
-                            <Link
-                              key={l.title}
-                              href={l.href!}
-                              className="py-2.5 text-[12px] tracking-[0.1em] font-body"
-                              style={{ color: "var(--text-faint)" }}
-                              onClick={closeAll}
-                            >
-                              {l.title}
+                    </button>
+                    <Plate def={item.mega} label={item.label} open={isOpen} onNavigate={closeAll} />
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          <div className="kn__acts">
+            <Link className="ac-btn-o kn__cta" href="/audit" onClick={closeAll} onPointerEnter={onItemEnter}>
+              Audit request
+            </Link>
+            <button
+              ref={burgerRef}
+              type="button"
+              className="kn__burger"
+              aria-expanded={sheetOpen}
+              aria-controls="kn-sheet"
+              aria-label="Open menu"
+              onClick={openSheet}
+            >
+              <span className="kn__lines" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* the hero frame's two registration marks, where the hairline meets the margins */}
+      <span className="ac-reg kn__reg kn__reg--l" style={{ "--d": "300ms" } as CSSProperties} aria-hidden="true" />
+      <span className="ac-reg kn__reg kn__reg--r" style={{ "--d": "380ms" } as CSSProperties} aria-hidden="true" />
+
+      {/* ≤1023px: the full-screen sheet */}
+      <div
+        ref={sheetRef}
+        id="kn-sheet"
+        className={`kn-sheet${sheetOpen ? " is-open" : ""}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
+        inert={!sheetOpen}
+        data-lenis-prevent=""
+      >
+        <div className="kn-sheet__bar">
+          <Link className="kn__brand" href="/" onClick={closeAll}>
+            <span className="km-logo" role="img" aria-label="Kelwin" />
+          </Link>
+          <button
+            ref={closeRef}
+            type="button"
+            className="kn__burger is-close"
+            aria-label="Close menu"
+            onClick={() => closeSheet(true)}
+          >
+            <span className="kn__lines" aria-hidden="true" />
+          </button>
+        </div>
+
+        <nav className="kn-sheet__nav" aria-label="Primary">
+          <ul className="kn-sheet__list">
+            {NAV.map((item, n) => {
+              const current = isCurrent(item, pathname);
+              const style = { "--i": n } as CSSProperties;
+              if (!item.mega) {
+                return (
+                  <li key={item.label} className="kn-sheet__li" style={style}>
+                    <Link
+                      href={item.href}
+                      className={`kn-sheet__item${current ? " is-current" : ""}`}
+                      aria-current={current ? "page" : undefined}
+                      onClick={closeAll}
+                    >
+                      <span>{item.label}</span>
+                      <ArrowGo className="kn-sheet__go" />
+                    </Link>
+                  </li>
+                );
+              }
+              const { id, strips, rail, door } = item.mega;
+              const isOpen = group === id;
+              return (
+                <li key={item.label} className={`kn-sheet__li${isOpen ? " is-open" : ""}`} style={style}>
+                  <button
+                    type="button"
+                    className={`kn-sheet__item${current ? " is-current" : ""}`}
+                    aria-expanded={isOpen}
+                    aria-controls={`kn-group-${id}`}
+                    onClick={() => setGroup(isOpen ? null : id)}
+                  >
+                    <span>{item.label}</span>
+                    <span className="ac-toggle" aria-hidden="true" />
+                  </button>
+                  <div className="kn-sheet__more" id={`kn-group-${id}`} inert={!isOpen}>
+                    <div>
+                      <ul className="kn-sheet__sub" aria-label={item.label}>
+                        {strips.map((s) => (
+                          <li key={s.title}>
+                            <Link href={s.href} className="kn-sheet__link" onClick={closeAll}>
+                              <span className="ac-idx">{s.tag ?? ""}</span>
+                              <span className="kn-sheet__lt">{s.title}</span>
+                              <span className="kn-sheet__ld">{s.desc}</span>
+                              {s.services && (
+                                <span className="kn-sheet__svc">
+                                  {s.services.map((v, i) => (
+                                    <span className="kn-sheet__row" key={v}>
+                                      <span className="ac-idx">{serviceIdx(s.tag, i)}</span>
+                                      <span>{v}</span>
+                                    </span>
+                                  ))}
+                                </span>
+                              )}
                             </Link>
-                          )
+                          </li>
+                        ))}
+                        {rail && (
+                          <li>
+                            <Link href={rail.href} className="kn-sheet__link" onClick={closeAll}>
+                              <span className="ac-idx" />
+                              <span className="kn-sheet__lt">{rail.title}</span>
+                              <span className="kn-sheet__ld">{rail.desc}</span>
+                            </Link>
+                          </li>
                         )}
+                      </ul>
+                      {door && <Door item={door} onNavigate={closeAll} className="kn-door--sheet" />}
                     </div>
                   </div>
-                ) : (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="py-3 text-[12px] tracking-[0.16em] font-body font-medium hover:text-cream"
-                    style={{ color: "var(--text-muted)" }}
-                    onClick={closeAll}
-                  >
-                    {item.label}
-                  </Link>
-                )
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        <div className="kn-sheet__foot">
+          <Link className="ac-btn-o kn-sheet__cta" href="/audit" onClick={closeAll}>
+            Audit request
+          </Link>
+        </div>
+      </div>
     </header>
+  );
+}
+
+/* A plate: flat graphite, hung from the hairline between the margins. */
+function Plate({
+  def,
+  label,
+  open,
+  onNavigate,
+}: {
+  def: MegaDef;
+  label: string;
+  open: boolean;
+  onNavigate: () => void;
+}) {
+  return (
+    <div
+      id={`kn-mega-${def.id}`}
+      className={`kn-mega${open ? " is-open" : ""}`}
+      role="region"
+      aria-label={label}
+      data-lenis-prevent=""
+    >
+      <ul className="kn-mega__strips">
+        {def.strips.map((s) => (
+          <Strip key={s.title} item={s} onNavigate={onNavigate} />
+        ))}
+      </ul>
+      {(def.rail || def.door) && (
+        <div className="kn-mega__band">
+          {def.rail && (
+            <Link href={def.rail.href} className="kn-mega__rail" onClick={onNavigate}>
+              <span className="kn-mega__rt">{def.rail.title}</span>
+              <span className="kn-mega__rd">{def.rail.desc}</span>
+              <ArrowGo />
+            </Link>
+          )}
+          {def.door && <Door item={def.door} onNavigate={onNavigate} />}
+        </div>
+      )}
+    </div>
   );
 }

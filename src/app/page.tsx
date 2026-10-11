@@ -32,14 +32,16 @@ const SECTIONS: { id: BehaviorName; Section: ComponentType; eager?: boolean }[] 
 
 export default function Home() {
   return (
-    <main className="km-page km-home">
+    <>
       <Navbar />
-      {SECTIONS.map(({ id, Section, eager }) => (
-        <Slot key={id} id={id} behavior={id} eager={eager}>
-          <Section />
-        </Slot>
-      ))}
+      <main className="km-page km-home">
+        {SECTIONS.map(({ id, Section, eager }) => (
+          <Slot key={id} id={id} behavior={id} eager={eager}>
+            <Section />
+          </Slot>
+        ))}
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

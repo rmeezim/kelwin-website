@@ -1,0 +1,292 @@
+/* ═══ The v5 site bar — scoped to .kn (approved mockup: frag/hero/T.css, the header) ═══════
+   Rest (homepage): 96px at the 1440 stage, transparent on the page's graphite; lockup left,
+   tracked-caps items centred, outlined AUDIT REQUEST ↗ right; one margin-to-margin hairline
+   with a + at each end. Every size is fluid below 1440 and the content inset follows --edge,
+   so above 1440 the bar's content centres with the stage.
+   Scrolled: the same bar, compact (64px), on flat graphite with a full-bleed bottom hairline.
+   The header keeps its flow height, so nothing below it moves.
+   Plates (mega menus): flat --panel, hung from the hairline between the margins, divided by
+   full-height hairlines. One red per plate: the System Audit door (button C's cut corner).
+   No blur, no glow, no radius, no gradients.
+   Links carry `.kn` in their selectors: `.km a { color: inherit }` outranks a single class. */
+
+.km.kn {
+  --kn-h: clamp(72px, 6.6667vw, 96px);   /* the bar at rest: 96px at the stage */
+  --kn-hc: 64px;                         /* the compact, scrolled bar */
+  --kn-gap: clamp(24px, 2.7778vw, 40px); /* between items: 40px at the stage */
+  --kn-in: clamp(20px, 2.2222vw, 32px);  /* plate cell inset */
+  --kn-logo: clamp(20px, 1.6667vw, 24px); /* the lockup: 24px at the stage */
+  position: sticky; top: 0; z-index: 50;
+  height: var(--kn-h);
+  background: transparent;
+  pointer-events: none;                  /* only the painted bar, plates and sheet take the pointer */
+}
+/* Interior pages open on a PageCommand photograph that pulls itself up 68px behind the bar:
+   keep the header's flow footprint at exactly that (the bar overhangs it), so the photo still
+   runs to the top edge. A height, not a negative margin: margins would collapse inside <main>. */
+.km.kn:has(+ .pgc) { height: 68px; }
+
+/* ── the bar ── */
+.kn__bar {
+  position: absolute; left: 0; right: 0; top: 0; height: var(--kn-h);
+  pointer-events: auto;
+  background-color: transparent;
+  transition: height 320ms var(--ease-out), background-color 320ms var(--ease-out);
+}
+/* the hairline: margin to margin at rest (::after); full-bleed when compact (::before) */
+.kn__bar::after, .kn__bar::before {
+  content: ""; position: absolute; left: var(--edge); right: var(--edge); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+  transition: opacity 320ms var(--ease-out);
+}
+.kn__bar::before { left: 0; right: 0; opacity: 0; }
+/* Homepage: the resting bar is painted in the page's own graphite (identical to transparent there).
+   A transparent sticky layer loses subpixel text antialiasing; an opaque one keeps it, so the
+   bar's type renders exactly as the mockup's. Interior pages keep it clear over their photograph. */
+main:has(#s-hero) .kn__bar { background-color: var(--bg); }
+/* Headerless legacy pages (privacy, terms, articles) run on the legacy charcoal right under the
+   bar: the resting bar takes that surface, so no cooler band sits above the hairline. */
+.km.kn:not(.is-scrolled):not(:has(+ :is(.pgc, .km-slot))) .kn__bar { background-color: var(--c-ink); }
+.kn.is-scrolled .kn__bar { height: var(--kn-hc); background-color: var(--bg); }
+.kn.is-scrolled .kn__bar::after { opacity: 0; }
+.kn.is-scrolled .kn__bar::before { opacity: 1; }
+/* a page that opens already scrolled takes the compact bar without the transition */
+.kn[data-instant] .kn__bar, .kn[data-instant] .kn__bar::before, .kn[data-instant] .kn__bar::after { transition: none; }
+
+.kn__row {
+  height: 100%;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center;
+  padding-inline: var(--edge);
+}
+.kn .kn__brand { display: inline-flex; justify-self: start; color: var(--fg); }
+.kn .kn__brand:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
+.kn__brand .km-logo { --logo-h: var(--kn-logo); }
+
+.kn__menu { align-self: stretch; }
+.kn__list { display: flex; height: 100%; gap: var(--kn-gap); }
+.kn__li { display: flex; }
+.kn .kn__item {
+  position: relative; display: inline-flex; align-items: center;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.kn .kn__item:hover, .kn .kn__item.is-open, .kn .kn__item.is-current { color: var(--fg); }
+.kn .kn__item:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
+/* the open plate's item, and the current page's section, sit lit on the hairline */
+.kn__item.is-open::after, .kn__item.is-current::after {
+  content: ""; position: absolute; left: 0; right: .18em; bottom: 0; height: 1px; background: var(--fg);
+}
+
+.kn__acts { justify-self: end; display: flex; align-items: center; gap: 12px; }
+.kn .kn__cta { color: var(--fg); }
+
+/* the menu button (≤1023px): a square in the outlined button's metric, two hairlines */
+.kn .kn__burger {
+  display: none; align-items: center; justify-content: center; flex: none;
+  width: 44px; height: 44px; border: 1px solid var(--line-2); color: var(--fg);
+  transition: border-color 200ms var(--ease-out);
+}
+.kn .kn__burger:hover { border-color: var(--fg); }
+.kn .kn__burger:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+.kn__lines { position: relative; display: block; width: 18px; height: 7px; }
+.kn__lines::before, .kn__lines::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1px; background: currentColor;
+}
+.kn__lines::before { top: 0; }
+.kn__lines::after { bottom: 0; }
+.kn__burger.is-close .kn__lines::before { top: 3px; transform: rotate(45deg); }
+.kn__burger.is-close .kn__lines::after { bottom: 3px; transform: rotate(-45deg); }
+
+/* the two registration marks where the hairline meets the margins (the hero frame's first two) */
+.kn__reg { z-index: 3; --y: var(--kn-h); }
+.kn__reg--l { --x: var(--edge); }
+.kn__reg--r { --x: calc(100% - var(--edge)); }
+.kn.is-scrolled .kn__reg { animation: none; opacity: 0; }
+
+/* ── entrance: homepage only, with the hero (mockup: nav fades 500ms, hairline draws 1s from
+      100ms, the marks register at 300 / 380ms). Held at the first frame until the hero plays;
+      no .km-motion (reduced motion / no JS) = the resting bar. Interior pages show it at rest. ── */
+@keyframes kn-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes kn-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.km-motion main:has(#s-hero) .kn__bar { animation: kn-fade 500ms var(--ease-out) both; }
+.km-motion main:has(#s-hero) .kn__bar::after { animation: kn-drawx 1s var(--ease-out) 100ms both; }
+.km-motion main:has(#s-hero) .kn:not([data-play]) .kn__bar,
+.km-motion main:has(#s-hero) .kn:not([data-play]) .kn__bar::after,
+.km-motion main:has(#s-hero) .kn:not([data-play]) .kn__reg { animation-play-state: paused !important; }
+
+/* ═══ plates ═══ */
+.kn-mega {
+  position: absolute; top: 100%; left: var(--edge); right: var(--edge); z-index: 1;
+  background: var(--panel); --ac-occlude: var(--panel);
+  border: 1px solid var(--line); border-top: 0;
+  max-height: calc(100vh - var(--kn-h)); overflow-y: auto; overscroll-behavior: contain;
+  visibility: hidden; opacity: 0; clip-path: inset(0 0 100% 0);
+  transition: clip-path 160ms var(--ease-out), opacity 160ms var(--ease-out), visibility 0s linear 160ms;
+}
+/* opening: the plate unrolls from the hairline */
+.kn-mega.is-open {
+  z-index: 2; visibility: visible; opacity: 1; clip-path: inset(0);
+  transition: clip-path 360ms var(--ease-out), opacity 200ms var(--ease-out), visibility 0s;
+}
+
+.kn-mega__strips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kn-strip { display: flex; min-width: 0; }
+.kn-strip + .kn-strip { border-left: 1px solid var(--line); }
+.kn .kn-strip__a {
+  flex: 1; min-width: 0; display: flex; flex-direction: column;
+  padding: 28px var(--kn-in) 32px; color: var(--fg);
+  transition: background-color 200ms var(--ease-out);
+}
+.kn .kn-strip__a:hover { background: var(--panel-2); }
+.kn .kn-strip__a:focus-visible { outline: 1px solid var(--fg); outline-offset: -1px; background: var(--panel-2); }
+.kn-strip__top {
+  display: flex; align-items: center; justify-content: space-between; height: 24px;
+  color: var(--fg-3); transition: color 300ms var(--ease-inout);
+}
+.kn-strip__a:hover .kn-strip__top, .kn-strip__a:focus-visible .kn-strip__top { color: var(--fg); }
+.kn-strip__t {
+  margin-top: 24px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: clamp(20px, 1.6667vw, 24px); line-height: 1.15; letter-spacing: var(--display-tracking);
+}
+.kn-strip__d { margin-top: 8px; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+.kn-strip__svc { margin-top: 22px; display: flex; flex-direction: column; border-bottom: 1px solid var(--line); }
+.kn-strip__row {
+  display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: baseline;
+  padding: 9px 0; border-top: 1px solid var(--line);
+  font-size: 14px; line-height: 20px; color: var(--fg-2);
+}
+
+/* drawn arrows */
+.kn-arrow, .kn-sheet__go {
+  flex: none; align-self: center; width: 14px; height: 12px; overflow: visible;
+  fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square;
+  color: var(--fg-3); transition: transform 250ms var(--ease-out), color 250ms var(--ease-out);
+}
+:is(.kn-strip__a, .kn-mega__rail):is(:hover, :focus-visible) .kn-arrow { color: var(--fg); transform: translateX(3px); }
+
+/* glyphs: 1px, currentColor; they plot as a plate opens */
+.kn-glyph path, .kn-glyph .kn-glyph__box { fill: none; stroke: currentColor; stroke-width: 1; }
+.kn-glyph path { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.kn-glyph .kn-glyph__nd { fill: currentColor; stroke: none; }
+.km-motion .kn-mega.is-open .kn-glyph path { animation: ac-plot 700ms var(--ease-inout) 120ms both; }
+.km-motion .kn-mega.is-open .kn-glyph :is(.kn-glyph__nd, .kn-glyph__box) { animation: ac-fade 240ms var(--ease-out) 560ms both; }
+
+/* the foot band: a quiet row (cols 1–8) and the red door in the plate's corner cell (cols 9–12) */
+.kn-mega__band { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.kn .kn-mega__rail {
+  grid-column: span 2; display: flex; align-items: center; gap: 20px; min-height: 88px;
+  padding: 16px var(--kn-in); color: var(--fg); transition: background-color 200ms var(--ease-out);
+}
+.kn .kn-mega__rail:hover { background: var(--panel-2); }
+.kn .kn-mega__rail:focus-visible { outline: 1px solid var(--fg); outline-offset: -1px; background: var(--panel-2); }
+.kn-mega__rt { flex: none; font-weight: var(--ui-weight); font-size: 15px; line-height: 22px; }
+.kn-mega__rd { flex: 1; min-width: 0; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+
+.kn .kn-door {
+  --kn-cut: 14px;
+  display: flex; flex-direction: column; justify-content: center; gap: 8px; min-height: 88px;
+  padding: 18px var(--kn-in); background: var(--accent); color: var(--accent-fg);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--kn-cut)), calc(100% - var(--kn-cut)) 100%, 0 100%);
+  transition: background-color 200ms var(--ease-out);
+}
+.kn .kn-door:hover { background: var(--accent-hover); }
+.kn .kn-door:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
+.kn-door__t { font-weight: var(--strong-weight); font-size: 14px; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; }
+.kn-door__d { font-size: 14px; line-height: 20px; color: var(--accent-fg); }   /* full paper: 5.2:1 on the red */
+
+/* a narrower desktop (1024–1199): the 12px caps cannot shrink with the stage, so the items centre
+   between the lockup and the action instead of on the page, on a tighter 24px pitch */
+@media (max-width: 1199px) {
+  .kn__row { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 24px; }
+  .kn__menu { justify-self: center; }
+  .km.kn { --kn-gap: 24px; }
+}
+
+/* a narrower desktop (1024–1279): the plate's descriptor row wraps under the rail title */
+@media (max-width: 1279px) {
+  .kn .kn-mega__rail { flex-wrap: wrap; row-gap: 2px; }
+  .kn-mega__rd { flex-basis: calc(100% - 40px); order: 3; }
+}
+
+/* ═══ the sheet (≤1023px) ═══ */
+.kn-sheet { display: none; }
+
+@media (max-width: 1023px) {
+  .km.kn { --kn-h: 64px; --kn-hc: 64px; --kn-logo: 20px; }
+  .kn__menu { display: none; }
+  .kn__row { grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; }
+  .kn .kn__burger { display: inline-flex; }
+  .kn-sheet {
+    position: fixed; inset: 0; z-index: 10;
+    display: flex; flex-direction: column;
+    background: var(--bg); color: var(--fg);
+    overflow-y: auto; overscroll-behavior: contain; pointer-events: auto;
+    visibility: hidden; opacity: 0;
+    transition: opacity 240ms var(--ease-out), visibility 0s linear 240ms;
+  }
+  .kn-sheet.is-open { visibility: visible; opacity: 1; transition: opacity 240ms var(--ease-out), visibility 0s; }
+
+  .kn-sheet__bar {
+    position: sticky; top: 0; z-index: 1; flex: none; height: var(--kn-h); background: var(--bg);
+    display: flex; align-items: center; justify-content: space-between; padding-inline: var(--edge);
+  }
+  .kn-sheet__bar::after {
+    content: ""; position: absolute; left: var(--edge); right: var(--edge); bottom: 0; height: 1px; background: var(--line);
+  }
+
+  .kn-sheet__nav { padding: 8px var(--edge) 0; }
+  .kn-sheet__li { border-bottom: 1px solid var(--line); }
+  .kn .kn-sheet__item {
+    display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 20px 0; text-align: left;
+    font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+    font-size: clamp(24px, 4.2vw, 32px); line-height: 1.1; letter-spacing: var(--display-tracking);
+    color: var(--fg);
+  }
+  .kn .kn-sheet__item:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+  .kn-sheet__item.is-current > span:first-child { text-decoration: underline 1px; text-underline-offset: .22em; }
+  .kn-sheet__go { width: 17px; height: 14px; }
+  .kn-sheet__item:hover .kn-sheet__go { color: var(--fg); transform: translateX(3px); }
+
+  .kn-sheet__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 360ms var(--ease-inout); }
+  .kn-sheet__more > div { min-height: 0; overflow: hidden; }
+  .kn-sheet__li.is-open .kn-sheet__more { grid-template-rows: 1fr; }
+  .kn-sheet__sub { padding-bottom: 8px; }
+  .kn .kn-sheet__link {
+    display: grid; grid-template-columns: 52px minmax(0, 1fr); row-gap: 4px;
+    padding: 14px 0; border-top: 1px solid var(--line); color: var(--fg);
+  }
+  .kn .kn-sheet__link:focus-visible { outline: 1px solid var(--fg); outline-offset: -1px; }
+  .kn-sheet__link > .ac-idx { grid-row: 1 / span 2; padding-top: 4px; }
+  .kn-sheet__lt { font-weight: var(--ui-weight); font-size: 17px; line-height: 24px; }
+  .kn-sheet__ld { grid-column: 2; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+  /* the capability's four services, as on the desktop plate (01.1 – 03.4) */
+  .kn-sheet__svc { grid-column: 2; margin-top: 10px; display: flex; flex-direction: column; }
+  .kn-sheet__row {
+    display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: baseline;
+    padding: 7px 0; border-top: 1px solid var(--line);
+    font-size: 14px; line-height: 20px; color: var(--fg-2);
+  }
+  .kn .kn-door--sheet { min-height: 0; margin: 8px 0 24px; padding: 20px 24px; }
+
+  .kn-sheet__foot { margin-top: auto; padding: 32px var(--edge) 40px; }
+  .kn .kn-sheet__cta { width: 100%; justify-content: center; color: var(--fg); }
+
+  /* the sheet's rows arrive in reading order */
+  .km-motion .kn-sheet.is-open .kn-sheet__li { animation: ac-up 500ms var(--ease-out) calc(60ms + var(--i, 0) * 50ms) both; }
+}
+
+@media (max-width: 767px) {
+  .kn .kn__cta { padding: 0 14px 0 16px; }
+  .kn .kn-sheet__link { grid-template-columns: 48px minmax(0, 1fr); }
+  /* over an interior photograph the content's protocol row starts just under the hairline:
+     the two + marks would crowd its first word, so the phone bar drops them there */
+  .km.kn:has(+ .pgc) .kn__reg { display: none; }
+}
+/* below 390px the lockup, the outlined action and the menu button no longer sit with air
+   between them: the audit action stays at the sheet's foot only */
+@media (max-width: 389px) {
+  .kn .kn__cta { display: none; }
+}

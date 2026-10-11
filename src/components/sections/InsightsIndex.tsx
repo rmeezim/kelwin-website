@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import HeroCTA from "@/components/ui/HeroCTA";
 import ArrowLink from "@/components/ui/ArrowLink";
 import "./InsightsIndex.css";
 
@@ -168,11 +168,7 @@ export default function InsightsIndex() {
             </p>
           </div>
           <div className="insx-convert-actions">
-            <DiagnosticMethodCTA
-              href="/audit"
-              label="Begin with the audit"
-              variant="signal"
-            />
+            <HeroCTA href="/audit" label="Begin with the audit" />
             <ArrowLink
               href="mailto:audit@kelwin.co?subject=Field%20notes%20request%20list"
               label="Get notes as they ship"

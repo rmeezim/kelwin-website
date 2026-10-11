@@ -18,8 +18,9 @@ export const metadata: Metadata = {
 // visitors self-qualify here; everyone earlier belongs on /contact.
 export default function AuditPage() {
   return (
-    <main>
+    <>
       <Navbar />
+      <main>
       {/* Dedicated audit photograph: the gate — one way in, lit. */}
       <PageCommand
         protocol="The System Audit"
@@ -36,7 +37,8 @@ export default function AuditPage() {
           full spec follows for the detail-readers. */}
       <QualifyFlow />
       <AuditSpec />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

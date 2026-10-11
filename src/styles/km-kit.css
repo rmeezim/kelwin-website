@@ -21,20 +21,20 @@
 :root {
   /* the stage & 12-column grid: exact at 1440, fluid below, capped above */
   --stage: 1440px;
-  --margin: clamp(20px, 4.4444vw, 64px);
-  --gutter: clamp(12px, 1.6667vw, 24px);
+  --margin: clamp(20px, calc(100vw * 64 / 1440), 64px);
+  --gutter: clamp(12px, calc(100vw * 24 / 1440), 24px);
   --cols: 12;
   /* the content inset: the margin, plus the centring gutter once the viewport passes the stage.
      % resolves where it is used, against the full-bleed section (padding-inline / left / right). */
   --edge: max(var(--margin), calc((100% - var(--stage)) / 2 + var(--margin)));
-  --ac-pad-y: clamp(72px, 8.8889vw, 128px);  --ac-pad-y-lg: clamp(88px, 11.1111vw, 160px);  /* section padding, top = bottom */
-  --ac-h-hero: clamp(42px, 8.0556vw, 116px); --ac-h-sec: clamp(36px, 6.1111vw, 88px); --ac-h-xl: clamp(40px, 7.7778vw, 112px);
-  --ac-h3: clamp(24px, 2.2222vw, 32px); --ac-h3-lg: clamp(28px, 2.9167vw, 42px); --ac-h4: clamp(19px, 1.6667vw, 24px);
-  --ac-lede: clamp(17px, 1.3889vw, 20px); --ac-body: clamp(16px, 1.1806vw, 17px); --ac-support: 15px;
+  --ac-pad-y: clamp(72px, calc(100vw * 128 / 1440), 128px);  --ac-pad-y-lg: clamp(88px, calc(100vw * 160 / 1440), 160px);  /* section padding, top = bottom */
+  --ac-h-hero: clamp(42px, calc(100vw * 116 / 1440), 116px); --ac-h-sec: clamp(36px, calc(100vw * 88 / 1440), 88px); --ac-h-xl: clamp(40px, calc(100vw * 112 / 1440), 112px);
+  --ac-h3: clamp(24px, calc(100vw * 32 / 1440), 32px); --ac-h3-lg: clamp(28px, calc(100vw * 42 / 1440), 42px); --ac-h4: clamp(19px, calc(100vw * 24 / 1440), 24px);
+  --ac-lede: clamp(17px, calc(100vw * 20 / 1440), 20px); --ac-body: clamp(16px, calc(100vw * 17 / 1440), 17px); --ac-support: 15px;
   --ac-anno: 14px;                                     /* Mona callout labels inside drawings */
   --ac-mono: 12px; --ac-mono-s: 11px;                  /* captions/codes · indices (the floor) */
   --ac-track-mono: .12em; --ac-track-idx: .10em; --ac-track-anno: .06em;
-  --ac-plate-h: clamp(300px, 33.3333vw, 480px); --ac-band-h: 56px;
+  --ac-plate-h: clamp(300px, calc(100vw * 480 / 1440), 480px); --ac-band-h: 56px;
 }
 
 /* ── 1 · section, wrap, 12-column grid ──

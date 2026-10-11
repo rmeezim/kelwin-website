@@ -7,7 +7,7 @@
   --secband-h: clamp(240px, 38vh, 420px);
   position: relative;
   height: var(--secband-h);
-  background: #110f0a;
+  background: #141517;
   overflow: hidden;
 }
 .secband-photo {

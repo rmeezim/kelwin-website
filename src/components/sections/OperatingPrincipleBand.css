@@ -8,7 +8,7 @@
    depth without complicating the motion logic. */
 
 .principle-band {
-  --bone: #110F0A; /* one dark world — band background renders charcoal */
+  --bone: #141517; /* one dark world — band background renders charcoal */
   --ink: #FBFAF6;
   --ink-muted: rgba(251, 250, 246, 0.42);
   /* Echo lines sit at a much softer cream so the main stays primary. The

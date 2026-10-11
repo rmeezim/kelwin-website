@@ -1,134 +1,48 @@
-"use client";
-
-import { useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import Link from "next/link";
-import { motion, useAnimation } from "motion/react";
 
-const FLICKER_OPACITY  = [0, 0.9, 0.05, 1, 0.38, 1];
-const FLICKER_TIMES    = [0, 0.10, 0.22, 0.42, 0.65, 1];
-const FLICKER_DURATION = 0.14;
+// CTA style #1 — the primary action, as the founder's button C (round 4 rule: "on every page"):
+// one 45° cut at the bottom-right, caps at weight 600, a step larger and tighter, no arrow, no
+// brackets. It is the kit's `.ac-btn` (km-kit.css §4), so it shares one source with the homepage.
+//
+// Interior pages are not inside `.km`, where the kit's surface tokens live, so the wrapper
+// resolves them here with fallbacks: inside a red surface ([data-surface="red"]) the button is
+// paper with red text; anywhere else it is signal red with paper text. The fallbacks are km-base's
+// :root palette tokens, which reach every page. (Two steps, because a custom property cannot fall
+// back to its own inherited value on the same element.)
+const SCOPE = {
+  display: "contents",
+  "--hcta-accent": "var(--accent, var(--c-red))",
+  "--hcta-accent-hover": "var(--accent-hover, var(--c-red-deep))",
+  "--hcta-accent-fg": "var(--accent-fg, var(--c-paper))",
+} as CSSProperties;
+const TOKENS = {
+  // legacy interior sections redefine --f-body locally (Inter); the button stays in v5 type
+  "--f-body": 'var(--font-mona), "Helvetica Neue", Arial, sans-serif',
+  "--accent": "var(--hcta-accent)",
+  "--accent-hover": "var(--hcta-accent-hover)",
+  "--accent-fg": "var(--hcta-accent-fg)",
+  color: "var(--hcta-accent-fg)",
+} as CSSProperties;
 
-const SIGNAL       = "#BF3A36";
-const SIGNAL_HOVER = "#A8302C"; // settled deeper shade while hovered
-const CREAM        = "#FBFAF6";
-
-const CAP_REST  = 8;  // bracket arm length at rest (viewBox units)
-const CAP_HOVER = 11; // extends inward on hover
-
-// CTA style #1 — the primary action. Red fill, full-height side rails,
-// corner caps that extend on hover. One per view; reserved for the core
-// conversion action (audit request).
 interface Props {
   label?: string;
   href?: string;
 }
 
 export default function HeroCTA({ label = "INITIATE SYSTEM AUDIT", href = "/audit" }: Props) {
-  const [hovered, setHovered] = useState(false);
-  const hoveredRef  = useRef(false); // guards async post-flicker callback
-  const fillControls = useAnimation();
-
-  const handleEnter = async () => {
-    hoveredRef.current = true;
-    setHovered(true);
-    await fillControls.start({
-      opacity: FLICKER_OPACITY,
-      transition: { duration: FLICKER_DURATION, times: FLICKER_TIMES, ease: "linear" },
-    });
-    // Only darken if the cursor hasn't already left during the flicker.
-    if (hoveredRef.current) {
-      fillControls.start({
-        backgroundColor: SIGNAL_HOVER,
-        transition: { duration: 0.25, ease: "easeOut" },
-      });
-    }
-  };
-
-  const handleLeave = () => {
-    hoveredRef.current = false;
-    setHovered(false);
-    fillControls.start({
-      opacity: 1,
-      backgroundColor: SIGNAL,
-      transition: { duration: 0.2, ease: "easeOut" },
-    });
-  };
-
-  // Bracket arms extend after the flicker on enter; retract immediately on leave.
-  const capTransition = hovered
-    ? { duration: FLICKER_DURATION, delay: 0, ease: "linear" as const }
-    : { duration: 0.2, ease: "easeOut" as const };
-
-  // mailto/http hrefs render a plain anchor; internal routes use Link.
-  const Tag: React.ElementType =
-    href.startsWith("mailto:") || href.startsWith("http") ? "a" : Link;
-
+  const external = href.startsWith("mailto:") || href.startsWith("http");
   return (
-    <Tag
-      href={href}
-      className="relative inline-flex items-center tracking-[0.08em] font-body font-semibold group select-none gap-[clamp(0.5rem,0.7vw,0.75rem)] text-[clamp(0.78rem,0.95vw,0.95rem)] px-[clamp(1rem,1.6vw,1.75rem)] py-[clamp(0.65rem,0.95vw,1rem)]"
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
-    >
-      {/* Signal-red fill — always present; flickers then deepens on hover */}
-      <motion.span
-        className="absolute pointer-events-none"
-        style={{ top: 5, right: 5, bottom: 5, left: 5 }}
-        initial={{ opacity: 1, backgroundColor: SIGNAL }}
-        animate={fillControls}
-      />
-
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-        overflow="visible"
-        aria-hidden="true"
-      >
-        {/* Static verticals */}
-        <line x1="0"   y1="0" x2="0"   y2="100" stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke" />
-        <line x1="100" y1="0" x2="100" y2="100" stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke" />
-
-        {/* Corner caps — extend inward after flicker, retract immediately on leave */}
-        <motion.line
-          x1={0} y1={0} y2={0}
-          initial={{ x2: CAP_REST }}
-          animate={{ x2: hovered ? CAP_HOVER : CAP_REST }}
-          transition={capTransition}
-          stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
-        />
-        <motion.line
-          x2={100} y1={0} y2={0}
-          initial={{ x1: 100 - CAP_REST }}
-          animate={{ x1: hovered ? 100 - CAP_HOVER : 100 - CAP_REST }}
-          transition={capTransition}
-          stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
-        />
-        <motion.line
-          x1={0} y1={100} y2={100}
-          initial={{ x2: CAP_REST }}
-          animate={{ x2: hovered ? CAP_HOVER : CAP_REST }}
-          transition={capTransition}
-          stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
-        />
-        <motion.line
-          x2={100} y1={100} y2={100}
-          initial={{ x1: 100 - CAP_REST }}
-          animate={{ x1: hovered ? 100 - CAP_HOVER : 100 - CAP_REST }}
-          transition={capTransition}
-          stroke={SIGNAL} strokeWidth="2.4" vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-
-      <span className="relative z-10" style={{ color: CREAM }}>
-        {label}
-      </span>
-      <span
-        className="relative z-10 transition-transform duration-200 group-hover:translate-x-1"
-        style={{ color: CREAM }}
-      >
-        →
-      </span>
-    </Tag>
+    <span style={SCOPE}>
+      {external ? (
+        <a className="ac-btn" href={href} style={TOKENS}>
+          {label}
+        </a>
+      ) : (
+        <Link className="ac-btn" href={href} style={TOKENS}>
+          {label}
+        </Link>
+      )}
+    </span>
   );
 }
