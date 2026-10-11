@@ -178,6 +178,10 @@
   padding: 0 34px 0 30px;
 }
 .ac-btn::after { display: none; }
+/* every v5 control gets a square focus ring (the browser's auto outline is rounded); components
+   with their own ring (.ac-btn, inside its cut) override it */
+:where(.km) :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.ac-seg > button:focus-visible { outline-offset: -4px; }
 .ac-btn:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
 
 /* ── 5 · controls ── */
