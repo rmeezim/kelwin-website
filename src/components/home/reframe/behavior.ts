@@ -8,8 +8,13 @@ import { D, W, geo, mesh, type Pt } from "./geometry";
    lattice vertices interpolates from its warped position to the true grid (rAF, 1300ms,
    --ease-inout) while the CSS transitions draw the cut, the dimensions and the red datum.
    · Surface | Architecture really switches the figure both ways (back to Surface the lattice warps
-     again in 900ms); the first interaction cancels the automatic switch. Tablist keyboard: the
-     selected tab is the one tab stop; ←/→ (and Home/End) move to the other tab and select it.
+     again in 900ms). It is a pair of toggle buttons (aria-pressed: one figure, no panels, so not a
+     tablist), both in the tab order; ←/→ (and Home/End) also move to the other one and press it.
+     The first interaction — a press, or keyboard focus arriving in the figure — cancels the
+     automatic switch, so nothing changes under the visitor's focus.
+   · The readout ("Fix the surface …" / "Fix the architecture …") is a live region kept quiet
+     (aria-live=off) through the opening and the automatic switch; it turns polite at the visitor's
+     first focus or press, so only the switches they make are announced.
    · Standalone (the preview) the plate plays on the mockup's timeline from the slot's play. On the
      homepage (.km-home) the slot plays when only the head is on screen: the plate opens in Surface on
      the slot's timeline (panel, readout, band, dashed construction), while the lattice, the tags and
@@ -37,7 +42,7 @@ export const init: Behavior = (root, { reduced }) => {
   const rsA = fig.querySelector<HTMLElement>(".km-reframe__rs--a");
   const tags = fig.querySelector<HTMLElement>(".km-reframe__tags");
   const bays = fig.querySelector<HTMLElement>(".km-reframe__bays");
-  const dims = fig.querySelector<HTMLElement>(".km-reframe__dims");
+  const ro = fig.querySelector<HTMLElement>(".km-reframe__ro");
   const G = geo();
   const undo: Array<() => void> = [];
   let t = 1; // 0 = warped, 1 = true
@@ -80,23 +85,19 @@ export const init: Behavior = (root, { reduced }) => {
     raf = requestAnimationFrame(step);
   };
   // the control and what the accessibility tree reads follow the state (the markup's form:
-  // aria-hidden="true" on what is hidden, no attribute on what shows)
+  // aria-hidden="true" on what is hidden, no attribute on what shows; the dimensions are always hidden —
+  // annotation the figure's label already carries)
   const hide = (el: HTMLElement | null, hidden: boolean) => {
     if (hidden) el?.setAttribute("aria-hidden", "true");
     else el?.removeAttribute("aria-hidden");
   };
   const mark = (state: State) => {
     const surf = state === "surface";
-    segs.forEach((b) => {
-      const on = b.dataset.state === state;
-      b.setAttribute("aria-selected", String(on));
-      b.tabIndex = on ? 0 : -1;
-    });
+    segs.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.state === state)));
     hide(rsS, !surf);
     hide(rsA, surf);
     hide(tags, !surf);
     hide(bays, surf);
-    hide(dims, surf);
   };
   const set = (state: State, instant: boolean) => {
     const surf = state === "surface";
@@ -110,14 +111,23 @@ export const init: Behavior = (root, { reduced }) => {
       fig.classList.remove("ac-cold");
     }
   };
-  const take = (b: HTMLButtonElement) => {
+  // the visitor has the figure: the automatic switch is cancelled, a held figure plays (on the homepage —
+  // it is plainly being looked at), and from now on the readout speaks the switches they make
+  const engage = () => {
     touched = true;
-    window.clearTimeout(auto); // the first interaction cancels the automatic switch
-    release?.(); // and, on the homepage, lets a held figure play (it is plainly being looked at)
+    window.clearTimeout(auto);
+    release?.();
+    ro?.setAttribute("aria-live", "polite");
+  };
+  const take = (b: HTMLButtonElement) => {
+    engage();
     set(b.dataset.state === "surface" ? "surface" : "arch", false);
   };
+  // keyboard focus arriving in the figure (Tab onto the control) takes it over too
+  fig.addEventListener("focusin", engage);
+  undo.push(() => fig.removeEventListener("focusin", engage));
 
-  // ── the control: click, and the tablist keys ──
+  // ── the control: click, and the arrow keys ──
   segs.forEach((b, k) => {
     const onClick = () => take(b);
     const onKey = (e: KeyboardEvent) => {
@@ -148,7 +158,8 @@ export const init: Behavior = (root, { reduced }) => {
     root.removeAttribute("data-wait");
     root.style.removeProperty("--rf-shift");
     if (!root.getAttribute("style")) root.removeAttribute("style");
-    // back to the markup's state (Architecture), without transitions
+    // back to the markup's state (Architecture, the readout quiet), without transitions
+    ro?.setAttribute("aria-live", "off");
     fig.classList.add("ac-cold");
     fig.classList.remove("is-surface");
     t = 1;

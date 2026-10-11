@@ -27,10 +27,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* side gutter: the v5 chrome's --margin, so wherever the stage meets the viewport the body
+   shares one edge with the bar, the PageCommand header and the footer */
 .cs-stage {
   max-width: 1140px;
   margin: 0 auto;
-  padding: clamp(56px, 7vh, 88px) clamp(28px, 5vw, 64px) var(--space-section);
+  padding: clamp(56px, 7vh, 88px) var(--margin) var(--space-section);
 }
 
 /* ── Reveal ── */
@@ -338,8 +340,9 @@
 .cs-research { margin-top: clamp(36px, 5vh, 52px); }
 .cs-research-head {
   display: flex;
+  flex-wrap: wrap; /* the note drops to its own line on narrow phones */
   align-items: baseline;
-  gap: 16px;
+  gap: 6px 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--hairline);
 }

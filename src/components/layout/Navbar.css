@@ -1,8 +1,11 @@
 /* ═══ The v5 site bar — scoped to .kn (approved mockup: frag/hero/T.css, the header) ═══════
-   Rest (homepage): 96px at the 1440 stage, transparent on the page's graphite; lockup left,
-   tracked-caps items centred, outlined AUDIT REQUEST ↗ right; one margin-to-margin hairline
-   with a + at each end. Every size is fluid below 1440 and the content inset follows --edge,
-   so above 1440 the bar's content centres with the stage.
+   Rest: 96px at the 1440 stage, on the page's own graphite (clear over a PageCommand
+   photograph); lockup left, tracked-caps items centred, outlined AUDIT REQUEST ↗ right; one
+   margin-to-margin hairline with a + at each end. Every size is fluid below 1440 and the content
+   inset follows --edge, so above 1440 the bar's content centres with the stage.
+   Every page renders <header.kn> then <main id="main"> (then the footer), so the page-specific
+   rules below key on the header's next sibling: `+ main #s-hero` is the homepage,
+   `+ main > .pgc:first-child` a page that opens on a PageCommand photograph.
    Scrolled: the same bar, compact (64px), on flat graphite with a full-bleed bottom hairline.
    The header keeps its flow height, so nothing below it moves.
    Plates (mega menus): flat --panel, hung from the hairline between the margins, divided by
@@ -23,14 +26,32 @@
 }
 /* Interior pages open on a PageCommand photograph that pulls itself up 68px behind the bar:
    keep the header's flow footprint at exactly that (the bar overhangs it), so the photo still
-   runs to the top edge. A height, not a negative margin: margins would collapse inside <main>. */
-.km.kn:has(+ .pgc) { height: 68px; }
+   runs to the top edge. A height on the header, not a margin on <main>: the page's own markup
+   decides nothing here. */
+.km.kn:has(+ main > .pgc:first-child) { height: 68px; }
+
+/* the skip link: the header's first stop, out of sight until it takes focus, then a paper-on-
+   graphite chip over the lockup with the kit's square ring. A plain fragment link to <main>. */
+.kn .kn-skip {
+  position: absolute; z-index: 4; left: var(--edge); top: calc(var(--kn-h) / 2 - 22px);
+  width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  pointer-events: auto;
+}
+.kn.is-scrolled .kn-skip { top: calc(var(--kn-hc) / 2 - 22px); }
+.kn .kn-skip:focus {
+  width: auto; height: 44px; overflow: visible; clip-path: none;
+  display: inline-flex; align-items: center; padding: 0 20px;
+  background: var(--bg); color: var(--fg); border: 1px solid var(--line-2);
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  outline: 2px solid var(--fg); outline-offset: 3px;
+}
 
 /* ── the bar ── */
 .kn__bar {
   position: absolute; left: 0; right: 0; top: 0; height: var(--kn-h);
   pointer-events: auto;
-  background-color: transparent;
+  background-color: var(--bg);
   transition: height 320ms var(--ease-out), background-color 320ms var(--ease-out);
 }
 /* the hairline: margin to margin at rest (::after); full-bleed when compact (::before) */
@@ -40,13 +61,12 @@
   transition: opacity 320ms var(--ease-out);
 }
 .kn__bar::before { left: 0; right: 0; opacity: 0; }
-/* Homepage: the resting bar is painted in the page's own graphite (identical to transparent there).
-   A transparent sticky layer loses subpixel text antialiasing; an opaque one keeps it, so the
-   bar's type renders exactly as the mockup's. Interior pages keep it clear over their photograph. */
-main:has(#s-hero) .kn__bar { background-color: var(--bg); }
-/* Headerless legacy pages (privacy, terms, articles) run on the legacy charcoal right under the
-   bar: the resting bar takes that surface, so no cooler band sits above the hairline. */
-.km.kn:not(.is-scrolled):not(:has(+ :is(.pgc, .km-slot))) .kn__bar { background-color: var(--c-ink); }
+/* At rest the bar is painted in the page's own graphite: every page body is graphite (the
+   homepage, the interior bodies, legal, articles, 404), so it reads as the page itself — and an
+   opaque layer keeps the bar's type on subpixel antialiasing, which a transparent sticky layer
+   loses. Only a page that opens on a PageCommand photograph keeps the resting bar clear, so the
+   photograph runs up behind it. Scrolled, every bar is the same compact graphite. */
+.km.kn:not(.is-scrolled):has(+ main > .pgc:first-child) .kn__bar { background-color: transparent; }
 .kn.is-scrolled .kn__bar { height: var(--kn-hc); background-color: var(--bg); }
 .kn.is-scrolled .kn__bar::after { opacity: 0; }
 .kn.is-scrolled .kn__bar::before { opacity: 1; }
@@ -109,11 +129,12 @@ main:has(#s-hero) .kn__bar { background-color: var(--bg); }
       no .km-motion (reduced motion / no JS) = the resting bar. Interior pages show it at rest. ── */
 @keyframes kn-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes kn-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.km-motion main:has(#s-hero) .kn__bar { animation: kn-fade 500ms var(--ease-out) both; }
-.km-motion main:has(#s-hero) .kn__bar::after { animation: kn-drawx 1s var(--ease-out) 100ms both; }
-.km-motion main:has(#s-hero) .kn:not([data-play]) .kn__bar,
-.km-motion main:has(#s-hero) .kn:not([data-play]) .kn__bar::after,
-.km-motion main:has(#s-hero) .kn:not([data-play]) .kn__reg { animation-play-state: paused !important; }
+.km-motion .kn:has(+ main #s-hero) .kn__bar { animation: kn-fade 500ms var(--ease-out) both; }
+.km-motion .kn:has(+ main #s-hero) .kn__bar::after { animation: kn-drawx 1s var(--ease-out) 100ms both; }
+/* (written out: a pseudo-element inside :is() is dropped, and the hairline would draw early) */
+.km-motion .kn:has(+ main #s-hero):not([data-play]) .kn__bar,
+.km-motion .kn:has(+ main #s-hero):not([data-play]) .kn__bar::after,
+.km-motion .kn:has(+ main #s-hero):not([data-play]) .kn__reg { animation-play-state: paused !important; }
 
 /* ═══ plates ═══ */
 .kn-mega {
@@ -283,7 +304,7 @@ main:has(#s-hero) .kn__bar { background-color: var(--bg); }
   .kn .kn-sheet__link { grid-template-columns: 48px minmax(0, 1fr); }
   /* over an interior photograph the content's protocol row starts just under the hairline:
      the two + marks would crowd its first word, so the phone bar drops them there */
-  .km.kn:has(+ .pgc) .kn__reg { display: none; }
+  .km.kn:has(+ main > .pgc:first-child) .kn__reg { display: none; }
 }
 /* below 390px the lockup, the outlined action and the menu button no longer sit with air
    between them: the audit action stays at the sheet's foot only */

@@ -149,7 +149,7 @@
 
 /* ── §7 control ── */
 /* local guard: keep the selected segment legible while hovered (the kit's :hover colour outranks it) */
-.km-reframe__seg > [aria-selected="true"]:hover { color: var(--bg); }
+.km-reframe__seg > [aria-pressed="true"]:hover { color: var(--bg); }
 /* Round 5: no Fig title block — the state toggle holds the band on its own, right-aligned */
 .km-reframe .ac-capband { justify-content: flex-end; }
 

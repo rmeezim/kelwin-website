@@ -1,0 +1,31 @@
+/* ─── HeroCTA — button C on interior pages ─────────────────────────────────
+   The look is the kit's .ac-btn (km-kit.css §4); this file only adds what an interior
+   instance needs that the homepage does not:
+   · a <button> outside .km gets no kit reset, and Tailwind's preflight leaves it on the
+     default cursor;
+   · interior labels are longer and sit in narrower panels, so a label that cannot fit its
+     container wraps (balanced, left-set) instead of pushing past it. The fixed height
+     becomes a minimum, so a one-line button is exactly the kit's 56px (52px on phones),
+     and the cut corner is a clip-path on the box, so it holds at any height.
+   Doubled class so these win over the kit's single-class rules whatever the CSS order. */
+
+.ac-btn.hcta {
+  max-width: 100%;
+  height: auto;
+  min-height: 56px;
+  padding-block: 12px;
+  white-space: normal;
+  text-wrap: balance;
+  text-align: left;
+  line-height: 1.25;
+  cursor: pointer;
+}
+.ac-btn.hcta:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+  background: var(--accent);
+}
+
+@media (max-width: 767px) {
+  .ac-btn.hcta { min-height: 52px; }
+}

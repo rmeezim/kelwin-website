@@ -44,12 +44,13 @@ export const init: Behavior = (root, { reduced }) => {
   let done = false;
   let io: IntersectionObserver | null = null;
 
-  // the open row's control, in the list and in the drawing: expanded, and it cannot collapse it
-  // (one row is always open: the ARIA accordion pattern)
+  // the selected layer's control, in the list and in the drawing: expanded and current. One row is always
+  // open, so pressing the current one keeps it open — it is the current layer, not an unavailable control
+  // (aria-current, never aria-disabled, which reads as "unavailable")
   const expand = (el: Element, on: boolean) => {
     el.setAttribute("aria-expanded", String(on));
-    if (on) el.setAttribute("aria-disabled", "true");
-    else el.removeAttribute("aria-disabled");
+    if (on) el.setAttribute("aria-current", "true");
+    else el.removeAttribute("aria-current");
   };
 
   // show(n): the red face (with its 8-unit lift), its bright callout, the ledger's current-row rule and the

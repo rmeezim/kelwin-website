@@ -140,15 +140,20 @@
    touch and pen tap a phase (behavior.ts sets [data-focus] + .is-focus; tap again or elsewhere clears).
    The hover reading needs a hovering pointer somewhere on the device (any-hover, so a trackpad on a
    touch-first tablet still reads), and stands down while the last press was touch/pen
-   ([data-touch]: no sticky touch-hover) or a tap reading is set. ── */
+   ([data-touch]: no sticky touch-hover) or a tap reading is set.
+   The list's own :hover stands for "a phase is hovered": the four columns tile the list edge to edge
+   (a gapless grid; stacked cards with no margin between them ≤1023px) and everything else in it —
+   bars, labels, the retainer — belongs to a column. Never write it as :has(.km-method__col:hover):
+   that form makes Chromium restyle the whole document whenever a node is removed anywhere on the
+   page (it froze the scroll for 100ms+ each time the founder's letter split its lines). ── */
 .km-method__txt > *, .km-method__ticks,
 .km-method__dim, .km-method__ret, .km-method__retl, .km-method__yours {
   transition: opacity 300ms var(--ease-out);
 }
 @media (any-hover: hover) {
-  .km-method__cols:not([data-touch], [data-focus]):has(.km-method__col:hover) > .km-method__col:not(:hover) .km-method__txt > * { opacity: .4; }
-  .km-method__cols:not([data-touch], [data-focus]):has(.km-method__col:hover) > .km-method__col:not(:hover) .km-method__bar::before,
-  .km-method__cols:not([data-touch], [data-focus]):has(.km-method__col:hover) > .km-method__col:not(:hover) :is(.km-method__dim, .km-method__ret, .km-method__retl, .km-method__yours) { opacity: .3; }
+  .km-method__cols:not([data-touch], [data-focus]):hover > .km-method__col:not(:hover) .km-method__txt > * { opacity: .4; }
+  .km-method__cols:not([data-touch], [data-focus]):hover > .km-method__col:not(:hover) .km-method__bar::before,
+  .km-method__cols:not([data-touch], [data-focus]):hover > .km-method__col:not(:hover) :is(.km-method__dim, .km-method__ret, .km-method__retl, .km-method__yours) { opacity: .3; }
   .km-method__cols:not([data-touch], [data-focus]) > .km-method__col--2:hover .km-method__bar--2::before,
   .km-method__cols:not([data-touch], [data-focus]) > .km-method__col--3:hover .km-method__bar--3::before { background: var(--fg); }
 }
@@ -302,7 +307,7 @@
   .km-method__cols[data-focus] > .km-method__col:not(.is-focus) .km-method__ticks { opacity: .3; }
 }
 @media (max-width: 1023px) and (any-hover: hover) {
-  .km-method__cols:not([data-touch], [data-focus]):has(.km-method__col:hover) > .km-method__col:not(:hover) .km-method__ticks { opacity: .3; }
+  .km-method__cols:not([data-touch], [data-focus]):hover > .km-method__col:not(:hover) .km-method__ticks { opacity: .3; }
 }
 
 /* ── ≤767px: one column of text per card; the statement breaks back into its two voices ── */

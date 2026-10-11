@@ -14,19 +14,21 @@ export default function ReportsPage() {
   return (
     <>
       <Navbar />
-      {/* Dedicated library photograph: the readout stack, on slate. */}
-      <PageCommand
-        protocol="Resources · Reports"
-        stamp="KELWIN/OS · CASE DOSSIERS"
-        titleTop="The work, in readouts."
-        titleBottom="Not testimonials — telemetry."
-        lede="Every engagement produces a readout: the state we found, what was installed, and what the instrumentation showed after — including what didn't work. This is where those readouts publish, as clients clear them."
-        code="REGISTRY · R-SERIES"
-        status="Publishes as cleared"
-        image="/docs-paper.webp"
-        imagePosition="62% 55%"
-      />
-      <CaseStudies />
+      <main id="main" tabIndex={-1}>
+        {/* Dedicated library photograph: the readout stack, on slate. */}
+        <PageCommand
+          protocol="Resources · Reports"
+          stamp="KELWIN/OS · CASE DOSSIERS"
+          titleTop="The work, in readouts."
+          titleBottom="Not testimonials — telemetry."
+          lede="Every engagement produces a readout: the state we found, what was installed, and what the instrumentation showed after — including what didn't work. This is where those readouts publish, as clients clear them."
+          code="REGISTRY · R-SERIES"
+          status="Publishes as cleared"
+          image="/docs-paper.webp"
+          imagePosition="62% 55%"
+        />
+        <CaseStudies />
+      </main>
       <Footer />
     </>
   );

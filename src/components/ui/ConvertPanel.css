@@ -54,6 +54,8 @@
 }
 
 @media (max-width: 880px) {
-  .cvp { grid-template-columns: 1fr; }
+  /* minmax(0, …): the track is the panel's content box, never the min-content of the button
+     (a plain 1fr is minmax(auto, 1fr) and widened the title and sub past the padding at 320) */
+  .cvp { grid-template-columns: minmax(0, 1fr); }
   .cvp-actions { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 20px; }
 }

@@ -14,19 +14,21 @@ export default function InsightsPage() {
   return (
     <>
       <Navbar />
-      {/* Dedicated library photograph: deckle-edged paper on dark slate. */}
-      <PageCommand
-        protocol="Resources · Insights"
-        stamp="KELWIN/OS · FIELD NOTES · VOL 01"
-        titleTop="Field notes"
-        titleBottom="from the install base."
-        lede="Working notes from live systems — not thought leadership. What we publish here is the operational residue of real installs: signal patterns, deliverability mechanics, narrative decisions and what they did to pipeline."
-        code="FIELD NOTES · VOL 01"
-        status="Publishing"
-        image="/docs-paper.webp"
-        imagePosition="78% 30%"
-      />
-      <InsightsIndex />
+      <main id="main" tabIndex={-1}>
+        {/* Dedicated library photograph: deckle-edged paper on dark slate. */}
+        <PageCommand
+          protocol="Resources · Insights"
+          stamp="KELWIN/OS · FIELD NOTES · VOL 01"
+          titleTop="Field notes"
+          titleBottom="from the install base."
+          lede="Working notes from live systems — not thought leadership. What we publish here is the operational residue of real installs: signal patterns, deliverability mechanics, narrative decisions and what they did to pipeline."
+          code="FIELD NOTES · VOL 01"
+          status="Publishing"
+          image="/docs-paper.webp"
+          imagePosition="78% 30%"
+        />
+        <InsightsIndex />
+      </main>
       <Footer />
     </>
   );

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { CSSProperties } from "react";
+import HashLink from "@/components/ui/HashLink";
 import { geo, mesh, statics } from "./geometry";
 import "./reframe.css";
 
@@ -81,9 +81,9 @@ export default function Reframe() {
           Most firms treat the surface — campaigns, conversion, reps. Kelwin diagnoses the architecture that produces it.
         </p>
         <div className="ac-doors">
-          <Link className="ac-link" href="/#methodology">
+          <HashLink className="ac-link" href="/#methodology">
             See the diagnostic method
-          </Link>
+          </HashLink>
         </div>
       </div>
 
@@ -93,7 +93,9 @@ export default function Reframe() {
             by bay (each bay directly beneath its symptom), and the red datum seats on the real layer. */}
         <figure className="ac-plate km-reframe__fig">
           <div className="ac-field km-reframe__field">
-            <div className="km-reframe__ro" aria-live="polite">
+            {/* a live region, but quiet (off) until the visitor uses the control: the automatic switch
+                is never announced; behavior.ts turns it polite at the first focus or press */}
+            <div className="km-reframe__ro" aria-live="off">
               <p className="ac-h3 km-reframe__rs km-reframe__rs--s" aria-hidden="true">
                 <span>Fix the surface,</span>
                 <span className="ac-accent">and it returns.</span>
@@ -177,8 +179,9 @@ export default function Reframe() {
                   </div>
                 ))}
               </div>
-              {/* the two spans, measured once the cut is true: a thin surface over a deep architecture */}
-              <div className="km-reframe__dims">
+              {/* the two spans, measured once the cut is true: a thin surface over a deep architecture (drawing
+                  annotation: the figure's label already says it, and the control carries the same two words) */}
+              <div className="km-reframe__dims" aria-hidden="true">
                 {DIMS.map((p) => (
                   <div key={p.t} className="ac-dim ac-dim--v km-reframe__dim" style={v({ "--px": p.x, "--py": p.y, "--ph": p.h, "--d": "0ms" })}>
                     <span className="ac-dim__v">{p.t}</span>
@@ -189,11 +192,12 @@ export default function Reframe() {
           </div>
 
           <figcaption className="ac-capband">
-            <span className="ac-seg km-reframe__seg" role="tablist" aria-label="Figure state">
-              <button type="button" role="tab" aria-selected="false" tabIndex={-1} data-state="surface">
+            {/* a toggle pair, not tabs: there is one figure, no panels — the pressed button is the state shown */}
+            <span className="ac-seg km-reframe__seg" role="group" aria-label="Figure state">
+              <button type="button" aria-pressed="false" data-state="surface">
                 Surface
               </button>
-              <button type="button" role="tab" aria-selected="true" tabIndex={0} data-state="arch">
+              <button type="button" aria-pressed="true" data-state="arch">
                 Architecture
               </button>
             </span>

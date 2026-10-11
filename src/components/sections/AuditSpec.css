@@ -32,14 +32,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   border-top: 1px solid var(--hairline);
-  /* anchor target: land with air above when CTAs jump here */
-  scroll-margin-top: 24px;
+  /* anchor target: html's scroll-padding-top lands it clear of the sticky bar, with air */
 }
 
+/* side gutter: the v5 chrome's --margin, so wherever the stage meets the viewport the body
+   shares one edge with the bar, the PageCommand header and the footer */
 .as-stage {
   max-width: 1440px;
   margin: 0 auto;
-  padding: var(--space-section) clamp(28px, 5vw, 64px);
+  padding: var(--space-section) var(--margin);
 }
 
 /* ── Reveal ── */

@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="km-page km-home">
+      <main id="main" tabIndex={-1} className="km-page km-home">
         {SECTIONS.map(({ id, Section, eager }) => (
           <Slot key={id} id={id} behavior={id} eager={eager}>
             <Section />

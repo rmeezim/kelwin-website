@@ -14,19 +14,21 @@ export default function CareersPage() {
   return (
     <>
       <Navbar />
-      {/* Dedicated Careers photograph: one line of footprints toward the lit ridge. */}
-      <PageCommand
-        protocol="The Firm · Careers"
-        stamp="KELWIN/OS · THE BENCH"
-        titleTop="We hire the way we build:"
-        titleBottom="slowly, on purpose."
-        lede="Kelwin runs on small senior pods, and every person on an engagement is accountable to the system it leaves behind. We add people rarely and deliberately — so this page is honest instead of aspirational."
-        code="FILE 03 · BENCH"
-        status="0 seats · bench open"
-        image="/careers-footprints.webp"
-        imagePosition="70% 50%"
-      />
-      <FirmBench />
+      <main id="main" tabIndex={-1}>
+        {/* Dedicated Careers photograph: one line of footprints toward the lit ridge. */}
+        <PageCommand
+          protocol="The Firm · Careers"
+          stamp="KELWIN/OS · THE BENCH"
+          titleTop="We hire the way we build:"
+          titleBottom="slowly, on purpose."
+          lede="Kelwin runs on small senior pods, and every person on an engagement is accountable to the system it leaves behind. We add people rarely and deliberately — so this page is honest instead of aspirational."
+          code="FILE 03 · BENCH"
+          status="0 seats · bench open"
+          image="/careers-footprints.webp"
+          imagePosition="70% 50%"
+        />
+        <FirmBench />
+      </main>
       <Footer />
     </>
   );

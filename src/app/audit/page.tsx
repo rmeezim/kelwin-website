@@ -22,27 +22,27 @@ export default function AuditPage() {
   return (
     <>
       <Navbar />
-      <main>
-      {/* Dedicated audit photograph: the gate — one way in, lit. */}
-      <PageCommand
-        protocol="The System Audit"
-        stamp="KELWIN/OS · DIAGNOSTIC"
-        titleTop="One way in."
-        titleBottom="Three questions wide."
-        lede="Every red button on this site lands here. The audit is fixed scope — ten working days, a written readout you keep — and it starts with three questions that qualify in both directions."
-        code="AUDIT · GATE"
-        status="Gate active"
-        image="/audit-canyon.webp"
-        imagePosition="66% 50%"
-      />
-      {/* Action first: the qualification waterfall is the page. The
-          full spec follows for the detail-readers. */}
-      <QualifyFlow />
-      <AuditSpec />
-      {/* the founder's FAQ, answered before the call (round 4, D4: the FAQ lives on this page) */}
-      <Slot id="faq" behavior="faq">
-        <Faq />
-      </Slot>
+      <main id="main" tabIndex={-1}>
+        {/* Dedicated audit photograph: the gate — one way in, lit. */}
+        <PageCommand
+          protocol="The System Audit"
+          stamp="KELWIN/OS · DIAGNOSTIC"
+          titleTop="One way in."
+          titleBottom="Three questions wide."
+          lede="Every red button on this site lands here. The audit is fixed scope — ten working days, a written readout you keep — and it starts with three questions that qualify in both directions."
+          code="AUDIT · GATE"
+          status="Gate active"
+          image="/audit-canyon.webp"
+          imagePosition="66% 50%"
+        />
+        {/* Action first: the qualification waterfall is the page. The
+            full spec follows for the detail-readers. */}
+        <QualifyFlow />
+        <AuditSpec />
+        {/* the founder's FAQ, answered before the call (round 4, D4: the FAQ lives on this page) */}
+        <Slot id="faq" behavior="faq">
+          <Faq />
+        </Slot>
       </main>
       <Footer />
     </>

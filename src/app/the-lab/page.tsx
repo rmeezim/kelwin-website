@@ -14,24 +14,26 @@ export default function TheLabPage() {
   return (
     <>
       <Navbar />
-      {/* Dedicated Lab photograph: star trails over the instrument ridge. */}
-      <PageCommand
-        protocol="The Lab · R&D Briefing"
-        stamp="K-LAB · CONTROLLED CIRCULATION"
-        titleTop="A briefing on the end"
-        titleBottom="of GTM software."
-        lede="What follows is Kelwin's working thesis, the instruments we're building against it, and the protocol for getting access before the market does. Read it as a memo, not a launch page."
-        code="K-LAB/BRIEF · 01"
-        status="Build 0.5 · active"
-        chips={[
-          { label: "In development", live: true },
-          { label: "AI-native" },
-          { label: "Install-trained" },
-        ]}
-        image="/lab-startrails.webp"
-        imagePosition="70% 45%"
-      />
-      <LabBriefing />
+      <main id="main" tabIndex={-1}>
+        {/* Dedicated Lab photograph: star trails over the instrument ridge. */}
+        <PageCommand
+          protocol="The Lab · R&D Briefing"
+          stamp="K-LAB · CONTROLLED CIRCULATION"
+          titleTop="A briefing on the end"
+          titleBottom="of GTM software."
+          lede="What follows is Kelwin's working thesis, the instruments we're building against it, and the protocol for getting access before the market does. Read it as a memo, not a launch page."
+          code="K-LAB/BRIEF · 01"
+          status="Build 0.5 · active"
+          chips={[
+            { label: "In development", live: true },
+            { label: "AI-native" },
+            { label: "Install-trained" },
+          ]}
+          image="/lab-startrails.webp"
+          imagePosition="70% 45%"
+        />
+        <LabBriefing />
+      </main>
       <Footer />
     </>
   );

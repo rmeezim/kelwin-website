@@ -25,10 +25,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* side gutter: the v5 chrome's --margin, so wherever the stage meets the viewport the body
+   shares one edge with the bar, the PageCommand header and the footer */
 .cap-stage {
   max-width: 1440px;
   margin: 0 auto;
-  padding: clamp(48px, 6vh, 80px) clamp(28px, 5vw, 64px) var(--space-section);
+  padding: clamp(48px, 6vh, 80px) var(--margin) var(--space-section);
 }
 .cap-section { margin-bottom: clamp(64px, 9vh, 120px); }
 .cap-section:last-child { margin-bottom: 0; }
@@ -316,8 +318,9 @@
 .cap-phase.is-retainer { border-color: rgba(124, 156, 138, 0.4); }
 .cap-phase-head {
   display: flex;
+  flex-wrap: wrap; /* the meta drops under the name when the column is too narrow for both */
   align-items: baseline;
-  gap: 12px;
+  gap: 4px 12px;
   padding-bottom: 12px;
   margin-bottom: 14px;
   border-bottom: 1px solid var(--hairline);

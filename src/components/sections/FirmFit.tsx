@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import ArrowLink from "@/components/ui/ArrowLink";
 import ConvertPanel from "@/components/ui/ConvertPanel";
 import "./FirmPages.css";
@@ -374,10 +375,10 @@ export default function FirmFit() {
                   {v.turn}
                 </p>
                 <div className="fp3-vig-foot">
-                  <a className="fp3-vig-install" href={v.installHref}>
+                  <Link className="fp3-vig-install" href={v.installHref}>
                     <span className="fp3-vig-install-k">First install</span>
                     <span className="fp3-vig-install-v">{v.install}</span>
-                  </a>
+                  </Link>
                   <ArrowLink href="/audit" label={v.cue} tone="sand" />
                 </div>
               </article>

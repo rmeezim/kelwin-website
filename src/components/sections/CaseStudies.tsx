@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import Link from "next/link";
+import HeroCTA from "@/components/ui/HeroCTA";
 import ArrowLink from "@/components/ui/ArrowLink";
 import "./CaseStudies.css";
 
@@ -263,12 +264,12 @@ export default function CaseStudies() {
                 <span className="cs-num">{r.n}</span>
                 <span className="cs-research-title">{r.title}</span>
                 <span className="cs-research-status">{r.status}</span>
-                <a
+                <Link
                   className="cs-research-req"
                   href={`/contact?topic=research&ref=${encodeURIComponent(r.n)}`}
                 >
-                  Request →
-                </a>
+                  Request <span aria-hidden="true">→</span>
+                </Link>
               </li>
             ))}
           </ul>
@@ -281,11 +282,7 @@ export default function CaseStudies() {
             always your call.
           </p>
           <div className="cs-foot-actions">
-            <DiagnosticMethodCTA
-              href="/audit"
-              label="Start your own readout"
-              variant="signal"
-            />
+            <HeroCTA href="/audit" label="Start your own readout" />
             <ArrowLink href="/contact" label="Talk to the team first" tone="sand" />
           </div>
         </footer>

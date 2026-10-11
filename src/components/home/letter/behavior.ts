@@ -7,7 +7,10 @@ import type { Behavior } from "../types";
    To rise "line by line", the paragraphs are split into their real rendered lines (measured, not
    guessed), animated, and then restored once the entrance has landed, so the resting page holds
    ordinary paragraphs that reflow freely (and React's own text nodes are put back). Under reduced
-   motion nothing is split and nothing is timed: the markup is already the final state. */
+   motion nothing is split and nothing is timed: the markup is already the final state.
+   Cost: the split runs inside the scroll that brings the letter in, so it reads everything first and
+   writes after — the lines are measured on the untouched text with Ranges (no DOM writes, one
+   layout), then every paragraph is rebuilt in one pass (one restyle). */
 
 const LINE_START = 360; // ms: first line, just after the subject begins its rise
 const LINE_STEP = 70; // ms between lines, in reading order
@@ -18,44 +21,65 @@ const M_ROWS = 160; // ms: label → first symptom row (letter.css: --lt-m + 160
 const M_STEP = 80; // ms between symptom rows (letter.css: --i * 80ms)
 const LATE = ["--lt-m", "--lt-sig", "--lt-ps", "--lt-dash"] as const;
 
-/** Split a paragraph into one masked span per rendered line; returns the inner (rising) spans. */
-function splitLines(p: HTMLElement): HTMLSpanElement[] {
-  // ordinary spaces only: no-break spaces stay bound, so a dash never starts a line
-  const text = (p.textContent ?? "").replace(/[ \t\r\n]+/g, " ").trim();
-  const words = text.split(" ");
-  p.textContent = "";
-  const spans = words.map((w, i) => {
-    const s = document.createElement("span");
-    s.textContent = w;
-    p.appendChild(s);
-    if (i < words.length - 1) p.appendChild(document.createTextNode(" "));
-    return s;
-  });
+const BREAK = /[ \t\r\n]/; // ordinary spaces only: no-break spaces stay bound, so a dash never starts a line
+
+/** A paragraph's rendered lines, read from its text as it stands (no DOM writes): one Range per
+ *  word, and a word opens a new line when its first box sits lower than the line's. */
+function readLines(p: HTMLElement, range: Range): string[] {
   const lines: string[] = [];
-  let cur: string[] = [];
+  let line: string[] = [];
   let top: number | null = null;
-  spans.forEach((s, k) => {
-    const t = s.offsetTop;
+  let word = "";
+  let from: [Text, number] | null = null; // where the word in progress starts (it may run across text nodes)
+  let to: [Text, number] | null = null;
+  const close = () => {
+    if (!word || !from || !to) return;
+    range.setStart(from[0], from[1]);
+    range.setEnd(to[0], to[1]);
+    const t = (range.getClientRects()[0] ?? range.getBoundingClientRect()).top;
     if (top === null || Math.abs(t - top) < 4) {
       if (top === null) top = t;
-      cur.push(words[k]);
+      line.push(word);
     } else {
-      lines.push(cur.join(" "));
-      cur = [words[k]];
+      lines.push(line.join(" "));
+      line = [word];
       top = t;
     }
-  });
-  if (cur.length) lines.push(cur.join(" "));
-  p.textContent = "";
-  return lines.map((line, j) => {
+    word = "";
+    from = to = null;
+  };
+  const walk = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+  for (let n = walk.nextNode() as Text | null; n; n = walk.nextNode() as Text | null) {
+    const text = n.data;
+    for (let i = 0; i < text.length; i++) {
+      if (BREAK.test(text[i])) {
+        close();
+        continue;
+      }
+      if (!word) from = [n, i];
+      word += text[i];
+      to = [n, i + 1];
+    }
+  }
+  close();
+  if (line.length) lines.push(line.join(" "));
+  return lines;
+}
+
+/** One masked span per line; returns the outer masks and their inner (rising) spans. */
+function buildLines(lines: string[]) {
+  const outers: HTMLSpanElement[] = [];
+  const inners: HTMLSpanElement[] = [];
+  lines.forEach((line, j) => {
     const o = document.createElement("span");
     o.className = "km-letter__ln";
     const n = document.createElement("span");
     n.textContent = line + (j < lines.length - 1 ? " " : "");
     o.appendChild(n);
-    p.appendChild(o);
-    return n;
+    outers.push(o);
+    inners.push(n);
   });
+  return { outers, inners };
 }
 
 const order = (el: Element) =>
@@ -74,14 +98,19 @@ export const init: Behavior = (root, { reduced }) => {
   const p2 = paras[1];
   const stacked = !!margin && !!p2 && margin.offsetTop >= p2.offsetTop + p2.offsetHeight;
   const rows = margin ? margin.querySelectorAll(".km-letter__sym > li").length : 0;
+
+  // read: every paragraph's lines, before anything is written
+  const range = document.createRange();
+  const measured = paras.map((p) => readLines(p, range));
+
+  // write: rebuild every paragraph as its lines, in one pass
   const saved: { p: HTMLElement; nodes: ChildNode[] }[] = [];
   let d = LINE_START;
   let last = LINE_START;
   let lm = LINE_START + M_LEAD;
   paras.forEach((p, pi) => {
     saved.push({ p, nodes: Array.from(p.childNodes) });
-    p.classList.add("is-lined"); // cancels the whole-paragraph fallback
-    const inners = splitLines(p);
+    const { outers, inners } = buildLines(measured[pi]);
     if (pi > 0) d += PARA_GAP;
     if (stacked && pi === 2) {
       lm = last + M_LEAD; // the margin, read between P2 and P3
@@ -93,6 +122,8 @@ export const init: Behavior = (root, { reduced }) => {
       d += LINE_STEP;
     });
     if (!stacked && pi === 0) lm = last + M_LEAD; // the movie first, then it is itemised
+    p.classList.add("is-lined"); // cancels the whole-paragraph fallback
+    p.replaceChildren(...outers);
   });
 
   // the late beats follow the real line count

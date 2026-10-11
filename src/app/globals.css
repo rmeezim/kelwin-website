@@ -102,7 +102,16 @@
 html {
   background-color: #141517; /* v5 graphite */
   color: #FBFAF6;
+  /* The site bar is sticky (64px compact). Anchors, HashLink targets and focus scrolled into
+     view land 16px below it instead of under it (WCAG 2.4.11). Don't add per-element
+     scroll-margin for the bar on top of this — the two add up. */
+  scroll-padding-top: 80px;
 }
+
+/* Programmatic focus targets — <main id="main" tabIndex={-1}> (the skip link's target) and the
+   sections a HashLink lands on (it gives them tabindex="-1") — take focus only so the next Tab
+   continues from there. They are not controls: no ring around a whole page or section. */
+[tabindex="-1"]:focus { outline: none; }
 
 body {
   font-family: var(--font-body, "Inter", sans-serif);
@@ -181,37 +190,4 @@ html::-webkit-scrollbar-corner,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* ─── Hero cover stack ─────────────────────────────────────────────
-   The hero holds its loaded position (sticky at the navbar's 68px
-   flow height) while the diagnostic section rides up over it like a
-   sheet placed on the bench — native scroll, no hijacking. The sheet
-   carries a sand hairline and a lift shadow on its top edge so the
-   overlap reads as physical. A charcoal dim scrubs over the hero as
-   it is covered (driven by ScrollTrigger in page.tsx).             */
-.cover-stack { position: relative; }
-.cover-hero {
-  position: sticky;
-  top: 68px; /* == navbar flow height: 12px pad + 56px pill */
-  z-index: 0;
-}
-.cover-hero-dim {
-  position: absolute;
-  inset: 0;
-  background: #08090a;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 20;
-}
-.cover-sheet {
-  position: relative;
-  z-index: 1;
-  box-shadow:
-    0 -1px 0 rgba(199, 180, 157, 0.26),
-    0 -30px 70px rgba(8, 9, 10, 0.6);
-}
-@media (prefers-reduced-motion: reduce) {
-  .cover-hero { position: static; }
-  .cover-hero-dim { display: none; }
 }

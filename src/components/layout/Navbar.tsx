@@ -14,6 +14,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import HashLink from "@/components/ui/HashLink";
 import "./Navbar.css";
 
 /* ─── The v5 site bar (approved mockup: design/redesign/site/frag/hero/T — the header) ───
@@ -26,7 +27,9 @@ import "./Navbar.css";
    · Capabilities / The Firm / Resources open flat graphite plates that hang from the hairline
      (hover, click or keyboard). Each plate's one red is the System Audit door.
    · ≤1023px: a menu button opens a full-screen graphite sheet with the same items; the three
-     plates become expandable groups. Focus is trapped, Escape closes, the page cannot scroll. */
+     plates become expandable groups. Focus is trapped, Escape closes, the page cannot scroll.
+   · Its first stop is a skip link to <main id="main">. Links that can point at the page you are
+     on (the lockup, the plain items, the "full stack" rail) are HashLinks, so they always scroll. */
 
 type GlyphName = "contour" | "trace" | "orbit" | "firm" | "fit" | "careers" | "insights" | "reports" | "contact";
 
@@ -336,33 +339,57 @@ export default function Navbar() {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [group, setGroup] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const scrolledRef = useRef(false);
 
   const openedBy = useRef<"hover" | "click" | null>(null);
   const closeTimer = useRef(0);
   const focusFirst = useRef(false);
   const restoreFocus = useRef(false);
 
-  /* scrolled: the compact graphite bar. A page that opens already scrolled (reload, back/forward
-     restoring a mid-page position) takes the compact bar before the first paint after hydration
-     and without its transition, so the bar never visibly collapses on load. data-instant is not
-     owned by React, so a re-render never drops it early. */
+  /* scrolled: the compact graphite bar. When the page jumps rather than scrolls — it opens already
+     scrolled (reload), back/forward restores a mid-page position after the page has mounted, a
+     navigation lands at the top from a scrolled page — the bar takes its new state at once and
+     without the transition, so it never shows the resting bar over mid-page content or visibly
+     collapses. A jump is a single scroll step of more than half a viewport; wheel, trackpad and
+     keyboard scrolling arrive in small steps and keep the transition. The opening state is read on
+     the first frame, once the router has placed the page (a navigation scrolls to the top in the
+     same commit). On a jump the class is set on the element straight away — React's render, which
+     sets the same class, can land a few frames later. data-instant is not owned by React, so a
+     re-render never drops it early. */
   useLayoutEffect(() => {
     const header = headerRef.current;
     let raf = 0;
-    if (header && window.scrollY > 8) {
-      header.dataset.instant = "";
-      setScrolled(true);
-      raf = requestAnimationFrame(() => {
+    const set = (next: boolean, instant: boolean) => {
+      if (next === scrolledRef.current) return;
+      scrolledRef.current = next;
+      if (instant && header) {
+        header.dataset.instant = "";
+        header.classList.toggle("is-scrolled", next);
+        cancelAnimationFrame(raf);
         raf = requestAnimationFrame(() => {
-          raf = 0;
-          delete header.dataset.instant;
+          raf = requestAnimationFrame(() => {
+            raf = 0;
+            delete header.dataset.instant;
+          });
         });
-      });
-    }
-    const onScroll = () => setScrolled(window.scrollY > 8);
+      }
+      setScrolled(next);
+    };
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const jump = Math.abs(y - lastY) > window.innerHeight / 2;
+      lastY = y;
+      set(y > 8, jump);
+    };
+    const open = requestAnimationFrame(() => {
+      lastY = window.scrollY;
+      set(lastY > 8, true);
+    });
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(open);
       if (raf) cancelAnimationFrame(raf);
       if (header) delete header.dataset.instant;
     };
@@ -563,11 +590,15 @@ export default function Navbar() {
 
   return (
     <header ref={headerRef} className={cls.join(" ")} data-surface="dark">
+      {/* a plain fragment link: <main id="main" tabIndex={-1}> on every page takes the focus */}
+      <a className="kn-skip" href="#main">
+        Skip to content
+      </a>
       <div className="kn__bar" inert={sheetOpen}>
         <div className="kn__row">
-          <Link className="kn__brand" href="/" onClick={closeAll}>
+          <HashLink className="kn__brand" href="/" onClick={closeAll}>
             <span className="km-logo" role="img" aria-label="Kelwin" />
-          </Link>
+          </HashLink>
 
           <nav className="kn__menu" aria-label="Primary">
             <ul className="kn__list">
@@ -576,14 +607,14 @@ export default function Navbar() {
                 if (!item.mega) {
                   return (
                     <li key={item.label} className="kn__li" onPointerEnter={onItemEnter}>
-                      <Link
+                      <HashLink
                         href={item.href}
                         className={`kn__item${current ? " is-current" : ""}`}
                         aria-current={current ? "page" : undefined}
                         onClick={closeAll}
                       >
                         {item.label}
-                      </Link>
+                      </HashLink>
                     </li>
                   );
                 }
@@ -649,12 +680,11 @@ export default function Navbar() {
         aria-modal="true"
         aria-label="Site menu"
         inert={!sheetOpen}
-        data-lenis-prevent=""
       >
         <div className="kn-sheet__bar">
-          <Link className="kn__brand" href="/" onClick={closeAll}>
+          <HashLink className="kn__brand" href="/" onClick={closeAll}>
             <span className="km-logo" role="img" aria-label="Kelwin" />
-          </Link>
+          </HashLink>
           <button
             ref={closeRef}
             type="button"
@@ -674,7 +704,7 @@ export default function Navbar() {
               if (!item.mega) {
                 return (
                   <li key={item.label} className="kn-sheet__li" style={style}>
-                    <Link
+                    <HashLink
                       href={item.href}
                       className={`kn-sheet__item${current ? " is-current" : ""}`}
                       aria-current={current ? "page" : undefined}
@@ -682,7 +712,7 @@ export default function Navbar() {
                     >
                       <span>{item.label}</span>
                       <ArrowGo className="kn-sheet__go" />
-                    </Link>
+                    </HashLink>
                   </li>
                 );
               }
@@ -724,11 +754,11 @@ export default function Navbar() {
                         ))}
                         {rail && (
                           <li>
-                            <Link href={rail.href} className="kn-sheet__link" onClick={closeAll}>
+                            <HashLink href={rail.href} className="kn-sheet__link" onClick={closeAll}>
                               <span className="ac-idx" />
                               <span className="kn-sheet__lt">{rail.title}</span>
                               <span className="kn-sheet__ld">{rail.desc}</span>
-                            </Link>
+                            </HashLink>
                           </li>
                         )}
                       </ul>
@@ -769,7 +799,6 @@ function Plate({
       className={`kn-mega${open ? " is-open" : ""}`}
       role="region"
       aria-label={label}
-      data-lenis-prevent=""
     >
       <ul className="kn-mega__strips">
         {def.strips.map((s) => (
@@ -779,11 +808,11 @@ function Plate({
       {(def.rail || def.door) && (
         <div className="kn-mega__band">
           {def.rail && (
-            <Link href={def.rail.href} className="kn-mega__rail" onClick={onNavigate}>
+            <HashLink href={def.rail.href} className="kn-mega__rail" onClick={onNavigate}>
               <span className="kn-mega__rt">{def.rail.title}</span>
               <span className="kn-mega__rd">{def.rail.desc}</span>
               <ArrowGo />
-            </Link>
+            </HashLink>
           )}
           {def.door && <Door item={def.door} onNavigate={onNavigate} />}
         </div>

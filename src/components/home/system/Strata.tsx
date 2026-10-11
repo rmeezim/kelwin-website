@@ -7,8 +7,10 @@ const vars = (o: Record<string, string | number>) =>
   Object.fromEntries(Object.entries(o).map(([k, v]) => [k, String(v)])) as CSSProperties;
 const ms = (n: number) => `${n}ms`;
 
+/* the drawing's short name, and what it shows (its description: read on request, not on every slab's focus) */
+const LABEL = "Drawing of the three layers";
 const DESCRIPTION =
-  "Drawing. Three flat slabs stacked in isometric, one per layer, each with its job drawn on its top face: 01 Narrative Systems carries lines of text, 02 GTM Infrastructure one signal routed three ways, 03 GTM Intelligence a ring that closes once the loop does. A dimension measures the three layers as one system. One return line leaves the bottom slab and runs back up into the top one, ending in an arrow and labelled feeds back what works: the loop is closed. The selected layer's top face is red and lifts slightly. Each slab is a button that opens its layer in the list.";
+  "Three flat slabs stacked in isometric, one per layer, each with its job drawn on its top face: 01 Narrative Systems carries lines of text, 02 GTM Infrastructure one signal routed three ways, 03 GTM Intelligence a ring that closes once the loop does. A dimension measures the three layers as one system. One return line leaves the bottom slab and runs back up into the top one, ending in an arrow and labelled feeds back what works: the loop is closed. The selected layer's top face is red and lifts slightly. Each slab is a button that opens its layer in the list.";
 
 /** One slab: occluding faces, its inscription, inside a lift (the selected slab's 8-unit rise) and a
  *  drop (its entrance). The visible faces take the pointer; the hit layer is the keyboard stop. */
@@ -68,8 +70,19 @@ export default function Strata() {
       <span className="ac-reg ac-reg--tr" aria-hidden="true"></span>
       <span className="ac-reg ac-reg--bl" aria-hidden="true"></span>
       <span className="ac-reg ac-reg--br" aria-hidden="true"></span>
+      <p id="km-system-fig-d" hidden>
+        {DESCRIPTION}
+      </p>
       <div className="ac-field km-system__field">
-        <svg className="ac-svg km-system__svg" width="755" height="580" viewBox="6 0 755 580" role="group" aria-label={DESCRIPTION}>
+        <svg
+          className="ac-svg km-system__svg"
+          width="755"
+          height="580"
+          viewBox="6 0 755 580"
+          role="group"
+          aria-label={LABEL}
+          aria-describedby="km-system-fig-d"
+        >
           <g className="km-system__loop" aria-hidden="true">
             <path className="km-system__ret" pathLength="1" d="M147.5 403.5H110.5V139.5H149" />
             <rect className="km-system__src" x="145.5" y="401" width="5" height="5" />
@@ -90,7 +103,7 @@ export default function Strata() {
                 aria-label={`Layer ${code}, ${name}`}
                 aria-controls={`km-system-p${n}`}
                 aria-expanded={n === 1 ? "true" : "false"}
-                aria-disabled={n === 1 ? "true" : undefined}
+                aria-current={n === 1 ? "true" : undefined}
               >
                 <g className="km-system__lift">
                   <path className="km-system__area" d={slabArea(y0)} />

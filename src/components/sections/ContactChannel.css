@@ -22,10 +22,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* side gutter: the v5 chrome's --margin, so wherever the stage meets the viewport the body
+   shares one edge with the bar, the PageCommand header and the footer */
 .ctc-stage {
   max-width: 1140px;
   margin: 0 auto;
-  padding: clamp(56px, 7vh, 88px) clamp(28px, 5vw, 64px) var(--space-section);
+  padding: clamp(56px, 7vh, 88px) var(--margin) var(--space-section);
 }
 
 /* ── Reveal ── */
@@ -154,7 +156,7 @@
   padding: clamp(22px, 2.8vh, 32px) clamp(22px, 2.8vw, 36px);
   background: #0b0a08;
   border: 1px solid var(--sand-line);
-  scroll-margin-top: 72px;
+  /* no scroll-margin: html's scroll-padding-top already lands #write clear of the sticky bar */
 }
 .ctc-form-head {
   display: flex;
@@ -295,31 +297,11 @@
   flex-wrap: wrap;
   padding-top: 6px;
 }
-/* Submit — the bracketed CTA posture (style #3) as a real button. */
-.ctc-submit {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--signal-bright);
-  border: 0;
-  border-radius: 0;
-  padding: 13px 22px;
-  font-family: var(--font-inter), sans-serif;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #fbfaf6;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.ctc-submit:hover { background: #a8302c; }
-.ctc-submit:focus-visible { outline: 2px solid var(--sand); outline-offset: 3px; }
-.ctc-submit-arrow { font-family: var(--font-mono); }
+/* the submit is HeroCTA as a <button> (button C); the row only places it beside its note */
 .ctc-submit-note {
   flex: 1;
-  min-width: 240px;
+  /* wraps under the button when the row is narrower than this, never wider than the row */
+  min-width: min(240px, 100%);
   margin: 2px 0 0;
   font-family: var(--font-mono);
   font-size: 12.5px;

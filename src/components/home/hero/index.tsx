@@ -94,10 +94,10 @@ export default function Hero() {
             Kelwin designs, installs and runs the narrative, channel and market intelligence systems that turn fragmented
             growth into repeatable pipeline.
           </p>
-          <aside className="ac-note ac-up" style={css({ "--d": "1250ms" })} aria-label="About the audit">
+          <div className="ac-note ac-up" style={css({ "--d": "1250ms" })}>
             <p className="ac-label">A fixed-scope diagnostic</p>
             <p className="ac-note__t">Ten working days. Clear findings. Actionable recommendations.</p>
-          </aside>
+          </div>
           <div className="ac-doors ac-up" style={css({ "--d": "1350ms" })}>
             <Link className="ac-btn" href="/audit">
               Request a System Audit
@@ -185,7 +185,12 @@ export default function Hero() {
             <span className="km-hero__phw" aria-hidden="true">
               <span className="km-hero__ph"></span>
             </span>
-            <div className="km-hero__chapters" role="group" aria-label="Film chapters">
+            {/* the chapters are also the film's stop (WCAG 2.2.2, no extra control: D12) — said to assistive
+                tech here; behavior.ts drops the description under reduced motion, where nothing moves */}
+            <p id="km-hero-chd" hidden>
+              Choosing a chapter plays its take once, then stops the film on it.
+            </p>
+            <div className="km-hero__chapters" role="group" aria-label="Film chapters" aria-describedby="km-hero-chd">
               {TAKES.map((t, k) => (
                 <button
                   key={t.index}

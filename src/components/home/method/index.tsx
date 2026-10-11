@@ -58,12 +58,12 @@ export default function Method() {
           The first three phases run once, in order. The fourth is the operating retainer&nbsp;— it
           keeps running, because a system left alone drifts the moment the market moves.
         </p>
-        <aside className="ac-note" aria-label="Engagements">
+        <div className="ac-note">
           <p className="ac-label">Engagements</p>
           <p className="ac-note__t">
             Install first, then an operating retainer — <span className="km-method__nb">on a system you own.</span>
           </p>
-        </aside>
+        </div>
       </div>
 
       <div className="ac-wrap km-method__body">

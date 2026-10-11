@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import Link from "next/link";
 import Slot from "@/components/home/Slot";
+import HashLink from "@/components/ui/HashLink";
 import "./Footer.css";
 
 /* 11 · Footer — "The mark, quietly buried" (approved mockup: design/redesign/site/frag/footer/U).
@@ -8,7 +8,9 @@ import "./Footer.css";
    legal row on a hairline that closes the frame the hero opened (+ at each margin), and the
    lockup in one quiet tone, ~70% of the content width, set right, its lower fifth buried by
    the page's last edge. It plays once as it scrolls into view; the lockup's slow rise is the
-   last thing to move. The London readout is written by footer-behavior.ts. */
+   last thing to move. The London readout is written by footer-behavior.ts.
+   Its internal links are HashLinks: on the page they point at (Methodology on the homepage, Privacy
+   on /privacy …) they scroll there instead of doing nothing. */
 
 type FootLink = { label: string; href: string; door?: "ne" | "go" };
 
@@ -75,13 +77,13 @@ export default function Footer() {
                 <ul className="km-footer__ul">
                   {s.links.map((l) => (
                     <li key={l.label}>
-                      <Link
+                      <HashLink
                         className={`km-footer__a${l.door ? ` km-footer__a--door km-footer__a--${l.door}` : ""}`}
                         href={l.href}
                       >
                         {l.label}
                         {l.door && <>{" "}<DoorArrow kind={l.door} /></>}
-                      </Link>
+                      </HashLink>
                     </li>
                   ))}
                 </ul>
@@ -115,19 +117,20 @@ export default function Footer() {
             <p className="ac-cap km-footer__copy">© 2026 Kelwin · All rights reserved</p>
             <div className="km-footer__ctl">
               <div className="km-footer__pair">
-                <Link href="/privacy">Privacy</Link>
-                <Link href="/terms">Terms</Link>
+                <HashLink href="/privacy">Privacy</HashLink>
+                <HashLink href="/terms">Terms</HashLink>
               </div>
-              <Link className="ac-btn-o km-footer__top" href="/audit">
+              <HashLink className="ac-btn-o km-footer__top" href="/audit">
                 Audit request
-              </Link>
+              </HashLink>
             </div>
           </div>
         </div>
 
-        {/* the lockup, one quiet tone, ~70% wide and set right; the footer's bottom edge buries its lower fifth */}
-        <div className="km-footer__bury">
-          <span className="km-logo km-footer__mark" role="img" aria-label="Kelwin" />
+        {/* the lockup, one quiet tone, ~70% wide and set right; the footer's bottom edge buries its lower
+            fifth. Decoration: the bar's lockup already names the site, so it stays out of the a11y tree. */}
+        <div className="km-footer__bury" aria-hidden="true">
+          <span className="km-logo km-footer__mark" />
         </div>
       </footer>
     </Slot>

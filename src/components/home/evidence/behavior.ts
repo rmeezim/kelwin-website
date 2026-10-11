@@ -16,7 +16,9 @@ import type { Behavior } from "../types";
    halts the pass at once; it never restarts. Production refinement: the pass only steps while
    the explorer (wall + readout) is at least half on screen — half of itself, or half the
    viewport when it is taller than that. A step that falls due off screen waits; when the
-   explorer returns, the reading on screen holds a full 3.3s before the pass continues.
+   explorer returns, the reading on screen holds a full 3.3s before the pass continues. A hidden
+   tab counts as off screen (its timers still run, throttled, and its IntersectionObserver goes
+   quiet): the pending step is withdrawn, a step in flight lands, and the pass waits for the tab.
    Reduced motion: the final markup (01 pressed) stands; presses still work; no timers.        */
 
 const HOLD = 3300; // the automatic pass: one reading every 3.3s
@@ -169,8 +171,8 @@ export const init: Behavior = (root, { reduced }) => {
   const tick = () => {
     autoT = null;
     if (manual) return;
-    if (!inView) {
-      due = true; // the explorer is off screen: wait for it
+    if (!inView || document.hidden) {
+      due = true; // the explorer is off screen (or the tab is hidden): wait for it
       return;
     }
     autoStep(SEQ[k++]);
@@ -396,13 +398,40 @@ export const init: Behavior = (root, { reduced }) => {
         const vh = e.rootBounds?.height ?? window.innerHeight;
         const need = SEEN * Math.min(e.boundingClientRect.height, vh);
         inView = e.isIntersecting && e.intersectionRect.height >= need - 1;
-        if (inView && due && !manual) {
+        if (inView && due && !manual && !document.hidden) {
           due = false;
           arm(HOLD);
         }
       }
     },
     steps,
+  );
+
+  /* a hidden tab is off screen: withdraw the pending step (a step in flight lands where it was
+     going first), and when the tab is back with the explorer in view, the reading on screen holds a
+     full 3.3s before the pass continues */
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+      if (manual) return;
+      if (document.hidden) {
+        if (autoT === null) return; // nothing pending: not armed yet, already waiting, or the pass is over
+        cancel(autoT);
+        autoT = null;
+        if (pend) {
+          pend();
+          if (k >= SEQ.length) {
+            next(); // that was the last step: the pass closes as it would have
+            return;
+          }
+        }
+        due = true;
+      } else if (due && inView) {
+        due = false;
+        arm(HOLD);
+      }
+    },
+    on,
   );
 
   return cleanup;

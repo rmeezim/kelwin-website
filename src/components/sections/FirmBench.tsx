@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import DotMatrixReading from "@/components/ui/DotMatrixReading";
 import ArrowLink from "@/components/ui/ArrowLink";
+import HeroCTA from "@/components/ui/HeroCTA";
 import "./FirmPages.css";
 
 // ─── Careers — system operators ───────────────────────────────────────────
@@ -454,10 +455,7 @@ export default function FirmBench() {
                 />
               </label>
               <div className="fp3-clear-foot">
-                <button className="fp3-clear-submit" type="submit">
-                  SUBMIT PARAMETERS FOR BENCH REVIEW
-                  <span aria-hidden="true"> →</span>
-                </button>
+                <HeroCTA as="button" type="submit" label="Submit for bench review" />
                 <p className="fp3-clear-note">
                   Opens your mail client, addressed to the founding team —
                   no ATS, no pipeline software. A human reads everything.

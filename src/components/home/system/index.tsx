@@ -36,13 +36,13 @@ export default function System() {
         <p className="ac-lede">
           Kelwin installs all three in your company, so pipeline becomes a standing output, not a one-time deliverable.
         </p>
-        <aside className="ac-note km-system__note" aria-label="The loop most teams run">
+        <div className="ac-note km-system__note">
           <p className="ac-label">The loop most teams run</p>
           <p className="ac-note__t">
             Capital in, campaigns run, knowledge lost, reset. The loop conserves nothing — every cycle pays full price to
             relearn what the last one knew.
           </p>
-        </aside>
+        </div>
       </div>
 
       {/* drawing left (cols 1–7) · ledger right (cols 9–12) */}
@@ -64,7 +64,7 @@ export default function System() {
                   type="button"
                   className="ac-row__head"
                   aria-expanded={n === 1 ? "true" : "false"}
-                  aria-disabled={n === 1 ? "true" : undefined}
+                  aria-current={n === 1 ? "true" : undefined}
                   aria-controls={`km-system-p${n}`}
                   id={`km-system-b${n}`}
                 >

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import HeroCTA from "@/components/ui/HeroCTA";
 import ArrowLink from "@/components/ui/ArrowLink";
 import "./ArticleDoc.css";
 
@@ -62,11 +62,7 @@ export default function ArticleDoc({
             your company.
           </p>
           <div className="artd-foot-actions">
-            <DiagnosticMethodCTA
-              href="/audit"
-              label="Begin with the audit"
-              variant="signal"
-            />
+            <HeroCTA href="/audit" label="Begin with the audit" />
             <ArrowLink href="/insights" label="More field notes" tone="sand" />
           </div>
         </footer>

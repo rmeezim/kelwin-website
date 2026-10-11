@@ -299,6 +299,9 @@
 /* held off screen: the film, the playhead and the grain stop where they are */
 .km-hero.is-held :is(.km-film__plate, .km-film__walker, .km-hero__glow, .km-hero__soft, .km-hero__ph, .km-hero__run),
 .km-hero.is-held .km-film::after { animation-play-state: paused; }
+/* stopped on a picked chapter (behavior.ts): its take has played to its last frame, where its moves rest
+   (they fill forwards); the grain, the one loop left, stops too */
+.km-hero.is-still .km-film::after { animation-play-state: paused; }
 
 @keyframes km-hero-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes km-hero-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }

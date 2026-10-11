@@ -13,8 +13,10 @@ import type { Behavior } from "../types";
    landed in its own slot (.is-home), and the dotted way across fades out at the hand-back (~0.7s after the last cue).
    Detail cards: each sheet is a disclosure button. Hover (mouse, after a 90ms intent delay; instant when moving
    between sheets), keyboard focus (focus-visible) or a tap opens its card; leaving, blur, Escape or a tap elsewhere
-   closes it. Enter/Space and taps toggle. Never while the spread runs: at the hand-back the keyboard's sheet opens,
-   and a sheet the pointer is resting on opens on the pointer's first move.
+   closes it. Enter/Space and taps toggle — except that a card keyboard focus has just opened stays open on the first
+   Enter/Space (it is already what the key asks for; a screen reader heard "expanded" on arrival), and closes on the
+   second, on Escape or on blur. Never while the spread runs: at the hand-back the keyboard's sheet opens, and a sheet
+   the pointer is resting on opens on the pointer's first move.
    Standalone (the preview): plays at once, settled by ~4.3s. Homepage (.km-home): the stack arrives with the
    section; the spread waits for the sheet row to be 60% in view, then for max(300ms, 1200ms − time since the
    section arrived), and plays once.
@@ -164,6 +166,7 @@ export const init: Behavior = (root, { reduced }) => {
   let cur: HTMLElement | null = null;
   let hov: HTMLElement | null = null;
   let armed: HTMLElement | null = null;
+  let byFocus: HTMLElement | null = null; // opened by keyboard focus, and not yet activated
   let lastPtr = "";
   let warm = 0;
   let timer = 0;
@@ -197,6 +200,7 @@ export const init: Behavior = (root, { reduced }) => {
   const shut = (it: HTMLElement | null) => {
     if (!it || cur !== it) return;
     cur = null;
+    if (byFocus === it) byFocus = null;
     warm = Date.now();
     it.classList.remove("is-open");
     btn(it).setAttribute("aria-expanded", "false");
@@ -229,13 +233,18 @@ export const init: Behavior = (root, { reduced }) => {
       window.clearTimeout(timer);
       shut(it);
       const f = focused();
-      if (f && f !== it) open(f); // hand back to the keyboard's sheet
+      if (f && f !== it) {
+        open(f); // hand back to the keyboard's sheet
+        if (cur === f) byFocus = f;
+      }
     });
     listen(b, "pointerdown", (e) => {
       lastPtr = e.pointerType;
     });
     listen(b, "focus", () => {
-      if (fv(b)) open(it);
+      if (!fv(b)) return;
+      open(it);
+      if (cur === it) byFocus = it;
     });
     listen(b, "blur", () => {
       if (hov !== it) shut(it);
@@ -245,8 +254,10 @@ export const init: Behavior = (root, { reduced }) => {
         open(it); // mouse: hover already opened it
         return;
       }
-      if (cur === it) shut(it);
-      else open(it); // Enter / Space and taps toggle
+      // Enter / Space and taps toggle; a card focus has just opened is already open: its first Enter / Space keeps it
+      if (cur === it && byFocus === it) byFocus = null;
+      else if (cur === it) shut(it);
+      else open(it);
     });
   });
   listen(document, "keydown", (e) => {
@@ -261,6 +272,7 @@ export const init: Behavior = (root, { reduced }) => {
     const f = focused();
     if (f) {
       open(f);
+      if (cur === f) byFocus = f;
       return;
     }
     armed = hov;

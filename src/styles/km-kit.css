@@ -79,14 +79,18 @@
   letter-spacing: var(--ac-track-mono); text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
 }
 
-/* two-voice statement: one .ac-line per line (masks the rise); exactly one .ac-accent */
+/* two-voice statement: one .ac-line per line (masks the rise); exactly one .ac-accent.
+   The mask clips vertically only (the rise is a translateY) and the line may wrap: at the
+   design's own spacing every line fits its column, so nothing changes; under a reader's
+   text-spacing override (WCAG 1.4.12) a line that grows wraps instead of being cut off. */
 .ac-statement {
   font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
   font-size: var(--ac-h-sec); line-height: .98; letter-spacing: var(--display-tracking); color: var(--fg);
 }
 .ac-statement--hero { font-size: var(--ac-h-hero); line-height: .96; }
 .ac-statement--xl { font-size: var(--ac-h-xl); line-height: .96; }
-.ac-line { display: block; overflow: hidden; white-space: nowrap; padding-block: .1em .14em; margin-block: -.1em -.14em; }
+.ac-line { display: block; overflow: hidden; padding-block: .1em .14em; margin-block: -.1em -.14em; }
+@supports (overflow: clip) { .ac-line { overflow: visible clip; } }   /* x visible, y clipped */
 .ac-line > span { display: inline-block; }
 .ac-accent { font-weight: var(--light-weight); color: var(--fg-2); }
 
@@ -386,7 +390,6 @@
   .ac-head > .ac-note { grid-column: 1 / span 7; grid-row: 6; align-self: start; margin-top: 40px; }
 }
 @media (max-width: 767px) {
-  .ac-line { white-space: normal; }
   .ac-head > .ac-statement { margin-top: 24px; }
   .ac-head > .ac-rule { margin-top: 28px; }
   .ac-head > .ac-lede { grid-column: 1 / -1; margin-top: 20px; }

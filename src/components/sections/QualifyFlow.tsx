@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import ArrowLink from "@/components/ui/ArrowLink";
+import HeroCTA from "@/components/ui/HeroCTA";
 import "./QualifyFlow.css";
 
 // ─── Audit intake — the qualification waterfall ───────────────────────────
@@ -235,11 +237,8 @@ export default function QualifyFlow() {
                 ))}
               </ul>
               <div className="qf-book-row">
-                <a className="qf-book" href={bookingHref}>
-                  <span aria-hidden="true" className="qf-book-brackets" />
-                  Book the strategic call
-                  <span className="qf-book-arrow" aria-hidden="true">→</span>
-                </a>
+                {/* the site's last conversion step — button C, like every red primary */}
+                <HeroCTA href={bookingHref} label="Book the strategic call" />
                 <p className="qf-book-note">
                   Your answers travel with the request — we reply with times
                   within one working day. Thirty minutes, founding team, no
@@ -288,7 +287,7 @@ export default function QualifyFlow() {
 
         <p className="qf-under-note">
           Not ready for any of this?{" "}
-          <a href="/contact" className="qf-under-link">The general channel</a>{" "}
+          <Link href="/contact" className="qf-under-link">The general channel</Link>{" "}
           takes questions with no qualification at all.
         </p>
       </div>

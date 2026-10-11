@@ -20,10 +20,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* side gutter: the v5 chrome's --margin wherever the stage fills the viewport, so the text
+   shares the bar's and the footer's edge on phones; capped at the reading stage's own inset */
 .artd-stage {
   max-width: 780px;
   margin: 0 auto;
-  padding: clamp(48px, 6vh, 72px) clamp(24px, 5vw, 40px) var(--space-section);
+  padding: clamp(48px, 6vh, 72px) min(var(--margin), 40px) var(--space-section);
 }
 
 /* ── Head ── */

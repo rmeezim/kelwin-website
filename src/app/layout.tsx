@@ -4,8 +4,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "../styles/km-base.css";
 import "../styles/km-kit.css";
-import DiagnosticManualOverlay from "@/components/effects/DiagnosticManualOverlay";
-import SmoothScrollProvider from "@/components/effects/SmoothScrollProvider";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
@@ -62,8 +60,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: motionBoot }} />
       </head>
       <body className="min-h-full flex flex-col bg-surface text-cream">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
-        <DiagnosticManualOverlay />
+        {children}
         <div className="site-grain" aria-hidden="true" />
       </body>
     </html>

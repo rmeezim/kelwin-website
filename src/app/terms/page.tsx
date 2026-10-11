@@ -84,13 +84,15 @@ export default function TermsPage() {
   return (
     <>
       <Navbar />
-      <LegalDoc
-        title="Terms of service"
-        docId="LEGAL · K-TERMS/01"
-        effective="JULY 2026"
-        intro="The short, readable version of what governs this website — including the honesty rule behind every artifact labeled 'Specimen'."
-        sections={SECTIONS}
-      />
+      <main id="main" tabIndex={-1}>
+        <LegalDoc
+          title="Terms of service"
+          docId="LEGAL · K-TERMS/01"
+          effective="JULY 2026"
+          intro="The short, readable version of what governs this website — including the honesty rule behind every artifact labeled 'Specimen'."
+          sections={SECTIONS}
+        />
+      </main>
       <Footer />
     </>
   );

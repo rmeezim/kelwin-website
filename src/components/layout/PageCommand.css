@@ -38,14 +38,14 @@
 }
 @keyframes pgc-media-in { from { opacity: 0; } to { opacity: 1; } }
 
-/* stage */
+/* stage — the content inset is the v5 chrome's (--edge: the fluid margin, plus the centring
+   gutter past the 1440 stage), so the protocol row, title and readout share one edge with the
+   bar's brand, its hairline and the footer at every width */
 .pgc-stage {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 clamp(28px, 5vw, 64px) clamp(36px, 5.5vh, 64px);
+  padding: 0 var(--edge) clamp(36px, 5.5vh, 64px);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -176,9 +176,8 @@
   background: rgba(199, 180, 157, 0.22);
   display: flex;
   justify-content: space-between;
-  max-width: 1440px;
-  margin: 0 auto;
-  width: calc(100% - 2 * clamp(28px, 5vw, 64px));
+  /* margin to margin, like the nav hairline (.pgc is a column flex box, so it stretches) */
+  margin-inline: var(--edge);
 }
 .pgc-tick {
   width: 1px;

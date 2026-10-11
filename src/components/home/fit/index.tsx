@@ -103,12 +103,21 @@ function Row({ row, i, head, panel }: { row: FitRow; i: number; head: string; pa
 
 /* A row title. Hyphenated compounds ("Committee-decided", "self-serve") are kept whole, so a
    narrow phone wraps the title between words, never after a hyphen. Markup only: the copy is
-   unchanged. */
+   unchanged. Only the compounds are cut out; every space stays inside a run of the title's own
+   text ("Real revenue, felt ceiling" is one text node, " sales" keeps its space). A space rendered
+   as a text node of its own sits between React's <!-- --> separators in the server HTML, and Chrome
+   drops it from the accessible name ("Realrevenue,feltceiling"). */
 function Title({ text }: { text: string }) {
-  return text.split(" ").map((word, k) => (
-    <Fragment key={k}>
-      {k > 0 && " "}
-      {word.includes("-") ? <span className="km-fit__nb">{word}</span> : word}
-    </Fragment>
-  ));
+  return text
+    .split(/(\S*-\S*)/)
+    .filter(Boolean)
+    .map((part, k) =>
+      part.includes("-") ? (
+        <span key={k} className="km-fit__nb">
+          {part}
+        </span>
+      ) : (
+        part
+      ),
+    );
 }

@@ -14,19 +14,21 @@ export default function WhoWeWorkWithPage() {
   return (
     <>
       <Navbar />
-      {/* Dedicated interior photograph: pre-dawn dune field, ridge crop. */}
-      <PageCommand
-        protocol="The Firm · Fit"
-        stamp="KELWIN/OS · QUALIFICATION"
-        titleTop="Not for everyone."
-        titleBottom="By design."
-        lede="A revenue system only compounds inside a company built to carry it. Here are the three situations we keep being hired into — told the way they feel from inside — and the honest list of who we send away."
-        code="FILE 02 · FIT"
-        status="Gate open"
-        image="/dune-predawn.webp"
-        imagePosition="86% 55%"
-      />
-      <FirmFit />
+      <main id="main" tabIndex={-1}>
+        {/* Dedicated interior photograph: pre-dawn dune field, ridge crop. */}
+        <PageCommand
+          protocol="The Firm · Fit"
+          stamp="KELWIN/OS · QUALIFICATION"
+          titleTop="Not for everyone."
+          titleBottom="By design."
+          lede="A revenue system only compounds inside a company built to carry it. Here are the three situations we keep being hired into — told the way they feel from inside — and the honest list of who we send away."
+          code="FILE 02 · FIT"
+          status="Gate open"
+          image="/dune-predawn.webp"
+          imagePosition="86% 55%"
+        />
+        <FirmFit />
+      </main>
       <Footer />
     </>
   );

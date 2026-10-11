@@ -15,19 +15,21 @@ export default function GtmInfrastructurePage() {
   return (
     <>
       <Navbar />
-      {/* The strata: the stack, as geology — the infrastructure job. */}
-      <PageCommand
-        protocol="Capability C·02 · GTM Infrastructure"
-        stamp="KELWIN/OS · THE MACHINE"
-        titleTop="The machine that carries"
-        titleBottom="the message."
-        lede="Deliverability, data, sequencing, orchestration, CRM — the unglamorous engineering that decides whether your story ever reaches a buyer. Built in your stack, documented in your language, yours when we leave."
-        code="C·02 · INFRASTRUCTURE"
-        status="Install + retainer"
-        image="/strata-layers.webp"
-        imagePosition="50% 30%"
-      />
-      <CapabilityDetail data={INFRASTRUCTURE} />
+      <main id="main" tabIndex={-1}>
+        {/* The strata: the stack, as geology — the infrastructure job. */}
+        <PageCommand
+          protocol="Capability C·02 · GTM Infrastructure"
+          stamp="KELWIN/OS · THE MACHINE"
+          titleTop="The machine that carries"
+          titleBottom="the message."
+          lede="Deliverability, data, sequencing, orchestration, CRM — the unglamorous engineering that decides whether your story ever reaches a buyer. Built in your stack, documented in your language, yours when we leave."
+          code="C·02 · INFRASTRUCTURE"
+          status="Install + retainer"
+          image="/strata-layers.webp"
+          imagePosition="50% 30%"
+        />
+        <CapabilityDetail data={INFRASTRUCTURE} />
+      </main>
       <Footer />
     </>
   );

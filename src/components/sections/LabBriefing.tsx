@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import ArrowLink from "@/components/ui/ArrowLink";
-import DiagnosticMethodCTA from "@/components/ui/DiagnosticMethodCTA";
+import HeroCTA from "@/components/ui/HeroCTA";
 import "./LabBriefing.css";
 
 // ─── The Lab — a classified briefing, not a coming-soon page ──────────────
@@ -392,10 +392,9 @@ export default function LabBriefing() {
             </div>
             <div className="lb-eap-foot">
               <div className="lb-eap-actions">
-                <DiagnosticMethodCTA
+                <HeroCTA
                   href="/contact?topic=lab&ref=Early%20Access%20Protocol"
                   label="Apply for early access"
-                  variant="signal"
                 />
                 <ArrowLink
                   href="/audit"

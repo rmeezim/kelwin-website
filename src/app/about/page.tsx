@@ -14,19 +14,21 @@ export default function AboutPage() {
   return (
     <>
       <Navbar />
-      {/* Dedicated interior photograph: pre-dawn dune field. */}
-      <PageCommand
-        protocol="The Firm · About"
-        stamp="KELWIN/OS · THE PEOPLE"
-        titleTop="Built to end"
-        titleBottom="the rebuild cycle."
-        lede="Most B2B companies rebuild their go-to-market every couple of years — new agency, new playbook, new pipeline, same ceiling. Kelwin exists because that cycle is an architecture problem, not an effort problem."
-        code="FILE 01 · THE FIRM"
-        status="Operational"
-        image="/dune-predawn.webp"
-        imagePosition="72% 40%"
-      />
-      <FirmAbout />
+      <main id="main" tabIndex={-1}>
+        {/* Dedicated interior photograph: pre-dawn dune field. */}
+        <PageCommand
+          protocol="The Firm · About"
+          stamp="KELWIN/OS · THE PEOPLE"
+          titleTop="Built to end"
+          titleBottom="the rebuild cycle."
+          lede="Most B2B companies rebuild their go-to-market every couple of years — new agency, new playbook, new pipeline, same ceiling. Kelwin exists because that cycle is an architecture problem, not an effort problem."
+          code="FILE 01 · THE FIRM"
+          status="Operational"
+          image="/dune-predawn.webp"
+          imagePosition="72% 40%"
+        />
+        <FirmAbout />
+      </main>
       <Footer />
     </>
   );

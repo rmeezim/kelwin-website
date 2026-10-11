@@ -47,7 +47,7 @@ export default function Letter() {
         <p className="km-letter__p km-letter__p--1">I started Kelwin after watching the same movie too many times: a good company, a real product, a founder writing every important email themselves at 11pm&nbsp;— hiring an agency, getting a quarter of activity, and ending up exactly where they started, minus the budget.</p>
         <p className="km-letter__p km-letter__p--2">Nobody in that movie is lazy. The problem is structural: the learning leaves with the vendor, the language never gets written down, and every quarter starts from zero. So we built the firm we kept wishing existed&nbsp;— one that installs the system, then hands you the keys.</p>
 
-        <aside className="km-letter__margin" aria-labelledby="km-letter-m">
+        <div className="km-letter__margin" role="group" aria-labelledby="km-letter-m">
           <p className="ac-label ac-label--plain km-letter__mlabel" id="km-letter-m">
             Told from inside
           </p>
@@ -60,7 +60,7 @@ export default function Letter() {
               </li>
             ))}
           </ol>
-        </aside>
+        </div>
 
         <p className="km-letter__p km-letter__p--3">If you write to us, a person answers. That isn’t a feature. That’s&nbsp;the&nbsp;point.</p>
 

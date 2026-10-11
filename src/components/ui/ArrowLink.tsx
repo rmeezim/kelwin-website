@@ -1,10 +1,10 @@
 import Link from "next/link";
 import "./ArrowLink.css";
 
-// CTA style #4 — the quiet arrow link ("Book a strategic call →").
+// The quiet arrow link on interior pages ("Talk to the team first →").
 // Uppercase, arrow, gap widens on hover. Tones: "cream" for the red band,
 // "sand" for charcoal sections. Use for secondary conversion paths and
-// wayfinding actions; the bracketed CTAs stay the loud moments.
+// wayfinding actions; the loud moment is always button C (HeroCTA).
 interface Props {
   href: string;
   label: string;

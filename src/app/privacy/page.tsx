@@ -80,13 +80,15 @@ export default function PrivacyPage() {
   return (
     <>
       <Navbar />
-      <LegalDoc
-        title="Privacy policy"
-        docId="LEGAL · K-PRIV/01"
-        effective="JULY 2026"
-        intro="Kelwin's whole data practice fits on one page, because the honest answer to 'what do you collect?' is: almost nothing. Here is the complete list."
-        sections={SECTIONS}
-      />
+      <main id="main" tabIndex={-1}>
+        <LegalDoc
+          title="Privacy policy"
+          docId="LEGAL · K-PRIV/01"
+          effective="JULY 2026"
+          intro="Kelwin's whole data practice fits on one page, because the honest answer to 'what do you collect?' is: almost nothing. Here is the complete list."
+          sections={SECTIONS}
+        />
+      </main>
       <Footer />
     </>
   );

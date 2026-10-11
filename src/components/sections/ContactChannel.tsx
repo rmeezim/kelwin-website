@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import HeroCTA from "@/components/ui/HeroCTA";
+import HashLink from "@/components/ui/HashLink";
 import "./ContactChannel.css";
 
 // ─── Contact — the general channel ────────────────────────────────────────
@@ -35,23 +36,37 @@ const TOPIC_PARAM_MAP: Record<string, string> = {
   lab: "The Lab · early access application",
 };
 
+// The page's query string. A static export renders without one, so the server snapshot is
+// empty and the client re-renders with the real one right after hydration.
+const subscribeToHistory = (onChange: () => void) => {
+  window.addEventListener("popstate", onChange);
+  return () => window.removeEventListener("popstate", onChange);
+};
+const readSearch = () => window.location.search;
+const noSearch = () => "";
+
 export default function ContactChannel() {
   const mainRef = useRef<HTMLElement>(null);
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
-  const [topic, setTopic] = useState(TOPICS[0]);
   const [message, setMessage] = useState("");
-  const [regarding, setRegarding] = useState<string | null>(null);
 
-  // Prefill from query params (static export — parse client-side).
+  // Prefill from query params: the URL supplies the defaults, the visitor's own choices win.
+  const params = new URLSearchParams(useSyncExternalStore(subscribeToHistory, readSearch, noSearch));
+  const [topicChoice, setTopic] = useState<string | null>(null);
+  const topicParam = params.get("topic") ?? "";
+  const topic =
+    topicChoice ??
+    (Object.prototype.hasOwnProperty.call(TOPIC_PARAM_MAP, topicParam)
+      ? TOPIC_PARAM_MAP[topicParam]
+      : TOPICS[0]);
+  const [regardingCleared, setRegardingCleared] = useState(false);
+  const regarding = regardingCleared ? null : params.get("ref");
+
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const t = params.get("topic");
-    const ref = params.get("ref");
-    if (t && TOPIC_PARAM_MAP[t]) setTopic(TOPIC_PARAM_MAP[t]);
-    if (ref) setRegarding(ref);
-    if (t || ref) {
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("topic") || query.get("ref")) {
       // Land the visitor on the form itself. Delayed until after layout
       // (fonts, reveals) settles so the scroll target is stable, then a
       // brief pulse on the pinned reference shows what got preselected.
@@ -155,9 +170,9 @@ export default function ContactChannel() {
               valid state. Write below.
             </p>
             <div className="ctc-door-action">
-              <a className="ctc-door-anchor" href="#write">
-                Write to the team ↓
-              </a>
+              <HashLink className="ctc-door-anchor" href="#write">
+                Write to the team <span aria-hidden="true">↓</span>
+              </HashLink>
             </div>
           </div>
         </div>
@@ -177,7 +192,7 @@ export default function ContactChannel() {
               <button
                 type="button"
                 className="ctc-regarding-clear"
-                onClick={() => setRegarding(null)}
+                onClick={() => setRegardingCleared(true)}
                 aria-label="Remove reference"
               >
                 ✕
@@ -295,14 +310,17 @@ export default function ContactChannel() {
             </label>
 
             <div className="ctc-submit-row">
-              <button className="ctc-submit" type="submit">
-                {isDocRequest
-                  ? "Request the document"
-                  : isLabWaitlist
-                    ? "Submit the application"
-                    : "Send the message"}
-                <span className="ctc-submit-arrow" aria-hidden="true">→</span>
-              </button>
+              <HeroCTA
+                as="button"
+                type="submit"
+                label={
+                  isDocRequest
+                    ? "Request the document"
+                    : isLabWaitlist
+                      ? "Submit the application"
+                      : "Send the message"
+                }
+              />
               <p className="ctc-submit-note">
                 Opens your mail client, addressed to the founding team — no
                 form-to-CRM pipeline on the other side. A human reads

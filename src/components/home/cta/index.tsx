@@ -92,12 +92,12 @@ export default function Cta() {
           </div>
 
           {/* ③ the note: what is decided at the readout */}
-          <aside className="km-cta__note" aria-labelledby="km-cta-note">
-            <p className="km-cta__label" id="km-cta-note">
+          <div className="km-cta__note">
+            <p className="km-cta__label">
               <span className="km-cta__sq" aria-hidden="true"></span>At the readout
             </p>
             <p className="km-cta__note-copy">If installation makes sense, we scope it there. If not, the plan is still yours.</p>
-          </aside>
+          </div>
         </div>
 
         {/* the poster's edge furniture: what happens after the click · where this sits in the method */}
