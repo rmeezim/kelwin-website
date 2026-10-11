@@ -70,7 +70,7 @@
 .kn.is-scrolled .kn__bar { height: var(--kn-hc); background-color: var(--bg); }
 .kn.is-scrolled .kn__bar::after { opacity: 0; }
 .kn.is-scrolled .kn__bar::before { opacity: 1; }
-/* a page that opens already scrolled takes the compact bar without the transition */
+/* a jump (opening scrolled, back/forward restoring mid-page, landing at the top) changes state without the transition */
 .kn[data-instant] .kn__bar, .kn[data-instant] .kn__bar::before, .kn[data-instant] .kn__bar::after { transition: none; }
 
 .kn__row {
