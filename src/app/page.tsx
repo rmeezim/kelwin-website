@@ -1,98 +1,44 @@
-"use client";
-
-import { useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { ComponentType } from "react";
 import Navbar from "@/components/layout/Navbar";
-import HeroSection from "@/components/sections/HeroSection";
-import DiagnosticReframe from "@/components/sections/DiagnosticReframe";
-import StructuralEvidence from "@/components/sections/StructuralEvidence";
-import RevenueOS from "@/components/sections/RevenueOS";
-import SystemArchitecture from "@/components/sections/SystemArchitecture";
-import StateChange from "@/components/sections/StateChange";
-import OperatingPrincipleBand from "@/components/sections/OperatingPrincipleBand";
-import SectionBand from "@/components/ui/SectionBand";
-import Methodology from "@/components/sections/Methodology";
-import FitStrip from "@/components/sections/FitStrip";
-import AssetInventory from "@/components/sections/AssetInventory";
-import BeforeAfter from "@/components/sections/BeforeAfter";
-import FaqSection from "@/components/sections/FaqSection";
-import FinalCTA from "@/components/sections/FinalCTA";
 import Footer from "@/components/layout/Footer";
+import Slot from "@/components/home/Slot";
+import type { BehaviorName } from "@/components/home/behaviors";
+import Hero from "@/components/home/hero";
+import Reframe from "@/components/home/reframe";
+import Evidence from "@/components/home/evidence";
+import Letter from "@/components/home/letter";
+import System from "@/components/home/system";
+import Principle from "@/components/home/principle";
+import Handover from "@/components/home/handover";
+import Method from "@/components/home/method";
+import Fit from "@/components/home/fit";
+import Cta from "@/components/home/cta";
+
+/* The homepage, in the order the founder approved (design/redesign/story-order.json).
+   Each section sits in a Slot: it plays its entrance once when it scrolls into view
+   (the hero on load) and wires its behaviour, by name, from the registry. */
+const SECTIONS: { id: BehaviorName; Section: ComponentType; eager?: boolean }[] = [
+  { id: "hero", Section: Hero, eager: true },
+  { id: "reframe", Section: Reframe },
+  { id: "evidence", Section: Evidence },
+  { id: "letter", Section: Letter },
+  { id: "system", Section: System },
+  { id: "principle", Section: Principle },
+  { id: "handover", Section: Handover },
+  { id: "method", Section: Method },
+  { id: "fit", Section: Fit },
+  { id: "cta", Section: Cta },
+];
 
 export default function Home() {
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Hero dim — as the diagnostic sheet slides up over the pinned hero,
-    // a charcoal veil scrubs in beneath it so the hero recedes like a
-    // surface falling into shadow. Ends exactly when the sheet reaches
-    // the top of the viewport (== where the reframe's own pin begins).
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let dim: gsap.core.Tween | undefined;
-    if (!reduced) {
-      dim = gsap.to(".cover-hero-dim", {
-        opacity: 0.62,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".cover-sheet",
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      });
-    }
-
-    // One global refresh after all sections have mounted and laid out,
-    // so each pinned/scrubbed trigger measures the final stacked layout.
-    const t = window.setTimeout(() => ScrollTrigger.refresh(), 100);
-    return () => {
-      window.clearTimeout(t);
-      if (dim) {
-        dim.scrollTrigger?.kill();
-        dim.kill();
-      }
-    };
-  }, []);
-
   return (
-    <main>
-      {/* Page-level navbar: sticky for the entire scroll, compacting into
-          glass once scrolling starts. */}
+    <main className="km-page km-home">
       <Navbar />
-      {/* Cover stack: the hero pins in place (sticky) while the diagnostic
-          section rides up over it like a sheet laid on the bench. Native
-          scroll only — the sheet lands, then the reframe's own pinned
-          cinematic takes over. Inert under prefers-reduced-motion. */}
-      <div className="cover-stack">
-        <div className="cover-hero">
-          <HeroSection />
-          <div className="cover-hero-dim" aria-hidden="true" />
-        </div>
-        <div className="cover-sheet">
-          <DiagnosticReframe />
-        </div>
-      </div>
-      <StructuralEvidence />
-      {/* the stack, as geology — strata photograph introduces the
-          four-layer infrastructure story */}
-      <SectionBand
-        image="/strata-layers.webp"
-        position="50% 48%"
-        caption="The stack · Four layers, one system"
-        stamp="KELWIN/OS · INFRASTRUCTURE"
-      />
-      <RevenueOS />
-      <SystemArchitecture />
-      <StateChange />
-      <OperatingPrincipleBand />
-      <Methodology />
-      <FitStrip />
-      <AssetInventory />
-      <BeforeAfter />
-      <FaqSection />
-      <FinalCTA />
+      {SECTIONS.map(({ id, Section, eager }) => (
+        <Slot key={id} id={id} behavior={id} eager={eager}>
+          <Section />
+        </Slot>
+      ))}
       <Footer />
     </main>
   );

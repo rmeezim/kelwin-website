@@ -1,0 +1,408 @@
+/* ═══ km-kit.css · the shared v5 kit ("Cinematic Drafting") ═════════════════════════
+   Ported from design/redesign/site/kit-ac.css (the approved mockups).
+   · Colours, fonts, weights and easing come ONLY from km-base.css tokens; this file adds
+     size/rhythm variables (--ac-*) and no hex values.
+   · Every class is prefixed .ac-. Sections add placement in their own CSS; they do not
+     restyle kit components.
+   · Sizes are FLUID: every --ac-* token resolves to the mockup's exact value at the 1440
+     stage, scales down with the viewport, and caps at 1440 (the stage centres above it).
+   · Motion: default CSS = final resting state. Entrance keyframes are declared under
+     html.km-motion (set before first paint unless prefers-reduced-motion) and stay PAUSED
+     until the section's .km-slot gains .is-play — so nothing flashes before it plays.
+
+   0  kit variables            6  strips · ledger (opens in place) · spec list
+   1  section · wrap · grid     7  figure: plate · field · caption band · registration
+   2  head grammar              8  annotation (HTML): callout + leader · dimension line
+   3  type                      9  drawing classes for inline SVG
+   4  actions                  10  motion (km-motion, paused until .is-play)
+   5  controls                 11  responsive (≤1023 tablet · ≤767 phone)                    */
+
+/* ── 0 · kit variables (sizes & rhythm only) ── */
+:root {
+  /* the stage & 12-column grid: exact at 1440, fluid below, capped above */
+  --stage: 1440px;
+  --margin: clamp(20px, 4.4444vw, 64px);
+  --gutter: clamp(12px, 1.6667vw, 24px);
+  --cols: 12;
+  /* the content inset: the margin, plus the centring gutter once the viewport passes the stage.
+     % resolves where it is used, against the full-bleed section (padding-inline / left / right). */
+  --edge: max(var(--margin), calc((100% - var(--stage)) / 2 + var(--margin)));
+  --ac-pad-y: clamp(72px, 8.8889vw, 128px);  --ac-pad-y-lg: clamp(88px, 11.1111vw, 160px);  /* section padding, top = bottom */
+  --ac-h-hero: clamp(42px, 8.0556vw, 116px); --ac-h-sec: clamp(36px, 6.1111vw, 88px); --ac-h-xl: clamp(40px, 7.7778vw, 112px);
+  --ac-h3: clamp(24px, 2.2222vw, 32px); --ac-h3-lg: clamp(28px, 2.9167vw, 42px); --ac-h4: clamp(19px, 1.6667vw, 24px);
+  --ac-lede: clamp(17px, 1.3889vw, 20px); --ac-body: clamp(16px, 1.1806vw, 17px); --ac-support: 15px;
+  --ac-anno: 14px;                                     /* Mona callout labels inside drawings */
+  --ac-mono: 12px; --ac-mono-s: 11px;                  /* captions/codes · indices (the floor) */
+  --ac-track-mono: .12em; --ac-track-idx: .10em; --ac-track-anno: .06em;
+  --ac-plate-h: clamp(300px, 33.3333vw, 480px); --ac-band-h: 56px;
+}
+
+/* ── 1 · section, wrap, 12-column grid ──
+   <section class="km km-<sec>-X ac-sec ac-sec--ruled" data-surface="dark">           */
+.ac-sec { padding-block: var(--ac-pad-y); }
+.ac-sec--lg { padding-block: var(--ac-pad-y-lg); }
+/* graphite→graphite cut: one margin-to-margin hairline (.km is position:relative) */
+.ac-sec--ruled::before {
+  content: ""; position: absolute; top: 0; left: var(--edge); right: var(--edge); height: 1px;
+  background: var(--line); transform-origin: 0 50%;
+}
+.ac-wrap { padding-inline: var(--edge); }
+.ac-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+/* place any child: style="--c:5; --s:4" → cols 5–8 */
+.ac-col { grid-column: var(--c, 1) / span var(--s, 12); min-width: 0; }
+.ac-hr { display: block; height: 1px; border: 0; margin: 0; background: var(--line); }
+
+/* ── 2 · head grammar: label → statement → rule → lede → doors / note ──
+   Rows: 1 label · 2 statement · 3 rule · 4 lede · 5 doors; the note spans 4–5, bottom-aligned. */
+.ac-head {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  grid-template-rows: auto auto auto auto auto;
+}
+.ac-head > .ac-labelrow { grid-column: 1 / -1; grid-row: 1; }
+.ac-head > .ac-statement { grid-column: 1 / span 11; grid-row: 2; margin-top: 36px; }
+.ac-head > .ac-rule { grid-column: 1; grid-row: 3; margin-top: 36px; }
+.ac-head > .ac-lede { grid-column: 1 / span 6; grid-row: 4; margin-top: 28px; }
+.ac-head > .ac-doors { grid-column: 1 / span 7; grid-row: 5; margin-top: 36px; }
+.ac-head > .ac-note { grid-column: 10 / span 3; grid-row: 4 / span 2; align-self: end; }
+
+.ac-labelrow { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+/* caps label with the 8px signal square (family punctuation — always allowed) */
+.ac-label {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.ac-label::before { content: ""; width: 8px; height: 8px; flex: none; background: var(--signal); }
+.ac-label--plain::before { display: none; }
+.ac-meta {
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px;
+  letter-spacing: var(--ac-track-mono); text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+
+/* two-voice statement: one .ac-line per line (masks the rise); exactly one .ac-accent */
+.ac-statement {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-h-sec); line-height: .98; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.ac-statement--hero { font-size: var(--ac-h-hero); line-height: .96; }
+.ac-statement--xl { font-size: var(--ac-h-xl); line-height: .96; }
+.ac-line { display: block; overflow: hidden; white-space: nowrap; padding-block: .1em .14em; margin-block: -.1em -.14em; }
+.ac-line > span { display: inline-block; }
+.ac-accent { font-weight: var(--light-weight); color: var(--fg-2); }
+
+.ac-rule { display: block; width: 48px; height: 2px; background: var(--signal); transform-origin: 0 50%; }
+.ac-lede { font-size: var(--ac-lede); line-height: 1.5; color: var(--fg-2); max-width: 46ch; }
+.ac-doors { display: flex; align-items: center; flex-wrap: wrap; gap: 20px 40px; }
+.ac-note { display: flex; flex-direction: column; gap: 14px; }
+.ac-note__t { font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 32ch; }
+
+/* ── 3 · type ── */
+.ac-h3 {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-h3); line-height: 1.1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.ac-h3--lg { font-size: var(--ac-h3-lg); }
+/* ledger row titles (B): normal width, UI weight — readability over flourish */
+.ac-h4 { font-family: var(--f-body); font-weight: var(--ui-weight); font-size: var(--ac-h4); line-height: 1.25; color: var(--fg); }
+.ac-body { font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 60ch; }
+.ac-support { font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.ac-idx {
+  font-family: var(--f-mono); font-size: var(--ac-mono-s); line-height: 16px; letter-spacing: var(--ac-track-idx);
+  text-transform: uppercase; color: var(--fg-3); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+/* captions and axis values — one line, never a sentence */
+.ac-cap {
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px; letter-spacing: var(--ac-track-mono);
+  text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.ac-num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--size, 176px); line-height: .9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: var(--fg);
+}
+.ac-num__u { font-weight: var(--light-weight); }
+.ac-chip {
+  display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border: 1px solid var(--line-2);
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--ac-track-idx); text-transform: uppercase;
+  color: var(--fg-2); white-space: nowrap;
+}
+.ac-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ── 4 · actions — tracked caps, drawn arrows (the brand fonts carry no ↗ →) ──
+   <a class="ac-btn" href="/audit">Request a System Audit</a>       red primary, ↗ (paper on red surfaces)
+   <a class="ac-btn-o" href="/audit">Audit request</a>             outlined nav action, ↗
+   <a class="ac-link" href="/contact">Talk to the team</a>         underlined secondary, → (.ac-link--ne → ↗) */
+.ac-btn, .ac-btn-o, .ac-link {
+  display: inline-flex; align-items: center; white-space: nowrap;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 13px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.ac-btn {
+  height: 56px; padding: 0 26px 0 28px; gap: 14px;
+  background: var(--accent); color: var(--accent-fg); transition: background-color 200ms var(--ease-out);
+}
+.ac-btn:hover { background: var(--accent-hover); }
+.ac-btn-o {
+  height: 44px; padding: 0 18px 0 20px; gap: 10px; font-size: 12px;
+  border: 1px solid var(--line-2); color: var(--fg); transition: border-color 200ms var(--ease-out);
+}
+.ac-btn-o:hover { border-color: var(--fg); }
+.ac-link { position: relative; gap: 12px; padding-block: 8px; color: var(--fg); }
+.ac-link::before {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--line-2); transition: background-color 200ms var(--ease-out);
+}
+.ac-link:hover::before { background: var(--fg); }
+/* the arrows: SVG masks painted in currentColor */
+.ac-btn::after, .ac-btn-o::after, .ac-link::after {
+  content: ""; flex: none; background-color: currentColor; transition: transform 250ms var(--ease-out);
+  -webkit-mask: var(--ac-arr) center / contain no-repeat; mask: var(--ac-arr) center / contain no-repeat;
+}
+.ac-link::after {
+  width: 13px; height: 11px;
+  --ac-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.ac-btn::after, .ac-btn-o::after, .ac-link--ne::after {
+  width: 10px; height: 10px;
+  --ac-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 9.5 9.5 2.5M3.5 2.5h6v6' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.ac-link:hover::after { transform: translateX(3px); }
+.ac-btn:hover::after, .ac-btn-o:hover::after, .ac-link--ne:hover::after { transform: translate(2px, -2px); }
+/* Round 4 · the primary action, founder's pick C: one 45° cut at the bottom-right, caps at
+   the spec's top UI weight (600), a step larger and tighter, no arrow — the cut reads as "go".
+   Only .ac-btn gets the cut; the outlined .ac-btn-o stays square, so the shape always means
+   "the main thing to do here". The focus ring is drawn inside the cut so it is never clipped. */
+.ac-btn {
+  --ac-cut: 14px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--ac-cut)), calc(100% - var(--ac-cut)) 100%, 0 100%);
+  font-weight: 600; font-size: 14px; letter-spacing: .1em;
+  padding: 0 34px 0 30px;
+}
+.ac-btn::after { display: none; }
+.ac-btn:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
+
+/* ── 5 · controls ── */
+/* segmented control: <div class="ac-seg" role="tablist"><button role="tab" aria-selected="true">…</button>… */
+.ac-seg { display: inline-flex; height: 48px; border: 1px solid var(--line-2); }
+.ac-seg > button {
+  height: 46px; padding: 0 20px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 46px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+  transition: background-color 500ms var(--ease-inout), color 500ms var(--ease-inout);
+}
+.ac-seg > button + button { box-shadow: inset 1px 0 0 var(--line); }
+.ac-seg > button:not([aria-selected="true"]):not([aria-pressed="true"]):hover { color: var(--fg); }
+.ac-seg > [aria-selected="true"], .ac-seg > [aria-pressed="true"] { background: var(--fg); color: var(--bg); box-shadow: none; }
+/* + that rotates to − (two 1px lines) — inside .ac-row__head or any [aria-expanded] */
+.ac-toggle { position: relative; display: block; width: 20px; height: 20px; flex: none; color: var(--fg-2); }
+.ac-toggle::before, .ac-toggle::after {
+  content: ""; position: absolute; left: 0; top: 50%; width: 20px; height: 1px; margin-top: -.5px;
+  background: currentColor; transition: transform 360ms var(--ease-inout);
+}
+.ac-toggle::after { transform: rotate(90deg); }
+.is-open > .ac-row__head .ac-toggle::after, [aria-expanded="true"] .ac-toggle::after { transform: rotate(0deg); }
+
+/* ── 6 · lists ── */
+/* strips (A): equal columns divided by full-height hairlines; body anchored to the bottom */
+.ac-strips { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 1fr)); column-gap: var(--gutter); }
+.ac-strip { position: relative; display: flex; flex-direction: column; gap: 16px; padding: 28px 24px 0 0; }
+.ac-strip + .ac-strip::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--gutter) / -2); width: 1px;
+  background: var(--line); transform-origin: 50% 0;
+}
+.ac-strip__foot { margin-top: auto; padding-top: 8px; }
+
+/* ledger (B), opens in place:
+   <div class="ac-ledger"><div class="ac-row is-open">
+     <button class="ac-row__head" aria-expanded="true"><span class="ac-idx">F-01</span><span class="ac-h4">…</span>
+       <span class="ac-support">…</span><span class="ac-toggle" aria-hidden="true"></span></button>
+     <div class="ac-row__more"><div><div class="ac-row__in">…</div></div></div></div></div>
+   Columns via --ac-row-cols on .ac-ledger (default: index · title · descriptor · toggle). */
+.ac-ledger { border-top: 1px solid var(--line-2); --ac-row-indent: calc(72px + var(--gutter)); }  /* open text aligns under the title */
+.ac-row { border-bottom: 1px solid var(--line); }
+.ac-row__head {
+  display: grid; grid-template-columns: var(--ac-row-cols, 72px minmax(0, 1.2fr) minmax(0, 1fr) 20px);
+  column-gap: var(--gutter); align-items: center; width: 100%; padding: 22px 0; text-align: left;
+}
+.ac-row__head .ac-h4 { transition: transform 300ms var(--ease-out); }
+.ac-row__head:hover .ac-h4 { transform: translateX(6px); }
+.ac-row__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 360ms var(--ease-inout); }
+.ac-row__more > * { min-height: 0; overflow: hidden; }
+.ac-row.is-open > .ac-row__more { grid-template-rows: 1fr; }
+.ac-row__in { padding: 0 0 26px var(--ac-row-indent, 0px); opacity: 0; transition: opacity 360ms var(--ease-inout); }
+.ac-row.is-open .ac-row__in { opacity: 1; }
+
+/* spec list: mono key, Mona value (values are never mono) */
+.ac-spec { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 24px; margin: 0; }
+.ac-spec > dt, .ac-spec > dd { margin: 0; padding: 12px 0; border-top: 1px solid var(--line); }
+.ac-spec > dt {
+  font-family: var(--f-mono); font-size: var(--ac-mono-s); line-height: 22px; letter-spacing: var(--ac-track-idx);
+  text-transform: uppercase; color: var(--fg-3);
+}
+.ac-spec > dd { font-size: var(--ac-support); line-height: 22px; color: var(--fg); }
+
+/* ── 7 · figure ──
+   <figure class="ac-plate"><div class="ac-field" style="--h:480px">…drawing…</div>
+     <figcaption class="ac-capband"><span class="ac-cap">Four layers, one system</span><div class="ac-seg">…</div></figcaption></figure>
+   A drawing sits in a plate OR a registration frame (.ac-frame + .ac-reg), never both.
+   (The round-2 title block .ac-tblock is retired: no figure numbering on the site.) */
+.ac-plate { position: relative; background: var(--panel); overflow: hidden; --ac-occlude: var(--panel); }
+.ac-plate--bare { background: transparent; overflow: visible; --ac-occlude: var(--bg); }
+.ac-field { position: relative; height: var(--h, var(--ac-plate-h)); }
+.ac-capband {
+  position: relative; display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  min-height: var(--ac-band-h); padding: 4px 24px 12px;
+}
+.ac-capband--ruled { border-top: 1px solid var(--line); padding-block: 12px; }
+/* registration frame + marks (+): corners via modifiers, or anywhere via --x/--y */
+.ac-frame { position: relative; --ac-occlude: var(--bg); }
+.ac-reg { position: absolute; left: var(--x, 0); top: var(--y, 0); width: 13px; height: 13px; margin: -6px 0 0 -6px; pointer-events: none; }
+.ac-reg::before, .ac-reg::after { content: ""; position: absolute; background: var(--fg-3); }
+.ac-reg::before { left: 0; right: 0; top: 6px; height: 1px; }
+.ac-reg::after { top: 0; bottom: 0; left: 6px; width: 1px; }
+.ac-reg--tl { left: 0; top: 0; }
+.ac-reg--tr { left: 100%; top: 0; }
+.ac-reg--bl { left: 0; top: 100%; }
+.ac-reg--br { left: 100%; top: 100%; }
+
+/* ── 8 · annotation (HTML, positioned inside .ac-field / .ac-frame) ──
+   Callout: (--x,--y) is the anchor ON the drawing; a leader of --len runs to the code + label.
+   <div class="ac-callout" style="--x:420px;--y:180px;--len:96px"><span class="ac-callout__code">L1</span><span class="ac-callout__t">Narrative</span></div>
+   .ac-callout--l puts the label on the LEFT of the anchor. ≤ 5 per drawing, labels ≤ 4 words.
+   Animate callouts with .ac-in (opacity) only — they own their translateY(-50%).           */
+.ac-callout {
+  position: absolute; left: var(--x, 0); top: var(--y, 0); transform: translateY(-50%);
+  display: flex; align-items: center; gap: 10px; white-space: nowrap; pointer-events: none;
+}
+.ac-callout::before { content: ""; flex: none; width: var(--len, 64px); height: 1px; background: var(--line-2); transition: background-color 300ms var(--ease-inout); }
+.ac-callout::after { content: ""; position: absolute; left: -2px; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; background: var(--fg-2); }
+.ac-callout--l { left: auto; right: calc(100% - var(--x, 0px)); flex-direction: row-reverse; }
+.ac-callout--l::after { left: auto; right: -2px; }
+.ac-callout__code {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 5px;
+  border: 1px solid var(--line-2); font-family: var(--f-mono); font-size: var(--ac-mono); letter-spacing: var(--ac-track-anno);
+  text-transform: uppercase; color: var(--fg);
+}
+.ac-callout__t { font-size: var(--ac-anno); line-height: 1.3; color: var(--fg-2); transition: color 300ms var(--ease-inout); }
+.ac-callout.is-on::before { background: var(--fg); }
+.ac-callout.is-on::after { background: var(--fg); }
+.ac-callout.is-on .ac-callout__t { color: var(--fg); }
+
+/* Dimension line with end ticks; value centred above (horizontal) or beside (vertical).
+   <div class="ac-dim" style="--x:80px;--y:400px;--w:320px"><span class="ac-dim__v">320 u</span></div>
+   <div class="ac-dim ac-dim--v" style="--x:600px;--y:80px;--h:240px"><span class="ac-dim__v">+3 layers</span></div>
+   .ac-dim--static drops the absolute positioning (in-flow rulers). ≤ 2 per drawing.       */
+.ac-dim { position: absolute; left: var(--x, 0); top: var(--y, 0); width: var(--w, 120px); height: 1px; background: var(--fg-3); transform-origin: 0 50%; }
+.ac-dim::before, .ac-dim::after { content: ""; position: absolute; top: -4px; width: 1px; height: 9px; background: var(--fg-3); }
+.ac-dim::before { left: 0; }
+.ac-dim::after { right: 0; }
+.ac-dim--static { position: relative; left: auto; top: auto; }
+.ac-dim--v { width: 1px; height: var(--h, 120px); transform-origin: 50% 0; }
+.ac-dim--v::before, .ac-dim--v::after { top: auto; left: -4px; right: auto; width: 9px; height: 1px; }
+.ac-dim--v::before { top: 0; }
+.ac-dim--v::after { bottom: 0; }
+.ac-dim__v {
+  position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%);
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 1; letter-spacing: var(--ac-track-anno);
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.ac-dim--v .ac-dim__v { left: 14px; top: 50%; bottom: auto; transform: translateY(-50%); }
+
+/* ── 9 · drawing classes for inline SVG ──
+   1px strokes that stay 1px at any scale; occlusion fill follows the plate/frame (--ac-occlude).
+   Use pathLength="1" on anything that should .ac-plot (see §10).                            */
+.ac-svg { display: block; overflow: visible; }
+.ac-svg * { vector-effect: non-scaling-stroke; }
+.ac-s, .ac-s-fg, .ac-s-mute, .ac-s-faint, .ac-s-red { fill: none; stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter; }
+.ac-s { stroke: var(--fg-2); }          /* object outlines */
+.ac-s-fg { stroke: var(--fg); }         /* emphasis / selected */
+.ac-s-mute { stroke: var(--line-2); }   /* leaders, secondary */
+.ac-s-faint { stroke: var(--line); }    /* construction */
+.ac-s-red { stroke: var(--signal); stroke-width: 1.5; }   /* the section's one red line */
+.ac-s-dash { stroke-dasharray: 2 4; }   /* combine: class="ac-s-faint ac-s-dash" */
+.ac-f-occ { fill: var(--ac-occlude, var(--bg)); }   /* hidden-line occlusion, never a visible fill */
+.ac-f-fg { fill: var(--fg); }
+.ac-f-red { fill: var(--accent); }                  /* the one red face */
+.ac-node { fill: var(--ac-occlude, var(--bg)); stroke: var(--fg-2); stroke-width: 1; transition: fill 200ms var(--ease-out), stroke 200ms var(--ease-out); }
+.ac-node.is-on { fill: var(--fg); stroke: var(--fg); }
+.ac-t-code { font-family: var(--f-mono); font-size: var(--ac-mono); letter-spacing: var(--ac-track-anno); text-transform: uppercase; fill: var(--fg-2); }
+.ac-t-label { font-family: var(--f-body); font-size: var(--ac-anno); fill: var(--fg-2); }
+.ac-t-fg { fill: var(--fg); }
+.ac-t-mid { text-anchor: middle; }
+.ac-t-end { text-anchor: end; }
+.ac-t-knock { paint-order: stroke; stroke: var(--ac-occlude, var(--bg)); stroke-width: 6px; stroke-linejoin: round; }
+/* capability glyph box (nav, interior): 96×64 by default */
+.ac-glyph { display: block; overflow: visible; width: var(--w, 96px); height: var(--h, 64px); }
+
+/* ── 10 · motion — declared under html.km-motion, paused until the section's .km-slot plays ──
+   No .km-motion (reduced motion, or no JS) = final state. A slot that has not played yet holds
+   every animation at its first frame, so entrances never flash the resting state first. */
+.km-motion .km-slot:not(.is-play) *,
+.km-motion .km-slot:not(.is-play) *::before,
+.km-motion .km-slot:not(.is-play) *::after { animation-play-state: paused !important; }
+@keyframes ac-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ac-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes ac-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes ac-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ac-drawy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes ac-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes ac-drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+/* head choreography; shift the whole head with --ac-d0 on .ac-head */
+.km-motion .ac-sec--ruled::before { animation: ac-drawx 900ms var(--ease-out) both; }
+.km-motion .ac-head > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) var(--ac-d0, 0ms) both; }
+.km-motion .ac-head .ac-line > span { animation: ac-rise 800ms var(--ease-out) calc(var(--ac-d0, 0ms) + 80ms) both; }
+.km-motion .ac-head .ac-line + .ac-line > span { animation-delay: calc(var(--ac-d0, 0ms) + 280ms); }
+.km-motion .ac-head .ac-line + .ac-line + .ac-line > span { animation-delay: calc(var(--ac-d0, 0ms) + 400ms); }
+.km-motion .ac-head > .ac-rule { animation: ac-drawx 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 520ms) both; }
+.km-motion .ac-head > .ac-lede { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 600ms) both; }
+.km-motion .ac-head > .ac-doors, .km-motion .ac-head > .ac-note { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 700ms) both; }
+
+/* utilities for the section's own pieces: set --d (delay) and --t (duration) inline */
+.ac-plot { stroke-dasharray: 1; stroke-dashoffset: 0; }   /* needs pathLength="1"; not for dashed strokes */
+.km-motion .ac-plot { animation: ac-plot var(--t, 1200ms) var(--ease-inout) var(--d, 600ms) both; }
+.km-motion .ac-in { animation: ac-fade var(--t, 400ms) var(--ease-out) var(--d, 0ms) both; }
+.km-motion .ac-up { animation: ac-up var(--t, 600ms) var(--ease-out) var(--d, 0ms) both; }
+.km-motion .ac-drop { animation: ac-drop var(--t, 400ms) var(--ease-out) var(--d, 0ms) both; }
+.km-motion .ac-dim:not(.ac-dim--v) { animation: ac-drawx var(--t, 600ms) var(--ease-out) var(--d, 900ms) both; }
+.km-motion .ac-dim--v { animation: ac-drawy var(--t, 600ms) var(--ease-out) var(--d, 900ms) both; }
+.km-motion .ac-reg { animation: ac-fade 300ms var(--ease-out) var(--d, 200ms) both; }
+/* rows / strips / cells cascade: style="--i:0..n" on each child */
+.km-motion .ac-cascade > * { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(var(--d, 900ms) + var(--i, 0) * 80ms); }
+/* JS resets: freeze transitions while a figure is put into its opening state */
+.ac-cold, .ac-cold * { transition: none !important; }
+
+/* ── 11 · responsive — the 1440 layout scales fluidly to 1024; below that the kit reflows ──
+   Tablet (≤1023): heads go full width, the note drops under the doors.
+   Phone (≤767): one column; headlines wrap; strips stack; ledger rows tuck the
+   descriptor under the title. Sections reflow their own figures in their own CSS. */
+@media (max-width: 1023px) {
+  .ac-head > .ac-statement { grid-column: 1 / -1; }
+  .ac-head > .ac-lede { grid-column: 1 / span 9; }
+  .ac-head > .ac-doors { grid-column: 1 / -1; }
+  .ac-head > .ac-note { grid-column: 1 / span 7; grid-row: 6; align-self: start; margin-top: 40px; }
+}
+@media (max-width: 767px) {
+  .ac-line { white-space: normal; }
+  .ac-head > .ac-statement { margin-top: 24px; }
+  .ac-head > .ac-rule { margin-top: 28px; }
+  .ac-head > .ac-lede { grid-column: 1 / -1; margin-top: 20px; }
+  .ac-head > .ac-doors { margin-top: 28px; }
+  .ac-head > .ac-note { grid-column: 1 / -1; margin-top: 32px; }
+  .ac-labelrow { flex-wrap: wrap; row-gap: 8px; }
+  .ac-meta, .ac-cap { white-space: normal; }
+  .ac-doors { gap: 16px 28px; }
+  .ac-btn { height: 52px; padding: 0 28px 0 24px; }
+  .ac-strips { grid-template-columns: minmax(0, 1fr); }
+  .ac-strip { padding: 24px 0; }
+  .ac-strip + .ac-strip::before { top: 0; bottom: auto; left: 0; right: 0; width: auto; height: 1px; }
+  .ac-ledger { --ac-row-indent: calc(48px + var(--gutter)); }
+  .ac-row__head { grid-template-columns: var(--ac-row-cols-sm, 48px minmax(0, 1fr) 20px); row-gap: 6px; padding: 18px 0; }
+  .ac-row__head > .ac-idx { grid-column: 1; grid-row: 1; }
+  .ac-row__head > .ac-h4 { grid-column: 2; grid-row: 1; }
+  .ac-row__head > .ac-support { grid-column: 2; grid-row: 2; }
+  .ac-row__head > .ac-toggle { grid-column: 3; grid-row: 1; }
+  .ac-capband { flex-wrap: wrap; padding-inline: 16px; }
+  .ac-seg { max-width: 100%; overflow-x: auto; }
+  .ac-spec { grid-template-columns: minmax(0, 1fr); }
+  .ac-spec > dd { border-top: 0; padding-top: 0; }
+}

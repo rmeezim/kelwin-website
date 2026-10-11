@@ -20,7 +20,7 @@
      palette. Bright tint #9BB0C1 on dark stock.
    Surfaces: base #110F0A, elevated #20201E, paper text #FBFAF6.      */
 @theme {
-  --color-surface: #110F0A;      /* base — the one dark world */
+  --color-surface: #141517;      /* base — v5 graphite, the one dark world (was #110F0A) */
   --color-surface-2: #20201E;    /* elevated — panels, cards, hover */
   --color-near-black: #08090A;
   --color-canvas: #ECE8DF;       /* bone — rare inverted moments */
@@ -100,7 +100,7 @@
 
 /* ─── Base ────────────────────────────────────────────────────── */
 html {
-  background-color: #110F0A;
+  background-color: #141517; /* v5 graphite */
   color: #FBFAF6;
 }
 
