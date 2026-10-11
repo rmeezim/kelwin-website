@@ -82,7 +82,7 @@ On the red surface the accents invert: paper is the action colour, and red text 
 ### Grid & rhythm
 - At 1440: a 12-column grid, 64px margins, 24px gutter.
 - Tokens scale fluidly below 1440. Above it the stage caps at 1440 and centres.
-- Sections pad with `--ac-pad-y`. They are separated by margin-to-margin hairlines (`.ac-sec--ruled`), never by background swaps.
+- Sections pad with `--ac-pad-y`. Graphite → graphite seams are margin-to-margin hairlines (`.ac-sec--ruled`); a change of surface (paper for evidence, principle and fit; red for the final call) is a deliberate, approved moment — never add one casually.
 
 ### Kit (reuse; never invent parallel components)
 - **Head grammar** (`.ac-head`): label row → two-voice statement (one `.ac-line` per line, one `.ac-accent`) → 48×2 red rule → lede → doors / note.
