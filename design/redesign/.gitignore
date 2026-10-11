@@ -1,0 +1,9 @@
+node_modules/
+__pycache__/
+site/shots/
+site/walk/
+site/m-*.html
+site/home-*.html
+!site/home-r7.html
+out*/
+preview*.html

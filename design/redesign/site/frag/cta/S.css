@@ -1,0 +1,133 @@
+/* ── cta · S · "Sound like you?" — the decision, then the document (round 3) ──
+   The middle ground the founder asked for:
+   · from round 2 (Ten Days, Measured): the red plane, the lede and the doors on their own,
+     arriving with the head, so the action is never late;
+   · from round 1 A (The Core, Installed): the solid paper object with the big red 10 and its
+     "Phase 01 / 04 · Diagnose" band, back as a DOCUMENT, the audit readout sheet. It is not the
+     logo's core square and not a button: no link, no hover, no pointer, no arrow.
+   Hierarchy: statement > button > sheet > rows. The red plane is the page's only red surface;
+   the accents invert to paper (label square, rule, button, registration marks, focus rings). Paper objects
+   carry red ink: the button's text and the sheet's 10.                                          */
+
+.km-cta-S { overflow: hidden; }
+
+/* head grid: 1 label · 2 statement · 3 rule · 4 lede · 5 doors · 6 path line.
+   The sheet sits in cols 10–12 across rows 2–6, aligned to the bottom of row 6. */
+.km-cta-S__head.ac-head { grid-template-rows: auto auto auto auto auto auto; }
+.km-cta-S__head > .ac-statement { grid-column: 1 / span 8; }
+/* the two-line statement's box is fractional (226.2px); hold it on whole pixels so the rule, the
+   doors and the path line below land crisp (the round-2 plane did the same) */
+.km-cta-S__head > .ac-statement { height: 227px; }
+
+/* ── the path line: what happens after the click (15px Mona, paper) ── */
+.km-cta-S__head > .km-cta-S__path {
+  grid-column: 1 / span 6; grid-row: 6; margin-top: var(--km-cta-S-pathgap, 47px);
+  font-size: var(--ac-support); line-height: 22px; color: var(--fg-2);
+}
+.km-cta-S__path > li { display: inline; }
+/* drawn → between steps (the brand fonts carry no arrows) */
+.km-cta-S__path > li + li::before {
+  content: ""; display: inline-block; width: 13px; height: 11px; margin: 0 12px; vertical-align: -1px;
+  background-color: currentColor; opacity: .8;
+  -webkit-mask: var(--km-cta-S-arr) center / contain no-repeat; mask: var(--km-cta-S-arr) center / contain no-repeat;
+  --km-cta-S-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.km-cta-S__day { color: var(--fg); }
+
+/* ── ② the document ──
+   280 × 396 (1 : 1.414), right edge on the page margin. Bottom-aligned to the path line:
+   the sheet's foot line (the ruler values) shares the path line's baseline. */
+.km-cta-S__head > .km-cta-S__doc {
+  grid-column: 10 / span 3; grid-row: 2 / span 5; align-self: end; justify-self: end;
+  position: relative; display: flex; width: 280px;
+  margin-bottom: var(--km-cta-S-drop, -16px);
+  cursor: default;
+}
+.km-cta-S__reg { z-index: 1; }
+/* the clip the sheet rises through (its own box: the foot is the slot) */
+.km-cta-S__slot { position: relative; flex: 1; display: flex; overflow: hidden; }
+/* 396px tall in the Swiss skin (its content needs 393, 18px margin all round); a wider face (the Kelwin comparison skin)
+   lets it grow upward rather than clip its foot */
+.km-cta-S__sheet {
+  position: relative; flex: 1; min-height: 396px;
+  display: flex; flex-direction: column;
+  padding: 18px;
+  background: var(--panel); color: var(--fg);   /* paper stock, a shade under the button's paper: the button stays the brightest object on the plane */
+}
+
+/* header: the one mono line in the section */
+.km-cta-S__hdr {
+  padding-bottom: 10px;
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px;
+  letter-spacing: var(--ac-track-mono); text-transform: uppercase; color: var(--fg); white-space: nowrap;
+}
+
+/* the header rule, in four segments: the plan's four phases, phase 01 printed solid */
+.km-cta-S__phase { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 4px; align-items: end; height: 2px; }
+.km-cta-S__phase > span { height: 1px; background: var(--line-2); }
+.km-cta-S__phase > span:first-child { height: 2px; background: var(--fg); }
+
+/* the 10, in red ink, with its unit set beside it on the baseline */
+.km-cta-S__days { display: flex; align-items: flex-end; gap: 14px; margin-top: 14px; }
+.km-cta-S__n {
+  --size: 128px; flex: none; line-height: .74; color: var(--accent);
+  font-variant-numeric: normal; margin-left: -.02em;   /* Mona's tabular zero is slashed; the 1's flag sits on the column */
+}
+.km-cta-S__unit { font-size: var(--ac-support); line-height: 20px; color: var(--fg-2); margin-bottom: -6px; }   /* last line on the 10's baseline */
+
+/* three printed rows: an 11px key above a 15px value, hairline divided */
+.km-cta-S__spec { display: block; margin-top: 14px; }
+.km-cta-S__spec > div { padding: 7px 0 8px; border-top: 1px solid var(--line); }
+.km-cta-S__spec dt, .km-cta-S__spec dd { margin: 0; padding: 0; border: 0; }
+/* the kit's .ac-spec key, kept when each key/value pair is grouped in a row */
+.km-cta-S__spec dt {
+  font-family: var(--f-mono); font-size: var(--ac-mono-s); line-height: 14px; letter-spacing: var(--ac-track-idx);
+  text-transform: uppercase; color: var(--fg-3);
+}
+.km-cta-S__spec dd { margin-top: 3px; font-size: 14px; line-height: 19px; color: var(--fg); text-wrap: pretty; }
+
+/* the foot: the sheet's last rule is calibrated. One ink hairline closes the rows; ten day-ticks
+   hang from it (01 and 10 at 9px, the eight days between at 5px, on a 27px pitch so every tick is
+   crisp); the two ends are named beneath; the paper keeps its 18px margin below. */
+.km-cta-S__ruler { margin-top: auto; }
+.km-cta-S__svg { display: block; overflow: visible; }
+.km-cta-S__svg path { fill: none; stroke: var(--fg); stroke-width: 1; shape-rendering: crispEdges; }
+.km-cta-S__tk { transform-box: fill-box; transform-origin: 50% 0; }
+.km-cta-S__ends { display: flex; justify-content: space-between; margin-top: 5px; }
+.km-cta-S__end { display: inline-flex; align-items: baseline; gap: 8px; }
+.km-cta-S__v {
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px;
+  letter-spacing: var(--ac-track-anno); color: var(--fg);
+}
+.km-cta-S__w { font-size: var(--ac-anno); line-height: 16px; color: var(--fg-2); }
+
+/* the doors' focus ring, in paper on the plane (hover stays the kit's) */
+.km-cta-S .ac-btn:focus-visible, .km-cta-S .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* ── entrance (only under .is-play) ──
+   The kit runs the head: label → statement → rule → lede → doors (0–1.3s); the path line rises
+   with the doors (+700ms), so the action is complete before the document arrives. Then:
+   the four registration marks register (760–1240ms) → the sheet rises through a clip from its
+   own foot, like a page fed out of a slot (800ms) → its ten day-ticks ink in down from the foot rule, left to right
+   (40ms stagger). At rest by ≈2.0s. No count-up, no loop, no dashed → solid. */
+.is-play .km-cta-S__head > .km-cta-S__path { animation: ac-up 600ms var(--ease-out) 700ms both; }
+.is-play .km-cta-S__sheet { animation: km-cta-S-feed 800ms var(--ease-inout) 820ms both; }
+.is-play .km-cta-S__tk { animation: km-cta-S-ink 220ms var(--ease-out) both; animation-delay: calc(1520ms + var(--n) * 40ms); }
+
+@keyframes km-cta-S-feed { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes km-cta-S-ink { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: none; } }
+
+/* ── ≤ 760px: one column, 16px gutters, the sheet follows the path line ── */
+@media (max-width: 760px) {
+  .km-cta-S.ac-sec--lg { padding-block: 96px; }
+  .km-cta-S .ac-wrap { padding-inline: 16px; }
+  .km-cta-S__head.ac-head { display: flex; flex-direction: column; align-items: flex-start; }
+  .km-cta-S__head > .ac-statement { font-size: 52px; height: auto; margin-top: 28px; }
+  .km-cta-S__head > .ac-rule { margin-top: 28px; }
+  .km-cta-S__head > .ac-lede { font-size: 18px; margin-top: 24px; }
+  .km-cta-S__head > .ac-doors { margin-top: 32px; }
+  .km-cta-S__head > .km-cta-S__path { margin-top: 24px; }
+  .km-cta-S__path > li { white-space: normal; }
+  .km-cta-S__head > .km-cta-S__doc { align-self: center; margin: 72px 0 14px; width: 280px; max-width: calc(100% - 28px); }
+  .km-cta-S__sheet { min-height: 0; }
+}

@@ -1,0 +1,46 @@
+[
+ {
+  "id": "hero",
+  "slot": "U"
+ },
+ {
+  "id": "reframe",
+  "slot": "U"
+ },
+ {
+  "id": "evidence",
+  "slot": "S"
+ },
+ {
+  "id": "letter",
+  "slot": "S"
+ },
+ {
+  "id": "system",
+  "slot": "U"
+ },
+ {
+  "id": "principle",
+  "slot": "S"
+ },
+ {
+  "id": "handover",
+  "slot": "U"
+ },
+ {
+  "id": "method",
+  "slot": "U"
+ },
+ {
+  "id": "fit",
+  "slot": "U"
+ },
+ {
+  "id": "cta",
+  "slot": "U"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

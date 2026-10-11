@@ -1,0 +1,168 @@
+/* ── cta · B · Quiet Ledger — 13 Decision ───────────────────────────────
+   Legora's closing panel, made red: one square field inset margin to margin
+   on paper, the statement top-left in two tones, the doors alone at the
+   bottom-left, the emptiness between kept on purpose. The Index Spine runs
+   straight through it (ink on paper, paper on red), and the panel hangs from
+   it by its opening rule, which turns into the mark's outer corner.       */
+
+.km-cta-B {
+  --sx: calc(3 * var(--col) + 2.5 * var(--gutter));        /* spine, from the margin: 322 */
+  --c4: calc(3 * var(--col) + 3 * var(--gutter));          /* col 4, from the margin: 334 */
+  --c10: calc(9 * var(--col) + 9 * var(--gutter));         /* col 10, from the margin: 1002 */
+  --in: 40px;                                              /* panel inset where the grid meets an edge */
+  --foot: 56px;                                            /* doors + ledger share this bottom line */
+  padding: 128px 0; overflow: hidden;
+}
+
+/* the Index Spine: page-long hairline at the col 3|4 gutter, taking each surface's --line */
+.km-cta-B__spine {
+  position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line);
+  left: calc(var(--margin) + var(--sx));
+}
+.km-cta-B__spine--in { left: var(--sx); z-index: 0; }
+
+/* the red panel: Legora's dark CTA field, square-cornered */
+.km-cta-B__panel {
+  position: relative; z-index: 1;
+  margin: 0 var(--margin); height: 660px;
+  background: var(--bg); color: var(--fg);
+}
+
+/* opening rule → K1's inner contour; K2 and K3 nested inside, 1px */
+.km-cta-B__mark { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.km-cta-B__mark path { fill: none; stroke: var(--line-2); stroke-width: 1; shape-rendering: crispEdges; }
+.km-cta-B__joint { position: absolute; left: calc(var(--sx) - 2.5px); top: 70px; width: 6px; height: 6px; background: var(--fg); }
+/* second joint: on the spine at the primary door's centre line, stubbed into the door */
+.km-cta-B__joint--act { top: auto; bottom: calc(var(--foot) + 23px); }
+.km-cta-B__joint--act::after { content: ""; position: absolute; left: 6px; top: 2.5px; width: calc(var(--c4) - var(--sx) - 3.5px); height: 1px; background: var(--fg); }
+
+/* ── shared voices ── */
+.km-cta-B__cta,
+.km-cta-B__link,
+.km-cta-B__lhead {
+  font-family: var(--f-body); font-weight: var(--ui-weight);
+  text-transform: uppercase; letter-spacing: var(--label-tracking); line-height: 1;
+}
+.km-cta-B__ico { display: inline-block; width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; }
+.km-cta-B__ico--r { width: 13px; height: 11px; }
+
+/* spine column: index only */
+.km-cta-B__index { position: absolute; left: var(--in); top: 112px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-cta-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-cta-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+
+/* main column (cols 4–10): statement → rule → doors on the foot line */
+.km-cta-B__main {
+  position: absolute; left: var(--c4); top: 104px; bottom: var(--foot);
+  width: calc(7 * var(--col) + 6 * var(--gutter));          /* cols 4–10 */
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+/* a sentence + a muted sentence: the second set light and stepped back in tone */
+.km-cta-B__h {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-cta-B__s1, .km-cta-B__s2, .km-cta-B__l { display: block; }
+.km-cta-B__s2 { color: var(--fg-3); font-weight: var(--light-weight); }
+.km-cta-B__rule {
+  display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--signal);
+  transform-origin: left center;
+}
+
+/* the two doors */
+.km-cta-B__doors { margin-top: auto; display: flex; align-items: center; gap: 40px; }
+.km-cta-B__cta {
+  display: inline-flex; align-items: center; gap: 14px; height: 52px; padding: 0 22px 0 24px;
+  background: var(--accent); color: var(--accent-fg); font-size: 12px; white-space: nowrap;
+  transition: background-color .3s var(--ease-out);
+}
+.km-cta-B__arr { transition: transform .25s var(--ease-out); }
+.km-cta-B__cta:hover { background: var(--accent-hover); }
+.km-cta-B__cta:hover .km-cta-B__arr { transform: translate(2px, -2px); }
+.km-cta-B__link {
+  position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px;
+  font-size: 12px; color: var(--fg);
+}
+.km-cta-B__link::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2); }
+.km-cta-B__link::after {      /* hover: a paper underline draws in from the left */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: left center; transition: transform .3s var(--ease-out);
+}
+.km-cta-B__link:hover::after { transform: scaleX(1); }
+.km-cta-B__go { transition: transform .25s var(--ease-out); }
+.km-cta-B__link:hover .km-cta-B__go { transform: translateX(3px); }
+
+/* terms as the hero's quiet ledger, cols 10–12, closing on the foot line */
+.km-cta-B__ledger { position: absolute; left: var(--c10); right: var(--in); bottom: var(--foot); }
+.km-cta-B__lhead { display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--fg-2); padding-bottom: 16px; }
+.km-cta-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-cta-B__rows { position: relative; }
+.km-cta-B__rows::after {      /* the closing hairline, on the doors' bottom edge */
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.km-cta-B__row { position: relative; }
+.km-cta-B__row::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.km-cta-B__row:first-child::before { background: var(--line-2); }
+.km-cta-B__rb {
+  width: 100%; height: 46px; display: grid; grid-template-columns: 44px 1fr 20px; align-items: center;
+  text-align: left; transition: padding-left .3s var(--ease-out);
+}
+.km-cta-B__rb:hover { padding-left: 8px; }
+.km-cta-B__ri { font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); color: var(--fg-3); }
+.km-cta-B__rt { font-family: var(--f-body); font-stretch: 100%; font-weight: var(--ui-weight); font-size: 15px; line-height: 1.2; color: var(--fg); white-space: nowrap; }
+/* the toggle: "+" drawn from two 1px lines, the vertical turning flat to "−" */
+.km-cta-B__tg { position: relative; justify-self: end; width: 14px; height: 14px; }
+.km-cta-B__tg::before, .km-cta-B__tg::after { content: ""; position: absolute; background: var(--fg); }
+.km-cta-B__tg::before { left: 0; right: 0; top: 6.5px; height: 1px; }
+.km-cta-B__tg::after { top: 0; bottom: 0; left: 6.5px; width: 1px; transition: transform .36s var(--ease-inout); }
+.km-cta-B__row.is-open .km-cta-B__tg::after { transform: rotate(90deg); }
+/* the open row: height + opacity, in place */
+.km-cta-B__rd {
+  display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows .36s var(--ease-inout), opacity .36s var(--ease-inout);
+}
+.km-cta-B__rd > p {
+  min-height: 0; overflow: hidden; padding-left: 44px;
+  font-family: var(--f-body); font-weight: var(--body-weight); font-size: 15px; line-height: 1.5; color: var(--fg-2);
+}
+.km-cta-B__row.is-open .km-cta-B__rd { grid-template-rows: 1fr; opacity: 1; }
+.km-cta-B__row.is-open .km-cta-B__rd > p { padding-bottom: 16px; margin-top: -4px; }
+
+/* ── entrance (html.is-play): the red unfolds out of the spine, then the
+   panel hangs from its opening rule and the content settles in ── */
+.is-play .km-cta-B__panel { animation: km-cta-B-unfold 1100ms var(--ease-inout) both; }
+.is-play .km-cta-B__mark path { stroke-dasharray: 1 1; }
+.is-play .km-cta-B__joint { animation: km-cta-B-fade 300ms var(--ease-out) 150ms both; }
+.is-play .km-cta-B__k1 { animation: km-cta-B-plot 1100ms var(--ease-out) 250ms both; }
+.is-play .km-cta-B__k2 { animation: km-cta-B-plot 800ms var(--ease-out) 1000ms both; }
+.is-play .km-cta-B__k3 { animation: km-cta-B-plot 600ms var(--ease-out) 1250ms both; }
+.is-play .km-cta-B__num { animation: km-cta-B-fade 400ms var(--ease-out) 300ms both; }
+.is-play .km-cta-B__name { animation: km-cta-B-fade 400ms var(--ease-out) 420ms both; }
+/* the statement rises inside the field as it unfolds, so the reveal carries the words */
+.is-play .km-cta-B__s1 { animation: km-cta-B-up 800ms var(--ease-out) 260ms both; }
+.is-play .km-cta-B__s2 { animation: km-cta-B-up 800ms var(--ease-out) 420ms both; }
+.is-play .km-cta-B__rule { animation: km-cta-B-draw-x 500ms var(--ease-out) 1000ms both; }
+.is-play .km-cta-B__lhead { animation: km-cta-B-fade 400ms var(--ease-out) 1050ms both; }
+.is-play .km-cta-B__row::before { animation: km-cta-B-draw-x 600ms var(--ease-out) both; animation-delay: calc(1100ms + var(--k) * 60ms); }
+.is-play .km-cta-B__rows::after { animation: km-cta-B-draw-x 600ms var(--ease-out) 1280ms both; }
+.is-play .km-cta-B__rb, .is-play .km-cta-B__rd > p { animation: km-cta-B-fade 500ms var(--ease-out) both; animation-delay: calc(1200ms + var(--k) * 60ms); }
+.is-play .km-cta-B__doors { animation: km-cta-B-up 700ms var(--ease-out) 1150ms both; }
+.is-play .km-cta-B__joint--act { animation-delay: 1250ms; }
+
+@keyframes km-cta-B-unfold {
+  from { clip-path: inset(0 calc(100% - var(--sx)) 0 var(--sx)); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes km-cta-B-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-cta-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-cta-B-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-cta-B-draw-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }

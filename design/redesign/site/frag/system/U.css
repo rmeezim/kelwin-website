@@ -1,0 +1,191 @@
+/* ── system · U · Strata, closed (round 5) ──
+   Round 2's stack X, matured to three layers: the head on top; the drawing on the
+   left (three rectangular iso slabs, one inscription each, boxed callouts on the
+   right, the "1 system" dimension, registration marks); the ledger on the right.
+   The red top face, its bright callout and the ledger's open row are always the
+   same layer: each slab lands red while it is installed (01 → 02 → 03) and its row
+   opens with it; pressing a row moves the red to its slab. After assembly one
+   return line runs from slab 03 back into slab 01 and the ring on 03 closes: the
+   closed loop. Default CSS = final state: installed, return drawn, ring closed,
+   01 selected and open.  */
+
+/* the note sits beside the statement (placement only), bottom-aligned with the lede */
+.km-system-U .km-system-U__head > .ac-note { grid-row: 2 / span 3; align-self: end; }
+.km-system-U .km-system-U__note .ac-note__t { max-width: 34ch; }
+
+.km-system-U .km-system-U__body { margin-top: 72px; align-items: stretch; }
+/* the detail column is as tall as the sheet: its door sits on the sheet's baseline. The script reserves the
+   ledger's tallest state (min-height), so the sheet, the door and the section never move while rows open and close */
+.km-system-U .km-system-U__detail { display: flex; flex-direction: column; }
+
+/* ── the figure: a registration frame on the graphite (occlusion = --bg, set by .ac-frame) ──
+   The frame stretches to the reading column's reserved height; the drawing is centred in it.
+   286 = the installed stack's centre in drawing units (top of the lifted slab 01 at 67, foot of 03 at 505). */
+.km-system-U .km-system-U__fig { display: flex; flex-direction: column; }
+.km-system-U .km-system-U__field { flex: 1 0 auto; height: auto; min-height: var(--h); }
+.km-system-U .km-system-U__svg { position: absolute; left: 0; top: calc(50% - 286px); }
+.km-system-U .km-system-U__anno { position: absolute; left: 0; right: 0; top: calc(50% - 286px); height: 580px; }
+
+/* slab faces: occluding fills (hidden-line drawing), 1px outlines */
+.km-system-U .km-system-U__top, .km-system-U .km-system-U__side {
+  fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter;
+  transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout);
+}
+.km-system-U .km-system-U__side { stroke: var(--fg-3); }
+
+/* inscriptions — each slab's one job, drawn on its top face */
+.km-system-U .km-system-U__ink {
+  fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: square;
+  stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke 400ms var(--ease-inout);
+}
+.km-system-U .km-system-U__ink--h { stroke: var(--fg); }
+/* the gap in 03's ring: drawn at rest (closed); open until the return lands */
+.km-system-U .km-system-U__gap {
+  fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: square;
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke 400ms var(--ease-inout), stroke-dashoffset 500ms var(--ease-inout) 800ms;
+}
+.km-system-U .km-system-U__node { fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout); }
+.km-system-U .km-system-U__node.is-hub { fill: var(--fg); stroke: var(--fg); }
+
+/* the one red: the selected slab's top face (inscription inverts to paper) and an 8px lift */
+.km-system-U .km-system-U__lift { transition: transform 400ms var(--ease-inout); }
+.km-system-U .km-system-U__s.is-on > .km-system-U__lift { transform: translateY(-8px); }
+.km-system-U .km-system-U__s.is-on .km-system-U__top { fill: var(--accent); stroke: var(--accent); }
+.km-system-U .km-system-U__s.is-on .km-system-U__side { stroke: var(--fg-2); }
+.km-system-U .km-system-U__s.is-on :is(.km-system-U__ink, .km-system-U__gap) { stroke: var(--accent-fg); }
+.km-system-U .km-system-U__s.is-on .km-system-U__node { fill: var(--accent); stroke: var(--accent-fg); }
+.km-system-U .km-system-U__s.is-on .km-system-U__node.is-hub { fill: var(--accent-fg); }
+
+/* exploded (pitch 176) → installed (pitch 132): slabs, callouts and the dimension close up together */
+.km-system-U .km-system-U__s, .km-system-U .km-system-U__co { transition: transform 700ms var(--ease-inout); }
+.km-system-U .km-system-U__fig.is-exploded [data-l="1"] { transform: translateY(-44px); }
+.km-system-U .km-system-U__fig.is-exploded [data-l="3"] { transform: translateY(44px); }
+
+/* the dimension's ticks stay on the 01 and 03 leaders, including the selected slab's 8px lift */
+.km-system-U .km-system-U__dim {
+  --lt: 0px; --lb: 0px;
+  top: calc(var(--y) - var(--lt)); height: calc(var(--h) + var(--lt) - var(--lb));
+  transition: top 700ms var(--ease-inout), height 700ms var(--ease-inout);   /* rides the close-up and the lift */
+}
+.km-system-U .km-system-U__fig[data-sel="1"] .km-system-U__dim { --lt: 8px; }
+.km-system-U .km-system-U__fig[data-sel="3"] .km-system-U__dim { --lb: 8px; }
+.km-system-U .km-system-U__fig.is-exploded .km-system-U__dim { top: calc(var(--y) - 44px - var(--lt)); height: calc(var(--h) + 88px + var(--lt) - var(--lb)); }
+.km-system-U .km-system-U__dv { display: grid; justify-items: start; }
+.km-system-U .km-system-U__dv > span { grid-area: 1 / 1; transition: opacity 400ms var(--ease-inout) 300ms; }   /* re-measures as the slabs land */
+.km-system-U .km-system-U__dv-a { opacity: 0; }
+.km-system-U .km-system-U__fig.is-exploded .km-system-U__dv-a { opacity: 1; }
+.km-system-U .km-system-U__fig.is-exploded .km-system-U__dv-b { opacity: 0; }
+
+/* assembly lines (dashed) register once the stack is assembled */
+.km-system-U .km-system-U__post { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; transition: opacity 400ms var(--ease-out) 450ms; }
+.km-system-U .km-system-U__fig.is-exploded .km-system-U__post { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* ── the return: one line, drawn once after assembly, from slab 03 back into slab 01 ── */
+.km-system-U .km-system-U__ret {
+  fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter;
+  stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1000ms var(--ease-inout);
+}
+.km-system-U .km-system-U__src { fill: var(--fg); stroke: none; transition: opacity 200ms var(--ease-out); }   /* where the signal leaves 03 */
+/* the one chevron: an arrowhead where the return enters 01 (lands as the line arrives) */
+.km-system-U .km-system-U__chev { fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter; transition: opacity 250ms var(--ease-out) 850ms; }
+.km-system-U .km-system-U__rlab {
+  position: absolute; left: var(--x); top: var(--y); transform: translate(-100%, -50%);
+  font-size: var(--ac-anno); line-height: 1.3; color: var(--fg-2); text-align: right; white-space: nowrap; pointer-events: none;
+  transition: opacity 400ms var(--ease-out) 500ms;
+}
+.km-system-U .km-system-U__fig.is-unlooped .km-system-U__ret,
+.km-system-U .km-system-U__fig.is-unlooped .km-system-U__gap { stroke-dashoffset: 1; transition-duration: 0ms; transition-delay: 0ms; }
+.km-system-U .km-system-U__fig.is-unlooped .km-system-U__chev,
+.km-system-U .km-system-U__fig.is-unlooped .km-system-U__src,
+.km-system-U .km-system-U__fig.is-unlooped .km-system-U__rlab { opacity: 0; transition-duration: 0ms; transition-delay: 0ms; }
+
+/* callouts ride with their slab (compression on __co, the 8px lift on __col) */
+.km-system-U .km-system-U__cos, .km-system-U .km-system-U__co, .km-system-U .km-system-U__col { position: absolute; inset: 0; pointer-events: none; }
+.km-system-U .km-system-U__col { transition: transform 400ms var(--ease-inout); }
+.km-system-U .km-system-U__co.is-on > .km-system-U__col { transform: translateY(-8px); }
+
+/* ── the ledger: index · title + job · toggle; open row = What it is / In practice.
+   The open row is the red layer's row (the script keeps the two in step); the 1px rule marks it too ── */
+.km-system-U .km-system-U__ledger { --ac-row-cols: 32px minmax(0, 1fr) 20px; --ac-row-indent: calc(32px + var(--gutter)); }
+.km-system-U .km-system-U__ledger .ac-row { position: relative; }
+.km-system-U .km-system-U__ledger .ac-row::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 500ms var(--ease-inout); pointer-events: none;
+}
+.km-system-U .km-system-U__ledger .ac-row.is-cur::before { transform: scaleX(1); }
+.km-system-U .km-system-U__ledger .ac-row__head > .ac-idx { transition: color 400ms var(--ease-inout); }
+.km-system-U .km-system-U__ledger .ac-row.is-cur .ac-row__head > .ac-idx { color: var(--fg); }
+.km-system-U .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+/* a row's focus ring sits inside the row's height (clear of its hairlines and of the open panel's first label
+   below the head) and a little outside its sides */
+.km-system-U .km-system-U__ledger .ac-row__head { position: relative; }
+.km-system-U .km-system-U__ledger .ac-row__head:focus-visible { outline: none; }
+.km-system-U .km-system-U__ledger .ac-row__head:focus-visible::after {
+  content: ""; position: absolute; inset: 6px -8px; border: 1px solid var(--fg); pointer-events: none;
+}
+.km-system-U .km-system-U__ledger .ac-row__head { align-items: start; }
+.km-system-U .km-system-U__ledger .ac-row__head > .ac-idx { padding-top: 7px; }
+.km-system-U .km-system-U__ledger .ac-toggle { margin-top: 5px; }
+.km-system-U .km-system-U__rt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.km-system-U .km-system-U__job { color: var(--fg-3); }
+.km-system-U .km-system-U__ledger .ac-row.is-open .km-system-U__job { color: var(--fg-2); }
+.km-system-U .km-system-U__more { display: flex; flex-direction: column; gap: 18px; }
+/* a closed row's panel leaves the accessibility tree once its close has finished (aria-expanded="false" means hidden) */
+.km-system-U .km-system-U__ledger .ac-row__more { visibility: hidden; transition: grid-template-rows 360ms var(--ease-inout), visibility 0s linear 360ms; }
+.km-system-U .km-system-U__ledger .ac-row.is-open > .ac-row__more { visibility: visible; transition: grid-template-rows 360ms var(--ease-inout), visibility 0s linear 0s; }
+.km-system-U .km-system-U__kv { display: flex; flex-direction: column; gap: 6px; }
+/* the reading path ends on one quiet door (the section's one red stays the slab face) */
+.km-system-U .km-system-U__doors { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.km-system-U .km-system-U__tail { max-width: 38ch; }
+
+/* ── entrance: the head AND the reading column (ledger rows, the quiet door) run on .is-play, so
+   reading text never waits on the drawing (round 4 coherence). Only the drawing runs on .is-go,
+   which the script sets when the figure itself is in view (at once in the standalone mockup) ── */
+.km-system-U .km-system-U__body.is-armed .km-system-U__drop,
+.km-system-U .km-system-U__body.is-armed .km-system-U__node,
+.km-system-U .km-system-U__body.is-armed .km-system-U__co .ac-callout,
+.km-system-U .km-system-U__body.is-armed .km-system-U__dim { opacity: 0; }
+.km-system-U .km-system-U__body.is-armed .km-system-U__ink { stroke-dashoffset: 1; }
+.is-play .km-system-U .km-system-U__dim { animation: none; }   /* the kit would draw it on .is-play; here it waits for the slabs */
+
+.km-system-U .km-system-U__fig .ac-reg { --d: 300ms; }
+.km-system-U .is-go .km-system-U__drop { animation: km-system-U-drop 700ms var(--ease-out) var(--d, 600ms) both; }
+.km-system-U .is-go .km-system-U__ink { animation: km-system-U-plot var(--t, 400ms) var(--ease-inout) var(--d, 1000ms) both; }
+.km-system-U .is-go .km-system-U__node { animation: km-system-U-fade 300ms var(--ease-out) var(--d, 1200ms) both; }
+.km-system-U .is-go .km-system-U__co .ac-callout { animation: km-system-U-fade 400ms var(--ease-out) var(--cd, 1000ms) both; }
+.km-system-U .km-system-U__co[data-l="1"] { --cd: 900ms; }
+.km-system-U .km-system-U__co[data-l="2"] { --cd: 3700ms; }
+.km-system-U .km-system-U__co[data-l="3"] { --cd: 6500ms; }
+.km-system-U .is-go .km-system-U__dim { animation: km-system-U-drawy 600ms var(--ease-out) 6700ms both; }
+.km-system-U .is-go .km-system-U__dim .ac-dim__v { animation: km-system-U-fade 400ms var(--ease-out) 7000ms both; }
+.is-play .km-system-U .km-system-U__ledger > .ac-row { animation: km-system-U-up 600ms var(--ease-out) both; animation-delay: calc(700ms + var(--i, 0) * 80ms); }
+.is-play .km-system-U .km-system-U__doors { animation: km-system-U-up 600ms var(--ease-out) 1100ms both; }
+
+.km-system-U.is-settled :is(.ac-reg, .ac-dim, .ac-head > .ac-labelrow, .ac-line > span, .ac-head > .ac-rule, .ac-head > .ac-lede, .ac-head > .ac-note) { animation: none; }
+.km-system-U.is-settled::before { animation: none; }
+
+@keyframes km-system-U-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-system-U-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-system-U-drop { from { opacity: 0; transform: translateY(-24px); } to { opacity: 1; transform: none; } }
+@keyframes km-system-U-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-system-U-drawy { from { opacity: 1; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+
+/* ── ≤ 760px: the ledger follows the drawing; the drawing keeps its slabs, return and dimension
+   (the ledger, numbered 01–03 top to bottom, is its key) ── */
+@media (max-width: 760px) {
+  .km-system-U { --margin: 16px; --gutter: 16px; padding-block: 72px; }
+  .km-system-U .ac-statement { font-size: 44px; }
+  .km-system-U .km-system-U__head > .ac-statement { grid-column: 1 / -1; }
+  .km-system-U .km-system-U__head > .ac-note { grid-column: 1 / -1; grid-row: auto; margin-top: 32px; }
+  .km-system-U .km-system-U__head > .ac-lede { grid-column: 1 / -1; }
+  .km-system-U .km-system-U__body { display: flex; flex-direction: column; gap: 40px; margin-top: 48px; }
+  .km-system-U .km-system-U__fig { width: 100%; overflow: hidden; }
+  .km-system-U .km-system-U__fig .ac-reg { visibility: hidden; }   /* visibility, not display: display:none would restart their fades */
+  .km-system-U .km-system-U__field { width: 755px; transform: scale(var(--fs, .8)); transform-origin: 0 0; margin-left: calc(50% - 204px * var(--fs, .8)); margin-bottom: calc(580px * (var(--fs, .8) - 1)); }
+  .km-system-U .km-system-U__rlab { font-size: calc(var(--ac-anno) / var(--fs, .8)); color: var(--fg); }   /* reads at 14px after the scale */
+  .km-system-U .km-system-U__dim { visibility: hidden; }
+  .km-system-U .km-system-U__cos { visibility: hidden; }
+  .km-system-U .km-system-U__detail { width: 100%; }
+  .km-system-U .km-system-U__doors .ac-link { white-space: normal; }
+}

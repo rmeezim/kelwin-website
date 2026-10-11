@@ -1,0 +1,30 @@
+{
+ "title": "The annotated statement",
+ "direction": "A×C",
+ "summary": "Your third choice has no drawing at all: the statement is the specimen. 'Decide what / the market hears.' is set large and glossed like a part on a technical drawing. Three words are measured and keyed to their services, and the full stop leads out to the last one, so the sentence itself becomes the map of Narrative Systems.",
+ "reference": {
+  "site": "Giga (Mobbin), with round-1 A's head grammar and C's dimension lines",
+  "mobbin_url": "https://mobbin.com/sites/sections/268ceb6c-6798-499f-be9f-f452ac0f75e6",
+  "ref_file": "refs/interior-r2-Z-gloss.webp",
+  "borrowed": "Giga's annotated transcript: a line of words with small tags hung beneath specific phrases on short ticks, so the text carries its own explanation instead of sitting next to a picture.",
+  "kelwin": "Hero X's bar, solid graphite, with CAPABILITIES current and + marks at the hairline ends. Below it is A's head grammar, top-aligned: '■ Narrative Systems' with mono 'Capabilities / 01', then the two-voice statement at 112px. Giga's waveform and chips are gone; the type is the picture. Giga's tags become C's dimension lines: under 'Decide', 'what' and 'hears' a 1px measure with end ticks spans exactly the word, and a coded label hangs beneath it (01.1 Positioning · 01.2 Message matrix · 01.3 Sales language). The full stop is the anchor of the last callout: a 1px red leader runs out of it to '01.4 Proof & evidence' (proof is what ends the argument). 'the market' is the audience, so it carries no gloss. Then the red rule, the 20px lede and a three-row facts ledger (cols 9–12, its top on the rule's line). After a ruled cut the body opens in the same grammar as every home section: '■ What we install', 'The story is not copy. / It's infrastructure.' (64px), and four strips that repeat the gloss codes."
+ },
+ "motion": [
+  "entrance (≈1.2s): the nav hairline draws and the CAPABILITIES underline seats on it. The label row fades in, each word of 'Decide what' rises out of its own mask, then 'the market hears.' follows. The red rule draws, and the lede and the facts ledger fade up.",
+  "orchestrated moment, the gloss pass (1.15–2.9s), in reading order: under 'Decide' a dimension line draws across exactly the word's width and '01.1 Positioning' registers beneath it. 'what' (01.2 Message matrix) and 'hears' (01.3 Sales language) follow 350ms apart. Last, the red leader runs out of the full stop and '01.4 Proof & evidence' registers at its end.",
+  "body (from 2.7s, standing in for the scroll): the ruled cut draws, '■ What we install' fades in, 'The story is not copy. / It's infrastructure.' rises, the rule draws, and the four strips cascade 01.1 → 01.4.",
+  "ambient: none. Once the sentence is glossed, nothing moves.",
+  "interaction: kit hovers only (nav items, the outlined AUDIT REQUEST, and 'The System Audit ↗' link).",
+  "on the live site: the gloss pass plays once when the head is in view (IntersectionObserver, no pin). Reduced motion shows the fully glossed statement straight away, with no timers or loops. Each gloss hangs from its own word in CSS, so it stays aligned in any font, skin or width."
+ ],
+ "demoMs": 4600,
+ "notes": "The stage is 1261px: the 96px nav, the head, a ruled cut, and the body cropped after the four strips. What changed in this pass: the previous Z drew one signal trace through the split statement. That was a third CONTOUR, so all three options showed noise turning into a line. Z now has no drawing; its device is typographic, made from A's statement and C's dimension line. The mapping, in reading order: Decide → Positioning (deciding the problem you own), what → Message matrix (what each buyer needs to hear), hears → Sales language (what the room hears), the full stop → Proof & evidence (what ends the argument). The statement is 112px, the manifesto size, so the glosses have room, with about 40px of air between line 1's glosses and line 2. C quotas: no drawing; 3 measures + 1 callout (≤ 5), about 10 annotation words, 2 registration marks, and mono only in the four codes and the label-row meta. Red appears only on the two label squares, the two rules and the full stop's 1px leader. There is no red button in the header: 'The System Audit ↗' links to /audit. One risk for you to judge: the full stop as proof is the cleverest move on the page. If it reads as a trick, the same layout works with three glosses and Proof & evidence carried by the strips alone. The Giga reference was saved to refs/interior-r2-Z-gloss.webp.",
+ "addressed": [
+  "'Too similar to the homepage hero' → no film or picture. The headline is visibly annotated like a technical drawing, which the hero never is.",
+  "'More proprietary' → a typographic device of Kelwin's own: your sentence becomes the map of the four services.",
+  "'Too cluttered' → no drawing and no frame: three measured words, one callout and three facts.",
+  "Three real choices → X draws waves, Y draws a document, and Z draws nothing: the type is the picture.",
+  "Your bias towards C → C's dimension lines and coded callouts, applied to the words themselves instead of to wallpaper.",
+  "'Definitely not B' → nothing from B. The logo symbol appears only in the nav lockup."
+ ]
+}

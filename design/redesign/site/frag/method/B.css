@@ -1,0 +1,142 @@
+/* ── method · B · Quiet Ledger — 08 Method ──────────────────────────────
+   Hangs from the Index Spine. The copy's own logic is the layout: three
+   grid-true columns that run once, in order (cols 4–6 / 7–9 / 10–12), and
+   Calibrate as one continuous ledger row under an ink hairline that spans
+   beneath all three — the fourth keeps running.                          */
+.km-method-B { padding: 128px 0 128px; overflow: hidden; }
+
+/* the Index Spine: the page-long hairline at the col 3|4 gutter */
+.km-method-B__spine {
+  position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line);
+  left: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));
+}
+
+.km-method-B__in {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* opening rule: spine → right margin, square at the joint (the mark's corner as a hairline) */
+.km-method-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-method-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-method-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+
+/* spine column: index numeral + red-square label */
+.km-method-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-method-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: 0.9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-method-B__label {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-method-B__sq { width: 8px; height: 8px; flex: none; background: var(--accent); }
+
+/* statement: a sentence + a muted sentence */
+.km-method-B__h {
+  grid-column: 4 / 13; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1.0; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-method-B__s1, .km-method-B__s2 { display: block; white-space: nowrap; }
+.km-method-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-method-B__red { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--accent); transform-origin: 0 50%; }
+
+.km-method-B__body { grid-column: 4 / 10; grid-row: 4; margin-top: 32px; max-width: 58ch; font-size: 18px; line-height: 30px; color: var(--fg-2); }
+
+/* the two doors, under the body (tracked caps) */
+.km-method-B__doors { grid-column: 4 / 10; grid-row: 5; margin-top: 36px; display: flex; align-items: center; gap: 40px; }
+.km-method-B__cta, .km-method-B__link {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-method-B__ico { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.km-method-B__go { width: 14px; }
+.km-method-B__cta {
+  display: inline-flex; align-items: center; gap: 14px; height: 52px; padding: 0 24px 0 26px;
+  background: var(--accent); color: var(--accent-fg); transition: background-color 200ms var(--ease-out);
+}
+.km-method-B__arr { transition: transform 200ms var(--ease-out); }
+.km-method-B__cta:hover { background: var(--accent-hover); }
+.km-method-B__cta:hover .km-method-B__arr { transform: translate(2px, -2px); }
+.km-method-B__link { position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px; color: var(--fg); }
+.km-method-B__link::before, .km-method-B__link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; }
+.km-method-B__link::before { background: var(--line-2); }
+.km-method-B__link::after { background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out); }
+.km-method-B__link:hover::after { transform: scaleX(1); }
+
+/* side note, cols 10–12: where phase 1.0 begins (ties the audit to the method) */
+.km-method-B__side { grid-column: 10 / 13; grid-row: 4 / 6; align-self: end; border-top: 1px solid var(--line); padding-top: 14px; }
+.km-method-B__sidek { font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-method-B__sidev { margin-top: 10px; font-size: 15px; line-height: 22px; color: var(--fg); max-width: 30ch; }
+
+/* sub-hairline + caption */
+.km-method-B__sub { grid-column: 4 / 13; grid-row: 6; margin-top: 88px; position: relative; }
+.km-method-B__subrule { position: absolute; top: 0; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+.km-method-B__subcap {
+  display: flex; justify-content: space-between; padding-top: 16px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+
+/* the three that run once */
+.km-method-B__cols { grid-column: 4 / 13; grid-row: 7; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--gutter); margin-top: 8px; }
+.km-method-B__col { position: relative; display: flex; flex-direction: column; padding: 32px 24px 40px 0; transition: background-color 300ms var(--ease-out); }
+.km-method-B__col + .km-method-B__col::before {
+  content: ""; position: absolute; left: calc(var(--gutter) / -2); top: 0; bottom: 0; width: 1px; background: var(--line); transform-origin: 50% 0;
+}
+.km-method-B__dec {
+  display: block; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 56px; line-height: 50px; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-method-B__t {
+  margin-top: 28px; font-family: var(--f-body); font-stretch: 100%; font-weight: 500;
+  font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; color: var(--fg);
+  transition: transform 300ms var(--ease-out);
+}
+.km-method-B__col:hover .km-method-B__t, .km-method-B__run:hover .km-method-B__t { transform: translateX(8px); }
+.km-method-B__p { margin-top: 12px; font-size: 15px; line-height: 1.6; color: var(--fg-2); max-width: 44ch; }
+.km-method-B__out { margin-top: auto; padding-top: 24px; font-size: 15px; line-height: 22px; color: var(--fg); max-width: 36ch; }
+.km-method-B__outk { display: block; margin-bottom: 8px; font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+
+/* the fourth keeps running: one row beneath all three, under the page's one ink hairline */
+.km-method-B__run {
+  grid-column: 4 / 13; grid-row: 8; position: relative;
+  display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--gutter); padding-top: 32px;
+}
+.km-method-B__runrule { position: absolute; top: 0; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--fg); transform-origin: 0 50%; }
+.km-method-B__runhead { grid-column: 1; }
+.km-method-B__runk { margin-top: 10px; font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-method-B__runp { grid-column: 2; margin-top: 0; padding-right: 24px; align-self: start; }
+.km-method-B__runo { grid-column: 3; margin-top: 0; padding-top: 0; align-self: start; }
+
+/* ── entrance (only under html.is-play) ── */
+.is-play .km-method-B__rule { animation: km-method-B-draw-x 900ms var(--ease-out) both; }
+.is-play .km-method-B__joint { animation: km-method-B-fade 300ms var(--ease-out) both; }
+.is-play .km-method-B__num { animation: km-method-B-fade 400ms var(--ease-out) 300ms both; }
+.is-play .km-method-B__label { animation: km-method-B-fade 400ms var(--ease-out) 420ms both; }
+.is-play .km-method-B__s1 { animation: km-method-B-up 700ms var(--ease-out) 400ms both; }
+.is-play .km-method-B__s2 { animation: km-method-B-up 700ms var(--ease-out) 560ms both; }
+.is-play .km-method-B__red { animation: km-method-B-draw-x 500ms var(--ease-out) 900ms both; }
+.is-play .km-method-B__body { animation: km-method-B-up 700ms var(--ease-out) 700ms both; }
+.is-play .km-method-B__doors { animation: km-method-B-up 700ms var(--ease-out) 820ms both; }
+.is-play .km-method-B__side { animation: km-method-B-up 700ms var(--ease-out) 940ms both; }
+.is-play .km-method-B__subrule { animation: km-method-B-draw-x 600ms var(--ease-out) 900ms both; }
+.is-play .km-method-B__subcap { animation: km-method-B-fade 400ms var(--ease-out) 1000ms both; }
+.is-play .km-method-B__col + .km-method-B__col::before { animation: km-method-B-draw-y 600ms var(--ease-out) both; animation-delay: calc(1100ms + var(--k) * 60ms); }
+.is-play .km-method-B__col > * { animation: km-method-B-up 600ms var(--ease-out) both; animation-delay: calc(1160ms + var(--k) * 60ms); }
+/* the moment: the three run once, in order (names lift one by one) … */
+.is-play .km-method-B__col .km-method-B__t { animation: km-method-B-up 600ms var(--ease-out) both, km-method-B-lift 500ms var(--ease-inout) both; animation-delay: calc(1160ms + var(--k) * 60ms), calc(1700ms + var(--k) * 400ms); }
+/* … then the fourth's hairline runs the full width and Calibrate settles beneath all three */
+.is-play .km-method-B__runrule { animation: km-method-B-draw-x 1200ms linear 2900ms both; }
+.is-play .km-method-B__runhead, .is-play .km-method-B__runp, .is-play .km-method-B__runo { animation: km-method-B-up 600ms var(--ease-out) both; }
+.is-play .km-method-B__runhead { animation-delay: 3100ms; }
+.is-play .km-method-B__runp { animation-delay: 3350ms; }
+.is-play .km-method-B__runo { animation-delay: 3600ms; }
+
+@keyframes km-method-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-method-B-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-method-B-draw-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-method-B-draw-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-method-B-lift { from { color: var(--fg-3); } to { color: var(--fg); } }

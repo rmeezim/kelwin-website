@@ -1,0 +1,196 @@
+/* ── system · S · FIG. 03 The loop, closed (round 3 — the page's only pin) ─────
+   One drawing, five frames. Frame 0 is the loop most teams run (Capital in →
+   Campaigns run → Knowledge lost, a red ✕ at the break, a dashed Reset back up
+   the right side, Carried forward · 00). Frames 1–3 drop the three layers onto
+   its nodes, each with its own inscription morph. Frame 4 draws the dashed
+   Reset solid red, laps the loop four times, deposits a ring per lap and steps
+   the counter to 04.
+   Three presentations of the same drawing code:
+     · homepage (html.km-home): a tall track + sticky stage, frames driven by
+       scroll progress (JS) — the pin;
+     · reduced motion / ≤ 760px: frames stacked (frame 0 · the three layers ·
+       frame 4), no pin;
+     · standalone review page: a static five-frame contact sheet.
+   Default CSS is the final state of whatever is shown.                        */
+
+.km-system-S {
+  --sys-frame-h: 700px;                       /* the content box of one frame (≤ 760) */
+  --sys-pin: 1600px;                          /* pinned scroll distance */
+}
+
+/* which presentation shows: the sheet off the homepage, the pin on it, the stack as fallback */
+.km-system-S__pin, .km-system-S__stack { display: none; }
+.km-system-S__sheet { display: block; }
+html.km-home .km-system-S__sheet { display: none; }
+html.km-home .km-system-S__pin { display: block; }
+html.km-home .km-system-S { padding-top: 0; }           /* the stage centres its frame; the rule is the cut */
+.km-system-S__tail--sheet { display: none; }
+
+/* ── drawing (shared by every presentation) ── */
+.km-system-S__svg { display: block; overflow: visible; --ac-occlude: var(--bg); }
+.km-system-S__svg * { vector-effect: non-scaling-stroke; }
+.km-system-S__face, .km-system-S__side { fill: var(--bg); stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter; }
+.km-system-S__side { stroke: var(--fg-3); }
+.km-system-S__ink { fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter; }
+.km-system-S__ink--fg { stroke: var(--fg); }
+.km-system-S__ret { fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-dasharray: 3 4; }
+.km-system-S__red { fill: none; stroke: var(--signal); stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: miter; }
+.km-system-S__x { fill: none; stroke: var(--signal); stroke-width: 1.5; stroke-linecap: square; }
+.km-system-S__redchev { fill: none; stroke: var(--signal); stroke-width: 1.5; }
+.km-system-S__packet { fill: var(--fg); }
+.km-system-S__node { fill: var(--bg); stroke: var(--fg-2); stroke-width: 1; }
+.km-system-S__node.is-on { fill: var(--fg); stroke: var(--fg); }
+.km-system-S__anchor { fill: var(--fg-2); }
+.km-system-S__stamp { fill: var(--bg); stroke: var(--line-2); stroke-width: 1; }
+.km-system-S__numeral {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 44px; letter-spacing: -0.02em; fill: var(--fg-3);
+}
+.km-system-S__svg .ac-t-label { font-size: var(--ac-anno); }
+.km-system-S__svg text { white-space: pre; }
+/* compact annotation: the drawing is shown near half size, so labels are set at 30 units
+   (≈ 14px on the contact sheet, ≥ 11.3px on a 360px phone) and the numerals at 60 */
+.km-system-S__svg--cmp .ac-t-label { font-size: 30px; }
+.km-system-S__svg--cmp .km-system-S__numeral { font-size: 60px; }
+
+/* figure foot: the title block (left) and the one counter (right) */
+.km-system-S__fig { position: relative; --ac-occlude: var(--bg); }
+.km-system-S__foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 16px; width: 755px; }
+.km-system-S__foot--solo { justify-content: flex-end; }
+.km-system-S__readout { display: flex; align-items: center; gap: 12px; }
+.km-system-S__count {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 34px; height: 26px; padding: 0 6px;
+  border: 1px solid var(--line-2); font-family: var(--f-mono); font-size: var(--ac-mono); letter-spacing: var(--ac-track-anno);
+  color: var(--fg); font-variant-numeric: tabular-nums;
+}
+.km-system-S__err {
+  display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border: 1px solid var(--line-2);
+  font-family: var(--f-mono); font-size: var(--ac-mono); letter-spacing: var(--ac-track-anno); color: var(--fg);
+  text-transform: uppercase; white-space: nowrap;
+}
+.km-system-S__err--narrow { display: none; }
+.km-system-S__reg { position: absolute; left: 0; top: 0; width: 755px; height: 640px; pointer-events: none; }
+
+/* ── 1 · the pin (homepage) ── */
+html.km-home .km-system-S__track { position: relative; height: calc(100vh / var(--page-zoom, 1) + var(--sys-pin)); }
+html.km-home .km-system-S__stage {
+  position: sticky; top: 0; height: calc(100vh / var(--page-zoom, 1));
+  display: flex; align-items: center; overflow: hidden;
+}
+.km-system-S__frame { width: 100%; height: var(--sys-frame-h); align-items: start; transform-origin: 50% 50%; }
+.km-system-S__panel { position: relative; padding-top: 0; }
+
+/* the progress rail: five 32px segments, the active one in --fg, no numbers */
+.km-system-S__rail { display: flex; gap: 8px; height: 9px; align-items: center; }
+.km-system-S__rail > li { width: 32px; height: 1px; background: var(--line-2); transition: background-color 400ms var(--ease-inout); }
+.km-system-S__rail > li.is-on { background: var(--fg); }
+
+/* one step at a time: every block sits in the same cell and crossfades in place */
+.km-system-S__steps { display: grid; margin-top: 56px; }
+.km-system-S__step { grid-area: 1 / 1; opacity: 0; pointer-events: none; transition: opacity 400ms var(--ease-inout); }
+.km-system-S__step.is-on { opacity: 1; pointer-events: auto; }
+
+/* frame 0: label → statement (64px, two voices) → rule → caption */
+.km-system-S__statement {
+  margin-top: 32px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 64px; line-height: .98; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-system-S__rule { margin-top: 32px; }
+.km-system-S__cap { margin-top: 28px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 44ch; }
+
+/* frames 1–4: big light index · layer name · subtitle · the line */
+.km-system-S__idx {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 96px; line-height: .9; letter-spacing: -0.04em; color: var(--fg-2);
+  font-feature-settings: "zero" 0; font-variant-numeric: normal; margin-left: -4px;
+}
+.km-system-S__idx--blank { visibility: hidden; }
+.km-system-S__name { margin-top: 28px; }
+.km-system-S__sub { margin-top: 12px; font-size: var(--ac-body); line-height: 1.5; color: var(--fg-2); }
+.km-system-S__line { margin-top: 20px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg); max-width: 40ch; }
+
+/* entrance (homepage pin only): armed by JS before the section is in view, so nothing flashes */
+html.km-home .is-play .km-system-S.ac-sec--ruled::before { animation: none; }
+.km-system-S.is-armed:not(.is-in)::before { transform: scaleX(0); }
+.km-system-S.is-armed.is-in::before { animation: ac-drawx 900ms var(--ease-out) both; }
+.km-system-S.is-armed:not(.is-in) :is(.km-system-S__fig, .km-system-S__rail, .km-system-S__step[data-f="0"] > *) { opacity: 0; }
+.km-system-S.is-armed.is-in .km-system-S__step[data-f="0"] > .ac-label { animation: km-system-S-fade 300ms var(--ease-out) 0ms both; }
+.km-system-S.is-armed.is-in .km-system-S__step[data-f="0"] > .km-system-S__statement { opacity: 1; }
+.km-system-S.is-armed.is-in .km-system-S__statement .ac-line > span { animation: ac-rise 800ms var(--ease-out) 80ms both; }
+.km-system-S.is-armed.is-in .km-system-S__statement .ac-line + .ac-line > span { animation-delay: 280ms; }
+.km-system-S.is-armed.is-in .km-system-S__rule { animation: ac-drawx 600ms var(--ease-out) 520ms both; }
+.km-system-S.is-armed.is-in .km-system-S__cap { animation: ac-up 600ms var(--ease-out) 600ms both; }
+.km-system-S.is-armed.is-in .km-system-S__rail { animation: km-system-S-fade 500ms var(--ease-out) 700ms both; }
+.km-system-S.is-armed.is-in .km-system-S__fig { animation: km-system-S-up 800ms var(--ease-out) 300ms both; }
+.km-system-S.is-armed.is-in .km-system-S__fig .ac-reg { animation: km-system-S-fade 300ms var(--ease-out) 200ms both; }
+.km-system-S.is-armed.is-in .km-system-S__spine { stroke-dasharray: 1; animation: km-system-S-plot 1100ms var(--ease-inout) 700ms both; }
+@keyframes km-system-S-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-system-S-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-system-S-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+/* ── tail: the quiet door, 96px below the pin (cols 8–12) ── */
+.km-system-S__tail { margin-top: 96px; }
+html.km-home .km-system-S__tail { margin-top: calc(96px - max(0px, (100vh / var(--page-zoom, 1) - var(--sys-frame-h)) / 2)); }
+.km-system-S__door { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.km-system-S__door .ac-support { max-width: 40ch; }
+.km-system-S .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* ── 2 · stacked (reduced motion, ≤ 760px): frame 0 · the three layers · frame 4 ── */
+.km-system-S__srow { align-items: start; }
+.km-system-S__listwrap { margin-block: 96px; }
+.km-system-S__stext { padding-top: 24px; }
+.km-system-S__list { border-top: 1px solid var(--line-2); }
+.km-system-S__list > li { padding: 28px 24px 0 0; position: relative; }
+.km-system-S__list > li + li::before { content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--gutter) / -2); width: 1px; background: var(--line); }
+.km-system-S__list .km-system-S__idx { font-size: 72px; }
+.km-system-S__list .km-system-S__name { margin-top: 20px; }
+
+/* ── 3 · contact sheet (standalone review page only): five frames at 0.5, 3 + 2 ── */
+.km-system-S__sheethead { align-items: end; }
+.km-system-S__sheetnote { font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 36ch; margin-bottom: 4px; }
+.km-system-S__cells { margin-top: 56px; row-gap: 44px; }
+.km-system-S__cell { display: flex; flex-direction: column; }
+.km-system-S__cell .km-system-S__svg { width: 100%; height: auto; }
+.km-system-S__cellcap { margin-top: 12px; padding-top: 14px; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+.km-system-S__cellname { font-size: var(--ac-body); line-height: 1.4; color: var(--fg); }
+.km-system-S__cellread { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+.km-system-S__cellread .km-system-S__count { height: 22px; min-width: 30px; }
+.km-system-S__cellread .km-system-S__err { height: 22px; margin-left: auto; }
+/* the sheet arrives as a reveal only (it never plays the frames: the scroll does that) */
+.is-play .km-system-S__sheet .km-system-S__cell, .is-play .km-system-S__sheet .km-system-S__tail--sheet { animation: km-system-S-up 700ms var(--ease-out) both; animation-delay: calc(240ms + var(--i, 0) * 80ms); }
+.is-play .km-system-S__sheethead .km-system-S__statement .ac-line > span { animation: ac-rise 800ms var(--ease-out) 80ms both; }
+.is-play .km-system-S__sheethead .km-system-S__statement .ac-line + .ac-line > span { animation-delay: 240ms; }
+.km-system-S.is-settled .km-system-S__sheet :is(.km-system-S__cell, .km-system-S__tail--sheet, .ac-line > span) { animation: none; }
+.km-system-S__tail--sheet { align-self: end; }
+html:not(.km-home) .km-system-S__tail--sheet { display: flex; }
+html:not(.km-home) .km-system-S__tail--main { display: none; }
+
+/* ── fallbacks: reduced motion (homepage) and ≤ 760px (everywhere) ── */
+@media (prefers-reduced-motion: reduce) {
+  html.km-home .km-system-S__pin { display: none; }
+  html.km-home .km-system-S__stack { display: block; }
+  html.km-home .km-system-S { padding-top: var(--ac-pad-y); }
+  html.km-home .km-system-S__tail { margin-top: 96px; }
+}
+@media (max-width: 760px) {
+  .km-system-S { --margin: 16px; --gutter: 16px; padding-top: 72px !important; padding-bottom: 72px; }
+  .km-system-S__pin, .km-system-S__sheet { display: none !important; }
+  .km-system-S__stack { display: block !important; }
+  .km-system-S__tail--main { display: flex !important; flex-direction: column; margin-top: 64px !important; }
+  .km-system-S__stack .ac-grid { display: flex; flex-direction: column; gap: 32px; }
+  .km-system-S__listwrap { margin-block: 64px; }
+  .km-system-S__door .ac-link { white-space: normal; }
+  .km-system-S__stack .km-system-S__stext { order: -1; padding-top: 0; }
+  .km-system-S__stack .km-system-S__svg { width: 100%; height: auto; }
+  .km-system-S__foot { width: 100%; flex-wrap: wrap; row-gap: 12px; }
+  .km-system-S__foot--solo { justify-content: space-between; }
+  .km-system-S__err--narrow { display: inline-flex; }
+  .km-system-S__stack .km-system-S__name, .km-system-S__stack .ac-h3--lg { font-size: 32px; }
+  .km-system-S__list .km-system-S__idx { font-size: 56px; }
+  .km-system-S__reg { display: none; }
+  .km-system-S__statement { font-size: 44px; }
+  .km-system-S__list > li { padding: 24px 0 0; }
+  .km-system-S__list > li + li::before { display: none; }
+  .km-system-S__list > li + li { border-top: 1px solid var(--line); }
+}

@@ -1,0 +1,215 @@
+/* ── method · C · Systems Drawing Set — SHEET 08/14, the phase gantt ──────
+   The C sheet head (same metric on every sheet): opening rule y 96 · label y 120 · title bottom y 422 ·
+   48×2 red rule y 450 · row bottom y 480 · note cell (cols 9–12) with its mono cell ID, a 20px lede and
+   the door pair (red audit cell cols 9–11 · contact cell col 12).                                        */
+.km-method-C { padding: 96px 0 0; overflow: hidden; }
+
+/* frame: margin verticals run on through every sheet + chosen crosshairs */
+.km-method-C__frame { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.km-method-C__frame--l { left: var(--margin); }
+.km-method-C__frame--r { left: calc(var(--stage) - var(--margin) - 1px); }
+.km-method-C__xh { position: absolute; width: 9px; height: 9px; margin: 92px 0 0 -4px; z-index: 3; }
+.km-method-C__xh::before, .km-method-C__xh::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-method-C__xh::before { left: 0; top: 4px; width: 9px; height: 1px; }
+.km-method-C__xh::after { left: 4px; top: 0; width: 1px; height: 9px; }
+
+.km-method-C__sheet { position: relative; padding-inline: var(--margin); }
+.km-method-C__row { display: grid; }
+.km-method-C__row--title, .km-method-C__body, .km-method-C__band { grid-template-columns: 878px 1fr; }
+.km-method-C__tabs { grid-template-columns: 322px 334px 334px 1fr; height: 64px; }
+
+/* cells: edges drawn as lines so they can plot in raster order */
+.km-method-C__cell { position: relative; }
+.km-method-C__cell::before { /* top edge */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; z-index: 2;
+}
+.km-method-C__notecell::after, .km-method-C__tab + .km-method-C__tab::after, .km-method-C__spec::after, .km-method-C__tblock::after { /* left edge */
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line); transform-origin: 50% 0; z-index: 2;
+}
+.km-method-C__row--title .km-method-C__cell::before { background: var(--line-2); } /* the sheet opens on a strong rule */
+
+/* title row */
+.km-method-C__row--title { height: 384px; }
+.km-method-C__titlecell { display: flex; flex-direction: column; justify-content: flex-start; padding: 24px 24px 28px; }
+.km-method-C__titlecell .km-method-C__h { margin-top: auto; }
+.km-method-C__sheetlabel {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-method-C__notelabel { font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-method-C__h {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 0.94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-method-C__rule { display: block; width: 48px; height: 2px; margin-top: 28px; background: var(--signal); transform-origin: 0 50%; }
+.km-method-C__sheetlabel { display: flex; align-items: center; gap: 12px; }
+.km-method-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-method-C__h > span { display: block; white-space: nowrap; }
+.km-method-C__turn { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-method-C__notecell { display: flex; flex-direction: column; padding: 24px 24px 0; }
+.km-method-C__note { margin: auto 0 28px; font-size: 20px; line-height: 1.5; font-weight: var(--body-weight); color: var(--fg-2); }
+
+/* action cells: red = the System Audit, bordered = contact */
+/* the door pair (same on every C sheet): red audit cell cols 9–11 · contact cell col 12; mono cell ID top, Mona caps label bottom */
+.km-method-C__acts { display: grid; grid-template-columns: 334px 1fr; height: 64px; margin: 0 -24px; }
+.km-method-C__act {
+  display: flex; flex-direction: column; justify-content: space-between; padding: 12px 24px 13px;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-method-C__actid { font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap; opacity: 0.78; }
+.km-method-C__go {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-method-C__ico { width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 250ms var(--ease-out); }
+.km-method-C__ico--r { width: 13px; height: 11px; }
+.km-method-C__act--audit:hover .km-method-C__ico { transform: translate(2px, -2px); }
+.km-method-C__act--contact { padding: 12px 12px 13px; align-items: flex-start; }
+.km-method-C__act--contact .km-method-C__ico { align-self: flex-end; margin-top: 2px; }
+.km-method-C__act--contact:hover .km-method-C__ico { transform: translateX(3px); }
+.km-method-C__act--audit { background: var(--accent); color: var(--accent-fg); }
+.km-method-C__act--audit:hover { background: var(--accent-hover); }
+.km-method-C__act--contact { color: var(--fg); box-shadow: inset 1px 0 0 var(--line-2), inset 0 1px 0 var(--line-2); }
+.km-method-C__act--contact .km-method-C__actid { color: var(--fg-3); opacity: 1; }
+.km-method-C__act--contact:hover { background: var(--fg); color: var(--bg); }
+
+/* tab row */
+.km-method-C__tab {
+  display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; height: 64px; padding: 13px 24px 12px;
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; text-align: left;
+  color: var(--fg-2); transition: background-color 400ms var(--ease-inout), color 400ms var(--ease-inout);
+}
+.km-method-C__tabn { color: var(--fg-3); transition: color 400ms var(--ease-inout); }
+.km-method-C__tab:hover, .km-method-C__tab[aria-selected="true"] { background: var(--fg); color: var(--bg); }
+.km-method-C__tab:hover .km-method-C__tabn, .km-method-C__tab[aria-selected="true"] .km-method-C__tabn { color: var(--bg); }
+
+/* body: the drawing field */
+.km-method-C__body { height: 480px; }
+.km-method-C__field { position: relative; height: 480px; margin: 0; }
+.km-method-C__grid, .km-method-C__marks { position: absolute; left: 0; top: 0; overflow: visible; display: block; pointer-events: none; }
+.km-method-C__marks { z-index: 2; }
+.km-method-C__cons path { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 5; }
+.km-method-C__axisline { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-method-C__ticks { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-method-C__bar path { fill: none; stroke: var(--fg); stroke-width: 1; }
+.km-method-C__mask { fill: var(--bg); stroke: none; }
+.km-method-C__bar .km-method-C__tick { stroke: var(--fg-2); }
+.km-method-C__arrow { fill: none; stroke: var(--fg); stroke-width: 1.5; }
+.km-method-C__mk { fill: var(--fg); }
+
+.km-method-C__cap, .km-method-C__scale, .km-method-C__ax, .km-method-C__rh, .km-method-C__lbl, .km-method-C__key {
+  position: absolute; font-family: var(--f-mono); text-transform: uppercase; white-space: nowrap;
+}
+.km-method-C__cap { left: 24px; top: 24px; font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); color: var(--fg-2); }
+.km-method-C__scale { right: 24px; top: 24px; font-size: 11px; line-height: 14px; letter-spacing: 0.06em; color: var(--fg-3); }
+.km-method-C__ax { top: 68px; font-size: 11px; line-height: 12px; letter-spacing: 0.06em; color: var(--fg-3); }
+.km-method-C__rh { left: 20px; padding: 2px 4px; margin-top: -2px; background: var(--bg); font-size: 12px; line-height: 12px; letter-spacing: 0.06em; color: var(--fg-3); transition: color 400ms var(--ease-inout); }
+.km-method-C__rh.is-on { color: var(--fg); }
+.km-method-C__lbl {
+  font-size: 12px; line-height: 12px; letter-spacing: 0.06em; color: var(--fg-2);
+  padding: 4px 0; margin-top: -4px; border: 1px solid transparent; transition: color 400ms var(--ease-inout);
+}
+/* the active row's label becomes the dimension callout tag, on an orthogonal leader to the bar */
+.km-method-C__lbl.is-on { color: var(--fg); border-color: var(--fg-2); padding: 4px 7px; margin-right: -8px; }
+.km-method-C__lbl[style*="auto"].is-on { margin-right: 0; margin-left: -8px; }
+.km-method-C__lbl.is-on::after { content: ""; position: absolute; right: 7px; top: 100%; width: 1px; height: 7px; margin-top: 1px; background: var(--fg-2); }
+
+/* the installed red plane (the sheet's one red element besides the audit cell) */
+.km-method-C__plane {
+  position: absolute; left: 767px; top: 420px; width: 111px; height: 25px; background: var(--accent); z-index: 1;
+  transition: left 600ms var(--ease-inout), top 600ms var(--ease-inout), width 600ms var(--ease-inout);
+}
+.km-method-C[data-active="0"] .km-method-C__plane { left: 99px; top: 132px; width: 224px; }
+.km-method-C[data-active="1"] .km-method-C__plane { left: 322px; top: 228px; width: 223px; }
+.km-method-C[data-active="2"] .km-method-C__plane { left: 544px; top: 324px; width: 224px; }
+.km-method-C__key, .km-method-C__kbox {
+  width: 17px; height: 17px; font-family: var(--f-mono); font-size: 11px; line-height: 15px; text-align: center; letter-spacing: 0;
+  color: var(--fg); border: 1px solid var(--fg-2); transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.km-method-C__key { top: calc(100% + 9px); }
+.km-method-C__key::before { content: ""; position: absolute; left: 7px; bottom: 100%; width: 1px; height: 9px; margin-bottom: 1px; background: var(--fg-2); transition: background-color 200ms var(--ease-out); }
+.km-method-C__key--a { left: 0; }
+.km-method-C__key--b { right: 0; }
+.km-method-C:has(.km-method-C__srow[data-key="a"]:hover) .km-method-C__key--a,
+.km-method-C:has(.km-method-C__srow[data-key="b"]:hover) .km-method-C__key--b,
+.km-method-C__srow:hover .km-method-C__kbox { color: var(--accent); border-color: var(--accent); }
+.km-method-C:has(.km-method-C__srow[data-key="a"]:hover) .km-method-C__key--a::before,
+.km-method-C:has(.km-method-C__srow[data-key="b"]:hover) .km-method-C__key--b::before { background: var(--accent); }
+
+/* spec column */
+.km-method-C__spec { display: flex; flex-direction: column; padding: 0 24px; }
+.km-method-C__spechead {
+  display: flex; justify-content: space-between; align-items: center; height: 62px;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-method-C__specn { color: var(--fg); }
+.km-method-C__specname {
+  min-height: 32px; margin-top: 14px; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 32px; line-height: 1; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-method-C__table { margin: 32px 0 0; }
+.km-method-C__srow { border-top: 1px solid var(--line); padding: 14px 0 20px; }
+.km-method-C__srow dt {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-method-C__kbox { display: inline-block; flex: none; }
+.km-method-C__srow dd { margin: 10px 0 0; font-size: 15px; transition: opacity 220ms var(--ease-inout); }
+.km-method-C__vm { line-height: 1.5; color: var(--fg-2); }
+.km-method-C__vo { line-height: 1.45; color: var(--fg); }
+.km-method-C__spec.is-swap dd { opacity: 0; }
+
+/* bottom band: ticker + split title block */
+.km-method-C__band { height: 48px; }
+/* the C band (same on every sheet): 48px, legend on cols 1–8, segmented title block on cols 9–12 */
+.km-method-C__ticker {
+  display: flex; align-items: center; padding: 0 24px; white-space: pre;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-method-C__ticker span { transition: color 400ms var(--ease-inout); }
+.km-method-C__ticker span.is-on { color: var(--fg); }
+.km-method-C__tblock { display: flex; font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); }
+.km-method-C__tblock > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; white-space: nowrap; }
+.km-method-C__tblock > span:first-child { justify-content: flex-start; padding-left: 24px; }
+.km-method-C__tblock > span:last-child { color: var(--fg); }
+.km-method-C__tblock > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-method-C__tblock .km-logo-mark { --logo-h: 11px; color: var(--fg); }
+
+/* JS bootstrap: no transitions while the demo resets to [01] */
+.km-method-C.is-cold *, .km-method-C.is-cold *::before, .km-method-C.is-cold *::after { transition: none !important; }
+
+/* ── entrance, in drafting order (only under html.is-play) ── */
+.is-play .km-method-C__frame, .is-play .km-method-C__xh { animation: km-method-C-fade 300ms var(--ease-out) both; }
+.is-play .km-method-C__cell::before { animation: km-method-C-draw-x 420ms var(--ease-inout) both; animation-delay: calc(80ms + var(--d) * 40ms); }
+.is-play .km-method-C__cell::after { animation: km-method-C-draw-y 420ms var(--ease-inout) both; animation-delay: calc(120ms + var(--d) * 40ms); }
+.is-play .km-method-C__sheetlabel, .is-play .km-method-C__notelabel { animation: km-method-C-fade 400ms var(--ease-out) 260ms both; }
+.is-play .km-method-C__h > span { animation: km-method-C-up 600ms var(--ease-out) both; }
+.is-play .km-method-C__h > span:nth-child(1) { animation-delay: 300ms; }
+.is-play .km-method-C__h > span:nth-child(2) { animation-delay: 380ms; }
+.is-play .km-method-C__h > span:nth-child(3) { animation-delay: 460ms; }
+.is-play .km-method-C__rule { animation: km-method-C-draw-x 400ms var(--ease-inout) 760ms both; }
+.is-play .km-method-C__note { animation: km-method-C-up 600ms var(--ease-out) 520ms both; }
+.is-play .km-method-C__acts { animation: km-method-C-fade 500ms var(--ease-out) 680ms both; }
+.is-play .km-method-C__tab > span { animation: km-method-C-fade 400ms var(--ease-out) both; animation-delay: calc(360ms + var(--d) * 40ms); }
+.is-play .km-method-C__cap, .is-play .km-method-C__scale { animation: km-method-C-fade 400ms var(--ease-out) 640ms both; }
+.is-play .km-method-C__cons { animation: km-method-C-plot-grid 1000ms var(--ease-inout) 700ms both; }
+.is-play .km-method-C__axisline { stroke-dasharray: 1 1; animation: km-method-C-plot 700ms var(--ease-inout) 800ms both; }
+.is-play .km-method-C__ticks, .is-play .km-method-C__ax { animation: km-method-C-fade 400ms var(--ease-out) 1100ms both; }
+.is-play .km-method-C__bar path[pathLength] { stroke-dasharray: 1 1; animation: km-method-C-plot 520ms var(--ease-inout) both; animation-delay: calc(1300ms + var(--b) * 200ms); }
+.is-play .km-method-C__mask { animation: km-method-C-fade 200ms var(--ease-out) both; animation-delay: calc(1300ms + var(--b) * 200ms); }
+.is-play .km-method-C__mk { animation: km-method-C-fade 200ms var(--ease-out) both; animation-delay: calc(1300ms + var(--b) * 200ms); }
+.is-play .km-method-C__bar .km-method-C__tick, .is-play .km-method-C__arrow { animation: km-method-C-fade 200ms var(--ease-out) both; animation-delay: calc(1760ms + var(--b) * 200ms); }
+.is-play .km-method-C__rh, .is-play .km-method-C__lbl { animation: km-method-C-fade 400ms var(--ease-out) both; }
+.is-play [data-k="0"].km-method-C__rh, .is-play [data-k="0"].km-method-C__lbl { animation-delay: 1400ms; }
+.is-play [data-k="1"].km-method-C__rh, .is-play [data-k="1"].km-method-C__lbl { animation-delay: 1600ms; }
+.is-play [data-k="2"].km-method-C__rh, .is-play [data-k="2"].km-method-C__lbl { animation-delay: 1800ms; }
+.is-play [data-k="3"].km-method-C__rh, .is-play [data-k="3"].km-method-C__lbl { animation-delay: 2000ms; }
+.is-play .km-method-C__plane { animation: km-method-C-drop 400ms var(--ease-inout) 2300ms both; }
+.is-play .km-method-C__spec > *, .is-play .km-method-C__ticker, .is-play .km-method-C__tblock > span { animation: km-method-C-fade 500ms var(--ease-out) 900ms both; }
+
+@keyframes km-method-C-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-method-C-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes km-method-C-draw-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-method-C-draw-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-method-C-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-method-C-plot-grid { from { clip-path: inset(0 100% 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-method-C-drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }

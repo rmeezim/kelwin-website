@@ -1,0 +1,21 @@
+{
+  "title": "SHEET 04 · Stepped assembly",
+  "direction": "C",
+  "summary": "SHEET 04 draws the Revenue OS as an engineering assembly: four nested plates from the master mark (plus one outer step) extruded in 1px isometric and exploded up one axis with the heavy corner at the back, a single red plane slotted under the layer being installed (plates beneath it shown as dashed hidden lines) and a tabbed spec column that moves it — the stack documented like defence hardware, not shown as today's dashboard widgets.",
+  "reference": {
+    "site": "Atlas — '— Our Process' (NDAA-compliant motors)",
+    "mobbin_url": "https://mobbin.com/sites/sections/f4bb0189-fdb7-4075-a704-8f2f7b91f926",
+    "ref_file": "refs/stack-C.webp",
+    "borrowed": "Atlas's composition: the construction grid drawn faint and full height as the backdrop, a 1px white line drawing of one product exploded into its parts along a single shaft line with small caps tags, a short note held in a side column, and the current step's word set large in uppercase on the baseline under the drawing, with a numbered step pager.",
+    "kelwin": "The motor becomes four nested plates built from the founder's master mark (three heavy pieces at true proportions + one outer step), extruded as 1px isometric plates with the plan turned a quarter so the heavy corner stands at the back and each layer rises behind the one before, exploded up a dashed axis over a dashed datum footprint; Heron's flat red plane slots under the active layer and is the sheet's one drawing red, with the plates beneath it shown as dashed hidden lines; real dimension callouts (the 211U footprint and the plane's elevation, keyed to the tabs' EL. values); 'INTEGRATE' becomes the active layer's name; Atlas's '01 ●○○○' pager becomes inverted [01]–[04] tab cells over a lettered spec table (A · What it is / B · In practice, keyed to callouts A and B) and the two door cells; framed sheet with title cell (red-square sheet label, uppercase title whose turn drops to the light accent, 48×2 red rule), note cell, crosshairs at chosen intersections and a title block."
+  },
+  "motion": [
+    "entrance (drafting order, --ease-inout): frame and crosshairs fade (300ms); cell borders draw in raster order (40ms stagger); the four title lines fade in line by line and the red rule draws; the construction grid, datum and axis fade up; FIG. 4.1 plots via stroke-dashoffset plate by plate from the core up (≈1.8s), then the dimensions and tag leaders; the red plane drops into L1 with its hidden lines (opacity + 8px settle, 400ms); the layer word wipes in left to right; the legend types on (14ms per character).",
+    "state change: the tabs step [01] → [02] → [03] at 1.2s intervals; the red plane glides down to the matching layer (600ms --ease-inout) and re-slots so the plates above it occlude it while the plates now beneath it turn to dashed hidden lines, the elevation dimension re-measures (EL. +162U → +114U → +66U), callout A moves to the active plate's tag, and the spec values and the layer word crossfade.",
+    "ambient: one UTC readout on the right frame edge updates every 6s with a 200ms dip; nothing else loops.",
+    "interaction: tabs are live (click any layer); hovering spec row A or B turns its lettered callout and leader --accent; hovering the contact cell inverts it; the audit cell deepens and its drawn ↗ nudges up-right.",
+    "on the live site: the tab steps are scroll-linked as the sheet passes; prefers-reduced-motion shows the fully plotted final state with L3 · Orchestration installed."
+  ],
+  "demoMs": 6000,
+  "notes": "Sheet and figure numbered 04 / 4.1 to match the stack's position (A's FIG. 04). Title row is five 96px rows (480) so the 88px uppercase title fits on four lines. Four layers: the source (RevenueOS.tsx) has three; the Data layer copy comes from capability-data.tsx. All geometry is the master mark's own proportions; dimension values are real mark units, not data."
+}

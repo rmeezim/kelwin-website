@@ -1,0 +1,21 @@
+{
+  "title": "Change Notice WAS→IS",
+  "direction": "C",
+  "summary": "Sheet 11 reframes before/after as an engineering change notice. Six shifts are diffed WAS (rev A) | IS (rev B) on cell IDs and lettered keys, the IS column stands raised as a flat panel, and one red install line runs down the seam. A drawing-set document replaces today's HUD table.",
+  "reference": {
+    "site": "Neon",
+    "mobbin_url": "https://mobbin.com/screens/5fb28d4d-e574-43e5-9ea4-79cbee893e0f",
+    "ref_file": "refs/beforeafter-C.webp",
+    "borrowed": "Neon's Schema Diff panel: a header row with a Base selector, a Compare selector and a solid Compare button. Below it, two panes split by one seam, each with a line-number gutter, '@@' hunk headers and −/+ signed lines, so the old and new versions read against each other line by line.",
+    "kelwin": "The diff becomes a drawing-set ECN on a graphite night plate, in C's grammar. It has frame verticals, a strong opening rule and a title cell: a red-square 'SHEET 11/14' label, an 88px uppercase 'BEFORE KELWIN. / AFTER KELWIN.' whose before line drops to --fg-3 to mirror WAS→IS, and a 48×2 red rule. The note cell holds the 24px light lede, with the red 'Initiate system audit ↗' cell and a bordered 'Contact →' cell at its foot, as on the other sheets. Neon's Base / Compare selectors become bordered header cells (C1·R4 Ref · Dimension, Base · Rev A · Without the system, Compare · Rev B · With the system, C12·R4 Change). The line-number gutter becomes a cell-ID gutter: R·01–R·06, lettered keys A–F and mono dimension names. Neon's '@@' hunk header becomes a plain mono change-set line (ECN-11 · 6 changes · held constant: team, market, activity). The pink/green line tints are dropped: WAS is --fg-3 with '−', IS is --fg with '+', and the IS pane is raised 24px proud as a flat --panel column (Linear's pricing column). A mono change-class column (Replace, Systemise, Add, Reroute, Instrument, Transfer) adds the ECN reading. The sheet's one drawing element in red is a datum, the 'install line', down the WAS | IS seam with a bordered mono tag. The bottom band has a legend and the segmented title block shared by every C sheet (SHEET 11/14 · ECN-11 · REV C · Kelwin/GTM; the A→B revision lives in the header cells and legend). There are no cursors, prompts, glows, HUD readouts or corner brackets."
+  },
+  "motion": [
+    "entrance, in drafting order: the frame verticals and three crosshairs fade in (300ms). Cell edges draw in raster order (420ms each, 40ms stagger), the title lines rise 10px and the 48×2 rule draws. The note follows and the audit and contact cells settle into the note cell's foot (400ms). The header cells, change-set rule and ref | WAS vertical draw, then each row's hairline draws and its ref + WAS line fade in (60ms stagger).",
+    "the IS column: at 1.24s the raised --panel column settles into place (opacity and 8px, 400ms --ease-inout) with its Compare and Change heads. Each IS line then plots left → right with a clip wipe (520ms --ease-inout, 130ms stagger), and its mono change class types on at 24ms per character as the line finishes.",
+    "last beat: the red install line drops down the WAS | IS seam (scaleY, 640ms --ease-inout, at 2.56s), then its 'Install line · Rev B' tag fades in. The plot is complete by about 3.3s.",
+    "interaction: hovering a row inverts its ref cell (--fg fill, --bg text) and turns its lettered key --accent. The audit cell deepens on hover and the contact cell inverts.",
+    "on the live site: the sheet plots once when it enters the viewport. With reduced motion the fully plotted sheet shows."
+  ],
+  "demoMs": 3600,
+  "notes": "Sheet numbering follows the built siblings (reframe 02/14, method 08/14), so before/after is SHEET 11/14. Rows use 72px (¾ of the 96px module) to keep the sheet at about 1070px. The datum line is 2px so it reads as a datum against the 1px cell lines. All other lines are 1px. The change classes are editorial readings, not data. The action cells sit in the note cell, as on method C, not in the table header, so the table reads as a pure WAS | IS document."
+}

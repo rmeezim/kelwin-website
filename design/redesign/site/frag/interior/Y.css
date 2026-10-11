@@ -1,0 +1,140 @@
+/* ── interior · Y · Datasheet (round 2, A×C) ─────────────────────────────
+   An engineering datasheet on graphite. Left, cols 1–5: the capability is
+   named like a product — "Narrative / Systems" in two voices — then the
+   lede and a three-row facts ledger anchored at the foot of the column.
+   Right, cols 7–12, under one caption hairline: FOLIO (P8) — the one
+   document Narrative Systems installs, drawn to scale. Its four blocks are
+   the four services, read top → bottom (positioning line · message matrix ·
+   script · proof chain), each keyed by one callout on the sheet's edge.
+   The morph: the sheet is typeset block by block on a dashed (draft) edge,
+   then issued — the edge plots solid. The one red: the positioning line,
+   the sentence everything else is written from. No film, plate or button.
+   Then a ruled cut: the page's statement opens the body.                  */
+
+/* ── nav (96px): hero X's bar, solid graphite ── */
+.km-interior-Y__nav {
+  position: relative; z-index: 2; height: 96px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-interior-Y__nav::after {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-interior-Y__brand { display: inline-flex; color: var(--fg); }
+.km-interior-Y__brand .km-logo { --logo-h: 24px; }
+.km-interior-Y__menu {
+  position: absolute; left: 50%; top: 0; bottom: 0; transform: translateX(-50%);
+  display: flex; align-items: stretch; gap: 40px; white-space: nowrap;
+}
+.km-interior-Y__item {
+  position: relative; display: inline-flex; align-items: center;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.km-interior-Y__item:hover, .km-interior-Y__item.is-current { color: var(--fg); }
+.km-interior-Y__item.is-current::after {
+  content: ""; position: absolute; left: 0; right: -.18em; bottom: 0; height: 1px; background: var(--fg); transform-origin: left center;
+}
+.km-interior-Y__reg { z-index: 3; }
+
+/* ── the sheet: left column (cols 1–5) · figure (cols 7–12) ── */
+.km-interior-Y__sheet {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  padding-top: 36px; padding-bottom: 72px;
+}
+.km-interior-Y__left { grid-column: 1 / span 5; display: flex; flex-direction: column; }
+
+/* the name, in the head grammar's two voices: "Narrative" in ink, "Systems" light */
+.km-interior-Y__title { --ac-h-sec: 96px; margin-top: 36px; }
+.km-interior-Y__rule { margin-top: 36px; }
+.km-interior-Y__lede { margin-top: 28px; max-width: 24em; }
+.km-interior-Y__facts { margin-top: auto; padding-top: 56px; width: calc(4 * var(--col) + 3 * var(--gutter)); }   /* ≥ 56px under the lede; its foot shares the sheet's foot */
+.km-interior-Y__facts > dt { min-width: 92px; }
+.km-interior-Y__facts > :nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+/* the quiet first door: "The System Audit" is a link to /audit, not a second red */
+.km-interior-Y__go { display: inline-flex; align-items: center; gap: 10px; box-shadow: inset 0 -1px 0 var(--line-2); transition: box-shadow 200ms var(--ease-out); }
+.km-interior-Y__go:hover { box-shadow: inset 0 -1px 0 var(--fg); }
+.km-interior-Y__go svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; transition: transform 250ms var(--ease-out); }
+.km-interior-Y__go:hover svg { transform: translate(2px, -2px); }
+
+/* the figure: one caption hairline on top, the sheet standing on the column's foot */
+.km-interior-Y__fig { grid-column: 7 / span 6; display: flex; flex-direction: column; --ac-occlude: var(--bg); }
+.km-interior-Y__capline { position: relative; display: flex; justify-content: space-between; padding-bottom: 15px; }
+.km-interior-Y__capline::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%;
+}
+.km-interior-Y__capline .ac-cap:first-child { color: var(--fg-2); }
+/* the sheet's state, right of the caption: Draft while it is typeset, Issued once the edge is solid */
+.km-interior-Y__sw { display: inline-grid; justify-items: end; }
+.km-interior-Y__sw > * { grid-area: 1 / 1; }
+.km-interior-Y__sw-a { opacity: 0; }
+.km-interior-Y__field { margin-top: auto; width: 644px; }
+.km-interior-Y__svg { position: absolute; left: 0; top: 0; }
+/* text rules: the document's lines of copy, quieter than its structure */
+.km-interior-Y__r { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-linecap: butt; }
+.km-interior-Y__h { fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: butt; }
+.km-interior-Y__node { fill: var(--fg); stroke: var(--fg); stroke-width: 1; }
+.km-interior-Y__draft { opacity: 0; }      /* resting state: issued — the solid edge only */
+
+/* ── the body: a ruled cut (graphite → graphite), margin to margin ── */
+.km-interior-Y__body { position: relative; padding: 64px 0 32px; }
+.km-interior-Y__body::before {
+  content: ""; position: absolute; top: 0; left: var(--margin); right: var(--margin); height: 1px;
+  background: var(--line); transform-origin: 0 50%;
+}
+.km-interior-Y__head { --ac-d0: 2700ms; }
+.km-interior-Y__h2 { --ac-h-sec: 64px; margin-top: 24px; }
+.km-interior-Y__head > .ac-rule { margin-top: 28px; }
+.km-interior-Y__head > .ac-note { grid-row: 2 / span 2; align-self: end; margin-bottom: -6px; }
+.km-interior-Y__strips { margin-top: 40px; }
+.km-interior-Y__strips .ac-strip { padding-top: 0; gap: 18px; }
+.km-interior-Y__strips .ac-strip::before { top: -4px; }
+.km-interior-Y__strips .ac-callout__code { align-self: flex-start; }
+.km-interior-Y__strips .ac-support { max-width: 34ch; }
+
+/* ── entrance (html.is-play only) ── */
+.is-play .km-interior-Y__nav::after { animation: ac-drawx 900ms var(--ease-out) both; }
+.is-play .km-interior-Y__brand,
+.is-play .km-interior-Y__menu,
+.is-play .km-interior-Y__nav .ac-btn-o { animation: ac-fade 600ms var(--ease-out) 60ms both; }
+.is-play .km-interior-Y__item.is-current::after { animation: ac-drawx 500ms var(--ease-out) 420ms both; }
+
+/* left column: the head choreography, by hand (label → name → rule → lede → facts) */
+.is-play .km-interior-Y__label { animation: ac-fade 300ms var(--ease-out) 120ms both; }
+.is-play .km-interior-Y__title .ac-line > span { animation: ac-rise 800ms var(--ease-out) 200ms both; }
+.is-play .km-interior-Y__title .ac-line + .ac-line > span { animation-delay: 400ms; }
+.is-play .km-interior-Y__rule { animation: ac-drawx 600ms var(--ease-out) 640ms both; }
+.is-play .km-interior-Y__lede { animation: ac-up 600ms var(--ease-out) 720ms both; }
+.is-play .km-interior-Y__facts > * { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(820ms + var(--i) * 80ms); }
+
+/* the figure: caption, then the sheet is typeset top → bottom on a draft edge, then issued */
+.is-play .km-interior-Y__capline::after { animation: ac-drawx 900ms var(--ease-out) 200ms both; }
+.is-play .km-interior-Y__capline .ac-cap { animation: ac-fade 500ms var(--ease-out) 300ms both; }
+.is-play .km-interior-Y__sw-a { animation: km-interior-Y-out 4400ms linear both; }
+.is-play .km-interior-Y__sw-b { animation: ac-fade 400ms var(--ease-out) 3900ms both; }
+.is-play .km-interior-Y__draft { animation: km-interior-Y-draft 4400ms linear both; }
+.is-play .km-interior-Y__edge { stroke-dasharray: 1; animation: ac-plot 900ms var(--ease-inout) 3500ms both; }
+.is-play .km-interior-Y__p { stroke-dasharray: 1; animation: ac-plot var(--t, 420ms) var(--ease-inout) var(--d, 900ms) both; }
+.is-play .km-interior-Y__in { animation: ac-fade 400ms var(--ease-out) var(--d, 900ms) both; }
+.is-play .km-interior-Y__node { animation: km-interior-Y-latch 300ms var(--ease-out) var(--d, 2900ms) both; }
+
+/* body: as if scrolled to — the cut draws, the kit head runs (shifted by --ac-d0), the strips follow 01.1 → 01.4 */
+.is-play .km-interior-Y__body::before { animation: ac-drawx 1000ms var(--ease-out) 2500ms both; }
+.is-play .km-interior-Y__strips .ac-strip { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(3400ms + var(--i) * 110ms); }
+.is-play .km-interior-Y__strips .ac-strip::before { animation: ac-drawy 700ms var(--ease-out) both; animation-delay: calc(3350ms + var(--i) * 110ms); }
+
+/* the draft edge: in at 0.6s, holds while the blocks are set, out as the solid edge is issued */
+@keyframes km-interior-Y-draft {
+  0%, 13% { opacity: 0; }
+  20%, 82% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes km-interior-Y-out { 0%, 8% { opacity: 0; } 14%, 84% { opacity: 1; } 88%, 100% { opacity: 0; } }
+/* a proof node latches: outline → filled */
+@keyframes km-interior-Y-latch {
+  0% { opacity: 0; fill: var(--bg); stroke: var(--fg-2); }
+  1% { opacity: 1; fill: var(--bg); stroke: var(--fg-2); }
+  100% { opacity: 1; fill: var(--fg); stroke: var(--fg); }
+}

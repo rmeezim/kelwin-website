@@ -1,0 +1,111 @@
+/* ── footer · A · Cinematic Figures — FIG. 11, the mark, installed ──
+   The page closes the way it opened. The hero is FIG. 01 (the film) over a
+   hairline band with its caption and controls; the footer is FIG. 11 (the
+   real lockup, margin to margin, seated on the same kind of band). Above it,
+   the sitemap is set as A's hairline strips (Metalab rhythm: index, wide
+   title, items). One red element: the mark's core square. */
+.km-footer-A {
+  --lk-w: calc(var(--stage) - 2 * var(--margin));   /* 1312px: cols 1–12 */
+  --lk-h: calc(var(--lk-w) * 152 / 734);            /* ≈ 271.7px */
+  padding: 112px var(--margin) 0;
+}
+
+/* ── label row (A anatomy: red-square label at col 1, FIG. at col 12) ── */
+.km-footer-A__head { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); }
+.km-footer-A__figno, .km-footer-A__ix, .km-footer-A__cap, .km-footer-A__copy {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-footer-A__label {
+  grid-column: 1 / 7; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-footer-A__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-footer-A__figno { grid-column: 7 / 13; justify-self: end; color: var(--fg-3); }
+
+/* ── the strips: cols 1–3 / 4–6 / 7–9 / 10–12, divided by full-height hairlines ── */
+.km-footer-A__strips {
+  margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); column-gap: var(--gutter);
+}
+.km-footer-A__strip { position: relative; }
+.km-footer-A__strip + .km-footer-A__strip::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--gutter) / -2); width: 1px;
+  background: var(--line); transform-origin: 50% 0;
+}
+.km-footer-A__ix { color: var(--fg-3); }
+.km-footer-A__h {
+  margin-top: 20px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 28px; line-height: 1.1; letter-spacing: var(--display-tracking); color: var(--fg);
+  transition: color 300ms var(--ease-out);
+}
+.km-footer-A__ul { margin-top: 28px; display: grid; row-gap: 8px; }
+.km-footer-A__a, .km-footer-A__t { font-size: 17px; line-height: 26px; }
+.km-footer-A__t { color: var(--fg-2); font-variant-numeric: tabular-nums; }
+.km-footer-A__t--quiet { color: var(--fg-3); }
+.km-footer-A__a {
+  position: relative; display: inline-flex; align-items: baseline; gap: 8px; color: var(--fg-2);
+  transition: color 300ms var(--ease-out);
+}
+.km-footer-A__a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out);
+}
+.km-footer-A__a--door { color: var(--fg); }
+.km-footer-A__ar { display: inline-block; flex: none; align-self: center; width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 300ms var(--ease-out); }
+.km-footer-A__ar--go { width: 13px; height: 11px; }
+.km-footer-A__a:hover, .km-footer-A__a:focus-visible { color: var(--fg); outline: none; }
+.km-footer-A__a:hover::after, .km-footer-A__a:focus-visible::after { transform: scaleX(1); }
+.km-footer-A__a[href="/audit"]:hover .km-footer-A__ar { transform: translate(2px, -2px); }
+.km-footer-A__a[href="/contact"]:hover .km-footer-A__ar { transform: translateX(3px); }
+
+/* ── FIG. 11: the real lockup, margin to margin, seated on the band's rule ── */
+.km-footer-A__fig { position: relative; width: var(--lk-w); height: var(--lk-h); margin-top: 120px; overflow: hidden; }
+.km-footer-A__svg { display: block; width: 100%; height: 100%; }
+.km-footer-A__word path, .km-footer-A__k rect { fill: var(--fg); }
+.km-footer-A__core rect { fill: var(--accent); }
+.km-footer-A__word, .km-footer-A__k { transform-box: fill-box; }
+
+/* ── caption band (as under the hero film): FIG. caption left · controls right ── */
+.km-footer-A__band {
+  position: relative; height: 88px; display: flex; align-items: center; justify-content: space-between;
+}
+.km-footer-A__band::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line-2);
+  transform-origin: 0 50%;
+}
+.km-footer-A__cap { color: var(--fg-3); }
+.km-footer-A__ctl { display: flex; align-items: center; gap: 12px; }
+.km-footer-A__copy { color: var(--fg-3); margin-right: 20px; }
+.km-footer-A__pair { display: flex; border: 1px solid var(--line-2); }
+.km-footer-A__pair a, .km-footer-A__top {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 46px; padding: 0 20px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: background-color 300ms var(--ease-out), color 300ms var(--ease-out), border-color 300ms var(--ease-out);
+}
+.km-footer-A__pair a + a { border-left: 1px solid var(--line-2); }
+.km-footer-A__pair a:hover, .km-footer-A__pair a:focus-visible { background: var(--fg); color: var(--bg); outline: none; }
+.km-footer-A__top { height: 48px; min-width: 176px; border: 1px solid var(--line-2); color: var(--fg); }
+.km-footer-A__top:hover, .km-footer-A__top:focus-visible { border-color: var(--fg); color: var(--fg); outline: none; }
+.km-footer-A__up { display: inline-block; flex: none; width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 300ms var(--ease-out); }
+.km-footer-A__top:hover .km-footer-A__up { transform: translate(2px, -2px); }
+
+/* ── entrance (html.is-play only): label → strips → wordmark rises → mark assembles → red core lands ── */
+@keyframes km-footer-A-fade { from { opacity: 0; } }
+@keyframes km-footer-A-drawx { from { transform: scaleX(0); } }
+@keyframes km-footer-A-drawy { from { transform: scaleY(0); } }
+@keyframes km-footer-A-up { from { opacity: 0; transform: translateY(12px); } }
+@keyframes km-footer-A-rise { from { transform: translateY(118%); } }
+@keyframes km-footer-A-slide { from { opacity: 0; transform: translate(34px, -34px); } }
+@keyframes km-footer-A-land { from { opacity: 0; transform: translateY(-12px); } }
+
+.is-play .km-footer-A__label, .is-play .km-footer-A__figno { animation: km-footer-A-fade 300ms var(--ease-out) both; }
+.is-play .km-footer-A__strip + .km-footer-A__strip::before { animation: km-footer-A-drawy 900ms var(--ease-out) 120ms both; }
+.is-play .km-footer-A__strip > * { animation: km-footer-A-up 600ms var(--ease-out) both; animation-delay: calc(200ms + var(--i) * 80ms); }
+.is-play .km-footer-A__band::before { animation: km-footer-A-drawx 1200ms var(--ease-out) 300ms both; }
+.is-play .km-footer-A__word { animation: km-footer-A-rise 800ms var(--ease-out) 520ms both; }
+.is-play .km-footer-A__k[data-k="1"] { animation: km-footer-A-slide 700ms var(--ease-out) 1180ms both; }
+.is-play .km-footer-A__k[data-k="2"] { animation: km-footer-A-slide 700ms var(--ease-out) 1300ms both; }
+.is-play .km-footer-A__k[data-k="3"] { animation: km-footer-A-land 400ms var(--ease-out) 2000ms both; }
+.is-play .km-footer-A__cap, .is-play .km-footer-A__ctl { animation: km-footer-A-fade 500ms var(--ease-out) 1300ms both; }

@@ -1,0 +1,72 @@
+/* ── principle · B · Quiet Ledger ────────────────────────────────────
+   Frontify's near-empty band on paper, hung from the Index Spine. The
+   spine column holds only the index; one sentence, hand-set on five
+   lines at section-title scale, runs down cols 4–10: three lines of
+   principle in ink, then its two-line disclaimer muted. Two-tone comes
+   from colour, not weight. Cols 11–12 and everything below are left
+   empty on purpose.                                                  */
+
+.km-principle-B {
+  --spine-x: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));   /* ≈ 386 */
+  padding: 128px 0 128px; overflow: hidden;
+}
+
+/* index spine (col 3|4 gutter), continuous */
+.km-principle-B__spine { position: absolute; top: 0; bottom: 0; left: var(--spine-x); width: 1px; background: var(--line); }
+
+.km-principle-B__inner {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  align-items: start;
+}
+
+/* opening rule: spine → right margin, square at the joint */
+.km-principle-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-principle-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-principle-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+
+/* spine column: index + the red-square caps label */
+.km-principle-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-principle-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-principle-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-principle-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-principle-B__redrule { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--signal); transform-origin: 0 50%; }
+
+/* the statement: 88px wide (the section-title scale), 92px leading, five hand-set lines */
+.km-principle-B__st {
+  grid-column: 4 / 11; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 92px; letter-spacing: var(--display-tracking); white-space: nowrap;
+}
+.km-principle-B__s1, .km-principle-B__s2, .km-principle-B__ln { display: block; }
+.km-principle-B__s1 { color: var(--fg); }
+.km-principle-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-principle-B__w { display: inline-block; }
+
+/* ── entrance (html.is-play): long durations, short distances ────────
+   rule draws from the spine → index → the sentence rises at noise
+   level (--fg-3, the same tone as its disclaimer) → the muted lines
+   follow → the principle clears to ink word by word; the disclaimer
+   stays muted. Live site: the clearing is scrubbed by scroll.          */
+.is-play .km-principle-B__rule { animation: km-principle-B-draw 900ms var(--ease-out) both; }
+.is-play .km-principle-B__joint { animation: km-principle-B-fade 300ms var(--ease-out) both; }
+.is-play .km-principle-B__index { animation: km-principle-B-fade 400ms var(--ease-out) 300ms both; }
+.is-play .km-principle-B__s1 .km-principle-B__w {
+  animation:
+    km-principle-B-rise 700ms var(--ease-out) 400ms both,
+    km-principle-B-clear 520ms var(--ease-inout) calc(1180ms + var(--i) * 140ms) both;
+}
+.is-play .km-principle-B__s2 .km-principle-B__w { animation: km-principle-B-rise 700ms var(--ease-out) 560ms both; }
+.is-play .km-principle-B__redrule { animation: km-principle-B-draw 600ms var(--ease-out) 900ms both; }
+
+@keyframes km-principle-B-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-principle-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-principle-B-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-principle-B-clear { from { color: var(--fg-3); } to { color: var(--fg); } }

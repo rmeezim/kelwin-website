@@ -1,0 +1,248 @@
+{
+ "hero": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Daylight frost is inherently softer than A and C. The standing figure reads clearly as a person, but the man seen from behind reads only as a grey head-and-shoulder mass.",
+   "The 4-line two-sentence statement is heavy at 92px and runs to col 9, wider than the founder's '\u2248 cols 1\u20137'. This follows direction B's sentence-plus-muted-sentence voice.",
+   "Shares the founder-mandated left-stack composition with A and C. Distinctness comes from the daylight surface, ledger and spine rather than from the layout."
+  ]
+ },
+ "architecture": {
+  "after": {
+   "proprietary": 8,
+   "direction": 9,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The open ledger body runs 4 lines in the 3-column cell, which is fine but dense for B's lowest-density brief.",
+   "The loop interior is deliberately quiet. Next to A and C it is the calm option, not the spectacular one."
+  ]
+ },
+ "fit": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Still a tall stage at 1358px. The live site would use B's 200px padding, as the notes say.",
+   "Proprietary character rests mostly on direction B's spine grammar. The section itself is a disciplined pair of accordions, by design."
+  ]
+ },
+ "footer": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The 200px empty band at the top is B's prescribed section anatomy. In an isolated render it still reads as dead space.",
+   "The doors intentionally repeat two sitemap destinations (The System Audit, contact) as the promoted two-door rule.",
+   "Cols 1\u20133 are empty below the '14' index by design (spine rule)."
+  ]
+ },
+ "nav": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Sibling sections 02\u201305 in the index column repeat the bar's items. This is kept deliberately as ZARA's category column but is redundant on a live nav.",
+   "The stage is 800px rather than ~760 so the open film reads as people."
+  ]
+ },
+ "stack": {
+  "after": {
+   "proprietary": 8,
+   "direction": 9,
+   "distinct": 9,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Still the quietest of the three by design (Legora calm). Someone skimming could take it for an accordion; its distinctiveness rests on the spine and the hanging corners.",
+   "The ledger grammar is close to reframe-B's (same B system). That's coherent, but the two sections look like siblings.",
+   "Data row copy comes from capability-data.tsx (the source has three layers)."
+  ]
+ },
+ "assets": {
+  "after": {
+   "proprietary": 7,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Proprietary is still about 7. The skeleton is a direction-mandated ledger, so it keeps a family resemblance to a table even though the specimen page and the ownership transfer now carry it.",
+   "The open row leaves deliberate empty space under the descriptor, as B's low density calls for. Some may read it as a gap.",
+   "The spine index renders '10' with Mona Sans' slashed tabular zero, the same as stack-B's '04'. The coherence pass should decide this for the whole set."
+  ]
+ },
+ "faq": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Still tall at 1336px, under the 1400 hard max but above the 1100 aim. That comes from B's prescribed generous spacing and one open answer.",
+   "The mid-entrance frame (550ms) is still mostly the spine and opening rule, which is B's calm sequence by design."
+  ]
+ },
+ "reframe": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "B stays the quietest option by design. If the founder reads calm as generic, the stepped tree and drawn strikes are the only signature moves, plus the spine.",
+   "Sibling B sections still set statements at 56px with mono-only spine labels and no red rule. The coherence review must sync them to this head.",
+   "Adding the red-square label and red rule bends B's original 'no red squares except the hero' rule in favour of the founder's later section-head DNA."
+  ]
+ },
+ "method": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 9,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Still the calmest and least graphic option by design (direction B has no figures). A founder chasing 'almost Palantir' may read it as too quiet next to A and C."
+  ]
+ },
+ "beforeafter": {
+  "after": {
+   "proprietary": 7,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The composition is mandated by direction B's section map (a two-column ledger), so it is still structurally a without | with table. The spine, the joint, the 88px statement and the open row are what separate it from today's site. Proprietary stays at 7.",
+   "The open row's two descriptors expand the source pairs in plain language. They make no claims or results, but they are new copy."
+  ]
+ },
+ "interior": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The 01/02 spine numerals render with Mona's slashed tabular zero. This matches reframe-B but reads slightly odd.",
+   "The S\u00b703 row's lower padding is cropped at 1400px.",
+   "This is the quietest and most conventional of the three; the hairline accordion ledger is Legora-standard by the direction's design."
+  ]
+ },
+ "evidence": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "This is still the most conventional of the three, built on big stat rows. Its ownership comes from the spine devices and calm execution, so the founder may still find it the least distinctive.",
+   "Same cross-section type-scale question as A: the spec gives a minimum of 88px for section titles, and all B sections use 56px.",
+   "Mona Sans renders a slashed zero in the spine index ('03'). This matches the other B sections."
+  ]
+ },
+ "statechange": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The 200px empty opening band is B's spine anatomy and is kept for coherence with reframe-B.",
+   "No red-square label or red rule. B reserves red for actions, so this conflicts with the founder's 'section heads echo the hero' line; that is a coherence decision.",
+   "88px head is an outlier versus sibling B sections at 56px. Propagate or reconcile."
+  ]
+ },
+ "principle": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Without motion, B's ownable character comes from the page-wide spine, index and joint system plus the cap-line precision. Its strongest beat, the word-by-word clearing, only shows when animated. This is the quietest option by direction, and a founder could still read the static frame as 'a big quote'.",
+   "B siblings disagree on the spine label: method-B uses a red-square caps label, while the others (including this one) use a mono 0.06em name. The section headline tracking also differs (-0.018em here vs -0.03em in statechange-B). These are for the coherence review."
+  ]
+ },
+ "cta": {
+  "after": {
+   "proprietary": 7,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Proprietary is still 7. A red inset CTA panel with a headline, a button and a terms list is the archetype B's brief prescribes (Legora's closing panel). The spine-hung panel, the rule-built mark and the open ledger make it Kelwin's, but going further would break the Quiet Ledger direction. If the founder wants more spectacle at the close, A or C is the answer."
+  ]
+ }
+}

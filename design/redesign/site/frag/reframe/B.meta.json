@@ -1,0 +1,22 @@
+{
+ "title": "The struck ledger",
+ "direction": "B",
+ "summary": "The reframe as a quiet correction ledger hung from the Index Spine: three things the market sees are struck through in place beside the layer that actually produces them, each real layer hanging one notch lower than the last on a hairline right angle — 'look one layer down' made literal — with one row open to explain; calmer and far more legible than today's three HUD cards.",
+ "reference": {
+  "site": "Ploy (the reframe)",
+  "mobbin_url": "https://mobbin.com/sites/sections/9138eef2-4217-4b65-bdac-b9f7909c6d40",
+  "ref_file": "refs/reframe-B.webp",
+  "borrowed": "Ploy's literally-labelled 'The reframe': a lone label in a narrow left column, a big statement offset into the right two-thirds with a short lede, then a full-width two-column correction table ('today' → 'on Ploy') with an arrow joint sitting on the column divider and hairline-divided rows of claim + grey support.",
+  "kelwin": "The label column becomes the Index Spine (light 02 + the founder's red-square caps label) and the spine itself is the hand-off from the hero, dropping into this section's right-angle joint; the statement is an 88px wide sentence plus a muted light sentence ('Look one layer down.') over the 48×2 red rule; the table becomes the B ledger — no card, tint, radius or chip — with mono heads, a hairline → landing on the col 8|9 divider, N·01–03 indices, each symptom struck through in --fg-3 beside its real layer in ink, the real layers stepping down 24px per row on hairline right angles (the mark's corner), and Legora's +/− so exactly one row opens in place."
+ },
+ "motion": [
+  "entrance: the spine drops from the top edge (360ms) into the joint, the 6px square lands and the opening rule draws spine → right margin (900ms) while the 02 index and red-square label fade; the statement rises 12px (700ms) with the muted sentence 160ms behind; the 48×2 red rule draws; body and side note follow; the ledger's divider, arrow leader and row rules draw at a 60ms stagger",
+  "signature beat (from ~1.4s): each symptom's line-through draws left → right (600ms, 200ms apart) as its real layer slides in 8px beside it, one notch lower each row — the misdiagnosis is corrected in place",
+  "state change (~2.5s): the ledger closes N·01 and opens N·02 in place (height + opacity 360ms --ease-inout, + rotates to −)",
+  "ambient: none",
+  "interaction: rows open on click (one open at a time); a hovered row fills --panel and its real layer shifts 8px right; the link underline draws from the left",
+  "on the live site: the timed open of N·02 is click-only; the spine index is sticky and crossfades as sections pass; reduced motion shows the final state with N·01 open"
+ ],
+ "demoMs": 3000,
+ "notes": "Statement set at 88px in cols 4–12: 'Most teams are fixing / the wrong layer.' + muted light 'Look one layer down.' (edited from 'The cause is one layer down.' to stay on one line). The tooling symptom is shortened to 'A tooling problem.' so the drawn strike stays on one line. This head is the template every B section now follows. Coherence pass (direction B, one site): every section now shares one head — 64px light index + red-square caps label (Mona 500, 11px, .18em) in the spine column, 88px statement at weight 430 / −0.018em with exactly one light (300) muted sentence, the 48×2 red rule, 18/30 lede — at 48/44/32px offsets from a 6px joint, with 128px top and bottom padding (the live site keeps B's 200px). Mono captions are 11px at .18em; spine numerals drop tabular figures (Mona's tabular zero is slashed); quiet doors are 12px tracked caps with a drawn arrow. Here: padding 160/120 → 128/128, spine label 'Reframe', ledger index 11px, the quiet door's arrow drawn."
+}

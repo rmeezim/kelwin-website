@@ -1,0 +1,99 @@
+/* ── stack · X · Cinematic Drafting (A × B × C) — FIG. 04, STRATA ──
+   A's head; C's "drawing left, detail right" split, drawn on the sheet inside a
+   registration frame (the neighbouring reframe and architecture figures live on
+   plates) as four rectangular isometric slabs (never L-shaped, never stepped),
+   each top face inscribed with its job; B's ledger on the right is the one
+   control and moves the single red top face, and ends on one quiet door.
+   Default CSS = final state: installed pitch, 03 selected.                      */
+
+.km-stack-X__body { margin-top: 64px; align-items: start; }
+
+/* ── the figure: a registration frame on the graphite (occlusion = --bg, set by .ac-frame) ── */
+.km-stack-X__svg { position: absolute; left: 0; top: 0; }
+
+/* slab faces: occluding fills (hidden-line drawing), 1px outlines */
+.km-stack-X__top, .km-stack-X__side {
+  fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter;
+  transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout);
+}
+.km-stack-X__side { stroke: var(--fg-3); }
+
+/* inscriptions — each slab's job, drawn on its top face */
+.km-stack-X__ink { fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: square; transition: stroke 400ms var(--ease-inout); }
+.km-stack-X__ink--h { stroke: var(--fg); }
+.km-stack-X__pt { fill: var(--fg-3); transition: fill 400ms var(--ease-inout), opacity 400ms var(--ease-inout); }
+.km-stack-X__pt.is-lit { fill: var(--fg); }
+.km-stack-X__node { fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout); }
+.km-stack-X__node.is-hub { fill: var(--fg); stroke: var(--fg); }
+
+/* the one red: the selected slab's top face (inscription inverts to paper) and an 8px lift */
+.km-stack-X__lift { transition: transform 400ms var(--ease-inout); }
+.km-stack-X__s.is-on > .km-stack-X__lift { transform: translateY(-8px); }
+.km-stack-X__s.is-on .km-stack-X__top { fill: var(--accent); stroke: var(--accent); }
+.km-stack-X__s.is-on .km-stack-X__side { stroke: var(--fg-2); }
+.km-stack-X__s.is-on .km-stack-X__ink { stroke: var(--accent-fg); }
+.km-stack-X__s.is-on .km-stack-X__pt { fill: var(--accent-fg); opacity: .5; }
+.km-stack-X__s.is-on .km-stack-X__pt.is-lit { opacity: 1; }
+.km-stack-X__s.is-on .km-stack-X__node { fill: var(--accent); stroke: var(--accent-fg); }
+.km-stack-X__s.is-on .km-stack-X__node.is-hub { fill: var(--accent-fg); }
+
+/* exploded (pitch 148) → installed (pitch 112): slabs, callouts, extension lines and the dimension close up together */
+.km-stack-X__s, .km-stack-X__co, .km-stack-X__ext { transition: transform 700ms var(--ease-inout); }
+.km-stack-X__fig.is-exploded [data-l="1"], .km-stack-X__fig.is-exploded .km-stack-X__ext--t { transform: translateY(-54px); }
+.km-stack-X__fig.is-exploded [data-l="2"] { transform: translateY(-18px); }
+.km-stack-X__fig.is-exploded [data-l="3"] { transform: translateY(18px); }
+.km-stack-X__fig.is-exploded [data-l="4"], .km-stack-X__fig.is-exploded .km-stack-X__ext--b { transform: translateY(54px); }
+.km-stack-X__ext { fill: none; stroke: var(--line-2); stroke-width: 1; }
+
+.km-stack-X__dim { transition: top 700ms var(--ease-inout), height 700ms var(--ease-inout); }
+.km-stack-X__fig.is-exploded .km-stack-X__dim { top: calc(var(--y) - 54px); height: calc(var(--h) + 108px); }
+/* the value sits on the outer side of the dimension (placement only), clear of the assembly line */
+.km-stack-X__dim .ac-dim__v { left: auto; right: 14px; }
+.km-stack-X__dv { display: grid; justify-items: end; }
+.km-stack-X__dv > span { grid-area: 1 / 1; transition: opacity 400ms var(--ease-inout) 300ms; }   /* re-measures as the slabs land */
+.km-stack-X__dv-a { opacity: 0; }
+.km-stack-X__fig.is-exploded .km-stack-X__dv-a { opacity: 1; }
+.km-stack-X__fig.is-exploded .km-stack-X__dv-b { opacity: 0; }
+
+/* title block: bottom-right of the sheet, on the frame's baseline (shared with the ledger's door);
+   the neighbouring reframe and architecture plates carry theirs bottom-left */
+.km-stack-X__cap { display: flex; justify-content: flex-end; align-items: flex-end; height: 56px; padding: 0 24px; }
+
+/* callouts ride with their slab (compression on __co, the 8px lift on __col) */
+.km-stack-X__cos, .km-stack-X__co, .km-stack-X__col { position: absolute; inset: 0; pointer-events: none; }
+.km-stack-X__col { transition: transform 400ms var(--ease-inout); }
+.km-stack-X__co.is-on > .km-stack-X__col { transform: translateY(-8px); }
+
+/* ── the ledger (B): index · title + job · toggle; open row = What it is / In practice ── */
+.km-stack-X__ledger { --ac-row-cols: 32px minmax(0, 1fr) 20px; --ac-row-indent: calc(32px + var(--gutter)); }
+.km-stack-X__ledger .ac-row__head { align-items: start; }
+.km-stack-X__ledger .ac-row__head > .ac-idx { padding-top: 7px; }
+.km-stack-X__ledger .ac-toggle { margin-top: 5px; }
+.km-stack-X__rt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.km-stack-X__job { color: var(--fg-3); }
+.km-stack-X__ledger .ac-row.is-open .km-stack-X__job { color: var(--fg-2); }
+.km-stack-X__more { display: flex; flex-direction: column; gap: 18px; }
+.km-stack-X__kv { display: flex; flex-direction: column; gap: 6px; }
+/* the reading path ends on one quiet door (the section's one red stays the slab face) */
+.km-stack-X__doors { margin-top: 36px; }
+
+/* ── entrance (html.is-play only), drafting order along the reading path 01 → 04 ── */
+.km-stack-X__fig .ac-reg { --d: 300ms; }
+.is-play .km-stack-X__cap { animation: km-stack-X-fade 400ms var(--ease-out) 900ms both; }
+.is-play .km-stack-X__doors { animation: ac-up 600ms var(--ease-out) 1300ms both; }
+.is-play .km-stack-X__drop { animation: km-stack-X-drop 700ms var(--ease-out) var(--d, 700ms) both; }
+.is-play .km-stack-X__pt, .is-play .km-stack-X__node { animation: km-stack-X-fade 300ms var(--ease-out) var(--d, 1200ms) both; }
+.is-play .km-stack-X__ext { animation: km-stack-X-fade 400ms var(--ease-out) 1500ms both; }
+.is-play .km-stack-X__dim .ac-dim__v { animation: km-stack-X-fade 400ms var(--ease-out) 1800ms both; }
+.is-play .km-stack-X__co .ac-callout { animation: km-stack-X-fade 400ms var(--ease-out) var(--cd, 1100ms) both; }
+.km-stack-X__co[data-l="2"] { --cd: 1240ms; }
+.km-stack-X__co[data-l="3"] { --cd: 1380ms; }
+.km-stack-X__co[data-l="4"] { --cd: 1520ms; }
+.km-stack-X__ledger { --d: 900ms; }
+
+@keyframes km-stack-X-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-stack-X-drop { from { opacity: 0; transform: translateY(-24px); } to { opacity: 1; transform: none; } }
+
+/* assembly lines (C's exploded-view convention): they register once the stack is assembled */
+.km-stack-X__post { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; transition: opacity 400ms var(--ease-out) 450ms; }
+.km-stack-X__fig.is-exploded .km-stack-X__post { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }

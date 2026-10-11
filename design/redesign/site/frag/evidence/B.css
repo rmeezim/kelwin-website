@@ -1,0 +1,164 @@
+/* ── evidence · B · Quiet Ledger — four numeral rows hung from the Index Spine ──
+   Paper. The spine (col 3|4 gutter) runs the full height; an opening rule meets it at a
+   right angle with a 6px square at the joint. The ledger stacks four light 200px numerals,
+   each over a 100-tick unit rule; one row is open. */
+.km-evidence-B { --pad: 128px; position: relative; padding: var(--pad) 0 128px; max-height: 1400px; overflow: hidden; } /* mockup slice: rows 1–3 + the head of row 4; live = 200px */
+.km-evidence-B__spine {
+  position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line);
+  left: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));
+}
+.km-evidence-B__defs { position: absolute; width: 0; height: 0; }
+.km-evidence-B #km-evidence-B-on rect { fill: var(--fg); }
+.km-evidence-B #km-evidence-B-off rect { fill: var(--line-2); }
+
+.km-evidence-B__in {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* opening rule: spine → right margin, square at the joint */
+.km-evidence-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-evidence-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-evidence-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+
+/* spine column: index + the red-square caps label, nothing else */
+.km-evidence-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-evidence-B__no {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-evidence-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-evidence-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+
+/* statement: a sentence + a muted light sentence (the one accent, picked out by colour) */
+.km-evidence-B__h {
+  grid-column: 4 / 10; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-evidence-B__s1, .km-evidence-B__s2 { display: block; white-space: nowrap; }
+.km-evidence-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-evidence-B__redrule { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--signal); transform-origin: 0 50%; }
+
+/* side note (cols 10–12), seated on the statement's last line */
+.km-evidence-B__note {
+  grid-column: 10 / 13; grid-row: 2 / 4; align-self: end; padding-top: 16px; border-top: 1px solid var(--line);
+  font-size: 17px; line-height: 26px;
+}
+.km-evidence-B__note span { display: block; color: var(--fg); }
+.km-evidence-B__note span + span { margin-top: 6px; font-size: 15px; color: var(--fg-3); }
+
+/* ── the ledger ── */
+.km-evidence-B__ledger { grid-column: 4 / 13; grid-row: 4; margin-top: 64px; }
+.km-evidence-B__row {
+  position: relative;
+  display: grid; grid-template-columns: repeat(9, 1fr); column-gap: var(--gutter);
+  padding: 24px 0 24px;
+  transition: background-color 300ms var(--ease-out);
+}
+.km-evidence-B__row::before { /* the row rule — it hangs from the spine (half a gutter left of col 4) */
+  content: ""; position: absolute; left: calc(var(--gutter) / -2); right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.km-evidence-B__row:hover { background: var(--panel); }
+/* the open row is pinned to the spine: the joint square (the mark's K3 core) moves to its rule */
+.km-evidence-B__row::after {
+  content: ""; position: absolute; left: calc(var(--gutter) / -2 - 2.5px); top: -2.5px; width: 6px; height: 6px; background: var(--fg);
+  opacity: 0; transition: opacity 360ms var(--ease-inout);
+}
+.km-evidence-B__row.is-open::after { opacity: 1; }
+
+.km-evidence-B__fig { grid-column: 1 / 6; position: relative; display: flex; flex-direction: column; }   /* numeral + unit rule: cols 4–8 */
+.km-evidence-B__num {
+  margin-left: -0.06em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 200px; line-height: 0.76; letter-spacing: -0.045em; color: var(--fg); white-space: nowrap;
+}
+.km-evidence-B__u { color: var(--fg-3); }
+/* the rule's key, set in the spine column and pointing at the rules that hang from the spine */
+.km-evidence-B__key {
+  position: absolute; right: calc(100% + var(--gutter)); bottom: -1px; white-space: nowrap;
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+/* the unit rule hangs from the spine: its 0 tick sits on the spine, so all four readings share one datum */
+.km-evidence-B__ticks { display: block; margin-top: 24px; margin-left: calc(var(--gutter) / -2); overflow: visible; }
+
+.km-evidence-B__read { grid-column: 6 / 10; position: relative; display: flex; flex-direction: column; }   /* reading + source: cols 9–12 */
+.km-evidence-B__meta {
+  padding-right: 36px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-evidence-B__tog { position: absolute; right: 0; top: -2px; width: 20px; height: 20px; }
+.km-evidence-B__tog::before, .km-evidence-B__tog::after {
+  content: ""; position: absolute; left: 0; top: 50%; width: 20px; height: 1px; margin-top: -0.5px; background: var(--fg);
+  transition: transform 360ms var(--ease-inout);
+}
+.km-evidence-B__tog::after { transform: rotate(90deg); }
+.km-evidence-B__row.is-open .km-evidence-B__tog::after { transform: rotate(0deg); }
+.km-evidence-B__vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.km-evidence-B__claim {
+  margin-top: 26px; font-size: 17px; line-height: 1.45; font-weight: 500; color: var(--fg); text-wrap: pretty;
+  transition: transform 300ms var(--ease-out);
+}
+.km-evidence-B__row:hover .km-evidence-B__claim { transform: translateX(8px); }
+.km-evidence-B__so { margin-top: 8px; font-size: 15px; line-height: 1.55; color: var(--fg-2); text-wrap: pretty; }
+
+/* rule caption — the open row explains its own unit rule */
+.km-evidence-B__rcap {
+  width: 489px; margin-top: 12px; display: flex;   /* ends under the 100 tick */ justify-content: space-between;
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+  opacity: 0; transition: opacity 360ms var(--ease-inout);
+}
+.km-evidence-B__row.is-open .km-evidence-B__rcap { opacity: 1; }
+
+/* the open-in-place read */
+.km-evidence-B__detail {
+  display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 360ms var(--ease-inout), opacity 360ms var(--ease-inout);
+}
+.km-evidence-B__row.is-open .km-evidence-B__detail { grid-template-rows: 1fr; opacity: 1; }
+.km-evidence-B__dclip { overflow: hidden; min-height: 0; }
+.km-evidence-B__dp { padding-top: 18px; font-size: 15px; line-height: 1.6; color: var(--fg-2); }
+.km-evidence-B__link {
+  position: relative; display: inline-flex; align-items: center; gap: 12px; margin-top: 16px; padding-block: 8px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap; color: var(--fg);
+}
+.km-evidence-B__go { width: 13px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; transition: transform 300ms var(--ease-out); }
+.km-evidence-B__link:hover .km-evidence-B__go { transform: translateX(3px); }
+.km-evidence-B__link::before, .km-evidence-B__link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; }
+.km-evidence-B__link::before { background: var(--line-2); }
+.km-evidence-B__link::after { background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out); }
+.km-evidence-B__link:hover::after { transform: scaleX(1); }
+
+.km-evidence-B__src {
+  margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--line);
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+
+/* JS bootstrap: no transitions while the demo resets */
+.km-evidence-B.is-cold *, .km-evidence-B.is-cold *::before, .km-evidence-B.is-cold *::after { transition: none !important; }
+
+/* ── entrance (only under html.is-play) ── */
+.is-play .km-evidence-B__joint { animation: km-evidence-B-fade 300ms var(--ease-out) both; }
+.is-play .km-evidence-B__rule { animation: km-evidence-B-drawx 900ms var(--ease-out) 120ms both; }
+.is-play .km-evidence-B__index { animation: km-evidence-B-fade 400ms var(--ease-out) 300ms both; }
+.is-play .km-evidence-B__s1 { animation: km-evidence-B-up 700ms var(--ease-out) 300ms both; }
+.is-play .km-evidence-B__s2 { animation: km-evidence-B-up 700ms var(--ease-out) 460ms both; }
+.is-play .km-evidence-B__redrule { animation: km-evidence-B-drawx 600ms var(--ease-out) 700ms both; }
+.is-play .km-evidence-B__note { animation: km-evidence-B-fade 600ms var(--ease-out) 760ms both; }
+.is-play .km-evidence-B__row::before { animation: km-evidence-B-drawx 600ms var(--ease-out) both; animation-delay: calc(760ms + var(--i) * 60ms); }
+.is-play .km-evidence-B__num { animation: km-evidence-B-fade 600ms var(--ease-out) both; animation-delay: calc(820ms + var(--i) * 60ms); }
+.is-play .km-evidence-B__off { animation: km-evidence-B-fade 500ms var(--ease-out) both; animation-delay: calc(900ms + var(--i) * 60ms); }
+.is-play .km-evidence-B__key { animation: km-evidence-B-fade 500ms var(--ease-out) 1500ms both; }
+.is-play .km-evidence-B__on { animation: km-evidence-B-fill 900ms var(--ease-out) both; animation-delay: calc(1080ms + var(--i) * 60ms); }
+.is-play .km-evidence-B__read { animation: km-evidence-B-fade 600ms var(--ease-out) both; animation-delay: calc(880ms + var(--i) * 60ms); }
+
+@keyframes km-evidence-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-evidence-B-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes km-evidence-B-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-evidence-B-fill { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }

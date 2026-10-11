@@ -1,0 +1,242 @@
+/* ── assets · C · Systems Drawing Set — SHEET 10/14, FIG. 10.1: the handover assembly, exploded along its
+   extrusion axis (true 30° axonometric, the three-piece mark cut at its joins), beside its parts list ── */
+.km-assets-C {
+  --x9: calc(var(--margin) + 8 * var(--col) + 7.5 * var(--gutter));    /* cell border between cols 8 | 9 */
+  height: 1104px; overflow: hidden;
+}
+
+/* frame + cell borders (borders only where a cell exists) */
+.km-assets-C__frame { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.km-assets-C__frame--l { left: var(--margin); }
+.km-assets-C__frame--r { left: calc(var(--stage) - var(--margin) - 1px); }
+.km-assets-C__ln { position: absolute; background: var(--line); }
+.km-assets-C__ln--h { height: 1px; transform-origin: 0 50%; }
+.km-assets-C__ln--h0 { background: var(--line-2); }
+.km-assets-C__ln--v { width: 1px; transform-origin: 50% 0; }
+
+/* ── the drawing layer (whole sheet, 1:1 px) ── */
+.km-assets-C__dwg { position: absolute; left: 0; top: 0; display: block; overflow: visible; pointer-events: none; }
+.km-assets-C__cl { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 5; }
+.km-assets-C__fp { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 4 3; transition: stroke 600ms var(--ease-inout); }
+/* explosion guides: each part's travel back to its seat on the datum */
+.km-assets-C__gd { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-assets-C__face { fill: var(--bg); stroke: var(--cool); stroke-width: 1; stroke-linejoin: miter; transition: stroke 600ms var(--ease-inout); }
+.km-assets-C__red { fill: var(--accent); opacity: 0; transition: opacity 600ms var(--ease-inout); }
+.km-assets-C__xh path { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+
+.km-assets-C__lead { fill: none; stroke: var(--fg-3); stroke-width: 1; transition: stroke 300ms var(--ease-inout); }
+.km-assets-C__node { fill: var(--fg-3); transition: fill 300ms var(--ease-inout); }
+.km-assets-C__box { fill: var(--bg); stroke: var(--line-2); stroke-width: 1; transition: stroke 300ms var(--ease-inout), fill 300ms var(--ease-inout); }
+.km-assets-C__boxt, .km-assets-C__tag {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.km-assets-C__boxt { fill: var(--fg); text-anchor: middle; transition: fill 300ms var(--ease-inout); }
+.km-assets-C__tag { paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round; }
+.km-assets-C__tag { fill: var(--fg-3); transition: fill 300ms var(--ease-inout); }
+
+/* the installed red plane: one part at a time (default P-05, the signal layer); P-06 turns the datum red instead */
+.km-assets-C[data-sel="1"] .km-assets-C__k[data-k="1"] .km-assets-C__red,
+.km-assets-C[data-sel="2"] .km-assets-C__k[data-k="2"] .km-assets-C__red,
+.km-assets-C[data-sel="3"] .km-assets-C__k[data-k="3"] .km-assets-C__red,
+.km-assets-C[data-sel="4"] .km-assets-C__k[data-k="4"] .km-assets-C__red,
+.km-assets-C[data-sel="5"] .km-assets-C__k[data-k="5"] .km-assets-C__red { opacity: 1; }
+.km-assets-C[data-sel="6"] .km-assets-C__fp { stroke: var(--accent); }
+.km-assets-C[data-sel="1"] .km-assets-C__k[data-k="1"] .km-assets-C__face,
+.km-assets-C[data-sel="2"] .km-assets-C__k[data-k="2"] .km-assets-C__face,
+.km-assets-C[data-sel="3"] .km-assets-C__k[data-k="3"] .km-assets-C__face,
+.km-assets-C[data-sel="4"] .km-assets-C__k[data-k="4"] .km-assets-C__face,
+.km-assets-C[data-sel="5"] .km-assets-C__k[data-k="5"] .km-assets-C__face { stroke: var(--fg); }
+.km-assets-C[data-sel="1"] .km-assets-C__t[data-k="1"] .km-assets-C__tag,
+.km-assets-C[data-sel="2"] .km-assets-C__t[data-k="2"] .km-assets-C__tag,
+.km-assets-C[data-sel="3"] .km-assets-C__t[data-k="3"] .km-assets-C__tag,
+.km-assets-C[data-sel="4"] .km-assets-C__t[data-k="4"] .km-assets-C__tag,
+.km-assets-C[data-sel="5"] .km-assets-C__t[data-k="5"] .km-assets-C__tag,
+.km-assets-C[data-sel="6"] .km-assets-C__t[data-k="6"] .km-assets-C__tag { fill: var(--fg); }
+.km-assets-C[data-sel="1"] .km-assets-C__t[data-k="1"] .km-assets-C__box,
+.km-assets-C[data-sel="2"] .km-assets-C__t[data-k="2"] .km-assets-C__box,
+.km-assets-C[data-sel="3"] .km-assets-C__t[data-k="3"] .km-assets-C__box,
+.km-assets-C[data-sel="4"] .km-assets-C__t[data-k="4"] .km-assets-C__box,
+.km-assets-C[data-sel="5"] .km-assets-C__t[data-k="5"] .km-assets-C__box,
+.km-assets-C[data-sel="6"] .km-assets-C__t[data-k="6"] .km-assets-C__box { stroke: var(--fg); }
+.km-assets-C[data-sel="1"] .km-assets-C__t[data-k="1"] .km-assets-C__lead,
+.km-assets-C[data-sel="2"] .km-assets-C__t[data-k="2"] .km-assets-C__lead,
+.km-assets-C[data-sel="3"] .km-assets-C__t[data-k="3"] .km-assets-C__lead,
+.km-assets-C[data-sel="4"] .km-assets-C__t[data-k="4"] .km-assets-C__lead,
+.km-assets-C[data-sel="5"] .km-assets-C__t[data-k="5"] .km-assets-C__lead,
+.km-assets-C[data-sel="6"] .km-assets-C__t[data-k="6"] .km-assets-C__lead { stroke: var(--fg-2); }
+.km-assets-C[data-sel="1"] .km-assets-C__t[data-k="1"] .km-assets-C__node,
+.km-assets-C[data-sel="2"] .km-assets-C__t[data-k="2"] .km-assets-C__node,
+.km-assets-C[data-sel="3"] .km-assets-C__t[data-k="3"] .km-assets-C__node,
+.km-assets-C[data-sel="4"] .km-assets-C__t[data-k="4"] .km-assets-C__node,
+.km-assets-C[data-sel="5"] .km-assets-C__t[data-k="5"] .km-assets-C__node,
+.km-assets-C[data-sel="6"] .km-assets-C__t[data-k="6"] .km-assets-C__node { fill: var(--fg); }
+.km-assets-C.is-snap .km-assets-C__red, .km-assets-C.is-snap .km-assets-C__face { transition: none; }
+
+/* ── title row (96–480): title cell (cols 1–8) | note cell (cols 9–12) — the head echoes the hero:
+      red-square label → wide caps title with its turn dropped to the light voice → 48×2 red rule ── */
+.km-assets-C__title { position: absolute; left: var(--margin); top: 96px; width: calc(var(--x9) - var(--margin)); height: 384px; }
+.km-assets-C__nk, .km-assets-C__fig, .km-assets-C__coda, .km-assets-C__legend, .km-assets-C__tb {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-assets-C__sheet {
+  position: absolute; left: 24px; top: 24px; display: flex; align-items: center; gap: 12px; color: var(--fg-2); white-space: nowrap;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-assets-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-assets-C__h {
+  position: absolute; left: 24px; bottom: 58px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 0.94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-assets-C__h span { display: block; white-space: nowrap; }
+.km-assets-C__h .km-assets-C__turn { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-assets-C__rule { position: absolute; left: 24px; bottom: 28px; width: 48px; height: 2px; background: var(--signal); transform-origin: 0 50%; }
+.km-assets-C__note { position: absolute; left: var(--x9); right: var(--margin); top: 96px; height: 384px; }
+.km-assets-C__nk { position: absolute; left: 24px; top: 24px; color: var(--fg-3); }
+.km-assets-C__coda { position: absolute; left: 24px; top: 48px; color: var(--fg-2); }
+.km-assets-C__lede {
+  position: absolute; left: 24px; right: 24px; bottom: 58px;
+  font-size: 20px; line-height: 1.5; font-weight: var(--body-weight); color: var(--fg-2);
+}
+
+/* ── drawing field caption ── */
+.km-assets-C__fig { position: absolute; left: calc(var(--margin) + 24px); top: 504px; color: var(--fg-3); }
+
+/* ── spec column (cols 9–12): stacked tabs (Joby) → parts list | transfer terms → the quiet door ── */
+.km-assets-C__spec { position: absolute; left: var(--x9); right: var(--margin); top: 480px; height: 576px; }
+.km-assets-C__tabs { position: absolute; left: 1px; right: 0; top: 1px; height: 127px; }
+.km-assets-C__tab {
+  position: absolute; left: 0; right: 0; height: 63px; display: flex; align-items: center; gap: 16px; padding: 0 23px; text-align: left;
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: background-color 300ms var(--ease-inout), color 300ms var(--ease-inout);
+}
+.km-assets-C__tab[data-tab="1"] { top: 0; }
+.km-assets-C__tab[data-tab="2"] { top: 64px; }
+.km-assets-C__ti { color: var(--fg-3); transition: color 300ms var(--ease-inout); }
+.km-assets-C__tz { margin-left: auto; font-size: 11px; letter-spacing: var(--label-tracking); color: var(--fg-3); transition: color 300ms var(--ease-inout); }
+.km-assets-C__tab:hover { color: var(--fg); }
+.km-assets-C__tab.is-on { background: var(--fg); color: var(--bg); }
+.km-assets-C__tab.is-on .km-assets-C__ti, .km-assets-C__tab.is-on .km-assets-C__tz { color: var(--bg); }
+
+.km-assets-C__panel { position: absolute; left: 0; right: 0; top: 129px; height: 383px; display: none; }
+.km-assets-C__panel.is-on { display: block; }
+
+/* parts list (Joby's key/value table → Part · Item · Format · Owner) */
+.km-assets-C__parts-t { width: 100%; border-collapse: collapse; }
+.km-assets-C__parts-t thead, .km-assets-C__parts-t tbody { display: block; }
+.km-assets-C__parts-t tr {
+  display: grid; grid-template-columns: 40px 1fr 104px 46px; column-gap: 14px; align-items: center;
+  padding: 0 24px; border-bottom: 1px solid var(--line);
+}
+.km-assets-C__parts-t thead tr { height: 47px; }
+.km-assets-C__parts-t th {
+  text-align: left; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+  font-weight: 400; color: var(--fg-3);
+}
+.km-assets-C__parts-t th:last-child, .km-assets-C__ow { text-align: right; }
+.km-assets-C__row { height: 56px; position: relative; cursor: default; transition: background-color 300ms var(--ease-inout); }
+.km-assets-C__row:last-child { border-bottom: 0; height: 55px; }
+.km-assets-C__row td { padding: 0; white-space: nowrap; }
+.km-assets-C__pn, .km-assets-C__fm, .km-assets-C__ow {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.km-assets-C__pn { color: var(--fg-3); }
+.km-assets-C__it { font-size: 15px; line-height: 20px; color: var(--fg); }
+.km-assets-C__fm { color: var(--fg-2); }
+.km-assets-C__ow { color: var(--fg); }
+.km-assets-C__row:hover { background: var(--panel); }
+.km-assets-C__row:hover .km-assets-C__pn { color: var(--fg); }
+/* the selected part's row is marked by its part number, like its tag */
+.km-assets-C[data-sel="1"] .km-assets-C__row[data-k="1"] .km-assets-C__pn,
+.km-assets-C[data-sel="2"] .km-assets-C__row[data-k="2"] .km-assets-C__pn,
+.km-assets-C[data-sel="3"] .km-assets-C__row[data-k="3"] .km-assets-C__pn,
+.km-assets-C[data-sel="4"] .km-assets-C__row[data-k="4"] .km-assets-C__pn,
+.km-assets-C[data-sel="5"] .km-assets-C__row[data-k="5"] .km-assets-C__pn,
+.km-assets-C[data-sel="6"] .km-assets-C__row[data-k="6"] .km-assets-C__pn { color: var(--fg); }
+/* hovering a row turns its leader and tag --accent (the plane follows via data-sel) */
+.km-assets-C[data-hot="1"] .km-assets-C__t[data-k="1"] :is(.km-assets-C__lead, .km-assets-C__box),
+.km-assets-C[data-hot="2"] .km-assets-C__t[data-k="2"] :is(.km-assets-C__lead, .km-assets-C__box),
+.km-assets-C[data-hot="3"] .km-assets-C__t[data-k="3"] :is(.km-assets-C__lead, .km-assets-C__box),
+.km-assets-C[data-hot="4"] .km-assets-C__t[data-k="4"] :is(.km-assets-C__lead, .km-assets-C__box),
+.km-assets-C[data-hot="5"] .km-assets-C__t[data-k="5"] :is(.km-assets-C__lead, .km-assets-C__box),
+.km-assets-C[data-hot="6"] .km-assets-C__t[data-k="6"] :is(.km-assets-C__lead, .km-assets-C__box) { stroke: var(--accent); }
+
+/* transfer terms (tab [02]) */
+.km-assets-C__terms { margin: 0; }
+.km-assets-C__terms > div { height: 96px; padding: 20px 24px 0; border-bottom: 1px solid var(--line); }
+.km-assets-C__terms > div:last-child { border-bottom: 0; height: 95px; }
+.km-assets-C__terms dt { font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-assets-C__terms dd { margin: 12px 0 0; font-size: 15px; line-height: 1.5; color: var(--fg); display: flex; align-items: center; gap: 10px; }
+.km-assets-C__zero { font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); font-size: 32px; line-height: 1; }
+.km-assets-C__chip { font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: 0.06em; padding: 2px 6px; border: 1px solid var(--line-2); color: var(--fg-2); }
+
+/* the quiet door: a bordered cell (the plane stays the sheet's only red) */
+.km-assets-C__act {
+  position: absolute; left: 1px; right: 0; top: 513px; height: 63px; display: flex; flex-direction: column; justify-content: space-between;
+  padding: 12px 23px 14px; font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg); transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-assets-C__act-k { font-family: var(--f-mono); font-weight: var(--body-weight); font-size: 11px; color: var(--fg-3); transition: color 200ms var(--ease-out); }
+.km-assets-C__act:hover { background: var(--fg); color: var(--bg); }
+.km-assets-C__act-t { display: inline-flex; align-items: center; gap: 12px; }
+.km-assets-C__ico { width: 13px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; transition: transform .25s var(--ease-out); }
+.km-assets-C__act:hover .km-assets-C__ico { transform: translateX(3px); }
+.km-assets-C__act:hover .km-assets-C__act-k { color: var(--bg); }
+
+/* ── bottom band: legend (cols 1–8) · title block (cols 9–12) ── */
+.km-assets-C__legend { position: absolute; left: calc(var(--margin) + 24px); top: 1057px; line-height: 46px; color: var(--fg-3); }
+/* segmented title block (same on every C sheet) */
+.km-assets-C__tb { position: absolute; left: calc(var(--x9) + 1px); right: var(--margin); top: 1057px; height: 46px; display: flex; color: var(--fg-2); }
+.km-assets-C__tb > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; white-space: nowrap; }
+.km-assets-C__tb > span:first-child { justify-content: flex-start; padding-left: 23px; }
+.km-assets-C__tb > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-assets-C__tb > span:last-child { color: var(--fg); }
+.km-assets-C__tb .km-logo-mark { --logo-h: 11px; }
+
+/* ── entrance: drafting order (only under html.is-play) ── */
+@keyframes km-assets-C-fade { from { opacity: 0; } }
+@keyframes km-assets-C-dx { from { transform: scaleX(0); } }
+@keyframes km-assets-C-dy { from { transform: scaleY(0); } }
+@keyframes km-assets-C-plot { from { stroke-dashoffset: 1; } }
+@keyframes km-assets-C-drop { from { opacity: 0; transform: translateY(-8px); } }
+@keyframes km-assets-C-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+.is-play .km-assets-C__frame, .is-play .km-assets-C__xh { animation: km-assets-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-assets-C__ln--h { animation: km-assets-C-dx 500ms var(--ease-inout) both; animation-delay: calc(120ms + var(--i) * 40ms); }
+.is-play .km-assets-C__ln--v { animation: km-assets-C-dy 500ms var(--ease-inout) both; animation-delay: calc(120ms + var(--i) * 40ms); }
+.is-play .km-assets-C__sheet, .is-play .km-assets-C__nk, .is-play .km-assets-C__coda, .is-play .km-assets-C__fig { animation: km-assets-C-fade 300ms var(--ease-inout) 300ms both; }
+.is-play .km-assets-C__h span { animation: km-assets-C-wipe 700ms var(--ease-inout) both; }
+.is-play .km-assets-C__h span:nth-child(1) { animation-delay: 260ms; }
+.is-play .km-assets-C__h span:nth-child(2) { animation-delay: 380ms; }
+.is-play .km-assets-C__h span:nth-child(3) { animation-delay: 500ms; }
+.is-play .km-assets-C__rule { animation: km-assets-C-dx 500ms var(--ease-inout) 820ms both; }
+.is-play .km-assets-C__lede { animation: km-assets-C-fade 600ms var(--ease-inout) 640ms both; }
+.is-play .km-assets-C__tab { animation: km-assets-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-assets-C__tab[data-tab="1"] { animation-delay: 600ms; }
+.is-play .km-assets-C__tab[data-tab="2"] { animation-delay: 640ms; }
+.is-play .km-assets-C__parts-t thead { animation: km-assets-C-fade 300ms var(--ease-inout) 720ms both; }
+.is-play .km-assets-C__row { animation: km-assets-C-fade 300ms var(--ease-inout) both; animation-delay: calc(760ms + var(--r) * 40ms); }
+.is-play .km-assets-C__act { animation: km-assets-C-fade 400ms var(--ease-inout) 900ms both; }
+.is-play .km-assets-C__legend, .is-play .km-assets-C__tb { animation: km-assets-C-fade 400ms var(--ease-inout) 760ms both; }
+/* the drawing plots: construction grid → datum (the assembled mark) → part outlines (stroke-dashoffset) */
+.is-play .km-assets-C__cons { animation: km-assets-C-fade 600ms var(--ease-inout) 480ms both; }
+.is-play .km-assets-C__foot { animation: km-assets-C-fade 600ms var(--ease-inout) 700ms both; }
+.is-play .km-assets-C__guides { animation: km-assets-C-fade 600ms var(--ease-inout) 900ms both; }
+.is-play .km-assets-C__face { stroke-dasharray: 1; animation: km-assets-C-plot 900ms var(--ease-inout) both; animation-delay: calc(820ms + var(--j) * 120ms); }
+/* keyed annotation: each part's leader and tag arrive with its parts-list row (180ms apart; JS types the row) */
+.is-play .km-assets-C__lead { stroke-dasharray: 1; animation: km-assets-C-plot 400ms var(--ease-inout) both; }
+.is-play .km-assets-C__t :is(.km-assets-C__node, .km-assets-C__box, .km-assets-C__boxt, .km-assets-C__tag) { animation: km-assets-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-assets-C__t[data-k="1"] .km-assets-C__lead { animation-delay: 2000ms; }
+.is-play .km-assets-C__t[data-k="2"] .km-assets-C__lead { animation-delay: 2180ms; }
+.is-play .km-assets-C__t[data-k="3"] .km-assets-C__lead { animation-delay: 2360ms; }
+.is-play .km-assets-C__t[data-k="4"] .km-assets-C__lead { animation-delay: 2540ms; }
+.is-play .km-assets-C__t[data-k="5"] .km-assets-C__lead { animation-delay: 2720ms; }
+.is-play .km-assets-C__t[data-k="6"] .km-assets-C__lead { animation-delay: 2900ms; }
+.is-play .km-assets-C__t[data-k="1"] > :not(.km-assets-C__lead) { animation-delay: 2200ms; }
+.is-play .km-assets-C__t[data-k="2"] > :not(.km-assets-C__lead) { animation-delay: 2380ms; }
+.is-play .km-assets-C__t[data-k="3"] > :not(.km-assets-C__lead) { animation-delay: 2560ms; }
+.is-play .km-assets-C__t[data-k="4"] > :not(.km-assets-C__lead) { animation-delay: 2740ms; }
+.is-play .km-assets-C__t[data-k="5"] > :not(.km-assets-C__lead) { animation-delay: 2920ms; }
+.is-play .km-assets-C__t[data-k="6"] > :not(.km-assets-C__lead) { animation-delay: 3100ms; }
+/* the red plane drops into P-05 as its row is entered (opacity + 8px settle) */
+.is-play .km-assets-C__k[data-k="5"] .km-assets-C__drop { animation: km-assets-C-drop 400ms var(--ease-inout) 2920ms both; }

@@ -1,0 +1,20 @@
+{
+ "title": "The mark, compounding",
+ "direction": "A",
+ "summary": "FIG. 06 makes the argument with Kelwin's own mark. Under Entropy, six quarters are six identical squares that each start from zero. Under System, each quarter closes around the last as one of the mark's right-angle corners, at the mark's own 1.618 ratio, and the red core lands last. Today's two line charts become one proprietary figure, with a Δ reading counting what carried forward.",
+ "reference": {
+  "site": "Goldsand",
+  "mobbin_url": "https://mobbin.com/sites/sections/d76a3205-fbe5-4d55-abff-88cb84b13d72",
+  "ref_file": "refs/statechange-A.webp",
+  "borrowed": "The 'Simulate your savings' plate: one flat panel holding one huge reading and an accumulating figure that keeps everything before it and grows geometrically, a control that re-runs the simulation, and an axis labelled with only the points that matter.",
+  "kelwin": "The rounded bar run becomes the Kelwin mark extended. The K1:K2 ratio of the founder's master is 152:94, or 1.618, and its bars are about 30% of their box. Six quarters nest at exactly that ratio and proportion, so growth reads as the mark's own geometry rather than as a chart. The $ reading becomes a drawn Δ with a light count from 0 to 5 quarters carried forward. The slider becomes Plurel's Entropy | System segmented control in a FIG. 06 caption band. The one red element is the core quarter, which turns red last. The plate is split across the 12-column grid, with the figure in cols 1–6 anchored bottom-left like the mark, and the reading plus a bottom-right state line in cols 9–12, echoing the hero's annotation block."
+ },
+ "motion": [
+  "entrance: the margin-to-margin hairline draws (graphite follows graphite) and the label fades in (300ms). Both H2 lines rise out of masks (800ms --ease-out), with the light 'Start compounding.' landing 200ms after the medium line. The 48×2 red rule draws and the lede fades up 12px beneath it. The FIG. 06 plate opens with a bottom-up clip wipe (900ms) on the Entropy state, where six equal squares rise into place on the floor and Δ reads 0.",
+  "state change (the orchestrated moment): at 2.4s the control auto-switches to System. Over 900ms --ease-inout with a 120ms stagger, each square slides left and unfolds into a right-angle corner closing around the one before it, and its Q label travels with it along the floor. Δ counts 0 → 5 as each corner closes, and the state sentence crossfades. The core then turns red (420ms). That is the 'installed' beat, and everything has landed by about 4.3s.",
+  "interaction: Entropy | System are real buttons with aria-pressed. Clicking replays the transition in either direction, and going back to Entropy retracts the outer corners first. The inactive segment brightens on hover.",
+  "on the live site: the figure advances once when it is 50% visible. Reduced motion shows the System state with no demo."
+ ],
+ "demoMs": 4600,
+ "notes": "All data is illustrative and the caption says SPECIMEN. The drawing is the mark's nesting continued outward and is not labelled as the logo (logo correction: K1–K3 proportions, extended at the same ratio). The ring sizes are 36/58/94/153/247/400px, each ×1.618, with bars at 29.5% of each box. Coherence pass: the heading is A's 96px section size on the display tokens, the lede moved under the red rule (cols 1–6) instead of the right column, the label is the Mona caps label, and Entropy | System is tracked caps. The shipped Latin subset of Mona Sans has no Δ, so the Δ is an inline SVG at Mona's cap height, and its stroke follows --display-weight. Direction-coherence pass: A's one section rhythm is 112px top / 96px bottom in the render (160/160 on the live site); the head grammar is the hero's — Mona 500 11px tracked-caps label with an 8px red square (mono FIG. number at right), 96px two-voice statement on the display tokens with exactly one light phrase, 48×2 red rule, 20px lede in cols 1–6 (≤ 50ch, ≤ 3 lines), optional quiet door, and the founder's bottom-right annotation; FIG. numbers run 01–11 in homepage order; segmented controls are 11px tracked caps."
+}

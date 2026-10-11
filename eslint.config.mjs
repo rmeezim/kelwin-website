@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Redesign mockups and their build tooling — not part of the site.
+    "design/**",
   ]),
 ]);
 

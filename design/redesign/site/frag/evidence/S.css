@@ -1,0 +1,184 @@
+/* ── evidence · S · The four readings, as an explorer (round 3) ─────────────
+   Archetype: a numeral wall that IS the control, over one fixed readout.
+   No plate, no caption band, no segmented control, no axis, no field.
+   · The wall: four 144px numerals on cols 1–3 / 4–6 / 7–9 / 10–12. Each is a
+     real toggle button. The pressed one carries a 2px ink top rule and full
+     ink; the others sit in --fg-2 so the wall reads whole at first glance.
+   · The readout: the four readings stacked in one grid cell (fixed height,
+     nothing reflows). Text on cols 1–6, MEASURE on cols 7–12, so both halves
+     start on a cell edge of the wall above (64 / 732). MEASURE: a 1px track
+     with end ticks at 0 and 100, a 10px bar, the value flagged at the fill's
+     end, the bar's unit in words, the source. The field-note door is constant,
+     so it sits apart on the readout's bottom line, level with the detail.
+   · One red: the 17% bar, only while 01 is pressed (the resting state).
+   Default CSS = the final, resting state (01 pressed). Entrances run only
+   under .is-play; the wall waits for .is-go (set by the JS).                */
+
+.km-evidence-S { --w0: 700ms; --r0: 1450ms; }
+
+/* ── head: statement on cols 1–8, lede cols 1–6, no note ── */
+.km-evidence-S .ac-head > .ac-statement { grid-column: 1 / span 8; }
+
+.km-evidence-S__body { margin-top: 80px; }
+
+/* ── 1 · the wall ── */
+.km-evidence-S__cell {
+  grid-column: span 3; position: relative; display: flex; flex-direction: column; align-items: stretch;
+  min-width: 0; padding: 22px 0 8px; text-align: left; color: var(--fg-2); cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+/* the 1px track every cell stands on (together: one row line, broken only by the gutters) */
+.km-evidence-S__cell::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line-2);
+  transform-origin: 0 50%;
+}
+/* the 2px state rule: ink when pressed, a --fg-3 preview on hover/focus, drawn from the cell's left */
+.km-evidence-S__cell::after {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 360ms var(--ease-inout), background-color 250ms var(--ease-out);
+}
+.km-evidence-S__cell[aria-pressed="true"]::after { transform: scaleX(1); }
+.km-evidence-S__cell[aria-pressed="false"]:hover::after,
+.km-evidence-S__cell[aria-pressed="false"]:focus-visible::after { transform: scaleX(1); background: var(--fg-3); }
+
+.km-evidence-S__top { display: flex; align-items: center; gap: 12px; }
+.km-evidence-S__idx { transition: color 250ms var(--ease-out); }
+/* the selector square, set before its own label: outlined = can be chosen, filled = the reading shown */
+.km-evidence-S__led {
+  flex: none; width: 8px; height: 8px; box-shadow: inset 0 0 0 1px var(--fg-3);
+  transition: background-color 250ms var(--ease-out), box-shadow 250ms var(--ease-out);
+}
+.km-evidence-S__mask { display: block; overflow: hidden; margin-top: 18px; padding-block: .06em .08em; }
+.km-evidence-S__num { --size: 144px; display: block; white-space: nowrap; color: var(--fg-2); transition: color 250ms var(--ease-out); }
+.km-evidence-S__num .ac-num__u { font-size: .5em; letter-spacing: -0.02em; }
+
+/* pressed */
+.km-evidence-S__cell[aria-pressed="true"] { cursor: default; }
+.km-evidence-S__cell[aria-pressed="true"] .km-evidence-S__num,
+.km-evidence-S__cell[aria-pressed="true"] .km-evidence-S__idx { color: var(--fg); }
+.km-evidence-S__cell[aria-pressed="true"] .km-evidence-S__led { background: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+/* hover / keyboard focus: the numeral lifts to ink and the square outlines in ink — it invites the press */
+.km-evidence-S__cell[aria-pressed="false"]:hover .km-evidence-S__num,
+.km-evidence-S__cell[aria-pressed="false"]:focus-visible .km-evidence-S__num,
+.km-evidence-S__cell[aria-pressed="false"]:hover .km-evidence-S__idx,
+.km-evidence-S__cell[aria-pressed="false"]:focus-visible .km-evidence-S__idx { color: var(--fg); }
+.km-evidence-S__cell[aria-pressed="false"]:hover .km-evidence-S__led,
+.km-evidence-S__cell[aria-pressed="false"]:focus-visible .km-evidence-S__led { box-shadow: inset 0 0 0 1px var(--fg); }
+.km-evidence-S__cell[aria-pressed="false"]:active .km-evidence-S__mask { transform: translateY(1px); }
+.km-evidence-S__cell:focus { outline: none; }
+.km-evidence-S__cell:focus-visible { outline: 1px solid var(--fg); outline-offset: 10px; }
+
+/* ── 2 · the readout (fixed height; four readings stacked in one cell) ── */
+.km-evidence-S__ro { margin-top: 48px; align-items: stretch; }
+.km-evidence-S__text { grid-column: 1 / span 6; display: grid; align-self: start; }
+.km-evidence-S__words { display: grid; margin-top: 18px; margin-bottom: 24px; }
+.km-evidence-S__text > .km-evidence-S__panel,
+.km-evidence-S__words > .km-evidence-S__panel { grid-area: 1 / 1; }
+/* crossfade (360ms): the old reading goes out (160ms), then the new one comes in (200ms) */
+.km-evidence-S__panel { opacity: 0; visibility: hidden; transition: opacity 160ms var(--ease-out), visibility 0s linear 160ms; }
+.km-evidence-S__panel.is-on { opacity: 1; visibility: visible; transition: opacity 200ms var(--ease-out) 160ms, visibility 0s linear 0s; }
+
+.km-evidence-S__claim { font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 24px; line-height: 1.3; color: var(--fg); }
+.km-evidence-S__so { margin-top: 10px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); }
+.km-evidence-S__detail { margin-top: 20px; max-width: 600px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+
+/* MEASURE (cols 7–12): stretches to the readout's height so the door can sit on its bottom line */
+.km-evidence-S__measure { grid-column: 7 / span 6; display: flex; flex-direction: column; align-items: flex-start; }
+.km-evidence-S__gauge { align-self: stretch; }
+.km-evidence-S__gauge { position: relative; height: 40px; --bt: 600ms; }
+.km-evidence-S__track { position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: var(--line-2); }
+/* end ticks at 0 and 100 only */
+.km-evidence-S__track::before, .km-evidence-S__track::after {
+  content: ""; position: absolute; top: -6px; width: 1px; height: 13px; background: var(--fg-3);
+}
+.km-evidence-S__track::before { left: 0; }
+.km-evidence-S__track::after { right: 0; }
+.km-evidence-S__fill {
+  position: absolute; left: 0; bottom: 0; width: 100%; height: 10px; background: var(--fg);
+  transform: scaleX(var(--v, 0)); transform-origin: 0 50%;
+  transition: transform var(--bt) var(--ease-inout);
+}
+.km-evidence-S__gauge.is-red .km-evidence-S__fill { background: var(--accent); }
+/* the value, flagged at the fill's end: a 1px pole up from the bar, the reading beside it */
+.km-evidence-S__val, .km-evidence-S__rest {
+  position: absolute; bottom: 14px; line-height: 16px; color: var(--fg);
+  opacity: 0; transition: opacity 120ms var(--ease-out);
+}
+.km-evidence-S__val { left: calc(var(--at) * 100%); padding-left: 8px; }
+.km-evidence-S__val::before {
+  content: ""; position: absolute; left: 0; top: 2px; bottom: -4px; width: 1px; background: var(--fg-3);
+}
+/* 95:5 · the empty track is labelled for what it holds */
+.km-evidence-S__rest { right: 0; padding-right: 8px; color: var(--fg-2); }
+.km-evidence-S__rest::after {
+  content: ""; position: absolute; right: 0; top: 2px; bottom: -4px; width: 1px; background: var(--fg-3);
+}
+.km-evidence-S__gauge[data-on="0"] [data-n="0"],
+.km-evidence-S__gauge[data-on="1"] [data-n="1"],
+.km-evidence-S__gauge[data-on="2"] [data-n="2"],
+.km-evidence-S__gauge[data-on="3"] [data-n="3"] {
+  opacity: 1; transition: opacity 240ms var(--ease-out) calc(var(--bt) - 180ms);
+}
+
+.km-evidence-S__unit { font-size: var(--ac-support); line-height: 1.55; color: var(--fg); }
+.km-evidence-S__src { display: block; margin-top: 10px; }
+/* constant across the four readings: pinned to the readout's bottom line, apart from the per-reading words */
+.km-evidence-S__door { margin-top: auto; }
+
+/* ── 3 · entrance (is-play) ──
+   Two beats, each with its own base delay: the WALL (--w0) and the READOUT (--r0).
+   Standalone: the wall follows the lede (--w0 700ms; the kit's lede enters at 600ms) and the readout follows
+   01's rule (--r0 = --w0 + 750ms). Live: the JS holds both (.is-wait / .is-hold-ro); the wall plays (.is-go)
+   when it is 40% visible, the readout (.is-ro) when the readout itself is on screen, so the red bar never
+   extends below the fold. Keyframes use backwards fill so press/hover transitions are never blocked.     */
+.is-play .km-evidence-S.is-wait .km-evidence-S__cell::before { transform: scaleX(0); }
+.is-play .km-evidence-S.is-wait .km-evidence-S__top,
+.is-play .km-evidence-S.is-wait .km-evidence-S__num,
+.is-play .km-evidence-S.is-hold-ro .km-evidence-S__claim,
+.is-play .km-evidence-S.is-hold-ro .km-evidence-S__so,
+.is-play .km-evidence-S.is-hold-ro .km-evidence-S__detail,
+.is-play .km-evidence-S.is-hold-ro .km-evidence-S__track,
+.is-play .km-evidence-S.is-hold-ro .km-evidence-S__words,
+.is-play .km-evidence-S.is-hold-ro .km-evidence-S__door { opacity: 0; }
+
+/* 1 · numerals rise 12px from their masks, left → right, 120ms apart (no counting) */
+.is-play .km-evidence-S.is-go .km-evidence-S__cell::before { animation: ac-drawx 600ms var(--ease-out) calc(var(--w0) + var(--i) * 120ms) backwards; }
+.is-play .km-evidence-S.is-go .km-evidence-S__top { animation: ac-fade 400ms var(--ease-out) calc(var(--w0) + 80ms + var(--i) * 120ms) backwards; }
+.is-play .km-evidence-S.is-go .km-evidence-S__num { animation: km-evidence-S-rise 700ms var(--ease-out) calc(var(--w0) + var(--i) * 120ms) backwards; }
+/* 2 · cell 01 takes its rule (the JS lifts .is-pre at --w0 + 600ms; the rule is a state transition) */
+.km-evidence-S.is-pre .km-evidence-S__cell::after { transform: scaleX(0); }
+.km-evidence-S.is-pre .km-evidence-S__cell .km-evidence-S__num,
+.km-evidence-S.is-pre .km-evidence-S__cell .km-evidence-S__idx { color: var(--fg-2); }
+.km-evidence-S.is-pre .km-evidence-S__cell .km-evidence-S__led { background: transparent; box-shadow: inset 0 0 0 1px var(--fg-3); }
+/* 3 · the readout writes in: claim, then so-what, then detail (300ms fades) */
+.is-play .km-evidence-S.is-ro .km-evidence-S__claim { animation: ac-fade 300ms var(--ease-out) var(--r0) backwards; }
+.is-play .km-evidence-S.is-ro .km-evidence-S__so { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 150ms) backwards; }
+.is-play .km-evidence-S.is-ro .km-evidence-S__detail { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 300ms) backwards; }
+/* 4 · the MEASURE: the track, then the red 17% bar extends (700ms at --r0 + 400ms, JS), its unit and source, the door */
+.is-play .km-evidence-S.is-ro .km-evidence-S__track { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 250ms) backwards; }
+.is-play .km-evidence-S.is-ro .km-evidence-S__words { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 550ms) backwards; }
+.is-play .km-evidence-S.is-ro .km-evidence-S__door { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 700ms) backwards; }
+
+@keyframes km-evidence-S-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ── 4 · ≤ 760px: numerals in a 2×2 grid at 88px, the readout below (text, then MEASURE) ── */
+@media (max-width: 760px) {
+  .km-evidence-S { --margin: 16px; --gutter: 16px; padding-block: 88px; }
+  .km-evidence-S .ac-head { grid-template-columns: minmax(0, 1fr); }
+  .km-evidence-S .ac-head > * { grid-column: 1 / -1; }
+  .km-evidence-S .ac-statement { font-size: 9.4vw; }
+  .km-evidence-S .ac-lede { font-size: 17px; }
+  .km-evidence-S__body { margin-top: 56px; }
+  .km-evidence-S__wall { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+  .km-evidence-S__cell { grid-column: span 1; padding-top: 16px; }
+  .km-evidence-S__num { --size: 88px; }
+  .km-evidence-S__mask { margin-top: 12px; }
+  .km-evidence-S__ro { grid-template-columns: minmax(0, 1fr); margin-top: 40px; }
+  .km-evidence-S__text, .km-evidence-S__measure { grid-column: 1 / -1; }
+  .km-evidence-S__claim { font-size: 20px; }
+  .km-evidence-S__measure { margin-top: 32px; }
+  .km-evidence-S__unit { text-wrap: balance; }
+  .km-evidence-S__door { margin-top: 0; margin-bottom: 0; }
+  .km-evidence-S__door { font-size: 12px; letter-spacing: .1em; }
+}

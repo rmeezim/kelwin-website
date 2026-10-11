@@ -1,0 +1,361 @@
+/* ── interior · B · Quiet Ledger ───────────────────────────────────────
+   YLLW's services page on the Index Spine: a 640px daylight film reprise
+   with ink type anchored lower-left, then the spine resumes at the film's
+   edge. YLLW's narrow "Services" column becomes the spine column (index
+   only), its caps statement becomes the sentence + muted sentence, and
+   its ruled service rows become the manifest ledger that opens in place. */
+
+.km-interior-B {
+  --spine: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));   /* ≈ 386px, the col 3|4 gutter */
+  height: 1400px; overflow: hidden; isolation: isolate;
+}
+
+/* ── the daylight film (640px) ── */
+.km-interior-B__head {
+  position: relative; height: 640px;
+  display: flex; flex-direction: column;
+  overflow: hidden; isolation: isolate;
+}
+.km-interior-B .km-film {
+  /* the hero's daylight frost: the room lifted so people read as warm-grey
+     shadows behind milky glass; the film ground is paper, so wherever the
+     plate ends the glass is simply milk */
+  background: var(--bg);
+  --film-bright: 1.02; --film-blur: 10px; --film-sat: .7; --film-grain: .42;
+}
+/* a closer crop than the hero (image 1920×964, mirrored about its centre):
+   only the right half of the room, larger. The seated figure sits behind
+   cols 6–8, the standing colleague at col 9, the man seen from behind
+   fills cols 10–12. Feathered into the paper ground. */
+.km-interior-B .km-film__plate {
+  inset: 11% -3% -6% 36%;
+  background-size: auto 108%;
+  background-position: 100% 0%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%), linear-gradient(180deg, transparent 0%, #000 14%);
+  -webkit-mask-composite: source-in; -webkit-mask-repeat: no-repeat;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 30%), linear-gradient(180deg, transparent 0%, #000 14%);
+  mask-composite: intersect; mask-repeat: no-repeat;
+  animation-duration: 48s;
+}
+.km-interior-B .km-film__walker { animation-duration: 30s; animation-delay: 6s; opacity: .5; }
+.km-interior-B .km-film__frost { background-color: color-mix(in srgb, var(--bg) 22%, transparent); }
+/* milk veil (inside .km-film only): cols 1–5 calm milk under the ink stack */
+.km-interior-B__veil {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--bg) 72%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 58%, transparent) 40%,
+      color-mix(in srgb, var(--bg) 14%, transparent) 56%,
+      transparent 64%),
+    linear-gradient(0deg, color-mix(in srgb, var(--bg) 40%, transparent) 0%, transparent 18%);
+}
+.km-interior-B__milk { position: absolute; inset: 0; background: var(--bg); opacity: 0; }
+
+/* ── the bar: hero B's nav, verbatim (lockup · tracked caps with "+" · outlined AUDIT REQUEST ↗) ── */
+.km-interior-B__bar {
+  position: absolute; z-index: 2; left: 0; right: 0; top: 0; height: 88px; padding-inline: var(--margin);
+  display: flex; align-items: center; gap: 44px;
+}
+.km-interior-B__brand { display: inline-flex; color: var(--fg); margin-right: auto; }
+.km-interior-B__brand .km-logo { --logo-h: 22px; }
+.km-interior-B__menu { display: flex; align-items: center; gap: 34px; }
+.km-interior-B__menu a {
+  position: relative; display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-interior-B__menu a.is-here::after {   /* the current section: an ink hairline under the item */
+  content: ""; position: absolute; left: 0; right: 18px; bottom: -10px; height: 1px; background: var(--fg);
+}
+.km-interior-B__plus { position: relative; width: 9px; height: 9px; flex: none; }
+.km-interior-B__plus::before, .km-interior-B__plus::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-interior-B__plus::before { left: 0; right: 0; top: 4px; height: 1px; }
+.km-interior-B__plus::after { top: 0; bottom: 0; left: 4px; width: 1px; transition: transform .36s var(--ease-inout); }
+.km-interior-B__more:hover .km-interior-B__plus::after { transform: scaleY(0); }
+.km-interior-B__navcta {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 40px; padding: 0 16px 0 18px; border: 1px solid var(--fg); color: var(--fg);
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  transition: background-color .3s var(--ease-out), color .3s var(--ease-out);
+}
+.km-interior-B__navcta:hover { background: var(--fg); color: var(--bg); }
+.km-interior-B__navcta:hover .km-interior-B__arr { transform: translate(2px, -2px); }
+
+/* ── shared type: caps labels & tracked UI (the hero's system) ── */
+.km-interior-B__label,
+.km-interior-B__glance-head,
+.km-interior-B__name,
+.km-interior-B__primary,
+.km-interior-B__secondary {
+  font-family: var(--f-body); font-weight: var(--ui-weight);
+  text-transform: uppercase; letter-spacing: var(--label-tracking); line-height: 1;
+}
+.km-interior-B__sq { width: 8px; height: 8px; flex: none; background: var(--accent); }
+
+.km-interior-B__hbody {
+  position: relative; z-index: 1; flex: 1;
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  grid-template-rows: auto auto auto auto auto;
+  align-content: end;
+  padding: 88px var(--margin) 48px;           /* 88px nav clearance */
+}
+.km-interior-B__label {
+  grid-column: 1 / span 6; grid-row: 1; margin-bottom: 36px;
+  display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--fg-2);
+}
+
+.km-interior-B__h1 {
+  grid-column: 1 / span 9; grid-row: 2;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 92px; line-height: 1.02; letter-spacing: var(--display-tracking);
+}
+.km-interior-B__s1 { display: block; white-space: nowrap; color: var(--fg); }
+.km-interior-B__s2 { display: inline-block; color: var(--fg-3); font-weight: var(--light-weight); }
+
+.km-interior-B__rule {
+  grid-column: 1; grid-row: 3; display: block;
+  width: 48px; height: 2px; margin-top: 40px; background: var(--accent);
+  transform-origin: left center;
+}
+.km-interior-B__lede {
+  grid-column: 1 / span 6; grid-row: 4; margin-top: 28px; max-width: 54ch;
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: 18px; line-height: 1.6; color: var(--fg-2);
+}
+.km-interior-B__doors {
+  grid-column: 1 / span 6; grid-row: 5; margin-top: 36px;
+  display: flex; align-items: center; gap: 40px;
+}
+.km-interior-B__primary {
+  display: inline-flex; align-items: center; gap: 14px;
+  height: 52px; padding: 0 22px 0 24px;
+  background: var(--accent); color: var(--accent-fg); font-size: 12px;
+  transition: background-color .3s var(--ease-out);
+}
+.km-interior-B__primary:hover { background: var(--accent-hover); }
+.km-interior-B__secondary {
+  position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px;
+  font-size: 12px; color: var(--fg);
+}
+.km-interior-B__secondary::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2); }
+.km-interior-B__secondary::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: left center; transition: transform .3s var(--ease-out);
+}
+.km-interior-B__secondary:hover::after { transform: scaleX(1); }
+
+/* arrows are drawn (the brand fonts carry no ↗ / → glyphs) */
+.km-interior-B__ico { display: inline-block; width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; }
+.km-interior-B__ico--r { width: 13px; height: 11px; }
+.km-interior-B__arr, .km-interior-B__go { transition: transform .3s var(--ease-out); }
+.km-interior-B__primary:hover .km-interior-B__arr { transform: translate(2px, -2px); }
+.km-interior-B__secondary:hover .km-interior-B__go,
+.km-interior-B__wire:hover .km-interior-B__go { transform: translateX(3px); }
+
+/* the engagement ledger, hung off one vertical hairline (cols 10–12) */
+.km-interior-B__glance {
+  grid-column: 10 / span 3; grid-row: 4 / span 2; align-self: end;
+  position: relative; padding-left: 20px;
+}
+.km-interior-B__glance::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line-2);
+  transform-origin: center top;
+}
+.km-interior-B__glance-head { display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--fg-2); padding: 2px 0 16px; }
+.km-interior-B__wires-head,
+.km-interior-B__mh {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-interior-B__grow {
+  position: relative; display: grid; grid-template-columns: 48px 1fr; align-items: baseline;
+  padding: 12px 0;
+}
+.km-interior-B__grow::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line);
+  transform-origin: left center;
+}
+.km-interior-B__grow:last-child { padding-bottom: 0; }
+.km-interior-B__gi,
+.km-interior-B__ri,
+.km-interior-B__wk {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); color: var(--fg-2);
+}
+.km-interior-B__gt {
+  font-family: var(--f-body); font-weight: var(--ui-weight);
+  font-size: 15px; line-height: 1.3; color: var(--fg); white-space: nowrap;
+}
+
+/* ── the spine resumes at the film's edge ── */
+.km-interior-B__body { position: relative; }
+.km-interior-B__spine {
+  position: absolute; top: 0; bottom: 0; left: var(--spine); width: 1px; background: var(--line); z-index: 2;
+  transform-origin: center top;
+}
+.km-interior-B__open {             /* 01's opening rule runs along the film edge, spine → right margin */
+  position: absolute; top: 0; left: var(--spine); right: var(--margin); height: 1px; background: var(--line-2);
+  transform-origin: left center; z-index: 2;
+}
+.km-interior-B__joint {
+  position: absolute; top: -2.5px; left: calc(var(--spine) - 2.5px); width: 6px; height: 6px; background: var(--fg); z-index: 3;
+}
+
+.km-interior-B__grid {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  padding: 48px var(--margin) 0;
+}
+
+/* spine column: index numeral + the red-square section label (the hero's head grammar) */
+.km-interior-B__idx { grid-column: 1 / 4; display: flex; flex-direction: column; align-items: flex-start; align-self: start; }
+.km-interior-B__idx--1 { grid-row: 1 / 4; margin-top: 0; }
+.km-interior-B__idx--2 { grid-row: 4; margin-top: 64px; }
+.km-interior-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-interior-B__name { margin-top: 18px; display: flex; align-items: center; gap: 12px; font-size: 11px; color: var(--fg-2); }
+.km-interior-B__sub {
+  margin-top: 10px; padding-left: 20px; max-width: 26ch; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3);
+}
+
+/* overview: sentence + light muted sentence, the red rule, one paragraph, a side note */
+.km-interior-B__h2 {
+  grid-column: 4 / 13; grid-row: 1;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1; letter-spacing: var(--display-tracking);
+}
+.km-interior-B__h2a, .km-interior-B__h2b { display: block; white-space: nowrap; }
+.km-interior-B__h2a { color: var(--fg); }
+.km-interior-B__h2b { color: var(--fg-3); font-weight: var(--light-weight); }
+.km-interior-B__rule--h2 { grid-column: 4; grid-row: 2; margin-top: 28px; }
+.km-interior-B__body-copy {
+  grid-column: 4 / 9; grid-row: 3; margin-top: 28px; align-self: start;
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: 18px; line-height: 1.6; color: var(--fg-2);
+}
+.km-interior-B__wires { grid-column: 10 / 13; grid-row: 3; align-self: end; margin-bottom: 2px; display: flex; flex-direction: column; }
+.km-interior-B__wires-head { padding-bottom: 10px; }
+/* the three capabilities as the mark's step read as typography: each layer
+   nests one 24px step in, hung from the one above by a hairline corner */
+.km-interior-B__wire {
+  position: relative; display: grid; grid-template-columns: 48px 1fr; row-gap: 3px; align-items: baseline;
+  padding: 11px 0 11px calc(var(--s) * 24px);
+}
+.km-interior-B__wire::before { content: ""; position: absolute; left: calc(var(--s) * 24px); right: 0; top: 0; height: 1px; background: var(--line); }
+.km-interior-B__wire + .km-interior-B__wire::after {      /* └ : down from the layer above, across into this one */
+  content: ""; position: absolute; left: calc((var(--s) - 1) * 24px + 6px); top: 0; width: 12px; height: 22px;
+  border-left: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);
+}
+.km-interior-B__wire--here .km-interior-B__wn { color: var(--fg); }
+.km-interior-B__wire--here .km-interior-B__wl { color: var(--fg-3); }
+.km-interior-B__wn {
+  display: inline-flex; align-items: center; gap: 8px; justify-self: start; position: relative;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 15px; line-height: 1.3; color: var(--fg);
+}
+a.km-interior-B__wire .km-interior-B__wn::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: left center; transition: transform .3s var(--ease-out);
+}
+a.km-interior-B__wire:hover .km-interior-B__wn::after { transform: scaleX(1); }
+.km-interior-B__wl { grid-column: 2; font-family: var(--f-body); font-size: 15px; line-height: 1.4; color: var(--fg-2); }
+
+/* ── the manifest ledger (cols 4–12, subgrid) ── */
+.km-interior-B__ledger {
+  grid-column: 4 / 13; grid-row: 4; margin-top: 40px;
+  display: grid; grid-template-columns: subgrid; position: relative;
+}
+.km-interior-B__ledger::before {     /* 02's opening rule, hung from the spine */
+  content: ""; position: absolute; top: 0; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line-2);
+  transform-origin: left center; z-index: 1;
+}
+.km-interior-B__ledger::after {      /* the joint */
+  content: ""; position: absolute; top: -2.5px; left: calc(var(--gutter) / -2 - 2.5px); width: 6px; height: 6px; background: var(--fg); z-index: 3;
+}
+.km-interior-B__row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; }
+.km-interior-B__row + .km-interior-B__row::after {   /* row rules, hung from the spine */
+  content: ""; position: absolute; top: 0; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line);
+  transform-origin: left center; z-index: 1;
+}
+.km-interior-B__row:last-child::before {
+  content: ""; position: absolute; bottom: 0; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line);
+  transform-origin: left center; z-index: 1;
+}
+.km-interior-B__rh {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline;
+  padding: 23px 0; text-align: left; position: relative; cursor: pointer;
+}
+.km-interior-B__rh::before {         /* hover fill, from the spine to the margin */
+  content: ""; position: absolute; inset: 0 0 0 calc(var(--gutter) / -2); background: var(--panel);
+  opacity: 0; transition: opacity .3s var(--ease-out); z-index: -1;
+}
+.km-interior-B__rh:hover::before { opacity: 1; }
+.km-interior-B__ri { grid-column: 1; }
+.km-interior-B__rt {
+  grid-column: 2 / 6;
+  font-family: var(--f-body); font-stretch: 100%; font-weight: var(--display-weight);
+  font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; color: var(--fg);
+  transition: transform .3s var(--ease-out);
+}
+.km-interior-B__rh:hover .km-interior-B__rt { transform: translateX(8px); }
+.km-interior-B__rd { grid-column: 6 / 9; font-family: var(--f-body); font-size: 17px; line-height: 1.4; color: var(--fg-2); }
+.km-interior-B__tg { grid-column: 9; justify-self: end; align-self: center; position: relative; width: 20px; height: 20px; }
+.km-interior-B__tg::before, .km-interior-B__tg::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-interior-B__tg::before { left: 0; right: 0; top: 9.5px; height: 1px; }
+.km-interior-B__tg::after { top: 0; bottom: 0; left: 9.5px; width: 1px; transition: transform .36s var(--ease-inout); }
+.km-interior-B__row.is-open .km-interior-B__tg::after { transform: rotate(90deg); }
+
+.km-interior-B__panel {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows .36s var(--ease-inout), opacity .36s var(--ease-inout);
+}
+.km-interior-B__row.is-open .km-interior-B__panel { grid-template-rows: 1fr; opacity: 1; }
+.km-interior-B__pin { grid-column: 1 / -1; min-height: 0; overflow: hidden; display: grid; grid-template-columns: subgrid; }
+.km-interior-B__pd {
+  grid-column: 2 / 6; padding: 0 24px 26px 0;
+  font-family: var(--f-body); font-size: 17px; line-height: 26px; color: var(--fg);
+}
+.km-interior-B__pk { grid-column: 6 / 9; padding-bottom: 26px; padding-top: 3px; }
+.km-interior-B__mv { margin-top: 8px; font-family: var(--f-body); font-size: 15px; line-height: 1.5; color: var(--fg-2); }
+.km-interior-B__ledger.is-snap .km-interior-B__panel,
+.km-interior-B__ledger.is-snap .km-interior-B__tg::after { transition: none; }
+
+/* ── entrance (only under html.is-play): long durations, short distances ── */
+@keyframes km-interior-B-settle { from { opacity: 1; } to { opacity: 0; } }
+@keyframes km-interior-B-fade { from { opacity: 0; } }
+@keyframes km-interior-B-rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes km-interior-B-draw { from { transform: scaleX(0); } }
+@keyframes km-interior-B-down { from { transform: scaleY(0); } }
+
+.is-play .km-interior-B__milk { animation: km-interior-B-settle 1.2s var(--ease-out) both; }
+.is-play .km-interior-B__bar { animation: km-interior-B-fade .6s var(--ease-out) .1s both; }
+.is-play .km-interior-B__label { animation: km-interior-B-fade .4s var(--ease-out) .15s both; }
+.is-play .km-interior-B__s1 { animation: km-interior-B-rise .7s var(--ease-out) .25s both; }
+.is-play .km-interior-B__s1 + .km-interior-B__s1 { animation-delay: .33s; }
+.is-play .km-interior-B__s2 { animation: km-interior-B-rise .7s var(--ease-out) .53s both; }
+.is-play .km-interior-B__head .km-interior-B__rule { animation: km-interior-B-draw .6s var(--ease-out) .55s both; }
+.is-play .km-interior-B__lede { animation: km-interior-B-rise .7s var(--ease-out) .6s both; }
+.is-play .km-interior-B__doors { animation: km-interior-B-rise .7s var(--ease-out) .7s both; }
+.is-play .km-interior-B__glance::before { animation: km-interior-B-down .6s var(--ease-out) .7s both; }
+.is-play .km-interior-B__glance-head { animation: km-interior-B-fade .4s var(--ease-out) .75s both; }
+.is-play .km-interior-B__grow::before { animation: km-interior-B-draw .6s var(--ease-out) both; animation-delay: calc(.8s + var(--i) * 60ms); }
+.is-play .km-interior-B__grow > span { animation: km-interior-B-fade .5s var(--ease-out) both; animation-delay: calc(.9s + var(--i) * 60ms); }
+
+/* the spine resumes: joint, then the rule out to the margin, then the spine down the page */
+.is-play .km-interior-B__joint { animation: km-interior-B-fade .3s var(--ease-out) .8s both; }
+.is-play .km-interior-B__open { animation: km-interior-B-draw .9s var(--ease-out) .85s both; }
+.is-play .km-interior-B__spine { animation: km-interior-B-down 1.4s var(--ease-out) .85s both; }
+.is-play .km-interior-B__idx--1 { animation: km-interior-B-fade .4s var(--ease-out) 1.1s both; }
+.is-play .km-interior-B__h2a { animation: km-interior-B-rise .7s var(--ease-out) 1.05s both; }
+.is-play .km-interior-B__h2b { animation: km-interior-B-rise .7s var(--ease-out) 1.21s both; }
+.is-play .km-interior-B__rule--h2 { animation: km-interior-B-draw .6s var(--ease-out) 1.3s both; }
+.is-play .km-interior-B__body-copy { animation: km-interior-B-rise .7s var(--ease-out) 1.35s both; }
+.is-play .km-interior-B__wires { animation: km-interior-B-fade .6s var(--ease-out) 1.45s both; }
+.is-play .km-interior-B__ledger::after { animation: km-interior-B-fade .3s var(--ease-out) 1.4s both; }
+.is-play .km-interior-B__ledger::before { animation: km-interior-B-draw .9s var(--ease-out) 1.45s both; }
+.is-play .km-interior-B__idx--2 { animation: km-interior-B-fade .4s var(--ease-out) 1.6s both; }
+.is-play .km-interior-B__row + .km-interior-B__row::after,
+.is-play .km-interior-B__row:last-child::before { animation: km-interior-B-draw .6s var(--ease-out) both; animation-delay: calc(1.55s + var(--n) * 60ms); }
+.is-play .km-interior-B__rh { animation: km-interior-B-fade .6s var(--ease-out) both; animation-delay: calc(1.6s + var(--n) * 60ms); }

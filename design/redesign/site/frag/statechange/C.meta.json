@@ -1,0 +1,21 @@
+{
+  "title": "Datum drawing sheet",
+  "direction": "C",
+  "summary": "Sheet 06/14 draws the state change on one quarter axis. Left of a datum, outlined squares of effort climb and fall back to the floor every quarter. Right of it, the system's red installed base runs under everything, and each quarter lays down a layer that carries right to Q8, split at every quarter it survives into. The result is a retention staircase in 1px drafting, with Δ measured as a dimension and callouts A–D keyed to a lost → kept spec table.",
+  "reference": {
+    "site": "Wild",
+    "mobbin_url": "https://mobbin.com/sites/sections/eef9343d-0d21-41e4-9524-54462b7612db",
+    "ref_file": "refs/statechange-C.webp",
+    "borrowed": "'Explore. Generate. Refine. Scale.': a two-line statement over one full-width field that reads left to right as a process. A loose scatter of small squares resolves into an ordered, shaped structure, one small high-contrast element acts as the focal marker, and four equal numbered caption columns sit directly under their own stretch of the plot, so the drawing and its captions share one x-axis.",
+    "kelwin": "The field becomes a Q1–Q8 quarter axis on the 12-column frame. Left of a 1px datum at Q4, 8px outlined squares climb and drop to the floor each quarter (entropy). Right of it, the order is a section cut. The red base is C's installed plane, the layer Kelwin installs, and it runs under Q4–Q8. Each later quarter adds a 1px layer that carries right to Q8. Layers grow about ×1.6 per quarter, the mark's ratio, and are split at each quarter boundary, so the stepped profile is a retention staircase rather than a bar chart. The focal marker becomes that single red plane. The round-badge captions become four bordered [01]–[04] cells under their own stretch of the axis. The sheet adds lettered callouts A–D keyed to a spec table, a Δ dimension from the entropy mean to the top tread, a legend, a mono ticker with a live UTC readout, and the SHEET 06/14 title block in cells with the real Kelwin mark."
+  },
+  "motion": [
+    "entrance, in drafting order with --ease-inout: the frame verticals and four crosshairs fade in (300ms), cell borders draw in raster order (30ms stagger), and the uppercase title plots on with a left-to-right wipe. The construction grid and floor then plot, the scatter squares plot in random order, and the datum draws up from the floor (600ms).",
+    "the orchestrated moment: the red installed base drops into its slot with an 8px settle (2.15s) and its INSTALLED tag types on. Each quarter's layer then draws rightward from the quarter it was laid down in, carried to Q8 (700ms each, 320ms apart). The stepped outline plots via stroke-dashoffset, callouts A–D land on their leaders, and the Δ extension and dimension draw before 'Carried forward' types on at 24ms per character. Everything has landed by about 5.1s.",
+    "ambient: one UTC readout in the ticker updates every 6s with a 200ms digit change. Nothing else loops.",
+    "interaction: hovering a spec row (A–D) fills it --panel and turns its lettered callout and leader --accent.",
+    "on the live site: the plot is scroll-linked. The scatter, the datum and then the layers resolve as the sheet crosses the viewport. Reduced motion shows the fully plotted sheet."
+  ],
+  "demoMs": 5400,
+  "notes": "All geometry is illustrative and labelled SPECIMEN. The sheet holds one red element, the installed base. The previous lattice of outlined squares read as building windows, which C's 'never draw buildings' rule forbids, so the order became strata (layers carried forward). Scatter squares no longer overlap, and they keep clear of the datum and the Δ dimension. The title is 88px, the founder's floor for section titles. The title block uses the same cell + mark form as method-C. Δ and → are inline SVG because the shipped font subsets lack them. Regenerate the HTML with scratchpad/sc-gen/gen-c.mjs."
+}

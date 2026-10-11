@@ -1,0 +1,250 @@
+{
+ "hero": {
+  "after": {
+   "proprietary": 8,
+   "direction": 9,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 9
+  },
+  "remaining": [
+   "A is by design the founder's own target, so it is the least 'new' of the three. What makes it proprietary is mainly the FIG. 01 band (caption, Close | Wide, Pause film).",
+   "The man-from-behind's head sits at the top edge of the source plate, so it is dark against dark and partly under the nav scrim. Only his shoulders and the two colleagues read strongly.",
+   "The nav section fragments (nav-A/B/C) still use the old dot/sentence-case nav, so the nav section and the hero disagree until those are updated. Outside this section's files."
+  ]
+ },
+ "architecture": {
+  "after": {
+   "proprietary": 9,
+   "direction": 8,
+   "distinct": 9,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "reframe-A FIG. 02 also draws the assembled mark, still in the outdated four-element version, so direction A shows the assembled mark twice on one page. The coherence reviewer should move reframe and stack to K1\u2013K3 and make sure the two figures read as different roles (nested state vs circuit).",
+   "The mark's right edge (x 1074) follows the mark's proportions rather than a column edge. The key (cols 1\u20133), the input (col 5) and the mark's left edge (col 7) are on grid."
+  ]
+ },
+ "fit": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 9
+  },
+  "remaining": [
+   "Height is 1263px, above the 720\u20131100 aim but under the 1400 cap. Both plates carry the full source sentences.",
+   "The K1 corner's meaning (installed vs ghost) is implied, not captioned. A reader who skims sees a branded plate silhouette rather than an argument.",
+   "No numbered FIG.: method is FIG. 07 and assets is FIG. 08, and A's FIG numbering is already inconsistent across sections (beforeafter and cta are both FIG. 09). That belongs to the coherence pass."
+  ]
+ },
+ "footer": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "A giant margin-to-margin lockup is a widespread footer trope. The FIG. 10 band, strips and red core make it Kelwin's, but it is the least surprising of the three.",
+   "The direction map asked for 'cropped by the bottom edge'. That was deliberately replaced with seating the lockup on the rule, and the coherence reviewer should confirm.",
+   "The 28px strip titles are loud for a footer. They could step down to 24px if the founder wants a quieter close."
+  ]
+ },
+ "nav": {
+  "after": {
+   "proprietary": 7,
+   "direction": 8,
+   "distinct": 7,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The three-column mega-menu skeleton is inherent to three capabilities \u00d7 four services, so A still shares its column structure with C (the visual grammar differs: flat plate and sentence-case titles versus cells and isometric drawings).",
+   "The seated figure in the film strip is readable but soft at some points of the 32s drift.",
+   "The stage is 800px rather than the ~760 in sections.json, so the film can show heads and shoulders."
+  ]
+ },
+ "stack": {
+  "after": {
+   "proprietary": 8,
+   "direction": 9,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The right third of the FIG plate, above the segmented control, is intentionally empty (A's \u226540% empty rule). A critic may still want the figure centred.",
+   "Statement edited to 'We don't deliver work.' so it fits on one line at 88px; 'Kelwin' moves into the lede.",
+   "The Data layer is not in RevenueOS.tsx (which has three layers); its copy comes from capability-data.tsx."
+  ]
+ },
+ "assets": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "A and C still share the 'mark cut into five parts plus its plan' idea, because both direction maps prescribe a parts metaphor. They differ in composition: A is a flat capability tray, C an axonometric depth explosion with a parts table.",
+   "Only one door (quiet link to /audit, as in the source). There is no contact door because the CTA act follows two sections later."
+  ]
+ },
+ "faq": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The composition is still the familiar split FAQ (heading left, accordion right). What makes it Kelwin is the type, the hero-DNA head and the mark toggle, not the layout itself, so a skeptical eye may still call the skeleton common.",
+   "The 28px mark glyph is a subtle signature at full-page viewing distance."
+  ]
+ },
+ "reframe": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Sibling A sections (evidence/faq/fit) still use 80px split heads. The coherence review should bring them to the founder's stacked 88px+ head, or this option will look inconsistent beside them.",
+   "Render crops section padding to 112px top / 56px bottom (160/160 on the live site); stated in meta.notes.",
+   "Both A and C map the misdiagnoses onto the same K1\u2013K3 pieces with left leader labels. The visual grammar differs (flat poster toggle vs 1px iso sheet), but the shared concept is worth knowing."
+  ]
+ },
+ "method": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Inside direction A, FIG. 07 is still a growth-of-corners figure on a baseline, like statechange A's FIG. 06 (nested quarters). The compositions differ (four separate pieces vs one nested cluster), but the coherence pass should watch this pair.",
+   "A's sibling sections (reframe, stack, fit) still use 80px titles with a right-column lede. Method A now follows the founder head spec, so the direction coherence pass should bring the others in line."
+  ]
+ },
+ "beforeafter": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The head's right columns 8\u201312 stay largely empty above the annotation. This is deliberate (A's \u226540% empty rule) but reads left-heavy at a glance.",
+   "The mark in the ink plate's head is 36px, so the red K3 core is a small installed beat. The plate re-proportion carries the orchestrated moment.",
+   "Height is 1286px, above the 720\u20131100 aim but under the 1400 hard max."
+  ]
+ },
+ "interior": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The header is 700px, not the direction's 640px, because it now carries the founder's full stack including both doors.",
+   "The body (statement and prose split, then four strips) is still a familiar editorial pattern. Per A's interior brief, the film plate is the one signature device, and there is no mark-built FIG. 02 in this section.",
+   "The S\u00b704 title is shortened to 'Objection library' so it fits a strip."
+  ]
+ },
+ "evidence": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Founder spec asks for section titles of 88\u2013152px and a 48\u00d72 red rule under section heads. All A sections, including this one, use 80px with no rule. I left this for the coherence pass rather than changing one section on its own.",
+   "Both A and C make 17% the red element, in different compositions. The coherence pass could move one of them if it wants more contrast."
+  ]
+ },
+ "statechange": {
+  "after": {
+   "proprietary": 9,
+   "direction": 8,
+   "distinct": 9,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The plate's middle (cols 5\u20138) is empty in the System state. This is deliberate (A asks for \u226540% empty), but some may find it sparse.",
+   "88px heads are a founder-spec override. Sibling A sections (reframe, method) are still 80px with no red rule, so the coherence reviewer should propagate or reconcile.",
+   "Cross-section: reframe-A's FIG. 02 still draws the obsolete four-piece mark, and its nested-mark silhouette is now a relative of this figure."
+  ]
+ },
+ "principle": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The tonal K1 plate is a large flat deep-red mass (931x325px). That is deliberate, because A uses the mark as solid plates, but some may read it as heavy. The direction's section map asked for an outline only, and the meta notes explain the change.",
+   "A no longer contains any mono text, so the Kelwin-skin lint reports mono as not loaded. This is expected and matches hero-A and cta-A."
+  ]
+ },
+ "cta": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Under A's \u226540% emptiness rule the top-right quadrant is deliberately empty. If the founder wants more density there, the next step is moving the deployment note up, not adding ornament."
+  ]
+ }
+}

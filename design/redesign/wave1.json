@@ -1,0 +1,280 @@
+{
+ "system": {
+  "name": "Cinematic Drafting (A\u00d7C): graphite cinema, drawn to scale",
+  "summary": "I wrote the blended round-2 system and the shared kit; the kit parses cleanly and passed the strict round-2 lint on a scratch build, which I then deleted.\n\n**The system** is in `/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/DIRECTION-AC.md`.\n\n- **What it takes from each direction:**\n  - **A** gives the structure: two-voice sentence-case wide statements, at least 40% empty space, the flat figure plate with its caption band and segmented control, hairline strips, and the button pair (red primary with \u2197, underlined secondary with \u2192). Every section opens with the same head: label, statement, short red rule, lede, optional note.\n  - **C** gives the precision under hard limits: one drawing per section, at most 5 callouts, at most 2 dimension lines, at most 6 registration marks, one title block of at most 4 cells, and at most 25 words of annotation per drawing. Mono text is one line only, with no paragraphs. Callout labels are 14px Mona, mono codes 12px, indices 11px. A drawing sits in a plate or a registration frame, never both. C's uppercase titles, cell nav, cell buttons, sheet numbers, \"REV C\", cell IDs and coordinate readouts are retired.\n  - **B** appears only where the founder named it: ledgers that open in place (fit, the stack's detail column, the architecture's \"How it closes\", the FAQ), the architecture loop chart, and the calm of the final CTA.\n- **Reading path:** every section starts at label, then statement, then its figure from item 01. The entrance motion follows that same path, and each section has one control.\n- **Hero:** the headline sets in two lines (\"Revenue is an / *architectural problem.*\", light accent on \"problem.\") and is vertically centred. The lede and both buttons move to the bottom-right; the fixed-scope diagnostic note moves to the bottom-left. C appears only three ways: corner registration marks, a tick ruler for film progress, and one timecode. I noted how this differs from Plurel's split hero: Plurel puts lede and button top-right beside the headline, Kelwin puts them bottom-right so the eye reads diagonally.\n- **Logo mark:** retired as illustration. It appears only as the nav and footer lockups and as the footer's large mark, cropped at about half its height by the bottom edge, in one tone with no red. No figure may use nested L-corners, staircases, iso L-slabs, nested squares or a corner \"core square\".\n- **Shapes that replace it:** eight drawn shapes (listed below), each with one signature transformation. The three capabilities each get one as a small glyph: Narrative Systems the waveform, GTM Infrastructure the signal line, GTM Intelligence the rings.\n- **Per-section assignment table:** names the leading shape for every section so no two neighbours share one. It also sets each section's base pick, surface, single animated moment, single red element, and a short brief of the founder's fixes.\n  - The interior page header is redesigned from scratch as a \"Specimen sheet\": no film, a title at the top, and the page's own shape drawn large.\n- **Motion and colour:** the document also sets durations and easing, the per-section animation sequence, triggers, reduced motion, and implementation notes such as seeded randomness so screenshots repeat. The page runs graphite about 65%, paper 28% and red 7%, with exactly one full-red section (the CTA) and one red moment per section.\n\n**Two choices of mine you may want to confirm:**\n- **Principle in sentence case:** the founder picked C's principle section, which used uppercase. I set it in sentence case so the page reads as one language, and allowed it to run 2\u20134 lines.\n- **Statechange as accretion rings:** this replaces the staircase, which is banned with the mark. Before installation a ring draws and collapses each quarter; afterwards rings accumulate and stay. It is a new idea rather than either round-1 option, so it is the one most worth a look.\n\n**The kit** is in `/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/site/kit-ac.css` (351 lines, `.ac-` prefix, base.css tokens only, no hex colours). It covers:\n- the head grammar, which animates itself on load;\n- the primary button, outlined nav button and secondary link, with drawn arrows that take the text colour;\n- the segmented control and a +/\u2212 toggle;\n- strips, a ledger that opens in place, and a key/value list;\n- the figure plate, caption band, title block and registration marks;\n- callouts with leaders (label left or right) and dimension lines (horizontal, vertical or in-flow);\n- 1px drawing classes for inline SVG, the capability glyph box, and animation helpers.\n\n**Verification:** the scratch build exercised every component on graphite, paper and red, in both the Swiss and Kelwin skins, with no overflow and nothing under 11px. I checked the final frame, the mid-entrance frame and the Kelwin-skin frame by eye. In the browser, all 181 CSS blocks parsed and none came out empty. After I fixed my test's overlapping callout positions, callouts in both directions rendered cleanly; the one kit change I made from the check was a default indent so open ledger text sits under the row title.",
+  "shape_vocabulary": [
+   {
+    "name": "TRACE \u00b7 signal lines",
+    "what": "Orthogonal 1px routes (90\u00b0 turns only) with 7px outlined square nodes, at most one open chevron per segment, dashed segments for indirect paths, at most 6 nodes.",
+    "motion": "The route draws segment by segment (pathLength 1, 900\u20131400ms ease-inout). Each node latches from outline to filled as the line reaches it. Then a single 6px packet laps at constant speed (6s or more per lap). Variant: a knotted route untangles into the orthogonal route, with the same vertex count.",
+    "sections": [
+     "architecture (closed loop, red return path)",
+     "fit (fork variant: one line, a gate, two branches)",
+     "nav (GTM Infrastructure glyph)",
+     "interior: GTM Infrastructure, Who we work with"
+    ]
+   },
+   {
+    "name": "STRATA \u00b7 isometric slabs",
+    "what": "Thin rectangular slabs in true 30\u00b0 isometric (never L-shaped or stepped), hidden edges occluded. Each slab carries one top-face inscription naming its job: text rules for narrative, a point grid for data, a mini trace for orchestration, a ring for intelligence.",
+    "motion": "Slabs drop in one by one (700ms, 140ms stagger), then the stack compresses from exploded to assembled spacing while a dimension line re-measures. Selection moves the single red top face (400ms) and lifts that slab 8px.",
+    "sections": [
+     "stack (four layers, red face follows the ledger selection)"
+    ]
+   },
+   {
+    "name": "FIELD \u00b7 point cloud",
+    "what": "60\u2013240 seeded points (6px squares up to 100 points, 3px above) with scatter, 10\u00d710 lattice, column and ring states. Forming digits from dots stays banned.",
+    "motion": "Scatter resolves into order: each point moves from its seeded position to its lattice target (1200\u20131600ms, staggered by distance). It re-morphs between states in 900ms. Highlighted subset in ink; at most one subset red.",
+    "sections": [
+     "evidence (100-point unit field replacing the nested squares; steps 17 \u2192 95:5 \u2192 77 \u2192 53)",
+     "interior: The Lab"
+    ]
+   },
+   {
+    "name": "ORBIT \u00b7 rings and arcs",
+    "what": "Concentric 1px circles on one centre at a modular radius step, arcs for portions, a gap for an open loop, and optionally one node riding a ring. Never a radar sweep, polar polygon or reticle.",
+    "motion": "Arcs sweep, a gap closes from 40\u00b0 to 0\u00b0, and new rings draw outward one by one (600ms, 160ms stagger) and stay. Optional ambient: one node orbiting at 12s or more per lap.",
+    "sections": [
+     "statechange (accretion rings: Q1\u2013Q3 a ring draws then collapses; from Q4 rings accrete; red Q4 ring)",
+     "nav (GTM Intelligence glyph)",
+     "interior: GTM Intelligence"
+    ]
+   },
+   {
+    "name": "MEASURE \u00b7 bars and ticks",
+    "what": "Calibrated 1px rulers (4px minor, 8px major ticks every 5th), 8\u201312px bars and gantt rows, a baseline with 12px mono values at major ticks.",
+    "motion": "Ticks draw left to right (20ms stagger), bars extend from their origin in sequence (700ms), values count up to their final figure (1000ms, tabular). Variant: irregular tick spacing settles into regular spacing.",
+    "sections": [
+     "method (phase gantt under four phase columns; red continuous Calibrate bar)",
+     "cta (ten-tick ruler = ten working days, paper lines on red)",
+     "hero (film-progress tick ruler in the bottom band; light touch only)",
+     "interior: Methodology"
+    ]
+   },
+   {
+    "name": "CONTOUR \u00b7 waveforms and contours",
+    "what": "1\u201312 open, smooth 1px curves stacked at fixed spacing, never filled. Noise state: high-frequency jitter. Signal state: one clean line.",
+    "motion": "Noise settles into signal: amplitude decays and frequency settles from left to right, as if through a filter (1600\u20132000ms, JS sample interpolation). Optional ambient: a slow phase drift on the clean line only (10s or more).",
+    "sections": [
+     "principle (noise bundle in, one signal out to the red tick)",
+     "nav (Narrative Systems glyph)",
+     "interior: Narrative Systems specimen (the worked example)"
+    ]
+   },
+   {
+    "name": "LATTICE \u00b7 the resolving grid",
+    "what": "A 1px mesh 8\u201316 cells wide, in plan or as one isometric plane. Warped state: displaced vertices and a few missing cells. True state: orthogonal, with a single datum line or cell group.",
+    "motion": "The warp resolves to the true grid (1400ms ease-inout), then the datum seats (draws in 400ms). Section-cut variant: a warped surface above a true grid, joined by dashed projectors.",
+    "sections": [
+     "reframe (Surface \u2192 Architecture; red datum on the real layer)",
+     "interior: The Firm"
+    ]
+   },
+   {
+    "name": "FOLIO \u00b7 sheets",
+    "what": "Flat 1px document rectangles at 1:1.414, each with 3\u20136 text rules and a mono tag. A dashed edge means draft or still ours; a solid edge means yours.",
+    "motion": "Deal and collate: sheets deal out from a stack (600ms, 100ms stagger), cross a handover datum one by one with their edges turning from dashed to solid, and collate into a 'Yours' tray.",
+    "sections": [
+     "assets (six tagged sheets, Installed \u2192 Handed over)",
+     "interior: Insights and Reports"
+    ]
+   }
+  ],
+  "kit_classes": [
+   ".ac-sec",
+   ".ac-sec--lg",
+   ".ac-sec--ruled",
+   ".ac-wrap",
+   ".ac-grid",
+   ".ac-col",
+   ".ac-hr",
+   ".ac-head",
+   ".ac-labelrow",
+   ".ac-label",
+   ".ac-label--plain",
+   ".ac-meta",
+   ".ac-statement",
+   ".ac-statement--hero",
+   ".ac-statement--xl",
+   ".ac-line",
+   ".ac-accent",
+   ".ac-rule",
+   ".ac-lede",
+   ".ac-doors",
+   ".ac-note",
+   ".ac-note__t",
+   ".ac-h3",
+   ".ac-h3--lg",
+   ".ac-h4",
+   ".ac-body",
+   ".ac-support",
+   ".ac-idx",
+   ".ac-cap",
+   ".ac-num",
+   ".ac-num__u",
+   ".ac-chip",
+   ".ac-sr",
+   ".ac-btn",
+   ".ac-btn-o",
+   ".ac-link",
+   ".ac-link--ne",
+   ".ac-seg",
+   ".ac-toggle",
+   ".ac-strips",
+   ".ac-strip",
+   ".ac-strip__foot",
+   ".ac-ledger",
+   ".ac-row",
+   ".ac-row__head",
+   ".ac-row__more",
+   ".ac-row__in",
+   ".ac-spec",
+   ".ac-plate",
+   ".ac-plate--bare",
+   ".ac-field",
+   ".ac-capband",
+   ".ac-capband--ruled",
+   ".ac-tblock",
+   ".ac-frame",
+   ".ac-reg",
+   ".ac-reg--tl",
+   ".ac-reg--tr",
+   ".ac-reg--bl",
+   ".ac-reg--br",
+   ".ac-callout",
+   ".ac-callout--l",
+   ".ac-callout__code",
+   ".ac-callout__t",
+   ".ac-dim",
+   ".ac-dim--v",
+   ".ac-dim--static",
+   ".ac-dim__v",
+   ".ac-svg",
+   ".ac-s",
+   ".ac-s-fg",
+   ".ac-s-mute",
+   ".ac-s-faint",
+   ".ac-s-red",
+   ".ac-s-dash",
+   ".ac-f-occ",
+   ".ac-f-fg",
+   ".ac-f-red",
+   ".ac-node",
+   ".ac-t-code",
+   ".ac-t-label",
+   ".ac-t-fg",
+   ".ac-t-mid",
+   ".ac-t-end",
+   ".ac-t-knock",
+   ".ac-glyph",
+   ".ac-plot",
+   ".ac-in",
+   ".ac-up",
+   ".ac-drop",
+   ".ac-cascade",
+   ".ac-cold"
+  ]
+ },
+ "hero": {
+  "options": [
+   {
+    "opt": "X",
+    "title": "FIG. 01 \u00b7 The Room, Re-set",
+    "status": "pass",
+    "summary": "The founder's brief, built literally from round-1 hero A. It keeps the frosted room (blur 8px, grain .5, silhouettes readable), the real nav (lockup, tracked caps, outlined AUDIT REQUEST \u2197) and the FIG. 01 band with Close | Wide and Pause film. The statement is now two lines: 'Revenue is an' / 'architectural problem.', 116px, light accent on 'problem.'. It is left-aligned and held almost at the vertical centre, at about 45% of the body (label 36px above, red rule 40px below). The lede and both doors moved to the bottom-right (cols 8\u201312); the doors end 5px inside the right margin, so the eye reads diagonally from the statement to the action. '\u25a0 A fixed-scope diagnostic' moved to the bottom-left (cols 1\u20134), its foot aligned with the doors. Exactly three touches of C's observed room: (1) four registration marks where the nav and band hairlines meet the margins, (2) the film-progress hairline remade as a calibrated tick ruler (one tick per second, major tick every fifth, elapsed run in --fg), (3) one mono timecode. Nothing is drawn over the people. Built entirely from kit-ac components. Red appears only on the primary, the rule and the label squares. The orchestrated moment is round-1 A's Close\u2192Wide pull-back at 2.4s. Lint passes in both skins, h=960; I checked the final, mid and Kelwin shots."
+   },
+   {
+    "opt": "Y",
+    "title": "FIG. 01 \u00b7 The Room, In Register",
+    "status": "pass",
+    "summary": "My alternative: same content, same system, but the hero is built as architecture. The room is seen through a glass partition on the 12 columns: mullions on the 4|5 and 8|9 gutters and one transom at y 722. The three bays carry graded frost (dense 12px/74% behind the type, 10px/40% in the middle, clear 8px/0% over the man seen from behind), so the legibility scrim is the building itself rather than a gradient. The two-line statement rests on the transom, and the 48\u00d72 red rule is the transom's first 48px. The sill below reads left to right, one bay each: lede (18px, 3 lines) \u2192 fixed-scope note \u2192 the two doors at bottom-right, stacked. Registration marks sit only on the two joints. Signature morph: each bay carries its own pass of the film, so the room arrives out of register (offset and rescaled per bay; the silhouettes jog at the joints) and slides into register over 1.6s, left to right. The joint marks land as it locks. That makes 'fragmented growth \u2192 repeatable system' the hero's one motion, and it echoes Plurel's glass-flute FIG. 01 as a family gesture. The band reads 'FIG. 01 \u00b7 The room, in register' with a timecode, a FRAGMENTED | REGISTERED control (it really toggles the state) and Pause film (it really pauses all passes). Deliberate departure: the statement's centre sits at about 59% (on the sill), not the founder's ~45%. Lint passes in both skins, h=980; I checked the final, mid (fragmented) and Kelwin shots, plus a forced-Fragmented still."
+   }
+  ],
+  "notes": "I wrote these files:\n- /tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/site/frag/hero/X.{html,css,js,meta.json}\n- /tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/site/frag/hero/Y.{html,css,js,meta.json}\n\nThe shots are in /tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/site/shots/: hero-X.png, hero-X-mid.png, hero-X.k.png, hero-Y.png, hero-Y-mid.png, hero-Y.k.png, and lint files hero-X.json and hero-Y.json. Lint shows one red fill, no overflow and no type under 11px in either skin. `node tool/mk.mjs hero r2` passes both.\n\nMeasured in the Swiss skin:\n- **Statement line 2:** \"architectural problem.\" runs from x 64 to 1238 (1103 in the Kelwin skin), so the statement spans 12 columns and the rise masks never clip it.\n- **X:** the statement box is y 328\u2013562, centred at 45% of the 776px body. The lede is 3 lines at the kit's 20px.\n- **Y:** the rows are fixed so the transom lands exactly at y 722, where the bay clips and the joint marks are keyed.\n\nDecisions to flag:\n1. In Y the lede is 18px, the low end of the hero spec's 18\u201320px. Bay 1 is only four columns (422px), and the lede has to stay at three lines.\n2. In Y the doors are stacked, because side by side they need about 529px and bay 3 is 422px.\n3. In Y the mullions pass behind the statement, like a grid line behind a title. The type is never broken.\n4. Y renders four blurred passes of the shared plate in the mockup. On the live site this would be one video drawn into a canvas in three slices, as described in its meta.\n5. In Y the mirrored half of the shared stand-in plate shows only dimly under bay 1's dense frost.\n\nBoth options use only kit-ac components plus placement overrides. I added two overrides that change more than placement, both in Y only: the kit's registration-mark fade is replaced, so the marks land when the room locks into register; and the kit's sill entrance delays are re-timed so the sill animates left to right.\n\nNo logo-mark geometry is used anywhere, and nothing is drawn over the people."
+ },
+ "nav": {
+  "options": [
+   {
+    "opt": "X",
+    "title": "The drawn plate",
+    "status": "pass",
+    "summary": "nav X is built and passes mk.mjs at h=840px in both skins. Lint is clean: no text under 11px, no logo-mark uses, no overflow, no gradients outside the film, no script errors, and one red fill. It keeps A's hanging plate metric for metric: 96px bar, 24px lockup, tracked-caps menu, outlined AUDIT REQUEST \u2197, the hairline with the open item marking it, and a --panel plate on cols 1\u20134 / 5\u20138 / 9\u201312 with full-height verticals. That plate runs on C's capability-sheet logic (master \u2192 detail). The nested-corner mark row is replaced by one 1px drawing set: a single signal line crosses the top of the plate, and each strip's run of it is that capability's DIRECTION-AC glyph. Narrative is CONTOUR (five contour lines settle into one), Infrastructure is TRACE (an orthogonal route with 3 nodes and a packet), and Intelligence is ORBIT (an open ring closes, a core ring accretes, one node rides). The open strip's glyph resolves in --fg with its morph, the hairline under its drawing seats in --fg, its title and CAP lift, and the title block narrates 'Index | 02 / 03 | GTM Infrastructure'. The other strips rest raw in --fg-3, so hovering a capability shows what Kelwin installs. Rows carry C-style codes (02.1\u201302.4). The band holds both doors: the audit note with the quiet 'Talk to the team \u2192' to /contact, and the red 'Request a System Audit \u2197' to /audit flush in the corner, which is the section's only red. The logo appears only in the lockup. Motion: the plate unrolls, the raw line is wiped on left to right in reading order (01 \u2192 03), and at 2.4s CAP. 02 opens, its route plots solid and its nodes latch. One packet then laps every 9s. Hover morphs and reduced motion were verified with extra Playwright captures (no errors)."
+   }
+  ],
+  "notes": "I built nav slot X and it passes `node tool/mk.mjs nav X` (h=840px) in both skins.\n\nFiles, all in /tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/site/frag/nav/:\n- X.html\n- X.css\n- X.js\n- X.meta.json\n\nShots in /tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/site/shots/:\n- nav-X.png\n- nav-X-mid.png\n- nav-X.k.png\n\nX.html is generated, so don't edit it by hand. The CONTOUR paths come from a seeded generator (window.KM.contour in X.js), and the final-state paths are written into the HTML so it shows the finished drawing even without JS. To change the markup, edit /tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/nav-X.tpl.html and re-run `node /tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/fill-nav.cjs`. meta.notes says the same.\n\nFounder notes:\n- **No logo glyphs:** the mark appears only in the lockup (0 .km-logo-mark uses, and no figure uses its corner shapes).\n- **\"Some other system drawing set\" plus a mix of the capability sheet and the hanging plate:** A's plate and three strips are kept. On top of them, one 1px signal line runs across the plate, and each strip's stretch of it is that capability's DIRECTION-AC drawing (CONTOUR, TRACE, ORBIT). C's master/detail logic becomes the open strip, which resolves while the other two rest raw. The drawing set stays well inside the C quotas, so it doesn't bring back C's clutter.\n- **System Audit and the two-door rule:** the outlined bar action and the red plate door both go to /audit. The quiet \"Talk to the team \u2192\" goes to /contact.\n\nJudgment calls to flag:\n1. **Registration marks:** there are two + marks at the ends of the bar hairline, where the plate hangs from. I count them as the hero frame's marks (\u00a73.4 \u2460), not the plate's. If a reviewer reads that as \"plate + registration frame\", delete the two `.km-nav-X__reg` spans; that changes nothing else.\n2. **Raw drawings in closed strips:** strips that aren't open show their glyph in its unresolved state (unsettled bundle, dashed route, ring open by 40\u00b0) rather than a dimmed finished drawing. That is what makes the selection meaningful, but it is a taste call.\n3. **Static packet:** in a still frame the moving packet can sit next to a node. It has a 2px gap around it so it reads as riding the line rather than as a fourth node.\n4. **Stage height:** the stage is 840px (round 1 A was 800) so the film still shows people below the taller plate.\n\nScratch scripts (`navtl.mjs`, `navhover2.mjs`, and the `navshots/` folder) remain in the scratchpad."
+ },
+ "crit_hero": {
+  "options": [
+   {
+    "opt": "X",
+    "score_before": 7.5,
+    "score_after": 8,
+    "founder_notes_honoured": true,
+    "fixes": [
+     "Door pair now spans the whole cols 8\u201312 bay (justify-content: space-between). The secondary's arrow lands exactly on the right margin (x 1376 in both skins), on the same edge as AUDIT REQUEST and PAUSE FILM. Before, it stopped 5px short in the Swiss skin and 32px short in the Kelwin skin, a visible near-miss (X.css).",
+     "Bottom-left fixed-scope note re-seated: its last baseline now sits exactly on the primary button's bottom edge (823.8 vs 824, measured in both skins). Before, it floated about 14px high with no alignment partner (X.css).",
+     "X.meta.json corrected: it had misreported the Kelwin-skin statement end as x 1103 (measured 1162) and claimed the doors were flush right when they were not. Notes now record the review fixes.",
+     "Verified against founder notes: two-line statement ('Revenue is an' / 'architectural problem.', with one light accent); optical centre at about 45% of the body, left-aligned at col 1; lede and both doors at bottom-right; note at bottom-left; exactly three light C touches (corner registration marks, calibrated film ruler, timecode). No logo symbol outside the nav lockup. Silhouettes read as people (the man from behind and the standing colleague). Lint is clean in both skins."
+    ],
+    "remaining": [
+     "The bottom-right block starts on the col-8 grid line (x 843), 66px right of where 'problem.' starts (x 777) in the Swiss skin. This is a deliberate grid-over-optics choice that holds in both skins, but it still reads as a slight indent under the accent.",
+     "The 960px stage puts the FIG. band below the fold on a 900px-tall viewport. The live build needs 100vh handling.",
+     "The FIG. caption 'Fig. 01 \u00b7 The room where pipeline is decided' is 44 characters, over the 40-character mono quota. DIRECTION-AC \u00a73.4 itself specifies this caption, so I left it.",
+     "The film is the shared mirrored stand-in. Silhouettes are recognisable but soft at blur 8px; the real video will decide final legibility."
+    ],
+    "final_status": "pass"
+   },
+   {
+    "opt": "Y",
+    "score_before": 5.5,
+    "score_after": 8,
+    "founder_notes_honoured": true,
+    "fixes": [
+     "Restructured to the founder's layout, which the earlier Y broke three ways. Before, the lede sat bottom-LEFT, the note bottom-CENTRE, and the statement's centre at 59%. Now the statement is held at about 46% (fixed rows: label at 298, rule at 624), left-aligned; the lede and both doors sit at bottom-right in pane 3 (cols 9\u201312, where round-1's note was); the note sits at bottom-left in pane 1.",
+     "Removed the two full-height mullions that ran nav-to-band through the statement (one cut the 'b' of 'problem.') and over the people. These are the column verticals DIRECTION-AC \u00a73.4 bans. The partition is now drawn only below the type: one margin-to-margin transom at y 624, whose first 48px is the red rule, and two mullion stubs on the 4|5 and 8|9 gutters dropping to the band. These frame the sill (note \u00b7 open pane \u00b7 action). Above the transom the three panes read only as graded frost, Kelwin's architectural answer to Plurel's flutes.",
+     "Panes rebalanced to equal thirds (cols 1\u20134 / 5\u20138 / 9\u201312). The middle pane's sill is left open, so the seated colleague shows through. Tints are 70/34/0% with blur 12/10/8px, all within the 8\u201312px film rule.",
+     "Fragmented-state offsets roughly halved (to \u2264 46px, scale \u2264 \u00b14.5%), so the entrance reads as misregistered plates rather than a glitch collage. The head choreography was brought forward (--ac-d0 160ms), so the entrance frame now shows the statement rising over the still-fragmented room. The transom draws out of the rule, then the mullions drop from it.",
+     "Exact alignments verified in both skins: rule = transom = joint marks at y 624; mullions at x 497/942; the note's last baseline (853.8) matches the secondary door's text baseline, so both corners finish on one line.",
+     "Y.meta.json rewritten to match the build: layout, C quota, motion, the 1000px stage rationale, and a record of what the review changed."
+    ],
+    "remaining": [
+     "The pane tone steps at x 497/942 still run behind the statement. This is intentional (the glass partition and Plurel-flute echo), but the founder may prefer X's seamless room. It is the main judgement call between the two slots.",
+     "Pane 3 is only 422px wide, so the doors stack (primary over secondary) and the lede drops to 18px, the low end of the 18\u201320px hero spec.",
+     "The stage is 1000px (40px taller than X) to fit the sill, so the band sits below a 900px viewport fold.",
+     "The live build needs one video drawn into a canvas in three slices, or three synced videos, to run the registration morph. The mockup uses four blurred plate passes."
+    ],
+    "final_status": "pass"
+   }
+  ]
+ },
+ "crit_nav": {
+  "options": [
+   {
+    "opt": "nav-X",
+    "score_before": 7,
+    "score_after": 8,
+    "founder_notes_honoured": true,
+    "fixes": [
+     "Film silhouettes: before, the strip of film under the plate was unreadable warm blur. I reframed the film at 0.85 scale (left -96px, top 294px), matched it to the hero's calibration (blur 8px, frost .2, bright 1.26) and grew the stage from 840px to 900px (one full 1440\u00d7900 screen). The final frame now shows the seated colleague's head and white-shirted shoulders between two backs, and the entrance frame shows all four people clearly.",
+     "Craft, CONTOUR stub: the five noise lines were drawn in semi-transparent --fg-3, so where they converge they stacked into a brighter stub. They are now drawn in opaque --fg inside one group dimmed to .58 (1 when open), so the converged line has one even tone.",
+     "Craft, packet looked like a doubled node: the 9s-lap packet was caught in the final shot right beside the top-right latched node. The lap is now 12s (calmer, and within the 8s-or-slower ambient rule), and in both final shots the packet sits on a clear stretch of the route.",
+     "Title block meaning: 'INDEX | 02 / 03 | GTM INFRASTRUCTURE' just repeated the strip heading. It now narrates the drawing's state, C-style: 'SIGNAL | CAP. 02 | ROUTED' (SETTLED for 01, CLOSED for 03, RAW while nothing is open). Values are centred inside their fixed-width cells, so the short ones no longer leave a lopsided gap.",
+     "Band copy: 'The System Audit: fixed scope, ten working days.' read as the caption of the red door, which made 'Talk to the team' underneath look like an audit action. It now reads 'Every engagement opens with a fixed-scope audit.', which sets up both doors without repeating the red label.",
+     "Interaction bug: the CSS always lit row 2 of the open strip, so a live hover showed two lit rows. That highlight is now demo-only (data-demo), and the first real hover or focus removes it.",
+     "ORBIT rider: the riding square turned into a diamond as it orbited. It now counter-rotates, so it stays an upright square.",
+     "Entrance glitch: the cold reset (.ac-cold) did not freeze the ::after seat hairline, so a stray white dash animated on strip 2 during the unroll. Fixed.",
+     "meta.json corrected: it described a mouse-leave revert that the JS never did, a 9s packet, the 840px stage and the old title block. It now matches the build. X.html is regenerated from scratchpad/nav-X.tpl.html via fill-nav.cjs. Lint passes in both skins: nothing under 11px, no mark uses, one red fill, no overflow, no console errors."
+    ],
+    "remaining": [
+     "The C side is deliberately restrained. In a static frame this reads as A's hanging plate with a drawn signal row; the capability-sheet logic (open strip resolves its drawing, title block narrates the state, coded rows) mostly shows on hover. If the founder wants more visible 'high-tech', the next step is one dimension line or keyed callouts in the open strip. I held back because of his clutter note.",
+     "The entrance frame at ~550ms is still an empty plate halfway through unrolling. Content starts at 800ms.",
+     "The packet is a filled 6px square and latched nodes are filled 7px squares. Mid-loop it can briefly sit at a route corner or beside a node and read as an extra node; the Kelwin-skin shot catches it near the top-left corner. This is inherent to the TRACE primitive as specified.",
+     "After ORBIT has been opened and closed, the stopped rider can rest inside the re-opened 40\u00b0 gap, floating just off the arc. This only happens in that transient live state.",
+     "In the final frame, the two men are readable only as shoulders and backs. Their heads appear only during the entrance, because the plate covers that band of the film by design."
+    ],
+    "final_status": "pass"
+   }
+  ]
+ }
+}

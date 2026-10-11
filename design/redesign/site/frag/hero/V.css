@@ -1,0 +1,190 @@
+/* ── hero · V · The Scope (round 6, A×C) ──────────────────────────────────
+   U's room, untouched, plus one device that gives the footage a job: a fixed
+   pane of clear glass on cols 8–12. Outside it the film stays frosted (the
+   market as it is seen); inside it the same footage is pin-registered and in
+   focus. The pane is the System Audit drawn as an optical instrument: a hard
+   1px gate, four registration marks, and a bottom edge calibrated into ten
+   working days. The col-8 line is the hero's spine: the scope's left edge, the
+   lede and the primary button all stand on it.
+   Stage: 96 nav + 864 body = 960.                                             */
+
+.km-hero-V {
+  height: 960px;
+  display: flex; flex-direction: column;
+  overflow: hidden; isolation: isolate;
+}
+
+/* ── the film: U's calibration, unchanged (dark, warm, frosted) ── */
+.km-hero-V .km-film {
+  --film-blur: 8px; --film-frost: .2; --film-bright: 1.26; --film-sat: .95; --film-grain: .5;
+}
+/* height-fit plate (1920×964, mirrored about its centre), exactly as U. Both plates (the frosted
+   room and the scope's glass) take this rule, so they stay registered pixel for pixel. */
+.km-hero-V .km-film__plate {
+  inset: 3% -4% -9%;
+  background-size: auto 100%;
+  background-position: -84px 50%;
+}
+/* the walker: re-drawn as a back-view figure (head, neck, shoulders) with its motion blur baked
+   into the drawing, and raised so it crosses the room at the scope's height; one pass every 24s,
+   then the room is still again. Both walkers (room + glass) take this rule and the same keyframes. */
+.km-hero-V .km-film__walker {
+  top: 138px; bottom: auto; left: 0; width: 259px; height: 1123px; opacity: .74;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 520' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='j' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%2317130F'/%3E%3Cstop offset='.35' stop-color='%23110E0C'/%3E%3Cstop offset='1' stop-color='%230C0A09'/%3E%3C/linearGradient%3E%3Cfilter id='f' x='-25%25' y='-5%25' width='150%25' height='110%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.6' numOctaves='2' seed='3' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='3' xChannelSelector='R' yChannelSelector='G' result='d'/%3E%3CfeGaussianBlur in='d' stdDeviation='2.4 .7'/%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23f)'%3E%3Cpath fill='url(%23j)' d='M46 64C34 66 20 72 15.5 85C11.5 99 10.5 150 12 520H108C109.5 150 108.5 98 104.5 84C100.5 71 87 66 74 63.5C66 68.5 54 68.5 46 64Z'/%3E%3Cpath fill='none' stroke='%23060504' stroke-width='1.3' stroke-opacity='.7' d='M25 108C23.5 160 23 210 23.5 270M96 106C97.5 160 98 210 97.5 270'/%3E%3Cpath fill='%23726B62' fill-opacity='.62' d='M61 66.6C66.5 66.3 70.6 64.8 73 62L74.6 66.4C70.4 69.4 65.4 70.4 61 70.3Z'/%3E%3Cpath fill='%232C1F18' d='M51.5 54H68.5L70 64.5C63 66.5 56.5 66.5 50 64.5Z'/%3E%3Cpath fill='%230B0908' d='M57 9C66 8.5 75 13 78.5 22C80.5 27 80 33 78 38L76 46C73 52 68 56 63 57.5H52C46 55 41.5 49 40 41C38.5 33 39.5 24 44 17.5C47.5 12.5 52 9.2 57 9Z'/%3E%3Cellipse cx='69' cy='19.5' rx='7.5' ry='5' fill='%232B2119' fill-opacity='.75'/%3E%3Cellipse cx='78.2' cy='40.5' rx='3' ry='5.6' fill='%233A2A20'/%3E%3Cpath fill='%2333241B' fill-opacity='.85' d='M76.5 42C77.8 47.5 75.5 53 70 57H66C71 53.2 74.6 48.4 76.5 42Z'/%3E%3Cpath fill='none' stroke='%23A07C58' stroke-opacity='.42' stroke-width='2' d='M78.5 22C80.5 27 80 33 78 38M74.5 64C86.5 66.5 100 71.5 104.5 85C108.5 99 109.4 150 109.4 220'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+  transform: translate3d(775px, 0, 0);   /* the still frame (reduced motion): standing in the scope */
+  animation: km-hero-V-walk 24s linear infinite;
+}
+
+/* legibility scrim (inside .km-film only) — U's cut: the left falls off late, a soft lane sits
+   behind the two lines, the floor deepens under the bottom corners, the upper right stays open */
+.km-hero-V__scrim {
+  position: absolute; inset: 0;
+  background:
+    /* V: two feathered pools under the copy that sits right of the col-8 spine — the scope's
+       readout and the lede bay — so they hold AA wherever the drift carries the room */
+    radial-gradient(ellipse 230px 50px at 1312px 357px,
+      color-mix(in srgb, var(--bg) 66%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 48%, transparent) 48%,
+      transparent 100%),
+    radial-gradient(ellipse 560px 230px at 1108px 712px,
+      color-mix(in srgb, var(--bg) 58%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 44%, transparent) 50%,
+      transparent 100%),
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--bg) 90%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 78%, transparent) 26%,
+      color-mix(in srgb, var(--bg) 40%, transparent) 44%,
+      color-mix(in srgb, var(--bg) 10%, transparent) 60%,
+      transparent 72%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 46%, transparent) 0%,
+      transparent 13%,
+      transparent 32%,
+      color-mix(in srgb, var(--bg) 14%, transparent) 40%,
+      color-mix(in srgb, var(--bg) 14%, transparent) 58%,
+      transparent 63%,
+      color-mix(in srgb, var(--bg) 34%, transparent) 76%,
+      color-mix(in srgb, var(--bg) 82%, transparent) 100%);
+}
+
+/* ── the scope's glass: a second plate inside the same .km-film, clipped to the pane.
+   Same geometry, same drift, same walker — only the optics differ: no frost, no scrim,
+   about +11% exposure, deeper blacks, richer colour (clear glass, not a lit card).
+   Resting state = in focus. ── */
+.km-hero-V__lens { position: absolute; inset: 0; clip-path: inset(144px 64px 628px 843px); }
+.km-hero-V__optic { position: absolute; inset: 0; }
+.km-hero-V__optic .km-film__plate { filter: brightness(1.4) saturate(1.08) contrast(1.18); }
+/* a passer-by is never pin-sharp: through clear glass it gains contrast, keeps its motion blur */
+.km-hero-V__optic .km-film__walker { opacity: .8; filter: blur(3.4px); }
+/* the frost the pane clears: a copy of the room's frost + scrim, gone at rest */
+.km-hero-V__glass { position: absolute; inset: 0; opacity: 0; }
+
+/* ── nav (96px): lockup · tracked caps items · outlined action — as U ── */
+.km-hero-V__nav {
+  position: relative; z-index: 3;
+  height: 96px; flex: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-hero-V__nav::after {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-hero-V__brand { display: inline-flex; color: var(--fg); }
+.km-hero-V__brand .km-logo { --logo-h: 24px; }
+.km-hero-V__menu {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 40px; white-space: nowrap;
+}
+.km-hero-V__menu a {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.km-hero-V__menu a:hover { color: var(--fg); }
+
+/* ── the scope: cols 8–12 (x 843–1376), y 144–332 (48px of air under the nav hairline).
+   Whole pixels so every 1px edge is crisp. ── */
+.km-hero-V__scope {
+  position: absolute; z-index: 2; left: 843px; top: 144px; width: 533px; height: 188px;
+  pointer-events: none;
+}
+.km-hero-V__svg { position: absolute; left: 0; top: 0; }
+.km-hero-V__svg path { shape-rendering: crispEdges; }
+/* construction lines: only during the build, gone at rest */
+.km-hero-V__con { opacity: 0; transform-box: fill-box; }
+.km-hero-V__con--x { transform-origin: 48px 0; }
+.km-hero-V__con--y { transform-origin: 0 24px; }
+.km-hero-V__tk { transform-box: fill-box; transform-origin: 50% 100%; }
+/* the ten day cells: they fill, one by one, while the visitor points at the audit */
+.km-hero-V__cells {
+  position: absolute; left: 0; right: 0; top: calc(100% + 3px); height: 3px;
+  display: flex; gap: 2px;
+}
+.km-hero-V__cells > span {
+  flex: 1; background: var(--fg); transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 140ms var(--ease-out) calc((9 - var(--i)) * 30ms);
+}
+.km-hero-V:has(.ac-doors .ac-btn:hover, .ac-doors .ac-btn:focus-visible) .km-hero-V__cells > span {
+  transform: none; transition-delay: calc(var(--i) * 30ms);
+}
+.km-hero-V__days {
+  position: absolute; right: 0; top: calc(100% + 15px);
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+  transition: color 250ms var(--ease-out);
+}
+.km-hero-V:has(.ac-doors .ac-btn:hover, .ac-doors .ac-btn:focus-visible) .km-hero-V__days { color: var(--fg); }
+
+/* ── body: the head grammar on the hero's 12 columns — exactly U's placement ──
+   rows: 1 lift · 2 label · 3 statement · 4 rule · 5 air · 6 lede · 7 doors. */
+.km-hero-V__body.ac-head {
+  position: relative; z-index: 1; flex: 1;
+  grid-template-rows: 180px auto auto auto minmax(0, 1fr) auto auto;
+  padding-bottom: 136px;
+}
+.km-hero-V__body > .ac-labelrow { grid-row: 2; }
+.km-hero-V__body > .ac-statement { grid-row: 3; grid-column: 1 / -1; }
+.km-hero-V__body > .ac-rule { grid-row: 4; margin-top: 40px; }
+.km-hero-V__body > .ac-lede { grid-row: 6; grid-column: 8 / span 5; margin-top: 0; max-width: none; }
+.km-hero-V__body > .ac-doors { grid-row: 7; grid-column: 8 / span 5; margin-top: 32px; flex-wrap: nowrap; justify-content: space-between; }
+.km-hero-V__body > .ac-note { grid-row: 6 / span 2; grid-column: 1 / span 4; align-self: end; margin-bottom: -6px; }
+
+.km-hero-V__reg { z-index: 3; }
+
+/* ── entrance (only under html.is-play) ──
+   0–1.2s   the film fades up, fully frosted (the glass starts frosted too, so the pane is invisible);
+            the nav hairline draws; the statement lands (U's choreography).
+   0.85–1.8s construction: dashed lines run along the pane's top and left edges, the outline
+            closes, the four marks register, the ten day ticks calibrate left → right.
+   1.8–3.4s the focus pull: inside the pane the frost clears and the room resolves. */
+.km-hero-V__body { --ac-d0: 240ms; }
+.is-play .km-hero-V .km-film { animation: km-hero-V-fade 1.2s var(--ease-out) both; }
+.is-play .km-hero-V__nav { animation: km-hero-V-fade 500ms var(--ease-out) both; }
+.is-play .km-hero-V__nav::after { animation: km-hero-V-drawx 1s var(--ease-out) 100ms both; }
+.is-play .km-hero-V__con--x { animation: km-hero-V-con-x 1.25s var(--ease-out) 850ms both; }
+.is-play .km-hero-V__con--y { animation: km-hero-V-con-y 1.25s var(--ease-out) 900ms both; }
+.is-play .km-hero-V__tk { animation: km-hero-V-tick 260ms var(--ease-out) calc(1450ms + var(--i) * 40ms) both; }
+.is-play .km-hero-V__days { animation: km-hero-V-fade 400ms var(--ease-out) 1850ms both; }
+.is-play .km-hero-V__optic { animation: km-hero-V-pull 1.6s var(--ease-inout) 1.8s both; }
+.is-play .km-hero-V__glass { animation: km-hero-V-clear 1.6s var(--ease-inout) 1.8s both; }
+
+@keyframes km-hero-V-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-hero-V-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-hero-V-con-x { 0% { opacity: 1; transform: scaleX(0); } 45% { opacity: 1; transform: none; } 72% { opacity: 1; } 100% { opacity: 0; transform: none; } }
+@keyframes km-hero-V-con-y { 0% { opacity: 1; transform: scaleY(0); } 45% { opacity: 1; transform: none; } 72% { opacity: 1; } 100% { opacity: 0; transform: none; } }
+@keyframes km-hero-V-tick { from { transform: scaleY(0); } to { transform: none; } }
+/* the pull: the glass's optics go from the room's (8px frost, its exposure) to clear */
+@keyframes km-hero-V-pull { from { filter: blur(8px) brightness(.9) contrast(.847) saturate(.88); } to { filter: none; } }
+@keyframes km-hero-V-clear { from { opacity: 1; } to { opacity: 0; } }
+/* one figure per 24s: walks in from the left (arriving just after the focus pull), slows and stands
+   in the scope's left third for ~6s with a slight shift of weight, then walks on and out; 6.7s of
+   empty room close the loop. Seamless: it leaves and re-enters off stage. */
+@keyframes km-hero-V-walk {
+  0%   { transform: translate3d(-270px, 0, 0); animation-timing-function: cubic-bezier(.25, .4, .45, 1); }
+  22%  { transform: translate3d(775px, 0, 0);  animation-timing-function: ease-in-out; }
+  34%  { transform: translate3d(781px, 0, 0);  animation-timing-function: ease-in-out; }
+  48%  { transform: translate3d(772px, 0, 0);  animation-timing-function: cubic-bezier(.5, 0, .7, .6); }
+  72%  { transform: translate3d(1720px, 0, 0); }
+  100% { transform: translate3d(1720px, 0, 0); }
+}

@@ -1,0 +1,18 @@
+{
+ "direction": "A×C · Round 4",
+ "title": "The cut-corner button",
+ "summary": "Your reference, adapted: every primary action now has one cut corner, set in capitals at weight 600 — the heaviest your type spec allows — slightly larger and tighter, with no arrow. The four options are shown side by side on graphite, paper and the red plane.",
+ "story": "The page's primary action — Request a System Audit — gets a signature shape of its own: sharp, with one cut corner.",
+ "motion": [
+  "Hover deepens the fill; the keyboard focus ring is drawn inside the cut so it is never clipped."
+ ],
+ "addressed": [
+  "Cut corner: yes — one 45° chamfer, bottom-right, sharp everywhere else. Technical and ownable, and it keeps the no-rounded-corners rule.",
+  "All caps: the buttons were already in capitals; they are now weight 600 at 14px with tighter tracking, so they read punchier, like your reference.",
+  "Not bold 700 (option D): your type spec caps UI text at 600, and at 700 the button starts to look generic.",
+  "No arrow (option C): the cut corner already reads as “go”, which is closest to your reference. Option B keeps the arrow if you miss it.",
+  "Only the primary action gets the cut; the small outlined nav button stays square, so the shape always means “the main thing to do here”."
+ ],
+ "signoff": [],
+ "notes": "Applied site-wide via the kit's .ac-btn; specimen page shows A–D."
+}

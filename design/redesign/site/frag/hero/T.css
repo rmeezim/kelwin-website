@@ -1,0 +1,225 @@
+/* ── hero · T · The Operating Feed (round 6, A×C) ─────────────────────────
+   The room stops being wallpaper and becomes evidence. The hero sits on flat
+   graphite like every section below; its one artifact is a framed film of the
+   engagement room in three hard-cut takes, one per system Kelwin runs, with a
+   calibrated chapter rail (MEASURE) as its scrub bar and the nav's capability
+   glyphs as chapter marks.
+   Stage 1440 × 960: nav 0–96 · label 148 · statement 200–434 · rule 466 ·
+   feed 500–816 (755 × 316, the 2.39 : 1 cinema frame) · ruler 828 · chapters 834–868.
+   Right bay (cols 8–12): lede top-aligned with the feed; the audit note sits
+   on the doors; the doors' bottom sits on the picture's bottom edge (816 < 900 fold). */
+
+.km-hero-T {
+  height: 960px;
+  display: flex; flex-direction: column;
+  overflow: hidden; isolation: isolate;
+  --gd: 1750ms;                       /* chapter 01's glyph draws in the entrance; 0 after the first cut */
+}
+.km-hero-T.is-cut { --gd: 0ms; }
+
+/* ── nav (96px), exactly as hero U: lockup · tracked caps items · outlined action ── */
+.km-hero-T__nav {
+  position: relative; z-index: 2;
+  height: 96px; flex: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-hero-T__nav::after {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-hero-T__brand { display: inline-flex; color: var(--fg); }
+.km-hero-T__brand .km-logo { --logo-h: 24px; }
+.km-hero-T__menu {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 40px; white-space: nowrap;
+}
+.km-hero-T__menu a {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.km-hero-T__menu a:hover { color: var(--fg); }
+.km-hero-T__reg { z-index: 3; }
+
+/* ── body: the head grammar, top-anchored, then the band (feed | bay) ── */
+.km-hero-T__body.ac-head {
+  position: relative; z-index: 1; flex: 1;
+  grid-template-rows: auto auto auto auto; align-content: start;
+  padding-top: 52px;
+  --ac-d0: 160ms;
+}
+.km-hero-T__body > .ac-statement { grid-column: 1 / -1; }
+.km-hero-T__body > .ac-rule { margin-top: 32px; }
+
+/* ── the feed: cols 1–7 ── */
+.km-hero-T__feed { grid-column: 1 / span 7; grid-row: 4; margin-top: 32px; width: 755px; }
+.km-hero-T__screen { position: relative; width: 755px; height: 316px; --ac-occlude: var(--bg); }
+
+/* the film, re-framed into three takes (inside .km-film only: raster, blur, scrims) */
+.km-hero-T .km-film {
+  --film-blur: 8px; --film-frost: .06; --film-bright: 1.2; --film-con: 1.4; --film-sat: .5; --film-grain: .5;
+}
+.km-hero-T .km-film__plate {
+  inset: -24px;                                  /* bleed for the blur edge and the camera moves */
+  background-size: 1907.4px auto;
+  background-position: -800px -27.7px;           /* take 01 · close: the standing colleague at the wall */
+  transform-origin: 424px 182px;
+  filter: blur(min(var(--film-blur), 12px)) brightness(var(--film-bright)) contrast(var(--film-con)) saturate(var(--film-sat));
+  animation: none;
+}
+.km-hero-T[data-take="2"] .km-film__plate {      /* take 02 · over the shoulder: the seated figure at the screen */
+  background-size: 2131.8px auto;
+  background-position: -486.7px -432.1px;
+  transform-origin: 60% 40%;
+}
+.km-hero-T[data-take="3"] .km-film__plate {      /* take 03 · wide, from the other side: the man from behind, the room past him */
+  background-size: 1367.5px auto;
+  background-position: -4.5px -47.2px;
+  transform-origin: 50% 45%;
+}
+/* footage cues: each take has its own camera move; take 01 opens soft and pulls focus;
+   take 03 has someone cross the glass. Hard cuts between them (JS). */
+.km-hero-T[data-take="1"] .km-film__plate { animation: km-hero-T-cam1 8s linear both; }
+/* the focus pull: a softer copy of the same frame (it inherits the crop and rides the camera move) dissolves
+   away, so the picture sharpens from about 12px of blur to the 8px floor. Opacity only, so it stays on the GPU. */
+.km-hero-T__soft { position: absolute; inset: 0; background: inherit; filter: blur(9px); opacity: 0; display: none; }
+.km-hero-T[data-take="1"] .km-hero-T__soft { display: block; animation: km-hero-T-focus 1.8s var(--ease-inout) 900ms both; }
+.km-hero-T[data-take="2"] .km-film__plate { animation: km-hero-T-cam2 8s linear both; }
+.km-hero-T[data-take="3"] .km-film__plate { animation: km-hero-T-cam3 8s linear both; }
+
+/* take 02's footage cue: the seated figure is lit by the screen in front of him, and the light shifts as he
+   works. A cool glow in the plate (so it shares the blur and the camera move), flickering in uneven steps. */
+.km-hero-T__glow {
+  position: absolute; left: 440px; top: 120px; width: 300px; height: 240px; opacity: 0;
+  background: radial-gradient(50% 50% at 50% 40%, rgba(226, 232, 238, .22), rgba(226, 232, 238, 0) 100%);
+  mix-blend-mode: screen;
+}
+.km-hero-T[data-take="2"] .km-hero-T__glow { opacity: .8; animation: km-hero-T-screen 8s steps(1, end) both; }
+
+.km-hero-T .km-film__walker {
+  left: -62%; bottom: -96%; width: 48%; height: 176%;
+  opacity: 0; animation: none;
+  filter: blur(12px);
+}
+.km-hero-T[data-take="3"] .km-film__walker { animation: km-hero-T-walk 8s linear both; }
+
+/* legibility scrim for the one mono line + a lens falloff toward the frame (gradients live in .km-film only) */
+.km-hero-T__scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 72%, transparent) 0,
+      color-mix(in srgb, var(--bg) 52%, transparent) 40px,
+      color-mix(in srgb, var(--bg) 16%, transparent) 72px,
+      transparent 104px),
+    radial-gradient(118% 150% at 50% 46%, transparent 52%, color-mix(in srgb, var(--bg) 46%, transparent) 100%);
+}
+
+/* the one mono line: session · take · time */
+.km-hero-T__slate {
+  position: absolute; left: 16px; top: 14px; z-index: 2;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: .10em;
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap; font-variant-numeric: tabular-nums;
+}
+
+/* the hairline frame (drawn in drafting order) */
+.km-hero-T__frame { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+.km-hero-T__cx { opacity: 0; transform-box: fill-box; }
+.km-hero-T__cx--h { transform-origin: 0 50%; }
+.km-hero-T__cx--v { transform-origin: 50% 0; }
+
+/* ── the chapter rail ── */
+.km-hero-T__rail { position: relative; margin-top: 12px; }
+.km-hero-T__ruler { width: 755px; height: 9px; }
+.km-hero-T__base { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-hero-T__tick { fill: none; stroke: var(--fg-3); stroke-width: 1; transform-box: fill-box; transform-origin: 50% 0; }
+.km-hero-T__tick--maj { stroke: var(--fg-2); }
+/* elapsed run + playhead: rest at the take's first second; travel linearly while the take plays */
+/* (HTML, not SVG: a CSS transform on an SVG path re-lays out the page every frame; a span stays on the compositor) */
+.km-hero-T__rung { position: absolute; left: 0; top: 0; width: 755px; height: 1px; pointer-events: none; }
+.km-hero-T__run { position: absolute; inset: 0; background: var(--fg); transform-origin: 0 0; transform: scaleX(0); will-change: transform; }
+.km-hero-T[data-take="2"] .km-hero-T__run { transform: scaleX(.33377); }
+.km-hero-T[data-take="3"] .km-hero-T__run { transform: scaleX(.66623); }
+.km-hero-T__phw { position: absolute; left: 0; top: -12px; width: 1px; height: 21px; pointer-events: none; }
+.km-hero-T__ph { position: absolute; inset: 0; background: var(--fg); transform: translateX(0); }
+.km-hero-T[data-take="2"] .km-hero-T__ph { transform: translateX(252px); }
+.km-hero-T[data-take="3"] .km-hero-T__ph { transform: translateX(503px); }
+.km-hero-T[data-take="1"] .km-hero-T__ph { animation: km-hero-T-ph1 8s linear both; }
+.km-hero-T[data-take="2"] .km-hero-T__ph { animation: km-hero-T-ph2 8s linear both; }
+.km-hero-T[data-take="3"] .km-hero-T__ph { animation: km-hero-T-ph3 8s linear both; }
+.km-hero-T[data-take="1"] .km-hero-T__run { animation: km-hero-T-run1 8s linear both; }
+.km-hero-T[data-take="2"] .km-hero-T__run { animation: km-hero-T-run2 8s linear both; }
+.km-hero-T[data-take="3"] .km-hero-T__run { animation: km-hero-T-run3 8s linear both; }
+
+/* chapters: three equal thirds keyed to the ruler's major ticks (0 · 8 · 16 s) */
+.km-hero-T__chapters { display: grid; grid-template-columns: 252px 251px 252px; margin-top: -3px; margin-bottom: -8px; }
+.km-hero-T__ch {
+  display: flex; align-items: center; gap: 10px; justify-self: start;
+  height: 34px; padding: 8px 0;
+  color: var(--fg-3); transition: color 300ms var(--ease-inout);
+}
+.km-hero-T__ch:hover, .km-hero-T__ch[aria-current="true"] { color: var(--fg); }
+.km-hero-T__ch:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+.km-hero-T__ix {
+  font-family: var(--f-mono); font-size: 11px; line-height: 18px; letter-spacing: .10em;
+  font-variant-numeric: tabular-nums;
+}
+.km-hero-T__nm { font-family: var(--f-body); font-size: var(--ac-anno); line-height: 18px; white-space: nowrap; }
+.km-hero-T__gl { flex: none; margin-left: 4px; opacity: 0; transition: opacity 240ms var(--ease-out); }
+.km-hero-T__gl path { fill: none; stroke: currentColor; stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.km-hero-T__gl .km-hero-T__nd { fill: currentColor; stroke: none; }
+.km-hero-T__ch[aria-current="true"] .km-hero-T__gl { opacity: 1; transition-duration: 0ms; }
+
+/* ── the right bay: cols 8–12, lede up top beside the film, the note on the doors ── */
+.km-hero-T__bay {
+  grid-column: 8 / span 5; grid-row: 4; margin-top: 32px; align-self: start;
+  height: 316px;                                   /* exactly the picture's height: top and bottom edges shared */
+  display: flex; flex-direction: column; min-width: 0;
+}
+.km-hero-T__bay > .ac-lede { max-width: none; margin-top: -7px; }      /* cap line meets the frame's top edge */
+.km-hero-T__bay > .ac-note { margin-top: auto; }
+.km-hero-T__bay > .ac-doors { margin-top: 32px; flex-wrap: nowrap; justify-content: space-between; }
+
+/* ── entrance (only under html.is-play) — the frame plots in drafting order ── */
+.is-play .km-hero-T__nav { animation: km-hero-T-fade 500ms var(--ease-out) both; }
+.is-play .km-hero-T__nav::after { animation: km-hero-T-drawx 1s var(--ease-out) 100ms both; }
+.is-play .km-hero-T__cx--h { animation: km-hero-T-cxh 1300ms var(--ease-inout) 600ms both; }
+.is-play .km-hero-T__cx--v { animation: km-hero-T-cxv 1300ms var(--ease-inout) 680ms both; }
+.is-play .km-hero-T .km-film { animation: km-hero-T-fade 700ms var(--ease-out) 1000ms both; }
+.is-play .km-hero-T__slate { animation: km-hero-T-fade 400ms var(--ease-out) 1500ms both; }
+.is-play .km-hero-T__base { animation: km-hero-T-drawx 600ms var(--ease-out) 1200ms both; transform-origin: 0 0; }
+.is-play .km-hero-T__tick { animation: km-hero-T-drawy 220ms var(--ease-out) calc(1250ms + var(--i) * 20ms) both; }
+.is-play .km-hero-T__rung, .is-play .km-hero-T__phw { animation: km-hero-T-fade 300ms var(--ease-out) 1720ms both; }
+.is-play .km-hero-T__ch[aria-current="true"] .km-hero-T__gl path { animation: km-hero-T-plot 600ms var(--ease-inout) var(--gd) both; }
+.is-play .km-hero-T__ch[aria-current="true"] .km-hero-T__gl .km-hero-T__nd { animation: km-hero-T-fade 200ms var(--ease-out) calc(var(--gd) + 420ms) both; }
+
+/* held off screen: the film, the playhead and the grain stop where they are */
+.km-hero-T.is-held .km-film__plate, .km-hero-T.is-held .km-film__walker, .km-hero-T.is-held .km-hero-T__glow, .km-hero-T.is-held .km-hero-T__soft, .km-hero-T.is-held .km-film::after,
+.km-hero-T.is-held .km-hero-T__ph, .km-hero-T.is-held .km-hero-T__run { animation-play-state: paused; }
+
+@keyframes km-hero-T-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-hero-T-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-hero-T-drawy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-hero-T-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-hero-T-cxh { 0% { opacity: 1; transform: scaleX(0); } 35% { transform: scaleX(1); } 70% { opacity: 1; } 100% { opacity: 0; transform: scaleX(1); } }
+@keyframes km-hero-T-cxv { 0% { opacity: 1; transform: scaleY(0); } 35% { transform: scaleY(1); } 70% { opacity: 1; } 100% { opacity: 0; transform: scaleY(1); } }
+/* camera: 01 a slow push toward the wall · 02 a slow truck past the shoulder · 03 a slow pull back */
+@keyframes km-hero-T-cam1 { from { transform: scale(1); } to { transform: scale(1.075); } }
+@keyframes km-hero-T-cam2 { from { transform: translate3d(16px, 0, 0) scale(1.03); } to { transform: translate3d(-16px, -3px, 0) scale(1.03); } }
+@keyframes km-hero-T-cam3 { from { transform: scale(1.08); } to { transform: scale(1); } }
+@keyframes km-hero-T-focus { from { opacity: 1; } to { opacity: 0; } }
+@keyframes km-hero-T-screen {
+  0% { opacity: .62; } 9% { opacity: .9; } 21% { opacity: .74; } 33% { opacity: 1; } 47% { opacity: .68; }
+  58% { opacity: .86; } 71% { opacity: .56; } 83% { opacity: .92; } 100% { opacity: .78; }
+}
+@keyframes km-hero-T-walk {
+  0%, 50% { transform: translate3d(0, 0, 0); opacity: .82; }
+  78%, 100% { transform: translate3d(345%, 0, 0); opacity: .82; }
+}
+@keyframes km-hero-T-ph1 { from { transform: translateX(0); } to { transform: translateX(252px); } }
+@keyframes km-hero-T-ph2 { from { transform: translateX(252px); } to { transform: translateX(503px); } }
+@keyframes km-hero-T-ph3 { from { transform: translateX(503px); } to { transform: translateX(754px); } }
+@keyframes km-hero-T-run1 { from { transform: scaleX(0); } to { transform: scaleX(.33377); } }
+@keyframes km-hero-T-run2 { from { transform: scaleX(.33377); } to { transform: scaleX(.66623); } }
+@keyframes km-hero-T-run3 { from { transform: scaleX(.66623); } to { transform: scaleX(1); } }

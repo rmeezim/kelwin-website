@@ -1,0 +1,148 @@
+/* ── statechange · B · Quiet Ledger ──────────────────────────────────
+   Paper chapter hung from the Index Spine. Sentence + muted sentence
+   across cols 4–12, then a quarter ledger that draws the state change
+   in type alone: the Entropy column repeats itself flat, the
+   Compounding column steps outward one deposit per quarter (the mark's
+   step, read as line length). A total rule closes the ledger and the
+   light Δ stands on it.                                              */
+
+.km-statechange-B {
+  --spine-x: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));   /* ≈ 386 */
+  padding: 128px 0 128px; overflow: hidden;
+}
+
+/* index spine (col 3|4 gutter), continuous */
+.km-statechange-B__spine { position: absolute; top: 0; bottom: 0; left: var(--spine-x); width: 1px; background: var(--line); }
+
+.km-statechange-B__inner {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  align-items: start;
+}
+
+/* opening rule: spine → right margin, square at the joint (the mark's corner as a hairline) */
+.km-statechange-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-statechange-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-statechange-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+
+/* spine column: index + the red-square caps label */
+.km-statechange-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-statechange-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-statechange-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-statechange-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+
+/* statement: a sentence + a muted light sentence */
+.km-statechange-B__title {
+  grid-column: 4 / 13; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1; letter-spacing: var(--display-tracking);
+}
+.km-statechange-B__s1, .km-statechange-B__s2 { display: block; white-space: nowrap; }
+.km-statechange-B__s1 { color: var(--fg); }
+.km-statechange-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-statechange-B__redrule { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--signal); transform-origin: 0 50%; }
+.km-statechange-B__body {
+  grid-column: 4 / 9; grid-row: 4; margin-top: 32px;
+  font-size: 18px; line-height: 30px; color: var(--fg-2); text-wrap: pretty;
+}
+
+/* ── the quarter ledger: cols 6–12 (index col 6 · entropy cols 7–8 · compounding cols 9–12) ── */
+.km-statechange-B__ledger { grid-column: 6 / 13; grid-row: 5; margin-top: 88px; }
+.km-statechange-B__head,
+.km-statechange-B__row,
+.km-statechange-B__total { position: relative; display: grid; grid-template-columns: repeat(7, 1fr); column-gap: var(--gutter); align-items: baseline; }
+.km-statechange-B__ix { grid-column: 1 / 2; font: 400 11px/1 var(--f-mono); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-statechange-B__e { grid-column: 2 / 4; }
+.km-statechange-B__c { grid-column: 4 / 8; }
+
+.km-statechange-B__head { padding-bottom: 16px; }
+.km-statechange-B__head .km-statechange-B__e,
+.km-statechange-B__head .km-statechange-B__c { font: 400 11px/1 var(--f-mono); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-statechange-B__head .km-statechange-B__c { color: var(--fg); }
+
+.km-statechange-B__row { padding: 22px 0; transition: background-color 300ms var(--ease-out); }
+.km-statechange-B__row::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+.km-statechange-B__row:hover { background: var(--panel); }
+.km-statechange-B__row .km-statechange-B__e { font-size: 17px; line-height: 26px; color: var(--fg-3); }
+.km-statechange-B__row .km-statechange-B__c {
+  font-family: var(--f-body); font-stretch: 100%; font-size: 22px; line-height: 26px; font-weight: 400; color: var(--fg-2);
+  white-space: nowrap; transition: transform 300ms var(--ease-out);
+}
+.km-statechange-B__row .km-statechange-B__c b { font-weight: 500; color: var(--fg); }
+.km-statechange-B__row:hover .km-statechange-B__c { transform: translateX(8px); }
+
+/* total: the closing rule runs from the Δ (col 4) to the margin */
+.km-statechange-B__total { padding: 24px 0 0; }
+.km-statechange-B__total::before {
+  content: ""; position: absolute; top: 0; right: 0; height: 1px; background: var(--fg);
+  left: calc(-2 * (var(--col) + var(--gutter)));                 /* reaches back to col 4, under the Δ */
+  transform-origin: 0 50%;
+}
+.km-statechange-B__total .km-statechange-B__e { font-size: 17px; line-height: 26px; color: var(--fg-3); max-width: 19ch; }
+.km-statechange-B__total .km-statechange-B__c {
+  font-family: var(--f-body); font-stretch: 100%; font-size: 22px; line-height: 26px; font-weight: 500; color: var(--fg);
+}
+
+/* the Δ — Mona wide light at 200px (drawn: the shipped subset has no Greek). It stands on the total
+   rule in cols 4–5, and its caption is the total row's header, on the row's first baseline. */
+.km-statechange-B__dglyph {
+  position: absolute; left: calc(-2 * (var(--col) + var(--gutter))); bottom: calc(100% + 24px);
+  width: 160px; height: 145.8px; overflow: visible; color: var(--fg);
+}
+.km-statechange-B__dglyph path { fill: none; stroke: currentColor; stroke-linejoin: miter; stroke-miterlimit: 8; stroke-width: calc(var(--light-weight) * 0.157); }
+.km-statechange-B__total .km-statechange-B__ix {
+  position: absolute; left: calc(-2 * (var(--col) + var(--gutter))); top: 32px;
+  font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); color: var(--fg-2); white-space: nowrap;
+  display: flex; align-items: center; gap: 6px;
+}
+.km-statechange-B__dmini { width: 9px; height: 8.2px; flex: none; overflow: visible; color: var(--fg); }
+.km-statechange-B__dmini path { fill: none; stroke: currentColor; stroke-width: 120; stroke-linejoin: miter; }
+
+/* quiet secondary + specimen note */
+.km-statechange-B__foot {
+  grid-column: 6 / 13; grid-row: 6; margin-top: 56px;
+  display: flex; align-items: baseline; justify-content: space-between;
+}
+.km-statechange-B__link {
+  position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap; color: var(--fg);
+}
+.km-statechange-B__link::before, .km-statechange-B__link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; }
+.km-statechange-B__link::before { background: var(--line-2); }
+.km-statechange-B__link::after { background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out); }
+.km-statechange-B__link:hover::after { transform: scaleX(1); }
+.km-statechange-B__link svg { width: 13px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; transition: transform 300ms var(--ease-out); }
+.km-statechange-B__link:hover svg { transform: translateX(3px); }
+.km-statechange-B__spec { font: 400 11px/1 var(--f-mono); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+
+/* ── entrance (html.is-play): long durations, short distances; the quarters fill in like a ledger ── */
+.is-play .km-statechange-B__rule { animation: km-statechange-B-draw 900ms var(--ease-out) both; }
+.is-play .km-statechange-B__joint { animation: km-statechange-B-fade 300ms var(--ease-out) both; }
+.is-play .km-statechange-B__index { animation: km-statechange-B-fade 400ms var(--ease-out) 300ms both; }
+.is-play .km-statechange-B__s1 { animation: km-statechange-B-rise 700ms var(--ease-out) 400ms both; }
+.is-play .km-statechange-B__s2 { animation: km-statechange-B-rise 700ms var(--ease-out) 560ms both; }
+.is-play .km-statechange-B__redrule { animation: km-statechange-B-draw 600ms var(--ease-out) 800ms both; }
+.is-play .km-statechange-B__body { animation: km-statechange-B-rise 700ms var(--ease-out) 720ms both; }
+.is-play .km-statechange-B__head { animation: km-statechange-B-fade 500ms var(--ease-out) 950ms both; }
+.is-play .km-statechange-B__row::before { animation: km-statechange-B-draw 600ms var(--ease-out) calc(1050ms + var(--i) * 280ms) both; }
+.is-play .km-statechange-B__row .km-statechange-B__ix,
+.is-play .km-statechange-B__row .km-statechange-B__e,
+.is-play .km-statechange-B__kept { animation: km-statechange-B-fade 400ms var(--ease-out) calc(1200ms + var(--i) * 280ms) both; }
+.is-play .km-statechange-B__row .km-statechange-B__c b { display: inline-block; animation: km-statechange-B-deposit 600ms var(--ease-out) calc(1330ms + var(--i) * 280ms) both; }
+.is-play .km-statechange-B__total::before { animation: km-statechange-B-draw 900ms var(--ease-out) 2300ms both; }
+.is-play .km-statechange-B__total > * { animation: km-statechange-B-fade 600ms var(--ease-out) 2700ms both; }
+.is-play .km-statechange-B__total > .km-statechange-B__dglyph { animation: km-statechange-B-rise 800ms var(--ease-out) 2450ms both; }
+.is-play .km-statechange-B__foot { animation: km-statechange-B-fade 600ms var(--ease-out) 2900ms both; }
+
+@keyframes km-statechange-B-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-statechange-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-statechange-B-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-statechange-B-deposit { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }

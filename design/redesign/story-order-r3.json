@@ -1,0 +1,13 @@
+[
+  {"id": "hero", "slot": "S"},
+  {"id": "reframe", "slot": "S"},
+  {"id": "evidence", "slot": "S"},
+  {"id": "letter", "slot": "S"},
+  {"id": "system", "slot": "S"},
+  {"id": "principle", "slot": "S"},
+  {"id": "handover", "slot": "S"},
+  {"id": "method", "slot": "S"},
+  {"id": "fit", "slot": "S"},
+  {"id": "cta", "slot": "S"},
+  {"id": "footer", "slot": "S"}
+]

@@ -1,0 +1,163 @@
+/* ── handover · S · "The handover, struck through" (FIG. 04) ─────────────────────────────
+   A split-surface sheet deck. Kelwin's side is graphite from the page edge to the end of
+   col 3; his side is paper from there to the right edge, and that surface edge IS the
+   Handover datum. Six FOLIO sheets wait as a dashed stack on the graphite, deal across the
+   edge along the lane under the tray, turn solid (ink on paper) exactly as they cross, rise
+   into their slot beside their asset, and strike through the letter's margin line each one
+   ends. Default CSS = the final, handed-over state. The one red: the 8px datum tick. */
+
+.km-handover-S {
+  /* end of col 3, measured from the page edge (≈ 374px on the 1440 stage) */
+  --hs-edge: calc(var(--margin) + (100% - 2 * var(--margin) - 11 * var(--gutter)) * 3 / 12 + 2 * var(--gutter));
+  --hs-lane: 112px;              /* the clear row under the tray that the sheets travel in (90px sheet + 11px) */
+}
+
+/* ── the two surfaces ── */
+.km-handover-S__side { position: absolute; left: 0; top: 0; bottom: 0; width: var(--hs-edge); background: var(--bg); }
+.km-handover-S__in { position: relative; z-index: 1; }
+
+/* ── head: the kit grammar, placed on his side (cols 4–12) ── */
+.km-handover-S__head > .ac-labelrow { grid-column: 4 / -1; }
+.km-handover-S__head > .ac-statement { grid-column: 4 / span 9; }
+.km-handover-S__head > .ac-rule { grid-column: 4; }
+.km-handover-S__head > .ac-lede { grid-column: 4 / span 5; }
+.km-handover-S__kside { grid-column: 1 / span 3; grid-row: 1; align-self: center; }
+
+/* ── Kelwin's side, at the top: it explains itself on the head's own label row. The datum's label sits
+      against the surface edge (16px inset, the same caption as method's Handover datum), and the line key
+      hangs directly under "Kelwin's side", so the column reads as one side of a handover at first glance. ── */
+.km-handover-S__head > .km-handover-S__dl { grid-column: 1 / span 3; grid-row: 1; align-self: center; justify-self: end; margin-right: 16px; color: var(--fg-2); position: relative; }
+/* a short leader from the label to the edge, so the word names the edge rather than the column */
+.km-handover-S__dl::after { content: ""; position: absolute; right: -16px; top: 50%; width: 10px; height: 1px; background: var(--fg-3); }
+.km-handover-S__head > .km-handover-S__legend { grid-column: 1 / span 3; grid-row: 2 / span 3; align-self: start; margin-top: 28px; }
+
+/* ── the tray: caps headers · row 1 · row 2 · the lane ── */
+.km-handover-S__tray { margin-top: 80px; grid-template-rows: auto auto auto var(--hs-lane); }
+.km-handover-S__cap { grid-column: var(--c) / span 3; grid-row: 1; position: relative; padding-bottom: 14px; margin-bottom: 32px; }
+/* the hairline bracket: one rule over the pair, its legs pointing down at the two assets */
+.km-handover-S__cap::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 7px;
+  border: 1px solid var(--line-2); border-bottom: 0; transform-origin: 0 50%;
+}
+
+.km-handover-S__item {
+  grid-column: var(--c) / span 3; grid-row: var(--r);
+  display: grid; grid-template-columns: 64px minmax(0, 1fr); column-gap: 18px; align-items: start;
+}
+.km-handover-S__item[data-row="1"] { margin-bottom: 44px; }
+.km-handover-S__item[data-row="2"] { margin-bottom: 22px; }
+.km-handover-S__slot { position: relative; width: 64px; height: 90px; }
+/* his side's empty place, seen only while the sheet is still on Kelwin's side */
+.km-handover-S__ph { position: absolute; left: 0; top: 0; display: block; }
+.km-handover-S__ph rect { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 1 3; }
+.km-handover-S__lift { position: absolute; inset: 0; transition: transform 250ms var(--ease-out); }
+.km-handover-S__sheet { position: absolute; inset: 0; z-index: 2; }
+.km-handover-S__draft, .km-handover-S__owned { position: absolute; left: 0; top: 0; display: block; overflow: visible; }
+.km-handover-S__draft { clip-path: inset(0 100% 0 0); }          /* at rest the draft is gone: the sheet is his */
+
+/* FOLIO sheet: 64×90, a mono index in its corner, a header rule and four rows of page furniture */
+.km-handover-S__pp { fill: var(--bg); }                           /* paper on his side, graphite on Kelwin's */
+.km-handover-S__ed { fill: none; stroke: var(--fg-2); stroke-width: 1; transition: stroke 250ms var(--ease-out); }
+.km-handover-S__ix { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; fill: var(--fg); font-variant-numeric: tabular-nums; }
+.km-handover-S__hr { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-handover-S__ru { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-handover-S__bu { fill: var(--fg-3); }
+/* the draft copy (paper strokes on graphite): dashed edge, a step quieter */
+.km-handover-S__draft .km-handover-S__ed { stroke: var(--fg-2); stroke-dasharray: 3 3; }
+.km-handover-S__draft .km-handover-S__ix { fill: var(--fg-2); }
+
+/* text, to the right of the sheet: name · tag · the struck before · the after */
+.km-handover-S__txt { padding-top: 1px; }
+.km-handover-S__nm { white-space: nowrap; }
+.km-handover-S__tag { margin-top: 6px; }
+.km-handover-S__was { position: relative; margin-top: 18px; font-size: 15px; line-height: 1.45; color: var(--fg-3); text-wrap: balance; }
+.km-handover-S__now { margin-top: 6px; font-size: 17px; line-height: 1.42; color: var(--fg); text-wrap: balance; }
+/* the strike: one SVG hairline per rendered line (built in JS), drawn left → right */
+.km-handover-S__strike { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.km-handover-S__strike line { stroke: var(--fg-2); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 300ms var(--ease-inout); }
+/* the strikes are SVG hairlines measured in JS (so they can draw); until JS has built them (.is-ink), a plain
+   1px line-through keeps the default render the honest final state: every before struck */
+.km-handover-S:not(.is-ink) .km-handover-S__was-t { text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: var(--fg-2); }
+
+/* hover / focus on an asset lifts its sheet 8px and inks its edge */
+.km-handover-S__item:hover .km-handover-S__lift, .km-handover-S__item:focus-within .km-handover-S__lift { transform: translateY(-8px); }
+.km-handover-S__item:hover .km-handover-S__owned .km-handover-S__ed { stroke: var(--fg); }
+
+/* ── Kelwin's side, at the lane: the stack's footprint, the way across, the datum's red tick ── */
+.km-handover-S__deck { grid-column: 1 / span 3; grid-row: 4; position: relative; height: var(--hs-lane); }
+.km-handover-S__fp { position: absolute; left: 0; top: 11px; display: block; }
+.km-handover-S__fp rect { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 3 3; }
+.km-handover-S__way { position: absolute; left: 100px; top: 51px; display: block; overflow: visible; }
+.km-handover-S__way-l { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 2 4; vector-effect: non-scaling-stroke; }
+.km-handover-S__way-c { fill: none; stroke: var(--fg-3); stroke-width: 1; vector-effect: non-scaling-stroke; }
+/* the section's one red: an 8px tick across the datum, where the sheets cross (the way's last 4px + his first 4px) */
+.km-handover-S__tick { position: absolute; left: 100%; top: 55px; width: 8px; height: 2px; margin-left: -4px; background: var(--signal); }
+
+/* ── the line key (top of Kelwin's side) · foot: the title block, merged with the end cap (paper) ── */
+.km-handover-S__foot { margin-top: 4px; align-items: end; }
+.km-handover-S__legend { display: flex; flex-direction: column; gap: 10px; }
+.km-handover-S__legend li { display: flex; align-items: center; gap: 14px; }
+.km-handover-S__sw { flex: none; display: block; overflow: visible; }
+.km-handover-S__sw-d, .km-handover-S__sw-s { fill: none; stroke-width: 1; }
+.km-handover-S__sw-d { stroke: var(--fg-2); stroke-dasharray: 3 3; }
+.km-handover-S__sw-s { stroke: var(--fg-2); }
+.km-handover-S__tb { grid-column: 7 / span 6; justify-self: end; }
+.km-handover-S__yours { transition: opacity 500ms var(--ease-out); }
+
+/* ── the deal (JS adds .is-deal while the sequence runs; each asset gets .is-landed) ── */
+.km-handover-S__now { transition: opacity 420ms var(--ease-out) 120ms, transform 520ms var(--ease-out) 120ms; }
+.km-handover-S.is-deal .km-handover-S__item:not(.is-landed) .km-handover-S__now { opacity: 0; transform: translateY(12px); }
+.km-handover-S.is-deal .km-handover-S__item:not(.is-landed) .km-handover-S__strike line { stroke-dashoffset: 1; }
+.km-handover-S.is-deal:not(.is-done) .km-handover-S__yours { opacity: 0; }
+.km-handover-S__fp { transition: opacity 600ms var(--ease-out); }
+.km-handover-S.is-deal:not(.is-done) .km-handover-S__fp { opacity: 0; }
+
+/* ── entrance (is-play only; the kit runs the head) ── */
+@keyframes km-handover-S-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-handover-S-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-handover-S-drawx { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes km-handover-S-plot { from { stroke-dashoffset: 210; } to { stroke-dashoffset: 0; } }
+.is-play .km-handover-S__kside { animation: km-handover-S-fade 400ms var(--ease-out) 0ms both; }
+.is-play .km-handover-S__dl { animation: km-handover-S-fade 400ms var(--ease-out) 120ms both; }
+.is-play .km-handover-S__legend { animation: km-handover-S-fade 500ms var(--ease-out) 240ms both; }
+.is-play .km-handover-S__cap { animation: km-handover-S-fade 400ms var(--ease-out) var(--d, 600ms) both; }
+.is-play .km-handover-S__cap::after { animation: km-handover-S-drawx 700ms var(--ease-out) var(--d, 600ms) both; }
+.is-play .km-handover-S__txt { animation: km-handover-S-up 600ms var(--ease-out) var(--d, 860ms) both; }
+.is-play .km-handover-S__ph { animation: km-handover-S-fade 500ms var(--ease-out) var(--d, 860ms) both; }
+.is-play .km-handover-S__way { animation: km-handover-S-fade 500ms var(--ease-out) 700ms both; }
+.is-play .km-handover-S__tick { animation: km-handover-S-fade 300ms var(--ease-out) 950ms both; }
+.is-play .km-handover-S__tb > :not(.km-handover-S__yours) { animation: km-handover-S-fade 500ms var(--ease-out) 1050ms both; }
+.is-play .km-handover-S__tb { animation: km-handover-S-fade 300ms var(--ease-out) 1050ms both; }
+
+/* ── ≤ 760px: the split stacks. Kelwin's side becomes a top strip (label · key · the footprint with the
+      way across); its foot is the datum, now horizontal, with the red tick on it; then the head and a
+      one-column tray. No deal on narrow screens: the final state, struck. ── */
+@media (max-width: 760px) {
+  .km-handover-S { --margin: 16px; --gutter: 16px; padding-block: 0 72px; }
+  .km-handover-S__side { display: none; }
+  .km-handover-S__in { display: flex; flex-direction: column; }
+  .km-handover-S__head, .km-handover-S__tray, .km-handover-S__foot { display: contents; }
+  .km-handover-S__head > *, .km-handover-S__tray > *, .km-handover-S__foot > * { order: 4; align-self: stretch; }
+  /* the strip: four consecutive graphite blocks, full bleed (label · key · datum label · the lane) */
+  .km-handover-S__head > .km-handover-S__kside, .km-handover-S__head > .km-handover-S__legend,
+  .km-handover-S__head > .km-handover-S__dl, .km-handover-S__tray > .km-handover-S__deck {
+    margin: 0 -16px; padding-inline: 16px; background: var(--bg); align-self: stretch;
+  }
+  .km-handover-S__head > .km-handover-S__kside { order: 1; padding-top: 40px; padding-bottom: 20px; }
+  .km-handover-S__head > .km-handover-S__legend { order: 2; padding-bottom: 4px; }
+  .km-handover-S__head > .km-handover-S__dl { order: 3; padding-top: 16px; text-align: right; }
+  .km-handover-S__dl::after { display: none; }   /* the datum is the strip's foot here, not the label's edge */
+  .km-handover-S__tray > .km-handover-S__deck { order: 3; height: 112px; margin-bottom: 40px; }
+  .km-handover-S__fp { left: 16px; }
+  .km-handover-S__way { left: 100px; }
+  .km-handover-S__tick { left: 299px; top: auto; bottom: -4px; width: 2px; height: 8px; margin: 0; }
+  .km-handover-S__head > .ac-statement { margin-top: 24px; font-size: 44px; }
+  .km-handover-S__head > .ac-statement .ac-line { white-space: normal; }
+  .km-handover-S__head > .ac-rule { align-self: start; margin-top: 24px; }
+  .km-handover-S__head > .ac-lede { font-size: 17px; }
+  .km-handover-S__head > .ac-note { align-self: stretch; margin-top: 28px; }
+  .km-handover-S__cap { margin-top: 48px; margin-bottom: 24px; }
+  .km-handover-S__item[data-row] { margin-bottom: 32px; }
+  .km-handover-S__nm { white-space: normal; }
+  .km-handover-S__foot > .km-handover-S__tb { order: 5; align-self: start; margin-top: 16px; max-width: 100%; }
+}

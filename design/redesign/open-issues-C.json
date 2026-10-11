@@ -1,0 +1,252 @@
+{
+ "hero": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 9,
+   "swiss": 9,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Single-column nav cells are tight at 11px tracked caps. 'RESOURCES' ends about 10px from its cell rule.",
+   "The cell ID inside the red audit cell and the X/Y frame readout are the closest things to instrumentation. They stay because direction C specifies them, but they need watching against the HUD ban.",
+   "The col-9 divider crosses the seated figure's shirt (not the head). Moving the figure left would put the divider through the standing figure's head."
+  ]
+ },
+ "architecture": {
+  "after": {
+   "proprietary": 8,
+   "direction": 9,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Plan micro-labels sit at the 11px mono floor. They are legible, but the schematic is compact relative to the 1440 stage, as the direction's density implies.",
+   "Tag F is the brightest object on the sheet after the title. Intentional as the keyed callout, but a reviewer could tone it to an outlined tag if it competes."
+  ]
+ },
+ "fit": {
+  "after": {
+   "proprietary": 8,
+   "direction": 9,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Large empty band between the C9\u00b7R1 note ID and the note. It matches method-C, but the cell feels bottom-heavy.",
+   "The legend line is long and dense at 11px mono. It is legible but close to the edge of comfortable."
+  ]
+ },
+ "footer": {
+  "after": {
+   "proprietary": 9,
+   "direction": 9,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 9,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The drawing is orthographic, not C's isometric. This is deliberate, because the CTA sheet directly above already carries the exploded iso stack.",
+   "The A/B/C tags read C-B-A left to right under the mark, because K3 is the leftmost piece. Accurate, but slightly counter-intuitive.",
+   "The sheet is built from absolutely positioned cells at fixed 1440 coordinates. That is fine for the mockup, but the live build needs a real grid implementation.",
+   "The 52px title is below C's 72px section-title size, which is a footer compromise."
+  ]
+ },
+ "nav": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 7,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Shares its three-column skeleton with A (content-driven), though its grammar of cells, wireframe isometrics, uppercase titles and title block is clearly different.",
+   "The film silhouette is soft at some points of the drift.",
+   "Coherence note for the direction pass: nav C now relies on hero C's updated outlined-audit nav. If hero C reverts to a red nav cell, the two will disagree."
+  ]
+ },
+ "stack": {
+  "after": {
+   "proprietary": 9,
+   "direction": 8,
+   "distinct": 9,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The sheet carries four red marks (label square, rule, plane, audit cell), beyond C's strict 'one red element besides the action cell'. This follows the founder's head DNA, as hero-C does.",
+   "There are still two large uppercase type blocks (88px title and 56px layer word, the Atlas device). The hierarchy holds, but it is type-heavy.",
+   "In the Kelwin skin the plate strokes take --cool (steel). That's acceptable on a drawing sheet, but worth a look in the coherence pass.",
+   "Height is 1104px, slightly over the 1100 target and well under the 1400 maximum."
+  ]
+ },
+ "assets": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The red label square and rule from the founder head spec sit beside the red plane, so the sheet has more than C's original 'one red element'. This follows the founder override and the sibling C sheets.",
+   "Small inverted-tab mono text shows LCD colour fringing in the screenshots. It is a rendering artifact, not a CSS colour."
+  ]
+ },
+ "faq": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 9,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 9
+  },
+  "remaining": [
+   "The response cell carries about 130px of unused depth under shorter answers. This is acceptable as drawing-field emptiness, but a stricter reviewer could ask for the row to tighten.",
+   "Several mono strings (legend, cell IDs) sit at 11px with 0.04\u20130.05em tracking. That meets the floors, but they are small at full-page viewing distance."
+  ]
+ },
+ "reframe": {
+  "after": {
+   "proprietary": 9,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Three small reds in one viewport (label square, rule, red plane) versus C's one-red-element rule. This follows the founder's section-head DNA; the coherence review should apply the same call to every C sheet, since hero C has neither.",
+   "C's light-weight turn line and 88px title differ from the other C sheets (72px, display-weight turn) until the coherence review syncs them.",
+   "The C TOOLING tag slightly overhangs the surface plane's front edge (K3 sits at the plan's front corner); it is legible and reads as a label placed on the drawing.",
+   "The A/B/C stepper is demoed on a timer (3.2/4.3/5.4s); on the live site it is scroll-linked, as described in meta."
+  ]
+ },
+ "method": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The gantt's T+1...T+5 intervals are unitless and only flagged 'T+ indicative \u00b7 Specimen'. They are honest but abstract; only Diagnose (WD 01-10) is a real span.",
+   "PH.0n row heads show colour fringing in the PNGs. This is subpixel antialiasing from their opaque mask background, a rendering artifact rather than a colour bug."
+  ]
+ },
+ "beforeafter": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Red appears four times: the label square, the title rule, the audit cell and the datum. That is consistent with the founder spec and the other C sheets, but it is one more than direction C's literal 'one red element besides the action cell'.",
+   "There is no isometric drawing on this sheet. The section map calls for a spec comparison, so the install-line datum stands in as the signature device."
+  ]
+ },
+ "interior": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 9,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "At 550ms the drafting-order entrance shows mostly an empty frame; the drawing only resolves after about 2s.",
+   "The red count is the highest of the three: label square, short rule, action cell and installed plane. It stays within the direction because the square and rule are founder DNA.",
+   "In isometric, the K1 plate reads as a chevron more than as the Kelwin mark.",
+   "The manifest shows only S\u00b701\u2013S\u00b703 of 07."
+  ]
+ },
+ "evidence": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The direction prescribes four 3-col cells, so the skeleton (label at top, graphic, claim, so-what, source) structurally echoes today's four-dial row. This is offset by the shared-baseline plot (numerals at four different heights), the paper document sheet, the frame, crosshairs and the title block, but the founder may notice the four-up rhythm.",
+   "Same cross-section type-scale question: C sheet titles are 72px uppercase, against the founder spec's 88px minimum."
+  ]
+ },
+ "statechange": {
+  "after": {
+   "proprietary": 9,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "Mapping the A\u2013D spec rows (learning, pipeline, narrative, signal) to specific quarters is illustrative only.",
+   "A brief thin-sliver artefact can appear in the first frames of each layer's scaleX draw.",
+   "Cross-section: font-variant-numeric: tabular-nums makes this Mona Sans build draw a slashed zero. reframe-B's spine index renders '\u00d82'. About 18 sibling CSS files use tabular-nums on Mona numerals and should be checked."
+  ]
+ },
+ "principle": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 8,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The four-line break 'IN A NOISY / MARKET,' is forced by the centre cell's measure. It leaves a slightly vase-shaped rag (386/320/548/607px).",
+   "At 72px the principle is still smaller than the 88px titles on state change and method. This follows C's direction spec, and the 'nearly empty sheet' intent, rather than the founder's 88-152px range."
+  ]
+ },
+ "cta": {
+  "after": {
+   "proprietary": 8,
+   "direction": 8,
+   "distinct": 9,
+   "swiss": 8,
+   "motion": 8,
+   "craft": 8,
+   "conversion": 8
+  },
+  "remaining": [
+   "The 12px mono door label is small for the page's strongest close. It stays at 12px to match hero-C's cells; if the founder picks C, raise both the hero's and this section's cells together."
+  ]
+ }
+}

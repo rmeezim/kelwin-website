@@ -1,0 +1,94 @@
+/* ── evidence · X · Four into one, re-drawn (round 2, A×C) ────────────────
+   Round-1 A as the founder picked it: paper act, the hero's head grammar, a
+   2×2 of 176px readings on a hairline cross, sources in mono, the FIG. 03
+   caption band with one segmented control. Only the centre figure changes.
+   The nested-box figure (too close to the logo) is replaced by a FIELD: 100
+   points (1 point = 1 in 100). Four loose clouds, one beside each reading,
+   converge into one 10×10 lattice (four into one); the lattice then shows
+   each reading's share in turn, 17 → 95:5 → 77 → 53, in step with the
+   numeral cells. A share fills column by column like a bar you can count,
+   and a part-column fills from its centre out, so no corner, step or nest
+   ever forms. One red: the 17-point subset, the share of the journey sales
+   owns.                                                                    */
+
+.km-evidence-X { --fig: 384px; }
+
+/* ── FIG. 03 plate: the 2×2 on the crossing ── */
+.km-evidence-X__plate { margin-top: 64px; }
+.km-evidence-X__grid {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr 1fr;
+  column-gap: var(--gutter);
+}
+.km-evidence-X__rule { position: absolute; z-index: 0; background: var(--line); }
+.km-evidence-X__rule--top { left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%; }
+.km-evidence-X__rule--mid { left: 0; right: 0; top: 50%; height: 1px; transform-origin: 0 50%; }
+.km-evidence-X__rule--v { top: 0; bottom: 0; left: 50%; width: 1px; transform-origin: 50% 0; }
+
+/* readings (cols 1–4 · 9–12); the field owns cols 5–8 */
+.km-evidence-X__cell { position: relative; z-index: 1; padding: 22px 0 22px; }
+.km-evidence-X__cell--tl { grid-column: 1 / 5; grid-row: 1; }
+.km-evidence-X__cell--tr { grid-column: 9 / 13; grid-row: 1; }
+.km-evidence-X__cell--bl { grid-column: 1 / 5; grid-row: 2; }
+.km-evidence-X__cell--br { grid-column: 9 / 13; grid-row: 2; }
+/* the active reading: a 1px --fg rule over the cell's top edge, drawn from its 01 side */
+.km-evidence-X__cell::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 600ms var(--ease-inout);
+}
+.km-evidence-X__cell.is-active::before { transform: scaleX(1); }
+.km-evidence-X__meta { display: flex; justify-content: space-between; gap: 16px; }
+.km-evidence-X__idx { color: var(--fg-2); transition: color 400ms var(--ease-inout); }
+.km-evidence-X__cell.is-active .km-evidence-X__idx { color: var(--fg); }
+/* the kit's big numeral (Mona wide 430, 176px, tabular, −.04em; unit in 300), line box trimmed */
+.km-evidence-X__num {
+  margin-top: 22px; margin-left: -0.05em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 176px; line-height: .8; letter-spacing: -0.04em; color: var(--fg);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.km-evidence-X__u { font-weight: var(--light-weight); letter-spacing: -0.02em; }
+.km-evidence-X__claim { margin-top: 22px; max-width: 25em; font-size: var(--ac-body); line-height: 1.45; font-weight: var(--ui-weight); color: var(--fg); text-wrap: pretty; }
+.km-evidence-X__so { margin-top: 6px; max-width: 26em; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+
+/* ── the FIELD: a 384×384 registration frame on the crossing (cols 5–8); the lattice is 294px ── */
+.km-evidence-X__fig {
+  position: absolute; z-index: 2; pointer-events: none;
+  left: calc(50% - var(--fig) / 2); top: calc(50% - var(--fig) / 2);
+  width: var(--fig); height: var(--fig);
+  --ac-occlude: var(--bg);
+}
+/* paper knock-out: the hairline cross stops at the frame, the field reads as one unit */
+.km-evidence-X__clear { position: absolute; inset: 0; background: var(--bg); }
+.km-evidence-X__field { position: absolute; left: 0; top: 0; overflow: visible; }
+/* points: 6px squares. Remainder = --line-2; a reading's share = --fg; the 17 = the one red */
+.km-evidence-X__p { fill: var(--line-2); transition: fill 360ms var(--ease-inout); }
+.km-evidence-X__p.is-on { fill: var(--fg); }
+.km-evidence-X__p.is-red { fill: var(--accent); }
+.km-evidence-X__p.is-loose { fill: var(--fg-3); }
+
+/* ── caption band (A): caption · key at the field's edge · the one control ── */
+.km-evidence-X__band {
+  position: relative; display: flex; align-items: center; height: 72px; padding: 0 12px 0 24px;
+  background: var(--panel);
+}
+.km-evidence-X__key { position: absolute; left: calc(50% - var(--fig) / 2); top: 50%; height: 16px; margin-top: -8px; }
+.km-evidence-X__k {
+  position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 12px;
+  opacity: 0; transition: opacity 180ms var(--ease-out);
+}
+/* out, then in: the two legend lines never overlap mid-change */
+.km-evidence-X__k.is-on { opacity: 1; transition: opacity 280ms var(--ease-out) 200ms; }
+.km-evidence-X__k .ac-cap { color: var(--fg-2); }
+/* legend swatch: one 6px field point in the state's colour */
+.km-evidence-X__sw { display: block; width: 6px; height: 6px; flex: none; background: var(--fg); }
+.km-evidence-X__k[data-n="1"] .km-evidence-X__sw { background: var(--accent); }
+.km-evidence-X__seg { margin-left: auto; }
+.km-evidence-X__seg > button { min-width: 84px; }
+
+/* ── entrance (only under html.is-play); the head runs on the kit's choreography ── */
+.is-play .km-evidence-X__rule--top { animation: ac-drawx 900ms var(--ease-out) 380ms both; }
+.is-play .km-evidence-X__rule--mid { animation: ac-drawx 900ms var(--ease-out) 520ms both; }
+.is-play .km-evidence-X__rule--v { animation: ac-drawy 900ms var(--ease-out) 600ms both; }
+.is-play .km-evidence-X__cell { animation: ac-up 700ms var(--ease-out) both; animation-delay: calc(600ms + var(--i) * 90ms); }
+.is-play .km-evidence-X__band { animation: ac-fade 500ms var(--ease-out) 900ms both; }

@@ -1,0 +1,350 @@
+<title>Kelwin Redesign Selector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+@font-face { font-family: "Mona Sans Local"; font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; src: url(fonts/MonaSans.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono Local"; font-weight: 400 700; font-display: swap; src: url(fonts/JetBrainsMono.woff2) format("woff2"); }
+/* Layout: a review console in the brand it reviews — sticky command bar with the
+   full-homepage door, section rail, one review panel per section (round-1 pick vs
+   round-2 blend, founder note, how it was addressed, approve / needs changes).
+   Swiss Systems palette, deliberately single-theme: the page is the brand. */
+:root {
+  --bg: #141517;
+  --panel: #1A1B1E;
+  --card: #202125;
+  --raised: #26272B;
+  --ink: #FBFAF6;
+  --stone: rgba(251,250,246,0.78);
+  --muted: #B9BCC2;
+  --faint: rgba(251,250,246,0.5);
+  --line: rgba(251,250,246,0.14);
+  --line-strong: rgba(251,250,246,0.3);
+  --red: #BF3A36;
+  --red-deep: #8E2824;
+  --signal: #E8564E;
+  --blush: #F2C9BF;
+  --ok: #B9BCC2;
+  --f-display: "Mona Sans", "Mona Sans Local", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Mona Sans", "Mona Sans Local", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", "JetBrains Mono Local", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 1px solid var(--blush); outline-offset: 3px; }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  padding: 12px clamp(16px, 3vw, 40px); background: rgba(20,21,23,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.mark { display: flex; align-items: center; gap: 12px; }
+.mark .logo { display: inline-block; height: 18px; aspect-ratio: 734 / 152; background: var(--ink); -webkit-mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; }
+.mark span { color: var(--muted); font: 500 11px/1 var(--f-mono); letter-spacing: 0.14em; text-transform: uppercase; }
+.bar-progress { display: flex; align-items: center; gap: 10px; margin-left: auto; font: 500 12px/1 var(--f-mono); color: var(--stone); }
+.meter { width: 120px; height: 3px; background: rgba(251,250,246,0.1); }
+.meter b { display: block; height: 100%; width: 0; background: var(--ink); transition: width .4s ease; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid var(--line-strong); background: transparent;
+  font: 500 11.5px/1 var(--f-body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); text-decoration: none; }
+.btn:hover { border-color: var(--ink); color: var(--ink); }
+.btn-red { background: var(--red); border-color: var(--red); color: var(--ink); }
+.btn-red:hover { background: var(--red-deep); border-color: var(--red-deep); }
+.save-state { font: 500 11px/1.3 var(--f-mono); color: var(--muted); max-width: 230px; }
+
+.wrap { padding-inline: clamp(16px, 3vw, 40px); padding-block: 0 80px; }
+.intro { max-width: 1240px; margin: 0 auto; padding-block: 56px 28px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; align-items: end; }
+.label { display: flex; align-items: center; gap: 10px; font: 500 11px/1 var(--f-body); letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+.label::before { content: ""; width: 8px; height: 8px; background: var(--signal); }
+.intro h1 { margin: 18px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(36px, 5vw, 72px); line-height: 1.0; letter-spacing: -0.018em; text-wrap: balance; }
+.intro h1 span { font-weight: 300; color: var(--muted); }
+.rule { width: 48px; height: 2px; background: var(--red); margin-top: 24px; }
+.intro p { margin: 20px 0 0; max-width: 60ch; color: var(--stone); font-size: 17px; }
+.home-door { display: grid; gap: 14px; padding: 22px; background: var(--panel); border: 1px solid var(--line); }
+.home-door p { margin: 0; color: var(--stone); font-size: 15px; }
+.home-door .btn-red { justify-content: space-between; padding: 16px 18px; font-size: 12.5px; }
+
+.system { max-width: 1240px; margin: 8px auto 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 0; border: 1px solid var(--line); background: var(--panel); }
+.system > div { padding: 22px 24px; min-width: 0; }
+.system > div + div { border-left: 1px solid var(--line); }
+.sys-name { margin: 12px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 28px; line-height: 1.1; letter-spacing: -0.018em; }
+.sys-thesis { margin: 12px 0 0; color: var(--stone); font-size: 15px; }
+.contrib { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 14px; color: var(--stone); }
+.contrib b { display: inline-block; min-width: 28px; font: 600 11px/1 var(--f-mono); letter-spacing: 0.1em; color: var(--blush); }
+.vocab { margin: 12px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.vocab li { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.vocab li:nth-child(odd) { padding-right: 16px; }
+.vocab b { display: block; font: 500 15px/1.3 var(--f-body); }
+.vocab span { display: block; margin-top: 3px; color: var(--muted); font-size: 13.5px; }
+
+.body { max-width: 1240px; margin: 44px auto 0; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; align-items: start; }
+.rail { position: sticky; top: 78px; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.rail a { display: grid; grid-template-columns: 26px minmax(0,1fr) auto; align-items: center; gap: 6px; padding: 8px 2px; border-bottom: 1px solid rgba(251,250,246,0.07); text-decoration: none; font-size: 13.5px; color: var(--stone); }
+.rail a:hover { color: var(--ink); }
+.rail .n { font: 500 11px/1 var(--f-mono); color: var(--faint); }
+.chip { font: 600 10px/1 var(--f-mono); letter-spacing: 0.06em; padding: 4px 6px; border: 1px solid var(--line); color: var(--faint); }
+.chip.ok { border-color: var(--ink); color: var(--ink); }
+.chip.chg { border-color: var(--signal); color: var(--signal); }
+
+.sec { scroll-margin-top: 72px; padding-block: 0 56px; margin-block: 0 56px; border-bottom: 1px solid var(--line); min-width: 0; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.sec-n { font: 600 12px/1 var(--f-mono); color: var(--blush); }
+.sec-name { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.018em; }
+.sec-job { margin: 10px 0 0; max-width: 78ch; color: var(--muted); font-size: 14px; }
+.yournote { margin-top: 16px; padding: 14px 16px; border-left: 2px solid var(--red); background: var(--panel); font-size: 14px; color: var(--stone); max-width: 92ch; }
+.yournote b { display: block; margin-bottom: 4px; font: 500 11px/1 var(--f-body); letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+
+.tabs { display: flex; flex-wrap: wrap; margin-top: 18px; border: 1px solid var(--line); width: fit-content; max-width: 100%; }
+.tab { padding: 10px 14px; border: 0; border-right: 1px solid var(--line); background: transparent; font: 500 12.5px/1.2 var(--f-body); color: var(--muted); text-align: left; }
+.tab:last-child { border-right: 0; }
+.tab b { font: 600 11px/1 var(--f-mono); letter-spacing: 0.08em; color: var(--stone); margin-right: 8px; text-transform: uppercase; }
+.tab[aria-selected="true"] { background: var(--raised); color: var(--ink); box-shadow: inset 0 -2px 0 var(--red); }
+
+.stage-wrap { margin-top: 14px; border: 1px solid var(--line); background: #000; position: relative; overflow: hidden; }
+.stage-wrap .poster { display: block; width: 100%; height: auto; }
+.stage-wrap iframe { position: absolute; top: 0; left: 0; width: 1440px; border: 0; transform-origin: 0 0; background: transparent; opacity: 0; transition: opacity .3s ease; }
+.stage-wrap iframe.is-ready { opacity: 1; }
+.stage-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+.info { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-top: 16px; }
+.card { background: var(--panel); border: 1px solid var(--line); padding: 16px 18px; min-width: 0; }
+.card h3 { margin: 0 0 10px; font: 500 11px/1 var(--f-body); letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+.opt-title { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 22px; line-height: 1.15; letter-spacing: -0.018em; }
+.opt-sum { margin: 8px 0 0; color: var(--stone); font-size: 15px; }
+.list { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; font-size: 14px; color: var(--stone); }
+.list li { padding-left: 16px; position: relative; }
+.list li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 7px; height: 7px; background: var(--blush); }
+.motion li::before { width: 7px; height: 1px; top: 0.7em; background: var(--muted); }
+
+.decide { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 16px; }
+.dec { padding: 12px 16px; border: 1px solid var(--line-strong); background: transparent; font: 500 12px/1 var(--f-body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+.dec:hover { border-color: var(--ink); color: var(--ink); }
+.dec[aria-pressed="true"].approve { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.dec[aria-pressed="true"].changes { background: var(--red); border-color: var(--red); color: var(--ink); }
+.note { flex: 1 1 280px; min-width: 0; padding: 11px 12px; background: var(--card); border: 1px solid var(--line); color: var(--ink); font: 400 14px/1.4 var(--f-body); }
+.note::placeholder { color: var(--faint); }
+
+.thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.thumb { padding: 0; border: 1px solid var(--line); background: var(--panel); text-align: left; display: flex; flex-direction: column; min-width: 0; }
+.thumb img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; display: block; }
+.thumb span { padding: 7px 9px; font: 500 11.5px/1.3 var(--f-body); color: var(--muted); }
+.thumb[aria-current="true"] { border-color: var(--ink); }
+.thumb[aria-current="true"] span { color: var(--ink); }
+
+.summary { max-width: 1240px; margin: 0 auto; padding: 22px 24px; background: var(--panel); border: 1px solid var(--line); }
+.summary h2 { margin: 12px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 26px; letter-spacing: -0.018em; }
+.summary pre { margin: 14px 0 0; padding: 14px; background: var(--card); border: 1px solid var(--line); white-space: pre-wrap; font: 400 13px/1.6 var(--f-mono); color: var(--stone); overflow-x: auto; }
+
+@media (max-width: 980px) {
+  .intro, .system { grid-template-columns: 1fr; }
+  .system > div + div { border-left: 0; border-top: 1px solid var(--line); }
+  .body { grid-template-columns: 1fr; }
+  .rail { display: none; }
+  .info { grid-template-columns: 1fr; }
+  .thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) { .vocab { grid-template-columns: 1fr; } .save-state { max-width: none; flex-basis: 100%; } }
+</style>
+
+<header class="bar">
+  <div class="mark"><span class="logo" role="img" aria-label="Kelwin"></span><span>Redesign · Round 2</span></div>
+  <div class="bar-progress"><span id="prog-txt">0 of 0 reviewed</span><span class="meter" aria-hidden="true"><b id="prog-bar"></b></span></div>
+  <a class="btn btn-red" id="home-btn" href="home.html" target="_blank" rel="noopener">Scroll the full homepage ↗</a>
+  <button class="btn" id="copy-btn" type="button">Copy my review</button>
+  <span class="save-state" id="save-state" aria-live="polite">Saved in this browser only</span>
+</header>
+
+<div class="wrap">
+  <section class="intro">
+    <div>
+      <div class="label">Round 2 · Built from your notes</div>
+      <h1>One language, <span>blended from A and C.</span></h1>
+      <div class="rule"></div>
+      <p>Every section below was rebuilt from your round-1 pick and your note, in one blended system: A's restraint and cinema, C's technical drawing used sparingly, and B where you named it. The logo symbol is retired as decoration. It now lives only in the lockup and the footer, and the figures use a new vocabulary of shapes that move and morph.</p>
+    </div>
+    <div class="home-door">
+      <div class="label">See it as one site</div>
+      <p>The whole homepage, stitched in order, with each section's motion playing as you scroll. Swiss Systems palette.</p>
+      <a class="btn btn-red" href="home.html" target="_blank" rel="noopener">Scroll the full homepage <span>↗</span></a>
+    </div>
+  </section>
+
+  <section class="system" id="system"></section>
+
+  <div class="body">
+    <nav class="rail" id="rail" aria-label="Sections"></nav>
+    <main id="sections"></main>
+  </div>
+
+  <section class="summary">
+    <div class="label">Your review</div>
+    <h2>Ready to hand back</h2>
+    <pre id="summary-pre">Nothing reviewed yet.</pre>
+    <div class="stage-tools"><button class="btn" id="copy-btn-2" type="button">Copy my review</button></div>
+  </section>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const review = {};   // sectionId -> {status: approve|changes, choice, note}
+const current = {};
+let db = null;
+function loadLocal() { try { return JSON.parse(localStorage.getItem("kelwin-review2") || "{}"); } catch (e) { return {}; } }
+function saveLocal() { try { localStorage.setItem("kelwin-review2", JSON.stringify(review)); } catch (e) {} }
+const sec = (id) => DATA.sections.find((s) => s.id === id);
+
+function renderSystem() {
+  const s = DATA.system;
+  $("#system").innerHTML = `
+    <div>
+      <div class="label">The blended system</div>
+      <p class="sys-name">${esc(s.name)}</p>
+      <p class="sys-thesis">${esc(s.thesis)}</p>
+      <ul class="contrib">${s.contributions.map((c) => `<li><b>${esc(c.from)}</b>${esc(c.what)}</li>`).join("")}</ul>
+    </div>
+    <div>
+      <div class="label">New shapes and motion, in place of the logo symbol</div>
+      <ul class="vocab">${s.vocab.map((v) => `<li><b>${esc(v.name)}</b><span>${esc(v.what)}</span></li>`).join("")}</ul>
+    </div>`;
+}
+
+function renderSections() {
+  $("#rail").innerHTML = DATA.sections.map((s, i) => `<a href="#s-${esc(s.id)}"><span class="n">${String(i + 1).padStart(2, "0")}</span><span>${esc(s.name)}</span><span class="chip" id="chip-${esc(s.id)}">—</span></a>`).join("");
+  $("#sections").innerHTML = DATA.sections.map((s, i) => {
+    const tabs = [`<button class="tab" role="tab" type="button" data-sec="${esc(s.id)}" data-opt="r1" aria-selected="false"><b>Round 1</b>Your pick · ${esc(s.r1.opt)}</button>`]
+      .concat(s.options.map((o) => `<button class="tab" role="tab" type="button" data-sec="${esc(s.id)}" data-opt="${esc(o.slot)}" aria-selected="false"><b>${esc(o.label)}</b>${esc(o.title)}</button>`)).join("");
+    const thumbs = [`<button class="thumb" type="button" data-sec="${esc(s.id)}" data-opt="r1"><img src="${esc(s.r1.shot)}" alt="" loading="lazy"><span>Round 1 · ${esc(s.r1.opt)} · ${esc(s.r1.title)}</span></button>`]
+      .concat(s.options.map((o) => `<button class="thumb" type="button" data-sec="${esc(s.id)}" data-opt="${esc(o.slot)}"><img src="${esc(o.shot)}" alt="" loading="lazy"><span>${esc(o.label)} · ${esc(o.title)}</span></button>`)).join("");
+    return `
+    <section class="sec" id="s-${esc(s.id)}" aria-labelledby="h-${esc(s.id)}">
+      <div class="sec-head"><span class="sec-n">${String(i + 1).padStart(2, "0")}</span><h2 class="sec-name" id="h-${esc(s.id)}">${esc(s.name)}</h2></div>
+      <p class="sec-job">${esc(s.blurb)}</p>
+      ${s.note ? `<div class="yournote"><b>Your note</b>${esc(s.note)}</div>` : ""}
+      <div class="tabs" role="tablist" aria-label="${esc(s.name)} versions">${tabs}</div>
+      <div class="stage-wrap" id="stage-${esc(s.id)}"></div>
+      <div class="stage-tools" id="tools-${esc(s.id)}"></div>
+      <div id="info-${esc(s.id)}"></div>
+      <div class="decide">
+        <button class="dec approve" type="button" id="ok-${esc(s.id)}" aria-pressed="false">Approve</button>
+        <button class="dec changes" type="button" id="chg-${esc(s.id)}" aria-pressed="false">Needs changes</button>
+        <input class="note" id="note-${esc(s.id)}" type="text" placeholder="What should change? (or which version you prefer)">
+      </div>
+      <div class="thumbs">${thumbs}</div>
+    </section>`;
+  }).join("");
+  document.querySelectorAll(".tab, .thumb").forEach((b) => b.addEventListener("click", () => show(b.dataset.sec, b.dataset.opt)));
+  DATA.sections.forEach((s) => {
+    $("#ok-" + s.id).addEventListener("click", () => decide(s.id, "approve"));
+    $("#chg-" + s.id).addEventListener("click", () => decide(s.id, "changes"));
+    $("#note-" + s.id).addEventListener("change", () => { const r = review[s.id] || { status: "changes", choice: current[s.id] }; r.note = $("#note-" + s.id).value.trim(); review[s.id] = r; persist(s.id); refresh(); });
+  });
+}
+
+const io = ("IntersectionObserver" in window) ? new IntersectionObserver((ents) => ents.forEach((e) => { if (e.isIntersecting) mountFrame(e.target.id.replace("stage-", "")); }), { rootMargin: "300px 0px" }) : null;
+
+function show(id, opt) {
+  const s = sec(id); current[id] = opt;
+  document.querySelectorAll(`.tab[data-sec="${id}"]`).forEach((t) => t.setAttribute("aria-selected", String(t.dataset.opt === opt)));
+  document.querySelectorAll(`.thumb[data-sec="${id}"]`).forEach((t) => t.setAttribute("aria-current", String(t.dataset.opt === opt)));
+  const stage = $("#stage-" + id), tools = $("#tools-" + id), info = $("#info-" + id);
+  if (opt === "r1") {
+    stage.innerHTML = `<img class="poster" src="${esc(s.r1.shot)}" alt="Round 1 pick for ${esc(s.name)}">`;
+    stage.dataset.frame = ""; tools.innerHTML = "";
+    info.innerHTML = `<div class="info"><div class="card"><h3>Round 1 · your pick</h3><p class="opt-title">${esc(s.r1.opt)} · ${esc(s.r1.title)}</p><p class="opt-sum">The version you picked in round 1, shown for comparison.</p></div></div>`;
+    return;
+  }
+  const o = s.options.find((x) => x.slot === opt);
+  stage.innerHTML = `<img class="poster" src="${esc(o.shot)}" alt="${esc(o.label)}: ${esc(o.title)}">`;
+  stage.dataset.frame = o.frame; stage.dataset.h = o.height; stage.dataset.mounted = "";
+  tools.innerHTML = `<button class="btn" type="button" data-replay="${esc(id)}">↻ Replay animation</button><a class="btn" href="${esc(o.frame)}" target="_blank" rel="noopener">Open full size ↗</a>`;
+  tools.querySelector("[data-replay]").addEventListener("click", () => { stage.dataset.mounted = ""; mountFrame(id, true); });
+  info.innerHTML = `<div class="info">
+      <div class="card"><h3>${esc(o.label)}</h3><p class="opt-title">${esc(o.title)}</p><p class="opt-sum">${esc(o.summary)}</p>
+        ${o.motion && o.motion.length ? `<h3 style="margin-top:16px">Motion</h3><ul class="list motion">${o.motion.map((m) => `<li>${esc(m)}</li>`).join("")}</ul>` : ""}</div>
+      <div class="card"><h3>How your note was addressed</h3>${o.addressed && o.addressed.length ? `<ul class="list">${o.addressed.map((m) => `<li>${esc(m)}</li>`).join("")}</ul>` : `<p class="opt-sum" style="margin:0">Harmonised with the blended system: same head grammar, type and red discipline, and no logo symbol used as decoration.</p>`}</div>
+    </div>`;
+  if (io) { io.unobserve(stage); io.observe(stage); } else mountFrame(id);
+}
+
+function mountFrame(id, force) {
+  const stage = $("#stage-" + id);
+  if (!stage || !stage.dataset.frame || (stage.dataset.mounted && !force)) return;
+  stage.dataset.mounted = "1";
+  const old = stage.querySelector("iframe"); if (old) old.remove();
+  const f = document.createElement("iframe");
+  f.title = "Live mockup"; f.loading = "lazy";
+  f.src = stage.dataset.frame + "#swiss" + (force ? "-" + Date.now() : "");
+  f.style.height = (+stage.dataset.h || 900) + "px";
+  const fit = () => { f.style.transform = `scale(${stage.clientWidth / 1440})`; };
+  fit(); stage.appendChild(f); new ResizeObserver(fit).observe(stage);
+}
+window.addEventListener("message", (e) => {
+  const d = e.data; if (!d || d.km !== "height") return;
+  const id = d.id.replace(/-[A-Z]$/, "");
+  const stage = $("#stage-" + id); const f = stage && stage.querySelector("iframe");
+  if (f && e.source === f.contentWindow && d.h > 200) { f.style.height = d.h + "px"; f.classList.add("is-ready"); }
+});
+
+async function persist(id) {
+  saveLocal();
+  if (!db) return;
+  try {
+    const r = review[id];
+    if (r) await db.doc("review2/" + id).set({ section: sec(id).name, status: r.status, choice: r.choice || "", note: r.note || "", updatedAt: new Date().toISOString() });
+    $("#save-state").textContent = "Saved · Claude can read your review";
+  } catch (e) { $("#save-state").textContent = "Couldn't save to the page (" + ((e && e.code) || "error") + ") — use Copy my review"; }
+}
+function decide(id, status) {
+  const choice = current[id] && current[id] !== "r1" ? current[id] : (sec(id).options[0] || {}).slot;
+  review[id] = { status, choice, note: $("#note-" + id).value.trim() };
+  persist(id); refresh();
+}
+function label(id, slot) { const o = sec(id).options.find((x) => x.slot === slot); return o ? `${o.label} (${o.title})` : slot; }
+function summaryText() {
+  return "Kelwin redesign — round 2 review\n" + DATA.sections.map((s, i) => {
+    const r = review[s.id]; const n = String(i + 1).padStart(2, "0");
+    if (!r) return `${n} ${s.name}: —`;
+    return `${n} ${s.name}: ${r.status === "approve" ? "APPROVED" : "NEEDS CHANGES"} · ${label(s.id, r.choice)}${r.note ? " — " + r.note : ""}`;
+  }).join("\n");
+}
+function refresh() {
+  const n = DATA.sections.filter((s) => review[s.id]).length;
+  $("#prog-txt").textContent = `${n} of ${DATA.sections.length} reviewed`;
+  $("#prog-bar").style.width = (100 * n / DATA.sections.length) + "%";
+  DATA.sections.forEach((s) => {
+    const r = review[s.id], c = $("#chip-" + s.id);
+    c.textContent = r ? (r.status === "approve" ? "OK" : "EDIT") : "—";
+    c.className = "chip" + (r ? (r.status === "approve" ? " ok" : " chg") : "");
+    $("#ok-" + s.id).setAttribute("aria-pressed", String(!!r && r.status === "approve"));
+    $("#chg-" + s.id).setAttribute("aria-pressed", String(!!r && r.status === "changes"));
+    if (r && r.note && !$("#note-" + s.id).value) $("#note-" + s.id).value = r.note;
+  });
+  $("#summary-pre").textContent = n ? summaryText() : "Nothing reviewed yet.";
+}
+async function copyReview(btn) {
+  const t = summaryText();
+  try { await navigator.clipboard.writeText(t); btn.textContent = "Copied"; }
+  catch (e) { const rg = document.createRange(); rg.selectNodeContents($("#summary-pre")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg); btn.textContent = "Selected — press Ctrl/Cmd+C"; }
+  setTimeout(() => { btn.textContent = "Copy my review"; }, 2200);
+}
+
+Object.assign(review, loadLocal());
+renderSystem(); renderSections();
+DATA.sections.forEach((s) => show(s.id, (s.options[0] && s.options[0].slot) || "r1"));
+refresh();
+$("#copy-btn").addEventListener("click", (e) => copyReview(e.currentTarget));
+$("#copy-btn-2").addEventListener("click", (e) => copyReview(e.currentTarget));
+(async () => {
+  if (!window.claude || typeof window.claude.use !== "function") return;
+  try { db = await window.claude.use("db"); } catch (e) { db = null; }
+  if (!db) return;
+  $("#save-state").textContent = "Connected · your review saves to this page";
+  db.collection("review2").onSnapshot((snap) => {
+    snap.docs.forEach((d) => { const v = d.data(); if (v && v.status) review[d.id] = { status: v.status, choice: v.choice, note: v.note || "" }; });
+    refresh();
+  }, () => { $("#save-state").textContent = "Live sync paused — your review still saves"; });
+})();
+</script>

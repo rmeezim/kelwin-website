@@ -1,0 +1,120 @@
+/* ── fit · S · Two ledgers, the gate both ways (round 3, A×C) ────────────────────
+   Round-2 X kept where the founder liked it (the two ledgers, their 42px heads, one
+   open row each, the muted Not-for list) and cut where he didn't:
+   · the TRACE fork (the "animated line on the left") is gone, with its callouts and
+     FIG. 09 title block, the 88px statement, the red button and the closing row;
+   · the 42px ledger heads ARE the headline. A sticky lede column (cols 1–4) holds the
+     label, the lede and one quiet link; it is position: sticky, not a pin;
+   · open rows show body text only (no sub-headline inside an open row);
+   · + / – are plain mono ledger signs in the index column, unboxed, so they read as
+     the yes / no of a ledger and never as buttons (the row toggles stay at the right).
+     The minus is set as an en dash: this JetBrains Mono build draws U+2212 as its
+     hyphen (320 units against the plus's 470), which read as stray punctuation;
+   · still beat: reveal only. No drawing, no loop, no red beyond the label square. */
+
+.km-fit-S {
+  --sign: 72px;                                   /* the ledger's index column (kit default) */
+}
+
+/* ── body: sticky lede column (cols 1–4) · col 5 open · the two ledgers (cols 6–12) ── */
+.km-fit-S__body { align-items: start; }
+
+.km-fit-S__side {
+  position: sticky; top: 128px; align-self: start;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.km-fit-S__label { margin: 0; }
+.km-fit-S__lede { margin-top: 36px; max-width: 20em; text-wrap: pretty; }
+.km-fit-S__link { margin-top: 36px; }
+
+/* the right column starts one label-row lower, so the lede's first line and the
+   "Built for" heading share a baseline (set in px; verified in both skins) */
+.km-fit-S__sets { padding-top: 36px; }
+.km-fit-S__set--no { margin-top: 48px; }
+
+/* ── the ledger head: sign · Built for ……… We say yes when  03 ──
+   On the ledger's own columns: the sign sits in the index column, the heading starts
+   on the row titles' edge, so every row title hangs from it. */
+.km-fit-S__sh {
+  display: grid; grid-template-columns: var(--sign) minmax(0, 1fr) auto; grid-template-rows: 46px; column-gap: var(--gutter);
+  align-items: baseline; padding-bottom: 20px;                 /* a whole-pixel band (the 42px head's box is 46.2px) */
+}
+.km-fit-S__sign {
+  font-family: var(--f-mono); font-size: 28px; line-height: 1; font-weight: 400;
+  color: var(--fg-3); letter-spacing: 0;   /* at 28px the glyphs' centre sits on the heading's x-height */
+}
+.km-fit-S__mask { display: block; font: inherit; overflow: clip; padding-block: .1em .18em; margin-block: -.1em -.18em; }
+.km-fit-S__mask > span { display: inline-block; white-space: nowrap; }
+.km-fit-S__sub { display: flex; align-items: baseline; gap: 18px; }
+.km-fit-S__sub > .ac-support { color: var(--fg-2); }
+.km-fit-S__sub > .ac-idx { font-size: 12px; color: var(--fg-2); }
+
+/* the head rule: ink under Built for, one step quieter under Not for */
+.km-fit-S__rule { display: block; height: 1px; background: var(--fg); transform-origin: 0 50%; }
+.km-fit-S__set--no .km-fit-S__rule { background: var(--line-2); }
+
+/* ── the ledgers (kit .ac-ledger): index · title · descriptor · toggle ── */
+.km-fit-S__lg {
+  border-top: 0;
+  --ac-row-cols: var(--sign) minmax(0, 1.5fr) minmax(0, 1fr) 20px;
+  --ac-row-indent: calc(var(--sign) + var(--gutter));
+}
+.km-fit-S .ac-row__head .ac-support { color: var(--fg-2); }
+.km-fit-S .ac-row__head:focus-visible, .km-fit-S__link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+/* open rows: the body, and nothing else (his FAQ note applies here too) */
+.km-fit-S .ac-row__in { padding-top: 0; padding-bottom: 24px; }
+/* one sentence per line: each answer reads as plain statements, never as a heading + text */
+.km-fit-S__p { font-size: 17px; line-height: 26px; color: var(--fg); text-wrap: pretty; }
+.km-fit-S__p > span { display: block; }
+
+/* Not for: one step quieter until a row is opened or hovered (as in round 2) */
+.km-fit-S__set--no .ac-row__head .ac-h4 { color: var(--fg-2); transition: transform 300ms var(--ease-out), color 300ms var(--ease-inout); }
+.km-fit-S__set--no .ac-row__head .ac-support { color: var(--fg-3); }
+.km-fit-S__set--no .ac-row.is-open .ac-h4, .km-fit-S__set--no .ac-row__head:hover .ac-h4 { color: var(--fg); }
+.km-fit-S__set--no .ac-row.is-open .ac-row__head .ac-support { color: var(--fg-2); }
+
+/* ── entrance (only under .is-play): reveal only, in reading order.
+   label → lede → link · "Built for" rises, its rule draws, its rows cascade (80ms) ·
+   "Not for" rises, its rule draws, its rows cascade · then the two open rows open
+   (360ms, JS): F-02 first, D-01 after it. No drawing, nothing loops.
+   The open rows keep their open height from the first frame, so nothing below them is
+   pushed while it is still landing (and the page below never jumps): JS holds them in
+   .is-pre (answer hidden, toggle at +), then releases them, so the answer drops out of
+   the row head and the toggle turns + → −. ── */
+.km-fit-S .ac-row__in { transition: opacity 360ms var(--ease-inout), transform 360ms var(--ease-out); }
+.km-fit-S .ac-row.is-pre .ac-row__in { opacity: 0; transform: translateY(-8px); }
+.km-fit-S .ac-row.is-pre .ac-toggle::after { transform: rotate(90deg); }
+.is-play .km-fit-S__label { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-fit-S__lede { animation: ac-up 600ms var(--ease-out) 120ms both; }
+.is-play .km-fit-S__link { animation: ac-up 600ms var(--ease-out) 240ms both; }
+
+.is-play .km-fit-S__mask > span { animation: ac-rise 800ms var(--ease-out) var(--hd, 200ms) both; }
+.is-play .km-fit-S__sign, .is-play .km-fit-S__sub { animation: ac-fade 400ms var(--ease-out) calc(var(--hd, 200ms) + 240ms) both; }
+.is-play .km-fit-S__rule { animation: ac-drawx 700ms var(--ease-inout) calc(var(--hd, 200ms) + 80ms) both; }
+.km-fit-S__set--no { --hd: 600ms; }
+
+.is-play .km-fit-S__lg > .ac-row { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(var(--d, 440ms) + var(--i, 0) * 80ms); }
+.km-fit-S__set--no .km-fit-S__lg { --d: 840ms; }
+
+/* ── ≤ 760px: the column stops being sticky and stacks above the ledgers; 16px gutters ── */
+@media (max-width: 760px) {
+  .km-fit-S { --sign: 40px; padding-block: 88px; }
+  .km-fit-S .ac-wrap { padding-inline: 16px; }
+  .km-fit-S__body { display: block; }
+  .km-fit-S__side { position: static; }
+  .km-fit-S__lede { margin-top: 24px; max-width: none; }
+  .km-fit-S__link { margin-top: 24px; font-size: 12px; letter-spacing: .12em; }   /* one line at 358px */
+  .km-fit-S__sets { padding-top: 56px; }
+  .km-fit-S__set--no { margin-top: 48px; }
+  .km-fit-S__sh { grid-template-columns: var(--sign) minmax(0, 1fr); column-gap: 16px; row-gap: 6px; }
+  .km-fit-S__sub { grid-column: 2; }
+  .km-fit-S .ac-h3--lg { font-size: 32px; }
+  .km-fit-S__lg { --ac-row-cols: var(--sign) minmax(0, 1fr) 20px; --ac-row-indent: calc(var(--sign) + 16px); }
+  .km-fit-S .ac-row__head { column-gap: 16px; row-gap: 4px; padding-block: 18px; }
+  .km-fit-S .ac-row__head > .ac-idx { grid-row: 1; align-self: baseline; }
+  .km-fit-S .ac-row__head > .ac-h4 { font-size: 20px; }
+  .km-fit-S .ac-row__head > .ac-support { grid-column: 2; grid-row: 2; }
+  .km-fit-S .ac-row__head > .ac-toggle { grid-column: 3; grid-row: 1; }
+  .km-fit-S__p { font-size: 16px; }
+  .km-fit-S__p > span { display: inline; }                     /* narrow lines: let the sentences flow */
+}

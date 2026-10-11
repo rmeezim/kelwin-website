@@ -1,0 +1,21 @@
+{
+  "title": "Section cut, red plane",
+  "direction": "C",
+  "summary": "SHEET 02/14 draws the reframe instead of saying it: a 1px 30° iso section cut through the true three-piece Kelwin mark, where the three symptoms sit as tags on a thin ghost SURFACE plane and lettered leaders drop straight through to the piece that really produces each one (A → K1 narrative, B → K2 orchestration, C → K3 the intelligence core), with one flat red plane slotting into that layer as the spec tabs step A → B → C.",
+  "reference": {
+    "site": "Intercom (Fin AI Engine)",
+    "mobbin_url": "https://mobbin.com/sites/sections/d7229859-7935-46bd-9859-fd407ec9ec42",
+    "ref_file": "refs/reframe-C.webp",
+    "borrowed": "Intercom's dark technical sheet: a small label + large title with a note paragraph on the same row under a hairline, then a hairline-framed 'FIG 3.A' field where one vertical engineered assembly is drawn in thin lines, flanked by bracketed mono callouts and dimension brackets marking its spans, with one warm-red zone at the core.",
+    "kelwin": "The assembly is Kelwin's own mark at master proportions (brand/kelwin-mark.svg: K1 outer corner, K2 middle L, K3 core square), extruded into 30° iso slabs and exploded downward under a ghost SURFACE plane, corner to the back so the pieces step toward the viewer; Intercom's bracketed callouts become lettered symptom tags (A PIPELINE / B SALES EXEC / C TOOLING) sitting on the surface whose leaders drop straight through it to K1/K2/K3, keyed to the spec tabs; the dimension brackets become dimension lines contrasting a thin 'SURFACE · VISIBLE · RETURNS' span with a deep 'ARCHITECTURE · PRODUCES IT · COMPOUNDS' span (the coda, drawn); the warm core becomes the one flat red plane. Everything sits in the C sheet grammar — frame verticals, red-square sheet label, 88px uppercase title with a light turn, note cell led by the 48×2 red rule, dashed construction grid, spec column with inverted tabs, legend and title block with the real mark."
+  },
+  "motion": [
+    "entrance (drafting order): frame verticals and three crosshairs fade (300ms) → cell rules draw in raster order (40ms stagger) → title fades, the red rule draws and the note fades → the section cut plots via stroke-dashoffset, bottom piece first (K3 → K2 → K1), then the surface plane → leaders, K-labels and dimensions fade in and the three symptom leaders drop through the surface → the red plane drops into K1 (opacity + 8px settle) at ~2.2s; sheet label, caption, cell ID, spec head and title-block values type on at 24ms per character",
+    "state change (demo of the scroll stepper): tabs step [A] → [B] → [C] → back to [A] at ~3.2s / 4.3s / 5.4s; each step moves the red plane to the matching piece (K1 → K2 → K3, 600ms --ease-inout: the old plane lifts away, the new one settles 8px), inverts the matching symptom tag, solidifies its leader, brackets the piece label, highlights the legend entry and crossfades the spec table",
+    "ambient: none",
+    "interaction: tabs are clickable and drive the same state; the 'The diagnostic method →' cell inverts on hover; capability links underline to --fg",
+    "on the live site: the A/B/C steps are scroll-linked while the sheet is pinned in view; reduced motion shows the fully plotted sheet on tab A"
+  ],
+  "demoMs": 5600,
+  "notes": "Title set at the founder's 88px floor in three uppercase lines using the source copy ('Most teams are / fixing the / wrong layer.', light turn on the last line) so it fits the 8-column title cell. The drawing uses the TRUE three-piece mark, so the three misdiagnoses map one-to-one onto K1–K3 and onto the three capabilities (Narrative Systems / GTM Infrastructure / GTM Intelligence). Red: the 8px label square and 48×2 rule (founder section-head DNA) plus one red plane in the drawing."
+}

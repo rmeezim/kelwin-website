@@ -1,0 +1,270 @@
+/* ── evidence · U · The painted chip (round 4, A×C · promoted from slot V) ──
+   Round 2's "Four into one" layout, returned as the founder asked: the head,
+   the 2×2 of 176px readings with labels and sources, the hairline cross, the
+   registration marks, the centre zone and the FIG. 03 caption. Only the
+   centre changes. The 10×10 dot square becomes a PAINTED CHIP: one precise
+   block of 100 units (3px each), painted flat and hung on the cross's
+   vertical axis (the hairline plumbs onto its keyline). Red paints the
+   active reading's share from the base over a pale ground. A calibrated
+   scale stands beside it (ticks the level has passed turn to ink), a datum
+   runs from the block's edge to a node on the scale, a mono strip reads it
+   out and one line names its unit in words. Pressing or hovering a numeral
+   re-proportions the fields in one slow mechanical morph. At 95:5 the pale
+   remainder carries its own label and dimension: '5 buying now'.
+   Round 4 coherence: no figure is printed inside the block (the 176px
+   numeral is the one reading; a second '17' beside it read as a glitch),
+   and the caption is a plain hairline row with no segmented control — the
+   tinted band + toggle is the reframe's device, one section up, and the
+   page keeps exactly one. The numerals were already the control.
+   Round 3's honesty fixes stay: the ★ lede, the live sources, one unit at a
+   time (never two readings on one axis), and the field-note door.        */
+
+/* one property drives the whole instrument: the active share, 0–1 */
+@property --km-evidence-U-v { syntax: "<number>"; inherits: true; initial-value: 0.17; }
+
+.km-evidence-U {
+  --fig-w: 416px; --fig-h: 500px;           /* registration frame on the crossing, symmetric about the cross */
+  --u: 3px;                                 /* one unit of 100 */
+  --bw: calc(100 * var(--u)); --bh: calc(100 * var(--u));   /* the painted block: 100 units, square */
+  --sg: 10px;                               /* block → scale gap (the datum crosses it) */
+  --sw: 46px;                               /* the scale column: ticks 0–10 · node 12–19 · values 24–46 */
+  --nx: 12px;                               /* node offset inside the scale */
+  --cw: calc(var(--bw) + var(--sg) + var(--sw)); /* chip width: block + gap + scale */
+  --chip-y: 46px;                           /* frame top → block keyline: the plumb's length */
+  --chip-x: calc((var(--fig-w) - var(--bw)) / 2);   /* the BLOCK is centred on the cross; its scale hangs right */
+  --mt: 1100ms;                             /* the morph */
+}
+
+/* ── FIG. 03 plate: the 2×2 on the crossing (round 2 X) ── */
+.km-evidence-U__plate { margin-top: 64px; }
+.km-evidence-U__grid {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr 1fr;
+  column-gap: var(--gutter);
+}
+.km-evidence-U__rule { position: absolute; z-index: 0; background: var(--line); }
+.km-evidence-U__rule--top { left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%; }
+.km-evidence-U__rule--mid { left: 0; right: 0; top: 50%; height: 1px; transform-origin: 0 50%; }
+.km-evidence-U__rule--v { top: 0; bottom: 0; left: 50%; width: 1px; transform-origin: 50% 0; }
+
+/* readings (cols 1–4 · 9–12); the chip owns cols 5–8. The whole cell is the hit area. */
+.km-evidence-U__cell { position: relative; z-index: 1; padding: 22px 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.km-evidence-U__cell--tl { grid-column: 1 / 5; grid-row: 1; }
+.km-evidence-U__cell--tr { grid-column: 9 / 13; grid-row: 1; }
+.km-evidence-U__cell--bl { grid-column: 1 / 5; grid-row: 2; }
+.km-evidence-U__cell--br { grid-column: 9 / 13; grid-row: 2; }
+.km-evidence-U__cell.is-active { cursor: default; }
+/* the state rule over the cell's top edge, drawn from its left: ink = shown, grey = hover preview */
+.km-evidence-U__cell::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 600ms var(--ease-inout), background-color 250ms var(--ease-out);
+}
+.km-evidence-U__cell.is-active::before { transform: scaleX(1); }
+/* the kit's .ac-cold freezes element transitions but cannot reach pseudo-elements: freeze the state rule too */
+.km-evidence-U.ac-cold .km-evidence-U__cell::before { transition: none !important; }
+.km-evidence-U__cell.is-peek:not(.is-active)::before { transform: scaleX(1); background: var(--fg-3); }
+
+.km-evidence-U__meta { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.km-evidence-U__tag { display: flex; align-items: center; gap: 12px; }
+/* selector square: outlined = can be shown, filled = the reading in the chip */
+.km-evidence-U__led {
+  flex: none; width: 8px; height: 8px; box-shadow: inset 0 0 0 1px var(--fg-3);
+  transition: background-color 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+}
+.km-evidence-U__cell.is-active .km-evidence-U__led { background: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+.km-evidence-U__cell.is-peek:not(.is-active) .km-evidence-U__led { box-shadow: inset 0 0 0 1px var(--fg); }
+.km-evidence-U__idx { color: var(--fg-2); transition: color 400ms var(--ease-inout); }
+.km-evidence-U__cell.is-active .km-evidence-U__idx,
+.km-evidence-U__cell.is-peek .km-evidence-U__idx { color: var(--fg); }
+
+/* the numeral is the button (the kit's big numeral: Mona wide 430, 176px, tabular, −.04em; unit in 300) */
+.km-evidence-U__num {
+  display: block; margin-top: 22px; margin-left: -0.05em; text-align: left;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 176px; line-height: .8; letter-spacing: -0.04em; color: var(--fg);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.km-evidence-U__num:focus { outline: none; }
+.km-evidence-U__num:focus-visible { outline: 1px solid var(--fg); outline-offset: 8px; }
+.km-evidence-U__mask { display: block; overflow: hidden; padding-block: .1em .04em; margin-block: -.1em -.04em; }
+.km-evidence-U__n { display: inline-block; }
+.km-evidence-U__u { font-weight: var(--light-weight); letter-spacing: -0.02em; }
+.km-evidence-U__cell:not(.is-active):active .km-evidence-U__n { transform: translateY(2px); }
+.km-evidence-U__claim { margin-top: 22px; max-width: 25em; font-size: var(--ac-body); line-height: 1.45; font-weight: var(--ui-weight); color: var(--fg); text-wrap: pretty; }
+.km-evidence-U__so { margin-top: 6px; max-width: 26em; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+
+/* ── THE SPECIMEN CHIP: a registration frame on the crossing ── */
+.km-evidence-U__fig {
+  position: absolute; z-index: 2;
+  left: calc(50% - var(--fig-w) / 2); top: calc(50% - var(--fig-h) / 2);
+  width: var(--fig-w); height: var(--fig-h);
+  --ac-occlude: var(--bg);
+}
+/* paper knock-out: the hairline cross stops at the frame — except the vertical, which carries on as a plumb
+   and lands on the centre of the block's top keyline, so the chip hangs on the plate's own axis */
+.km-evidence-U__clear { position: absolute; inset: 0; background: var(--bg); }
+.km-evidence-U__plumb {
+  position: absolute; left: 50%; top: 0; width: 1px; height: calc(var(--chip-y) - 1px);
+  background: var(--line); transform-origin: 50% 0;
+}
+.km-evidence-U__chip {
+  position: absolute; top: var(--chip-y); left: var(--chip-x); width: var(--cw);
+  transition: --km-evidence-U-v var(--mt) var(--ease-inout);
+}
+.km-evidence-U__inst { position: relative; display: flex; gap: var(--sg); height: var(--bh); }
+
+/* the block: a pale ground with a hairline keyline, the red share painted up from the base. Flat colour, square edges. */
+.km-evidence-U__block { position: relative; z-index: 1; flex: none; width: var(--bw); height: var(--bh); box-shadow: 0 0 0 1px var(--line-2); }
+.km-evidence-U__ground {
+  position: absolute; inset: 0; background-color: var(--panel);
+  /* drafting hatch: the unpainted share is drawn as a cut surface — fine 45° section lines, flat ink
+     at low alpha (an SVG pattern, no gradient); the red share is solid over it */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M-3 3 3 -3M0 12 12 0M9 15 15 9' stroke='%23110F0A' stroke-opacity='.16' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 12px 12px;
+}
+.km-evidence-U[data-surface="dark"] .km-evidence-U__ground { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M-3 3 3 -3M0 12 12 0M9 15 15 9' stroke='%23FBFAF6' stroke-opacity='.14' stroke-width='1'/%3E%3C/svg%3E"); }
+.km-evidence-U__share {
+  position: absolute; left: 0; right: 0; bottom: 0; overflow: hidden; background: var(--accent);
+  height: calc(var(--km-evidence-U-v) * var(--bh));
+}
+/* 95:5 — the pale remainder above the red is the 5: it carries its own label (inside the band, ink on the
+   ground) and a dimension bracket in the gap beside the scale, both riding the level and gated like the figure */
+.km-evidence-U__rem {
+  position: absolute; left: 0; right: 0; top: 0; z-index: 1;
+  height: calc((1 - var(--km-evidence-U-v)) * var(--bh));
+  display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; overflow: hidden;
+}
+.km-evidence-U__rem-t {
+  font-family: var(--f-mono); font-size: 11px; line-height: 13px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--fg); white-space: nowrap;
+}
+.km-evidence-U__dim {
+  position: absolute; z-index: 1; top: 0; left: calc(var(--bw) + 2px); width: 5px;
+  height: calc((1 - var(--km-evidence-U-v)) * var(--bh));
+  box-shadow: inset 1px 0 0 var(--fg), inset 0 1px 0 var(--fg);
+}
+.km-evidence-U__rem, .km-evidence-U__dim {
+  opacity: 0; --fv: .95;
+  --near: clamp(0, calc(1 - max(var(--km-evidence-U-v) - var(--fv), var(--fv) - var(--km-evidence-U-v)) * 12), 1);
+}
+.km-evidence-U__chip:is([data-on="1"], [data-from="1"]) :is(.km-evidence-U__rem, .km-evidence-U__dim) { opacity: var(--near); }
+
+/* the datum: one ink hairline at the level, from the block's right keyline across the gap and the ticks to
+   the node on the scale (block → scale → node). Nothing is drawn left of the block. */
+.km-evidence-U__datum {
+  position: absolute; z-index: 0; left: var(--bw); top: 0; height: 1px;
+  width: calc(var(--sg) + var(--nx)); background: var(--fg);
+  transform: translateY(calc((1 - var(--km-evidence-U-v)) * var(--bh)));
+}
+
+/* the scale: a tick every 5 units; 10s at 6px, 0 · 50 · 100 at 10px. Ticks below the level are ink. */
+.km-evidence-U__scale { position: relative; flex: none; width: var(--sw); height: var(--bh); }
+.km-evidence-U__tk {
+  position: absolute; left: 0; width: 4px; height: 1px; background: var(--fg);
+  top: calc((100 - var(--t)) * var(--u));
+  transform-origin: 0 50%;
+  opacity: clamp(.26, calc(1 + (var(--km-evidence-U-v) * 100 - var(--t)) * .25), 1);
+}
+.km-evidence-U__tk--mid { width: 6px; }
+.km-evidence-U__tk--maj { width: 10px; }
+.km-evidence-U__tk[style*="--t:0"] { top: calc(var(--bh) - 1px); }
+/* the node rides the level and latches (outline → filled) when the morph lands */
+.km-evidence-U__node {
+  position: absolute; left: var(--nx); top: -3px; width: 7px; height: 7px;
+  background: var(--bg); box-shadow: inset 0 0 0 1px var(--fg);
+  transform: translateY(calc((1 - var(--km-evidence-U-v)) * var(--bh)));
+  transition: background-color 200ms var(--ease-out);
+}
+.km-evidence-U__chip.is-latched .km-evidence-U__node { background: var(--fg); }
+.km-evidence-U__sv {
+  position: absolute; left: 24px; top: calc((100 - var(--t)) * var(--u) - 8px);
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: .06em; color: var(--fg-3);
+  font-variant-numeric: tabular-nums;
+}
+
+/* the reading: a mono strip under an ink rule, then the unit in words (15px). Four panels share one cell. */
+.km-evidence-U__reads { display: grid; margin-top: 22px; }
+.km-evidence-U__read { grid-area: 1 / 1; }
+.km-evidence-U__strip {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding-top: 10px; border-top: 1px solid var(--fg);
+}
+.km-evidence-U__strip .ac-cap { color: var(--fg-2); }
+.km-evidence-U__strip .km-evidence-U__val { color: var(--fg); }
+.km-evidence-U__unit { margin-top: 10px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg); text-wrap: pretty; }
+/* crossfade: the old reading goes out (160ms), then the new one comes in (220ms) — never two at once */
+.km-evidence-U__read { opacity: 0; visibility: hidden; transition: opacity 160ms var(--ease-out), visibility 0s linear 160ms; }
+.km-evidence-U__read.is-on { opacity: 1; visibility: visible; transition: opacity 220ms var(--ease-out) 160ms, visibility 0s linear 0s; }
+
+/* ── caption row: the plate's base hairline, then caption · field-note door at the chip's edge. No fill and
+   no control (round 4: the tinted band + segmented toggle is the reframe's, one section up). ── */
+.km-evidence-U__band {
+  position: relative; display: flex; align-items: center; min-height: 40px; padding: 14px 0 0;
+  border-top: 1px solid var(--line);
+}
+.km-evidence-U__door { position: absolute; left: calc(50% - var(--bw) / 2); top: calc(50% + 7px); transform: translateY(-50%); font-size: 12px; color: var(--fg-2); transition: color 200ms var(--ease-out); }
+/* the door is quiet (stone, not ink); it inks on hover/focus */
+.km-evidence-U__door:hover, .km-evidence-U__door:focus-visible { color: var(--fg); }
+
+/* ── entrance: only under .is-play, and only once the JS says go (.is-go). On the homepage the JS holds
+   the plate (.is-wait) until it is 40% on screen. Without JS nothing is held: the final state stands. ── */
+.is-play .km-evidence-U.is-wait .km-evidence-U__plate { visibility: hidden; }
+.is-play .km-evidence-U.is-go .km-evidence-U__rule--top { animation: ac-drawx 900ms var(--ease-out) 380ms both; }
+.is-play .km-evidence-U.is-go .km-evidence-U__rule--mid { animation: ac-drawx 900ms var(--ease-out) 520ms both; }
+.is-play .km-evidence-U.is-go .km-evidence-U__rule--v { animation: ac-drawy 900ms var(--ease-out) 600ms both; }
+/* readings: meta, then the numeral rises from its mask, then claim and so-what — in reading order */
+.is-play .km-evidence-U.is-go .km-evidence-U__meta { animation: ac-fade 400ms var(--ease-out) calc(600ms + var(--i) * 90ms) backwards; }
+.is-play .km-evidence-U.is-go .km-evidence-U__n { animation: km-evidence-U-rise 800ms var(--ease-out) calc(640ms + var(--i) * 90ms) backwards; }
+.is-play .km-evidence-U.is-go .km-evidence-U__claim,
+.is-play .km-evidence-U.is-go .km-evidence-U__so { animation: ac-up 600ms var(--ease-out) calc(820ms + var(--i) * 90ms) backwards; }
+/* the kit fades .ac-reg on .is-play alone; hold it until the plate goes, or on the homepage the marks finish
+   fading while the plate is still waiting and then pop in ahead of the cross */
+.is-play .km-evidence-U:not(.is-go) .ac-reg { animation: none; }
+.is-play .km-evidence-U.is-go .ac-reg { animation: ac-fade 300ms var(--ease-out) var(--d, 760ms) backwards; }
+.is-play .km-evidence-U.is-go .km-evidence-U__band { animation: ac-fade 500ms var(--ease-out) 900ms backwards; }
+/* the chip, in drafting order: the ink ground paints down, the scale calibrates bottom → top,
+   then the red rises to the share (JS, the morph) with its datum, and the reading prints */
+.is-play .km-evidence-U.is-go .km-evidence-U__plumb { animation: ac-drawy 280ms var(--ease-out) 820ms backwards; }
+.is-play .km-evidence-U.is-go .km-evidence-U__block { animation: km-evidence-U-paint 600ms var(--ease-inout) 960ms backwards; }
+.is-play .km-evidence-U.is-go .km-evidence-U__tk { animation: ac-drawx 260ms var(--ease-out) calc(960ms + var(--t) * 5ms) backwards; }
+.is-play .km-evidence-U.is-go .km-evidence-U__sv { animation: ac-fade 300ms var(--ease-out) calc(1060ms + var(--t) * 5ms) backwards; }
+.is-play .km-evidence-U.is-go .km-evidence-U__datum,
+.is-play .km-evidence-U.is-go .km-evidence-U__node { animation: ac-fade 300ms var(--ease-out) 1200ms backwards; }
+.is-play .km-evidence-U.is-go .km-evidence-U__reads { animation: ac-fade 400ms var(--ease-out) 1700ms backwards; }
+/* before 01 takes its rule (the JS lifts .is-pre as the red starts to rise) */
+.km-evidence-U.is-pre .km-evidence-U__cell::before { transform: scaleX(0); }
+.km-evidence-U.is-pre .km-evidence-U__cell .km-evidence-U__led { background: transparent; box-shadow: inset 0 0 0 1px var(--fg-3); }
+.km-evidence-U.is-pre .km-evidence-U__cell .km-evidence-U__idx { color: var(--fg-2); }
+
+@keyframes km-evidence-U-rise { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes km-evidence-U-paint { from { clip-path: inset(-1px -1px calc(100% + 2px) -1px); } to { clip-path: inset(-1px -1px -1px -1px); } }
+
+/* ── ≤ 760px: the readings stack in reading order with the chip after the first pair; caption row wraps ── */
+@media (max-width: 760px) {
+  .km-evidence-U { --margin: 16px; --gutter: 16px; --fig-w: 100%; --fig-h: 440px; --u: 2.4px; --chip-y: 40px; padding-block: 88px; }
+  .km-evidence-U .ac-head { grid-template-columns: minmax(0, 1fr); }
+  .km-evidence-U .ac-head > * { grid-column: 1 / -1; }
+  .km-evidence-U .ac-statement { font-size: 9.4vw; }
+  .km-evidence-U .ac-lede { font-size: 17px; }
+  .km-evidence-U__plate { margin-top: 48px; }
+  .km-evidence-U__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto; row-gap: 8px; }
+  .km-evidence-U__rule--mid, .km-evidence-U__rule--v, .km-evidence-U__plumb { background: transparent; }
+  .km-evidence-U__cell--tl { grid-column: 1; grid-row: 1; }
+  .km-evidence-U__cell--tr { grid-column: 2; grid-row: 1; }
+  .km-evidence-U__cell--bl { grid-column: 1; grid-row: 2; }
+  .km-evidence-U__cell--br { grid-column: 2; grid-row: 2; }
+  .km-evidence-U__cell { padding: 16px 0 12px; }
+  .km-evidence-U__meta { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .km-evidence-U__meta .ac-cap { white-space: normal; letter-spacing: .06em; }
+  .km-evidence-U__num { font-size: 64px; margin-top: 14px; }
+  .km-evidence-U__claim { margin-top: 12px; font-size: 15px; }
+  .km-evidence-U__fig { position: relative; grid-column: 1 / -1; grid-row: 3; left: auto; top: auto; margin-top: 16px; }
+  .km-evidence-U__chip { left: calc(50% - var(--cw) / 2); }
+  .km-evidence-U__fig { margin-bottom: 24px; }
+  .km-evidence-U__rem-t { line-height: 12px; }
+  .km-evidence-U__strip { flex-wrap: wrap; row-gap: 4px; }
+  .km-evidence-U__band { flex-wrap: wrap; gap: 10px; padding: 14px 0 0; }
+  .km-evidence-U__cap { white-space: normal; }
+  .km-evidence-U__door { position: static; transform: none; }
+}

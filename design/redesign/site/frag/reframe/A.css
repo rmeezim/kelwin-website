@@ -1,0 +1,182 @@
+/* ── reframe · A · Cinematic Figures — FIG. 02, Surface | Architecture ─────
+   Head echoes the hero (founder DNA): red-square caps label → two-voice wide
+   headline (light accent) → 48×2 red rule → lede → tracked-caps link, all
+   stacked down the left. FIG. 02 is drawn from the TRUE three-piece Kelwin
+   mark (K1 outer corner / K2 middle L / K3 core square, master proportions). */
+.km-reframe-A { padding: 112px 0 96px; overflow: hidden; }
+/* the hand-off: a hard cut — one margin-to-margin hairline, no slide-over sheet */
+.km-reframe-A::before {
+  content: ""; position: absolute; top: 0; left: var(--margin); right: var(--margin); height: 1px;
+  background: var(--line); transform-origin: 0 50%;
+}
+.km-reframe-A__in {
+  padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* ── head ── */
+.km-reframe-A__labels { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; }
+.km-reframe-A__label {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-reframe-A__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-reframe-A__fignum {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3);
+}
+.km-reframe-A__h {
+  grid-column: 1 / span 9; margin-top: 36px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 96px; line-height: .98; letter-spacing: var(--display-tracking);
+}
+.km-reframe-A__mask { display: block; overflow: hidden; padding-block: .08em .14em; margin-block: -.08em -.14em; }
+.km-reframe-A__l1, .km-reframe-A__l2 { display: block; white-space: nowrap; }
+.km-reframe-A__l1 { font-weight: var(--display-weight); color: var(--fg); }
+.km-reframe-A__l2 { font-weight: var(--light-weight); color: var(--fg-2); }
+.km-reframe-A__rule {
+  grid-column: 1; display: block; width: 48px; height: 2px; margin-top: 36px;
+  background: var(--signal); transform-origin: 0 50%;
+}
+.km-reframe-A__lede {
+  grid-column: 1 / span 6; margin-top: 28px; max-width: 50ch;
+  font-size: 20px; line-height: 1.5; color: var(--fg-2);
+}
+.km-reframe-A__link {
+  grid-column: 1 / span 5; justify-self: start; margin-top: 36px;
+  display: inline-flex; align-items: center; gap: 12px; padding-block: 8px; position: relative;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 13px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg); white-space: nowrap;
+}
+.km-reframe-A__link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2);
+  transition: background-color 250ms var(--ease-out);
+}
+.km-reframe-A__link:hover::after { background: var(--fg); }
+.km-reframe-A__arr { display: inline-block; width: 13px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 250ms var(--ease-out); }
+.km-reframe-A__link:hover .km-reframe-A__arr { transform: translateX(3px); }
+
+/* ── FIG. 02 plate (cols 1–12, flat --panel, caption band inside its bottom edge) ── */
+.km-reframe-A__fig { grid-column: 1 / -1; position: relative; margin-top: 64px; height: 456px; background: var(--panel); overflow: hidden; }
+.km-reframe-A__svg { position: absolute; left: 0; top: -16px; display: block; overflow: visible; }
+
+/* the pieces — flat fills, master proportions; K3 (the core) is the one red element once installed */
+.km-reframe-A__k { transform-box: fill-box; transform-origin: 50% 50%; transition: transform 900ms var(--ease-inout); }
+.km-reframe-A__k1 path { fill: var(--fg); }
+.km-reframe-A__k2 path { fill: var(--soft); }
+.km-reframe-A__k3 rect { fill: var(--accent); transition: fill 400ms var(--ease-out) 1060ms; }
+.km-reframe-A__k3 { transition-delay: 160ms; }
+
+.km-reframe-A__fig.is-surface .km-reframe-A__k1 { transform: translate(160px, 0) rotate(90deg); }
+.km-reframe-A__fig.is-surface .km-reframe-A__k2 { transform: translate(-344.5px, -88.5px) rotate(-90deg); }
+.km-reframe-A__fig.is-surface .km-reframe-A__k3 { transform: translate(-626px, -39px) rotate(90deg); transition-delay: 0ms; }
+.km-reframe-A__fig.is-surface .km-reframe-A__k3 rect { fill: var(--cool); transition-delay: 0ms; transition-duration: 200ms; }
+
+/* surface-only furniture */
+.km-reframe-A__sf { opacity: 0; transition: opacity 320ms var(--ease-inout); }
+.km-reframe-A__fig.is-surface .km-reframe-A__sf { opacity: 1; }
+.km-reframe-A__wires path { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-reframe-A__ends rect { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-reframe-A__tags rect { fill: var(--panel); stroke: var(--line-2); stroke-width: 1; }
+.km-reframe-A__tags text, .km-reframe-A__lbls text {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+}
+.km-reframe-A__tags text { fill: var(--fg-2); text-anchor: middle; }
+.km-reframe-A__route { fill: none; stroke: var(--signal); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.km-reframe-A__x { fill: none; stroke: var(--signal); stroke-width: 1.5; }
+.km-reframe-A__wipe { transform-box: fill-box; transform-origin: 0 50%; }
+
+/* architecture-only leader labels */
+.km-reframe-A__ar { opacity: 1; transition: opacity 500ms var(--ease-out) 1000ms; }
+.km-reframe-A__fig.is-surface .km-reframe-A__ar { opacity: 0; transition-delay: 0s; transition-duration: 200ms; }
+.km-reframe-A__leads path { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-reframe-A__lbls text { fill: var(--fg-2); text-anchor: end; }
+.km-reframe-A__lbls text.is-core { fill: var(--fg); }
+
+/* state readout — the coda, split across the two states */
+.km-reframe-A__ro { position: absolute; left: 24px; top: 32px; z-index: 1; }
+.km-reframe-A__rs { transition: opacity 400ms var(--ease-inout), transform 400ms var(--ease-inout); }
+.km-reframe-A__rs--s { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(8px); }
+.km-reframe-A__fig.is-surface .km-reframe-A__rs--s { opacity: 1; transform: none; transition-delay: 0ms; }
+.km-reframe-A__fig.is-surface .km-reframe-A__rs--a { opacity: 0; transform: translateY(-8px); }
+.km-reframe-A__fig:not(.is-surface) .km-reframe-A__rs--a { transition-delay: 500ms; }
+.km-reframe-A__rk {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3);
+}
+.km-reframe-A__rt {
+  margin-top: 16px; white-space: nowrap;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-size: 30px; line-height: 1.12;
+  letter-spacing: var(--display-tracking);
+}
+.km-reframe-A__rt span { display: block; }
+.km-reframe-A__rt span:first-child { font-weight: var(--display-weight); color: var(--fg); }
+.km-reframe-A__rt span:last-child { font-weight: var(--light-weight); color: var(--fg-2); }
+
+/* caption + segmented control (Plurel) in the 56px band */
+.km-reframe-A__cap {
+  position: absolute; left: 24px; bottom: 21px;
+  font-family: var(--f-mono); font-size: 12px; line-height: 14px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.km-reframe-A__segs { position: absolute; right: 24px; bottom: 16px; display: flex; height: 48px; border: 1px solid var(--line-2); }
+.km-reframe-A__seg {
+  height: 46px; padding: 0 20px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 46px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: background-color 500ms var(--ease-inout), color 500ms var(--ease-inout);
+}
+.km-reframe-A__seg + .km-reframe-A__seg { box-shadow: inset 1px 0 0 var(--line); }
+.km-reframe-A__seg:hover { color: var(--fg); }
+.km-reframe-A__seg[aria-selected="true"] { background: var(--fg); color: var(--bg); box-shadow: none; }
+
+/* ── strips: struck symptom → the real layer (cols 1–4 / 5–8 / 9–12) ── */
+.km-reframe-A__strips { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--gutter); }
+.km-reframe-A__strip {
+  position: relative; display: flex; flex-direction: column; padding: 28px 24px 0 0;
+}
+.km-reframe-A__strip + .km-reframe-A__strip::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--gutter) / -2); width: 1px; background: var(--line);
+  transform-origin: 50% 0;
+}
+.km-reframe-A__idx {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); color: var(--fg-3);
+}
+.km-reframe-A__was { margin-top: 20px; font-size: 17px; line-height: 1.4; color: var(--fg-3); }
+.km-reframe-A__was s { text-decoration-thickness: 1px; text-decoration-color: var(--fg-3); }
+.km-reframe-A__t {
+  margin-top: 6px; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 30px; line-height: 1.1; letter-spacing: var(--display-tracking); color: var(--fg-2);
+  transition: color 300ms var(--ease-out);
+}
+.km-reframe-A__strip:hover .km-reframe-A__t { color: var(--fg); }
+.km-reframe-A__p { margin-top: auto; padding-top: 24px; font-size: 15px; line-height: 1.55; color: var(--fg-2); max-width: 46ch; }
+
+/* JS bootstrap: no transitions while the figure is reset to its opening state */
+.km-reframe-A__fig.is-cold *, .km-reframe-A__fig.is-cold *::before { transition: none !important; }
+
+/* ── entrance (only under html.is-play) ── */
+.is-play .km-reframe-A::before { animation: km-reframe-A-draw 900ms var(--ease-out) both; }
+.is-play .km-reframe-A__labels { animation: km-reframe-A-fade 300ms var(--ease-out) both; }
+.is-play .km-reframe-A__l1 { animation: km-reframe-A-rise 800ms var(--ease-out) 80ms both; }
+.is-play .km-reframe-A__l2 { animation: km-reframe-A-rise 800ms var(--ease-out) 280ms both; }
+.is-play .km-reframe-A__rule { animation: km-reframe-A-draw 600ms var(--ease-out) 520ms both; }
+.is-play .km-reframe-A__lede { animation: km-reframe-A-up 600ms var(--ease-out) 600ms both; }
+.is-play .km-reframe-A__link { animation: km-reframe-A-up 600ms var(--ease-out) 700ms both; }
+/* the plate assembles beneath the statement, in its SURFACE state */
+.is-play .km-reframe-A__fig { animation: km-reframe-A-fade 400ms var(--ease-out) 200ms both; }
+.is-play .km-reframe-A__ro { animation: km-reframe-A-fade 400ms var(--ease-out) 420ms both; }
+.is-play .km-reframe-A__kin { animation: km-reframe-A-slide 700ms var(--ease-out) both; animation-delay: calc(300ms + var(--i) * 120ms); }
+.is-play .km-reframe-A__wires, .is-play .km-reframe-A__ends { animation: km-reframe-A-fade 400ms var(--ease-out) 700ms both; }
+.is-play .km-reframe-A__tags { animation: km-reframe-A-fade 400ms var(--ease-out) 760ms both; }
+.is-play .km-reframe-A__wipe { animation: km-reframe-A-draw 500ms var(--ease-out) 900ms both; }
+.is-play .km-reframe-A__x { animation: km-reframe-A-fade 200ms var(--ease-out) 1380ms both; }
+.is-play .km-reframe-A__cap, .is-play .km-reframe-A__segs { animation: km-reframe-A-fade 400ms var(--ease-out) 500ms both; }
+.is-play .km-reframe-A__strip { animation: km-reframe-A-up 700ms var(--ease-out) both; animation-delay: calc(1000ms + var(--i) * 120ms); }
+
+@keyframes km-reframe-A-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-reframe-A-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-reframe-A-rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
+@keyframes km-reframe-A-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes km-reframe-A-slide { from { opacity: 0; transform: translate(24px, -24px); } to { opacity: 1; transform: translate(0, 0); } }

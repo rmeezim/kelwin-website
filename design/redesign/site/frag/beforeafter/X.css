@@ -1,0 +1,149 @@
+/* ── beforeafter · X · The switch plate (round 2, A×C) ──────────────────────
+   Round-1 A as the founder picked it: two flat plates face to face, a paper
+   --panel plate for "without the system" and an ink plate for "with it", the
+   six shifts row against row. Harmonised with Cinematic Drafting:
+   · the head is the kit's grammar (label → 88px two-voice → rule → lede);
+     the quiet note is dropped because it restated the statement a third time;
+   · this section is deliberately drawing-free (DIRECTION-AC §5.2): the lead
+     device is TYPE on a switch plate. The mark that sat in the ink plate's
+     head is gone, and nothing replaces it (the assets section just above
+     already counts "06/06"; a second count here would echo it);
+   · the one orchestrated moment is the switch, and the text never leaves the
+     plate: row by row, 01 → 06, the receding voice settles to 17px --fg-2
+     while the plates re-proportion across the seam (7|5 ↔ 5|7), then the
+     gaining voice swells to 32px --fg and the gaining plate's rules redraw;
+   · no red inside the figure: paper and ink only (label square + rule are
+     the family punctuation).
+   Plate: 56 head + 6 × 60 rows + 72 caption band = 488px.                      */
+
+.km-beforeafter-X { overflow: hidden; }
+/* the two-voice statement's line boxes are fractional (2 × 88 × .98); hold the head on
+   whole pixels so the plates' edges stay crisp in both skins */
+.km-beforeafter-X__head { min-height: 360px; }
+
+/* ── FIG. 11 · two plates on the 12 columns ──
+   --wb = the paper plate's width: 5 columns at rest (After), 7 when Before leads.
+   Everything that rides the seam transitions left/width together, so the plates move as one.
+   The seam waits 150ms so the receding voices start settling before the plate narrows. */
+.km-beforeafter-X__fig {
+  --w5: calc(5 * var(--col) + 4 * var(--gutter));
+  --w7: calc(7 * var(--col) + 6 * var(--gutter));
+  --wb: var(--w5);
+  --seam: 900ms var(--ease-inout) 150ms;
+  --lead: 32px;                                  /* the leading voice: the kit's H3 tier (32) */
+  --trail: .53125;                               /* 17 / 32: the trailing voice renders at 17px */
+  position: relative; height: 488px; margin: 64px 0 0;          /* the page's head → figure step */
+}
+.km-beforeafter-X__fig.is-before { --wb: var(--w7); }
+
+.km-beforeafter-X__plate { position: absolute; top: 0; bottom: 0; }
+.km-beforeafter-X__plate--b { left: 0; width: var(--wb); background: var(--panel); transition: width var(--seam); }
+.km-beforeafter-X__plate--a { left: calc(var(--wb) + var(--gutter)); right: 0; background: var(--bg); transition: left var(--seam); }
+
+/* plate heads: one mono line each (≤ 40 characters); the leading plate's head reads in --fg */
+.km-beforeafter-X__hd {
+  position: absolute; top: 0; height: 56px; padding: 0 24px; margin: 0;
+  display: flex; align-items: center;
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px; letter-spacing: var(--ac-track-mono);
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+  transition: color 500ms var(--ease-inout) 300ms;
+}
+.km-beforeafter-X__hd--b { left: 0; width: var(--wb); transition: width var(--seam), color 500ms var(--ease-inout) 300ms; }
+.km-beforeafter-X__hd--a { left: calc(var(--wb) + var(--gutter)); right: 0; transition: left var(--seam), color 500ms var(--ease-inout) 300ms; }
+.km-beforeafter-X__fig.is-after .km-beforeafter-X__hd--a,
+.km-beforeafter-X__fig.is-before .km-beforeafter-X__hd--b { color: var(--fg); }
+
+/* ── six rows: one hairline per row and plate; the two voices face across the seam ── */
+.km-beforeafter-X__rows { position: absolute; left: 0; right: 0; top: 56px; height: 360px; margin: 0; padding: 0; list-style: none; }
+.km-beforeafter-X__row { position: relative; height: 60px; }
+.km-beforeafter-X__b, .km-beforeafter-X__a {
+  position: absolute; top: 0; bottom: 0; display: flex; align-items: center; padding: 0 24px; min-width: 0;
+}
+.km-beforeafter-X__b { left: 0; width: var(--wb); transition: width var(--seam); }
+.km-beforeafter-X__a { left: calc(var(--wb) + var(--gutter)); right: 0; transition: left var(--seam); }
+
+/* the rules (top of every cell, plus the last row's bottom) */
+.km-beforeafter-X__b::before, .km-beforeafter-X__a::before,
+.km-beforeafter-X__row:last-child .km-beforeafter-X__b::after,
+.km-beforeafter-X__row:last-child .km-beforeafter-X__a::after {
+  content: ""; position: absolute; left: 24px; right: 24px; height: 1px; background: var(--line);
+}
+.km-beforeafter-X__b::before, .km-beforeafter-X__a::before { top: 0; }
+.km-beforeafter-X__row:last-child .km-beforeafter-X__b::after,
+.km-beforeafter-X__row:last-child .km-beforeafter-X__a::after { bottom: 0; }
+
+/* row key: index + label (mono 11 / 12px, tracking kept tight so it reads) */
+.km-beforeafter-X__k { flex: none; width: 176px; display: flex; align-items: center; gap: 14px; }
+.km-beforeafter-X__kl {
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px; letter-spacing: var(--ac-track-idx);
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap; transition: color 250ms var(--ease-out);
+}
+.km-beforeafter-X__row:hover .km-beforeafter-X__kl { color: var(--fg); }
+
+/* the voices: without = Mona light at normal width; with = the wide display cut.
+   Each voice is ONE element set at the leading size; the trailing state scales it to 17px from its left
+   edge (transform, so the swap is a smooth in-place morph instead of a fade-out / fade-in). */
+.km-beforeafter-X__t {
+  display: block; white-space: nowrap; font-size: var(--lead); line-height: 1.1; color: var(--fg);
+  transform-origin: 0 50%;
+}
+.km-beforeafter-X__b .km-beforeafter-X__t { font-family: var(--f-body); font-stretch: 100%; font-weight: var(--light-weight); letter-spacing: -0.01em; }
+.km-beforeafter-X__a .km-beforeafter-X__t { font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); }
+
+/* trailing voice (17px, --fg-2): settles first, 01 → 06, 60ms apart */
+.km-beforeafter-X__fig.is-after .km-beforeafter-X__b .km-beforeafter-X__t,
+.km-beforeafter-X__fig.is-before .km-beforeafter-X__a .km-beforeafter-X__t {
+  transform: scale(var(--trail)); color: var(--fg-2);
+  transition: transform 600ms var(--ease-inout) calc(var(--i) * 60ms), color 600ms var(--ease-inout) calc(var(--i) * 60ms);
+}
+/* leading voice (32px, --fg): swells once its plate has room, 01 → 06, 60ms apart */
+.km-beforeafter-X__fig.is-after .km-beforeafter-X__a .km-beforeafter-X__t,
+.km-beforeafter-X__fig.is-before .km-beforeafter-X__b .km-beforeafter-X__t {
+  transform: none; color: var(--fg);
+  transition: transform 600ms var(--ease-inout) calc(400ms + var(--i) * 60ms), color 600ms var(--ease-inout) calc(400ms + var(--i) * 60ms);
+}
+
+/* each row's rules redraw as its voices trade, in reading order: wiped toward the right, then drawn from
+   the left. Both plates share one animation name in both states, so a switch never restarts the entrance. */
+.km-beforeafter-X__fig.is-drawing .km-beforeafter-X__b::before,
+.km-beforeafter-X__fig.is-drawing .km-beforeafter-X__a::before,
+.km-beforeafter-X__fig.is-drawing .km-beforeafter-X__row:last-child .km-beforeafter-X__b::after,
+.km-beforeafter-X__fig.is-drawing .km-beforeafter-X__row:last-child .km-beforeafter-X__a::after {
+  animation: km-beforeafter-X-redraw 800ms var(--ease-inout) calc(250ms + var(--i) * 60ms) both;
+}
+
+/* caption band (inside the plates' bottom edge): FIG. caption left on paper, the control right on ink */
+.km-beforeafter-X__cap { position: absolute; left: 24px; bottom: 0; height: 72px; display: flex; align-items: center; }
+.km-beforeafter-X__seg { position: absolute; right: 24px; bottom: 12px; }
+/* the kit's hover colour (--fg) out-ranks the pressed state and blanks the selected label (fg on fg);
+   keep the pressed label legible under the pointer */
+.km-beforeafter-X__seg > [aria-pressed="true"]:hover { color: var(--bg); }
+
+/* demo snap: no transitions while JS puts the figure into its opening state */
+.km-beforeafter-X__fig.is-cold *, .km-beforeafter-X__fig.is-cold *::before, .km-beforeafter-X__fig.is-cold *::after { transition: none !important; }
+
+/* ── entrance (html.is-play): the kit runs the head; then the plates open top-down, the heads settle,
+   and the rows follow the wipe in reading order, 01 → 06: rule draws left → right, key and voices fade ── */
+.is-play .km-beforeafter-X__plate--b { animation: km-beforeafter-X-wipe 800ms var(--ease-out) 760ms both; }
+.is-play .km-beforeafter-X__plate--a { animation: km-beforeafter-X-wipe 800ms var(--ease-out) 880ms both; }
+.is-play .km-beforeafter-X__hd { animation: km-beforeafter-X-fade 500ms var(--ease-out) 1000ms both; }
+.is-play .km-beforeafter-X__b::before, .is-play .km-beforeafter-X__a::before,
+.is-play .km-beforeafter-X__row:last-child .km-beforeafter-X__b::after,
+.is-play .km-beforeafter-X__row:last-child .km-beforeafter-X__a::after {
+  animation: km-beforeafter-X-draw 600ms var(--ease-inout) calc(1000ms + var(--i) * 60ms) both;
+}
+.is-play .km-beforeafter-X__k,
+.is-play .km-beforeafter-X__t { animation: km-beforeafter-X-fade 500ms var(--ease-out) calc(1150ms + var(--i) * 60ms) both; }
+.is-play .km-beforeafter-X__cap,
+.is-play .km-beforeafter-X__seg { animation: km-beforeafter-X-fade 500ms var(--ease-out) 1500ms both; }
+
+@keyframes km-beforeafter-X-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-beforeafter-X-wipe { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-beforeafter-X-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+/* every in-between frame of the 35% → 35.1% jump has left + right = 100%, so the line stays invisible */
+@keyframes km-beforeafter-X-redraw {
+  0%    { clip-path: inset(0 0 0 0); }
+  35%   { clip-path: inset(0 0 0 100%); }
+  35.1% { clip-path: inset(0 100% 0 0); }
+  100%  { clip-path: inset(0 0 0 0); }
+}

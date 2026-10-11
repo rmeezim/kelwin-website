@@ -1,0 +1,177 @@
+/* ── cta · U · round 4 — round 1 A ("The Core, Installed"), ported ─────────────
+   The founder's pick: A's full-red poster, kept as it was: a paper-square caps label, a flush-left
+   120px two-voice statement, the short paper rule, one row (object · lede · note), and an edge
+   band under a hairline. One change in kind: the information and the action are separated.
+   · ① the fact (cols 1–3): the 10 is information, not a button. No link, no hover, no pointer,
+     no arrow. It is a recessed panel, one step darker than the plane.
+   · ② the action (cols 5–9): the lede on the panel's top line, then the family's primary on red
+     (kit .ac-btn: solid paper fill, red text, drawn ↗) and the contact link on the panel's foot.
+     Col 4 is left empty: a channel of plain red between the information and the action, so the
+     button never reads as part of the panel (no new border or colour).
+   · ③ the note (cols 10–12): AuditSpec row 06, the risk reverser.
+   Legibility on red: every piece of reading type on the plane, the 20px lede included, is set in
+   full paper (--fg, 5.2:1). Paper at .86 on the red is only 4.2:1, under AA for anything below 24px,
+   so it is used only for the 120px light line and inside the darker panel (6.4:1).        */
+
+.km-cta-U { overflow: hidden; }
+.km-cta-U__inner { padding: 112px var(--margin) 0; }
+
+/* ── shared voices ── */
+.km-cta-U__label {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-cta-U__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-cta-U__cap {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--fg); white-space: nowrap;
+}
+
+/* ── label row ── */
+.km-cta-U__labelrow { display: flex; align-items: center; justify-content: space-between; }
+
+/* ── statement: wide 430, then the light clause ── */
+.km-cta-U__title {
+  margin-top: 36px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 120px; line-height: .94; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-cta-U__ln {
+  display: block; overflow: hidden; white-space: nowrap;
+  padding-block: .1em .16em; margin-block: -.1em -.16em;
+}
+.km-cta-U__ln > span { display: inline-block; }
+.km-cta-U__ln--light { font-weight: var(--light-weight); color: var(--fg-2); }
+
+.km-cta-U__rule {
+  display: block; width: 48px; height: 2px; margin-top: 36px;
+  background: var(--signal); transform-origin: left center;
+}
+
+/* ── the row: fact (cols 1–3) · channel (col 4) · copy (cols 5–9) · note (cols 10–12) ── */
+.km-cta-U__row {
+  margin-top: 36px;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: stretch;
+}
+
+/* ① the fact — information. 310 × 280, the size A's object had.
+   A recessed deep-red panel (the red surface's --panel), one step DARKER than the plane, while the
+   button is the one thing LIGHTER than it: dark = read, paper = act. Paper type; the 10 in blush.
+   (Compared against a paper-hairline frame on the plane: that box read as a ghost button beside
+   the filled one, so the pair looked like two buttons. The deep panel never does.) */
+.km-cta-U__fact {
+  grid-column: 1 / span 3; height: 280px;
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: 24px;   /* its foot line ("Kickoff · Readout") sits on the doors' baseline */
+  background: var(--panel); color: var(--fg); cursor: default;
+}
+.km-cta-U__fact-top { display: flex; flex-direction: column; align-items: flex-start; }
+.km-cta-U__num {
+  display: block;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 168px; line-height: .78; letter-spacing: -0.04em; margin-left: -.04em;
+  font-variant-numeric: normal;   /* Mona's tabular zero is slashed */
+  color: var(--soft);
+}
+.km-cta-U__unit {
+  display: block; margin-top: 18px;
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--fg);
+}
+/* the foot: ten day-ticks hang from one hairline (01 and 10 long), the two ends named beneath */
+.km-cta-U__ruler { margin-top: auto; }
+.km-cta-U__svg { display: block; width: 100%; height: 9px; overflow: visible; }
+.km-cta-U__svg path { fill: none; stroke-width: 1; shape-rendering: crispEdges; }
+.km-cta-U__base { stroke: var(--line-2); }
+.km-cta-U__tk { stroke: var(--fg); transform-box: fill-box; transform-origin: 50% 0; }
+.km-cta-U__ends {
+  display: flex; justify-content: space-between; margin-top: 8px;
+  font-size: 14px; line-height: 18px; color: var(--fg-2);
+}
+
+/* ② the action: lede cap-aligned to the panel's top; the doors sit on the panel's foot */
+.km-cta-U__copy {
+  grid-column: 5 / span 5;
+  display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
+}
+.km-cta-U__lede {
+  margin-top: -7px; max-width: 40ch;
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: 20px; line-height: 1.5; color: var(--fg); text-wrap: pretty;   /* .86 paper is 4.2:1 here */
+}
+.km-cta-U__doors { display: flex; align-items: center; gap: 20px 40px; }
+.km-cta-U .ac-btn:focus-visible, .km-cta-U .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* ③ the note: bottom-aligned with the doors, set flush to the right margin (the band's phase cap below
+   shares that edge), so the action's channel on the left is matched by air on the right */
+.km-cta-U__note {
+  grid-column: 10 / span 3; align-self: end; justify-self: end; margin-bottom: 22px;   /* last line on the doors' baseline */
+  display: flex; flex-direction: column; gap: 14px;
+}
+.km-cta-U__note-copy {
+  max-width: 30ch;
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: 15px; line-height: 1.55; color: var(--fg); text-wrap: pretty;
+}
+
+/* ── the band: the poster's edge furniture ── */
+.km-cta-U__band {
+  position: relative; margin-top: 104px; height: 88px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.km-cta-U__band::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: var(--line); transform-origin: left center;
+}
+/* the path line: what happens after the click (15px Mona, paper, drawn arrows) */
+.km-cta-U__path { font-size: 15px; line-height: 22px; color: var(--fg); }
+.km-cta-U__path > li { display: inline; }
+.km-cta-U__path > li + li::before {
+  content: ""; display: inline-block; width: 13px; height: 11px; margin: 0 12px; vertical-align: -1px;
+  background-color: currentColor;
+  -webkit-mask: var(--km-cta-U-arr) center / contain no-repeat; mask: var(--km-cta-U-arr) center / contain no-repeat;
+  --km-cta-U-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+
+/* ── entrance (html.is-play): label → statement out of its masks → rule → lede and doors
+   (the action is in place before the fact arrives) → the fact panel opens from its bottom-left
+   corner and its ten day-ticks ink in, left to right → the note and the band settle.
+   At rest by ≈ 2.3s. No count-up (the page's one counter belongs to the system), no loop. ── */
+.is-play .km-cta-U__labelrow { animation: km-cta-U-fade .3s var(--ease-out) .05s both; }
+.is-play .km-cta-U__ln > span { animation: km-cta-U-rise .8s var(--ease-out) .15s both; }
+.is-play .km-cta-U__ln--light > span { animation-delay: .47s; }
+.is-play .km-cta-U__rule { animation: km-cta-U-draw .5s var(--ease-out) .8s both; }
+.is-play .km-cta-U__lede { animation: km-cta-U-up .6s var(--ease-out) .9s both; }
+.is-play .km-cta-U__doors { animation: km-cta-U-up .6s var(--ease-out) 1s both; }
+.is-play .km-cta-U__fact { animation: km-cta-U-land .75s var(--ease-inout) 1.15s both; }
+.is-play .km-cta-U__fact-top { animation: km-cta-U-fade .4s var(--ease-out) 1.6s both; }
+.is-play .km-cta-U__base { animation: km-cta-U-fade .3s var(--ease-out) 1.7s both; }
+.is-play .km-cta-U__tk { animation: km-cta-U-ink .22s var(--ease-out) both; animation-delay: calc(1.75s + var(--n) * 40ms); }
+.is-play .km-cta-U__ends { animation: km-cta-U-fade .4s var(--ease-out) 2s both; }
+.is-play .km-cta-U__note { animation: km-cta-U-up .6s var(--ease-out) 1.2s both; }
+.is-play .km-cta-U__band::before { animation: km-cta-U-draw 1.2s var(--ease-out) .3s both; }
+.is-play .km-cta-U__band > * { animation: km-cta-U-fade .5s var(--ease-out) 1.3s both; }
+
+@keyframes km-cta-U-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-cta-U-rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
+@keyframes km-cta-U-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-cta-U-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-cta-U-land { from { clip-path: inset(100% 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-cta-U-ink { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: none; } }
+
+/* ── ≤ 760px: one column, 16px gutters; the doors come before the fact ── */
+@media (max-width: 760px) {
+  .km-cta-U__inner { padding: 88px 16px 0; }
+  .km-cta-U__title { font-size: 52px; margin-top: 28px; }
+  .km-cta-U__rule { margin-top: 28px; }
+  .km-cta-U__row { display: flex; flex-direction: column; align-items: stretch; margin-top: 24px; }
+  .km-cta-U__copy { order: 1; gap: 28px; }
+  .km-cta-U__lede { margin-top: 0; font-size: 18px; }
+  .km-cta-U__doors { flex-wrap: wrap; }
+  .km-cta-U__fact { order: 2; width: 100%; max-width: 310px; margin-top: 48px; }
+  .km-cta-U__note { order: 3; align-self: flex-start; margin: 40px 0 0; }
+  .km-cta-U__band { margin-top: 64px; height: auto; padding-block: 24px; flex-direction: column; align-items: flex-start; }
+}

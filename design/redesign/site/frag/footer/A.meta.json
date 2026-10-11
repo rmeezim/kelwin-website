@@ -1,0 +1,20 @@
+{
+ "title": "FIG. 11 · The mark, installed",
+ "direction": "A",
+ "summary": "The footer becomes A's last figure and bookends the hero. Four hairline strips (Capabilities, Firm, Resources, Contact) sit above the real Kelwin lockup, set margin to margin and seated on a hairline caption band that mirrors the hero's FIG. 01 band: FIG. 11 caption at left, Privacy | Terms and an outlined 'Audit request ↗' at right. The mark's core square is the one red element. Today's footer is a brand block beside small mono-headed columns under a thesis line; this one closes the film on the brand itself.",
+ "reference": {
+  "site": "Zellerfeld",
+  "mobbin_url": "https://mobbin.com/sites/sections/18df6730-6569-49da-9c23-3bee32fbe638",
+  "ref_file": "refs/footer-A.webp",
+  "borrowed": "Zellerfeld's two-band footer. A sparse, small sitemap band sits above a giant flat lockup (solid mark plus wordmark) that runs margin to margin and owns the field, so the links read as a quiet caption to the logo.",
+  "kelwin": "Zellerfeld's address block beside four columns is close to today's Kelwin footer, so the top band is rebuilt in A's own list grammar: four equal strips on cols 1–3 / 4–6 / 7–9 / 10–12, divided by full-height 1px verticals (Metalab rhythm). Each strip has a mono index, a 28px wide display title and 17px items. The real sitemap is kept, the two doors are lifted in --fg with arrows (The System Audit ↗ to /audit, Get in Touch → to /contact), and the Contact strip carries audit@kelwin.co, a London hours:minutes readout, 'Sister company of Plurel' and 'Built in-house, no template'. The lockup is the founder's traced master, inlined so K1–K3 can assemble; its straight glyphs are redrawn at the traced dimensions and overlay the master to within a pixel. Zellerfeld's floating logo becomes A's FIG. plate anatomy: the lockup sits on a --line-2 rule with an 88px caption band below it, the same band the hero uses under the film. The band carries FIG. 11 · THE MARK, INSTALLED, © 2026 Kelwin, a Privacy | Terms pair and an outlined 'Audit request ↗' that mirrors the nav's action, so the page closes on the door it opened with."
+ },
+ "motion": [
+  "entrance (≈2.4s): the label and FIG. 11 fade (300ms). The strip verticals draw downward (900ms) while each strip's index, title and items fade up 12px (600ms, 80ms stagger by strip). The caption band's rule draws left to right (1.2s). The wordmark then rises out of the rule as if out of a mask (translateY 118% → 0, 800ms --ease-out). The mark assembles: K1, then K2, slide in from the top-right along the mark's diagonal (700ms, 120ms stagger), and the red K3 core lands last (12px settle, 400ms), which is the 'installed' beat. The band's caption and controls fade in (500ms).",
+  "ambient: none visible. The London readout shows hours:minutes and refreshes quietly, with no ticking seconds (A loops nothing but the hero film).",
+  "interaction: strip links lift from --fg-2 to --fg and grow an underline from the left (300ms); the door arrows nudge (↗ up-right, → right). Privacy / Terms invert on hover like the hero's segmented control, and the outlined 'Audit request ↗' border lifts to --fg with its arrow nudging 2px.",
+  "on the live site: the strips and the assembly run once when the footer is 50% visible. prefers-reduced-motion shows the assembled final state."
+ ],
+ "demoMs": 3200,
+ "notes": "FIG. 11 follows A's page order (hero 01 … before/after 09, CTA 10; the nav, principle, fit and FAQ carry no figure number). The map's 'cropped by the bottom edge' was tried and dropped: a crop sliced the red core into a rectangle and left the wordmark on the last pixel, which read as a render error. The lockup now sits on the caption-band rule, complete. The map's mono-headed columns became A's strips with wide titles, because mono heads over link columns are what today's footer does. The founder's master has three pieces, so the plan's 'K4 core' is K3 here. Coherence pass: renumbered FIG. 11 (after CTA FIG. 10); the label is the Mona caps label, mono captions use the .18em label tracking, and the ↗ / → in the doors are drawn SVG like every other A arrow."
+}

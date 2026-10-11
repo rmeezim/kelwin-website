@@ -1,0 +1,201 @@
+/* ── nav · B · Quiet Ledger ───────────────────────────────────────────
+   Hero B's bar (right-set tracked caps with Legora "+" disclosures, the
+   outlined AUDIT REQUEST ↗) over the daylight film. Capabilities drops a
+   paper sheet that reads like the index page of an annual report: ZARA's
+   category column becomes the spine column (01 · Capabilities, then the
+   sibling sections), and the three capabilities are one ruled ledger hung
+   from the index spine at a right angle — a row per capability, name and
+   descriptor on the left, its four services set as a column on the right.
+   The ledger closes on the System Audit, the only red on the screen.     */
+
+.km-nav-B {
+  height: 800px; overflow: hidden; isolation: isolate;
+  --nav-h: 88px;
+  --spine-x: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));   /* ≈ 386px, col 3|4 gutter */
+  --to-spine: calc(-.5 * var(--gutter));                                     /* row rules reach back to the spine (the sheet edge) */
+  --rule-y: 0px;
+}
+
+/* ── daylight film: hero B's calibration (milky glass, people as warm-grey
+   shadows). The sheet hangs from the spine, so the film stays open in the
+   spine column and under the sheet; the plate is set so a man seen from
+   behind stands in the spine column and the room continues under the sheet ── */
+.km-nav-B .km-film { background: var(--bg); --film-bright: 1.02; --film-blur: 10px; --film-sat: .7; --film-grain: .42; }
+.km-nav-B .km-film__plate {
+  inset: auto; top: var(--plate-y, 300px); left: var(--plate-x, -120px); width: var(--plate-w, 1800px); height: var(--plate-h, 900px);
+  background-size: auto 100%; background-position: 0 50%;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 14%);
+  animation-duration: 48s;
+}
+.km-nav-B .km-film__walker { animation-duration: 30s; animation-delay: 6s; opacity: .5; }
+.km-nav-B .km-film__frost { background-color: color-mix(in srgb, var(--bg) 22%, transparent); }
+.km-nav-B__veil {                       /* inside .km-film only: calm milk under the bar and the index type */
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--bg) 62%, transparent) 0, color-mix(in srgb, var(--bg) 36%, transparent) 88px, transparent 150px),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg) 44%, transparent) 0, color-mix(in srgb, var(--bg) 44%, transparent) 420px, transparent 560px);
+}
+
+/* ── shared caps voice (hero B) ── */
+.km-nav-B__item,
+.km-nav-B__navcta,
+.km-nav-B__cta,
+.km-nav-B__stack {
+  font-family: var(--f-body); font-weight: var(--ui-weight);
+  text-transform: uppercase; letter-spacing: var(--label-tracking); line-height: 1;
+}
+
+/* ── the bar (88px) ── */
+.km-nav-B__bar {
+  position: relative; z-index: 2; height: var(--nav-h);
+  display: flex; align-items: center; gap: 44px;
+  padding-inline: var(--margin);
+}
+.km-nav-B__brand { display: inline-flex; color: var(--fg); margin-right: auto; }
+.km-nav-B__brand .km-logo { --logo-h: 22px; }
+.km-nav-B__menu { display: flex; align-items: center; gap: 34px; }
+.km-nav-B__item { position: relative; display: inline-flex; align-items: center; gap: 9px; font-size: 12px; color: var(--fg); }
+/* the Legora "+" drawn from two 1px lines; open → the vertical folds flat → "−" */
+.km-nav-B__pm { position: relative; width: 9px; height: 9px; flex: none; }
+.km-nav-B__pm::before, .km-nav-B__pm::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-nav-B__pm::before { left: 0; right: 0; top: 4px; height: 1px; }
+.km-nav-B__pm::after { top: 0; bottom: 0; left: 4px; width: 1px; transition: transform .36s var(--ease-inout); }
+.km-nav-B__item.is-open .km-nav-B__pm::before, .km-nav-B__item.is-open .km-nav-B__pm::after { background: var(--fg); }
+.km-nav-B__item.is-open .km-nav-B__pm::after { transform: scaleY(0); }
+.km-nav-B__navcta {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 40px; padding: 0 16px 0 18px; border: 1px solid var(--fg); color: var(--fg); font-size: 12px;
+  transition: background-color .3s var(--ease-out), color .3s var(--ease-out);
+}
+.km-nav-B__navcta:hover { background: var(--fg); color: var(--bg); }
+/* drawn arrows (the brand fonts carry no arrow glyphs) */
+.km-nav-B__ico { display: inline-block; width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; }
+.km-nav-B__ico--r { width: 13px; height: 11px; }
+.km-nav-B__arr { transition: transform .3s var(--ease-out); }
+.km-nav-B__cta:hover .km-nav-B__arr, .km-nav-B__navcta:hover .km-nav-B__arr { transform: translate(2px, -2px); }
+
+/* ── the paper sheet: hung from the spine (col 3|4 gutter) to the right
+   edge; its left edge IS the spine. Inside, cols 4–12 of the page grid. ── */
+.km-nav-B__sheet {
+  position: absolute; z-index: 1; left: var(--spine-x); right: 0; top: var(--nav-h);
+  display: grid; grid-template-columns: minmax(0, 1fr); align-content: start;
+  padding: var(--rule-y) var(--margin) 36px calc(.5 * var(--gutter));
+  /* the sheet's top edge is the ledger's opening rule (row N·01), so the
+     spine and that rule meet at a right angle with the square at the joint */
+  background: var(--bg);
+}
+.km-nav-B__sheet::before {                          /* the spine: the sheet's left edge, drawn top-down */
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line-2);
+  transform-origin: center top;
+}
+.km-nav-B__joint {                                  /* the mark's core square at the spine's right angle */
+  position: absolute; z-index: 2; left: -2.5px; top: calc(var(--rule-y) - 2.5px);
+  width: 6px; height: 6px; background: var(--fg);
+}
+
+/* spine column — the index only, set on the film (cols 1–3) */
+.km-nav-B__index {
+  position: absolute; z-index: 1; left: var(--margin); top: calc(var(--nav-h) + var(--rule-y) + 30px);
+  width: calc(3 * var(--col) + 2 * var(--gutter));
+}
+.km-nav-B__sec {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-nav-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-nav-B__lead { margin-top: 28px; font-size: 20px; line-height: 1.4; letter-spacing: -0.005em; }
+.km-nav-B__lead span { display: block; color: var(--fg); }
+.km-nav-B__lead span + span { color: var(--fg-2); }
+.km-nav-B__meta {
+  margin-top: 20px; font-family: var(--f-mono); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+
+/* the ledger (cols 4–12) — every row on the same 9-column sub-grid */
+.km-nav-B__ledger { grid-row: 1; }
+.km-nav-B__row,
+.km-nav-B__audit {
+  position: relative;
+  display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start;
+  padding: 22px 0 24px;
+}
+.km-nav-B__row::before,
+.km-nav-B__audit::before {                          /* each rule runs from the spine to the margin */
+  content: ""; position: absolute; left: var(--to-spine); right: 0; top: 0; height: 1px;
+  background: var(--line); transform-origin: left center;
+}
+.km-nav-B__row:first-child::before, .km-nav-B__audit::before { background: var(--line-2); }
+.km-nav-B__row::after {                             /* hover/selection fill, spine to margin */
+  content: ""; position: absolute; z-index: -1; left: var(--to-spine); right: 0; top: 1px; bottom: 0;
+  background: var(--panel); opacity: 0; transition: opacity .36s var(--ease-inout);
+}
+.km-nav-B__hit { position: absolute; inset: 0; z-index: 1; }
+.km-nav-B__n {
+  grid-column: 1; padding-top: 7px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); color: var(--fg-3);
+}
+.km-nav-B__head { grid-column: 2 / 5; transition: translate .36s var(--ease-inout); }
+.km-nav-B__title {
+  font-family: var(--f-body); font-stretch: 100%; font-weight: 500;
+  font-size: 24px; line-height: 30px; letter-spacing: -.01em; color: var(--fg);
+}
+.km-nav-B__desc { margin-top: 6px; font-size: 15px; line-height: 22px; color: var(--fg-2); max-width: 34ch; }
+.km-nav-B__svc { grid-column: 5 / 9; padding-top: 4px; }
+.km-nav-B__svc li { font-size: 15px; line-height: 24px; color: var(--fg); }
+.km-nav-B__go { grid-column: 9; justify-self: end; padding-top: 9px; color: var(--fg-3); transition: color .36s var(--ease-inout), translate .36s var(--ease-inout); }
+
+.km-nav-B__row:hover::after, .km-nav-B__row.is-hover::after { opacity: 1; }
+.km-nav-B__row:hover .km-nav-B__head, .km-nav-B__row.is-hover .km-nav-B__head { translate: 8px 0; }
+.km-nav-B__row:hover .km-nav-B__go, .km-nav-B__row.is-hover .km-nav-B__go { color: var(--fg); }
+
+/* the closing row — the System Audit (the only red on the screen) */
+.km-nav-B__audit { grid-row: 2; padding-bottom: 0; align-items: center; }
+.km-nav-B__audit .km-nav-B__n { align-self: start; }
+.km-nav-B__audit .km-nav-B__head { align-self: start; }
+.km-nav-B__stack {
+  margin-top: 36px;
+  position: relative; display: inline-flex; align-items: center; gap: 10px; padding-bottom: 8px;
+  font-size: 12px; color: var(--fg); white-space: nowrap;
+}
+.km-nav-B__stack::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2);
+  transform-origin: left center; transition: background-color .3s var(--ease-out);
+}
+.km-nav-B__stack:hover::after { background: var(--fg); }
+.km-nav-B__cta {
+  grid-column: 5 / 8; align-self: start;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px; padding: 0 20px 0 22px;
+  background: var(--accent); color: var(--accent-fg); font-size: 12px;
+  transition: background-color .3s var(--ease-out);
+}
+.km-nav-B__cta:hover { background: var(--accent-hover); }
+
+.km-nav-B.no-tr * { transition: none !important; }
+
+/* ── entrance: long durations, short distances ─────────────────────── */
+.is-play .km-nav-B__bar { animation: km-nav-B-fade 600ms var(--ease-out) both; }
+.is-play .km-nav-B__item.is-open .km-nav-B__pm::after { animation: km-nav-B-minus 360ms var(--ease-inout) 400ms both; }
+.is-play .km-nav-B__sheet { animation: km-nav-B-hang 900ms var(--ease-out) 60ms both; }
+.is-play .km-nav-B__sheet::before { animation: km-nav-B-drawy 1100ms var(--ease-out) 150ms both; }
+.is-play .km-nav-B__index > * { animation: km-nav-B-fade 500ms var(--ease-out) both; animation-delay: 700ms; }
+.is-play .km-nav-B__joint { animation: km-nav-B-fade 300ms var(--ease-out) 300ms both; }
+.is-play .km-nav-B__index > * { animation-delay: 650ms; }
+.is-play .km-nav-B__lead { animation-delay: 760ms; }
+.is-play .km-nav-B__meta, .is-play .km-nav-B__stack { animation-delay: 880ms; }
+/* rules draw from the spine to the margin, one per row (the first is the
+   opening rule), then each row's text rises 12px */
+.is-play .km-nav-B__row::before { animation: km-nav-B-drawx 900ms var(--ease-out) both; animation-delay: calc(300ms + var(--i) * 140ms); }
+.is-play .km-nav-B__row > :not(.km-nav-B__hit) { animation: km-nav-B-rise 700ms var(--ease-out) both; animation-delay: calc(700ms + var(--i) * 140ms); }
+.is-play .km-nav-B__row > .km-nav-B__svc { animation-delay: calc(860ms + var(--i) * 140ms); }
+.is-play .km-nav-B__audit::before { animation: km-nav-B-drawx 900ms var(--ease-out) 720ms both; }
+.is-play .km-nav-B__audit > * { animation: km-nav-B-rise 700ms var(--ease-out) 1160ms both; }
+
+@keyframes km-nav-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-nav-B-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-nav-B-drawx { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes km-nav-B-drawy { from { transform: scaleY(0); } to { transform: none; } }
+@keyframes km-nav-B-hang { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-nav-B-minus { from { transform: scaleY(1); } to { transform: scaleY(0); } }

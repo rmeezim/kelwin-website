@@ -1,0 +1,158 @@
+/* ── stack · B · Quiet Ledger — 04 The stack, four layers stepping inward ──
+   The Index Spine (col 3|4 gutter) runs straight through. Head follows the
+   founder DNA inside B's grammar: red-square caps label in the spine column,
+   88px statement + muted light sentence, 48×2 red rule. The ledger titles step
+   in 24px per layer, each hung from the one above by a hairline right angle —
+   the mark's nesting read as typography. One row is open in place.          */
+.km-stack-B { --pad: 128px; --spine-x: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter)); padding: var(--pad) 0 128px; overflow: hidden; }
+
+.km-stack-B__spine { position: absolute; top: 0; bottom: 0; left: var(--spine-x); width: 1px; background: var(--line); z-index: 2; }
+
+.km-stack-B__in {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* opening rule: spine → right margin, square at the joint */
+.km-stack-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-stack-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-stack-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); z-index: 3; }
+
+/* spine column: index + the red-square caps label, nothing else */
+.km-stack-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-stack-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-stack-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-stack-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+
+/* statement: a sentence + a muted sentence (the light accent, picked out by colour) */
+.km-stack-B__h {
+  grid-column: 4 / 13; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-stack-B__s1, .km-stack-B__s2 { display: block; white-space: nowrap; }
+.km-stack-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-stack-B__redrule { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--signal); transform-origin: 0 50%; }
+
+.km-stack-B__body { grid-column: 4 / 9; grid-row: 4; margin-top: 32px; font-size: 18px; line-height: 30px; color: var(--fg-2); max-width: 62ch; }
+.km-stack-B__note { grid-column: 10 / 13; grid-row: 4; margin-top: 38px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 17px; line-height: 26px; }
+.km-stack-B__note span { display: block; color: var(--fg); }
+.km-stack-B__note span + span { color: var(--fg-3); }
+
+/* ── the ledger (cols 4–12 on the page grid via subgrid) ── */
+.km-stack-B__ledger { grid-column: 4 / 13; grid-row: 5; margin-top: 80px; display: grid; grid-template-columns: subgrid; }
+.km-stack-B__cols { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; padding-bottom: 16px; }
+.km-stack-B__ck {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-stack-B__ck--a { grid-column: 2 / 6; }
+.km-stack-B__ck--b { grid-column: 6 / 9; }
+.km-stack-B__rows { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; }
+.km-stack-B__rows::after { content: ""; position: absolute; left: calc(var(--gutter) / -2); right: 0; bottom: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+.km-stack-B__row { --step: calc(var(--n) * 24px); grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; }
+.km-stack-B__row::before {           /* hover fill, from the spine to the margin */
+  content: ""; position: absolute; inset: 0 0 0 calc(var(--gutter) / -2); background: var(--panel);
+  opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.km-stack-B__row::after {            /* row rule, hung from the spine */
+  content: ""; position: absolute; top: 0; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line);
+  transform-origin: 0 50%;
+}
+.km-stack-B__row:hover::before { opacity: 1; }
+
+.km-stack-B__head {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline;
+  padding: 28px 0; text-align: left; position: relative; cursor: pointer; transition: padding-bottom 360ms var(--ease-inout);
+}
+.km-stack-B__row.is-open .km-stack-B__head { padding-bottom: 20px; }
+.km-stack-B__ri { grid-column: 1; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); color: var(--fg-3); }
+.km-stack-B__rt {
+  grid-column: 2 / 6; position: relative; padding-left: var(--step);
+  font-family: var(--f-body); font-stretch: 100%; font-weight: var(--ui-weight);
+  font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; color: var(--fg);
+  transition: transform 300ms var(--ease-out);
+}
+.km-stack-B__tt { display: inline-block; white-space: nowrap; }
+/* every layer hangs from its row rule by a hairline right angle (the mark's corner), each one
+   24px step further in — the mark's down-and-in step read as structure (four layers extend the
+   three-piece nesting by one step; not the logo); a 3px square marks each joint */
+.km-stack-B__rt::before {
+  content: ""; position: absolute; left: calc(var(--step) - 17px); top: -29px; width: 9px; height: 44px;
+  border-left: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); transform-origin: 50% 0;
+}
+.km-stack-B__rt::after {
+  content: ""; position: absolute; left: calc(var(--step) - 18px); top: -30px; width: 3px; height: 3px; background: var(--fg-2);
+}
+.km-stack-B__row.is-open .km-stack-B__rt::before { border-color: var(--fg-3); }
+.km-stack-B__row:hover .km-stack-B__rt { transform: translateX(8px); }
+.km-stack-B__rd { grid-column: 6 / 9; font-size: 17px; line-height: 1.4; color: var(--fg-2); }
+.km-stack-B__tg { grid-column: 9; justify-self: end; align-self: center; position: relative; width: 20px; height: 20px; }
+.km-stack-B__tg::before, .km-stack-B__tg::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-stack-B__tg::before { left: 0; right: 0; top: 9.5px; height: 1px; }
+.km-stack-B__tg::after { top: 0; bottom: 0; left: 9.5px; width: 1px; transition: transform 360ms var(--ease-inout); }
+.km-stack-B__row.is-open .km-stack-B__tg::after { transform: rotate(90deg); }
+
+/* open-in-place panel: Ploy's micro-head over value, two cells */
+.km-stack-B__panel {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 360ms var(--ease-inout), opacity 360ms var(--ease-inout);
+  position: relative;
+}
+.km-stack-B__row.is-open .km-stack-B__panel { grid-template-rows: 1fr; opacity: 1; }
+.km-stack-B__pin { grid-column: 1 / -1; min-height: 0; overflow: hidden; display: grid; grid-template-columns: subgrid; }
+.km-stack-B__what { grid-column: 2 / 6; padding: 0 24px 32px var(--step); }
+.km-stack-B__prac { grid-column: 6 / 9; padding-bottom: 32px; }
+.km-stack-B__mh { font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-stack-B__mv { margin-top: 10px; font-size: 17px; line-height: 26px; color: var(--fg); max-width: 40ch; }
+.km-stack-B__ledger.is-snap .km-stack-B__panel, .km-stack-B__ledger.is-snap .km-stack-B__tg::after, .km-stack-B__ledger.is-snap .km-stack-B__head { transition: none; }
+
+/* the two doors: red primary in tracked caps + an underlined tracked-caps secondary */
+.km-stack-B__doors { grid-column: 4 / 13; grid-row: 6; margin-top: 56px; display: flex; align-items: center; gap: 40px; }
+.km-stack-B__cta, .km-stack-B__link {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  text-transform: uppercase; letter-spacing: var(--label-tracking); white-space: nowrap;
+}
+.km-stack-B__cta {
+  display: inline-flex; align-items: center; gap: 14px; height: 52px; padding: 0 24px 0 26px;
+  background: var(--accent); color: var(--accent-fg); transition: background-color 200ms var(--ease-out);
+}
+.km-stack-B__cta:hover { background: var(--accent-hover); }
+.km-stack-B__link { position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px; color: var(--fg); }
+.km-stack-B__link::before, .km-stack-B__link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2); }
+.km-stack-B__link::after { background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out); }
+.km-stack-B__link:hover::after { transform: scaleX(1); }
+/* arrows are drawn (the brand fonts carry no ↗ / → glyphs) */
+.km-stack-B__ico { display: inline-block; width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; }
+.km-stack-B__ico--r { width: 13px; height: 11px; }
+.km-stack-B__arr, .km-stack-B__go { transition: transform 250ms var(--ease-out); }
+.km-stack-B__cta:hover .km-stack-B__arr { transform: translate(2px, -2px); }
+.km-stack-B__link:hover .km-stack-B__go { transform: translateX(3px); }
+
+/* ── entrance (only under html.is-play): long durations, short distances ── */
+@keyframes km-stack-B-draw { from { transform: scaleX(0); } }
+@keyframes km-stack-B-fade { from { opacity: 0; } }
+@keyframes km-stack-B-rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes km-stack-B-in { from { opacity: 0; transform: translateX(-12px); } }
+
+.is-play .km-stack-B__joint { animation: km-stack-B-fade 300ms var(--ease-out) both; }
+.is-play .km-stack-B__rule { animation: km-stack-B-draw 900ms var(--ease-out) 120ms both; }
+.is-play .km-stack-B__index { animation: km-stack-B-fade 400ms var(--ease-out) 300ms both; }
+.is-play .km-stack-B__s1 { animation: km-stack-B-rise 700ms var(--ease-out) 300ms both; }
+.is-play .km-stack-B__s2 { animation: km-stack-B-rise 700ms var(--ease-out) 460ms both; }
+.is-play .km-stack-B__redrule { animation: km-stack-B-draw 600ms var(--ease-out) 700ms both; }
+.is-play .km-stack-B__body { animation: km-stack-B-rise 700ms var(--ease-out) 620ms both; }
+.is-play .km-stack-B__note { animation: km-stack-B-fade 600ms var(--ease-out) 760ms both; }
+.is-play .km-stack-B__cols { animation: km-stack-B-fade 500ms var(--ease-out) 820ms both; }
+.is-play .km-stack-B__row::after { animation: km-stack-B-draw 600ms var(--ease-out) both; animation-delay: calc(860ms + var(--n) * 60ms); }
+.is-play .km-stack-B__ri, .is-play .km-stack-B__rd, .is-play .km-stack-B__tg, .is-play .km-stack-B__pin { animation: km-stack-B-fade 600ms var(--ease-out) both; animation-delay: calc(940ms + var(--n) * 60ms); }
+/* the layers step in one after another — the nesting assembles */
+.is-play .km-stack-B__rt { animation: km-stack-B-in 600ms var(--ease-out) both; animation-delay: calc(1100ms + var(--n) * 160ms); }
+.is-play .km-stack-B__rows::after { animation: km-stack-B-draw 600ms var(--ease-out) 1100ms both; }
+.is-play .km-stack-B__doors { animation: km-stack-B-fade 600ms var(--ease-out) 1500ms both; }

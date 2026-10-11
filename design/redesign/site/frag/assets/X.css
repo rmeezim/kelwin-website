@@ -1,0 +1,105 @@
+/* ── assets · X · A×C "Cinematic Drafting" — FIG. 10 · The handover (FOLIO) ──────────
+   A's head, plate and key strips; C's 1px drawing, one lettered callout, datum,
+   registration marks and title block; B's calm. Six document sheets (136×192, 1:1.41),
+   each a different kind of page (hierarchy, playbook list, table, rule table, panels,
+   quarter plan), are fanned on Kelwin's side and spread across the handover datum into
+   your tray, one row, card order preserved. Dashed edge + draft page = drafted by Kelwin;
+   solid edge + finished page = yours: each sheet is drawn twice and clipped at the datum,
+   so it resolves exactly as it crosses. The one red: the datum's tick, where the
+   handover arrow meets it. Default CSS = the final state (Handed over).               */
+
+.km-assets-X__body { margin-top: 64px; }
+
+/* ── FIG. 10 plate ── */
+.km-assets-X__field { overflow: hidden; }
+.km-assets-X__svg { position: absolute; left: 0; top: 0; z-index: 1; pointer-events: none; }
+/* labels live outside the one row the sheets travel in; the datum (drawn last) stays on top of the sheets */
+.km-assets-X__co, .km-assets-X__field > .ac-reg { z-index: 0; }
+/* column heads: Kelwin's side, then each capability over its pair (and so over its key strip below) */
+.km-assets-X__grp { position: absolute; z-index: 0; margin: 0; }
+
+/* the sheets — "yours" copies: solid edge, brighter inscriptions */
+.km-assets-X__paper { fill: var(--ac-occlude); }
+.km-assets-X__edge { fill: none; stroke: var(--fg-2); stroke-width: 1; transition: stroke 300ms var(--ease-out); }
+.km-assets-X__tag {
+  font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; fill: var(--fg);
+  font-variant-numeric: tabular-nums;
+}
+/* inscriptions are page furniture only: rules, bullets, table cells, panels — document-native, no other primitive */
+.km-assets-X__hr { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-assets-X__ru { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-assets-X__ink { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-assets-X__dot { fill: var(--fg-3); }
+.km-assets-X__hot { fill: var(--fg); }
+.km-assets-X__panel { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-assets-X__val { fill: var(--fg-3); }
+.km-assets-X__val--on { fill: var(--fg); }
+.km-assets-X__lead { fill: none; stroke: var(--fg); stroke-width: 1; }
+
+/* "ours" copies (left of the datum): dashed edge, everything a step quieter */
+.km-assets-X__ours .km-assets-X__edge { stroke: var(--fg-3); stroke-dasharray: 3 3; }
+.km-assets-X__ours .km-assets-X__tag { fill: var(--fg-3); }
+.km-assets-X__ours .km-assets-X__hr, .km-assets-X__ours .km-assets-X__ink { stroke: var(--line-2); }
+.km-assets-X__ours .km-assets-X__ru { stroke: var(--line); }
+.km-assets-X__ours .km-assets-X__panel { stroke: var(--line); stroke-dasharray: 2 2; }
+.km-assets-X__ours .km-assets-X__dot { fill: var(--line-2); }
+
+/* where Kelwin's working set stood — only a dotted footprint is left behind */
+.km-assets-X__ghost { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 1 4; }
+/* your side's empty places (covered by the sheets once they land) */
+.km-assets-X__slots rect { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 1 4; }
+
+/* the handover arrow: dashed (a construction route) from the footprint into the datum, one open chevron at its tip */
+.km-assets-X__lane-l { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-assets-X__lane-c { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+
+/* the handover datum: a reference line over the sheets; the tick is the section's one red */
+.km-assets-X__datum { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-assets-X__tick { fill: none; stroke: var(--signal); stroke-width: 1.5; stroke-linecap: butt; }
+
+/* caption band: title block (its last cell counts the hand-over) · segmented control */
+.km-assets-X__count { min-width: 128px; font-variant-numeric: tabular-nums; }
+/* guard: the kit's button:hover (--fg) would paint the selected segment's label white on white */
+.km-assets-X__seg > [aria-selected="true"]:hover { color: var(--bg); }
+
+/* ── the key: line styles under Kelwin's side, the six assets under yours ── */
+/* two shared rows across the strips (subgrid), so the second asset of every capability sits on one line */
+.km-assets-X__key { grid-template-rows: auto auto; row-gap: 28px; }
+.km-assets-X__key > .ac-strip { grid-row: span 2; display: grid; grid-template-rows: subgrid; row-gap: 28px; align-content: start; }
+.km-assets-X__key > .km-assets-X__legend > * { grid-row: 1; }
+.km-assets-X__lg { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+.km-assets-X__lg li { display: flex; align-items: center; gap: 14px; }
+.km-assets-X__sw { flex: none; display: block; overflow: visible; }
+.km-assets-X__sw-d, .km-assets-X__sw-s { fill: none; stroke-width: 1; }
+.km-assets-X__sw-d { stroke: var(--fg-3); stroke-dasharray: 3 3; }
+.km-assets-X__sw-s { stroke: var(--fg-2); }
+
+.km-assets-X__item { display: flex; flex-direction: column; }
+.km-assets-X__t { display: flex; align-items: center; gap: 12px; }
+.km-assets-X__t .ac-h4 { white-space: nowrap; }
+.km-assets-X__no {
+  flex: none; display: inline-flex; align-items: center; justify-content: center; height: 22px; min-width: 28px; padding: 0 5px;
+  border: 1px solid var(--fg-3); font-family: var(--f-mono); font-size: 12px; line-height: 1; letter-spacing: .06em; color: var(--fg);
+  font-variant-numeric: tabular-nums;
+  transition: border-color 360ms var(--ease-inout), color 360ms var(--ease-inout), background-color 250ms var(--ease-out);
+}
+.km-assets-X__d { margin-top: 10px; text-wrap: pretty; }   /* no one-word last lines ("quarter.", "touch.") in either skin */
+.km-assets-X__f { margin-top: 6px; }
+.km-assets-X__nb { white-space: nowrap; }
+
+/* not yet handed over (Installed, or mid-deal): the key's index is still a draft */
+.km-assets-X__item.is-draft .km-assets-X__no { border-style: dashed; border-color: var(--line-2); color: var(--fg-3); }
+
+/* hover a key item → its sheet's edge lifts to --fg and its index inverts */
+.km-assets-X__item:hover .km-assets-X__no { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.km-assets-X:has(.km-assets-X__item[data-s="1"]:hover) .km-assets-X__sh[data-s="1"] .km-assets-X__edge,
+.km-assets-X:has(.km-assets-X__item[data-s="2"]:hover) .km-assets-X__sh[data-s="2"] .km-assets-X__edge,
+.km-assets-X:has(.km-assets-X__item[data-s="3"]:hover) .km-assets-X__sh[data-s="3"] .km-assets-X__edge,
+.km-assets-X:has(.km-assets-X__item[data-s="4"]:hover) .km-assets-X__sh[data-s="4"] .km-assets-X__edge,
+.km-assets-X:has(.km-assets-X__item[data-s="5"]:hover) .km-assets-X__sh[data-s="5"] .km-assets-X__edge,
+.km-assets-X:has(.km-assets-X__item[data-s="6"]:hover) .km-assets-X__sh[data-s="6"] .km-assets-X__edge { stroke: var(--fg); }
+
+/* ── entrance (html.is-play only; kit runs the head, .ac-plot/.ac-in/.ac-drop/.ac-cascade) ── */
+@keyframes km-assets-X-fade { from { opacity: 0; } to { opacity: 1; } }
+.is-play .km-assets-X__plate { animation: km-assets-X-fade 520ms var(--ease-out) 480ms both; }
+.is-play .km-assets-X__band > * { animation: km-assets-X-fade 500ms var(--ease-out) 1100ms both; }

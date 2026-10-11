@@ -1,0 +1,21 @@
+{
+ "title": "The diagonal sentence",
+ "direction": "A",
+ "summary": "A's first full-red plane, made decisive: nothing on it but the principle, set at the red-plane statement size (120px) as one diagonal on the 12-column grid — 'In a noisy market,' hangs from col 1 in wide 430, 'the clearest / company wins.' lands at col 5 in the light voice, and the coda holds cols 1–4 on its last baseline. Today's version is a centred line drifting over a stock photo.",
+ "reference": {
+  "site": "Daylight",
+  "mobbin_url": "https://mobbin.com/sites/sections/4db3eb21-9348-4652-9e4e-e286971f8091",
+  "ref_file": "refs/principle-A.webp",
+  "borrowed": "The 'Our thesis' band. It is one full-bleed plane with tiny stamps pinned to the top corners. The thesis is split into two clauses at the same large size: the first hangs top-left, the second is pushed to the lower right so the eye crosses the plane diagonally through empty space, and a short support paragraph is anchored bottom-left.",
+  "kelwin": "The dusk photograph of pylons becomes flat Plurel red and nothing else: the tonal K1 plate of the earlier pass is gone, because a second red mass behind the type read as overlapping blocks. Daylight's corner stamps become A's label row (a paper square plus the hero's tracked-caps 'OPERATING PRINCIPLE' label) and the Kelwin mark alone at col 12. The clauses take A's two voices at 120px (the size A uses for both red planes): 'In a noisy market,' in wide 430 paper from col 1, then — one held line-pair of empty red lower — 'the clearest / company wins.' in wide light 300 at paper 86%, flush to the col 5 line. Daylight's support paragraph becomes the hero's coda, the 48×2 paper rule over 'Not the loudest. / Not the busiest.' in cols 1–4, its last baseline on clause 2's. There is no CTA, because the final CTA is A's other red plane."
+ },
+ "motion": [
+  "entrance: the label row fades in (300ms). 'In a noisy market,' rises out of its mask (900ms --ease-out).",
+  "orchestrated moment: a held beat of empty red (≈500ms), then 'the clearest / company wins.' rises into place at col 5 (900ms, 120ms line stagger) — the light voice landing after the medium one, across the diagonal. The 48×2 paper rule then draws left→right (600ms) and the disclaimer fades up 12px (600ms); everything has settled by about 2.5s.",
+  "ambient: none. The plane holds still once set.",
+  "interaction: none. It is a pause between dense acts and has no controls.",
+  "on the live site: the sequence runs once at 50% visibility, with no pin and no scrub. Reduced motion shows the final composed state."
+ ],
+ "demoMs": 3000,
+ "notes": "One of A's exactly two red planes (the other is the final CTA); they are never adjacent. Coherence pass: the tonal K1 plate was removed — critics read the deep-red block behind the second clause as unresolved overlapping reds — so the plane is now type only, and the grid carries the composition. The direction's 'K1 outline bleeding off the right edge' is deliberately not used: the mark appears once, at master proportions, in the label row. Type is 120px, matching the CTA plane. The section is 756px: 112px padding plus a fixed row map, so the coda stays locked to clause 2's baseline in both skins."
+}

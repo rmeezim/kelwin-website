@@ -1,0 +1,64 @@
+{
+ "diagnosis": "Why today's hero falls behind the rest of the page: every section below proves its point with one exact drawn instrument, while the hero is type over a blurred photo, the most common hero on the web. Its video is wallpaper: it fills everything, so it frames nothing, and nothing tells the eye it is footage. Each new option gives the video a job (evidence, optics, cinema or terrain) and one drawn device that gives it edges and meaning. One caveat for all four: the footage here is a stand-in made from a single blurred still. The launch versions use real footage, described under each option.",
+ "options": [
+  {
+   "slot": "U",
+   "label": "Today"
+  },
+  {
+   "slot": "T",
+   "label": "Option 1"
+  },
+  {
+   "slot": "V",
+   "label": "Option 2"
+  },
+  {
+   "slot": "W",
+   "label": "Option 3"
+  },
+  {
+   "slot": "Z",
+   "label": "Option 4"
+  }
+ ],
+ "recommendation": "Lead with Z, The Survey. It is the only option where the video clearly plays and has a job: the night city is the market, and Kelwin's route is drawn across it in the same fine-line style as the sections you approved. It reads as serious infrastructure software, not an agency reel, and your approved headline, text and buttons stay exactly where they are today. The runner-up is T, The Operating Feed: it keeps people at work inside a framed, timecoded feed with clickable chapters, but it needs a custom shoot, and today its small blurred frame undersells it. The one trade-off with Z is that it drops the people-in-the-room film you started with.",
+ "ranking": [
+  {
+   "slot": "Z",
+   "score": 8,
+   "one_liner": "The Survey: the only option where the video plainly plays and does a job, and it already looks finished.",
+   "strengths": "In the 6s and 10s captures it is the clearest answer to the note. Traffic visibly moves on every street, and a crisp route with three square nodes (01 Narrative Systems, 02 GTM Infrastructure, 03 GTM Intelligence) is drawn on top of the footage. That is the defence and infrastructure look of soft footage with a sharp drawing over it, which the research diagnosis asked for. It is the farthest of the five from an agency showreel. The approved type, lede, doors and audit note stay exactly where they are in U, so the founder's approved composition is kept and only the material changes. The 1px route, square nodes and 01/02/03 code boxes come from the approved reframe and system sections, so the hero finally carries the page's drawing language. The handoff is clean: the city fades to graphite at the hairline, and the reframe then opens the same triad as a diagram, which reads as moving from outside the market into its architecture. It is also the easiest to produce, because licensed nadir footage or a rendered flyover both work, and today's canvas costs about 2% of one core.",
+   "risks": "It drops the people-at-work film, which was the founder's original idea. A night city aerial is a consulting and fintech trope, so it needs the straight-down, graphite-graded treatment to stay distinct. Today's procedural bokeh city could read as computer-generated, which is the one thing the founder praised the rest of the page for avoiding, so real footage matters here. The 01/02/03 labels sit above the statement and catch the eye before the GTM SYSTEMS PARTNER label. The triad repeats two screens later in the reframe under different nouns (Narrative Systems vs Narrative architecture), so the names should be aligned or dropped. Expressway traffic at about 40px/s is busier than the brand's 'slow, restrained' motion. Pinning the route to real streets under a moving camera is real engineering work: the camera must be a pure lateral pan, and the route has to be redrawn for the actual footage."
+  },
+  {
+   "slot": "T",
+   "score": 7,
+   "one_liner": "The Operating Feed: the most proprietary and most coherent structure, held back today by a small, muddy frame.",
+   "strengths": "The video is unmistakably a video. Hard cuts land at about 3.6s and 6.4s and then every 8s, with a counting timecode, a take counter and a calibrated chapter rail you can click. It reads as an operations-room monitor, not mood footage. It is built entirely from the approved grammar (flat graphite, a hairline frame with registration marks, a tick ruler, the nav glyphs), so it sits with the sections below more naturally than any other option. Each take carries one of the three systems, so the film carries the offer. Statement and lede sit on solid graphite and are perfectly legible. It keeps people in frame, which suits an advisory firm. The flat-to-flat handoff into the reframe is seamless.",
+   "risks": "Today the 755×316 frame holds a blurred brown blob, which reads as a low-resolution feed or a placeholder. That undersells the idea and does not yet fix 'less impressive'. With the full-bleed picture gone, the first viewport is type on flat graphite like the reframe directly below, so the hero loses its opening moment and the first two screens look alike. It also moves the statement to the top, against his 'almost vertically centred' note, and brings back a ruler and timecode he removed in round 4. The chapter triad repeats in the reframe with different nouns. It depends on a commissioned shoot of three specific setups from a real client session, which is costly and sensitive under client confidentiality. With generic footage it collapses into a framed stock reel."
+  },
+  {
+   "slot": "W",
+   "score": 6,
+   "one_liner": "The Wide Frame: the right cinema structure, but the video barely moves and has no instrument.",
+   "strengths": "The hard-edged 2.76:1 band, with hairlines and registration marks at its edges, turns the footage into cinema rather than wallpaper. The entrance, where the nav hairline splits and opens into the picture (seen at 1.5s), is elegant and very Kelwin. The statement reads as a strong title card inside the band. The lede, doors and note on a flat graphite bar fix U's 'action floating in mud', and the button is crisp above the fold. The handoff to the reframe is clean. With real anamorphic night footage it has a high ceiling, in the spirit of Titan.",
+   "risks": "In the founder's first ten seconds the video hardly registers as playing. The 6s and 10s frames are almost identical, because the dolly runs at about 3.5px a second and the passer-by appears only once every 30s. That misses his explicit 'video playing' requirement. Today's plate is muddy: the over-the-shoulder head is a dark blob behind 'problem.', and the window on the right has an off-palette green cast. Apart from U it is the only option with no drawn instrument, so it is the least connected to the approved diagram sections, and its people-in-a-room subject still says nothing about the work. The left and middle of the flat bar sit empty. It depends entirely on a commissioned anamorphic shoot."
+  },
+  {
+   "slot": "V",
+   "score": 5,
+   "one_liner": "The Scope: a smart idea the stand-in footage cannot show, so today it reads as a dim thumbnail in the corner.",
+   "strengths": "It keeps the approved hero exactly: same room, layout, copy and nav. The clear pane gives the blur a meaning (the market is frosted, the audit is the one clear view), and its ten-tick day ruler ties the footage to the 10-working-day audit, with the button on the same column line. The construction-line entrance and the registration marks are on brand. It is the lowest-risk change.",
+   "risks": "The stand-in plate is soft at source, so the 'clear' pane is only slightly darker and more saturated than the frost around it. In the captures it looks like a picture-in-picture or a stray video thumbnail in the upper right, not a lens. The pane floats about 430px above the button, with the statement's second line between them, so the tie between pane and audit is not felt. The rest of the hero is still the soft wallpaper and mud the diagnosis faulted. Motion (the drift and one walker every 24s) is too slow to read as video. At launch, the clear pane would need shallow-focus footage in which faces still stay unreadable."
+  },
+  {
+   "slot": "U",
+   "score": 3,
+   "one_liner": "Today's approved hero: legible and calm, but it is exactly what the founder said feels weaker.",
+   "strengths": "The approved, proven layout: a big near-centred statement, clear two-door hierarchy, a legible lede and a clean fade into the reframe. It has no production risk.",
+   "risks": "The video is wallpaper: a warm brown smear under heavy scrim, with no edge, cut or timecode. In the 6s and 10s captures it is effectively a still. It is the generic people-film-behind-a-left-headline hero (Harvey, Square, Jasper), and the only section on the page without an instrument. It answers none of the round-6 note."
+  }
+ ],
+ "start": "Z"
+}

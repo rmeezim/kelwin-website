@@ -1,0 +1,215 @@
+/* ── beforeafter · C · Systems Drawing Set — SHEET 11/14, the change notice ──
+   Neon's schema diff, redrawn as an engineering change notice: WAS (rev A) |
+   IS (rev B), six rows on cell-IDs and lettered keys. The IS column is raised
+   24px proud as a flat --panel (Linear's pricing column); a single red datum
+   — the install line — runs down the seam.                                   */
+.km-beforeafter-C {
+  --b2: calc(2 * var(--col) + 1.5 * var(--gutter));    /* col 2|3 gutter  ≈ 211 */
+  --b6: calc(6 * var(--col) + 5.5 * var(--gutter));    /* col 6|7 gutter  = 656 */
+  --b8: calc(8 * var(--col) + 7.5 * var(--gutter));    /* col 8|9 gutter  ≈ 879 */
+  --b11: calc(11 * var(--col) + 10.5 * var(--gutter)); /* col 11|12 gutter ≈ 1213 */
+  padding: 96px 0 0; overflow: hidden;
+}
+
+/* frame: margin verticals + chosen crosshairs */
+.km-beforeafter-C__frame { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.km-beforeafter-C__frame--l { left: var(--margin); }
+.km-beforeafter-C__frame--r { left: calc(var(--stage) - var(--margin) - 1px); }
+.km-beforeafter-C__xh { position: absolute; width: 9px; height: 9px; margin: -4px 0 0 -4px; z-index: 4; }
+.km-beforeafter-C__xh::before, .km-beforeafter-C__xh::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-beforeafter-C__xh::before { left: 0; top: 4px; width: 9px; height: 1px; }
+.km-beforeafter-C__xh::after { left: 4px; top: 0; width: 1px; height: 9px; }
+
+.km-beforeafter-C__sheet { position: relative; padding-inline: var(--margin); }
+.km-beforeafter-C__row { display: grid; }
+.km-beforeafter-C__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* cells draw their own edges, so they can plot in raster order */
+.km-beforeafter-C__cell { position: relative; }
+.km-beforeafter-C__cell::before {                       /* top edge */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; z-index: 2;
+}
+.km-beforeafter-C__notecell::after, .km-beforeafter-C__hc--base::after, .km-beforeafter-C__tblock::after {   /* left edge */
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line); transform-origin: 50% 0; z-index: 2;
+}
+.km-beforeafter-C__row--title .km-beforeafter-C__cell::before { background: var(--line-2); }   /* the sheet opens on a strong rule */
+
+/* ── title row ── */
+/* the C sheet head (same metric on every sheet): opening rule y 96 · label y 120 · title bottom y 422 ·
+   48×2 red rule y 450 · row bottom y 480 · note cell with mono cell ID, 20px lede and the door pair */
+.km-beforeafter-C__row--title { grid-template-columns: var(--b8) 1fr; height: 384px; }
+.km-beforeafter-C__titlecell { display: flex; flex-direction: column; justify-content: flex-start; padding: 24px 24px 28px; }
+.km-beforeafter-C__titlecell .km-beforeafter-C__h { margin-top: auto; }
+.km-beforeafter-C__sheetlabel {
+  display: flex; align-items: center; gap: 12px; white-space: nowrap;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-beforeafter-C__notelabel { font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; }
+.km-beforeafter-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-beforeafter-C__notelabel { color: var(--fg-3); }
+.km-beforeafter-C__h {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 0.94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-beforeafter-C__h > span { display: block; white-space: nowrap; }
+.km-beforeafter-C__was-t { font-weight: var(--light-weight); color: var(--fg-3); }   /* the one light phrase: the state being retired */
+.km-beforeafter-C__rule { display: block; width: 48px; height: 2px; margin-top: 28px; background: var(--signal); transform-origin: 0 50%; }
+.km-beforeafter-C__notecell { display: flex; flex-direction: column; padding: 24px 24px 0; }
+.km-beforeafter-C__note { margin: auto 0 28px; font-size: 20px; line-height: 1.5; font-weight: var(--body-weight); color: var(--fg-2); text-wrap: pretty; }
+/* action cells at the foot of the note cell: red = the System Audit, bordered = contact */
+/* the door pair (same on every C sheet): red audit cell cols 9–11 · contact cell col 12 */
+.km-beforeafter-C__acts { display: grid; grid-template-columns: 334px 1fr; height: 64px; margin: 0 -24px; }
+
+/* ── the change notice ── */
+.km-beforeafter-C__ecn { position: relative; padding: 24px 0; }
+.km-beforeafter-C__ecn::before {                        /* title row's bottom edge */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; z-index: 2;
+}
+.km-beforeafter-C__raise { position: absolute; left: var(--b6); right: 0; top: 0; bottom: 0; background: var(--panel); }
+
+/* the install line: a red datum down the WAS | IS seam, overrunning the table like a drawing's centre line */
+.km-beforeafter-C__datum {
+  position: absolute; left: var(--b6); top: -12px; bottom: 0; width: 2px; margin-left: -1px; background: var(--accent); z-index: 3;
+  transform-origin: 50% 0;
+}
+.km-beforeafter-C__datumtag {
+  position: absolute; z-index: 3; top: 3px; right: calc(100% - var(--b6) + 14px); height: 18px; padding: 0 7px;
+  display: flex; align-items: center; border: 1px solid var(--line-2);
+  font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg); white-space: nowrap;
+}
+.km-beforeafter-C__datumtag::after { content: ""; position: absolute; left: 100%; top: 8px; width: 13px; height: 1px; margin-left: 1px; background: var(--fg-2); }
+
+/* header row: Neon's Base / Compare selectors + its Compare button → the red audit cell */
+.km-beforeafter-C__hdr {
+  position: relative; display: grid; height: 64px;
+  grid-template-columns: var(--b2) calc(var(--b6) - var(--b2)) 1fr auto;
+}
+.km-beforeafter-C__hc {
+  display: flex; flex-direction: column; justify-content: space-between; padding: 12px 16px 13px 24px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-beforeafter-C__hc > span:first-child { font-size: 11px; color: var(--fg-3); }
+.km-beforeafter-C__hc > span:last-child { color: var(--fg-2); }
+.km-beforeafter-C__hc--cmp, .km-beforeafter-C__hc--chg { position: relative; z-index: 1; }
+.km-beforeafter-C__hc--cmp > span:last-child { color: var(--fg); }
+.km-beforeafter-C__hc--chg { align-items: flex-end; min-width: 134px; padding-right: 24px; }
+
+.km-beforeafter-C__act {
+  position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 12px 24px 13px;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-beforeafter-C__actid { font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap; opacity: 0.78; }
+.km-beforeafter-C__go {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-beforeafter-C__ico { width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 250ms var(--ease-out); }
+.km-beforeafter-C__ico--r { width: 13px; height: 11px; }
+.km-beforeafter-C__act--audit:hover .km-beforeafter-C__ico { transform: translate(2px, -2px); }
+.km-beforeafter-C__act--contact { padding: 12px 12px 13px; align-items: flex-start; }
+.km-beforeafter-C__act--contact .km-beforeafter-C__ico { align-self: flex-end; margin-top: 2px; }
+.km-beforeafter-C__act--contact:hover .km-beforeafter-C__ico { transform: translateX(3px); }
+.km-beforeafter-C__act--audit { background: var(--accent); color: var(--accent-fg); }
+.km-beforeafter-C__act--audit:hover { background: var(--accent-hover); }
+.km-beforeafter-C__act--contact { color: var(--fg); box-shadow: inset 1px 0 0 var(--line-2), inset 0 1px 0 var(--line-2); }
+.km-beforeafter-C__act--contact .km-beforeafter-C__actid { color: var(--fg-3); opacity: 1; }
+.km-beforeafter-C__act--contact:hover { background: var(--fg); color: var(--bg); }
+.km-beforeafter-C__act--contact:hover .km-beforeafter-C__actid { color: var(--bg); }
+
+/* hunk line (Neon's @@ header) */
+.km-beforeafter-C__hunk {
+  position: relative; height: 32px; display: flex; justify-content: space-between; align-items: center; padding: 0 24px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.km-beforeafter-C__hunk::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+
+/* rows: ref · WAS · IS · change class */
+.km-beforeafter-C__rows { position: relative; }
+.km-beforeafter-C__rows::before {                       /* ref | WAS vertical */
+  content: ""; position: absolute; left: var(--b2); top: 0; bottom: 0; width: 1px; background: var(--line); transform-origin: 50% 0;
+}
+.km-beforeafter-C__rows::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+.km-beforeafter-C__r {
+  position: relative; height: 72px; display: grid; align-items: center;
+  grid-template-columns: var(--b2) calc(var(--b6) - var(--b2)) 1fr auto;
+}
+.km-beforeafter-C__r::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+
+.km-beforeafter-C__ref {
+  align-self: stretch; display: flex; align-items: center; gap: 0; padding: 0 12px 0 24px; margin-top: 1px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-beforeafter-C__rid { color: var(--fg-3); width: 50px; transition: color 200ms var(--ease-out); }
+.km-beforeafter-C__key {
+  width: 17px; height: 17px; flex: none; margin-right: 10px; text-align: center;
+  font-size: 11px; line-height: 15px; letter-spacing: 0; color: var(--fg); border: 1px solid var(--fg-2);
+  transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.km-beforeafter-C__dim { color: var(--fg-2); }
+.km-beforeafter-C__r:hover .km-beforeafter-C__ref { background: var(--fg); color: var(--bg); }
+.km-beforeafter-C__r:hover .km-beforeafter-C__rid, .km-beforeafter-C__r:hover .km-beforeafter-C__dim { color: var(--bg); }
+.km-beforeafter-C__r:hover .km-beforeafter-C__key { color: var(--accent); border-color: var(--accent); }
+
+.km-beforeafter-C__was, .km-beforeafter-C__is { display: flex; align-items: baseline; padding-left: 24px; font-size: 18px; line-height: 1.3; white-space: nowrap; }
+.km-beforeafter-C__was { color: var(--fg-3); }
+.km-beforeafter-C__is { position: relative; z-index: 1; color: var(--fg); }
+.km-beforeafter-C__sign { width: 24px; flex: none; font-family: var(--f-mono); font-size: 14px; line-height: 1; }
+.km-beforeafter-C__plot { display: inline-block; }
+.km-beforeafter-C__chg, .km-beforeafter-C__chghead {
+  font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); text-align: right;
+}
+.km-beforeafter-C__chg { position: relative; z-index: 1; padding-right: 24px; min-width: 134px; color: var(--fg-2); }
+
+/* ── bottom band: legend + split title block ── */
+.km-beforeafter-C__band { grid-template-columns: var(--b8) 1fr; height: 48px; }
+.km-beforeafter-C__legend {
+  display: flex; align-items: center; gap: 22px; padding: 0 24px;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.km-beforeafter-C__legend span:first-child { color: var(--fg-2); }
+.km-beforeafter-C__legend b { font-weight: var(--body-weight); color: var(--fg); margin-right: 4px; }
+.km-beforeafter-C__tblock { display: flex; font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); }
+.km-beforeafter-C__tblock > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; white-space: nowrap; }
+.km-beforeafter-C__tblock > span:first-child { justify-content: flex-start; padding-left: 24px; }
+.km-beforeafter-C__tblock > span:last-child { color: var(--fg); }
+.km-beforeafter-C__tblock > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-beforeafter-C__tblock .km-logo-mark { --logo-h: 11px; color: var(--fg); }
+
+/* ── entrance, in drafting order (html.is-play): frame → cells → WAS → the IS column rises → IS plots → install line drops ── */
+.is-play .km-beforeafter-C__frame, .is-play .km-beforeafter-C__xh { animation: km-beforeafter-C-fade 300ms var(--ease-out) both; }
+.is-play .km-beforeafter-C__cell::before { animation: km-beforeafter-C-drawx 420ms var(--ease-inout) both; animation-delay: calc(80ms + var(--d) * 40ms); }
+.is-play .km-beforeafter-C__cell::after { animation: km-beforeafter-C-drawy 420ms var(--ease-inout) both; animation-delay: calc(120ms + var(--d) * 40ms); }
+.is-play .km-beforeafter-C__ecn::before { animation: km-beforeafter-C-drawx 420ms var(--ease-inout) 200ms both; }
+.is-play .km-beforeafter-C__sheetlabel, .is-play .km-beforeafter-C__notelabel { animation: km-beforeafter-C-fade 400ms var(--ease-out) 240ms both; }
+.is-play .km-beforeafter-C__h > span { animation: km-beforeafter-C-up 600ms var(--ease-out) both; }
+.is-play .km-beforeafter-C__h > span:nth-child(1) { animation-delay: 300ms; }
+.is-play .km-beforeafter-C__h > span:nth-child(2) { animation-delay: 380ms; }
+.is-play .km-beforeafter-C__rule { animation: km-beforeafter-C-drawx 500ms var(--ease-out) 560ms both; }
+.is-play .km-beforeafter-C__note { animation: km-beforeafter-C-up 600ms var(--ease-out) 480ms both; }
+.is-play .km-beforeafter-C__acts { animation: km-beforeafter-C-settle 400ms var(--ease-inout) 640ms both; }
+.is-play .km-beforeafter-C__hc--ref > span, .is-play .km-beforeafter-C__hc--base > span { animation: km-beforeafter-C-fade 400ms var(--ease-out) 520ms both; }
+.is-play .km-beforeafter-C__hunk::before { animation: km-beforeafter-C-drawx 420ms var(--ease-inout) 560ms both; }
+.is-play .km-beforeafter-C__hunk > span:first-child { animation: km-beforeafter-C-fade 400ms var(--ease-out) 640ms both; }
+.is-play .km-beforeafter-C__rows::before { animation: km-beforeafter-C-drawy 600ms var(--ease-inout) 520ms both; }
+.is-play .km-beforeafter-C__r::before { animation: km-beforeafter-C-drawx 420ms var(--ease-inout) both; animation-delay: calc(600ms + var(--r) * 40ms); }
+.is-play .km-beforeafter-C__rows::after { animation: km-beforeafter-C-drawx 420ms var(--ease-inout) 840ms both; }
+.is-play .km-beforeafter-C__ref, .is-play .km-beforeafter-C__was { animation: km-beforeafter-C-fade 360ms var(--ease-out) both; animation-delay: calc(760ms + var(--r) * 60ms); }
+/* the IS column rises into place with everything that sits on it */
+.is-play .km-beforeafter-C__raise,
+.is-play .km-beforeafter-C__hc--cmp,
+.is-play .km-beforeafter-C__hc--chg,
+.is-play .km-beforeafter-C__chghead { animation: km-beforeafter-C-settle 400ms var(--ease-inout) 1240ms both; }
+.is-play .km-beforeafter-C__is .km-beforeafter-C__sign { animation: km-beforeafter-C-fade 200ms var(--ease-out) both; animation-delay: calc(1560ms + var(--r) * 130ms); }
+.is-play .km-beforeafter-C__plot { animation: km-beforeafter-C-plot 520ms var(--ease-inout) both; animation-delay: calc(1580ms + var(--r) * 130ms); }
+/* last: the install line drops down the seam, then its tag */
+.is-play .km-beforeafter-C__datum { animation: km-beforeafter-C-drawy 640ms var(--ease-inout) 2560ms both; }
+.is-play .km-beforeafter-C__datumtag { animation: km-beforeafter-C-fade 300ms var(--ease-out) 2960ms both; }
+.is-play .km-beforeafter-C__legend, .is-play .km-beforeafter-C__tblock > span { animation: km-beforeafter-C-fade 500ms var(--ease-out) 900ms both; }
+
+@keyframes km-beforeafter-C-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-beforeafter-C-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes km-beforeafter-C-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-beforeafter-C-drawy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-beforeafter-C-settle { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes km-beforeafter-C-plot { from { clip-path: inset(-20% 100% -20% 0); } to { clip-path: inset(-20% 0 -20% 0); } }

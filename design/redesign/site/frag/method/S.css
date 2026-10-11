@@ -1,0 +1,176 @@
+/* ── method · S · "It starts with the audit." (round 3) ─────────────────────────
+   Re-laid out on the founder's note ("we are repeating the layout… introduce new layouts"):
+   no plate, no caption band, no tabs, no standard head. One statement sits on the
+   track's top-left; a descending gantt continues its diagonal to the bottom-right.
+   The ruler runs edge to edge of the stage, the Handover datum hangs from it at the
+   start of col 9, and the Calibrate bar runs off the right edge (clipped by the
+   section). Red = the Diagnose bar only (the step he can take). The page's only
+   ambient loop besides the film: one 6px packet along Calibrate, ≥ 8s per lap.
+   Default CSS = final state. Entrances only under .is-play.                         */
+
+.km-method-S {
+  overflow-x: clip;                               /* Calibrate (and its packet) leave the page here */
+  --ry: 31px;                                     /* the ruler, in track coordinates */
+  --y1: 210px; --y2: 340px; --y3: 470px; --y4: 600px;   /* bar tops, 130 apart, descending */
+  --th: 664px;                                    /* track height */
+  --pitch: calc(var(--col) + var(--gutter));
+  --dx: 20px;                                     /* one text inset right of the Handover datum */
+}
+
+/* ── top-left: label → one-line statement (no rule: the red bar below takes that place) ── */
+.km-method-S__stmt {
+  margin-top: 36px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 64px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+
+/* ── the track: full stage width (the ruler and Calibrate break the grid) ── */
+.km-method-S__track { position: relative; margin-top: 64px; height: var(--th); }
+
+/* the lede: cols 5–8, top-aligned with row 1's label (stack 1 = 122.5px above a 10px gap) */
+.km-method-S__lede {
+  position: absolute; top: calc(var(--y1) - 138px);
+  left: calc(var(--margin) + 4 * var(--pitch)); width: calc(4 * var(--col) + 3 * var(--gutter));
+}
+
+/* the ruler's left end: the title block sits on the scale, its bottom edge on the ruler line */
+.km-method-S__tb { position: absolute; left: var(--margin); top: calc(var(--ry) - 31px); }
+
+.km-method-S__ruler { position: absolute; left: 0; right: 0; top: var(--ry); height: 9px; }
+.km-method-S__base { position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%; }
+.km-method-S__tick { position: absolute; top: 1px; width: 1px; height: 4px; background: var(--fg-3); }
+.km-method-S__tick--maj { height: 8px; background: var(--fg-2); }
+/* the measured span: the ten intervals over the Diagnose bar read a step brighter — the scale is
+   lit only where a duration is known; everything after it is indicative */
+.km-method-S__tick--on { background: var(--fg-2); --pre: var(--fg-3); }
+.km-method-S__tick--on.km-method-S__tick--maj { background: var(--fg); --pre: var(--fg-2); }
+
+/* ── the four rows: each sits on its bar; its label stands directly above the bar's start ── */
+.km-method-S__row {
+  position: absolute; top: var(--y);
+  left: calc(var(--margin) + (var(--c) - 1) * var(--pitch));
+  width: calc(var(--s) * var(--col) + (var(--s) - 1) * var(--gutter)); height: 10px;
+}
+.km-method-S__row--1 { --c: 1; --s: 2; --y: var(--y1); --t0: 1000ms; }
+.km-method-S__row--2 { --c: 3; --s: 3; --y: var(--y2); --t0: 1800ms; }
+.km-method-S__row--3 { --c: 6; --s: 3; --y: var(--y3); --t0: 2500ms; }
+.km-method-S__row--4 { --c: 9; --s: 4; --y: var(--y4); --t0: 3700ms;
+  width: calc(4 * var(--pitch) + var(--margin) + 64px); }          /* past the stage edge */
+
+.km-method-S__stack { position: absolute; left: 0; bottom: calc(100% + 14px); white-space: nowrap; }
+.km-method-S__row--1 .km-method-S__stack { bottom: calc(100% + 10px); }
+.km-method-S__row--4 .km-method-S__stack {
+  left: var(--dx); white-space: normal; width: calc(4 * var(--col) + 3 * var(--gutter) - var(--dx));
+}
+.km-method-S__name { display: block; margin-top: 10px; }
+.km-method-S__out { margin-top: 8px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.km-method-S__dim { margin-top: 14px; color: var(--fg); }
+
+/* bars: Diagnose = the one red · Architect, Install = --fg-2 · Calibrate = --fg, endless */
+.km-method-S__bar { position: absolute; inset: 0; display: block; background: var(--fg-2); transform-origin: 0 50%; }
+.km-method-S__row--1 .km-method-S__bar { background: var(--accent); }
+.km-method-S__bar--cal { background: var(--fg); }
+
+/* the packet: a 6px square riding Calibrate off the page (only under .is-play) */
+.km-method-S__pkt { position: absolute; left: 10px; top: 2px; width: 6px; height: 6px; background: var(--bg); opacity: 0; }
+
+/* the Handover datum: 1px --fg-2 at the start of col 9, from the track top past Calibrate */
+.km-method-S__row--4::before {
+  content: ""; position: absolute; left: 0; top: calc(0px - var(--y4)); width: 1px;
+  height: calc(var(--y4) + 52px); background: var(--fg-2); transform-origin: 50% 0;
+}
+/* its label is the handover section's datum label, word for word and in the same kit caption */
+.km-method-S__ho { position: absolute; left: var(--dx); top: calc(8px - var(--y4)); color: var(--fg-2); }
+
+/* Yours: the span after the datum, open to the right edge (a line in two runs around its word —
+   no opaque knock-out behind the text) */
+.km-method-S__yours {
+  position: absolute; left: 0; right: 0; top: 36px; height: 16px;
+  display: flex; align-items: center; gap: 8px; transform-origin: 0 50%;
+}
+.km-method-S__yours::before, .km-method-S__yours::after { content: ""; height: 1px; background: var(--line-2); }
+.km-method-S__yours::before { flex: 0 0 calc(var(--dx) - 8px); }   /* word lands on the --dx inset */
+.km-method-S__yours::after { flex: 1 1 auto; }
+.km-method-S__yours > span { color: var(--fg); }
+
+/* the closing line is the caption for what happens after handover, so it sits on his side of the datum:
+   the 20px datum inset, top-aligned with row 1's label (the lede's top line), filling the zone above Calibrate */
+.km-method-S__foot {
+  position: absolute; top: calc(var(--y1) - 138px);
+  left: calc(var(--margin) + 8 * var(--pitch) + var(--dx)); max-width: 32ch;
+}
+.km-method-S__nb { white-space: nowrap; }   /* break after the dash, never before "a system you own" */
+
+/* ── entrance (only under .is-play) — ruler → bars in order → datum → Calibrate → packet ── */
+.is-play .km-method-S__top .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-method-S__stmt .ac-line > span { animation: ac-rise 800ms var(--ease-out) 80ms both; }
+.is-play .km-method-S__base { animation: km-method-S-bar 1100ms var(--ease-inout) 200ms both; }
+.is-play .km-method-S__tick { animation: km-method-S-cal 640ms var(--ease-inout) both; animation-delay: calc(300ms + var(--i) * 13ms); }
+/* …and the ten measured intervals light in step with the red bar passing beneath them */
+.is-play .km-method-S__tick--on {
+  animation: km-method-S-cal 640ms var(--ease-inout) both, km-method-S-lit 240ms var(--ease-out) both;
+  animation-delay: calc(300ms + var(--i) * 13ms), calc(1300ms + (var(--i) - 3) * 62ms);
+}
+.is-play .km-method-S__tb { animation: ac-fade 500ms var(--ease-out) 420ms both; }
+.is-play .km-method-S__lede { animation: ac-up 600ms var(--ease-out) 640ms both; }
+.is-play .km-method-S__stack { animation: ac-up 600ms var(--ease-out) var(--t0) both; }
+.is-play .km-method-S__bar { animation: km-method-S-bar 700ms var(--ease-inout) calc(var(--t0) + 260ms) both; }
+.is-play .km-method-S__bar--cal { animation-duration: 900ms; animation-delay: 3960ms; }
+.is-play .km-method-S__row--4::before { animation: ac-drawy 400ms var(--ease-inout) 3300ms both; }
+.is-play .km-method-S__ho { animation: ac-fade 400ms var(--ease-out) 3420ms both; }
+.is-play .km-method-S__yours { animation: ac-drawx 700ms var(--ease-out) 4500ms both; }
+.is-play .km-method-S__yours > span { animation: ac-fade 400ms var(--ease-out) 4800ms both; }
+.is-play .km-method-S__foot { animation: ac-up 600ms var(--ease-out) 3560ms both; }   /* just after its datum's label */
+/* ambient: the page's only loop besides the film — 9.6s per lap, linear, off the edge */
+.is-play .km-method-S__pkt { animation: km-method-S-pkt 9600ms linear 5100ms infinite; }
+.km-method-S[data-idle] .km-method-S__pkt { animation-play-state: paused; }
+/* homepage only (set by the script): the track holds its first frame until it is 45% in view */
+.km-method-S[data-wait] .km-method-S__track *,
+.km-method-S[data-wait] .km-method-S__track *::before { animation-play-state: paused !important; }
+
+@keyframes km-method-S-cal {
+  0%   { opacity: 0; transform: translateX(var(--j, 0px)); }
+  35%  { opacity: 1; transform: translateX(var(--j, 0px)); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes km-method-S-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-method-S-lit { from { background: var(--pre); } }
+@keyframes km-method-S-pkt {
+  0%   { opacity: 0; transform: none; }
+  4%   { opacity: 1; }
+  100% { opacity: 1; transform: translateX(560px); }
+}
+@media (prefers-reduced-motion: reduce) { .km-method-S__pkt { display: none; } }
+
+/* ── ≤ 760px: a horizontal swipe track in its own container (snap per phase); the datum
+   sits between cards 3 and 4 and Calibrate runs off the last card ── */
+@media (max-width: 760px) {
+  .km-method-S { --margin: 16px; padding-block: 88px; }
+  .km-method-S__stmt { margin-top: 24px; font-size: 40px; line-height: 1.04; }
+  .km-method-S__stmt .ac-line { white-space: normal; }
+  .km-method-S__stmt .ac-accent { display: block; }            /* two voices, two lines */
+  .km-method-S__track { display: flex; flex-direction: column; height: auto; margin-top: 24px; }
+  .km-method-S__lede { position: static; order: 0; width: auto; padding-inline: var(--margin); font-size: 17px; }
+  .km-method-S__ruler { visibility: hidden; }   /* not display:none — toggling display restarts its entrance */
+  .km-method-S__rows {
+    order: 1; display: flex; margin-top: 40px; padding: 28px 0 12px var(--margin); border-top: 1px solid var(--line-2);
+    overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--margin); scrollbar-width: none;
+  }
+  .km-method-S__rows:focus-visible { outline: 1px solid var(--fg); outline-offset: -1px; }
+  .km-method-S__row {
+    position: relative; left: auto; top: auto; width: auto; height: auto; flex: 0 0 80%;
+    display: flex; flex-direction: column; padding-right: 24px; scroll-snap-align: start;
+  }
+  .km-method-S__stack { position: static; white-space: normal; }
+  .km-method-S__row--4 .km-method-S__stack { width: auto; padding-left: var(--dx); }
+  .km-method-S__bar { position: relative; inset: auto; height: 10px; margin-top: 20px; width: 70%; }
+  .km-method-S__row--1 .km-method-S__bar { width: 45%; }
+  .km-method-S__row--4 { flex-basis: 84%; padding-right: 0; overflow-x: clip; }
+  .km-method-S__row--4::before { top: -28px; height: calc(100% + 28px); }
+  .km-method-S__ho { position: static; padding: 0 0 12px var(--dx); }
+  .km-method-S__bar--cal { width: calc(100% + 64px); }
+  .km-method-S__yours { position: relative; top: auto; margin-top: 16px; width: calc(100% + 64px); }
+  .km-method-S__foot { position: static; order: 2; width: auto; max-width: none; margin-top: 24px; padding-inline: var(--margin); }
+  .km-method-S__tb { position: static; order: 3; align-self: flex-start; margin: 32px var(--margin) 0; }
+}

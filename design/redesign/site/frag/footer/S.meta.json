@@ -1,0 +1,31 @@
+{
+ "title": "The mark, partly buried",
+ "direction": "A×C",
+ "summary": "The footer keeps its index; the big lockup now sits only about one-sixth below the edge, so the top of the smallest square shows.",
+ "reference": {
+  "site": "Round 1 · A ('FIG. 11 · The mark, installed'), with one registration touch from C",
+  "mobbin_url": "https://mobbin.com/sites/sections/18df6730-6569-49da-9c23-3bee32fbe638",
+  "ref_file": "refs/footer-A.webp",
+  "borrowed": "From footer A (after Zellerfeld), the whole language the founder picked: the red-square caps label; four equal sitemap strips divided by full-height hairlines (mono index, wide 32px title, 17px items); the two doors lifted in --fg with drawn arrows; the Contact strip with audit@kelwin.co, the London readout and the colophon lines; an 88px hairline band with a Privacy | Terms pair and an outlined AUDIT REQUEST ↗; and the real lockup set margin to margin. From C, one touch only: + registration marks where the band's hairline meets the margins.",
+  "kelwin": "The founder's two fixes. (1) The lockup is one flat tone (--fg, rendered from the founder's master via .km-logo), so the red piece is gone. (2) It is buried. It still spans cols 1–12 (1312 × 271.7px), but its container is exactly half that height and the footer's bottom edge cuts it. Above the edge you see the mark's top bar, the K, the l, the dotted i and the shoulders of e, w and n. Following DIRECTION-AC §5.3, the legal row moves above the crop and the FIG. 11 caption goes. The band's hairline carries + marks at x 64 / 1376, the same marks the hero puts at its frame corners, so the page's frame closes where it opened. Door names now match the hero and nav exactly: the /contact door reads 'Talk to the Team' (it was 'Get in Touch'), and the second column reads 'The Firm' (the nav's word). The only red is the 8px label square, which is family punctuation. The band's AUDIT REQUEST ↗ is the kit's .ac-btn-o, the same 44px button as in the nav."
+ },
+ "motion": [
+  "entrance, along the reading path (--ease-out unless stated): the label fades in (300ms). The strip hairlines draw downward (900ms, 80ms stagger), and each strip's index, title and items rise 12px in that order, 01 → 04 (600ms, 90ms stagger per strip). The legal hairline draws left to right (1.2s from 300ms); its left + registers as the line starts (300ms) and its right + as the line arrives (1000ms). The © line and the Privacy | Terms / Audit request pair fade in (500ms at 800ms).",
+  "orchestrated moment, and the last thing to move: the lockup makes a single slow rise. It starts fully below the footer's bottom edge and surfaces only once the legal row is in, then settles into its crop, about one-sixth buried (translateY 86% → 0, 2s --ease-inout from 900ms, landing at ≈2.9s). It never moves again: no assembly, no red, no loop (mark policy §4).",
+  "ambient: nothing visible. The London readout updates its hours:minutes every 15s and never ticks seconds.",
+  "interaction: sitemap links lift from --fg-2 to --fg and grow an underline from the left (250ms). The door arrows nudge (↗ 2px up-right, → 3px right). Privacy and Terms invert to --fg on hover. The outlined AUDIT REQUEST ↗ border lifts to --fg and its arrow nudges.",
+  "on the live site: the footer plays once when 40% of it is visible (IntersectionObserver, no pin). The strips cascade, the legal row draws, and the lockup rises from the page's last edge as you arrive at the bottom. Reduced motion (no .is-play; KM.init with reduced:true) shows the final buried state at once, writes the London time once and starts no timer."
+ ],
+ "demoMs": 3600,
+ "notes": "The stage is 828px: 128 top padding, label, strips, 112px of air, the 88px legal row, 64px of air (raised from 40 so the buried lockup no longer crowds the legal buttons), then the 135.9px visible half of the lockup. The cut is a strict 50% of the lockup's height. Cuts from 54% to 57% leave a 2–6px sliver of the e's crossbar on the edge, and 58% reads as 'sitting low' rather than buried. The lockup is the base .km-logo mask (the founder's traced master) in currentColor, so there is no hand-drawn mark geometry anywhere. The section uses kit components (.ac-wrap, .ac-labelrow/.ac-label, .ac-strips/.ac-strip, .ac-idx, .ac-h3, .ac-cap, .ac-btn-o, .ac-reg) with placement-only overrides. Review pass: the rise used to run 2.6s --ease-out from 250ms. That made it 73% up by 1s, so it popped up before the legal row had appeared. It is now a 2s --ease-inout rise from 900ms and is the last thing to move. C quotas: 2 registration marks, 0 callouts, 0 dimensions, and mono only for the indices and the one © line. · Promoted unchanged from round-2 slot X.",
+ "addressed": [
+  "Approved in round 2 apart from the crop depth — kept as is otherwise.",
+  "Buried far less: about 17% of the lockup now sits below the edge instead of half.",
+  "The top third of the smallest square is visible, cut but not hidden — as you described.",
+  "Why not exactly one-third: the smallest square sits in the bottom quarter of the mark, so a one-third crop would hide it completely. The three depths are shown side by side below the footer so you can pick (D6)."
+ ],
+ "signoff": [
+  "D6"
+ ],
+ "story": "The coda and the index: after the decision comes the sitemap, and the only place the mark appears large."
+}

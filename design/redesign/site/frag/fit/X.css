@@ -1,0 +1,154 @@
+/* ── fit · X · Two Ledgers, One Gate — the fork (round 2, A×C) ─────────────────
+   Round-1 B as the founder picked it: two stacked ledgers that open in place, one
+   row open in each, and the doors as the closing row. Blended into Cinematic Drafting:
+   · the head is the kit's grammar (label → two-voice statement), and the rule, lede
+     and quiet note continue in the left column (cols 1–4);
+   · B's index spine becomes the section's one drawing, a TRACE fork (DIRECTION-AC
+     P1, fork variant): one line enters at the left margin, passes the audit gate
+     (two posts with a latching node seated between them), and forks on the col 4|5
+     gutter. The solid branch turns into the Built-for ledger's top rule, the dashed
+     branch into the Not-for rule. The headings sit on their branches, so the verdict
+     is drawn. No ruler and no day count: method (directly above) owns MEASURE;
+   · "Built for" / "Not for" are 42px wide display (.ac-h3--lg) set flush on the
+     ledger's left edge, with a plain-language sub and a count. They are no longer
+     11px mono captions, and they carry no + / − box (that glyph already means
+     "open this row" at the right of every row, so it would read as a button);
+   · the one red is the primary button (label squares + rule are family punctuation).
+   The fork is layout-driven: it spans from this set's rule to the next set's rule
+   (fixed heading bands), so the geometry holds in both skins without measuring. */
+
+.km-fit-X {
+  --hh: 76px;                                                   /* heading band above each branch rule */
+  --gap: 48px;                                                  /* Built for → Not for */
+  --trunk: calc(4 * var(--col) + 3.5 * var(--gutter));          /* fork (col 4|5 gutter) → left margin */
+  --tj: calc(var(--hh) + var(--gap) / 2 + 1px);                 /* fork bottom → junction: the trunk enters
+                                                                   mid-gap between the ledgers, clear of every hairline */
+  overflow: hidden;
+}
+
+/* ── body: left column (cols 1–4) + the two sets (cols 5–12) ── */
+.km-fit-X__body { margin-top: 56px; align-items: stretch; }
+.km-fit-X__side { display: flex; flex-direction: column; align-items: flex-start; }
+/* the rule keeps the page's head rhythm (36px under the statement, as in every other section);
+   the ledgers keep their 56px so 'Built for' clears the statement's descenders, and the lede's
+   first line now lands level with the 'Built for' heading */
+.km-fit-X__side > .ac-rule { margin-top: -20px; }
+.km-fit-X__side > .ac-lede { margin-top: 28px; max-width: 19em; text-wrap: pretty; }
+.km-fit-X__note { margin-top: auto; }                           /* bottom-left, level with the doors */
+
+.km-fit-X__sets { position: relative; }
+.km-fit-X__set { position: relative; }
+.km-fit-X__set--no { margin-top: var(--gap); }
+
+/* ── the set heading: Built for ………… We say yes when · 03 (flush with the ledger's index column) ── */
+.km-fit-X__sh {
+  display: flex; flex-wrap: wrap; align-content: flex-end; align-items: baseline; column-gap: 18px;
+  height: var(--hh); padding-bottom: 20px;
+}
+.km-fit-X__mask { display: inline-block; font: inherit; overflow: clip; padding-block: .1em .16em; margin-block: -.1em -.16em; }
+.km-fit-X__mask > span { display: inline-block; white-space: nowrap; }
+.km-fit-X__sub { margin-left: auto; display: flex; align-items: baseline; gap: 18px; }
+.km-fit-X__sub > .ac-idx { font-size: 12px; color: var(--fg-2); }
+
+/* the branch rules (the fork's two branches, drawn across each ledger's top edge) */
+.km-fit-X__br { position: absolute; z-index: 1; top: var(--hh); left: calc(var(--gutter) / -2); height: 1px; pointer-events: none; }
+.km-fit-X__br--yes { right: 0; background: var(--fg); }
+.km-fit-X__br--no { display: block; width: calc(100% + var(--gutter) / 2); overflow: visible; }
+.km-fit-X__br--no line, .km-fit-X__arm--dn line { stroke: var(--fg-2); stroke-width: 1; stroke-dasharray: 2 4; shape-rendering: crispEdges; }
+
+/* ── the ledgers (kit .ac-ledger): index · title · descriptor · toggle ── */
+.km-fit-X__lg { border-top-color: transparent; }               /* the branch rule draws this edge */
+.km-fit-X .ac-row__head .ac-support { color: var(--fg-2); }
+.km-fit-X .ac-row__in > .ac-support { max-width: 46em; color: var(--fg-2); }
+.km-fit-X .ac-row__head:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+/* Not for: the muted sentence (B), one step quieter until a row is opened */
+.km-fit-X__set--no .ac-row__head .ac-h4 { color: var(--fg-2); transition: transform 300ms var(--ease-out), color 300ms var(--ease-inout); }
+.km-fit-X__set--no .ac-row__head .ac-support { color: var(--fg-3); }
+.km-fit-X__set--no .ac-row.is-open .ac-h4, .km-fit-X__set--no .ac-row__head:hover .ac-h4 { color: var(--fg); }
+
+/* the closing row: Next · Sound like you? · the two doors */
+.km-fit-X__act {
+  display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; column-gap: var(--gutter); align-items: center;
+  padding-top: 28px;
+}
+.km-fit-X__doors { display: flex; align-items: center; gap: 36px; }
+
+/* ── FIG. 09 · the TRACE fork ── */
+.km-fit-X__fork {
+  position: absolute; z-index: 2; left: calc(var(--gutter) / -2); width: 1px;
+  top: var(--hh); bottom: calc(-1 * (var(--gap) + var(--hh)) - 1px); pointer-events: none;
+}
+.km-fit-X__arm { position: absolute; left: 0; width: 1px; }
+.km-fit-X__arm--up { top: 0; bottom: var(--tj); background: var(--fg); }
+.km-fit-X__arm--dn { display: block; top: calc(100% - var(--tj)); height: var(--tj); overflow: visible; }
+
+.km-fit-X__trunk { position: absolute; top: calc(100% - var(--tj)); right: 0; width: calc(var(--trunk) + 1px); height: 1px; }
+.km-fit-X__tl { position: absolute; inset: 0; background: var(--fg); }
+/* the gate: two posts across the line with the gate node seated between them ( |■| ) */
+.km-fit-X__post { position: absolute; left: var(--x); top: -15px; width: 1px; height: 31px; background: var(--fg); }
+/* one open chevron on the first segment: the direction of travel, readable at rest */
+.km-fit-X__chev { position: absolute; left: 104px; top: -5px; overflow: visible; }
+.km-fit-X__chev path { fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter; }
+
+/* nodes: 7px squares; latched = filled. The Not-for end stays open (declined). */
+.km-fit-X__n {
+  position: absolute; width: 7px; height: 7px; margin: -3px 0 0 -3px;
+  border: 1px solid var(--fg); background: var(--fg);
+}
+.km-fit-X__trunk .km-fit-X__n { left: var(--x); top: 0; }
+.km-fit-X__n--fork { left: 0; top: calc(100% - var(--tj)); }
+.km-fit-X__n--yes { left: 0; top: 0; }
+.km-fit-X__n--no { left: 0; top: calc(100% - 1px); border-color: var(--fg-2); background: var(--bg); }
+
+/* callouts: a short vertical leader, then the code box + Mona 14 label (kit type) */
+.km-fit-X__co { position: absolute; left: var(--x); top: 6px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-fit-X__lead { width: 1px; height: 26px; background: var(--line-2); }
+/* the gate's leader starts below its posts (a drafting gap), tag on the same line as 01 */
+.km-fit-X__co--gate { top: 22px; }
+.km-fit-X__co--gate .km-fit-X__lead { height: 10px; }
+.km-fit-X__tag { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.km-fit-X__tag > .ac-callout__t { color: var(--fg); }
+/* the drawing's one title block, under its callouts */
+.km-fit-X__tb { position: absolute; left: 0; top: 96px; }
+
+/* the packet: one 6px square, placed by JS (hidden at rest and under reduced motion) */
+.km-fit-X__pk {
+  position: absolute; left: 0; top: 0; width: 6px; height: 6px; margin: -2.5px 0 0 -2.5px;
+  background: var(--fg); opacity: 0; will-change: transform, opacity;
+}
+
+/* ── entrance (only under html.is-play). Drafting order along the reading path:
+   head (kit) → rule + lede → posts → the line draws from 01 through the gate (nodes latch)
+   → it forks up and down → the branches draw across as the ledger rules while
+   "Built for" / "Not for" rise → rows cascade → the doors + note → Not-for D-02 opens. ── */
+.is-play .km-fit-X__side > .ac-rule { animation: ac-drawx 600ms var(--ease-out) 520ms both; }
+.is-play .km-fit-X__side > .ac-lede { animation: ac-up 600ms var(--ease-out) 600ms both; }
+
+.is-play .km-fit-X__post { animation: ac-drawy 360ms var(--ease-out) var(--pd, 440ms) both; transform-origin: 50% 50%; }
+.is-play .km-fit-X__post + .km-fit-X__post { --pd: 500ms; }
+.is-play .km-fit-X__chev { animation: ac-fade 240ms var(--ease-out) 900ms both; }
+.is-play .km-fit-X__tl { animation: km-fit-X-wx 800ms var(--ease-inout) 600ms both; }
+.is-play .km-fit-X__n--01 { animation: ac-fade 240ms var(--ease-out) 460ms both, km-fit-X-latch 200ms var(--ease-out) 620ms both; }
+.is-play .km-fit-X__n--gate { animation: ac-fade 240ms var(--ease-out) 520ms both, km-fit-X-latch 200ms var(--ease-out) 1000ms both; }
+.is-play .km-fit-X__n--fork { animation: ac-fade 240ms var(--ease-out) 580ms both, km-fit-X-latch 200ms var(--ease-out) 1400ms both; }
+.is-play .km-fit-X__co--01 { animation: ac-fade 400ms var(--ease-out) 700ms both; }
+.is-play .km-fit-X__co--gate { animation: ac-fade 400ms var(--ease-out) 1080ms both; }
+.is-play .km-fit-X__tb { animation: ac-fade 400ms var(--ease-out) 1300ms both; }
+
+.is-play .km-fit-X__arm--up { animation: km-fit-X-wu 450ms var(--ease-inout) 1400ms both; }
+.is-play .km-fit-X__arm--dn { animation: km-fit-X-wd 300ms var(--ease-inout) 1550ms both; }   /* the short arm: both corners land together */
+.is-play .km-fit-X__n--yes { animation: ac-fade 240ms var(--ease-out) 1400ms both, km-fit-X-latch 200ms var(--ease-out) 1850ms both; }
+.is-play .km-fit-X__n--no { animation: ac-fade 240ms var(--ease-out) 1400ms both; }
+.is-play .km-fit-X__br { animation: km-fit-X-wx 700ms var(--ease-inout) 1850ms both; }
+
+.is-play .km-fit-X__mask > span { animation: ac-rise 800ms var(--ease-out) 1860ms both; }
+.is-play .km-fit-X__set--no .km-fit-X__mask > span { animation-delay: 1960ms; }
+.is-play .km-fit-X__sub { animation: ac-fade 400ms var(--ease-out) 2150ms both; }
+
+.is-play .km-fit-X__act { animation: ac-up 600ms var(--ease-out) 2600ms both; }
+.is-play .km-fit-X__note { animation: ac-up 600ms var(--ease-out) 2680ms both; }
+
+@keyframes km-fit-X-wx { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-fit-X-wu { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-fit-X-wd { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-fit-X-latch { from { background-color: var(--bg); border-color: var(--fg-2); } to { background-color: var(--fg); border-color: var(--fg); } }

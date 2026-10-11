@@ -1,0 +1,189 @@
+/* ── cta · C · Systems Drawing Set — SHEET 13/14, the one full-red sheet ──
+   Built on the shared C sheet metric (opening rule y 96 · label y 120 · title bottom
+   y 422 · 48×2 rule y 450 · row y 480 · 48px band). On red the drawing inverts:
+   paper lines on red, and the red plane becomes the PAPER audit plane, printed with
+   the plan of all four layers (the audit maps every layer). Its leader runs straight
+   into the paper audit door on the spec column. FIG. 13.1 reuses FIG. 4.1's assembly
+   (the master mark's three pieces + one outer step, same proportions).
+   Default CSS = final, fully plotted state.                                          */
+
+.km-cta-C { position: relative; height: 1008px; overflow: hidden; }
+.km-cta-C__frame, .km-cta-C__draw { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.km-cta-C__draw { z-index: 0; }
+
+/* sheet structure */
+.km-cta-C__frame .fv line { stroke: var(--line); stroke-width: 1; }
+.km-cta-C__frame .cells line { stroke: var(--line); stroke-width: 1; }
+.km-cta-C__frame .cells line.strong { stroke: var(--line-2); }
+.km-cta-C__frame .x path { stroke: var(--fg-2); stroke-width: 1; fill: none; }
+
+/* ── title row (shared C head) ── */
+.km-cta-C__sheet {
+  position: absolute; left: 88px; top: 120px; margin: 0;
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-cta-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-cta-C__title {
+  position: absolute; left: 88px; bottom: calc(1008px - 422px); margin: 0;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: .94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-cta-C__title span { display: block; white-space: nowrap; }
+.km-cta-C__turn { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-cta-C__rule { position: absolute; left: 88px; top: 450px; width: 48px; height: 2px; background: var(--signal); transform-origin: 0 50%; }
+
+.km-cta-C__notelabel {
+  position: absolute; left: 968px; top: 120px; margin: 0;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3); white-space: pre;
+}
+.km-cta-C__note {
+  position: absolute; left: 968px; width: 384px; bottom: calc(1008px - 426px); margin: 0;
+  font-weight: var(--body-weight); font-size: 20px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty;
+}
+
+/* ── FIG. 13.1 ── */
+.km-cta-C__field { margin: 0; }
+.km-cta-C__fig, .km-cta-C__iso {
+  position: absolute; top: 504px; margin: 0;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.km-cta-C__fig { left: 88px; }
+.km-cta-C__iso { right: calc(1440px - 919px); }
+
+.km-cta-C__draw .cg line { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 6; }
+.km-cta-C__draw .pj line { stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 3 4; }
+.km-cta-C__draw .plane .pl { fill: var(--accent); stroke: var(--fg); stroke-width: 1; stroke-linejoin: round; }
+.km-cta-C__draw .plan path { fill: none; stroke: var(--accent-fg); stroke-width: 1; stroke-linejoin: round; }
+.km-cta-C__draw .sd { fill: var(--bg); stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: round; }
+.km-cta-C__draw .tp { fill: var(--bg); stroke: var(--fg); stroke-width: 1; stroke-linejoin: round; }
+.km-cta-C__draw .ld path { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-cta-C__draw .ld rect, .km-cta-C__draw .lk rect { fill: var(--fg); }
+.km-cta-C__draw .lk path { fill: none; stroke: var(--fg); stroke-width: 1; }
+.km-cta-C__draw .dm path { fill: none; stroke: var(--fg-2); stroke-width: 1; transition: stroke 300ms var(--ease-inout); }
+.km-cta-C[data-hl="A"] .km-cta-C__draw .dm path { stroke: var(--fg); }
+
+.km-cta-C__lab {
+  position: absolute; left: 88px; width: 220px; margin: 0; text-align: right;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-cta-C__lab span { color: var(--fg); }
+.km-cta-C__tag {
+  position: absolute; height: 22px; margin: 0; padding: 0 7px; display: flex; align-items: center;
+  border: 1px solid var(--fg); background: var(--bg);
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg); white-space: nowrap;
+}
+.km-cta-C__call {
+  position: absolute; width: 16px; height: 16px; display: grid; place-items: center;
+  border: 1px solid var(--fg); background: var(--bg);
+  font-family: var(--f-mono); font-size: 10px; line-height: 1; color: var(--fg);
+  transition: background-color 300ms var(--ease-inout), color 300ms var(--ease-inout);
+}
+.km-cta-C__call[data-k="B"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent-fg); }
+.km-cta-C[data-hl="A"] .km-cta-C__call[data-k="A"] { background: var(--fg); color: var(--bg); }
+.km-cta-C[data-hl="B"] .km-cta-C__call[data-k="B"] { background: var(--accent-fg); color: var(--accent); }
+
+/* ── spec column ── */
+.km-cta-C__spechead {
+  position: absolute; left: 944px; top: 481px; width: 432px; height: 47px; margin: 0; padding: 0 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); white-space: pre;
+}
+.km-cta-C__spec { position: absolute; left: 968px; top: 529px; width: 384px; margin: 0; }
+.km-cta-C__row {
+  display: grid; grid-template-columns: 28px 100px 1fr; align-items: center; height: 60px;
+  border-bottom: 1px solid var(--line);
+}
+.km-cta-C__row:last-child { border-bottom: 0; }
+.km-cta-C__letter {
+  width: 16px; height: 16px; display: grid; place-items: center; border: 1px solid var(--line-2);
+  font-family: var(--f-mono); font-size: 10px; line-height: 1; color: var(--fg);
+  transition: background-color 300ms var(--ease-inout), color 300ms var(--ease-inout);
+}
+.km-cta-C__letter.is-none { border: 0; color: var(--fg-3); }
+.km-cta-C__key { font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-cta-C__val { font-size: 15px; line-height: 1.4; color: var(--fg); }
+.km-cta-C__row[data-k] { cursor: default; }
+.km-cta-C[data-hl="A"] .km-cta-C__row[data-k="A"] .km-cta-C__letter,
+.km-cta-C[data-hl="B"] .km-cta-C__row[data-k="B"] .km-cta-C__letter { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+
+/* the two doors: the paper audit cell on the plane's row (R8), the ruled contact cell below (R9) */
+.km-cta-C__act {
+  position: absolute; left: 944px; width: 431px; height: 95px; padding: 15px 24px 17px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.km-cta-C__act--audit { top: 769px; color: var(--accent-fg); }
+.km-cta-C__act--contact { top: 865px; color: var(--fg); transition: background-color .25s var(--ease-inout), color .25s var(--ease-inout); }
+.km-cta-C__act--contact:hover { background: var(--fg); color: var(--bg); }
+.km-cta-C__fill { position: absolute; inset: 0; background: var(--accent); transform-origin: 0 50%; transition: background-color .25s var(--ease-inout); }
+.km-cta-C__act--audit:hover .km-cta-C__fill { background: var(--accent-hover); }
+.km-cta-C__id, .km-cta-C__go { position: relative; white-space: nowrap; }
+.km-cta-C__id {
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: color-mix(in srgb, currentColor 78%, transparent);
+}
+.km-cta-C__act--contact .km-cta-C__id { color: var(--fg-3); }
+.km-cta-C__act--contact:hover .km-cta-C__id { color: color-mix(in srgb, var(--bg) 78%, transparent); }
+.km-cta-C__go {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-cta-C__ico { width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform .25s var(--ease-out); }
+.km-cta-C__ico--r { width: 13px; height: 11px; }
+.km-cta-C__act--audit:hover .km-cta-C__ico { transform: translate(2px, -2px); }
+.km-cta-C__act--contact:hover .km-cta-C__ico { transform: translateX(3px); }
+
+/* ── bottom band (shared C band): legend cols 1–8, segmented title block cols 9–12 ── */
+.km-cta-C__band { position: absolute; left: 64px; right: 64px; top: 961px; height: 47px; }
+.km-cta-C__ticker {
+  position: absolute; left: 24px; top: 0; height: 47px; margin: 0; display: flex; align-items: center;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-cta-C__tb {
+  position: absolute; left: 880px; right: 0; top: 0; height: 47px; margin: 0; display: flex;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-cta-C__tb > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; white-space: nowrap; }
+.km-cta-C__tb > span:first-child { justify-content: flex-start; padding-left: 24px; }
+.km-cta-C__tb > span:last-child { color: var(--fg); }
+.km-cta-C__tb > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-cta-C__tb .km-logo-mark { --logo-h: 11px; color: var(--fg); }
+
+/* ── entrance, in drafting order (only under html.is-play) ── */
+.is-play .km-cta-C__frame .fv { animation: km-cta-C-fade .3s var(--ease-inout) both; }
+.is-play .km-cta-C__frame .x { animation: km-cta-C-fade .3s var(--ease-inout) .1s both; }
+.is-play .km-cta-C__frame .cells line { stroke-dasharray: 1; animation: km-cta-C-draw .5s var(--ease-inout) both; animation-delay: calc(.15s + var(--o) * 40ms); }
+.is-play .km-cta-C__sq { animation: km-cta-C-fade .3s var(--ease-inout) .3s both; }
+.is-play .km-cta-C__title { animation: km-cta-C-fade .6s var(--ease-inout) .3s both; }
+.is-play .km-cta-C__rule { animation: km-cta-C-draw-x .5s var(--ease-out) .55s both; }
+.is-play .km-cta-C__note { animation: km-cta-C-fade .6s var(--ease-inout) .6s both; }
+.is-play .km-cta-C__draw .cg { animation: km-cta-C-fade .6s var(--ease-inout) .55s both; }
+.is-play .km-cta-C__iso { animation: km-cta-C-fade .3s var(--ease-inout) .7s both; }
+.is-play .km-cta-C__draw .pt path { stroke-dasharray: 1; animation: km-cta-C-draw .5s var(--ease-inout) both; animation-delay: calc(.9s + var(--o) * 220ms); }
+.is-play .km-cta-C__draw .pj line { stroke-dasharray: 1; animation: km-cta-C-draw .6s var(--ease-inout) 1.7s both; }
+.is-play .km-cta-C__draw .ld { animation: km-cta-C-fade .4s var(--ease-inout) 1.75s both; }
+.is-play .km-cta-C__lab { animation: km-cta-C-fade .4s var(--ease-inout) both; animation-delay: calc(1.8s + var(--o) * 60ms); }
+.is-play .km-cta-C__draw .plane .pl { animation: km-cta-C-settle .4s var(--ease-inout) 2.1s both; }
+.is-play .km-cta-C__draw .plan path { stroke-dasharray: 1; animation: km-cta-C-draw .5s var(--ease-inout) both; animation-delay: calc(2.35s + var(--o) * 80ms); }
+.is-play .km-cta-C__draw .dm { animation: km-cta-C-fade .4s var(--ease-inout) 2.4s both; }
+.is-play .km-cta-C__call { animation: km-cta-C-fade .3s var(--ease-inout) 2.5s both; }
+.is-play .km-cta-C__draw .lk path { stroke-dasharray: 1; animation: km-cta-C-draw .5s var(--ease-inout) 2.55s both; }
+.is-play .km-cta-C__draw .lk rect { animation: km-cta-C-fade .2s var(--ease-inout) 2.55s both; }
+.is-play .km-cta-C__tag { animation: km-cta-C-fade .3s var(--ease-inout) 2.75s both; }
+.is-play .km-cta-C__spechead { animation: km-cta-C-fade .3s var(--ease-inout) .8s both; }
+.is-play .km-cta-C__row { animation: km-cta-C-fade .4s var(--ease-inout) both; animation-delay: calc(.9s + var(--o) * 80ms); }
+.is-play .km-cta-C__fill { animation: km-cta-C-wipe .5s var(--ease-inout) 2.9s both; }
+.is-play .km-cta-C__act--audit .km-cta-C__go { animation: km-cta-C-fade .4s var(--ease-inout) 3.25s both; }
+.is-play .km-cta-C__act--contact { animation: km-cta-C-fade .4s var(--ease-inout) 1.3s both; }
+.is-play .km-cta-C__band { animation: km-cta-C-fade .5s var(--ease-inout) .45s both; }
+
+@keyframes km-cta-C-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-cta-C-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-cta-C-draw-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-cta-C-wipe { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-cta-C-settle { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }

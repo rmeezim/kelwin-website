@@ -1,0 +1,246 @@
+/* ── evidence · W · The calibrated gauge (round 4, A×C) ────────────────────
+   Round 2's FIG. 03 plate, returned to whole: paper act, the head grammar, the
+   2×2 of 176px readings on a hairline cross, sources in mono, registration
+   marks, and the caption band with the one segmented control. Only the centre
+   changes: the 10×10 field of dots becomes a calibrated GAUGE, drawn into the
+   cross itself.
+   · Scale: 400px, 101 marks (1 mark = 1 in 100, so 4px a mark), end caps at 0
+     and 100 that sit square under the registration marks, 50 on the cross's
+     vertical hairline.
+   · Datum: the cross's horizontal hairline. It runs in from the left reading,
+     turns to ink at the 0 cap, and leaves as a hairline after the 100 cap.
+   · Track: a painted 0–100 block (--panel-2). The share is painted red: the
+     section's one red. A 1px ink needle rides the fill's edge to a boxed flag.
+   · The reading's unit, in words, under the scale. 95:5 paints the 5 and
+     dimensions the empty run "95 not buying".
+   Re-measure (on every change): the fill retracts to 0, a calibration pass
+   runs through the marks from 0 to 100, and the fill extends to the new value.
+   Default CSS = the final resting state (01 · 17 measured).               */
+
+.km-evidence-W { --gw: 400px; --gh: 352px; --dy: 176px; --bh: 52px; --fh: 56px; }
+
+/* ── head: as approved (statement cols 1–8), no label-row meta ── */
+.km-evidence-W .ac-head > .ac-statement { grid-column: 1 / span 8; }
+
+/* ── FIG. 03 plate: the 2×2 on the crossing (round 2 X) ── */
+.km-evidence-W__plate { margin-top: 64px; }
+.km-evidence-W__grid {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr 1fr;
+  column-gap: var(--gutter);
+}
+.km-evidence-W__rule { position: absolute; z-index: 0; background: var(--line); }
+.km-evidence-W__rule--top { left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%; }
+.km-evidence-W__rule--mid { left: 0; right: 0; top: 50%; height: 1px; transform-origin: 0 50%; }
+.km-evidence-W__rule--v { top: 0; bottom: 0; left: 50%; width: 1px; transform-origin: 50% 0; }
+
+/* readings (cols 1–4 · 9–12); the gauge owns cols 5–8 */
+.km-evidence-W__cell { position: relative; z-index: 1; padding: 22px 0 22px; cursor: pointer; }
+.km-evidence-W__cell--tl { grid-column: 1 / 5; grid-row: 1; }
+.km-evidence-W__cell--tr { grid-column: 9 / 13; grid-row: 1; }
+.km-evidence-W__cell--bl { grid-column: 1 / 5; grid-row: 2; }
+.km-evidence-W__cell--br { grid-column: 9 / 13; grid-row: 2; }
+/* the active reading: a 1px ink rule over the cell's top edge, drawn from its left; hover previews it in --fg-3 */
+.km-evidence-W__cell::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 600ms var(--ease-inout), background-color 250ms var(--ease-out);
+}
+.km-evidence-W__cell.is-active::before { transform: scaleX(1); }
+.km-evidence-W__cell:not(.is-active):hover::before { transform: scaleX(1); background: var(--fg-3); }
+.km-evidence-W__meta { display: flex; justify-content: space-between; gap: 16px; }
+.km-evidence-W__idx { color: var(--fg-2); transition: color 400ms var(--ease-inout); }
+.km-evidence-W__cell.is-active .km-evidence-W__idx,
+.km-evidence-W__cell:hover .km-evidence-W__idx { color: var(--fg); }
+/* the kit's big numeral (Mona wide 430, 176px, tabular, −.04em; unit in 300), line box trimmed */
+.km-evidence-W__num {
+  margin-top: 22px; margin-left: -0.05em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 176px; line-height: .8; letter-spacing: -0.04em; color: var(--fg);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.km-evidence-W__u { font-weight: var(--light-weight); letter-spacing: -0.02em; }
+.km-evidence-W__claim { margin-top: 22px; max-width: 25em; font-size: var(--ac-body); line-height: 1.45; font-weight: var(--ui-weight); color: var(--fg); text-wrap: pretty; }
+.km-evidence-W__so { margin-top: 6px; max-width: 26em; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+
+/* ── THE GAUGE: a 400 × 352 registration frame centred on the crossing; datum = the crossing's y ── */
+.km-evidence-W__fig {
+  position: absolute; z-index: 2;
+  left: calc(50% - var(--gw) / 2); top: calc(50% - var(--dy));
+  width: var(--gw); height: var(--gh);
+  --ac-occlude: var(--bg);
+}
+/* paper knock-out: the cross stops at the frame; the gauge redraws the horizontal as its datum */
+.km-evidence-W__clear { position: absolute; inset: 0; background: var(--bg); }
+.km-evidence-W__gauge { position: absolute; inset: 0; }
+
+/* header: which reading is on the scale · the scale's resolution */
+.km-evidence-W__hd {
+  position: absolute; left: 0; right: 0; top: 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.km-evidence-W__stack { display: grid; }
+.km-evidence-W__name { grid-area: 1 / 1; color: var(--fg); opacity: 0; transition: opacity 180ms var(--ease-out); }
+.km-evidence-W__name.is-on { opacity: 1; transition: opacity 280ms var(--ease-out) 160ms; }
+.km-evidence-W__spec { color: var(--fg-3); }
+
+/* plumb: the cross's vertical hairline carries on through the frame and lands on the 50 mark */
+.km-evidence-W__plumb {
+  position: absolute; left: calc(var(--gw) / 2); top: 0; width: 1px;
+  height: calc(var(--dy) - var(--bh)); background: var(--line); transform-origin: 50% 0;
+}
+
+/* the painted track (0–100) and the painted share (red), both sitting on the datum */
+.km-evidence-W__track, .km-evidence-W__fill {
+  position: absolute; left: 0; top: calc(var(--dy) - var(--bh)); height: var(--bh); transform-origin: 0 50%;
+}
+.km-evidence-W__track { width: calc(var(--gw) + 1px); background: var(--line); }
+.km-evidence-W__fill { width: var(--gw); background: var(--accent); transform: scaleX(var(--f)); }
+
+/* decades: paper knock-outs every 10 marks, over track and share alike, so a share counts like a ruler */
+.km-evidence-W__dec { position: absolute; left: 0; top: calc(var(--dy) - var(--bh)); fill: var(--bg); }
+
+/* 95:5 only: the empty run, dimensioned inside the track: end ticks, two leaders, the value between them */
+.km-evidence-W__rest {
+  position: absolute; left: calc(var(--gw) * .05 + 9px); width: calc(var(--gw) * .95 - 17px);
+  top: calc(var(--dy) - var(--bh) / 2 - 8px); height: 17px;
+  display: flex; align-items: center; gap: 10px;
+  opacity: 0; transition: opacity 200ms var(--ease-out);
+}
+.km-evidence-W__rl { position: relative; flex: 1; height: 1px; background: var(--fg-3); }
+.km-evidence-W__rl::before { content: ""; position: absolute; top: -5px; left: 0; width: 1px; height: 11px; background: var(--fg-3); }
+.km-evidence-W__rl + .ac-cap + .km-evidence-W__rl::before { left: auto; right: 0; }
+.km-evidence-W__restv { color: var(--fg); }
+.km-evidence-W__gauge.is-rest .km-evidence-W__rest { opacity: 1; transition: opacity 320ms var(--ease-out); }
+
+/* end caps (0 and 100): 1px ink, from 12px above the track to the foot of the long marks */
+.km-evidence-W__cap {
+  position: absolute; top: calc(var(--dy) - var(--bh) - 12px); width: 1px; height: calc(var(--bh) + 12px + 15px);
+  background: var(--fg); transform-origin: 50% 100%;
+}
+.km-evidence-W__cap--a { left: 0; }
+.km-evidence-W__cap--b { left: var(--gw); }
+
+/* datum: the crossing's hairline, in ink between the caps */
+.km-evidence-W__datum { position: absolute; left: 0; top: var(--dy); width: calc(var(--gw) + 1px); height: 1px; background: var(--fg); transform-origin: 0 50%; }
+
+/* the scale: 101 marks hanging from the datum (3 · 6 · 9 · 14px) and three values */
+.km-evidence-W__ticks { position: absolute; left: 0; top: calc(var(--dy) + 1px); overflow: visible; }
+.km-evidence-W__t { fill: var(--line-2); transform-box: fill-box; transform-origin: 50% 0; }
+.km-evidence-W__t.is-mid, .km-evidence-W__t.is-maj { fill: var(--fg-3); }
+.km-evidence-W__t.is-xl { fill: var(--fg); }
+.km-evidence-W__lbl { position: absolute; top: calc(var(--dy) + 22px); left: calc(var(--at) * var(--gw) + .5px); transform: translateX(-50%); color: var(--fg-3); }
+
+/* needle: 1px ink on the fill's edge, up to a boxed flag that names the reading */
+.km-evidence-W__needle {
+  position: absolute; left: 0; top: calc(var(--dy) - var(--bh) - var(--fh)); width: 1px;
+  height: calc(var(--bh) + var(--fh) + 17px); background: var(--fg);
+  transform: translateX(calc(var(--f) * var(--gw)));
+}
+/* the cursor: a slide-rule window riding the needle, open so the share and the marks read through it */
+.km-evidence-W__cursor {
+  position: absolute; left: -11px; top: calc(var(--fh) - 10px); width: 23px; height: calc(var(--bh) + 10px + 17px);
+  box-shadow: inset 0 0 0 1px var(--fg);
+}
+.km-evidence-W__flag {
+  position: absolute; left: 0; top: 0; display: flex; align-items: center; height: 24px; padding: 0 9px;
+  background: var(--fg);
+  transition: opacity 160ms var(--ease-out);
+}
+/* only the active value is in flow, so the flag fits its reading (it is lifted while the width changes) */
+.km-evidence-W__fv {
+  position: absolute; left: 9px; top: 0; height: 100%; display: flex; align-items: center; white-space: nowrap; opacity: 0;
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 1; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--bg); font-variant-numeric: tabular-nums;
+}
+.km-evidence-W__fv.is-on { position: static; height: auto; opacity: 1; }
+.km-evidence-W__gauge.is-moving .km-evidence-W__flag { opacity: 0; }
+.km-evidence-W__gauge:not(.is-moving) .km-evidence-W__flag { transition: opacity 260ms var(--ease-out) 40ms; }
+
+/* the unit, in words (one reading at a time, stacked so nothing reflows) */
+.km-evidence-W__words { position: absolute; left: 0; top: calc(var(--dy) + 62px); width: 380px; display: grid; }
+.km-evidence-W__w {
+  grid-area: 1 / 1; font-size: var(--ac-body); line-height: 1.45; color: var(--fg); text-wrap: pretty;
+  opacity: 0; transform: translateY(4px); transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+}
+.km-evidence-W__w.is-on { opacity: 1; transform: none; transition: opacity 360ms var(--ease-out) 200ms, transform 360ms var(--ease-out) 200ms; }
+
+/* the calibration pass: a pulse runs through the marks from 0 to 100 (restarted by the JS on every change) */
+@keyframes km-evidence-W-cal {
+  0% { transform: scaleY(1); }
+  35% { transform: scaleY(2.6); fill: var(--fg); }
+  100% { transform: scaleY(1); }
+}
+@keyframes km-evidence-W-tick { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+/* ── caption band (round 2): caption · field-note door at the gauge's 0 · the one control ── */
+.km-evidence-W__band {
+  position: relative; display: flex; align-items: center; height: 72px; padding: 0 12px 0 24px;
+  background: var(--panel);
+}
+.km-evidence-W__door { position: absolute; left: calc(50% - var(--gw) / 2); top: 50%; transform: translateY(-50%); color: var(--fg-2); }
+.km-evidence-W__door:hover { color: var(--fg); }
+.km-evidence-W__seg { margin-left: auto; }
+.km-evidence-W__seg > button { min-width: 84px; }
+
+/* ── entrance (only under .is-play); the head runs on the kit's choreography ── */
+.is-play .km-evidence-W__rule--top { animation: ac-drawx 900ms var(--ease-out) 380ms both; }
+.is-play .km-evidence-W__rule--mid { animation: ac-drawx 900ms var(--ease-out) 520ms both; }
+.is-play .km-evidence-W__rule--v { animation: ac-drawy 900ms var(--ease-out) 600ms both; }
+.is-play .km-evidence-W__cell { animation: ac-up 700ms var(--ease-out) both; animation-delay: calc(600ms + var(--i) * 90ms); }
+.is-play .km-evidence-W__band { animation: ac-fade 500ms var(--ease-out) 900ms both; }
+
+/* the gauge's own entrance waits for .is-go (set by the JS: at once standalone, on sight on the homepage).
+   .is-wait hides it until then, so it never plays out of view. Drafting order: datum → caps → track →
+   marks (0 → 100) → values; the fill, needle, flag and words are run by the JS. */
+.is-play .km-evidence-W.is-wait .km-evidence-W__gauge,
+.is-play .km-evidence-W.is-wait .km-evidence-W__fig > .ac-reg { opacity: 0; }
+.is-play .km-evidence-W.is-go .km-evidence-W__fig > .ac-reg { animation: ac-fade 300ms var(--ease-out) calc(var(--g0) + (var(--d) - 760ms) / 2) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__hd { animation: ac-fade 300ms var(--ease-out) var(--g0) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__plumb { animation: ac-drawy 600ms var(--ease-out) var(--g0) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__needle { animation: ac-fade 300ms var(--ease-out) calc(var(--g0) + 450ms) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__dec { animation: ac-fade 300ms var(--ease-out) calc(var(--g0) + 600ms) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__datum { animation: ac-drawx 700ms var(--ease-out) var(--g0) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__cap { animation: ac-drawy 400ms var(--ease-out) calc(var(--g0) + 100ms) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__cap--b { animation-delay: calc(var(--g0) + 560ms); }
+.is-play .km-evidence-W.is-go .km-evidence-W__track { animation: ac-drawx 600ms var(--ease-inout) calc(var(--g0) + 150ms) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__t { animation: km-evidence-W-tick 260ms var(--ease-out) calc(var(--g0) + 200ms + var(--i) * 5ms) both; }
+.is-play .km-evidence-W.is-go .km-evidence-W__lbl { animation: ac-fade 300ms var(--ease-out) calc(var(--g0) + 300ms + var(--at) * 500ms) both; }
+/* a change of reading: the calibration pass replaces the marks' entrance */
+.km-evidence-W .km-evidence-W__gauge.is-cal .km-evidence-W__t,
+.is-play .km-evidence-W.is-go .km-evidence-W__gauge.is-cal .km-evidence-W__t {
+  animation: km-evidence-W-cal var(--calt, 220ms) var(--ease-out) calc(var(--i) * var(--cals, 2.6ms)) both;
+}
+
+/* reduced motion: every change lands at once */
+@media (prefers-reduced-motion: reduce) {
+  .km-evidence-W *, .km-evidence-W *::before { transition: none !important; animation: none !important; }
+}
+
+/* ── ≤ 760px: the 2×2 reads first, the gauge follows full width, the band stacks ── */
+@media (max-width: 760px) {
+  .km-evidence-W .ac-head > .ac-statement, .km-evidence-W .ac-head > .ac-lede { grid-column: 1 / -1; }
+  .km-evidence-W .ac-statement { font-size: 9.4vw; }
+  .km-evidence-W { --gw: calc(100vw - 32px - 24px); }
+  .km-evidence-W__plate { margin-top: 48px; }
+  .km-evidence-W__grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto; column-gap: 16px; }
+  .km-evidence-W__rule--v, .km-evidence-W__rule--mid { display: none; }
+  .km-evidence-W__cell--tl { grid-column: 1; grid-row: 1; }
+  .km-evidence-W__cell--tr { grid-column: 2; grid-row: 1; }
+  .km-evidence-W__cell--bl { grid-column: 1; grid-row: 2; }
+  .km-evidence-W__cell--br { grid-column: 2; grid-row: 2; }
+  .km-evidence-W__num { font-size: 15vw; }
+  .km-evidence-W__meta { flex-direction: column; gap: 4px; min-height: 52px; }
+  .km-evidence-W__claim { font-size: var(--ac-support); }
+  .km-evidence-W__so { display: none; }
+  .km-evidence-W__fig { position: relative; grid-column: 1 / -1; grid-row: 3; left: 12px; top: 0; margin: 32px 0 24px; }
+  .km-evidence-W__ticks { width: calc(var(--gw) + 1px); }
+  .km-evidence-W__dec { width: var(--gw); }
+  .km-evidence-W__meta .ac-cap { white-space: normal; }
+  .km-evidence-W__door { white-space: normal; letter-spacing: .1em; }
+  .km-evidence-W__words { width: 100%; }
+  .km-evidence-W__band { flex-direction: column; align-items: flex-start; height: auto; gap: 16px; padding: 20px 16px; }
+  .km-evidence-W__door { position: static; transform: none; }
+  .km-evidence-W__seg { margin-left: 0; }
+  .km-evidence-W__seg > button { min-width: 0; flex: 1; padding: 0 12px; }
+}

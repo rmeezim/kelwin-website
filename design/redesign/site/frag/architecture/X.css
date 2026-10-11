@@ -1,0 +1,131 @@
+/* ── architecture · X · FIG. 05 The signal loop (round 2, A×C) ─────────────
+   Base: round-1 A (head, clean full-width plate, the Open → Closed story).
+   The mark-as-circuit is retired, and so is any right-angle corner that reads
+   as the mark: the loop is one straight signal line (in → 01 → 02 → 03 → out)
+   with the red return running UNDER it (a U, back into 01) and the dashed
+   reroute arching OVER 02–03 — C's routing-sheet topology, drawn with B's
+   vocabulary (big light numerals, names hung from the nodes, dashed reroute,
+   red return) as the TRACE primitive. B's "How it closes" ledger in cols 9–12;
+   C's lettered tags A–D on the segments keyed to the ledger rows; one
+   dimension; one title block. The one red: the return path (03 → 01).
+   Default CSS = final, closed state with D · Retune selected.                */
+
+.km-architecture-X {
+  --colw: calc(var(--col) + var(--gutter));           /* one column + gutter ≈ 111.33 */
+}
+.km-architecture-X__body { margin-top: 64px; }
+
+/* ── field geometry (px, shared with the SVG viewBox 0 0 1312 480) ──
+   stations on column lines: 01 = col 3, 02 = col 5, 03 = col 7                */
+.km-architecture-X__field {
+  --x1: 222.5px; --x2: 445.5px; --x3: 668.5px;
+  --yt: 176.5px;                                       /* the signal line */
+  --yr: 120.5px;                                       /* top of the reroute arch */
+}
+.km-architecture-X__draw { position: absolute; inset: 0; }
+
+/* ── selection: the selected ledger row brightens its segment; D (red) thickens ── */
+.km-architecture-X__seg,
+.km-architecture-X__reroute { transition: stroke 300ms var(--ease-inout), stroke-width 300ms var(--ease-inout); }
+.km-architecture-X[data-sel="a"] .km-architecture-X__seg--a,
+.km-architecture-X[data-sel="b"] .km-architecture-X__seg--b,
+.km-architecture-X[data-sel="c"] .km-architecture-X__seg--c { stroke: var(--fg); }
+.km-architecture-X[data-sel="d"] .km-architecture-X__seg--d { stroke-width: 2.5; }
+.km-architecture-X[data-sel="d"] .km-architecture-X__reroute { stroke: var(--fg-2); }   /* Retune also reroutes effort */
+
+/* ── annotation: Mona 14 callout labels (no mono sentences on the drawing) ── */
+.km-architecture-X__lab {
+  position: absolute; font-size: var(--ac-anno); line-height: 20px; color: var(--fg-2); white-space: nowrap;
+}
+.km-architecture-X__lab--in { left: 24px; bottom: calc(100% - var(--yt) + 12px); }
+.km-architecture-X__lab--out { left: calc(var(--x3) + 16px); bottom: calc(100% - var(--yt) + 12px); }
+.km-architecture-X__lab--rr {
+  left: calc((var(--x2) + var(--x3)) / 2); bottom: calc(100% - var(--yr) + 10px); transform: translateX(-50%); color: var(--fg-3);
+}
+
+/* stations: B's light numeral over the name (Mona 500, 17) and one descriptor (Mona 14),
+   hung from each node on the same rule — 16px right of the node, 18px under the line */
+.km-architecture-X__stn {
+  position: absolute; top: calc(var(--yt) + 18px); display: flex; flex-direction: column; white-space: nowrap;
+}
+.km-architecture-X__stn--1 { left: calc(var(--x1) + 16px); }
+.km-architecture-X__stn--2 { left: calc(var(--x2) + 16px); }
+.km-architecture-X__stn--3 { left: calc(var(--x3) + 16px); }
+.km-architecture-X__num { color: var(--fg-3); font-feature-settings: "zero" 0; font-variant-numeric: normal; margin: 0 0 12px -3px; }
+.km-architecture-X__stn-t { font-weight: var(--ui-weight); font-size: var(--ac-body); line-height: 22px; color: var(--fg); }
+.km-architecture-X__stn-d { margin-top: 2px; font-size: var(--ac-anno); line-height: 20px; color: var(--fg-3); }
+
+/* C's lettered tags: the kit code box seated on its segment; the knock-out interrupts the line */
+.km-architecture-X__tag {
+  position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%);
+  display: flex; padding: 6px; background: var(--panel); pointer-events: none;
+}
+.km-architecture-X__tag .ac-callout__code,
+.km-architecture-X__row .ac-callout__code { transition: background-color 300ms var(--ease-inout), color 300ms var(--ease-inout), border-color 300ms var(--ease-inout); }
+.km-architecture-X[data-sel="a"] :is(.km-architecture-X__tag--a, .km-architecture-X__row[data-k="a"]) .ac-callout__code,
+.km-architecture-X[data-sel="b"] :is(.km-architecture-X__tag--b, .km-architecture-X__row[data-k="b"]) .ac-callout__code,
+.km-architecture-X[data-sel="c"] :is(.km-architecture-X__tag--c, .km-architecture-X__row[data-k="c"]) .ac-callout__code,
+.km-architecture-X[data-sel="d"] :is(.km-architecture-X__tag--d, .km-architecture-X__row[data-k="d"]) .ac-callout__code {
+  background: var(--fg); border-color: var(--fg); color: var(--bg);
+}
+
+/* the packet: one 6px square at constant speed. Its path starts at 03, so it first rides the
+   red return under the line into 01, then the signal line back to 03 — one lap of the closed loop. */
+.km-architecture-X__packet {
+  position: absolute; left: 0; top: 0; width: 6px; height: 6px; background: var(--fg);
+  offset-path: path("M668.5 176.5V352.5H222.5V176.5Z"); offset-rotate: 0deg; offset-anchor: 50% 50%;
+  offset-distance: 22%;                                   /* resting place: on the red return, right of D */
+}
+
+/* ── B · "How it closes" ledger (cols 9–12) ── */
+.km-architecture-X__read { position: absolute; left: calc(8 * var(--colw)); right: 24px; top: 32px; }
+.km-architecture-X__readhead { margin-bottom: 22px; }
+.km-architecture-X__ledger { --ac-row-cols: 22px minmax(0, 1fr) auto 20px; --ac-row-indent: 46px; }
+.km-architecture-X__row .ac-h4 { color: var(--fg-2); transition: color 300ms var(--ease-inout), transform 300ms var(--ease-out); }
+.km-architecture-X__route { display: inline-flex; align-items: center; gap: 8px; transition: color 300ms var(--ease-inout); }
+/* the route arrow is drawn (the kit's → path as a mask in currentColor): the brand mono subset carries no U+2192 */
+.km-architecture-X__to {
+  display: block; flex: none; width: 11px; height: 10px; background-color: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.km-architecture-X[data-sel="a"] .km-architecture-X__row[data-k="a"] .ac-h4,
+.km-architecture-X[data-sel="b"] .km-architecture-X__row[data-k="b"] .ac-h4,
+.km-architecture-X[data-sel="c"] .km-architecture-X__row[data-k="c"] .ac-h4,
+.km-architecture-X[data-sel="d"] .km-architecture-X__row[data-k="d"] .ac-h4 { color: var(--fg); }
+.km-architecture-X[data-sel="a"] .km-architecture-X__row[data-k="a"] .km-architecture-X__route,
+.km-architecture-X[data-sel="b"] .km-architecture-X__row[data-k="b"] .km-architecture-X__route,
+.km-architecture-X[data-sel="c"] .km-architecture-X__row[data-k="c"] .km-architecture-X__route,
+.km-architecture-X[data-sel="d"] .km-architecture-X__row[data-k="d"] .km-architecture-X__route { color: var(--fg-2); }
+.km-architecture-X__row .ac-support { max-width: 40ch; text-wrap: pretty; }
+
+/* ── caption band: the title block alone (its state cell reads Open → Closed); no door here —
+   the stack above closes on one, and the reframe already routes to the method ── */
+.km-architecture-X__band { padding-top: 0; }
+.km-architecture-X__tstate { min-width: 84px; justify-content: center; }
+
+/* ── entrance (html.is-play): the kit runs the head; then the plate; then the loop in reading order ── */
+.is-play .km-architecture-X__plate { animation: km-architecture-X-up 700ms var(--ease-out) 420ms both; }
+.is-play .km-architecture-X__term,
+.is-play .km-architecture-X__chev,
+.is-play .km-architecture-X__tag,
+.is-play .km-architecture-X__lab { animation: km-architecture-X-fade 360ms var(--ease-out) var(--d, 0ms) both; }
+.is-play .km-architecture-X__stn { animation: km-architecture-X-up 500ms var(--ease-out) var(--d, 0ms) both; }
+.is-play .km-architecture-X__node {
+  animation: km-architecture-X-fade 300ms var(--ease-out) 650ms both, km-architecture-X-latch 240ms var(--ease-out) var(--d, 0ms) both;
+}
+.is-play .km-architecture-X__reroute { animation: km-architecture-X-fade 500ms var(--ease-out) 2650ms both; }
+.is-play .km-architecture-X__dim .ac-dim__v { animation: km-architecture-X-fade 400ms var(--ease-out) 4300ms both; }
+.is-play .km-architecture-X__readhead,
+.is-play .km-architecture-X__band { animation: km-architecture-X-fade 500ms var(--ease-out) 900ms both; }
+.is-play .km-architecture-X__packet {
+  animation: km-architecture-X-lap 12s linear 3950ms infinite both, km-architecture-X-fade 400ms var(--ease-out) 3950ms both;
+}
+
+@keyframes km-architecture-X-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-architecture-X-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-architecture-X-latch {
+  from { fill: var(--ac-occlude); stroke: var(--fg-2); }
+  to { fill: var(--fg); stroke: var(--fg); }
+}
+@keyframes km-architecture-X-lap { from { offset-distance: 0%; } to { offset-distance: 100%; } }

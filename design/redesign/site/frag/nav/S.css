@@ -1,0 +1,217 @@
+/* ── nav · X · A×C "Cinematic Drafting" ─────────────────────────────────
+   A's hanging plate (the bar, the hairline, a flat --panel plate on cols
+   1–4 / 5–8 / 9–12) run on C's capability-sheet logic (master → detail):
+   one 1px signal line is drawn across the top of the plate, and each strip's
+   run of it is that capability's glyph — CONTOUR (noise settles into one
+   line) → TRACE (the line is carried on a routed path) → ORBIT (the line
+   closes into a loop). The OPEN strip's glyph resolves in --fg with its one
+   morph; the other two rest raw and quiet. No logo geometry anywhere but the
+   lockup. The one red is the System Audit door in the plate's corner.      */
+
+.km-nav-S {
+  height: 900px; overflow: hidden; isolation: isolate;
+  --nav-h: 96px;
+  --fig-h: 144px;
+  --band-h: 88px;
+  --inset: 32px;
+  --strip-1: calc(4 * var(--col) + 3.5 * var(--gutter));   /* cols 1–4 → gutter centre */
+  --strip-2: calc(4 * var(--col) + 4 * var(--gutter));     /* cols 5–8, both half-gutters */
+}
+
+/* ── the film (the hero's calibration: blur 8, frost .2); lowered so the seated colleague —
+      head and white-shirted shoulders between two backs — reads below the plate ── */
+.km-nav-S .km-film { --film-blur: 8px; --film-frost: .2; --film-bright: 1.26; --film-sat: .95; }
+.km-nav-S .km-film__plate {
+  inset: auto; left: -96px; top: var(--plate-y, 294px); width: 1633px; height: 820px;   /* the frame at .85: the seated colleague centred on the stage */
+  background-size: 100% 100%; background-position: 0 0;
+}
+.km-nav-S__scrim {                       /* inside .km-film only: a quiet floor under the bar */
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 62%, transparent) 0, color-mix(in srgb, var(--bg) 20%, transparent) 96px, transparent 160px);
+}
+
+/* ── the bar (96px): lockup · tracked caps · outlined AUDIT REQUEST ↗ · hairline ── */
+.km-nav-S__bar {
+  position: relative; z-index: 2; height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-nav-S__bar::after {                                 /* the hairline the plate hangs from */
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-nav-S__brand { display: inline-flex; color: var(--fg); }
+.km-nav-S__brand .km-logo { --logo-h: 24px; }
+.km-nav-S__menu {
+  position: absolute; left: 50%; top: 0; bottom: 0; transform: translateX(-50%);
+  display: flex; align-items: stretch; gap: 40px; white-space: nowrap;
+}
+.km-nav-S__item {
+  position: relative; display: inline-flex; align-items: center;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.km-nav-S__item:hover, .km-nav-S__item.is-open { color: var(--fg); }
+.km-nav-S__item.is-open::after {                        /* the open item marks the hairline */
+  content: ""; position: absolute; left: 0; right: -.18em; bottom: 0; height: 1px; background: var(--fg); transform-origin: left center;
+}
+.km-nav-S__reg { z-index: 3; --y: var(--nav-h); }
+
+/* ── the plate ── */
+.km-nav-S__sheet {
+  position: absolute; z-index: 1; top: var(--nav-h); left: var(--margin); right: var(--margin);
+  display: flex; flex-direction: column;
+  background: var(--panel); --ac-occlude: var(--panel);
+}
+.km-nav-S__strips,
+.km-nav-S__band { display: grid; grid-template-columns: var(--strip-1) var(--strip-2) 1fr; }
+.km-nav-S__strip { position: relative; display: flex; flex-direction: column; padding: 0 var(--inset) 28px; }
+.km-nav-S__strip + .km-nav-S__strip::before,             /* full-height verticals, through the band */
+.km-nav-S__band > :nth-child(n+2)::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+  background: var(--line); transform-origin: top center; z-index: 1;
+}
+
+/* the drawing row: one hairline under all three glyphs; under the open strip it seats in --fg */
+.km-nav-S__fig {
+  position: relative; height: var(--fig-h); margin: 0 calc(-1 * var(--inset));
+  border-bottom: 1px solid var(--line);
+}
+.km-nav-S__fig::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: left center; transition: transform 600ms var(--ease-inout);
+}
+.km-nav-S__glyph { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* glyph ink: raw strips draw in --fg-3, the open strip in --fg */
+.km-nav-S__strip { --g: var(--fg-3); }
+.km-nav-S__glyph path, .km-nav-S__glyph circle {
+  fill: none; stroke: var(--g); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter;
+  transition: stroke 400ms var(--ease-inout);
+}
+/* CONTOUR (cap 1) — paths are rewritten by JS while it settles. The five lines are drawn in opaque
+   --fg and dimmed as ONE group, so where they converge they don't stack into a brighter stub. */
+.km-nav-S__waves { opacity: .58; transition: opacity 400ms var(--ease-inout); }
+.km-nav-S__glyph .km-nav-S__wave { stroke: var(--fg); }
+.km-nav-S[data-sel="1"] .km-nav-S__waves { opacity: 1; }
+/* TRACE (cap 2) — raw: an indirect (dashed) route, open nodes; open: the route plots solid, nodes latch, a packet runs */
+.km-nav-S__glyph .km-nav-S__route { stroke-dasharray: 2 4; transition: opacity 200ms var(--ease-out), stroke 400ms var(--ease-inout); }
+.km-nav-S__glyph .km-nav-S__route-on { stroke: var(--fg); stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 900ms var(--ease-inout); }
+.km-nav-S__node { fill: var(--ac-occlude); stroke: var(--g); stroke-width: 1; transition: fill 200ms var(--ease-out), stroke 200ms var(--ease-out); }
+.km-nav-S__packet { fill: var(--fg); stroke: var(--ac-occlude); stroke-width: 4px; paint-order: stroke; opacity: 0; transition: opacity 300ms var(--ease-out); }   /* a 2px knock-out: it rides the line, it is not a node */
+/* ORBIT (cap 3) — raw: a ring open by 40°, the core ring only sketched; open: the gap closes, the core ring accretes, a node rides */
+.km-nav-S__glyph .km-nav-S__ring { stroke-dasharray: 320 40; transition: stroke-dasharray 1000ms var(--ease-inout), stroke 400ms var(--ease-inout); }
+.km-nav-S__glyph .km-nav-S__core-ghost { stroke: var(--line); stroke-dasharray: 2 4; }
+.km-nav-S__glyph .km-nav-S__core { stroke: var(--fg); stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 700ms var(--ease-inout) 500ms; }
+.km-nav-S__rider { transform-box: view-box; transform-origin: 216px 72px; }
+.km-nav-S__rider rect { transform-box: fill-box; transform-origin: center; }   /* counter-rotates: the square stays square as it rides */
+.km-nav-S__rider rect { fill: var(--g); transition: fill 400ms var(--ease-inout); }
+
+/* ── type in the strip: CAP. 0n → wide title → descriptor → four service rows ── */
+.km-nav-S__cap { margin-top: 24px; transition: color 300ms var(--ease-inout); }
+.km-nav-S__title {
+  margin-top: 10px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 30px; line-height: 1.1; letter-spacing: var(--display-tracking);
+}
+.km-nav-S__title a {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  color: var(--fg-2); transition: color 300ms var(--ease-inout);
+}
+.km-nav-S__mask { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+.km-nav-S__mask > span { display: block; }
+.km-nav-S__go { display: inline-flex; align-self: center; color: var(--fg-3); transition: color 300ms var(--ease-inout), transform 250ms var(--ease-out); }
+.km-nav-S__go svg { display: block; width: 17px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; }
+.km-nav-S__title a:hover .km-nav-S__go { transform: translateX(3px); }
+.km-nav-S__desc { margin-top: 10px; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+
+.km-nav-S__list { margin: 22px -16px 0; border-bottom: 1px solid var(--line); }
+.km-nav-S__list li { border-top: 1px solid var(--line); }
+.km-nav-S__list a {
+  display: grid; grid-template-columns: 48px 1fr; align-items: baseline;
+  padding: 10px 16px; font-size: 15px; line-height: 20px; color: var(--fg-2);
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-nav-S__list a:hover { background: var(--panel-2); color: var(--fg); }
+
+/* ── the open strip (master → detail) ── */
+.km-nav-S[data-sel="1"] [data-cap="1"],
+.km-nav-S[data-sel="2"] [data-cap="2"],
+.km-nav-S[data-sel="3"] [data-cap="3"] { --g: var(--fg); }
+.km-nav-S[data-sel="1"] [data-cap="1"] .km-nav-S__fig::after,
+.km-nav-S[data-sel="2"] [data-cap="2"] .km-nav-S__fig::after,
+.km-nav-S[data-sel="3"] [data-cap="3"] .km-nav-S__fig::after { transform: none; }
+.km-nav-S[data-sel="1"] [data-cap="1"] :is(.km-nav-S__cap, .km-nav-S__title a, .km-nav-S__go),
+.km-nav-S[data-sel="2"] [data-cap="2"] :is(.km-nav-S__cap, .km-nav-S__title a, .km-nav-S__go),
+.km-nav-S[data-sel="3"] [data-cap="3"] :is(.km-nav-S__cap, .km-nav-S__title a, .km-nav-S__go) { color: var(--fg); }
+/* demo only (data-demo): the pointer "rests" on row 2 of the open strip. The first real pointer or
+   keyboard interaction removes data-demo, so a live hover never shows two lit rows. */
+.km-nav-S[data-demo][data-sel="1"] [data-cap="1"] [data-row="2"] a,
+.km-nav-S[data-demo][data-sel="2"] [data-cap="2"] [data-row="2"] a,
+.km-nav-S[data-demo][data-sel="3"] [data-cap="3"] [data-row="2"] a { background: var(--panel-2); color: var(--fg); }
+/* TRACE resolves: the route plots, each node latches as the line reaches it, the packet appears */
+.km-nav-S[data-sel="2"] .km-nav-S__route-on { stroke-dashoffset: 0; }
+.km-nav-S[data-sel="2"] .km-nav-S__glyph .km-nav-S__route { opacity: 0; transition-delay: 900ms; }   /* the solid route replaces the sketch once plotted */
+.km-nav-S[data-sel="2"] [data-cap="2"] .km-nav-S__node { fill: var(--fg); stroke: var(--fg); transition-delay: calc(var(--k) * 900ms); }
+.km-nav-S[data-sel="2"] .km-nav-S__packet { opacity: 1; transition-delay: 900ms; }
+/* ORBIT resolves: the gap closes, the core ring accretes, the join latches */
+.km-nav-S[data-sel="3"] .km-nav-S__glyph .km-nav-S__ring { stroke-dasharray: 360 0; }
+.km-nav-S[data-sel="3"] .km-nav-S__glyph .km-nav-S__core { stroke-dashoffset: 0; }
+.km-nav-S[data-sel="3"] .km-nav-S__join { fill: var(--fg); stroke: var(--fg); transition-delay: 300ms; }
+/* the rider orbits only while ORBIT is open (16s a lap); on close it simply stops where it is — no snap */
+.is-play .km-nav-S__rider { animation: km-nav-S-orbit 16s linear 600ms infinite; animation-play-state: paused; }
+.is-play .km-nav-S__rider rect { animation: km-nav-S-orbit 16s linear 600ms infinite reverse; animation-play-state: paused; }
+.is-play .km-nav-S[data-sel="3"] .km-nav-S__rider,
+.is-play .km-nav-S[data-sel="3"] .km-nav-S__rider rect { animation-play-state: running; }
+
+/* ── the band: title block · the audit note + the quiet door · the red door ── */
+.km-nav-S__band { position: relative; height: var(--band-h); border-top: 1px solid var(--line); }
+.km-nav-S__band > * { position: relative; }
+.km-nav-S__tbcell, .km-nav-S__door { display: flex; padding-inline: var(--inset); }
+.km-nav-S__tbcell { align-items: center; }
+.km-nav-S__door { flex-direction: column; justify-content: center; align-items: flex-start; gap: 2px; }
+.km-nav-S__swap { display: grid; justify-items: center; }   /* sized by its longest value; the live value sits centred */
+.km-nav-S__swap > span { grid-area: 1 / 1; opacity: 0; transition: opacity 180ms var(--ease-out); }   /* out first, then in: never two labels at once */
+.km-nav-S[data-sel="0"] .km-nav-S__swap [data-for="0"],
+.km-nav-S[data-sel="1"] .km-nav-S__swap [data-for="1"],
+.km-nav-S[data-sel="2"] .km-nav-S__swap [data-for="2"],
+.km-nav-S[data-sel="3"] .km-nav-S__swap [data-for="3"] { opacity: 1; transition: opacity 320ms var(--ease-out) 200ms; }
+.km-nav-S__note { font-size: 15px; line-height: 22px; color: var(--fg-2); }
+.km-nav-S__contact { padding-block: 6px; }
+.km-nav-S__cta { height: 100%; justify-content: space-between; padding-inline: var(--inset); }
+
+/* ── entrance (only under html.is-play) ─────────────────────────────── */
+.is-play .km-nav-S__bar::after { animation: ac-drawx 900ms var(--ease-out) both; }
+.is-play .km-nav-S__brand,
+.is-play .km-nav-S__menu,
+.is-play .km-nav-S__navcta { animation: ac-fade 600ms var(--ease-out) 100ms both; }
+.is-play .km-nav-S__item.is-open::after { animation: ac-drawx 500ms var(--ease-out) 500ms both; }
+.is-play .km-nav-S__reg { --d: 300ms; }
+
+.is-play .km-nav-S__sheet { animation: km-nav-S-unroll 700ms var(--ease-out) 350ms both; }
+.is-play .km-nav-S__strip + .km-nav-S__strip::before,
+.is-play .km-nav-S__band > :nth-child(n+2)::before { animation: ac-drawy 700ms var(--ease-out) 700ms both; }
+.is-play .km-nav-S__band > * { animation: ac-fade 500ms var(--ease-out) 1100ms both; }
+
+/* the line plots left → right across the plate, strip by strip (the reading path) */
+.is-play .km-nav-S__glyph { animation: km-nav-S-wipe 900ms var(--ease-inout) both; }
+.is-play .km-nav-S [data-cap="1"] .km-nav-S__glyph { animation-delay: 850ms; }
+.is-play .km-nav-S [data-cap="2"] .km-nav-S__glyph { animation-delay: 1250ms; }
+.is-play .km-nav-S [data-cap="3"] .km-nav-S__glyph { animation-delay: 1650ms; }
+
+.is-play .km-nav-S__mask > span { animation: ac-rise 800ms var(--ease-out) both; }
+.is-play .km-nav-S [data-cap="1"] .km-nav-S__mask > span { animation-delay: 800ms; }
+.is-play .km-nav-S [data-cap="2"] .km-nav-S__mask > span { animation-delay: 920ms; }
+.is-play .km-nav-S [data-cap="3"] .km-nav-S__mask > span { animation-delay: 1040ms; }
+.is-play .km-nav-S__go,
+.is-play .km-nav-S__cap,
+.is-play .km-nav-S__desc { animation: ac-up 600ms var(--ease-out) 1100ms both; }
+.is-play .km-nav-S__list li { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(1150ms + var(--i) * 80ms); }
+
+/* JS resets (.ac-cold) freeze element transitions; the seat hairline is a pseudo-element, so freeze it too */
+.ac-cold .km-nav-S__fig::after { transition: none !important; }
+
+@keyframes km-nav-S-unroll { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-nav-S-wipe { from { clip-path: inset(-8px 100% -8px 0); } to { clip-path: inset(-8px -8px -8px 0); } }
+@keyframes km-nav-S-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }

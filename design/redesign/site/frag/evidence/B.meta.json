@@ -1,0 +1,21 @@
+{
+ "title": "The Evidence Ledger",
+ "direction": "B",
+ "summary": "Four light 200px numerals stacked as ruled ledger rows hung from the Index Spine under B's shared head ('Four numbers.' + light 'One diagnosis.'): each row's rule meets the spine, each 100-tick unit rule starts on it (one datum for all four readings), every number carries its mono source under a hairline, and the one open row is pinned to the spine with the joint square — a research index rather than four dashboard dials.",
+ "reference": {
+  "site": "Glide",
+  "mobbin_url": "https://mobbin.com/sites/sections/979fe5b7-85d8-450e-8b61-5534ff3f1f97",
+  "ref_file": "refs/evidence-B.webp",
+  "borrowed": "Stacked figure rows on a flat field: a huge numeral holding ~60% of each row, its unit set as a separate glyph in a second tone, and a short sentence plus a quiet arrow link on the right, top-aligned to the numeral. Full-width hairlines separate the rows, and generous row height does all the pacing. No cards, icons or boxes.",
+  "kelwin": "Paper, hung from B's Index Spine: '03 / Evidence' in the spine column, an opening rule meeting the spine at a right angle with a square at the joint, and a sentence + muted-sentence statement on two lines. Glide's coloured '+' becomes a muted unit ('17' + '%', '95' + ':5') in the same light weight. Under each numeral a 100-tick unit rule (n ticks in ink, fives and tens taller) is the only data graphic; it starts on the spine, so all four readings are measured from one datum, and its key ('1 tick = 1 in 100 →') sits in the spine column pointing at it. Row rules run to the spine; the reading, the so-what and a mono source under its own hairline sit in cols 9–12. Following the ledger rule, exactly one row (95:5) opens in place to the full read, a rule caption ('95 of 100 · not in market today / 5 · buying') and a quiet door to the method ('See how we diagnose it →', /#methodology), and the spine's joint square moves to that row."
+ },
+ "motion": [
+  "entrance: the joint square appears and the opening rule draws from the spine to the right margin (900ms); the '03' index and red-square label fade in (400ms); 'Four numbers.' rises 12px (700ms) with the light 'One diagnosis.' 160ms behind; the 48×2 red rule draws and the side note fades in",
+  "entrance: ledger rows reveal top-down at a 60ms stagger. Each row's rule draws from the spine (600ms), its numeral fades in as the rule passes (no count-up), then its ticks fill left to right from the spine to n (900ms) and the reading fades in; the rule key in the spine column fades in once the first rule has filled",
+  "state: at ~1.8s the 95:5 row opens in place (height + opacity, 360ms --ease-inout): its + rotates to −, the rule caption fades in and the joint square appears where its rule meets the spine",
+  "interaction: any + opens its row and closes the others (the joint square follows); a hovered row fills --panel and its claim shifts 8px right; the link's underline draws from the left (300ms)",
+  "on the live site: the spine index is sticky and crossfades as sections pass; rows reveal on scroll; reduced motion shows the final state with the 95:5 row open"
+ ],
+ "demoMs": 3000,
+ "notes": "Coherence pass: the head was the outlier of the set (56px, mono 0.06em spine name, no red square, no red rule, 7px joint). It now follows the shared head; the source's 'None of them is a pipeline problem.' moves to the side note with 'Every figure is sourced. None of them is ours.' Coherence pass (direction B, one site): every section now shares one head — 64px light index + red-square caps label (Mona 500, 11px, .18em) in the spine column, 88px statement at weight 430 / −0.018em with exactly one light (300) muted sentence, the 48×2 red rule, 18/30 lede — at 48/44/32px offsets from a 6px joint, with 128px top and bottom padding (the live site keeps B's 200px). Mono captions are 11px at .18em; spine numerals drop tabular figures (Mona's tabular zero is slashed); quiet doors are 12px tracked caps with a drawn arrow. Mockup slice: with the shared 128px padding the stage is cropped at 1400px, so rows 1–3 show in full and the head of row 4 (53%) runs off the bottom edge as a continuation; the live section shows all four. Numerals sit in cols 4–8 (the 100-tick rule is 501px, 5px a tick), readings in cols 9–12. The open row's quiet door is now tracked caps."
+}

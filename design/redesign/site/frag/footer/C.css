@@ -1,0 +1,223 @@
+/* ── footer · C · Systems Drawing Set — SHEET 14/14, the colophon sheet (Heron) ──
+   C's sheet anatomy, applied to the footer:
+   1 · title row — uppercase title cell (cols 1–8) | note cell with the two doors as cells (cols 9–12)
+   2 · body — drawing field (cols 1–8): the real lockup plotted 1:1 as a 1px construction
+       drawing over datums | spec column (cols 9–12): the Capabilities sitemap IS the drawing's
+       parts list, lettered A–C and keyed by leaders to K1–K3. The red plane sits in the part
+       under discussion (K3 at rest) and follows the hovered row.
+   3 · cell row — Firm · Resources · Location · New business / Sister company · Colophon
+   4 · bottom band — legend · Privacy · Terms · title block                                   */
+.km-footer-C { height: 816px; overflow: hidden; }
+/* the sheet body opens on the shared C lead-in: 96px of continuing frame, then the --line-2 rule */
+.km-footer-C__in { position: absolute; left: 0; top: 96px; width: 1440px; height: 720px; }
+
+/* frame + cell borders (only where a cell exists) */
+.km-footer-C__frame { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.km-footer-C__frame--l { left: var(--margin); }
+.km-footer-C__frame--r { left: calc(var(--stage) - var(--margin) - 1px); }
+.km-footer-C__ln { position: absolute; background: var(--line); }
+.km-footer-C__ln--h { height: 1px; transform-origin: 0 50%; }
+.km-footer-C__ln--h0 { background: var(--line-2); }
+.km-footer-C__ln--v { width: 1px; transform-origin: 50% 0; }
+
+/* ── the drawing layer (whole sheet, 1:1 px) ── */
+.km-footer-C__dwg { position: absolute; left: 0; top: 0; display: block; overflow: visible; pointer-events: none; }
+.km-footer-C__cl { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 5; }
+.km-footer-C__cl--h { stroke: var(--line-2); stroke-dasharray: 2 6; }
+.km-footer-C__dt, .km-footer-C__dimt, .km-footer-C__tagl {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.km-footer-C__dt { fill: var(--fg-3); }
+.km-footer-C__o { fill: none; stroke: var(--fg); stroke-width: 1; stroke-linejoin: miter; }
+.km-footer-C__dim { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-footer-C__dimt { fill: var(--fg-2); }
+.km-footer-C__xh path { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+
+/* the installed red plane: one per sheet, in the part under discussion (data-on on the root) */
+.km-footer-C__fill { fill: var(--accent); opacity: 0; transition: opacity 600ms var(--ease-inout); }
+.km-footer-C[data-on="1"] .km-footer-C__fill[data-k="1"],
+.km-footer-C[data-on="2"] .km-footer-C__fill[data-k="2"],
+.km-footer-C[data-on="3"] .km-footer-C__fill[data-k="3"] { opacity: 1; }
+.km-footer-C[data-on="0"] .km-footer-C__fill { transition: none; }   /* demo start: plane hidden at once, until the plot is done */
+
+/* lettered callouts: leader + node + boxed letter; the active one inverts */
+.km-footer-C__lead { fill: none; stroke: var(--fg-3); stroke-width: 1; transition: stroke 300ms var(--ease-inout); }
+.km-footer-C__node { fill: var(--fg-2); }
+.km-footer-C__tagbox { fill: var(--bg); stroke: var(--line-2); stroke-width: 1; transition: fill 300ms var(--ease-inout), stroke 300ms var(--ease-inout); }
+.km-footer-C__tagl { fill: var(--fg-2); transition: fill 300ms var(--ease-inout); }
+.km-footer-C[data-on="1"] .km-footer-C__call[data-k="1"] .km-footer-C__lead,
+.km-footer-C[data-on="2"] .km-footer-C__call[data-k="2"] .km-footer-C__lead,
+.km-footer-C[data-on="3"] .km-footer-C__call[data-k="3"] .km-footer-C__lead { stroke: var(--fg); }
+.km-footer-C[data-on="1"] .km-footer-C__call[data-k="1"] .km-footer-C__tagbox,
+.km-footer-C[data-on="2"] .km-footer-C__call[data-k="2"] .km-footer-C__tagbox,
+.km-footer-C[data-on="3"] .km-footer-C__call[data-k="3"] .km-footer-C__tagbox { fill: var(--fg); stroke: var(--fg); }
+.km-footer-C[data-on="1"] .km-footer-C__call[data-k="1"] .km-footer-C__tagl,
+.km-footer-C[data-on="2"] .km-footer-C__call[data-k="2"] .km-footer-C__tagl,
+.km-footer-C[data-on="3"] .km-footer-C__call[data-k="3"] .km-footer-C__tagl { fill: var(--bg); }
+
+/* ── shared cell voice ── */
+.km-footer-C__cell { position: absolute; }
+.km-footer-C__k, .km-footer-C__kr, .km-footer-C__fig, .km-footer-C__legend, .km-footer-C__block, .km-footer-C__xy,
+.km-footer-C__spec dt, .km-footer-C__id, .km-footer-C__pk, .km-footer-C__ptag, .km-footer-C__actid {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-footer-C__k { position: absolute; left: 20px; top: 18px; color: var(--fg-3); white-space: nowrap; }
+
+/* row 1 · title cell (cols 1–8): the shared C head at footer scale — red-square label, two-tone title, 48px rule */
+.km-footer-C__title { left: var(--margin); top: 0; width: 878px; height: 192px; }
+.km-footer-C__sheet {
+  position: absolute; left: 24px; top: 24px; margin: 0; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-footer-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-footer-C__h {
+  position: absolute; left: 24px; bottom: 58px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 40px; line-height: 0.94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-footer-C__turn { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-footer-C__rule { position: absolute; left: 24px; top: 162px; width: 48px; height: 2px; background: var(--signal); transform-origin: 0 50%; }
+.km-footer-C__h span { display: block; white-space: nowrap; }
+
+/* row 1 · note cell (cols 9–12) over the two doors as cells */
+.km-footer-C__audit { left: 943px; top: 0; width: 433px; height: 128px; }
+.km-footer-C__audit .km-footer-C__k { left: 24px; top: 24px; }
+.km-footer-C__note {
+  position: absolute; left: 24px; right: 24px; bottom: 16px;
+  font-size: 20px; line-height: 1.5; font-weight: var(--body-weight); color: var(--fg-2); text-wrap: pretty;
+}
+.km-footer-C__cta, .km-footer-C__ct2, .km-footer-C__lcell {
+  position: absolute; display: flex; font-family: var(--f-mono); font-size: 12px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+/* the two doors: the shared C door pair (red audit cell with its cell ID · ruled contact cell) */
+.km-footer-C__cta {
+  left: 943px; top: 129px; width: 334px; height: 63px; flex-direction: column; justify-content: space-between;
+  padding: 12px 24px 13px; background: var(--accent); color: var(--accent-fg);
+}
+.km-footer-C__actid { white-space: nowrap; opacity: 0.78; }
+.km-footer-C__go {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-footer-C__ico { width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 250ms var(--ease-out); }
+.km-footer-C__ico--r { width: 13px; height: 11px; }
+.km-footer-C__cta:hover .km-footer-C__ico { transform: translate(2px, -2px); }
+.km-footer-C__ct2 .km-footer-C__ico { align-self: flex-end; margin-top: 2px; }
+.km-footer-C__ct2:hover .km-footer-C__ico { transform: translateX(3px); }
+.km-footer-C__cta:hover, .km-footer-C__cta:focus-visible { background: var(--accent-hover); outline: none; }
+.km-footer-C__ct2 { left: 1277px; top: 129px; width: 98px; height: 63px; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 12px 12px 13px; color: var(--fg); }
+.km-footer-C__ct2:hover, .km-footer-C__ct2:focus-visible, .km-footer-C__lcell:hover, .km-footer-C__lcell:focus-visible { background: var(--fg); color: var(--bg); outline: none; }
+
+/* row 2 · drawing caption, bottom-right of the field */
+.km-footer-C__fig { position: absolute; right: calc(var(--stage) - 942px + 24px); top: 446px; color: var(--fg-3); white-space: nowrap; }
+
+/* row 2 · parts list (cols 9–12): the Capabilities sitemap, keyed to the drawing */
+.km-footer-C__parts { left: 943px; top: 192px; width: 433px; height: 288px; }
+.km-footer-C__parts .km-footer-C__k { left: 24px; }
+.km-footer-C__kr { position: absolute; right: 24px; top: 18px; color: var(--fg-3); }
+.km-footer-C__part {
+  position: absolute; left: 0; right: 0; height: 79px; color: var(--fg);
+  transition: background-color 200ms var(--ease-inout), color 200ms var(--ease-inout);
+}
+.km-footer-C__ptag {
+  position: absolute; left: 24px; top: 16px; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line-2); color: var(--fg-2); letter-spacing: 0;
+  transition: background-color 300ms var(--ease-inout), color 300ms var(--ease-inout), border-color 300ms var(--ease-inout);
+}
+.km-footer-C__pk { position: absolute; left: 52px; top: 16px; color: var(--fg-3); white-space: nowrap; }
+.km-footer-C__pv { position: absolute; left: 52px; bottom: 14px; font-size: 20px; line-height: 26px; white-space: nowrap; }
+.km-footer-C__par { position: absolute; right: 24px; bottom: 21px; display: flex; color: var(--fg-2); transition: transform 200ms var(--ease-out); }
+.km-footer-C[data-on="1"] .km-footer-C__part[data-k="1"] .km-footer-C__ptag,
+.km-footer-C[data-on="2"] .km-footer-C__part[data-k="2"] .km-footer-C__ptag,
+.km-footer-C[data-on="3"] .km-footer-C__part[data-k="3"] .km-footer-C__ptag { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.km-footer-C__part:hover, .km-footer-C__part:focus-visible { background: var(--fg); color: var(--bg); outline: none; }
+.km-footer-C__part:hover .km-footer-C__pk, .km-footer-C__part:focus-visible .km-footer-C__pk,
+.km-footer-C__part:hover .km-footer-C__par, .km-footer-C__part:focus-visible .km-footer-C__par { color: var(--bg); }
+.km-footer-C__part:hover .km-footer-C__ptag, .km-footer-C__part:focus-visible .km-footer-C__ptag { background: var(--bg); color: var(--fg); border-color: var(--bg); }
+.km-footer-C__part:hover .km-footer-C__par { transform: translateX(3px); }
+
+/* row 3 · sitemap cells: each link is a cell row on a hairline */
+.km-footer-C__site { top: 480px; height: 192px; }
+.km-footer-C__site .km-footer-C__k { left: 16px; }
+.km-footer-C__lk {
+  position: absolute; left: 0; right: 0; height: 35px; padding: 0 16px;
+  display: flex; align-items: center; gap: 10px; color: var(--fg);
+  transition: background-color 200ms var(--ease-inout), color 200ms var(--ease-inout);
+}
+.km-footer-C__id { flex: none; width: 36px; color: var(--fg-3); transition: color 200ms var(--ease-inout); }
+.km-footer-C__lt { font-size: 15px; line-height: 20px; white-space: nowrap; }
+.km-footer-C__lk:hover, .km-footer-C__lk:focus-visible { background: var(--fg); color: var(--bg); outline: none; }
+.km-footer-C__lk:hover .km-footer-C__id, .km-footer-C__lk:focus-visible .km-footer-C__id { color: var(--bg); }
+
+/* spec tables (location · colophon): mono key, Mona value */
+.km-footer-C__spec div { position: absolute; left: 0; right: 0; height: 35px; padding: 0 20px; display: flex; align-items: center; }
+.km-footer-C__spec dt { flex: none; width: 104px; color: var(--fg-3); }
+.km-footer-C__spec dd { margin: 0; font-size: 15px; line-height: 20px; color: var(--fg); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.km-footer-C__loc { left: 498px; top: 480px; width: 222px; height: 192px; }
+.km-footer-C__loc .km-footer-C__spec div { padding-left: 16px; }
+.km-footer-C__loc .km-footer-C__k { left: 16px; }
+.km-footer-C__loc .km-footer-C__spec dt { width: 48px; }
+.km-footer-C__utc { transition: opacity 200ms var(--ease-inout); }
+.km-footer-C__utc.is-tick { opacity: 0.3; }
+.km-footer-C__colo { left: 943px; top: 480px; width: 433px; height: 192px; }
+.km-footer-C__colo .km-footer-C__k { left: 24px; }
+.km-footer-C__colo .km-footer-C__spec div { padding-left: 24px; }
+
+/* row 3 · new business / sister company (cols 7–8, stacked sub-cells) */
+.km-footer-C__sub { left: 721px; width: 221px; height: 95px; }
+.km-footer-C__sub--1 { top: 481px; }
+.km-footer-C__sub--2 { top: 577px; }
+.km-footer-C__line { position: absolute; left: 20px; bottom: 16px; font-size: 20px; line-height: 24px; color: var(--fg); white-space: nowrap; }
+.km-footer-C__sub--1 .km-footer-C__line { border-bottom: 1px solid transparent; transition: border-color 200ms var(--ease-out); }
+.km-footer-C__sub--1 .km-footer-C__line:hover, .km-footer-C__sub--1 .km-footer-C__line:focus-visible { border-color: var(--fg); outline: none; }
+
+/* bottom band (48px): legend · Privacy · Terms · title block */
+.km-footer-C__legend { position: absolute; left: calc(var(--margin) + 24px); top: 673px; line-height: 47px; color: var(--fg-3); }
+.km-footer-C__lcell { top: 673px; width: 110px; height: 47px; align-items: center; padding: 0 16px; color: var(--fg-2); font-size: 11px; }
+.km-footer-C__lcell--p { left: 721px; }
+.km-footer-C__lcell--t { left: 832px; }
+/* the shared C title block: segmented cells on cols 9–12 */
+.km-footer-C__block { position: absolute; left: 943px; width: 433px; top: 673px; height: 47px; margin: 0; display: flex; color: var(--fg-2); }
+.km-footer-C__block > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; white-space: nowrap; }
+.km-footer-C__block > span:first-child { justify-content: flex-start; padding-left: 24px; }
+.km-footer-C__block > span:last-child { color: var(--fg); }
+.km-footer-C__block > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-footer-C__block .km-logo-mark { --logo-h: 11px; color: var(--fg); }
+
+/* X/Y cursor readout on the frame edge (outside the right frame) */
+.km-footer-C__xy {
+  position: absolute; top: 24px; left: calc(var(--stage) - var(--margin)); width: var(--margin);
+  display: flex; justify-content: center; writing-mode: vertical-rl; transform: rotate(180deg);
+  color: var(--fg-3); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+/* ── entrance: drafting order (html.is-play only) ── */
+@keyframes km-footer-C-fade { from { opacity: 0; } }
+@keyframes km-footer-C-dx { from { transform: scaleX(0); } }
+@keyframes km-footer-C-dy { from { transform: scaleY(0); } }
+@keyframes km-footer-C-plot { from { stroke-dashoffset: 1; } }
+@keyframes km-footer-C-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+.is-play .km-footer-C__frame, .is-play .km-footer-C__xh, .is-play .km-footer-C__xy { animation: km-footer-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-footer-C__ln--h { animation: km-footer-C-dx 500ms var(--ease-inout) both; animation-delay: calc(120ms + var(--i) * 40ms); }
+.is-play .km-footer-C__ln--v { animation: km-footer-C-dy 500ms var(--ease-inout) both; animation-delay: calc(120ms + var(--i) * 40ms); }
+.is-play .km-footer-C__sq { animation: km-footer-C-fade 300ms var(--ease-inout) 200ms both; }
+.is-play .km-footer-C__rule { animation: km-footer-C-dx 500ms var(--ease-out) 560ms both; }
+.is-play .km-footer-C__h span { animation: km-footer-C-wipe 700ms var(--ease-inout) both; }
+.is-play .km-footer-C__h span:nth-child(1) { animation-delay: 240ms; }
+.is-play .km-footer-C__h span:nth-child(2) { animation-delay: 380ms; }
+.is-play .km-footer-C__k, .is-play .km-footer-C__kr, .is-play .km-footer-C__lt, .is-play .km-footer-C__spec dt,
+.is-play .km-footer-C__ptag, .is-play .km-footer-C__pv, .is-play .km-footer-C__par { animation: km-footer-C-fade 300ms var(--ease-inout) 420ms both; }
+.is-play .km-footer-C__spec dd, .is-play .km-footer-C__line, .is-play .km-footer-C__note { animation: km-footer-C-fade 400ms var(--ease-inout) 640ms both; }
+.is-play .km-footer-C__cta, .is-play .km-footer-C__ct2 { animation: km-footer-C-fade 400ms var(--ease-inout) 900ms both; }
+.is-play .km-footer-C__legend, .is-play .km-footer-C__lcell, .is-play .km-footer-C__block { animation: km-footer-C-fade 400ms var(--ease-inout) 1000ms both; }
+/* the lockup plots: datums → mark plates → glyphs → dimensions → leaders; then the red plane steps K1 → K2 → K3 (JS) */
+.is-play .km-footer-C__cons, .is-play .km-footer-C__dl { animation: km-footer-C-fade 600ms var(--ease-inout) 600ms both; }
+.is-play .km-footer-C__o { stroke-dasharray: 1; animation: km-footer-C-plot 900ms var(--ease-inout) both; animation-delay: calc(760ms + var(--p) * 90ms); }
+.is-play .km-footer-C__dim { stroke-dasharray: 1; animation: km-footer-C-plot 600ms var(--ease-inout) 1900ms both; }
+.is-play .km-footer-C__dimt, .is-play .km-footer-C__fig { animation: km-footer-C-fade 300ms var(--ease-inout) 2300ms both; }
+.is-play .km-footer-C__lead { stroke-dasharray: 1; animation: km-footer-C-plot 400ms var(--ease-inout) 2200ms both; }
+.is-play .km-footer-C__node, .is-play .km-footer-C__tagbox, .is-play .km-footer-C__tagl { animation: km-footer-C-fade 300ms var(--ease-inout) 2450ms both; }

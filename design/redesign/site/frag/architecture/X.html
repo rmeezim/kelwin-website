@@ -1,0 +1,121 @@
+<section class="km km-architecture-X ac-sec ac-sec--ruled" data-surface="dark" data-sel="d" aria-labelledby="km-architecture-X-title">
+
+  <!-- head (A): label → two-voice statement → rule → lede (no note: the stack above carries one, and ownership is the assets section's line) -->
+  <div class="ac-head ac-wrap">
+    <div class="ac-labelrow"><p class="ac-label">System architecture</p><p class="ac-meta">Fig. 05</p></div>
+    <h2 class="ac-statement" id="km-architecture-X-title">
+      <span class="ac-line"><span>Three layers.</span></span>
+      <span class="ac-line ac-accent"><span>One closed loop.</span></span>
+    </h2>
+    <span class="ac-rule" aria-hidden="true"></span>
+    <p class="ac-lede">Narrative shapes what the market hears. Channels put it in motion. Intelligence feeds back what works, and that return is why the system compounds.</p>
+  </div>
+
+  <!-- FIG. 05 (A's clean plate, cols 1–12).
+       Cols 1–8: B's signal loop drawn as one TRACE, read left → right. The three stations sit on one
+       signal line (market signal in → 01 → 02 → 03 → compounding pipeline out); the red return runs
+       underneath, back from 03 into 01, and closes the loop; the dashed reroute arches over 02–03
+       (C's routing-sheet topology). Cols 9–12: B's "How it closes" ledger. C's lettered tags A–D sit
+       on the segments and key them to the ledger rows. -->
+  <div class="ac-wrap km-architecture-X__body">
+    <figure class="ac-plate km-architecture-X__plate" aria-labelledby="km-architecture-X-cap">
+      <div class="ac-field km-architecture-X__field" style="--h:480px">
+
+        <svg class="ac-svg km-architecture-X__draw" viewBox="0 0 1312 480" width="1312" height="480" role="img" aria-label="The signal loop, read left to right. Market signal enters and is defined into 01 Narrative, activated across to 02 Channels and measured into 03 Intelligence, which sends compounding pipeline out to the right. A dashed line arches back from Intelligence to Channels to reroute effort, and a red return path runs underneath from Intelligence back into Narrative, which closes the loop.">
+          <!-- A · define: market signal → 01 Narrative -->
+          <path class="ac-s-mute ac-plot km-architecture-X__seg km-architecture-X__seg--a" pathLength="1" style="--d:800ms;--t:450ms" d="M27 176.5H222.5"/>
+          <!-- B · activate: 01 → 02 -->
+          <path class="ac-s ac-plot km-architecture-X__seg km-architecture-X__seg--b" pathLength="1" style="--d:1250ms;--t:650ms" d="M222.5 176.5H445.5"/>
+          <!-- C · measure: 02 → 03 -->
+          <path class="ac-s ac-plot km-architecture-X__seg km-architecture-X__seg--c" pathLength="1" style="--d:1900ms;--t:650ms" d="M445.5 176.5H668.5"/>
+          <!-- output: 03 → compounding pipeline -->
+          <path class="ac-s-mute ac-plot km-architecture-X__out" pathLength="1" style="--d:2550ms;--t:400ms" d="M668.5 176.5H843.5"/>
+          <!-- reroute effort: 03 → 02, indirect (dashed), arching over the line -->
+          <path class="ac-s-mute ac-s-dash km-architecture-X__reroute" d="M668.5 173V120.5H445.5V173"/>
+          <!-- D · retune: THE ONE RED ELEMENT — the return path, 03 → under the line → 01, drawn last -->
+          <path class="ac-s-red ac-plot km-architecture-X__seg km-architecture-X__seg--d" pathLength="1" style="--d:2950ms;--t:1000ms" d="M668.5 176.5V352.5H222.5V176.5"/>
+
+          <!-- direction: one open chevron per segment -->
+          <path class="ac-s km-architecture-X__chev" style="--d:1750ms" d="M396 172L400.5 176.5L396 181"/>
+          <path class="ac-s km-architecture-X__chev" style="--d:2400ms" d="M619 172L623.5 176.5L619 181"/>
+          <path class="ac-s-mute km-architecture-X__chev" style="--d:2850ms" d="M796 172L800.5 176.5L796 181"/>
+          <path class="ac-s-mute km-architecture-X__chev km-architecture-X__chev--rr" style="--d:2800ms" d="M524.5 116L520 120.5L524.5 125"/>
+          <path class="ac-s-red km-architecture-X__chev km-architecture-X__chev--d" style="--d:3700ms" d="M334.5 348L330 352.5L334.5 357"/>
+
+          <!-- terminals (in / out) and the three stations: 7px nodes that latch as the line reaches them -->
+          <rect class="ac-f-fg km-architecture-X__term" style="--d:760ms" x="22" y="174" width="5" height="5"/>
+          <rect class="ac-node km-architecture-X__term km-architecture-X__term--out" style="--d:2900ms" x="843.5" y="174" width="5" height="5"/>
+          <rect class="ac-node is-on km-architecture-X__node" style="--d:1250ms" x="219.5" y="173.5" width="6" height="6"/>
+          <rect class="ac-node is-on km-architecture-X__node" style="--d:1900ms" x="442.5" y="173.5" width="6" height="6"/>
+          <rect class="ac-node is-on km-architecture-X__node" style="--d:2550ms" x="665.5" y="173.5" width="6" height="6"/>
+        </svg>
+
+        <!-- annotation on the drawing (Mona 14 callout labels) -->
+        <p class="km-architecture-X__lab km-architecture-X__lab--in" style="--d:760ms">Market signal</p>
+        <p class="km-architecture-X__lab km-architecture-X__lab--out" style="--d:2900ms">Compounding pipeline</p>
+        <p class="km-architecture-X__lab km-architecture-X__lab--rr" style="--d:2800ms">Reroute effort</p>
+
+        <!-- stations: B's big light numeral, then the name and one descriptor, hung from each node -->
+        <div class="km-architecture-X__stn km-architecture-X__stn--1" style="--d:1150ms">
+          <p class="ac-num km-architecture-X__num" style="--size:56px" aria-hidden="true"><span class="ac-num__u">01</span></p>
+          <p class="km-architecture-X__stn-t">Narrative</p><p class="km-architecture-X__stn-d">Positioning &amp; language</p>
+        </div>
+        <div class="km-architecture-X__stn km-architecture-X__stn--2" style="--d:1800ms">
+          <p class="ac-num km-architecture-X__num" style="--size:56px" aria-hidden="true"><span class="ac-num__u">02</span></p>
+          <p class="km-architecture-X__stn-t">Channels</p><p class="km-architecture-X__stn-d">Omnichannel orchestration</p>
+        </div>
+        <div class="km-architecture-X__stn km-architecture-X__stn--3" style="--d:2450ms">
+          <p class="ac-num km-architecture-X__num" style="--size:56px" aria-hidden="true"><span class="ac-num__u">03</span></p>
+          <p class="km-architecture-X__stn-t">Intelligence</p><p class="km-architecture-X__stn-d">Observe &amp; learn</p>
+        </div>
+
+        <!-- one dimension (C): the loop's span is one cycle -->
+        <div class="ac-dim km-architecture-X__dim" style="--x:222px;--y:408px;--w:447px;--d:3950ms;--t:600ms"><span class="ac-dim__v">One cycle · one quarter</span></div>
+
+        <!-- one packet laps the closed loop (ambient, constant speed) -->
+        <span class="km-architecture-X__packet" aria-hidden="true"></span>
+
+        <!-- C · lettered tags sit on their segments and key them to the ledger rows -->
+        <span class="km-architecture-X__tag km-architecture-X__tag--a" style="--x:124.5px;--y:176.5px;--d:950ms" aria-hidden="true"><span class="ac-callout__code">A</span></span>
+        <span class="km-architecture-X__tag km-architecture-X__tag--b" style="--x:334px;--y:176.5px;--d:1500ms" aria-hidden="true"><span class="ac-callout__code">B</span></span>
+        <span class="km-architecture-X__tag km-architecture-X__tag--c" style="--x:557px;--y:176.5px;--d:2150ms" aria-hidden="true"><span class="ac-callout__code">C</span></span>
+        <span class="km-architecture-X__tag km-architecture-X__tag--d" style="--x:445.5px;--y:352.5px;--d:3450ms" aria-hidden="true"><span class="ac-callout__code">D</span></span>
+
+        <!-- B · "How it closes" (cols 9–12): a ledger-group head, then rows that open in place, exactly one open -->
+        <div class="km-architecture-X__read">
+          <h3 class="ac-h3 km-architecture-X__readhead" id="km-architecture-X-how">How it closes</h3>
+          <div class="ac-ledger ac-cascade km-architecture-X__ledger" style="--d:900ms" role="list" aria-labelledby="km-architecture-X-how">
+            <div class="ac-row km-architecture-X__row" data-k="a" role="listitem" style="--i:0">
+              <button type="button" class="ac-row__head" aria-expanded="false" aria-controls="km-architecture-X-ra">
+                <span class="ac-callout__code">A</span><span class="ac-h4">Define</span><span class="ac-cap km-architecture-X__route">In<span class="ac-sr"> to </span><i class="km-architecture-X__to" aria-hidden="true"></i>01</span><span class="ac-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="ac-row__more" id="km-architecture-X-ra"><div><div class="ac-row__in"><p class="ac-support">Market signal (ICP, intent, demand) sets the brief the narrative is written to.</p></div></div></div>
+            </div>
+            <div class="ac-row km-architecture-X__row" data-k="b" role="listitem" style="--i:1">
+              <button type="button" class="ac-row__head" aria-expanded="false" aria-controls="km-architecture-X-rb">
+                <span class="ac-callout__code">B</span><span class="ac-h4">Activate</span><span class="ac-cap km-architecture-X__route">01<span class="ac-sr"> to </span><i class="km-architecture-X__to" aria-hidden="true"></i>02</span><span class="ac-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="ac-row__more" id="km-architecture-X-rb"><div><div class="ac-row__in"><p class="ac-support">The narrative goes live across email, social, phone, content and events, run as one.</p></div></div></div>
+            </div>
+            <div class="ac-row km-architecture-X__row" data-k="c" role="listitem" style="--i:2">
+              <button type="button" class="ac-row__head" aria-expanded="false" aria-controls="km-architecture-X-rc">
+                <span class="ac-callout__code">C</span><span class="ac-h4">Measure</span><span class="ac-cap km-architecture-X__route">02<span class="ac-sr"> to </span><i class="km-architecture-X__to" aria-hidden="true"></i>03</span><span class="ac-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="ac-row__more" id="km-architecture-X-rc"><div><div class="ac-row__in"><p class="ac-support">Every touch is instrumented, so intelligence observes what actually works.</p></div></div></div>
+            </div>
+            <div class="ac-row km-architecture-X__row is-open" data-k="d" role="listitem" style="--i:3">
+              <button type="button" class="ac-row__head" aria-expanded="true" aria-controls="km-architecture-X-rd">
+                <span class="ac-callout__code">D</span><span class="ac-h4">Retune</span><span class="ac-cap km-architecture-X__route">03<span class="ac-sr"> to </span><i class="km-architecture-X__to" aria-hidden="true"></i>01</span><span class="ac-toggle" aria-hidden="true"></span>
+              </button>
+              <div class="ac-row__more" id="km-architecture-X-rd"><div><div class="ac-row__in"><p class="ac-support">What intelligence learns flows back each quarter, retuning the narrative and rerouting effort.</p></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ac-capband km-architecture-X__band">
+        <figcaption id="km-architecture-X-cap"><p class="ac-tblock"><span>Fig. 05</span><span>Signal loop</span><span class="km-architecture-X__tstate" data-statecell>Closed</span><span>Schematic</span></p></figcaption>
+      </div>
+    </figure>
+  </div>
+</section>

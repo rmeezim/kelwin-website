@@ -1,0 +1,20 @@
+{
+ "title": "The Core, Installed",
+ "direction": "A",
+ "summary": "A's second full-red plane opens like the founder's hero, with a paper-square caps label, a flush-left 120px two-voice 'Initiate the / System Audit.' and the short rule. FIG. 10 is then the mark's core square (K3, at its 42:38 proportions) cut as one paper plate. That plate is the primary action, and it carries the one number the offer turns on: 10 working days, fixed scope. It replaces today's dot-matrix T-00, rounded grid cells and bracketed button with one poster object, so the decision is unmistakable.",
+ "reference": {
+  "site": "Studio Freight",
+  "mobbin_url": "https://mobbin.com/sites/sections/c7a1c798-ce4e-4cd6-8770-21c5893d2478",
+  "ref_file": "refs/cta-A.webp",
+  "borrowed": "The typographic contact poster on an empty field: a tiny label above the top-left of a large type block, one solid square anchored at the block's bottom-left so that type wraps it on its top and right sides, small furniture at the page edges, and nothing else on screen.",
+  "kelwin": "The field is A's flat full-red plane (data-surface red), and the inversion rule applies: paper label squares, a paper rule and a paper action. The poster's headline becomes A's two-voice statement at 120px, flush left to echo the founder's hero. 'Initiate the' is set in wide --display-weight paper and 'System Audit.' in light --fg-2. This deliberately drops Studio Freight's staircase indent, because A's principle band already uses that move. The engraving becomes the mark's core square: a 310×280 paper plate on cols 1–3 that IS 'Request a System Audit' (red text, tracked caps, drawn ↗), carrying a 168px wide '10' over 'WORKING DAYS · FIXED SCOPE'. The type wraps it as in the reference: the statement above, and to its right the lede with 'Talk to the team →' (to /contact) on the plate's last baseline. The hero's bottom-right annotation returns as '■ Deployment window open · Fixed scope, fixed end date. The readout is yours to keep.' The poster's edge furniture becomes A's FIG. band under a hairline: 'FIG. 10 · The core, installed' and 'Phase 01 / 04 · Diagnose'."
+ },
+ "motion": [
+  "entrance: the label row fades in (300ms). 'Initiate the' rises out of its mask (800ms --ease-out), and the light 'System Audit.' follows 320ms behind. The paper rule draws (500ms). The lede, the secondary and the note fade up 12px (600ms), and the band hairline draws left to right (1.2s).",
+  "the installed beat (the one orchestrated moment): at about 1.15s the paper core opens from the mark's own anchor, its bottom-left corner, by a clip-path reveal (750ms --ease-inout). Its number counts 00 → 10 once (900ms, ease-out, JS) and 'Request a System Audit' rises into place. All motion ends by about 2.5s.",
+  "interaction: on hover the core's fill goes to --accent-hover (blush on red) and ↗ moves 2px up-right. The secondary's underline goes from --line-2 to paper and its → moves 3px. Nothing loops.",
+  "on the live site: the sequence runs once when the plane is 50% visible. Reduced motion shows the final state, with the core in place reading 10."
+ ],
+ "demoMs": 3000,
+ "notes": "949px tall: 112px top padding (A's rhythm), the label row, the 2-line 120px statement, the 48×2 paper rule, then a 280px row (core cols 1–3 · lede and secondary cols 4–8 · note cols 10–12), and 104px to the 88px FIG. band. The core's action label, the secondary and the note's last line share one baseline. Labels and buttons follow the founder spec and hero-A: Mona 500 tracked caps, with arrows drawn in SVG because the brand fonts have no ↗/→. Both skins checked. This is A's second full-red plane (the other is the principle band), so the two must stay non-adjacent in page order. Coherence pass: renumbered FIG. 10 (it had duplicated before/after's FIG. 09); 11px label; statement at 120px, the size A uses for both red planes."
+}

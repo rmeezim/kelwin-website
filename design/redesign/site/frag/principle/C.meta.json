@@ -1,0 +1,21 @@
+{
+  "title": "Signal / noise sheet",
+  "direction": "C",
+  "summary": "An almost empty paper sheet from Kelwin's drawing set. The caps principle stands in the centre cell at C's sheet-title scale, and the datum crossing the side cells draws it as a signal route: input noise on the left, one clean output line on the right, ending on the frame at the sheet's single red tick. Today's version is a slogan scrolling over a photograph.",
+  "reference": {
+    "site": "Heron AI",
+    "mobbin_url": "https://mobbin.com/sites/sections/da478a6a-0069-4e5a-86c0-f9ffde610ebc",
+    "ref_file": "refs/principle-C.webp",
+    "borrowed": "The 'We're architects…' sheet. A framed band is split into three cells by full-height verticals: narrow side cells and a wide centre cell holding a centred caps title over a short centred line. A dashed datum crosses the side cells at mid-height, carrying tiny mono marginalia flush to the outer edges, a question at left and its answer at right, read across the title. There are crosshair marks at the frame corners, and the sheet is otherwise almost empty.",
+    "kelwin": "Heron's cells snap to the 12-col grid (cols 1–3 | 4–9 | 10–12, walls on the gutter centres) inside C's continuous frame, with 9px crosshairs only at the four frame corners and where the datum meets the cell walls. Heron's modest centred title becomes Mona wide 430 caps at 72px — C's sheet-title size — stacked on four lines ('IN A NOISY / MARKET, / THE CLEAREST / COMPANY WINS.') because the centre cell's measure cannot hold 'IN A NOISY MARKET,' on one line at that size; the title and its 24px light note are centred in the drawing field, which puts 'THE CLEAREST' exactly on the datum. Heron's question/answer marginalia become lettered callouts that straddle the datum: 'A · INPUT / NOISE' and 'B · OUTPUT / SIGNAL'. The datum itself becomes FIG. 7.1. On the left it is noise: 22 short 1px ticks jittered about a dashed construction line, calming as they near the principle. On the right it is one solid 1px output line that ends on the frame at Heron's red tick, a 6×14px --accent mark and the only red on the sheet. A 48px bottom band adds the legend and the title block 'SHEET 07/14 · REV C · SCALE 1:1 · KELWIN/GTM'."
+  },
+  "motion": [
+    "entrance, in drafting order: the frame and crosshairs fade in (300ms), the cell walls and rules draw in raster order (440ms each, 40ms stagger), and the four caps lines wipe in left→right (700ms, 120ms stagger). The note then fades in and the dashed construction datum appears.",
+    "orchestrated moment: the 22 noise ticks plot left→right, each growing from its own centre (260ms, 24ms apart). The output line then draws as one stroke from the right cell wall to the frame by stroke-dashoffset (900ms --ease-inout). The red tick drops onto the frame line (opacity plus an 8px settle, 400ms --ease-out), marking where the clear signal lands. The mono callouts, legend and title-block values type on at 24ms per character in step with what they label.",
+    "ambient: none. The sheet holds still once plotted.",
+    "interaction: none. It is a pause sheet with no controls.",
+    "on the live site: the sequence runs once at 50% visibility, with no pin. Reduced motion shows the fully plotted sheet with every value set."
+  ],
+  "demoMs": 3800,
+  "notes": "The title is set at C's 72px sheet-title size (the first build used 60px, which read as a caption beside the 88px titles of the neighbouring sheets). At 72px the caps line 'IN A NOISY MARKET,' is 721px wide and the centre cell is 669px, so the title stacks on four lines rather than widening the centre cell — that keeps Heron's 3|6|3 proportions and leaves the side cells wide enough for the noise/signal drawing. The datum sits at the drawing field's mid-height (y 424), the title group (title plus note) is centred on the field, and 'THE CLEAREST' falls on the datum. Sheet 07/14 continues C's numbering (state change 06, method 08). The noise is a deterministic drawing, not data, so it needs no SPECIMEN label."
+}

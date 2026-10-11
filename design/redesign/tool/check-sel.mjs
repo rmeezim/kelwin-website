@@ -1,0 +1,31 @@
+import { chromium } from "playwright";
+const b = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+const p = await b.newPage({ viewport: { width: 1440, height: 1000 }, ignoreHTTPSErrors: true });
+const errs = [];
+p.on("pageerror", (e) => errs.push("pageerror " + e.message));
+p.on("console", (m) => { if (m.type() === "error" && !/fonts\.g|ERR_CERT|net::/.test(m.text())) errs.push(m.text()); });
+await p.goto("http://localhost:8320/index.html", { waitUntil: "load" });
+await p.waitForTimeout(1500);
+await p.locator("#s-hero").scrollIntoViewIfNeeded();
+await p.waitForTimeout(2500);
+const r1 = await p.evaluate(() => {
+  const f = document.querySelector("#stage-hero iframe");
+  return { iframe: !!f, ready: f && f.classList.contains("is-ready"), h: f && f.style.height, tf: f && f.style.transform, skinInFrame: f && f.contentDocument && f.contentDocument.documentElement.getAttribute("data-skin") };
+});
+await p.click('.seg [data-skin="kelwin"]');
+await p.waitForTimeout(700);
+const r2 = await p.evaluate(() => {
+  const f = document.querySelector("#stage-hero iframe");
+  return { skinInFrame: f.contentDocument.documentElement.getAttribute("data-skin"), poster: document.querySelector("#stage-hero .poster").src.split("/").pop() };
+});
+await p.click("#pick-hero");
+await p.waitForTimeout(300);
+const r3 = await p.evaluate(() => ({ prog: document.querySelector("#prog-txt").textContent, chip: document.querySelector("#chip-hero").textContent, save: document.querySelector("#save-state").textContent, sum: document.querySelector("#summary-pre").textContent.split("\n").slice(0, 4).join(" | ") }));
+await p.locator("#s-hero").screenshot({ path: process.argv[2] + "/sel-hero.png" });
+await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(300);
+await p.screenshot({ path: process.argv[2] + "/sel-top.png" });
+const m = await b.newPage({ viewport: { width: 390, height: 844 } });
+await m.goto("http://localhost:8320/index.html", { waitUntil: "load" }); await m.waitForTimeout(1200);
+const mob = await m.evaluate(() => ({ sw: document.documentElement.scrollWidth, cw: document.documentElement.clientWidth }));
+console.log(JSON.stringify({ r1, r2, r3, mob, errs }, null, 1));
+await b.close();

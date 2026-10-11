@@ -1,0 +1,31 @@
+
+.km-buttons-U { padding: 96px 0 0; }
+.km-buttons-U__head { padding-bottom: 48px; }
+.km-buttons-U__h { margin-top: 20px; }
+.km-buttons-U__band { background: var(--bg); color: var(--fg); padding: 56px 0 64px; }
+.km-buttons-U__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gutter); margin-top: 32px; }
+.km-buttons-U__cell { display: grid; gap: 18px; align-content: start; }
+.km-buttons-U__row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; min-height: 56px; }
+.km-buttons-U__desc { margin: 0; font-family: var(--f-body); font-size: 14px; line-height: 1.45; color: var(--fg-2); max-width: 30ch; }
+.km-buttons-U .ac-btn { padding: 0 22px 0 24px; }
+
+/* B, C, D: one chamfer, bottom-right; focus ring drawn inside the cut */
+.km-buttons-U__b, .km-buttons-U__c, .km-buttons-U__d.ac-btn,
+.km-buttons-U__bo, .km-buttons-U__co, .km-buttons-U__do { --cut: 14px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); }
+.km-buttons-U__bo, .km-buttons-U__co, .km-buttons-U__do { --cut: 11px; position: relative; }
+.km-buttons-U__b, .km-buttons-U__c { font-weight: 600; font-size: 14px; letter-spacing: .1em; padding-right: 30px !important; }
+.km-buttons-U__bo, .km-buttons-U__co { font-weight: 600; letter-spacing: .1em; padding-right: 24px; }
+.km-buttons-U__c::after, .km-buttons-U__co::after { display: none; }
+.km-buttons-U__c { padding: 0 34px 0 30px !important; }
+/* the outlined chamfer: the border can't follow the cut, so the diagonal is drawn */
+.km-buttons-U__bo::before, .km-buttons-U__co::before, .km-buttons-U__do::before {
+  content: ""; position: absolute; right: -1px; bottom: calc(var(--cut) * .5 - .5px); width: calc(var(--cut) * 1.4142); height: 1px;
+  background: var(--line-2); transform: translateX(calc(var(--cut) * -.2071)) rotate(-45deg); transform-origin: center;
+}
+.km-buttons-U__bo:hover::before, .km-buttons-U__co:hover::before, .km-buttons-U__do:hover::before { background: var(--fg); }
+/* D: the literal reference */
+.km-buttons-U__d.ac-btn { --cut: 16px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); font-weight: 700; font-size: 15px; letter-spacing: .02em; padding: 0 36px 0 30px; }
+.km-buttons-U__d.ac-btn::after { display: none; }
+.km-buttons-U__do { font-weight: 700; letter-spacing: .02em; padding-right: 24px; }
+.km-buttons-U__do::after { display: none; }
+.km-buttons-U .ac-btn:focus-visible, .km-buttons-U .ac-btn-o:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }

@@ -1,0 +1,147 @@
+/* ── assets · A · Cinematic Figures — FIG. 08, the handover kit ─────────────
+   Head echoes the hero (founder DNA): red-square caps label → two-voice wide
+   headline (light accent) → 48×2 red rule → lede; the coda is the bottom-right note.
+   FIG. 08 knolls the TRUE three-piece mark, cut at its own joins, into a
+   three-compartment tray — one compartment per capability — beside its own
+   assembly drawing (part 06). One red element: the K3 core.                 */
+.km-assets-A { padding: 112px 0 96px; overflow: hidden; }   /* after the paper fit act: a hard surface cut */
+.km-assets-A__in { padding-inline: var(--margin); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); }
+
+/* ── head ── */
+.km-assets-A__labels { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; }
+.km-assets-A__label {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-assets-A__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-assets-A__fignum {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3);
+}
+.km-assets-A__h {
+  grid-column: 1 / span 9; grid-row: 2; margin-top: 36px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 96px; line-height: .98; letter-spacing: var(--display-tracking);
+}
+.km-assets-A__mask { display: block; overflow: hidden; padding-block: .08em .14em; margin-block: -.08em -.14em; }
+.km-assets-A__l1, .km-assets-A__l2 { display: block; white-space: nowrap; }
+.km-assets-A__l1 { font-weight: var(--display-weight); color: var(--fg); }
+.km-assets-A__l2 { font-weight: var(--light-weight); color: var(--fg-2); }
+.km-assets-A__rule { grid-column: 1; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 36px; background: var(--signal); transform-origin: 0 50%; }
+.km-assets-A__lede {
+  grid-column: 1 / span 6; grid-row: 4; margin-top: 28px; max-width: 50ch;
+  font-size: 20px; line-height: 1.5; color: var(--fg-2);
+}
+/* the quiet annotation, anchored bottom-right (cols 10–12): the act's coda */
+.km-assets-A__note { grid-column: 10 / span 3; grid-row: 4; align-self: end; display: flex; flex-direction: column; gap: 14px; }
+.km-assets-A__note-copy { font-size: 15px; line-height: 1.55; color: var(--fg-2); max-width: 30ch; }
+
+/* ── FIG. 08 plate (cols 1–12, flat --panel, caption band inside its bottom edge) ── */
+.km-assets-A__plate { grid-column: 1 / -1; grid-row: 5; position: relative; margin-top: 64px; height: 420px; background: var(--panel); }
+.km-assets-A__svg { position: absolute; left: 0; top: 0; display: block; overflow: visible; }
+
+.km-assets-A__bay { fill: var(--panel-2); opacity: 0; transition: opacity 400ms var(--ease-out); }
+.km-assets-A__wall { fill: none; stroke: var(--line); stroke-width: 1; }
+.km-assets-A__floor { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-assets-A__slot { fill: none; stroke: var(--line-2); stroke-width: 1; shape-rendering: crispEdges; transition: stroke 300ms var(--ease-out); }
+
+/* the parts: flat fills — K1 paper, K2 blush — and ONE red: the K3 core */
+.km-assets-A__p { transition: transform 900ms var(--ease-inout); transition-delay: calc(var(--o) * 120ms); }
+.km-assets-A__p rect { shape-rendering: crispEdges; }
+.km-assets-A__p[data-p="1"] rect, .km-assets-A__p[data-p="2"] rect { fill: var(--fg); }
+.km-assets-A__p[data-p="3"] rect, .km-assets-A__p[data-p="4"] rect { fill: var(--soft); }
+.km-assets-A__p--core rect { fill: var(--accent); }
+
+/* 06 · the assembly drawing */
+.km-assets-A__ol { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-assets-A__join { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 3 3; }
+
+/* markers: squared mono numbers on one line under the seats */
+.km-assets-A__marks { position: absolute; inset: 0; pointer-events: none; }
+.km-assets-A__mk {
+  position: absolute; display: flex; align-items: center; justify-content: center; height: 20px; min-width: 28px; padding: 0 5px;
+  border: 1px solid var(--line-2); font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: 0.04em; color: var(--fg);
+  transition: opacity 500ms var(--ease-out), background-color 300ms var(--ease-out), color 300ms var(--ease-out), border-color 300ms var(--ease-out);
+  transition-delay: calc(900ms + var(--t) * 90ms), 0ms, 0ms, 0ms;
+}
+
+/* state: Installed — the parts nest as the running mark (JS translates them); the empty seats stay, numbers dim */
+.km-assets-A__plate[data-state="installed"] .km-assets-A__mk { opacity: .32; transition-delay: 0ms; }
+.km-assets-A__plate[data-state="installed"] .km-assets-A__slot { stroke: var(--line); }
+.km-assets-A__plate.is-snap :is(.km-assets-A__p, .km-assets-A__mk, .km-assets-A__seg, .km-assets-A__slot) { transition: none; }
+
+/* strip hover → its compartment rises and its seats/numbers light */
+.km-assets-A:has(.km-assets-A__strip[data-k="1"]:hover) .km-assets-A__bay[data-k="1"],
+.km-assets-A:has(.km-assets-A__strip[data-k="2"]:hover) .km-assets-A__bay[data-k="2"],
+.km-assets-A:has(.km-assets-A__strip[data-k="3"]:hover) .km-assets-A__bay[data-k="3"] { opacity: 1; }
+.km-assets-A:has(.km-assets-A__strip[data-k="1"]:hover) .km-assets-A__slot[data-k="1"],
+.km-assets-A:has(.km-assets-A__strip[data-k="2"]:hover) .km-assets-A__slot[data-k="2"],
+.km-assets-A:has(.km-assets-A__strip[data-k="3"]:hover) .km-assets-A__slot[data-k="3"] { stroke: var(--fg-2); }
+.km-assets-A:has(.km-assets-A__strip[data-k="1"]:hover) .km-assets-A__mk[data-k="1"],
+.km-assets-A:has(.km-assets-A__strip[data-k="2"]:hover) .km-assets-A__mk[data-k="2"],
+.km-assets-A:has(.km-assets-A__strip[data-k="3"]:hover) .km-assets-A__mk[data-k="3"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+
+/* caption band: FIG caption left · segmented control right */
+.km-assets-A__cap {
+  position: absolute; left: 24px; bottom: 34px;
+  font-family: var(--f-mono); font-size: 12px; line-height: 12px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-assets-A__segs { position: absolute; right: 24px; bottom: 16px; display: flex; height: 48px; border: 1px solid var(--line-2); }
+.km-assets-A__seg {
+  height: 46px; padding: 0 20px; font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 46px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: background-color 500ms var(--ease-inout), color 500ms var(--ease-inout);
+}
+.km-assets-A__seg + .km-assets-A__seg { box-shadow: inset 1px 0 0 var(--line); }
+.km-assets-A__seg:hover { color: var(--fg); }
+.km-assets-A__seg[aria-selected="true"] { background: var(--fg); color: var(--bg); box-shadow: none; }
+
+/* ── the key: three strips under their three compartments (Metalab rhythm) ── */
+.km-assets-A__strips { grid-column: 1 / -1; grid-row: 6; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--gutter); }
+.km-assets-A__strip { position: relative; display: flex; flex-direction: column; padding: 28px 24px 0 0; }
+.km-assets-A__strip + .km-assets-A__strip::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--gutter) / -2); width: 1px; background: var(--line);
+}
+.km-assets-A__si {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-assets-A__item { margin-top: 24px; }
+.km-assets-A__item + .km-assets-A__item { margin-top: 28px; }
+.km-assets-A__st {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 28px; line-height: 1.1; letter-spacing: var(--display-tracking); color: var(--fg-2);
+  transition: color 300ms var(--ease-out);
+}
+.km-assets-A__no {
+  flex: none; display: inline-flex; align-items: center; justify-content: center; height: 20px; min-width: 28px; padding: 0 5px;
+  border: 1px solid var(--line-2); font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: 0.04em; font-weight: 400; font-stretch: 100%; color: var(--fg);
+}
+.km-assets-A__strip:hover .km-assets-A__st { color: var(--fg); }
+.km-assets-A__sd { margin-top: 10px; padding-left: 42px; font-size: 15px; line-height: 1.5; color: var(--fg-2); max-width: 44ch; }
+.km-assets-A__sf {
+  margin-top: 8px; padding-left: 42px; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+
+/* ── entrance (only under html.is-play) ── */
+@keyframes km-assets-A-fade { from { opacity: 0; } }
+@keyframes km-assets-A-rise { from { transform: translateY(104%); } }
+@keyframes km-assets-A-up { from { opacity: 0; transform: translateY(12px); } }
+@keyframes km-assets-A-draw { from { transform: scaleX(0); } }
+@keyframes km-assets-A-slide { from { opacity: 0; transform: translate(48px, -48px); } }
+@keyframes km-assets-A-land { from { opacity: 0; transform: translate(0, -10px); } }
+
+.is-play .km-assets-A__labels { animation: km-assets-A-fade 300ms var(--ease-out) both; }
+.is-play .km-assets-A__l1 { animation: km-assets-A-rise 800ms var(--ease-out) 120ms both; }
+.is-play .km-assets-A__l2 { animation: km-assets-A-rise 800ms var(--ease-out) 440ms both; }
+.is-play .km-assets-A__rule { animation: km-assets-A-draw 500ms var(--ease-out) 900ms both; }
+.is-play .km-assets-A__lede { animation: km-assets-A-up 600ms var(--ease-out) 640ms both; }
+.is-play .km-assets-A__note { animation: km-assets-A-up 600ms var(--ease-out) 760ms both; }
+.is-play .km-assets-A__plate { animation: km-assets-A-fade 500ms var(--ease-out) 560ms both; }
+/* the mark assembles part by part on its own drawing, from the top-right; the red core lands last — the 'installed' beat */
+.is-play .km-assets-A__in { animation: km-assets-A-slide 700ms var(--ease-out) both; animation-delay: calc(760ms + var(--e) * 120ms); }
+.is-play .km-assets-A__in--core { animation: km-assets-A-land 400ms var(--ease-out) 1640ms both; }
+.is-play .km-assets-A__cap, .is-play .km-assets-A__segs { animation: km-assets-A-fade 500ms var(--ease-out) 1300ms both; }
+.is-play .km-assets-A__strip { animation: km-assets-A-up 700ms var(--ease-out) both; animation-delay: calc(1200ms + var(--i) * 90ms); }
+

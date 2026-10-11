@@ -1,0 +1,195 @@
+/* ── method · W · "Phase ledger + track" (round 4) ──────────────────────────────
+   The founder: round 3 was "a little too empty" and "an abrupt change in design language".
+   So the section speaks the family's instrument language again — the kit head (label →
+   two-voice statement → rule → lede, quiet note at cols 10–12) over one flat instrument
+   panel — but the panel is new to the page: a phase LEDGER (cols 1–7) and a compact GANTT
+   (cols 8–12) that share their rows, so every bar lives in its own phase's row.
+   The scale is one tick per working day: the red Diagnose bar spans exactly ten lit
+   intervals (the only measured span; everything else is Indicative). The Handover datum
+   leaves the panel at its foot; Calibrate leaves it at its right edge and runs off the page.
+   Red = the label squares, the 48×2 rule and the Diagnose bar. One ambient loop: the packet.
+   Default CSS = final state. Entrances only under .is-play.                                 */
+
+.km-method-W {
+  overflow-x: clip;                                       /* Calibrate (and its packet) leave the page here */
+  --pitch: calc(var(--col) + var(--gutter));
+  --lx: calc(7 * var(--pitch) - var(--gutter));           /* ledger right edge (cols 1–7)   ≈ 755.33 */
+  --gx: calc(7 * var(--pitch));                           /* gantt origin (col 8)           ≈ 779.33 */
+  --hh: 56px;                                             /* header strip; its bottom rule is the ruler */
+  --rh: 112px;                                            /* one phase row */
+  --day: 10px;                                            /* the scale: one working day */
+  --dx: 370px;                                            /* the Handover datum, gantt-local */
+  --cells: 40px minmax(0, 1fr) 176px;                     /* index · phase + output · run by */
+}
+
+/* ── head (kit): placement only — the lede spans cols 1–7 so it sets in two lines ── */
+.km-method-W .ac-head > .ac-lede { grid-column: 1 / span 7; max-width: 60ch; }
+.km-method-W__nb { white-space: nowrap; }
+
+/* ── the instrument (cols 1–12), 64px under the head — the page's head → figure step ── */
+.km-method-W__body { margin-top: 64px; }
+.km-method-W__panel {
+  position: relative; height: calc(var(--hh) + 4 * var(--rh));
+  background: var(--panel); --ac-occlude: var(--panel);
+}
+
+/* header strip: the ledger's column keys, on the same columns as the rows */
+.km-method-W__hd {
+  position: absolute; left: 0; top: 0; width: var(--lx); height: var(--hh);
+  display: grid; grid-template-columns: var(--cells); column-gap: var(--gutter); align-items: center;
+  padding-inline: 24px;
+}
+.km-method-W__key--ph { grid-column: 2; }
+.km-method-W__key--by { grid-column: 3; }
+/* the drawing's title block sits on the scale's left end, like its legend */
+.km-method-W__tb { position: absolute; left: var(--gx); top: 12px; z-index: 2; }
+
+/* the ruler: its base is the header's bottom rule (full panel width); ticks hang into row 01 */
+.km-method-W__ruler { position: absolute; left: var(--gx); right: 0; top: var(--hh); height: 9px; z-index: 2; pointer-events: none; }
+.km-method-W__base {
+  position: absolute; left: calc(-1 * var(--gx)); right: 0; top: -1px; height: 1px;
+  background: var(--line-2); transform-origin: 0 50%;
+}
+.km-method-W__tick { position: absolute; top: 0; width: 1px; height: 4px; background: var(--line-2); }
+.km-method-W__tick--maj { height: 8px; background: var(--fg-3); }
+/* the measured span: the ten intervals over the Diagnose bar are the only lit part of the scale
+   (a duration is known only there; everything after it is Indicative) */
+.km-method-W__tick--on { height: 6px; background: var(--fg); --pre: var(--line-2); }
+.km-method-W__tick--on.km-method-W__tick--maj { height: 10px; --pre: var(--fg-3); }
+
+/* ── the ledger rows: one phase per row; the row's lane carries its bar ── */
+.km-method-W__rows { position: absolute; left: 0; right: 0; top: var(--hh); }
+.km-method-W__row {
+  position: relative; height: var(--rh);
+  display: grid; grid-template-columns: var(--cells); column-gap: var(--gutter); align-items: start;
+  padding: 26px calc(100% - var(--lx) + 24px) 0 24px;
+  transition: background-color 300ms var(--ease-out);
+}
+.km-method-W__row + .km-method-W__row { border-top: 1px solid var(--line); }
+/* the ledger's side of the handover: the rule between 03 and 04 is one step stronger */
+.km-method-W__row--cal { border-top-color: var(--line-2) !important; }
+.km-method-W__row:hover { background: var(--panel-2); }
+.km-method-W__idx { margin-top: 10px; }
+.km-method-W__name { display: block; }
+.km-method-W__out { margin-top: 6px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); white-space: nowrap; }
+.km-method-W__by { margin-top: 6px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.km-method-W__row--cal .km-method-W__by { color: var(--fg); }
+.km-method-W__hom { display: none; }
+
+/* the lane: gantt-local coordinates, from col 8 to the stage edge. Its dashed centre line is
+   Kelwin's schedule window — it stops at the Handover datum; past it only Calibrate runs */
+.km-method-W__lane { position: absolute; left: var(--gx); right: calc(-1 * var(--margin)); top: 0; bottom: 0; pointer-events: none; }
+.km-method-W__lane::before {
+  content: ""; position: absolute; left: 0; width: var(--dx); top: 50%; height: 1px; background-color: var(--line-2);
+  -webkit-mask: var(--km-method-W-dash) left center / 6px 1px repeat-x; mask: var(--km-method-W-dash) left center / 6px 1px repeat-x;
+  --km-method-W-dash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='1'%3E%3Crect width='2' height='1'/%3E%3C/svg%3E");
+}
+.km-method-W__bar {
+  position: absolute; top: 50%; height: 10px; margin-top: -5px;
+  background: var(--fg-2); transform-origin: 0 50%; transition: background-color 300ms var(--ease-out);
+}
+.km-method-W__bar--dia { left: 0; width: calc(10 * var(--day)); background: var(--accent); }      /* the one red: ten days */
+.km-method-W__bar--arc { left: calc(11 * var(--day)); width: calc(12 * var(--day)); }
+.km-method-W__bar--ins { left: calc(24 * var(--day)); width: calc(12 * var(--day)); }
+.km-method-W__bar--cal { left: var(--dx); right: -64px; background: var(--fg); }                   /* runs on, off the page */
+.km-method-W__row:hover .km-method-W__bar--arc,
+.km-method-W__row:hover .km-method-W__bar--ins { background: var(--fg); }
+
+/* annotations in the drawing: the audit's one dimension, and whose line Calibrate is */
+.km-method-W__dim { position: absolute; left: 0; bottom: calc(50% + 14px); color: var(--fg); }
+.km-method-W__yours { position: absolute; left: calc(var(--dx) + 12px); bottom: calc(50% + 14px); color: var(--fg); }
+
+/* the packet: a 6px square riding Calibrate off the page (only under .is-play) */
+.km-method-W__pkt { position: absolute; left: 8px; top: 2px; width: 6px; height: 6px; background: var(--bg); opacity: 0; }
+
+/* the ledger | track seam */
+.km-method-W__seam { position: absolute; left: calc(var(--lx) + var(--gutter) / 2); top: 0; bottom: 0; width: 1px; background: var(--line); z-index: 2; transform-origin: 50% 0; }
+
+/* the Handover datum: 1px --fg-2, drawn through the instrument and out of both its edges */
+.km-method-W__datum {
+  position: absolute; left: calc(var(--gx) + var(--dx)); top: -24px; bottom: -24px; width: 1px;
+  background: var(--fg-2); z-index: 2; transform-origin: 50% 0; pointer-events: none;
+}
+.km-method-W__ho { position: absolute; left: 12px; top: 44px; color: var(--fg); }
+
+/* ── entrance (only under .is-play): panel → scale calibrates → phases in reading order, each
+   label then its bar (Diagnose first, in red, lighting its ten days) → the datum → Calibrate
+   runs out past the edge → the packet ── */
+.is-play .km-method-W__panel { animation: ac-up 600ms var(--ease-out) 380ms both; }
+.is-play .km-method-W__hd,
+.is-play .km-method-W__tb { animation: ac-fade 500ms var(--ease-out) 720ms both; }
+.is-play .km-method-W__base { animation: ac-drawx 900ms var(--ease-inout) 560ms both; }
+.is-play .km-method-W__seam { animation: ac-drawy 700ms var(--ease-inout) 640ms both; }
+.is-play .km-method-W__tick { animation: km-method-W-cal 640ms var(--ease-inout) both; animation-delay: calc(680ms + var(--i) * 14ms); }
+.is-play .km-method-W__tick--on {
+  animation: km-method-W-cal 640ms var(--ease-inout) both, km-method-W-lit 240ms var(--ease-out) both;
+  animation-delay: calc(680ms + var(--i) * 14ms), calc(1460ms + var(--i) * 68ms);
+}
+.km-method-W__row { --t: calc(1100ms + var(--i) * 620ms); }
+.km-method-W__row--cal { --t: 3140ms; }
+.is-play .km-method-W__idx,
+.is-play .km-method-W__main,
+.is-play .km-method-W__by { animation: ac-up 600ms var(--ease-out) var(--t) both; }
+.is-play .km-method-W__by { animation-delay: calc(var(--t) + 120ms); }
+.is-play .km-method-W__bar { animation: ac-drawx 700ms var(--ease-inout) calc(var(--t) + 340ms) both; }
+.is-play .km-method-W__bar--cal { animation-duration: 1000ms; animation-delay: 3640ms; }
+.is-play .km-method-W__dim { animation: ac-fade 400ms var(--ease-out) 2080ms both; }
+.is-play .km-method-W__lane::before { animation: ac-fade 500ms var(--ease-out) calc(var(--t) + 200ms) both; }
+.is-play .km-method-W__datum { animation: ac-drawy 460ms var(--ease-inout) 2960ms both; }
+.is-play .km-method-W__ho { animation: ac-fade 400ms var(--ease-out) 3240ms both; }
+.is-play .km-method-W__yours { animation: ac-fade 400ms var(--ease-out) 4300ms both; }
+/* ambient: the page's only loop besides the film — 9.6s per lap, linear, off the edge */
+.is-play .km-method-W__pkt { animation: km-method-W-pkt 9600ms linear 4800ms infinite; }
+.km-method-W[data-idle] .km-method-W__pkt { animation-play-state: paused; }
+/* homepage only (set by the script): the panel holds its first frame until it is in view */
+.km-method-W[data-wait] .km-method-W__panel,
+.km-method-W[data-wait] .km-method-W__panel *,
+.km-method-W[data-wait] .km-method-W__panel *::before { animation-play-state: paused !important; }
+
+@keyframes km-method-W-cal {
+  0%   { opacity: 0; transform: translateX(var(--j, 0px)); }
+  35%  { opacity: 1; transform: translateX(var(--j, 0px)); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes km-method-W-lit { from { background: var(--pre); } }
+@keyframes km-method-W-pkt {
+  0%   { opacity: 0; transform: none; }
+  4%   { opacity: 1; }
+  100% { opacity: 1; transform: translateX(260px); }
+}
+@media (prefers-reduced-motion: reduce) { .km-method-W__pkt { display: none; } }
+
+/* ── ≤ 760px: the ledger stacks; each phase carries its own bar; the datum turns horizontal
+   between 03 and 04; Calibrate runs off the screen edge ── */
+@media (max-width: 760px) {
+  .km-method-W { --margin: 16px; padding-block: 88px; }
+  .km-method-W .ac-head { display: block; }
+  .km-method-W .ac-statement { margin-top: 24px; font-size: 44px; }
+  .km-method-W .ac-rule { margin-top: 24px; }
+  .km-method-W .ac-lede { margin-top: 20px; font-size: 17px; }
+  .km-method-W .ac-note { margin-top: 28px; }
+  .km-method-W__body { margin-top: 40px; }
+  .km-method-W__panel { height: auto; padding: 4px 0 8px; }
+  .km-method-W__hd, .km-method-W__ruler, .km-method-W__seam, .km-method-W__datum { visibility: hidden; height: 0; }
+  .km-method-W__tb { position: static; margin: 20px 16px 4px; }
+  .km-method-W__rows { position: static; }
+  .km-method-W__row {
+    height: auto; grid-template-columns: 28px minmax(0, 1fr); row-gap: 0; padding: 22px 16px 56px;
+  }
+  .km-method-W__by { grid-column: 2; margin-top: 4px; font-size: 13.5px; color: var(--fg-3); }
+  .km-method-W__out { white-space: normal; }
+  .km-method-W__name { font-size: 26px; }
+  .km-method-W__row:first-child { padding-bottom: 88px; }               /* room for the audit's dimension */
+  .km-method-W__lane { left: 68px; right: -16px; top: auto; bottom: 22px; height: 10px; }   /* on the name's text edge */
+  .km-method-W__bar { top: 0; margin-top: 0; }
+  .km-method-W__bar--dia { width: 30%; }
+  .km-method-W__bar--arc { left: 12%; width: 40%; }
+  .km-method-W__bar--ins { left: 26%; width: 40%; }
+  .km-method-W__bar--cal { left: 0; right: -16px; }
+  .km-method-W__dim { bottom: 18px; letter-spacing: .06em; }
+  .km-method-W__yours { visibility: hidden; }
+  .km-method-W__lane::before { visibility: hidden; }
+  .km-method-W__row--cal { border-top-color: var(--fg-2); }
+  .km-method-W__hom { display: block; position: absolute; left: 16px; top: -8px; padding-right: 8px; background: var(--panel); color: var(--fg-2); }
+  .km-method-W__row--cal .km-method-W__by { color: var(--fg); }
+}

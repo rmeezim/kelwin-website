@@ -1,0 +1,189 @@
+/* ── hero · Z · The Survey (round 6, A×C) ─────────────────────────────
+   The footage is the market seen from straight above: a slow nadir survey
+   of a night grid, its traffic moving every which way. Over it, Kelwin's own
+   instrument is registered to the streets: one 1px TRACE route. Raw signal
+   enters dashed from the left edge along the avenue (y 200), turns solid on
+   the col-8 line (the same spine as the lede and the primary), latches the
+   three systems at three junctions, turns down the col-12 street and drops
+   toward the doors in one open chevron. One pulse laps the solid route at
+   constant speed. Soft ground, crisp tool.
+   Type sits exactly on hero U's positions so the founder's diagonal holds.
+   Stage: 96 nav + 864 body = 960.                                         */
+
+.km-hero-Z {
+  height: 960px;
+  display: flex; flex-direction: column;
+  overflow: hidden; isolation: isolate;
+}
+
+/* ── the footage ── */
+.km-hero-Z .km-film { --film-blur: 8px; --film-frost: .22; --film-grain: .5; }
+/* the frost's white mottle lifts a night plate's blacks from ≈ 8 to ≈ 36 (fog, not glass). At .45 the
+   blacks settle on the page's own graphite (≈ 20), so the hero is the same material as the sections
+   below it; the blur and the frosted-glass grain are unchanged. */
+.km-hero-Z .km-film__frost { opacity: .45; }
+/* the canvas plate replaces .km-film__plate; it is drawn at half resolution and
+   pre-blurred by JS at --film-blur (optics are baked, never filtered per frame) */
+.km-hero-Z__plate {
+  position: absolute; left: 0; top: 0; width: 1440px; height: 960px; display: block;
+}
+/* legibility (inside .km-film only): a head veil under the nav, a lane behind the
+   label and statement, a floor under the note and the doors, and a lens falloff.
+   The upper right stays open: that is where the route reads its territory. */
+.km-hero-Z__scrim {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 78% 82% at 62% 38%, transparent 55%, color-mix(in srgb, var(--bg) 46%, transparent) 100%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 66%, transparent) 0,
+      color-mix(in srgb, var(--bg) 26%, transparent) 104px,
+      transparent 156px),
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--bg) 60%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 44%, transparent) 24%,
+      color-mix(in srgb, var(--bg) 16%, transparent) 50%,
+      transparent 62%),
+    linear-gradient(180deg,
+      transparent 0%,
+      transparent 60%,
+      color-mix(in srgb, var(--bg) 46%, transparent) 70%,
+      color-mix(in srgb, var(--bg) 70%, transparent) 84%,
+      color-mix(in srgb, var(--bg) 80%, transparent) 100%);
+}
+
+/* ── nav (96px): as hero U ── */
+.km-hero-Z__nav {
+  position: relative; z-index: 2;
+  height: 96px; flex: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-hero-Z__nav::after {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-hero-Z__brand { display: inline-flex; color: var(--fg); }
+.km-hero-Z__brand .km-logo { --logo-h: 24px; }
+.km-hero-Z__menu {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 40px; white-space: nowrap;
+}
+.km-hero-Z__menu a {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.km-hero-Z__menu a:hover { color: var(--fg); }
+
+/* ── body: hero U's grid, unchanged ── */
+.km-hero-Z__body.ac-head {
+  position: relative; z-index: 1; flex: 1;
+  grid-template-rows: 180px auto auto auto minmax(0, 1fr) auto auto;
+  padding-bottom: 136px;
+}
+.km-hero-Z__body > .ac-labelrow { grid-row: 2; }
+.km-hero-Z__body > .ac-statement { grid-row: 3; grid-column: 1 / -1; }
+.km-hero-Z__body > .ac-rule { grid-row: 4; margin-top: 40px; }
+.km-hero-Z__body > .ac-lede { grid-row: 6; grid-column: 8 / span 5; margin-top: 0; max-width: none; }
+.km-hero-Z__body > .ac-doors { grid-row: 7; grid-column: 8 / span 5; margin-top: 32px; flex-wrap: nowrap; justify-content: space-between; }
+.km-hero-Z__body > .ac-note { grid-row: 6 / span 2; grid-column: 1 / span 4; align-self: end; margin-bottom: -6px; }
+
+/* ── the instrument ──
+   The whole layer rides the footage's pan (JS sets its translate each frame), so the
+   route stays pinned to its streets. At rest it sits exactly on the page grid. */
+.km-hero-Z__trace { position: absolute; inset: 0; z-index: 3; pointer-events: none; will-change: transform; }
+.km-hero-Z__route { position: absolute; left: 0; top: 0; }
+.km-hero-Z__wipe { fill: var(--fg); transform-box: fill-box; transform-origin: 0 50%; }
+.km-hero-Z__in { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-hero-Z__seg, .km-hero-Z__chev { transition: stroke 300ms var(--ease-inout); }
+/* the casing: a flat 4px graphite band under the 1px route (map casing, not a glow) */
+.km-hero-Z__cs { fill: none; stroke: var(--bg); stroke-width: 4; stroke-opacity: .72; stroke-linecap: square; stroke-linejoin: miter; }
+.km-hero-Z__node { --ac-occlude: var(--bg); }
+.km-hero-Z__packet { fill: var(--fg); opacity: 0; }
+
+/* the three keys: a mono code box + a Mona 14px name, above (01, 02) or left of (03) their node */
+.km-hero-Z__keys { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
+.km-hero-Z__k { position: absolute; }
+.km-hero-Z__k[data-seg="1"] { left: 839px; top: 148px; }
+.km-hero-Z__k[data-seg="2"] { left: 1062px; top: 148px; }
+/* 01 and 02 hang from their nodes on a 1px leader (key bottom 170 → node top 197) */
+.km-hero-Z__k[data-seg="1"]::after, .km-hero-Z__k[data-seg="2"]::after {
+  content: ""; position: absolute; left: 3px; top: 22px; width: 1px; height: 27px; background: var(--fg-3);
+}
+/* 03 sits left of its node on a 13px leader (key right 1272 → node left 1285) */
+.km-hero-Z__k[data-seg="3"] { right: 168px; top: 311px; }
+.km-hero-Z__k[data-seg="3"]::after {
+  content: ""; position: absolute; left: 100%; top: 11px; width: 13px; height: 1px; background: var(--fg-3);
+}
+/* a key is a cartographic tag: the kit's code box + the name, knocked out of the footage on one
+   flat graphite field (no outline, no halo), so it reads crisp over any light the film carries */
+.km-hero-Z__key {
+  pointer-events: auto;
+  display: flex; align-items: center; height: 22px; white-space: nowrap;
+  background: var(--bg); color: var(--fg);
+}
+.km-hero-Z__name {
+  padding: 0 10px; font-family: var(--f-body); font-size: var(--ac-anno); line-height: 22px; color: var(--fg-2);
+  transition: color 300ms var(--ease-inout);
+}
+.km-hero-Z__key .ac-callout__code { transition: border-color 300ms var(--ease-inout); }
+.km-hero-Z__key:hover .km-hero-Z__name, .km-hero-Z__key:focus-visible .km-hero-Z__name { color: var(--fg); }
+.km-hero-Z__key:hover .ac-callout__code, .km-hero-Z__key:focus-visible .ac-callout__code { border-color: var(--fg); }
+.km-hero-Z__key:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
+
+/* hover a key: its stretch of the route holds --fg, the rest drops to --fg-3 */
+.km-hero-Z:has(.km-hero-Z__key:hover, .km-hero-Z__key:focus-visible) :is(.km-hero-Z__seg, .km-hero-Z__chev) { stroke: var(--fg-3); }
+.km-hero-Z:has(.km-hero-Z__key[data-seg="1"]:is(:hover, :focus-visible)) :is(.km-hero-Z__seg, .km-hero-Z__chev)[data-seg="1"],
+.km-hero-Z:has(.km-hero-Z__key[data-seg="2"]:is(:hover, :focus-visible)) :is(.km-hero-Z__seg, .km-hero-Z__chev)[data-seg="2"],
+.km-hero-Z:has(.km-hero-Z__key[data-seg="3"]:is(:hover, :focus-visible)) :is(.km-hero-Z__seg, .km-hero-Z__chev)[data-seg="3"] { stroke: var(--fg); }
+
+/* registration marks ride above the film, on the hairline's ends */
+.km-hero-Z__reg { z-index: 3; }
+
+/* ── entrance (only under html.is-play) ──
+   0 film fades up while the lens finds focus · 240 the head lands (kit) ·
+   700 three targets appear · 900 raw signal enters · 1600 solid at node 01 (latch) ·
+   1880 node 02 · 2400 node 03 · 2820 the chevron seats · 3200 the pulse starts lapping */
+.km-hero-Z__body { --ac-d0: 240ms; }
+.is-play .km-hero-Z .km-film { animation: km-hero-Z-fade 1.2s var(--ease-out) both; }
+.is-play .km-hero-Z__plate { animation: km-hero-Z-focus 1.8s var(--ease-out) backwards; }
+.is-play .km-hero-Z__nav { animation: km-hero-Z-fade 500ms var(--ease-out) both; }
+.is-play .km-hero-Z__nav::after { animation: km-hero-Z-draw 1s var(--ease-out) 100ms both; }
+
+.is-play .km-hero-Z__wipe { animation: km-hero-Z-draw 700ms cubic-bezier(.45, 0, .9, .6) 900ms both; }
+.is-play :is(.km-hero-Z__seg, .km-hero-Z__cs.ac-plot) { animation: ac-plot var(--t) linear var(--d) both; }
+.is-play :is(.km-hero-Z__seg, .km-hero-Z__cs.ac-plot)[data-seg="1"] { --d: 1600ms; --t: 280ms; }
+.is-play :is(.km-hero-Z__seg, .km-hero-Z__cs.ac-plot)[data-seg="2"] { --d: 1880ms; --t: 440ms; }
+.is-play :is(.km-hero-Z__seg, .km-hero-Z__cs.ac-plot)[data-seg="3"] { --d: 2320ms; --t: 520ms; animation-timing-function: var(--ease-out); }
+.is-play :is(.km-hero-Z__chev, .km-hero-Z__cs--chev) { animation: km-hero-Z-fade 240ms var(--ease-out) 2780ms both; }
+.is-play .km-hero-Z__node {
+  animation: km-hero-Z-fade 300ms var(--ease-out) 700ms both, km-hero-Z-latch 200ms var(--ease-out) var(--l) both;
+}
+.km-hero-Z__node[data-seg="1"] { --l: 1600ms; }
+.km-hero-Z__node[data-seg="2"] { --l: 1880ms; }
+.km-hero-Z__node[data-seg="3"] { --l: 2320ms; }
+.is-play .km-hero-Z__k { animation: km-hero-Z-fade 400ms var(--ease-out) var(--l) both; }
+.km-hero-Z__k[data-seg="1"] { --l: 1600ms; }
+.km-hero-Z__k[data-seg="2"] { --l: 1880ms; }
+.km-hero-Z__k[data-seg="3"] { --l: 2320ms; }
+/* ambient: one pulse laps the solid route at constant speed (12s, linear) */
+.is-play .km-hero-Z__packet { animation: km-hero-Z-lap 12s linear 3200ms infinite both; }
+/* off screen: the JS stops the footage; CSS loops hold too */
+.km-hero-Z.is-off .km-hero-Z__packet, .km-hero-Z.is-off .km-film::after { animation-play-state: paused; }
+
+@keyframes km-hero-Z-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-hero-Z-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-hero-Z-focus { from { filter: blur(14px); } to { filter: blur(0); } }
+@keyframes km-hero-Z-latch { from { fill: var(--bg); stroke: var(--fg-2); } to { fill: var(--fg); stroke: var(--fg); } }
+/* the pulse: an 18×3 bar riding the line (it turns 90° at the corner), so in any still it reads as
+   signal in transit and never as a fourth node. 446px then 412px at one speed: the corner falls at
+   446 / 858 of the 90% run; the 0.2% after it is the 1.9px it travels while it turns. */
+@keyframes km-hero-Z-lap {
+  0%    { transform: translate(842.5px, 200.5px) rotate(0deg); opacity: 0; }
+  1.5%  { opacity: 1; }
+  46.8% { transform: translate(1288.5px, 200.5px) rotate(0deg); }
+  47%   { transform: translate(1288.5px, 202.4px) rotate(90deg); }
+  88.5% { opacity: 1; }
+  90%   { transform: translate(1288.5px, 612.5px) rotate(90deg); opacity: 0; }
+  100%  { transform: translate(1288.5px, 612.5px) rotate(90deg); opacity: 0; }
+}

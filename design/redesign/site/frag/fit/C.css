@@ -1,0 +1,217 @@
+/* ── fit · C · Systems Drawing Set — SHEET 09/14, the fit check ───────────
+   A paper document sheet. Speakeasy's framed panel becomes the C frame: title cell
+   (cols 1–8) | note cell with the two action cells (cols 9–12), then a body band of
+   cells — the drawing field (cols 1–4) and two spec tables FIT (5–8) | DECLINE (9–12)
+   read across as mirrored pairs. FIG. 9.1 draws "fit" literally: the three pieces of
+   the Kelwin mark (K1–K3) seated inside a dashed clearance envelope, lettered A–C and
+   keyed to F-01…F-03. The sheet's one red element besides the action cell is the
+   gate tag: 3 of 3 required to seat. */
+.km-fit-C {
+  --x5: calc(var(--margin) + 4 * var(--col) + 3.5 * var(--gutter));   /* col 4|5 gutter centre (497.3) */
+  --x9: calc(var(--margin) + 8 * var(--col) + 7.5 * var(--gutter));   /* col 8|9 gutter centre (942.7) */
+  --x13: calc(var(--stage) - var(--margin));                          /* right frame (1376) */
+  position: relative; height: 1008px;
+}
+
+/* ── drafting layer ── */
+.km-fit-C__draft { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.km-fit-C__ln { position: absolute; display: block; background: var(--line); }
+.km-fit-C__fl { left: var(--margin); top: 0; bottom: 0; width: 1px; }
+.km-fit-C__fr { left: calc(var(--x13) - 1px); top: 0; bottom: 0; width: 1px; }
+.km-fit-C__h { left: var(--margin); right: var(--margin); top: var(--y); height: 1px; transform-origin: 0 50%; }
+.km-fit-C__h--open { background: var(--line-2); }
+.km-fit-C__h--t { left: var(--x5); }
+.km-fit-C__v { left: var(--x); top: var(--y); width: 1px; height: var(--len); transform-origin: 50% 0; }
+.km-fit-C__x { position: absolute; left: calc(var(--cx) - 4px); top: calc(var(--cy) - 4px); width: 9px; height: 9px; }
+.km-fit-C__x::before, .km-fit-C__x::after { content: ""; position: absolute; background: var(--fg); }
+.km-fit-C__x::before { left: 0; top: 4px; width: 9px; height: 1px; }
+.km-fit-C__x::after { left: 4px; top: 0; width: 1px; height: 9px; }
+
+/* shared mono voice */
+.km-fit-C__nid, .km-fit-C__cap, .km-fit-C__seat, .km-fit-C__th, .km-fit-C__id, .km-fit-C__legend, .km-fit-C__tb {
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-fit-C__nid, .km-fit-C__cap, .km-fit-C__legend, .km-fit-C__tb { letter-spacing: var(--label-tracking); }
+
+/* ── title row ── */
+.km-fit-C__tcell {
+  position: absolute; z-index: 1; left: var(--margin); top: 96px; width: calc(var(--x9) - var(--margin)); height: 384px;
+  display: flex; flex-direction: column; padding: 24px 24px 28px;
+}
+/* the C sheet head (same metric on every sheet): opening rule y 96 · label y 120 · title bottom y 422 ·
+   48×2 red rule y 450 · row bottom y 480 · note cell with mono cell ID, 20px lede and the door pair */
+.km-fit-C__sheet {
+  display: flex; align-items: center; gap: 12px; white-space: nowrap;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-fit-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-fit-C__title {
+  margin-top: auto;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 0.94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-fit-C__title > span { display: block; white-space: nowrap; }
+.km-fit-C__turn { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-fit-C__rule { display: block; flex: none; width: 48px; height: 2px; margin-top: 28px; background: var(--signal); transform-origin: 0 50%; }
+
+.km-fit-C__ncell {
+  position: absolute; z-index: 1; left: var(--x9); top: 96px; width: calc(var(--x13) - var(--x9)); height: 384px;
+  display: flex; flex-direction: column; padding: 24px 24px 0;
+}
+.km-fit-C__nid { line-height: 16px; color: var(--fg-3); }
+.km-fit-C__note { margin: auto 0 28px; font-size: 20px; line-height: 1.5; font-weight: var(--body-weight); color: var(--fg-2); }
+/* the door pair (same on every C sheet): red audit cell cols 9–11 · contact cell col 12; mono cell ID top, Mona caps label bottom */
+.km-fit-C__acts { display: grid; grid-template-columns: 334px 1fr; height: 64px; margin: 0 -24px; }
+.km-fit-C__act {
+  display: flex; flex-direction: column; justify-content: space-between; padding: 12px 24px 13px;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-fit-C__actid { font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap; opacity: 0.78; }
+.km-fit-C__go {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-fit-C__ico { width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 250ms var(--ease-out); }
+.km-fit-C__ico--r { width: 13px; height: 11px; }
+.km-fit-C__act--audit:hover .km-fit-C__ico { transform: translate(2px, -2px); }
+.km-fit-C__act--contact { padding: 12px 12px 13px; align-items: flex-start; }
+.km-fit-C__act--contact .km-fit-C__ico { align-self: flex-end; margin-top: 2px; }
+.km-fit-C__act--contact:hover .km-fit-C__ico { transform: translateX(3px); }
+.km-fit-C__act--contact .km-fit-C__actid { color: var(--fg-3); opacity: 1; }
+.km-fit-C__act--contact:hover .km-fit-C__actid { color: var(--bg); }
+.km-fit-C__act--audit { background: var(--accent); color: var(--accent-fg); }
+.km-fit-C__act--audit:hover { background: var(--accent-hover); }
+.km-fit-C__act--contact { color: var(--fg); box-shadow: inset 1px 0 0 var(--line-2), inset 0 1px 0 var(--line-2); }
+.km-fit-C__act--contact:hover { background: var(--fg); color: var(--bg); }
+
+/* ── drawing field ── */
+.km-fit-C__fig { position: absolute; z-index: 1; left: var(--margin); top: 480px; width: calc(var(--x5) - var(--margin)); height: 480px; }
+.km-fit-C__cap { position: absolute; left: 24px; top: 24px; color: var(--fg-2); }
+.km-fit-C__seat { position: absolute; right: 24px; top: 24px; color: var(--fg-3); }
+.km-fit-C__seatv { color: var(--fg); font-variant-numeric: tabular-nums; }
+.km-fit-C__dwg { position: absolute; left: 0; top: 0; display: block; overflow: visible; }
+.km-fit-C__cons path { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 6; }
+.km-fit-C__env path { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 5 4; }
+.km-fit-C__envh path { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-fit-C__side { fill: var(--bg); stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter; }
+.km-fit-C__top { fill: var(--bg); stroke: var(--fg); stroke-width: 1; stroke-linejoin: miter; }
+.km-fit-C__dl { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-fit-C__tk { fill: none; stroke: var(--fg); stroke-width: 1; }
+.km-fit-C__dimt { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; fill: var(--fg-2); }
+.km-fit-C__lead { fill: none; stroke: var(--fg-2); stroke-width: 1; transition: stroke 300ms var(--ease-inout); }
+.km-fit-C__node { fill: var(--fg); transition: fill 300ms var(--ease-inout); }
+.km-fit-C__box { fill: var(--bg); stroke: var(--fg); stroke-width: 1; transition: fill 300ms var(--ease-inout), stroke 300ms var(--ease-inout); }
+.km-fit-C__boxt { font-family: var(--f-mono); font-size: 11px; text-anchor: middle; fill: var(--fg); transition: fill 300ms var(--ease-inout); }
+.km-fit-C__glead { fill: none; stroke: var(--accent); stroke-width: 1; }
+.km-fit-C__gnode { fill: var(--accent); }
+.km-fit-C__tag rect { fill: var(--accent); }
+.km-fit-C__tag text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; fill: var(--accent-fg); }
+
+/* hover a FIT row → its lettered callout and leader turn red */
+.km-fit-C:has(.km-fit-C__cell[data-k="A"]:hover) .km-fit-C__co[data-k="A"] .km-fit-C__lead,
+.km-fit-C:has(.km-fit-C__cell[data-k="B"]:hover) .km-fit-C__co[data-k="B"] .km-fit-C__lead,
+.km-fit-C:has(.km-fit-C__cell[data-k="C"]:hover) .km-fit-C__co[data-k="C"] .km-fit-C__lead { stroke: var(--accent); }
+.km-fit-C:has(.km-fit-C__cell[data-k="A"]:hover) .km-fit-C__co[data-k="A"] :is(.km-fit-C__node, .km-fit-C__box),
+.km-fit-C:has(.km-fit-C__cell[data-k="B"]:hover) .km-fit-C__co[data-k="B"] :is(.km-fit-C__node, .km-fit-C__box),
+.km-fit-C:has(.km-fit-C__cell[data-k="C"]:hover) .km-fit-C__co[data-k="C"] :is(.km-fit-C__node, .km-fit-C__box) { fill: var(--accent); stroke: var(--accent); }
+.km-fit-C:has(.km-fit-C__cell[data-k="A"]:hover) .km-fit-C__co[data-k="A"] .km-fit-C__boxt,
+.km-fit-C:has(.km-fit-C__cell[data-k="B"]:hover) .km-fit-C__co[data-k="B"] .km-fit-C__boxt,
+.km-fit-C:has(.km-fit-C__cell[data-k="C"]:hover) .km-fit-C__co[data-k="C"] .km-fit-C__boxt { fill: var(--accent-fg); }
+
+/* ── spec tables ── */
+.km-fit-C__tbl { position: absolute; z-index: 1; top: 480px; height: 480px; }
+.km-fit-C__tbl--fit { left: var(--x5); width: calc(var(--x9) - var(--x5)); }
+.km-fit-C__tbl--dec { left: var(--x9); width: calc(var(--x13) - var(--x9)); }
+.km-fit-C__th { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; color: var(--fg); }
+.km-fit-C__thl { display: flex; align-items: center; gap: 10px; }
+.km-fit-C__thr { color: var(--fg-3); }
+.km-fit-C__chip { position: relative; display: inline-block; width: 17px; height: 17px; border: 1px solid var(--line-2); }
+.km-fit-C__chip::before, .km-fit-C__chip--plus::after { content: ""; position: absolute; background: var(--fg); }
+.km-fit-C__chip::before { left: 3px; top: 7px; width: 9px; height: 1px; }
+.km-fit-C__chip--plus::after { left: 7px; top: 3px; width: 1px; height: 9px; }
+.km-fit-C__rows { display: block; }
+.km-fit-C__cell {
+  position: relative; height: 144px; padding: 20px 24px 0;
+}
+.km-fit-C__id { display: flex; justify-content: space-between; align-items: center; color: var(--fg-3); }
+.km-fit-C__id > span:first-child { transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out); padding: 1px 0; }
+.km-fit-C__cell:hover .km-fit-C__id > span:first-child { background: var(--fg); color: var(--bg); box-shadow: 0 0 0 4px var(--fg); }
+.km-fit-C__key {
+  display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;
+  border: 1px solid var(--fg); font-size: 11px; line-height: 1; letter-spacing: 0; color: var(--fg);
+  transition: background-color 300ms var(--ease-inout), border-color 300ms var(--ease-inout), color 300ms var(--ease-inout);
+}
+.km-fit-C__cell:hover .km-fit-C__key { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.km-fit-C__txt { margin-top: 22px; }
+.km-fit-C__t { font-family: var(--f-body); font-stretch: 100%; font-weight: var(--ui-weight); font-size: 17px; line-height: 22px; color: var(--fg); }
+.km-fit-C__d { margin-top: 6px; font-size: 15px; line-height: 21px; color: var(--fg-2); text-wrap: pretty; max-width: 36em; }
+
+/* ── bottom band ── */
+/* the C band (same on every sheet): 48px, legend on cols 1–8, segmented title block on cols 9–12 */
+.km-fit-C__legend, .km-fit-C__tb { position: absolute; z-index: 1; top: 960px; height: 48px; display: flex; align-items: center; }
+.km-fit-C__legend { left: var(--margin); width: calc(var(--x9) - var(--margin)); padding: 0 24px; color: var(--fg-3); }
+.km-fit-C__tb { left: var(--x9); width: calc(var(--x13) - var(--x9)); color: var(--fg-2); }
+.km-fit-C__tb > span { flex: 1 1 auto; height: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; }
+.km-fit-C__tb > span:first-child { justify-content: flex-start; padding-left: 24px; }
+.km-fit-C__tb > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-fit-C__tb > span:last-child { color: var(--fg); }
+.km-fit-C__tb .km-logo-mark { --logo-h: 11px; }
+
+/* ── entrance, in drafting order (only under html.is-play) ──
+   frame + crosshairs → cell borders in raster order → title → construction + envelope →
+   the assembly plots piece by piece (A core, B, C), each lettered callout lands as its
+   piece seats and pings its F-row key → dimension → the red gate tag settles last */
+.is-play .km-fit-C__fl, .is-play .km-fit-C__fr { animation: km-fit-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-fit-C__x { animation: km-fit-C-fade 300ms var(--ease-inout) 120ms both; }
+.is-play .km-fit-C__h { animation: km-fit-C-drawx 440ms var(--ease-inout) both; animation-delay: calc(140ms + var(--r) * 40ms); }
+.is-play .km-fit-C__v { animation: km-fit-C-drawy 440ms var(--ease-inout) both; animation-delay: calc(140ms + var(--r) * 40ms); }
+.is-play .km-fit-C__title > span { animation: km-fit-C-wipe 700ms var(--ease-inout) both; }
+.is-play .km-fit-C__title > span:nth-child(1) { animation-delay: 360ms; }
+.is-play .km-fit-C__title > span:nth-child(2) { animation-delay: 460ms; }
+.is-play .km-fit-C__title > span:nth-child(3) { animation-delay: 560ms; }
+.is-play .km-fit-C__sq { animation: km-fit-C-fade 300ms var(--ease-inout) 240ms both; }
+.is-play .km-fit-C__rule { animation: km-fit-C-drawx 400ms var(--ease-inout) 760ms both; }
+.is-play .km-fit-C__note { animation: km-fit-C-fade 600ms var(--ease-inout) 640ms both; }
+.is-play .km-fit-C__acts { animation: km-fit-C-fade 500ms var(--ease-inout) 760ms both; }
+.is-play .km-fit-C__chip { animation: km-fit-C-fade 300ms var(--ease-inout) 860ms both; }
+.is-play .km-fit-C__txt { animation: km-fit-C-fade 600ms var(--ease-inout) both; animation-delay: calc(980ms + var(--i) * 90ms); }
+.is-play .km-fit-C__seat { animation: km-fit-C-fade 300ms var(--ease-inout) 900ms both; }
+.is-play .km-fit-C__cons { animation: km-fit-C-fade 500ms var(--ease-inout) 760ms both; }
+.is-play .km-fit-C__env, .is-play .km-fit-C__envh { animation: km-fit-C-fade 500ms var(--ease-inout) 900ms both; }
+
+/* the assembly plots: strokes draw, then the faces fill (hidden lines drop out) */
+.is-play .km-fit-C__side, .is-play .km-fit-C__top {
+  stroke-dasharray: 1;
+  animation: km-fit-C-plot 480ms var(--ease-inout) both, km-fit-C-fill 220ms var(--ease-inout) both;
+}
+.is-play .km-fit-C__side[data-p="A"], .is-play .km-fit-C__top[data-p="A"] { animation-delay: 1100ms, 1560ms; }
+.is-play .km-fit-C__side[data-p="B"], .is-play .km-fit-C__top[data-p="B"] { animation-delay: 1500ms, 1960ms; }
+.is-play .km-fit-C__side[data-p="C"], .is-play .km-fit-C__top[data-p="C"] { animation-delay: 1900ms, 2360ms; }
+.is-play .km-fit-C__top { animation-duration: 520ms, 220ms; }
+
+.is-play .km-fit-C__lead { stroke-dasharray: 1; animation: km-fit-C-plot 320ms var(--ease-inout) both; }
+.is-play .km-fit-C__box, .is-play .km-fit-C__boxt, .is-play .km-fit-C__node { animation: km-fit-C-fade 200ms var(--ease-inout) both; }
+.is-play .km-fit-C__co[data-k="A"] > * { animation-delay: 1600ms; }
+.is-play .km-fit-C__co[data-k="B"] > * { animation-delay: 2000ms; }
+.is-play .km-fit-C__co[data-k="C"] > * { animation-delay: 2400ms; }
+/* each seated piece pings its row key in the FIT table */
+.is-play .km-fit-C__cell[data-k] .km-fit-C__key { animation: km-fit-C-fade 300ms var(--ease-inout) both, km-fit-C-ping 700ms var(--ease-inout) none; }
+.is-play .km-fit-C__cell[data-k="A"] .km-fit-C__key { animation-delay: 1000ms, 1640ms; }
+.is-play .km-fit-C__cell[data-k="B"] .km-fit-C__key { animation-delay: 1080ms, 2040ms; }
+.is-play .km-fit-C__cell[data-k="C"] .km-fit-C__key { animation-delay: 1160ms, 2440ms; }
+
+.is-play .km-fit-C__dl { stroke-dasharray: 1; animation: km-fit-C-plot 300ms var(--ease-inout) 2520ms both; }
+.is-play .km-fit-C__tk, .is-play .km-fit-C__dimt { animation: km-fit-C-fade 300ms var(--ease-inout) 2760ms both; }
+.is-play .km-fit-C__glead { stroke-dasharray: 1; animation: km-fit-C-plotup 260ms var(--ease-inout) 2880ms both; }
+.is-play .km-fit-C__gnode { animation: km-fit-C-fade 200ms var(--ease-inout) 2860ms both; }
+.is-play .km-fit-C__tag { animation: km-fit-C-settle 400ms var(--ease-out) 3100ms both; }
+
+@keyframes km-fit-C-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-fit-C-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-fit-C-drawy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-fit-C-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-fit-C-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-fit-C-plotup { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-fit-C-fill { from { fill-opacity: 0; } to { fill-opacity: 1; } }
+@keyframes km-fit-C-ping { 0% { background-color: transparent; color: var(--fg); } 30%, 70% { background-color: var(--fg); color: var(--bg); } 100% { background-color: transparent; color: var(--fg); } }
+@keyframes km-fit-C-settle { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }

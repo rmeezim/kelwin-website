@@ -1,0 +1,21 @@
+{
+ "title": "The sentence clears",
+ "direction": "B",
+ "summary": "An almost empty paper band hung from the Index Spine, holding one sentence hand-set at section-title scale: three lines of principle in ink, then its disclaimer muted. On entrance the principle surfaces from noise-grey to ink word by word, so it acts out its own claim. Today's version is a marquee over a photograph.",
+ "reference": {
+  "site": "Frontify",
+  "mobbin_url": "https://mobbin.com/sites/sections/2bae281e-1150-4542-b8f3-77c3bc236855",
+  "ref_file": "refs/principle-B.webp",
+  "borrowed": "The 'Our story' band: an almost empty paper band where a tiny label hangs at the top of a narrow far-left column, and a two-line statement starts about a third of the way across, top-aligned with the label. The label column and statement column never meet, and about 60% of the band is left untouched.",
+  "kelwin": "Frontify's dot-label column becomes the spine column (cols 1–3): a wide light 64px '07' in --fg-3 over the shared red-square caps label 'PRINCIPLE', with its figure-top on the statement's cap line. The band hangs from B's continuous spine (1px at the col 3|4 gutter) by a right-angle opening rule with the 6px joint square (the mark's K3 core). Frontify's two-line serif statement becomes Mona wide 430 at 88/92px — the same scale as B's section titles, so the principle is stated large — hand-set on five lines in cols 4–10 so every break falls on a phrase: 'In a noisy market, / the clearest / company wins.' in ink, then 'Not the loudest. / Not the busiest.' in --fg-3. The muted lines are also the headline's one light (300) accent, so the two tones read in both skins. Cols 11–12 and the lower band stay empty, and nothing else is on the screen."
+ },
+ "motion": [
+  "entrance: the opening rule draws from the spine to the right margin (900ms --ease-out) and the joint square fades in. The 07 index and red-square label fade in (400ms). The sentence rises 12px as it fades in (700ms), with the two light muted lines 160ms behind; the 48×2 red rule draws under it at 0.9s.",
+  "orchestrated moment: the principle arrives entirely at noise level, in --fg-3, the same tone as its disclaimer. From 1.2s it clears to ink one word at a time, 'In · a · noisy · market, · the · clearest · company · wins.', at 140ms per word (520ms each, --ease-inout), finishing about 2.7s in. 'Not the loudest. / Not the busiest.' stays muted. The principle is acted out: the clear words separate from the noise.",
+  "ambient: none.",
+  "interaction: none. The band is a pause and offers nothing to click.",
+  "on the live site: the word-by-word clearing is scrubbed by scroll as the band crosses the middle of the viewport (reversible, never pinned), and the spine index is sticky and crossfades to the next section's number. Reduced motion shows the cleared final state."
+ ],
+ "demoMs": 3400,
+ "notes": "One sentence hand-set on five lines at 88px (the founder's 88–152px title scale, matching its neighbours), cols 4–10, more than half the band empty. Coherence pass: the disclaimer 'Not the loudest. Not the busiest.' now takes the light 300 weight as the headline's one accent (it was 430); the spine label is the shared red-square caps label; the 48×2 red rule closes the statement as in every B head. Coherence pass (direction B, one site): every section now shares one head — 64px light index + red-square caps label (Mona 500, 11px, .18em) in the spine column, 88px statement at weight 430 / −0.018em with exactly one light (300) muted sentence, the 48×2 red rule, 18/30 lede — at 48/44/32px offsets from a 6px joint, with 128px top and bottom padding (the live site keeps B's 200px). Mono captions are 11px at .18em; spine numerals drop tabular figures (Mona's tabular zero is slashed); quiet doors are 12px tracked caps with a drawn arrow. Index 07 continues the spine numbering."
+}

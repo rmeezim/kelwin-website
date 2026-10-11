@@ -1,0 +1,223 @@
+/* ── hero · A · Cinematic Figures ─────────────────────────────────────
+   The founder's hero, set harder. Grok's single warm source bleeding in
+   from the right becomes FIG. 01, the frosted room: the plate is cropped
+   to the right half of the room so a man seen from behind, a standing
+   colleague and a seated one gather in cols 7–12, held off the type by a
+   left-to-right scrim. Content stacks down cols 1–7 (label → two-voice
+   statement → red rule → lede → doors); the audit note pins bottom-right;
+   the FIG. band under a hairline credits the film and carries its controls. */
+
+.km-hero-A {
+  min-height: 960px;
+  display: flex; flex-direction: column;
+  overflow: hidden; isolation: isolate;
+}
+
+/* ── FIG. 01 · the film: dark, warm ── */
+.km-hero-A .km-film {
+  --film-blur: 8px; --film-frost: .2; --film-bright: 1.2; --film-sat: .95;
+}
+/* height-fit plate (image 1920×964, mirrored about its centre): the seated
+   figure lands at x≈650, the standing one at ≈900, the man from behind at
+   ≈1000–1400 — the mirrored left half sits under the scrim */
+.km-hero-A .km-film__plate {
+  inset: 3% -4% -9%;
+  background-size: auto 100%;
+  background-position: -334px 50%;
+  transition: scale 1.6s var(--ease-inout), translate 1.6s var(--ease-inout);
+}
+.km-hero-A[data-crop="close"] .km-film__plate { scale: 1.18; translate: -4% 2%; }
+.km-hero-A.is-cut .km-film__plate { transition: none; }
+.km-hero-A.is-paused .km-film__plate,
+.km-hero-A.is-paused .km-film__walker,
+.km-hero-A.is-paused .km-film::after,
+.km-hero-A.is-paused .km-hero-A__prog > span { animation-play-state: paused; }
+
+/* legibility scrim (inside .km-film only): cols 1–5 stay near graphite,
+   the room opens from col 6; a quiet floor under the nav and the band */
+.km-hero-A__scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--bg) 94%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 86%, transparent) 28%,
+      color-mix(in srgb, var(--bg) 52%, transparent) 42%,
+      color-mix(in srgb, var(--bg) 14%, transparent) 55%,
+      transparent 64%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 50%, transparent) 0%,
+      transparent 12%,
+      transparent 78%,
+      color-mix(in srgb, var(--bg) 76%, transparent) 100%);
+}
+
+/* ── shared type: caps labels & tracked UI ── */
+.km-hero-A__label,
+.km-hero-A__menu a,
+.km-hero-A__navcta,
+.km-hero-A__primary,
+.km-hero-A__secondary,
+.km-hero-A__seg button,
+.km-hero-A__pause {
+  font-family: var(--f-body); font-weight: var(--ui-weight);
+  text-transform: uppercase; letter-spacing: var(--label-tracking); line-height: 1;
+}
+
+/* ── nav (96px): lockup · tracked caps items · outlined action ── */
+.km-hero-A__nav {
+  position: relative; z-index: 2;
+  height: 96px; flex: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-hero-A__nav::after {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-hero-A__brand { display: inline-flex; color: var(--fg); }
+.km-hero-A__brand .km-logo { --logo-h: 24px; }
+.km-hero-A__menu {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 40px; white-space: nowrap;
+}
+.km-hero-A__menu a { font-size: 12px; color: var(--fg-2); transition: color .2s var(--ease-out); }
+.km-hero-A__menu a:hover { color: var(--fg); }
+.km-hero-A__navcta {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 44px; padding: 0 18px 0 20px;
+  border: 1px solid var(--line-2); color: var(--fg); font-size: 12px;
+  transition: border-color .2s var(--ease-out);
+}
+.km-hero-A__navcta:hover { border-color: var(--fg); }
+.km-hero-A__arr { transition: transform .25s var(--ease-out); }
+.km-hero-A__navcta:hover .km-hero-A__arr,
+.km-hero-A__primary:hover .km-hero-A__arr { transform: translate(2px, -2px); }
+
+/* arrows are drawn (the brand fonts carry no ↗ / → glyphs) */
+.km-hero-A__ico { display: inline-block; width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; }
+.km-hero-A__ico--r { width: 13px; height: 11px; }
+.km-hero-A__go { transition: transform .25s var(--ease-out); }
+.km-hero-A__secondary:hover .km-hero-A__go { transform: translateX(3px); }
+
+/* ── body: the act, stacked down cols 1–7 ── */
+.km-hero-A__body {
+  position: relative; z-index: 1; flex: 1;
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  grid-template-rows: auto auto auto auto 1fr;
+  padding: 72px var(--margin) 64px;
+}
+.km-hero-A__label { display: flex; align-items: center; gap: 12px; font-size: 11px; line-height: 16px; color: var(--fg-2); }
+.km-hero-A__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-hero-A__label--top { grid-column: 1 / span 6; grid-row: 1; margin-bottom: 36px; }
+
+.km-hero-A__h1 {
+  grid-column: 1 / span 8; grid-row: 2;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 116px; line-height: .96; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-hero-A__ln {
+  display: block; overflow: hidden; white-space: nowrap;
+  padding-block: .1em .14em; margin-block: -.1em -.14em;
+}
+.km-hero-A__ln > span { display: inline-block; }
+.km-hero-A__ln--light { font-weight: var(--light-weight); color: var(--fg-2); }
+
+.km-hero-A__rule {
+  grid-column: 1; grid-row: 3; display: block;
+  width: 48px; height: 2px; margin-top: 40px; background: var(--signal);
+  transform-origin: left center;
+}
+.km-hero-A__lede {
+  grid-column: 1 / span 5; grid-row: 4; margin-top: 28px; max-width: 44ch;
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: 20px; line-height: 1.5; color: var(--fg-2);
+}
+.km-hero-A__ctas {
+  grid-column: 1 / span 7; grid-row: 5; align-self: end; margin-top: 40px;
+  display: flex; align-items: center; gap: 40px;
+}
+.km-hero-A__primary {
+  display: inline-flex; align-items: center; gap: 14px;
+  height: 56px; padding: 0 26px 0 28px;
+  background: var(--accent); color: var(--accent-fg); font-size: 13px;
+  transition: background-color .2s var(--ease-out);
+}
+.km-hero-A__primary:hover { background: var(--accent-hover); }
+.km-hero-A__secondary {
+  position: relative; display: inline-flex; align-items: center; gap: 12px;
+  padding-block: 8px; font-size: 13px; color: var(--fg);
+}
+.km-hero-A__secondary::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--line-2); transition: background-color .2s var(--ease-out);
+}
+.km-hero-A__secondary:hover::after { background: var(--fg); }
+
+/* the audit note: anchored bottom-right, cols 10–12 */
+.km-hero-A__note {
+  grid-column: 10 / span 3; grid-row: 5; align-self: end;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.km-hero-A__note-copy {
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: 15px; line-height: 1.55; color: var(--fg-2); max-width: 30ch;
+}
+
+/* ── FIG. band ── */
+.km-hero-A__band {
+  position: relative; z-index: 2; flex: none;
+  height: 88px; padding: 0 var(--margin);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.km-hero-A__band::before {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); top: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-hero-A__cap {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-hero-A__ctl { display: flex; gap: 12px; }
+.km-hero-A__seg { display: flex; border: 1px solid var(--line-2); }
+.km-hero-A__seg button,
+.km-hero-A__pause {
+  height: 46px; padding: 0 20px; font-size: 11px; color: var(--fg-2);
+  transition: background-color .5s var(--ease-inout), color .5s var(--ease-inout), border-color .2s var(--ease-out);
+}
+.km-hero-A__seg button + button { border-left: 1px solid var(--line-2); }
+.km-hero-A__seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.km-hero-A__seg button[aria-pressed="false"]:hover { color: var(--fg); }
+.km-hero-A__pause { position: relative; height: 48px; border: 1px solid var(--line-2); min-width: 148px; }
+.km-hero-A__pause:hover { border-color: var(--fg); color: var(--fg); }
+/* the 1px progress hairline runs along the film control's bottom edge */
+.km-hero-A__prog {
+  position: absolute; left: -1px; right: -1px; bottom: -1px; height: 1px; overflow: hidden;
+}
+.km-hero-A__prog > span {
+  position: absolute; inset: 0; background: var(--fg);
+  transform-origin: left center; transform: scaleX(.42);
+  animation: km-hero-A-prog 32s linear infinite;
+}
+@keyframes km-hero-A-prog { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ── entrance (only under html.is-play) ── */
+.is-play .km-hero-A .km-film { animation: km-hero-A-fade 1.2s var(--ease-out) both; }
+.is-play .km-hero-A__nav { animation: km-hero-A-fade .5s var(--ease-out) both; }
+.is-play .km-hero-A__nav::after { animation: km-hero-A-draw 1s var(--ease-out) .1s both; }
+.is-play .km-hero-A__label--top { animation: km-hero-A-fade .3s var(--ease-out) .2s both; }
+.is-play .km-hero-A__ln > span { animation: km-hero-A-rise .8s var(--ease-out) both; }
+.is-play .km-hero-A__ln:nth-child(1) > span { animation-delay: .3s; }
+.is-play .km-hero-A__ln:nth-child(2) > span { animation-delay: .42s; }
+.is-play .km-hero-A__ln:nth-child(3) > span { animation-delay: .74s; }   /* the light clause lands 200ms after */
+.is-play .km-hero-A__rule { animation: km-hero-A-draw .5s var(--ease-out) 1s both; }
+.is-play .km-hero-A__lede { animation: km-hero-A-up .6s var(--ease-out) 1.02s both; }
+.is-play .km-hero-A__ctas { animation: km-hero-A-up .6s var(--ease-out) 1.12s both; }
+.is-play .km-hero-A__note { animation: km-hero-A-up .6s var(--ease-out) 1.22s both; }
+.is-play .km-hero-A__band::before { animation: km-hero-A-draw 1.2s var(--ease-out) .4s both; }
+.is-play .km-hero-A__cap,
+.is-play .km-hero-A__ctl { animation: km-hero-A-fade .5s var(--ease-out) 1.3s both; }
+
+@keyframes km-hero-A-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-hero-A-rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
+@keyframes km-hero-A-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-hero-A-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }

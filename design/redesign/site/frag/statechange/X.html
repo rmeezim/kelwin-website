@@ -1,0 +1,93 @@
+<section class="km km-statechange-X ac-sec ac-sec--ruled" data-surface="dark" aria-labelledby="km-statechange-X-title">
+
+  <!-- head (A): label → two-voice statement → rule → lede -->
+  <div class="ac-head ac-wrap">
+    <div class="ac-labelrow"><p class="ac-label">The state change</p><p class="ac-meta">Fig. 06</p></div>
+    <h2 class="ac-statement" id="km-statechange-X-title">
+      <span class="ac-line"><span>Stop resetting.</span></span>
+      <span class="ac-line ac-accent"><span>Start compounding.</span></span>
+    </h2>
+    <span class="ac-rule" aria-hidden="true"></span>
+    <p class="ac-lede">Most companies rebuild their pipeline from scratch every quarter. We build the part that carries forward.</p>
+  </div>
+
+  <!-- FIG. 06 (A's plate, C's drawing): ORBIT accretion. Q1–Q3 each draw a ring that collapses back
+       to the centre; at Q4 the system is installed (the one red ring) and every later quarter
+       accretes a ring outside it that stays. Δ counts the rings that stay. -->
+  <div class="ac-wrap km-statechange-X__body">
+    <figure class="ac-plate km-statechange-X__plate" data-state="system">
+      <div class="ac-field km-statechange-X__field" style="--h:464px;--cy:232px;--rl:240px">
+        <svg class="ac-svg km-statechange-X__draw" viewBox="0 0 1312 464" width="1312" height="464" aria-hidden="true">
+          <!-- the entropy ceiling: where every reset quarter peaks (shows under Entropy; the red ring covers it under System) -->
+          <circle class="ac-s-mute ac-s-dash km-statechange-X__peak" cx="440" cy="232" r="40"/>
+          <!-- accreted quarters Q5–Q8 (draw counter-clockwise from the radius line, outward, and stay) -->
+          <circle class="ac-s km-statechange-X__ring" style="--i:0" pathLength="1" cx="440" cy="232" r="68"/>
+        <circle class="ac-s km-statechange-X__ring" style="--i:1" pathLength="1" cx="440" cy="232" r="104"/>
+        <circle class="ac-s km-statechange-X__ring" style="--i:2" pathLength="1" cx="440" cy="232" r="148"/>
+        <circle class="ac-s-fg km-statechange-X__ring" style="--i:3" pathLength="1" cx="440" cy="232" r="200"/>
+          <!-- Q4 · installed: the section's one red element -->
+          <circle class="ac-s-red km-statechange-X__ring km-statechange-X__ring--red" pathLength="1" cx="440" cy="232" r="40"/>
+          <!-- a reset quarter: draws, then collapses to zero (JS replays it; invisible at rest) -->
+          <circle class="ac-s-fg km-statechange-X__pulse" pathLength="1" cx="440" cy="232" r="40"/>
+
+          <!-- the axis: the past (left of zero, dashed: nothing was kept) · zero · the radius line carrying Q4–Q8 (solid) · dashed construction on to Δ -->
+          <line class="ac-s-mute ac-s-dash km-statechange-X__past" x1="240" y1="232.5" x2="436" y2="232.5"/>
+          <!-- dashed construction from zero to the reading: what Entropy carries (nothing) -->
+          <line class="ac-s-faint ac-s-dash km-statechange-X__carry" x1="444" y1="232.5" x2="866.64" y2="232.5"/>
+          <!-- the radius line: solid only where the system has kept something; grows with the rings, retracts under Entropy -->
+          <line class="ac-s-mute km-statechange-X__radius" pathLength="1" x1="444" y1="232.5" x2="688" y2="232.5"/>
+          <!-- ambient: one node rides the outermost ring (18s a lap); drawn under the labels so it passes behind Q8 -->
+          <g class="km-statechange-X__rider"><rect class="ac-node is-on" x="636.5" y="228.5" width="7" height="7"/></g>
+          <text class="ac-t-code ac-t-knock ac-t-mid ac-t-fg km-statechange-X__q" style="--i:-1" x="480" y="236.9">Q4</text>
+        <text class="ac-t-code ac-t-knock ac-t-mid km-statechange-X__q" style="--i:0" x="508" y="236.9">Q5</text>
+        <text class="ac-t-code ac-t-knock ac-t-mid km-statechange-X__q" style="--i:1" x="544" y="236.9">Q6</text>
+        <text class="ac-t-code ac-t-knock ac-t-mid km-statechange-X__q" style="--i:2" x="588" y="236.9">Q7</text>
+        <text class="ac-t-code ac-t-knock ac-t-mid km-statechange-X__q" style="--i:3" x="640" y="236.9">Q8</text>
+
+          <!-- dimension: carried forward = the radius the system has kept (axis → tangent at the outer ring's top) -->
+          <g class="km-statechange-X__dim">
+            <path class="ac-s-faint" d="M446 32.5H678"/>
+            <path class="ac-s-mute" d="M672.5 32V232M668 32.5h9M668 232.5h9"/>
+          </g>
+          <text class="ac-t-code km-statechange-X__dimv" x="686" y="136.5">Carried forward</text>
+
+          <!-- callout 02's leader (radial, from the red ring) -->
+          <g class="km-statechange-X__c2">
+            <path class="ac-s-mute" d="M468.28 260.28L595.56 387.56H678"/>
+            <rect class="km-statechange-X__anchor" x="465.78" y="257.78" width="5" height="5"/>
+          </g>
+
+          <!-- the centre: zero -->
+          <rect class="ac-node km-statechange-X__node" x="436.5" y="228.5" width="7" height="7"/>
+        </svg>
+
+        <!-- 01 rides the axis from the plate edge into zero; the whole past is dashed (nothing was kept) -->
+        <div class="km-statechange-X__call km-statechange-X__call--past">
+          <span class="ac-callout__code">01</span><span class="ac-callout__t"><span data-q>Q1–Q3</span> reset to zero</span><i class="km-statechange-X__lead" aria-hidden="true"><svg class="ac-svg" width="100%" height="1"><line class="ac-s-mute ac-s-dash" x1="0" y1="0.5" x2="100%" y2="0.5"/></svg></i>
+        </div>
+        <div class="km-statechange-X__call km-statechange-X__c2" style="--x:686px;--y:387.56px">
+          <span class="ac-callout__code">02</span><span class="ac-callout__t">Installed at Q4</span>
+        </div>
+
+        <!-- reading (cols 9–12): Δ on the radius line's axis, the state sentence on the floor -->
+        <div class="km-statechange-X__readout">
+          <p class="ac-num km-statechange-X__delta" style="--size:176px" aria-label="Delta: 5 quarters carried forward">
+            <svg class="km-statechange-X__dglyph" viewBox="0 0 800 729" aria-hidden="true"><path d="M77.9 680 L380.8 49 L419.2 49 L722.1 680 Z"/></svg><span class="ac-num__u km-statechange-X__dnum" aria-hidden="true">5</span>
+          </p>
+          <p class="ac-cap km-statechange-X__unit">Quarters compounding</p>
+          <div class="km-statechange-X__states">
+            <p class="ac-body km-statechange-X__s km-statechange-X__s--ent">Campaigns end. Reps rotate. Learning evaporates. Every quarter starts at zero.</p>
+            <p class="ac-body km-statechange-X__s km-statechange-X__s--sys">Narrative, channels and signal feed forward. Every cycle deposits into the next.</p>
+          </div>
+        </div>
+      </div>
+
+      <figcaption class="ac-capband km-statechange-X__band">
+        <p class="ac-tblock km-statechange-X__tb"><span>Fig. 06</span><span>Accretion</span><span class="km-statechange-X__tstate" data-statecell>System</span><span>Specimen</span></p>
+        <div class="ac-seg km-statechange-X__seg" role="group" aria-label="Figure state">
+          <button type="button" data-to="entropy" aria-pressed="false">Entropy</button><button type="button" data-to="system" aria-pressed="true">System</button>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>

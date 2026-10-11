@@ -1,0 +1,219 @@
+/* ── method · U · FIG. 06 Phase track (round 4 final: V, finished) ──────────────────
+   The approved round-2 X composition (two-line head with a note at right, then one plate:
+   four phase columns over a calibrated ruler, the gantt beneath in the same bays), carrying
+   what round 3 agreed: the red, measured audit; each phase's output; the Handover datum;
+   Calibrate leaving the plate through its right edge as "Yours".
+   Round 4: the ownership axis at the plate's foot (Kelwin's side → Handover → Yours), an
+   axis break after the audit (only the audit is to scale), no caption band and no toggle.
+   Finishing pass: one Handover label (the handover section's token: mono caps, --fg-2, no box),
+   no cap above the plate, the retainer as a dotted hairline, Kelwin's lanes stopping at the
+   datum, the title block outside the plate, hover linking each phase's text to its bar,
+   and a static "10" (the page's one counter belongs to the system).
+   Coherence pass: the foot axis is a TIME axis in the lede's words (Runs once → Handover → Keeps
+   running), so it no longer restates the handover section's ownership key directly above;
+   the lede names the operating retainer (E4).
+   Kit components are placed, not restyled. Geometry is noted in U.html.                 */
+
+.km-method-U {
+  --R: 252px;                 /* ruler y (the seam between columns and gantt) */
+  --L0: 280px; --L1: 312px; --L2: 344px; --L3: 376px;   /* bar tops, 10px bars, 32px lanes */
+  --A: 420px;                 /* ownership axis y */
+  --D: 984.5px;               /* the Handover datum x */
+  --bw: 328px;                /* one bay */
+  overflow-x: clip;           /* Calibrate runs off the page; the section clips it */
+}
+
+/* ── head: kit grammar. The two voices share ONE line ("It starts with" + light "the audit."), so the
+   statement spans the head instead of leaving its right half empty, and the beat differs from the
+   handover's two-line head directly above. Each voice still rises in its own mask (kit cascade, L → R).
+   The lede takes cols 1–7 so it sets in two lines. ── */
+.km-method-U .ac-statement > .ac-line { display: inline-block; vertical-align: top; }
+.km-method-U .ac-head > .ac-lede { grid-column: 1 / span 7; max-width: 60ch; text-wrap: pretty; }
+.km-method-U .ac-head > .ac-note { align-self: end; }
+.km-method-U__nb { white-space: nowrap; }
+
+/* ── FIG. 05 ── */
+.km-method-U__body { margin-top: 64px; }                    /* the page's head → figure step */
+.km-method-U__fig { margin: 0; }
+.km-method-U__plate { overflow: visible; }                   /* Calibrate leaves through the right edge */
+.km-method-U__draw { position: absolute; left: 0; top: 0; }
+
+/* the four phase columns (bays); bars and labels are placed in plate coordinates */
+.km-method-U__cols {
+  position: absolute; left: 0; top: 0; width: 1312px; height: var(--R);
+  display: grid; grid-template-columns: repeat(4, var(--bw));
+}
+.km-method-U__col { padding: 30px 24px 0 32px; }
+.km-method-U__name { margin-top: 14px; }
+.km-method-U__key { margin-top: 24px; }
+.km-method-U__out { margin-top: 6px; }
+.km-method-U__col--1 .km-method-U__idx,
+.km-method-U__col--4 .km-method-U__idx { color: var(--fg-2); }
+
+/* ── the gantt ──
+   Every bar is an opaque --panel ground with its colour on a ::before layer, so the lane guides
+   never show through (--fg-3 is translucent) and the hover can quiet a bar without it going see-through. */
+.km-method-U__bar {
+  position: absolute; height: 10px; background: var(--panel);
+  transform-origin: 0 50%;
+}
+.km-method-U__bar::before {
+  content: ""; position: absolute; inset: 0; background: var(--fg-3);
+  transition: opacity 300ms var(--ease-out), background-color 300ms var(--ease-out);
+}
+.km-method-U__bar--1 { left: 32px;  top: var(--L0); width: 220px; }    /* the audit: ten intervals of 22 */
+.km-method-U__bar--1::before { background: var(--accent); }
+.km-method-U__bar--2 { left: 360px; top: var(--L1); width: 280px; }
+.km-method-U__bar--3 { left: 688px; top: var(--L2); width: 280px; }
+.km-method-U__bar--4 { left: 984px; top: var(--L3); width: 440px; overflow: hidden; }   /* runs past the plate and off the page */
+.km-method-U__bar--4::before { background: var(--fg); }
+
+/* the audit's dimension, read under its bar */
+.km-method-U__dim {
+  position: absolute; left: 32px; top: calc(var(--L0) + 16px);
+  color: var(--fg); letter-spacing: var(--ac-track-anno); font-variant-numeric: tabular-nums;
+}
+
+/* after handover, Kelwin's lane may carry on: the optional operating retainer, one dotted hairline;
+   its label sits on Calibrate's text edge (bay + 32), like every label in the drawing */
+.km-method-U__ret { position: absolute; left: 992px; top: calc(var(--L2) + 5px); display: block; overflow: visible; }
+.km-method-U__ret line { stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-method-U__retl { position: absolute; left: 1016px; top: calc(var(--L2) - 22px); color: var(--fg-3); }
+
+/* ruler: calibrated ticks over the audit (lit), indicative beyond the break */
+.km-method-U__tick { stroke: var(--fg-2); stroke-width: 1; }
+.km-method-U__gates line { stroke: var(--fg-3); }   /* phase starts on the indicative stretch: marked, not scaled */
+.km-method-U__datum { stroke: var(--fg-2); stroke-width: 1; fill: none; }
+.km-method-U__dnode { fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; }
+
+/* the time axis: Runs once ──── HANDOVER ── KEEPS RUNNING ──→ (labels knock out of the line) */
+.km-method-U__kside {
+  position: absolute; left: 44px; top: var(--A); transform: translateY(-50%);
+  padding: 0 12px; background: var(--panel); color: var(--fg-2);
+}
+.km-method-U__ho {
+  position: absolute; left: var(--D); top: calc(var(--A) + .5px); transform: translate(-50%, -50%);
+  padding: 0 10px; background: var(--panel); color: var(--fg-2);
+}
+.km-method-U__yours {
+  position: absolute; left: calc(var(--D) + 44px); top: calc(var(--A) + .5px); width: 480px; transform: translateY(-50%);
+  display: flex; align-items: center; gap: 12px;
+}
+.km-method-U__yours::before, .km-method-U__yours::after { content: ""; height: 1px; background: var(--line-2); }
+.km-method-U__yours::before { width: 24px; flex: none; }
+.km-method-U__yours::after { flex: 1; transform-origin: 0 50%; }
+.km-method-U__yours .ac-cap { color: var(--fg); }
+
+/* the title block, outside the plate at its bottom-left edge (the drawing stays the drawing) */
+
+/* ── focus: hovering a phase reads it on its own — its text and its bar stay, the other three
+   phases' text and bars quiet; a build bar brightens to paper while it is the one being read ── */
+.km-method-U__txt > *,
+.km-method-U__dim, .km-method-U__ret, .km-method-U__retl, .km-method-U__yours {
+  transition: opacity 300ms var(--ease-out);
+}
+.km-method-U__cols:has(.km-method-U__col:hover) > .km-method-U__col:not(:hover) .km-method-U__txt > * { opacity: .4; }
+.km-method-U__cols:has(.km-method-U__col:hover) > .km-method-U__col:not(:hover) .km-method-U__bar::before,
+.km-method-U__cols:has(.km-method-U__col:hover) > .km-method-U__col:not(:hover) :is(.km-method-U__dim, .km-method-U__ret, .km-method-U__retl, .km-method-U__yours) { opacity: .3; }
+.km-method-U__col--2:hover .km-method-U__bar--2::before,
+.km-method-U__col--3:hover .km-method-U__bar--3::before { background: var(--fg); }
+
+/* ── ambient (the page's one loop besides the film): a packet rides Calibrate off the page ── */
+.km-method-U__pkt { position: absolute; left: 6px; top: 2px; width: 6px; height: 6px; background: var(--bg); opacity: 0; }
+
+/* ── entrance (only under .is-play); the kit runs the head ──
+   Elements that the hover quiets enter with `backwards` fill, so the resting opacity stays theirs. */
+.is-play .km-method-U__plate { animation: ac-up 600ms var(--ease-out) 380ms both; }
+.is-play .km-method-U__div { stroke-dasharray: 1; animation: ac-plot 600ms var(--ease-inout) both; animation-delay: calc(560ms + var(--i) * 90ms); }
+.is-play .km-method-U__rul--a { stroke-dasharray: 1; animation: ac-plot 220ms linear 600ms both; }
+.is-play .km-method-U__rul--b { stroke-dasharray: 1; animation: ac-plot 760ms var(--ease-out) 820ms both; }
+.is-play .km-method-U__brk,
+.is-play .km-method-U__gates { animation: ac-fade 300ms var(--ease-out) 900ms both; }
+.is-play .km-method-U__lanes { animation: ac-fade 600ms var(--ease-out) 900ms both; }
+/* the ruler calibrates (MEASURE): ticks arrive off-pitch, settle, then light as the audit fills */
+.is-play .km-method-U__tick {
+  animation: km-method-U-cal 900ms var(--ease-inout) both, km-method-U-lit 240ms linear both;
+  animation-delay: calc(700ms + var(--i) * 20ms), calc(1300ms + var(--i) * 62ms);
+}
+/* phases build in reading order: each column lifts as its bar extends */
+.is-play .km-method-U__txt { animation: km-method-U-lift 500ms var(--ease-out) both; }
+.is-play .km-method-U__col--1 .km-method-U__txt { animation-delay: 1200ms; }
+.is-play .km-method-U__col--2 .km-method-U__txt { animation-delay: 1950ms; }
+.is-play .km-method-U__col--3 .km-method-U__txt { animation-delay: 2650ms; }
+.is-play .km-method-U__col--4 .km-method-U__txt { animation-delay: 3800ms; }
+.is-play .km-method-U__bar { animation: km-method-U-ext 700ms var(--ease-inout) both; }
+.is-play .km-method-U__bar--1 { animation-delay: 1300ms; }
+.is-play .km-method-U__bar--2 { animation-delay: 2000ms; }
+.is-play .km-method-U__bar--3 { animation-delay: 2700ms; }
+.is-play .km-method-U__bar--4 { animation-duration: 1000ms; animation-delay: 3850ms; }
+/* the audit's dimension lands with its bar: a static "10", no count-up */
+.is-play .km-method-U__dim { animation: ac-fade 400ms var(--ease-out) 1750ms backwards; }
+/* Kelwin's side accrues under the three build phases; then the datum rises from its label */
+.is-play .km-method-U__axl { stroke-dasharray: 1; animation: ac-plot 2100ms linear 1300ms both; }
+.is-play .km-method-U__axt,
+.is-play .km-method-U__kside { animation: ac-fade 300ms var(--ease-out) 1300ms both; }
+.is-play .km-method-U__ho { animation: ac-fade 360ms var(--ease-out) 3300ms both; }
+.is-play .km-method-U__datum { stroke-dasharray: 1; animation: ac-plot 600ms var(--ease-inout) 3400ms both; }
+.is-play .km-method-U__dnode { animation: ac-fade 200ms var(--ease-out) 3700ms both; }
+/* Calibrate runs out from the datum; Yours draws with it; the retainer hairline follows */
+.is-play .km-method-U__yours .ac-cap,
+.is-play .km-method-U__yours::before { animation: ac-fade 300ms var(--ease-out) 3850ms both; }
+.is-play .km-method-U__yours::after { animation: ac-drawx 1000ms var(--ease-inout) 3900ms both; }
+.is-play .km-method-U__ret,
+.is-play .km-method-U__retl { animation: ac-fade 600ms var(--ease-out) 4500ms backwards; }
+.is-play .km-method-U__pkt { animation: km-method-U-pkt 9600ms linear 4900ms infinite; }
+
+/* homepage: the figure waits on its first frame until the plate is in view (the head plays on
+   arrival); the packet rests while the section is off screen */
+.km-method-U[data-wait] .km-method-U__body *,
+.km-method-U[data-wait] .km-method-U__body *::before,
+.km-method-U[data-wait] .km-method-U__body *::after { animation-play-state: paused !important; }
+.km-method-U[data-idle] .km-method-U__pkt { animation-play-state: paused; }
+
+@keyframes km-method-U-cal {
+  0%   { opacity: 0; transform: translateX(var(--j, 0px)); }
+  30%  { opacity: 1; transform: translateX(var(--j, 0px)); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes km-method-U-lit { from { stroke: var(--line-2); } to { stroke: var(--fg-2); } }
+@keyframes km-method-U-lift { from { opacity: .36; } to { opacity: 1; } }
+@keyframes km-method-U-ext { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-method-U-pkt {
+  0%   { opacity: 0; transform: none; }
+  5%   { opacity: 1; }
+  86%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(392px); }
+}
+@media (prefers-reduced-motion: reduce) { .km-method-U__pkt { display: none; } }
+
+/* ── ≤ 760px: one column; each phase carries its own bar; Handover is a rule between 03 and 04 ── */
+@media (max-width: 760px) {
+  .km-method-U { --margin: 16px; padding-block: 88px; }
+  .km-method-U .ac-head { display: block; }
+  .km-method-U .ac-head > * + * { margin-top: 24px; }
+  .km-method-U .ac-statement { font-size: 40px; line-height: 1.04; }
+  .km-method-U .ac-statement > .ac-line { display: block; }
+  .km-method-U .ac-lede { font-size: 18px; }
+  .km-method-U .ac-head > .ac-note { margin-top: 32px; }
+  .km-method-U__nb { white-space: normal; }
+  .km-method-U__body { margin-top: 40px; }
+  .km-method-U__field { height: auto; }
+  .km-method-U__draw { visibility: hidden; width: 0; height: 0; }
+  .km-method-U__kside, .km-method-U__retl, .km-method-U__ret { visibility: hidden; position: absolute; }
+  .km-method-U__cols { position: static; width: auto; height: auto; display: block; }
+  .km-method-U__col { position: relative; padding: 24px 20px 28px; }
+  .km-method-U__col + .km-method-U__col { border-top: 1px solid var(--line); }
+  .km-method-U__bar { position: relative; left: auto; top: auto; display: block; margin-top: 20px; }
+  .km-method-U__bar--1 { width: 40%; }
+  .km-method-U__bar--2 { width: 64%; margin-left: 12%; }
+  .km-method-U__bar--3 { width: 64%; margin-left: 24%; }
+  .km-method-U__bar--4 { width: calc(100% + 48px); }
+  .km-method-U__dim { position: static; margin-top: 10px; white-space: normal; }
+  /* the Handover label opens card 04 as a full-width rule (it replaces that card's hairline) */
+  .km-method-U__cols > .km-method-U__col--4 { border-top: 0; }
+  .km-method-U__ho {
+    position: static; transform: none; display: block; padding: 14px 20px; margin: -24px -20px 24px;
+    border-top: 1px solid var(--fg-2); background: transparent;
+  }
+  .km-method-U__yours { position: static; transform: none; width: calc(100% + 48px); margin-top: 12px; }
+}

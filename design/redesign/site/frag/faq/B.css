@@ -1,0 +1,166 @@
+/* ── faq · B · Quiet Ledger — 12 FAQ, a Büro ledger hung from the Index Spine ──
+   The spine column holds only the index and its red-square label. The statement
+   (sentence + light muted sentence) hangs right of the spine over the short red
+   rule; the lede sits as a side note in cols 10–12. Below, the ledger runs
+   spine → margin: N· index · question · THE SHORT ANSWER · +. Every row states
+   its straight answer in one line; exactly one row opens in place, setting the
+   reasoning large and calm under the question and a ledger of terms under its
+   short answer. The System Audit row carries the red door; the foot row the
+   contact door. */
+.km-faq-B {
+  --x-spine: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));
+  padding: 128px 0 128px; overflow: hidden;
+}
+
+.km-faq-B__spine { position: absolute; left: var(--x-spine); width: 1px; background: var(--line); transform-origin: 50% 0; }
+.km-faq-B__spine--a { top: 0; height: 128px; }
+.km-faq-B__spine--b { top: 128px; bottom: 0; }
+
+.km-faq-B__in {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* opening rule: spine → right margin, square at the joint */
+.km-faq-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-faq-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-faq-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+
+/* spine column: index only */
+.km-faq-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-faq-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: 0.9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-faq-B__label {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-faq-B__sq { width: 8px; height: 8px; flex: none; background: var(--accent); }
+
+/* statement: a sentence + a muted sentence (the light accent, picked out by colour) */
+.km-faq-B__h {
+  grid-column: 4 / 11; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1.0; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-faq-B__s1, .km-faq-B__s2 { display: block; white-space: nowrap; }
+.km-faq-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-faq-B__red { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--accent); transform-origin: 0 50%; }
+
+/* the lede: a side note in cols 10–12, its last line seated on the red rule's row */
+.km-faq-B__body {
+  grid-column: 10 / 13; grid-row: 2 / 4; align-self: end; margin-bottom: -6px;
+  font-size: 15px; line-height: 22px; color: var(--fg-2); text-wrap: balance;
+}
+
+/* ── the ledger (cols 4–12, subgrid): N· · question · short answer · + ── */
+.km-faq-B__ledger { grid-column: 4 / 13; grid-row: 4; margin-top: 56px; display: grid; grid-template-columns: subgrid; position: relative; }
+.km-faq-B__lh {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; padding-bottom: 16px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-faq-B__lh > span:nth-child(1) { grid-column: 2 / 7; }
+.km-faq-B__lh > span:nth-child(2) { grid-column: 7 / 9; }
+.km-faq-B__lc { grid-column: 9; justify-self: end; color: var(--fg-3); }
+
+.km-faq-B__rows { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; }
+.km-faq-B__row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; isolation: isolate; }
+.km-faq-B__row::before, .km-faq-B__rows::after { /* hairlines, from the spine */
+  content: ""; position: absolute; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.km-faq-B__row::before { top: 0; }
+.km-faq-B__row:first-child::before { background: var(--line-2); }
+.km-faq-B__rows::after { bottom: 0; }
+.km-faq-B__row::after { /* hover fill */
+  content: ""; position: absolute; z-index: -1; top: 1px; bottom: 0; left: calc(var(--gutter) / -2); right: 0;
+  background: var(--panel); opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.km-faq-B__row:hover::after { opacity: 1; }
+
+.km-faq-B__btn {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: first baseline;
+  padding: 22px 0; text-align: left; transition: padding-bottom 360ms var(--ease-inout);
+}
+.km-faq-B__row.is-open .km-faq-B__btn { padding-bottom: 14px; }
+.km-faq-B__idx { grid-column: 1; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-faq-B__q {
+  grid-column: 2 / 7; grid-row: 1; padding-right: 24px; transition: transform 300ms var(--ease-out);
+  font-family: var(--f-body); font-stretch: 100%; font-weight: 500; font-size: 24px; line-height: 30px; letter-spacing: -0.01em; color: var(--fg);
+}
+.km-faq-B__row:hover .km-faq-B__q { transform: translateX(8px); }
+/* the straight answer, one line per question */
+.km-faq-B__v { grid-column: 7 / 10; grid-row: 1; padding-right: 48px; font-size: 17px; line-height: 26px; color: var(--fg-2); transition: color 300ms var(--ease-out); }
+.km-faq-B__row.is-open .km-faq-B__v { color: var(--fg); }
+.km-faq-B__tog { grid-column: 9; grid-row: 1; justify-self: end; align-self: start; margin-top: 5px; position: relative; width: 20px; height: 20px; }
+.km-faq-B__tog::before, .km-faq-B__tog::after {
+  content: ""; position: absolute; left: 0; top: 9.5px; width: 20px; height: 1px; background: var(--fg);
+}
+.km-faq-B__tog::after { transform: rotate(90deg); transition: transform 360ms var(--ease-inout); }
+.km-faq-B__row.is-open .km-faq-B__tog::after { transform: rotate(0deg); }
+
+/* the open answer: height + opacity, 360ms */
+.km-faq-B__ans {
+  grid-column: 1 / -1; display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 360ms var(--ease-inout), opacity 360ms var(--ease-inout);
+}
+.km-faq-B__ans > div { overflow: hidden; min-height: 0; }
+.km-faq-B__row.is-open .km-faq-B__ans { grid-template-rows: 1fr; opacity: 1; }
+.km-faq-B__ai { display: grid; grid-template-columns: repeat(9, 1fr); column-gap: var(--gutter); padding-bottom: 32px; }
+/* Büro's large, muted answer — reading, not UI */
+.km-faq-B__a { grid-column: 2 / 7; padding-right: 24px; }
+.km-faq-B__a p { font-size: 20px; line-height: 1.55; color: var(--fg-2); text-wrap: pretty; }
+/* the terms, ruled under the short answer */
+.km-faq-B__sl { grid-column: 7 / 10; padding-top: 4px; }
+.km-faq-B__sl li { padding: 9px 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.4; color: var(--fg-2); }
+.km-faq-B__sl li:last-child { border-bottom: 1px solid var(--line); }
+
+/* doors: tracked caps, the B system's buttons */
+.km-faq-B__cta, .km-faq-B__link {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-faq-B__ico { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; transition: transform 200ms var(--ease-out); }
+.km-faq-B__go { width: 14px; }
+.km-faq-B__cta {
+  margin-top: 26px; display: inline-flex; align-items: center; gap: 14px; height: 52px; padding: 0 24px 0 26px;
+  background: var(--accent); color: var(--accent-fg); transition: background-color 200ms var(--ease-out);
+}
+.km-faq-B__cta:hover { background: var(--accent-hover); }
+.km-faq-B__cta:hover .km-faq-B__arr { transform: translate(2px, -2px); }
+.km-faq-B__link { position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px; color: var(--fg); }
+.km-faq-B__link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2);
+  transform-origin: 0 50%; transition: background-color 300ms var(--ease-out);
+}
+.km-faq-B__link:hover::after { background: var(--fg); }
+.km-faq-B__link:hover .km-faq-B__go { transform: translateX(2px); }
+
+/* the foot row, under the last rule: the quiet second door */
+.km-faq-B__foot { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; padding-top: 24px; }
+.km-faq-B__fq { grid-column: 2 / 7; font-size: 17px; line-height: 26px; color: var(--fg-2); }
+.km-faq-B__foot .km-faq-B__link { grid-column: 7 / 10; justify-self: start; }
+
+/* ── entrance (only under html.is-play): rule → index → statement → ledger, top-down ── */
+.is-play .km-faq-B__spine--a { animation: km-faq-B-drop 400ms var(--ease-out) both; }
+.is-play .km-faq-B__joint { animation: km-faq-B-fade 200ms var(--ease-out) 360ms both; }
+.is-play .km-faq-B__rule { animation: km-faq-B-draw 900ms var(--ease-out) 400ms both; }
+.is-play .km-faq-B__spine--b { animation: km-faq-B-drop 1600ms var(--ease-out) 400ms both; }
+.is-play .km-faq-B__index { animation: km-faq-B-fade 400ms var(--ease-out) 560ms both; }
+.is-play .km-faq-B__s1 { animation: km-faq-B-up 700ms var(--ease-out) 600ms both; }
+.is-play .km-faq-B__s2 { animation: km-faq-B-up 700ms var(--ease-out) 760ms both; }
+.is-play .km-faq-B__red { animation: km-faq-B-draw 500ms var(--ease-out) 1000ms both; }
+.is-play .km-faq-B__body { animation: km-faq-B-up 700ms var(--ease-out) 960ms both; }
+.is-play .km-faq-B__lh { animation: km-faq-B-fade 400ms var(--ease-out) 1060ms both; }
+.is-play .km-faq-B__row::before { animation: km-faq-B-draw 600ms var(--ease-out) both; animation-delay: calc(1100ms + var(--i) * 60ms); }
+.is-play .km-faq-B__rows::after { animation: km-faq-B-draw 600ms var(--ease-out) 1460ms both; }
+.is-play .km-faq-B__idx, .is-play .km-faq-B__q, .is-play .km-faq-B__v, .is-play .km-faq-B__tog { animation: km-faq-B-fade 500ms var(--ease-out) both; animation-delay: calc(1180ms + var(--i) * 60ms); }
+.is-play .km-faq-B__ai { animation: km-faq-B-fade 500ms var(--ease-out) 1420ms both; }
+.is-play .km-faq-B__foot { animation: km-faq-B-fade 500ms var(--ease-out) 1620ms both; }
+.km-faq-B.is-init, .km-faq-B.is-init * { transition: none !important; }
+
+@keyframes km-faq-B-drop { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-faq-B-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-faq-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-faq-B-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }

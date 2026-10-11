@@ -1,0 +1,74 @@
+{
+ "summary": "We read the whole page against your positioning: Kelwin sells and deploys revenue architecture as a service, and Plurel owns demand, exposure and distribution. The page already sold the diagnosis well and never promises leads or reach. Its gap was the service itself: the retainer appeared once, in the smallest type on the page, and the handover headline announced an exit. Five fixes are applied in sections we were reworking anyway. Three more touch copy you approved, so they need your yes.",
+ "edits": [
+  {
+   "id": "A1",
+   "section": "07 · The handover",
+   "kind": "safe",
+   "status": "Applied",
+   "current": "When we leave, the system stays. · Drafted by Kelwin",
+   "proposed": "If we leave, the system stays. · …six assets installed in your stack, in your language… · Installed by Kelwin",
+   "why": "“When we leave” announced an exit; for a firm that also runs the system on retainer, “If we leave” makes the same promise as a guarantee."
+  },
+  {
+   "id": "A2",
+   "section": "08 · Methodology",
+   "kind": "safe",
+   "status": "Applied",
+   "current": "The retainer appeared only as a 15px line under the track.",
+   "proposed": "The lede now reads “…The fourth is the operating retainer — it keeps running, because a system left alone drifts the moment the market moves.” “Install first, then an operating retainer — on a system you own.” sits beside the headline at reading size, and a “With us on retainer” line runs on past the Handover marker.",
+   "why": "This is where “as a service” becomes concrete: diagnose, architect, install, then keep it running."
+  },
+  {
+   "id": "A3",
+   "section": "05 · The system",
+   "kind": "safe",
+   "status": "Applied",
+   "current": "…and run the first cycles with your team. · We instrument every touch, then retune…",
+   "proposed": "…and run the first cycles with your team, then keep them running on retainer. · We instrument every touch, then sit with you each quarter and retune the system against what the signal says.",
+   "why": "These are the lines that say what Kelwin actually does; they used to stop at the first cycles. The second is word for word from the live site."
+  },
+  {
+   "id": "A4",
+   "section": "11 · Footer",
+   "kind": "safe",
+   "status": "Applied",
+   "current": "Sister company of Plurel",
+   "proposed": "Sister company of Plurel / Demand, exposure & distribution",
+   "why": "Names the two lanes side by side, in your own words. It can link to Plurel's site once you send the address."
+  },
+  {
+   "id": "A5",
+   "section": "10 · Final call to action",
+   "kind": "safe",
+   "current": "One diagnostic maps the architecture underneath your pipeline. What we build, you keep.",
+   "proposed": "One diagnostic maps the architecture underneath your pipeline. If it makes sense, we install it and run it with you. What we build, you keep.",
+   "why": "The last sentence before the button sold only the audit; it now adds the install and the service in one line and keeps your closing words. (Applied with the round-1 rebuild; say if you'd rather keep the shorter version.)",
+   "status": "Applied"
+  },
+  {
+   "id": "P1",
+   "section": "01 · Hero lede (reopens D10)",
+   "kind": "decision",
+   "current": "Kelwin designs the narrative, market intelligence and outbound systems that turn fragmented growth into repeatable pipeline.",
+   "proposed": "Kelwin designs, installs and runs the narrative, channel and market intelligence systems that turn fragmented growth into repeatable pipeline.",
+   "why": "The most-read sentence on the page has only a consultancy verb, and “outbound” is the one agency word left — Plurel's lane. The smallest version just swaps “outbound” for “channel”."
+  },
+  {
+   "id": "P2",
+   "section": "09 · Who it's for",
+   "kind": "decision",
+   "current": "Someone will own it — After handover an internal operator runs the system. · Outsource-it-forever — Nobody inside will own the system — declined.",
+   "proposed": "Someone will own it — After handover the system is yours — run by your operator, or with us on retainer. Owning it is the real gate. · Rent-it-forever — We'll run it on retainer, but if nobody inside will own it, we decline.",
+   "why": "Today the page describes two operating models: the method offers a retainer, but the fit rows say your operator runs it and decline anyone who wants it run for them. Your call: is the gate owning the system, or operating it?"
+  },
+  {
+   "id": "P3",
+   "section": "09 · Who it's for — a pointer to Plurel",
+   "kind": "decision",
+   "current": "A buyer who needs demand rather than a system has nowhere to go.",
+   "proposed": "One quiet line under the fit lede: “Need demand and exposure, not a system? That's our sister company, Plurel ↗”",
+   "why": "It routes the wrong buyer kindly and sharpens what Kelwin is. It needs your OK on naming Plurel there, and Plurel's address."
+  }
+ ]
+}

@@ -1,0 +1,178 @@
+/* ── statechange · A · Cinematic Figures ─────────────────────────────
+   Graphite act. Two-voice H2 (88px, founder floor) + red rule + lede,
+   then FIG. 06: the Kelwin mark compounding. Six quarters are six equal
+   squares under Entropy; under System each quarter wraps the last as a
+   right-angle corner at the mark's own ratio (1.618, bars ≈ 30%), and
+   the red core lands last. Δ reading top-right, state line bottom-right. */
+
+.km-statechange-A {
+  --colw: calc(var(--col) + var(--gutter));       /* one column + gutter ≈ 111.33 */
+  --plate-h: 552px;
+  --floor: 112px;                                  /* figure baseline, from plate bottom */
+  --tone-e: color-mix(in srgb, var(--fg) 26%, var(--panel));
+}
+.km-statechange-A__inner { padding: 112px var(--margin) 96px; }
+/* graphite after graphite (architecture): one margin-to-margin hairline, then the label row */
+.km-statechange-A::before {
+  content: ""; position: absolute; top: 0; left: var(--margin); right: var(--margin); height: 1px;
+  background: var(--line); transform-origin: 0 50%;
+}
+
+/* label row */
+.km-statechange-A__labelrow {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); align-items: center;
+}
+.km-statechange-A__label {
+  grid-column: 1 / 7; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-statechange-A__sq { width: 8px; height: 8px; background: var(--signal); flex: none; }
+.km-statechange-A__fig {
+  grid-column: 7 / 13; justify-self: end;
+  font: 400 12px/16px var(--f-mono); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+
+/* the hero's stack, echoed: statement → 48×2 red rule → lede */
+.km-statechange-A__head {
+  margin-top: 36px;
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+.km-statechange-A__title {
+  grid-column: 1 / 11;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 96px; line-height: 0.98; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-statechange-A__ln { display: block; overflow: hidden; padding: 0.06em 0 0.14em; margin: -0.06em 0 -0.14em; }
+.km-statechange-A__ln > span { display: block; }
+.km-statechange-A__ln--light { font-weight: var(--light-weight); color: var(--fg-2); }
+.km-statechange-A__rule {
+  grid-column: 1; display: block; width: 48px; height: 2px; margin-top: 36px;
+  background: var(--signal); transform-origin: 0 50%;
+}
+.km-statechange-A__lede {
+  grid-column: 1 / 7; margin-top: 28px; max-width: 50ch;
+  font-size: 20px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty;
+}
+
+/* ── FIG. 06 plate ── */
+.km-statechange-A__plate {
+  position: relative; margin-top: 64px; height: var(--plate-h); background: var(--panel);
+}
+
+/* figure (cols 1–6): anchored to the plate's bottom-left like the mark itself */
+.km-statechange-A__figure {
+  position: absolute; left: 24px; bottom: var(--floor);
+  width: calc(6 * var(--colw) - var(--gutter) - 24px); height: 400px;
+}
+.km-statechange-A__ring { position: absolute; inset: 0; }
+.km-statechange-A__ring > i {
+  position: absolute; display: block;
+  background: color-mix(in srgb, var(--fg) var(--k), var(--panel));
+  --dl: calc(var(--i) * 120ms);
+  transition:
+    left 900ms var(--ease-inout) var(--dl), bottom 900ms var(--ease-inout) var(--dl),
+    width 900ms var(--ease-inout) var(--dl), height 900ms var(--ease-inout) var(--dl),
+    background-color 900ms var(--ease-inout) var(--dl);
+}
+/* System (default, final): each quarter is a right-angle corner — top bar + right bar — around the last */
+.km-statechange-A__tb { left: 0; bottom: calc(var(--s) - var(--t)); width: var(--s); height: var(--t); }
+.km-statechange-A__rb { left: calc(var(--s) - var(--t)); bottom: 0; width: var(--t); height: var(--s); }
+/* the core: the one red element, landing last (the "installed" beat) */
+.km-statechange-A__ring.is-core > i {
+  background: var(--accent);
+  transition: background-color 420ms var(--ease-out) 1500ms;
+}
+
+/* Entropy: six identical squares on the floor — every quarter starts at zero */
+.km-statechange-A__plate[data-state="entropy"] .km-statechange-A__ring > i {
+  left: var(--xe); bottom: 0; width: 36px; height: 36px; background: var(--tone-e);
+  --dl: calc((5 - var(--i)) * 70ms);
+}
+.km-statechange-A__plate[data-state="entropy"] .km-statechange-A__ring.is-core > i { transition: background-color 240ms var(--ease-inout) 0ms; }
+.km-statechange-A__plate.is-instant, .km-statechange-A__plate.is-instant * { transition: none !important; }
+
+/* floor + quarter labels (they travel with their quarter) */
+.km-statechange-A__axis { position: absolute; left: 0; right: 0; top: 100%; height: 1px; background: var(--line-2); }
+.km-statechange-A__q { position: absolute; inset: 0; pointer-events: none; }
+.km-statechange-A__q li {
+  position: absolute; top: calc(100% + 13px); left: var(--xs); transform: translateX(-50%);
+  font: 400 11px/1 var(--f-mono); letter-spacing: 0.04em; color: var(--fg-3); white-space: nowrap;
+  --dl: calc(var(--i) * 120ms);
+  transition: left 900ms var(--ease-inout) var(--dl);
+}
+.km-statechange-A__plate[data-state="entropy"] .km-statechange-A__q li { left: var(--xe); --dl: calc((5 - var(--i)) * 70ms); }
+
+/* readout (cols 9–12) */
+.km-statechange-A__readout {
+  position: absolute; left: calc(8 * var(--colw)); right: 24px; top: 40px; bottom: var(--floor);
+  display: flex; flex-direction: column;
+}
+.km-statechange-A__delta {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 240px; line-height: 0.729; letter-spacing: -0.04em; color: var(--fg-2);
+  white-space: nowrap; font-feature-settings: "zero" 0;
+}
+.km-statechange-A__dglyph {
+  display: inline-block; width: 0.8em; height: 0.729em; vertical-align: baseline; overflow: visible;
+  margin-right: 0.02em; color: var(--fg);
+}
+.km-statechange-A__dglyph path {
+  fill: none; stroke: currentColor; stroke-linejoin: miter; stroke-miterlimit: 8;
+  stroke-width: calc(var(--display-weight) * 0.196);
+}
+.km-statechange-A__dnum { display: inline-block; }
+.km-statechange-A__unit {
+  margin-top: 28px;
+  font: 400 12px/1.4 var(--f-mono); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-statechange-A__states { margin-top: auto; margin-bottom: -6px; display: grid; }
+.km-statechange-A__s {
+  grid-area: 1 / 1; align-self: end; max-width: 34ch; text-wrap: pretty;
+  font-size: 17px; line-height: 1.5; color: var(--fg-2);
+  transition: opacity 600ms var(--ease-inout), transform 600ms var(--ease-inout);
+}
+.km-statechange-A__s--ent { opacity: 0; transform: translateY(8px); }
+.km-statechange-A__plate[data-state="entropy"] .km-statechange-A__s--ent { opacity: 1; transform: none; }
+.km-statechange-A__plate[data-state="entropy"] .km-statechange-A__s--sys { opacity: 0; transform: translateY(8px); }
+
+/* caption band */
+.km-statechange-A__cap {
+  position: absolute; left: 24px; bottom: 24px; height: 48px; display: flex; align-items: center;
+  font: 400 12px/1 var(--f-mono); letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-statechange-A__seg {
+  position: absolute; right: 24px; bottom: 24px; height: 48px; display: flex;
+  border: 1px solid var(--line-2);
+}
+.km-statechange-A__seg button {
+  height: 100%; padding: 0 20px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: background-color 400ms var(--ease-inout), color 400ms var(--ease-inout);
+}
+.km-statechange-A__seg button + button { border-left: 1px solid var(--line-2); }
+.km-statechange-A__seg button:hover { color: var(--fg); }
+.km-statechange-A__seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+
+/* ── entrance (html.is-play) ── */
+.is-play .km-statechange-A__label,
+.is-play .km-statechange-A__fig { animation: km-statechange-A-fade 300ms var(--ease-out) both; }
+.is-play .km-statechange-A__ln > span { animation: km-statechange-A-rise 800ms var(--ease-out) 150ms both; }
+.is-play .km-statechange-A__ln--light > span { animation-delay: 350ms; }
+.is-play .km-statechange-A::before { animation: km-statechange-A-drawx 900ms var(--ease-out) both; }
+.is-play .km-statechange-A__rule { animation: km-statechange-A-drawx 500ms var(--ease-out) 720ms both; }
+.is-play .km-statechange-A__lede { animation: km-statechange-A-up 600ms var(--ease-out) 640ms both; }
+.is-play .km-statechange-A__plate { animation: km-statechange-A-open 900ms var(--ease-out) 420ms both; }
+.is-play .km-statechange-A__readout,
+.is-play .km-statechange-A__cap,
+.is-play .km-statechange-A__seg,
+.is-play .km-statechange-A__axis { animation: km-statechange-A-fade 600ms var(--ease-out) 800ms both; }
+.is-play .km-statechange-A__ring { animation: km-statechange-A-up 600ms var(--ease-out) calc(950ms + var(--i) * 70ms) both; }
+.is-play .km-statechange-A__q { animation: km-statechange-A-fade 600ms var(--ease-out) 1100ms both; }
+
+@keyframes km-statechange-A-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-statechange-A-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-statechange-A-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes km-statechange-A-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-statechange-A-open { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }

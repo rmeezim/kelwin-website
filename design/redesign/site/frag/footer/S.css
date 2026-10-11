@@ -1,0 +1,113 @@
+/* ── footer · X · The mark, buried (round 2, A×C) ─────────────────────────
+   Round-1 footer A, kept for its language: the red-square label, four hairline
+   strips (index · wide title · items) and a hairline band with the legal pair
+   and the outlined audit action. The founder's two fixes:
+   ① the lockup is ONE flat tone: no red core;
+   ② it is buried: set margin to margin, the footer's bottom edge cuts it at
+      half its height, so the page ends inside the brand.
+   The legal row moves above the crop (DIRECTION-AC §5.3) and the FIG. caption
+   goes. One C touch: registration marks where the legal hairline meets the
+   margins, closing the frame the hero opened with the same + marks.
+   Red: the label square only (family punctuation); the mark carries none.   */
+
+.km-footer-S {
+  --lk-w: calc(var(--stage) - 2 * var(--margin));   /* 1312px: cols 1–12 */
+  --lk-h: calc(var(--lk-w) * 152 / 734);            /* ≈ 271.7px, the whole lockup */
+  --lk-vis: calc(var(--lk-h) * .83);                /* ≈ 225.5px above the edge: the cut lands at y≈126/152,
+                                                        so the top third of the smallest square shows */
+  padding-top: var(--ac-pad-y);
+  overflow: hidden;
+}
+
+/* ── the sitemap strips: cols 1–3 / 4–6 / 7–9 / 10–12 ── */
+.km-footer-S__map { margin-top: 56px; }
+.km-footer-S__map > .ac-strip { padding-top: 0; gap: 0; }
+.km-footer-S__map .ac-h3 { margin-top: 20px; }
+.km-footer-S__ul { margin-top: 28px; display: grid; row-gap: 8px; }
+/* every row is one 26px line, link or text, so the four strips share one row pitch */
+.km-footer-S__ul > li { font-size: var(--ac-body); line-height: 26px; }
+.km-footer-S__t { color: var(--fg-2); }
+/* tabular figures on the clock only: on whole rows, Inter's tnum also widens the hyphen ("in - house") */
+.km-footer-S__clock { font-variant-numeric: tabular-nums; }
+.km-footer-S__t--quiet { color: var(--fg-3); }
+.km-footer-S__a {
+  position: relative; display: inline-flex; align-items: baseline; gap: 8px; vertical-align: top; color: var(--fg-2);
+  transition: color 250ms var(--ease-out);
+}
+.km-footer-S__a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 250ms var(--ease-out);
+}
+.km-footer-S__a--door { color: var(--fg); }
+.km-footer-S__ar {
+  display: inline-block; flex: none; align-self: center; width: 10px; height: 10px; overflow: visible;
+  fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square;
+  transition: transform 250ms var(--ease-out);
+}
+.km-footer-S__ar--go { width: 13px; height: 11px; }
+.km-footer-S__a:hover, .km-footer-S__a:focus-visible { color: var(--fg); outline: none; }
+.km-footer-S__a:hover::after, .km-footer-S__a:focus-visible::after { transform: scaleX(1); }
+.km-footer-S__a--ne:hover .km-footer-S__ar { transform: translate(2px, -2px); }
+.km-footer-S__a--go:hover .km-footer-S__ar { transform: translateX(3px); }
+
+/* ── the legal row (88px, the hero band's height), above the crop ── */
+.km-footer-S__legal {
+  position: relative; margin-top: 112px; height: 88px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.km-footer-S__legal::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line);
+  transform-origin: 0 50%;
+}
+.km-footer-S__copy { color: var(--fg-3); }
+.km-footer-S__ctl { display: flex; align-items: center; gap: 12px; }
+.km-footer-S__pair { display: flex; height: 44px; border: 1px solid var(--line-2); }
+.km-footer-S__pair a {
+  display: inline-flex; align-items: center; height: 42px; padding: 0 20px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: background-color 250ms var(--ease-out), color 250ms var(--ease-out);
+}
+.km-footer-S__pair a + a { box-shadow: inset 1px 0 0 var(--line-2); }
+.km-footer-S__pair a:hover, .km-footer-S__pair a:focus-visible { background: var(--fg); color: var(--bg); box-shadow: none; outline: none; }
+.km-footer-S__top { min-width: 176px; justify-content: center; }
+
+/* ── the buried lockup: margin to margin, cut by the footer's bottom edge ── */
+.km-footer-S__bury {
+  position: relative; height: var(--lk-vis); margin: 64px var(--margin) 0; overflow: hidden;
+}
+.km-footer-S__mark { display: block; --logo-h: var(--lk-h); width: var(--lk-w); color: var(--fg); }
+
+/* ── entrance (html.is-play only), along the reading path:
+      label → strips 01→04 → legal hairline draws left→right and each + registers
+      as the line reaches it → © and controls fade in → LAST, the lockup rises
+      once, slowly, into its crop. Nothing moves after ≈2.9s. ── */
+@keyframes km-footer-S-fade { from { opacity: 0; } }
+@keyframes km-footer-S-up { from { opacity: 0; transform: translateY(12px); } }
+@keyframes km-footer-S-drawx { from { transform: scaleX(0); } }
+@keyframes km-footer-S-drawy { from { transform: scaleY(0); } }
+@keyframes km-footer-S-rise { from { transform: translateY(86%); } }
+
+.is-play .km-footer-S__head { animation: km-footer-S-fade 300ms var(--ease-out) both; }
+.is-play .km-footer-S__map > .ac-strip + .ac-strip::before { animation: km-footer-S-drawy 900ms var(--ease-out) calc(120ms + var(--i) * 80ms) both; }
+.is-play .km-footer-S__map > .ac-strip > * { animation: km-footer-S-up 600ms var(--ease-out) both; animation-delay: calc(200ms + var(--i) * 90ms); }
+.is-play .km-footer-S__map > .ac-strip > .ac-h3 { animation-delay: calc(260ms + var(--i) * 90ms); }
+.is-play .km-footer-S__map > .ac-strip > .km-footer-S__ul { animation-delay: calc(330ms + var(--i) * 90ms); }
+.is-play .km-footer-S__legal::before { animation: km-footer-S-drawx 1200ms var(--ease-out) 300ms both; }
+.is-play .km-footer-S__copy, .is-play .km-footer-S__ctl { animation: km-footer-S-fade 500ms var(--ease-out) 800ms both; }
+/* the one orchestrated moment, and the last word: a single slow rise from fully
+   below the edge into its crop (2s --ease-inout from 900ms, so it surfaces
+   only once the legal row is in, and lands by ≈2.9s). It never moves again. */
+.is-play .km-footer-S__mark { animation: km-footer-S-rise 2000ms var(--ease-inout) 900ms both; }
+
+/* ── review only (standalone page, never on the homepage): the crop depths side by side ── */
+.km-footer-S__review { margin: 96px var(--margin) 0; padding: 32px 0 64px; border-top: 1px solid var(--line); }
+.km-home .km-footer-S__review { display: none; }
+.km-footer-S__rv-cap { margin-top: 20px; max-width: 64ch; font-family: var(--f-body); font-size: 15px; line-height: 1.5; color: var(--fg-2); }
+.km-footer-S__rv-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gutter); margin-top: 40px; align-items: end; }
+.km-footer-S__rv-fig { margin: 0; }
+.km-footer-S__rv-box { --w: 416px; --h: calc(var(--w) * 152 / 734); position: relative; height: calc(var(--h) * var(--v)); overflow: hidden; border-bottom: 1px solid var(--fg-2); }
+.km-footer-S__rv-box .km-logo { display: block; --logo-h: var(--h); width: var(--w); color: var(--fg); }
+.km-footer-S__rv-fig figcaption { margin-top: 16px; display: grid; gap: 6px; }
+.km-footer-S__rv-t { font-family: var(--f-body); font-size: 15px; line-height: 1.5; color: var(--fg); }
+.km-footer-S__rv-fig--pick .km-footer-S__rv-t::after { content: " · current build"; color: var(--fg-2); }

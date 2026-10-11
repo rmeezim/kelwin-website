@@ -1,0 +1,164 @@
+/* ── architecture · C · Systems Drawing Set ───────────────────────────
+   SHEET 05/14. Frame verticals at the margins, a --line-2 opening rule,
+   title cell + note cell, drawing field (cols 1–8) over a dashed
+   construction grid, spec column (cols 9–12), 48px bottom band with
+   ticker + title block. FIG. 5.1 is a 1px orthogonal routing plan; the
+   sheet's ONE red element is the return route (tag F is paper).
+   Default CSS = final, fully plotted state.                            */
+
+.km-architecture-C { position: relative; height: 1008px; overflow: hidden; }
+.km-architecture-C__sheet, .km-architecture-C__plan { position: absolute; left: 0; display: block; overflow: visible; }
+.km-architecture-C__sheet { top: 0; }
+.km-architecture-C__plan { top: 480px; }
+
+/* sheet structure */
+.km-architecture-C__frame { fill: none; stroke: var(--line); stroke-width: 1; }
+.km-architecture-C__r { fill: none; stroke: var(--line); stroke-width: 1; }
+.km-architecture-C__r--2 { stroke: var(--line-2); }
+.km-architecture-C__grid path { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 6; }
+.km-architecture-C__cross path { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+
+/* title row */
+/* the C sheet head (same metric on every sheet): opening rule y 96 · label y 120 · title bottom y 422 ·
+   48×2 red rule y 450 · row bottom y 480 · note cell (cols 9–12) with its mono cell ID and a 20px lede */
+.km-architecture-C__titlecell { position: absolute; left: 64px; top: 97px; width: 879px; height: 383px; padding: 23px 24px 0; }
+.km-architecture-C__notecell { position: absolute; left: 944px; top: 97px; width: 432px; height: 383px; padding: 23px 24px 0; }
+.km-architecture-C__sheetlab {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-architecture-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-architecture-C__cellid {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+  white-space: pre;
+}
+.km-architecture-C__title {
+  position: absolute; left: 24px; bottom: 58px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: .94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-architecture-C__title span { display: block; white-space: nowrap; }
+.km-architecture-C__turn { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-architecture-C__rule { position: absolute; left: 24px; top: 353px; width: 48px; height: 2px; background: var(--signal); transform-origin: 0 50%; }
+.km-architecture-C__note {
+  position: absolute; left: 24px; right: 24px; bottom: 58px;
+  font-weight: var(--body-weight); font-size: 20px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty;
+}
+
+/* FIG. 5.1 drawing */
+.km-architecture-C__w { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-architecture-C__cell { fill: none; stroke: var(--fg); stroke-width: 1; }
+.km-architecture-C__branch .km-architecture-C__cell { stroke: var(--fg-2); }
+.km-architecture-C__dash { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 4 4; }
+.km-architecture-C__jn rect { fill: var(--fg-2); }
+.km-architecture-C__dot { fill: var(--fg); }
+.km-architecture-C__t { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; fill: var(--fg); white-space: pre; }
+.km-architecture-C__t--2, .km-architecture-C__t--2 text { fill: var(--fg-2); }
+.km-architecture-C__t--3, .km-architecture-C__t--3 text, .km-architecture-C__t .km-architecture-C__t--3 { fill: var(--fg-3); }
+
+/* lettered callouts */
+.km-architecture-C__co path, .km-architecture-C__co rect { fill: none; stroke: var(--fg-3); stroke-width: 1; transition: stroke .25s var(--ease-inout); }
+.km-architecture-C__co text { font-family: var(--f-mono); font-size: 11px; fill: var(--fg-2); text-anchor: middle; transition: fill .25s var(--ease-inout); }
+.km-architecture-C__co.is-hot path, .km-architecture-C__co.is-hot rect { stroke: var(--accent); }
+.km-architecture-C__co.is-hot text { fill: var(--accent); }
+
+/* the one red element: the return route. Its callout F is an inverted paper tag. */
+.km-architecture-C__retline { fill: none; stroke: var(--accent); stroke-width: 1; transition: stroke-width .25s var(--ease-inout); }
+.km-architecture-C__ret.is-hot .km-architecture-C__retmain { stroke-width: 2; }
+.km-architecture-C__tagleader { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-architecture-C__tagbox { fill: var(--fg); }
+.km-architecture-C__tagrule { fill: none; stroke: var(--bg); stroke-width: 1; }
+.km-architecture-C__tagt { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; fill: var(--bg); }
+.km-architecture-C__run { fill: var(--fg); opacity: 0; }
+
+/* spec column */
+.km-architecture-C__spec { position: absolute; left: 968px; top: 504px; width: 384px; height: 432px; }
+.km-architecture-C__spechead {
+  display: flex; justify-content: space-between; padding-bottom: 12px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); white-space: pre;
+}
+.km-architecture-C__rows { margin: 0; border-bottom: 1px solid var(--line); }
+.km-architecture-C__row {
+  display: grid; grid-template-columns: 104px 1fr; align-items: center; min-height: 40px; padding: 8px 0;
+  border-top: 1px solid var(--line); cursor: default;
+}
+.km-architecture-C__row dt {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+  transition: color .25s var(--ease-inout);
+}
+.km-architecture-C__lt {
+  display: inline-grid; place-items: center; width: 16px; height: 16px; flex: none;
+  border: 1px solid var(--line-2); font-size: 11px; letter-spacing: 0; color: var(--fg-2);
+  transition: border-color .25s var(--ease-inout), color .25s var(--ease-inout);
+}
+.km-architecture-C__lt--blank { border-color: transparent; color: var(--fg-3); }
+.km-architecture-C__row dd { margin: 0; font-size: 15px; line-height: 1.35; color: var(--fg); }
+.km-architecture-C__row[data-c]:hover dt { color: var(--fg); }
+.km-architecture-C__row[data-c]:hover .km-architecture-C__lt { border-color: var(--accent); color: var(--accent); }
+
+.km-architecture-C__cta {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 64px;
+  display: flex; justify-content: space-between; align-items: flex-end; padding: 0 16px 15px;
+  border: 1px solid var(--line-2);
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg);
+  transition: background-color .25s var(--ease-inout), color .25s var(--ease-inout);
+}
+.km-architecture-C__cta:hover { background: var(--fg); color: var(--bg); }
+.km-architecture-C__ico { width: 13px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; margin-bottom: 2px; transition: transform .25s var(--ease-out); }
+.km-architecture-C__cta:hover .km-architecture-C__ico { transform: translateX(3px); }
+
+/* bottom band */
+/* the C band (same on every sheet): 48px, legend on cols 1–8, segmented title block on cols 9–12 */
+.km-architecture-C__band { position: absolute; left: 64px; right: 64px; top: 961px; height: 46px; }
+.km-architecture-C__ticker {
+  position: absolute; left: 24px; top: 0; height: 46px; display: flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-architecture-C__ticker span { color: var(--fg-3); }
+.km-architecture-C__ticker .km-architecture-C__tk { color: var(--fg); }
+.km-architecture-C__tb {
+  position: absolute; left: 880px; right: 0; top: 0; height: 46px; display: flex;
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-architecture-C__tb > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; white-space: nowrap; }
+.km-architecture-C__tb > span:first-child { justify-content: flex-start; padding-left: 24px; }
+.km-architecture-C__tb > span:last-child { color: var(--fg); }
+.km-architecture-C__tb > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-architecture-C__tb .km-logo-mark { --logo-h: 11px; color: var(--fg); }
+
+/* ── entrance, in drafting order (only under html.is-play) ── */
+.is-play .km-architecture-C__frame { animation: km-architecture-C-fade .3s var(--ease-inout) both; }
+.is-play .km-architecture-C__cross { animation: km-architecture-C-fade .3s var(--ease-inout) .1s both; }
+.is-play .km-architecture-C__r { stroke-dasharray: 1; animation: km-architecture-C-draw .5s var(--ease-inout) both; animation-delay: calc(.15s + var(--i) * 40ms); }
+.is-play .km-architecture-C__grid path { animation: km-architecture-C-fade .6s var(--ease-inout) .6s both; }
+.is-play .km-architecture-C__grid path + path { animation-delay: .75s; }
+.is-play .km-architecture-C__title { animation: km-architecture-C-fade .6s var(--ease-inout) .45s both; }
+.is-play .km-architecture-C__sheetlab { animation: km-architecture-C-fade .3s var(--ease-inout) .25s both; }
+.is-play .km-architecture-C__rule { animation: km-architecture-C-drawx .5s var(--ease-out) .7s both; }
+.is-play .km-architecture-C__note { animation: km-architecture-C-fade .6s var(--ease-inout) .7s both; }
+.is-play .km-architecture-C__p { stroke-dasharray: 1; animation: km-architecture-C-draw .35s var(--ease-inout) both; animation-delay: var(--d); }
+.is-play rect.km-architecture-C__p { animation-duration: .45s; }
+.is-play .km-architecture-C__branch { animation: km-architecture-C-fade .5s var(--ease-inout) both; animation-delay: var(--d); }
+.is-play .km-architecture-C__branch .km-architecture-C__p { animation-duration: .5s; }
+.is-play .km-architecture-C__dot { animation: km-architecture-C-fade .3s var(--ease-inout) both; animation-delay: var(--d); }
+.is-play .km-architecture-C__bus { animation: km-architecture-C-fade .5s var(--ease-inout) both; animation-delay: var(--d); }
+.is-play .km-architecture-C__co { animation: km-architecture-C-fade .4s var(--ease-inout) both; animation-delay: var(--d); }
+.is-play .km-architecture-C__retmain { stroke-dasharray: 1; animation: km-architecture-C-draw .6s var(--ease-inout) 2.8s both; }
+.is-play .km-architecture-C__retchev { animation: km-architecture-C-fade .2s var(--ease-inout) 3.35s both; }
+.is-play .km-architecture-C__tag { animation: km-architecture-C-settle .4s var(--ease-inout) 3.35s both; }
+.is-play .km-architecture-C__spechead { animation: km-architecture-C-fade .3s var(--ease-inout) 1s both; }
+.is-play .km-architecture-C__row { animation: km-architecture-C-fade .4s var(--ease-inout) both; animation-delay: calc(1.1s + var(--i) * 60ms); }
+.is-play .km-architecture-C__rows { animation: km-architecture-C-fade .3s var(--ease-inout) 1.1s both; }
+.is-play .km-architecture-C__cta { animation: km-architecture-C-fade .4s var(--ease-inout) 1.6s both; }
+.is-play .km-architecture-C__ticker { animation: km-architecture-C-fade .5s var(--ease-inout) 2.6s both; }
+.is-play .km-architecture-C__tb { animation: km-architecture-C-fade .4s var(--ease-inout) .45s both; }
+
+@keyframes km-architecture-C-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-architecture-C-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-architecture-C-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-architecture-C-settle { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+/* coherence: the figure caption takes the caption tier (every C sheet) */
+.km-architecture-C__t[data-t="900"] { letter-spacing: var(--label-tracking); }

@@ -1,0 +1,178 @@
+/* ── system · W · FIG. 03 Strata, assembled by scroll (round 4) ─────────────────
+   Round 2's strata language, back: three true-isometric slabs (one inscription
+   each), boxed numeral callouts on the right, a dimension bracket, registration
+   marks and a title block, and the ledger beside the drawing. Each step drops one
+   slab (red while it is being installed) and opens its ledger row. The last step
+   closes the stack, and the bracket that measured "3 layers" is inked red as the
+   one return path (03 → 01) and re-reads "1 system".
+   · homepage (html.km-home, wide, motion on): a tall track + sticky stage, steps
+     driven by scroll (the script adds .is-pinned and .is-live);
+   · standalone mockup: plays once by itself in about 6s, then rests assembled;
+   · reduced motion and ≤ 760px: the assembled state, no pin.
+   Default CSS = the final, assembled state.                                       */
+
+.km-system-W { --sys-pin: 1200px; --sys-body-h: 700px; --ac-occlude: var(--bg); }
+
+.km-system-W__body { margin-top: 64px; align-items: start; }
+
+/* ── the figure: a registration frame on the graphite, drawing at 1:1 ── */
+.km-system-W__plot { position: absolute; left: 0; top: 0; width: 755px; height: 640px; transform-origin: 0 0; }
+.km-system-W__svg { position: absolute; left: 0; top: 0; }
+.km-system-W__cap { display: flex; justify-content: flex-end; align-items: flex-end; height: 56px; padding: 0 24px; }
+
+/* slab faces: occluding fills, 1px outlines */
+.km-system-W__top, .km-system-W__side {
+  fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter;
+  transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout);
+}
+.km-system-W__side { stroke: var(--fg-3); }
+
+/* inscriptions: each slab's job on its face */
+.km-system-W__ink {
+  fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: butt; stroke-linejoin: miter;
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke 400ms var(--ease-inout), stroke-dashoffset var(--t, 700ms) var(--ease-inout) var(--d, 300ms), opacity 120ms linear var(--d, 300ms);
+}
+.km-system-W__ink--h { stroke: var(--fg); }
+.km-system-W__node {
+  fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1;
+  transition: opacity 300ms var(--ease-out) var(--d, 300ms), fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout);
+}
+.km-system-W__node.is-hub { fill: var(--fg); stroke: var(--fg); }
+
+/* the slab being installed: red top face, paper inscription, lifted 8px */
+.km-system-W__lift { transition: transform 400ms var(--ease-inout); }
+.km-system-W__s.is-on > .km-system-W__lift { transform: translateY(-8px); }
+.km-system-W__s.is-on .km-system-W__top { fill: var(--accent); stroke: var(--accent); }
+.km-system-W__s.is-on .km-system-W__side { stroke: var(--fg-2); }
+.km-system-W__s.is-on .km-system-W__ink { stroke: var(--accent-fg); }
+.km-system-W__s.is-on .km-system-W__node { fill: var(--accent); stroke: var(--accent-fg); }
+.km-system-W__s.is-on .km-system-W__node.is-hub { fill: var(--accent-fg); }
+
+/* exploded (pitch 176) → installed (pitch 136): slabs, callouts, extension lines and the bracket close up together.
+   Re-exploding (scrolling back) waits for the red to withdraw first. */
+.km-system-W__s, .km-system-W__co, .km-system-W__ext { transition: transform 700ms var(--ease-inout); }
+.km-system-W__fig.is-exploded :is(.km-system-W__s, .km-system-W__co, .km-system-W__ext) { transition-delay: 250ms; }
+.km-system-W__fig.is-exploded :is(.km-system-W__s, .km-system-W__co, .km-system-W__ext)[data-l="1"] { transform: translateY(-40px); }
+.km-system-W__fig.is-exploded :is(.km-system-W__s, .km-system-W__co, .km-system-W__ext)[data-l="3"] { transform: translateY(40px); }
+.km-system-W__ext { fill: none; stroke: var(--line-2); stroke-width: 1; transition: transform 700ms var(--ease-inout), opacity 400ms var(--ease-out) 300ms; }
+
+/* the bracket: "3 layers" while exploded; once the loop closes its ticks give way to the red return and it reads "1 system" */
+.km-system-W__dim { transition: top 700ms var(--ease-inout), height 700ms var(--ease-inout), opacity 400ms var(--ease-out) 300ms; }
+.km-system-W__fig.is-exploded .km-system-W__dim { top: calc(var(--y) - 40px); height: calc(var(--h) + 80px); transition-delay: 250ms, 250ms, 300ms; }
+.km-system-W__dim::before, .km-system-W__dim::after { transition: opacity 300ms var(--ease-out) 900ms; }
+.km-system-W__fig.is-closed .km-system-W__dim::before, .km-system-W__fig.is-closed .km-system-W__dim::after { opacity: 0; }
+.km-system-W__fig.is-exploded .km-system-W__dim::before, .km-system-W__fig.is-exploded .km-system-W__dim::after { transition-delay: 0ms; }
+.km-system-W__dim .ac-dim__v { left: auto; right: 14px; }
+.km-system-W__dv { display: grid; justify-items: end; }
+.km-system-W__dv > span { grid-area: 1 / 1; transition: opacity 400ms var(--ease-inout) 400ms; }
+.km-system-W__dv-a { opacity: 0; }
+.km-system-W__fig.is-exploded .km-system-W__dv-a { opacity: 1; }
+.km-system-W__fig.is-exploded .km-system-W__dv-b { opacity: 0; }
+
+/* the hand-off: as the loop closes, the red drains from 03's face just as the return starts from its corner */
+.km-system-W.is-handoff .km-system-W__top { transition-delay: 450ms; }
+
+/* the one red at rest: the return, inked over the bracket (out of 03, up, into 01) */
+.km-system-W__ret {
+  fill: none; stroke: var(--signal); stroke-width: 1.5; stroke-linecap: butt; stroke-linejoin: miter;
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1100ms var(--ease-inout) 650ms, opacity 100ms linear 650ms;
+}
+.km-system-W__chev { fill: none; stroke: var(--signal); stroke-width: 1.5; stroke-linecap: square; transition: opacity 300ms var(--ease-out) 1250ms; }
+/* …and the ring on 03 closes with it */
+.km-system-W__gap { transition: stroke 400ms var(--ease-inout), stroke-dashoffset 500ms var(--ease-inout) 650ms, opacity 100ms linear 650ms; }
+
+/* callouts ride with their slab (close-up on __co, the 8px lift on __col) */
+.km-system-W__cos, .km-system-W__co, .km-system-W__col { position: absolute; inset: 0; pointer-events: none; }
+.km-system-W__col { transition: transform 400ms var(--ease-inout); }
+.km-system-W__co.is-on > .km-system-W__col { transform: translateY(-8px); }
+.km-system-W__co .ac-callout { transition: opacity 400ms var(--ease-out) 450ms; }
+
+/* ── the ledger (stack X): index · name + job · toggle; the open row shows "In practice" ── */
+.km-system-W__detail { display: flex; flex-direction: column; align-items: flex-start; }
+.km-system-W__detail > .km-system-W__ledger { align-self: stretch; }
+.km-system-W__ledger { --ac-row-cols: 32px minmax(0, 1fr) 20px; --ac-row-indent: calc(32px + var(--gutter)); }
+.km-system-W__ledger .ac-row { position: relative; }
+.km-system-W__ledger .ac-row__head { align-items: start; }
+.km-system-W__ledger .ac-row__head > .ac-idx { padding-top: 7px; transition: color 400ms var(--ease-inout); }
+.km-system-W__ledger .ac-toggle { margin-top: 5px; }
+.km-system-W__ledger .ac-h4 { transition: transform 300ms var(--ease-out), color 400ms var(--ease-inout); }
+.km-system-W__rt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.km-system-W__job { color: var(--fg-3); transition: color 400ms var(--ease-inout); }
+.km-system-W__ledger .ac-row.is-open .km-system-W__job { color: var(--fg-2); }
+.km-system-W__ledger .ac-row__more { transition-delay: 160ms; }
+.km-system-W__ledger .ac-row__in { transition-delay: 160ms; }
+.km-system-W__more { display: flex; flex-direction: column; gap: 6px; }
+.km-system-W__line { color: var(--fg); max-width: 42ch; }
+/* a layer not yet installed reads quieter; the one being installed carries a 1px --fg rule on top */
+.km-system-W__ledger .ac-row.is-pending .ac-h4 { color: var(--fg-3); }
+.km-system-W__ledger .ac-row.is-pending .ac-toggle { opacity: .4; }
+.km-system-W__ledger .ac-row::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 500ms var(--ease-inout); pointer-events: none;
+}
+.km-system-W__ledger .ac-row.is-cur::before { transform: scaleX(1); }
+.km-system-W__ledger .ac-row.is-cur .ac-row__head > .ac-idx { color: var(--fg); }
+.km-system-W__ledger .ac-row__head:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+/* the reading path ends on one quiet door, right under the ledger (stack X) */
+.km-system-W__doors { margin-top: 36px; }
+.km-system-W .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* ── step states (only once the script has armed the section: .is-live) ── */
+.km-system-W.is-live .km-system-W__drop { transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+.km-system-W.is-live .km-system-W__s:not(.is-in) .km-system-W__drop { opacity: 0; transform: translateY(-24px); transition-duration: 300ms; }
+.km-system-W.is-live .km-system-W__s:not(.is-in) .km-system-W__ink { stroke-dashoffset: 1; opacity: 0; transition-duration: 200ms, 200ms, 1ms; transition-delay: 0ms, 0ms, 200ms; }
+.km-system-W.is-live .km-system-W__s:not(.is-in) .km-system-W__node { opacity: 0; transition-delay: 0ms; }
+.km-system-W.is-live .km-system-W__co:not(.is-in) .ac-callout { opacity: 0; transition-delay: 0ms; transition-duration: 200ms; }
+.km-system-W.is-live .km-system-W__fig:not(.has-dim) :is(.km-system-W__dim, .km-system-W__ext) { opacity: 0; transition-delay: 0ms; }
+.km-system-W.is-live .km-system-W__fig:not(.is-closed) :is(.km-system-W__ret, .km-system-W__gap) { stroke-dashoffset: 1; opacity: 0; transition: stroke-dashoffset 300ms var(--ease-inout), opacity 1ms linear 300ms; }
+.km-system-W.is-live .km-system-W__fig:not(.is-closed) .km-system-W__chev { opacity: 0; transition-delay: 0ms; transition-duration: 200ms; }
+
+/* ── entrance (standalone: html.is-play · homepage: the section plays its own) ── */
+.km-system-W__fig .ac-reg { --d: 300ms; }
+.is-play .km-system-W__cap { animation: km-system-W-fade 400ms var(--ease-out) 600ms both; }
+.is-play .km-system-W__ledger > .ac-row { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(700ms + var(--i, 0) * 80ms); }
+.km-system-W__ledger > .ac-row[data-l="2"] { --i: 1; }
+.km-system-W__ledger > .ac-row[data-l="3"] { --i: 2; }
+.is-play .km-system-W__doors { animation: ac-up 600ms var(--ease-out) 1000ms both; }
+.is-play .km-system-W__dim { animation: none; }
+/* once played, the entrance retires (so a resize or a tall capture can never replay it) */
+.km-system-W.is-settled :is(.ac-reg, .km-system-W__cap, .km-system-W__ledger > .ac-row, .km-system-W__doors) { animation: none; }
+@keyframes km-system-W-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── homepage: the pin (a tall track; the stage sticks while the steps play) ── */
+html.km-home .km-system-W.is-pinned { padding-bottom: 0; }
+html.km-home .km-system-W.is-pinned .km-system-W__track {
+  height: calc(100vh / var(--page-zoom, 1) + var(--sys-pin));
+  margin-top: calc(64px - max(0px, (100vh / var(--page-zoom, 1) - var(--sys-body-h)) / 2));
+}
+html.km-home .km-system-W.is-pinned .km-system-W__stage {
+  position: sticky; top: 0; height: calc(100vh / var(--page-zoom, 1));
+  display: flex; align-items: center;
+}
+html.km-home .km-system-W.is-pinned .km-system-W__body { width: 100%; margin-top: 0; transform-origin: 50% 50%; }
+/* the section plays its own entrance on the homepage (its track is taller than the page player's threshold) */
+html.km-home .is-play .km-system-W.ac-sec--ruled::before { animation: none; }
+html.km-home .km-system-W.is-play.ac-sec--ruled::before { animation: ac-drawx 900ms var(--ease-out) both; }
+
+/* ── phones: the assembled drawing, scaled to the column; the ledger names the layers ── */
+@media (max-width: 760px) {
+  .km-system-W { --margin: 16px; --gutter: 16px; padding-block: 72px; }
+  .km-system-W .ac-head { display: flex; flex-direction: column; align-items: flex-start; }
+  .km-system-W .ac-head > * { margin-top: 0; }
+  .km-system-W .ac-labelrow { width: 100%; }
+  .km-system-W .ac-statement { margin-top: 28px; font-size: min(40px, 9.6vw); }
+  .km-system-W .ac-head > .ac-rule { margin-top: 24px; }
+  .km-system-W .ac-head > .ac-lede { margin-top: 20px; font-size: 17px; }
+  .km-system-W__body { display: flex; flex-direction: column; gap: 40px; margin-top: 48px; }
+  .km-system-W__fig { width: 100%; }
+  /* crop to the stack and its return (x 130–610, y 60–580 of the 755 × 640 drawing) and scale that to the column */
+  .km-system-W__field { height: calc(520px * var(--fs, .72)); overflow: hidden; }
+  .km-system-W__plot { transform: translate(calc(-130px * var(--fs, .72)), calc(-60px * var(--fs, .72))) scale(var(--fs, .72)); }
+  /* visibility (not display): hiding must never restart an entrance animation */
+  .km-system-W__cos, .km-system-W__dim, .km-system-W__fig .ac-reg { visibility: hidden; }
+  .km-system-W__cap { justify-content: flex-start; padding: 12px 0 0; height: auto; }
+  .km-system-W__cap .ac-tblock > * { padding: 0 8px; font-size: 11px; height: 26px; }
+  .km-system-W__ledger .ac-h4 { font-size: 20px; }
+}

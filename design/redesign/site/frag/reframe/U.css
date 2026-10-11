@@ -1,0 +1,90 @@
+/* ── reframe · X · Cinematic Drafting (A × C) — FIG. 02, LATTICE section cut ──
+   A's head, plate and strips; C's 1px isometric section cut, under quota:
+   one drawing, three callouts at a time, one title block, one red line.
+   Surface (warped lattice over a dashed, unseen architecture) resolves to
+   Architecture (true grid; the cut plots bay by bay, left → right, each bay
+   under its symptom; one straight red datum on the real layer).           */
+
+.km-reframe-U__fig { margin-top: 64px; }
+.km-reframe-U__field { --ac-occlude: var(--panel); }
+.km-reframe-U__svg { position: absolute; left: 0; top: 0; }
+
+/* ── the drawing ── */
+/* the lattice (surface): warped in --fg-2, resolved it recedes to --fg-3 so the cut leads */
+.km-reframe-U__m, .km-reframe-U__gaps {
+  fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-linejoin: round;
+  transition: stroke 600ms var(--ease-inout) 900ms;
+}
+.km-reframe-U__m { --t: 760ms; }
+.km-reframe-U__gaps { transition: stroke 600ms var(--ease-inout) 900ms, opacity 300ms var(--ease-out) 1150ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__m,
+.km-reframe-U__fig.is-surface .km-reframe-U__gaps { stroke: var(--fg-2); transition-delay: 0ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__gaps { opacity: 0; }
+
+/* construction: the true surface outline + the hidden architecture (Surface only) */
+.km-reframe-U__ghost { opacity: 0; transition: opacity 400ms var(--ease-inout) 800ms; }
+.km-reframe-U__hid { opacity: 0; transition: opacity 300ms var(--ease-inout) 250ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__ghost,
+.km-reframe-U__fig.is-surface .km-reframe-U__hid { opacity: 1; transition-delay: 500ms; }
+
+/* the cut (architecture): the outline plots first, then the two bay dividers left → right, then the face cells */
+.km-reframe-U__c {
+  fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 600ms var(--ease-inout) calc(300ms + var(--k, 0) * 90ms);
+}
+.km-reframe-U__c--bay { transition-duration: 600ms; transition-delay: calc(820ms + var(--k, 0) * 160ms); }
+.km-reframe-U__cells { fill: none; stroke: var(--line); stroke-width: 1; transition: opacity 500ms var(--ease-out) 1150ms; }
+/* the three drops that seat the surface over the datum (dashed: they are construction, not structure) */
+.km-reframe-U__drops { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; transition: opacity 400ms var(--ease-out) 1250ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__drops { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__c { stroke-dashoffset: 1; transition-duration: 300ms; transition-delay: 0ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__cells { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* the one red: a single straight datum along the top of the real layer, drawn left → right, last */
+.km-reframe-U__datum { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 500ms var(--ease-out) 1400ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__datum { stroke-dashoffset: 1; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* ── callouts: three at a time. Symptoms (Surface) on a right column; bays (Architecture) on a left column ── */
+.km-reframe-U__tags, .km-reframe-U__bays { position: absolute; inset: 0; pointer-events: none; }
+.km-reframe-U__tags { opacity: 0; transform: translateY(10px); transition: opacity 280ms var(--ease-out), transform 400ms var(--ease-inout); }
+.km-reframe-U__fig.is-surface .km-reframe-U__tags { opacity: 1; transform: none; transition-delay: 650ms; }
+.km-reframe-U__bays .ac-callout { transition: opacity 400ms var(--ease-out) calc(1000ms + var(--i, 0) * 160ms); }
+.km-reframe-U__bays .ac-callout:nth-child(2), .km-reframe-U__tags .ac-callout:nth-child(2) { --i: 1; }
+.km-reframe-U__bays .ac-callout:nth-child(3), .km-reframe-U__tags .ac-callout:nth-child(3) { --i: 2; }
+.km-reframe-U__fig.is-surface .km-reframe-U__bays .ac-callout { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* dimensions (Architecture only): off the right corner of the cut, values to the right */
+.km-reframe-U__dims { position: absolute; inset: 0; pointer-events: none; transition: opacity 400ms var(--ease-out) 1200ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__dims { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* ── the coda, split across the two states (A's readout) ── */
+.km-reframe-U__ro { position: absolute; left: 24px; top: 32px; z-index: 1; }
+.km-reframe-U__rs > span { display: block; }
+.km-reframe-U__rs { transition: opacity 400ms var(--ease-inout), transform 400ms var(--ease-inout); }
+.km-reframe-U__rs--s { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(8px); }
+.km-reframe-U__rs--a { transition-delay: 300ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__rs--s { opacity: 1; transform: none; transition-delay: 0ms; }
+.km-reframe-U__fig.is-surface .km-reframe-U__rs--a { opacity: 0; transform: translateY(-8px); transition-delay: 0ms; }
+
+/* ── strips: struck symptom → the real layer ── */
+.km-reframe-U__was { display: flex; align-items: baseline; gap: 16px; font-size: 17px; line-height: 1.4; color: var(--fg-3); }
+.km-reframe-U__t { margin-top: -6px; }
+.km-reframe-U__was s { text-decoration-thickness: 1px; text-decoration-color: var(--fg-3); }
+.km-reframe-U__strips .ac-strip__foot { max-width: 46ch; }
+
+/* ── entrance (html.is-play only), travelling the reading path: the head runs first (label → statement →
+      rule → lede → door, 0–700ms); the plate follows the lede in its SURFACE state: construction, then the
+      lattice plots left → right, then the symptom tags 01 → 03; the strips cascade beneath ── */
+.is-play .km-reframe-U__fig { animation: km-reframe-U-fade 500ms var(--ease-out) 640ms both; }
+.is-play .km-reframe-U__ro { animation: km-reframe-U-fade 500ms var(--ease-out) 760ms both; }
+.is-play .km-reframe-U__fig .ac-capband { animation: km-reframe-U-fade 400ms var(--ease-out) 860ms both; }
+.is-play .km-reframe-U__in { animation: km-reframe-U-fade 500ms var(--ease-out) var(--d, 760ms) both; }
+.is-play .km-reframe-U__tags .ac-callout { animation: km-reframe-U-fade 400ms var(--ease-out) both; animation-delay: calc(1500ms + var(--i, 0) * 140ms); }
+
+@keyframes km-reframe-U-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* local guard: keep the selected segment legible while hovered (the kit's :hover colour outranks it) */
+.km-reframe-U__seg > [aria-selected="true"]:hover { color: var(--bg); }
+
+/* Round 5: no Fig title block — the state toggle holds the band on its own, right-aligned */
+.km-reframe-U .ac-capband { justify-content: flex-end; }

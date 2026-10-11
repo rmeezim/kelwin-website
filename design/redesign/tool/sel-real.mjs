@@ -1,0 +1,13 @@
+import { chromium } from "playwright";
+const out = process.argv[2];
+const b = await chromium.launch({ executablePath: "/opt/pw-browsers/chromium" });
+const p = await b.newPage({ viewport: { width: 1440, height: 1100 } });
+const errs = []; p.on("pageerror", (e) => errs.push(e.message));
+await p.goto("http://localhost:8322/preview.html", { waitUntil: "load" }); await p.waitForTimeout(1500);
+await p.screenshot({ path: out + "/real-top.png" });
+await p.evaluate(() => { document.documentElement.style.scrollBehavior = "auto"; document.querySelector("#s-hero").scrollIntoView(); });
+await p.waitForTimeout(6000);
+await p.screenshot({ path: out + "/real-hero.png" });
+const st = await p.evaluate(() => { const f = document.querySelector("#stage-hero iframe"); return { ready: f && f.classList.contains("is-ready"), h: f && f.style.height }; });
+console.log(JSON.stringify({ st, errs }));
+await b.close();

@@ -1,0 +1,277 @@
+/* ── nav · C · Systems Drawing Set — SHEET 00 · the capability sheet ──
+   Bird's header as a ruled table row (hero C's cell nav, metric for metric:
+   cells on the mid-gutter cell lines, labels bottom-left, the open tab
+   inverted, the outlined AUDIT REQUEST cell). CAPABILITIES opens a sheet laid
+   out on C's own anatomy, not a menu of columns: a selector stack (cols 1–3,
+   the selected cell inverted like every C tab) → FIG. 0.1, the three-piece
+   Kelwin mark exploded at exact 30° (cols 4–8), lettered leaders A–C running
+   from each selector into its piece and the red plane on the selected one →
+   the spec column (cols 9–12): that capability's services, the datum note
+   (D · the System Audit, joined to the drawing's datum by a leader) and the
+   door pair. A 48px band closes it: key + segmented title block.           */
+
+.km-nav-C {
+  height: 800px; overflow: hidden; isolation: isolate;
+  --inset: 16px;
+  --pad: 24px;          /* content inset inside sheet cells (every C sheet) */
+  --sheet-y: 64px;       /* sheet top = nav bottom */
+  --sheet-h: 504px;      /* 2 × 228 callout rows + 48 band → sheet bottom 568 */
+}
+
+/* ── cool night film under the drafting overlay ── */
+.km-nav-C .km-film { --film-sat: .45; --film-frost: .2; --film-bright: 1.16; --film-blur: 8px; }   /* hero C's calibration */
+/* hero C's height-fit plate, lowered so the room's people stand in the strip
+   of film left open under the sheet (column lines continue over them) */
+/* hero C's framing, lowered so the colleague and the man seen from behind
+   stand in the strip of film left open under the sheet */
+.km-nav-C .km-film__plate {
+  left: -85px; top: 440px; width: 1690px; height: 848px; right: auto; bottom: auto;
+  background-size: 100% 100%; background-position: 0 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent 18%, #000 42%);
+  mask-image: linear-gradient(90deg, transparent 18%, #000 42%);
+}
+.km-nav-C__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 40%, transparent) 0, transparent 120px);
+}
+
+/* ── the frame: margin verticals, sheet rules, column lines over the film, chosen crosshairs ── */
+.km-nav-C__frame { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.km-nav-C__fv { position: absolute; top: 0; bottom: 0; left: var(--x); width: 1px; background: var(--line-2); }
+.km-nav-C__fh { position: absolute; left: var(--margin); right: var(--margin); top: var(--y); height: 1px; background: var(--line-2); transform-origin: left center; }
+.km-nav-C__strip { position: absolute; left: 0; right: 0; top: 569px; bottom: 0; }
+.km-nav-C__cv { position: absolute; top: 0; bottom: 0; left: var(--x); width: 1px; background: var(--line); transform-origin: top center; }
+.km-nav-C__xh { position: absolute; left: calc(var(--x) - 4px); top: calc(var(--y) - 4px); width: 9px; height: 9px; }
+.km-nav-C__xh::before, .km-nav-C__xh::after { content: ""; position: absolute; background: var(--fg); }
+.km-nav-C__xh::before { left: 0; right: 0; top: 4px; height: 1px; }
+.km-nav-C__xh::after { top: 0; bottom: 0; left: 4px; width: 1px; }
+.km-nav-C__xy {
+  position: absolute; right: calc(var(--margin) + 12px); top: 580px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: .06em; color: var(--fg-2);
+  opacity: 0; transition: opacity .3s var(--ease-inout); font-variant-numeric: tabular-nums;
+}
+.km-nav-C.is-pointer .km-nav-C__xy { opacity: 1; }
+
+/* drawn arrows (the brand fonts carry no arrow glyphs) */
+.km-nav-C__ico { display: inline-block; width: 11px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; }
+.km-nav-C__ico--r { width: 13px; }
+
+/* ── nav: the hero's cell row (64px), Capabilities open = inverted ── */
+.km-nav-C__bar { position: absolute; z-index: 2; left: 0; top: 0; width: 100%; height: 64px; }
+.km-nav-C__menu { display: contents; }
+.km-nav-C__cell {
+  position: absolute; top: 0; height: 64px;
+  display: flex; align-items: flex-end; gap: 10px; padding: 0 var(--inset) 15px;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); text-align: left; white-space: nowrap;
+  transition: background-color .25s var(--ease-inout), color .25s var(--ease-inout);
+}
+.km-nav-C__cell::after {                         /* right rule of each cell (draws top-down) */
+  content: ""; position: absolute; right: -1px; top: 0; bottom: 0; width: 1px; background: var(--line-2); transform-origin: center top;
+}
+.km-nav-C__cell:hover, .km-nav-C__cell.is-active { background: var(--fg); color: var(--bg); }
+.km-nav-C__brand { padding-left: var(--pad); padding-bottom: 14px; color: var(--fg); }
+.km-nav-C__brand:hover { background: color-mix(in srgb, var(--bg) 72%, transparent); color: var(--fg); }
+.km-nav-C__brand .km-logo { --logo-h: 20px; }
+.km-nav-C__sheetno { flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 3px; }
+.km-nav-C__sheetno:hover { background: color-mix(in srgb, var(--bg) 72%, transparent); color: var(--fg-2); }
+.km-nav-C__k, .km-nav-C__sv { font-family: var(--f-mono); font-weight: var(--body-weight); font-size: 11px; line-height: 14px; }
+.km-nav-C__k { color: var(--fg-3); }
+.km-nav-C__sv { color: var(--fg); letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.km-nav-C__act {                                 /* outlined action cell: a 1px --fg frame inside the cell (hero C) */
+  color: var(--fg); outline: 1px solid var(--fg); outline-offset: -1px;
+}
+.km-nav-C__act::after { display: none; }
+.km-nav-C__act:hover { background: var(--fg); color: var(--bg); }
+.km-nav-C__act .km-nav-C__ico { margin-bottom: 3px; transition: transform .3s var(--ease-out); }
+.km-nav-C__act:hover .km-nav-C__ico { transform: translate(2px, -2px); }
+
+/* ── the sheet (64→568): selector stack · drawing field · spec column · band ── */
+.km-nav-C__sheet {
+  position: absolute; z-index: 1; top: var(--sheet-y); left: var(--margin); width: 1312px; height: var(--sheet-h);
+  background: var(--bg);
+}
+.km-nav-C__lines { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.km-nav-C__lines .h { position: absolute; left: var(--x0); width: calc(var(--x1) - var(--x0)); top: var(--y); height: 1px; background: var(--line); transform-origin: left center; }
+.km-nav-C__lines .v { position: absolute; left: var(--x); top: var(--y0); height: calc(var(--y1) - var(--y0)); width: 1px; background: var(--line); transform-origin: top center; }
+
+/* mono voice of the sheet */
+.km-nav-C__top, .km-nav-C__spechead, .km-nav-C__eid, .km-nav-C__legend, .km-nav-C__tb {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+
+/* cols 1–3 · the selector stack (C tabs: the selected cell inverts) */
+.km-nav-C__sels { position: absolute; left: 0; top: 0; width: 322px; height: 456px; }
+.km-nav-C__sel {
+  position: absolute; left: 0; width: 322px; height: 152px; padding: 22px var(--pad) 0;
+  display: flex; flex-direction: column; color: var(--fg);
+  transition: background-color .5s var(--ease-inout), color .5s var(--ease-inout);
+}
+.km-nav-C__top { display: flex; align-items: center; gap: 12px; height: 16px; color: var(--fg-3); transition: color .5s var(--ease-inout); }
+.km-nav-C__tag {
+  width: 16px; height: 16px; flex: none; display: grid; place-items: center;
+  border: 1px solid var(--line-2); color: var(--fg-2); letter-spacing: 0;
+  transition: background-color .5s var(--ease-inout), color .5s var(--ease-inout), border-color .5s var(--ease-inout);
+}
+.km-nav-C__cid { margin-left: auto; color: var(--fg-2); transition: color .5s var(--ease-inout); }
+.km-nav-C__title {
+  display: flex; justify-content: space-between; align-items: center; margin-top: 20px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 20px; line-height: 20px; letter-spacing: var(--display-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-nav-C__go { display: inline-flex; color: var(--fg-3); transition: transform .3s var(--ease-out), color .5s var(--ease-inout); }
+.km-nav-C__desc { display: block; margin-top: 10px; font-size: 15px; line-height: 20px; color: var(--fg-2); transition: color .5s var(--ease-inout); }
+.km-nav-C__sel:hover .km-nav-C__go { transform: translateX(3px); }
+
+/* cols 4–8 · FIG. 0.1 */
+.km-nav-C__field { position: absolute; left: 322px; top: 0; width: 557px; height: 456px; }
+.km-nav-C__iso { position: absolute; left: 0; top: 0; overflow: visible; }
+.km-nav-C__iso .cg { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 6; }
+.km-nav-C__iso .cx { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 3 3; }
+.km-nav-C__iso .sd, .km-nav-C__iso .tp { fill: var(--bg); stroke: var(--fg-3); stroke-width: 1; stroke-linejoin: miter; transition: stroke .5s var(--ease-inout); }
+.km-nav-C__iso .rp {
+  fill: var(--accent); stroke: var(--accent); stroke-width: 1;
+  opacity: 0; transform: translateY(-8px);
+  transition: opacity .6s var(--ease-inout), transform .6s var(--ease-inout);
+}
+.km-nav-C__iso .dm path { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-nav-C__iso .dv, .km-nav-C__iso .lb, .km-nav-C__iso .cap {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; white-space: pre;
+}
+.km-nav-C__iso .dv { fill: var(--fg-3); }
+.km-nav-C__iso .lb { fill: var(--fg-3); transition: fill .5s var(--ease-inout); }
+.km-nav-C__iso .cap { fill: var(--fg-3); letter-spacing: var(--label-tracking); }
+.km-nav-C__iso .ld path { fill: none; stroke: var(--line-2); stroke-width: 1; transition: stroke .5s var(--ease-inout); }
+.km-nav-C__iso .ld rect { fill: var(--fg-3); transition: fill .5s var(--ease-inout); }
+.km-nav-C__iso .ld--d path { stroke: var(--fg-3); stroke-dasharray: 3 3; }
+
+/* cols 9–12 · the spec column */
+.km-nav-C__spec { position: absolute; left: 879px; top: 0; width: 433px; height: 456px; }
+.km-nav-C__panel {
+  position: absolute; left: 0; top: 0; width: 433px; height: 288px;
+  opacity: 0; visibility: hidden; transition: opacity .36s var(--ease-inout), visibility 0s linear .36s;
+}
+.km-nav-C__spechead { display: flex; justify-content: space-between; align-items: center; height: 48px; margin: 0; padding: 0 var(--pad); color: var(--fg-3); }
+.km-nav-C__spechead span:first-child { color: var(--fg-2); }
+.km-nav-C__rows li { height: 48px; }
+.km-nav-C__rows li + li { box-shadow: inset 0 1px 0 var(--line); }
+.km-nav-C__rows a {
+  display: flex; align-items: center; height: 100%; padding: 0 var(--pad); color: var(--fg);
+  transition: background-color .25s var(--ease-inout), color .25s var(--ease-inout);
+}
+.km-nav-C__id { width: 76px; flex: none; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: .06em; color: var(--fg-3); transition: color .25s var(--ease-inout); }
+.km-nav-C__val { flex: 1; font-size: 15px; line-height: 20px; white-space: nowrap; }
+.km-nav-C__rows a:hover { background: var(--fg); color: var(--bg); transition-duration: .2s; }
+.km-nav-C__rows a:hover .km-nav-C__id, .km-nav-C__rows a:hover .km-nav-C__go { color: var(--bg); }
+.km-nav-C__all {
+  position: absolute; left: 0; right: 0; top: 240px; height: 48px; padding: 0 var(--pad);
+  display: flex; justify-content: space-between; align-items: center; box-shadow: inset 0 1px 0 var(--line);
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg);
+  transition: background-color .25s var(--ease-inout), color .25s var(--ease-inout);
+}
+.km-nav-C__all:hover { background: var(--fg); color: var(--bg); }
+.km-nav-C__all .km-nav-C__ico { transition: transform .3s var(--ease-out); }
+.km-nav-C__all:hover .km-nav-C__ico { transform: translateX(3px); }
+
+.km-nav-C__datum { position: absolute; left: 0; top: 288px; width: 433px; height: 104px; padding: 25px var(--pad) 0; }
+.km-nav-C__datum .km-nav-C__desc { margin-top: 12px; max-width: 360px; }
+
+/* the shared C door pair: red audit cell with its cell ID · ruled contact cell */
+.km-nav-C__doors { position: absolute; left: 0; top: 392px; width: 433px; height: 64px; display: grid; grid-template-columns: 334px 1fr; }
+.km-nav-C__entry {
+  display: flex; flex-direction: column; justify-content: space-between; padding: 12px var(--pad) 13px;
+  background: var(--accent); color: var(--accent-fg);
+  transition: background-color .25s var(--ease-inout);
+}
+.km-nav-C__entry:hover { background: var(--accent-hover); }
+.km-nav-C__eid { color: color-mix(in srgb, var(--accent-fg) 78%, transparent); }
+.km-nav-C__ego {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-nav-C__ego .km-nav-C__ico, .km-nav-C__contact .km-nav-C__ico { transition: transform .3s var(--ease-out); }
+.km-nav-C__entry:hover .km-nav-C__ico { transform: translate(2px, -2px); }
+.km-nav-C__contact {
+  display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; padding: 12px 12px 13px; color: var(--fg);
+  box-shadow: inset 1px 0 0 var(--line-2);
+  transition: background-color .25s var(--ease-inout), color .25s var(--ease-inout);
+}
+.km-nav-C__contact .km-nav-C__ico { align-self: flex-end; margin-top: 2px; }
+.km-nav-C__contact:hover { background: var(--fg); color: var(--bg); }
+.km-nav-C__contact:hover .km-nav-C__ico { transform: translateX(3px); }
+
+/* selection (data-sel on the root): the selector inverts, the red plane lands on its piece,
+   its leader, label and key entry go --fg, and the spec column shows its panel */
+.km-nav-C[data-sel="1"] .rp[data-k="1"],
+.km-nav-C[data-sel="2"] .rp[data-k="2"],
+.km-nav-C[data-sel="3"] .rp[data-k="3"] { opacity: 1; transform: none; }
+.km-nav-C[data-sel="1"] .pl[data-k="1"] > *,
+.km-nav-C[data-sel="2"] .pl[data-k="2"] > *,
+.km-nav-C[data-sel="3"] .pl[data-k="3"] > * { stroke: var(--fg); }
+.km-nav-C[data-sel="1"] .ld[data-l="1"] path,
+.km-nav-C[data-sel="2"] .ld[data-l="2"] path,
+.km-nav-C[data-sel="3"] .ld[data-l="3"] path { stroke: var(--fg); }
+.km-nav-C[data-sel="1"] .ld[data-l="1"] rect,
+.km-nav-C[data-sel="2"] .ld[data-l="2"] rect,
+.km-nav-C[data-sel="3"] .ld[data-l="3"] rect { fill: var(--fg); }
+.km-nav-C[data-sel="1"] .lb[data-l="1"],
+.km-nav-C[data-sel="2"] .lb[data-l="2"],
+.km-nav-C[data-sel="3"] .lb[data-l="3"] { fill: var(--fg); }
+.km-nav-C[data-sel="1"] .km-nav-C__sel[data-cap="1"],
+.km-nav-C[data-sel="2"] .km-nav-C__sel[data-cap="2"],
+.km-nav-C[data-sel="3"] .km-nav-C__sel[data-cap="3"] { background: var(--fg); color: var(--bg); }
+.km-nav-C[data-sel="1"] .km-nav-C__sel[data-cap="1"] :is(.km-nav-C__top, .km-nav-C__cid, .km-nav-C__desc, .km-nav-C__go),
+.km-nav-C[data-sel="2"] .km-nav-C__sel[data-cap="2"] :is(.km-nav-C__top, .km-nav-C__cid, .km-nav-C__desc, .km-nav-C__go),
+.km-nav-C[data-sel="3"] .km-nav-C__sel[data-cap="3"] :is(.km-nav-C__top, .km-nav-C__cid, .km-nav-C__desc, .km-nav-C__go) { color: color-mix(in srgb, var(--bg) 72%, transparent); }
+.km-nav-C[data-sel="1"] .km-nav-C__sel[data-cap="1"] .km-nav-C__tag,
+.km-nav-C[data-sel="2"] .km-nav-C__sel[data-cap="2"] .km-nav-C__tag,
+.km-nav-C[data-sel="3"] .km-nav-C__sel[data-cap="3"] .km-nav-C__tag { background: var(--bg); border-color: var(--bg); color: var(--fg); }
+.km-nav-C:is([data-sel="0"], [data-sel="1"]) .km-nav-C__panel[data-cap="1"],
+.km-nav-C[data-sel="2"] .km-nav-C__panel[data-cap="2"],
+.km-nav-C[data-sel="3"] .km-nav-C__panel[data-cap="3"] { opacity: 1; visibility: visible; transition: opacity .36s var(--ease-inout) .16s, visibility 0s; }
+
+/* band (48px): key on cols 1–8 · segmented title block on cols 9–12 (the shared C band) */
+.km-nav-C__band { position: absolute; left: 0; right: 0; top: 456px; height: 48px; }
+.km-nav-C__legend { position: absolute; left: var(--pad); top: 0; height: 48px; margin: 0; display: flex; align-items: center; gap: 20px; color: var(--fg-3); }
+.km-nav-C__legend [data-l] { transition: color .25s var(--ease-inout); }
+.km-nav-C__fig { color: var(--fg-2); }
+.km-nav-C[data-sel="1"] .km-nav-C__legend [data-l="1"],
+.km-nav-C[data-sel="2"] .km-nav-C__legend [data-l="2"],
+.km-nav-C[data-sel="3"] .km-nav-C__legend [data-l="3"] { color: var(--fg); }
+.km-nav-C__tb { position: absolute; left: 879px; right: 0; top: 0; height: 48px; margin: 0; display: flex; color: var(--fg-2); }
+.km-nav-C__tb > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; }
+.km-nav-C__tb > span:first-child { justify-content: flex-start; padding-left: var(--pad); }
+.km-nav-C__tb > span:last-child { color: var(--fg); }
+.km-nav-C__tb > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-nav-C__tb .km-logo-mark { --logo-h: 11px; color: var(--fg); }
+
+.km-nav-C.no-tr * { transition: none !important; }
+
+/* ── entrance: drafting order, --ease-inout ─────────────────────────── */
+.is-play .km-nav-C__fv, .is-play .km-nav-C__xh { animation: km-nav-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-nav-C__fh { animation: km-nav-C-drawx 700ms var(--ease-inout) 100ms both; }
+.is-play .km-nav-C__cv { animation: km-nav-C-drawy 600ms var(--ease-inout) 900ms both; }
+.is-play .km-nav-C__cell { animation: km-nav-C-fade 300ms var(--ease-inout) both; animation-delay: calc(100ms + var(--i) * 40ms); }
+.is-play .km-nav-C__cell::after { animation: km-nav-C-drawy 400ms var(--ease-inout) both; animation-delay: calc(100ms + var(--i) * 40ms); }
+.is-play .km-nav-C__sheet { animation: km-nav-C-fade 120ms linear both; }
+.is-play .km-nav-C__lines .h { animation: km-nav-C-drawx 500ms var(--ease-inout) both; animation-delay: calc(420ms + var(--i) * 40ms); }
+.is-play .km-nav-C__lines .v { animation: km-nav-C-drawy 600ms var(--ease-inout) both; animation-delay: calc(420ms + var(--i) * 40ms); }
+.is-play .km-nav-C__sel { animation: km-nav-C-fade 400ms var(--ease-inout) both; animation-delay: calc(560ms + var(--i) * 80ms); }
+.is-play .km-nav-C__iso .cg, .is-play .km-nav-C__iso .cx, .is-play .km-nav-C__iso .dm { animation: km-nav-C-fade 400ms var(--ease-inout) 700ms both; }
+.is-play .km-nav-C__iso .sd, .is-play .km-nav-C__iso .tp { stroke-dasharray: 1; animation: km-nav-C-plot 1400ms var(--ease-inout) both; }
+.is-play .km-nav-C__iso .p3 > * { animation-delay: 820ms; }
+.is-play .km-nav-C__iso .p2 > * { animation-delay: 960ms; }
+.is-play .km-nav-C__iso .p1 > * { animation-delay: 1100ms; }
+.is-play .km-nav-C__iso .rp { animation: none; }
+.is-play .km-nav-C__iso .ld { animation: km-nav-C-fade 400ms var(--ease-inout) 1700ms both; }
+.is-play .km-nav-C__iso .lb, .is-play .km-nav-C__iso .dv, .is-play .km-nav-C__iso .cap { animation: km-nav-C-fade 400ms var(--ease-inout) 1800ms both; }
+.is-play .km-nav-C__spechead, .is-play .km-nav-C__all, .is-play .km-nav-C__datum { animation: km-nav-C-fade 400ms var(--ease-inout) 900ms both; }
+.is-play .km-nav-C__rows li { animation: km-nav-C-fade 400ms var(--ease-inout) both; animation-delay: calc(980ms + var(--i, 0) * 60ms); }
+.is-play .km-nav-C__doors, .is-play .km-nav-C__band > * { animation: km-nav-C-fade 500ms var(--ease-inout) 1300ms both; }
+
+@keyframes km-nav-C-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-nav-C-drawx { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes km-nav-C-drawy { from { transform: scaleY(0); } to { transform: none; } }
+@keyframes km-nav-C-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }

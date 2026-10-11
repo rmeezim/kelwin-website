@@ -1,0 +1,20 @@
+{
+ "title": "The quarter ledger",
+ "direction": "B",
+ "summary": "A report chapter hung from the Index Spine that draws the compounding curve in type alone. Four quarter rows repeat 'Starts at zero.' flat under Entropy, while the Compounding column grows by one deposit per quarter (narrative, channels, signal, learning), so the line lengths step outward like the mark. A total rule closes the ledger and the light Δ stands on it.",
+ "reference": {
+  "site": "AI in Design Report 2026",
+  "mobbin_url": "https://mobbin.com/sites/sections/bde9e82a-b11e-446f-9858-76c20256b468",
+  "ref_file": "refs/statechange-B.webp",
+  "borrowed": "The report chapter opener under one top hairline: a big index parked in its own left column, a chapter title and short paragraph at the top of the next column, a band of deliberate air, then a mono-headed, hairline-ruled list anchored bottom-right, with its own large object bottom-left and an action closing the chapter.",
+  "kelwin": "'01 Tools' moves into the Index Spine as '06 · State change', and the opening rule meets the spine at a right angle with the 6px joint square (the mark's K3 core). The chapter title becomes the 88px sentence plus muted sentence across cols 4–12. The bulleted list becomes a quarter ledger in cols 6–12 whose Compounding column lengthens one deposit per row, the mark's step read as line length, while the Entropy column repeats itself flat. The raster image bottom-left becomes a 200px light Δ standing on the ledger's ink total rule, which reaches back to col 4. The black action bar becomes a quiet underlined link to the method."
+ },
+ "motion": [
+  "entrance: the opening rule draws from the spine to the right margin (900ms --ease-out) and the joint square fades in. The 06 index and red-square label fade in (400ms). 'Stop resetting.' rises 12px (700ms), the light muted 'Start compounding.' follows 160ms later, the 48×2 red rule draws, then the body.",
+  "the state-change moment: the ledger fills in quarter by quarter, one row every 280ms. Each rule draws (600ms), then 'Starts at zero.' and the carried items fade in, then the new deposit slides 8px into place in ink. The compounding column visibly lengthens while the entropy column stays flat. The ink total rule then draws from col 4 to the margin (900ms), the light Δ rises onto it, and the total row lands at about 3.3s.",
+  "interaction: hovering a quarter row fills it --panel and shifts its compounding line 8px right. The link underline draws from the left (300ms) and its arrow nudges 3px.",
+  "on the live site: the spine index is sticky and crossfades as sections pass, and the quarters fill in as the ledger crosses 50% of the viewport. Reduced motion shows the complete ledger."
+ ],
+ "demoMs": 3600,
+ "notes": "The quarters are illustrative and marked SPECIMEN. The items and the total line are source copy ('Campaigns end. Reps rotate. Learning evaporates', 'every cycle deposits into the next'). Coherence pass: 'Start compounding.' was set at 430 — it now takes the light 300 weight as the one accent; tracking moves from −0.03em to the −0.018em token; the head gains the red-square label and the red rule (founder: section heads echo the hero), which supersedes B's original 'no red outside buttons' note; the quiet door is tracked caps. Coherence pass (direction B, one site): every section now shares one head — 64px light index + red-square caps label (Mona 500, 11px, .18em) in the spine column, 88px statement at weight 430 / −0.018em with exactly one light (300) muted sentence, the 48×2 red rule, 18/30 lede — at 48/44/32px offsets from a 6px joint, with 128px top and bottom padding (the live site keeps B's 200px). Mono captions are 11px at .18em; spine numerals drop tabular figures (Mona's tabular zero is slashed); quiet doors are 12px tracked caps with a drawn arrow."
+}

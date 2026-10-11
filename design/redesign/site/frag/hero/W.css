@@ -1,0 +1,156 @@
+/* ── hero · W · The Wide Frame (round 6, A×C) ─────────────────────────────
+   The footage is treated as cinema, not backdrop. One full-bleed band in Ultra
+   Panavision 70 proportions (1440 × 522 = 2.76:1) holds the film; flat graphite
+   bars above and below carry the interface. The statement sits inside the band
+   as a title card; the lede, the doors and the audit note sit on the flat bottom
+   bar, crisp and unscrimmed. The band's edges are Kelwin hairlines with four
+   registration marks, and the entrance is drawn from the same grammar: the nav
+   hairline draws, splits, and its twin descends to open the film.
+   Stage: 96 nav · 522 band (y 96–618) · 342 bar (y 618–960).                  */
+
+.km-hero-W {
+  height: 960px;
+  overflow: hidden; isolation: isolate;
+}
+
+/* ── the band: the film, confined (x 0–1440 × y 96–618) ── */
+.km-hero-W .km-film {
+  inset: 96px 0 auto 0; height: 522px;
+  --film-blur: 8px; --film-frost: .08; --film-bright: 1.34; --film-sat: .92; --film-grain: .5;
+  --w-contrast: 1.32;
+}
+/* plate (1920×964, mirrored about x 960) at ×1.15. The band frames the right half of the
+   plate as an over-the-shoulder shot: the man seen from behind is the subject, his head and
+   collar dark against the lit wall right of centre (so the light accent 'problem.' always
+   sits on shadow), the colleague he faces soft beyond his shoulder, the window at the right
+   edge. The mirrored half stays under the scrim. A graded look rather than a flat frost:
+   less tint, deeper blacks (contrast 1.32), warm practicals. The plate overhangs the band
+   by 144px a side so the dolly and the blur never reach the hard edges, and it repeats
+   sideways: the stand-in is mirror-symmetric, so past its right edge the window simply
+   continues instead of the bare backing showing through at the end of the dolly. */
+.km-hero-W .km-film__plate {
+  inset: -64px -144px -40px;
+  background-size: 2208px auto;
+  background-position: -736px 44px;
+  background-repeat: repeat-x;
+  filter: blur(min(var(--film-blur), 12px)) brightness(var(--film-bright)) contrast(var(--w-contrast)) saturate(var(--film-sat));
+  animation: km-hero-W-dolly 36s ease-in-out infinite alternate;
+}
+/* a passer-by close to the lens: far larger and softer than the subject, head out of frame,
+   so only a dark shoulder and torso sweep across the shot. One pass (about 9s) every 30s,
+   then the shot holds. It gives the footage time, and it only ever darkens behind the type. */
+.km-hero-W .km-film__walker {
+  left: -42%; bottom: -62%; width: 40%; height: 220%; opacity: .6;
+  filter: blur(12px);
+  animation: km-hero-W-pass 30s linear 4s infinite;
+}
+
+/* legibility scrim (inside .km-film only): a left-only grade behind the title card, eased
+   off along the bottom strip (below the rule), plus a soft lens vignette centred on the
+   subject so the frame reads as photographed, not printed. */
+.km-hero-W__scrim {
+  position: absolute; inset: 0;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 76%, rgba(0, 0, 0, .4) 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 76%, rgba(0, 0, 0, .4) 100%);
+  background: radial-gradient(120% 140% at 64% 42%, transparent 52%, color-mix(in srgb, var(--bg) 55%, transparent) 100%),
+    linear-gradient(90deg,
+    color-mix(in srgb, var(--bg) 78%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 62%, transparent) 26%,
+    color-mix(in srgb, var(--bg) 46%, transparent) 48%,
+    color-mix(in srgb, var(--bg) 30%, transparent) 60%,
+    color-mix(in srgb, var(--bg) 8%, transparent) 72%,
+    transparent 84%);
+}
+
+/* ── nav (96px, flat --bg): lockup · tracked caps items · outlined action — as hero U ── */
+.km-hero-W__nav {
+  position: relative; z-index: 2;
+  height: 96px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-hero-W__brand { display: inline-flex; color: var(--fg); }
+.km-hero-W__brand .km-logo { --logo-h: 24px; }
+.km-hero-W__menu {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 40px; white-space: nowrap;
+}
+.km-hero-W__menu a {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.km-hero-W__menu a:hover { color: var(--fg); }
+
+/* ── the title card, inside the band: label (y 180) · statement (232–455) · rule (495) ── */
+.km-hero-W__card.ac-head {
+  position: absolute; top: 96px; left: 0; right: 0; height: 522px; z-index: 1;
+  align-content: start; padding-top: 84px;
+  --ac-d0: 1050ms;
+}
+.km-hero-W__card > .ac-statement { grid-column: 1 / -1; }
+.km-hero-W__card > .ac-rule { margin-top: 40px; }
+
+/* ── the bottom bar (y 618–960): flat graphite, no scrim ──
+   lede + doors in cols 8–12 (y 666–840); the note in cols 1–4, its last baseline on the
+   primary's bottom edge. The founder's diagonal, now on hard flat colour. */
+.km-hero-W__bar {
+  position: absolute; top: 618px; left: 0; right: 0; z-index: 1;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  grid-template-rows: auto auto; align-content: start;
+  padding-top: 48px;
+}
+.km-hero-W__bar > .ac-lede { grid-row: 1; grid-column: 8 / span 5; max-width: none; }
+.km-hero-W__bar > .ac-doors { grid-row: 2; grid-column: 8 / span 5; margin-top: 28px; flex-wrap: nowrap; justify-content: space-between; }
+.km-hero-W__bar > .ac-note { grid-row: 1 / span 2; grid-column: 1 / span 4; align-self: end; margin-bottom: -6px; }
+
+/* ── the frame: two margin-to-margin hairlines just outside the film's edges ── */
+.km-hero-W__edge {
+  position: absolute; left: var(--margin); right: var(--margin); height: 1px; z-index: 3;
+  pointer-events: none;
+}
+.km-hero-W__edge > span { display: block; height: 100%; background: var(--line-2); transform-origin: 0 50%; }
+.km-hero-W__edge--top { top: 95px; }
+.km-hero-W__edge--seam { top: 618px; }
+.km-hero-W__reg { z-index: 3; }
+
+/* ── entrance (only under html.is-play) ──
+   0.08–0.78s the nav hairline draws · 0.7s it splits: the seam descends 523px (1.1s) and the
+   band's clip follows it, so a line opens into a film (the lens pulls focus 12 → 8px as it
+   opens) · the title card rises inside the opening · 1.8s the lede, doors and note settle on
+   the flat bar as the seam lands and the lower marks register. */
+.is-play .km-hero-W__nav { animation: km-hero-W-fade 500ms var(--ease-out) both; }
+.is-play .km-hero-W__edge--top > span { animation: km-hero-W-draw 700ms var(--ease-inout) 80ms both; }
+.is-play .km-hero-W__edge--seam {
+  animation: km-hero-W-show 1ms linear 690ms both, km-hero-W-descend 1100ms var(--ease-inout) 700ms both;
+}
+/* the film and the title card open together behind the seam, so nothing shows outside the frame */
+.is-play .km-hero-W .km-film,
+.is-play .km-hero-W__card { animation: km-hero-W-open 1100ms var(--ease-inout) 700ms both; }
+/* as the frame opens the lens finds focus once (12px → 8px, inside the founder's 8–12px range) */
+.is-play .km-hero-W .km-film__plate {
+  animation: km-hero-W-dolly 36s ease-in-out infinite alternate, km-hero-W-focus 1800ms var(--ease-out) 700ms both;
+}
+.is-play .km-hero-W__bar > .ac-lede { animation: km-hero-W-up 600ms var(--ease-out) 1800ms both; }
+.is-play .km-hero-W__bar > .ac-doors,
+.is-play .km-hero-W__bar > .ac-note { animation: km-hero-W-up 600ms var(--ease-out) 1920ms both; }
+
+/* ambient: paused while the hero is off screen (JS toggles .is-off) */
+.km-hero-W.is-off .km-film__plate,
+.km-hero-W.is-off .km-film__walker,
+.km-hero-W.is-off .km-film::after { animation-play-state: paused; }
+
+@keyframes km-hero-W-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-hero-W-show { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-hero-W-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-hero-W-descend { from { transform: translateY(-523px); } to { transform: none; } }
+@keyframes km-hero-W-open { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-hero-W-focus {
+  from { filter: blur(12px) brightness(var(--film-bright)) contrast(var(--w-contrast)) saturate(var(--film-sat)); }
+  to   { filter: blur(min(var(--film-blur), 12px)) brightness(var(--film-bright)) contrast(var(--w-contrast)) saturate(var(--film-sat)); }
+}
+@keyframes km-hero-W-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+/* the slow lateral dolly: one 36s pass of 128px (about 3.5px a second), then back (seamless ping-pong) */
+@keyframes km-hero-W-dolly { from { transform: translate3d(-64px, 0, 0); } to { transform: translate3d(64px, 0, 0); } }
+/* the passer-by: off left → off right in a third of the cycle, then the shot holds (the jump back happens off frame) */
+@keyframes km-hero-W-pass { 0% { transform: translate3d(0, 0, 0); } 30%, 100% { transform: translate3d(360%, 0, 0); } }

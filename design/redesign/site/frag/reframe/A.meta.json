@@ -1,0 +1,21 @@
+{
+ "title": "Surface, then architecture",
+ "direction": "A",
+ "summary": "The section head echoes the founder's hero (red-square label, two-voice wide headline, 48×2 red rule, lede, tracked-caps link) and one FIG. 02 plate carries the argument: the three true pieces of the Kelwin mark lie scattered, each wired to a symptom it never reaches, then a Surface | Architecture control nests them into the mark itself with the intelligence core turning red — the reframe happens to the logo, not to a sheet sliding over the hero.",
+ "reference": {
+  "site": "monday.com (work management · 'Your everyday tools. All in one place.')",
+  "mobbin_url": "https://mobbin.com/sites/sections/2a7653b4-0c4c-493f-bb78-e032fa852fc4",
+  "ref_file": "refs/reframe-A.webp",
+  "borrowed": "One wide diagram whose whole meaning is a two-state toggle ('Without' | 'With'): scattered nodes joined by 1px dotted orthogonal connectors re-arrange into one organised whole when the control flips.",
+  "kelwin": "The nodes are the three solid pieces of the real Kelwin mark at master proportions (K1 outer corner, K2 middle L, K3 core square, scale 2.25), not app icons; in Surface each is rotated out of place and wired to a mono symptom tag (TOOLING / SALES EXECUTION / PIPELINE) by dotted wiring that stops short in an open square, and the one red element is a dashed effort route dead-ending in a two-hairline ✕ before the narrative layer. The pill toggle becomes Plurel's square segmented control in a FIG. caption band at bottom-right. Architecture nests the pieces into the mark, red moves to the core, and leader labels seat the real layers (01 Narrative architecture / 02 Orchestration / 03 GTM intelligence). A two-voice readout carries the coda (returns vs compounds); three hairline strips strike each symptom above its real layer."
+ },
+ "motion": [
+  "entrance: the margin-to-margin hairline draws (900ms) and the red-square label fades (300ms); the two statement lines rise out of masks (800ms, the light clause 200ms behind); the 48×2 red rule draws, then lede and link fade up 12px; beneath, FIG. 02 assembles in its SURFACE state — the three pieces slide in from the top-right one at a time (700ms, 120ms stagger), dotted wiring and symptom tags fade in, the red dashed route wipes toward the narrative layer and stops in a ✕; the strips fade up in sequence",
+  "state change (the one orchestrated moment, at ~2.4s): the control flips to Architecture; wiring, tags and the red route retract (320ms); K1 and K2 rotate and translate into place (900ms --ease-inout) with K3 160ms behind, so the core lands last and only then turns from fog to red (400ms); the leader labels fade in; the readout crossfades from 'Fix the surface, and it returns.' to 'Fix the architecture, and it compounds.'",
+  "ambient: none",
+  "interaction: the Surface | Architecture control really switches the figure both ways; hovering a strip raises its title from --fg-2 to --fg; the link underline turns --fg and its arrow nudges 3px",
+  "on the live site: the figure opens in Surface and advances once to Architecture when the plate is 50% visible; reduced motion shows the Architecture state"
+ ],
+ "demoMs": 3900,
+ "notes": "Preceded only by a 1px --line rule (a hard cut, no slide-over). Head follows the founder layout spec (stacked down the left, 96px headline, red rule) rather than Plurel's split. The figure IS the Kelwin mark (true three-piece master geometry from brand/kelwin-mark.svg), so the three misdiagnoses map one-to-one onto K1–K3. One red element per state (dead-end route → core). The lede now runs cols 1–6 at ≤ 50ch (two lines), and the quiet door is 13px tracked caps with a drawn → (the brand fonts carry no arrow glyph). The FIG. 02 plate is 456px with the drawing lifted 16px. Direction-coherence pass: A's one section rhythm is 112px top / 96px bottom in the render (160/160 on the live site); the head grammar is the hero's — Mona 500 11px tracked-caps label with an 8px red square (mono FIG. number at right), 96px two-voice statement on the display tokens with exactly one light phrase, 48×2 red rule, 20px lede in cols 1–6 (≤ 50ch, ≤ 3 lines), optional quiet door, and the founder's bottom-right annotation; FIG. numbers run 01–11 in homepage order; segmented controls are 11px tracked caps."
+}

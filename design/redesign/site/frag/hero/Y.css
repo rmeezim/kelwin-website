@@ -1,0 +1,170 @@
+/* ── hero · Y · FIG. 01 The room, in register (round 2, A×C) ──────────────
+   The founder's layout, exactly as in X: the statement in TWO lines, held
+   almost at the vertical centre and left-aligned; the lede and the two doors
+   at the bottom-right; the fixed-scope note at the bottom-left. What differs
+   is how the room is seen. Here it is seen through a glass PARTITION of three
+   equal panes on the 12 columns (cols 1–4 · 5–8 · 9–12) — Kelwin's
+   architectural answer to Plurel's glass flutes. The panes carry graded
+   frost (dense at left behind the type, clear at right over the people), so
+   the legibility scrim is the building, not a soft gradient.
+   Only the lower part is drawn: one transom under the statement (the red rule
+   is its first 48px) and two mullions dropping from it to the band, which
+   frame the sill: note · open · action. Above the transom nothing is drawn —
+   no line crosses the type or the people; the panes read only as frost.
+   The orchestrated moment is C's precision as motion: each pane carries its
+   own pass of the film, so the room arrives slightly OUT of register
+   (fragmented growth) and settles into register (the system installed);
+   registration marks land on the two joints as it locks.
+   Stage: 96 nav + 816 body (528 room + 288 sill) + 88 band = 1000.           */
+
+.km-hero-Y {
+  height: 1000px;
+  display: flex; flex-direction: column;
+  overflow: hidden; isolation: isolate;
+}
+
+/* ── the film: dark, warm; the base pass shows only in the nav and band strips ── */
+.km-hero-Y .km-film {
+  --film-blur: 10px; --film-frost: .2; --film-bright: 1.26; --film-sat: .95; --film-grain: .5;
+}
+/* height-fit plate (1920×964, mirrored about its centre): the seated figure
+   ≈ x 620 (pane 2), the standing one ≈ 850 (pane 2), the man from behind
+   ≈ 1000–1300 (pane 3, clear glass); the mirrored half sits under pane 1 */
+.km-hero-Y .km-film__plate {
+  inset: 3% -4% -9%;
+  background-size: auto 100%;
+  background-position: -334px 50%;
+}
+.km-hero-Y.is-paused .km-film__plate,
+.km-hero-Y.is-paused .km-film__walker,
+.km-hero-Y.is-paused .km-film::after { animation-play-state: paused; }
+
+/* the three panes: same film, own frost, own registration offset (gutters 4|5 and 8|9) */
+.km-hero-Y__bay { position: absolute; inset: 0; clip-path: inset(96px var(--r) 88px var(--l)); }
+.km-hero-Y__bay:nth-child(2) { --l: 0px;   --r: 943px; --film-blur: 12px; --tint: 70%; --dx: -30px; --dy: 22px;  --s: 1.035; }
+.km-hero-Y__bay:nth-child(3) { --l: 497px; --r: 498px; --film-blur: 10px; --tint: 34%; --dx: 38px;  --dy: -46px; --s: .965; }
+.km-hero-Y__bay:nth-child(4) { --l: 942px; --r: 0px;   --film-blur: 8px;  --tint: 0%;  --dx: -28px; --dy: 30px;  --s: 1.045; }
+.km-hero-Y__shift {
+  position: absolute; inset: 0;
+  transition: transform 1600ms var(--ease-inout) calc(var(--i) * 140ms);
+}
+.km-hero-Y[data-state="fragmented"] .km-hero-Y__shift { transform: translate(var(--dx), var(--dy)) scale(var(--s)); }
+.km-hero-Y__tint { position: absolute; inset: 0; background: color-mix(in srgb, var(--bg) var(--tint), transparent); }
+
+/* scrim (inside .km-film only): a floor under the nav, and a quiet floor that
+   deepens through the sill into the band. The panes do the rest of the work. */
+.km-hero-Y__scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 46%, transparent) 0,
+      color-mix(in srgb, var(--bg) 10%, transparent) 96px,
+      transparent 140px,
+      transparent 690px,
+      color-mix(in srgb, var(--bg) 26%, transparent) 800px,
+      color-mix(in srgb, var(--bg) 52%, transparent) 912px,
+      color-mix(in srgb, var(--bg) 74%, transparent) 100%);
+}
+
+/* ── nav (96px): lockup · tracked caps items · outlined action ── */
+.km-hero-Y__nav {
+  position: relative; z-index: 2;
+  height: 96px; flex: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-hero-Y__nav::after {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-hero-Y__brand { display: inline-flex; color: var(--fg); }
+.km-hero-Y__brand .km-logo { --logo-h: 24px; }
+.km-hero-Y__menu {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 40px; white-space: nowrap;
+}
+.km-hero-Y__menu a {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.km-hero-Y__menu a:hover { color: var(--fg); }
+
+/* ── the built part: a transom at y 624 (on the red rule), two mullions 624 → 912 ── */
+.km-hero-Y__frame { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.km-hero-Y__transom {
+  position: absolute; left: var(--margin); right: var(--margin); top: 624px; height: 1px;
+  background: var(--line-2); transform-origin: 0 50%;
+}
+.km-hero-Y__mullion {
+  position: absolute; left: var(--x); top: 625px; width: 1px; height: 287px;
+  background: var(--line-2); transform-origin: 50% 0;
+}
+
+/* ── body: the head grammar on fixed rows so the rule (and the transom) land at y 624 ──
+   rows: 1 room · 2 label · 3 statement · 4 rule · 5 sill.
+   The statement's optical centre sits at ≈ 46% of the 816px body. */
+.km-hero-Y__body.ac-head {
+  position: relative; z-index: 2; flex: 1;
+  grid-template-rows: 202px 16px auto auto minmax(0, 1fr);
+  padding-bottom: 48px;
+}
+.km-hero-Y__body > .ac-labelrow { grid-row: 2; }
+.km-hero-Y__body > .ac-statement { grid-row: 3; grid-column: 1 / -1; }
+.km-hero-Y__body > .ac-rule { grid-row: 4; margin-top: 40px; position: relative; z-index: 1; }
+/* pane 3 (cols 9–12): the lede hangs from the transom, the doors stand on the sill floor */
+.km-hero-Y__body > .ac-lede {
+  grid-row: 5; grid-column: 9 / span 4; align-self: start;
+  margin-top: 24px; font-size: 18px; max-width: none;
+}
+.km-hero-Y__body > .ac-doors {
+  grid-row: 5; grid-column: 9 / span 4; align-self: end; margin-top: 0;
+  flex-direction: column; align-items: flex-start; gap: 18px;
+}
+/* pane 1 (cols 1–4): the note, its last baseline on the secondary door's baseline */
+.km-hero-Y__body > .ac-note { grid-row: 5; grid-column: 1 / span 4; align-self: end; margin-bottom: 4px; }
+
+/* the bar's own + marks (hero X's, at the nav hairline's ends) ride above the film */
+.km-hero-Y__corner { z-index: 3; }
+/* registration marks on the joints: they land as the panes lock into register */
+.km-hero-Y__reg { z-index: 3; transition: opacity 400ms var(--ease-out) 1700ms; }
+.km-hero-Y[data-state="fragmented"] .km-hero-Y__reg { opacity: 0; transition-delay: 0ms; }
+
+/* ── FIG. band (88px) ── */
+.km-hero-Y__band {
+  position: relative; z-index: 2; flex: none;
+  height: 88px; padding: 0 var(--margin);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.km-hero-Y__band::before {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); top: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-hero-Y__ctl { display: flex; align-items: center; gap: 12px; }
+.km-hero-Y__time { color: var(--fg-2); font-variant-numeric: tabular-nums; margin-right: 16px; }
+.km-hero-Y__pause {
+  height: 48px; min-width: 148px; padding: 0 20px;
+  border: 1px solid var(--line-2);
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: border-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-hero-Y__pause:hover { border-color: var(--fg); color: var(--fg); }
+
+/* ── entrance (only under html.is-play) ── */
+/* the statement rises over the still-fragmented room; the panes register (700ms →) behind it */
+.km-hero-Y__body { --ac-d0: 160ms; }
+.is-play .km-hero-Y .km-film { animation: km-hero-Y-fade 900ms var(--ease-out) both; }
+.is-play .km-hero-Y__nav { animation: km-hero-Y-fade 500ms var(--ease-out) both; }
+.is-play .km-hero-Y__nav::after { animation: km-hero-Y-drawx 1s var(--ease-out) 100ms both; }
+/* the transom draws out of the red rule, then the mullions drop from it to the band */
+.is-play .km-hero-Y__transom { animation: km-hero-Y-drawx 1100ms var(--ease-inout) 820ms both; }
+.is-play .km-hero-Y__mullion { animation: km-hero-Y-drawy 700ms var(--ease-inout) calc(1300ms + var(--i) * 140ms) both; }
+.is-play .km-hero-Y__band::before { animation: km-hero-Y-drawx 1.2s var(--ease-out) 400ms both; }
+.is-play .km-hero-Y__cap,
+.is-play .km-hero-Y__ctl { animation: km-hero-Y-fade 500ms var(--ease-out) 1300ms both; }
+.is-play .km-hero-Y__reg { animation: none; }   /* the joints land on registration, not on the kit's fade */
+
+@keyframes km-hero-Y-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-hero-Y-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-hero-Y-drawy { from { transform: scaleY(0); } to { transform: scaleY(1); } }

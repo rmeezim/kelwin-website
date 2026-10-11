@@ -1,0 +1,21 @@
+{
+ "title": "Stepped layer ledger",
+ "direction": "B",
+ "summary": "The four layers become a calm hairline ledger hung from the index spine: each layer title hangs from its row rule by a hairline right angle one 24px step further in — the mark's down-and-in step read as structure (four layers extend the three-piece mark's nesting by one step; the drawing is not labelled as the logo) — with one row opened in place to 'What it is / In practice', so the stack reads as institutional record instead of today's dashboard panels.",
+ "reference": {
+  "site": "Ploy — 'One platform replaces seven contracts'",
+  "mobbin_url": "https://mobbin.com/sites/sections/e9e0814d-1e1a-4d44-a1c7-5ae5a7053020",
+  "ref_file": "refs/stack-B.webp",
+  "borrowed": "Ploy's posture: a tiny label alone in a narrow left column, a big two-line statement offset to the right with a short lede beneath it so the left third stays almost empty, then a full-width hairline-ruled ledger of identical rows in aligned cells with small micro-heads over each value — no cards, icons or boxes, just rule, label and value.",
+  "kelwin": "Ploy's pill label becomes B's index spine (light wide '04' + red-square caps label) with the opening rule meeting it at a right angle and a 6px square at the joint; the condensed uppercase headline becomes the 88px sentence + muted light sentence with the founder's 48×2 red rule; seven contract rows become four layer rows whose titles step in 24px per layer, each hung from its row rule by a hairline right angle with a 3px joint square (the spine's joint, repeated at layer scale); Ploy's micro-heads become the mono column heads (Layer / What it does) and the open row's What it is / In practice; its 'Native' chips are dropped — the only status mark is the +/− toggle; the two doors close the section in tracked caps."
+ },
+ "motion": [
+  "entrance: the joint square appears and the opening rule draws from the spine to the right margin (900ms --ease-out); the index fades in (400ms); the statement rises 12px (700ms) with the muted sentence 160ms behind; the 48×2 red rule draws; the body and side note follow; each ledger rule draws from the spine (600ms, 60ms stagger) as its index and descriptor fade in; the layer titles then step in one after another from the left with their hanging corners (600ms, 160ms stagger) — the nesting assembles; the doors fade in last.",
+  "state change: the ledger arrives with N·01 open; at 1.8s N·01 closes and N·03 Orchestration opens in place (height + opacity 360ms --ease-inout, '+' rotates to '−').",
+  "ambient: none.",
+  "interaction: every row is a button that opens in place (one open at a time); hovering a row fills it --panel from the spine to the margin and slides its title (with its corner) 8px right; the contact underline draws from the left (300ms); the audit button deepens and its drawn ↗ nudges up-right.",
+  "on the live site: the spine index is sticky and crossfades (300ms) as sections pass; the third row opens once when the ledger is 50% visible; prefers-reduced-motion shows N·03 open with no entrance."
+ ],
+ "demoMs": 3000,
+ "notes": "Statement edited to 'We don't deliver work.' so it holds one line at 88px in cols 4–12. Four layers: the source (RevenueOS.tsx) has three; the Data row copy comes from capability-data.tsx — this drawing extends the mark's nesting by one step and is not labelled as the logo. Ledger titles are normal-width Mona 500 (no wide type under 40px). Coherence pass (direction B, one site): every section now shares one head — 64px light index + red-square caps label (Mona 500, 11px, .18em) in the spine column, 88px statement at weight 430 / −0.018em with exactly one light (300) muted sentence, the 48×2 red rule, 18/30 lede — at 48/44/32px offsets from a 6px joint, with 128px top and bottom padding (the live site keeps B's 200px). Mono captions are 11px at .18em; spine numerals drop tabular figures (Mona's tabular zero is slashed); quiet doors are 12px tracked caps with a drawn arrow. Here: padding 160/128 → 128/128, spine label 'Stack', CTAs 12px."
+}

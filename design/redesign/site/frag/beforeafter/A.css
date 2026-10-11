@@ -1,0 +1,161 @@
+/* ── beforeafter · A · Cinematic Figures — FIG. 09, two operating states ──
+   Paper act. The head echoes the hero (red-square label → two-voice wide
+   headline → 48×2 red rule → lede → the two doors, stacked down the left).
+   FIG. 09 is V7's two side-by-side plates made Kelwin: a flat paper --panel
+   (without the system) and an ink plate (with it), on the 12-column grid.
+   Both voices are always on screen, row against row; the Before | After
+   control re-proportions the plates (5|7 ↔ 7|5 columns) and swaps which
+   voice leads. The plate's one red element is the K3 core of the mark.     */
+
+.km-beforeafter-A { padding: 112px 0 96px; overflow: hidden; }
+.km-beforeafter-A__in {
+  padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+.km-beforeafter-A__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ── head ── */
+.km-beforeafter-A__labels { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; }
+.km-beforeafter-A__label {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-beforeafter-A__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-beforeafter-A__fignum {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3);
+}
+.km-beforeafter-A__h {
+  grid-column: 1 / span 9; margin-top: 36px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 96px; line-height: 0.98; letter-spacing: var(--display-tracking);
+}
+.km-beforeafter-A__mask { display: block; overflow: hidden; padding-block: 0.06em 0.14em; margin-block: -0.06em -0.14em; }
+.km-beforeafter-A__l1, .km-beforeafter-A__l2 { display: block; white-space: nowrap; }
+.km-beforeafter-A__l1 { font-weight: var(--display-weight); color: var(--fg); }
+.km-beforeafter-A__l2 { font-weight: var(--light-weight); color: var(--fg-2); }
+.km-beforeafter-A__rule {
+  grid-column: 1; display: block; width: 48px; height: 2px; margin-top: 36px;
+  background: var(--signal); transform-origin: 0 50%;
+}
+.km-beforeafter-A__lede {
+  grid-column: 1 / span 6; grid-row: 4; margin-top: 28px; max-width: 50ch;
+  font-size: 20px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty;
+}
+
+/* quiet annotation, bottom-right of the head (the founder's hero device): the source coda */
+.km-beforeafter-A__note { grid-column: 10 / 13; grid-row: 4; align-self: end; display: flex; flex-direction: column; gap: 14px; }
+.km-beforeafter-A__nt { font-size: 15px; line-height: 1.55; color: var(--fg-2); max-width: 30ch; }
+/* ── FIG. 09 · two plates on the grid ──
+   --wb is the paper plate's width: 5 columns at rest (After), 7 when Before leads.
+   Everything that rides the seam transitions left/width, so the plates re-proportion as one. */
+.km-beforeafter-A__fig {
+  --w5: calc(5 * var(--col) + 4 * var(--gutter));
+  --w7: calc(7 * var(--col) + 6 * var(--gutter));
+  --wb: var(--w5);
+  --seam: 900ms var(--ease-inout);
+  grid-column: 1 / -1; position: relative; margin-top: 64px; height: 480px;
+}
+.km-beforeafter-A__fig.is-before { --wb: var(--w7); }
+
+.km-beforeafter-A__plate { position: absolute; top: 0; bottom: 0; }
+.km-beforeafter-A__plate--b { left: 0; width: var(--wb); background: var(--panel); transition: width var(--seam); }
+.km-beforeafter-A__plate--a { left: calc(var(--wb) + var(--gutter)); right: 0; background: var(--bg); transition: left var(--seam); }
+
+/* plate heads */
+.km-beforeafter-A__hd {
+  position: absolute; top: 0; height: 56px; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-beforeafter-A__hd--b { left: 0; width: var(--wb); transition: width var(--seam); }
+.km-beforeafter-A__hd--a { left: calc(var(--wb) + var(--gutter)); right: 0; transition: left var(--seam); }
+
+/* the mark: K1 paper, K2 blush, K3 the red core — it seats only in the After state */
+.km-beforeafter-A__mark { display: block; flex: none; overflow: visible; }
+.km-beforeafter-A__k1 { fill: var(--fg); }
+.km-beforeafter-A__k2 { fill: var(--soft); }
+.km-beforeafter-A__socket { fill: none; stroke: var(--line-2); stroke-width: 4.2; }
+.km-beforeafter-A__k3 {
+  fill: var(--accent);
+  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+}
+.km-beforeafter-A__fig:not(.is-cored) .km-beforeafter-A__k3 { opacity: 0; transform: translateY(-40px); }
+
+/* six rows — one hairline-ruled row per shift, the two voices facing across the seam */
+.km-beforeafter-A__rows { position: absolute; left: 0; right: 0; top: 56px; height: 360px; }
+.km-beforeafter-A__row { position: relative; height: 60px; }
+.km-beforeafter-A__b, .km-beforeafter-A__a {
+  position: absolute; top: 0; bottom: 0; display: flex; align-items: center; padding: 0 24px; min-width: 0;
+}
+.km-beforeafter-A__b { left: 0; width: var(--wb); transition: width var(--seam); }
+.km-beforeafter-A__a { left: calc(var(--wb) + var(--gutter)); right: 0; transition: left var(--seam); }
+.km-beforeafter-A__b::before, .km-beforeafter-A__a::before,
+.km-beforeafter-A__row:last-child .km-beforeafter-A__b::after, .km-beforeafter-A__row:last-child .km-beforeafter-A__a::after {
+  content: ""; position: absolute; left: 24px; right: 24px; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.km-beforeafter-A__b::before, .km-beforeafter-A__a::before { top: 0; }
+.km-beforeafter-A__row:last-child .km-beforeafter-A__b::after, .km-beforeafter-A__row:last-child .km-beforeafter-A__a::after { bottom: 0; }
+
+.km-beforeafter-A__idx {
+  flex: none; width: 152px; display: flex; gap: 14px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-2); transition: color 300ms var(--ease-out);
+}
+.km-beforeafter-A__idx > span { color: var(--fg-3); }
+.km-beforeafter-A__row:hover .km-beforeafter-A__idx { color: var(--fg); }
+
+/* the voices: without = Mona light (normal width), with = the wide display cut.
+   The leading plate sets its voice at 28px in --fg; the trailing plate at 17px in --fg-2. */
+.km-beforeafter-A__t {
+  display: block; white-space: nowrap;
+  transition: opacity 420ms var(--ease-out) calc(var(--i) * 60ms);
+}
+.km-beforeafter-A__b .km-beforeafter-A__t { font-family: var(--f-body); font-stretch: 100%; font-weight: var(--light-weight); letter-spacing: -0.01em; }
+.km-beforeafter-A__a .km-beforeafter-A__t { font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); }
+.km-beforeafter-A__fig.is-after .km-beforeafter-A__b .km-beforeafter-A__t,
+.km-beforeafter-A__fig.is-before .km-beforeafter-A__a .km-beforeafter-A__t { font-size: 17px; line-height: 1.3; color: var(--fg-2); }
+.km-beforeafter-A__fig.is-after .km-beforeafter-A__a .km-beforeafter-A__t,
+.km-beforeafter-A__fig.is-before .km-beforeafter-A__b .km-beforeafter-A__t { font-size: 28px; line-height: 1.1; color: var(--fg); }
+.km-beforeafter-A__fig.is-fading .km-beforeafter-A__t { opacity: 0; transition: opacity 200ms var(--ease-out) 0ms; }
+
+/* caption band (inside the plates' bottom edge): FIG. caption left, Plurel segmented control right */
+.km-beforeafter-A__cap {
+  position: absolute; left: 24px; bottom: 0; height: 64px; display: flex; align-items: center;
+  font-family: var(--f-mono); font-size: 12px; line-height: 14px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.km-beforeafter-A__seg { position: absolute; right: 24px; bottom: 8px; height: 48px; display: flex; border: 1px solid var(--line-2); }
+.km-beforeafter-A__opt {
+  height: 46px; padding: 0 22px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 46px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: background-color 420ms var(--ease-inout), color 420ms var(--ease-inout);
+}
+.km-beforeafter-A__opt + .km-beforeafter-A__opt { box-shadow: inset 1px 0 0 var(--line); }
+.km-beforeafter-A__opt:hover { color: var(--fg); }
+.km-beforeafter-A__opt[aria-pressed="true"] { background: var(--fg); color: var(--bg); box-shadow: none; }
+
+/* demo snap: no transitions while JS sets the opening state */
+.km-beforeafter-A__fig.is-cold *, .km-beforeafter-A__fig.is-cold *::before, .km-beforeafter-A__fig.is-cold *::after { transition: none !important; }
+
+/* ── entrance (html.is-play): label → masked statement → rule → lede + doors → the plates open → rows settle ── */
+.is-play .km-beforeafter-A__labels { animation: km-beforeafter-A-fade 300ms var(--ease-out) 60ms both; }
+.is-play .km-beforeafter-A__l1 { animation: km-beforeafter-A-rise 800ms var(--ease-out) 120ms both; }
+.is-play .km-beforeafter-A__l2 { animation: km-beforeafter-A-rise 800ms var(--ease-out) 320ms both; }
+.is-play .km-beforeafter-A__rule { animation: km-beforeafter-A-draw 600ms var(--ease-out) 720ms both; }
+.is-play .km-beforeafter-A__lede { animation: km-beforeafter-A-up 600ms var(--ease-out) 560ms both; }
+.is-play .km-beforeafter-A__note { animation: km-beforeafter-A-up 600ms var(--ease-out) 800ms both; }
+.is-play .km-beforeafter-A__plate--b { animation: km-beforeafter-A-wipe 800ms var(--ease-out) 760ms both; }
+.is-play .km-beforeafter-A__plate--a { animation: km-beforeafter-A-wipe 800ms var(--ease-out) 880ms both; }
+.is-play .km-beforeafter-A__hd { animation: km-beforeafter-A-fade 500ms var(--ease-out) 1100ms both; }
+.is-play .km-beforeafter-A__row { animation: km-beforeafter-A-fade 500ms var(--ease-out) both; animation-delay: calc(1160ms + var(--i) * 70ms); }
+.is-play .km-beforeafter-A__cap, .is-play .km-beforeafter-A__seg { animation: km-beforeafter-A-fade 500ms var(--ease-out) 1400ms both; }
+
+@keyframes km-beforeafter-A-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-beforeafter-A-rise { from { transform: translateY(104%); } to { transform: none; } }
+@keyframes km-beforeafter-A-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-beforeafter-A-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-beforeafter-A-wipe { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }

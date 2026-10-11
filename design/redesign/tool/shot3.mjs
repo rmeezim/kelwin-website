@@ -1,0 +1,13 @@
+import http from "node:http"; import fs from "node:fs"; import path from "node:path";
+import { chromium } from "playwright";
+const ROOT = process.argv[2], OUTP = process.argv[3], W = +(process.argv[4] || 1440);
+const types = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".webp": "image/webp", ".png": "image/png", ".svg": "image/svg+xml", ".woff2": "font/woff2", ".json": "application/json" };
+const server = http.createServer((q, s) => { let p = decodeURIComponent(q.url.split("?")[0].split("#")[0]); if (p === "/") p = "/preview3.html"; const f = path.join(ROOT, p); fs.readFile(f, (e, d) => { if (e) { s.writeHead(404); s.end(); return; } s.writeHead(200, { "content-type": types[path.extname(f)] || "application/octet-stream" }); s.end(d); }); });
+await new Promise((ok) => server.listen(0, "127.0.0.1", ok));
+const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: W, height: 900 } });
+const errs = []; p.on("pageerror", (e) => errs.push(String(e))); p.on("console", (m) => { if (m.type() === "error") errs.push(m.text()); });
+await p.goto(`http://127.0.0.1:${server.address().port}/preview3.html`, { waitUntil: "load" });
+await p.waitForTimeout(1500);
+await p.screenshot({ path: OUTP, fullPage: true });
+console.log("errors:", JSON.stringify(errs.filter(e => !/fonts.g/.test(e)).slice(0, 8)));
+await b.close(); server.close();

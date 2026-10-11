@@ -1,0 +1,21 @@
+{
+ "title": "Run-Once Ledger",
+ "direction": "B",
+ "summary": "The method hangs from the Index Spine and is laid out the way its own copy reads. Three grid-true decimal columns (1.0–3.0) run once, in order. 4.0 Calibrate is one continuous ledger row under the page's single ink hairline, spanning beneath all three because it keeps running. Calm and editorial, where today's version is a boxed pipeline widget.",
+ "reference": {
+  "site": "AI in Design Report 2026 (Methodology)",
+  "mobbin_url": "https://mobbin.com/sites/sections/2e102d3e-9c17-456e-af13-61468986fd1d",
+  "ref_file": "refs/method-B.webp",
+  "borrowed": "The Swiss report page. A mono label sits over a full-width hairline. A narrow left column holds only the section title, and a full-height vertical rule divides it from the content. Then come short text blocks, a sub-hairline with a small caption, and hairline-ruled columns of equal width with large figures. There are no fills and no boxes.",
+  "kelwin": "The vertical rule is the page-long Index Spine at the col 3|4 gutter, with the right-angle opening rule and the 6px joint square. The left column holds '08' and the red-square METHOD label. The report's figures became light decimal indices (1.0–3.0, Mona wide 300). The columns sit exactly on cols 4–6, 7–9 and 10–12. The report's last column became the ledger row that stays open: 4.0 Calibrate runs beneath all three under an ink hairline from spine to margin, with its method and output set in the same three-column measure. The head follows the founder's spec: a two-tone 88px statement, the 48×2 red rule, then the body and both doors in tracked caps. A side note in cols 10–12 ties phase 1.0 to the System Audit."
+ },
+ "motion": [
+  "entrance: the opening rule draws from the spine to the right margin (900ms) and '08' fades in, then the label. The statement rises 12px (700ms), with the light second sentence 160ms behind. The red rule draws (500ms), then the body, doors and side note rise in turn. The sub-hairline draws, then the column verticals draw top-down (600ms, 60ms stagger) as their text fades up.",
+  "the moment: from 1.7s the three phase names lift from --fg-3 to --fg one at a time, 400ms apart (run once, in order). At 2.9s the ink hairline draws across the full width beneath them (1.2s, linear), and 4.0 Calibrate's index, method and output rise into place left to right. The section settles at about 4.2s.",
+  "ambient: none.",
+  "interaction: hovering a column or the Calibrate row slides its title 8px right (300ms). The contact link's underline draws from the left (300ms). On button hover the fill deepens to --accent-hover and ↗ nudges up-right.",
+  "on the live site: the spine index is sticky, and the phase names lift in order as the section scrolls through, with the Calibrate hairline drawing last. Reduced motion shows the finished ledger."
+ ],
+ "demoMs": 4400,
+ "notes": "The statement is edited to 'We install the system. / And keep it sharp.' to hold two lines at 88px. Method copy trimmed to about 30 words per phase; outputs verbatim; decimal indices 1.0–4.0 are used only here. Coherence pass (direction B, one site): every section now shares one head — 64px light index + red-square caps label (Mona 500, 11px, .18em) in the spine column, 88px statement at weight 430 / −0.018em with exactly one light (300) muted sentence, the 48×2 red rule, 18/30 lede — at 48/44/32px offsets from a 6px joint, with 128px top and bottom padding (the live site keeps B's 200px). Mono captions are 11px at .18em; spine numerals drop tabular figures (Mona's tabular zero is slashed); quiet doors are 12px tracked caps with a drawn arrow. Here: padding 136/104 → 128/128, head offsets 40/36/28 → 48/44/32, label and CTAs to the shared 11px / 12px sizes."
+}

@@ -1,0 +1,73 @@
+{
+  "name": "The Audit, Run on the Reader",
+  "thesis": "The homepage now behaves like a Kelwin engagement instead of describing one. It diagnoses before it prescribes. It builds one system inside the reader's own broken loop, and hands that system over before it asks for anything. It qualifies in both directions, and only then asks for a small, fixed first step whose readout he keeps either way. The page never says Kelwin is different. The order of the sections makes that case.",
+  "changes": [
+    ["The story is in the words.", "Each section's first line picks up the one before it, so reading only the headlines, top to bottom, tells the story."],
+    ["Fewer slogans.", "Only three sections keep the big two-line headline. The others speak in their own form: a letter, a pinned drawing, a one-line track, two ledger heads, a red poster."],
+    ["Resetting vs compounding is one drawing.", "The system opens on the broken loop from your About page, then builds the three layers into it, one per scroll step, until the loop closes. Same counter: 00 becomes 04."],
+    ["Setup, then payoff.", "Your letter lists six familiar problems in its margin. Further down, the handover strikes each one out, word for word, as the asset that ends it crosses to the client's side."],
+    ["Honest numbers.", "The evidence has no axis and no dots. Tap a number and it explains itself in its own unit, with its source."],
+    ["A clearer ask.", "The final sheet prints what the audit needs from the client, what happens after the click, and “if not, the plan is still yours”."]
+  ],
+  "movements": [
+    { "n": "I", "name": "Name the problem", "job": "Four beats, four registers: the claim, the wrong layer, what the market has published, and the lived cost.", "beats": ["hero", "reframe", "evidence", "letter"] },
+    { "n": "II", "name": "Show the system", "job": "The only pinned scroll builds the system inside the reader's own broken loop, then the principle lands as what the closed loop produces.", "beats": ["system", "principle"] },
+    { "n": "III", "name": "Hand it over", "job": "The exit before the entry: the six problems are struck as six assets change hands, then the order of work starts with the audit.", "beats": ["handover", "method"] },
+    { "n": "IV", "name": "Qualify, then invite", "job": "The gate works both ways and has no button. Then one red plane, and the index.", "beats": ["fit", "cta", "footer"] }
+  ],
+  "beats": {
+    "hero": { "line": "Revenue is an architectural problem.", "surface": "G", "density": 2, "moment": "Statement rises over the film", "archetype": "Cinematic full-bleed" },
+    "reframe": { "line": "Most teams are fixing the wrong layer.", "picks": "picks up “architectural”", "surface": "G", "density": 3, "moment": "The warped mesh resolves", "archetype": "Figure plate + toggle (the only one)" },
+    "evidence": { "line": "Four numbers. One diagnosis. — Not one of them moves with more activity.", "picks": "picks up “diagnoses”", "surface": "P", "density": 4, "moment": "The numbers are the controls", "archetype": "Numeral wall + readout" },
+    "letter": { "line": "…hiring an agency, getting a quarter of activity, and ending up exactly where they started, minus the budget.", "picks": "picks up “more activity”", "surface": "G", "density": 2, "moment": "Still — a signed letter", "archetype": "Letter + margin list" },
+    "system": { "line": "Three layers. One closed loop. — The loop conserves nothing.", "picks": "draws the letter's “every quarter starts from zero”", "surface": "G", "density": 4, "pin": true, "moment": "Loop breaks → layers drop in → loop closes", "archetype": "Pinned scroll, one frame at a time" },
+    "principle": { "line": "In a noisy market, the clearest company wins. Not the loudest. Not the busiest.", "picks": "answers “more activity”", "surface": "P", "density": 1, "moment": "Noise settles into one signal", "archetype": "Centred poster" },
+    "handover": { "line": "When we leave, the system stays. — Same team, same market.", "picks": "picks up “noisy market”; strikes the letter's six lines", "surface": "GP", "density": 4, "moment": "Six sheets cross; problems struck", "archetype": "Split-surface sheet deck" },
+    "method": { "line": "It starts with the audit.", "picks": "the exit has been shown, now the entry", "surface": "G", "density": 2, "moment": "The track draws; Diagnose lit", "archetype": "Descending gantt, off the edge" },
+    "fit": { "line": "The audit is a gate, and it works in both directions.", "picks": "picks up “It starts with the audit”", "surface": "P", "density": 3, "moment": "Still — two ledgers face off", "archetype": "Sticky lede + two ledgers" },
+    "cta": { "line": "Sound like you? Request the System Audit.", "picks": "answers the ledgers", "surface": "R", "density": 2, "moment": "The readout sheet rises", "archetype": "Red poster + one document" },
+    "footer": { "line": "The index.", "surface": "G", "density": 3, "moment": "Still — the mark rises once", "archetype": "Index + cropped mark" }
+  },
+  "fates": [
+    ["Navigation & mega menu", "Approved — unchanged"],
+    ["Hero", "Kept — the Close | Wide toggle removed"],
+    ["The reframe", "Kept — level 02 renamed GTM infrastructure"],
+    ["Structural evidence", "Rebuilt — a numeral explorer, no dots"],
+    ["The stack + System architecture + State change", "Merged — one pinned “system” beat"],
+    ["Operating principle", "Kept — moved after the system"],
+    ["Methodology", "Re-laid out — it starts with the audit"],
+    ["Who it's for", "Ledgers kept — the line, statement and button removed"],
+    ["What you own + Before / after", "Merged — “the handover”"],
+    ["FAQ", "Moved to the System Audit page — headings removed"],
+    ["Final call to action", "Reworked — middle ground with your round-1 pick"],
+    ["Footer", "Kept — buried far less"],
+    ["Interior page header", "Approved — unchanged"],
+    ["The founder's letter", "New"]
+  ],
+  "says": [
+    ["Diagnosis before prescription.", "Four beats diagnose before anything Kelwin installs appears, and even then the first thing drawn is the reader's own broken loop."],
+    ["One system, not a menu.", "What Kelwin does appears once, as one machine built into the loop he already runs. There is no service grid."],
+    ["Resetting vs compounding, in one drawing.", "Same loop, same counter: 00 becomes 04, and the red break becomes the red return."],
+    ["Ownership, set up and paid off.", "The six problems in your margin are struck out as six assets cross to the client's side."],
+    ["The exit before the entry.", "“When we leave” comes before “It starts with the audit”, and the endless phase is labelled “yours”."],
+    ["Selective, not hungry.", "The gate has no button, and there are only two red asks on the whole page."],
+    ["Honest authority.", "Every figure names its source and unit; your dated field notes are listed; the letter is signed with a founding year. No logos, testimonials or invented results."]
+  ],
+  "budget": [
+    ["1", "pinned scroll"], ["1", "figure plate + toggle"], ["1", "red plane"], ["3", "big two-line headlines"], ["2", "red asks to the audit"], ["2", "uses of “compound”"], ["3", "still beats"]
+  ],
+  "decisions": [
+    { "id": "D1", "q": "Your memo (K-000, from the About page) appears on the homepage, verbatim and signed.", "def": "Verbatim, with “Founded 2026 — deliberately late to the category” under the signature." },
+    { "id": "D2", "q": "One count of three: the system shows three layers (Narrative Systems, GTM Infrastructure, GTM Intelligence), and the reframe's level 02 is renamed GTM infrastructure.", "def": "Three layers." },
+    { "id": "D3", "q": "The method's one red bar is the first step (Diagnose), not the endless one (Calibrate).", "def": "Diagnose is red." },
+    { "id": "D4", "q": "The FAQ leaves the homepage for the System Audit page, with your no-heading fix.", "def": "Moved." },
+    { "id": "D5", "q": "Four slogans retire: “Same activity. / Different system.”, “We don't deliver work. / We install systems.”, “We install the system. / Then keep it sharp.” (now “It starts with the audit.”) and “Initiate” (now “Request”).", "def": "Retired." },
+    { "id": "D6", "q": "Footer crop depth. A literal one-third crop hides the smallest square completely; the footer review shows 67%, 80% and 83% side by side.", "def": "83% visible (about one-sixth buried)." },
+    { "id": "D7", "q": "“Deployment window open” comes off the homepage CTA. It stays on the About page.", "def": "Off." },
+    { "id": "D8", "q": "The audit's facts: ten working days, two 90-minute sessions, read-only CRM and channel-stack access, and how to show the fee (state it, or “fixed fee, quoted before kickoff”).", "def": "Built with the audit page's current values and no fee line. Needs your sign-off before anything ships.", "urgent": true },
+    { "id": "D9", "q": "Audience: is the homepage for founders, revenue leaders, or both?", "def": "Both. The memo speaks to founders; the margin, the system and fit speak to revenue leaders." },
+    { "id": "D10", "q": "The hero lede names the layers as “narrative, market intelligence and outbound systems”, unlike the nav's three names, and “outbound” is the page's one agency word.", "def": "Kept as approved. We recommend aligning it." },
+    { "id": "D11", "q": "Trust lines: add one real line of your background under the signature? The pod line (“senior pods of 2–3”) returns only once the About page shows the pod.", "def": "No background line; pod line off." },
+    { "id": "D12", "q": "The hero's Close | Wide control is removed, so the reframe owns the page's only toggle. Pause film stays.", "def": "Removed." }
+  ]
+}

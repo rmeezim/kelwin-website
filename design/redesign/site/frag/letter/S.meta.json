@@ -1,0 +1,25 @@
+{
+ "title": "Memo K-000, signed",
+ "direction": "A×C · Round 3",
+ "summary": "Your founder memo set as a signed letter in large type, with the problems it describes listed in the margin in your buyer's own words: no headline, no drawing, just the page stopping to speak in a person's voice.",
+ "story": "The evidence has just shown that more activity fixes none of it; the letter tells what that costs, in your voice, lists the six symptoms that the handover later strikes out, and ends on 'installs the system, then hands you the keys', which the system section draws next.",
+ "motion": [
+  "In this mockup: the label fades in and the subject rises. Then the memo rises line by line in reading order, each line from behind its own edge, about 70ms apart with a short breath between paragraphs. Once paragraph 1 has landed, the margin comes in: its label, the caption, then the six lines 80ms apart. The signature and the P.S. follow. The short dash above your name draws last (about 2.3s to 3.0s), and then nothing moves.",
+  "On the live page: the same reveal plays once, when the section scrolls into view. Nothing loops, nothing follows the scroll, and there is no control.",
+  "Hover: your name and the field-note titles underline, and the small arrows on the reading list nudge right.",
+  "Reduced motion: the finished letter appears at once, with nothing timed."
+ ],
+ "demoMs": 3800,
+ "addressed": [
+  "'We keep repeating the same layout section by section': this beat has no big headline, no figure, no caption band and no toggle. It is a letter set in type, and the first real change of pace after the numbers.",
+  "'Tell a proper story… not directly, but through how the information is arranged': the evidence says more activity doesn't move the numbers. Your memo picks that up ('a quarter of activity… minus the budget') and ends on 'installs the system, then hands you the keys', which the next sections then show.",
+  "'It looks like an afterthought' (the reset idea in State change): the reset story gets your voice here ('every quarter starts from zero') and its full drawing in the very next section. This section deliberately carries no artifact at all.",
+  "Set-up and payoff: the margin lists six problems a revenue leader will recognise, numbered 01–06 exactly as the handover numbers them. There, each one is struck through as the asset that ends it changes hands.",
+  "Trust without invented proof: the letter is signed, links to your About page, and gives the founding year and the three field notes you have actually published, with their dates and reading times. No logos, numbers or results."
+ ],
+ "signoff": [
+  "D1",
+  "D11"
+ ],
+ "notes": "Needs founder sign-off (D1, D11). D1: the memo runs word for word as on /about, where it is still marked for you to edit, and it is signed. D11: there is no background line under your name. The /about foot 'Drafted late on a Tuesday. Unchanged since.' is dropped, as the story asks. Copy sources: the memo and 'Founded 2026, deliberately late to the category' come from the About page. 'Told from inside' and the margin caption are the label and first sentence of the 'plateaued motion' story on Who We Work With. The six problems are the approved before/after lines, word for word. The three field notes and their dates and reading times are as listed on Insights. 'Revenue entropy' is the first part of that note's full title ('…: why pipeline problems rarely start in the pipeline'), shortened as the story lists it. The only red is the label square. The signature dash is ink, not red. Two quiet memo keys hang in the left column: 'Subject' (from the memo's own 'Subject:' line) and 'P.S.'. The letter is set at a true letter measure: about 52–64 characters a line in both skins, inside your 34–68 rule. (The first build let lines run to 77 characters.) That puts 'That’s the point.' on its own closing line in both skins. The section is about 1,290px tall at 1440 wide, against the story's 850–950 estimate. That estimate leaves out the P.S. and its reading list (about 280px), and the shorter lines add about 100px. I kept every specified size and gap rather than shrink the letter or move the P.S. beside the signature, and well over half the section is still empty. The cut into the system section below is a hairline that the system section draws at its own top edge, so this section draws none. Checked on the stitched page: one rule, no double. Typesetting: each dash is tied to the word before it, so no line starts with a dash, and 'That's the point.' never splits; the words are unchanged. To rise line by line, the paragraphs are briefly split into their real lines and then put back as ordinary text once the reveal ends, so the resting page reflows normally and stays fully readable to screen readers. On phones (760px and narrower) everything becomes one column with 16px side margins, and the margin list drops in right after paragraph 2, beside the movie it lists. The '17% window' field note also appears as the evidence section's link two beats earlier; the story asks for both."
+}

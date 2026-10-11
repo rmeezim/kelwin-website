@@ -1,0 +1,147 @@
+/* ── architecture · B · Quiet Ledger ──────────────────────────────────
+   Graphite chapter hung from the Index Spine. The direction's ONE
+   diagram: an orthogonal hairline loop on the grid (cols 5–8) that hangs
+   from the spine by its input wire; the single --accent line is the
+   return, drawn as the mark's right angle (bottom + left sides). Beside
+   it, a ledger of the loop's four moves with exactly one row open.
+   Default CSS = final state.                                           */
+
+.km-architecture-B {
+  --spine-x: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));
+  --c10: calc(var(--margin) + 9 * (var(--col) + var(--gutter)));
+  --w3: calc(3 * var(--col) + 2 * var(--gutter));
+  position: relative; overflow: hidden; padding: 128px 0 128px;
+}
+
+/* the spine: continuous hairline at the col 3|4 gutter */
+.km-architecture-B__spine { position: absolute; top: 0; bottom: 0; left: var(--spine-x); width: 1px; background: var(--line); }
+
+/* ── head: the B section grammar (index + red-square label · 88px statement + light accent · red rule) ── */
+.km-architecture-B__head {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+.km-architecture-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-architecture-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-architecture-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+.km-architecture-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-architecture-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-architecture-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-architecture-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-architecture-B__title {
+  grid-column: 4 / 13; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-architecture-B__s1, .km-architecture-B__s2 { display: block; white-space: nowrap; }
+.km-architecture-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-architecture-B__redrule { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--signal); transform-origin: 0 50%; }
+.km-architecture-B__body { grid-column: 4 / 9; grid-row: 4; margin-top: 32px; font-size: 18px; line-height: 30px; color: var(--fg-2); }
+
+/* ── the diagram ── */
+.km-architecture-B__dia { position: relative; height: 600px; margin-top: 88px; }
+.km-architecture-B__svg { position: absolute; left: 0; top: 0; display: block; overflow: visible; }
+
+.km-architecture-B__ln { fill: none; stroke: var(--fg-3); stroke-width: 1; transition: stroke .3s var(--ease-out); }
+.km-architecture-B__ret { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linejoin: miter; transition: stroke-width .3s var(--ease-out); }
+.km-architecture-B__chev { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-architecture-B__dash { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 3 5; transition: stroke .3s var(--ease-out); }
+.km-architecture-B__chev--ret { stroke: var(--accent); stroke-width: 1.5; }
+.km-architecture-B__jt { fill: var(--fg); }
+.km-architecture-B__mono { font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); fill: var(--fg-2); transition: fill .3s var(--ease-out); }
+.km-architecture-B__mono--dim { fill: var(--fg-3); }
+.km-architecture-B__num2 {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 48px; letter-spacing: -.02em; fill: var(--fg-3); transition: fill .3s var(--ease-out);
+}
+.km-architecture-B__st.is-hot .km-architecture-B__num2 { fill: var(--fg); }
+.km-architecture-B__desc { font-family: var(--f-body); font-weight: var(--body-weight); font-size: 17px; fill: var(--fg-2); transition: fill .3s var(--ease-out); }
+.km-architecture-B__seg.is-hot { stroke: var(--fg); }
+.km-architecture-B__ret.is-hot { stroke: var(--accent); stroke-width: 2.5; }
+.km-architecture-B__st.is-hot .km-architecture-B__mono,
+.km-architecture-B__st.is-hot .km-architecture-B__desc { fill: var(--fg); }
+
+/* mono caption in the spine column, on the loop's baseline */
+.km-architecture-B__cap {
+  position: absolute; left: var(--margin); top: 412px; width: var(--w3);
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+
+/* ── the ledger (cols 10–12): four moves, one open ── */
+.km-architecture-B__read { position: absolute; left: var(--c10); top: 6px; width: var(--w3); }
+.km-architecture-B__rlabel { font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-architecture-B__ledger { margin-top: 20px; border-bottom: 1px solid var(--line); }
+.km-architecture-B__row { position: relative; margin-inline: -12px; padding-inline: 12px; transition: background-color .3s var(--ease-out); }
+.km-architecture-B__row::before { content: ""; position: absolute; left: 12px; right: 12px; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+.km-architecture-B__rowhead {
+  display: grid; grid-template-columns: 52px 1fr 20px; align-items: center; width: 100%;
+  padding: 15px 0 14px; text-align: left;
+}
+.km-architecture-B__ri { font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); color: var(--fg-3); }
+.km-architecture-B__rt {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 24px; line-height: 1.25; color: var(--fg-2);
+  transition: color .3s var(--ease-out), transform .3s var(--ease-out);
+}
+.km-architecture-B__tg { position: relative; width: 20px; height: 20px; }
+.km-architecture-B__tg::before, .km-architecture-B__tg::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; margin-top: -.5px; background: var(--fg-2);
+  transition: transform .36s var(--ease-inout);
+}
+.km-architecture-B__tg::after { transform: rotate(90deg); }
+.km-architecture-B__row.is-open .km-architecture-B__tg::after { transform: rotate(0deg); }
+.km-architecture-B__row.is-open .km-architecture-B__rt { color: var(--fg); }
+
+.km-architecture-B__rb {
+  display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows .36s var(--ease-inout), opacity .36s var(--ease-inout);
+}
+.km-architecture-B__rb > p { overflow: hidden; min-height: 0; padding-left: 52px; font-size: 15px; line-height: 1.5; color: var(--fg-2); }
+.km-architecture-B__row.is-open .km-architecture-B__rb { grid-template-rows: 1fr; opacity: 1; }
+.km-architecture-B__row.is-open .km-architecture-B__rb > p { padding-bottom: 18px; }
+.km-architecture-B__row:hover, .km-architecture-B__row.is-hot { background: var(--panel); }
+.km-architecture-B__row:hover .km-architecture-B__rt, .km-architecture-B__row.is-hot .km-architecture-B__rt { color: var(--fg); transform: translateX(8px); }
+
+/* below the output wire: ownership + the quiet secondary door */
+.km-architecture-B__keep { position: absolute; left: var(--c10); top: 476px; width: var(--w3); }
+.km-architecture-B__own { font-size: 17px; line-height: 1.45; color: var(--fg); }
+.km-architecture-B__link {
+  position: relative; display: inline-flex; align-items: center; gap: 12px; margin-top: 18px; padding-block: 8px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap; color: var(--fg);
+}
+.km-architecture-B__link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2); }
+.km-architecture-B__link::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; transition: transform .3s var(--ease-out); z-index: 1; }
+.km-architecture-B__link:hover::before { transform: scaleX(1); }
+.km-architecture-B__ico { width: 13px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; transition: transform .3s var(--ease-out); }
+.km-architecture-B__link:hover .km-architecture-B__ico { transform: translateX(3px); }
+
+/* JS starts the ledger closed without animating it */
+.km-architecture-B.is-init .km-architecture-B__rb,
+.km-architecture-B.is-init .km-architecture-B__tg::after,
+.km-architecture-B.is-init .km-architecture-B__rt { transition: none; }
+
+/* ── entrance (only under html.is-play) — the diagram is plotted by JS ── */
+.is-play .km-architecture-B__rule { animation: km-architecture-B-draw .9s var(--ease-out) both; }
+.is-play .km-architecture-B__joint { animation: km-architecture-B-fade .3s var(--ease-out) both; }
+.is-play .km-architecture-B__index { animation: km-architecture-B-fade .4s var(--ease-out) .45s both; }
+.is-play .km-architecture-B__s1 { animation: km-architecture-B-rise .7s var(--ease-out) .45s both; }
+.is-play .km-architecture-B__s2 { animation: km-architecture-B-rise .7s var(--ease-out) .61s both; }
+.is-play .km-architecture-B__redrule { animation: km-architecture-B-draw .6s var(--ease-out) .85s both; }
+.is-play .km-architecture-B__body { animation: km-architecture-B-rise .7s var(--ease-out) .9s both; }
+.is-play .km-architecture-B__rlabel { animation: km-architecture-B-fade .4s var(--ease-out) 1.4s both; }
+.is-play .km-architecture-B__row::before { animation: km-architecture-B-draw .6s var(--ease-out) both; animation-delay: calc(1.5s + var(--i) * 60ms); }
+.is-play .km-architecture-B__rowhead { animation: km-architecture-B-fade .6s var(--ease-out) both; animation-delay: calc(1.65s + var(--i) * 60ms); }
+.is-play .km-architecture-B__ledger { animation: km-architecture-B-fade .4s var(--ease-out) 1.85s both; }
+.is-play .km-architecture-B__cap { animation: km-architecture-B-fade .5s var(--ease-out) 3.4s both; }
+.is-play .km-architecture-B__keep { animation: km-architecture-B-rise .7s var(--ease-out) 3.5s both; }
+
+@keyframes km-architecture-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-architecture-B-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-architecture-B-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }

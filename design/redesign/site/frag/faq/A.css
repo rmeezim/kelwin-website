@@ -1,0 +1,139 @@
+/* ── faq · A · Cinematic Figures — a Giga split on graphite ─────────────────
+   Left (cols 1–5): the hero's stack echoed — red-square label → four-line
+   two-voice statement → 48×2 red rule → lede → both doors (red audit + the
+   underlined contact door). Right (cols 7–12): six hairline strips. Each
+   strip's toggle is the Kelwin mark as solid plates: closed strips hold a
+   ghost of the mark with an empty core slot; the open strip lights the plates
+   and lands the red K3 core — the "installed" beat. */
+.km-faq-A { padding: 112px 0 96px; overflow: hidden; }   /* after the paper before/after act: a hard surface cut */
+.km-faq-A__in { padding-inline: var(--margin); }
+
+/* shared voices: Mona tracked caps for labels and doors, mono for indexes */
+.km-faq-A__label, .km-faq-A__cta, .km-faq-A__link {
+  font-family: var(--f-body); font-weight: var(--ui-weight);
+  text-transform: uppercase; letter-spacing: var(--label-tracking); line-height: 1; white-space: nowrap;
+}
+
+/* label row */
+.km-faq-A__labels { display: flex; justify-content: space-between; align-items: center; }
+.km-faq-A__label { display: flex; align-items: center; gap: 12px; font-size: 11px; line-height: 16px; color: var(--fg-2); }
+.km-faq-A__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-faq-A__meta {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3);
+}
+
+.km-faq-A__grid {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  margin-top: 36px; align-items: start;
+}
+
+/* ── left column: statement · rule · lede · doors ── */
+.km-faq-A__head { grid-column: 1 / 6; }
+.km-faq-A__h {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 96px; line-height: 0.98; letter-spacing: var(--display-tracking);
+  margin-top: -14px; /* cap height meets the first strip's hairline */
+}
+.km-faq-A__mask { display: block; overflow: hidden; padding-block: 0.06em 0.16em; margin-block: -0.06em -0.16em; }
+.km-faq-A__l { display: block; white-space: nowrap; }
+.km-faq-A__l--m { font-weight: var(--display-weight); color: var(--fg); }
+.km-faq-A__l--x { font-weight: var(--light-weight); color: var(--fg-2); }
+
+.km-faq-A__rule { display: block; width: 48px; height: 2px; margin-top: 36px; background: var(--signal); transform-origin: 0 50%; }
+.km-faq-A__lede { margin-top: 28px; max-width: 25em; font-size: 20px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+
+.km-faq-A__doors { margin-top: 36px; display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
+.km-faq-A__ico { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; transition: transform 200ms var(--ease-out); }
+.km-faq-A__go { width: 14px; }
+.km-faq-A__cta {
+  display: inline-flex; align-items: center; gap: 14px; height: 56px; padding: 0 26px 0 28px;
+  background: var(--accent); color: var(--accent-fg); font-size: 13px;
+  transition: background-color 200ms var(--ease-out);
+}
+.km-faq-A__cta:hover { background: var(--accent-hover); }
+.km-faq-A__cta:hover .km-faq-A__arr { transform: translate(2px, -2px); }
+.km-faq-A__door { display: flex; align-items: center; gap: 16px; font-size: 15px; line-height: 1.5; color: var(--fg-3); }
+.km-faq-A__link { position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px; font-size: 13px; color: var(--fg); }
+.km-faq-A__link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2);
+  transition: background-color 200ms var(--ease-out);
+}
+.km-faq-A__link:hover::after { background: var(--fg); }
+.km-faq-A__link:hover .km-faq-A__go { transform: translateX(2px); }
+
+/* ── right column: the strips ── */
+.km-faq-A__list { grid-column: 6 / 13; position: relative; }
+.km-faq-A__row { position: relative; }
+.km-faq-A__row::before, .km-faq-A__list::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.km-faq-A__row::before { top: 0; }
+.km-faq-A__list::after { bottom: 0; }
+
+.km-faq-A__q {
+  display: grid; grid-template-columns: 48px 1fr 28px; column-gap: 24px; align-items: start;
+  width: 100%; padding: 26px 0; text-align: left;
+  transition: padding-bottom 900ms var(--ease-inout);
+}
+.km-faq-A__row.is-open .km-faq-A__q { padding-bottom: 20px; }
+.km-faq-A__idx {
+  font-family: var(--f-mono); font-size: 12px; line-height: 34px; letter-spacing: var(--label-tracking); color: var(--fg-3);
+  font-variant-numeric: tabular-nums; transition: color 300ms var(--ease-out);
+}
+.km-faq-A__qt {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 28px; line-height: 34px; letter-spacing: -0.012em; color: var(--fg-2); text-wrap: balance;
+  transition: color 300ms var(--ease-out);
+}
+.km-faq-A__row:hover .km-faq-A__qt, .km-faq-A__row.is-open .km-faq-A__qt { color: var(--fg); }
+.km-faq-A__row.is-open .km-faq-A__idx { color: var(--fg); }
+
+/* the glyph: the true three-piece mark as solid plates (152-unit master) */
+.km-faq-A__gw { display: block; width: 28px; height: 28px; margin-top: 3px; }
+.km-faq-A__glyph { display: block; overflow: visible; }
+.km-faq-A__k1, .km-faq-A__k2 { fill: var(--line); transition: fill 600ms var(--ease-inout); }
+.km-faq-A__row:hover .km-faq-A__k1, .km-faq-A__row:hover .km-faq-A__k2 { fill: var(--line-2); }
+.km-faq-A__row.is-open .km-faq-A__k1, .km-faq-A__row.is-open .km-faq-A__k2 { fill: var(--fg); }
+/* the empty core slot: a hairline where the answer will land */
+.km-faq-A__slot { fill: none; stroke: var(--line-2); stroke-width: 1; vector-effect: non-scaling-stroke; transition: opacity 300ms var(--ease-inout); }
+.km-faq-A__row.is-open .km-faq-A__slot { opacity: 0; }
+.km-faq-A__k3 {
+  fill: var(--signal); opacity: 0; transform: translateY(-64px);
+  transition: opacity 240ms var(--ease-inout), transform 240ms var(--ease-inout);
+}
+/* opening: the core lands after the plates light — the "installed" beat */
+.km-faq-A__row.is-open .km-faq-A__k3 {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 200ms var(--ease-out) 560ms, transform 400ms var(--ease-out) 560ms;
+}
+
+/* the answer: height + opacity, 900ms, A's state-change timing */
+.km-faq-A__a {
+  display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 900ms var(--ease-inout), opacity 500ms var(--ease-inout);
+}
+.km-faq-A__a > div { overflow: hidden; min-height: 0; }
+.km-faq-A__row.is-open .km-faq-A__a { grid-template-rows: 1fr; opacity: 1; transition: grid-template-rows 900ms var(--ease-inout), opacity 600ms var(--ease-inout) 300ms; }
+.km-faq-A__ai { padding: 0 52px 36px 72px; }
+.km-faq-A__ai p { max-width: 46ch; font-size: 17px; line-height: 1.6; color: var(--fg-2); text-wrap: pretty; }
+
+/* ── entrance (only under html.is-play) ── */
+.is-play .km-faq-A__labels { animation: km-faq-A-fade 300ms var(--ease-out) 120ms both; }
+.is-play .km-faq-A__l { animation: km-faq-A-rise 800ms var(--ease-out) both; animation-delay: calc(200ms + var(--l) * 120ms); }
+.is-play .km-faq-A__l--x { animation-delay: calc(400ms + var(--l) * 120ms); } /* the light clause lands 200ms behind */
+.is-play .km-faq-A__rule { animation: km-faq-A-draw 500ms var(--ease-out) 900ms both; }
+.is-play .km-faq-A__lede { animation: km-faq-A-up 600ms var(--ease-out) 960ms both; }
+.is-play .km-faq-A__doors { animation: km-faq-A-up 600ms var(--ease-out) 1100ms both; }
+.is-play .km-faq-A__row::before { animation: km-faq-A-draw 700ms var(--ease-out) both; animation-delay: calc(360ms + var(--i) * 120ms); }
+.is-play .km-faq-A__list::after { animation: km-faq-A-draw 700ms var(--ease-out) 1080ms both; }
+.is-play .km-faq-A__idx, .is-play .km-faq-A__qt, .is-play .km-faq-A__gw { animation: km-faq-A-fade 500ms var(--ease-out) both; animation-delay: calc(480ms + var(--i) * 120ms); }
+.is-play .km-faq-A__ai { animation: km-faq-A-up 600ms var(--ease-out) 1000ms both; }
+/* the first open strip's core lands last (400ms) */
+.is-play .km-faq-A__k3w { animation: km-faq-A-land 400ms var(--ease-out) 1480ms both; }
+
+@keyframes km-faq-A-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-faq-A-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-faq-A-rise { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes km-faq-A-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes km-faq-A-land { from { opacity: 0; transform: translateY(-64px); } to { opacity: 1; transform: translateY(0); } }

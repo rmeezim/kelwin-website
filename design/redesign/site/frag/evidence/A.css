@@ -1,0 +1,194 @@
+/* ── evidence · A · Cinematic Figures — FIG. 03, four readings, one structure ──
+   Paper act. A 2×2 hairline grid of readings (176px numerals); at the centre crossing,
+   FIG. 03 draws each reading as a flat square whose AREA is its value, anchored bottom-left
+   in its own 100-unit frame (Readings). Diagnosis: the four frames become one and the four
+   squares nest on its bottom-left corner — the mark's nested right angles, drawn by the data.
+   One red element: the 17% square, the share of the journey sales actually owns. */
+.km-evidence-A {
+  --F: calc(2 * var(--col) + var(--gutter));          /* one reading's frame: 2 cols (cols 5–6 / 7–8) */
+  --M: calc(4 * var(--col) + 3 * var(--gutter));      /* the shared frame: cols 5–8, centred on the crossing */
+  --o: calc(var(--F) + var(--gutter));                /* offset of the right / lower frames */
+  padding: 112px 0 96px;
+}
+.km-evidence-A__in { padding-inline: var(--margin); }
+
+/* label row: the hero's red-square caps label · mono FIG. number */
+.km-evidence-A__labels { display: flex; justify-content: space-between; align-items: center; }
+.km-evidence-A__label {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-evidence-A__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-evidence-A__fignum {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3);
+}
+
+/* the hero's stack, echoed: statement → 48×2 red rule → lede */
+.km-evidence-A__head {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  margin-top: 36px;
+}
+.km-evidence-A__h {
+  grid-column: 1 / 10;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 96px; line-height: 0.98; letter-spacing: var(--display-tracking);
+}
+.km-evidence-A__mask { display: block; overflow: hidden; padding-block: 0.06em 0.14em; margin-block: -0.06em -0.14em; }
+.km-evidence-A__l1, .km-evidence-A__l2 { display: block; white-space: nowrap; }
+.km-evidence-A__l1 { font-weight: var(--display-weight); color: var(--fg); }
+.km-evidence-A__l2 { font-weight: var(--light-weight); color: var(--fg-2); }
+.km-evidence-A__hr {
+  grid-column: 1; display: block; width: 48px; height: 2px; margin-top: 36px;
+  background: var(--signal); transform-origin: 0 50%;
+}
+.km-evidence-A__lede {
+  grid-column: 1 / 7; margin-top: 28px;
+  font-size: 20px; line-height: 1.5; color: var(--fg-2); max-width: 50ch;
+}
+
+/* ── FIG. 03 plate ── */
+.km-evidence-A__plate { margin-top: 64px; }
+.km-evidence-A__grid {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: 1fr 1fr; column-gap: var(--gutter);
+}
+.km-evidence-A__rule { position: absolute; z-index: 0; background: var(--line); }
+.km-evidence-A__rule--top { left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%; }
+.km-evidence-A__rule--mid { left: 0; right: 0; top: 50%; height: 1px; transform-origin: 0 50%; }
+.km-evidence-A__rule--v { top: 0; bottom: 0; left: 50%; width: 1px; transform-origin: 50% 0; }
+
+/* readings (text) */
+.km-evidence-A__cell { position: relative; z-index: 1; padding: 28px 0 32px; }
+.km-evidence-A__cell--tl { grid-column: 1 / 5; grid-row: 1; }
+.km-evidence-A__cell--tr { grid-column: 9 / 13; grid-row: 1; }
+.km-evidence-A__cell--bl { grid-column: 1 / 5; grid-row: 2; }
+.km-evidence-A__cell--br { grid-column: 9 / 13; grid-row: 2; }
+.km-evidence-A__meta {
+  display: flex; justify-content: space-between; gap: 16px;
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-evidence-A__src { color: var(--fg-3); }
+.km-evidence-A__num {
+  margin-top: 24px; margin-left: -0.05em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 168px; line-height: 0.8; letter-spacing: -0.04em; color: var(--fg);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.km-evidence-A__u { font-weight: var(--light-weight); letter-spacing: -0.02em; }
+.km-evidence-A__claim { margin-top: 24px; max-width: 25em; font-size: 17px; line-height: 1.45; font-weight: var(--ui-weight); color: var(--fg); text-wrap: pretty; transition: color 300ms var(--ease-out); }
+.km-evidence-A__so { margin-top: 6px; max-width: 26em; font-size: 15px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+
+/* ── the figure: one box on cols 5–8, centred on the crossing ── */
+.km-evidence-A__fig {
+  position: absolute; z-index: 2; pointer-events: none;
+  left: calc(4 * (var(--col) + var(--gutter))); top: calc(50% - var(--M) / 2);
+  width: var(--M); height: var(--M);
+}
+/* paper knock-out under the nested state, so the hairline cross stops at the figure */
+.km-evidence-A__clear { position: absolute; inset: calc(-1 * var(--gutter)); background: var(--bg); transition: opacity 500ms var(--ease-inout) 200ms; }
+/* Readings: four 100-unit frames tiling the box; the hairline cross runs through their gutters.
+   The group carries the entrance fade, each frame its state opacity (an animation would pin it). */
+.km-evidence-A__frames { position: absolute; inset: 0; }
+.km-evidence-A__frame {
+  position: absolute; width: var(--F); height: var(--F);
+  outline: 1px solid var(--line-2); outline-offset: -1px;
+  transition: opacity 500ms var(--ease-inout), outline-color 300ms var(--ease-out);
+}
+.km-evidence-A__frame--tl { left: 0; top: 0; }
+.km-evidence-A__frame--tr { left: var(--o); top: 0; }
+.km-evidence-A__frame--bl { left: 0; top: var(--o); }
+.km-evidence-A__frame--br { left: var(--o); top: var(--o); }
+/* Diagnosis: the one shared 100-unit frame */
+.km-evidence-A__unit { position: absolute; inset: 0; outline: 1px solid var(--line-2); outline-offset: -1px; transition: opacity 500ms var(--ease-inout) 350ms; }
+
+/* the readings as areas. --s = √(value/100): side of a square whose area is the value.
+   Default geometry = Diagnosis (final): every square on the shared frame's bottom-left corner. */
+.km-evidence-A__a {
+  position: absolute; display: block;
+  left: var(--x, 0px); bottom: var(--y, 0px);
+  width: calc(var(--k, var(--M)) * var(--s)); height: calc(var(--k, var(--M)) * var(--s));
+  transition: left 900ms var(--ease-inout), bottom 900ms var(--ease-inout), width 900ms var(--ease-inout), height 900ms var(--ease-inout);
+  transition-delay: calc(var(--n) * 70ms);
+}
+.km-evidence-A__a--95 { --s: 0.97468; background: var(--fg); }
+.km-evidence-A__a--77 { --s: 0.87750; background: var(--cool); }
+.km-evidence-A__a--53 { --s: 0.72801; background: var(--soft); }
+.km-evidence-A__a--17 { --s: 0.41231; background: var(--accent); }
+/* the value, set inside each area's top-right (as the reference sets '91%') */
+.km-evidence-A__v {
+  position: absolute; top: 9px; right: 9px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 12px; letter-spacing: 0.04em; white-space: nowrap;
+}
+.km-evidence-A__a--95 .km-evidence-A__v { color: var(--bg); }
+.km-evidence-A__a--77 .km-evidence-A__v { color: var(--bg); }
+.km-evidence-A__a--53 .km-evidence-A__v { color: var(--fg); }
+.km-evidence-A__a--17 .km-evidence-A__v { color: var(--accent-fg); }
+
+/* ── state: Readings — each square in its own frame, next to its numeral ── */
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__a { --k: var(--F); }
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__a--17 { --x: 0px;        --y: var(--o); }
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__a--95 { --x: var(--o);   --y: var(--o); }
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__a--77 { --x: 0px;        --y: 0px; }
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__a--53 { --x: var(--o);   --y: 0px; }
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__a { transition-delay: calc((3 - var(--n)) * 70ms); }
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__clear,
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__unit { opacity: 0; transition-delay: 0ms; }
+.km-evidence-A__plate:not([data-state="readings"]) .km-evidence-A__frame { opacity: 0; transition-delay: 0ms; }
+
+/* hover a reading: its frame (Readings) firms up */
+.km-evidence-A__grid:has(.km-evidence-A__cell--tl:hover) .km-evidence-A__frame--tl,
+.km-evidence-A__grid:has(.km-evidence-A__cell--tr:hover) .km-evidence-A__frame--tr,
+.km-evidence-A__grid:has(.km-evidence-A__cell--bl:hover) .km-evidence-A__frame--bl,
+.km-evidence-A__grid:has(.km-evidence-A__cell--br:hover) .km-evidence-A__frame--br { outline-color: var(--fg); }
+
+/* caption band */
+.km-evidence-A__band {
+  position: relative; height: 80px; background: var(--panel);
+  font-family: var(--f-mono); font-size: 12px; line-height: 12px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-evidence-A__cap { position: absolute; left: 24px; bottom: 34px; color: var(--fg-3); white-space: nowrap; }
+.km-evidence-A__key { position: absolute; left: calc(4 * (var(--col) + var(--gutter))); /* = the figure's left edge */ bottom: 34px; color: var(--fg-3); white-space: nowrap; }
+.km-evidence-A__key > span { position: absolute; left: 0; bottom: 0; transition: opacity 400ms var(--ease-inout); }
+.km-evidence-A__key-d { opacity: 1; }
+.km-evidence-A__key-r { opacity: 0; }
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__key-d { opacity: 0; }
+.km-evidence-A__plate[data-state="readings"] .km-evidence-A__key-r { opacity: 1; }
+.km-evidence-A__segs { position: absolute; right: 24px; bottom: 16px; display: flex; height: 48px; border: 1px solid var(--line-2); }
+.km-evidence-A__seg {
+  height: 46px; padding: 0 20px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 46px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: background-color 500ms var(--ease-inout), color 500ms var(--ease-inout);
+}
+.km-evidence-A__seg + .km-evidence-A__seg { box-shadow: inset 1px 0 0 var(--line); }
+.km-evidence-A__seg:hover { color: var(--fg); }
+.km-evidence-A__seg[aria-pressed="true"] { background: var(--fg); color: var(--bg); box-shadow: none; }
+
+/* JS bootstrap: no transitions while the demo resets to its opening state */
+.km-evidence-A__plate.is-cold *, .km-evidence-A__plate.is-cold *::before { transition: none !important; }
+
+/* ── entrance (only under html.is-play) ── */
+.is-play .km-evidence-A__labels { animation: km-evidence-A-fade 300ms var(--ease-out) both; }
+.is-play .km-evidence-A__l1 { animation: km-evidence-A-rise 800ms var(--ease-out) 100ms both; }
+.is-play .km-evidence-A__l2 { animation: km-evidence-A-rise 800ms var(--ease-out) 420ms both; }
+.is-play .km-evidence-A__hr { animation: km-evidence-A-drawx 500ms var(--ease-out) 720ms both; }
+.is-play .km-evidence-A__lede { animation: km-evidence-A-up 600ms var(--ease-out) 640ms both; }
+.is-play .km-evidence-A__rule--top { animation: km-evidence-A-drawx 900ms var(--ease-out) 380ms both; }
+.is-play .km-evidence-A__rule--mid { animation: km-evidence-A-drawx 900ms var(--ease-out) 520ms both; }
+.is-play .km-evidence-A__rule--v { animation: km-evidence-A-drawy 900ms var(--ease-out) 600ms both; }
+.is-play .km-evidence-A__cell { animation: km-evidence-A-up 700ms var(--ease-out) both; animation-delay: calc(600ms + var(--i) * 90ms); }
+.is-play .km-evidence-A__frames { animation: km-evidence-A-fade 500ms var(--ease-out) 820ms both; }
+/* the areas grow out of their bottom-left corners, largest first; the red 17 lands last */
+.is-play .km-evidence-A__a--95, .is-play .km-evidence-A__a--77, .is-play .km-evidence-A__a--53 { animation: km-evidence-A-grow 700ms var(--ease-out) both; animation-delay: calc(980ms + var(--n) * 120ms); }
+.is-play .km-evidence-A__a--17 { animation: km-evidence-A-grow 400ms var(--ease-out) 1560ms both; }
+.is-play .km-evidence-A__v { animation: km-evidence-A-fade 300ms var(--ease-out) 1900ms both; }
+.is-play .km-evidence-A__band { animation: km-evidence-A-fade 500ms var(--ease-out) 900ms both; }
+
+@keyframes km-evidence-A-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-evidence-A-rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
+@keyframes km-evidence-A-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes km-evidence-A-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-evidence-A-drawy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-evidence-A-grow { from { clip-path: inset(100% 100% 0 0); } to { clip-path: inset(0 0 0 0); } }

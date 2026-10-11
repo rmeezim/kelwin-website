@@ -1,0 +1,107 @@
+/* ── method · X · FIG. 08 Phase gantt (round 2, A×C) ────────────────────────
+   Base: round-1 A "The Phase Climb" (head, plate, four phases, the sliding rail).
+   The climb is gone, and so is anything stepped: C's phase gantt is the centrepiece,
+   drawn with the MEASURE primitive inside ONE plate. Four phase columns on top (they
+   are the tabs, read 01 → 04, one short line each) sit on a calibrated ruler; the
+   bars run beneath in the same four bays. Every bar starts on its column's text
+   edge and stops 8px short of the bay divider, so consecutive bars never touch: it
+   reads as a schedule, not a staircase. Calibrate is the one red and runs out through the
+   plate edge (one slow paper cursor rides it: the section's only ambient loop).
+   Each bay carries its own ten-tick ruler segment exactly over its bar, so the
+   Diagnose bar reads as ten working days at a glance.
+   Markup is static and in the final state (04 · Calibrate selected); geometry is
+   noted in X.html. Kit components are placed, not restyled.                      */
+
+.km-method-X {
+  --bw: 328px;           /* one bay = one phase (4 × 328 = 1312, the plate) */
+  --hz: 168px;           /* column (tab) zone; the ruler is its bottom edge */
+  --a: 3;
+}
+.km-method-X[data-active="0"] { --a: 0; }
+.km-method-X[data-active="1"] { --a: 1; }
+.km-method-X[data-active="2"] { --a: 2; }
+.km-method-X[data-active="3"] { --a: 3; }
+
+/* ── FIG. 08 plate (cols 1–12) ── */
+.km-method-X__body { margin-top: 64px; }                      /* the page's head → figure step */
+.km-method-X__draw { position: absolute; left: 0; top: 0; }
+
+/* ── the four phase columns = the tabs ── */
+.km-method-X__cols {
+  position: absolute; left: 0; top: 0; height: var(--hz);
+  display: grid; grid-template-columns: repeat(4, var(--bw));
+}
+.km-method-X__col {
+  display: flex; flex-direction: column; align-items: flex-start; height: 100%;
+  padding: 30px 16px 0 32px; text-align: left; cursor: pointer;
+  transition: opacity 600ms var(--ease-inout);
+}
+.km-method-X__col:focus-visible { outline: 1px solid var(--fg-2); outline-offset: -1px; }
+.km-method-X__idx { transition: color 400ms var(--ease-inout); }
+.km-method-X__name { margin-top: 16px; }
+.km-method-X__line { margin-top: 12px; white-space: nowrap; }
+.km-method-X__col.is-active .km-method-X__idx,
+.km-method-X__col:hover .km-method-X__idx { color: var(--fg); }
+.km-method-X__col.is-todo { opacity: .36; }
+.km-method-X__col.is-todo:hover { opacity: .7; }
+
+/* the active bay's rail (A's rail, riding the plate's top edge) */
+.km-method-X__rail {
+  position: absolute; left: 0; top: 0; width: var(--bw); height: 2px; background: var(--fg);
+  transform: translateX(calc(var(--a) * var(--bw)));
+  transition: transform 600ms var(--ease-inout), opacity 300ms var(--ease-out);
+}
+.km-method-X[data-active="-1"] .km-method-X__rail { opacity: 0; transform: none; }
+
+/* ── the gantt (MEASURE) ── */
+.km-method-X__tick { stroke: var(--fg-3); stroke-width: 1; }
+.km-method-X__tick--maj { stroke: var(--fg-2); }
+
+/* bars: done = solid neutral · active = solid paper · Calibrate active = the one red · planned = dashed outline */
+.km-method-X__bar {
+  fill: var(--fg-3); stroke: var(--fg-3); stroke-width: 1;
+  transform-box: fill-box; transform-origin: 0 50%;
+  transition: fill 500ms var(--ease-inout), stroke 500ms var(--ease-inout),
+              transform 800ms var(--ease-inout), opacity 120ms linear;
+}
+.km-method-X__bar.is-active { fill: var(--fg); stroke: var(--fg); }
+.km-method-X__bar--cal.is-active { fill: var(--accent); stroke: var(--accent); }
+.km-method-X__bar.is-todo { fill: var(--ac-occlude); stroke: var(--line-2); stroke-dasharray: 2 4; }
+.km-method-X__bar.is-unbuilt { transform: scaleX(0); opacity: 0; }
+.km-method-X__bar--cal { transition-duration: 500ms, 500ms, 900ms, 120ms; }
+
+/* the audit's one fixed span: a value at the Diagnose bar's end (counts 01 → 10 as the bar builds) */
+.km-method-X__val { font-variant-numeric: tabular-nums; transition: opacity 400ms var(--ease-out); }
+.km-method-X__val.is-unbuilt { opacity: 0; }
+
+/* Calibrate runs on: an open paper chevron where the red bar meets the plate edge */
+.km-method-X__chev { fill: none; stroke: var(--accent-fg); stroke-width: 1.5; stroke-linecap: square; transition: opacity 300ms var(--ease-out) 700ms; }
+.km-method-X:not([data-active="3"]) .km-method-X__chev { opacity: 0; transition-delay: 0ms; }
+
+/* ambient (the section's one loop, ≥ 8s): a paper cursor runs along the live Calibrate bar */
+.km-method-X__cursor { fill: var(--accent-fg); opacity: 0; }
+.is-play .km-method-X[data-active="3"] .km-method-X__cursor { animation: km-method-X-run 9600ms linear 1200ms infinite; }
+
+/* caption band (ruled, as in the nav's bottom band): aligned to the column text edge */
+.km-method-X__band { padding-inline: 32px; }
+
+/* ── entrance (only under html.is-play); the kit runs the head ── */
+.is-play .km-method-X__plate { animation: ac-up 600ms var(--ease-out) 380ms both; }
+.is-play .km-method-X__ruler { stroke-dasharray: 1; animation: ac-plot 900ms var(--ease-inout) 600ms both; }
+.is-play .km-method-X__lanes { animation: ac-fade 600ms var(--ease-out) 900ms both; }
+.is-play .km-method-X__vert { stroke-dasharray: 1; animation: ac-plot 700ms var(--ease-inout) both; animation-delay: calc(560ms + var(--i) * 90ms); }
+/* the ruler calibrates: ticks arrive left → right, off-pitch, then settle onto the regular pitch */
+.is-play .km-method-X__tick { animation: km-method-X-cal 900ms var(--ease-inout) both; animation-delay: calc(700ms + var(--i) * 20ms); }
+.is-play .km-method-X__band > * { animation: ac-fade 500ms var(--ease-out) 900ms both; }
+
+@keyframes km-method-X-run {
+  0%   { opacity: 0; transform: none; }
+  6%   { opacity: .85; }
+  90%  { opacity: .85; }
+  100% { opacity: 0; transform: translateX(262px); }
+}
+@keyframes km-method-X-cal {
+  0%   { opacity: 0; transform: translateX(var(--j, 0px)); }
+  30%  { opacity: 1; transform: translateX(var(--j, 0px)); }
+  100% { opacity: 1; transform: none; }
+}

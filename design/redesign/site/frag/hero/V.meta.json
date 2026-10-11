@@ -1,0 +1,50 @@
+{
+ "title": "The Scope",
+ "direction": "A×C · Round 6",
+ "summary": "Your approved room with one pane of clear glass set into its upper right: outside it the film stays frosted, inside it the same footage comes clear, and the pane's bottom edge counts the audit's ten working days directly above the button that books them.",
+ "reference": {
+  "site": "Harvey · Seasats · Lightship",
+  "mobbin_url": "https://mobbin.com/sites/sections/9d56d813-93b1-42d4-8aa3-55c2b30c9dc0",
+  "ref_file": "refs/hero-r6-3.webp",
+  "borrowed": "Harvey: a frame inside a frame, which turns a flat picture into something you look through. Seasats (refs/hero-r6-2.webp): a small, clearer inset inside a hazy full-bleed film, so the inset is the thing being looked at. Lightship (refs/hero-r6-13.webp): a calibration drawn around the footage, so watching becomes measuring.",
+  "kelwin": "The inset is a fixed pane on the 12-column grid (cols 8–12), never a box that follows people. It is drawn in the page's own 1px language: a hairline frame, four registration marks and a straight ten-day ruler on its bottom edge, with no dial, reticle or perspective. The pane is the System Audit, and the red button stands under it on the same column line."
+ },
+ "video": "In the mockup: today's film plate (img/film-room.webp), shown twice inside one .km-film and kept in exact register. The room sits behind today's frost (8px blur, .20 tint, grain). The pane's copy has no frost or scrim, and it runs about 11% brighter with more contrast and colour, so it reads as clear glass rather than a lit card. Both copies share the same 32-second drift. One figure (a drawn stand-in with its motion blur built in) walks in from the left about two seconds after the pane clears, stands in it for about six seconds, then walks on, and the room stays empty for the rest of a seamless 24-second loop. The plate is panned about 250px from today's framing, so the pane holds the wall, the standing colleague and the edge of the foreground man's hair instead of the dark back of his head. There is no canvas: it is all CSS, and every loop pauses when the hero is off screen. For launch: one new 30-second, 4K, 24fps seamless loop of the same working session (the same commission as today's film), shot with shallow depth of field and faces turned away, so nobody can be identified even where the pane makes them clear. One or two people cross the frame at the pane's height. On the site it plays as one muted, looping <video>, drawn sharp. The frost is a separate glass layer on top (backdrop blur 8–10px, the frost tint and the grain) with a rectangular hole cut where the pane sits. That means one decode and perfect registration, and the focus pull is just the hole's blur animating from 8px to 0. Ship a 1080p encode for 1440px screens and a poster frame (the still in these screenshots) for reduced motion and slow connections.",
+ "motion": [
+  "entrance (0–1.6s): the film fades up fully frosted, the nav hairline draws, and the statement lands exactly as it does today.",
+  "construction (0.85–2.1s): dashed construction lines run along the pane's top and left edges, the 1px outline draws all the way round and closes, the four corner marks register, and the ten day ticks calibrate left to right, 40ms apart. Then '10 working days' fades in.",
+  "the one orchestrated moment (1.8–3.4s): a focus pull. Inside the pane the frost clears and the exposure lifts, so the room comes clear while everything around it stays frosted. This replaces today's close-to-wide pull-back.",
+  "ambient: the slow 32s drift (both copies stay in register), the film grain, and one figure every 24s. It walks in through the frost, comes clear as it crosses into the pane, stands, then frosts again as it leaves. That is the only loop. The pane never moves and never follows anyone.",
+  "interaction: pointing at or tabbing to 'Request a System Audit' fills the ten day cells under the pane one by one, 30ms apart, and brightens '10 working days'. Moving away steps them back.",
+  "on the live site: the film loops pause when the hero is off screen and carry on from the same frame when it comes back. Under reduced motion it is one still frame: the pane clear, the figure standing in it, no drift and no timers."
+ ],
+ "demoMs": 6000,
+ "addressed": [
+  "The video has a job now. One clear pane makes the footage the thing you look at, and you can tell it is live: a person walks out of the frost, comes clear in the pane, stands, and frosts again as they leave.",
+  "It reads as a proprietary instrument, not agency mood. A hard 1px frame, four registration marks and a ten-day ruler are drawn in the same 1px language as the sections you approved. The blur now means something: the market is frosted, and the audit is the one place it is clear.",
+  "It sells the audit without adding copy. The pane is the fixed-scope diagnostic, its edge counts the ten working days, and the red button stands directly under it on the same column line. Pointing at the button fills in the ten days.",
+  "It keeps your approved hero: the same room, layout, copy and nav. The button sits at 768–824px, above the fold on a 1440×900 screen, and the statement and lede pass AA contrast on every frame of the loop."
+ ],
+ "notes": "Decisions and deviations from the concept. (1) Framing: at today's framing the pane would have held the darkest thing in the room, the back of the foreground man's head, so the focus pull had nothing to reveal. The plate is panned 250px (background-position -334px → -84px) so the pane frames the wall, the standing colleague and the edge of that man's hair. Both copies use the same rule, so they stay in register. (2) The walker is redrawn as a figure seen from behind (hair, ear, collar, jacket, a warm rim light, motion blur built in) and raised so it crosses at the pane's height. It walks in, stands and walks on, so the screenshot is repeatable. A drawn stand-in that is fully sharp reads as a cut-out, so inside the pane it keeps 3.4px of softness (the concept said 0–1.5px), the way a passer-by looks in real footage. It is still clearly sharper than the same figure in the frost (6.4px plus the frost). (3) The pane runs about 11% brighter than the room, with 18% more contrast and 8% more colour (the concept said +8% exposure). Clear glass shows deeper blacks and richer colour than frost, so the pane reads as a window, not a lit card. (4) Legibility: the pan put a white shirt behind the lede, so two feathered graphite pools were added inside the film's scrim, one under the lede bay and one under '10 working days'. Today's scrim is otherwise unchanged. Contrast was measured against the brightest 5% of the background at both ends of the drift, in both skins (Swiss / Kelwin): lede 5.7 / 5.4:1, '10 working days' 6.0 / 5.8:1, 'problem.' 4.1 / 4.1:1 (large text needs 3:1), and everything else 5.7:1 or better. (5) The stand-in plate is soft at source, so in the mockup 'in focus' mostly reads as 'clear'. The 4K launch footage shows the full effect. An SVG sharpen was tried and made the plate worse, so it was dropped. (6) The hover fill is a row of ten 3px cells just under the ruler, not a 1px line, so it reads at a glance. (7) The ruler has ten ticks, one at the centre of each day cell, with day 01 and day 10 long, matching the final call's ten-tick ruler. Its one label is 11px mono at --fg-2. (8) Six registration marks in total: today's nav pair plus the pane's four corners. (9) Red appears only on the two label squares, the rule and the primary button. Gradients appear only inside .km-film. There are no Fig. labels, no caption strip, no Pause button and no Plurel. (10) The stage is 960px tall. The primary's bottom edge is at y 824 at 1440×900 and at 732 on a 1280×800 screen. The pane sits at cols 8–12 (x 843–1376, y 144–332, about 2.8:1), 48px under the nav hairline so it no longer crowds the nav, and its left edge, the lede and the primary all stand on the col-8 line. (11) Review pass: the pane was dropped 16px to give it 48px of air under the nav, the walker inside it was softened so it no longer reads as a cut-out, and the pane's optics were changed from 'brighter' to 'clearer' (deeper blacks, richer colour). Removing the frost grain from inside the pane was tried and rejected: without grain the pane read as a still photo, so the grain stays over the whole film. Main-thread cost over 5 seconds on screen is effectively zero (no style or layout work); every loop runs on the compositor.",
+ "refs": [
+  {
+   "site": "Harvey",
+   "mobbin_url": "https://mobbin.com/sites/sections/9d56d813-93b1-42d4-8aa3-55c2b30c9dc0",
+   "ref_file": "refs/hero-r6-3.webp",
+   "takeaway": "A frame inside a frame turns a flat plate into an optical device. Kelwin: a flat 1px scope over the frosted film, clear inside, with no perspective tunnel."
+  },
+  {
+   "site": "Seasats",
+   "mobbin_url": "https://mobbin.com/sites/sections/22a666fa-5045-4320-b587-41749a80515e",
+   "ref_file": "refs/hero-r6-2.webp",
+   "takeaway": "A sharper inset registered inside a hazy full-bleed film, so the inset is the thing being looked at. Kelwin: a fixed pane on the 12-column grid, never a tracking box."
+  },
+  {
+   "site": "Lightship",
+   "mobbin_url": "https://mobbin.com/sites/sections/bdc83579-5afc-4952-b158-a807fe4269bd",
+   "ref_file": "refs/hero-r6-13.webp",
+   "takeaway": "A calibration drawn around the film turns watching into measuring. Kelwin: a straight ten-day ruler on the pane's edge (no dial, no reticle), echoing the final CTA's ten ticks."
+  }
+ ],
+ "story": "The claim and the room, said once. The room now shows what the audit does: it makes the architecture visible."
+}

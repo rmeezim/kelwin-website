@@ -1,0 +1,184 @@
+/* ── reframe · B · Quiet Ledger — 02 The reframe, symptoms struck in place ──
+   The Index Spine (col 3|4 gutter) drops out of the hero into this section's
+   joint. Head follows the founder DNA inside B's grammar: red-square caps label
+   in the spine column, 88px statement + muted light sentence, 48×2 red rule.
+   The real layers step down by 24px per row — "one layer down", the mark's
+   step read as typography.                                                   */
+.km-reframe-B { --pad: 128px; padding: var(--pad) 0 128px; overflow: hidden; }
+
+/* the Index Spine. It enters from the hero's bottom edge (a) and continues below
+   this section's joint (b) — the hand-off is the spine itself. */
+.km-reframe-B__spine {
+  position: absolute; width: 1px; background: var(--line); transform-origin: 50% 0;
+  left: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));
+}
+.km-reframe-B__spine--a { top: 0; height: var(--pad); }
+.km-reframe-B__spine--b { top: var(--pad); bottom: 0; }
+
+.km-reframe-B__in {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* opening rule: spine → right margin, square at the joint */
+.km-reframe-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-reframe-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-reframe-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+
+/* spine column: index + the red-square caps label, nothing else */
+.km-reframe-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-reframe-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-reframe-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-reframe-B__sq { width: 8px; height: 8px; flex: none; background: var(--accent); }
+
+/* statement: a sentence + a muted sentence (the light accent, picked out by colour) */
+.km-reframe-B__h {
+  grid-column: 4 / 13; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-reframe-B__s1, .km-reframe-B__s2, .km-reframe-B__ln { display: block; white-space: nowrap; }
+.km-reframe-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-reframe-B__redrule {
+  grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px;
+  background: var(--accent); transform-origin: 0 50%;
+}
+
+.km-reframe-B__body { grid-column: 4 / 9; grid-row: 4; margin-top: 32px; font-size: 18px; line-height: 30px; color: var(--fg-2); max-width: 62ch; }
+
+.km-reframe-B__note {
+  grid-column: 10 / 13; grid-row: 4; margin-top: 38px; padding-top: 16px; border-top: 1px solid var(--line);
+  font-size: 17px; line-height: 26px;
+}
+.km-reframe-B__note span { display: block; }
+.km-reframe-B__note span:first-child { color: var(--fg); }
+.km-reframe-B__note span:last-child { color: var(--fg-3); }
+
+/* ── the ledger: what the market sees → the structural truth ── */
+.km-reframe-B__ledger {
+  grid-column: 4 / 13; grid-row: 5; margin-top: 96px; position: relative;
+  display: grid; grid-template-columns: subgrid;
+}
+.km-reframe-B__div { /* the col 8|9 divider the arrow joint sits on */
+  position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); transform-origin: 50% 0;
+  left: calc(5 * var(--col) + 4.5 * var(--gutter));
+}
+.km-reframe-B__head { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; padding: 0 0 18px; position: relative; }
+.km-reframe-B__hk {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.km-reframe-B__hk--a { grid-column: 2 / 6; }
+.km-reframe-B__hk--b { grid-column: 6 / 9; }
+/* the arrow joint: a hairline leader from the first head that lands on the divider */
+.km-reframe-B__hk--a { display: flex; align-items: center; gap: 16px; }
+.km-reframe-B__lead { position: relative; flex: 1; height: 1px; margin-right: calc(var(--gutter) / -2); background: var(--line-2); transform-origin: 0 50%; }
+.km-reframe-B__lead svg { position: absolute; right: 0; top: -5px; display: block; overflow: visible; }
+.km-reframe-B__lead path { fill: none; stroke: var(--fg); stroke-width: 1; }
+
+.km-reframe-B__rows { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; }
+.km-reframe-B__row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; isolation: isolate; }
+.km-reframe-B__row::before, .km-reframe-B__rows::after { /* hairlines, from the spine */
+  content: ""; position: absolute; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.km-reframe-B__row::before { top: 0; }
+.km-reframe-B__rows { position: relative; }
+.km-reframe-B__rows::after { bottom: 0; }
+.km-reframe-B__row::after { /* hover fill */
+  content: ""; position: absolute; z-index: -1; top: 1px; bottom: 0; left: calc(var(--gutter) / -2); right: 0;
+  background: var(--panel); opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.km-reframe-B__row:hover::after { opacity: 1; }
+
+.km-reframe-B__btn {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline;
+  padding: 28px 0; text-align: left; transition: padding-bottom 360ms var(--ease-inout);
+}
+.km-reframe-B__row.is-open .km-reframe-B__btn { padding-bottom: 12px; }
+.km-reframe-B__idx { grid-column: 1; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); color: var(--fg-3); }
+.km-reframe-B__sym, .km-reframe-B__truth {
+  font-family: var(--f-body); font-stretch: 100%; font-weight: var(--ui-weight); font-size: 24px; line-height: 1.25; letter-spacing: -0.01em;
+}
+.km-reframe-B__sym { grid-column: 2 / 6; color: var(--fg-3); }
+.km-reframe-B__strike { position: relative; display: inline-block; white-space: nowrap; }
+.km-reframe-B__strike::after {
+  content: ""; position: absolute; left: -2px; right: -2px; top: 54%; height: 1px; background: var(--fg-3); transform-origin: 0 50%;
+}
+/* the real layer steps down one 24px notch per row */
+.km-reframe-B__row { --step: calc(var(--i) * 24px); }
+.km-reframe-B__truth { grid-column: 6 / 9; padding-left: var(--step); color: var(--fg); transition: transform 300ms var(--ease-out); }
+.km-reframe-B__truth { position: relative; }
+.km-reframe-B__tt { display: inline-block; white-space: nowrap; }
+/* a hairline right angle (the mark's corner) hangs each deeper layer from the one above */
+.km-reframe-B__row + .km-reframe-B__row .km-reframe-B__truth::before {
+  content: ""; position: absolute; left: calc(var(--step) - 17px); top: -2px; width: 9px; height: 17px;
+  border-left: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);
+}
+.km-reframe-B__row:hover .km-reframe-B__truth { transform: translateX(8px); }
+.km-reframe-B__tog { grid-column: 9; justify-self: end; align-self: center; position: relative; width: 20px; height: 20px; }
+.km-reframe-B__tog::before, .km-reframe-B__tog::after {
+  content: ""; position: absolute; left: 0; top: 9.5px; width: 20px; height: 1px; background: var(--fg);
+}
+.km-reframe-B__tog::after { transform: rotate(90deg); transition: transform 360ms var(--ease-inout); }
+.km-reframe-B__row.is-open .km-reframe-B__tog::after { transform: rotate(0deg); }
+
+.km-reframe-B__desc {
+  grid-column: 6 / 9; padding-left: var(--step); display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 360ms var(--ease-inout), opacity 360ms var(--ease-inout);
+}
+.km-reframe-B__desc > div { overflow: hidden; }
+.km-reframe-B__desc p { padding-bottom: 30px; font-size: 17px; line-height: 26px; color: var(--fg-2); }
+.km-reframe-B__row.is-open .km-reframe-B__desc { grid-template-rows: 1fr; opacity: 1; }
+
+/* the quiet door: tracked caps, underlined, → */
+.km-reframe-B__link {
+  grid-column: 4 / 9; grid-row: 6; justify-self: start; margin-top: 44px; position: relative;
+  display: inline-flex; align-items: center; gap: 12px; padding-bottom: 8px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg); white-space: nowrap;
+  border-bottom: 1px solid var(--line-2);
+}
+.km-reframe-B__arr { width: 13px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; transition: transform 300ms var(--ease-out); }
+.km-reframe-B__link:hover .km-reframe-B__arr { transform: translateX(3px); }
+.km-reframe-B__link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out);
+}
+.km-reframe-B__link:hover::after { transform: scaleX(1); }
+
+.km-reframe-B.is-cold *, .km-reframe-B.is-cold *::before, .km-reframe-B.is-cold *::after { transition: none !important; }
+
+/* ── entrance (only under html.is-play): drop → joint → rule → statement → ledger, then each symptom is struck ── */
+.is-play .km-reframe-B__spine--a { animation: km-reframe-B-drop 360ms var(--ease-out) both; }
+.is-play .km-reframe-B__joint { animation: km-reframe-B-fade 200ms var(--ease-out) 300ms both; }
+.is-play .km-reframe-B__rule { animation: km-reframe-B-draw 900ms var(--ease-out) 340ms both; }
+.is-play .km-reframe-B__spine--b { animation: km-reframe-B-drop 1600ms var(--ease-out) 340ms both; }
+.is-play .km-reframe-B__index { animation: km-reframe-B-fade 400ms var(--ease-out) 380ms both; }
+.is-play .km-reframe-B__s1 { animation: km-reframe-B-up 700ms var(--ease-out) 360ms both; }
+.is-play .km-reframe-B__s2 { animation: km-reframe-B-up 700ms var(--ease-out) 520ms both; }
+.is-play .km-reframe-B__redrule { animation: km-reframe-B-draw 600ms var(--ease-out) 760ms both; }
+.is-play .km-reframe-B__body, .is-play .km-reframe-B__note { animation: km-reframe-B-up 700ms var(--ease-out) 800ms both; }
+.is-play .km-reframe-B__head { animation: km-reframe-B-fade 500ms var(--ease-out) 960ms both; }
+.is-play .km-reframe-B__lead { animation: km-reframe-B-draw 700ms var(--ease-out) 1060ms both; }
+.is-play .km-reframe-B__div { animation: km-reframe-B-drop 900ms var(--ease-out) 960ms both; }
+.is-play .km-reframe-B__row::before { animation: km-reframe-B-draw 600ms var(--ease-out) both; animation-delay: calc(1000ms + var(--i) * 60ms); }
+.is-play .km-reframe-B__rows::after { animation: km-reframe-B-draw 600ms var(--ease-out) 1180ms both; }
+.is-play .km-reframe-B__idx, .is-play .km-reframe-B__sym, .is-play .km-reframe-B__tog { animation: km-reframe-B-fade 500ms var(--ease-out) both; animation-delay: calc(1060ms + var(--i) * 60ms); }
+/* signature beat: the line-through draws left → right as the real layer arrives, one notch lower each row */
+.is-play .km-reframe-B__strike::after { animation: km-reframe-B-draw 600ms var(--ease-out) both; animation-delay: calc(1400ms + var(--i) * 200ms); }
+.is-play .km-reframe-B__tt, .is-play .km-reframe-B__row + .km-reframe-B__row .km-reframe-B__truth::before { animation: km-reframe-B-in 600ms var(--ease-out) both; animation-delay: calc(1520ms + var(--i) * 200ms); }
+.is-play .km-reframe-B__row:first-child .km-reframe-B__desc > div { animation: km-reframe-B-fade 500ms var(--ease-out) 1700ms both; }
+.is-play .km-reframe-B__link { animation: km-reframe-B-fade 500ms var(--ease-out) 1900ms both; }
+
+@keyframes km-reframe-B-drop { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-reframe-B-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-reframe-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-reframe-B-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes km-reframe-B-in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }

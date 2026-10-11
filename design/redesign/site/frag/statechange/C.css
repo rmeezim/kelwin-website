@@ -1,0 +1,215 @@
+/* ── statechange · C · Systems Drawing Set ───────────────────────────
+   SHEET 06/14, a graphite night plate. Wild's scatter→order field becomes
+   a quarter-axis drawing: entropy scatter left of the datum; right of it,
+   a section cut of strata — each quarter's layer carried right to Q8 —
+   stepping like the mark's right angles. The one red plane is the
+   installed base under every later quarter; Δ is a dimension callout.
+   Absolute sheet coordinates (1440 × 912) on the 12-col frame.        */
+
+.km-statechange-C {
+  --x8: calc(var(--margin) + 8 * var(--col) + 7.5 * var(--gutter));   /* 942.67 field | spec */
+  height: 1128px; overflow: hidden;
+  font-family: var(--f-body);
+}
+.km-statechange-C p { margin: 0; }
+
+/* ── frame, crosshairs, cell borders ── */
+.km-statechange-C__frame, .km-statechange-C__cells { position: absolute; inset: 0; pointer-events: none; }
+.km-statechange-C__fv { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.km-statechange-C__x { position: absolute; width: 9px; height: 9px; z-index: 2; }
+.km-statechange-C__x::before, .km-statechange-C__x::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-statechange-C__x::before { left: 0; right: 0; top: 4px; height: 1px; }
+.km-statechange-C__x::after { top: 0; bottom: 0; left: 4px; width: 1px; }
+.km-statechange-C__ln { position: absolute; background: var(--line); }
+.km-statechange-C__ln--h { height: 1px; transform-origin: 0 50%; }
+.km-statechange-C__ln--h.is-strong { background: var(--line-2); }
+.km-statechange-C__ln--v { width: 1px; transform-origin: 50% 0; }
+
+/* shared mono voice */
+.km-statechange-C__notelabel, .km-statechange-C__fig, .km-statechange-C__scale,
+.km-statechange-C__lbl, .km-statechange-C__dimlbl, .km-statechange-C__tag, .km-statechange-C__call,
+.km-statechange-C__q, .km-statechange-C__spechead, .km-statechange-C__key, .km-statechange-C__deflbl,
+.km-statechange-C__legend, .km-statechange-C__tab, .km-statechange-C__ticker, .km-statechange-C__block {
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: var(--body-weight);
+}
+.km-statechange-C__notelabel, .km-statechange-C__fig, .km-statechange-C__ticker, .km-statechange-C__block { letter-spacing: var(--label-tracking); }
+
+/* ── title row ── */
+/* the C sheet head (same metric on every sheet): opening rule y 96 · label y 120 · title bottom y 422 ·
+   48×2 red rule y 450 · row bottom y 480 · note cell (cols 9–12) with its mono cell ID and a 20px lede */
+.km-statechange-C__sheet {
+  position: absolute; left: 88px; top: 120px; display: flex; align-items: center; gap: 12px; white-space: nowrap;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-statechange-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-statechange-C__title {
+  position: absolute; left: 88px; bottom: calc(1128px - 422px);
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 0.94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-statechange-C__title > span { display: block; }
+.km-statechange-C__turn { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-statechange-C__rule { position: absolute; left: 88px; top: 450px; width: 48px; height: 2px; background: var(--signal); transform-origin: 0 50%; }
+.km-statechange-C__notelabel { position: absolute; left: calc(var(--x8) + 24px); top: 121px; color: var(--fg-3); }
+.km-statechange-C__note {
+  position: absolute; left: calc(var(--x8) + 24px); right: 88px; bottom: calc(1128px - 422px);
+  font-family: var(--f-body); font-weight: var(--body-weight); font-size: 20px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty;
+}
+
+/* ── drawing field ── */
+.km-statechange-C__field { position: absolute; left: 0; top: 216px; width: 1440px; height: 912px; margin: 0; pointer-events: none; }
+.km-statechange-C__draw { position: absolute; left: 0; top: 0; overflow: visible; }
+.km-statechange-C__cg { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 6; }
+.km-statechange-C__floor { stroke: var(--line-2); stroke-width: 1; }
+.km-statechange-C__ticks line { stroke: var(--line-2); stroke-width: 1; }
+.km-statechange-C__scatter rect,
+.km-statechange-C__slab rect { fill: none; stroke: var(--cool); stroke-width: 1; }
+.km-statechange-C__slab line { stroke: var(--cool); stroke-width: 1; opacity: 0.55; }
+.km-statechange-C__scatter rect { opacity: 0.85; }
+.km-statechange-C__ext { stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 4 4; }
+.km-statechange-C__datum { stroke: var(--fg); stroke-width: 1; }
+.km-statechange-C__drops line { stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-statechange-C__drops path { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-statechange-C__stair { fill: none; stroke: var(--fg); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; shape-rendering: crispEdges; }
+.km-statechange-C__plane { fill: var(--accent); }
+.km-statechange-C__dim line { stroke: var(--fg); stroke-width: 1; }
+.km-statechange-C__leaders line { stroke: var(--fg-3); stroke-width: 1; transition: stroke 200ms var(--ease-inout); }
+.km-statechange-C__tagleader { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+
+.km-statechange-C__fig { position: absolute; left: 88px; top: 288px; color: var(--fg-2); }
+.km-statechange-C__scale { position: absolute; right: calc(1440px - var(--x8) + 24px); top: 288px; color: var(--fg-3); }
+.km-statechange-C__lbl { position: absolute; color: var(--fg-3); }
+.km-statechange-C__lbl--mean { left: 88px; }
+.km-statechange-C__lbl--datum { color: var(--fg-2); }
+.km-statechange-C__dimlbl { position: absolute; display: flex; align-items: center; gap: 8px; color: var(--fg); white-space: nowrap; }
+.km-statechange-C__chip {
+  display: inline-flex; align-items: center; justify-content: center; height: 18px; padding: 0 6px;
+  border: 1px solid var(--line-2); color: var(--fg);
+}
+.km-statechange-C__tri { width: 9px; height: 8.2px; overflow: visible; display: block; }
+.km-statechange-C__tri path { fill: none; stroke: currentColor; stroke-width: 120; stroke-linejoin: miter; }
+.km-statechange-C__tag {
+  position: absolute; height: 22px; padding: 0 8px; display: flex; align-items: center; white-space: nowrap;
+  border: 1px solid var(--line-2); background: var(--bg); color: var(--fg);
+}
+.km-statechange-C__call {
+  position: absolute; width: 18px; height: 18px; display: grid; place-items: center;
+  border: 1px solid var(--line-2); background: var(--bg); color: var(--fg); line-height: 1;
+  transition: border-color 200ms var(--ease-inout), color 200ms var(--ease-inout);
+}
+.km-statechange-C__q { position: absolute; left: 0; top: 700px; width: 100%; color: var(--fg-3); }
+.km-statechange-C__q span { position: absolute; transform: translateX(-50%); }
+
+/* ── spec column ── */
+.km-statechange-C__spec { position: absolute; left: var(--x8); top: 480px; width: calc(1376px - var(--x8)); height: 600px; }
+.km-statechange-C__spechead { position: absolute; left: 24px; right: 24px; top: 0; height: 48px; display: flex; align-items: center; justify-content: space-between; color: var(--fg-3); }
+.km-statechange-C__rows { position: absolute; inset: 0; }
+.km-statechange-C__row {
+  position: absolute; left: 0; right: 0; height: 72px; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background-color 200ms var(--ease-inout);
+}
+.km-statechange-C__row:hover { background: var(--panel); }
+.km-statechange-C__key { display: flex; align-items: center; gap: 14px; color: var(--fg-3); font-size: 12px; }
+.km-statechange-C__letter {
+  width: 18px; height: 18px; display: grid; place-items: center; border: 1px solid var(--line-2);
+  font-weight: 400; font-size: 11px; color: var(--fg); line-height: 1;
+}
+.km-statechange-C__val { display: flex; align-items: center; gap: 10px; font-size: 15px; line-height: 1.3; }
+.km-statechange-C__from { color: var(--fg-3); }
+.km-statechange-C__to { color: var(--fg); }
+.km-statechange-C__arr { width: 16px; height: 10px; fill: none; stroke: var(--fg-3); stroke-width: 1.2; flex: none; }
+.km-statechange-C__def { position: absolute; left: 24px; right: 24px; top: 360px; }
+.km-statechange-C__deflbl { display: flex; align-items: center; gap: 10px; color: var(--fg-2); }
+.km-statechange-C__defbody { margin-top: 14px; font-size: 15px; line-height: 1.55; color: var(--fg-2); max-width: 38ch; text-wrap: pretty; }
+.km-statechange-C__legend { position: absolute; left: 24px; right: 24px; top: 504px; display: grid; row-gap: 10px; color: var(--fg-3); }
+.km-statechange-C__legend li { display: flex; align-items: center; gap: 12px; }
+.km-statechange-C__g { width: 24px; height: 10px; flex: none; overflow: visible; }
+.km-statechange-C__g rect { fill: none; stroke: var(--cool); stroke-width: 1; }
+.km-statechange-C__g--dash line { stroke: var(--fg-3); stroke-dasharray: 4 4; }
+.km-statechange-C__legend li:nth-child(2) .km-statechange-C__g rect { stroke: var(--cool); }
+
+/* hover a spec row → its lettered callout + leader turn accent */
+.km-statechange-C[data-hl="A"] .km-statechange-C__call[data-k="A"],
+.km-statechange-C[data-hl="B"] .km-statechange-C__call[data-k="B"],
+.km-statechange-C[data-hl="C"] .km-statechange-C__call[data-k="C"],
+.km-statechange-C[data-hl="D"] .km-statechange-C__call[data-k="D"] { border-color: var(--accent); color: var(--fg); }
+.km-statechange-C[data-hl="A"] .km-statechange-C__leaders [data-k="A"],
+.km-statechange-C[data-hl="B"] .km-statechange-C__leaders [data-k="B"],
+.km-statechange-C[data-hl="C"] .km-statechange-C__leaders [data-k="C"],
+.km-statechange-C[data-hl="D"] .km-statechange-C__leaders [data-k="D"] { stroke: var(--accent); }
+
+/* ── caption cells under the x-axis ── */
+.km-statechange-C__caps { position: absolute; left: 0; top: 960px; width: 100%; height: 120px; }
+.km-statechange-C__capcell { position: absolute; top: 0; height: 120px; padding: 24px; }
+.km-statechange-C__tab { color: var(--fg); }
+.km-statechange-C__tab span { color: var(--fg-3); }
+.km-statechange-C__capbody { margin-top: 12px; font-size: 15px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+
+/* ── bottom band ── */
+/* the C band (same on every sheet): 48px, legend on cols 1–8, segmented title block on cols 9–12 */
+.km-statechange-C__ticker, .km-statechange-C__block { position: absolute; top: 1080px; height: 48px; display: flex; align-items: center; }
+.km-statechange-C__ticker { left: 88px; gap: 10px; color: var(--fg-2); }
+.km-statechange-C__ticker .km-statechange-C__arr { stroke: var(--fg-2); }
+.km-statechange-C__block { left: var(--x8); right: 64px; color: var(--fg-2); align-items: stretch; }
+.km-statechange-C__block > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; white-space: nowrap; }
+.km-statechange-C__block > span:first-child { justify-content: flex-start; padding-left: 24px; }
+.km-statechange-C__block > span:last-child { color: var(--fg); }
+.km-statechange-C__block > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-statechange-C__block .km-logo-mark { --logo-h: 11px; color: var(--fg); }
+
+/* ── entrance, in drafting order (html.is-play) ── */
+.is-play .km-statechange-C__fv { animation: km-statechange-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-statechange-C__x { animation: km-statechange-C-fade 300ms var(--ease-inout) 100ms both; }
+.is-play .km-statechange-C__ln--h { animation: km-statechange-C-dx 360ms var(--ease-inout) calc(var(--o) * 30ms) both; }
+.is-play .km-statechange-C__ln--v { animation: km-statechange-C-dy 360ms var(--ease-inout) calc(var(--o) * 30ms) both; }
+.is-play .km-statechange-C__sheet,
+.is-play .km-statechange-C__notelabel { animation: km-statechange-C-fade 300ms var(--ease-inout) 100ms both; }
+.is-play .km-statechange-C__title > span { animation: km-statechange-C-wipe 600ms var(--ease-inout) 0ms both; }
+.is-play .km-statechange-C__title > span + span { animation-delay: 110ms; }
+.is-play .km-statechange-C__note { animation: km-statechange-C-fade 600ms var(--ease-inout) 150ms both; }
+.is-play .km-statechange-C__rule { animation: km-statechange-C-dx 500ms var(--ease-out) 350ms both; }
+.is-play .km-statechange-C__ticker,
+.is-play .km-statechange-C__block > span,
+.is-play .km-statechange-C__spechead { animation: km-statechange-C-fade 400ms var(--ease-inout) 400ms both; }
+.is-play .km-statechange-C__fig,
+.is-play .km-statechange-C__scale { animation: km-statechange-C-fade 400ms var(--ease-inout) 420ms both; }
+.is-play .km-statechange-C__cg { animation: km-statechange-C-fade 300ms var(--ease-inout) calc(450ms + var(--o) * 40ms) both; }
+.is-play .km-statechange-C__floor,
+.is-play .km-statechange-C__ext--mean { transform-box: fill-box; transform-origin: 0 50%; }
+.is-play .km-statechange-C__floor { animation: km-statechange-C-dx 600ms var(--ease-inout) 500ms both; }
+.is-play .km-statechange-C__ticks,
+.is-play .km-statechange-C__q { animation: km-statechange-C-fade 300ms var(--ease-inout) 700ms both; }
+.is-play .km-statechange-C__capcell { animation: km-statechange-C-fade 400ms var(--ease-inout) calc(600ms + var(--o) * 80ms) both; }
+.is-play .km-statechange-C__row { animation: km-statechange-C-fade 300ms var(--ease-inout) calc(650ms + var(--o) * 120ms) both; }
+.is-play .km-statechange-C__def { animation: km-statechange-C-fade 400ms var(--ease-inout) 1100ms both; }
+.is-play .km-statechange-C__legend { animation: km-statechange-C-fade 400ms var(--ease-inout) 1200ms both; }
+.is-play .km-statechange-C__scatter rect { animation: km-statechange-C-plot 160ms var(--ease-inout) var(--d) both; }
+.is-play .km-statechange-C__datum { transform-box: fill-box; transform-origin: 50% 100%; animation: km-statechange-C-dy 600ms var(--ease-inout) 1500ms both; }
+.is-play .km-statechange-C__drops { animation: km-statechange-C-fade 400ms var(--ease-inout) 1700ms both; }
+.is-play .km-statechange-C__lbl--datum { animation: km-statechange-C-fade 300ms var(--ease-inout) 1900ms both; }
+.is-play .km-statechange-C__ext--mean { animation: km-statechange-C-dx 500ms var(--ease-inout) 1850ms both; }
+.is-play .km-statechange-C__lbl--mean { animation: km-statechange-C-fade 300ms var(--ease-inout) 2100ms both; }
+.is-play .km-statechange-C__plane { animation: km-statechange-C-drop 400ms var(--ease-inout) 2150ms both; }
+.is-play .km-statechange-C__tagleader { animation: km-statechange-C-fade 300ms var(--ease-inout) 2400ms both; }
+.is-play .km-statechange-C__tag { animation: km-statechange-C-fade 300ms var(--ease-inout) 2450ms both; }
+.is-play .km-statechange-C__slab { transform-box: fill-box; transform-origin: 0 50%; animation: km-statechange-C-carry 700ms var(--ease-inout) calc(2700ms + var(--o) * 320ms) both; }
+.is-play .km-statechange-C__stair { animation: km-statechange-C-plotline 900ms var(--ease-inout) 4000ms both; }
+.is-play .km-statechange-C__leaders line { animation: km-statechange-C-fade 300ms var(--ease-inout) calc(4300ms + var(--o) * 90ms) both; }
+.is-play .km-statechange-C__call { animation: km-statechange-C-fade 300ms var(--ease-inout) calc(4350ms + var(--o) * 90ms) both; }
+.is-play .km-statechange-C__ext--top { transform-box: fill-box; transform-origin: 100% 50%; animation: km-statechange-C-dx 600ms var(--ease-inout) 4450ms both; }
+.is-play .km-statechange-C__dim { transform-box: fill-box; transform-origin: 50% 100%; animation: km-statechange-C-dy 400ms var(--ease-inout) 4700ms both; }
+.is-play .km-statechange-C__dimlbl .km-statechange-C__chip { animation: km-statechange-C-fade 300ms var(--ease-inout) 4750ms both; }
+
+@keyframes km-statechange-C-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-statechange-C-dx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-statechange-C-dy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-statechange-C-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-statechange-C-plot { from { opacity: 0; } to { opacity: 0.85; } }
+@keyframes km-statechange-C-carry { from { opacity: 0; transform: scaleX(0); } 20% { opacity: 1; } to { opacity: 1; transform: scaleX(1); } }
+@keyframes km-statechange-C-plotline { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-statechange-C-drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+/* coherence: header & key tier (spec head, spec keys, legend, tabs) take the caption tracking of every C sheet */
+.km-statechange-C__spechead, .km-statechange-C__key, .km-statechange-C__legend, .km-statechange-C__legend *, .km-statechange-C__tab, .km-statechange-C__tab * { letter-spacing: var(--label-tracking); }
+.km-statechange-C__key { font-size: 11px; }

@@ -1,0 +1,223 @@
+/* ── nav · A · Cinematic Figures ──────────────────────────────────────
+   Hero A's bar, metric for metric (96px, lockup, tracked caps, outlined
+   AUDIT REQUEST ↗, hairline). Capabilities drops a flat --panel FIG. plate
+   from the hairline: three strips on cols 1–4 / 5–8 / 9–12, and across
+   them the Kelwin mark assembles one solid piece per capability (K1 outer
+   corner → K2 middle L → K3 core square) — an unnumbered INDEX plate (the nav is global, so it never takes a FIG. number). The selected piece is
+   the plate's one red element. Pinterest's info band becomes the caption
+   band: the caption narrates the selection, the note explains the audit,
+   and the red door sits flush in the plate's corner cell.                 */
+
+.km-nav-A {
+  height: 800px; overflow: hidden; isolation: isolate;
+  --nav-h: 96px;
+  --band-h: 64px;
+  --inset: 32px;
+  --strip-1: calc(4 * var(--col) + 3.5 * var(--gutter));   /* cols 1–4 → gutter centre */
+  --strip-2: calc(4 * var(--col) + 4 * var(--gutter));     /* cols 5–8, both half-gutters */
+}
+
+/* ── the film: hero A's calibration; the plate is lifted so the room's
+   people sit in the strip of film left open under the plate ── */
+.km-nav-A .km-film { --film-blur: 8px; --film-frost: .2; --film-bright: 1.2; --film-sat: .95; }   /* = hero A calibration */
+.km-nav-A .km-film__plate {
+  inset: auto; left: -58px; top: var(--plate-y, 110px); width: 1556px; height: 1041px;
+  background-size: auto 100%; background-position: -334px 50%;
+}
+.km-nav-A__scrim {                       /* inside .km-film only: a quiet floor under the bar */
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 62%, transparent) 0, color-mix(in srgb, var(--bg) 20%, transparent) 96px, transparent 160px);
+}
+
+/* ── shared caps voice (hero A) ── */
+.km-nav-A__item,
+.km-nav-A__navcta,
+.km-nav-A__cta {
+  font-family: var(--f-body); font-weight: var(--ui-weight);
+  text-transform: uppercase; letter-spacing: var(--label-tracking); line-height: 1;
+}
+
+/* ── the bar (96px) ── */
+.km-nav-A__bar {
+  position: relative; z-index: 2;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-nav-A__bar::after {                                   /* the hairline the plate hangs from */
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-nav-A__brand { display: inline-flex; color: var(--fg); }
+.km-nav-A__brand .km-logo { --logo-h: 24px; }
+.km-nav-A__menu {
+  position: absolute; left: 50%; top: 0; bottom: 0; transform: translateX(-50%);
+  display: flex; align-items: stretch; gap: 40px; white-space: nowrap;
+}
+.km-nav-A__item {
+  position: relative; display: inline-flex; align-items: center;
+  font-size: 12px; color: var(--fg-2); transition: color .2s var(--ease-out);
+}
+.km-nav-A__item:hover, .km-nav-A__item.is-open { color: var(--fg); }
+.km-nav-A__item.is-open::after {                           /* the open item marks the hairline */
+  content: ""; position: absolute; left: 0; right: -.18em; bottom: 0; height: 1px; background: var(--fg); transform-origin: left center;
+}
+.km-nav-A__navcta {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: 44px; padding: 0 18px 0 20px;
+  border: 1px solid var(--line-2); color: var(--fg); font-size: 12px;
+  transition: border-color .2s var(--ease-out);
+}
+.km-nav-A__navcta:hover { border-color: var(--fg); }
+/* drawn arrows (the brand fonts carry no arrow glyphs) */
+.km-nav-A__ico { display: inline-block; width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; }
+.km-nav-A__ico--r { width: 13px; height: 11px; }
+.km-nav-A__arr { transition: transform .25s var(--ease-out); }
+.km-nav-A__navcta:hover .km-nav-A__arr,
+.km-nav-A__cta:hover .km-nav-A__arr { transform: translate(2px, -2px); }
+
+/* ── the plate ── */
+.km-nav-A__sheet {
+  position: absolute; z-index: 1; top: var(--nav-h); left: var(--margin); right: var(--margin);
+  display: flex; flex-direction: column;
+  background: var(--panel);
+}
+.km-nav-A__strips,
+.km-nav-A__band { display: grid; grid-template-columns: var(--strip-1) var(--strip-2) 1fr; }
+.km-nav-A__strip {
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: 24px var(--inset) 24px;
+}
+.km-nav-A__strip + .km-nav-A__strip::before,               /* full-height verticals, through the band */
+.km-nav-A__band > *:nth-child(2)::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+  background: var(--line); transform-origin: top center;
+}
+
+.km-nav-A__head {                                   /* the figure row: one hairline runs under all three pieces */
+  position: relative; display: flex; align-items: flex-end;
+  margin: 0 calc(-1 * var(--inset)); padding: 0 var(--inset) 24px;
+  border-bottom: 1px solid var(--line);
+}
+.km-nav-A__mark { display: block; width: 88px; height: 88px; overflow: visible; }
+.km-nav-A__mark .ghost { fill: var(--panel-2); }
+.km-nav-A__mark .own { fill: var(--line-2); transition: fill .2s var(--ease-inout); }
+.km-nav-A[data-sel="1"] [data-cap="1"] .own,
+.km-nav-A[data-sel="2"] [data-cap="2"] .own,
+.km-nav-A[data-sel="3"] [data-cap="3"] .own { fill: var(--accent); }
+
+.km-nav-A__cap,
+.km-nav-A__fig {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-3);
+}
+.km-nav-A__cap { margin-top: 20px; transition: color .2s var(--ease-inout); }
+
+.km-nav-A__title {
+  margin-top: 10px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 28px; line-height: 1.1; letter-spacing: var(--display-tracking);
+}
+.km-nav-A__title a {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  color: var(--fg-2); transition: color .2s var(--ease-inout);
+}
+.km-nav-A__mask { display: block; overflow: hidden; padding-bottom: .08em; margin-bottom: -.08em; }
+.km-nav-A__mask > span { display: block; }
+.km-nav-A__go {
+  display: inline-flex; align-self: center; color: var(--fg-3);
+  transition: color .2s var(--ease-inout), transform .3s var(--ease-out);
+}
+.km-nav-A__go .km-nav-A__ico--r { width: 17px; height: 14px; }
+.km-nav-A__title a:hover .km-nav-A__go { transform: translateX(3px); }
+.km-nav-A__desc {
+  margin-top: 10px;
+  font-size: 15px; line-height: 22px; color: var(--fg-2);
+}
+
+/* the 4-line manifest, anchored to the strip bottom (Metalab rhythm) */
+.km-nav-A__list { margin: 20px -16px 0; border-bottom: 1px solid var(--line); }
+.km-nav-A__list li { border-top: 1px solid var(--line); }
+.km-nav-A__list a {
+  display: grid; grid-template-columns: 32px 1fr; align-items: baseline;
+  padding: 10px 16px; font-size: 15px; line-height: 20px; color: var(--fg-2);
+  transition: background-color .2s var(--ease-inout), color .2s var(--ease-inout);
+}
+.km-nav-A__n { font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--label-tracking); color: var(--fg-3); }
+.km-nav-A__list a:hover { background: var(--panel-2); color: var(--fg); transition-duration: .2s; }
+
+/* the selected strip: title lifts to --fg, its row 02 carries the hover bar */
+.km-nav-A[data-sel="1"] [data-cap="1"] .km-nav-A__title a,
+.km-nav-A[data-sel="2"] [data-cap="2"] .km-nav-A__title a,
+.km-nav-A[data-sel="3"] [data-cap="3"] .km-nav-A__title a,
+.km-nav-A[data-sel="1"] [data-cap="1"] .km-nav-A__cap,
+.km-nav-A[data-sel="2"] [data-cap="2"] .km-nav-A__cap,
+.km-nav-A[data-sel="3"] [data-cap="3"] .km-nav-A__cap,
+.km-nav-A[data-sel="1"] [data-cap="1"] .km-nav-A__go,
+.km-nav-A[data-sel="2"] [data-cap="2"] .km-nav-A__go,
+.km-nav-A[data-sel="3"] [data-cap="3"] .km-nav-A__go { color: var(--fg); }
+.km-nav-A[data-sel="1"] [data-cap="1"] [data-row="2"] a,
+.km-nav-A[data-sel="2"] [data-cap="2"] [data-row="2"] a,
+.km-nav-A[data-sel="3"] [data-cap="3"] [data-row="2"] a { background: var(--panel-2); color: var(--fg); }
+
+/* ── caption band (64px): one cell per strip ── */
+.km-nav-A__band { position: relative; height: var(--band-h); border-top: 1px solid var(--line); }
+.km-nav-A__band > * { position: relative; align-self: stretch; display: flex; align-items: center; padding-inline: var(--inset); }
+.km-nav-A__fig { display: grid; align-content: center; }
+.km-nav-A__fig > span { grid-area: 1 / 1; white-space: nowrap; opacity: 0; transition: opacity .2s var(--ease-inout); }
+.km-nav-A[data-sel="0"] .km-nav-A__fig [data-for="0"],
+.km-nav-A[data-sel="1"] .km-nav-A__fig [data-for="1"],
+.km-nav-A[data-sel="2"] .km-nav-A__fig [data-for="2"],
+.km-nav-A[data-sel="3"] .km-nav-A__fig [data-for="3"] { opacity: 1; }
+.km-nav-A__note { font-size: 15px; line-height: 20px; color: var(--fg-2); }
+.km-nav-A__cta {
+  justify-content: space-between; gap: 14px;
+  background: var(--accent); color: var(--accent-fg); font-size: 13px;
+  transition: background-color .2s var(--ease-out);
+}
+.km-nav-A__cta:hover { background: var(--accent-hover); }
+
+/* the selection change runs at A's 900ms state-change tempo only while JS
+   switches it (.is-switching), so skin swaps and hovers stay quick */
+.km-nav-A.is-switching * { transition-duration: .9s !important; }
+/* no transitions while JS sets the opening state */
+.km-nav-A.no-tr * { transition: none !important; }
+
+/* ── entrance (only under html.is-play) ───────────────────────────── */
+.is-play .km-nav-A__bar::after { animation: km-nav-A-drawx 900ms var(--ease-out) both; }
+.is-play .km-nav-A__brand,
+.is-play .km-nav-A__menu,
+.is-play .km-nav-A__navcta { animation: km-nav-A-fade 600ms var(--ease-out) 100ms both; }
+.is-play .km-nav-A__item.is-open::after { animation: km-nav-A-drawx 500ms var(--ease-out) 500ms both; }
+
+.is-play .km-nav-A__sheet { animation: km-nav-A-unroll 700ms var(--ease-out) 350ms both; }
+.is-play .km-nav-A__strip + .km-nav-A__strip::before,
+.is-play .km-nav-A__band > *:nth-child(2)::before { animation: km-nav-A-drawy 700ms var(--ease-out) 700ms both; }
+.is-play .km-nav-A__band > * { animation: km-nav-A-fade 500ms var(--ease-out) 1000ms both; }
+
+.is-play .km-nav-A__mask > span { animation: km-nav-A-rise 800ms var(--ease-out) both; }
+.is-play [data-cap="1"] .km-nav-A__mask > span { animation-delay: 800ms; }
+.is-play [data-cap="2"] .km-nav-A__mask > span { animation-delay: 920ms; }
+.is-play [data-cap="3"] .km-nav-A__mask > span { animation-delay: 1040ms; }
+.is-play .km-nav-A__go,
+.is-play .km-nav-A__cap,
+.is-play .km-nav-A__desc { animation: km-nav-A-fadeup 600ms var(--ease-out) 1100ms both; }
+.is-play .km-nav-A__list li { animation: km-nav-A-fadeup 600ms var(--ease-out) both; animation-delay: calc(1100ms + var(--i) * 70ms); }
+
+/* the index mark assembles left to right: each strip's ghosts are already in place,
+   then its own piece slides in from the top-right — K1, K2, K3 — and the
+   selected piece turns red last (the "installed" beat) */
+.is-play .km-nav-A__mark .ghost { animation: km-nav-A-fade 500ms var(--ease-out) 800ms both; }
+.is-play .km-nav-A__mark .own { animation: km-nav-A-piece 700ms var(--ease-out) both; }
+.is-play [data-cap="1"] .km-nav-A__mark .own { animation-delay: 1000ms; }
+.is-play [data-cap="2"] .km-nav-A__mark .own { animation-delay: 1240ms; }
+.is-play [data-cap="3"] .km-nav-A__mark .own { animation-delay: 1480ms; }
+
+@keyframes km-nav-A-drawx { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes km-nav-A-drawy { from { transform: scaleY(0); } to { transform: none; } }
+@keyframes km-nav-A-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-nav-A-fadeup { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-nav-A-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes km-nav-A-unroll { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-nav-A-piece { from { opacity: 0; transform: translate(24px, -24px); } to { opacity: 1; transform: none; } }

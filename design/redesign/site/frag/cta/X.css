@@ -1,0 +1,75 @@
+/* ── cta · X · Ten Days, Measured (round 2, A×C with B's calm) ─────────────
+   Round-1 A's full-red plane and flush-left two-voice statement, with the
+   founder's fix: the button and the "10 working days" are no longer one
+   object. They are two things with a clear order:
+   ① the DECISION (cols 1–6): the head grammar on red, its paper primary
+     and the contact door in the doors position, on their own;
+   ② the FACT (cols 9–12), one step quieter: FIG. 12, the MEASURE primitive
+     as a ten-tick paper ruler (one tick per working day), then three
+     static terms (B's calm: no accordion, so the close never reads as a
+     second FAQ and nothing competes with the button).
+   The logo-symbol "core" is gone. On the red plane the accents invert:
+   paper label squares, paper rule, paper button, paper drawing strokes.   */
+
+.km-cta-X { overflow: hidden; }
+
+/* head grid: 1 label · 2 statement · 3 rule · 4 lede · 5 doors · 6 the fact's run-out.
+   The fact spans rows 3–6; row 6 is flexible, so its height never pushes the doors
+   away from the lede. */
+.km-cta-X__head.ac-head { grid-template-rows: auto auto auto auto auto 1fr; }
+/* the two-line statement's box is fractional (226.2px in both skins); hold it on whole pixels so the
+   rule, the fact column's label square and every hairline below land crisp */
+.km-cta-X__head > .ac-statement { height: 227px; }
+
+/* ── ② the fact column ──
+   Its label square sits on the rule's centre line: both halves of the act start on
+   one horizontal (rule centre = row top + 36 + 1; label square centre = top + 8). */
+.km-cta-X__head > .km-cta-X__fact {
+  grid-column: 9 / span 4; grid-row: 3 / span 4; align-self: start;
+  margin-top: 29px; min-width: 0;
+}
+/* "10 working days": 14px under its label (the nav's CAP. → title gap); its baseline sits on the
+   lede's first baseline */
+.km-cta-X__days { margin-top: 14px; line-height: 36px; white-space: nowrap; }
+/* proportional figures on purpose: Mona's tabular zero is slashed. While the numeral counts, JS holds
+   its box at the final "10" width, end-aligned (a wider "08" overflows to the left, into the gutter),
+   so "working days" never moves. */
+.km-cta-X__n { display: inline-flex; justify-content: flex-end; }
+
+/* FIG. 12 · the ruler: baseline + ten day ticks; majors at 01 · 05 · 10 */
+.km-cta-X__ruler { margin-top: 24px; }
+.km-cta-X__svg line, .km-cta-X__svg path { shape-rendering: crispEdges; }
+.km-cta-X__tk line { transform-box: fill-box; transform-origin: 50% 0; }
+.km-cta-X__ends {
+  margin-top: 10px; display: flex; align-items: center; justify-content: space-between;
+}
+.km-cta-X__ends { position: relative; }
+.km-cta-X__end { display: inline-flex; align-items: center; gap: 10px; }
+/* the one mid-scale value, centred under the day-05 major (x = 4 × 420/9 + .5) */
+.km-cta-X__mid { position: absolute; left: 187px; top: 0; line-height: 16px; transform: translateX(-50%); }
+.km-cta-X__word { font-family: var(--f-body); font-size: var(--ac-anno); line-height: 16px; color: var(--fg-2); }
+
+/* the terms: three static rows (kit .ac-spec: mono key, Mona value). The key column is exactly one
+   grid column wide, so every value starts on col 10. The first hairline sits on the primary
+   button's bottom edge: the foot line of the decision. Same kit sheet as the interior header's facts. */
+.km-cta-X__terms {
+  grid-template-columns: calc((100% - 3 * var(--gutter)) / 4) minmax(0, 1fr);
+  margin-top: 52px;
+}
+
+/* ── entrance (only under html.is-play) ──
+   The kit runs the head: label → statement → rule → lede → doors (0–1.3s).
+   Then the one orchestrated moment travels the fact column top to bottom:
+   label · "10 working days" → the baseline draws → ten ticks draw at uneven
+   spacing (40ms stagger) → they SETTLE into an even calendar (1.2s) while the
+   numeral counts 00 → 10 → the three terms settle, row by row. Nothing opens,
+   nothing loops: the plane is at rest by ≈3.3s. */
+.is-play .km-cta-X__flabel { animation: ac-fade 300ms var(--ease-out) 820ms both; }
+.is-play .km-cta-X__days { animation: ac-up 600ms var(--ease-out) 900ms both; }
+.is-play .km-cta-X__tk line { animation: km-cta-X-tick 320ms var(--ease-out) both; animation-delay: calc(1100ms + var(--n) * 40ms); }
+.is-play .km-cta-X__tk { animation: km-cta-X-settle 1200ms var(--ease-inout) 1700ms both; }
+.is-play .km-cta-X__ends { animation: ac-fade 500ms var(--ease-out) 1300ms both; }
+.km-cta-X__terms.ac-cascade { --d: 2400ms; }
+
+@keyframes km-cta-X-tick { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: none; } }
+@keyframes km-cta-X-settle { from { transform: translateX(var(--dx, 0px)); } to { transform: none; } }

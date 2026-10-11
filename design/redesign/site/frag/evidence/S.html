@@ -1,0 +1,100 @@
+<section class="km km-evidence-S ac-sec" data-surface="light" aria-labelledby="km-evidence-S-h">
+
+  <!-- head grammar (standard .ac-head, one of the page's three): label → two-voice statement → rule → lede -->
+  <div class="ac-head ac-wrap">
+    <div class="ac-labelrow"><p class="ac-label">The structural read</p></div>
+    <h2 class="ac-statement" id="km-evidence-S-h">
+      <span class="ac-line"><span>Four numbers.</span></span>
+      <span class="ac-line ac-accent"><span>One diagnosis.</span></span>
+    </h2>
+    <span class="ac-rule" aria-hidden="true"></span>
+    <p class="ac-lede">Every one gets blamed on the pipeline. Not one of them moves with more activity.</p>
+  </div>
+
+  <div class="ac-wrap km-evidence-S__body">
+
+    <!-- THE WALL: the four numerals are the control. Real toggle buttons, one pressed at a time, in a
+         role=toolbar (the ARIA pattern for toggle buttons with roving focus, so screen readers switch to
+         focus mode and the arrow keys reach it). Selection follows focus. Live order, approved labels. -->
+    <div class="ac-grid km-evidence-S__wall" role="toolbar" aria-label="Four readings. Choose one to read it.">
+      <button type="button" class="km-evidence-S__cell" aria-pressed="true" aria-controls="km-evidence-S-ro" data-n="0" tabindex="0" style="--i:0">
+        <span class="km-evidence-S__top"><span class="km-evidence-S__led" aria-hidden="true"></span><span class="ac-idx km-evidence-S__idx">01 · Visibility</span></span>
+        <span class="km-evidence-S__mask"><span class="ac-num km-evidence-S__num">17<span class="ac-num__u">%</span></span></span>
+      </button>
+      <button type="button" class="km-evidence-S__cell" aria-pressed="false" aria-controls="km-evidence-S-ro" data-n="1" tabindex="-1" style="--i:1">
+        <span class="km-evidence-S__top"><span class="km-evidence-S__led" aria-hidden="true"></span><span class="ac-idx km-evidence-S__idx">02 · Timing</span></span>
+        <span class="km-evidence-S__mask"><span class="ac-num km-evidence-S__num">95<span class="ac-num__u">:5</span></span></span>
+      </button>
+      <button type="button" class="km-evidence-S__cell" aria-pressed="false" aria-controls="km-evidence-S-ro" data-n="2" tabindex="-1" style="--i:2">
+        <span class="km-evidence-S__top"><span class="km-evidence-S__led" aria-hidden="true"></span><span class="ac-idx km-evidence-S__idx">03 · Complexity</span></span>
+        <span class="km-evidence-S__mask"><span class="ac-num km-evidence-S__num">77<span class="ac-num__u">%</span></span></span>
+      </button>
+      <button type="button" class="km-evidence-S__cell" aria-pressed="false" aria-controls="km-evidence-S-ro" data-n="3" tabindex="-1" style="--i:3">
+        <span class="km-evidence-S__top"><span class="km-evidence-S__led" aria-hidden="true"></span><span class="ac-idx km-evidence-S__idx">04 · Experience</span></span>
+        <span class="km-evidence-S__mask"><span class="ac-num km-evidence-S__num">53<span class="ac-num__u">%</span></span></span>
+      </button>
+    </div>
+
+    <!-- THE READOUT: one fixed-height panel under the wall. The four readings are stacked in the same
+         grid cell, so the panel never changes height on a press. Text on cols 1–6 (under cells 01–02), MEASURE on cols 7–12 (under cells 03–04), so the readout locks to the wall's cell edges. -->
+    <div class="ac-grid km-evidence-S__ro" id="km-evidence-S-ro" aria-live="polite">
+
+      <div class="km-evidence-S__text">
+        <div class="km-evidence-S__panel is-on" data-n="0">
+          <p class="km-evidence-S__claim">Buyers spend just 17% of the journey with sales.</p>
+          <p class="km-evidence-S__so">The deal is decided by your narrative — not your reps.</p>
+          <p class="km-evidence-S__detail">Buyers spend only 17% of a purchase with sales — and less with any single vendor. The decision is mostly made before a rep is in the room, on what the market already believes about you. That’s narrative work, not more outreach.</p>
+        </div>
+        <div class="km-evidence-S__panel" data-n="1">
+          <p class="km-evidence-S__claim">95% of your market isn’t buying right now.</p>
+          <p class="km-evidence-S__so">You win by being remembered when they are — not by chasing harder.</p>
+          <p class="km-evidence-S__detail">At any given moment only about 5% of your market is actively buying. You can’t convert the 95% who aren’t ready — you can only be the name they recall when they are. That’s mental availability, not pipeline volume.</p>
+        </div>
+        <div class="km-evidence-S__panel" data-n="2">
+          <p class="km-evidence-S__claim">77% of buyers say the purchase was hard to make.</p>
+          <p class="km-evidence-S__so">The friction is your buying process — make deciding easier and you win.</p>
+          <p class="km-evidence-S__detail">More than three-quarters of buyers call their last purchase complex or difficult. That friction is the buying process — too many stakeholders, no clear path — not your reps underperforming. You win by making the decision easier to make.</p>
+        </div>
+        <div class="km-evidence-S__panel" data-n="3">
+          <p class="km-evidence-S__claim">53% of loyalty comes from the buying experience.</p>
+          <p class="km-evidence-S__so">How you sell outweighs brand, product, and price combined.</p>
+          <p class="km-evidence-S__detail">The biggest driver of B2B loyalty isn’t brand, product, or price — it’s the buying experience, at 53%. How you frame and guide the decision outweighs everything sitting in your pipeline. The way you sell is the product.</p>
+        </div>
+      </div>
+
+      <div class="km-evidence-S__measure">
+        <!-- MEASURE: a 1px track with end ticks at 0 and 100 only, one 10px bar, the value flagged at the
+             fill's end. Red only while 01 is active (the resting state); the other readings fill in ink. -->
+        <div class="km-evidence-S__gauge is-red" data-on="0" style="--v:.17" aria-hidden="true">
+          <span class="km-evidence-S__track"></span>
+          <span class="km-evidence-S__fill"></span>
+          <span class="ac-cap km-evidence-S__val" data-n="0" style="--at:.17">17 / 100</span>
+          <span class="ac-cap km-evidence-S__val" data-n="1" style="--at:.05">5 / 100</span>
+          <span class="ac-cap km-evidence-S__val" data-n="2" style="--at:.77">77 / 100</span>
+          <span class="ac-cap km-evidence-S__val" data-n="3" style="--at:.53">53 / 100</span>
+          <span class="ac-cap km-evidence-S__rest" data-n="1">95 not buying</span>
+        </div>
+        <div class="km-evidence-S__words">
+          <div class="km-evidence-S__panel is-on" data-n="0">
+            <p class="km-evidence-S__unit"><span class="ac-sr">17 of 100. </span>Share of the purchase spent with sales — every vendor combined.</p>
+            <p class="ac-cap km-evidence-S__src">Source · Gartner</p>
+          </div>
+          <div class="km-evidence-S__panel" data-n="1">
+            <p class="km-evidence-S__unit"><span class="ac-sr">5 of 100; 95 not buying. </span>Share of your market buying right now.</p>
+            <p class="ac-cap km-evidence-S__src">Source · Ehrenberg-Bass</p>
+          </div>
+          <div class="km-evidence-S__panel" data-n="2">
+            <p class="km-evidence-S__unit"><span class="ac-sr">77 of 100. </span>Share of buyers who found the purchase hard.</p>
+            <p class="ac-cap km-evidence-S__src">Source · Gartner</p>
+          </div>
+          <div class="km-evidence-S__panel" data-n="3">
+            <p class="km-evidence-S__unit"><span class="ac-sr">53 of 100. </span>Share of loyalty that comes from the buying experience.</p>
+            <p class="ac-cap km-evidence-S__src">Source · CEB · HBR</p>
+          </div>
+        </div>
+        <a class="ac-link km-evidence-S__door" href="/insights/the-17-percent-window">Field note · The 17% window · 5 min</a>
+      </div>
+
+    </div>
+  </div>
+</section>

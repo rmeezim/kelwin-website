@@ -1,0 +1,195 @@
+/* ── assets · B · Quiet Ledger — 10 What you own: the handover manifest ──────
+   The Index Spine (col 3|4 gutter) runs straight through. Head follows the
+   founder DNA inside B's grammar: red-square caps label in the spine column,
+   88px statement + muted light clause, 48×2 red rule. Below it, B's one inset
+   plate for this stretch of the page: the handover manifest itself, a paper
+   sheet hung from the spine (its left edge IS the spine, as in the nav's
+   sheet) and running out to the page edge. Inside, the page's own cols 4–12
+   carry a Waka Waka catalogue cadence (number · object · format · custody);
+   each custody box fills as the asset changes hands, one row is open onto
+   its contents, and the sheet closes on its terms and a sign-off.          */
+.km-assets-B { --spine-x: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter)); padding: 128px 0 128px; max-height: 1400px; overflow: hidden; }
+
+.km-assets-B__spine { position: absolute; top: 0; bottom: 0; left: var(--spine-x); width: 1px; background: var(--line); z-index: 2; }
+
+.km-assets-B__in {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* opening rule: spine → right margin, square at the joint */
+.km-assets-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-assets-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-assets-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); z-index: 3; }
+
+/* spine column: index + the red-square caps label */
+.km-assets-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-assets-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-assets-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-assets-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+
+/* statement: a clause + its muted light completion */
+.km-assets-B__h {
+  grid-column: 4 / 13; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-assets-B__s1, .km-assets-B__s2 { display: block; white-space: nowrap; }
+.km-assets-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-assets-B__redrule { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--signal); transform-origin: 0 50%; }
+
+.km-assets-B__body { grid-column: 4 / 10; grid-row: 4; margin-top: 32px; padding-right: 24px; font-size: 18px; line-height: 30px; color: var(--fg-2); }
+.km-assets-B__note { grid-column: 10 / 13; grid-row: 4; margin-top: 38px; padding-top: 16px; border-top: 1px solid var(--line); }
+.km-assets-B__coda { font-size: 17px; line-height: 26px; }
+.km-assets-B__coda span { display: block; color: var(--fg); }
+.km-assets-B__coda span + span { color: var(--fg-3); }
+.km-assets-B__link {
+  position: relative; margin-top: 18px; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  text-transform: uppercase; letter-spacing: var(--label-tracking); white-space: nowrap; color: var(--fg);
+}
+.km-assets-B__link::before, .km-assets-B__link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2); }
+.km-assets-B__link::after { background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out); }
+.km-assets-B__link:hover::after { transform: scaleX(1); }
+/* arrows are drawn (the brand fonts carry no → glyph) */
+.km-assets-B__ico { display: inline-block; width: 13px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 250ms var(--ease-out); }
+.km-assets-B__link:hover .km-assets-B__go { transform: translateX(3px); }
+
+/* ── the handover manifest: a paper sheet hung from the spine to the page edge ── */
+.km-assets-B__sheet {
+  position: relative; z-index: 3; margin: 64px 0 0 var(--spine-x); background: var(--bg); color: var(--fg);
+}
+.km-assets-B__sjoint {                /* the sheet's top-left corner sits on the spine: the joint square */
+  position: absolute; z-index: 4; left: -2.5px; top: -2.5px; width: 6px; height: 6px;
+  background: var(--fg); outline: 1px solid var(--bg);     /* carries data-surface="dark": paper square, graphite keyline */
+}
+/* inside: the page grid's cols 4–12 (sheet edge = spine = col 4 − half a gutter; right padding = the margin) */
+.km-assets-B__grid {
+  --to-spine: calc(var(--gutter) / -2);
+  display: grid; grid-template-columns: repeat(9, var(--col)); column-gap: var(--gutter);
+  padding: 26px var(--margin) 28px calc(var(--gutter) / 2);
+}
+.km-assets-B__mh { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 16px; position: relative; }
+.km-assets-B__mh::after { content: ""; position: absolute; left: var(--to-spine); right: 0; bottom: 0; height: 1px; background: var(--fg); transform-origin: 0 50%; }
+.km-assets-B__mt, .km-assets-B__mm, .km-assets-B__ck, .km-assets-B__ri, .km-assets-B__who, .km-assets-B__tn, .km-assets-B__term dt, .km-assets-B__sk {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-assets-B__mt { color: var(--fg); }
+.km-assets-B__mt span, .km-assets-B__mm { color: var(--fg-3); }
+
+.km-assets-B__cols { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; padding: 14px 0 10px; }
+.km-assets-B__ck { color: var(--fg-3); white-space: nowrap; }
+.km-assets-B__ck--a { grid-column: 2 / 5; }
+.km-assets-B__ck--b { grid-column: 5 / 8; }
+.km-assets-B__ck--c { grid-column: 8 / 10; }
+
+.km-assets-B__rows { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; }
+.km-assets-B__row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; }
+.km-assets-B__row::before {           /* hover fill, from the spine to the margin */
+  content: ""; position: absolute; inset: 0 0 0 var(--to-spine); background: var(--panel);
+  opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.km-assets-B__row::after {            /* row rule, hung from the spine (the sheet edge) */
+  content: ""; position: absolute; top: 0; left: var(--to-spine); right: 0; height: 1px; background: var(--line);
+  transform-origin: 0 50%;
+}
+.km-assets-B__row:hover::before { opacity: 1; }
+
+.km-assets-B__head {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center;
+  padding: 12px 0; text-align: left; position: relative; cursor: pointer;
+}
+.km-assets-B__ri { grid-column: 1; color: var(--fg-3); }
+.km-assets-B__rt {
+  grid-column: 2 / 5; font-family: var(--f-body); font-weight: var(--ui-weight); font-stretch: 100%;
+  font-size: 24px; line-height: 30px; letter-spacing: -0.01em; color: var(--fg); white-space: nowrap;
+  transition: transform 300ms var(--ease-out);
+}
+.km-assets-B__row:hover .km-assets-B__rt { transform: translateX(8px); }
+.km-assets-B__fm { grid-column: 5 / 8; font-size: 17px; line-height: 26px; color: var(--fg-2); }
+
+/* custody: the box fills as the asset changes hands; the holder reads Kelwin → Yours */
+.km-assets-B__cu { grid-column: 8; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.km-assets-B__bx { width: 8px; height: 8px; flex: none; border: 1px solid var(--fg); background: var(--fg); }
+.km-assets-B__who { display: inline-grid; color: var(--fg); }
+.km-assets-B__k, .km-assets-B__y { grid-area: 1 / 1; }
+.km-assets-B__k { opacity: 0; color: var(--fg-3); }
+
+.km-assets-B__tg { grid-column: 9; justify-self: end; align-self: center; position: relative; width: 20px; height: 20px; }
+.km-assets-B__tg::before, .km-assets-B__tg::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-assets-B__tg::before { left: 0; right: 0; top: 9.5px; height: 1px; }
+.km-assets-B__tg::after { top: 0; bottom: 0; left: 9.5px; width: 1px; transition: transform 360ms var(--ease-inout); }
+.km-assets-B__row.is-open .km-assets-B__tg::after { transform: rotate(90deg); }
+
+/* open in place: the descriptor under the asset, its contents under the format */
+.km-assets-B__panel {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 360ms var(--ease-inout), opacity 360ms var(--ease-inout);
+}
+.km-assets-B__row.is-open .km-assets-B__panel { grid-template-rows: 1fr; opacity: 1; }
+.km-assets-B__pin { grid-column: 1 / -1; min-height: 0; overflow: hidden; display: grid; grid-template-columns: subgrid; align-items: start; }
+.km-assets-B__desc { grid-column: 2 / 5; padding: 2px 24px 22px 0; font-size: 17px; line-height: 26px; color: var(--fg-2); max-width: 32ch; }
+.km-assets-B__dl { grid-column: 5 / 9; padding: 2px 0 22px; }
+.km-assets-B__dl li { display: flex; align-items: baseline; gap: 16px; padding: 4px 0 5px; border-top: 1px solid var(--line); font-size: 15px; line-height: 20px; color: var(--fg); white-space: nowrap; }
+.km-assets-B__dl li:last-child { border-bottom: 1px solid var(--line); }
+.km-assets-B__tn { width: 22px; flex: none; color: var(--fg-3); }
+.km-assets-B__sheet.is-snap .km-assets-B__panel, .km-assets-B__sheet.is-snap .km-assets-B__tg::after { transition: none; }
+
+/* the terms: the manifest's fields, under its strong rule */
+.km-assets-B__terms { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; padding-top: 18px; }
+.km-assets-B__terms::before { content: ""; position: absolute; top: 0; left: var(--to-spine); right: 0; height: 1px; background: var(--fg); transform-origin: 0 50%; }
+.km-assets-B__term--a { grid-column: 2 / 5; }
+.km-assets-B__term--b { grid-column: 5 / 8; }
+.km-assets-B__term--c { grid-column: 8 / 10; }
+.km-assets-B__term dt { color: var(--fg-3); }
+.km-assets-B__term dd { margin: 6px 0 0; font-size: 17px; line-height: 24px; color: var(--fg); white-space: nowrap; }
+
+/* sign-off: who hands over (the real lockup) and who receives */
+.km-assets-B__sign { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; margin-top: 22px; }
+.km-assets-B__sg { display: flex; align-items: flex-end; gap: 20px; padding-bottom: 8px; position: relative; }
+.km-assets-B__sg--a { grid-column: 2 / 5; }
+.km-assets-B__sg--b { grid-column: 5 / 10; }
+.km-assets-B__sg::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%; }
+.km-assets-B__sk { color: var(--fg-3); }
+.km-assets-B__sg .km-logo { --logo-h: 17px; color: var(--fg); }
+.km-assets-B__line { font-size: 17px; line-height: 20px; color: var(--fg); }
+
+/* ── entrance (only under html.is-play): long durations, short distances ── */
+@keyframes km-assets-B-draw { from { transform: scaleX(0); } }
+@keyframes km-assets-B-fade { from { opacity: 0; } }
+@keyframes km-assets-B-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes km-assets-B-rise { from { opacity: 0; transform: translateY(12px); } }
+@keyframes km-assets-B-hang { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-assets-B-fill { from { background-color: transparent; border-color: var(--fg-3); } }
+
+.is-play .km-assets-B__joint { animation: km-assets-B-fade 300ms var(--ease-out) both; }
+.is-play .km-assets-B__rule { animation: km-assets-B-draw 900ms var(--ease-out) 120ms both; }
+.is-play .km-assets-B__index { animation: km-assets-B-fade 400ms var(--ease-out) 300ms both; }
+.is-play .km-assets-B__s1 { animation: km-assets-B-rise 700ms var(--ease-out) 300ms both; }
+.is-play .km-assets-B__s2 { animation: km-assets-B-rise 700ms var(--ease-out) 460ms both; }
+.is-play .km-assets-B__redrule { animation: km-assets-B-draw 600ms var(--ease-out) 700ms both; }
+.is-play .km-assets-B__body { animation: km-assets-B-rise 700ms var(--ease-out) 620ms both; }
+.is-play .km-assets-B__note { animation: km-assets-B-fade 600ms var(--ease-out) 760ms both; }
+/* the sheet hangs open from the spine, left → right, like every opening rule */
+.is-play .km-assets-B__sheet { animation: km-assets-B-hang 1000ms var(--ease-out) 820ms both; }
+.is-play .km-assets-B__sjoint { animation: km-assets-B-fade 300ms var(--ease-out) 820ms both; }
+.is-play .km-assets-B__mh, .is-play .km-assets-B__cols { animation: km-assets-B-fade 500ms var(--ease-out) 1150ms both; }
+.is-play .km-assets-B__row::after { animation: km-assets-B-draw 600ms var(--ease-out) both; animation-delay: calc(1200ms + var(--n) * 60ms); }
+.is-play .km-assets-B__ri, .is-play .km-assets-B__rt, .is-play .km-assets-B__fm, .is-play .km-assets-B__cu, .is-play .km-assets-B__tg { animation: km-assets-B-fade 600ms var(--ease-out) both; animation-delay: calc(1280ms + var(--n) * 60ms); }
+/* the one orchestrated moment: custody changes hands, row by row, top-down */
+.is-play .km-assets-B__bx { animation: km-assets-B-fill 360ms var(--ease-inout) both; animation-delay: calc(2050ms + var(--n) * 150ms); }
+.is-play .km-assets-B__k { animation: km-assets-B-out 360ms var(--ease-inout) both; animation-delay: calc(2050ms + var(--n) * 150ms); }
+.is-play .km-assets-B__y { animation: km-assets-B-fade 360ms var(--ease-inout) both; animation-delay: calc(2120ms + var(--n) * 150ms); }
+.is-play .km-assets-B__terms::before { animation: km-assets-B-draw 700ms var(--ease-out) 1500ms both; }
+.is-play .km-assets-B__term { animation: km-assets-B-fade 600ms var(--ease-out) 1600ms both; }
+.is-play .km-assets-B__sg--a { animation: km-assets-B-fade 600ms var(--ease-out) 1700ms both; }
+.is-play .km-assets-B__sg--b::after { animation: km-assets-B-draw 700ms var(--ease-out) 3000ms both; }
+.is-play .km-assets-B__line { animation: km-assets-B-fade 500ms var(--ease-out) 3300ms both; }
+.is-play .km-assets-B__sg--b .km-assets-B__sk { animation: km-assets-B-fade 500ms var(--ease-out) 1700ms both; }

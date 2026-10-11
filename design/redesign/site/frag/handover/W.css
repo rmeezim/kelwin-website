@@ -1,0 +1,234 @@
+/* ── handover · W · "The handover ledger" (FIG. 04, round 4) ─────────────────────────────
+   One paper surface, cols 1–12: no split, no side column (paper = his side, all of it; Kelwin
+   is present only as the dashed drafts). A compact head (statement at
+   left, rule + lede bottom-right on the hero's diagonal), then one instrument: a ledger
+   whose row bands are the three capabilities. Each row: index · FOLIO glyph · asset + tag ·
+   the letter's margin line (struck by an SVG hairline) · → on the Handover datum · the after.
+   Rows complete one by one: the glyph's dashed edge is redrawn solid, the before is struck,
+   the after wipes in from the datum. Default CSS = the final, handed-over state.
+   The one red: the datum's flag (a 2×12 segment at its head). */
+
+.km-handover-W {
+  --hw-t0: 1600ms;             /* the first row completes once the head has landed (standalone) */
+  --hw-cad: 420ms;             /* then one row every .42s, 01 → 06 */
+  --hw-gx: 78px;               /* index 22 + 14 + glyph 28 + 14: where the asset names start */
+  padding-bottom: 112px;       /* the foot is quiet and the graphite method below is a hard cut: 16px back for the ≤ 1000px target */
+}
+
+/* ── head: the kit grammar, compacted. The statement takes cols 1–7; the rule and lede sit
+      bottom-right (cols 8–12) on the statement's last line, as the hero's lede does. ── */
+.km-handover-W__head > .ac-statement { grid-column: 1 / span 7; }
+.km-handover-W__aside {
+  grid-column: 8 / span 5; grid-row: 2; align-self: end; margin-top: 36px; margin-bottom: 3px;   /* lede's last baseline on the statement's */
+  display: flex; flex-direction: column; align-items: flex-start; gap: 28px;
+}
+.km-handover-W__rule { transform-origin: 0 50%; }
+
+/* ── the ledger ── */
+.km-handover-W__body { margin-top: 42px; }
+.km-handover-W__led { position: relative; }
+
+/* the annotation line over the instrument: the key sits above the glyph column */
+.km-handover-W__ann {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  height: 16px; margin-bottom: 12px;
+}
+.km-handover-W__key {
+  grid-column: 3 / span 6; display: flex; align-items: center; gap: 28px; padding-left: 36px;
+  font-size: 13.5px; line-height: 16px; color: var(--fg-2);
+}
+.km-handover-W__key li { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.km-handover-W__sw { flex: none; display: block; overflow: visible; }
+.km-handover-W__sw-d, .km-handover-W__sw-s { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-handover-W__sw-d { stroke: var(--fg-3); stroke-dasharray: 2 2; }
+
+/* the Handover datum: a vertical hairline on the gutter between Before (cols 6–8) and After (cols 9–12),
+   from the annotation line down to the ledger's total. Its flag (the section's one red) and its name sit
+   on the annotation line, so the instrument is labelled before a row has moved. */
+.km-handover-W__datum {
+  position: absolute; top: 0; bottom: 0; width: 1px;
+  left: calc((100% - 11 * var(--gutter)) / 12 * 8 + 7.5 * var(--gutter));
+}
+.km-handover-W__datum::before { content: ""; position: absolute; inset: 0; background: var(--line-2); transform-origin: 50% 0; }
+.km-handover-W__tick { position: absolute; left: -.5px; top: 2px; width: 2px; height: 12px; background: var(--signal); }
+.km-handover-W__dl { position: absolute; left: 11px; top: 0; color: var(--fg-2); }
+
+/* column heads */
+.km-handover-W__hdr {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: center; height: 34px; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2);
+}
+.km-handover-W__h { grid-row: 1; }
+.km-handover-W__h--cap { grid-column: 1 / span 2; }
+.km-handover-W__h--no { grid-column: 3 / span 1; }
+.km-handover-W__h--as { grid-column: 3 / span 3; padding-left: var(--hw-gx); }
+.km-handover-W__h--was { grid-column: 6 / span 3; }
+.km-handover-W__h--now { grid-column: 9 / span 4; }
+
+/* row bands: one per capability; bands are cut by a strong hairline, rows inside a band by a faint one
+   that starts at col 3, so the capability cell reads as one band holding its two rows */
+.km-handover-W__band { position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+.km-handover-W__band + .km-handover-W__band::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--line-2); transform-origin: 0 50%;
+}
+.km-handover-W__band + .km-handover-W__band { margin-top: 1px; }
+.km-handover-W__cap {
+  grid-column: 1 / span 2; display: flex; flex-direction: column; gap: 2px; padding-top: 14px;
+  font: inherit; margin: 0;
+}
+.km-handover-W__capn { font-size: 15px; line-height: 22px; color: var(--fg); }
+.km-handover-W__rows { grid-column: 3 / -1; margin: 0; padding: 0; list-style: none; }
+
+.km-handover-W__row {
+  --hw-at: calc(var(--hw-t0) + var(--i, 0) * var(--hw-cad));
+  position: relative; z-index: 0;
+  display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: start; padding: 10px 0;
+}
+.km-handover-W__row + .km-handover-W__row { border-top: 1px solid var(--line); }
+/* ::before = the posting cursor (motion only) · ::after = hover */
+.km-handover-W__row::before, .km-handover-W__row::after {
+  content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(var(--gutter) / -2); right: 0;
+  background: var(--panel); opacity: 0; pointer-events: none;
+}
+.km-handover-W__row::after { transition: opacity 250ms var(--ease-out); }
+.km-handover-W__row:hover::after { opacity: 1; }
+
+/* asset: index · glyph · name over tag */
+.km-handover-W__as { grid-column: 1 / span 3; display: flex; align-items: flex-start; gap: 14px; min-width: 0; }
+.km-handover-W__ix { flex: none; width: 22px; line-height: 24px; padding-top: 4px; }   /* baseline on the name's */
+.km-handover-W__gx { flex: none; display: block; overflow: visible; }
+.km-handover-W__nmw { min-width: 0; }
+.km-handover-W__nm {
+  margin: 0; font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 20px; line-height: 24px;
+  color: var(--fg); white-space: nowrap;
+}
+.km-handover-W__tag { margin: 0; line-height: 16px; }
+
+/* FOLIO glyph, 28×40: a dashed draft edge, a solid owned edge (drawn round, pathLength 1), page furniture */
+.km-handover-W__gd, .km-handover-W__gs { fill: none; stroke-width: 1; }
+.km-handover-W__gd { stroke: var(--fg-3); stroke-dasharray: 2 2; opacity: 0; }       /* at rest the draft is gone */
+.km-handover-W__gs { stroke: var(--fg-2); stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke 250ms var(--ease-out); }
+.km-handover-W__gh { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-handover-W__gr { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-handover-W__gb { fill: var(--fg-3); }
+.km-handover-W__row:hover .km-handover-W__gs { stroke: var(--fg); }
+
+/* before: the letter's margin line, struck by one SVG hairline (not text-decoration) */
+.km-handover-W__was {
+  grid-column: 4 / span 3; margin: 0; padding-top: 2px;
+  font-size: 15px; line-height: 24px; color: var(--fg-3); white-space: nowrap;
+}
+.km-handover-W__wt { position: relative; display: inline-block; }
+.km-handover-W__st {
+  position: absolute; left: -2px; top: 0; width: calc(100% + 4px); height: 24px;
+  overflow: visible; pointer-events: none; transform-origin: 0 50%;
+}
+.km-handover-W__st line { stroke: var(--fg-2); stroke-width: 1; }
+
+/* after: rides the datum; its arrow sits on the datum, centred in the gutter */
+.km-handover-W__now {
+  grid-column: 7 / span 4; position: relative; margin: 0; padding-top: 1px;
+  font-size: 17px; line-height: 24px; color: var(--fg); white-space: nowrap;
+}
+.km-handover-W__nt { display: inline-block; }
+.km-handover-W__nb { white-space: nowrap; }
+.km-handover-W__ar {
+  position: absolute; left: calc(var(--gutter) / -2 - 9px); top: 7px; display: block; overflow: visible;
+  color: var(--fg-2);
+}
+.km-handover-W__ar path { fill: none; stroke: currentColor; stroke-width: 1; }
+
+/* the total: a double rule closes the ledger */
+.km-handover-W__tot { display: block; height: 4px; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
+
+/* foot: the handover test · the title block */
+.km-handover-W__foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 18px; }
+.km-handover-W__note { display: flex; align-items: center; gap: 20px; min-width: 0; }
+.km-handover-W__nott { font-size: 15px; line-height: 1.55; color: var(--fg-2); }
+.km-handover-W__tb { flex: none; }
+
+/* ── entrance (is-play only; the kit runs the label and statement) ── */
+@keyframes km-handover-W-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-handover-W-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes km-handover-W-drawx { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes km-handover-W-drawy { from { transform: scaleY(0); } to { transform: none; } }
+.is-play .km-handover-W__rule { animation: km-handover-W-drawx 600ms var(--ease-out) 520ms backwards; }
+.is-play .km-handover-W__lede { animation: km-handover-W-up 600ms var(--ease-out) 600ms backwards; }
+.is-play .km-handover-W__hdr { animation: km-handover-W-fade 500ms var(--ease-out) 700ms backwards; }
+.is-play .km-handover-W__datum::before { animation: km-handover-W-drawy 900ms var(--ease-inout) 760ms backwards; }
+.is-play .km-handover-W__key { animation: km-handover-W-fade 500ms var(--ease-out) 1000ms backwards; }
+.is-play .km-handover-W__tick { animation: km-handover-W-fade 300ms var(--ease-out) 1300ms backwards; }
+.is-play .km-handover-W__dl { animation: km-handover-W-fade 400ms var(--ease-out) 1340ms backwards; }
+.is-play .km-handover-W__band::before { animation: km-handover-W-drawx 700ms var(--ease-out) calc(820ms + var(--b, 0) * 110ms) backwards; }
+.is-play .km-handover-W__cap { animation: km-handover-W-fade 500ms var(--ease-out) calc(860ms + var(--b, 0) * 110ms) backwards; }
+.is-play .km-handover-W__row { animation: km-handover-W-up 500ms var(--ease-out) calc(900ms + var(--i, 0) * 60ms) backwards; }
+.is-play .km-handover-W__tot, .is-play .km-handover-W__note, .is-play .km-handover-W__tb { animation: km-handover-W-fade 500ms var(--ease-out) 1300ms backwards; }
+
+/* ── the rows complete, one by one (JS adds .is-arm, then .is-run; without JS nothing changes) ──
+   each row, from its --hw-at: the cursor posts it · the edge is redrawn solid as the dashes fade ·
+   the page furniture inks in · the before is struck and dims · the arrow lights · the after wipes in
+   from the datum. The title block (the end cap, "Yours 06/06") arrives whole after the sixth. */
+@keyframes km-handover-W-cur { 0% { opacity: 0; } 14% { opacity: 1; } 62% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes km-handover-W-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-handover-W-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes km-handover-W-ink { from { opacity: .4; } to { opacity: 1; } }
+@keyframes km-handover-W-strike { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes km-handover-W-dim { from { color: var(--fg-2); } to { color: var(--fg-3); } }
+@keyframes km-handover-W-arr { from { color: var(--line-2); } to { color: var(--fg-2); } }
+@keyframes km-handover-W-wipe {
+  0% { opacity: 0; clip-path: inset(-6px 100% -6px -6px); }
+  25% { opacity: 1; }
+  100% { opacity: 1; clip-path: inset(-6px -6px -6px -6px); }
+}
+/* armed, waiting: the opening state (identical to each animation's first frame) */
+.km-handover-W.is-arm:not(.is-run) .km-handover-W__gd { opacity: 1; }
+.km-handover-W.is-arm:not(.is-run) .km-handover-W__gs { stroke-dashoffset: 1; }
+.km-handover-W.is-arm:not(.is-run) .km-handover-W__gi { opacity: .4; }
+.km-handover-W.is-arm:not(.is-run) .km-handover-W__st { transform: scaleX(0); }
+.km-handover-W.is-arm:not(.is-run) .km-handover-W__wt { color: var(--fg-2); }
+.km-handover-W.is-arm:not(.is-run) .km-handover-W__ar { color: var(--line-2); }
+.km-handover-W.is-arm:not(.is-run) .km-handover-W__nt { opacity: 0; }
+.km-handover-W.is-arm:not(.is-run) .km-handover-W__tb { opacity: 0; }
+/* running */
+.km-handover-W.is-run .km-handover-W__row::before { animation: km-handover-W-cur 900ms linear var(--hw-at) backwards; }
+.km-handover-W.is-run .km-handover-W__gs { animation: km-handover-W-plot 420ms var(--ease-inout) var(--hw-at) backwards; }
+.km-handover-W.is-run .km-handover-W__gd { animation: km-handover-W-out 260ms var(--ease-out) calc(var(--hw-at) + 160ms) backwards; }
+.km-handover-W.is-run .km-handover-W__gi { animation: km-handover-W-ink 360ms var(--ease-out) calc(var(--hw-at) + 100ms) backwards; }
+.km-handover-W.is-run .km-handover-W__st { animation: km-handover-W-strike 300ms var(--ease-inout) calc(var(--hw-at) + 200ms) backwards; }
+.km-handover-W.is-run .km-handover-W__wt { animation: km-handover-W-dim 360ms var(--ease-out) calc(var(--hw-at) + 260ms) backwards; }
+.km-handover-W.is-run .km-handover-W__ar { animation: km-handover-W-arr 260ms var(--ease-out) calc(var(--hw-at) + 380ms) backwards; }
+.km-handover-W.is-run .km-handover-W__nt { animation: km-handover-W-wipe 460ms var(--ease-out) calc(var(--hw-at) + 400ms) backwards; }
+.km-handover-W.is-arm .km-handover-W__tb { animation: none; }   /* armed: the end cap waits for the sixth row instead */
+.km-handover-W.is-arm.is-run .km-handover-W__tb { animation: km-handover-W-fade 500ms var(--ease-out) calc(var(--hw-t0) + 5 * var(--hw-cad) + 900ms) backwards; }
+
+/* ── ≤ 760px: the head stacks; the ledger becomes a list of bands, each row a short card
+      (asset · struck before · after). No datum, no column heads, no sequence: the final state. ── */
+@media (max-width: 760px) {
+  .km-handover-W { --margin: 16px; --gutter: 16px; padding-block: 72px; }
+  .km-handover-W__head { display: block; }
+  .km-handover-W__head > .ac-statement { margin-top: 24px; font-size: 44px; }
+  .km-handover-W__head > .ac-statement .ac-line { white-space: normal; }
+  .km-handover-W__aside { margin: 24px 0 0; gap: 20px; }
+  .km-handover-W__lede { font-size: 17px; }
+  .km-handover-W__body { margin-top: 40px; }
+  .km-handover-W__ann { display: block; height: auto; margin-bottom: 20px; }
+  .km-handover-W__key { padding-left: 0; flex-wrap: wrap; gap: 10px 24px; }
+  /* hidden without display:none, so no entrance animation restarts when the query flips */
+  .km-handover-W__datum { visibility: hidden; }
+  .km-handover-W__hdr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .km-handover-W__band { display: block; border-top: 1px solid var(--line-2); }
+  .km-handover-W__band + .km-handover-W__band { margin-top: 0; }
+  .km-handover-W__band::before { visibility: hidden; }
+  .km-handover-W__cap { flex-direction: row; align-items: baseline; gap: 12px; padding: 16px 0 4px; }
+  .km-handover-W__row { display: block; padding: 14px 0 16px; }
+  .km-handover-W__row::before, .km-handover-W__row::after { visibility: hidden; }
+  .km-handover-W__nm { white-space: normal; }
+  .km-handover-W__was, .km-handover-W__now { padding: 0 0 0 var(--hw-gx); white-space: normal; }
+  .km-handover-W__was { margin-top: 10px; }
+  .km-handover-W__now { margin-top: 2px; }
+  .km-handover-W__ar { visibility: hidden; }
+  .km-handover-W__foot { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .km-handover-W__note { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .km-handover-W__tb > * { padding: 0 8px; }   /* four cells on one line at 358px */
+}

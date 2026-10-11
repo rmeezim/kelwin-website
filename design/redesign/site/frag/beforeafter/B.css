@@ -1,0 +1,184 @@
+/* ── beforeafter · B · Quiet Ledger — 11 Before / After ─────────────────
+   Collins's tall ruled rows, split by the page's own Index Spine: life
+   without the system sits off the spine (in the spine column, muted, on
+   broken rules), life with it hangs from the spine. One row open in place. */
+.km-beforeafter-B { --pad: 128px; padding: var(--pad) 0 128px; overflow: hidden; }
+
+/* the Index Spine (col 3|4 gutter): segment a drops into the joint, b runs on */
+.km-beforeafter-B__spine {
+  position: absolute; width: 1px; background: var(--line); transform-origin: 50% 0;
+  left: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));
+}
+.km-beforeafter-B__spine--a { top: 0; height: var(--pad); }
+.km-beforeafter-B__spine--b { top: var(--pad); bottom: 0; }
+
+.km-beforeafter-B__in {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* opening rule: spine → right margin, the K-square at the joint */
+.km-beforeafter-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-beforeafter-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-beforeafter-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+
+/* spine column: index + the red-square caps label, nothing else */
+.km-beforeafter-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-beforeafter-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-beforeafter-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-beforeafter-B__sq { width: 8px; height: 8px; flex: none; background: var(--accent); }
+
+/* statement: a sentence + a muted light sentence, colour does the work */
+.km-beforeafter-B__h {
+  grid-column: 4 / 13; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 88px; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-beforeafter-B__s1, .km-beforeafter-B__s2, .km-beforeafter-B__ln { display: block; white-space: nowrap; }
+.km-beforeafter-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-beforeafter-B__redrule {
+  grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px;
+  background: var(--accent); transform-origin: 0 50%;
+}
+
+.km-beforeafter-B__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ── the ledger, split by the page's own Index Spine ──
+   --sx is the spine inside the 12-col grid (the col 3|4 gutter centre); --c3 is col 3's right edge.
+   Off the spine (cols 1–3, the one place in B where anything but the index enters the spine column):
+   each "without" sits right-aligned under a dashed rule that ends in an open square 12px short of the
+   spine — reaching for it, never attached, unindexed. On the spine (cols 4–12): each "with" hangs from
+   the spine itself at a filled joint, on a continuous rule to the margin, with its index and the layer
+   it fixes. Same rows, same height: only the attachment changes. */
+.km-beforeafter-B__ledger {
+  --sx: calc(3 * var(--col) + 2.5 * var(--gutter));
+  --c3: calc(3 * var(--col) + 2 * var(--gutter));
+  grid-column: 1 / 13; grid-row: 4; margin-top: 72px; position: relative;
+  display: grid; grid-template-columns: subgrid;
+}
+.km-beforeafter-B__head { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; padding: 0 0 16px; }
+.km-beforeafter-B__hk { font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); white-space: nowrap; }
+.km-beforeafter-B__hk--was { grid-column: 1 / 4; justify-self: end; }
+.km-beforeafter-B__hk--is { grid-column: 5 / 10; color: var(--fg); }
+.km-beforeafter-B__hk--dim { grid-column: 10 / 12; }
+
+.km-beforeafter-B__rows { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; }
+.km-beforeafter-B__row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; isolation: isolate; }
+/* on the spine: a continuous rule from the spine to the margin (and one closing the ledger) */
+.km-beforeafter-B__row::before, .km-beforeafter-B__rows::after {
+  content: ""; position: absolute; left: var(--sx); right: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%;
+}
+.km-beforeafter-B__row::before { top: 0; }
+.km-beforeafter-B__rows::after { bottom: 0; }
+.km-beforeafter-B__row::after {                                        /* hover fill: the attached half only */
+  content: ""; position: absolute; z-index: -1; top: 1px; bottom: 0; left: var(--sx); right: 0;
+  background: var(--panel); opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.km-beforeafter-B__row:hover::after { opacity: 1; }
+.km-beforeafter-B__jt { position: absolute; z-index: 3; left: calc(var(--sx) - 2.5px); top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+/* off the spine: a broken rule ending in an open square, short of the spine */
+.km-beforeafter-B__was::before, .km-beforeafter-B__rows::before {
+  content: ""; position: absolute; left: 0; width: calc(var(--c3) - 12px); height: 0; border-top: 1px dashed var(--line-2);
+}
+.km-beforeafter-B__was::before { top: 0; }
+.km-beforeafter-B__rows::before { bottom: 0; }
+.km-beforeafter-B__stub {
+  position: absolute; z-index: 3; left: calc(var(--c3) - 6px); top: -2.5px; width: 6px; height: 6px;
+  border: 1px solid var(--fg-3); background: var(--bg);
+}
+
+.km-beforeafter-B__btn {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline;
+  padding: 22px 0; text-align: left; transition: padding-bottom 360ms var(--ease-inout);
+}
+.km-beforeafter-B__row.is-open .km-beforeafter-B__btn { padding-bottom: 10px; }
+.km-beforeafter-B__was { grid-column: 1 / 4; text-align: right; font-size: 17px; line-height: 24px; color: var(--fg-3); text-wrap: balance; }
+.km-beforeafter-B__idx { grid-column: 4; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); color: var(--fg-3); }
+.km-beforeafter-B__is {
+  grid-column: 5 / 10;
+  font-family: var(--f-body); font-stretch: 100%; font-weight: var(--ui-weight); font-size: 24px; line-height: 30px; letter-spacing: -0.01em; color: var(--fg);
+  transition: transform 300ms var(--ease-out);
+}
+.km-beforeafter-B__tt { display: inline-block; white-space: nowrap; }
+.km-beforeafter-B__row:hover .km-beforeafter-B__is { transform: translateX(8px); }
+.km-beforeafter-B__dim { grid-column: 10 / 12; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); }
+.km-beforeafter-B__tog { grid-column: 12; justify-self: end; align-self: center; position: relative; width: 20px; height: 20px; }
+.km-beforeafter-B__tog::before, .km-beforeafter-B__tog::after {
+  content: ""; position: absolute; left: 0; top: 9.5px; width: 20px; height: 1px; background: var(--fg-2);
+}
+.km-beforeafter-B__tog::after { transform: rotate(90deg); transition: transform 360ms var(--ease-inout); }
+.km-beforeafter-B__row.is-open .km-beforeafter-B__tog::after { transform: rotate(0deg); }
+
+/* the row that opens in place: both halves explain themselves */
+.km-beforeafter-B__desc {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 360ms var(--ease-inout), opacity 360ms var(--ease-inout);
+}
+.km-beforeafter-B__row.is-open .km-beforeafter-B__desc { grid-template-rows: 1fr; opacity: 1; }
+.km-beforeafter-B__dw { grid-column: 1 / -1; min-height: 0; overflow: hidden; display: grid; grid-template-columns: subgrid; align-items: start; }
+.km-beforeafter-B__dwas, .km-beforeafter-B__dis { padding-bottom: 26px; text-wrap: pretty; }
+.km-beforeafter-B__dwas { grid-column: 1 / 4; text-align: right; font-size: 15px; line-height: 22px; color: var(--fg-3); padding-left: 24px; }
+.km-beforeafter-B__dis { grid-column: 5 / 9; font-size: 17px; line-height: 26px; color: var(--fg-2); }
+
+/* closing row: the quiet door + the coda as a side note */
+.km-beforeafter-B__close { grid-column: 4 / 10; grid-row: 5; margin-top: 56px; display: flex; align-items: center; gap: 40px; }
+.km-beforeafter-B__link {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-beforeafter-B__ico { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.km-beforeafter-B__go { width: 14px; }
+.km-beforeafter-B__go { transition: transform 200ms var(--ease-out); }
+.km-beforeafter-B__link { position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px; color: var(--fg); }
+.km-beforeafter-B__link::before, .km-beforeafter-B__link::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; }
+.km-beforeafter-B__link::before { background: var(--line-2); }
+.km-beforeafter-B__link::after { background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out); }
+.km-beforeafter-B__link:hover::after { transform: scaleX(1); }
+.km-beforeafter-B__link:hover .km-beforeafter-B__go { transform: translateX(3px); }
+.km-beforeafter-B__note {
+  grid-column: 10 / 13; grid-row: 5; margin-top: 56px; align-self: start; padding-top: 14px; border-top: 1px solid var(--line);
+  font-size: 15px; line-height: 1.5;
+}
+.km-beforeafter-B__note span { display: block; }
+.km-beforeafter-B__note span:first-child { color: var(--fg); }
+.km-beforeafter-B__note span:last-child { color: var(--fg-3); }
+
+.km-beforeafter-B.is-cold *, .km-beforeafter-B.is-cold *::before, .km-beforeafter-B.is-cold *::after { transition: none !important; }
+
+/* ── entrance (html.is-play): joint → rule → index → statement; the "without" lines surface, unconnected;
+   then the system arrives as structure: the bus draws down and each "with" hangs from it, row by row ── */
+.is-play .km-beforeafter-B__spine--a { animation: km-beforeafter-B-drop 420ms var(--ease-out) both; }
+.is-play .km-beforeafter-B__joint { animation: km-beforeafter-B-fade 200ms var(--ease-out) 360ms both; }
+.is-play .km-beforeafter-B__rule { animation: km-beforeafter-B-draw 900ms var(--ease-out) 400ms both; }
+.is-play .km-beforeafter-B__spine--b { animation: km-beforeafter-B-drop 1600ms var(--ease-out) 400ms both; }
+.is-play .km-beforeafter-B__index { animation: km-beforeafter-B-fade 400ms var(--ease-out) 520ms both; }
+.is-play .km-beforeafter-B__s1 { animation: km-beforeafter-B-up 700ms var(--ease-out) 560ms both; }
+.is-play .km-beforeafter-B__s2 { animation: km-beforeafter-B-up 700ms var(--ease-out) 720ms both; }
+.is-play .km-beforeafter-B__redrule { animation: km-beforeafter-B-draw 600ms var(--ease-out) 860ms both; }
+.is-play .km-beforeafter-B__hk--was { animation: km-beforeafter-B-fade 500ms var(--ease-out) 940ms both; }
+/* off the spine first: muted, unindexed, attached to nothing */
+.is-play .km-beforeafter-B__was, .is-play .km-beforeafter-B__stub { animation: km-beforeafter-B-fade 500ms var(--ease-out) both; animation-delay: calc(1000ms + var(--i) * 60ms); }
+.is-play .km-beforeafter-B__rows::before { animation: km-beforeafter-B-fade 500ms var(--ease-out) 1360ms both; }
+/* signature beat: the system arrives as attachment — row by row a joint lands on the page spine,
+   the rule runs out to the margin and the "with" line slides off the spine into place */
+.is-play .km-beforeafter-B__hk--is, .is-play .km-beforeafter-B__hk--dim { animation: km-beforeafter-B-fade 500ms var(--ease-out) 1350ms both; }
+.is-play .km-beforeafter-B__jt { animation: km-beforeafter-B-pop 300ms var(--ease-out) both; animation-delay: calc(1450ms + var(--i) * 150ms); }
+.is-play .km-beforeafter-B__row::before { animation: km-beforeafter-B-draw 600ms var(--ease-out) both; animation-delay: calc(1480ms + var(--i) * 150ms); }
+.is-play .km-beforeafter-B__idx, .is-play .km-beforeafter-B__tog, .is-play .km-beforeafter-B__dim { animation: km-beforeafter-B-fade 400ms var(--ease-out) both; animation-delay: calc(1580ms + var(--i) * 150ms); }
+.is-play .km-beforeafter-B__tt { animation: km-beforeafter-B-in 640ms var(--ease-out) both; animation-delay: calc(1600ms + var(--i) * 150ms); }
+.is-play .km-beforeafter-B__rows::after { animation: km-beforeafter-B-draw 600ms var(--ease-out) 2400ms both; }
+.is-play .km-beforeafter-B__close, .is-play .km-beforeafter-B__note { animation: km-beforeafter-B-fade 600ms var(--ease-out) 2500ms both; }
+
+@keyframes km-beforeafter-B-drop { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-beforeafter-B-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-beforeafter-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-beforeafter-B-pop { from { opacity: 0; transform: scale(0); } to { opacity: 1; transform: scale(1); } }
+@keyframes km-beforeafter-B-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes km-beforeafter-B-in { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }

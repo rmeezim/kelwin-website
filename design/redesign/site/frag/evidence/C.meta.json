@@ -1,0 +1,21 @@
+{
+  "title": "Sheet 03 · Readings",
+  "direction": "C",
+  "summary": "A paper document sheet from Kelwin's drawing set. Four cells plot the four readings as 1px outlined columns on one ink baseline over graph paper, each numeral riding its column's top edge, and the 17% column is the sheet's single red plane, so the evidence reads as measured and drawn rather than decorated.",
+  "reference": {
+    "site": "Intercom",
+    "mobbin_url": "https://mobbin.com/sites/sections/537fc7f9-23ba-47b4-bf45-b6859a3513eb",
+    "ref_file": "refs/evidence-C.webp",
+    "borrowed": "A survey-breakdown sheet: a big title over a hairline, tall cells butted edge to edge, each with a small uppercase label at its top and a solid bar rising from a shared baseline, its percentage sitting directly on top of the bar so the numbers themselves plot the data, one highlighted bar in the accent, and a mono footnote with a coloured key square along the bottom edge.",
+    "kelwin": "Rebuilt as SHEET 03/14 on C's frame: margin verticals, a line-2 sheet edge, four chosen crosshairs, a title cell (uppercase wide 72px, flush bottom-left, mono sheet label) beside a light 24px note cell. The bars become 1px outlined columns over a dashed graph-paper track (every 10 units, 50 and 100 stronger and labelled), with drafting dimension lines carrying rotated values ([17%]), boxed unit chips on 112px numerals, and the 95:5 column split by a datum tick with the 5% on a leader. Intercom's single highlighted bar becomes the sheet's one red element, the 17% column as a flat plane: the share of the journey sales controls, keyed in the legend beside the title block."
+  },
+  "motion": [
+    "entrance (drafting order, --ease-inout): the frame verticals, sheet edge and crosshairs fade in (300ms); cell borders draw in raster order at a 40ms stagger, ink baseline included; graph paper fades up; the title wipes in line by line; mono labels type on at 24ms per character",
+    "plot: from 0.9s the four columns plot upward from the baseline (1.2s, 120ms stagger), each 112px numeral riding its column's top edge as it rises, so 17 stays low and 95 climbs to the top; the unit chips appear when each column lands",
+    "annotate: dimension lines draw up the columns' left edges, then their rotated values type on; the 95:5 datum tick and the [5%] leader draw last, and the legend and title block type on",
+    "install: the red plane drops into the 17% column last (opacity + 8px settle, 400ms)",
+    "interaction: hovering a cell inverts its ID strip (--fg fill, --bg text). On the live site the sheet plots once when it scrolls into view; reduced motion shows the fully plotted sheet"
+  ],
+  "demoMs": 4500,
+  "notes": "Scale is honest: 100 units = 360px in every cell, so the column heights are exactly to value. 'Src' lines name the published source; the legend repeats them once for the sheet. Sheet numbering follows the C set: hero 01, reframe 02, evidence 03 (FIG. 3.1), stack 04."
+}

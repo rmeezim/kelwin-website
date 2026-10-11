@@ -1,0 +1,496 @@
+<title>Kelwin Redesign Selector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..700&family=Instrument+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a decision console — sticky command bar, section rail on the
+   left, one decision panel per section (today vs A/B/C, live frame,
+   reference, motion, pick). Single dark world, by design: the page
+   speaks the brand it is choosing for. */
+:root {
+  --bg: #110F0A;
+  --panel: #0B0A08;
+  --card: #14120D;
+  --raised: #1B1915;
+  --ink: #FBFAF6;
+  --stone: #D8D2C8;
+  --muted: #A39D94;
+  --line: rgba(199,180,157,0.18);
+  --line-strong: rgba(199,180,157,0.34);
+  --sand: #C7B49D;
+  --red: #BF3A36;
+  --red-bright: #D4524E;
+  --patina: #7C9C8A;
+  --steel: #9BB0C1;
+  --f-display: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 15px/1.6 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 1px solid var(--sand); outline-offset: 3px; }
+.mono { font-family: var(--f-mono); }
+
+/* ── command bar ── */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  padding: 12px clamp(16px, 3vw, 40px);
+  background: rgba(11,10,8,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.mark { display: flex; align-items: center; gap: 10px; font: 600 13px/1 var(--f-display); letter-spacing: 0.18em; }
+.mark .logo { display: inline-block; height: 18px; aspect-ratio: 734 / 152; background: var(--ink); -webkit-mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; }
+.mark span { color: var(--muted); font: 500 11px/1 var(--f-mono); letter-spacing: 0.06em; }
+.bar-progress { display: flex; align-items: center; gap: 10px; margin-left: auto; font: 500 12px/1 var(--f-mono); color: var(--stone); }
+.meter { width: 120px; height: 4px; background: rgba(251,250,246,0.08); }
+.meter b { display: block; height: 100%; width: 0; background: var(--patina); transition: width .4s ease; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px; border: 1px solid var(--line-strong); background: transparent;
+  font: 500 12px/1 var(--f-mono); letter-spacing: 0.04em; color: var(--stone);
+}
+.btn:hover { border-color: var(--sand); color: var(--ink); }
+.save-state { font: 500 11px/1.3 var(--f-mono); color: var(--muted); max-width: 220px; }
+.seg { display: inline-flex; border: 1px solid var(--line-strong); }
+.seg button { padding: 8px 12px; border: 0; background: transparent; font: 500 11.5px/1 var(--f-mono); color: var(--muted); }
+.seg button + button { border-left: 1px solid var(--line-strong); }
+.seg button[aria-pressed="true"] { background: var(--raised); color: var(--ink); box-shadow: inset 0 -2px 0 var(--red-bright); }
+.seg-label { font: 500 11px/1 var(--f-mono); color: var(--muted); }
+.skins { max-width: 1240px; margin: 0 auto 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.skin { border: 1px solid var(--line); background: var(--panel); padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.skin[aria-current="true"] { border-color: var(--sand); }
+.skin-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.skin-name { font: 500 20px/1.15 var(--f-display); }
+.skin-spec { font: 500 11px/1.4 var(--f-mono); color: var(--muted); }
+.swatches { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid var(--line); width: fit-content; max-width: 100%; }
+.sw { width: 54px; height: 54px; display: flex; align-items: flex-end; padding: 5px; font: 500 9.5px/1.1 var(--f-mono); }
+.specimen { display: grid; gap: 6px; }
+.specimen .d { font-size: clamp(28px, 3.2vw, 40px); line-height: 1; letter-spacing: -0.03em; }
+.specimen .l { font-size: 18px; }
+.specimen .m { font: 500 11px/1.2 var(--f-mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+.skin .pick { align-self: flex-start; }
+
+/* ── page frame ── */
+.wrap { padding-inline: clamp(16px, 3vw, 40px); padding-block: 0 80px; }
+.intro { max-width: 1240px; margin: 0 auto; padding-block: 48px 28px; }
+.eyebrow { display: flex; align-items: center; gap: 12px; font: 600 11px/1 var(--f-mono); letter-spacing: 0.06em; color: var(--red-bright); text-transform: uppercase; }
+.eyebrow::after { content: ""; width: 28px; height: 1px; background: var(--red-bright); }
+.intro h1 { margin: 16px 0 0; font: 400 clamp(34px, 4.4vw, 60px)/1.02 var(--f-display); letter-spacing: -0.025em; text-wrap: balance; }
+.intro h1 span { color: rgba(251,250,246,0.44); display: block; }
+.intro p { margin: 18px 0 0; max-width: 64ch; color: var(--stone); font-size: 16px; }
+.steps { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; padding: 0; list-style: none; font: 500 12px/1.5 var(--f-mono); color: var(--muted); }
+.steps b { color: var(--sand); font-weight: 600; }
+
+.dirs { max-width: 1240px; margin: 8px auto 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.dir { background: var(--panel); border: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
+.dir-cover { aspect-ratio: 16 / 9; background: #000 center / cover no-repeat; border-bottom: 1px solid var(--line); position: relative; }
+.dir-cover::after { content: attr(data-site); position: absolute; left: 10px; bottom: 8px; padding: 3px 6px; background: rgba(8,9,10,0.82); font: 500 10px/1.2 var(--f-mono); letter-spacing: 0.04em; color: var(--stone); }
+.dir-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; }
+.dir-id { font: 600 11px/1 var(--f-mono); letter-spacing: 0.06em; color: var(--sand); }
+.dir-name { font: 500 21px/1.15 var(--f-display); letter-spacing: -0.01em; }
+.dir-line { color: var(--stone); font-size: 14px; }
+.dir-traits { margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13.5px; color: var(--muted); }
+.dir-traits li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 8px; background: var(--sand); vertical-align: 2px; }
+.dir-apply { margin-top: 6px; align-self: flex-start; }
+
+/* ── body grid ── */
+.body { max-width: 1240px; margin: 40px auto 0; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; align-items: start; }
+.rail { position: sticky; top: 76px; display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.rail a { display: grid; grid-template-columns: 26px minmax(0,1fr) auto; align-items: center; gap: 6px; padding: 8px 2px; border-bottom: 1px solid rgba(251,250,246,0.06); text-decoration: none; font-size: 13.5px; color: var(--stone); }
+.rail a:hover { color: var(--ink); }
+.rail .n { font: 500 11px/1 var(--f-mono); color: var(--muted); }
+.chip { font: 600 10px/1 var(--f-mono); letter-spacing: 0.06em; padding: 4px 6px; border: 1px solid var(--line); color: var(--muted); }
+.chip.is-set { border-color: var(--patina); color: var(--patina); }
+
+.sec { scroll-margin-top: 72px; padding-block: 0 56px; margin-block: 0 56px; border-bottom: 1px solid var(--line); min-width: 0; }
+.sec-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.sec-n { font: 600 12px/1 var(--f-mono); color: var(--sand); }
+.sec-name { margin: 0; font: 500 clamp(24px, 2.4vw, 32px)/1.1 var(--f-display); letter-spacing: -0.015em; }
+.sec-job { margin: 10px 0 0; max-width: 78ch; color: var(--muted); font-size: 14px; }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 0; margin-top: 20px; border: 1px solid var(--line); width: fit-content; max-width: 100%; }
+.tab { padding: 10px 14px; border: 0; border-right: 1px solid var(--line); background: transparent; font: 500 12px/1.2 var(--f-mono); color: var(--muted); text-align: left; }
+.tab:last-child { border-right: 0; }
+.tab b { color: var(--stone); font-weight: 600; margin-right: 6px; }
+.tab[aria-selected="true"] { background: var(--raised); color: var(--ink); box-shadow: inset 0 -2px 0 var(--sand); }
+.tab.is-picked::after { content: " ●"; color: var(--patina); }
+
+.stage-wrap { margin-top: 14px; border: 1px solid var(--line); background: #000; position: relative; overflow: hidden; }
+.stage-wrap .poster { display: block; width: 100%; height: auto; }
+.stage-wrap iframe { position: absolute; top: 0; left: 0; width: 1440px; border: 0; transform-origin: 0 0; background: transparent; opacity: 0; transition: opacity .3s ease; }
+.stage-wrap iframe.is-ready { opacity: 1; }
+.stage-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+.info { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 18px; margin-top: 16px; }
+.card { background: var(--panel); border: 1px solid var(--line); padding: 16px 18px; min-width: 0; }
+.card h3 { margin: 0 0 8px; font: 600 11px/1 var(--f-mono); letter-spacing: 0.06em; color: var(--sand); text-transform: uppercase; }
+.opt-title { margin: 0; font: 500 22px/1.15 var(--f-display); letter-spacing: -0.01em; }
+.opt-sum { margin: 8px 0 0; color: var(--stone); font-size: 15px; }
+.motion { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13.5px; color: var(--stone); }
+.motion li { padding-left: 14px; position: relative; }
+.motion li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 1px; background: var(--sand); }
+.ref { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 14px; align-items: start; }
+.ref img { width: 100%; height: auto; border: 1px solid var(--line); background: #000; }
+.ref-site { font: 500 15px/1.2 var(--f-display); }
+.ref-link { display: inline-block; margin-top: 4px; font: 500 12px/1.3 var(--f-mono); color: var(--steel); }
+.kv { margin: 10px 0 0; display: grid; gap: 8px; font-size: 13.5px; color: var(--stone); }
+.kv b { display: block; font: 600 10.5px/1.4 var(--f-mono); letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; }
+
+.decide { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
+.pick {
+  padding: 12px 18px; border: 1px solid var(--red); background: var(--red); color: var(--ink);
+  font: 600 13px/1 var(--f-display); letter-spacing: 0.02em;
+}
+.pick:hover { background: #A8302C; }
+.pick.is-picked { background: transparent; border-color: var(--patina); color: var(--patina); }
+.note { flex: 1 1 260px; min-width: 0; padding: 11px 12px; background: var(--card); border: 1px solid var(--line); color: var(--ink); font: 400 14px/1.4 var(--f-body); }
+.note::placeholder { color: var(--muted); }
+
+.thumbs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.thumb { padding: 0; border: 1px solid var(--line); background: var(--panel); text-align: left; display: flex; flex-direction: column; min-width: 0; }
+.thumb img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; display: block; }
+.thumb span { padding: 7px 9px; font: 500 11px/1.3 var(--f-mono); color: var(--muted); }
+.thumb[aria-current="true"] { border-color: var(--sand); }
+.thumb[aria-current="true"] span { color: var(--ink); }
+
+.summary { max-width: 1240px; margin: 0 auto; padding: 22px 24px; background: var(--panel); border: 1px solid var(--line); }
+.summary h2 { margin: 0; font: 500 26px/1.1 var(--f-display); }
+.summary pre { margin: 14px 0 0; padding: 14px; background: var(--card); border: 1px solid var(--line); white-space: pre-wrap; font: 400 13px/1.6 var(--f-mono); color: var(--stone); overflow-x: auto; }
+.notice { max-width: 1240px; margin: 24px auto 0; color: var(--muted); font-size: 13.5px; }
+.notice p { margin: 6px 0 0; }
+
+@media (max-width: 980px) {
+  .skins { grid-template-columns: 1fr; }
+  .dirs { grid-template-columns: 1fr; }
+  .body { grid-template-columns: 1fr; }
+  .rail { display: none; }
+  .info { grid-template-columns: 1fr; }
+  .thumbs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .ref { grid-template-columns: 1fr; }
+  .save-state { max-width: none; flex-basis: 100%; }
+}
+</style>
+
+<header class="bar">
+  <div class="mark"><span class="logo" role="img" aria-label="Kelwin"></span><span>/ REDESIGN SELECTOR</span></div>
+  <div class="bar-progress"><span id="prog-txt">0 of 0 chosen</span><span class="meter" aria-hidden="true"><b id="prog-bar"></b></span></div>
+  <span class="seg-label">Colour &amp; type</span>
+  <span class="seg" role="group" aria-label="Preview colour and type">
+    <button type="button" data-skin="swiss" aria-pressed="true">Swiss Systems</button>
+    <button type="button" data-skin="kelwin" aria-pressed="false">Kelwin today</button>
+  </span>
+  <button class="btn" id="copy-btn" type="button">Copy my picks</button>
+  <span class="save-state" id="save-state" aria-live="polite">Connecting…</span>
+</header>
+
+<div class="wrap">
+  <section class="intro">
+    <div class="eyebrow">Redesign · Round 1</div>
+    <h1>Pick the new Kelwin, <span>one section at a time.</span></h1>
+    <p id="intro-p">Built from zero: every section of the homepage, plus the navigation and the interior page header, has three new options, each adapted from a real Mobbin reference. No static photography: the hero keeps a background film behind frosted glass (stand-in footage until the real video exists), and everything else is type, grid, flat colour, diagrams and motion. Colour and type are a separate choice: switch every frame between your Swiss Systems palette and today's Kelwin palette with the toggle at the top.</p>
+    <ul class="steps">
+      <li><b>01</b> Choose the colour &amp; type system below</li>
+      <li><b>02</b> Compare today against A, B and C</li>
+      <li><b>03</b> Watch the motion (frames play live; Replay restarts them)</li>
+      <li><b>04</b> Choose one per section, add a note if you want changes</li>
+      <li><b>05</b> Tell me when you're done — I build from your picks</li>
+    </ul>
+  </section>
+
+  <div class="skins" id="skins"></div>
+  <div class="dirs" id="dirs"></div>
+
+  <div class="body">
+    <nav class="rail" id="rail" aria-label="Sections"></nav>
+    <main id="sections"></main>
+  </div>
+
+  <section class="summary" id="summary">
+    <div class="eyebrow">Your picks</div>
+    <h2 style="margin-top:12px">Ready to hand back</h2>
+    <pre id="summary-pre">No picks yet.</pre>
+    <div class="stage-tools"><button class="btn" id="copy-btn-2" type="button">Copy my picks</button></div>
+  </section>
+  <div class="notice" id="notice"></div>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const picks = {};          // sectionId -> {option, note}; "skin" -> {option}
+let skin = "swiss";
+let db = null;
+let saveMode = "local";
+
+function loadLocal() { try { return JSON.parse(localStorage.getItem("kelwin-picks") || "{}"); } catch (e) { return {}; } }
+function saveLocal() { try { localStorage.setItem("kelwin-picks", JSON.stringify(picks)); } catch (e) {} }
+
+function setSaveState(t) { $("#save-state").textContent = t; }
+
+/* ── colour & type skins ── */
+function renderSkins() {
+  $("#skins").innerHTML = DATA.skins.map((k) => `
+    <article class="skin" data-skin-card="${esc(k.id)}" aria-current="${k.id === skin}">
+      <div class="skin-head"><span class="skin-name">${esc(k.name)}</span><span class="skin-spec">${esc(k.spec)}</span></div>
+      <div class="swatches">${k.swatches.map((w) => `<span class="sw" style="background:${esc(w.hex)};color:${esc(w.text)}">${esc(w.name)}</span>`).join("")}</div>
+      <div class="specimen">
+        <span class="d" style="font-family:${k.display};font-stretch:${k.stretch};font-weight:${k.dWeight}">Revenue is architecture.</span>
+        <span class="l" style="font-family:${k.display};font-weight:${k.lWeight};color:var(--stone)">The first returns. The second compounds.</span>
+        <span class="m">${esc(k.monoLine)}</span>
+      </div>
+      <button class="pick" type="button" data-pick-skin="${esc(k.id)}">Choose ${esc(k.name)}</button>
+    </article>`).join("");
+  document.querySelectorAll("[data-pick-skin]").forEach((b) => b.addEventListener("click", () => {
+    picks.skin = { option: b.dataset.pickSkin, note: "" }; persist("skin"); setSkin(b.dataset.pickSkin); refresh();
+  }));
+}
+
+function setSkin(next) {
+  skin = next;
+  document.querySelectorAll(".seg [data-skin]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.skin === skin)));
+  document.querySelectorAll("[data-skin-card]").forEach((c) => c.setAttribute("aria-current", String(c.dataset.skinCard === skin)));
+  document.querySelectorAll("img[data-shot]").forEach((im) => { im.src = skin === "kelwin" ? im.dataset.shotK : im.dataset.shot; });
+  document.querySelectorAll(".stage-wrap iframe").forEach((f) => { try { f.contentWindow.postMessage({ km: "skin", skin }, "*"); } catch (e) {} });
+  try { localStorage.setItem("kelwin-skin-view", skin); } catch (e) {}
+}
+
+/* ── render directions ── */
+function renderDirs() {
+  $("#dirs").innerHTML = DATA.directions.map((d) => `
+    <article class="dir">
+      <div class="dir-cover" style="background-image:url('${esc(d.cover)}')" data-site="Reference · ${esc(d.coverSite)}" role="img" aria-label="Reference for direction ${esc(d.id)}"></div>
+      <div class="dir-body">
+        <div class="dir-id">DIRECTION ${esc(d.id)}</div>
+        <div class="dir-name">${esc(d.name)}</div>
+        <div class="dir-line">${esc(d.oneLiner)}</div>
+        <ul class="dir-traits">${d.traits.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
+        <button class="btn dir-apply" type="button" data-apply="${esc(d.id)}">Pick ${esc(d.id)} for every section</button>
+      </div>
+    </article>`).join("");
+  document.querySelectorAll("[data-apply]").forEach((b) => b.addEventListener("click", () => applyAll(b.dataset.apply)));
+}
+
+/* ── render sections ── */
+function renderSections() {
+  $("#rail").innerHTML = DATA.sections.map((s, i) => `
+    <a href="#s-${esc(s.id)}"><span class="n">${String(i + 1).padStart(2, "0")}</span><span>${esc(s.name)}</span><span class="chip" id="chip-${esc(s.id)}">—</span></a>`).join("");
+  $("#sections").innerHTML = DATA.sections.map((s, i) => {
+    const tabs = [`<button class="tab" role="tab" type="button" data-sec="${esc(s.id)}" data-opt="today" aria-selected="false"><b>Today</b>current site</button>`]
+      .concat(s.options.map((o) => `<button class="tab" role="tab" type="button" data-sec="${esc(s.id)}" data-opt="${esc(o.opt)}" aria-selected="false"><b>${esc(o.opt)}</b>${esc(o.title)}</button>`)).join("");
+    const thumbs = [`<button class="thumb" type="button" data-sec="${esc(s.id)}" data-opt="today"><img src="${esc(s.today)}" alt="" loading="lazy"><span>Today</span></button>`]
+      .concat(s.options.map((o) => `<button class="thumb" type="button" data-sec="${esc(s.id)}" data-opt="${esc(o.opt)}"><img src="${esc(skin === "kelwin" ? o.shotK : o.shot)}" data-shot="${esc(o.shot)}" data-shot-k="${esc(o.shotK)}" alt="" loading="lazy"><span>${esc(o.opt)} · ${esc(o.title)}</span></button>`)).join("");
+    return `
+    <section class="sec" id="s-${esc(s.id)}" aria-labelledby="h-${esc(s.id)}">
+      <div class="sec-head"><span class="sec-n">${String(i + 1).padStart(2, "0")}</span><h2 class="sec-name" id="h-${esc(s.id)}">${esc(s.name)}</h2></div>
+      <p class="sec-job">${esc(s.job)}</p>
+      <div class="tabs" role="tablist" aria-label="${esc(s.name)} options">${tabs}</div>
+      <div class="stage-wrap" id="stage-${esc(s.id)}"></div>
+      <div class="stage-tools" id="tools-${esc(s.id)}"></div>
+      <div id="info-${esc(s.id)}"></div>
+      <div class="thumbs">${thumbs}</div>
+    </section>`;
+  }).join("");
+  document.querySelectorAll(".tab, .thumb").forEach((b) => b.addEventListener("click", () => show(b.dataset.sec, b.dataset.opt)));
+}
+
+const current = {};
+const io = ("IntersectionObserver" in window) ? new IntersectionObserver((ents) => {
+  ents.forEach((e) => { if (e.isIntersecting) { const id = e.target.id.replace("stage-", ""); mountFrame(id); } });
+}, { rootMargin: "300px 0px" }) : null;
+
+function sec(id) { return DATA.sections.find((s) => s.id === id); }
+
+function show(id, opt) {
+  const s = sec(id);
+  current[id] = opt;
+  document.querySelectorAll(`.tab[data-sec="${id}"]`).forEach((t) => t.setAttribute("aria-selected", String(t.dataset.opt === opt)));
+  document.querySelectorAll(`.thumb[data-sec="${id}"]`).forEach((t) => t.setAttribute("aria-current", String(t.dataset.opt === opt)));
+  const stage = $("#stage-" + id);
+  const tools = $("#tools-" + id);
+  const info = $("#info-" + id);
+  if (opt === "today") {
+    stage.innerHTML = `<img class="poster" src="${esc(s.today)}" alt="Today's ${esc(s.name)} section on the live site">`;
+    tools.innerHTML = "";
+    info.innerHTML = `<div class="info"><div class="card"><h3>Today</h3><p class="opt-sum" style="margin:0">This is the section as it ships now. Compare it against A, B and C.</p></div></div>`;
+    return;
+  }
+  const o = s.options.find((x) => x.opt === opt);
+  stage.innerHTML = `<img class="poster" src="${esc(skin === "kelwin" ? o.shotK : o.shot)}" data-shot="${esc(o.shot)}" data-shot-k="${esc(o.shotK)}" alt="Option ${esc(opt)}: ${esc(o.title)}">`;
+  stage.dataset.frame = o.frame;
+  stage.dataset.h = o.height;
+  stage.dataset.mounted = "";
+  tools.innerHTML = `<button class="btn" type="button" data-replay="${esc(id)}">↻ Replay animation</button><a class="btn" href="${esc(o.frame)}" target="_blank" rel="noopener">Open full size ↗</a>`;
+  tools.querySelector("[data-replay]").addEventListener("click", () => { stage.dataset.mounted = ""; mountFrame(id, true); });
+  const picked = picks[id] && picks[id].option === opt;
+  const r = o.reference || {};
+  info.innerHTML = `
+    <div class="info">
+      <div class="card">
+        <h3>Option ${esc(opt)} · Direction ${esc(o.direction)}</h3>
+        <p class="opt-title">${esc(o.title)}</p>
+        <p class="opt-sum">${esc(o.summary)}</p>
+        <h3 style="margin-top:16px">Motion</h3>
+        <ul class="motion">${(o.motion || []).map((m) => `<li>${esc(m)}</li>`).join("")}</ul>
+      </div>
+      <div class="card">
+        <h3>Inspired by</h3>
+        <div class="ref">
+          ${r.thumb ? `<a href="${esc(r.url)}" target="_blank" rel="noopener"><img src="${esc(r.thumb)}" alt="Mobbin reference preview from ${esc(r.site)}" loading="lazy"></a>` : ""}
+          <div><div class="ref-site">${esc(r.site || "—")}</div>${r.url ? `<a class="ref-link" href="${esc(r.url)}" target="_blank" rel="noopener">View on Mobbin ↗</a>` : ""}</div>
+        </div>
+        <div class="kv">
+          ${r.borrowed ? `<div><b>What we borrowed</b>${esc(r.borrowed)}</div>` : ""}
+          ${r.kelwin ? `<div><b>What makes it Kelwin</b>${esc(r.kelwin)}</div>` : ""}
+        </div>
+      </div>
+    </div>
+    <div class="decide">
+      <button class="pick ${picked ? "is-picked" : ""}" type="button" id="pick-${esc(id)}">${picked ? "✓ Chosen for " + esc(s.name) : "Choose option " + esc(opt)}</button>
+      <input class="note" id="note-${esc(id)}" type="text" placeholder="Optional note for this section — e.g. keep A but use B's headline" value="${esc((picks[id] && picks[id].note) || "")}">
+    </div>`;
+  $("#pick-" + id).addEventListener("click", () => choose(id, opt));
+  const note = $("#note-" + id);
+  note.addEventListener("change", () => { if (picks[id]) { picks[id].note = note.value.trim(); persist(id); refresh(); } });
+  if (io) { io.unobserve(stage); io.observe(stage); } else mountFrame(id);
+}
+
+function mountFrame(id, force) {
+  const stage = $("#stage-" + id);
+  if (!stage || !stage.dataset.frame || (stage.dataset.mounted && !force)) return;
+  stage.dataset.mounted = "1";
+  const old = stage.querySelector("iframe"); if (old) old.remove();
+  const f = document.createElement("iframe");
+  f.title = "Live mockup";
+  f.loading = "lazy";
+  f.src = stage.dataset.frame + "#" + skin + (force ? "-" + Date.now() : "");
+  const H = +stage.dataset.h || 900;
+  f.style.height = H + "px";
+  const fit = () => { const s = stage.clientWidth / 1440; f.style.transform = `scale(${s})`; };
+  fit();
+  f.addEventListener("load", () => { try { f.contentWindow.postMessage({ km: "skin", skin }, "*"); } catch (e) {} });
+  stage.appendChild(f);
+  new ResizeObserver(fit).observe(stage);
+}
+
+window.addEventListener("message", (e) => {
+  const d = e.data;
+  if (!d || d.km !== "height") return;
+  const id = d.id.replace(/-[ABC]$/, "");
+  const stage = $("#stage-" + id);
+  const f = stage && stage.querySelector("iframe");
+  if (f && e.source === f.contentWindow && d.h > 200) {
+    f.style.height = d.h + "px";
+    if (!f.classList.contains("is-ready")) { f.classList.add("is-ready"); try { f.contentWindow.postMessage({ km: "skin", skin }, "*"); } catch (err) {} }
+  }
+});
+
+/* ── picks ── */
+async function persist(id) {
+  saveLocal();
+  if (!db) { setSaveState("Saved in this browser only"); return; }
+  try {
+    const p = picks[id];
+    if (p) await db.doc("picks/" + id).set({ option: p.option, note: p.note || "", section: id === "skin" ? "Colour & type" : sec(id).name, updatedAt: new Date().toISOString() });
+    else await db.doc("picks/" + id).delete();
+    setSaveState("Saved · Claude can read your picks");
+  } catch (e) {
+    setSaveState("Couldn't save to the page (" + (e && e.code || "error") + ") — kept in this browser; use Copy my picks");
+  }
+}
+
+function choose(id, opt) {
+  const note = $("#note-" + id);
+  picks[id] = { option: opt, note: note ? note.value.trim() : (picks[id] && picks[id].note) || "" };
+  persist(id);
+  refresh();
+  show(id, opt);
+}
+
+async function applyAll(dir) {
+  for (const s of DATA.sections) {
+    const o = s.options.find((x) => x.direction === dir) || s.options.find((x) => x.opt === dir);
+    if (!o) continue;
+    picks[s.id] = { option: o.opt, note: (picks[s.id] && picks[s.id].note) || "" };
+    await persist(s.id);
+  }
+  refresh();
+  DATA.sections.forEach((s) => { if (current[s.id] && current[s.id] !== "today") show(s.id, current[s.id]); });
+}
+
+function summaryText() {
+  const lines = DATA.sections.map((s, i) => {
+    const p = picks[s.id];
+    if (!p) return `${String(i + 1).padStart(2, "0")} ${s.name}: —`;
+    const o = s.options.find((x) => x.opt === p.option);
+    return `${String(i + 1).padStart(2, "0")} ${s.name}: ${p.option} (${o ? o.title : ""})${p.note ? " — note: " + p.note : ""}`;
+  });
+  const k = picks.skin ? (DATA.skins.find((x) => x.id === picks.skin.option) || {}).name : "—";
+  return "Kelwin redesign picks\nColour & type: " + k + "\n" + lines.join("\n");
+}
+
+function refresh() {
+  const n = DATA.sections.filter((s) => picks[s.id]).length;
+  $("#prog-txt").textContent = `${n} of ${DATA.sections.length} chosen`;
+  $("#prog-bar").style.width = (100 * n / DATA.sections.length) + "%";
+  DATA.sections.forEach((s) => {
+    const c = $("#chip-" + s.id);
+    if (c) { c.textContent = picks[s.id] ? picks[s.id].option : "—"; c.classList.toggle("is-set", !!picks[s.id]); }
+    document.querySelectorAll(`.tab[data-sec="${s.id}"]`).forEach((t) => t.classList.toggle("is-picked", !!picks[s.id] && picks[s.id].option === t.dataset.opt));
+  });
+  $("#summary-pre").textContent = (n || picks.skin) ? summaryText() : "No picks yet.";
+}
+
+async function copyPicks(btn) {
+  const t = summaryText();
+  try { await navigator.clipboard.writeText(t); btn.textContent = "Copied"; }
+  catch (e) {
+    const r = document.createRange(); r.selectNodeContents($("#summary-pre"));
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    btn.textContent = "Selected — press Ctrl/Cmd+C";
+  }
+  setTimeout(() => { btn.textContent = "Copy my picks"; }, 2200);
+}
+
+/* ── boot ── */
+Object.assign(picks, loadLocal());
+try { const v = localStorage.getItem("kelwin-skin-view"); if (v === "kelwin" || v === "swiss") skin = v; } catch (e) {}
+renderSkins();
+renderDirs();
+renderSections();
+document.querySelectorAll(".seg [data-skin]").forEach((b) => b.addEventListener("click", () => setSkin(b.dataset.skin)));
+setSkin(skin);
+DATA.sections.forEach((s) => show(s.id, (picks[s.id] && picks[s.id].option) || (s.options[0] && s.options[0].opt) || "today"));
+refresh();
+$("#copy-btn").addEventListener("click", (e) => copyPicks(e.currentTarget));
+$("#copy-btn-2").addEventListener("click", (e) => copyPicks(e.currentTarget));
+if (DATA.notice) $("#notice").innerHTML = DATA.notice;
+setSaveState("Saved in this browser only");
+
+(async () => {
+  if (!window.claude || typeof window.claude.use !== "function") return;
+  try { db = await window.claude.use("db"); } catch (e) { db = null; }
+  if (!db) return;
+  setSaveState("Connected · picks save to this page");
+  db.collection("picks").onSnapshot((snap) => {
+    snap.docs.forEach((d) => { const v = d.data(); if (v && v.option) picks[d.id] = { option: v.option, note: v.note || "" }; });
+    refresh();
+  }, () => setSaveState("Live sync paused — picks still save"));
+})();
+</script>

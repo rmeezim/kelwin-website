@@ -1,0 +1,158 @@
+/* ── footer · B · Quiet Ledger — 14 Colophon: the index spine's last entry (Until) ──
+   The sitemap is three column ledgers set large, hung from the spine as one
+   ruled table; the two doors are big contact lines; a quiet band below
+   carries the small lockup, and the spine ends there in its square. */
+.km-footer-B {
+  --spine: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));   /* ≈ 386px, the col 3|4 gutter */
+  --rule-y: 128px; --band: 72px;
+  overflow: hidden;
+}
+
+/* the spine (continuous from the page above) ends on the band's rule */
+.km-footer-B__spine { position: absolute; top: 0; bottom: var(--band); left: var(--spine); width: 1px; background: var(--line); z-index: 2; transform-origin: 50% 0; }
+.km-footer-B__open { position: absolute; top: var(--rule-y); left: var(--spine); right: var(--margin); height: 1px; background: var(--line-2); transform-origin: 0 50%; }
+.km-footer-B__joint { position: absolute; top: calc(var(--rule-y) - 2.5px); left: calc(var(--spine) - 2.5px); width: 6px; height: 6px; background: var(--fg); z-index: 3; }
+
+.km-footer-B__grid {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  padding: calc(var(--rule-y) + 48px) var(--margin) 128px;
+}
+
+/* spine column: index numeral + section name only */
+.km-footer-B__idx { grid-column: 1 / 4; grid-row: 1; align-self: start; display: flex; flex-direction: column; align-items: flex-start; }
+.km-footer-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: .9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-footer-B__name {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-2);
+}
+.km-footer-B__sq { width: 8px; height: 8px; flex: none; background: var(--signal);
+}
+
+/* ── the sitemap: three column ledgers, one ruled table hung from the spine ── */
+.km-footer-B__nav { grid-column: 4 / 13; grid-row: 1; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--gutter); }
+.km-footer-B__lh {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3); padding-bottom: 20px;
+}
+.km-footer-B__ul { position: relative; }
+.km-footer-B__row { position: relative; }
+/* rules run through the gutters so the three ledgers read as one table (from the spine to the margin) */
+.km-footer-B__row::before, .km-footer-B__ul::after {
+  content: ""; position: absolute; left: calc(var(--gutter) / -2); right: calc(var(--gutter) / -2); height: 1px;
+  background: var(--line); transform-origin: 0 50%;
+}
+.km-footer-B__row::before { top: 0; }
+.km-footer-B__ul::after { bottom: 0; }
+.km-footer-B__led:last-child .km-footer-B__row::before, .km-footer-B__led:last-child .km-footer-B__ul::after { right: 0; }
+.km-footer-B__a {
+  position: relative; display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+  padding: 18px 0 17px;
+}
+.km-footer-B__a::before {   /* hover fill */
+  content: ""; position: absolute; inset: 1px calc(var(--gutter) / -2) 0; background: var(--panel);
+  opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.km-footer-B__led:last-child .km-footer-B__a::before { right: 0; }
+.km-footer-B__t {
+  position: relative; font-family: var(--f-body); font-stretch: 100%; font-weight: var(--ui-weight);
+  font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; color: var(--fg); white-space: nowrap;
+  transition: transform 300ms var(--ease-out);
+}
+.km-footer-B__ix {
+  position: relative; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); color: var(--fg-3);
+  padding-right: 4px; transition: color 300ms var(--ease-out);
+}
+.km-footer-B__a:hover::before, .km-footer-B__a:focus-visible::before { opacity: 1; }
+.km-footer-B__a:hover .km-footer-B__t, .km-footer-B__a:focus-visible .km-footer-B__t { transform: translateX(8px); }
+.km-footer-B__a:hover .km-footer-B__ix, .km-footer-B__a:focus-visible .km-footer-B__ix { color: var(--fg-2); }
+.km-footer-B__a:focus-visible { outline: none; }
+
+/* ── the two doors: small labels over large contact lines (Legora “Discover”),
+      aligned to the ledger columns: audit door over cols 4–9, contact door over cols 10–12 ── */
+.km-footer-B__doors {
+  grid-column: 4 / 13; grid-row: 2; margin-top: 96px; position: relative;
+  display: grid; grid-template-columns: repeat(9, 1fr); column-gap: var(--gutter);
+}
+.km-footer-B__door--1 { grid-column: 1 / 7; }
+.km-footer-B__door--2 { grid-column: 7 / 10; }
+.km-footer-B__dl, .km-footer-B__cl {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking);
+  text-transform: uppercase; color: var(--fg-3);
+}
+.km-footer-B__big {
+  position: relative; display: inline-block; margin-top: 16px;
+  font-family: var(--f-body); font-stretch: 100%; font-weight: var(--ui-weight);
+  font-size: 32px; line-height: 38px; letter-spacing: -0.015em; color: var(--fg); white-space: nowrap;
+}
+.km-footer-B__big::after {   /* link underline grows from the left */
+  content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out);
+}
+.km-footer-B__big:hover::after, .km-footer-B__big:focus-visible::after { transform: scaleX(1); }
+.km-footer-B__big:focus-visible { outline: none; }
+.km-footer-B__ar { display: inline-block; width: 18px; height: 18px; margin-left: 6px; vertical-align: 0.02em; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: square; overflow: visible; color: var(--fg-2); transition: transform 300ms var(--ease-out), color 300ms var(--ease-out); }
+.km-footer-B__ar--go { width: 22px; height: 18px; }
+.km-footer-B__door--1 .km-footer-B__big:hover .km-footer-B__ar { transform: translate(2px, -2px); color: var(--fg); }
+.km-footer-B__door--2 .km-footer-B__big:hover .km-footer-B__ar { transform: translateX(3px); color: var(--fg); }
+.km-footer-B__ds { margin-top: 12px; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+.km-footer-B__mail { color: var(--fg); border-bottom: 1px solid var(--line-2); transition: border-color 300ms var(--ease-out); }
+.km-footer-B__mail:hover { border-color: var(--fg); }
+
+/* ── colophon: one ledger row under its own rule (index col 4 · line cols 5–9 · type note cols 10–12) ── */
+.km-footer-B__colophon {
+  grid-column: 4 / 13; grid-row: 3; margin-top: 88px; position: relative; padding-top: 28px;
+  display: grid; grid-template-columns: repeat(9, 1fr); column-gap: var(--gutter); align-items: baseline;
+}
+.km-footer-B__crule {
+  position: absolute; top: 0; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line);
+  transform-origin: 0 50%;
+}
+.km-footer-B__cl { grid-column: 1 / 2; }
+.km-footer-B__colo { grid-column: 2 / 7; font-size: 17px; line-height: 26px; color: var(--fg-2); }
+.km-footer-B__set {
+  grid-column: 7 / 10;
+  font-family: var(--f-mono); font-size: 11px; line-height: 18px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); text-wrap: balance;
+}
+
+/* ── the band: small lockup in the spine column; the spine ends here in its square ── */
+.km-footer-B__band {
+  position: relative; height: var(--band); padding: 0 var(--margin);
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: center;
+}
+.km-footer-B__brule { position: absolute; top: 0; left: var(--margin); right: var(--margin); height: 1px; background: var(--line); transform-origin: 0 50%; }
+.km-footer-B__end { position: absolute; top: -2.5px; left: calc(var(--spine) - 2.5px); width: 6px; height: 6px; background: var(--fg); z-index: 3; }
+.km-footer-B__logo { grid-column: 1 / 4; justify-self: start; display: inline-flex; color: var(--fg); --logo-h: 24px; }
+.km-footer-B__copy, .km-footer-B__legal, .km-footer-B__loc {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-footer-B__copy { grid-column: 4 / 10; color: var(--fg-3); }
+.km-footer-B__legal { grid-column: 10 / 11; color: var(--fg-3); white-space: nowrap; }
+.km-footer-B__legal a { color: var(--fg-2); transition: color 300ms var(--ease-out); }
+.km-footer-B__legal a:hover { color: var(--fg); }
+.km-footer-B__loc { grid-column: 11 / 13; justify-self: end; white-space: nowrap; color: var(--fg-2); }
+
+/* ── entrance (html.is-play only): long durations, short distances ── */
+@keyframes km-footer-B-fade { from { opacity: 0; } }
+@keyframes km-footer-B-draw { from { transform: scaleX(0); } }
+@keyframes km-footer-B-up { from { opacity: 0; transform: translateY(12px); } }
+@keyframes km-footer-B-pop { from { opacity: 0; transform: scale(0); } }
+
+.is-play .km-footer-B__open { animation: km-footer-B-draw 900ms var(--ease-out) both; }
+.is-play .km-footer-B__joint { animation: km-footer-B-fade 300ms var(--ease-out) both; }
+.is-play .km-footer-B__num { animation: km-footer-B-fade 400ms var(--ease-out) 200ms both; }
+.is-play .km-footer-B__name { animation: km-footer-B-fade 400ms var(--ease-out) 300ms both; }
+.is-play .km-footer-B__lh { animation: km-footer-B-fade 400ms var(--ease-out) both; animation-delay: calc(320ms + var(--c) * 60ms); }
+.is-play .km-footer-B__led .km-footer-B__row::before { animation: km-footer-B-draw 600ms var(--ease-out) both; animation-delay: calc(420ms + (var(--r) * 3 + var(--c)) * 60ms); }
+.is-play .km-footer-B__led .km-footer-B__a { animation: km-footer-B-fade 600ms var(--ease-out) both; animation-delay: calc(500ms + (var(--r) * 3 + var(--c)) * 60ms); }
+.is-play .km-footer-B__led .km-footer-B__ul::after { animation: km-footer-B-draw 600ms var(--ease-out) both; animation-delay: calc(660ms + (9 + var(--c)) * 60ms); }
+.is-play .km-footer-B__door--1 { animation: km-footer-B-up 700ms var(--ease-out) 1260ms both; }
+.is-play .km-footer-B__door--2 { animation: km-footer-B-up 700ms var(--ease-out) 1420ms both; }
+.is-play .km-footer-B__crule { animation: km-footer-B-draw 600ms var(--ease-out) 1560ms both; }
+.is-play .km-footer-B__cl, .is-play .km-footer-B__colo, .is-play .km-footer-B__set { animation: km-footer-B-fade 700ms var(--ease-out) 1680ms both; }
+.is-play .km-footer-B__brule { animation: km-footer-B-draw 900ms var(--ease-out) 1500ms both; }
+.is-play .km-footer-B__logo, .is-play .km-footer-B__copy, .is-play .km-footer-B__legal, .is-play .km-footer-B__loc { animation: km-footer-B-fade 600ms var(--ease-out) 1800ms both; }
+.is-play .km-footer-B__end { animation: km-footer-B-pop 400ms var(--ease-out) 2100ms both; }

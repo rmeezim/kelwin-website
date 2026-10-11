@@ -1,0 +1,22 @@
+{
+ "title": "The index sheet",
+ "direction": "B",
+ "summary": "Hero B's bar (lockup, right-set tracked caps with Legora +/− disclosures, the outlined AUDIT REQUEST ↗) over the daylight film. A paper sheet hangs from the index spine: its left edge is the spine and its top edge the ledger's opening rule, meeting at the mark's square. Inside, the three capabilities are ruled rows indexed C·01–C·03 (name and descriptor, then four services), closing on C·00 The System Audit with the red door; the spine column carries the open menu's red-square label, one framing line and the way into the full stack.",
+ "reference": {
+  "site": "ZARA (navigation menu)",
+  "mobbin_url": "https://mobbin.com/screens/fab9fd81-4397-423b-a03a-0c5c778c92fa",
+  "ref_file": "refs/nav-B.webp",
+  "borrowed": "ZARA's editorial full-page menu: a narrow left column of top-level categories with the active one marked, beside a widely spaced, bracket-indexed list of subgroups, with generous white space. It reads like a printed index, not a dropdown.",
+  "kelwin": "ZARA's category column becomes B's spine column, set straight on the milky film: the red-square caps label CAPABILITIES, the line 'Three capabilities. / One installed system.', a mono 'C·01 – C·03 · 12 services' and a tracked-caps 'The full stack, on one page →'. ZARA's bracket-indexed subgroups become a ruled ledger on paper, hung from the spine at the col 3|4 gutter. Each capability is one row on cols 4–12: a mono C·0n, the name (24px Mona 500, normal width) over its descriptor, its four services as a 4-line column on cols 8–11, and an arrow on col 12. The thumbnails become the closing C·00 System Audit row, with a red 52px REQUEST A SYSTEM AUDIT ↗ aligned to the services column. Because the sheet starts at the spine, the daylight film stays open in cols 1–3 and under the sheet: a man seen from behind stands behind the index, and the room continues below."
+ },
+ "motion": [
+  "entrance (long durations, short distances): the spine draws top-down (1.1s) as the paper sheet hangs open from the bar (clip-path, 900ms --ease-out), and the joint square appears. Capabilities' '+' folds to '−' (360ms --ease-inout).",
+  "entrance: each row's rule draws from the spine to the margin (900ms, 140ms per row, the first being the opening rule), then the row's index, name and descriptor rise 12px, followed by its service column (700ms). The closing audit rule (--line-2) draws last and the C·00 System Audit row rises. The spine column (red-square CAPABILITIES label, the framing line, the C·01–C·03 meta, the stack link) fades in from 650ms, staggered.",
+  "demo (~2.0s): the pointer rests on C·02 GTM Infrastructure. The row fills --panel from spine to margin, the name steps 8px right and the arrow darkens (360ms --ease-inout).",
+  "interaction: every row hovers the same way and the whole row is the link. The stack link's underline darkens, the red button deepens to --accent-hover and its ↗ moves 2px up-right, and the outlined AUDIT REQUEST inverts.",
+  "ambient: only the daylight film (hero B's calibration: blur 10px, 22% paper frost, base grain, 48s drift), with a man seen from behind in the spine column and colleagues under the sheet.",
+  "on the live site: the sheet opens on hover or focus of CAPABILITIES (aria-expanded) and closes on Esc; the spine column's label and framing line swap per open menu (The Firm, Resources). Reduced motion shows the final state."
+ ],
+ "demoMs": 3200,
+ "notes": "Stage is 800px so the open film reads as people. Coherence pass: the spine column no longer shows a big '01' and a 02–05 sibling list — those numbers collided with the homepage section indices (02 Reframe, 03 Evidence …) and repeated the bar. It now holds the red-square caps label, 'Three capabilities. / One installed system.' and a mono 'C·01 – C·03 · 12 services' line. Capability rows use the C· index shared with the footer and interior pages; the audit is C·00 because every engagement starts there. Film recalibrated with the hero (blur 10px, paper frost 22%, brightness 1.02, saturation .7, grain .42) so the heads and shoulders under the sheet read as people. Red appears only on the label square and the audit button. Arrows are drawn SVG."
+}

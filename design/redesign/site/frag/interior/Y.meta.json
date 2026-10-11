@@ -1,0 +1,30 @@
+{
+ "title": "The issued datasheet",
+ "direction": "A×C",
+ "summary": "A second, genuinely different picture for your interior pages: an engineering datasheet. On the left the capability is named like a product ('Narrative / Systems', with its terms underneath). On the right, the thing Narrative Systems actually installs, your narrative written down as one document, is drawn to scale. Its four blocks are keyed to the four services, and you watch it being typeset and then issued.",
+ "reference": {
+  "site": "Joby Aviation (Mobbin), with round-1 A's restraint and C's drawing discipline",
+  "mobbin_url": "https://mobbin.com/sites/sections/bf44b5c4-7680-4935-9430-4488a7be61cf",
+  "ref_file": "refs/interior-r2-Y.webp",
+  "borrowed": "Joby's summary sheet: the subject named at top-left, a ruled spec table anchored at bottom-left, and one large unframed 1px drawing on the right under a small 'Fig.' caption on a hairline.",
+  "kelwin": "Hero X's bar, solid graphite, with CAPABILITIES current and + marks at the hairline ends. Cols 1–5: '■ Capability 01', then the name in the head grammar's two voices, 'Narrative' in ink and 'Systems' light, at 96px. Below it are the 48×2 red rule, the 20px lede and a three-row facts ledger (Engagement · Output · Starts with: The System Audit ↗), anchored to the column's foot. Cols 7–12 hold Joby's aircraft, replaced by Kelwin's FOLIO: one 340×480 sheet named 'Narrative OS'. Its four blocks are drawn as text rules: the positioning line (the one red), its paragraph, a 3×3 message matrix, a question-and-answer script, and a three-step proof chain with square nodes. Each block is keyed by one callout on the sheet's edge (01.1 Positioning · 01.2 Message matrix · 01.3 Sales language · 01.4 Proof & evidence), and a '01 / 07' folio marks it as one of the seven artifacts you own. Then a ruled cut: the body opens on '■ Overview' and 'Decide what / the market hears.' (64px), and four strips repeat the callout codes."
+ },
+ "motion": [
+  "entrance (≈1.4s): the nav hairline draws and the CAPABILITIES underline seats on it. '■ Capability 01' fades in, 'Narrative' and 'Systems' rise out of their masks 200ms apart, the red rule draws, and the lede and the three facts rows fade up in turn. The figure's caption hairline draws and its caption fades in.",
+  "orchestrated moment, the FOLIO morph (0.6–4.4s): the sheet appears as a draft with a dashed edge, and the caption reads DRAFT. It is then typeset top to bottom in reading order: the document's name and header rule; the red positioning line (01.1) and its paragraph; the message-matrix table (01.2); the question-and-answer script (01.3); and the proof chain, whose three nodes latch outline → filled one after another (01.4). Each callout registers as its block completes. At 3.5s the edge plots solid over the dashed one, the draft edge fades out, the caption swaps DRAFT → ISSUED and the '01 / 07' folio appears.",
+  "body (from 2.5s, standing in for the scroll): the ruled cut draws, the head runs ('■ Overview', the statement rising line by line, the rule, the note), and the four strips cascade 01.1 → 01.4.",
+  "ambient: none. Once the sheet is issued, nothing moves.",
+  "interaction: kit hovers only (nav items lift to --fg; the outlined AUDIT REQUEST and the 'The System Audit ↗' link brighten, with the ↗ nudging).",
+  "on the live site: the sheet is typeset once when 40% of it is visible (IntersectionObserver, no pin). Reduced motion shows the issued sheet straight away, with no timers or loops."
+ ],
+ "demoMs": 5000,
+ "notes": "The stage is 1310px: the 96px nav, the datasheet, a ruled cut, and the body cropped after the four strips. What changed in this pass: the previous Y drew a contour field, the same noise-into-order idea as X, so you would have seen one picture three times. Y now uses FOLIO (sheets), the one primitive that is literally what Narrative Systems ships. The stacked index title (Narrative Systems / Services / Engagement / Proof) was replaced by the capability's name in two voices. Its 01–04 section numbers sat beside the services' 01.1–01.4 codes, which gave two numbered lists side by side and no single reading path. One deliberate departure from DIRECTION-AC: its glyph table gives Narrative Systems CONTOUR and gives FOLIO to Insights/Reports. Y breaks that so the three options differ. If you pick Y, the nav's Narrative Systems glyph should become a small sheet to match. C quotas: 1 drawing, 4 callouts, 0 dimension lines, 0 title blocks (the caption hairline stands in), 2 registration marks and about 12 annotation words. Mono is used only for single-line captions, keys and codes. Red appears only on the label square, the two rules and the positioning line. There is no red button in the header: 'The System Audit ↗' links to /audit, and the red primary + 'Talk to the team' pair belongs to the page's closing decision panel (not shown). The sheet's contents are abstract text rules, illustrative and labelled Specimen.",
+ "addressed": [
+  "'Too similar to the homepage hero' → no film, photo or slogan over a backdrop. The page is named like a product, with its terms beside a technical drawing.",
+  "'More proprietary, more thoughtfully designed' → the drawing is the real deliverable: your narrative as one document, whose four blocks are the four services.",
+  "'Too cluttered' → one drawing, four labels and three facts. The old four-line index title is gone.",
+  "Three real choices → Y draws a document (sheets), not the wave lines X uses.",
+  "Your bias towards C → C's precision (callouts on the sheet's edge, a Fig. caption) without its cells, coordinates or mono text.",
+  "'Definitely not B' → no paper, film or photo. The logo symbol appears only in the nav lockup."
+ ]
+}

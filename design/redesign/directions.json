@@ -1,0 +1,257 @@
+{
+ "directions": [
+  {
+   "id": "A",
+   "name": "Cinematic Figures",
+   "one_liner": "Plurel's architectural sibling: graphite cinema, two-voice wide headlines, and in every act one numbered FIG. plate built from the nested corners of the Kelwin mark.",
+   "thesis": "This is the founder's own target (refs/user-kelwin-intent.webp + refs/user-plurel.webp), done to the standard of a defense prime's in-house brand team. The page plays like a film in acts. Each act opens with a red-square label and a two-voice statement (wide medium, then light) and is proved by one numbered FIG. plate. The hero's frosted film is FIG. 01. Every later figure is a flat graphic built only from the mark's nested right angles, with a Plurel-style segmented control that switches it between two states. It uses Plurel's ingredients (dot nav, outlined 'Audit request \u2197', red \u2197 CTA, FIG. captions, film controls), set harder: a sharper type scale, a stricter grid and fewer words.",
+   "type": "Statements use Mona Sans wide 110%, sentence case, in two voices. Hero H1 is 120px, line-height 0.94, tracking -0.035em, max 3 lines; the final clause ('problem.') is weight 300 in --fg-2 and the rest is weight 500 in --fg. Section H2 is 80px, 0.98, -0.03em, exactly 2 lines: line 1 weight 500 --fg, line 2 weight 300 --fg-2, at most 22 characters per line. H3 strip/figure titles are 28-32px wide 500. Numerals are wide 500, 176px, tabular, -0.04em, with the unit or sign (%, :, \u0394) in weight 300 at the same size; cap them at 120px in 3-column strips. Lede is Mona 400 normal width, 20px/1.5 --fg-2, max 44ch. Body is 17px/1.6 and support 15px. Labels are an 8px solid square (--signal on graphite, --accent on paper, paper on red) followed by JetBrains Mono 12px uppercase at 0.06em, e.g. '\u25a0 GTM SYSTEMS PARTNER'. FIG. captions are mono 12px uppercase --fg-3. Nav is Mona 400 15px with items joined by ' \u00b7 '. The primary button is a flat red rectangle, 56px tall, Mona 500 17px sentence case: 'Request a System Audit \u2197'. The secondary is Mona 500 16px text with \u2192 and a 1px underline at 6px offset. The segmented control is 48px tall with a 1px --line-2 border, Mona 400 15px; the active segment is --fg fill with --bg text.",
+   "layout": "1440 stage, 64px margins, 24px gutters, 12 columns. The nav is 96px tall: lockup at col 1, dot nav centred over cols 4-9, outlined 44px 'Audit request \u2197' right-aligned to col 12, and a 1px --line hairline from margin to margin under it. Sections are padded 160px top and bottom. Each opens with a label row (red-square label at col 1, mono 'FIG. 0n' right-aligned to col 12). The statement sits 48px below in cols 1-8. The lede and CTA sit in cols 9-12, baseline-aligned to the statement's last line. The FIG. plate sits 96px below, spanning cols 1-12 (or the full 1440 bleed for hero and architecture). Plates are flat --panel, 480-560px tall, with a 56px caption band inside the bottom edge: caption at bottom-left, control at bottom-right, each 24px inset. Lists are 2-4 equal strips divided by full-height 1px --line verticals: mono index at top, H3, body anchored to the bottom. No cards. Density is medium-low: one statement, one figure and at most 4 items per act, with at least 40% of each section empty. Graphite-to-graphite acts are separated by a margin-to-margin --line rule plus the next label row; surface changes are hard cuts. Only figures are numbered (FIG. 01 is the hero film); acts are labelled in words.",
+   "surface_rhythm": "Graphite about 65%: nav, hero, reframe, stack, architecture, state change, method, assets, FAQ, footer, interior. Paper about 20%: evidence, fit and before/after, the reading and comparison acts. Full red about 15%: exactly two planes, the principle band and the final CTA, never adjacent. On red the accents invert: the CTA becomes a paper rectangle with red text, label squares turn paper, and figure lines become --line on red. Elsewhere red appears only as CTA fills, label squares, and the single red element in each figure.",
+   "graphics": "Photography is limited to the hero film: dark warm frost (--film-frost .42, blur 30px, with a left-to-right legibility scrim allowed inside .km-film only). It is reprised once, in the interior page header at a different crop (--film-pos 70% 50%), 640px tall. Everything else is a flat FIG. plate built only from the mark's vocabulary: nested right-angle corners (one heavy, then thin), steps and solid squares, keeping the mark's 30/12/28 bar proportions and 6-unit gaps. Fills are flat (--panel-2, --cool, --soft, --fg) with exactly one red element: the K4 core by default, or the selected element when the figure has a selection. Figures by section: reframe shows Surface (corners scattered) vs Architecture (nested); evidence gets a proportional corner bar per numeral; stack shows K1-K4 exploded and labelled; architecture shows the four elements rotated into a closed loop with travelling 8px signal squares; state change shows a compounding staircase; method shows a four-step staircase; assets shows a numbered parts tray.",
+   "signature_device": "The FIG. plate. Every act carries one numbered figure: a flat plate with a mono 'FIG. 0n \u00b7 TITLE' caption at bottom-left and a Plurel segmented control at bottom-right (Surface | Architecture, Before | After, Phase 1-4, layer names) that switches it between states. FIG. 01 is the frosted hero film itself, with a 'Pause film' control. FIG. 02 onward are nested-corner graphics with one red square.",
+   "motion": "Entrances take at most 1.6s per act. The label fades in (300ms). Statement lines then rise out of masks (translateY 100% to 0, 800ms --ease-out, 120ms stagger), with the light clause landing 200ms after the medium line. Lede and CTA fade up 12px (600ms). Finally the figure assembles: corners slide in from the top-right one at a time (700ms each, 120ms stagger), and the red core lands last (400ms), the 'installed' beat. State changes from the segmented control re-arrange the geometry over 900ms --ease-inout; demos auto-advance once at about 2.4s. Numerals count up once over 1.2s. The only ambient motion is the hero film (32s drift, silhouettes crossing) and a 1px progress hairline under the film control. On CTA hover the fill goes to --accent-hover and the \u2197 shifts 2px; 'Pause film' really pauses. On the live site each figure advances its state once when 50% visible. Reduced motion shows the final state. No bounce.",
+   "traits": [
+    "Plurel's sibling: dot nav, red \u2197, FIG. captions",
+    "Two-voice wide headlines (medium + light)",
+    "Flat figure plates built from the nested-corner mark",
+    "Graphite cinema with two full-red acts"
+   ],
+   "do": [
+    "Keep the founder's hero intact and sharpen it: dot nav with hairline and outlined 'Audit request \u2197'; '\u25a0 GTM SYSTEMS PARTNER'; a 3-line H1 ending in a light, muted 'problem.'; a 48\u00d72px --signal rule; a 20px lede in cols 1-5; the red 'Request a System Audit \u2197' plus an underlined contact link; '\u25a0 A FIXED-SCOPE DIAGNOSTIC' note at cols 10-12; and a bottom band with 'FIG. 01 \u00b7 THE ROOM WHERE PIPELINE IS DECIDED' on the left and 'Pause film' on the right",
+    "Give each act one statement and one figure, and let the figure carry the argument",
+    "Build every figure only from the mark's geometry: flat fills, one red element",
+    "Pair each figure with a caption and, where the content has two states, a segmented control",
+    "Set every second clause in weight 300 + --fg-2; get emphasis from weight, never from extra colours",
+    "Leave at least 40% of each section empty"
+   ],
+   "dont": [
+    "No corner brackets, HUD panels, readouts, radar, dot-matrix numerals or terminal cursors (today's site)",
+    "No third full-red plane, no two reds in a row, no decorative red inside figures",
+    "No cards, bento grids or icons; lists are hairline strips",
+    "No uppercase statements (that is C's voice), and no statements below 64px",
+    "No photography outside the hero film and its one interior reprise",
+    "No rounded corners, gradients or glow"
+   ],
+   "references": [
+    {
+     "site": "Grok (xAI)",
+     "mobbin_url": "https://mobbin.com/sites/sections/6857a406-9c8b-4b57-8247-c96e015c140b",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-5.webp",
+     "what": "Mission section: a bracketed mono label over a two-line headline with a muted second line, body copy and an outlined \u2197 button bottom-right on a dark field. Model for the hero's bottom-right note and corner placement."
+    },
+    {
+     "site": "A24",
+     "mobbin_url": "https://mobbin.com/sites/sections/6273675b-53ef-400e-a5b4-77ff67a08a33",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-7.webp",
+     "what": "Large type stacked directly over a running film, first line muted, with mono superscript metadata. Model for type-over-film hierarchy (Kelwin's film is frosted)."
+    },
+    {
+     "site": "Tailscale",
+     "mobbin_url": "https://mobbin.com/sites/sections/e72d1d36-a761-4557-b655-d2797beb7abb",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-6.webp",
+     "what": "Flat two-tone geometric tiles inside a solid plate: a brand mark's geometry used as illustration. Kelwin swaps the quarter-circles for nested corners."
+    },
+    {
+     "site": "Zipline",
+     "mobbin_url": "https://mobbin.com/sites/sections/baf31b25-1858-463c-bf15-611d9c669092",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-20.webp",
+     "what": "Two huge numerals with caps captions on a flat field. Model for the 2\u00d72 evidence cells."
+    },
+    {
+     "site": "Metalab",
+     "mobbin_url": "https://mobbin.com/sites/sections/26e93485-a46d-464b-b795-f4eb9101403c",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S1-6.webp",
+     "what": "Strips divided by vertical hairlines with the index at top and the label at bottom. The list rhythm for every act."
+    },
+    {
+     "site": "Zellerfeld",
+     "mobbin_url": "https://mobbin.com/sites/sections/18df6730-6569-49da-9c23-3bee32fbe638",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S1-26.webp",
+     "what": "A giant mark + wordmark lockup filling the footer under mono-headed link columns. Model for the Kelwin footer."
+    }
+   ],
+   "cover_ref": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/user-kelwin-intent.webp",
+   "cover_site": "Founder reference"
+  },
+  {
+   "id": "B",
+   "name": "Quiet Ledger",
+   "one_liner": "Legora-calm Swiss editorial: a daylight frosted film, paper-led reading, one continuous index spine, and ruled ledgers that open in place.",
+   "thesis": "This direction moves toward calm authority. Kelwin reads like a sovereign fund's annual report or an AI lab's research index: mostly paper, very few words per screen, everything indexed and sourced, and every list a hairline ledger that opens in place like Legora's accordions. The frosted film stays, but as daylight: milky glass with silhouettes moving behind it, so the first impression is quiet confidence rather than spectacle. The mark appears as structure: a single index spine runs the length of the page, and every section hangs from it at a right angle (the logo's corner drawn as a hairline).",
+   "type": "The two-tone comes from colour, not weight: a sentence followed by a muted second sentence at the same weight. Mona Sans wide 110%, weight 500, sentence case. Hero H1 is 96px, line-height 1.0, tracking -0.03em; sentence 1 is --fg and sentence 2 is --fg-3 ('Revenue is an architectural problem. We design the system that solves it.'), max 4 lines. Section H2 is 56px, 1.06, -0.025em, sentence plus muted follow-up, at most 3 lines. The spine index is Mona wide weight 300, 64px, --fg-3, tabular, with the section name under it in mono 12px uppercase --fg-2. Evidence numerals are Mona wide weight 300, 200px, tabular, with the source in mono 11px under a 1px rule. Ledger row titles are Mona 500 at normal width (100%), 24px/1.25; descriptors are 17px --fg-2; the index is mono 12px; the toggle is a 20px '+' drawn from 1px lines that rotates to '\u2212'. Body is Mona 400 18px/1.65 --fg-2 at a measure of cols 4-8 (62ch max); support is 15px. Labels are mono 12px uppercase at 0.06em --fg-3, with no red squares except one 8px marker in the hero label. Nav items are Mona 400 15px with '+' disclosure marks and an outlined 40px 'Audit request \u2197'. The primary button is a 52px red rectangle in Mona 500 16px; the secondary is underlined text with \u2192.",
+   "layout": "The spine is a 1px --line vertical at the col 3|4 gutter (left: calc(var(--margin) + 3*var(--col) + 2.5*var(--gutter)), about 386px). It runs uninterrupted from the hero's bottom edge to the footer, through every surface change. Sections are padded 200px top and bottom. Each opens with a 1px --line-2 rule from the spine to the right margin, meeting it at a right angle, with a 6px --fg square at the joint (echoing K4). Cols 1-3 hold only the index numeral and section name (sticky on the live site). Statements sit in cols 4-10, body in cols 4-8, side notes and sources in cols 10-12. Ledgers are the universal list, in cols 4-12: index in col 4, title in cols 5-8, descriptor in cols 9-11, toggle or value right-aligned in col 12. Rows are 1px --line apart with 28px vertical padding, and exactly one row is open by default. An inset --panel plate holding one typographic object may appear at most once every three sections. Density is the lowest of the three: at most 60 words of body per screen, at least 45% of each section empty. Sections are numbered 01-14 in the spine; rows use N\u00b701; method uses decimals 1.0-4.0. In the hero, the H1 is anchored lower-left (cols 1-9), the lede sits in cols 1-5 with the two doors below, and cols 10-12 hold a three-row quiet ledger (Fixed scope \u00b7 Ten working days \u00b7 The readout is yours to keep).",
+   "surface_rhythm": "The hero is a daylight film on data-surface='light'. Paper takes about 60% (reframe, evidence, state change, principle, method, fit, before/after, FAQ) and graphite about 30% (stack, architecture, assets, footer), never more than two graphite sections in a row. Red is about 5%: one red inset panel for the final CTA (Legora's dark CTA panel made red), plus primary buttons and the hero marker. No full-red sections and no red text.",
+   "graphics": "Type, rules and numerals do almost all the work: no figures, icons, isometrics or cells. Architecture holds the only diagram, a quiet orthogonal hairline loop (Narrative \u2192 Channels \u2192 Signals \u2192 Intelligence \u2192 back) in 1px --fg-3 with mono node labels, where the single return path is --accent. Evidence may add a hairline 100-tick unit rule under each numeral, never a chart. The mark appears as the spine's corner joint and as stepped indents in the stack ledger (row n's title indents by (n-1)\u00d724px). The film uses daylight frost: '.km-hero-B .km-film__frost { background-color: color-mix(in srgb, var(--bg) 64%, transparent) }' with --film-bright 1.05, --film-blur 36px, --film-sat .6, so silhouettes read as soft warm-grey shadows behind milky glass under ink type. It is reprised once, in the interior page header (560px), with the same daylight frost.",
+   "signature_device": "The Index Spine. One continuous hairline at the col 3|4 gutter runs the whole page, and every section hangs from it with a right-angle opening rule (the logo's corner as a hairline, with a small square at the joint). A light wide index numeral and the mono section name sit in the spine column; the content sits to the right, almost always as a ledger that opens in place.",
+   "motion": "Long durations, short distances, --ease-out. The opening rule draws from the spine to the right margin (900ms). The index numeral fades in (400ms). The statement fades and rises 12px (700ms), with the muted sentence 160ms later. Ledger rows reveal top-down, each rule drawing (600ms) as its text fades, at a 60ms stagger. Numerals never count; they fade in as their top rule draws. Ledgers open with height and opacity over 360ms --ease-inout as '+' rotates to '\u2212'; demos open the second row at about 1.8s. The only ambient motion is the hero film, slowed to a 48s drift with a silhouette crossing about every 30s. A hovered row fills --panel and its title shifts 8px right; links underline from the left. On the live site the sticky spine index crossfades (300ms) as sections pass. Reduced motion shows the final state.",
+   "traits": [
+    "Daylight frosted film under ink type",
+    "Paper-led, Legora-calm whitespace",
+    "One continuous index spine with ruled ledgers",
+    "A statement followed by a muted second sentence"
+   ],
+   "do": [
+    "Write every statement as a sentence plus a muted second sentence at the same weight",
+    "Hang every section from the spine; nothing but the index enters cols 1-3",
+    "Make every list a ledger with exactly one row open",
+    "Put a mono source under a hairline for every number",
+    "Spend whitespace: 200px section padding and deliberately empty columns",
+    "Use stepped indents in the stack ledger as the typographic echo of the mark"
+   ],
+   "dont": [
+    "No figures, geometry plates, isometric drawings, cells, crosshairs or title blocks (those belong to A and C)",
+    "No full-red sections and no red text",
+    "No dark film frost (that's A)",
+    "No cards, bento, icons or boxes around content",
+    "No uppercase display, and no wide type below 40px",
+    "Nothing from today's site: brackets, HUD, dot-matrix, terminal"
+   ],
+   "references": [
+    {
+     "site": "Legora",
+     "mobbin_url": "https://mobbin.com/sites/sections/fc998a50-1d47-4ca5-baac-cf5e08bb7df8",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-1.webp",
+     "what": "Assistant section: a small caps label, a two-line statement, and a quiet accordion with one row open beside a calm inset plate. The core calm grammar."
+    },
+    {
+     "site": "Legora",
+     "mobbin_url": "https://mobbin.com/sites/sections/96bf78ea-b1ce-4776-965e-c570af80d588",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-3.webp",
+     "what": "Label and date held in a narrow left column, with content to the right under a single hairline. The index-spine posture."
+    },
+    {
+     "site": "Legora",
+     "mobbin_url": "https://mobbin.com/sites/sections/b23738fd-71ca-42c3-88bb-1dedc285c3ab",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-2.webp",
+     "what": "FAQ as hairline rows with + and one open. The ledger that opens in place."
+    },
+    {
+     "site": "Legora",
+     "mobbin_url": "https://mobbin.com/sites/sections/de997de8-3e43-4060-a258-2b2e10dea2ca",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-4.webp",
+     "what": "Product hero: headline top-left, body and button anchored bottom-left, generous emptiness. Model for hero anchoring and pacing."
+    },
+    {
+     "site": "Cartesia",
+     "mobbin_url": "https://mobbin.com/sites/sections/b8608ed1-0d62-4162-92ba-539871655c72",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S3-18.webp",
+     "what": "Index numerals in a fixed left column, with rows framed by full-height rules. The spine."
+    },
+    {
+     "site": "Instrument",
+     "mobbin_url": "https://mobbin.com/sites/sections/10b3f9ff-98d3-4526-b4e3-bc5efeb5724c",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-7.webp",
+     "what": "Huge figures stacked as ruled rows with a narrow caption column. The evidence grammar."
+    },
+    {
+     "site": "Linear",
+     "mobbin_url": "https://mobbin.com/sites/sections/11fa0cf7-8a9c-41f1-b38f-66918fac01f4",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-11.webp",
+     "what": "Decimal-indexed columns divided by hairlines. The method phases."
+    },
+    {
+     "site": "Legora",
+     "mobbin_url": "https://mobbin.com/sites/sections/85d5fc55-bcd5-4aa3-8ba1-95bfb4ae6146",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-8.webp",
+     "what": "Contact page: small labels over large contact lines. The footer contact block."
+    }
+   ],
+   "cover_ref": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/dirD-1.webp",
+   "cover_site": "Legora"
+  },
+  {
+   "id": "C",
+   "name": "Systems Drawing Set",
+   "one_liner": "Palantir-grade rigour: every section is a sheet from Kelwin's drawing set, with a cell-built nav, framed graphite night plates, 1px isometric drawings of the four-layer mark, title blocks, and one red plane marking the installed layer.",
+   "thesis": "This direction moves toward systems and instrument rigour. Kelwin documents its work the way a defense or infrastructure company documents an assembly: numbered sheets, a visible 12-column frame, cell rows, mono coordinates and exact 1px drawings. The drawing subject is Kelwin's own mark, extruded into an exploded isometric stack of its four elements (Narrative, Data, Orchestration, Intelligence). In every drawing one flat red plane marks the layer under discussion. Dense where density earns it, always labelled, never decorative. 'Revenue is an architectural problem' is literally drawn.",
+   "type": "Sheet titles are Mona Sans wide 110%, weight 500, UPPERCASE. The hero title is 104px, line-height 0.94, tracking -0.01em, 3 lines ('REVENUE IS AN / ARCHITECTURAL / PROBLEM.'); section titles are 72px, 0.96, 2-3 lines, flush to the bottom-left of the title cell. The last line may drop to --fg-3 only when the statement has a turn (hero, reframe). The counter-voice is the note cell: Mona weight 300, sentence case, 24px/1.4 --fg-2, cols 9-12. Cell numerals are wide 500, 112px, tabular, with a boxed mono unit chip ([%], [WD], 11px, 1px --line-2). Mono is the dominant small voice: JetBrains Mono 11-12px uppercase, 0.04-0.06em, at least --fg-3, used for SHEET 04/16, cell IDs, X/Y coordinates, dimension values, [01] tabs and A-F callouts. Body is Mona 400 15-16px/1.55, at most 4 columns. Spec tables put the key in mono 12px --fg-3 and the value in Mona 15px --fg. Buttons are cells: the primary is a filled red cell at least 3 cols by 64px with mono 12px 'INITIATE SYSTEM AUDIT \u2197' bottom-left; the secondary is a 1px --line-2 bordered 'CONTACT \u2192' cell.",
+   "layout": "The nav is a row of 64px bordered cells: lockup (cols 1-2), five mono menu cells, a UTC/coordinate cell, and a filled red 'AUDIT REQUEST \u2197' cell at cols 11-12. The frame is 1px --line verticals at both margins (x=64 and x=1376) running down the whole page. Each sheet opens with a --line-2 horizontal, and 9px '+' crosshairs sit at the frame corners and at 2-4 chosen intersections (never all of them). The module is 12 cols by 96px rows; content sits inside cells with a 24px inset, and borders are drawn only where a cell exists. Each sheet has a title row (title cell cols 1-8 | note cell cols 9-12); a body with a drawing field (cols 1-8) over a faint dashed construction grid and a spec column (cols 9-12) for tabs, spec table or copy; and a 48px bottom band with a mono legend/ticker (cols 1-8) and a title block (cols 9-12: SHEET 05/16 \u00b7 REV C \u00b7 SCALE 1:1 \u00b7 KELWIN/GTM). Sheets butt together with 96px internal top padding. Density is the highest of the three, up to 6 data points per sheet, but the drawing field keeps at least 30% empty. Numbering: SHEET 01-16, FIG. n.n, callouts A-F keyed to spec rows, tabs [01]-[04] with the active tab inverted. In the hero, the title cell sits bottom-left in cols 1-8; the note cell in cols 9-12 holds the light lede, the red audit cell and the contact cell; the bottom band carries the ticker NARRATIVE \u00b7 DATA \u00b7 ORCHESTRATION \u00b7 INTELLIGENCE and the title block.",
+   "surface_rhythm": "Graphite night plates take about 70%: nav, hero, reframe, stack, architecture, state change, method, assets, before/after, footer and interior, drawn in 1px --fg/--cool lines. Paper document sheets take about 20%: evidence, principle, fit and FAQ, drawn in ink. Red is about 10%: one full-red sheet for the final CTA, where the drawing inverts to paper lines and the audit cell becomes paper with red text. Every other sheet has exactly one red element besides the action cell: the red plane, a red callout tag, or a red datum line, never more than one.",
+   "graphics": "1px inline-SVG isometric and axonometric drawings, with iso angles exactly 30\u00b0 and no fills except the red plane, all derived from the mark's four elements. Three to four master drawings are reused: the exploded K1-K4 stack, a section cut (surface vs architecture), an orthogonal routing plan (bordered node cells, dashed connectors, closed loop), and a phase gantt on graph-paper grid. Annotation uses dimension lines with end ticks and mono values, lettered callouts on orthogonal leaders keyed to spec tables, red callout tags (a filled red rectangle with a mono code and a 2-line label), parts lists and title blocks. The film uses cool night frost (--film-sat .4, --film-frost .55, --film-bright .7) under a drafting overlay: 12 column verticals, crosshairs at four intersections, an X/Y readout at the frame edge, and a title block 'SHEET 01/16 \u00b7 FIG. 1.0 \u00b7 OBSERVED ROOM \u00b7 LIVE'. Never put reticles or tracking boxes on the people. No reprise: the interior header is a drawing sheet.",
+   "signature_device": "The installed red plane. Kelwin's four-layer assembly is drawn in 1px isometric line work, and a single flat red plane slots into the layer under discussion, tagged with a mono dimension callout ([L3 \u00b7 ORCHESTRATION]) and framed by the sheet's title block. It moves layer to layer as tabs or scroll advance. Red always means 'the layer Kelwin installs' or the action.",
+   "motion": "Drafting order, --ease-inout, no overshoot. Frame verticals and crosshairs fade in (300ms). Cell borders then draw in raster order (40ms stagger). The drawing plots via stroke-dashoffset, construction lines then outlines then dimensions (1.6-2.4s). The red plane drops into its slot (opacity plus 8px settle, 400ms). Mono values type on (24ms per character) and title-block coordinates tick to their final values. Tabs [01]\u2192[04] step every 1.2s in demos (scroll-linked on the live site), moving the red plane to the matching layer over 600ms. Ambient motion is limited to one mono readout updating every 6s with a 200ms digit change, plus the hero film. Interaction: an X/Y cursor readout on the frame edge, spec-row hover turning its lettered callout and leader --accent, and cell hover inverting the cell (--fg fill, --bg text). Reduced motion shows the fully plotted final state.",
+   "traits": [
+    "Cell nav, framed sheets, crosshair registration",
+    "1px isometric drawings of the four-layer mark",
+    "One red plane per drawing marks the installed layer",
+    "Uppercase wide sheet titles, mono everywhere"
+   ],
+   "do": [
+    "Make every section a numbered sheet with a title block, and caption every drawing FIG. n.n",
+    "Draw only Kelwin subjects (the mark's layers, signal routes, phases), never buildings, machines or people",
+    "Use exactly one red element per sheet besides the action cell, and make it mean something",
+    "Key every lettered callout to a spec row, and label illustrative values SPECIMEN",
+    "Keep every line at 1px (construction lines dashed --line) with exact 30\u00b0 iso angles",
+    "Put documents on paper sheets and the machine on graphite night plates"
+   ],
+   "dont": [
+    "No corner brackets, radar charts, dot-matrix numerals, terminal cursors or glowing readouts; this direction is the most at risk of sliding back into today's HUD look",
+    "No Heron-style buildings, hatching, shading or hand-drawn feel",
+    "No sentence-case display or light-weight statements (those belong to A and B)",
+    "No rounded cells, gradients, glow, or crosshairs at every intersection",
+    "No reticles or tracking boxes over the film's people",
+    "No more than one full-red sheet, and never two red elements in one sheet"
+   ],
+   "references": [
+    {
+     "site": "Heron AI",
+     "mobbin_url": "https://mobbin.com/sites/sections/76dab96c-c33d-4d52-944b-7d32dc2274fa",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-12.webp",
+     "what": "Hero as a sheet: nav as cells with a red action cell, a frame with crosshair corners and an X/Y readout, a caps title band beside a description cell, and a mono ticker."
+    },
+    {
+     "site": "Heron AI",
+     "mobbin_url": "https://mobbin.com/sites/sections/1fe1d979-0175-41b8-9d0a-15ab35c48fa8",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-13.webp",
+     "what": "[01]-[05] tab row with the active tab inverted, and a flat red plane slicing an isometric line drawing with dimension tags. The signature, applied to Kelwin's own assembly."
+    },
+    {
+     "site": "Rox",
+     "mobbin_url": "https://mobbin.com/sites/sections/f81fe9bd-84ae-40e5-8ddd-6a406a3442fc",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S1-7.webp",
+     "what": "Exploded isometric layer stack on dark with a layer index. Borrow the exploded-stack grammar only."
+    },
+    {
+     "site": "Rivian",
+     "mobbin_url": "https://mobbin.com/sites/sections/1890ce54-01e1-4c4f-bdb7-1165d0818ddd",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S1-21.webp",
+     "what": "Blueprint line work on graphite with lettered A-F callouts keyed to a ruled table. The night-plate annotation system."
+    },
+    {
+     "site": "Mistral AI",
+     "mobbin_url": "https://mobbin.com/sites/sections/687e8d48-cc6e-422b-bacf-b6fae6802471",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-1.webp",
+     "what": "A page built from bordered cells: nav as cells with a filled action cell, and a headline flush to the bottom-left of its cell."
+    },
+    {
+     "site": "Cloudflare Workers",
+     "mobbin_url": "https://mobbin.com/sites/sections/3f43d4a8-c70c-4f82-a216-52bd0a30a932",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-16.webp",
+     "what": "Orthogonal system plan with mono-labelled node groups and dashed connectors. The architecture sheet."
+    },
+    {
+     "site": "Mercury",
+     "mobbin_url": "https://mobbin.com/sites/sections/3a483a4e-ab5c-494e-9db9-c6d41660be22",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-29.webp",
+     "what": "LAYER 1-4 leader labels into an exploded stack. The layer labelling system, redrawn flat with no glow."
+    },
+    {
+     "site": "Heron AI",
+     "mobbin_url": "https://mobbin.com/sites/sections/a9d85ab3-0d19-447b-b151-40273c241f61",
+     "ref_file": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S1-22.webp",
+     "what": "An almost-empty frame with registration marks, one caps line and one red tick. The principle sheet."
+    }
+   ],
+   "cover_ref": "/tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/refs/v2S2-13.webp",
+   "cover_site": "Heron AI"
+  }
+ ],
+ "rationale": "The founder's late input outranks the scouts, so A is not one of the twelve scout candidates. It is built directly from user-kelwin-intent.webp and user-plurel.webp. From the scouts it keeps Cinematic Poster Sequence's medium/light weight split and its two-red rhythm, Doctrine's one-statement restraint, and Metalab-style hairline strips. Plurel's FIG. caption and film controls become the signature: a numbered figure plate with a segmented control. FIG. 01 is the frosted film, and every later figure is drawn from the nested-corner mark, so the logo becomes the illustration system. If the founder picks 'all A', he gets exactly his hero: dot nav with hairline, outlined Audit request \u2197, red-square label, a 3-line headline ending in a light muted 'problem.', red \u2197 CTA plus underlined secondary, the fixed-scope note, and a FIG. 01 caption with Pause film. The rest of the site follows that hero's logic, which is how it ends up better than he imagined.\n\nB merges Registry, Index & Caption Ledger and Register with the founder's Legora pointer. I searched Mobbin and found Legora indexed (assistant accordion, FAQ, latest, product hero, contact). The result is a paper-led, very low-density editorial site. It has one continuous index spine, ledgers that open in place, and two-tone headlines made by colour rather than weight. The hero film becomes daylight milky frost, which turns the required frosted hero into a calm opening instead of a cinematic one. Red appears only once as a surface (an inset CTA panel), and the mark shows up as hairline structure.\n\nC merges Drawing Sheet, Drafting Table, Technical Publication and Ruled Cell Matrix into one dense, graphite-led system. It uses cell nav, a continuous frame, title blocks, and 1px isometric drawings whose subject is Kelwin's own four-element mark. One red plane per drawing marks the installed layer. This answers 'almost Palantir' most directly.\n\nThree candidates were dropped:\n- Theatre of Operations and The Operating Model sit too close to today's dark HUD and readout panels.\n- Signal Field leans on dot fields, which echo today's dot-matrix numerals.\n- Doctrine's visible full-height column rules are partly absorbed into C's frame.\n\nEach direction uses the logo differently (solid plates, hairline spine, isometric assembly) and uses red at a different dose (two full planes, one inset panel, one sheet plus single in-drawing signals). The hero films also differ (dark warm, daylight milky, cool night), and so do density (medium-low, lowest, highest) and display voice (light clause, muted sentence, uppercase plus light note). That keeps the founder's choice real while all three stay inside the brief: no photography beyond the film, flat colour, 12-column grid, and the Swiss Systems skin.\n\nOne gap: Palantir, Anduril, Helsing and Shield AI are not indexed on Mobbin, so Heron, Rivian, Rox, Mistral and Cloudflare stand in as the closest indexed analogues for C. The full spec, with per-section maps for all 16 sections, is in /tmp/claude-0/-home-user-kelwin-website/a6575ec0-0f5a-5d4f-8079-2ba4f8c9a40d/scratchpad/redesign/DIRECTIONS.md. New Mobbin previews are saved as refs/dirD-1.webp to refs/dirD-8.webp.",
+ "ai_usage_notices": [],
+ "ai_usage_notices_all": [
+  "---\n\n**Your Mobbin AI usage is high this month**\n\nUsage is unlimited during beta. If your usage stays at this level, you may need to purchase more credits once limits take effect. [View usage and plan options](https://mobbin.com/settings/billing-and-usage)",
+  "---\n\n**Your Mobbin AI usage is high this month**\n\nUsage is unlimited during beta. If your usage stays at this level, you may need to purchase more credits once limits take effect. [View usage and plan options](https://mobbin.com/settings/billing-and-usage)",
+  "---\n\n**Your Mobbin AI usage is high this month**\n\nUsage is unlimited during beta. If your usage stays at this level, you may need to purchase more credits once limits take effect. [View usage and plan options](https://mobbin.com/settings/billing-and-usage)"
+ ]
+}

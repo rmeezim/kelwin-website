@@ -1,0 +1,211 @@
+/* ── stack · C · Systems Drawing Set — SHEET 04, FIG. 4.1 exploded assembly + the installed red plane ──
+   Module 12 cols × 96px rows. Title row 5 rows (480), drawing field 6 rows (576), bottom band 48.
+   Head keeps the founder DNA inside C's grammar: red-square sheet label, uppercase title whose turn
+   ("We install systems.") drops to the light accent, 48×2 red rule.                                   */
+.km-stack-C {
+  --x9: calc(var(--margin) + 8 * var(--col) + 7.5 * var(--gutter));    /* cell border between cols 8 | 9 */
+  --x12: calc(var(--margin) + 11 * var(--col) + 10.5 * var(--gutter));  /* cell border between cols 11 | 12 */
+  height: 1200px; overflow: hidden;
+}
+.km-stack-C__sheetwrap { position: absolute; left: 0; top: 96px; width: 1440px; height: 1104px; }
+
+/* frame + cell borders (borders only where a cell exists) */
+.km-stack-C__frame { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.km-stack-C__frame--l { left: var(--margin); }
+.km-stack-C__frame--r { left: calc(var(--stage) - var(--margin) - 1px); }
+.km-stack-C__ln { position: absolute; background: var(--line); }
+.km-stack-C__ln--h { height: 1px; transform-origin: 0 50%; }
+.km-stack-C__ln--h0 { background: var(--line-2); }
+.km-stack-C__ln--v { width: 1px; transform-origin: 50% 0; }
+
+/* the drawing layer (whole sheet, 1:1 px) */
+.km-stack-C__dwg { position: absolute; left: 0; top: 0; display: block; overflow: visible; pointer-events: none; }
+.km-stack-C__cl { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 5; }
+.km-stack-C__dash { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 3 4; }
+.km-stack-C__axis { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 14 4 2 4; }
+.km-stack-C__face { fill: var(--bg); stroke: var(--cool); stroke-width: 1; stroke-linejoin: miter; }
+.km-stack-C__k.is-on .km-stack-C__face { stroke: var(--fg); }
+.km-stack-C__red { fill: var(--accent); }
+.km-stack-C__hid { fill: none; stroke: var(--accent-fg); stroke-width: 1; stroke-dasharray: 3 3; opacity: 0; transition: opacity 300ms var(--ease-inout); }
+.km-stack-C__hid.is-on { opacity: 0.6; }
+.km-stack-C__plane { transition: transform 600ms var(--ease-inout); }
+.km-stack-C.is-snap .km-stack-C__plane, .km-stack-C.is-snap .km-stack-C__hid { transition: none; }
+.km-stack-C__lead { fill: none; stroke: var(--fg-3); stroke-width: 1; transition: stroke 300ms var(--ease-inout); }
+.km-stack-C__lead--b { stroke: var(--fg-2); }
+.km-stack-C__node { fill: var(--fg-3); transition: fill 300ms var(--ease-inout); }
+.km-stack-C__box { fill: none; stroke: var(--fg-2); stroke-width: 1; transition: stroke 300ms var(--ease-inout); }
+.km-stack-C__boxt, .km-stack-C__tag, .km-stack-C__dimt {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.km-stack-C__boxt { fill: var(--fg); text-anchor: middle; }
+.km-stack-C__tag, .km-stack-C__dimt { paint-order: stroke; stroke: var(--bg); stroke-width: 5px; stroke-linejoin: round; }
+.km-stack-C__tag { fill: var(--fg-3); transition: fill 300ms var(--ease-inout); }
+.km-stack-C__t .km-stack-C__box, .km-stack-C__t .km-stack-C__boxt { opacity: 0; transition: opacity 300ms var(--ease-inout); }
+.km-stack-C__t.is-on .km-stack-C__box, .km-stack-C__t.is-on .km-stack-C__boxt { opacity: 1; }
+.km-stack-C__t.is-on .km-stack-C__tag { fill: var(--fg); }
+.km-stack-C__t.is-on .km-stack-C__lead { stroke: var(--fg-2); }
+.km-stack-C__t.is-on .km-stack-C__node { fill: var(--fg); }
+.km-stack-C__tag--b { fill: var(--fg); }
+.km-stack-C__dim { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-stack-C__eld { transition: d 600ms var(--ease-inout); }
+.km-stack-C__elt { transition: transform 600ms var(--ease-inout); }
+.km-stack-C.is-snap .km-stack-C__eld, .km-stack-C.is-snap .km-stack-C__elt { transition: none; }
+.km-stack-C__dimt { fill: var(--fg-2); }
+.km-stack-C__xh path { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+/* hovering a spec row lights its lettered callout */
+.km-stack-C[data-hot="a"] .km-stack-C__t.is-on .km-stack-C__lead,
+.km-stack-C[data-hot="a"] .km-stack-C__t.is-on .km-stack-C__box,
+.km-stack-C[data-hot="b"] .km-stack-C__lead--b,
+.km-stack-C[data-hot="b"] .km-stack-C__box--b { stroke: var(--accent); }
+
+/* ── mono small voice ── */
+.km-stack-C__fig, .km-stack-C__coda, .km-stack-C__legend, .km-stack-C__utc, .km-stack-C__id {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-stack-C__utc { letter-spacing: .06em; }
+
+/* ── title row: title cell (cols 1–8) | note cell (cols 9–12) ── */
+.km-stack-C__title { position: absolute; left: var(--margin); top: 0; width: calc(var(--x9) - var(--margin)); height: 480px; }
+/* the C sheet head: label row-top + 24 · title bottom row-bottom − 58 · 48×2 red rule row-bottom − 30 ·
+   note cell (cols 9–12) with its mono cell ID and a 20px lede aligned to the title's last line */
+.km-stack-C__sheet {
+  position: absolute; left: 24px; top: 24px; display: flex; align-items: center; gap: 12px; color: var(--fg-2); white-space: nowrap;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+}
+.km-stack-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-stack-C__h {
+  position: absolute; left: 24px; bottom: 58px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 0.94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-stack-C__h span { display: block; white-space: nowrap; }
+.km-stack-C__h .km-stack-C__lt { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-stack-C__rule { position: absolute; left: 24px; bottom: 28px; width: 48px; height: 2px; background: var(--signal); transform-origin: 0 50%; }
+.km-stack-C__note { position: absolute; left: var(--x9); right: var(--margin); top: 0; height: 480px; }
+.km-stack-C__coda { position: absolute; left: 24px; top: 24px; color: var(--fg-3); }
+.km-stack-C__lede {
+  position: absolute; left: 24px; right: 24px; bottom: 58px;
+  font-size: 20px; line-height: 1.5; font-weight: var(--body-weight); color: var(--fg-2); text-wrap: pretty;
+}
+.km-stack-C__nw { white-space: nowrap; }
+
+/* ── drawing field (cols 1–8) ── */
+.km-stack-C__fig { position: absolute; right: calc(var(--stage) - var(--x9) + 24px); top: 504px; color: var(--fg-3); }
+.km-stack-C__word {
+  position: absolute; left: calc(var(--margin) + 24px); top: 1000px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 40px; line-height: 40px; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg); white-space: nowrap;
+  transition: opacity 260ms var(--ease-inout), clip-path 0s;
+}
+.km-stack-C__word.is-swap { opacity: 0; }
+
+/* ── spec column (cols 9–12): tabs → spec table → action cells ── */
+.km-stack-C__spec { position: absolute; left: var(--x9); right: var(--margin); top: 480px; height: 576px; }
+.km-stack-C__tabs { display: flex; flex-direction: column; gap: 1px; padding-top: 1px; }
+.km-stack-C__tab {
+  display: flex; align-items: center; gap: 16px; height: 55px; padding: 0 24px; text-align: left;
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: background-color 300ms var(--ease-inout), color 300ms var(--ease-inout);
+}
+.km-stack-C__ti { color: var(--fg-3); transition: color 300ms var(--ease-inout); }
+.km-stack-C__tz { margin-left: auto; font-size: 11px; letter-spacing: .06em; color: var(--fg-3); transition: color 300ms var(--ease-inout); }
+.km-stack-C__tab:hover { color: var(--fg); }
+.km-stack-C__tab.is-on { background: var(--fg); color: var(--bg); }
+.km-stack-C__tab.is-on .km-stack-C__ti, .km-stack-C__tab.is-on .km-stack-C__tz { color: var(--bg); }
+
+.km-stack-C__row { position: absolute; left: 0; right: 0; height: 128px; padding: 22px 24px; }
+.km-stack-C__row[data-key="a"] { top: 224px; }
+.km-stack-C__row[data-key="b"] { top: 352px; }
+.km-stack-C__key {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-stack-C__kb {
+  display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px;
+  border: 1px solid var(--line-2); font-size: 11px; color: var(--fg); transition: border-color 300ms var(--ease-inout);
+}
+.km-stack-C__row:hover .km-stack-C__kb { border-color: var(--accent); }
+.km-stack-C__val { margin-top: 12px; font-size: 15px; line-height: 1.5; color: var(--fg); transition: opacity 200ms var(--ease-inout); }
+.km-stack-C__val.is-swap { opacity: 0; }
+
+/* the two doors: a red audit cell (cols 9–11) and a contact cell (col 12), both 96px — id/arrow top, label bottom */
+.km-stack-C__act { position: absolute; left: 0; right: 0; top: 481px; height: 95px; display: grid; grid-template-columns: calc(var(--x12) - var(--x9)) 1fr; }
+.km-stack-C__cta, .km-stack-C__ct2 {
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-stack-C__cta { padding: 15px 24px 17px; background: var(--accent); color: var(--accent-fg); }
+.km-stack-C__cta:hover { background: var(--accent-hover); }
+.km-stack-C__id { color: var(--fg-2); }
+.km-stack-C__go, .km-stack-C__ct2 span {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-stack-C__go { display: inline-flex; align-items: center; gap: 12px; }
+.km-stack-C__ct2 { margin-left: 1px; padding: 15px 12px 17px; color: var(--fg); align-items: flex-start; }
+.km-stack-C__ct2 .km-stack-C__ico { align-self: flex-end; margin-top: 3px; }
+.km-stack-C__ct2:hover { background: var(--fg); color: var(--bg); }
+.km-stack-C__ico { display: inline-block; width: 10px; height: 10px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; overflow: visible; transition: transform 250ms var(--ease-out); }
+.km-stack-C__ico--r { width: 13px; height: 11px; }
+.km-stack-C__cta:hover .km-stack-C__ico { transform: translate(2px, -2px); }
+.km-stack-C__ct2:hover .km-stack-C__ico { transform: translateX(3px); }
+
+/* ── bottom band: legend (cols 1–8) · title block (cols 9–12) ── */
+.km-stack-C__legend { position: absolute; left: calc(var(--margin) + 24px); top: 1057px; line-height: 46px; color: var(--fg-3); }
+/* segmented title block (same on every C sheet) */
+.km-stack-C__tb {
+  position: absolute; left: calc(var(--x9) + 1px); right: var(--margin); top: 1057px; height: 46px; display: flex;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-stack-C__tb > span { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; white-space: nowrap; }
+.km-stack-C__tb > span:first-child { justify-content: flex-start; padding-left: 23px; }
+.km-stack-C__tb > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-stack-C__tb > span:last-child { color: var(--fg); }
+.km-stack-C__tb .km-logo-mark { --logo-h: 11px; }
+.km-stack-C__utc {
+  position: absolute; bottom: 72px; left: calc(var(--stage) - var(--margin)); width: var(--margin);
+  display: flex; justify-content: center; writing-mode: vertical-rl; transform: rotate(180deg);
+  color: var(--fg-3); transition: opacity 200ms var(--ease-inout);
+}
+.km-stack-C__utc.is-tick { opacity: 0.3; }
+
+/* ── entrance: drafting order (only under html.is-play) ── */
+@keyframes km-stack-C-fade { from { opacity: 0; } }
+@keyframes km-stack-C-dx { from { transform: scaleX(0); } }
+@keyframes km-stack-C-dy { from { transform: scaleY(0); } }
+@keyframes km-stack-C-plot { from { stroke-dashoffset: 1; } }
+@keyframes km-stack-C-drop { from { opacity: 0; transform: translateY(-8px); } }
+@keyframes km-stack-C-rise { from { transform: translateY(100%); } }
+@keyframes km-stack-C-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+.is-play .km-stack-C__frame, .is-play .km-stack-C__xh { animation: km-stack-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-stack-C__ln--h { animation: km-stack-C-dx 500ms var(--ease-inout) both; animation-delay: calc(120ms + var(--i) * 40ms); }
+.is-play .km-stack-C__ln--v { animation: km-stack-C-dy 500ms var(--ease-inout) both; animation-delay: calc(120ms + var(--i) * 40ms); }
+.is-play .km-stack-C__sheet, .is-play .km-stack-C__coda, .is-play .km-stack-C__fig { animation: km-stack-C-fade 300ms var(--ease-inout) 300ms both; }
+/* title lines rise out of their own line boxes (no half-drawn letters mid-entrance) */
+.km-stack-C__h span { overflow: hidden; }
+.is-play .km-stack-C__h span { animation: km-stack-C-fade 600ms var(--ease-inout) both; }
+.is-play .km-stack-C__h span:nth-child(1) { animation-delay: 260ms; }
+.is-play .km-stack-C__h span:nth-child(2) { animation-delay: 360ms; }
+.is-play .km-stack-C__h span:nth-child(3) { animation-delay: 520ms; }
+.is-play .km-stack-C__h span:nth-child(4) { animation-delay: 620ms; }
+.is-play .km-stack-C__rule { animation: km-stack-C-dx 500ms var(--ease-inout) 820ms both; }
+.is-play .km-stack-C__lede { animation: km-stack-C-fade 600ms var(--ease-inout) 640ms both; }
+.is-play .km-stack-C__tab { animation: km-stack-C-fade 300ms var(--ease-inout) both; animation-delay: calc(560ms + var(--r) * 40ms); }
+.is-play .km-stack-C__row, .is-play .km-stack-C__act, .is-play .km-stack-C__tb { animation: km-stack-C-fade 400ms var(--ease-inout) 820ms both; }
+.is-play .km-stack-C__cons { animation: km-stack-C-fade 600ms var(--ease-inout) 260ms both; }
+.is-play .km-stack-C__datum { animation: km-stack-C-fade 500ms var(--ease-inout) 420ms both; }
+.is-play .km-stack-C__face { stroke-dasharray: 1; animation: km-stack-C-plot 640ms var(--ease-inout) both; animation-delay: calc(560ms + var(--p) * 260ms + var(--j) * 70ms); }
+.km-stack-C__k[data-k="4"] { --p: 0; }
+.km-stack-C__k[data-k="3"] { --p: 1; }
+.km-stack-C__k[data-k="2"] { --p: 2; }
+.km-stack-C__k[data-k="1"] { --p: 3; }
+.km-stack-C.is-done .km-stack-C__face { animation: none; }
+.is-play .km-stack-C__dimp { stroke-dasharray: 1; animation: km-stack-C-plot 600ms var(--ease-inout) 1800ms both; }
+.is-play .km-stack-C__eld, .is-play .km-stack-C__dims text { animation: km-stack-C-fade 300ms var(--ease-inout) 2200ms both; }
+.is-play .km-stack-C__t .km-stack-C__lead { stroke-dasharray: 1; animation: km-stack-C-plot 500ms var(--ease-inout) 1950ms both; }
+.is-play .km-stack-C__t .km-stack-C__tag, .is-play .km-stack-C__t .km-stack-C__node, .is-play .km-stack-C__t.is-on .km-stack-C__box, .is-play .km-stack-C__t.is-on .km-stack-C__boxt { animation: km-stack-C-fade 300ms var(--ease-inout) 2250ms both; }
+.is-play .km-stack-C__drop, .is-play .km-stack-C__hids { animation: km-stack-C-drop 400ms var(--ease-out) 2300ms both; }
+.is-play .km-stack-C__word { animation: km-stack-C-wipe 700ms var(--ease-inout) 2350ms both; }
+/* after the entrance, steps use the transitions (moving the A box must not replay the entrance fade) */
+.is-play .km-stack-C.is-done .km-stack-C__t .km-stack-C__box, .is-play .km-stack-C.is-done .km-stack-C__t .km-stack-C__boxt { animation: none; }

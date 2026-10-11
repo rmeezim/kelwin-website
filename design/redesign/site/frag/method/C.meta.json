@@ -1,0 +1,21 @@
+{
+ "title": "Phase Gantt Sheet",
+ "direction": "C",
+ "summary": "SHEET 08/14 draws the method as an engineering schedule. A full-width [01]–[04] tab row sits over a phase gantt on graph paper, where the one red plane marks the phase being installed and slides from bar to bar, keyed A/B to a spec column. Diagnose is the only fixed span (10 WD), and Calibrate runs out through the edge. A schedule a buyer can read replaces today's generic stepper.",
+ "reference": {
+  "site": "Wild ('We build it with you')",
+  "mobbin_url": "https://mobbin.com/sites/sections/1bac0acb-c4fe-46ec-acd7-fe0bf057faf2",
+  "ref_file": "refs/method-C.webp",
+  "borrowed": "A faint graph-paper field sits under a short statement that the work runs in phases, with nothing moving on until the last one worked. The phases lie on one thin rail, each anchored by a small solid square marker with a mono time caption (PHASE 1 · WKS 1–4), a title and a short description: a schedule drawn as a document.",
+  "kelwin": "The rail became a true staggered gantt on a dashed construction grid aligned to the page columns, inside a C drawing sheet (frame, crosshairs, title and note cells, inverted tab row, spec column, ticker and split title block). Wild's square markers start each bar. Its week captions became an honest axis: 'WD 01–10' for the real ten-working-day diagnostic, then indicative T+ units flagged SPECIMEN. The active phase gets the flat red plane, a boxed dimension tag on a leader, and A/B keys tied to the spec table's Method and Output rows. Calibrate's bar has no end tick: it runs to the drawing field's edge and ends in an open arrow, without crossing into the spec column. The red audit cell reads 'FIXED SCOPE · 10 WD', which ties the CTA to phase 01."
+ },
+ "motion": [
+  "entrance, in drafting order: the frame and crosshairs fade in (300ms), and cell edges draw in raster order (420ms each, 40ms stagger). The title lines and note rise 10px, and the 48×2 red rule draws under the title. The construction grid wipes in (1s), the axis line plots via stroke-dashoffset, and the ticks and axis labels follow. The four bars plot left to right in phase order (520ms each, 200ms stagger), with start markers, end ticks and labels after them.",
+  "state: at 2.3s the red plane drops into PH.01 (opacity + 8px settle, 400ms --ease-inout). The tabs then step to [02] at 3.3s, [03] at 4.5s and [04] at 5.7s. Each time, the plane slides diagonally to the next bar (600ms --ease-inout) carrying its A/B keys. The active label becomes a boxed callout and types on at 24ms per character, the spec number and name type on, the method and output values crossfade, and that ticker word lifts to --fg. The sequence rests on [04] Calibrate at about 6.3s.",
+  "ambient: none; this sheet has no live readouts.",
+  "interaction: the tabs are real; a click jumps to that phase and stops the demo, and hovering a tab inverts the cell. Hovering a spec row turns its boxed letter, and the matching key and leader on the plane, --accent. The audit cell deepens on hover and the contact cell inverts.",
+  "on the live site: the tabs are scroll-linked, and the plane advances one bar per quarter of the sheet's scroll. Reduced motion shows the plotted sheet with [04] active."
+ ],
+ "demoMs": 6800,
+ "notes": "The sheet and figure numbers follow DIRECTIONS' FIG numbering (stack 4.1, architecture 5.1, so method is SHEET 08 / FIG. 8.1). Spans after Diagnose are indicative and labelled SPECIMEN; no durations are invented. As on sheet 05, there is 96px of frame above the opening rule. The title is 88px per the founder's type spec. To fit cols 1–8 the turn line reads '& KEEP IT SHARP.', from the source's 'And how we keep it sharp.'. The sheet label carries the founder's red square and the title the 48×2 red rule. These are family marks; the red plane stays the sheet's one red drawing element."
+}

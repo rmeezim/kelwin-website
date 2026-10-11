@@ -1,0 +1,64 @@
+/* ── principle · X · A×C "Cinematic Drafting" — the signal / noise sheet, harmonised ──
+   C's paper sheet without its clutter: a registration frame (four corner marks,
+   no cell walls, no bottom band), the head grammar shifted to col 4 so cols 1–3
+   hold the drawing's input. One datum runs through the middle line of the
+   statement: nine lines of market noise (CONTOUR) settle into one line that
+   enters "the clearest", and one clean line leaves it to the red tick on the
+   frame edge. Everything else is type: no title block, no legend band —
+   the FIG. number rides the label row, as on every other section.
+   Geometry (Swiss skin, 1440 stage): frame x 64 → 1376 · text column col 4
+   (x 398) · noise field x 64 → 366 (302 wide), datum at its y 100.           */
+
+.km-principle-X { position: relative; }
+.km-principle-X__frame { position: relative; }
+
+/* the head grammar, placed on the col-4 text column (kit components, placement only) */
+.km-principle-X__head { position: relative; --datum: 185px; }      /* datum: y from the statement's top (x-height centre of line 2) */
+.km-principle-X__head > .ac-labelrow { grid-column: 4 / -1; }
+.km-principle-X__head > .ac-statement { grid-column: 4 / -1; }
+.km-principle-X__head > .ac-rule { grid-column: 4; }
+.km-principle-X__head > .ac-lede { grid-column: 4 / span 5; }
+
+/* line 2 carries the output: the word, a 32px gap, then the wire runs to the frame edge */
+.km-principle-X__through > span { display: flex; align-items: center; width: 100%; }
+.km-principle-X__word { flex: none; }
+.km-principle-X__out { position: relative; flex: 1 1 auto; align-self: stretch; margin-left: 32px; }
+.km-principle-X__wire {
+  position: absolute; left: 0; right: 0; top: calc(50% + .115em); height: 1px; background: var(--fg);
+  transform-origin: 0 50%;
+}
+.km-principle-X__tick {
+  position: absolute; right: 0; top: calc(50% + .115em); width: 4px; height: 22px; margin-top: -10.5px;
+  background: var(--accent);
+}
+
+/* the input field: shares the statement's row, its datum (y 100) on the wire */
+.km-principle-X__noise {
+  grid-column: 1 / span 3; grid-row: 2; align-self: start; justify-self: start;
+  margin-top: calc(36px + var(--datum) - 100px);
+}
+.km-principle-X__wave { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-principle-X__wave--sig { stroke: var(--fg); }
+
+/* callout tags (kit code box + Mona label), flush to the frame edges, each seated 17px under the
+   drawing it names: A under the noise bundle (its lowest curve reaches datum + 59), B under the red
+   tick (datum + 11), so the output label belongs to the tick and never sits in line 3's row.
+   52px = label row + the statement's 36px offset, i.e. the statement's top inside the head.       */
+.km-principle-X__tag {
+  position: absolute; display: flex; align-items: center; gap: 10px; margin: 0;
+  white-space: nowrap;
+}
+.km-principle-X__tag--a { left: 0;  top: calc(52px + var(--datum) + 76px); }
+.km-principle-X__tag--b { right: 0; top: calc(52px + var(--datum) + 28px); }
+
+/* ── motion (html.is-play only) ── the kit runs the head; then the drawing:
+   raw noise plots left → right (300ms) → the bundle settles (JS, 1300 → 3100ms) →
+   the wire draws from the word to the frame edge → the red tick seats.      */
+.is-play .km-principle-X__noise { animation: km-principle-X-wipe 1000ms var(--ease-out) 300ms both; }
+.is-play .km-principle-X__tag--a { animation: ac-fade 400ms var(--ease-out) 900ms both; }
+.is-play .km-principle-X__wire { animation: ac-drawx 800ms var(--ease-inout) 2750ms both; }
+.is-play .km-principle-X__tick { animation: km-principle-X-seat 420ms var(--ease-out) 3450ms both; }
+.is-play .km-principle-X__tag--b { animation: ac-fade 400ms var(--ease-out) 3600ms both; }
+
+@keyframes km-principle-X-wipe { from { clip-path: inset(-20px 100% -20px 0); } to { clip-path: inset(-20px 0 -20px 0); } }
+@keyframes km-principle-X-seat { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }

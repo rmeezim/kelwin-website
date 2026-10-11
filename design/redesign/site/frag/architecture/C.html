@@ -1,0 +1,167 @@
+<section class="km km-architecture-C" data-surface="dark" aria-labelledby="km-arch-c-title">
+  <!-- sheet structure: frame, rules, construction grid, crosshairs -->
+  <svg class="km-architecture-C__sheet" viewBox="0 0 1440 1008" width="1440" height="1008" aria-hidden="true">
+    <path class="km-architecture-C__frame" d="M64.5 0V1008M1375.5 0V1008"/>
+    <g class="km-architecture-C__rules">
+      <path class="km-architecture-C__r km-architecture-C__r--2" style="--i:0" pathLength="1" d="M64 96.5H1376"/>
+      <path class="km-architecture-C__r" style="--i:1" pathLength="1" d="M943.5 97V960"/>
+      <path class="km-architecture-C__r" style="--i:2" pathLength="1" d="M64 480.5H1376"/>
+      <path class="km-architecture-C__r" style="--i:3" pathLength="1" d="M64 960.5H1376"/>
+      <path class="km-architecture-C__r" style="--i:4" pathLength="1" d="M943.5 961V1007"/>
+      <path class="km-architecture-C__r" style="--i:5" pathLength="1" d="M64 1007.5H1376"/>
+    </g>
+    <g class="km-architecture-C__grid">
+      <path d="M175.5 481V960M286.5 481V960M398.5 481V960M509.5 481V960M620.5 481V960M732.5 481V960M843.5 481V960"/>
+      <path d="M65 576.5H943M65 672.5H943M65 768.5H943M65 864.5H943"/>
+    </g>
+    <g class="km-architecture-C__cross">
+      <path d="M64.5 92V101M60 96.5H69"/>
+      <path d="M1375.5 92V101M1371 96.5H1380"/>
+      <path d="M943.5 476V485M939 480.5H948"/>
+      <path d="M1375.5 956V965M1371 960.5H1380"/>
+    </g>
+  </svg>
+
+  <!-- title row -->
+  <div class="km-architecture-C__titlecell">
+    <p class="km-architecture-C__sheetlab"><span class="km-architecture-C__sq" aria-hidden="true"></span>Sheet 05/14 · Signal routing</p>
+    <h2 class="km-architecture-C__title" id="km-arch-c-title"><span>Three layers.</span><span class="km-architecture-C__turn">One closed</span><span class="km-architecture-C__turn">loop.</span></h2>
+    <span class="km-architecture-C__rule" aria-hidden="true"></span>
+  </div>
+  <div class="km-architecture-C__notecell">
+    <p class="km-architecture-C__cellid" data-type>C9·R1 · NOTE</p>
+    <p class="km-architecture-C__note">Narrative shapes what the market hears. Channels put it in motion. Intelligence feeds back what works.</p>
+  </div>
+
+  <!-- FIG. 5.1 · orthogonal routing plan (body-local coordinates; cells sit on the 111.33px column module and 96px rows) -->
+  <svg class="km-architecture-C__plan" viewBox="0 0 1440 480" width="1440" height="480" role="img" aria-label="Figure 5.1: market signal routes through Narrative, the five channels and Intelligence to a compounding pipeline; a red return route retunes the narrative and a dashed route reroutes channel effort.">
+    <text class="km-architecture-C__t km-architecture-C__t--3" x="88" y="36" data-type data-t="900">FIG. 5.1 — SIGNAL ROUTING PLAN, CLOSED</text>
+
+    <!-- top bus: reroute effort K3 → K2 (dashed) -->
+    <g class="km-architecture-C__bus" style="--d:2.3s">
+      <path class="km-architecture-C__dash" d="M787.5 192V120.5H453.5V192"/>
+      <path class="km-architecture-C__w" d="M449 186L453.5 190.5L458 186"/>
+      <text class="km-architecture-C__t km-architecture-C__t--3" x="620.5" y="110" text-anchor="middle" data-type data-t="2400">REROUTE EFFORT</text>
+    </g>
+
+    <!-- input terminal -->
+    <circle class="km-architecture-C__dot" style="--d:1s" cx="64.5" cy="240.5" r="4"/>
+    <text class="km-architecture-C__t km-architecture-C__t--2" x="72" y="229" data-type data-t="1050">MARKET SIGNAL</text>
+
+    <!-- forward path (plotted left → right) -->
+    <path class="km-architecture-C__w km-architecture-C__p" style="--d:1.05s" pathLength="1" d="M64 240.5H175"/>
+    <rect class="km-architecture-C__cell km-architecture-C__p" style="--d:1.15s" pathLength="1" x="175.5" y="192.5" width="111" height="96"/>
+    <path class="km-architecture-C__w km-architecture-C__p" style="--d:1.3s" pathLength="1" d="M287 240.5H398"/>
+    <rect class="km-architecture-C__cell km-architecture-C__p" style="--d:1.4s" pathLength="1" x="398.5" y="192.5" width="111" height="96"/>
+    <path class="km-architecture-C__w km-architecture-C__p" style="--d:1.5s" pathLength="1" d="M510 240.5H521.5"/>
+    <path class="km-architecture-C__w km-architecture-C__p" style="--d:1.75s" pathLength="1" d="M609.5 240.5H732"/>
+    <rect class="km-architecture-C__cell km-architecture-C__p" style="--d:1.85s" pathLength="1" x="732.5" y="192.5" width="111" height="96"/>
+    <rect class="km-architecture-C__cell km-architecture-C__p" style="--d:1.95s" pathLength="1" x="735.5" y="195.5" width="105" height="90"/>
+    <path class="km-architecture-C__w km-architecture-C__p" style="--d:2.05s" pathLength="1" d="M844 240.5H943"/>
+    <circle class="km-architecture-C__dot" style="--d:2.2s" cx="943.5" cy="240.5" r="4"/>
+
+    <!-- L2 fan-out: five parallel channel rows, rejoined -->
+    <g class="km-architecture-C__branch" style="--d:1.55s">
+      <path class="km-architecture-C__w km-architecture-C__p" pathLength="1" d="M521.5 168V313"/>
+      <path class="km-architecture-C__w km-architecture-C__p" pathLength="1" d="M609.5 168V313"/>
+      <path class="km-architecture-C__w" d="M522 168.5H533M598 168.5H609M522 204.5H533M598 204.5H609M522 240.5H533M598 240.5H609M522 276.5H533M598 276.5H609M522 312.5H533M598 312.5H609"/>
+      <rect class="km-architecture-C__cell" x="533.5" y="156.5" width="64" height="24"/>
+      <rect class="km-architecture-C__cell" x="533.5" y="192.5" width="64" height="24"/>
+      <rect class="km-architecture-C__cell" x="533.5" y="228.5" width="64" height="24"/>
+      <rect class="km-architecture-C__cell" x="533.5" y="264.5" width="64" height="24"/>
+      <rect class="km-architecture-C__cell" x="533.5" y="300.5" width="64" height="24"/>
+      <g class="km-architecture-C__jn">
+        <rect x="519" y="166" width="5" height="5"/><rect x="519" y="202" width="5" height="5"/><rect x="519" y="238" width="5" height="5"/><rect x="519" y="274" width="5" height="5"/><rect x="519" y="310" width="5" height="5"/>
+        <rect x="607" y="166" width="5" height="5"/><rect x="607" y="202" width="5" height="5"/><rect x="607" y="238" width="5" height="5"/><rect x="607" y="274" width="5" height="5"/><rect x="607" y="310" width="5" height="5"/>
+      </g>
+    </g>
+    <g class="km-architecture-C__t km-architecture-C__t--2" text-anchor="middle">
+      <text x="565.5" y="172.5" data-type data-t="1800">EMAIL</text>
+      <text x="565.5" y="208.5" data-type data-t="1850">SOCIAL</text>
+      <text x="565.5" y="244.5" data-type data-t="1900">PHONE</text>
+      <text x="565.5" y="280.5" data-type data-t="1950">CONTENT</text>
+      <text x="565.5" y="316.5" data-type data-t="2000">EVENTS</text>
+    </g>
+
+    <!-- L1 junction stack: what the narrative is made of -->
+    <g class="km-architecture-C__branch" style="--d:1.25s">
+      <path class="km-architecture-C__w km-architecture-C__p" pathLength="1" d="M230.5 112V192"/>
+      <g class="km-architecture-C__jn"><rect x="228" y="122" width="5" height="5"/><rect x="228" y="146" width="5" height="5"/><rect x="228" y="170" width="5" height="5"/></g>
+    </g>
+    <g class="km-architecture-C__t km-architecture-C__t--3">
+      <text x="244" y="128.5" data-type data-t="1450">MESSAGE SYSTEM</text>
+      <text x="244" y="152.5" data-type data-t="1510">PROOF</text>
+      <text x="244" y="176.5" data-type data-t="1570">CATEGORY</text>
+    </g>
+
+    <!-- node cell type (12px inset) -->
+    <g class="km-architecture-C__t">
+      <text class="km-architecture-C__t--3" x="188" y="214" data-type data-t="1300">K1</text>
+      <text x="188" y="276" data-type data-t="1330">NARRATIVE</text>
+      <text class="km-architecture-C__t--3" x="411" y="214" data-type data-t="1550">K2</text>
+      <text x="411" y="276" data-type data-t="1580">CHANNELS</text>
+      <text class="km-architecture-C__t--3" x="747" y="217" data-type data-t="2050">K3</text>
+      <text x="747" y="273" data-type data-t="2080">INTELLIGENCE</text>
+    </g>
+
+    <!-- edge verbs -->
+    <g class="km-architecture-C__t km-architecture-C__t--3" text-anchor="middle">
+      <text x="124" y="260" data-type data-t="1150">DEFINE</text>
+      <text x="342.5" y="260" data-type data-t="1400">ACTIVATE</text>
+      <text x="676.5" y="260" data-type data-t="1850">MEASURE</text>
+      <text x="880" y="260" data-type data-t="2150">COMPOUND</text>
+    </g>
+    <g class="km-architecture-C__t km-architecture-C__t--2" text-anchor="end">
+      <text x="935" y="214" data-type data-t="2250">COMPOUNDING</text>
+      <text x="935" y="228" data-type data-t="2300">PIPELINE</text>
+    </g>
+
+    <!-- lettered callouts A–E on orthogonal leaders -->
+    <g class="km-architecture-C__co" data-c="A" style="--d:2.45s"><path d="M80.5 245V300"/><rect x="72.5" y="300.5" width="16" height="16"/><text x="80.5" y="312.5">A</text></g>
+    <g class="km-architecture-C__co" data-c="B" style="--d:2.5s"><path d="M191.5 289V300"/><rect x="183.5" y="300.5" width="16" height="16"/><text x="191.5" y="312.5">B</text></g>
+    <g class="km-architecture-C__co" data-c="C" style="--d:2.55s"><path d="M414.5 289V300"/><rect x="406.5" y="300.5" width="16" height="16"/><text x="414.5" y="312.5">C</text></g>
+    <g class="km-architecture-C__co" data-c="D" style="--d:2.6s"><path d="M748.5 289V300"/><rect x="740.5" y="300.5" width="16" height="16"/><text x="748.5" y="312.5">D</text></g>
+    <g class="km-architecture-C__co" data-c="E" style="--d:2.65s"><path d="M927.5 245V300"/><rect x="919.5" y="300.5" width="16" height="16"/><text x="927.5" y="312.5">E</text></g>
+
+    <!-- THE ONE RED ELEMENT: return route K3 → under the plan → K1 -->
+    <g class="km-architecture-C__ret" data-c="F">
+      <path class="km-architecture-C__retline km-architecture-C__retmain" pathLength="1" d="M787.5 289V348.5H230.5V290"/>
+      <path class="km-architecture-C__retline km-architecture-C__retchev" d="M226 294.5L230.5 290L235 294.5"/>
+    </g>
+    <!-- its callout F: an inverted (paper) tag on a leader, not a second red -->
+    <g class="km-architecture-C__tag" data-c="F">
+      <path class="km-architecture-C__tagleader" d="M509.5 349V396"/>
+      <rect class="km-architecture-C__tagbox" x="509" y="396" width="244" height="42"/>
+      <path class="km-architecture-C__tagrule" d="M531.5 396V438"/>
+      <text class="km-architecture-C__tagt" x="520" y="421" text-anchor="middle">F</text>
+      <text class="km-architecture-C__tagt" x="541" y="413">RETURN ROUTE</text>
+      <text class="km-architecture-C__tagt" x="541" y="428">LEARN &amp; RETUNE THE NARRATIVE</text>
+    </g>
+
+    <!-- one signal square runs the whole loop once (JS) -->
+    <rect class="km-architecture-C__run" x="227.5" y="237.5" width="6" height="6"/>
+  </svg>
+
+  <!-- spec column -->
+  <div class="km-architecture-C__spec">
+    <p class="km-architecture-C__spechead"><span data-type>SPEC — FIG. 5.1</span><span>C9·R4</span></p>
+    <dl class="km-architecture-C__rows">
+      <div class="km-architecture-C__row" data-c="A" style="--i:0"><dt><span class="km-architecture-C__lt">A</span>Ingest</dt><dd>Market signal · ICP, intent, demand</dd></div>
+      <div class="km-architecture-C__row" data-c="B" style="--i:1"><dt><span class="km-architecture-C__lt">B</span>K1</dt><dd>Narrative · positioning &amp; language</dd></div>
+      <div class="km-architecture-C__row" data-c="C" style="--i:2"><dt><span class="km-architecture-C__lt">C</span>K2</dt><dd>Channels · omnichannel orchestration</dd></div>
+      <div class="km-architecture-C__row" data-c="D" style="--i:3"><dt><span class="km-architecture-C__lt">D</span>K3</dt><dd>Intelligence · observe &amp; learn</dd></div>
+      <div class="km-architecture-C__row" data-c="E" style="--i:4"><dt><span class="km-architecture-C__lt">E</span>Output</dt><dd>Compounding pipeline</dd></div>
+      <div class="km-architecture-C__row" data-c="F" style="--i:5"><dt><span class="km-architecture-C__lt">F</span>Return</dt><dd>Retune the narrative · reroute effort</dd></div>
+      <div class="km-architecture-C__row" style="--i:6"><dt><span class="km-architecture-C__lt km-architecture-C__lt--blank">—</span>Owner</dt><dd>Client. The asset stays with your team.</dd></div>
+    </dl>
+    <a class="km-architecture-C__cta" href="#method"><span>See how we install it</span><svg class="km-architecture-C__ico" viewBox="0 0 14 12" aria-hidden="true"><path d="M1 6h12M8 1.5 12.5 6 8 10.5"/></svg></a>
+  </div>
+
+  <!-- bottom band: ticker + title block -->
+  <div class="km-architecture-C__band">
+    <p class="km-architecture-C__ticker">DEFINE <span>→</span> ACTIVATE <span>→</span> MEASURE <span>→</span> COMPOUND <span>→</span> <span class="km-architecture-C__tk">RETUNE</span></p>
+    <p class="km-architecture-C__tb">
+      <span>Sheet 05/14</span><span>FIG. 5.1</span><span>Rev C</span><span><span class="km-logo-mark" aria-hidden="true"></span>Kelwin/GTM</span>
+    </p>
+  </div>
+</section>

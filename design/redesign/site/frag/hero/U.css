@@ -1,0 +1,118 @@
+/* ── hero · X · FIG. 01 The room, re-set (round 2, A×C) ─────────────────
+   The founder's brief, literally. Round-1 hero A keeps its room, nav and
+   FIG. band; the statement drops to TWO lines (the family cadence,
+   "architectural" + the light "problem." on one line) and is held almost
+   at the vertical centre, left-aligned. The lede + the two doors move to
+   the bottom-right (cols 8–12), where the audit note used to be; the note
+   moves to the bottom-left (cols 1–4). The eye reads diagonally: statement
+   at mid-left → action at bottom-right.
+   A little of hero C's observed room (three touches, no more): registration
+   marks at the content frame's four corners, the film-progress hairline
+   re-made as a calibrated tick ruler, and one film timecode.
+   Round 4 (D12): the FIG. band, its ruler/timecode and Pause film are gone;
+   the body takes the freed 88px as foot padding (48 → 136), so the doors and
+   note hold their approved round-3 positions. Stage: 96 nav + 864 body = 960.                                */
+
+.km-hero-U {
+  height: 960px;
+  display: flex; flex-direction: column;
+  overflow: hidden; isolation: isolate;
+}
+
+/* ── FIG. 01 · the film: dark, warm (round-1 A calibration) ── */
+.km-hero-U .km-film {
+  --film-blur: 8px; --film-frost: .2; --film-bright: 1.26; --film-sat: .95; --film-grain: .5;
+}
+/* height-fit plate (1920×964, mirrored about its centre): the seated figure
+   ≈ x 650, the standing one ≈ 900, the man from behind ≈ 1000–1400; the
+   mirrored half sits under the left scrim */
+.km-hero-U .km-film__plate {
+  inset: 3% -4% -9%;
+  background-size: auto 100%;
+  background-position: -334px 50%;
+  transition: scale 1.6s var(--ease-inout), translate 1.6s var(--ease-inout);
+}
+.km-hero-U[data-crop="close"] .km-film__plate { scale: 1.18; translate: -4% 2%; }
+.km-hero-U.is-cut .km-film__plate { transition: none; }
+
+/* legibility scrim (inside .km-film only). The statement now runs to col 11,
+   so the left falls off later than in round 1, a soft lane sits behind the
+   two lines, and the floor deepens under the bottom corners. The upper right
+   stays open: that is where the room shows. */
+.km-hero-U__scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb, var(--bg) 90%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 78%, transparent) 26%,
+      color-mix(in srgb, var(--bg) 40%, transparent) 44%,
+      color-mix(in srgb, var(--bg) 10%, transparent) 60%,
+      transparent 72%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 46%, transparent) 0%,
+      transparent 13%,
+      transparent 32%,
+      color-mix(in srgb, var(--bg) 14%, transparent) 40%,
+      color-mix(in srgb, var(--bg) 14%, transparent) 58%,
+      transparent 63%,
+      color-mix(in srgb, var(--bg) 34%, transparent) 76%,
+      color-mix(in srgb, var(--bg) 82%, transparent) 100%);
+}
+
+/* ── nav (96px): lockup · tracked caps items · outlined action ── */
+.km-hero-U__nav {
+  position: relative; z-index: 2;
+  height: 96px; flex: none;
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.km-hero-U__nav::after {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line); transform-origin: left center;
+}
+.km-hero-U__brand { display: inline-flex; color: var(--fg); }
+.km-hero-U__brand .km-logo { --logo-h: 24px; }
+.km-hero-U__menu {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; align-items: center; gap: 40px; white-space: nowrap;
+}
+.km-hero-U__menu a {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.km-hero-U__menu a:hover { color: var(--fg); }
+
+/* ── body: the head grammar, re-placed on the hero's 12 columns ──
+   rows: 1 lift · 2 label · 3 statement · 4 rule · 5 air · 6 lede · 7 doors.
+   Row 1 (180px) holds the statement's centre at ≈45% of the 776px body. */
+.km-hero-U__body.ac-head {
+  position: relative; z-index: 1; flex: 1;
+  grid-template-rows: 180px auto auto auto minmax(0, 1fr) auto auto;
+  /* round 4: 48 + the 88px the D12 band freed, so the doors stay exactly where
+     round 3 put them (y 768–824 at 1440×900) and clear the fold */
+  padding-bottom: 136px;
+}
+.km-hero-U__body > .ac-labelrow { grid-row: 2; }
+.km-hero-U__body > .ac-statement { grid-row: 3; grid-column: 1 / -1; }
+.km-hero-U__body > .ac-rule { grid-row: 4; margin-top: 40px; }
+/* bottom-right: the action — lede over the two doors, cols 8–12 */
+.km-hero-U__body > .ac-lede { grid-row: 6; grid-column: 8 / span 5; margin-top: 0; max-width: none; }
+/* the pair spans the whole bay: primary on the col-8 line, the secondary's
+   arrow lands flush on the right margin (with AUDIT REQUEST and PAUSE FILM) */
+.km-hero-U__body > .ac-doors { grid-row: 7; grid-column: 8 / span 5; margin-top: 32px; flex-wrap: nowrap; justify-content: space-between; }
+/* bottom-left: the audit note, cols 1–4. Its last baseline sits on the
+   primary's bottom edge — the strongest horizontal at the foot of the act */
+.km-hero-U__body > .ac-note { grid-row: 6 / span 2; grid-column: 1 / span 4; align-self: end; margin-bottom: -6px; }
+
+/* registration marks ride above the film, on the hairlines' ends */
+.km-hero-U__reg { z-index: 3; }
+
+/* ── entrance (only under html.is-play) ── */
+.km-hero-U__body { --ac-d0: 240ms; }
+.is-play .km-hero-U .km-film { animation: km-hero-U-fade 1.2s var(--ease-out) both; }
+.is-play .km-hero-U__nav { animation: km-hero-U-fade 500ms var(--ease-out) both; }
+.is-play .km-hero-U__nav::after { animation: km-hero-U-draw 1s var(--ease-out) 100ms both; }
+
+@keyframes km-hero-U-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-hero-U-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }

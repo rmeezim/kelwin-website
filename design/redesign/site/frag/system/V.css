@@ -1,0 +1,150 @@
+/* ── system · V · Faithful strata (round 4) ──
+   Round 2's stack X, matured to three layers: the head on top; the drawing on the
+   left (three rectangular iso slabs, one inscription each, boxed callouts on the
+   right, the "1 system" dimension, registration marks, a title block); the ledger
+   on the right (one row open) moves the single red top face. After assembly one
+   return line runs from slab 03 back into slab 01: the closed loop.
+   Default CSS = final state: installed, return drawn, 01 selected.               */
+
+/* the note sits beside the statement (placement only), bottom-aligned with the lede */
+.km-system-V .km-system-V__head > .ac-note { grid-row: 2 / span 3; align-self: end; }
+.km-system-V .km-system-V__note .ac-note__t { max-width: 34ch; }
+
+.km-system-V .km-system-V__body { margin-top: 72px; align-items: stretch; }
+/* the detail column is as tall as the sheet: its door sits on the sheet's baseline and never moves while rows open */
+.km-system-V .km-system-V__detail { display: flex; flex-direction: column; }
+
+/* ── the figure: a registration frame on the graphite (occlusion = --bg, set by .ac-frame) ── */
+.km-system-V .km-system-V__svg { position: absolute; left: 0; top: 0; }
+
+/* slab faces: occluding fills (hidden-line drawing), 1px outlines */
+.km-system-V .km-system-V__top, .km-system-V .km-system-V__side {
+  fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter;
+  transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout);
+}
+.km-system-V .km-system-V__side { stroke: var(--fg-3); }
+
+/* inscriptions — each slab's one job, drawn on its top face */
+.km-system-V .km-system-V__ink {
+  fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: square;
+  stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke 400ms var(--ease-inout);
+}
+.km-system-V .km-system-V__ink--h { stroke: var(--fg); }
+.km-system-V .km-system-V__node { fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout); }
+.km-system-V .km-system-V__node.is-hub { fill: var(--fg); stroke: var(--fg); }
+
+/* the one red: the selected slab's top face (inscription inverts to paper) and an 8px lift */
+.km-system-V .km-system-V__lift { transition: transform 400ms var(--ease-inout); }
+.km-system-V .km-system-V__s.is-on > .km-system-V__lift { transform: translateY(-8px); }
+.km-system-V .km-system-V__s.is-on .km-system-V__top { fill: var(--accent); stroke: var(--accent); }
+.km-system-V .km-system-V__s.is-on .km-system-V__side { stroke: var(--fg-2); }
+.km-system-V .km-system-V__s.is-on .km-system-V__ink { stroke: var(--accent-fg); }
+.km-system-V .km-system-V__s.is-on .km-system-V__node { fill: var(--accent); stroke: var(--accent-fg); }
+.km-system-V .km-system-V__s.is-on .km-system-V__node.is-hub { fill: var(--accent-fg); }
+
+/* exploded (pitch 176) → installed (pitch 132): slabs, callouts and the dimension close up together */
+.km-system-V .km-system-V__s, .km-system-V .km-system-V__co { transition: transform 700ms var(--ease-inout); }
+.km-system-V .km-system-V__fig.is-exploded [data-l="1"] { transform: translateY(-44px); }
+.km-system-V .km-system-V__fig.is-exploded [data-l="3"] { transform: translateY(44px); }
+
+.km-system-V .km-system-V__dim { transition: top 700ms var(--ease-inout), height 700ms var(--ease-inout); }
+.km-system-V .km-system-V__fig.is-exploded .km-system-V__dim { top: calc(var(--y) - 44px); height: calc(var(--h) + 88px); }
+.km-system-V .km-system-V__dv { display: grid; justify-items: start; }
+.km-system-V .km-system-V__dv > span { grid-area: 1 / 1; transition: opacity 400ms var(--ease-inout) 300ms; }   /* re-measures as the slabs land */
+.km-system-V .km-system-V__dv-a { opacity: 0; }
+.km-system-V .km-system-V__fig.is-exploded .km-system-V__dv-a { opacity: 1; }
+.km-system-V .km-system-V__fig.is-exploded .km-system-V__dv-b { opacity: 0; }
+
+/* assembly lines (dashed) register once the stack is assembled */
+.km-system-V .km-system-V__post { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; transition: opacity 400ms var(--ease-out) 450ms; }
+.km-system-V .km-system-V__fig.is-exploded .km-system-V__post { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* ── the return: one line, drawn once after assembly, from slab 03 back into slab 01 ── */
+.km-system-V .km-system-V__ret {
+  fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter;
+  stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1000ms var(--ease-inout);
+}
+.km-system-V .km-system-V__chev { fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter; transition: opacity 300ms var(--ease-out); }
+.km-system-V .km-system-V__chev--up { transition-delay: 450ms; }
+.km-system-V .km-system-V__chev--in { transition-delay: 900ms; }
+.km-system-V .km-system-V__rlab {
+  position: absolute; left: var(--x); top: var(--y); transform: translate(-100%, -50%);
+  font-size: var(--ac-anno); line-height: 1.3; color: var(--fg-2); text-align: right; white-space: nowrap; pointer-events: none;
+  transition: opacity 400ms var(--ease-out) 500ms;
+}
+.km-system-V .km-system-V__fig.is-unlooped .km-system-V__ret { stroke-dashoffset: 1; transition-duration: 0ms; }
+.km-system-V .km-system-V__fig.is-unlooped .km-system-V__chev,
+.km-system-V .km-system-V__fig.is-unlooped .km-system-V__rlab { opacity: 0; transition-duration: 0ms; transition-delay: 0ms; }
+
+/* title block: bottom-right of the sheet, on the frame's baseline (shared with the ledger's door) */
+.km-system-V .km-system-V__cap { display: flex; justify-content: flex-end; align-items: flex-end; height: 56px; padding: 0 24px; }
+
+/* callouts ride with their slab (compression on __co, the 8px lift on __col) */
+.km-system-V .km-system-V__cos, .km-system-V .km-system-V__co, .km-system-V .km-system-V__col { position: absolute; inset: 0; pointer-events: none; }
+.km-system-V .km-system-V__col { transition: transform 400ms var(--ease-inout); }
+.km-system-V .km-system-V__co.is-on > .km-system-V__col { transform: translateY(-8px); }
+
+/* ── the ledger: index · title + job · toggle; open row = What it is / In practice ── */
+.km-system-V .km-system-V__ledger { --ac-row-cols: 32px minmax(0, 1fr) 20px; --ac-row-indent: calc(32px + var(--gutter)); }
+.km-system-V .km-system-V__ledger .ac-row__head { align-items: start; }
+.km-system-V .km-system-V__ledger .ac-row__head > .ac-idx { padding-top: 7px; }
+.km-system-V .km-system-V__ledger .ac-toggle { margin-top: 5px; }
+.km-system-V .km-system-V__rt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.km-system-V .km-system-V__job { color: var(--fg-3); }
+.km-system-V .km-system-V__ledger .ac-row.is-open .km-system-V__job { color: var(--fg-2); }
+.km-system-V .km-system-V__more { display: flex; flex-direction: column; gap: 18px; }
+.km-system-V .km-system-V__kv { display: flex; flex-direction: column; gap: 6px; }
+/* the reading path ends on one quiet door (the section's one red stays the slab face) */
+.km-system-V .km-system-V__doors { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.km-system-V .km-system-V__tail { max-width: 38ch; }
+
+/* ── entrance: the head runs on .is-play (kit); the figure and ledger run on .is-go, which the
+   script sets when the figure itself is in view (at once in the standalone mockup) ── */
+.km-system-V .km-system-V__body.is-armed .km-system-V__drop,
+.km-system-V .km-system-V__body.is-armed .km-system-V__node,
+.km-system-V .km-system-V__body.is-armed .km-system-V__co .ac-callout,
+.km-system-V .km-system-V__body.is-armed .km-system-V__cap,
+.km-system-V .km-system-V__body.is-armed .km-system-V__dim,
+.km-system-V .km-system-V__body.is-armed .km-system-V__ledger > .ac-row,
+.km-system-V .km-system-V__body.is-armed .km-system-V__doors { opacity: 0; }
+.km-system-V .km-system-V__body.is-armed .km-system-V__ink { stroke-dashoffset: 1; }
+.is-play .km-system-V .km-system-V__dim { animation: none; }   /* the kit would draw it on .is-play; here it waits for the slabs */
+
+.km-system-V .km-system-V__fig .ac-reg { --d: 300ms; }
+.km-system-V .is-go .km-system-V__drop { animation: km-system-V-drop 700ms var(--ease-out) var(--d, 600ms) both; }
+.km-system-V .is-go .km-system-V__ink { animation: km-system-V-plot var(--t, 400ms) var(--ease-inout) var(--d, 1000ms) both; }
+.km-system-V .is-go .km-system-V__node { animation: km-system-V-fade 300ms var(--ease-out) var(--d, 1200ms) both; }
+.km-system-V .is-go .km-system-V__co .ac-callout { animation: km-system-V-fade 400ms var(--ease-out) var(--cd, 1000ms) both; }
+.km-system-V .km-system-V__co[data-l="2"] { --cd: 1120ms; }
+.km-system-V .km-system-V__co[data-l="3"] { --cd: 1240ms; }
+.km-system-V .is-go .km-system-V__dim { animation: km-system-V-drawy 600ms var(--ease-out) 1400ms both; }
+.km-system-V .is-go .km-system-V__dim .ac-dim__v { animation: km-system-V-fade 400ms var(--ease-out) 1950ms both; }
+.km-system-V .is-go .km-system-V__cap { animation: km-system-V-fade 400ms var(--ease-out) 800ms both; }
+.km-system-V .is-go .km-system-V__ledger > .ac-row { animation: km-system-V-up 600ms var(--ease-out) both; animation-delay: calc(700ms + var(--i, 0) * 80ms); }
+.km-system-V .is-go .km-system-V__doors { animation: km-system-V-up 600ms var(--ease-out) 1100ms both; }
+
+@keyframes km-system-V-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-system-V-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-system-V-drop { from { opacity: 0; transform: translateY(-24px); } to { opacity: 1; transform: none; } }
+@keyframes km-system-V-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-system-V-drawy { from { opacity: 1; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+
+/* ── ≤ 760px: the ledger follows the drawing; the drawing keeps its slabs, return and dimension
+   (the ledger, numbered 01–03 top to bottom, is its key) ── */
+@media (max-width: 760px) {
+  .km-system-V { --margin: 16px; --gutter: 16px; padding-block: 72px; }
+  .km-system-V .ac-statement { font-size: 44px; }
+  .km-system-V .km-system-V__head > .ac-statement { grid-column: 1 / -1; }
+  .km-system-V .km-system-V__head > .ac-note { grid-column: 1 / -1; grid-row: auto; margin-top: 32px; }
+  .km-system-V .km-system-V__head > .ac-lede { grid-column: 1 / -1; }
+  .km-system-V .km-system-V__body { display: flex; flex-direction: column; gap: 40px; margin-top: 48px; }
+  .km-system-V .km-system-V__fig { width: 100%; overflow: hidden; }
+  .km-system-V .km-system-V__fig .ac-reg { visibility: hidden; }   /* visibility, not display: display:none would restart their fades */
+  .km-system-V .km-system-V__field { width: 755px; transform: scale(var(--fs, .85)); transform-origin: 0 0; margin-left: calc(-20px * var(--fs, .85)); margin-bottom: calc(580px * (var(--fs, .85) - 1)); }
+  .km-system-V .km-system-V__dim { visibility: hidden; }
+  .km-system-V .km-system-V__cos { visibility: hidden; }
+  .km-system-V .km-system-V__cap { justify-content: flex-start; padding: 0; height: auto; margin-top: 8px; }
+  .km-system-V .km-system-V__cap .ac-tblock > * { padding: 0 8px; }
+  .km-system-V .km-system-V__detail { width: 100%; }
+  .km-system-V .km-system-V__doors .ac-link { white-space: normal; }
+}

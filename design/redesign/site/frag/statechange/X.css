@@ -1,0 +1,155 @@
+/* ── statechange · X · FIG. 06 Accretion rings (round 2, A×C) ─────────────
+   Base: round-1 A (head, FIG. plate, Δ reading, Entropy | System). The mark
+   staircase is retired; the figure is the ORBIT primitive drawn with C's
+   precision: rings on one centre at a modular +8px step, one radius line
+   carrying the Q labels, one dimension, two radial leaders, a title block.
+   Q1–Q3: a ring draws and collapses to zero. Q4: the system is installed —
+   the one red ring — and every later quarter accretes a ring that stays.
+   Q labels sit ON their rings (contour-map style, kit .ac-t-knock); the past
+   (left of zero) is dashed, so the radius line reads one way, never a crosshair.
+   Default CSS = System (final). Kit components are placed, not restyled.   */
+
+.km-statechange-X {
+  --colw: calc(var(--col) + var(--gutter));          /* one column + gutter ≈ 111.33 */
+  --ring-in: 600ms;                                  /* a ring draws (P4) */
+}
+
+/* ── FIG. 06 plate (cols 1–12) ── */
+.km-statechange-X__body { margin-top: 64px; }
+.km-statechange-X__draw { position: absolute; inset: 0; }
+.km-statechange-X__draw text { white-space: pre; }
+
+/* rings draw counter-clockwise from the radius line (scaleY(-1) about their own centre) */
+.km-statechange-X__ring,
+.km-statechange-X__pulse {
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+  transform: scaleY(-1); transform-box: fill-box; transform-origin: 50% 50%;
+}
+/* System (default): accrete outward one by one — 600ms each, 160ms stagger, after the red ring */
+.km-statechange-X__ring {
+  --dl: calc(380ms + var(--i, 0) * 160ms);
+  transition:
+    stroke-dashoffset var(--ring-in) var(--ease-inout) var(--dl),
+    opacity 1ms linear var(--dl);
+}
+.km-statechange-X__ring--red {
+  --dl: 0ms;
+  transition: stroke-dashoffset 520ms var(--ease-inout) 0ms, opacity 1ms linear 0ms;
+}
+/* the reset quarter: invisible at rest; JS replays draw → collapse */
+.km-statechange-X__pulse { opacity: 0; }
+
+/* Entropy: nothing accretes — rings retract outer-first, the red ring last */
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__ring {
+  stroke-dashoffset: 1; opacity: 0;
+  --dl: calc((3 - var(--i, 0)) * 70ms);
+  transition:
+    stroke-dashoffset 420ms var(--ease-inout) var(--dl),
+    opacity 1ms linear calc(var(--dl) + 420ms);
+}
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__ring--red {
+  transition: stroke-dashoffset 420ms var(--ease-inout) 300ms, opacity 1ms linear 720ms;
+}
+
+/* the radius line: solid = kept. It grows outward as the rings accrete and retracts under Entropy,
+   leaving only the dashed construction line (nothing carried) */
+.km-statechange-X__radius {
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1100ms var(--ease-inout) 380ms;
+}
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__radius {
+  stroke-dashoffset: 1; transition: stroke-dashoffset 420ms var(--ease-inout) 0ms;
+}
+
+/* Q labels arrive as their ring closes (each label knocks its ring and the radius line out behind it) */
+.km-statechange-X__q { transition: opacity 300ms var(--ease-out) calc(830ms + var(--i, 0) * 160ms); }   /* lands as its ring closes */
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__q { opacity: 0; transition: opacity 240ms var(--ease-out) 0ms; }
+
+/* dimension draws from the centre once the outer ring has closed */
+.km-statechange-X__dim {
+  transform-box: fill-box; transform-origin: 0 50%;
+  transition: transform 600ms var(--ease-inout) 1200ms, opacity 1ms linear 1200ms;
+}
+.km-statechange-X__dimv { transition: opacity 400ms var(--ease-out) 1650ms; }
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__dim {
+  transform: scaleX(0); opacity: 0;
+  transition: transform 360ms var(--ease-inout) 0ms, opacity 1ms linear 360ms;
+}
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__dimv { opacity: 0; transition: opacity 200ms var(--ease-out) 0ms; }
+
+/* callout 02 (installed) lands with the red ring */
+.km-statechange-X__c2 { transition: opacity 400ms var(--ease-out) 420ms; }
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__c2 { opacity: 0; transition: opacity 240ms var(--ease-out) 0ms; }
+
+/* callout 02's anchor on the red ring: the kit's callout anchor (5px, --fg-2), so the rider stays the only bright point */
+.km-statechange-X__anchor { fill: var(--fg-2); }
+
+/* the rider: one node on the outer ring, resting at 110°; it orbits only while the page plays */
+.km-statechange-X__rider {
+  transform-box: view-box; transform-origin: 440px 232px; transform: rotate(-110deg);
+  transition: opacity 500ms var(--ease-out) 1500ms;
+}
+.km-statechange-X__rider rect { transform-box: fill-box; transform-origin: 50% 50%; transform: rotate(110deg); }
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__rider { opacity: 0; transition: opacity 240ms var(--ease-out) 0ms; }
+
+/* callouts: kit code + label, placed at the end of a radial leader (leaders are drawn in the SVG) */
+.km-statechange-X__call {
+  position: absolute; top: var(--y); left: var(--x); transform: translateY(-50%);
+  display: flex; align-items: center; gap: 10px; white-space: nowrap;
+}
+/* 01: pinned to the plate's 24px edge; its leader fills to the outer ring's leftmost point (both skins) */
+.km-statechange-X__call--past { left: 24px; right: calc(100% - var(--rl)); top: calc(var(--cy) + 0.5px); }
+.km-statechange-X__call > :not(i) { flex: none; }
+.km-statechange-X__lead { flex: 1 1 0; min-width: 0; height: 1px; margin-left: 2px; }
+.km-statechange-X__lead > svg { display: block; width: 100%; height: 1px; }
+.km-statechange-X__call [data-q] { font-variant-numeric: tabular-nums; }
+
+/* ── reading (cols 9–12) ── */
+.km-statechange-X__readout {
+  position: absolute; top: 0; bottom: 0; left: calc(8 * var(--colw)); right: 24px;
+}
+.km-statechange-X__delta {
+  position: absolute; left: 0; bottom: calc(100% - var(--cy) + 30px);   /* sits on the axis; top meets the outer ring's top */
+  display: flex; align-items: baseline; line-height: .74; white-space: nowrap;
+}
+.km-statechange-X__dglyph {
+  width: .8em; height: .729em; flex: none; overflow: visible; margin-right: .03em; color: var(--fg);
+}
+.km-statechange-X__dglyph path {
+  fill: none; stroke: currentColor; stroke-linejoin: miter; stroke-miterlimit: 8;
+  stroke-width: calc(var(--display-weight) * 0.196);
+}
+.km-statechange-X__dnum { color: var(--fg-2); display: inline-block; min-width: .62em; font-feature-settings: "zero" 0; font-variant-numeric: normal; }
+.km-statechange-X__unit {
+  position: absolute; left: 0; top: calc(var(--cy) + 0.5px); transform: translateY(-50%);
+}
+.km-statechange-X__states { position: absolute; left: 0; right: 0; bottom: 40px; display: grid; }
+.km-statechange-X__s { grid-area: 1 / 1; align-self: end; max-width: 34ch; text-wrap: pretty; }
+/* sequential, never overlapping: the outgoing sentence leaves (240ms), then the incoming one arrives */
+.km-statechange-X__s--sys { transition: opacity 480ms var(--ease-out) 260ms, transform 480ms var(--ease-out) 260ms; }
+.km-statechange-X__s--ent { opacity: 0; transform: translateY(8px); transition: opacity 240ms var(--ease-inout) 0ms, transform 240ms var(--ease-inout) 0ms; }
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__s--ent { opacity: 1; transform: none; transition: opacity 480ms var(--ease-out) 260ms, transform 480ms var(--ease-out) 260ms; }
+.km-statechange-X__plate[data-state="entropy"] .km-statechange-X__s--sys { opacity: 0; transform: translateY(8px); transition: opacity 240ms var(--ease-inout) 0ms, transform 240ms var(--ease-inout) 0ms; }
+
+/* caption band: title block left (its state cell follows the control), Entropy | System right */
+.km-statechange-X__band { padding-top: 0; }
+.km-statechange-X__tstate { min-width: 88px; justify-content: center; }
+/* guard: the kit's segment hover (0,2,1) outranks its pressed state (0,2,0) — keep the pressed label legible */
+.km-statechange-X__seg > [aria-pressed="true"]:hover { color: var(--bg); }
+
+/* ── entrance (html.is-play): head by the kit; then the plate, then the drawing in drafting order ── */
+.is-play .km-statechange-X__plate { animation: km-statechange-X-up 700ms var(--ease-out) 420ms both; }
+.is-play .km-statechange-X__past,
+.is-play .km-statechange-X__call--past { animation: km-statechange-X-fade 400ms var(--ease-out) 640ms both; }
+.is-play .km-statechange-X__peak,
+.is-play .km-statechange-X__node { animation: km-statechange-X-fade 400ms var(--ease-out) 800ms both; }
+.is-play .km-statechange-X__carry { animation: km-statechange-X-fade 600ms var(--ease-out) 900ms both; }
+.is-play .km-statechange-X__readout,
+.is-play .km-statechange-X__band { animation: km-statechange-X-fade 600ms var(--ease-out) 900ms both; }
+.is-play .km-statechange-X__rider { animation: km-statechange-X-orbit 18s linear 0ms infinite; }
+.is-play .km-statechange-X__rider rect { animation: km-statechange-X-counter 18s linear 0ms infinite; }
+
+@keyframes km-statechange-X-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-statechange-X-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-statechange-X-orbit { from { transform: rotate(-110deg); } to { transform: rotate(-470deg); } }
+@keyframes km-statechange-X-counter { from { transform: rotate(110deg); } to { transform: rotate(470deg); } }

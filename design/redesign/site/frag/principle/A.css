@@ -1,0 +1,77 @@
+/* ── principle · A · Cinematic Figures ───────────────────────────────
+   The first of A's two full-red planes: a pause between dense acts.
+   Nothing on the plane but the sentence, set as one decisive diagonal on
+   the 12-column grid: clause 1 (wide 430, paper) hangs from col 1;
+   clause 2 (wide 300, paper 86%) lands at col 5 one line-pair lower;
+   the coda (paper rule + disclaimer) holds cols 1–4 on clause 2's last
+   baseline. No plates, no overlaps: the red field is the figure.
+   Row map (px): 112 pad · 16 label · 56 · 116 clause 1 · 112 · 232
+   clause 2 · 112 pad = 756.                                            */
+
+.km-principle-A { overflow: hidden; }
+
+.km-principle-A__inner {
+  position: relative;
+  padding: 112px var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  grid-template-rows: 16px 56px 116px 112px 232px;
+}
+
+/* label row: paper square + tracked caps label at col 1, the mark at col 12 */
+.km-principle-A__labelrow {
+  grid-column: 1 / -1; grid-row: 1;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.km-principle-A__label {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-principle-A__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-principle-A__mark { --logo-h: 20px; color: var(--fg); }
+
+/* the sentence, in two voices, on the diagonal */
+.km-principle-A__title {
+  grid-column: 1 / -1; grid-row: 3 / 6;
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+  grid-template-rows: 116px 112px 232px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 120px; line-height: 116px; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-principle-A__c1 { grid-column: 1 / -1; grid-row: 1; display: block; }
+.km-principle-A__c2 {
+  grid-column: 5 / -1; grid-row: 3; display: block;
+  font-weight: var(--light-weight); color: var(--fg-2);
+}
+.km-principle-A__ln {
+  display: block; overflow: hidden; white-space: nowrap;
+  padding-block: .12em .26em; margin-block: -.12em -.26em;
+}
+.km-principle-A__ln > span { display: inline-block; }
+
+/* coda: the hero's 48×2 rule, then the disclaimer — its last baseline sits on clause 2's */
+.km-principle-A__coda {
+  grid-column: 1 / 5; grid-row: 5; align-self: end; margin-bottom: var(--coda-drop, -10px);
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.km-principle-A__rule { display: block; width: 48px; height: 2px; margin-bottom: 28px; background: var(--signal); transform-origin: 0 50%; }
+.km-principle-A__note {
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: 20px; line-height: 30px; color: var(--fg-2);
+}
+
+/* ── entrance (html.is-play) ─────────────────────────────────────────
+   label → clause 1 rises → a held beat of empty red → clause 2 lands at
+   col 5 (the light voice, 400ms after the medium one) → rule → note.   */
+.is-play .km-principle-A__labelrow > * { animation: km-principle-A-fade 300ms var(--ease-out) 100ms both; }
+.is-play .km-principle-A__c1 .km-principle-A__ln > span { animation: km-principle-A-rise 900ms var(--ease-out) 250ms both; }
+.is-play .km-principle-A__c2 .km-principle-A__ln > span { animation: km-principle-A-rise 900ms var(--ease-out) both; }
+.is-play .km-principle-A__c2 .km-principle-A__ln:nth-child(1) > span { animation-delay: 1050ms; }
+.is-play .km-principle-A__c2 .km-principle-A__ln:nth-child(2) > span { animation-delay: 1170ms; }
+.is-play .km-principle-A__rule { animation: km-principle-A-draw 600ms var(--ease-out) 1700ms both; }
+.is-play .km-principle-A__note { animation: km-principle-A-up 600ms var(--ease-out) 1850ms both; }
+
+@keyframes km-principle-A-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-principle-A-rise { from { transform: translateY(135%); } to { transform: translateY(0); } }
+@keyframes km-principle-A-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-principle-A-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }

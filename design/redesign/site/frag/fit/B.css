@@ -1,0 +1,182 @@
+/* ── fit · B · Quiet Ledger — 09 Fit, two ledgers that open in place ─────
+   The report's chapter opener on paper: the spine index holds the left third
+   (where the report set "01 Tools" and its photo), the statement and body sit
+   right of the spine, and the report's ruled "In this chapter" list becomes
+   two stacked ledgers — Built for (ink) and Not for (the muted sentence).
+   The report's black closing bar becomes the second ledger's last row. */
+.km-fit-B {
+  --x-spine: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter));
+  padding: 128px 0 128px; overflow: hidden;
+}
+
+/* the Index Spine (col 3|4 gutter): (a) enters from the section above into the joint, (b) runs on */
+.km-fit-B__spine { position: absolute; left: var(--x-spine); width: 1px; background: var(--line); transform-origin: 50% 0; }
+.km-fit-B__spine--a { top: 0; height: 128px; }
+.km-fit-B__spine--b { top: 128px; bottom: 0; }
+
+.km-fit-B__in {
+  position: relative; padding-inline: var(--margin);
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter);
+}
+
+/* opening rule: spine → right margin, square at the joint (the mark's corner, as a hairline) */
+.km-fit-B__open { grid-column: 4 / 13; grid-row: 1; position: relative; height: 1px; margin-left: calc(var(--gutter) / -2); }
+.km-fit-B__rule { position: absolute; inset: 0; background: var(--line-2); transform-origin: 0 50%; }
+.km-fit-B__joint { position: absolute; left: -2.5px; top: -2.5px; width: 6px; height: 6px; background: var(--fg); }
+
+/* spine column: index only */
+.km-fit-B__index { grid-column: 1 / 4; grid-row: 2; margin-top: 48px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-fit-B__num {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 64px; line-height: 0.9; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-fit-B__label {
+  margin-top: 18px; display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-fit-B__sq { width: 8px; height: 8px; flex: none; background: var(--accent); }
+
+/* statement: a sentence + a muted sentence */
+.km-fit-B__h {
+  grid-column: 4 / 11; grid-row: 2; margin-top: 48px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: 1.0; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-fit-B__s1, .km-fit-B__s2 { display: block; white-space: nowrap; }
+.km-fit-B__s2 { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-fit-B__red { grid-column: 4; grid-row: 3; display: block; width: 48px; height: 2px; margin-top: 44px; background: var(--accent); transform-origin: 0 50%; }
+
+.km-fit-B__body { grid-column: 4 / 9; grid-row: 4; margin-top: 32px; font-size: 18px; line-height: 30px; color: var(--fg-2); max-width: 62ch; text-wrap: pretty; }
+
+.km-fit-B__note {
+  grid-column: 10 / 13; grid-row: 4; align-self: end; margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line);
+  font-size: 15px; line-height: 22px;
+}
+.km-fit-B__note span { display: block; }
+.km-fit-B__nk { margin-bottom: 8px; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-fit-B__n1 { color: var(--fg); }
+.km-fit-B__n2 { color: var(--fg-3); }
+
+/* ── the ledgers ── */
+.km-fit-B__ledger { grid-column: 4 / 13; position: relative; display: grid; grid-template-columns: subgrid; }
+.km-fit-B__ledger--yes { grid-row: 5; margin-top: 64px; }
+.km-fit-B__ledger--no { grid-row: 6; margin-top: 44px; }
+
+.km-fit-B__lh {
+  grid-column: 1 / -1; display: flex; justify-content: space-between; padding-bottom: 16px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-fit-B__lc { color: var(--fg-3); }
+/* each ledger hangs from the spine at a joint: solid where we say yes, open where we decline */
+.km-fit-B__jt {
+  position: absolute; z-index: 1; top: 29.5px; left: calc(var(--gutter) / -2 - 2.5px); width: 6px; height: 6px;
+  background: var(--fg);
+}
+.km-fit-B__ledger--no .km-fit-B__jt { background: var(--bg); box-shadow: inset 0 0 0 1px var(--fg-2); }
+
+.km-fit-B__rows { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; }
+.km-fit-B__row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; position: relative; isolation: isolate; }
+.km-fit-B__row::before, .km-fit-B__rows::after { /* hairlines, from the spine */
+  content: ""; position: absolute; left: calc(var(--gutter) / -2); right: 0; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.km-fit-B__row::before { top: 0; }
+.km-fit-B__rows::after { bottom: 0; }
+.km-fit-B__row:first-child::before { background: var(--line-2); }
+.km-fit-B__row::after { /* hover fill */
+  content: ""; position: absolute; z-index: -1; top: 1px; bottom: 0; left: calc(var(--gutter) / -2); right: 0;
+  background: var(--panel); opacity: 0; transition: opacity 300ms var(--ease-out);
+}
+.km-fit-B__row:hover::after { opacity: 1; }
+
+.km-fit-B__btn {
+  grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline;
+  padding: 18px 0; text-align: left; transition: padding-bottom 360ms var(--ease-inout);
+}
+.km-fit-B__row.is-open .km-fit-B__btn { padding-bottom: 8px; }
+.km-fit-B__idx { grid-column: 1; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); }
+.km-fit-B__t {
+  grid-column: 2 / 6; font-family: var(--f-body); font-stretch: 100%; font-weight: 500;
+  font-size: 24px; line-height: 30px; letter-spacing: -0.01em; color: var(--fg);
+  transition: transform 300ms var(--ease-out);
+}
+.km-fit-B__row:hover .km-fit-B__t { transform: translateX(8px); }
+.km-fit-B__d { grid-column: 6 / 9; font-size: 17px; line-height: 26px; color: var(--fg-2); }
+.km-fit-B__tog { grid-column: 9; justify-self: end; align-self: center; position: relative; width: 20px; height: 20px; }
+.km-fit-B__tog::before, .km-fit-B__tog::after {
+  content: ""; position: absolute; left: 0; top: 9.5px; width: 20px; height: 1px; background: var(--fg);
+}
+.km-fit-B__tog::after { transform: rotate(90deg); transition: transform 360ms var(--ease-inout); }
+.km-fit-B__row.is-open .km-fit-B__tog::after { transform: rotate(0deg); }
+
+/* Not for: the muted sentence */
+.km-fit-B__ledger--no .km-fit-B__t { color: var(--fg-2); }
+.km-fit-B__ledger--no .km-fit-B__d { color: var(--fg-3); }
+.km-fit-B__ledger--no .km-fit-B__tog::before, .km-fit-B__ledger--no .km-fit-B__tog::after { background: var(--fg-2); }
+
+/* open in place */
+.km-fit-B__x {
+  grid-column: 6 / 9; display: grid; grid-template-rows: 0fr; opacity: 0;
+  transition: grid-template-rows 360ms var(--ease-inout), opacity 360ms var(--ease-inout);
+}
+.km-fit-B__x > div { overflow: hidden; }
+.km-fit-B__x p { padding-bottom: 22px; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+.km-fit-B__row.is-open .km-fit-B__x { grid-template-rows: 1fr; opacity: 1; }
+
+/* the closing row: the report's black bar, set as a ledger row */
+.km-fit-B__act { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; padding-top: 28px; }
+.km-fit-B__act .km-fit-B__idx { align-self: center; }
+.km-fit-B__q {
+  grid-column: 2 / 6; font-family: var(--f-body); font-stretch: 100%; font-weight: 500;
+  font-size: 24px; line-height: 30px; letter-spacing: -0.01em; color: var(--fg);
+}
+.km-fit-B__doors { grid-column: 6 / 10; justify-self: end; display: flex; align-items: center; gap: 28px; }
+.km-fit-B__cta, .km-fit-B__link {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+}
+.km-fit-B__ico { width: 12px; height: 12px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.km-fit-B__go { width: 14px; }
+.km-fit-B__cta {
+  display: inline-flex; align-items: center; gap: 14px; height: 52px; padding: 0 24px 0 26px;
+  background: var(--accent); color: var(--accent-fg);
+  transition: background-color 200ms var(--ease-out);
+}
+.km-fit-B__arr { transition: transform 200ms var(--ease-out); }
+.km-fit-B__cta:hover { background: var(--accent-hover); }
+.km-fit-B__cta:hover .km-fit-B__arr { transform: translate(2px, -2px); }
+.km-fit-B__link {
+  position: relative; display: inline-flex; align-items: center; gap: 12px; padding-block: 8px;
+  border-bottom: 1px solid var(--line-2); color: var(--fg);
+}
+.km-fit-B__link::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 300ms var(--ease-out);
+}
+.km-fit-B__link:hover::after { transform: scaleX(1); }
+
+.km-fit-B.is-cold *, .km-fit-B.is-cold *::before, .km-fit-B.is-cold *::after { transition: none !important; }
+
+/* ── entrance (only under html.is-play) ──
+   drop → joint → rule draws from the spine → 09 → statement (+ muted sentence) →
+   ledger rules draw top-down at a 60ms stagger → at ~2.2s the Not-for row opens in place */
+.is-play .km-fit-B__spine--a { animation: km-fit-B-drop 360ms var(--ease-out) both; }
+.is-play .km-fit-B__joint { animation: km-fit-B-fade 200ms var(--ease-out) 300ms both; }
+.is-play .km-fit-B__rule { animation: km-fit-B-draw 900ms var(--ease-out) 360ms both; }
+.is-play .km-fit-B__spine--b { animation: km-fit-B-drop 1800ms var(--ease-out) 360ms both; }
+.is-play .km-fit-B__index { animation: km-fit-B-fade 400ms var(--ease-out) 420ms both; }
+.is-play .km-fit-B__s1 { animation: km-fit-B-up 700ms var(--ease-out) 460ms both; }
+.is-play .km-fit-B__s2 { animation: km-fit-B-up 700ms var(--ease-out) 620ms both; }
+.is-play .km-fit-B__red { animation: km-fit-B-draw 600ms var(--ease-out) 820ms both; }
+.is-play .km-fit-B__body, .is-play .km-fit-B__note { animation: km-fit-B-up 700ms var(--ease-out) 900ms both; }
+.is-play .km-fit-B__lh, .is-play .km-fit-B__jt { animation: km-fit-B-fade 500ms var(--ease-out) both; animation-delay: calc(1120ms + var(--g) * 300ms); }
+.is-play .km-fit-B__row::before { animation: km-fit-B-draw 600ms var(--ease-out) both; animation-delay: calc(1160ms + var(--g) * 300ms + var(--i) * 60ms); }
+.is-play .km-fit-B__rows::after { animation: km-fit-B-draw 600ms var(--ease-out) both; animation-delay: calc(1340ms + var(--g) * 300ms); }
+.is-play .km-fit-B__btn > * { animation: km-fit-B-fade 500ms var(--ease-out) both; animation-delay: calc(1220ms + var(--g) * 300ms + var(--i) * 60ms); }
+.is-play .km-fit-B__ledger--yes .km-fit-B__row.is-open .km-fit-B__x > div { animation: km-fit-B-fade 500ms var(--ease-out) 1500ms both; }
+.is-play .km-fit-B__act { animation: km-fit-B-up 600ms var(--ease-out) 1700ms both; }
+
+@keyframes km-fit-B-drop { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-fit-B-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-fit-B-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-fit-B-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }

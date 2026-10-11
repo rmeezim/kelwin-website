@@ -1,0 +1,52 @@
+{
+ "name": "Cinematic Drafting",
+ "thesis": "Kelwin reads like a film shot inside an engineering office. A sets the restraint (graphite, paper and one red, two-voice wide statements, generous space, every section echoing the hero). C proves each argument with one exact technical drawing, never a wall of cells or tiny text. B brings calm only where you named it.",
+ "contributions": [
+  {
+   "from": "A",
+   "what": "The hero, the head grammar on every section, two-voice statements, the FIG. plate, strips instead of cards, and the space."
+  },
+  {
+   "from": "C",
+   "what": "One 1px technical drawing per section, under strict limits: a few large callouts, at most two dimension lines, nothing under 11px."
+  },
+  {
+   "from": "B",
+   "what": "Ledgers that open in place, the architecture loop with 'How it closes', and the calm of the final call."
+  }
+ ],
+ "vocab": [
+  {
+   "name": "Trace · signal lines",
+   "what": "Routed 1px signal lines with nodes that latch as the line draws; a knot untangles into a clean route."
+  },
+  {
+   "name": "Strata · isometric slabs",
+   "what": "Thin isometric slabs that drop in and compress from exploded to assembled."
+  },
+  {
+   "name": "Field · point cloud",
+   "what": "A point cloud that resolves from scatter into a 10×10 field, one point per percent."
+  },
+  {
+   "name": "Orbit · rings and arcs",
+   "what": "Concentric rings and arcs: a loop closes, and rings accrete outward and stay."
+  },
+  {
+   "name": "Measure · bars and ticks",
+   "what": "Calibrated rulers, ticks and gantt bars that measure out time and progress."
+  },
+  {
+   "name": "Contour · waveforms and contours",
+   "what": "Waveforms and contour lines: noise settles into one clean signal."
+  },
+  {
+   "name": "Lattice · the resolving grid",
+   "what": "A warped grid that resolves into a true one, from surface to architecture."
+  },
+  {
+   "name": "Folio · sheets",
+   "what": "Tagged document sheets that resolve from draft to finished as they change hands."
+  }
+ ]
+}

@@ -1,0 +1,168 @@
+/* ── evidence · C · Systems Drawing Set — SHEET 03/14, a document sheet on paper ──
+   Frame verticals at the margins, a title row (title cell | note cell), four 3-col cells
+   on one ink baseline over graph paper. Each value is a 1px outlined column; its 112px
+   numeral rides the column's top edge. The one red element: the 17% column as a flat plane. */
+.km-evidence-C {
+  --u: 3px;                         /* 1 unit of the 0–100 scale (100 = 300px) */
+  --x-title: calc(var(--margin) + 8 * var(--col) + 7.5 * var(--gutter));
+  position: relative; height: 1168px;
+}
+
+/* ── drafting layer ── */
+.km-evidence-C__draft { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.km-evidence-C__ln { position: absolute; display: block; background: var(--line); }
+.km-evidence-C__ln--edge { left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); }
+.km-evidence-C__ln--fl { left: var(--margin); top: 0; bottom: 0; width: 1px; }
+.km-evidence-C__ln--fr { left: calc(var(--stage) - var(--margin) - 1px); top: 0; bottom: 0; width: 1px; }
+.km-evidence-C__h { left: var(--margin); right: var(--margin); top: var(--y); height: 1px; transform-origin: 0 50%; }
+.km-evidence-C__v { width: 1px; transform-origin: 50% 0; }
+.km-evidence-C__v--title { left: var(--x-title); top: 96px; height: 384px; }
+.km-evidence-C__v--b1 { left: calc(var(--margin) + 3 * var(--col) + 2.5 * var(--gutter)); top: 480px; height: 640px; }
+.km-evidence-C__v--b2 { left: calc(var(--margin) + 6 * var(--col) + 5.5 * var(--gutter)); top: 480px; height: 640px; }
+.km-evidence-C__v--b3 { left: calc(var(--margin) + 9 * var(--col) + 8.5 * var(--gutter)); top: 480px; height: 640px; }
+.km-evidence-C__v--band { left: var(--x-title); top: 1120px; height: 48px; }
+.km-evidence-C__base { left: var(--margin); right: var(--margin); top: 948px; height: 1px; background: var(--fg); transform-origin: 0 50%; }
+
+.km-evidence-C__paper { position: absolute; left: var(--margin); top: 528px; display: block; }
+.km-evidence-C__grid line { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; shape-rendering: crispEdges; }
+.km-evidence-C__grid .km-evidence-C__g50, .km-evidence-C__grid .km-evidence-C__g100 { stroke: var(--line-2); }
+.km-evidence-C__scale {
+  position: absolute; right: calc(var(--margin) + 10px);
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: 0.04em; color: var(--fg-3);
+}
+.km-evidence-C__scale--100 { top: calc(528px + 120px - 18px); }
+.km-evidence-C__scale--50 { top: calc(528px + 270px - 18px); }
+
+.km-evidence-C__x { position: absolute; left: calc(var(--x) - 4px); top: calc(var(--yy) - 4px); width: 9px; height: 9px; }
+.km-evidence-C__x::before, .km-evidence-C__x::after { content: ""; position: absolute; background: var(--fg); }
+.km-evidence-C__x::before { left: 0; top: 4px; width: 9px; height: 1px; }
+.km-evidence-C__x::after { left: 4px; top: 0; width: 1px; height: 9px; }
+
+/* ── the sheet ── */
+.km-evidence-C__sheet { position: relative; z-index: 1; padding: 96px var(--margin) 0; }
+
+/* the C sheet head (same metric on every sheet): opening rule y 96 · label y 120 · title bottom y 422 ·
+   48×2 red rule y 450 · row bottom y 480 · note cell (cols 9–12) with its mono cell ID and a 20px lede */
+.km-evidence-C__titlerow { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); height: 384px; }
+.km-evidence-C__tcell, .km-evidence-C__ncell { position: relative; padding: 24px; }
+.km-evidence-C__tcell { grid-column: 1 / 9; margin-right: calc(var(--gutter) / -2); }
+.km-evidence-C__ncell { grid-column: 9 / 13; margin-left: calc(var(--gutter) / -2); }
+.km-evidence-C__sheetno {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-evidence-C__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-evidence-C__spec {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.km-evidence-C__title {
+  position: absolute; left: 24px; bottom: 58px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 88px; line-height: .94; letter-spacing: var(--display-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-evidence-C__title span { display: block; white-space: nowrap; }
+.km-evidence-C__turn { font-weight: var(--light-weight); color: var(--fg-3); }
+.km-evidence-C__rule { position: absolute; left: 24px; top: 354px; width: 48px; height: 2px; background: var(--signal); transform-origin: 0 50%; }
+.km-evidence-C__note { position: absolute; left: 24px; right: 24px; bottom: 58px; font-size: 20px; line-height: 1.5; font-weight: var(--body-weight); color: var(--fg-2); text-wrap: pretty; }
+
+/* body cells */
+.km-evidence-C__cells { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); height: 640px; }
+.km-evidence-C__cell { grid-column: span 3; margin-inline: calc(var(--gutter) / -2); display: flex; flex-direction: column; min-width: 0; }
+.km-evidence-C__cell:first-child { margin-left: 0; }
+.km-evidence-C__cell:last-child { margin-right: 0; }
+.km-evidence-C__id {
+  height: 48px; flex: none; display: flex; align-items: center; padding: 0 24px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+  transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out);
+}
+.km-evidence-C__cell:hover .km-evidence-C__id { background: var(--fg); color: var(--bg); }
+
+.km-evidence-C__plot { position: relative; height: 420px; flex: none; }
+/* dimension line with end ticks, value set across it */
+.km-evidence-C__dim { position: absolute; left: 40px; bottom: 0; width: 1px; height: calc(var(--v) * var(--u)); background: var(--fg-2); transform-origin: 50% 100%; }
+.km-evidence-C__dim::before, .km-evidence-C__dim::after { content: ""; position: absolute; left: -4px; width: 9px; height: 1px; background: var(--fg-2); }
+.km-evidence-C__dim::before { top: 0; }
+.km-evidence-C__dim::after { bottom: 0; }
+.km-evidence-C__dimv {
+  position: absolute; left: 0.5px; top: 50%; transform: translate(-50%, -50%) rotate(-90deg);
+  padding: 0 5px; background: var(--bg); white-space: nowrap;
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: 0.02em; color: var(--fg);
+}
+/* the value column */
+.km-evidence-C__col {
+  position: absolute; left: 64px; right: 56px; bottom: 0; height: calc(var(--v) * var(--u));
+  border: 1px solid var(--fg); border-bottom: 0; background: var(--bg);
+}
+.km-evidence-C__plane { position: absolute; left: 64px; right: 56px; bottom: 0; height: calc(var(--v) * var(--u)); background: var(--accent); }
+/* 95:5 — a datum tick splits the column; the 5 is called out on a leader */
+.km-evidence-C__datum { position: absolute; left: 56px; right: 48px; bottom: calc(95 * var(--u)); height: 1px; background: var(--fg); transform-origin: 0 50%; }
+.km-evidence-C__call { position: absolute; left: calc(100% - 56px); width: 14px; bottom: calc(97.5 * var(--u)); height: 1px; background: var(--fg-2); transform-origin: 0 50%; }
+.km-evidence-C__callv {
+  position: absolute; left: 18px; top: -7px; white-space: nowrap;
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: 0.02em; color: var(--fg);
+}
+/* the numeral rides the column's top edge */
+.km-evidence-C__num {
+  position: absolute; left: 62px; bottom: calc(var(--v) * var(--u) + 10px);
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 112px; line-height: 0.74; letter-spacing: var(--display-tracking); color: var(--fg);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.km-evidence-C__chip {
+  display: inline-block; vertical-align: top; margin: 2px 0 0 10px; padding: 2px 6px;
+  border: 1px solid var(--line-2);
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: 0; color: var(--fg-2);
+}
+
+.km-evidence-C__read { height: 172px; flex: none; display: flex; flex-direction: column; padding: 20px 24px 22px; }
+.km-evidence-C__claim { font-size: 15px; line-height: 1.45; font-weight: var(--ui-weight); color: var(--fg); text-wrap: pretty; }
+.km-evidence-C__so { margin-top: 6px; font-size: 15px; line-height: 1.45; color: var(--fg-2); text-wrap: pretty; }
+.km-evidence-C__src {
+  margin-top: auto; font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+
+/* bottom band */
+.km-evidence-C__band { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); height: 48px; }
+/* the C band (same on every sheet): 48px, legend on cols 1–8, segmented title block on cols 9–12 */
+.km-evidence-C__legend, .km-evidence-C__tb {
+  display: flex; align-items: center; gap: 10px; white-space: nowrap;
+  font-family: var(--f-mono); font-size: 11px; line-height: 14px; letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2);
+}
+.km-evidence-C__legend { grid-column: 1 / 9; margin-right: calc(var(--gutter) / -2); padding: 0 24px; color: var(--fg-3); }
+.km-evidence-C__tb { grid-column: 9 / 13; margin-left: calc(var(--gutter) / -2); gap: 0; }
+.km-evidence-C__tb > span { flex: 1 1 auto; height: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0 12px; }
+.km-evidence-C__tb > span:first-child { justify-content: flex-start; padding-left: 24px; }
+.km-evidence-C__tb > span + span { box-shadow: inset 1px 0 0 var(--line); }
+.km-evidence-C__tb > span:last-child { color: var(--fg); }
+.km-evidence-C__tb .km-logo-mark { --logo-h: 11px; }
+.km-evidence-C__key { width: 8px; height: 8px; flex: none; background: var(--accent); }
+
+/* ── entrance: drafting order (only under html.is-play) ── */
+.is-play .km-evidence-C__ln--edge, .is-play .km-evidence-C__ln--fl, .is-play .km-evidence-C__ln--fr { animation: km-evidence-C-fade 300ms var(--ease-inout) both; }
+.is-play .km-evidence-C__x { animation: km-evidence-C-fade 300ms var(--ease-inout) 120ms both; }
+.is-play .km-evidence-C__h, .is-play .km-evidence-C__base { animation: km-evidence-C-drawx 440ms var(--ease-inout) both; animation-delay: calc(220ms + var(--r) * 40ms); }
+.is-play .km-evidence-C__v { animation: km-evidence-C-drawy 440ms var(--ease-inout) both; animation-delay: calc(220ms + var(--r) * 40ms); }
+.is-play .km-evidence-C__paper, .is-play .km-evidence-C__scale { animation: km-evidence-C-fade 500ms var(--ease-inout) 560ms both; }
+.is-play .km-evidence-C__title span { animation: km-evidence-C-wipe 700ms var(--ease-inout) both; }
+.is-play .km-evidence-C__title span:first-child { animation-delay: 380ms; }
+.is-play .km-evidence-C__title span:last-child { animation-delay: 500ms; }
+.is-play .km-evidence-C__sq { animation: km-evidence-C-fade 300ms var(--ease-inout) 300ms both; }
+.is-play .km-evidence-C__rule { animation: km-evidence-C-drawx 500ms var(--ease-out) 700ms both; }
+.is-play .km-evidence-C__note { animation: km-evidence-C-fade 600ms var(--ease-inout) 700ms both; }
+.is-play .km-evidence-C__col { animation: km-evidence-C-plot 1200ms var(--ease-inout) both; animation-delay: calc(900ms + var(--i) * 120ms); }
+.is-play .km-evidence-C__num { animation: km-evidence-C-ride 1200ms var(--ease-inout) both, km-evidence-C-fade 300ms var(--ease-inout) both; animation-delay: calc(900ms + var(--i) * 120ms); }
+.is-play .km-evidence-C__chip { animation: km-evidence-C-fade 300ms var(--ease-inout) both; animation-delay: calc(2100ms + var(--i) * 120ms); }
+.is-play .km-evidence-C__dim { animation: km-evidence-C-drawy 400ms var(--ease-inout) both; animation-delay: calc(1980ms + var(--i) * 80ms); }
+.is-play .km-evidence-C__datum { animation: km-evidence-C-drawx 300ms var(--ease-inout) 2240ms both; }
+.is-play .km-evidence-C__call { animation: km-evidence-C-drawx 240ms var(--ease-inout) 2480ms both; }
+.is-play .km-evidence-C__read { animation: km-evidence-C-fade 600ms var(--ease-inout) both; animation-delay: calc(1500ms + var(--i) * 80ms); }
+.is-play .km-evidence-C__key { animation: km-evidence-C-fade 300ms var(--ease-inout) 1960ms both; }
+.is-play .km-evidence-C__plane { animation: km-evidence-C-drop 400ms var(--ease-out) 2900ms both; }
+
+@keyframes km-evidence-C-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-evidence-C-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-evidence-C-drawy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-evidence-C-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-evidence-C-plot { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-evidence-C-ride { from { transform: translateY(calc(var(--v) * var(--u))); } to { transform: translateY(0); } }
+@keyframes km-evidence-C-drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }

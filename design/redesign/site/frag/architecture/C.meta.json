@@ -1,0 +1,21 @@
+{
+  "title": "Signal routing sheet",
+  "direction": "C",
+  "summary": "SHEET 05/14 of Kelwin's drawing set: a 1px orthogonal routing plan (FIG. 5.1) of the source architecture. Market signal runs through L1 Narrative, L2 Channels (fanned into five parallel channel rows) and L3 Intelligence to a compounding pipeline, closed by the sheet's single red return route under the plan and a dashed reroute bus over it. Every cell sits on the 111px column module and 96px rows of the visible construction grid, lettered callouts A–F key to a spec column, and the sheet ends in a title block. It replaces today's floating bracketed cards and Bézier arcs with an engineered schematic in which feedback is a route, not a decoration.",
+  "reference": {
+    "site": "Ada",
+    "mobbin_url": "https://mobbin.com/sites/sections/8b9d52f3-05d9-47d9-81a2-aad5a6a8fa71",
+    "ref_file": "refs/architecture-C.webp",
+    "borrowed": "Ada's horizontal system schematic that reads left to right: an input terminal dot, a first stage, a vertical junction stack with square markers feeding the central engine, a bus that splits into parallel rows joined by right-angle connectors, and rows that rejoin at an output terminal dot. Full-width top and bottom buses drop in on square-marked connectors, and micro-labels sit on the wires.",
+    "kelwin": "Redrawn as a no-fill 1px drawing on a graphite night plate, inside the C sheet anatomy: frame verticals, a --line-2 opening rule, title cell plus light note cell, a dashed construction grid, the spec column, and the ticker plus title block with the Kelwin mark. Ada's discs become bordered node cells snapped to the column module (L1 Narrative, L2 Channels, L3 Intelligence; L3 is the only doubled border, standing in for Ada's ringed central engine). The junction stack becomes Narrative's three inputs (message system, proof, category), and the 'coaching' bus becomes the five channel branches. Ada's wire labels become the source's edge verbs DEFINE / ACTIVATE / MEASURE / COMPOUND. Her two full-width buses become the source's two feedback routes: a dashed REROUTE EFFORT bus over the top into Channels, and the sheet's one red element, the return route under the plan into Narrative. That route is tagged F with an inverted paper tag, so no second red appears. Lettered callouts A–F key to the spec rows."
+  },
+  "motion": [
+    "entrance, in drafting order: the frame verticals and the three crosshairs fade in (300ms). The sheet rules draw in raster order (40ms stagger) and the dashed construction grid fades up. The plan then plots via stroke-dashoffset from left to right over about 1.2s: input wire, L1, Narrative's junction stack, L2, the five channel rows with their square junctions, L3 (then its inner border) and the output terminal. Mono labels type on at 24ms per character as their element is drawn, and the spec rows reveal top-down.",
+    "the closing beat: the dashed reroute bus fades in over the plan (about 2.3s), the lettered callouts land, and then the red return route plots last, from L3 down, back under the whole plan and up into L1 (600ms --ease-inout, about 2.8–3.4s). Tag F settles 8px into place, and a 6px square runs the whole loop once (L1 → L3 → under the plan → L1, 2.2s) before fading out.",
+    "interaction: hovering a spec row turns its lettered callout and leader --accent (row F thickens the red route). The 'See how we install it →' cell inverts on hover.",
+    "on the live site: the plan plots once when the sheet enters view, and the frame verticals continue from sheet to sheet. Reduced motion shows the fully plotted sheet.",
+    "ambient: none."
+  ],
+  "demoMs": 6200,
+  "notes": "The input terminal sits on the left frame line and the output terminal on the cols 8|9 divider, so the signal enters the sheet from outside and exits into the spec column. Cells span one 111.33px column module (column plus gutter) between the drawn construction lines and one 96px row, so the inked cells sit exactly on the grid that is visible behind them. The statement is the source's 'Three layers. One closed loop.' and the plan uses the source's real topology and edge verbs. The sheet is 912px tall: 96px internal top padding, a 288px title row, a 480px body and a 48px band."
+}
