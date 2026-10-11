@@ -416,44 +416,7 @@
    The one place red is allowed to be a full-bleed fill. Compresses the
    sister-brand's red-card gesture into Kelwin's instrument form: a thin
    protocol strip with a mono label left and a live reading right.      */
-.sys-seam {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 12px clamp(28px, 5vw, 64px);
-  background: var(--hud-signal);
-  font-family: var(--hud-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--hud-cream);
-  box-shadow:
-    inset 0 1px 0 rgba(251, 250, 246, 0.14),
-    inset 0 -1px 0 rgba(10, 8, 5, 0.25);
-}
-.sys-seam-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-}
-.sys-seam-label::before {
-  content: '';
-  width: 7px;
-  height: 7px;
-  background: var(--hud-cream);
-  flex-shrink: 0;
-}
-.sys-seam-reading {
-  color: rgba(251, 250, 246, 0.75);
-  font-variant-numeric: tabular-nums;
-  text-align: right;
-}
 @media (max-width: 600px) {
-  .sys-seam { font-size: 9px; letter-spacing: 0.14em; }
 }
 
 /* ── DotMatrixReading — cell-built flip-board numerals ────────────────

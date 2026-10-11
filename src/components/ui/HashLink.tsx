@@ -29,7 +29,10 @@ export default function HashLink({ href, onClick, ...rest }: Props) {
     const behavior: ScrollBehavior = reduced ? "auto" : "smooth";
     if (target) {
       target.scrollIntoView({ behavior, block: "start" });
-      window.history.pushState(null, "", `${window.location.pathname}${window.location.search}#${hash}`);
+      // a new history entry only when the fragment changes, so repeat clicks don't pile up Back steps
+      const url = `${window.location.pathname}${window.location.search}#${hash}`;
+      if (window.location.hash === `#${hash}`) window.history.replaceState(null, "", url);
+      else window.history.pushState(null, "", url);
       if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
       target.focus({ preventScroll: true });
     } else {

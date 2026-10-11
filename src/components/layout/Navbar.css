@@ -126,11 +126,13 @@
 
 /* ── entrance: homepage only, with the hero (mockup: nav fades 500ms, hairline draws 1s from
       100ms, the marks register at 300 / 380ms). Held at the first frame until the hero plays;
-      no .km-motion (reduced motion / no JS) = the resting bar. Interior pages show it at rest. ── */
+      no .km-motion (reduced motion / no JS) = the resting bar. Interior pages show it at rest.
+      data-settled (Navbar.tsx: the bar compacted before the hero played — the page opened
+      scrolled, or the reader left the hero first) = no entrance: the bar simply stands. ── */
 @keyframes kn-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes kn-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.km-motion .kn:has(+ main #s-hero) .kn__bar { animation: kn-fade 500ms var(--ease-out) both; }
-.km-motion .kn:has(+ main #s-hero) .kn__bar::after { animation: kn-drawx 1s var(--ease-out) 100ms both; }
+.km-motion .kn:has(+ main #s-hero):not([data-settled]) .kn__bar { animation: kn-fade 500ms var(--ease-out) both; }
+.km-motion .kn:has(+ main #s-hero):not([data-settled]) .kn__bar::after { animation: kn-drawx 1s var(--ease-out) 100ms both; }
 /* (written out: a pseudo-element inside :is() is dropped, and the hairline would draw early) */
 .km-motion .kn:has(+ main #s-hero):not([data-play]) .kn__bar,
 .km-motion .kn:has(+ main #s-hero):not([data-play]) .kn__bar::after,

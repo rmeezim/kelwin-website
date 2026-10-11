@@ -355,13 +355,23 @@ export default function Navbar() {
      the first frame, once the router has placed the page (a navigation scrolls to the top in the
      same commit). On a jump the class is set on the element straight away — React's render, which
      sets the same class, can land a few frames later. data-instant is not owned by React, so a
-     re-render never drops it early. */
+     re-render never drops it early.
+     The homepage bar's entrance belongs to the top of the page: if the bar compacts before the
+     hero has played (the page opened scrolled — Back to a scrolled homepage, a /#section link, a
+     mid-page reload — or the reader left the hero first), it skips the entrance and stands at
+     once (data-settled; data-play releases the held marks). Sticky for the mount, so returning
+     to the top never replays it. */
   useLayoutEffect(() => {
     const header = headerRef.current;
+    const home = document.getElementById("s-hero") !== null;
     let raf = 0;
     const set = (next: boolean, instant: boolean) => {
       if (next === scrolledRef.current) return;
       scrolledRef.current = next;
+      if (next && home && header && header.dataset.play === undefined) {
+        header.dataset.settled = "";
+        header.dataset.play = "";
+      }
       if (instant && header) {
         header.dataset.instant = "";
         header.classList.toggle("is-scrolled", next);

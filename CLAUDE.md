@@ -164,7 +164,7 @@ When maintaining them, keep to their v4 patterns. Don't start new v4 work, and d
 
 ## Technical Stack
 - Next.js App Router (static export to GitHub Pages under a `basePath`), TypeScript, Tailwind CSS v4, plain co-located CSS for section styles.
-- Motion for React and GSAP where animation needs them. Server components by default; client components only for behaviour.
+- CSS keyframes first; GSAP (+ ScrollTrigger) only where an animation needs it. Native scrolling (no smooth-scroll layer). Server components by default; client components only for behaviour.
 - **Internal links use `next/link`.** Assets are imported or referenced relative from CSS, so they resolve under the `basePath`. A raw `href="/x"` or `url(/x)` breaks on GitHub Pages.
 - Deploys run from `main` only (`.github/workflows/deploy-pages.yml`). Never push to `main` without the founder's go-ahead.
 
