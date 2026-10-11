@@ -1,0 +1,478 @@
+<title>Kelwin Redesign · Round 7</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+@font-face { font-family: "Mona Sans Local"; font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; src: url(fonts/MonaSans.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono Local"; font-weight: 400 700; font-display: swap; src: url(fonts/JetBrainsMono.woff2) format("woff2"); }
+/* Round 7: the built site. One working page down the left edge of a 12-col graphite stage:
+   try it → it matches → your calls → what else changed → what's next. Deliberately single-theme,
+   in Kelwin's own v5 system (the page is the brand, as in rounds 3–6). */
+:root {
+  --bg: #141517;
+  --panel: #1A1B1E;
+  --card: #202125;
+  --raised: #26272B;
+  --ink: #FBFAF6;
+  --stone: rgba(251,250,246,0.78);
+  --muted: #B9BCC2;
+  --faint: rgba(251,250,246,0.5);
+  --line: rgba(251,250,246,0.14);
+  --line-strong: rgba(251,250,246,0.3);
+  --paper: #FBFAF6;
+  --red: #BF3A36;
+  --red-deep: #8E2824;
+  --signal: #E8564E;
+  --blush: #F2C9BF;
+  --fog: #B9BCC2;
+  --f-display: "Mona Sans", "Mona Sans Local", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Mona Sans", "Mona Sans Local", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", "JetBrains Mono Local", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--blush); outline-offset: 3px; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap;
+  padding: 12px clamp(16px, 3vw, 40px); background: var(--bg); border-bottom: 1px solid var(--line); }
+.mark { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.mark .logo { display: inline-block; height: 18px; aspect-ratio: 734 / 152; background: var(--ink); -webkit-mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; }
+.mark span { color: var(--muted); font: 500 11px/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; }
+.bar-right { display: flex; align-items: center; gap: 12px 14px; margin-left: auto; flex-wrap: wrap; }
+.prog { display: flex; align-items: center; gap: 10px; font: 500 12px/1 var(--f-mono); color: var(--stone); }
+.meter { width: 96px; height: 3px; background: rgba(251,250,246,0.1); }
+.meter b { display: block; height: 100%; width: 0; background: var(--ink); transition: width .4s ease; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 10px 14px; border: 1px solid var(--line-strong); background: transparent;
+  font: 500 11.5px/1 var(--f-body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); text-decoration: none; }
+.btn:hover { border-color: var(--ink); color: var(--ink); }
+.btn-c { --cut: 12px; border: 0; background: var(--red); color: var(--ink); font-weight: 600; letter-spacing: .1em; padding: 12px 26px 12px 20px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); }
+.btn-c:hover { background: var(--red-deep); color: var(--ink); }
+.btn-c:focus-visible { outline-offset: -5px; outline-color: var(--ink); }
+
+/* page */
+.wrap { padding-inline: clamp(16px, 3vw, 40px); padding-block: 0 96px; }
+.blk { max-width: 1240px; margin: 0 auto; }
+.label { display: flex; align-items: center; gap: 10px; margin: 0; font: 500 11px/1.3 var(--f-body); letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+.label::before { content: ""; width: 8px; height: 8px; background: var(--signal); flex: none; }
+.label i { font-style: normal; margin-left: auto; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; color: var(--muted); }
+.h2 { margin: 16px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(28px, 3vw, 42px); line-height: 1.05; letter-spacing: -0.018em; text-wrap: balance; }
+.h2 span { font-weight: 300; color: var(--muted); }
+.lede { margin: 14px 0 0; max-width: 64ch; color: var(--stone); font-size: 16px; }
+.sect { margin-top: 88px; padding-top: 28px; border-top: 1px solid var(--line); }
+.sect > .lede + * { margin-top: 28px; }
+
+.intro { padding-block: 64px 8px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px 56px; align-items: end; }
+.intro h1 { margin: 20px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(38px, 5.6vw, 80px); line-height: .98; letter-spacing: -0.018em; text-wrap: balance; }
+.intro h1 span { font-weight: 300; color: var(--muted); }
+.rule { width: 48px; height: 2px; background: var(--red); margin-top: 28px; }
+.intro .lede { font-size: 17px; margin-top: 22px; }
+.status { display: grid; gap: 0; border: 1px solid var(--line); background: var(--panel); }
+.status div { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 12px; padding: 14px 18px; border-top: 1px solid var(--line); }
+.status div:first-child { border-top: 0; }
+.status dt { margin: 0; font: 500 11px/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.status dd { margin: 0; font-size: 14px; color: var(--stone); }
+.status dd b { color: var(--ink); font-weight: 600; }
+.ok-dot { display: inline-block; width: 8px; height: 8px; background: var(--fog); margin-right: 8px; vertical-align: 1px; }
+
+/* try it: the built homepage in a device frame */
+.devices { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line-strong); }
+.seg button { min-height: 42px; padding: 0 16px; border: 0; background: transparent; font: 500 11.5px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--stone); }
+.seg button + button { box-shadow: inset 1px 0 0 var(--line); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.dev-note { font: 500 12px/1.4 var(--f-mono); color: var(--muted); }
+.stage { position: relative; margin-top: 18px; background: #0E0F11; border: 1px solid var(--line); overflow: hidden; }
+.stage-in { position: relative; margin: 0 auto; transform-origin: 0 0; }
+.stage iframe { display: block; border: 0; background: var(--bg); }
+.stage-cap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 12px; font-size: 13.5px; color: var(--muted); }
+.stage-cap p { margin: 0; max-width: 78ch; }
+
+/* matches what you approved */
+.match-wrap { overflow-x: auto; }
+table.match { width: 100%; min-width: 560px; border-collapse: collapse; font-size: 14px; }
+.match th, .match td { text-align: left; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+.match th { font: 500 11px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom-color: var(--line-strong); }
+.match td.n { font: 500 12px/1 var(--f-mono); color: var(--faint); width: 44px; }
+.match td.num { font-family: var(--f-mono); font-size: 13px; font-variant-numeric: tabular-nums; color: var(--ink); white-space: nowrap; }
+.match td.slot { font-family: var(--f-mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.bar-px { display: inline-block; vertical-align: middle; margin-left: 10px; width: 80px; height: 4px; background: rgba(251,250,246,0.08); }
+.bar-px b { display: block; height: 100%; background: var(--fog); }
+.facts { margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.fact { padding: 18px 18px 4px 0; min-width: 0; }
+.fact + .fact { padding-left: 18px; border-left: 1px solid var(--line); }
+.fact b { display: block; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 40px; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.fact span { display: block; margin-top: 10px; font-size: 13.5px; color: var(--muted); }
+
+/* your calls */
+.calls { display: grid; gap: 0; border-top: 1px solid var(--line-strong); }
+.call { display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 340px); gap: 18px 32px; padding: 30px 0; border-bottom: 1px solid var(--line); }
+.call-id { font: 600 12px/1 var(--f-mono); letter-spacing: .06em; color: var(--blush); padding-top: 8px; }
+.call h3 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 24px; line-height: 1.15; letter-spacing: -0.015em; text-wrap: balance; }
+.call .why { margin: 10px 0 0; color: var(--stone); font-size: 15px; max-width: 62ch; }
+.call .why b { color: var(--ink); font-weight: 600; }
+.figs { margin-top: 18px; display: grid; gap: 12px; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); align-items: start; }
+.figs figure { margin: 0; min-width: 0; }
+.figs a { display: block; border: 1px solid var(--line); background: #0E0F11; }
+.figs a:hover { border-color: var(--line-strong); }
+.figs figcaption { margin-top: 8px; font: 500 11px/1.4 var(--f-mono); letter-spacing: .04em; color: var(--muted); }
+.quote { margin: 16px 0 0; padding: 14px 18px; border-left: 2px solid var(--line-strong); background: var(--panel); color: var(--stone); font-size: 14.5px; max-width: 62ch; }
+.quote b { display: block; color: var(--ink); font-weight: 500; }
+.ctl { display: grid; gap: 10px; align-content: start; }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.choice { min-height: 46px; padding: 10px 12px; border: 1px solid var(--line-strong); background: transparent; color: var(--stone); font: 500 12px/1.25 var(--f-body); letter-spacing: .08em; text-transform: uppercase; text-align: left; }
+.choice:hover { border-color: var(--ink); color: var(--ink); }
+.choice[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.choice.go[aria-pressed="true"] { background: var(--red); border-color: var(--red); color: var(--ink); }
+.note { width: 100%; min-height: 72px; padding: 10px 12px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font: 400 14px/1.45 var(--f-body); resize: vertical; }
+.note::placeholder { color: var(--faint); }
+.note:focus { border-color: var(--line-strong); outline: none; }
+.saved { font: 500 11px/1.3 var(--f-mono); color: var(--muted); min-height: 14px; }
+
+/* also changed */
+.changes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.chg { padding: 22px 24px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; }
+.chg h4 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 20px; line-height: 1.2; letter-spacing: -0.01em; }
+.chg p { margin: 8px 0 0; color: var(--stone); font-size: 14.5px; }
+.chg .figs { margin-top: 16px; }
+.chg ul { margin: 8px 0 0; padding-left: 18px; color: var(--stone); font-size: 14.5px; display: grid; gap: 4px; }
+.chg ul li::marker { color: var(--faint); }
+.tag { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; margin-top: 12px; border: 1px solid var(--line-strong); font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--fog); }
+
+/* next + summary */
+.next { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.next div { padding: 20px 20px 4px 0; min-width: 0; }
+.next div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.next b { display: block; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 19px; line-height: 1.2; }
+.next p { margin: 8px 0 0; color: var(--stone); font-size: 14px; }
+.summary { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 24px; align-items: start; padding: 22px; background: var(--panel); border: 1px solid var(--line); }
+.summary pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 400 13px/1.6 var(--f-mono); color: var(--stone); min-width: 0; }
+.summary .btn-c { white-space: nowrap; }
+
+@media (max-width: 1023px) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .call { grid-template-columns: 48px minmax(0, 1fr); }
+  .call .ctl { grid-column: 2; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+  .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 767px) {
+  .changes, .next { grid-template-columns: minmax(0, 1fr); }
+  .next div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .call { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 24px 0; }
+  .call .ctl { grid-column: 1; }
+  .call-id { padding-top: 0; }
+  .figs { grid-template-columns: minmax(0, 1fr); }
+  .figs.keep { grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); }
+  .summary { grid-template-columns: minmax(0, 1fr); }
+  .bar .mark span { display: none; }
+  .meter { width: 56px; }
+  .status div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .fact b { font-size: 32px; }
+}
+</style>
+
+<header class="bar">
+  <div class="mark"><span class="logo" role="img" aria-label="Kelwin"></span><span>Round 7 · The built site</span></div>
+  <div class="bar-right">
+    <div class="prog" aria-live="polite"><span id="prog-txt">0 of 7 calls</span><span class="meter" aria-hidden="true"><b id="prog-bar"></b></span></div>
+    <a class="btn" href="#summary">Copy my review</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="blk">
+
+    <section class="intro" aria-labelledby="t-intro">
+      <div>
+        <p class="label">Round 7 · Built</p>
+        <h1 id="t-intro">Your approved homepage, <span>now the real site.</span></h1>
+        <span class="rule" aria-hidden="true"></span>
+        <p class="lede">Every section you signed off is now production code. It matches your mockups at desktop width, works on tablets and phones, and the new nav and footer run across every page. Nothing new is live yet. Try it below, check it, and make seven calls. The last call is whether to put it live.</p>
+      </div>
+      <dl class="status">
+        <div><dt>Where it is</dt><dd><b>Dev branch</b>, built and pushed. The live site still shows the old design.</dd></div>
+        <div><dt>Already live</dt><dd><span class="ok-dot" aria-hidden="true"></span>Plurel removed from the footer and About page, as you approved.</dd></div>
+        <div><dt>Checked</dt><dd>12 sections against your mockups, 17 pages at 16 widths, keyboard and screen-reader use.</dd></div>
+        <div><dt>Needs you</dt><dd>Seven calls below, then <b>Copy my review</b> and paste it back to me.</dd></div>
+      </dl>
+    </section>
+
+    <!-- 1 · try it -->
+    <section class="sect" id="try" aria-labelledby="t-try">
+      <p class="label">Try it <i>Desktop · tablet · phone</i></p>
+      <h2 class="h2" id="t-try">The built homepage. <span>Scroll it, click it.</span></h2>
+      <p class="lede">This is the real built homepage running its real animations and behaviours, at the width you pick. Phone and tablet are layouts you haven't seen before, so they're call C1 below.</p>
+      <div class="devices">
+        <div class="seg" role="group" aria-label="Screen size">
+          <button type="button" data-w="1440" data-h="900" aria-pressed="true">Desktop</button>
+          <button type="button" data-w="820" data-h="1180" aria-pressed="false">Tablet</button>
+          <button type="button" data-w="390" data-h="844" aria-pressed="false">Phone</button>
+        </div>
+        <a class="btn" href="site/index.html" target="_blank" rel="noopener">Open full screen ↗</a>
+        <span class="dev-note" id="dev-note">1440 × 900, shown at its real proportions</span>
+      </div>
+      <div class="stage" id="stage"><div class="stage-in" id="stage-in"><iframe id="site" title="The built Kelwin homepage" src="site/index.html" loading="lazy"></iframe></div></div>
+      <div class="stage-cap">
+        <p>Two things differ from the live site. The nav's dropdowns don't open in this preview (they're shown in call C2), and links to other pages say where they go instead of navigating.</p>
+        <p>The hero film is still the stand-in from your reference image.</p>
+      </div>
+    </section>
+
+    <!-- 2 · matches -->
+    <section class="sect" id="match" aria-labelledby="t-match">
+      <p class="label">Matches what you approved <i>at 1440</i></p>
+      <h2 class="h2" id="t-match">Every section, against its mockup. <span>Pixel for pixel.</span></h2>
+      <p class="lede">Each built section was screenshotted with motion settled and compared with your approved mockup. What remains is sub-pixel text smoothing; no layout, spacing or colour differs, every height is identical, and the copy is word for word.</p>
+      <div class="match-wrap">
+        <table class="match">
+          <thead><tr><th scope="col">#</th><th scope="col">Section</th><th scope="col">Your approved design</th><th scope="col">Pixels that differ</th><th scope="col">Height</th></tr></thead>
+          <tbody id="match-rows"></tbody>
+        </table>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>0</b><span>pages that scroll sideways, across 17 pages at 16 widths from 320 to 1920</span></div>
+        <div class="fact"><b>27</b><span>issues found by a site-wide QA pass and fixed, each confirmed by an independent check</span></div>
+        <div class="fact"><b>0</b><span>console errors or broken links on any page of the built site</span></div>
+        <div class="fact"><b>0</b><span>mentions of Plurel and “Fig.” labels anywhere in the build</span></div>
+      </div>
+    </section>
+
+    <!-- 3 · your calls -->
+    <section class="sect" id="calls" aria-labelledby="t-calls">
+      <p class="label">Your calls <i id="calls-count">0 / 7</i></p>
+      <h2 class="h2" id="t-calls">Seven calls. <span>The last one puts it live.</span></h2>
+      <p class="lede">Each one is something you haven't seen or a place where I had to choose. Your answers save to this page, and you can add a note to any of them.</p>
+      <div class="calls" id="call-list"></div>
+    </section>
+
+    <!-- 4 · also changed -->
+    <section class="sect" id="changed" aria-labelledby="t-changed">
+      <p class="label">Also changed across the site</p>
+      <h2 class="h2" id="t-changed">The rest of the site, <span>brought into line.</span></h2>
+      <p class="lede">These follow rules you've already set, so they don't need a call. Tell me in a note if any of them is wrong.</p>
+      <div class="changes">
+        <div class="chg">
+          <h4>Your cut-corner button, on every page</h4>
+          <p>Every red primary button on every page is now button C. The arrows on those buttons are gone. On the careers page, “Submit parameters for bench review” is now “Submit for bench review”, so it fits on a phone.</p>
+          <div class="figs"><figure><a href="shots/about-cvp.webp" target="_blank" rel="noopener"><img src="shots/about-cvp.webp" alt="The closing panel on the About page with the red cut-corner button 'Begin with the audit'" width="1312" height="225"></a><figcaption>About page · closing panel</figcaption></figure></div>
+        </div>
+        <div class="chg">
+          <h4>Interior pages join the new world</h4>
+          <p>They get the new nav and footer and the graphite background, and their headers now line up with the nav. Their page bodies keep today's design until they get their own review rounds.</p>
+          <div class="figs keep" style="--n:2"><figure><a href="shots/capability-top.webp" target="_blank" rel="noopener"><img src="shots/capability-top.webp" alt="The Narrative Systems capability page at desktop width with the new nav" width="1440" height="900"></a><figcaption>Narrative Systems · desktop</figcaption></figure><figure><a href="shots/about-top.webp" target="_blank" rel="noopener"><img src="shots/about-top.webp" alt="The About page at desktop width with the new nav" width="1440" height="900"></a><figcaption>About · desktop</figcaption></figure></div>
+        </div>
+        <div class="chg">
+          <h4>The FAQ is on the audit page</h4>
+          <p>As you decided in round 4. Its red button jumps to the three qualifying questions on the same page; “Ask the founding team” goes to the contact page.</p>
+          <div class="figs keep" style="--n:2"><figure><a href="shots/audit-faq.webp" target="_blank" rel="noopener"><img src="shots/audit-faq.webp" alt="The FAQ section on the System Audit page at desktop width" width="1440" height="1089"></a><figcaption>System Audit · desktop</figcaption></figure><figure><a href="shots/audit-faq-390.webp" target="_blank" rel="noopener"><img src="shots/audit-faq-390.webp" alt="The FAQ section on the System Audit page on a phone" width="390" height="1266" style="height:340px;width:auto;max-width:100%"></a><figcaption>Phone</figcaption></figure></div>
+        </div>
+        <div class="chg">
+          <h4>Scrolling is native</h4>
+          <p>The old smooth-scroll layer is removed, as in your approved prototype. It stopped the mouse wheel from scrolling the homepage after you moved between pages, and it carried scroll momentum across link clicks.</p>
+        </div>
+        <div class="chg">
+          <h4>Easier with a keyboard or screen reader</h4>
+          <p>The changes:</p>
+          <ul>
+            <li>A “Skip to content” link.</li>
+            <li>Keyboard focus that never hides under the sticky nav.</li>
+            <li>Links to a section on the same page now work every time.</li>
+            <li>One main region and one main heading per page.</li>
+            <li>Headlines that don't clip when someone enlarges text spacing.</li>
+          </ul>
+        </div>
+        <div class="chg">
+          <h4>Smaller fixes</h4>
+          <ul>
+            <li>The Kelwin mark replaces the default browser-tab icon.</li>
+            <li>Seven links that broke on GitHub Pages now work.</li>
+            <li>A hidden “d”-key overlay with old copy is removed.</li>
+            <li>The old homepage code is deleted: about 50 files and 5 packages nothing used any more.</li>
+          </ul>
+          <span class="tag">Done</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · next -->
+    <section class="sect" id="next" aria-labelledby="t-next">
+      <p class="label">Still to come</p>
+      <h2 class="h2" id="t-next">After this round.</h2>
+      <div class="next" style="margin-top:24px">
+        <div><b>Real footage for the hero</b><p>Three short takes, one per capability. The feed is ready for them: each take drops in as a video in one config file, with no layout change. Until then, the stand-in from your reference image.</p></div>
+        <div><b>The interior pages in v5</b><p>About, the capability pages, the audit, contact, insights and the rest, in the same process as the homepage: mockups, your review rounds, then the build.</p></div>
+        <div><b>The Survey stays on the bench</b><p>Hero option 4 is kept, unchanged, ready to swap in if you ever want it.</p></div>
+      </div>
+    </section>
+
+    <!-- summary -->
+    <section class="sect" id="summary" aria-labelledby="t-summary">
+      <p class="label">Your review</p>
+      <h2 class="h2" id="t-summary">Copy it, <span>paste it to me.</span></h2>
+      <p class="lede" id="save-state">Your answers are kept in this browser. Copy the review and paste it into our chat.</p>
+      <div class="summary">
+        <pre id="summary-pre">Nothing answered yet.</pre>
+        <button class="btn-c btn" type="button" id="copy-btn">Copy my review</button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+const MATCH = [
+  ["01", "Hero · The Operating Feed", "hero T", 0.0, "960 = 960"],
+  ["02", "The reframe", "reframe U", 0.2, "1400 = 1400"],
+  ["03", "Structural evidence", "evidence T", 0.1, "1099 = 1099"],
+  ["04", "The founder's letter", "letter S", 0.0, "1289 = 1289"],
+  ["05", "The system", "system T", 0.0, "1344 = 1344"],
+  ["06", "Operating principle", "principle S", 0.0, "900 = 900"],
+  ["07", "The handover", "handover U", 0.0, "940 = 940"],
+  ["08", "Methodology", "method U", 0.0, "1070 = 1070"],
+  ["09", "Who it's for", "fit U", 0.1, "1050 = 1050"],
+  ["10", "Final call to action", "cta U", 0.1, "948 = 948"],
+  ["11", "Footer", "footer U", 0.0, "843 = 843"],
+  ["—", "FAQ · System Audit page", "faq U", 0.0, "1088 = 1088"],
+];
+const CALLS = [
+  { id: "C1", title: "Phone and tablet layouts", a: "Approve", b: "Change something",
+    why: "You've only seen the 1440 designs. Every section now reflows for tablets and phones, using the same parts and the same order. Try them with the <b>Tablet</b> and <b>Phone</b> buttons above.",
+    figs: [["shots/about-top-390.webp", "About on a phone", 390, 844], ["shots/audit-top-390.webp", "System Audit on a phone", 390, 844], ["shots/contact-top-390.webp", "Contact on a phone", 390, 844]], keep: true },
+  { id: "C2", title: "The nav, beyond what you saw", a: "Approve", b: "Change something",
+    why: "Your mockups showed the nav at rest. Three pieces are new: the dropdowns (today's content, restyled in the new system), the slimmer bar that stays at the top while you scroll, and the phone menu.",
+    figs: [["shots/nav-plate.webp", "Capabilities dropdown", 1440, 900], ["shots/nav-compact.webp", "Slim bar while scrolling", 1440, 420], ["shots/nav-sheet.webp", "Phone menu", 390, 844]] },
+  { id: "C3", title: "Two reds when the Capabilities dropdown is open", a: "Keep the red door", b: "Make the door paper",
+    why: "The Capabilities dropdown ends in a red “The System Audit” door. With it open over the hero, two red buttons show at once, and your rule is one red moment per view. The other option is a paper door with red text, so the red appears only once.",
+    figs: [["shots/nav-plate.webp", "Dropdown open over the hero", 1440, 900]] },
+  { id: "C4", title: "Stopping the hero film", a: "Keep it", b: "Change it",
+    why: "Accessibility rules say moving content that plays more than 5 seconds needs a way to stop it. In round 4 you ruled out a “Pause film” button, so I didn't add one. Instead, <b>choosing a chapter plays that take once and then holds the film still</b>; choosing a chapter again replays it. Your mockup replayed the chosen take every 8 seconds. Try it in the preview above." },
+  { id: "C5", title: "The Lab's red button", a: "Keep it red", b: "Make it a quiet link",
+    why: "On The Lab page, “Apply for early access” is now your cut-corner button, but it goes to the Lab application on the contact page, not to /audit. Your rule is that every red button leads to the audit. You can keep it red as the Lab's own door, or make it a quiet link so the audit stays the only red." },
+  { id: "C6", title: "The new 404 page", a: "Approve", b: "Change the words",
+    why: "Before, a mistyped address showed Next.js's plain white error page. It's now in the new system, with copy you haven't seen:",
+    quote: "<b>Not found · Nothing is built at this address.</b>The link is out of date, or the address was mistyped. Start again from the homepage, or go straight to where every engagement begins. [Request a System Audit] [Back to the homepage]",
+    figs: [["shots/404.webp", "The 404 page", 1440, 900]] },
+  { id: "C7", title: "Put it live", a: "Go live", b: "Not yet", go: true,
+    why: "When you say go, I merge the dev branch into main and GitHub Pages publishes it in about three minutes. The current site stays in git history, so going back is one step. If you'd rather see your calls above applied first, choose <b>Not yet</b> and say so in the note." },
+];
+
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const review = {};
+const COLL = "review7";
+let db = null;
+function loadLocal() { try { return JSON.parse(localStorage.getItem("kelwin-review7") || "{}"); } catch (e) { return {}; } }
+function saveLocal() { try { localStorage.setItem("kelwin-review7", JSON.stringify(review)); } catch (e) {} }
+
+// the match table
+$("#match-rows").innerHTML = MATCH.map(([n, name, slot, pct, h]) => `<tr><td class="n">${n}</td><td>${esc(name)}</td><td class="slot">${esc(slot)}</td><td class="num">${pct.toFixed(1)}%<span class="bar-px" aria-hidden="true"><b style="width:${Math.max(1.5, pct * 100)}%"></b></span></td><td class="num">${esc(h)} px</td></tr>`).join("");
+
+// the calls
+$("#call-list").innerHTML = CALLS.map((c) => {
+  const figs = (c.figs || []).map(([src, cap, w, h]) => `<figure><a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${esc(cap)}" width="${w}" height="${h}"${h > w ? ' style="height:360px;width:auto;max-width:100%;margin:0 auto"' : ""}></a><figcaption>${esc(cap)}</figcaption></figure>`).join("");
+  return `<article class="call" id="call-${c.id}" aria-labelledby="h-${c.id}">
+    <span class="call-id">${c.id}</span>
+    <div style="min-width:0">
+      <h3 id="h-${c.id}">${esc(c.title)}</h3>
+      <p class="why">${c.why}</p>
+      ${c.quote ? `<p class="quote">${c.quote}</p>` : ""}
+      ${figs ? `<div class="figs${c.keep ? " keep" : ""}" style="--n:${c.figs.length}">${figs}</div>` : ""}
+    </div>
+    <div class="ctl">
+      <div class="choices" role="group" aria-label="${esc(c.title)}">
+        <button type="button" class="choice${c.go ? " go" : ""}" id="a-${c.id}" aria-pressed="false">${esc(c.a)}</button>
+        <button type="button" class="choice" id="b-${c.id}" aria-pressed="false">${esc(c.b)}</button>
+      </div>
+      <label class="saved" for="note-${c.id}">Note (optional)</label>
+      <textarea class="note" id="note-${c.id}" placeholder="What should change, or anything to add"></textarea>
+    </div>
+  </article>`;
+}).join("");
+
+function answer(c) { const r = review[c.id]; return r ? (r.choice === "a" ? c.a : c.b) : ""; }
+function summaryText() {
+  const lines = CALLS.map((c) => { const r = review[c.id]; return `${c.id} ${c.title}: ${r ? answer(c).toUpperCase() : "—"}${r && r.note ? " — " + r.note : ""}`; });
+  const extra = (review.general && review.general.note) ? `\n\nAlso: ${review.general.note}` : "";
+  return "Kelwin redesign — round 7 review (the built site)\n\n" + lines.join("\n") + extra;
+}
+function refresh() {
+  const n = CALLS.filter((c) => review[c.id]).length;
+  $("#prog-txt").textContent = `${n} of ${CALLS.length} calls`;
+  $("#calls-count").textContent = `${n} / ${CALLS.length}`;
+  $("#prog-bar").style.width = (100 * n / CALLS.length) + "%";
+  CALLS.forEach((c) => {
+    const r = review[c.id];
+    $("#a-" + c.id).setAttribute("aria-pressed", String(!!r && r.choice === "a"));
+    $("#b-" + c.id).setAttribute("aria-pressed", String(!!r && r.choice === "b"));
+    const ta = $("#note-" + c.id); if (r && r.note && document.activeElement !== ta && !ta.value) ta.value = r.note;
+  });
+  $("#summary-pre").textContent = n ? summaryText() : "Nothing answered yet.";
+}
+async function persist(id) {
+  saveLocal();
+  if (!db) return;
+  const c = CALLS.find((x) => x.id === id); const r = review[id];
+  try {
+    await db.doc(COLL + "/" + id).set({ item: id + " · " + c.title, answer: r.choice ? answer(c) : "", status: r.choice === "a" ? "approve" : "changes", note: r.note || "", updatedAt: new Date().toISOString() });
+    $("#save-state").textContent = "Saved to this page · Claude can read your answers. Copy the review too if you like.";
+  } catch (e) { $("#save-state").textContent = "Couldn't save to the page (" + ((e && e.code) || "error") + "). Your answers are kept in this browser; use Copy my review."; }
+}
+CALLS.forEach((c) => {
+  ["a", "b"].forEach((k) => $(`#${k}-${c.id}`).addEventListener("click", () => {
+    review[c.id] = { choice: k, note: $("#note-" + c.id).value.trim() };
+    persist(c.id); refresh();
+    if (k === "b") setTimeout(() => $("#note-" + c.id).focus(), 0);
+  }));
+  $("#note-" + c.id).addEventListener("change", (e) => {
+    const r = review[c.id] || { choice: "" }; r.note = e.target.value.trim(); review[c.id] = r; persist(c.id); refresh();
+  });
+});
+$("#copy-btn").addEventListener("click", async (e) => {
+  const btn = e.currentTarget; const t = summaryText();
+  try { await navigator.clipboard.writeText(t); btn.textContent = "Copied"; }
+  catch (err) { const rg = document.createRange(); rg.selectNodeContents($("#summary-pre")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg); btn.textContent = "Selected · press Ctrl/Cmd+C"; }
+  setTimeout(() => { btn.textContent = "Copy my review"; }, 2400);
+});
+
+// the device stage: the built page at a real CSS width, scaled to fit
+const stage = $("#stage"), inner = $("#stage-in"), frame = $("#site");
+let W = 1440, H = 900;
+function fit() {
+  const avail = stage.clientWidth;
+  const k = Math.min(1, avail / W);
+  frame.style.width = W + "px"; frame.style.height = H + "px";
+  inner.style.width = W + "px"; inner.style.transform = `scale(${k})`;
+  inner.style.marginLeft = Math.max(0, (avail - W * k) / 2) + "px";
+  stage.style.height = Math.round(H * k) + "px";
+  $("#dev-note").textContent = `${W} × ${H}${k < 1 ? `, shown at ${Math.round(k * 100)}%` : ""}`;
+}
+document.querySelectorAll(".seg button").forEach((b) => b.addEventListener("click", () => {
+  document.querySelectorAll(".seg button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+  W = +b.dataset.w; H = +b.dataset.h; fit();
+  try { localStorage.setItem("kelwin-review7-device", b.dataset.w); } catch (e) {}
+}));
+try { const d = localStorage.getItem("kelwin-review7-device"); const btn = d && document.querySelector(`.seg button[data-w="${d}"]`); if (btn) btn.click(); } catch (e) {}
+fit(); addEventListener("resize", fit);
+
+Object.assign(review, loadLocal());
+refresh();
+(async () => {
+  if (!window.claude || typeof window.claude.use !== "function") return;
+  try { db = await window.claude.use("db"); } catch (e) { db = null; }
+  if (!db) return;
+  $("#save-state").textContent = "Connected · your answers save to this page as you go.";
+  db.collection(COLL).onSnapshot((snap) => {
+    snap.docs.forEach((d) => { const v = d.data(); const c = CALLS.find((x) => x.id === d.id); if (v && c) review[d.id] = { choice: v.status === "approve" ? "a" : "b", note: v.note || "" }; });
+    refresh();
+  }, () => { $("#save-state").textContent = "Live sync paused · your answers still save in this browser."; });
+})();
+</script>

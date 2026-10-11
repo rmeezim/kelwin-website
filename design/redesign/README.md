@@ -49,3 +49,14 @@ candidate. Never delete or overwrite it. To try it, use
   - no serif or italics;
   - no gradients outside the film.
 - `STORY.md`, `ROUND*-NOTES.md` — the homepage story and the founder's verbatim notes from each round.
+
+## Production checks (round 7 onward)
+
+- `tool/prodshot.mjs`, `tool/pixdiff.py`, `tool/proddiff.mjs`: shoot a production section from the dev server
+  (they expect dev-only `/preview/<section>/` routes; re-add them temporarily when you need them) and compare
+  it with its mockup at 1440: pixels, copy and entrance frames.
+- `tool/walkprod.mjs`, `tool/crawl.mjs`: walk the built homepage and crawl every page of the static export
+  (served under `/kelwin-website/`) for errors, overflow and broken links.
+- `tool/preview-entry.ts` + `tool/review7.template.html`: the round-7 review page. The built homepage runs there
+  standalone: its HTML and CSS from `out/`, Next's scripts removed, and this entry (bundled with esbuild,
+  `--tsconfig=tsconfig.json`) running the real section behaviours with the Slot rules instead of React.
