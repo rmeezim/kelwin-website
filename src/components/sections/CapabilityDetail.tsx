@@ -47,10 +47,10 @@ export interface CapabilityData {
 }
 
 export default function CapabilityDetail({ data }: { data: CapabilityData }) {
-  const mainRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const root = mainRef.current;
+    const root = rootRef.current;
     if (!root) return;
     const targets = root.querySelectorAll<HTMLElement>(".cap-reveal");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -72,7 +72,7 @@ export default function CapabilityDetail({ data }: { data: CapabilityData }) {
   }, []);
 
   return (
-    <main className="cap" ref={mainRef}>
+    <div className="cap" ref={rootRef}>
       <div className="cap-stage">
         {/* ── 01 · The system ── */}
         <section className="cap-section cap-reveal" aria-label="What this system is">
@@ -237,6 +237,6 @@ export default function CapabilityDetail({ data }: { data: CapabilityData }) {
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

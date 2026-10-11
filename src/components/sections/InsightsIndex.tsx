@@ -96,10 +96,10 @@ function NoteCard({ note, big }: { note: Note; big?: boolean }) {
 }
 
 export default function InsightsIndex() {
-  const mainRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const root = mainRef.current;
+    const root = rootRef.current;
     if (!root) return;
     const targets = root.querySelectorAll<HTMLElement>(".insx-reveal");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -121,7 +121,7 @@ export default function InsightsIndex() {
   }, []);
 
   return (
-    <main className="insx" ref={mainRef}>
+    <div className="insx" ref={rootRef}>
       <div className="insx-stage">
         {/* Page head lives in the PageCommand header (page level) — the
             stage opens straight onto the front page. */}
@@ -177,6 +177,6 @@ export default function InsightsIndex() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

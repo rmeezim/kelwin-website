@@ -87,10 +87,10 @@ const WEEK = [
 ];
 
 export default function FirmAbout() {
-  const mainRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const root = mainRef.current;
+    const root = rootRef.current;
     if (!root) return;
     const targets = root.querySelectorAll<HTMLElement>(".fp3-reveal");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -112,7 +112,7 @@ export default function FirmAbout() {
   }, []);
 
   return (
-    <main className="fp3" ref={mainRef}>
+    <div className="fp3" ref={rootRef}>
       <div className="fp3-stage">
         {/* ── 01 · Origin telemetry — why Kelwin exists, plotted ── */}
         <section className="fp3-section fp3-reveal" aria-label="Origin telemetry">
@@ -469,6 +469,6 @@ export default function FirmAbout() {
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

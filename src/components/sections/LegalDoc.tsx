@@ -25,7 +25,7 @@ interface LegalDocProps {
 
 export default function LegalDoc({ title, docId, effective, intro, sections }: LegalDocProps) {
   return (
-    <main className="lgl">
+    <div className="lgl">
       <div className="lgl-stage">
         <div className="lgl-meta">
           <span className="lgl-meta-id">{docId}</span>
@@ -52,6 +52,6 @@ export default function LegalDoc({ title, docId, effective, intro, sections }: L
           </a>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

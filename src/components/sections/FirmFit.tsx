@@ -188,10 +188,10 @@ function TopoGraph({ topo }: { topo: Topo }) {
 }
 
 export default function FirmFit() {
-  const mainRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const root = mainRef.current;
+    const root = rootRef.current;
     if (!root) return;
     const targets = root.querySelectorAll<HTMLElement>(".fp3-reveal");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -213,7 +213,7 @@ export default function FirmFit() {
   }, []);
 
   return (
-    <main className="fp3" ref={mainRef}>
+    <div className="fp3" ref={rootRef}>
       <div className="fp3-stage">
         {/* ── 01 · The deployment matrix ── */}
         <section className="fp3-section fp3-reveal" aria-label="Qualification matrix">
@@ -424,6 +424,6 @@ export default function FirmFit() {
           />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

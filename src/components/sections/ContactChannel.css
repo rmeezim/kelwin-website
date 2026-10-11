@@ -38,6 +38,10 @@
     transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
 }
 .ctc .ctc-reveal.is-in { opacity: 1; transform: translateY(0); }
+/* #write is a scroll target ("Write to the team", ?topic= deep links), so it reveals by opacity
+   alone: scrollIntoView measures the transformed box, and an 18px rise still pending would leave
+   the panel's top edge under the sticky bar once the reveal settles. */
+.ctc .ctc-form-wrap.ctc-reveal { transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .ctc .ctc-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
 }

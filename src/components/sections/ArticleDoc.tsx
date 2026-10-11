@@ -30,7 +30,7 @@ export default function ArticleDoc({
   children: ReactNode;
 }) {
   return (
-    <main className="artd">
+    <div className="artd">
       <div className="artd-stage">
         <header className="artd-head">
           <div className="artd-protocol-row">
@@ -67,6 +67,6 @@ export default function ArticleDoc({
           </div>
         </footer>
       </div>
-    </main>
+    </div>
   );
 }

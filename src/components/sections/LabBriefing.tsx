@@ -114,10 +114,10 @@ const EAP_RETURNS = [
 ];
 
 export default function LabBriefing() {
-  const mainRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const root = mainRef.current;
+    const root = rootRef.current;
     if (!root) return;
     const targets = root.querySelectorAll<HTMLElement>(".lb-reveal");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -139,7 +139,7 @@ export default function LabBriefing() {
   }, []);
 
   return (
-    <main className="lb" ref={mainRef}>
+    <div className="lb" ref={rootRef}>
       <div className="lb-stage">
         {/* ── 01 · The manifesto ── */}
         <section className="lb-section lb-reveal" aria-label="The thesis">
@@ -412,6 +412,6 @@ export default function LabBriefing() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }

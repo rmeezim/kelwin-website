@@ -111,10 +111,10 @@ function DocGlyph() {
 }
 
 export default function CaseStudies() {
-  const mainRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const root = mainRef.current;
+    const root = rootRef.current;
     if (!root) return;
     const targets = root.querySelectorAll<HTMLElement>(".cs-reveal");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -136,7 +136,7 @@ export default function CaseStudies() {
   }, []);
 
   return (
-    <main className="cs" ref={mainRef}>
+    <div className="cs" ref={rootRef}>
       <div className="cs-stage">
         {/* Page head lives in the PageCommand header (page level);
             the specimen-honesty key stays with the dossiers it governs. */}
@@ -287,6 +287,6 @@ export default function CaseStudies() {
           </div>
         </footer>
       </div>
-    </main>
+    </div>
   );
 }

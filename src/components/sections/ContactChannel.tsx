@@ -46,7 +46,7 @@ const readSearch = () => window.location.search;
 const noSearch = () => "";
 
 export default function ContactChannel() {
-  const mainRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
   const [email, setEmail] = useState("");
@@ -71,9 +71,10 @@ export default function ContactChannel() {
       // (fonts, reveals) settles so the scroll target is stable, then a
       // brief pulse on the pinned reference shows what got preselected.
       const timer = window.setTimeout(() => {
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         document
           .getElementById("write")
-          ?.scrollIntoView({ block: "start", behavior: "smooth" });
+          ?.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" });
         window.setTimeout(() => {
           document
             .querySelector(".ctc-regarding")
@@ -85,7 +86,7 @@ export default function ContactChannel() {
   }, []);
 
   useEffect(() => {
-    const root = mainRef.current;
+    const root = rootRef.current;
     if (!root) return;
     const targets = root.querySelectorAll<HTMLElement>(".ctc-reveal");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -136,7 +137,7 @@ export default function ContactChannel() {
   const messageOptional = isDocRequest;
 
   return (
-    <main className="ctc" ref={mainRef}>
+    <div className="ctc" ref={rootRef}>
       <div className="ctc-stage">
         {/* Page head lives in the PageCommand header (page level) — the
             stage opens straight onto the two doors. */}
@@ -340,6 +341,6 @@ export default function ContactChannel() {
           </a>
         </footer>
       </div>
-    </main>
+    </div>
   );
 }

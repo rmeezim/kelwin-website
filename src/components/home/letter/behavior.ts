@@ -152,6 +152,8 @@ export const init: Behavior = (root, { reduced }) => {
     if (window.innerWidth !== w0) restore();
   };
   window.addEventListener("resize", onResize);
+  // so would a web font landing mid-entrance (the slot plays on the fallback metrics when fonts are slow)
+  if (document.fonts?.status === "loading") document.fonts.ready.then(restore, restore);
   timer = window.setTimeout(restore, bodyEnd + 120);
 
   return () => {

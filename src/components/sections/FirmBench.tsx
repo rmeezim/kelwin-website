@@ -92,7 +92,7 @@ const RADAR_AXES: { x: number; y: number; label: string; v: string; zero?: boole
 ];
 
 export default function FirmBench() {
-  const mainRef = useRef<HTMLElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
   const [openLog, setOpenLog] = useState<number | null>(null);
   const [opName, setOpName] = useState("");
   const [opPost, setOpPost] = useState("");
@@ -100,7 +100,7 @@ export default function FirmBench() {
   const [opParams, setOpParams] = useState("");
 
   useEffect(() => {
-    const root = mainRef.current;
+    const root = rootRef.current;
     if (!root) return;
     const targets = root.querySelectorAll<HTMLElement>(".fp3-reveal");
     const arm = (el: HTMLElement) => {
@@ -141,7 +141,7 @@ export default function FirmBench() {
   }
 
   return (
-    <main className="fp3" ref={mainRef}>
+    <div className="fp3" ref={rootRef}>
       <div className="fp3-stage">
         {/* ── 01 · The console + the deal ── */}
         <section className="fp3-section fp3-reveal" aria-label="Open seats and the deal">
@@ -468,6 +468,6 @@ export default function FirmBench() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
   );
 }
