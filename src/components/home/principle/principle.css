@@ -1,0 +1,143 @@
+/* ── principle · "In a noisy market, the clearest company wins." ──────────────────────────────────────────────
+   Ported from design/redesign/site/frag/principle/S.css (approved). The signal / noise sheet: a registration
+   frame (four corner marks, no cell walls, no bottom band), the head grammar shifted to col 4 so cols 1–3 hold
+   the drawing's input. One datum runs through the middle line of the statement: nine lines of market noise
+   (CONTOUR) settle into one line that enters "the clearest", and one clean line leaves it to the red tick on
+   the frame edge. Everything else is type: no title block, no legend band, no figure number.
+   Geometry at the 1440 stage: frame x 64 → 1376 · text column col 4 (x 398) · noise field x 64 → 366
+   (302 wide, cols 1–3 are 310), its datum (y 100) on the wire.
+   Widths: ≥1024 the 1440 sheet, every coordinate proportional (the datum and the wire gap in em of the
+   statement, the tick and the tags' seat scaled with it, the field in % of cols 1–3; the tags tighten below
+   1200) · ≤1023 the drawing
+   lifts out of the statement's row and stacks above it, the statement takes the full width · ≤767 the B tag
+   drops from under the tick to the rule's row (see the bands at the end).
+   Motion: keyframe entrances under .km-motion (km-kit §10 holds them at frame 0 until the slot plays); the
+   settle itself is behavior.ts (rAF sample interpolation). Default CSS + markup = the final state. */
+
+.km-principle {
+  position: relative;
+  /* the registration marks sit this far outside the content box: 64px at the stage = 0.4 of the section's
+     padding, so they keep the same place in the margin band at every width */
+  --reg-off: calc(var(--ac-pad-y-lg) * 0.4);
+}
+.km-principle__frame { position: relative; }
+
+/* the head grammar, placed on the col-4 text column (kit components, placement only).
+   --datum: y from the statement's top to the x-height centre of line 2 (185px at the 112px stage size).
+   --tick-h: the red tick, 22px at the stage, scaling with the statement (never under 14px) so B's seat under it
+   keeps clear of line 3's x-height as the type shrinks. */
+.km-principle__head {
+  position: relative;
+  --datum: calc(var(--ac-h-xl) * 185 / 112);
+  --tick-h: max(14px, var(--ac-h-xl) * 22 / 112);
+  /* --nwr: the noise field's width, 302/310 of cols 1–3 (the % resolves in the grid item that uses it, against
+     its grid area). --nw: that width, nudged (< 1.5px) so the datum lands on a half pixel: browsers paint an
+     inline SVG from a whole-pixel origin, so with 100.5 · scale = n + .5 the 1px signal (non-scaling stroke, kit)
+     covers exactly one pixel row at every width instead of smearing over two. 302 at the stage (unchanged). */
+  --nwr: calc(100% * 302 / 310);
+  --nw: var(--nwr);
+}
+@supports (width: round(1px, 1px)) {
+  .km-principle__head { --nw: calc((round(var(--nwr) * 100.5 / 302 - .5px, 1px) + .5px) * 302 / 100.5); }
+}
+.km-principle .km-principle__head > .ac-labelrow { grid-column: 4 / -1; }
+.km-principle .km-principle__head > .ac-statement { grid-column: 4 / -1; }
+.km-principle .km-principle__head > .ac-rule { grid-column: 4; }
+.km-principle .km-principle__head > .ac-lede { grid-column: 4 / span 5; }
+
+/* line 2 carries the output: the word, a 32px gap (in em, so it scales with the statement), then the wire runs
+   to the frame edge */
+.km-principle__through > span { display: flex; align-items: center; width: 100%; }
+.km-principle__word { flex: none; }
+.km-principle__out { position: relative; flex: 1 1 auto; align-self: stretch; margin-left: calc(1em * 32 / 112); }
+.km-principle__wire {
+  position: absolute; left: 0; right: 0; top: calc(50% + .115em); height: 1px; background: var(--fg);
+  transform-origin: 0 50%;
+}
+.km-principle__tick {
+  position: absolute; right: 0; top: calc(50% + .115em); width: 4px; height: var(--tick-h);
+  margin-top: calc(var(--tick-h) / -2 + .5px);   /* centred on the 1px wire */
+  background: var(--accent);
+}
+
+/* the input field: shares the statement's row, its datum (y 100 of 200) on the wire. It is --nw wide (≈ 302/310
+   of cols 1–3); grid-item % margins resolve against the area's width, like the width, so --nw · 100/302 is
+   exactly half the field's height. */
+.km-principle .km-principle__noise {
+  grid-column: 1 / span 3; grid-row: 2; align-self: start; justify-self: start;
+  width: var(--nw); height: auto; aspect-ratio: 302 / 200;
+  margin-top: calc(36px + var(--datum) - var(--nw) * 100 / 302);
+}
+.km-principle__wave { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-principle__wave--sig { stroke: var(--fg); }
+
+/* callout tags (kit code box + label), flush to the frame edges, each seated 17px (at the stage; fluid) under the
+   drawing it names: A under the noise bundle (its lowest curve reaches datum + 59 field units), B under the red
+   tick (datum + 11), so the output label belongs to the tick and never sits in line 3's row. Both share the
+   statement's row. */
+.km-principle__tag { display: flex; align-items: center; gap: var(--tag-gap, 10px); margin: 0; white-space: nowrap; }
+.km-principle__tag .ac-callout__t { font-size: var(--tag-fs, var(--ac-anno)); }
+.km-principle .km-principle__tag--a {
+  grid-column: 1 / span 3; grid-row: 2; align-self: start; justify-self: start;
+  margin-top: calc(36px + var(--datum) + var(--nw) * 59 / 302 + var(--ac-h-xl) * 17 / 112);
+}
+.km-principle .km-principle__tag--b {
+  grid-column: 1 / -1; grid-row: 2; align-self: start; justify-self: end;
+  margin-top: calc(36px + var(--datum) + var(--tick-h) / 2 + var(--ac-h-xl) * 17 / 112);
+}
+
+/* ── 1024–1199 · the tags tighten ──
+   B's width is type (fixed) while the room right of line 3 shrinks with the statement: at 14px its label would
+   start over the "s." of "wins." near 1024 and read as line 3's caption. Below 1200 both tags (a pair, so A
+   follows) ease from 14px / 10px gap to 12px / 6px at 1024, keeping B ≈ 19px clear to the right of line 3. */
+@media (min-width: 1024px) {
+  .km-principle__head {
+    --tag-fs: clamp(12px, 1.1364vw + .3636px, 14px);
+    --tag-gap: clamp(6px, 2.2727vw - 17.2727px, 10px);
+  }
+}
+
+/* ── motion ── the kit runs the head; then the drawing: raw noise plots left → right (300ms) → the bundle settles
+   (JS, 1300 → 3100ms) → the wire draws from the word to the frame edge → the red tick seats → B fades in. */
+.km-motion .km-principle__noise { animation: km-principle-wipe 1000ms var(--ease-out) 300ms both; }
+.km-motion .km-principle__tag--a { animation: ac-fade 400ms var(--ease-out) 900ms both; }
+.km-motion .km-principle__wire { animation: ac-drawx 800ms var(--ease-inout) 2750ms both; }
+.km-motion .km-principle__tick { animation: km-principle-seat 420ms var(--ease-out) 3450ms both; }
+.km-motion .km-principle__tag--b { animation: ac-fade 400ms var(--ease-out) 3600ms both; }
+
+@keyframes km-principle-wipe { from { clip-path: inset(-20px 100% -20px 0); } to { clip-path: inset(-20px 0 -20px 0); } }
+@keyframes km-principle-seat { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+/* ── ≤1023 · the stacked sheet ──
+   Below 1024 the statement needs the full width (at col 4 its 14px tags would sit on line 3's glyphs), so the
+   drawing lifts out of the statement's row and stacks above it, flush to the left frame edge: label → noise
+   (A under it) → the statement, its wire still leaving "the clearest" for the red tick on the right frame edge.
+   The field is cropped to the bundle's own extent (y 38 → 159.5 of 200) with negative margins; --nw is its
+   width, resolved against the full-width grid area in each property that uses it. It is 240px on tablet and
+   phone alike (the stage's drawing-to-type ratio would give 161–215px here, smaller than on a phone). */
+@media (max-width: 1023px) {
+  .km-principle__head { --nwr: min(100%, 240px); }
+  .km-principle .km-principle__head > .ac-labelrow { grid-column: 1 / -1; }
+  .km-principle .km-principle__head > .ac-statement { grid-column: 1 / -1; grid-row: 4; }
+  .km-principle .km-principle__head > .ac-rule { grid-column: 1; grid-row: 5; }
+  .km-principle .km-principle__head > .ac-lede { grid-column: 1 / span 9; grid-row: 6; }
+  .km-principle .km-principle__noise {
+    grid-column: 1 / -1; grid-row: 2; width: var(--nw);
+    margin-top: calc(40px - var(--nw) * 38 / 302);
+  }
+  .km-principle .km-principle__tag--a {
+    grid-column: 1 / -1; grid-row: 3;
+    margin-top: calc(17px - var(--nw) * 40.5 / 302);
+  }
+  /* B keeps its place under the tick, in the statement's row (line 3 is short enough to leave it room) */
+  .km-principle .km-principle__tag--b { grid-row: 4; }
+}
+
+/* ── ≤767 · phone ──
+   The statement wraps (kit) and line 3 fills the width, so B cannot sit under the tick without entering line 3's
+   row: it drops to the rule's row, flush right on the frame edge below the tick, centred on the rule. */
+@media (max-width: 767px) {
+  .km-principle .km-principle__head > .ac-lede { grid-column: 1 / -1; }
+  .km-principle .km-principle__noise { margin-top: calc(32px - var(--nw) * 38 / 302); }
+  .km-principle .km-principle__tag--b { grid-row: 5; align-self: end; margin: 0 0 -10px; }
+}

@@ -1,0 +1,213 @@
+/* ── evidence · the four readings, as an explorer (mockup slot T, round 3; round-6 pace) ─────
+   Archetype: a numeral wall that IS the control, over one fixed readout.
+   · The wall: four numerals (144px at the 1440 stage) on cols 1–3 / 4–6 / 7–9 / 10–12. Each is a
+     real toggle button. The pressed one carries a 2px ink top rule and full ink; the others sit
+     in --fg-2 so the wall reads whole at first glance.
+   · The readout: the four readings stacked in one grid cell (fixed height, nothing reflows).
+     Text on cols 1–6, MEASURE on cols 7–12, so both halves start on a cell edge of the wall.
+     MEASURE: a 1px track with end ticks at 0 and 100, a 10px bar, the value flagged at the
+     fill's end, the bar's unit in words, the source. The field-note door is constant, so it
+     sits apart on the readout's bottom line, level with the detail.
+   · One red: the 17% bar, only while 01 is pressed (the resting state).
+   Default CSS = the final, resting state (01 pressed). Keyframe entrances are declared under
+   .km-motion (held at their first frame until the slot plays); the JS-held beats (.is-wait,
+   .is-hold-ro, .is-pre) key off the slot's .is-play. Fixed 1440 sizes are fluid below the stage. */
+
+.km-evidence {
+  --w0: 700ms; --r0: 1450ms;
+  --xo: 160ms; --xi: 200ms; --ct: 250ms; --rt: 360ms; --fo: 120ms; --xe: var(--ease-out);
+  /* stage sizes: exact at 1440, scaled with the viewport below it */
+  --ev-num: clamp(88px, 10vw, 144px);
+  --ev-claim: var(--ac-h4);   /* 24px at the stage; its 19px floor keeps every claim on one line down to 1024 */
+  --ev-body-gap: clamp(56px, 5.5556vw, 80px);
+  --ev-ro-gap: clamp(40px, 3.3333vw, 48px);
+}
+/* the automatic pass (the JS adds .is-auto while it runs, and drops it for good on any interaction):
+   one calm tempo for every moving part. Words: 280ms out, then 420ms in. The numeral's rule draws in
+   600ms and its ink shifts in 420ms. The value flag fades out in 240ms. The old words fade on an
+   in-out curve. (The bar's own timing is set per step by the JS: it retracts with the old words in
+   280ms, then re-extends in 900ms.) A press keeps the brisk 360 / 600ms. */
+.km-evidence.is-auto { --xo: 280ms; --xi: 420ms; --ct: 420ms; --rt: 600ms; --fo: 240ms; --xe: var(--ease-inout); }
+
+/* ── head: statement on cols 1–8, lede cols 1–6, no note ── */
+.km-evidence .ac-head > .ac-statement { grid-column: 1 / span 8; }
+
+.km-evidence__body { margin-top: var(--ev-body-gap); }
+
+/* ── 1 · the wall ── */
+/* (doubled class: km-base resets `.km button` / `.km p` at 0,1,1, above a single class) */
+.km-evidence .km-evidence__cell {
+  grid-column: span 3; position: relative; display: flex; flex-direction: column; align-items: stretch;
+  min-width: 0; padding: 22px 0 8px; text-align: left; color: var(--fg-2); cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+/* the 1px track every cell stands on (together: one row line, broken only by the gutters) */
+.km-evidence__cell::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line-2);
+  transform-origin: 0 50%;
+}
+/* the 2px state rule: ink when pressed, a --fg-3 preview on hover/focus, drawn from the cell's left */
+.km-evidence__cell::after {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 2px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform var(--rt) var(--ease-inout), background-color var(--ct) var(--ease-out);
+}
+.km-evidence__cell[aria-pressed="true"]::after { transform: scaleX(1); }
+.km-evidence__cell[aria-pressed="false"]:hover::after,
+.km-evidence__cell[aria-pressed="false"]:focus-visible::after { transform: scaleX(1); background: var(--fg-3); }
+
+.km-evidence__top { display: flex; align-items: center; gap: 12px; }
+.km-evidence__idx { transition: color var(--ct) var(--ease-out); }
+/* the selector square, set before its own label: outlined = can be chosen, filled = the reading shown */
+.km-evidence__led {
+  flex: none; width: 8px; height: 8px; box-shadow: inset 0 0 0 1px var(--fg-3);
+  transition: background-color var(--ct) var(--ease-out), box-shadow var(--ct) var(--ease-out);
+}
+.km-evidence__mask { display: block; overflow: hidden; margin-top: 18px; padding-block: .06em .08em; }
+.km-evidence__num { --size: var(--ev-num); display: block; white-space: nowrap; color: var(--fg-2); transition: color var(--ct) var(--ease-out); }
+.km-evidence__num .ac-num__u { font-size: .5em; letter-spacing: -0.02em; }
+
+/* pressed */
+.km-evidence__cell[aria-pressed="true"] { cursor: default; }
+.km-evidence__cell[aria-pressed="true"] .km-evidence__num,
+.km-evidence__cell[aria-pressed="true"] .km-evidence__idx { color: var(--fg); }
+.km-evidence__cell[aria-pressed="true"] .km-evidence__led { background: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+/* hover / keyboard focus: the numeral lifts to ink and the square outlines in ink — it invites the press */
+.km-evidence__cell[aria-pressed="false"]:hover .km-evidence__num,
+.km-evidence__cell[aria-pressed="false"]:focus-visible .km-evidence__num,
+.km-evidence__cell[aria-pressed="false"]:hover .km-evidence__idx,
+.km-evidence__cell[aria-pressed="false"]:focus-visible .km-evidence__idx { color: var(--fg); }
+.km-evidence__cell[aria-pressed="false"]:hover .km-evidence__led,
+.km-evidence__cell[aria-pressed="false"]:focus-visible .km-evidence__led { box-shadow: inset 0 0 0 1px var(--fg); }
+.km-evidence__cell[aria-pressed="false"]:active .km-evidence__mask { transform: translateY(1px); }
+.km-evidence__cell:focus { outline: none; }
+.km-evidence__cell:focus-visible { outline: 1px solid var(--fg); outline-offset: 10px; }
+
+/* ── 2 · the readout (fixed height; four readings stacked in one cell) ── */
+.km-evidence__ro { margin-top: var(--ev-ro-gap); align-items: stretch; }
+.km-evidence__text { grid-column: 1 / span 6; display: grid; align-self: start; }
+.km-evidence__words { display: grid; margin-top: 18px; margin-bottom: 24px; }
+.km-evidence__text > .km-evidence__panel,
+.km-evidence__words > .km-evidence__panel { grid-area: 1 / 1; }
+/* crossfade: the old reading goes out (--xo), then the new one comes in (--xi); never two texts at once.
+   A press: 160 + 200ms. The automatic pass: 280 + 420ms. */
+.km-evidence__panel { opacity: 0; visibility: hidden; transition: opacity var(--xo) var(--xe), visibility 0s linear var(--xo); }
+.km-evidence__panel.is-on { opacity: 1; visibility: visible; transition: opacity var(--xi) var(--ease-out) var(--xo), visibility 0s linear 0s; }
+
+/* pretty: no single-word last lines across the fluid range and on phones (at 1440 no break changes) */
+.km-evidence :is(.km-evidence__claim, .km-evidence__so, .km-evidence__detail) { text-wrap: pretty; }
+.km-evidence .km-evidence__claim { font-family: var(--f-body); font-weight: var(--ui-weight); font-size: var(--ev-claim); line-height: 1.3; color: var(--fg); }
+.km-evidence .km-evidence__so { margin-top: 10px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); }
+.km-evidence .km-evidence__detail { margin-top: 20px; max-width: 600px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+
+/* MEASURE (cols 7–12): stretches to the readout's height so the door can sit on its bottom line */
+.km-evidence__measure { grid-column: 7 / span 6; display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.km-evidence__gauge { align-self: stretch; position: relative; height: 40px; --bt: 600ms; container-type: inline-size; }
+.km-evidence__track { position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: var(--line-2); }
+/* end ticks at 0 and 100 only */
+.km-evidence__track::before, .km-evidence__track::after {
+  content: ""; position: absolute; top: -6px; width: 1px; height: 13px; background: var(--fg-3);
+}
+.km-evidence__track::before { left: 0; }
+.km-evidence__track::after { right: 0; }
+.km-evidence__fill {
+  position: absolute; left: 0; bottom: 0; width: 100%; height: 10px; background: var(--fg);
+  transform: scaleX(var(--v, 0)); transform-origin: 0 50%;
+  transition: transform var(--bt) var(--ease-inout);
+}
+.km-evidence__gauge.is-red .km-evidence__fill { background: var(--accent); }
+/* the value, flagged at the fill's end: a 1px pole up from the bar, the reading beside it */
+.km-evidence__val, .km-evidence__rest {
+  position: absolute; bottom: 14px; line-height: 16px; color: var(--fg); white-space: nowrap;
+  opacity: 0; transition: opacity var(--fo) var(--ease-out);
+}
+.km-evidence__val { left: calc(var(--at) * 100%); padding-left: 8px; }
+.km-evidence__val::before {
+  content: ""; position: absolute; left: 0; top: 2px; bottom: -4px; width: 1px; background: var(--fg-3);
+}
+/* 95:5 · the empty track is labelled for what it holds */
+.km-evidence__rest { right: 0; padding-right: 8px; color: var(--fg-2); }
+.km-evidence__rest::after {
+  content: ""; position: absolute; right: 0; top: 2px; bottom: -4px; width: 1px; background: var(--fg-3);
+}
+/* a flag near the 100 end (77) turns to the left of its pole when the gauge is too narrow to hold it
+   (phones) — the same drafting move as "95 not buying", so it never crosses the end tick */
+@container (max-width: 380px) {
+  .km-evidence__val--end { left: auto; right: calc((1 - var(--at)) * 100%); padding-left: 0; padding-right: 8px; }
+  .km-evidence__val--end::before { left: auto; right: 0; }
+}
+.km-evidence__gauge[data-on="0"] [data-n="0"],
+.km-evidence__gauge[data-on="1"] [data-n="1"],
+.km-evidence__gauge[data-on="2"] [data-n="2"],
+.km-evidence__gauge[data-on="3"] [data-n="3"] {
+  opacity: 1; transition: opacity 240ms var(--ease-out) calc(var(--bt) - 180ms);
+}
+
+.km-evidence .km-evidence__unit { font-size: var(--ac-support); line-height: 1.55; color: var(--fg); }
+.km-evidence .km-evidence__src { display: block; margin-top: 10px; }
+/* constant across the four readings: pinned to the readout's bottom line, apart from the per-reading words */
+.km-evidence__door { margin-top: auto; }
+
+/* ── 3 · entrance ──
+   Two beats, each with its own base delay: the WALL (--w0) and the READOUT (--r0). The JS holds both
+   (.is-wait / .is-hold-ro) once the slot plays; the wall plays (.is-go) when it is 40% visible, the
+   readout (.is-ro) when the readout itself is on screen, so the red bar never extends below the fold.
+   Before the slot plays (motion on), the same beats are held so nothing flashes its resting state.
+   Keyframes use backwards fill so press/hover transitions are never blocked.                     */
+.km-motion .km-slot:not(.is-play) .km-evidence__cell::before,
+.km-motion .km-slot:not(.is-play) .km-evidence__cell::after,
+.is-play .km-evidence.is-wait .km-evidence__cell::before,
+.is-play .km-evidence.is-wait .km-evidence__cell::after { transform: scaleX(0); }
+.km-motion .km-slot:not(.is-play) .km-evidence :is(.km-evidence__top, .km-evidence__num, .km-evidence__claim, .km-evidence__so, .km-evidence__detail, .km-evidence__track, .km-evidence__words, .km-evidence__door, .km-evidence__gauge [data-n]),
+.is-play .km-evidence.is-wait :is(.km-evidence__top, .km-evidence__num),
+.is-play .km-evidence.is-hold-ro :is(.km-evidence__claim, .km-evidence__so, .km-evidence__detail, .km-evidence__track, .km-evidence__words, .km-evidence__door) { opacity: 0; }
+.km-motion .km-slot:not(.is-play) .km-evidence__fill { transform: scaleX(0); }
+
+/* 1 · numerals rise 12px from their masks, left → right, 120ms apart (no counting) */
+.km-motion .km-evidence.is-go .km-evidence__cell::before { animation: ac-drawx 600ms var(--ease-out) calc(var(--w0) + var(--i) * 120ms) backwards; }
+.km-motion .km-evidence.is-go .km-evidence__top { animation: ac-fade 400ms var(--ease-out) calc(var(--w0) + 80ms + var(--i) * 120ms) backwards; }
+.km-motion .km-evidence.is-go .km-evidence__num { animation: km-evidence-rise 700ms var(--ease-out) calc(var(--w0) + var(--i) * 120ms) backwards; }
+/* 2 · cell 01 takes its rule (the JS lifts .is-pre at --w0 + 600ms; the rule is a state transition) */
+.km-evidence.is-pre .km-evidence__cell::after { transform: scaleX(0); }
+.km-evidence.is-pre .km-evidence__cell .km-evidence__num,
+.km-evidence.is-pre .km-evidence__cell .km-evidence__idx { color: var(--fg-2); }
+.km-evidence.is-pre .km-evidence__cell .km-evidence__led { background: transparent; box-shadow: inset 0 0 0 1px var(--fg-3); }
+/* 3 · the readout writes in: claim, then so-what, then detail (300ms fades) */
+.km-motion .km-evidence.is-ro .km-evidence__claim { animation: ac-fade 300ms var(--ease-out) var(--r0) backwards; }
+.km-motion .km-evidence.is-ro .km-evidence__so { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 150ms) backwards; }
+.km-motion .km-evidence.is-ro .km-evidence__detail { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 300ms) backwards; }
+/* 4 · the MEASURE: the track, then the red 17% bar extends (700ms at --r0 + 400ms, JS), its unit and source, the door */
+.km-motion .km-evidence.is-ro .km-evidence__track { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 250ms) backwards; }
+.km-motion .km-evidence.is-ro .km-evidence__words { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 550ms) backwards; }
+.km-motion .km-evidence.is-ro .km-evidence__door { animation: ac-fade 300ms var(--ease-out) calc(var(--r0) + 700ms) backwards; }
+
+@keyframes km-evidence-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ── 4 · tablet (≤ 1023px): the wall keeps its four columns; the readout stacks (text, then MEASURE
+   across the full wall, so 0 and 100 sit on the wall's outer edges) ── */
+@media (max-width: 1023px) {
+  .km-evidence .ac-head > .ac-statement { grid-column: 1 / -1; }
+  .km-evidence__text { grid-column: 1 / span 10; }
+  .km-evidence__measure { grid-column: 1 / -1; margin-top: 36px; }
+  .km-evidence__door { margin-top: 0; }
+}
+
+/* ── 5 · phone (≤ 767px): numerals in a 2×2 grid, the readout below (text, then MEASURE) ── */
+@media (max-width: 767px) {
+  .km-evidence { --ev-num: min(88px, 22.5vw); --ev-claim: 20px; --ev-body-gap: 56px; --ev-ro-gap: 40px; }
+  .km-evidence__wall { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+  .km-evidence .km-evidence__cell { grid-column: span 1; padding-top: 16px; }
+  .km-evidence__mask { margin-top: 12px; }
+  .km-evidence__ro { grid-template-columns: minmax(0, 1fr); }
+  .km-evidence__text, .km-evidence__measure { grid-column: 1 / -1; }
+  .km-evidence__measure { margin-top: 32px; }
+  .km-evidence__unit { text-wrap: balance; }
+  .km-evidence__door { font-size: 12px; letter-spacing: .1em; }
+}
+/* narrow phones (< 380px): tighter tracking so the cell labels stay inside their cells and the door
+   holds one line inside the margins (sizes stay at 11 / 12px) */
+@media (max-width: 379px) {
+  .km-evidence__top { gap: 8px; }
+  .km-evidence__idx { letter-spacing: .06em; }
+  .km-evidence__door { letter-spacing: .06em; gap: 10px; }
+}

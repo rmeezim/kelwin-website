@@ -1,0 +1,236 @@
+/* ── cta · "Request the / System Audit." (mockup slot U, round 4) ──────────────────────────────
+   The founder's red poster: a paper-square caps label, a flush-left 120px two-voice statement, the
+   short paper rule, one row (fact · lede and doors · note) and an edge band under a hairline.
+   · ① the fact (cols 1–3) is information: a recessed deep-red panel (the red surface's --panel),
+     one step darker than the plane. No link, no hover, no pointer, no arrow.
+   · ② the action (cols 5–9): the lede on the panel's top line, then the kit's primary on red
+     (.ac-btn: paper fill, red text) and the contact link on the panel's foot. Col 4 stays empty: a
+     channel of plain red between the information and the action.
+   · ③ the note (cols 10–12), flush to the right margin.
+   Legibility on red: all reading type on the plane is full paper (--fg, 5.2:1); paper at .86 is
+   kept only for the 120px light line and inside the darker panel.
+   Default CSS = the final, resting state. Keyframe entrances are declared under .km-motion (held at
+   their first frame until the slot plays, km-kit §10). Every rule is scoped under .km-cta so it
+   outranks km-base's `.km :is(p, h2, …)` / `.km a` resets.
+   Sizes are exact at the 1440 stage and scale with the viewport down to 1024 (vw clamps); the
+   tablet (≤1023) and phone (≤767) reflows are at the end. */
+
+.km-cta {
+  overflow: hidden;
+  /* fluid sizes: the mockup's exact px at 1440, scaling with the viewport below it */
+  --cta-top: clamp(88px, 100vw * 112 / 1440, 112px);
+  --cta-h: clamp(64px, 100vw * 120 / 1440, 120px);          /* the statement */
+  --cta-fact-h: clamp(248px, 100vw * 280 / 1440, 280px);   /* the panel: 310 × 280 at the stage */
+  --cta-fact-pad: clamp(16px, 100vw * 24 / 1440, 24px);
+  --cta-num: clamp(112px, 100vw * 168 / 1440, 168px);      /* the 10 */
+  --cta-band-top: clamp(72px, 100vw * 104 / 1440, 104px);
+  /* the lede: 20px at the stage, never below the mockup's phone size (18px), so it never shrinks
+     as the viewport widens (the kit's --ac-lede bottoms out at 17px) */
+  --cta-lede: clamp(18px, 100vw * 20 / 1440, 20px);
+}
+.km-cta .km-cta__inner { padding: var(--cta-top) var(--edge) 0; }
+
+/* ── shared voices ── */
+.km-cta .km-cta__label {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-cta .km-cta__sq { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-cta .km-cta__cap {
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--fg); white-space: nowrap;
+}
+
+/* ── label row ── */
+.km-cta .km-cta__labelrow { display: flex; align-items: center; justify-content: space-between; }
+
+/* ── statement: wide 430, then the light clause ── */
+.km-cta .km-cta__title {
+  margin-top: 36px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--cta-h); line-height: .94; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-cta .km-cta__ln {
+  display: block; overflow: hidden; white-space: nowrap;
+  padding-block: .1em .16em; margin-block: -.1em -.16em;
+}
+.km-cta .km-cta__ln > span { display: inline-block; }
+.km-cta .km-cta__ln--light { font-weight: var(--light-weight); color: var(--fg-2); }
+
+.km-cta .km-cta__rule {
+  display: block; width: 48px; height: 2px; margin-top: 36px;
+  background: var(--signal); transform-origin: left center;
+}
+
+/* ── the row: fact (cols 1–3) · channel (col 4) · copy (cols 5–9) · note (cols 10–12) ── */
+.km-cta .km-cta__row {
+  margin-top: 36px;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: stretch;
+}
+
+/* ① the fact — information. 310 × 280 at the stage. Dark = read, paper = act: the panel is one
+   step darker than the plane, the button the one thing lighter than it. */
+.km-cta .km-cta__fact {
+  grid-column: 1 / span 3; height: var(--cta-fact-h);
+  position: relative;
+  display: flex; flex-direction: column;
+  /* the bottom stays 24px so "Kickoff · Readout" keeps the doors' baseline at every width */
+  padding: var(--cta-fact-pad) var(--cta-fact-pad) 24px;
+  background: var(--panel); color: var(--fg); cursor: default;
+}
+.km-cta .km-cta__fact-top { display: flex; flex-direction: column; align-items: flex-start; }
+.km-cta .km-cta__num {
+  display: block;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--cta-num); line-height: .78; letter-spacing: -0.04em; margin-left: -.04em;
+  font-variant-numeric: normal;   /* Mona's tabular zero is slashed */
+  color: var(--soft);
+}
+.km-cta .km-cta__unit {
+  display: block; margin-top: 18px;
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--fg);
+}
+/* where the panel is too narrow for one line (≈ <1270px), it breaks at the dot, never mid-phrase */
+.km-cta .km-cta__unit > span { white-space: nowrap; }
+/* the foot: ten day-ticks hang from one hairline (01 and 10 long), the two ends named beneath.
+   The drawing stretches with the panel (preserveAspectRatio="none"); strokes stay 1px. */
+.km-cta .km-cta__ruler { margin-top: auto; }
+.km-cta .km-cta__svg { display: block; width: 100%; height: 9px; overflow: visible; }
+.km-cta .km-cta__svg path { fill: none; stroke-width: 1; shape-rendering: crispEdges; vector-effect: non-scaling-stroke; }
+.km-cta .km-cta__base { stroke: var(--line-2); }
+.km-cta .km-cta__tk { stroke: var(--fg); transform-box: fill-box; transform-origin: 50% 0; }
+.km-cta .km-cta__ends {
+  display: flex; justify-content: space-between; margin-top: 8px;
+  font-size: 14px; line-height: 18px; color: var(--fg-2);
+}
+
+/* ② the action: lede cap-aligned to the panel's top; the doors sit on the panel's foot */
+.km-cta .km-cta__copy {
+  grid-column: 5 / span 5;
+  display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
+}
+.km-cta .km-cta__lede {
+  margin-top: -.35em; max-width: 40ch;   /* -7px at 20px: the cap line on the panel's top edge */
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: var(--cta-lede); line-height: 1.5; color: var(--fg); text-wrap: pretty;   /* .86 paper is 4.2:1 here */
+}
+.km-cta .km-cta__doors { display: flex; align-items: center; gap: 20px 40px; }
+/* the primary on red: paper fill, red text. (km-base's `.km a { color: inherit }` outranks the
+   kit's `.ac-btn { color: var(--accent-fg) }`, which would paint paper text on the paper fill.) */
+.km-cta .km-cta__btn { color: var(--accent-fg); }
+/* focus: the link gets the paper ring; the button keeps the kit's ring drawn inside its cut (an
+   outside ring is clipped away by the button's clip-path) */
+.km-cta .km-cta__link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* ③ the note: bottom-aligned with the doors, set flush to the right margin (the band's phase cap
+   below shares that edge) */
+.km-cta .km-cta__note {
+  grid-column: 10 / span 3; align-self: end; justify-self: end; margin-bottom: 22px;   /* last line on the doors' baseline */
+  display: flex; flex-direction: column; gap: 14px;
+}
+.km-cta .km-cta__note-copy {
+  max-width: 30ch;
+  font-family: var(--f-body); font-weight: var(--body-weight);
+  font-size: 15px; line-height: 1.55; color: var(--fg); text-wrap: pretty;
+}
+
+/* ── the band: the poster's edge furniture ── */
+.km-cta .km-cta__band {
+  position: relative; margin-top: var(--cta-band-top); min-height: 88px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.km-cta .km-cta__band::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
+  background: var(--line); transform-origin: left center;
+}
+/* the path line: what happens after the click (15px Mona, paper, drawn arrows) */
+.km-cta .km-cta__path { font-size: 15px; line-height: 22px; color: var(--fg); }
+.km-cta .km-cta__path > li { display: inline; }
+.km-cta .km-cta__path > li + li::before {
+  content: ""; display: inline-block; width: 13px; height: 11px; margin: 0 12px; vertical-align: -1px;
+  background-color: currentColor;
+  -webkit-mask: var(--km-cta-arr) center / contain no-repeat; mask: var(--km-cta-arr) center / contain no-repeat;
+  --km-cta-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+
+/* ── entrance (km-motion only, held at frame 0 until the slot plays; no km-motion = the final
+   state): label → statement out of its masks → rule → lede and doors (the action is in place
+   before the fact arrives) → the fact panel opens from its bottom-left corner and its ten
+   day-ticks ink in, left to right → the note and the band settle. At rest by ≈ 2.3s. No
+   count-up (the page's one counter belongs to the system section), no loop. ── */
+.km-motion .km-cta .km-cta__labelrow { animation: km-cta-fade .3s var(--ease-out) .05s both; }
+.km-motion .km-cta .km-cta__ln > span { animation: km-cta-rise .8s var(--ease-out) .15s both; }
+.km-motion .km-cta .km-cta__ln--light > span { animation-delay: .47s; }
+.km-motion .km-cta .km-cta__rule { animation: km-cta-draw .5s var(--ease-out) .8s both; }
+.km-motion .km-cta .km-cta__lede { animation: km-cta-up .6s var(--ease-out) .9s both; }
+.km-motion .km-cta .km-cta__doors { animation: km-cta-up .6s var(--ease-out) 1s both; }
+.km-motion .km-cta .km-cta__fact { animation: km-cta-land .75s var(--ease-inout) 1.15s both; }
+.km-motion .km-cta .km-cta__fact-top { animation: km-cta-fade .4s var(--ease-out) 1.6s both; }
+.km-motion .km-cta .km-cta__base { animation: km-cta-fade .3s var(--ease-out) 1.7s both; }
+.km-motion .km-cta .km-cta__tk { animation: km-cta-ink .22s var(--ease-out) both; animation-delay: calc(1.75s + var(--n) * 40ms); }
+.km-motion .km-cta .km-cta__ends { animation: km-cta-fade .4s var(--ease-out) 2s both; }
+.km-motion .km-cta .km-cta__note { animation: km-cta-up .6s var(--ease-out) 1.2s both; }
+.km-motion .km-cta .km-cta__band::before { animation: km-cta-draw 1.2s var(--ease-out) .3s both; }
+.km-motion .km-cta .km-cta__band > * { animation: km-cta-fade .5s var(--ease-out) 1.3s both; }
+
+@keyframes km-cta-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-cta-rise { from { transform: translateY(105%); } to { transform: translateY(0); } }
+@keyframes km-cta-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-cta-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-cta-land { from { clip-path: inset(100% 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-cta-ink { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: none; } }
+
+/* ── 1024–1379: the row keeps its columns, but the doors (fixed-size kit actions) would run into
+   the note at its foot, so the note lifts to the row's top line, beside the lede (its label's cap
+   line on the panel's top edge, like the lede's). ── */
+@media (max-width: 1379px) {
+  .km-cta .km-cta__note { align-self: start; margin: -4px 0 0; }
+}
+
+/* ── ≤ 1023 · tablet: the action comes first (lede, doors), then the fact and the note side by side,
+   the note's last line on the panel's foot line; the band wraps. ── */
+@media (max-width: 1023px) {
+  .km-cta {
+    --cta-fact-h: 280px; --cta-fact-pad: 24px; --cta-num: 168px;
+  }
+  .km-cta .km-cta__row { row-gap: 56px; }
+  .km-cta .km-cta__copy { grid-column: 1 / -1; grid-row: 1; gap: 32px; }
+  .km-cta .km-cta__lede { margin-top: 0; max-width: 40ch; }
+  .km-cta .km-cta__fact { grid-column: 1 / span 6; grid-row: 2; width: 100%; max-width: 310px; }
+  .km-cta .km-cta__note { grid-column: 7 / -1; grid-row: 2; align-self: end; justify-self: start; margin: 0 0 22px; }
+  /* wrapped, the phase cap drops under the path line at the band's 24px gap (as the phone stack) */
+  .km-cta .km-cta__band { flex-wrap: wrap; padding-block: 24px; }
+}
+
+/* ── ≤ 767 · phone: one column; the doors come before the fact. The side gutters stay the kit's
+   --edge (the mockup's phone note said 16px), so the poster's left edge lines up with every other
+   section on the page. ── */
+@media (max-width: 767px) {
+  .km-cta {
+    --cta-top: 88px;
+    /* "System Audit." is ≈6.3em wide: the statement fits the column down to 320 without wrapping
+       (52px at 390 as the mockup's phone spec, 64px by 767 to meet the tablet size) */
+    --cta-h: min(64px, (100vw - 32px) * .145);
+  }
+  .km-cta .km-cta__title { margin-top: 28px; }
+  .km-cta .km-cta__rule { margin-top: 28px; }
+  .km-cta .km-cta__row { display: flex; flex-direction: column; align-items: stretch; row-gap: 0; margin-top: 24px; }
+  .km-cta .km-cta__copy { order: 1; gap: 28px; }
+  /* the doors keep the kit's phone rhythm (km-kit §11 sets every .ac-doors to 16px 28px here) */
+  .km-cta .km-cta__doors { flex-wrap: wrap; gap: 16px 28px; }
+  .km-cta .km-cta__fact { order: 2; width: 100%; max-width: 310px; margin-top: 48px; }
+  .km-cta .km-cta__note { order: 3; align-self: flex-start; margin: 40px 0 0; }
+  .km-cta .km-cta__band { margin-top: 64px; flex-direction: column; align-items: flex-start; }
+  .km-cta .km-cta__cap { white-space: normal; }
+}
+
+/* ── touch: the contact link's hit area grows to 44px without moving anything. The kit's .ac-link is
+   29px tall (8px padding) with its underline (::before) on the box's foot, so the box grows by 7.5px
+   each way, negative margins keep its footprint, and the underline is lifted back by the same 7.5px. ── */
+@media (pointer: coarse) {
+  .km-cta .km-cta__link { padding-block: 15.5px; margin-block: -7.5px; }
+  .km-cta .km-cta__link::before { bottom: 7.5px; }
+}

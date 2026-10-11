@@ -1,0 +1,170 @@
+/* ── fit · Two ledgers, the gate both ways ─────────────────────────────────────────────────
+   Port of design/redesign/site/frag/fit/U.{html,css} (round 5, approved). Kit components are
+   placed, not restyled.
+   · The two 42px ledger heads ARE the headline. A sticky lede column (cols 1–4) holds the
+     label, the lede and one quiet link; it is position: sticky, not a pin.
+   · Open rows show body text only (no sub-headline inside an open row).
+   · + / – are plain mono ledger signs in the index column, unboxed, so they read as the yes / no
+     of a ledger and never as buttons (the row toggles stay at the right). The minus is an en dash:
+     this JetBrains Mono build draws U+2212 as its hyphen, which read as stray punctuation.
+   · Still beat: reveal only. No drawing, no loop, no red beyond the label square.
+   Motion: keyframe entrances are declared under .km-motion (held at their first frame until the
+   slot plays — km-kit §10). The resting rows' answers are held by JS after play (.is-pre).
+   Responsive: ≥1024 the 1440 composition, fluid · ≤1023 the lede column stacks over full-width
+   ledgers (no longer sticky) · ≤767 one column, row descriptors tuck under the titles. */
+
+.km-fit {
+  /* the ledger's index column: the kit's 72px at the stage, narrowing to ~51px at 1024 so the
+     title and descriptor columns keep their one-line widths */
+  --sign: clamp(48px, 5vw, 72px);
+  /* the sticky column's distance from the top of the screen: 128px at the stage, i.e. the section's
+     top padding, so the column starts to hold exactly when the section's top reaches the screen's */
+  --fit-top: var(--ac-pad-y);
+}
+
+/* ── body: sticky lede column (cols 1–4) · col 5 open · the two ledgers (cols 6–12) ── */
+.km-fit__body { align-items: start; }
+
+.km-fit__side {
+  position: sticky; top: var(--fit-top); align-self: start;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.km-fit__label { margin: 0; }
+/* (prefixed: km-base resets margins on .km p/h* at a higher specificity than a bare class) */
+.km-fit .km-fit__lede { margin-top: 36px; max-width: 20em; text-wrap: pretty; }
+.km-fit .km-fit__link { margin-top: 36px; }
+
+/* The right column starts one label-row lower, so the lede's first line and the "Built for"
+   heading share a baseline: the mockup's 36px at the 1440 stage. Below it the lede (20 → 17px)
+   and the heading (42 → 28px) shrink at different rates, so the offset follows them (fitted to
+   the measured baselines from 1024 to 1440; within a pixel). */
+.km-fit__sets { padding-top: calc(36px + 1.5 * (var(--ac-lede) - 20px) - (var(--ac-h3-lg) - 42px)); }
+.km-fit__set--no { margin-top: 48px; }
+
+/* ── the ledger head: sign · Built for ……… We say yes when  03 ──
+   On the ledger's own columns: the sign sits in the index column, the heading starts on the row
+   titles' edge, so every row title hangs from it. The band is a whole pixel (the 42px head's box
+   is 46.2px → 46px), and follows the heading below the stage. */
+.km-fit__sh {
+  display: grid; grid-template-columns: var(--sign) minmax(0, 1fr) auto; column-gap: var(--gutter);
+  grid-template-rows: 46px; grid-template-rows: round(calc(var(--ac-h3-lg) * 1.1), 1px);
+  align-items: baseline; padding-bottom: 20px;
+}
+.km-fit__sign {
+  font-family: var(--f-mono); font-size: 28px; line-height: 1; font-weight: 400;
+  color: var(--fg-3); letter-spacing: 0;   /* at 28px the glyphs' centre sits on the heading's x-height */
+}
+.km-fit .km-fit__mask { display: block; font: inherit; overflow: clip; padding-block: .1em .18em; margin-block: -.1em -.18em; }
+.km-fit__mask > span { display: inline-block; white-space: nowrap; }
+.km-fit__sub { display: flex; align-items: baseline; gap: 18px; }
+.km-fit__sub > .ac-support { color: var(--fg-2); }
+.km-fit__sub > .ac-idx { font-size: 12px; color: var(--fg-2); }
+
+/* the head rule: ink under Built for, one step quieter under Not for */
+.km-fit__rule { display: block; height: 1px; background: var(--fg); transform-origin: 0 50%; }
+.km-fit__set--no .km-fit__rule { background: var(--line-2); }
+
+/* ── the ledgers (kit .ac-ledger): index · title · descriptor · toggle ── */
+.km-fit .km-fit__lg {
+  border-top: 0;
+  /* index · title 1.5fr · descriptor 1fr · toggle. The descriptor never drops below its longest
+     line ("Buying lists, not a system.", 179px): from ~1180px down the title column gives way,
+     so every descriptor stays on one line to 1024 (at 1440 the 1.5 : 1 split is untouched). */
+  --ac-row-cols: var(--sign) minmax(0, 1.5fr) minmax(180px, 1fr) 20px;
+  --ac-row-indent: calc(var(--sign) + var(--gutter));
+}
+/* the kit row's 22px band (km-base's .km button { padding: 0 } outranks the kit's .ac-row__head) */
+.km-fit .ac-row__head { padding-block: 22px; }
+/* the kit's 6px title nudge is a pointer hover; on touch a tap would leave it stuck (kit rule is
+   ungated), so touch screens drop it — the tap's open / close is the response */
+@media (hover: none) {
+  .km-fit .ac-row__head:hover .ac-h4 { transform: none; }
+}
+.km-fit .ac-row__head .ac-support { color: var(--fg-2); }
+.km-fit .ac-row__head:focus-visible, .km-fit .km-fit__link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+/* open rows: the body, and nothing else */
+.km-fit .ac-row__in { padding-top: 0; padding-bottom: 24px; }
+/* one sentence per line: each answer reads as plain statements, never as a heading + text */
+.km-fit__p { font-size: 17px; line-height: 26px; color: var(--fg); text-wrap: pretty; }
+.km-fit__p > span { display: block; }
+.km-fit__nb { white-space: nowrap; }       /* a hyphenated compound in a row title never breaks */
+
+/* Not for: one step quieter until a row is opened or hovered */
+.km-fit__set--no .ac-row__head .ac-h4 { color: var(--fg-2); transition: transform 300ms var(--ease-out), color 300ms var(--ease-inout); }
+.km-fit__set--no .ac-row__head .ac-support { color: var(--fg-3); }
+.km-fit__set--no .ac-row.is-open .ac-h4 { color: var(--fg); }
+@media (hover: hover) {
+  .km-fit__set--no .ac-row__head:hover .ac-h4 { color: var(--fg); }
+}
+.km-fit__set--no .ac-row.is-open .ac-row__head .ac-support { color: var(--fg-2); }
+
+/* ── entrance: reveal only, in reading order.
+   label → lede → link · "Built for" rises, its rule draws, its rows cascade (80ms) · "Not for"
+   rises, its rule draws, its rows cascade · then the two resting rows open (360ms, JS): F-02 first,
+   D-01 after it. Nothing loops.
+   The resting rows keep their open height from the first frame, so nothing below them is pushed
+   while it lands (the page below never jumps): JS holds them in .is-pre (answer hidden, toggle at +),
+   then releases them, so the answer drops out of the row head and the toggle turns + → −. ── */
+.km-fit .ac-row__in { transition: opacity 360ms var(--ease-inout), transform 360ms var(--ease-out); }
+.km-fit .ac-row.is-pre .ac-row__in { opacity: 0; transform: translateY(-8px); }
+.km-fit .ac-row.is-pre .ac-toggle::after { transform: rotate(90deg); }
+.km-motion .km-fit__label { animation: ac-fade 300ms var(--ease-out) both; }
+.km-motion .km-fit__lede { animation: ac-up 600ms var(--ease-out) 120ms both; }
+.km-motion .km-fit__link { animation: ac-up 600ms var(--ease-out) 240ms both; }
+
+.km-motion .km-fit__mask > span { animation: ac-rise 800ms var(--ease-out) var(--hd, 200ms) both; }
+.km-motion .km-fit__sign, .km-motion .km-fit__sub { animation: ac-fade 400ms var(--ease-out) calc(var(--hd, 200ms) + 240ms) both; }
+.km-motion .km-fit__rule { animation: ac-drawx 700ms var(--ease-inout) calc(var(--hd, 200ms) + 80ms) both; }
+.km-fit__set--no { --hd: 600ms; }
+
+.km-motion .km-fit__lg > .ac-row { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(var(--d, 440ms) + var(--i, 0) * 80ms); }
+.km-fit__set--no .km-fit__lg { --d: 840ms; }
+
+/* ── 1024–1279: the link stays inside the lede column. At the stage the 13px link is the lede's
+   own line length (359px in a 421px column); below ~1280 the column narrows past it (300px at
+   1024). The link steps to 12px and gives up tracking only as the column needs it: the kit's
+   .18em down to ~1160, easing to .08em at 1024 (292px). It keeps 7–9px to spare, more than a
+   classic 15px scrollbar takes from the column (5px). ── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .km-fit .km-fit__link { font-size: 12px; letter-spacing: clamp(.08em, calc(.8606vw - 7.9px), .18em); }
+}
+
+/* ── ≤ 1023px (tablet): the 7-column ledgers get cramped beside the lede, so the lede column
+   stacks above them (no longer sticky) and the ledgers take the full width. ── */
+@media (max-width: 1023px) {
+  .km-fit__body { display: block; }
+  .km-fit__side { position: static; }
+  .km-fit .km-fit__lede { max-width: 32em; }
+  .km-fit__sets { padding-top: 64px; }
+}
+
+/* ── ≤ 767px (phone): one column; descriptors under the titles ── */
+@media (max-width: 767px) {
+  .km-fit { --sign: 40px; }
+  .km-fit .km-fit__lede { margin-top: 24px; max-width: none; }
+  .km-fit .km-fit__link { margin-top: 24px; font-size: 12px; letter-spacing: .12em; }
+  .km-fit__sets { padding-top: 56px; }
+  /* the sub drops under the heading; the band is the 32px head's box (35.2px), a whole pixel */
+  .km-fit__sh { grid-template-columns: var(--sign) minmax(0, 1fr); grid-template-rows: 35px; column-gap: 16px; row-gap: 6px; }
+  .km-fit__sub { grid-column: 2; }
+  .km-fit .ac-h3--lg { font-size: 32px; }
+  .km-fit .km-fit__lg {
+    --ac-row-cols-sm: var(--sign) minmax(0, 1fr) 20px;
+    --ac-row-indent: calc(var(--sign) + 16px);
+  }
+  .km-fit .ac-row__head { column-gap: 16px; row-gap: 4px; padding-block: 18px; }
+  .km-fit .ac-row__head > .ac-idx { grid-row: 1; align-self: baseline; }
+  .km-fit .ac-row__head > .ac-h4 { font-size: 20px; }
+  .km-fit .ac-row__head > .ac-support { grid-column: 2; grid-row: 2; }
+  /* the toggle centres on the title's first line (20px × 1.25 = a 25px line, a 20px toggle), so a
+     title that wraps on a narrow phone keeps its control beside its first line, like the index */
+  .km-fit .ac-row__head > .ac-toggle { grid-column: 3; grid-row: 1; align-self: start; margin-top: 2.5px; }
+  .km-fit__p { font-size: 16px; }
+  .km-fit__p > span { display: inline; }                     /* narrow lines: let the sentences flow */
+}
+
+/* ── ≤ 359px: the link no longer fits one line at 12px; it steps to the 11px floor with tighter
+   tracking (270px — one line at 320), and below that it may wrap rather than overflow ── */
+@media (max-width: 359px) {
+  .km-fit .km-fit__link { font-size: 11px; letter-spacing: .08em; line-height: 1.45; white-space: normal; }
+}

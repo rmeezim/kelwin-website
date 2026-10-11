@@ -1,0 +1,322 @@
+/* ── method · the phase track ─────────────────────────────────────────────────────────────
+   Port of design/redesign/site/frag/method/U.{html,css} (round 5, approved). Kit components are
+   placed, not restyled.
+   Geometry: the 1440 stage puts the plate at 1312 wide; bay k starts at 25%·k and every label and
+   bar sits at bay + 32px. x is fluid (% of the plate + fixed insets); the audit span --S is 220/1312
+   of the plate. The column zone is as tall as its text (min 252px — the mockup's ruler y) and the
+   gantt under it is a fixed band --G (204px), so every gantt y reads "ruler + n":
+     ruler +0 · bars (10px) +28 / +60 / +92 / +124 · time axis +168 · plate foot +204.
+   Calibrate, the retainer and "Keeps running" run past the plate and off the page: --bleed is the
+   distance from the plate's right edge to the viewport's (the margin, plus the centring gutter
+   above the 1440 stage); the section clips the overshoot.
+   Motion: entrances are declared under .km-motion (held at their first frame until the slot
+   plays — km-kit §10); state set by JS after play ([data-wait], [data-idle], [data-focus]).
+   Never hide an animated element with display:none at a breakpoint (that cancels its entrance and
+   replays it when the viewport crosses back, e.g. an iPad rotating) — use visibility. */
+
+.km-method {
+  --bleed: max(var(--margin), calc((100vw - var(--stage)) / 2 + var(--margin)));
+  overflow-x: clip;           /* Calibrate runs off the page; the section clips it */
+}
+
+/* ── head: kit grammar. The two voices share ONE line, each still rising in its own mask (L → R).
+   The lede takes cols 1–7. ── */
+.km-method .ac-statement > .ac-line { display: inline-block; vertical-align: top; }
+.km-method .ac-head > .ac-lede { grid-column: 1 / span 7; max-width: 60ch; text-wrap: pretty; }
+.km-method .ac-head > .ac-note { align-self: end; }
+.km-method__nb { white-space: nowrap; }
+
+/* ── the plate ── */
+.km-method__body { margin-top: clamp(40px, 4.4444vw, 64px); }   /* the page's head → figure step */
+.km-method .km-method__fig { margin: 0; }
+.km-method .km-method__plate { overflow: visible; }             /* Calibrate leaves through the right edge */
+.km-method .km-method__field {
+  --G: 204px;                         /* the gantt band under the ruler */
+  --S: calc(100% * 220 / 1312);       /* the audit span: ten intervals of 22 at the stage */
+  height: auto; padding-bottom: var(--G);
+}
+/* the span snaps to a whole 10px so its ten intervals land on a whole-pixel pitch at every width
+   (220 at the stage, unchanged); ruler, break, ticks and the red bar all read --S */
+@supports (width: round(1px, 1px)) {
+  .km-method .km-method__field { --S: round(calc(100% * 220 / 1312), 10px); }
+}
+
+/* the drawing, in plate coordinates (each stroke is its own small SVG so it stays crisp and 1px) */
+.km-method__draw { position: absolute; inset: 0; pointer-events: none; }
+.km-method__g { position: absolute; }
+.km-method__g--div1, .km-method__g--div2 { top: 0; width: 1px; height: calc(100% - var(--G)); }
+.km-method__g--div1 { left: 25%; }
+.km-method__g--div2 { left: 50%; }
+.km-method__g--lanes { left: 0; top: calc(100% - var(--G) + 33px); width: 75%; height: 97px; }
+.km-method__g--rula { left: 0; top: calc(100% - var(--G)); width: calc(55px + var(--S)); height: 1px; }
+.km-method__g--rulb { left: calc(65px + var(--S)); top: calc(100% - var(--G)); width: calc(100% - 65px - var(--S)); height: 1px; }
+.km-method__g--brk { left: calc(50px + var(--S)); top: calc(100% - var(--G) - 6px); width: 18px; height: 13px; }
+.km-method__g--gate1, .km-method__g--gate2 { top: calc(100% - var(--G)); width: 1px; height: 9px; }
+.km-method__g--gate1 { left: calc(25% + 32px); }
+.km-method__g--gate2 { left: calc(50% + 32px); }
+.km-method__g--datum { left: 75%; top: 0; width: 1px; height: calc(100% - 47px); }
+.km-method__g--dnode { left: calc(75% - 4px); top: calc(100% - var(--G) - 4px); width: 9px; height: 9px; }
+.km-method__g--axl { left: 32px; top: calc(100% - 36px); width: calc(75% - 32px); height: 1px; }
+.km-method__g--axt { left: 32px; top: calc(100% - 41px); width: 1px; height: 11px; }
+
+/* ruler: calibrated ticks over the audit (lit), indicative beyond the break */
+.km-method__ticks { position: absolute; left: 32px; top: calc(100% - var(--G)); width: var(--S); height: 9px; }
+.km-method__tk { position: absolute; left: calc(var(--i) * 10%); top: 0; width: 1px; height: 9px; }
+.km-method__tb { position: absolute; left: 0; top: 0; width: 100%; height: 1px; }
+.km-method__tbase { visibility: hidden; stroke: var(--line-2); stroke-width: 1; }   /* the stacked plate's own short ruler */
+.km-method__tick { stroke: var(--fg-2); stroke-width: 1; }
+.km-method .km-method__gate { stroke: var(--fg-3); }   /* phase starts on the indicative stretch: marked, not scaled */
+.km-method__datum { stroke: var(--fg-2); stroke-width: 1; fill: none; }
+.km-method__dnode { fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; }
+
+/* the four phase columns (bays): text in flow; bars and labels are placed in plate coordinates */
+.km-method__cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); min-height: 252px; }
+.km-method__col { padding: 30px 24px 0 32px; }
+.km-method .km-method__name { margin-top: 14px; }
+.km-method .km-method__key { margin-top: 24px; }
+.km-method .km-method__out { margin-top: 6px; }
+.km-method .km-method__col--1 .km-method__idx,
+.km-method .km-method__col--4 .km-method__idx { color: var(--fg-2); }
+
+/* ── the gantt ──
+   Every bar is an opaque --panel ground with its colour on a ::before layer, so the lane guides
+   never show through and a quieted bar never goes see-through. */
+.km-method__bar {
+  position: absolute; display: block; height: 10px; background: var(--panel);
+  transform-origin: 0 50%;
+}
+.km-method__bar::before {
+  content: ""; position: absolute; inset: 0; background: var(--fg-3);
+  transition: opacity 300ms var(--ease-out), background-color 300ms var(--ease-out);
+}
+.km-method__bar--1 { left: 32px; top: calc(100% - var(--G) + 28px); width: var(--S); }        /* the audit */
+.km-method__bar--1::before { background: var(--accent); }
+.km-method__bar--2 { left: calc(25% + 32px); top: calc(100% - var(--G) + 60px); width: calc(25% - 48px); }
+.km-method__bar--3 { left: calc(50% + 32px); top: calc(100% - var(--G) + 92px); width: calc(25% - 48px); }
+.km-method__bar--4 {                                                                          /* off the page */
+  left: 75%; top: calc(100% - var(--G) + 124px); width: calc(25% + var(--bleed) + 48px); overflow: hidden;
+}
+.km-method__bar--4::before { background: var(--fg); }
+
+/* the audit's dimension, read under its bar. Below ~1350px its bay is too narrow for one line, so it
+   breaks after the "·" and stays in its own bay; the text knocks out the lane guide it then crosses. */
+.km-method .km-method__dim {
+  position: absolute; left: 32px; top: calc(100% - var(--G) + 44px); max-width: calc(25% - 40px);
+  white-space: normal;
+  color: var(--fg); letter-spacing: var(--ac-track-anno); font-variant-numeric: tabular-nums;
+}
+.km-method__dimt { background: var(--panel); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.km-method__dimnb { white-space: nowrap; }
+
+/* after handover, Kelwin's lane may carry on: the optional operating retainer, one dotted hairline;
+   its label sits on Calibrate's text edge (bay + 32) */
+.km-method__ret {
+  position: absolute; left: calc(75% + 8px); top: calc(100% - var(--G) + 97px);
+  width: calc(25% - 8px + var(--bleed) + 64px); height: 1px; display: block; overflow: visible;
+}
+.km-method__ret line { stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-method .km-method__retl { position: absolute; left: calc(75% + 32px); top: calc(100% - var(--G) + 70px); color: var(--fg-3); }
+
+/* the time axis: Runs once ──── HANDOVER ── KEEPS RUNNING ──→ (labels knock out of the line) */
+.km-method .km-method__kside {
+  position: absolute; left: 44px; top: calc(100% - 36px); transform: translateY(-50%);
+  padding: 0 12px; background: var(--panel); color: var(--fg-2);
+}
+.km-method .km-method__ho {
+  position: absolute; left: calc(75% + .5px); top: calc(100% - 35.5px); transform: translate(-50%, -50%);
+  padding: 0 10px; background: var(--panel); color: var(--fg-2);
+}
+.km-method .km-method__yours {
+  position: absolute; left: calc(75% + 44.5px); top: calc(100% - 35.5px); width: calc(25% + var(--bleed) + 88px);
+  transform: translateY(-50%); display: flex; align-items: center; gap: 12px;
+}
+.km-method__yours::before, .km-method__yours::after { content: ""; height: 1px; background: var(--line-2); }
+.km-method__yours::before { width: 24px; flex: none; }
+.km-method__yours::after { flex: 1; transform-origin: 0 50%; }
+.km-method .km-method__yours .ac-cap { color: var(--fg); }
+
+/* ── focus: reading a phase on its own — its text and its bar stay, the other three phases' text
+   and bars quiet; a build bar brightens to paper while it is the one being read. A mouse hovers;
+   touch and pen tap a phase (behavior.ts sets [data-focus] + .is-focus; tap again or elsewhere clears).
+   The hover reading needs a hovering pointer somewhere on the device (any-hover, so a trackpad on a
+   touch-first tablet still reads), and stands down while the last press was touch/pen
+   ([data-touch]: no sticky touch-hover) or a tap reading is set. ── */
+.km-method__txt > *, .km-method__ticks,
+.km-method__dim, .km-method__ret, .km-method__retl, .km-method__yours {
+  transition: opacity 300ms var(--ease-out);
+}
+@media (any-hover: hover) {
+  .km-method__cols:not([data-touch], [data-focus]):has(.km-method__col:hover) > .km-method__col:not(:hover) .km-method__txt > * { opacity: .4; }
+  .km-method__cols:not([data-touch], [data-focus]):has(.km-method__col:hover) > .km-method__col:not(:hover) .km-method__bar::before,
+  .km-method__cols:not([data-touch], [data-focus]):has(.km-method__col:hover) > .km-method__col:not(:hover) :is(.km-method__dim, .km-method__ret, .km-method__retl, .km-method__yours) { opacity: .3; }
+  .km-method__cols:not([data-touch], [data-focus]) > .km-method__col--2:hover .km-method__bar--2::before,
+  .km-method__cols:not([data-touch], [data-focus]) > .km-method__col--3:hover .km-method__bar--3::before { background: var(--fg); }
+}
+.km-method__cols[data-focus] > .km-method__col:not(.is-focus) .km-method__txt > * { opacity: .4; }
+.km-method__cols[data-focus] > .km-method__col:not(.is-focus) .km-method__bar::before,
+.km-method__cols[data-focus] > .km-method__col:not(.is-focus) :is(.km-method__dim, .km-method__ret, .km-method__retl, .km-method__yours) { opacity: .3; }
+.km-method__col--2.is-focus .km-method__bar--2::before,
+.km-method__col--3.is-focus .km-method__bar--3::before { background: var(--fg); }
+
+/* ── ambient (the page's one loop besides the film): a packet rides Calibrate off the page.
+   .pkt spans the bar's visible run (the bar minus its 48px overshoot), so translateX(100%) carries
+   the square from the Handover line to the viewport edge at any width. One lap is 9.6s over the
+   stage's 392px run; where the run is longer (above 1440, the stacked tablet track) behavior.ts
+   lengthens the lap (--km-method-lap) so the pace stays the approved one. ── */
+.km-method__pkt { position: absolute; left: 6px; top: 2px; width: calc(100% - 48px); height: 6px; opacity: 0; }
+.km-method__pkt::before { content: ""; position: absolute; left: 0; top: 0; width: 6px; height: 6px; background: var(--bg); }
+
+/* ── entrance (km-motion, held until the slot plays); the kit runs the head ──
+   Elements that the focus quiets enter with `backwards` fill, so the resting opacity stays theirs. */
+.km-motion .km-method__plate { animation: ac-up 600ms var(--ease-out) 380ms both; }
+.km-motion .km-method__div { stroke-dasharray: 1; animation: ac-plot 600ms var(--ease-inout) both; animation-delay: calc(560ms + var(--i) * 90ms); }
+.km-motion .km-method__rul--a { stroke-dasharray: 1; animation: ac-plot 220ms linear 600ms both; }
+.km-motion .km-method__rul--b { stroke-dasharray: 1; animation: ac-plot 760ms var(--ease-out) 820ms both; }
+.km-motion .km-method__brk,
+.km-motion .km-method__gates { animation: ac-fade 300ms var(--ease-out) 900ms both; }
+.km-motion .km-method__lanes { animation: ac-fade 600ms var(--ease-out) 900ms both; }
+/* the ruler calibrates: ticks arrive off-pitch, settle, then light as the audit fills */
+.km-motion .km-method__tick {
+  animation: km-method-cal 900ms var(--ease-inout) both, km-method-lit 240ms linear both;
+  animation-delay: calc(700ms + var(--i) * 20ms), calc(1300ms + var(--i) * 62ms);
+}
+.km-motion .km-method__tbase { animation: ac-fade 300ms var(--ease-out) 700ms both; }
+/* phases build in reading order: each column lifts as its bar extends */
+.km-motion .km-method__txt { animation: km-method-lift 500ms var(--ease-out) both; }
+.km-motion .km-method__col--1 .km-method__txt { animation-delay: 1200ms; }
+.km-motion .km-method__col--2 .km-method__txt { animation-delay: 1950ms; }
+.km-motion .km-method__col--3 .km-method__txt { animation-delay: 2650ms; }
+.km-motion .km-method__col--4 .km-method__txt { animation-delay: 3800ms; }
+.km-motion .km-method__bar { animation: km-method-ext 700ms var(--ease-inout) both; }
+.km-motion .km-method__bar--1 { animation-delay: 1300ms; }
+.km-motion .km-method__bar--2 { animation-delay: 2000ms; }
+.km-motion .km-method__bar--3 { animation-delay: 2700ms; }
+.km-motion .km-method__bar--4 { animation-duration: 1000ms; animation-delay: 3850ms; }
+/* the audit's dimension lands with its bar: a static "10", no count-up */
+.km-motion .km-method__dim { animation: ac-fade 400ms var(--ease-out) 1750ms backwards; }
+/* the run-once stretch accrues under the three build phases; then the datum rises from its label */
+.km-motion .km-method__axl { stroke-dasharray: 1; animation: ac-plot 2100ms linear 1300ms both; }
+.km-motion .km-method__axt,
+.km-motion .km-method__kside { animation: ac-fade 300ms var(--ease-out) 1300ms both; }
+.km-motion .km-method__ho { animation: ac-fade 360ms var(--ease-out) 3300ms both; }
+.km-motion .km-method__datum { stroke-dasharray: 1; animation: ac-plot 600ms var(--ease-inout) 3400ms both; }
+.km-motion .km-method__dnode { animation: ac-fade 200ms var(--ease-out) 3700ms both; }
+/* Calibrate runs out from the datum; Keeps running draws with it; the retainer hairline follows */
+.km-motion .km-method__yours .ac-cap,
+.km-motion .km-method__yours::before { animation: ac-fade 300ms var(--ease-out) 3850ms both; }
+.km-motion .km-method__yours::after { animation: ac-drawx 1000ms var(--ease-inout) 3900ms both; }
+.km-motion .km-method__ret,
+.km-motion .km-method__retl { animation: ac-fade 600ms var(--ease-out) 4500ms backwards; }
+.km-motion .km-method__pkt { animation: km-method-pkt var(--km-method-lap, 9600ms) linear 4900ms infinite; }
+
+/* homepage: the figure waits on its first frame until the plate is in view (the head plays on
+   arrival); the packet rests while the section is off screen */
+.km-method[data-wait] .km-method__body *,
+.km-method[data-wait] .km-method__body *::before,
+.km-method[data-wait] .km-method__body *::after { animation-play-state: paused !important; }
+.km-method[data-idle] .km-method__pkt { animation-play-state: paused; }
+
+@keyframes km-method-cal {
+  0%   { opacity: 0; transform: translateX(var(--j, 0px)); }
+  30%  { opacity: 1; transform: translateX(var(--j, 0px)); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes km-method-lit { from { stroke: var(--line-2); } to { stroke: var(--fg-2); } }
+@keyframes km-method-lift { from { opacity: .36; } to { opacity: 1; } }
+@keyframes km-method-ext { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-method-pkt {
+  0%   { opacity: 0; transform: none; }
+  5%   { opacity: 1; }
+  86%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) { .km-method__pkt { display: none; } }
+
+/* ── ≤1023px: the plate stacks — one card per phase, each carrying its own bar, the bars still
+   stepping down and to the right; the time axis becomes three rules in its own words: RUNS ONCE
+   opens the list, HANDOVER opens card 04, KEEPS RUNNING trails Calibrate off the page. The
+   plate-wide construction (dividers, lanes, ruler, datum) gives way; the audit keeps its ten
+   calibrated intervals on a short ruler of its own. Tablet sets each card's text in two columns
+   (index + name | output). ── */
+@media (max-width: 1023px) {
+  .km-method .ac-head > .ac-lede { grid-column: 1 / span 9; }
+  .km-method .ac-head > .ac-note { align-self: start; }
+
+  .km-method { --pad-x: 32px; }
+  .km-method .km-method__field { padding-bottom: 0; }
+  .km-method__draw { visibility: hidden; }   /* never display:none — that would cancel and replay its entrance */
+  .km-method__cols { display: block; min-height: 0; }
+  .km-method__col { position: relative; padding: 28px var(--pad-x) 32px; }
+  .km-method__col + .km-method__col { border-top: 1px solid var(--line); }
+
+  .km-method__txt {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--gutter);
+  }
+  .km-method__txt > .km-method__idx { grid-column: 1; grid-row: 1; }
+  .km-method .km-method__txt > .km-method__name { grid-column: 1; grid-row: 2; margin-top: 10px; }
+  .km-method .km-method__txt > .km-method__key { grid-column: 2; grid-row: 1; margin-top: 0; }
+  .km-method .km-method__txt > .km-method__out { grid-column: 2; grid-row: 2; margin-top: 10px; }
+
+  /* the bars, in flow under their phase. The card's width is the run-once window of the desktop
+     gantt (bay 1 + 32 → 968 of 1312, i.e. 936 units), so 01–03 keep their proportions and still run
+     in order — each starts after the last ends, one step down and to the right. Calibrate opens its
+     own card after Handover and runs off the page. */
+  .km-method__bar { position: relative; left: auto; top: auto; margin-top: 28px; }
+  .km-method__bar--1 { width: calc(100% * 220 / 936); margin-top: 10px; }
+  .km-method__bar--2 { width: calc(100% * 280 / 936); margin-left: calc(100% * 328 / 936); }
+  .km-method__bar--3 { width: calc(100% * 280 / 936); margin-left: calc(100% * 656 / 936); }
+  .km-method__bar--4 { width: calc(100% + var(--pad-x) + var(--bleed) + 48px); }
+
+  /* the audit's own ruler: ten intervals over the red bar. Ruler and bar snap to a whole 10px, so
+     the ten intervals keep a whole-pixel pitch even at 5–7px on a phone */
+  .km-method__ticks { position: relative; left: auto; top: auto; display: block; width: calc(100% * 220 / 936); margin-top: 28px; }
+  @supports (width: round(1px, 1px)) {
+    .km-method__ticks, .km-method__bar--1 { width: round(calc(100% * 220 / 936), 10px); }
+  }
+  .km-method__tbase { visibility: visible; }
+  .km-method .km-method__dim { position: static; max-width: none; margin-top: 12px; }
+  .km-method__dimt { background: none; }
+
+  /* RUNS ONCE opens the list: a label on its own rule */
+  .km-method .km-method__kside {
+    position: static; transform: none; display: flex; align-items: center; gap: 12px;
+    padding: 24px var(--pad-x) 0; background: none;
+  }
+  .km-method__kside::after { content: ""; flex: 1; height: 1px; background: var(--line-2); }
+
+  /* HANDOVER opens card 04 as a full-width rule (it replaces that card's hairline) */
+  .km-method__cols > .km-method__col--4 { border-top: 0; }
+  .km-method .km-method__ho {
+    position: static; transform: none; display: block; padding: 14px var(--pad-x);
+    margin: -28px calc(-1 * var(--pad-x)) 24px; border-top: 1px solid var(--fg-2); background: none;
+  }
+
+  /* the retainer: its label, then its dotted hairline off the page, above Calibrate's bar */
+  .km-method .km-method__retl { position: static; margin-top: 28px; }
+  .km-method__ret { position: relative; left: auto; top: auto; margin-top: 10px; width: calc(100% + var(--pad-x) + var(--bleed) + 48px); }
+  .km-method__bar--4 { margin-top: 20px; }
+  .km-method .km-method__yours {
+    position: static; transform: none; width: calc(100% + var(--pad-x) + var(--bleed) + 48px); margin-top: 16px;
+  }
+
+  .km-method__cols[data-focus] > .km-method__col:not(.is-focus) .km-method__ticks { opacity: .3; }
+}
+@media (max-width: 1023px) and (any-hover: hover) {
+  .km-method__cols:not([data-touch], [data-focus]):has(.km-method__col:hover) > .km-method__col:not(:hover) .km-method__ticks { opacity: .3; }
+}
+
+/* ── ≤767px: one column of text per card; the statement breaks back into its two voices ── */
+@media (max-width: 767px) {
+  .km-method { --pad-x: 20px; }
+  .km-method .ac-statement > .ac-line { display: block; }
+  .km-method .ac-head > .ac-lede { grid-column: 1 / -1; }
+  .km-method__nb { white-space: normal; }
+  .km-method__col { padding: 24px var(--pad-x) 28px; }
+  .km-method__txt { display: block; }
+  .km-method .km-method__txt > .km-method__name { margin-top: 12px; }
+  .km-method .km-method__txt > .km-method__key { margin-top: 20px; }
+  .km-method .km-method__txt > .km-method__out { margin-top: 6px; }
+  .km-method .km-method__kside { padding-top: 20px; }
+  .km-method .km-method__ho { margin: -24px calc(-1 * var(--pad-x)) 20px; }
+  .km-method .km-method__retl { margin-top: 24px; }
+}

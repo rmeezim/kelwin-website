@@ -1,0 +1,228 @@
+/* ── reframe · "Surface, cut to architecture" (mockup slot U, round 5) ─────────────────────────
+   A's head, plate and strips; C's 1px isometric section cut, under quota: one drawing, three
+   callouts at a time, no title block, one red line. Surface (warped lattice over a dashed,
+   unseen architecture) resolves to Architecture (true grid; the cut plots bay by bay, left →
+   right, each bay under its symptom; one straight red datum on the real layer).
+   Default CSS = the final, resting state (Architecture). Keyframe entrances are declared under
+   .km-motion (held at their first frame until the slot plays — km-kit §10); the state the JS
+   sets after play (.is-surface on the figure, [data-wait] on the homepage) keys off classes.
+
+   §1 placement & the drawing's coordinate system   §5 strips
+   §2 the drawing                                    §6 entrance · homepage gate
+   §3 callouts · dimensions                          §7 control
+   §4 the readout                                    §8 responsive (tablet · phone)
+
+   COORDINATES. The drawing is laid out in unitless 1440-stage units: the field is 1312×424
+   there. Every positioned piece reads --px/--py (and --pl leader / --ph height) and maps them
+   through three variables on .km-reframe__draw:  px = --ox + x · --u  (and --oy for y).
+   ≥1024: --u = field width / 1312 (1px at the stage, fluid below it), --ox = --oy = 0, so the
+   composition scales as a unit while every label keeps its type size. ≤1023 the readout moves
+   above the drawing and the drawing is re-framed (cropped to its own extent) — §8.            */
+
+/* ── §1 placement ── */
+/* (doubled class: km-base resets `.km figure/p/h3` at 0,1,1, above a single class) */
+.km-reframe .km-reframe__fig { margin-top: clamp(40px, 4.4444vw, 64px); }
+.km-reframe__field { --ac-occlude: var(--panel); }
+.km-reframe .km-reframe__field { container-type: inline-size; height: auto; aspect-ratio: 1312 / 424; }
+.km-reframe__draw {
+  position: absolute; inset: 0;
+  --u: calc(100cqw / 1312);   /* px per drawing unit (the field is the container) */
+  --ox: 0px; --oy: 0px;
+}
+.km-reframe__svg {
+  position: absolute; left: var(--ox); top: var(--oy);
+  width: calc(1312 * var(--u)); height: calc(424 * var(--u));
+}
+
+/* ── §2 the drawing ── */
+/* the lattice (surface): warped in --fg-2, resolved it recedes to --fg-3 so the cut leads */
+.km-reframe__m, .km-reframe__gaps {
+  fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-linejoin: round;
+  transition: stroke 600ms var(--ease-inout) 900ms;
+}
+/* the 20 lines plot left → right: 760ms each, 24ms apart from 860ms (kit .ac-plot reads --t/--d) */
+.km-reframe__m { --t: 760ms; --d: calc(860ms + var(--n, 0) * 24ms - var(--rf-shift, 0ms)); }
+.km-reframe__gaps { transition: stroke 600ms var(--ease-inout) 900ms, opacity 300ms var(--ease-out) 1150ms; }
+.km-reframe__fig.is-surface .km-reframe__m,
+.km-reframe__fig.is-surface .km-reframe__gaps { stroke: var(--fg-2); transition-delay: 0ms; }
+.km-reframe__fig.is-surface .km-reframe__gaps { opacity: 0; }
+
+/* construction: the true surface outline + the hidden architecture (Surface only) */
+.km-reframe__ghost { opacity: 0; transition: opacity 400ms var(--ease-inout) 800ms; }
+.km-reframe__hid { opacity: 0; transition: opacity 300ms var(--ease-inout) 250ms; }
+.km-reframe__fig.is-surface .km-reframe__ghost,
+.km-reframe__fig.is-surface .km-reframe__hid { opacity: 1; transition-delay: 500ms; }
+
+/* the cut (architecture): the outline plots first, then the two bay dividers left → right, then the face cells */
+.km-reframe__c {
+  fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 600ms var(--ease-inout) calc(300ms + var(--k, 0) * 90ms);
+}
+.km-reframe__c--bay { transition-duration: 600ms; transition-delay: calc(820ms + var(--k, 0) * 160ms); }
+.km-reframe__cells { fill: none; stroke: var(--line); stroke-width: 1; transition: opacity 500ms var(--ease-out) 1150ms; }
+/* the three drops that seat the surface over the datum (dashed: they are construction, not structure) */
+.km-reframe__drops { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; transition: opacity 400ms var(--ease-out) 1250ms; }
+.km-reframe__fig.is-surface .km-reframe__drops { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+.km-reframe__fig.is-surface .km-reframe__c { stroke-dashoffset: 1; transition-duration: 300ms; transition-delay: 0ms; }
+.km-reframe__fig.is-surface .km-reframe__cells { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* the one red: a single straight datum along the top of the real layer, drawn left → right, last */
+.km-reframe__datum { stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 500ms var(--ease-out) 1400ms; }
+.km-reframe__fig.is-surface .km-reframe__datum { stroke-dashoffset: 1; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* ── §3 callouts: three at a time. Symptoms (Surface) on a right column; bays (Architecture) on a left column ── */
+/* the kit positions a callout from --x/--y/--len (px); here they come from the drawing's units */
+.km-reframe .km-reframe__co {
+  --x: calc(var(--ox) + var(--px) * var(--u));
+  --y: calc(var(--oy) + var(--py) * var(--u));
+  --len: calc(var(--pl) * var(--u));
+}
+.km-reframe__tags, .km-reframe__bays { position: absolute; inset: 0; pointer-events: none; }
+.km-reframe__tags { opacity: 0; transform: translateY(10px); transition: opacity 280ms var(--ease-out), transform 400ms var(--ease-inout); }
+.km-reframe__fig.is-surface .km-reframe__tags { opacity: 1; transform: none; transition-delay: 650ms; }
+.km-reframe__bays .ac-callout { transition: opacity 400ms var(--ease-out) calc(1000ms + var(--i, 0) * 160ms); }
+.km-reframe__bays .ac-callout:nth-child(2), .km-reframe__tags .ac-callout:nth-child(2),
+.km-reframe__pins .km-reframe__pin:nth-child(2) { --i: 1; }
+.km-reframe__bays .ac-callout:nth-child(3), .km-reframe__tags .ac-callout:nth-child(3),
+.km-reframe__pins .km-reframe__pin:nth-child(3) { --i: 2; }
+.km-reframe__fig.is-surface .km-reframe__bays .ac-callout { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* dimensions (Architecture only): off the right corner of the cut, values to the right */
+.km-reframe .km-reframe__dim {
+  --x: calc(var(--ox) + var(--px) * var(--u));
+  --y: calc(var(--oy) + var(--py) * var(--u));
+  --h: calc(var(--ph) * var(--u));
+}
+.km-reframe__dims { position: absolute; inset: 0; pointer-events: none; transition: opacity 400ms var(--ease-out) 1200ms; }
+.km-reframe__fig.is-surface .km-reframe__dims { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* phone pins (§8): hidden on the full plate, where the callouts carry their own leaders */
+.km-reframe__pins { display: none; }
+
+/* ── §4 the coda, split across the two states (A's readout) ── */
+.km-reframe__ro { position: absolute; left: 24px; top: 32px; z-index: 1; }
+.km-reframe__rs > span { display: block; }
+.km-reframe__rs { transition: opacity 400ms var(--ease-inout), transform 400ms var(--ease-inout); }
+.km-reframe__rs--s { position: absolute; left: 0; top: 0; opacity: 0; transform: translateY(8px); }
+.km-reframe__rs--a { transition-delay: 300ms; }
+.km-reframe__fig.is-surface .km-reframe__rs--s { opacity: 1; transform: none; transition-delay: 0ms; }
+.km-reframe__fig.is-surface .km-reframe__rs--a { opacity: 0; transform: translateY(-8px); transition-delay: 0ms; }
+
+/* ── §5 strips: struck symptom → the real layer ── */
+.km-reframe__was { display: flex; align-items: baseline; gap: 16px; font-size: 17px; line-height: 1.4; color: var(--fg-3); }
+.km-reframe .km-reframe__t { margin-top: -6px; }
+.km-reframe__was s { text-decoration-thickness: 1px; text-decoration-color: var(--fg-3); }
+.km-reframe__strips .ac-strip__foot { max-width: 46ch; margin-top: auto; }   /* the kit's margin-top:auto loses to the km-base reset */
+.km-reframe__strips { --d: calc(1200ms - var(--rf-shift, 0ms)); }   /* the kit's .ac-cascade: 80ms stagger */
+/* the three parts line up across the columns (subgrid), so a symptom that wraps below the stage never
+   drops its strip's title out of line; at the stage every part is one line and nothing moves */
+@media (min-width: 1024px) {
+  .km-reframe__strips { grid-template-rows: auto auto 1fr; }
+  .km-reframe__strips > .ac-strip { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 16px; }
+}
+
+/* ── §6 entrance (km-motion; held until the slot plays), travelling the reading path: the head runs first
+      (label → statement → rule → lede → door, 0–700ms); the plate follows the lede in its SURFACE state:
+      construction, then the lattice plots left → right, then the symptom tags 01 → 03; the strips cascade
+      beneath. --rf-shift is 0 except on the homepage (behavior.ts), where the plate's timeline starts when
+      the plate is half in view instead of 640ms after the head. ── */
+.km-motion .km-reframe__fig { animation: km-reframe-fade 500ms var(--ease-out) calc(640ms - var(--rf-shift, 0ms)) both; }
+.km-motion .km-reframe__ro { animation: km-reframe-fade 500ms var(--ease-out) calc(760ms - var(--rf-shift, 0ms)) both; }
+.km-motion .km-reframe__fig .ac-capband { animation: km-reframe-fade 400ms var(--ease-out) calc(860ms - var(--rf-shift, 0ms)) both; }
+.km-motion .km-reframe__in { animation: km-reframe-fade 500ms var(--ease-out) calc(var(--d, 760ms) - var(--rf-shift, 0ms)) both; }
+.km-motion .km-reframe__tags .ac-callout,
+.km-motion .km-reframe__pins--tags .km-reframe__pin {
+  animation: km-reframe-fade 400ms var(--ease-out) both;
+  animation-delay: calc(1500ms + var(--i, 0) * 140ms - var(--rf-shift, 0ms));
+}
+
+@keyframes km-reframe-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* homepage gate: the body holds its first frame until the plate is half in view (behavior.ts) */
+.km-reframe[data-wait] .km-reframe__body *,
+.km-reframe[data-wait] .km-reframe__body *::before,
+.km-reframe[data-wait] .km-reframe__body *::after { animation-play-state: paused !important; }
+
+/* ── §7 control ── */
+/* local guard: keep the selected segment legible while hovered (the kit's :hover colour outranks it) */
+.km-reframe__seg > [aria-selected="true"]:hover { color: var(--bg); }
+/* Round 5: no Fig title block — the state toggle holds the band on its own, right-aligned */
+.km-reframe .ac-capband { justify-content: flex-end; }
+
+/* ── §8 responsive ──
+   ≤1023: the readout sits above the drawing (in flow), and the drawing is re-framed to its own
+   extent instead of the 1312-unit field, so it stays large while every label keeps its size.
+   Tablet (768–1023): the full drawing — both callout columns, the dimensions — centred; its scale
+   is capped at the 1024 plate's (0.711), so it never grows as the viewport narrows.
+   Phone (≤767): the drawing keeps its keys as pins (symptom codes hang above the surface, cause
+   codes below the cut, one set at a time, as on the plate) and the labels read as a list beneath
+   it, in the same crossfade; the dimensions stay in the drawing. Text never scales: codes 12px,
+   labels 14px, values 12px mono. */
+@media (max-width: 1023px) {
+  .km-reframe .km-reframe__field { aspect-ratio: auto; }
+  .km-reframe__ro { position: relative; left: auto; top: auto; margin: 24px 24px 0; }
+  .km-reframe__draw { position: relative; inset: auto; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* content box: bay 01's label block (191px) left of x 579.9 → tag 02's (151px) right of x 1062.3 */
+  .km-reframe__draw {
+    --u: min(0.711px, (100cqw - 390px) / 482.4);
+    --ox: calc(50cqw - 821.1 * var(--u) + 20px);
+    --oy: calc(23px - 36.5 * var(--u));
+    height: calc(357.5 * var(--u) + 35px);
+  }
+  /* strips as rows: struck symptom + layer on cols 1–6, the reason on cols 7–12, hairlines between */
+  .km-reframe__strips { grid-template-columns: minmax(0, 1fr); }
+  .km-reframe__strips > .ac-strip {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 16px;
+    align-content: start; padding: 28px 0;
+  }
+  .km-reframe__strips > .ac-strip + .ac-strip::before { top: 0; bottom: auto; left: 0; right: 0; width: auto; height: 1px; }
+  .km-reframe__strips .km-reframe__was, .km-reframe__strips .km-reframe__t { grid-column: 1 / span 6; }
+  .km-reframe__strips .ac-strip__foot { grid-column: 7 / -1; grid-row: 1 / span 2; margin-top: 0; padding-top: 2px; }
+}
+@media (max-width: 767px) {
+  .km-reframe__ro { margin: 20px 16px 0; }
+  /* content box: the cut's left edge (x 600) → the dimension values (109px right of x 1042);
+     tag pins hang 34px above y 36.5, bay pins end 32px + 16 units below y 352 */
+  .km-reframe__draw {
+    --u: min(0.711px, (100cqw - 141px) / 442);   /* never larger than the tablet / 1024 plate's scale */
+    --ox: calc(50cqw - 821 * var(--u) - 54.5px);
+    --oy: calc(46px - 36.5 * var(--u));
+    display: grid; grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: calc(331.5 * var(--u) + 90px) auto;
+  }
+  .km-reframe__pins { display: block; position: absolute; inset: 0; pointer-events: none; }
+  .km-reframe__pin {
+    position: absolute; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; background: var(--fg-2);
+    left: calc(var(--ox) + var(--px) * var(--u)); top: calc(var(--oy) + var(--py) * var(--u));
+  }
+  /* the leader (1px) and the code box (the kit's .ac-callout__code, drawn from data-c) */
+  .km-reframe__pin::before { content: ""; position: absolute; left: 2px; width: 1px; background: var(--line-2); }
+  .km-reframe__pin::after {
+    content: attr(data-c); position: absolute; left: 2.5px; transform: translateX(-50%);
+    display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 5px;
+    border: 1px solid var(--line-2); background: var(--panel);
+    font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 1; letter-spacing: var(--ac-track-anno);
+    text-transform: uppercase; color: var(--fg);
+  }
+  .km-reframe__pin--up::before { bottom: 2.5px; height: 12px; }
+  .km-reframe__pin--up::after { bottom: 14.5px; }
+  .km-reframe__pin--down::before { top: 2.5px; height: calc(16 * var(--u) + 10px); }
+  .km-reframe__pin--down::after { top: calc(2.5px + 16 * var(--u) + 10px); }
+  /* pins follow their callouts' state: symptom pins with the tags, bay pins with the bays */
+  .km-reframe__pins--tags { opacity: 0; transition: opacity 280ms var(--ease-out); }
+  .km-reframe__fig.is-surface .km-reframe__pins--tags { opacity: 1; transition-delay: 650ms; }
+  .km-reframe__pins--bays .km-reframe__pin { transition: opacity 400ms var(--ease-out) calc(1000ms + var(--i, 0) * 160ms); }
+  .km-reframe__fig.is-surface .km-reframe__pins--bays .km-reframe__pin { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+  /* the labels: a list under the drawing, tags and bays in one cell so the plate never changes height */
+  .km-reframe__tags, .km-reframe__bays {
+    position: relative; inset: auto; grid-area: 2 / 1;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 0 16px 20px;
+  }
+  .km-reframe .km-reframe__co { position: relative; left: auto; right: auto; top: auto; transform: none; flex-direction: row; }
+  .km-reframe .km-reframe__co::before, .km-reframe .km-reframe__co::after { display: none; }
+  /* the control: tighter segments so both fit the 320 plate without scrolling */
+  .km-reframe .km-reframe__seg > button { padding: 0 clamp(10px, 3vw, 20px); }
+}

@@ -1,0 +1,288 @@
+/* ── system · "Strata, closed" (round 6) ──
+   The head on top; the drawing on the left (three rectangular iso slabs, one inscription each, boxed
+   callouts on the right, the "1 system" dimension, registration marks); the ledger on the right.
+   The red top face, its bright callout and the ledger's open row are always the same layer: each slab
+   lands red while it is installed (01 → 02 → 03) and its row opens with it; pressing a row moves the red
+   to its slab, pressing a slab (or its callout) opens its row. After assembly one return line runs from
+   slab 03 back into slab 01 and the ring on 03 closes: the closed loop. Default CSS = final state:
+   installed, return drawn, ring closed, 01 selected and open.
+
+   Drawing units: the strata are drawn on a 755 × 580 sheet. --u is one drawing unit in CSS px — exactly
+   1px on the 1440 stage, smaller when the drawing's column is narrower — so the SVG (viewBox), the
+   slabs' close-up and lift, and every annotation's anchor scale together, while the annotation type
+   keeps its size (never below 11px). */
+
+/* the note sits beside the statement (placement only), bottom-aligned with the lede — from 1024 up; below,
+   the kit drops it under the lede. Under 1280 its three columns would wrap the label and run the note to five
+   lines, so it takes the reading column's four (cols 9–12, over the ledger); the statement ends well before. */
+@media (min-width: 1024px) {
+  .km-system .km-system__head > .ac-note { grid-row: 2 / span 3; align-self: end; }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .km-system .km-system__head > .ac-note { grid-column: 9 / span 4; }
+}
+.km-system .km-system__note .ac-note__t { max-width: 34ch; }
+
+.km-system .km-system__body { margin-top: clamp(48px, 5vw, 72px); align-items: stretch; }
+/* the detail column is as tall as the frame: its door sits on the frame's baseline. The ledger reserves its
+   tallest state (min-height, Ledger.tsx), so the frame, the door and the section never move while rows open */
+.km-system .km-system__detail { display: flex; flex-direction: column; }
+
+/* ── the figure: a registration frame on the graphite (occlusion = --bg, set by .ac-frame) ──
+   The frame stretches to the reading column's reserved height; the drawing is centred in it.
+   286 = the installed stack's centre in drawing units (top of the lifted slab 01 at 67, foot of 03 at 505).
+   The composition across the frame: the return's label (76px of 14px type, right edge at 92.5 units), the slabs
+   (to 413), the callouts (200px of type past 413) and the dimension (at 662, or 28px clear of the callouts) with
+   its value (77.4px past the line). Only the drawing scales; the type keeps its size. */
+.km-system .km-system__fig {
+  display: flex; flex-direction: column;
+  container-type: inline-size;
+  /* one drawing unit: exactly 1px on the stage; on a narrower column, the largest unit at which the whole
+     composition stays inside the frame — the label 16px in from the left, the dimension's value ≥14px in from
+     the right (184 = 16 + 76 + 77.4 + 14.6; 412 = 184 + 228) */
+  --u: min(1px, 100cqw / 755, (100cqw - 184px) / 569.5, (100cqw - 412px) / 320.5);
+  /* the drawing's left edge in the frame: 0 on the stage; on a narrower column it steps right just enough to keep
+     the label 16px inside the frame */
+  --sx: max(0px, 92px - 92.5 * var(--u));
+}
+.km-system .km-system__field { flex: 1 0 auto; height: auto; min-height: calc(580 * var(--u)); }
+.km-system .km-system__svg,
+.km-system .km-system__anno {
+  position: absolute; left: var(--sx); top: calc(50% - 286 * var(--u));
+  width: calc(755 * var(--u)); height: calc(580 * var(--u));
+}
+.km-system .km-system__anno { pointer-events: none; }
+
+/* slab faces: occluding fills (hidden-line drawing), 1px outlines */
+.km-system .km-system__top, .km-system .km-system__side {
+  fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter;
+  transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout);
+}
+.km-system .km-system__side { stroke: var(--fg-3); }
+
+/* inscriptions — each slab's one job, drawn on its top face */
+.km-system .km-system__ink {
+  fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: square;
+  stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke 400ms var(--ease-inout);
+}
+.km-system .km-system__ink--h { stroke: var(--fg); }
+/* the gap in 03's ring: drawn at rest (closed); open until the return lands */
+.km-system .km-system__gap {
+  fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linecap: square;
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke 400ms var(--ease-inout), stroke-dashoffset 500ms var(--ease-inout) 800ms;
+}
+.km-system .km-system__node { fill: var(--ac-occlude); stroke: var(--fg-2); stroke-width: 1; transition: fill 400ms var(--ease-inout), stroke 400ms var(--ease-inout); }
+.km-system .km-system__node.is-hub { fill: var(--fg); stroke: var(--fg); }
+
+/* the one red: the selected slab's top face (inscription inverts to paper) and an 8-unit lift */
+.km-system .km-system__lift { transition: transform 400ms var(--ease-inout); }
+.km-system .km-system__s.is-on > .km-system__lift { transform: translateY(-8px); }   /* SVG: px = drawing units */
+.km-system .km-system__s.is-on .km-system__top { fill: var(--accent); stroke: var(--accent); }
+.km-system .km-system__s.is-on .km-system__side { stroke: var(--fg-2); }
+.km-system .km-system__s.is-on :is(.km-system__ink, .km-system__gap) { stroke: var(--accent-fg); }
+.km-system .km-system__s.is-on .km-system__node { fill: var(--accent); stroke: var(--accent-fg); }
+.km-system .km-system__s.is-on .km-system__node.is-hub { fill: var(--accent-fg); }
+
+/* ── the slabs are buttons ──
+   Pointer and touch: the visible slab faces take the pointer themselves, so the slab you see on top is the one
+   you press (01's front tip covers 02's back tip, and 02's covers 03's, most of all when one is lifted). A slab
+   that has not landed yet takes nothing (is-wait, set only during the pass).
+   Keyboard and assistive tech: the hit layer over the drawing, one role=button per slab in reading order (Tab
+   runs 01 → 03), riding the same close-up and lift as its slab; it carries the focus brackets, never the pointer. */
+.km-system .km-system__s { pointer-events: none; -webkit-tap-highlight-color: transparent; }
+.km-system .km-system__s:not(.is-wait) :is(.km-system__top, .km-system__side) { pointer-events: visible; cursor: pointer; }
+.km-system .km-system__hits { pointer-events: none; }
+.km-system .km-system__hit { outline: none; }
+.km-system .km-system__hit.is-on > .km-system__lift { transform: translateY(-8px); }
+.km-system .km-system__area { fill: transparent; stroke: none; }
+/* hover (mouse and pen; set by the script, also from the slab's row and callout): the outline and inscription
+   come up to paper and the face rises one surface step. The red stays the selected slab's alone. */
+.km-system .km-system__s.is-hover:not(.is-on) .km-system__top { fill: var(--panel); stroke: var(--fg); }
+.km-system .km-system__s.is-hover:not(.is-on) .km-system__side { stroke: var(--fg-2); }
+.km-system .km-system__s.is-hover:not(.is-on) :is(.km-system__ink, .km-system__gap) { stroke: var(--fg); }
+.km-system .km-system__s.is-hover:not(.is-on) .km-system__node:not(.is-hub) { fill: var(--panel); stroke: var(--fg); }
+.km-system .km-system__s.is-hover :is(.km-system__top, .km-system__side, .km-system__ink, .km-system__gap, .km-system__node) { transition-duration: 200ms; }
+/* keyboard focus: four corner brackets around the slab, 1px paper, like the row's focus ring */
+.km-system .km-system__focus { fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter; opacity: 0; pointer-events: none; }
+.km-system .km-system__hit:focus-visible .km-system__focus { opacity: 1; }
+/* the callout beside a slab is part of it: pressing it does the same (mouse and touch; the slab is the keyboard stop) */
+.km-system .km-system__co .ac-callout { pointer-events: auto; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.km-system .km-system__co.is-wait .ac-callout { pointer-events: none; }
+.km-system .km-system__co .ac-callout.is-hover .ac-callout__t { color: var(--fg); }
+/* …and its row answers with the kit's own row hover (the title's 6px nudge), so a hover reads both ways */
+.km-system .km-system__ledger .ac-row.is-hover > .ac-row__head .ac-h4 { transform: translateX(6px); }
+/* a tap must leave nothing behind: where a finger can be the pointer, the kit's CSS :hover nudge (which a tap
+   leaves applied until the next tap elsewhere) is off, and the script's mouse/pen-only is-hover above drives it */
+@media (hover: none), (any-pointer: coarse) {
+  .km-system .km-system__ledger .ac-row__head:hover .ac-h4 { transform: none; }
+}
+
+/* exploded (pitch 176) → installed (pitch 132): slabs, callouts and the dimension close up together */
+.km-system .km-system__s, .km-system .km-system__co, .km-system .km-system__hit { transition: transform 700ms var(--ease-inout); }
+.km-system .km-system__fig.is-exploded :is(.km-system__s, .km-system__hit)[data-l="1"] { transform: translateY(-44px); }
+.km-system .km-system__fig.is-exploded :is(.km-system__s, .km-system__hit)[data-l="3"] { transform: translateY(44px); }
+.km-system .km-system__fig.is-exploded .km-system__co[data-l="1"] { transform: translateY(calc(-44 * var(--u))); }
+.km-system .km-system__fig.is-exploded .km-system__co[data-l="3"] { transform: translateY(calc(44 * var(--u))); }
+
+/* annotations: anchored in drawing units (unitless --x/--y), set in their own type size */
+.km-system .km-system__anno .ac-callout { left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u)); }
+
+/* the dimension's ticks stay on the 01 and 03 leaders, including the selected slab's 8-unit lift */
+.km-system .km-system__dim {
+  --lt: 0; --lb: 0;
+  /* at 662 units on the stage; on a narrower column it keeps its clearance after the longest callout
+     (anchor at 413 units + 200px of label), since the labels keep their type size */
+  left: max(calc(var(--x) * var(--u)), calc(413 * var(--u) + 228px));
+  top: calc((var(--y) - var(--lt)) * var(--u)); height: calc((var(--h) + var(--lt) - var(--lb)) * var(--u));
+  transition: top 700ms var(--ease-inout), height 700ms var(--ease-inout);   /* rides the close-up and the lift */
+}
+.km-system .km-system__fig[data-sel="1"] .km-system__dim { --lt: 8; }
+.km-system .km-system__fig[data-sel="3"] .km-system__dim { --lb: 8; }
+.km-system .km-system__fig.is-exploded .km-system__dim {
+  top: calc((var(--y) - 44 - var(--lt)) * var(--u)); height: calc((var(--h) + 88 + var(--lt) - var(--lb)) * var(--u));
+}
+.km-system .km-system__dv { display: grid; justify-items: start; }
+.km-system .km-system__dv > span { grid-area: 1 / 1; transition: opacity 400ms var(--ease-inout) 300ms; }   /* re-measures as the slabs land */
+.km-system .km-system__dv-a { opacity: 0; }
+.km-system .km-system__fig.is-exploded .km-system__dv-a { opacity: 1; }
+.km-system .km-system__fig.is-exploded .km-system__dv-b { opacity: 0; }
+
+/* assembly lines (dashed) register once the stack is assembled */
+.km-system .km-system__post { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 2 4; transition: opacity 400ms var(--ease-out) 450ms; }
+.km-system .km-system__fig.is-exploded .km-system__post { opacity: 0; transition-duration: 200ms; transition-delay: 0ms; }
+
+/* ── the return: one line, drawn once after assembly, from slab 03 back into slab 01 ── */
+.km-system .km-system__ret {
+  fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter;
+  stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1000ms var(--ease-inout);
+}
+.km-system .km-system__src { fill: var(--fg); stroke: none; transition: opacity 200ms var(--ease-out); }   /* where the signal leaves 03 */
+/* the one chevron: an arrowhead where the return enters 01 (lands as the line arrives) */
+.km-system .km-system__chev { fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: square; stroke-linejoin: miter; transition: opacity 250ms var(--ease-out) 850ms; }
+.km-system .km-system__rlab {
+  position: absolute; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u)); transform: translate(-100%, -50%);
+  font-size: var(--ac-anno); line-height: 1.3; color: var(--fg-2); text-align: right; white-space: nowrap; pointer-events: none;
+  transition: opacity 400ms var(--ease-out) 500ms;
+}
+.km-system .km-system__fig.is-unlooped .km-system__ret,
+.km-system .km-system__fig.is-unlooped .km-system__gap { stroke-dashoffset: 1; transition-duration: 0ms; transition-delay: 0ms; }
+.km-system .km-system__fig.is-unlooped .km-system__chev,
+.km-system .km-system__fig.is-unlooped .km-system__src,
+.km-system .km-system__fig.is-unlooped .km-system__rlab { opacity: 0; transition-duration: 0ms; transition-delay: 0ms; }
+
+/* callouts ride with their slab (compression on __co, the 8-unit lift on __col) */
+.km-system .km-system__cos, .km-system .km-system__co, .km-system .km-system__col { position: absolute; inset: 0; pointer-events: none; }
+.km-system .km-system__col { transition: transform 400ms var(--ease-inout); }
+.km-system .km-system__co.is-on > .km-system__col { transform: translateY(calc(-8 * var(--u))); }
+
+/* ── the ledger: index · title + job · toggle; open row = What it is / In practice.
+   The open row is the red layer's row (the script keeps the two in step); the 1px rule marks it too ── */
+.km-system .km-system__ledger {
+  --ac-row-cols: 32px minmax(0, 1fr) 20px; --ac-row-cols-sm: 32px minmax(0, 1fr) 20px;
+  --ac-row-indent: calc(32px + var(--gutter));
+}
+.km-system .km-system__ledger .ac-row { position: relative; }
+.km-system .km-system__ledger .ac-row::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; background: var(--fg);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform 500ms var(--ease-inout); pointer-events: none;
+}
+.km-system .km-system__ledger .ac-row.is-cur::before { transform: scaleX(1); }
+.km-system .km-system__ledger .ac-row__head > .ac-idx { transition: color 400ms var(--ease-inout); }
+.km-system .km-system__ledger .ac-row.is-cur .ac-row__head > .ac-idx { color: var(--fg); }
+.km-system .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+/* a row's focus ring sits inside the row's height (clear of its hairlines and of the open panel's first label
+   below the head) and a little outside its sides */
+.km-system .km-system__ledger .ac-row__head { position: relative; }
+.km-system .km-system__ledger .ac-row__head:focus-visible { outline: none; }
+.km-system .km-system__ledger .ac-row__head:focus-visible::after {
+  content: ""; position: absolute; inset: 6px -8px; border: 1px solid var(--fg); pointer-events: none;
+}
+/* the kit's head padding (22px; 18px on phones) — restated here because km-base's `.km button` reset outranks
+   the kit's `.ac-row__head` padding in production (it did not in the mockup's base) */
+.km-system .km-system__ledger .ac-row__head { align-items: start; padding: 22px 0; }
+.km-system .km-system__ledger .ac-row__head > .ac-idx { padding-top: 7px; }
+.km-system .km-system__ledger .ac-toggle { margin-top: 5px; }
+.km-system .km-system__rt { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.km-system .km-system__job { color: var(--fg-3); }
+.km-system .km-system__ledger .ac-row.is-open .km-system__job { color: var(--fg-2); }
+.km-system .km-system__more { display: flex; flex-direction: column; gap: 18px; }
+/* a closed row's panel leaves the accessibility tree once its close has finished (aria-expanded="false" means hidden) */
+.km-system .km-system__ledger .ac-row__more { visibility: hidden; transition: grid-template-rows 360ms var(--ease-inout), visibility 0s linear 360ms; }
+.km-system .km-system__ledger .ac-row.is-open > .ac-row__more { visibility: visible; transition: grid-template-rows 360ms var(--ease-inout), visibility 0s linear 0s; }
+.km-system .km-system__kv { display: flex; flex-direction: column; gap: 6px; }
+/* the reading path ends on one quiet door (the section's one red stays the slab face) */
+.km-system .km-system__doors { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.km-system .km-system__tail { max-width: 38ch; }
+
+/* ── entrance (slabs drop at 500 / 1750 / 3000ms; the dimension draws as 03 lands and reads "3 layers"
+   until the close-up at 4250ms — see timing.ts). The head AND the reading column (ledger rows, the quiet
+   door) run when the section plays, so reading text never waits on the drawing. Only the drawing runs on
+   .is-go, which the script sets once the figure itself is a third in view. ── */
+/* before the section plays the drawing waits unseen (the script's opening state takes over at play);
+   without motion or without the script, none of this applies and the drawing is simply final */
+.km-motion .km-slot:not(.is-play) .km-system__fig :is(.km-system__drop, .km-system__co .ac-callout, .km-system__dim, .km-system__loop, .km-system__post, .km-system__rlab) { opacity: 0; }
+.km-system .km-system__body.is-armed :is(.km-system__drop, .km-system__node, .km-system__co .ac-callout, .km-system__dim) { opacity: 0; }
+.km-system .km-system__body.is-armed .km-system__ink { stroke-dashoffset: 1; }
+.km-motion .km-system .km-system__dim { animation: none; }   /* the kit would draw it at play; here it waits for the slabs */
+
+.km-system .km-system__fig .ac-reg { --d: 300ms; }
+.km-motion .km-system .is-go .km-system__drop { animation: km-system-drop 700ms var(--ease-out) var(--d, 600ms) both; }
+.km-motion .km-system .is-go .km-system__ink { animation: km-system-plot var(--t, 400ms) var(--ease-inout) var(--d, 1000ms) both; }
+.km-motion .km-system .is-go .km-system__node { animation: km-system-fade 300ms var(--ease-out) var(--d, 1200ms) both; }
+.km-motion .km-system .is-go .km-system__co .ac-callout { animation: km-system-fade 400ms var(--ease-out) var(--cd, 1000ms) both; }
+.km-motion .km-system .is-go .km-system__dim { animation: km-system-drawy 600ms var(--ease-out) var(--dd, 3400ms) both; }
+.km-motion .km-system .is-go .km-system__dim .ac-dim__v { animation: km-system-fade 400ms var(--ease-out) var(--dl, 3700ms) both; }
+.km-motion .km-system .km-system__ledger > .ac-row { animation: km-system-up 600ms var(--ease-out) both; animation-delay: calc(700ms + var(--i, 0) * 80ms); }
+.km-motion .km-system .km-system__doors { animation: km-system-up 600ms var(--ease-out) 1100ms both; }
+
+/* settled (the pass is over, or a press stopped it): retire the entrance hooks, nothing can replay a fade */
+.km-motion .km-system.is-settled :is(.ac-reg, .ac-dim, .ac-head > .ac-labelrow, .ac-line > span, .ac-head > .ac-rule, .ac-head > .ac-lede, .ac-head > .ac-note) { animation: none; }
+.km-motion .km-system.is-settled::before { animation: none; }
+
+@keyframes km-system-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-system-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes km-system-drop { from { opacity: 0; transform: translateY(-24px); } to { opacity: 1; transform: none; } }
+@keyframes km-system-plot { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes km-system-drawy { from { opacity: 1; transform: scaleY(0); } to { opacity: 1; transform: scaleY(1); } }
+
+/* ── 1024–1279px: below 1280 the composition with the dimension would leave the drawing too small, so the
+   dimension rests (as on phones; the ledger is the key, numbered 01–03) and the label, slabs and callouts are
+   centred in the frame, ≥16px in from either side (308 = 2 × 16 + 76 + 200) ── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .km-system .km-system__fig {
+    --u: min(1px, 100cqw / 755, (100cqw - 308px) / 320.5);
+    --sx: calc(50% - 252.75 * var(--u) - 62px);   /* centres the 320.5u + 276px run: label (−76px) to callout (+200px) */
+  }
+  .km-system .km-system__dim { visibility: hidden; }   /* visibility, not display: its fades keep their clock */
+}
+
+/* ── ≤ 1023px: the drawing goes full width above the ledger (centred, never past its design size); the open
+   row sets its two notes side by side so the measure stays short ── */
+@media (max-width: 1023px) {
+  .km-system .km-system__body { display: flex; flex-direction: column; gap: 56px; }
+  .km-system .km-system__fig {
+    --u: min(1px, 100cqw / 755);
+    --sx: max(calc((100% - 755 * var(--u)) / 2), 76px - 92.5 * var(--u));
+  }
+  .km-system .km-system__detail { width: 100%; }
+  .km-system .km-system__more { flex-direction: row; gap: var(--gutter); }
+  .km-system .km-system__kv { flex: 1 1 0; min-width: 0; }
+}
+
+/* ── ≤ 767px: the ledger follows the drawing; the drawing keeps its slabs and the return (the ledger, numbered
+   01–03 top to bottom, is its key), sized to the column so the return's label stays at 14px ── */
+@media (max-width: 767px) {
+  .km-system .km-system__body { gap: 40px; margin-top: 48px; }
+  .km-system .km-system__fig {
+    overflow: hidden;
+    --u: min(1px, (100cqw - 32px) / 406);
+    --sx: max(calc(50% - 204 * var(--u)), calc(84px - 92.5 * var(--u)));   /* centred, the label clear of the edge */
+  }
+  .km-system .km-system__fig .ac-reg { visibility: hidden; }   /* visibility, not display: display:none would restart their fades */
+  .km-system .km-system__dim, .km-system .km-system__cos { visibility: hidden; }
+  .km-system .km-system__rlab { color: var(--fg); }
+  .km-system .km-system__more { flex-direction: column; gap: 18px; }
+  .km-system .km-system__ledger .ac-row__head { padding: 18px 0; }
+  .km-system .km-system__doors .ac-link { white-space: normal; }
+}

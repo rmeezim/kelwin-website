@@ -1,0 +1,362 @@
+/* ── handover · "If we leave, the system stays." ─────────────────────────────────────────────────────────────
+   Ported from design/redesign/site/frag/handover/U.css (round 5, approved). Six FOLIO sheets crossing a vertical
+   Handover datum, drawn straight onto ONE graphite surface: the key column is the figure's left end (the drafts'
+   footprint, the way across, a quiet key). Under each sheet: its name, tag, the letter's margin line it ends
+   (struck by an SVG hairline) and what replaces it. Each sheet is a disclosure button that opens a small detail
+   card beside it on hover, keyboard focus or tap, once the spread has run.
+   Default CSS = the final state: all six handed over, every line struck. The one red: the tick on the datum.
+   Motion: keyframe entrances live under .km-motion (km-kit §10 holds them at frame 0 until the slot plays);
+   the spread itself is behavior.ts (GSAP), keyed off .is-deal / .is-struck / .is-home on the section.
+   Widths: 1440 = the mockup · 1024–1439 the same row: fluid gaps, names one line (scaled) then two (all at once),
+   cards sized to land in a gap · 768–1023 the pairs side by side, facing across the gutter · ≤767 one column
+   (the mockup's phone figure). */
+
+.km-handover {
+  --kz: 146px;          /* key zone: the footprint and the key (data.ts KZ) */
+  --dz: 36px;           /* the datum's track; the datum runs down its centre (data.ts DZ) */
+  --sw: 96px;           /* sheet 96×136, 1:1.41 (data.ts SW/SH) */
+  --sh: 136px;
+  --pw: 260px;          /* the detail card at the stage: 16px off its sheet, over the next sheet, half a gutter short of the one after */
+  --g-pair: 16px;       /* the gap inside a capability pair, and between pairs (fluid below 1440, see the 1024 band) */
+  --g-cap: 24px;
+}
+/* the seam into the method (graphite → graphite): ONE margin-to-margin hairline, drawn here, so the method must not
+   also carry .ac-sec--ruled */
+.km-handover::after {
+  content: ""; position: absolute; left: var(--edge); right: var(--edge); bottom: 0; height: 1px;
+  background: var(--line); transform-origin: 0 50%; pointer-events: none;
+}
+
+/* ── head: statement + rule at left, lede bottom-right (its last baseline on the statement's) ── */
+.km-handover .km-handover__head > .ac-statement { grid-column: 1 / span 7; }
+/* the lede starts one gutter before col 8, on the same vertical as sheet 04 in the figure below */
+.km-handover .km-handover__head > .ac-lede {
+  grid-column: 8 / span 5; grid-row: 2; align-self: end;
+  margin: 36px 0 3.3px calc(-1 * var(--gutter)); max-width: 44ch;
+}
+
+/* ── the figure: drawn on the section itself (sheets occlude with the section's own ground) ── */
+.km-handover .km-handover__fig { margin-top: 56px; --ac-occlude: var(--bg); }
+.km-handover__grid {
+  position: relative; display: grid;
+  /* key zone · datum track · 01 · 02 | 03 · 04 | 05 · 06 */
+  grid-template-columns:
+    var(--kz) var(--dz)
+    minmax(0, 1fr) var(--g-pair) minmax(0, 1fr) var(--g-cap)
+    minmax(0, 1fr) var(--g-pair) minmax(0, 1fr) var(--g-cap)
+    minmax(0, 1fr) var(--g-pair) minmax(0, 1fr);
+  grid-template-rows: auto var(--sh) auto auto auto auto;   /* caps · sheets · name · tag · before · after */
+}
+
+/* the Handover datum: one vertical line down the whole figure, between two registration marks.
+   Sheets carry z 10–15 only while they travel, so the datum and its tick are lifted above them only then. */
+.km-handover__datum { position: absolute; left: calc(var(--kz) + var(--dz) / 2); top: -10px; bottom: -12px; width: 1px; pointer-events: none; }
+.km-handover.is-deal .km-handover__datum { z-index: 20; }
+.km-handover.is-deal .km-handover__tick { z-index: 21; }
+.km-handover__dline { position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--fg-3); transform-origin: 50% 0; }
+
+/* row 1 · the datum's label, touching the line; then each capability over its pair, with a hairline bracket */
+.km-handover .km-handover__dl {
+  grid-column: 1 / span 2; grid-row: 1; justify-self: end; position: relative;
+  margin-right: calc(var(--dz) / 2 + 14px); padding-bottom: 12px; margin-bottom: 16px; color: var(--fg-2);
+}
+.km-handover__dl::after { content: ""; position: absolute; right: -14px; top: 8px; width: 10px; height: 1px; background: var(--fg-3); }
+/* the capability heads are h3s: the mockup drew them in the UA's bold (700), kept for parity */
+.km-handover .km-handover__cap { grid-column: var(--c) / span 3; grid-row: 1; position: relative; padding-bottom: 12px; margin-bottom: 16px; font-weight: 700; }
+.km-handover__cap::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+  border: 1px solid var(--line-2); border-bottom: 0; transform-origin: 0 50%;
+}
+
+/* row 2 · the figure's left end: the drafts' footprint (the stack's base sheet), the way across (dotted, one open
+   chevron, touching the datum) and the red tick */
+.km-handover__deck { grid-column: 1 / span 2; grid-row: 2; position: relative; }
+.km-handover__decksvg { display: block; overflow: visible; }
+/* the footprint is drawn in the draft's own dashed edge, so "--- Installed by Kelwin" directly under it names it.
+   At rest it sits on the hairline tier; while the spread runs it is the stack's base, two tiers up. */
+.km-handover__fp { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 3; transition: opacity 600ms var(--ease-out), stroke 600ms var(--ease-out); }
+.km-handover.is-deal .km-handover__fp { stroke: var(--fg-3); }
+/* the way across (dotted leader + open chevron to the datum): only while the spread runs, then it fades out */
+.km-handover__way-l { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-handover__way-c { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-handover__way-l, .km-handover__way-c { opacity: 0; transition: opacity 600ms var(--ease-out); }
+.km-handover.is-deal :is(.km-handover__way-l, .km-handover__way-c) { opacity: 1; }
+/* the section's one red: a short tick ON the datum, where the sheets cross */
+.km-handover__tick {
+  position: absolute; left: calc(var(--kz) + var(--dz) / 2 - 1px); top: calc(var(--sh) / 2 - 10px);
+  width: 3px; height: 21px; background: var(--signal); z-index: 2;
+}
+
+/* rows 3–4 · the key, directly under the footprint: it names the box the drafts left (annotation size, caption
+   colour, 12px swatches); its first line sits on the names' baseline */
+.km-handover .km-handover__legend {
+  grid-column: 1; grid-row: 3 / span 2; align-self: start; margin: 22px 0 -8px;   /* −8px: the key never sizes the rows */
+  display: flex; flex-direction: column; gap: 2px;
+}
+.km-handover__legend li { display: flex; align-items: center; gap: 8px; white-space: nowrap; font-size: var(--ac-anno); line-height: 20px; color: var(--fg-3); }
+.km-handover__sw { flex: none; display: block; overflow: visible; }
+.km-handover__sw-d, .km-handover__sw-s { fill: none; stroke-width: 1; }
+.km-handover__sw-d { stroke: var(--fg-3); stroke-dasharray: 3 3; }
+.km-handover__sw-s { stroke: var(--fg-3); }
+
+/* ── the six assets: a sheet, then directly under it name · tag · before (struck) · after ──
+   One subgrid, so every name, tag, before and after shares a line across the row. */
+.km-handover__item {
+  position: relative; isolation: isolate;
+  grid-column: var(--col); grid-row: 2 / span 5; display: grid; grid-template-rows: subgrid; grid-template-columns: minmax(0, 1fr); min-width: 0;
+  /* the three gaps a card crosses when it covers two neighbours (see the card's width): 02 and 05 cross two
+     capability gaps, every other asset two pair gaps */
+  --g3: calc(2 * var(--g-pair) + var(--g-cap));
+}
+.km-handover__item:is([data-n="02"], [data-n="05"]) { --g3: calc(var(--g-pair) + 2 * var(--g-cap)); }
+/* the asset's column band: the posting cue only, shown once when its line is struck */
+.km-handover__item::before {
+  content: ""; position: absolute; z-index: -1; left: -8px; right: -8px; top: -12px; bottom: -14px;
+  background: var(--panel); opacity: 0; pointer-events: none; transition: opacity 250ms var(--ease-out);
+}
+/* the sheet is the asset's disclosure button: reset to a bare box the size of the sheet */
+.km-handover .km-handover__slot {
+  position: relative; display: block; width: var(--sw); height: var(--sh); margin: 0; padding: 0; border: 0;
+  background: none; color: inherit; font: inherit; text-align: left; cursor: default; -webkit-tap-highlight-color: transparent;
+}
+.km-handover__slot:focus { outline: none; }
+.km-handover__ph { position: absolute; left: 0; top: 0; display: block; }
+.km-handover__ph rect { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 1 3; }
+.km-handover__lift { position: absolute; inset: 0; display: block; transition: transform 250ms var(--ease-out); }
+.km-handover__sheet { position: absolute; inset: 0; display: block; }
+.km-handover__draft, .km-handover__own { position: absolute; left: 0; top: 0; display: block; overflow: visible; }
+.km-handover__draft { clip-path: inset(0 100% 0 0); }      /* at rest every sheet is yours: the draft is gone */
+
+.km-handover .km-handover__nm { margin-top: 20px; font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 18px; line-height: 1.25; color: var(--fg); white-space: nowrap; }
+.km-handover .km-handover__tag { margin-top: 6px; }
+.km-handover .km-handover__was { position: relative; margin-top: 16px; font-size: var(--ac-support); line-height: 1.45; color: var(--fg-3); text-wrap: balance; }
+.km-handover .km-handover__now { margin-top: 8px; font-size: 16px; line-height: 1.4; color: var(--fg); text-wrap: balance; }
+
+/* the strike: one SVG hairline per rendered line (built in JS), drawn left → right */
+.km-handover__strike { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.km-handover__strike line { stroke: var(--fg-2); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 300ms var(--ease-inout); }
+/* until JS has measured the SVG strikes (.is-ink), a plain 1px line-through keeps the default render honest */
+.km-handover:not(.is-ink) .km-handover__was-t { text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: var(--fg-2); }
+
+/* FOLIO sheet (owned copy = finished page; draft copy = rough page) */
+.km-handover__pp { fill: var(--ac-occlude); }
+.km-handover__ed { fill: none; stroke: var(--fg-2); stroke-width: 1; transition: stroke 250ms var(--ease-out); }
+.km-handover__ix { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; fill: var(--fg); font-variant-numeric: tabular-nums; transition: opacity 250ms var(--ease-out); }
+/* mid-spread a sheet's index never shows over another asset's slot: hidden on your side until it lands home */
+.km-handover.is-deal .km-handover__item:not(.is-home) .km-handover__own .km-handover__ix { opacity: 0; }
+.km-handover__hr { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-handover__ru { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-handover__pn { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 2; }
+.km-handover__dot { fill: var(--fg-3); }
+.km-handover__hot { fill: var(--fg); }
+.km-handover__val { fill: var(--fg-3); }
+.km-handover__val--on { fill: var(--fg); }
+.km-handover__lead { fill: none; stroke: var(--fg); stroke-width: 1; }
+.km-handover__draft .km-handover__ed { stroke: var(--fg-3); stroke-dasharray: 3 3; }
+.km-handover__draft .km-handover__ix { fill: var(--fg-3); }
+.km-handover__draft .km-handover__hr { stroke: var(--line-2); }
+.km-handover__draft .km-handover__ru { stroke: var(--line-2); stroke-dasharray: 2 2; }
+.km-handover__draft .km-handover__dot { fill: var(--line-2); }
+
+/* ── open: the sheet lifted 8px, its edge inked, its detail card beside it. behavior.ts sets .is-open (hover after a
+      short intent delay, keyboard focus, or a tap), never while the spread runs. Without JS, :hover and
+      :focus-within do the same on the resting figure. ── */
+.km-handover__item.is-open { z-index: 30; }
+.km-handover__item.is-open .km-handover__lift { transform: translateY(-8px); }
+.km-handover__item.is-open .km-handover__own .km-handover__ed { stroke: var(--fg); }
+.km-handover:not(.is-ink) .km-handover__item:is(:hover, :focus-within) { z-index: 30; }
+.km-handover:not(.is-ink) .km-handover__item:is(:hover, :focus-within) .km-handover__lift { transform: translateY(-8px); }
+.km-handover:not(.is-ink) .km-handover__item:is(:hover, :focus-within) .km-handover__own .km-handover__ed { stroke: var(--fg); }
+/* keyboard focus: a 2px ring drawn round the sheet itself, so it rides the lift */
+.km-handover__slot:focus-visible .km-handover__lift { outline: 2px solid var(--fg); outline-offset: 4px; }
+
+/* the detail card: the panel surface, one hairline, flat, square. Top-flush with the lifted sheet, 16px off its edge,
+   tied to it by a 16px leader. The card's index row sits ON the sheet's own header rule (sheet y 15–16 = card 1px
+   border + 7px padding + half the 15px row), so sheet rule → leader → card rule run as one line; the name and its
+   line sit at the card's foot. 01–03 open right, 04–06 (--l) open left, so each card lies over the neighbouring
+   sheet (8px proud of it top and bottom) and never over its own.
+   Its width follows the columns, so its far end always lands in a gap, never across a sheet: it covers the
+   neighbour and stops half a gutter short of the next sheet. 100% is one column; every card crosses one pair gap
+   and one capability gap. At the stage that is 260.7px, held at the mockup's 260. Where the columns get too narrow
+   for that card to hold its name (the 1024 band, below), it covers both neighbouring sheets instead. */
+.km-handover__pop {
+  position: absolute; z-index: 1; top: -8px; left: calc(var(--sw) + 16px); min-height: calc(var(--sh) + 16px);
+  width: min(var(--pw), calc(200% + var(--g-pair) + var(--g-cap) - var(--sw) - 16px - var(--gutter) / 2));
+  display: flex; flex-direction: column; padding: 7px 18px 15px; background: var(--panel); border: 1px solid var(--line-2);
+  pointer-events: none; opacity: 0; visibility: hidden; transform: translateY(4px);
+  transition: opacity 140ms var(--ease-out), transform 140ms var(--ease-out), visibility 0s linear 140ms;
+}
+.km-handover__item--l .km-handover__pop { left: auto; right: calc(100% + 16px); }
+.km-handover__pop::before { content: ""; position: absolute; top: 14px; left: -17px; width: 16px; height: 1px; background: var(--fg-3); }
+.km-handover__item--l .km-handover__pop::before { left: auto; right: -17px; }
+.km-handover__item.is-open .km-handover__pop,
+.km-handover:not(.is-ink) .km-handover__item:is(:hover, :focus-within) .km-handover__pop {
+  opacity: 1; visibility: visible; transform: none;
+  transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out), visibility 0s;
+}
+/* index · rule · tag: the sheet's own header line, continued (line-height 15px + padding-top 7px put the rule on it) */
+.km-handover .km-handover__pk { display: flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: var(--ac-mono-s); line-height: 15px; letter-spacing: var(--ac-track-idx); text-transform: uppercase; white-space: nowrap; }
+.km-handover__pi { color: var(--fg); font-variant-numeric: tabular-nums; }
+.km-handover__pr { flex: 1 1 auto; height: 1px; background: var(--line-2); }
+.km-handover__pt { color: var(--fg-3); }
+.km-handover .km-handover__pname {
+  margin-top: auto; padding-top: 14px; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 20px; line-height: 1.2; letter-spacing: var(--display-tracking); color: var(--fg); white-space: nowrap;
+}
+.km-handover .km-handover__pd { margin-top: 6px; font-size: var(--ac-support); line-height: 1.45; color: var(--fg-2); text-wrap: balance; }
+.km-handover__nb { white-space: nowrap; }
+
+/* ── the spread (behavior.ts adds .is-deal while it runs; each asset gets .is-struck as its line is crossed out) ── */
+.km-handover .km-handover__now { transition: opacity 420ms var(--ease-out) 100ms, transform 520ms var(--ease-out) 100ms; }
+.km-handover.is-deal .km-handover__item:not(.is-struck) .km-handover__now { opacity: 0; transform: translateY(10px); }
+.km-handover.is-deal .km-handover__item:not(.is-struck) .km-handover__strike line { stroke-dashoffset: 1; }
+/* the posting cue: as its line is struck, the asset's column lights once and its sheet edge inks, so each strike
+   visibly belongs to the document that ended it */
+@keyframes km-handover-cur { 0% { opacity: 0; } 15% { opacity: 1; } 45% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes km-handover-ink { 0% { stroke: var(--fg-2); } 15% { stroke: var(--fg); } 45% { stroke: var(--fg); } 100% { stroke: var(--fg-2); } }
+.km-handover.is-deal .km-handover__item.is-struck::before { animation: km-handover-cur 640ms linear both; }
+.km-handover.is-deal .km-handover__item.is-struck .km-handover__own .km-handover__ed { animation: km-handover-ink 640ms linear both; }
+.km-handover.is-deal:not(.is-gone) .km-handover__fp { opacity: 0; }
+
+/* ── entrance (km-motion only, held at frame 0 until the slot plays; the kit runs the head) ── */
+@keyframes km-handover-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-handover-up { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes km-handover-drawx { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes km-handover-drawy { from { transform: scaleY(0); } to { transform: none; } }
+.km-motion .km-handover::after { animation: km-handover-drawx 900ms var(--ease-out) 600ms both; }
+.km-motion .km-handover__dline { animation: km-handover-drawy 800ms var(--ease-inout) 420ms both; }
+.km-motion .km-handover__datum > .ac-reg { animation: km-handover-fade 300ms var(--ease-out) 420ms both; }
+.km-motion .km-handover__datum > .ac-reg--bl { animation-delay: 1150ms; }
+.km-motion .km-handover__dl { animation: km-handover-fade 400ms var(--ease-out) 700ms both; }
+.km-motion .km-handover__cap { animation: km-handover-fade 400ms var(--ease-out) calc(620ms + var(--i) * 80ms) both; }
+.km-motion .km-handover__cap::after { animation: km-handover-drawx 700ms var(--ease-out) calc(620ms + var(--i) * 80ms) both; }
+.km-motion .km-handover__ph { animation: km-handover-fade 500ms var(--ease-out) calc(760ms + var(--i) * 50ms) both; }
+.km-motion .km-handover__item > :not(.km-handover__slot):not(.km-handover__now):not(.km-handover__pop) { animation: km-handover-up 600ms var(--ease-out) calc(760ms + var(--i) * 60ms) both; }
+/* backwards fill only: once the fade has run, the .is-deal rule holds it, and its removal fades it out */
+.km-motion .km-handover.is-deal .km-handover__decksvg :is(.km-handover__way-l, .km-handover__way-c) { animation: km-handover-fade 500ms var(--ease-out) 950ms backwards; }
+.km-motion .km-handover__tick { animation: km-handover-fade 300ms var(--ease-out) 1100ms both; }
+.km-motion .km-handover__legend { animation: km-handover-fade 500ms var(--ease-out) 850ms both; }
+/* before the slot plays, the pieces the spread (not a keyframe) brings in stay out of sight, so nothing shows in
+   its resting place first: the sheets (laid on the stack at play), the after lines and the footprint. Reduced
+   motion and no-JS have no .km-motion: the final state. */
+.km-motion .km-slot:not(.is-play) :is(.km-handover__sheet, .km-handover__now, .km-handover__fp) { visibility: hidden; }
+
+/* ── 1024–1439: the same row, scaling down. The kit's tokens are fluid; here the gaps between the six columns
+      follow the gutter, and below 1200 the tags take the mono floor (11px, tight tracking) so the longest
+      ("Instrumentation") keeps to its column. The row is a size container (the grid's width gives the column:
+      (row − key zone − datum track − 3 pair gaps − 2 capability gaps) / 6), so the names and the cards follow the
+      columns actually laid out, whatever the scrollbar takes. ── */
+@media (max-width: 1439px) {
+  .km-handover { --g-pair: calc(var(--gutter) * 2 / 3); --g-cap: var(--gutter); }
+}
+@media (max-width: 1199px) {
+  .km-handover .km-handover__tag { font-size: var(--ac-mono-s); letter-spacing: .06em; }
+}
+@media (min-width: 1024px) {
+  .km-handover__grid { container: km-handover-row / inline-size; }
+  /* the names keep to ONE line, all six together: sized so the longest ("Orchestration Rules", 9.47 ems) fits its
+     column (column / 9.5 = row-terms / 57), never past the stage's 18px. At the stage that is 18px; it reaches 15px
+     (body scale) with a 142.5px column (≈1228px wide). */
+  .km-handover .km-handover__nm { font-size: min(18px, (100cqi - var(--kz) - var(--dz) - 3 * var(--g-pair) - 2 * var(--g-cap)) / 57); }
+  /* narrower: the names go back to 16px and set on TWO lines, all at once. The measure (7.25em = 116px) is wider
+     than "Narrative OS" (98px) and every first line ("Orchestration", 104px), narrower than every other full name
+     (132px and up), so five names break before their last word and the short one stays whole, on any width and
+     with a few px of slack against font rendering. */
+  @container km-handover-row (width < 1119px) {
+    .km-handover .km-handover__nm { white-space: normal; font-size: 16px; max-width: 7.25em; }
+  }
+  /* the one-neighbour card needs 228px to hold its name ("Orchestration Rules" at 20px + padding): below a 1214px
+     row (≈1332px wide) the card covers BOTH neighbouring sheets and stops half a gutter short of the third, as it
+     does across the 1024 end of the band (≈261px there, ≈400px at the switch). */
+  @container km-handover-row (width < 1214px) {
+    .km-handover__pop { width: calc(300% + var(--g3) - var(--sw) - 16px - var(--gutter) / 2); }
+  }
+}
+
+/* ── ≤ 1023 · tablet and phone share: the head's kit grammar, the key as the figure's top strip, the datum turned
+      horizontal under it (labelled Handover, with the red tick), and no spread (the final state, struck): the sheets
+      and their after lines enter with the rest of their column. ── */
+@media (max-width: 1023px) {
+  .km-handover .km-handover__head > .ac-statement { grid-column: 1 / -1; }
+  .km-handover .km-handover__head > .ac-lede { grid-column: 1 / span 9; grid-row: 4; align-self: start; margin: 28px 0 0; max-width: 46ch; }
+  .km-handover .km-handover__fig { margin-top: 48px; }
+  /* hidden, not display:none: toggling display would restart their entrance animations */
+  .km-handover__datum, .km-handover__deck { visibility: hidden; }
+  .km-handover__deck { position: absolute; left: 0; top: 0; }
+  .km-handover .km-handover__legend { margin: 0; flex-direction: row; flex-wrap: wrap; gap: 8px 24px; }
+  /* the datum, horizontal: a full-width line under the key, its label at the right, the red tick on it */
+  .km-handover .km-handover__dl {
+    justify-self: stretch; text-align: right;
+    margin: 20px 0 4px; padding: 0 0 10px; border-bottom: 1px solid var(--fg-3);
+  }
+  .km-handover__dl::after { right: auto; left: 40px; top: auto; bottom: -5px; width: 3px; height: 9px; background: var(--signal); }
+  .km-handover__item::before { visibility: hidden; }
+  .km-handover__item > .km-handover__pop { grid-column: auto; grid-row: auto; }   /* contain to the whole item, not a text column */
+  .km-handover .km-handover__nm { grid-row: 1; margin-top: 0; font-size: 18px; white-space: normal; }   /* full size again: the reflowed rows have room */
+  .km-handover .km-handover__tag { grid-row: 2; }
+  .km-handover .km-handover__was { grid-row: 3; }
+  .km-handover .km-handover__now { grid-row: 4; }
+  .km-handover .km-handover__pname { white-space: normal; }
+  /* only when the section PLAYED narrow (behavior.ts sets .is-narrow-in at play and drops it as the width crosses
+     1024): a section that played wide and is then narrowed (an iPad turned to portrait) keeps its final state
+     instead of replaying these, and crossing back later never restarts them */
+  .km-motion .km-handover.is-narrow-in .km-handover__lift { animation: km-handover-fade 500ms var(--ease-out) calc(760ms + var(--i) * 50ms) both; }
+  .km-motion .km-handover.is-narrow-in .km-handover__item > .km-handover__now { animation: km-handover-up 600ms var(--ease-out) calc(760ms + var(--i) * 60ms) both; }
+}
+
+/* ── 768–1023 · tablet: the six-column row gets cramped, so the pairs sit side by side under their capability, the
+      two sheets of a pair facing each other across the gutter (01 | 02), each with its name · tag · before · after
+      on its outer side; the pair shares its lines (subgrid). A card opens over the pair-mate, continuing the sheet's
+      own header rule across the gutter, as on the desktop row. ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .km-handover { --g-tab: 40px; }
+  .km-handover__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: none; column-gap: var(--g-tab); }
+  .km-handover .km-handover__legend { grid-column: 1 / -1; grid-row: 1; }
+  .km-handover .km-handover__dl { grid-column: 1 / -1; grid-row: 2; }
+  .km-handover .km-handover__cap { grid-column: 1 / -1; grid-row: var(--tr); margin: 40px 0 20px; }
+  .km-handover__item { grid-column: 1; grid-row: var(--tr) / span 4; grid-template-columns: minmax(0, 1fr) var(--sw); column-gap: 16px; }
+  .km-handover__item > .km-handover__slot { grid-column: 2; grid-row: 1 / span 4; }
+  .km-handover__item > :not(.km-handover__slot):not(.km-handover__pop) { grid-column: 1; }
+  .km-handover__item + .km-handover__item { grid-column: 2; grid-template-columns: var(--sw) minmax(0, 1fr); }
+  .km-handover__item + .km-handover__item > .km-handover__slot { grid-column: 1; }
+  .km-handover__item + .km-handover__item > :not(.km-handover__slot):not(.km-handover__pop) { grid-column: 2; }
+  .km-handover .km-handover__was { margin-top: 12px; }
+  /* the card covers the pair-mate exactly (its sheet and its lines), 8px proud top and bottom, with 4px of outer
+     bleed so a strike's 2px overhang never peeks past it */
+  .km-handover .km-handover__item > .km-handover__pop { left: calc(100% + 16px); right: auto; bottom: -8px; width: calc(100% + var(--g-tab) - 12px); }
+  .km-handover .km-handover__item > .km-handover__pop::before { left: -17px; right: auto; }
+  .km-handover .km-handover__item + .km-handover__item > .km-handover__pop { left: auto; right: calc(100% + 16px); }
+  .km-handover .km-handover__item + .km-handover__item > .km-handover__pop::before { left: auto; right: -17px; }
+}
+
+/* ── ≤ 767 · phone: one column (the mockup's phone figure). The key strip and the horizontal datum, then each
+      capability and its two assets as rows: the sheet (72×102), then name · tag · before (struck) · after. Each card
+      lies over its pair-mate's row: the first of a pair opens down, the second opens up, so a card never cuts
+      through a row or a capability heading. Full width, a short vertical leader from the sheet. Tap toggles it. ── */
+@media (max-width: 767px) {
+  .km-handover { --sw: 72px; --sh: 102px; }
+  .km-handover .km-handover__head > .ac-lede { grid-column: 1 / -1; margin-top: 20px; }
+  .km-handover .km-handover__fig { margin-top: 40px; }
+  .km-handover__grid { display: flex; flex-direction: column; }
+  .km-handover .km-handover__legend { order: 1; gap: 8px 20px; }
+  .km-handover .km-handover__dl { order: 2; }
+  .km-handover__cap, .km-handover__item { order: 3; }
+  .km-handover .km-handover__cap { margin: 28px 0 0; }
+  .km-handover__item {
+    display: grid; grid-template-columns: var(--sw) minmax(0, 1fr); grid-template-rows: auto auto auto auto;
+    column-gap: 16px; margin-top: 20px; align-content: start;
+  }
+  .km-handover__item > .km-handover__slot { grid-column: 1; grid-row: 1 / span 4; }
+  .km-handover__item > :not(.km-handover__slot):not(.km-handover__pop) { grid-column: 2; }
+  .km-handover__ph, .km-handover__draft, .km-handover__own { width: 100%; height: 100%; }
+  /* the sheet is drawn at 3/4 size here: its index is set a step larger so it still renders at the 11px floor */
+  .km-handover__ix { font-size: 14.667px; }
+  .km-handover .km-handover__was { margin-top: 10px; }
+  /* compact, so an upward card clears the capability heading; as tall as the pair-mate's row (behavior.ts measures
+     it into --mate-h when the card opens), so none of the mate's lines peek out under the card */
+  .km-handover .km-handover__item > .km-handover__pop { left: 0; right: 0; top: calc(100% + 12px); width: auto; min-height: calc(var(--mate-h, var(--sh)) + 16px); padding: 10px 16px 12px; }
+  .km-handover .km-handover__item > .km-handover__pop::before { left: calc(var(--sw) / 2); right: auto; top: -13px; width: 1px; height: 12px; }
+  .km-handover .km-handover__item + .km-handover__item > .km-handover__pop { top: auto; bottom: calc(100% + 12px); }
+  .km-handover .km-handover__item + .km-handover__item > .km-handover__pop::before { top: auto; bottom: -13px; }
+  .km-handover .km-handover__pname { padding-top: 10px; }
+}
