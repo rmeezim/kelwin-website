@@ -71,7 +71,7 @@ On the red surface the accents invert: paper is the action colour, and red text 
   - never bold.
 - **Accent phrase:** the same font at weight 300 (`--light-weight`) in `--fg-2`. Exactly one per headline, never italic.
 - **Labels above headings:** 11px, caps, weight 500, tracking .18em, led by an 8px signal square (`.ac-label`).
-- **Captions and indexes:** JetBrains Mono, caps, 11–12px (`.ac-cap`, `.ac-idx`, `.ac-meta`). Mono values are never prose.
+- **Captions and indexes:** JetBrains Mono, caps, 11–12px at the kit's tracking (`.ac-idx` .10em, `.ac-cap` / `.ac-meta` .12em, as approved in the mockups). Mono values are never prose.
 - **Body:** 400 weight, 17px (support 15px, lede 20px) at the 1440 stage, line-height 1.5–1.55.
 - **Legibility floors (hard):**
   - reading copy ≥15px;

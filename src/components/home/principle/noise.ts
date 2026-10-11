@@ -48,18 +48,35 @@ const calm = (i: number, x: number) => {
 };
 const f = (n: number) => String(Math.round(n * 10) / 10);
 
-/** Catmull-Rom through the samples → cubic Béziers. */
+/** Catmull-Rom through the samples → cubic Béziers. A run of segments that are exactly flat (as written, all
+ *  three y's equal to the current point's) is one straight line, so it is written as one H: the same geometry
+ *  as the mockup's chain of flat cubics, but without their joints, which rasterise as lighter pixels every
+ *  3 field units (a dotted tail once the field is scaled below the stage). The filtered tail, from where the
+ *  bundle has closed onto the datum to the field's edge, is such a run: the one clean line. */
 function curve(p: [number, number][]) {
-  let d = "M" + f(p[0][0]) + " " + f(p[0][1]);
+  let y = f(p[0][1]);
+  let d = "M" + f(p[0][0]) + " " + y;
+  let flatTo = ""; // end x of a pending flat run
   for (let k = 0; k < p.length - 1; k++) {
     const p0 = p[k - 1] || p[k];
     const p1 = p[k];
     const p2 = p[k + 1];
     const p3 = p[k + 2] || p2;
-    d +=
-      "C" + f(p1[0] + (p2[0] - p0[0]) / 6) + " " + f(p1[1] + (p2[1] - p0[1]) / 6) + " " +
-      f(p2[0] - (p3[0] - p1[0]) / 6) + " " + f(p2[1] - (p3[1] - p1[1]) / 6) + " " + f(p2[0]) + " " + f(p2[1]);
+    const c1y = f(p1[1] + (p2[1] - p0[1]) / 6);
+    const c2y = f(p2[1] - (p3[1] - p1[1]) / 6);
+    const y2 = f(p2[1]);
+    if (c1y === y && c2y === y && y2 === y) {
+      flatTo = f(p2[0]);
+      continue;
+    }
+    if (flatTo) {
+      d += "H" + flatTo;
+      flatTo = "";
+    }
+    d += "C" + f(p1[0] + (p2[0] - p0[0]) / 6) + " " + c1y + " " + f(p2[0] - (p3[0] - p1[0]) / 6) + " " + c2y + " " + f(p2[0]) + " " + y2;
+    y = y2;
   }
+  if (flatTo) d += "H" + flatTo;
   return d;
 }
 

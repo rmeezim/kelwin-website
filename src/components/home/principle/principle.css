@@ -23,15 +23,19 @@
 .km-principle__frame { position: relative; }
 
 /* the head grammar, placed on the col-4 text column (kit components, placement only).
-   --datum: y from the statement's top to the x-height centre of line 2 (185px at the 112px stage size).
+   --datum: y from the statement's top to the x-height centre of line 2 (185px at the 112px stage size); the
+   tags' seats. --wire-c: the wire's own centre line (its top, calc(50% + .115em) of line 2, measures 1.6547em
+   from the statement's top at every width, plus half its 1px), where the field's signal is seated so the
+   pixel row it paints is the wire's row (the mockup's datum sat .35px above it; same pixels at the stage).
    --tick-h: the red tick, 22px at the stage, scaling with the statement (never under 14px) so B's seat under it
    keeps clear of line 3's x-height as the type shrinks. */
 .km-principle__head {
   position: relative;
   --datum: calc(var(--ac-h-xl) * 185 / 112);
+  --wire-c: calc(var(--ac-h-xl) * 185.33 / 112 + .5px);
   --tick-h: max(14px, var(--ac-h-xl) * 22 / 112);
   /* --nwr: the noise field's width, 302/310 of cols 1–3 (the % resolves in the grid item that uses it, against
-     its grid area). --nw: that width, nudged (< 1.5px) so the datum lands on a half pixel: browsers paint an
+     its grid area). --nw: that width, nudged (by ≤ 1.5px) so the datum lands on a half pixel: browsers paint an
      inline SVG from a whole-pixel origin, so with 100.5 · scale = n + .5 the 1px signal (non-scaling stroke, kit)
      covers exactly one pixel row at every width instead of smearing over two. 302 at the stage (unchanged). */
   --nwr: calc(100% * 302 / 310);
@@ -40,6 +44,8 @@
 @supports (width: round(1px, 1px)) {
   .km-principle__head { --nw: calc((round(var(--nwr) * 100.5 / 302 - .5px, 1px) + .5px) * 302 / 100.5); }
 }
+/* NB: subtract --nw as `+ var(--nw) * -k`. Chrome (141) evaluates `A - var(--nw) * k` wrongly here: it negates
+   the round() term but not the + .5px beside it (1440: 221.83 - 100.5 came out 122.33). */
 .km-principle .km-principle__head > .ac-labelrow { grid-column: 4 / -1; }
 .km-principle .km-principle__head > .ac-statement { grid-column: 4 / -1; }
 .km-principle .km-principle__head > .ac-rule { grid-column: 4; }
@@ -60,13 +66,13 @@
   background: var(--accent);
 }
 
-/* the input field: shares the statement's row, its datum (y 100 of 200) on the wire. It is --nw wide (≈ 302/310
-   of cols 1–3); grid-item % margins resolve against the area's width, like the width, so --nw · 100/302 is
-   exactly half the field's height. */
+/* the input field: shares the statement's row, its datum (y 100 of 200, drawn at 100.5) on the wire's centre.
+   It is --nw wide (≈ 302/310 of cols 1–3); grid-item % margins resolve against the area's width, like the
+   width, so --nw · 100.5/302 is the drawn datum's depth in the field. */
 .km-principle .km-principle__noise {
   grid-column: 1 / span 3; grid-row: 2; align-self: start; justify-self: start;
   width: var(--nw); height: auto; aspect-ratio: 302 / 200;
-  margin-top: calc(36px + var(--datum) - var(--nw) * 100 / 302);
+  margin-top: calc(36px + var(--wire-c) + var(--nw) * -100.5 / 302);
 }
 .km-principle__wave { fill: none; stroke: var(--fg-3); stroke-width: 1; }
 .km-principle__wave--sig { stroke: var(--fg); }
@@ -113,8 +119,8 @@
    drawing lifts out of the statement's row and stacks above it, flush to the left frame edge: label → noise
    (A under it) → the statement, its wire still leaving "the clearest" for the red tick on the right frame edge.
    The field is cropped to the bundle's own extent (y 38 → 159.5 of 200) with negative margins; --nw is its
-   width, resolved against the full-width grid area in each property that uses it. It is 240px on tablet and
-   phone alike (the stage's drawing-to-type ratio would give 161–215px here, smaller than on a phone). */
+   width, resolved against the full-width grid area in each property that uses it. It is 240px (nudged, see --nw) on
+   tablet and phone alike (the stage's drawing-to-type ratio would give 161–215px here, smaller than on a phone). */
 @media (max-width: 1023px) {
   .km-principle__head { --nwr: min(100%, 240px); }
   .km-principle .km-principle__head > .ac-labelrow { grid-column: 1 / -1; }
@@ -123,11 +129,11 @@
   .km-principle .km-principle__head > .ac-lede { grid-column: 1 / span 9; grid-row: 6; }
   .km-principle .km-principle__noise {
     grid-column: 1 / -1; grid-row: 2; width: var(--nw);
-    margin-top: calc(40px - var(--nw) * 38 / 302);
+    margin-top: calc(40px + var(--nw) * -38 / 302);
   }
   .km-principle .km-principle__tag--a {
     grid-column: 1 / -1; grid-row: 3;
-    margin-top: calc(17px - var(--nw) * 40.5 / 302);
+    margin-top: calc(17px + var(--nw) * -40.5 / 302);
   }
   /* B keeps its place under the tick, in the statement's row (line 3 is short enough to leave it room) */
   .km-principle .km-principle__tag--b { grid-row: 4; }
@@ -138,6 +144,6 @@
    row: it drops to the rule's row, flush right on the frame edge below the tick, centred on the rule. */
 @media (max-width: 767px) {
   .km-principle .km-principle__head > .ac-lede { grid-column: 1 / -1; }
-  .km-principle .km-principle__noise { margin-top: calc(32px - var(--nw) * 38 / 302); }
+  .km-principle .km-principle__noise { margin-top: calc(32px + var(--nw) * -38 / 302); }
   .km-principle .km-principle__tag--b { grid-row: 5; align-self: end; margin: 0 0 -10px; }
 }

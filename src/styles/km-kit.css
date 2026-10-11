@@ -224,7 +224,7 @@
   column-gap: var(--gutter); align-items: center; width: 100%; padding: 22px 0; text-align: left;
 }
 .ac-row__head .ac-h4 { transition: transform 300ms var(--ease-out); }
-.ac-row__head:hover .ac-h4 { transform: translateX(6px); }
+@media (hover: hover) { .ac-row__head:hover .ac-h4 { transform: translateX(6px); } }  /* never sticks after a tap */
 .ac-row__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 360ms var(--ease-inout); }
 .ac-row__more > * { min-height: 0; overflow: hidden; }
 .ac-row.is-open > .ac-row__more { grid-template-rows: 1fr; }
@@ -369,7 +369,7 @@
 /* rows / strips / cells cascade: style="--i:0..n" on each child */
 .km-motion .ac-cascade > * { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(var(--d, 900ms) + var(--i, 0) * 80ms); }
 /* JS resets: freeze transitions while a figure is put into its opening state */
-.ac-cold, .ac-cold * { transition: none !important; }
+.ac-cold, .ac-cold *, .ac-cold::before, .ac-cold::after, .ac-cold *::before, .ac-cold *::after { transition: none !important; }
 
 /* ── 11 · responsive — the 1440 layout scales fluidly to 1024; below that the kit reflows ──
    Tablet (≤1023): heads go full width, the note drops under the doors.
