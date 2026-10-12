@@ -1,0 +1,898 @@
+{
+  "version": "round-8 interior story map",
+  "source": "design/redesign/STORY-INTERIOR.md (the founder-facing story map; this file is its build plan)",
+  "tags": {
+    "[K]": "kept verbatim (source named)",
+    "[R]": "rewritten from existing copy",
+    "[N]": "new copy drafted in Kelwin's voice, for founder review",
+    "(FS)": "changes founder-approved copy: needs his yes",
+    "(FC)": "a fact the founder must confirm: built as drafted, flagged, never shipped unconfirmed"
+  },
+  "pages": [
+    {
+      "route": "/about",
+      "file": "about",
+      "title": "About Us — Kelwin",
+      "metaDescription": "[N] Who founded Kelwin, the five rules every engagement is built on, and how the firm is built today.",
+      "oneLine": "The firm behind the signature: the person who signed the letter, the five rules he runs every engagement by, and the week an engagement runs on — then the first step.",
+      "question": "Who is actually behind this, can I trust them with my revenue system, and how would they work with us?",
+      "template": null,
+      "sections": [
+        {
+          "id": "about-head",
+          "name": "Header · the five rules, where they bind",
+          "job": "Pay off the homepage letter's signature link: name the person and the firm at first glance, and show the doctrine as a drawing.",
+          "layout": "Specimen-sheet header (InteriorHead) with band kind MX (rule matrix).",
+          "artifact": "LATTICE matrix in the band: rows = the five rules (01–05 short titles), columns = Diagnose · Architect · Install · Handover · Calibrate; a filled 7px square seats where each rule binds (01→Diagnose; 02→Handover and Calibrate; 03→Architect; 04→Calibrate; 05→Handover); dimension “Runs once” over Diagnose–Install. The one red: the 05 × Handover cell.",
+          "content": "Label “■ About” · meta “The Firm / 01”. H1 [N] “The firm behind / the signature.” (accent: “the signature.”). Lede [N] “Kelwin was founded in 2026 by Rameez. It designs, installs and runs revenue systems that its clients keep. It stays small, so the person who diagnoses your system is the person who answers your email.” Facts: Founded · 2026 — deliberately late to the category [K letter] · Led by · Rameez, Founder · Lead Narrative Architect [K] (FC) · Starts with · The System Audit ↗ (quiet link to /audit).",
+          "surface": "dark",
+          "motion": "Once at 40% visible: the warped mesh resolves to a true grid (1.4s), cells seat row by row, the red cell lands last. Reduced motion: final state.",
+          "interaction": "None. Phone (≤767): recomposed as five rule rows, each followed by its phase chips — no 5×5 grid."
+        },
+        {
+          "id": "about-founder",
+          "name": "The founder · signature sheet",
+          "job": "Answer the arrival question: a real, senior person — without a portrait, without inventing a team.",
+          "layout": "SG signature sheet: name block cols 1–7, .ac-spec cols 8–12. Ruled seam from the header.",
+          "artifact": "Typography only: “Rameez” in display type (~128px), role in the light accent, a short dash echoing the letter's signature.",
+          "content": "Background line: renders ONLY if the founder supplies it (D11) — no placeholder ever ships. Spec [N] (FC each): On an engagement · Runs the audit's working sessions, writes the readout, and leads the architecture and the install. · The firm today · One architect. The next seat, a Systems Engineer, opens when the work needs it. → /careers · Write to him · audit@kelwin.co · Based · London. Link “The letter that started it →” /#s-letter. The memo is NOT reprinted (the homepage owns it).",
+          "surface": "dark",
+          "motion": "Still beat: reveal only.",
+          "interaction": "Links only."
+        },
+        {
+          "id": "about-rules",
+          "name": "What we believe · tenet sheet",
+          "job": "The firm's doctrine as its standing document; the legend of the header matrix. Unique content the homepage doesn't carry.",
+          "layout": "TN tenet sheet: five tenets, all open, two-column static sheet; each 32px title + body + “Binds at · <phase>” chip aligned to the matrix.",
+          "artifact": "Ink type on paper, poster-like. 05 set largest. The one red: the 05 index square.",
+          "content": "Label “■ What we believe” · h3 [N] “The rules every engagement is built on.” 01 Diagnosis before prescription [K] — “No engagement starts without the audit's readout — building before diagnosing sells the same fix to every different problem.” [K] · Binds at Diagnose. 02 Assets first — then the retainer [K] — “Everything we install is documented in your language and lives in your stack. The operating retainer compounds a system you own — it never becomes the thing you rent.” [K, approved service model] · Binds at Handover, Calibrate. 03 Clarity is infrastructure [K] — [R] “Most pipeline problems are narrative problems in disguise. We write the language down before we build anything that carries it.” · Architect. 04 Learning is the asset [R, was “Compounding beats resetting”] — [R] “What an engagement learns is written into the system, so next quarter starts where this one ended.” · Calibrate. 05 The exit test [K] — “If it stops working the day we leave, we built it wrong. Every engagement is designed backwards from this sentence.” [K] · Handover.",
+          "surface": "light",
+          "motion": "Still beat: reveal only.",
+          "interaction": "None."
+        },
+        {
+          "id": "about-week",
+          "name": "The week · calendar ruler (#week)",
+          "job": "What working with Kelwin feels like; deepens the method's Calibrate. Ships ONLY if the founder confirms this is how engagements run (FC, founder Q7); otherwise cut and the page goes tenets → Door.",
+          "layout": "CL calendar ruler: five day columns on an hour ruler 08–18.",
+          "artifact": "MEASURE ruler; each ritual is a node at its hour; Wednesday drawn empty. The one red: Thursday's Kill review node.",
+          "content": "Label “■ The week” · h3 [N] “The week an engagement runs on.” Mon 09:00 Signal review — “What the market did over the weekend. 25 minutes, no deck.” [K] · Tue 10:30 Client working session — “Language decided live on the document — not presented after.” [K] · Wed No-meeting day — “Systems get built. Notes get written. Calendars stay empty.” [K] · Thu 16:00 Kill review — “What we stop doing this week. The hardest ritual to keep.” [K] · Fri 15:00 The written note — [R] “What moved this week, in writing.” Note [R] “An engagement runs on this week. The Friday note is where you read what moved.” (replaces the dead “Friday readout from the methodology” reference).",
+          "surface": "dark",
+          "motion": "Ruler ticks calibrate, nodes latch left to right, once.",
+          "interaction": "None. Phone: vertical list with times."
+        },
+        {
+          "id": "about-door",
+          "name": "Door · statement close (D2)",
+          "job": "Conversion moment: the first step, plus the rest of the firm.",
+          "layout": "D2 statement close. Ruled seam.",
+          "artifact": "None beyond the doors. Red: the button.",
+          "content": "Statement [N] “Start where / every engagement starts.” Lede [N] “The System Audit: ten working days, fixed scope, and a written readout you keep.” Doors: red .ac-btn “Request a System Audit” → /audit · .ac-link “Talk to the team” → /contact. Foot row [N] “The Lab · Kelwin's R&D, in development → What it's building” (/the-lab). Onward [N] “How does Kelwin think? → Field notes” (/insights).",
+          "surface": "dark",
+          "motion": "Head entrance only.",
+          "interaction": "Links."
+        }
+      ]
+    },
+    {
+      "route": "/who-we-work-with",
+      "file": "who-we-work-with",
+      "title": "Who We Work With — Kelwin",
+      "metaDescription": "[N] The three situations Kelwin is built for, told from inside; where each one breaks; the markets where they're sharpest; and who we send away.",
+      "oneLine": "The homepage's promise first — three situations told from inside and the layer each breaks first — then the markets, then the honest list of who we send away.",
+      "question": "Is a company like mine what Kelwin is for, or will they turn me away?",
+      "template": null,
+      "sections": [
+        {
+          "id": "who-we-work-with-head",
+          "name": "Header · the break chart",
+          "job": "Land on the homepage fit link's exact words and show, at a glance, which layer breaks first in each situation.",
+          "layout": "Specimen-sheet header with band kind BC (break chart).",
+          "artifact": "Three flat elevations (one per situation), each with three bands named by layer glyph (Narrative Systems / GTM Infrastructure / GTM Intelligence). A 1px fracture opens in the band that breaks first; a dashed fracture where it spreads. Callouts: 01 The founder-seller — breaks first: Narrative Systems (spreads to Infrastructure) · 02 The plateaued motion — breaks first: GTM Intelligence (spreads to Infrastructure) · 03 The misheard category — breaks first: Narrative Systems. The one red: one fracture at a time (01 at rest). Every band labelled in words — must read without the animation (round-3 lesson).",
+          "content": "Label “■ Who we work with” · meta “The Firm / 02”. H1 [K homepage link] “Three situations, / told from inside.” Lede [R] “A revenue system only pays off inside a company that can carry it. These are the three situations it's built for, told the way they feel from inside, followed by who we send away.” Facts: Built for · Real revenue, felt ceiling · Committee-decided sales [K F titles] · The real gate · Someone inside will own it [R F-02] · Not sure? · Talk to the team ↗ (/contact).",
+          "surface": "dark",
+          "motion": "Once: elevations draw, fractures open in sequence 01→03. Nothing cycles. Reduced motion: final state.",
+          "interaction": "Hover/focus on a situation row in the next section moves the red fracture; tapping an elevation jumps to its row anchor. Phone: three narrow elevations, labels below."
+        },
+        {
+          "id": "who-we-work-with-situations",
+          "name": "The three situations · case-file rows",
+          "job": "The page's strongest content, now first (it sat ~6,600px down on phones).",
+          "layout": "CF case-file rows: cols 1–3 index + name + 48px mini elevation · cols 4–9 story · cols 10–12 What changes + Breaks first. Anchors #founder-seller, #plateaued-motion, #misheard-category. Ruled seam.",
+          "artifact": "Mini elevations repeating the band's fracture per row.",
+          "content": "Vignette 01 (tag, H3 “You're still the best rep the company has — and it's a trap.”, body, What changes) [K]. Vignette 02 H3 “The playbook that got you here has stopped compounding.” [K]; first body sentence [R] “The team is hired, the tools are paid for, and the pipeline chart has been flat for four quarters.” rest [K]. Vignette 03 [K]. “First install” → “Breaks first” [R]: 01 → Narrative Systems, then GTM Infrastructure · 02 → GTM Intelligence, then GTM Infrastructure · 03 → Narrative Systems; each links its capability page. Section foot once [N] “The audit decides which layer comes first, before anything is built.” Cut: the three per-row audit cues.",
+          "surface": "dark",
+          "motion": "Still beat: reveal only.",
+          "interaction": "Capability links; rows report hover/focus to the header chart."
+        },
+        {
+          "id": "who-we-work-with-markets",
+          "name": "Where it breaks, by market · ledger",
+          "job": "Sector depth the homepage doesn't carry, without photos or the noise-cut device.",
+          "layout": "LG ledger that opens in place, six rows, row I·01 resting open.",
+          "artifact": "Type and hairlines only.",
+          "content": "Label “■ Where it breaks” · h3 [N] “The same three situations, in six markets.” Lede [N] “Committee-decided deals make all three sharper. These are the markets where they show up most.” Rows: six sectors with their two chips and their “where it breaks” line [K], except I·01 [R] “The story that wins the champion dies in the committee, where every stakeholder carries a different version of what you do.” and I·04 adds [N] “Product-led with a sales-carried expansion is in scope. Card-at-checkout with no sales conversation is not.” Cut: photos, the AI-image slot, network graphs, “Specialist, not generalist”, the accent line.",
+          "surface": "light",
+          "motion": "Row open 360ms.",
+          "interaction": "Rows are real buttons with aria-expanded/aria-controls; closed panels inert."
+        },
+        {
+          "id": "who-we-work-with-close",
+          "name": "Who we send away · gate close (D3)",
+          "job": "Conversion moment and the honest list, every reason visible.",
+          "layout": "D3 gate close: honest list cols 1–6, gate line + doors cols 8–12. Ruled seam.",
+          "artifact": "Mono “−” marks on the four rows. Red: the button.",
+          "content": "Label “■ Who we send away”. D-01 Rent-it-forever · “We'll run it on retainer, but if nobody inside will own it, we decline.” [K] · Instead [N] “Find the owner first. Then the system has somewhere to live.” · D-02 Lead-list shopping · “Renting activity is the cycle we exist to end. A list vendor is the better call.” [K] · D-03 Pure self-serve / PLG · “The system assumes a sales-carried deal.” [K] · Instead [N] “Different machinery, built for checkout.” · D-04 Pre-revenue · [R from the gate] “There's no working motion to instrument yet. When the first revenue is real, come straight back.” · Instead “Read the field notes meanwhile →” (/insights). Right: “The audit is a gate, and it works in both directions.” [K homepage fit] · [R] “Its three questions check where revenue is today, how your deals close, and what it feels like from inside.” · red “Request a System Audit” → /audit · quiet [R] “Not sure which side you're on? Talk to the team →” (/contact). Onward [N] “Who would you be working with? → About”.",
+          "surface": "dark",
+          "motion": "Reveal only.",
+          "interaction": "Links."
+        }
+      ]
+    },
+    {
+      "route": "/careers",
+      "file": "careers",
+      "title": "Careers — Kelwin",
+      "metaDescription": "[N] No open seats today. The seat that opens next, the standards every seat is held to, and how to join the bench list.",
+      "oneLine": "An honest zero-state: no seats today, the seat that opens next, what every seat is held to, and the bench list.",
+      "question": "Are they hiring, what is the work held to, and how do I get on their radar?",
+      "template": null,
+      "sections": [
+        {
+          "id": "careers-head",
+          "name": "Header · the seat plan",
+          "job": "Say the truth at first glance (zero seats, the list is open) and show the firm's real shape.",
+          "layout": "Specimen-sheet header with band kind SE (seat plan).",
+          "artifact": "LATTICE floor in plan view: Seat 01 filled “Founder · Lead Narrative Architect”; Seat 02 dashed “Systems Engineer · opens next” (FC); a third faint seat only if the founder names one (FC). Each seat has one straight line to an edge labelled “Your team”; dimension “No layer between”. The one red: Seat 02's outline.",
+          "content": "Label “■ Careers” · meta “The Firm / 03”. H1 [N] “No open seats today. / The bench list is open.” Lede [R] “Kelwin adds a person only when the work needs a seat it can't fill, and only senior people: nobody learns on a client's budget. When a seat opens, the bench list is read first.” Facts: Open seats · None right now [K] · Next seat · Systems Engineer (FC) · Bench list · Open, read first when a seat opens [K] → #bench.",
+          "surface": "dark",
+          "motion": "Once: grid resolves, Seat 01 latches, lines draw.",
+          "interaction": "None. Phone: plan rotated vertical."
+        },
+        {
+          "id": "careers-standards",
+          "name": "What every seat is held to · two-column spec",
+          "job": "The hiring values (and a quiet seniority signal for buyers).",
+          "layout": "SP two-column spec. Ruled seam.",
+          "artifact": "Type only.",
+          "content": "Label “■ What every seat is held to”. Left: H·01 “You own systems, not tasks.” [K] — [R] “Everyone is accountable to the thing the engagement leaves behind — not to hours logged against it.” · H·02 “Writing is the job.” [K] · H·03 “Diagnose out loud.” [K] · H·04 “No theater.” [K]; “Enforced” cut. Right, the deal (FC each): Juniors · None — nobody learns on a client's budget [K] · Writing · The job. Documents before meetings [K] · Comp · Published with every role, no ranges withheld [K] · Shape · Remote-first, London-based [R]. Link “The week an engagement runs on → /about#week” (only if that section ships).",
+          "surface": "dark",
+          "motion": "Still beat.",
+          "interaction": "Link."
+        },
+        {
+          "id": "careers-bench",
+          "name": "Join the bench list · form as a document (#bench) + quiet close",
+          "job": "The page's conversion moment for candidates; quiet doors for buyers.",
+          "layout": "FM form as a document, then QC quiet close.",
+          "artifact": "The form itself (MemoForm styling) + MailtoConfirm.",
+          "content": "Label “■ The bench list” · h3 [N] “Be read first when a seat opens.” Lede [R] “Skip the CV summary. Tell us who you are, where your work lives, and the part of a revenue system you'd take personal responsibility for.” Fields [R], all labelled and required: Name · Current role and company · Something you've made — a link, or a few lines about it (textarea, not type=url) · The part of a revenue system you'd own, and why that one. Submit: OUTLINED .ac-btn-o “Join the bench list” [R] (not red). Mailto subject [R] “Bench list — {name}”; recipient (FC). Note [R] “This opens your own mail app with your answers filled in. Nothing is sent from this page, and a person reads every one. How we handle it: Privacy →.” After submit [N] “Your mail app should have opened. If it didn't, send it to <address>.” + Copy. Quiet close: “Questions first? Talk to the team →” (/contact?topic=careers) · “Here to buy, not to join? Request a System Audit →” (quiet .ac-link) · onward “Who's at Kelwin today? → About”.",
+          "surface": "light",
+          "motion": "Reveal only.",
+          "interaction": "Required-field validation; mailto build; confirmation state with copy-address fallback. SAME-DAY SYNC: Privacy L·02 “the bench clearance request” → “the bench list request”."
+        }
+      ]
+    },
+    {
+      "route": "/capabilities/{narrative-systems | gtm-infrastructure | gtm-intelligence}",
+      "file": "capability",
+      "title": "<Layer> — Kelwin",
+      "oneLine": "One template, three shapes: what gets built in this layer, a page of what you'd hold (a labelled specimen), how it runs through the method, and what the audit returns for it.",
+      "question": "What exactly would you build in this layer, what would I hold, and who runs it after?",
+      "template": "capability",
+      "templateRules": "Five slots: head → services → specimen (paper) → runs → door. Slot ORDER and every layout differ per page (see instances[].order). Facts ledger keeps the approved X keys: Engagement · Scoped at the readout (FS) · Output · <two homepage assets> — yours (FS) · Starts with · The System Audit ↗ [K]. Four services per layer named exactly as the nav's 0n.1–0n.4, each “Ships” an artifact that rolls up into one of two assets. Removed everywhere: install durations, Phase I/II, 3×2 stat cards, defensive stamps, “yours when we leave”, any claim the audit “instruments”. ≤2 readings per page, none of the homepage's four.",
+      "instances": [
+        {
+          "route": "/capabilities/narrative-systems",
+          "file": "narrative-systems",
+          "title": "Narrative Systems — Kelwin",
+          "metaDescription": "[R] Positioning, message architecture, sales language and proof, built as one documented system every channel inherits — and what you own at the end.",
+          "oneLine": "Four pieces of work become one document every channel inherits — here is a page of it, filled in for Kelwin itself.",
+          "order": ["capability-head", "capability-services", "capability-specimen", "capability-runs", "capability-door"]
+        },
+        {
+          "route": "/capabilities/gtm-infrastructure",
+          "file": "gtm-infrastructure",
+          "title": "GTM Infrastructure — Kelwin",
+          "metaDescription": "[R] Data pipelines, routing and CRM architecture built as one documented machine in your stack — the infrastructure that carries your story to the right buyer.",
+          "oneLine": "A tangle of tools becomes one documented route in your stack — here are the rules it runs on, and who keeps it running. Clearly not an outbound shop.",
+          "order": ["capability-head", "capability-services", "capability-specimen", "capability-runs", "capability-door"]
+        },
+        {
+          "route": "/capabilities/gtm-intelligence",
+          "file": "gtm-intelligence",
+          "title": "GTM Intelligence — Kelwin",
+          "metaDescription": "[R] Signal taxonomy, win/loss, resonance and a quarterly calibration — the loop that feeds what works back into narrative and infrastructure.",
+          "oneLine": "Four questions answered every quarter — the cadence, a quarter's plan re-scored, and the meeting that does it.",
+          "order": ["capability-head", "capability-services", "capability-runs", "capability-specimen", "capability-door"]
+        }
+      ],
+      "sections": [
+        {
+          "id": "capability-head",
+          "name": "Header X · the layer's primitive, drawn large",
+          "job": "Orient and answer “what do I own, how is it scoped, where do I start”; the layer's nav glyph drawn large in a variant the homepage doesn't use.",
+          "layout": "Approved Specimen-sheet header (interior/X), title block removed. Band kinds CT / TR / OR.",
+          "artifact": "Per page (see variants). ≤4 flags keyed to services, ≤1 dimension, one red element. Phone (≤767) recomposed; reviewed at 320/390/834/1024/1440.",
+          "content": "Facts keys [K X]: Engagement · Scoped at the readout (FS) · Output · <assets> — yours (FS) · Starts with · The System Audit ↗ [K X].",
+          "surface": "dark",
+          "motion": "One orchestrated morph at 40% visible; reduced motion draws the final state synchronously.",
+          "interaction": "None.",
+          "variants": {
+            "narrative-systems": {
+              "artifact": "CONTOUR [K X]: five jittery lines settle through a drawn filter bracket into one clean line meeting the frame at the red output tick. Flags 01.1 Positioning · 01.2 Message matrix · 01.3 Sales language · 01.4 Proof & evidence; dimension “One voice”. C1 guard: the bundle stays a bundle inside the band (never a poster like the homepage principle); settle computed on a fixed viewBox; ≤767: three lines, filter 40% wide, flags as a keyed list below.",
+              "content": "Label “■ Narrative Systems” · “Capabilities / 01” [K X]. H1 “Decide what / the market hears.” [K X]. Lede “Buyers run most of the journey without you in the room. We make what they hear deliberate.” [K X]. Facts: Engagement · Scoped at the readout (FS) · Output · Narrative OS and Channel Playbooks — yours (FS) · Starts with · The System Audit ↗.",
+              "motion": "Noise settles to signal (1600–2000ms); ambient ≥12s phase drift on the clean line only [K X] — the interior's one ambient loop."
+            },
+            "gtm-infrastructure": {
+              "artifact": "TRACE “untangle”: a knot of disconnected tool nodes untangles into one orthogonal route (≤6 nodes): Signal → Data pipeline → CRM → Routing rule → Channel → The buyer. Flags 02.1 Deliverability engineering (Channel) · 02.2 Data pipeline & signal map (Data) (FS) · 02.3 Omnichannel orchestration (Routing) · 02.4 CRM & data hygiene automation (CRM). Dimension “One documented route”. Red: the buyer node, latching when one packet completes a single traversal. Plan view — distinct from homepage slab 02 and hero take 02. Phone: vertical route.",
+              "content": "Label “■ GTM Infrastructure” · “Capabilities / 02”. H1 [R nav/homepage job] “The machine that / carries it to buyers.” Lede [R homepage “What it is”] “Data pipelines, routing and CRM architecture, built as one documented machine in your stack — so the right account hears the story at the right moment, and the record stays true.” Facts: Engagement · Scoped at the readout · Output · ICP & Signal Map and Orchestration Rules — yours · Starts with · The System Audit ↗.",
+              "motion": "Untangle morph (1400ms), then one packet traverses once; no loop."
+            },
+            "gtm-intelligence": {
+              "artifact": "ORBIT “stations”: one open ring in plan view with four stations — 03.1 Signal taxonomy (what's watched) · 03.2 Win/loss (why deals move) · 03.3 Resonance (what lands) · 03.4 Quarterly calibration. A node rides the ring once; at 03.4 the gap closes. Red: the closing arc. Not accretion rings (rejected round 3); distinct from homepage slab 03.",
+              "content": "Label “■ GTM Intelligence” · “Capabilities / 03”. H1 [K homepage job] “The loop / that learns.” (retires “What gets measured compounds.” and its duplicate H2). Lede [K homepage What it is + In practice] “The observation layer that feeds what works back into narrative and infrastructure. We instrument every touch, then sit with you each quarter and retune the system against what the signal says.” Facts: Engagement · Scoped at the readout · Output · Signal Dashboard and Rebuild Sequence — yours · Starts with · The System Audit ↗.",
+              "motion": "Arc sweeps, node rides once, gap closes (40°→0°)."
+            }
+          }
+        },
+        {
+          "id": "capability-services",
+          "name": "What we install · the four services",
+          "job": "The work, as the legend of the header's flags; each service ships an artifact that rolls into one of two assets.",
+          "layout": "Varies: ST strips / LG ledger / QA question table. Ruled seam from the header.",
+          "artifact": "Per page.",
+          "content": "Per page (see variants). Body label rows carry no meta.",
+          "surface": "dark",
+          "motion": "Reveal; ledger rows open 360ms.",
+          "interaction": "Per page.",
+          "variants": {
+            "narrative-systems": {
+              "layout": "ST · four strips [K X body].",
+              "content": "Label “■ What we install”. Statement [K X] “The story is not copy. / It's infrastructure.” (the page's second statement). Support [R] “Four services, each shipping into one of two assets you own.” Strips [K X]: 01.1 Positioning — “The problem named your way, with competitors re-mapped around it.” Ships · Category brief → Narrative OS · 01.2 Message matrix — “What the champion, the buyer and the skeptic each need to hear.” Ships · Message matrix → Narrative OS · 01.3 Sales language — “Talk tracks, demo narrative and objection answers in one voice.” Ships · Language system → Channel Playbooks · 01.4 Proof & evidence — “What must be proven, and in what order, for a committee to say yes.” Ships · Proof map → Narrative OS. (Rolls-up [N].)",
+              "interaction": "None."
+            },
+            "gtm-infrastructure": {
+              "layout": "LG · ledger that opens in place, 02.1 resting open.",
+              "content": "Label “■ What we build”. Statement [N] “Built in your stack. / Documented in your language.” Rows [R lines; N Replaces]: 02.1 Deliverability engineering — “Domain architecture, authentication and placement monitoring, so what the machine sends arrives.” Replaces “Sending from the main domain and hoping.” Ships · Deliverability runbook → Orchestration Rules · Reading “1 in 6 · legitimate marketing emails that never reach the inbox (global) · Validity, 2025 ↗” + “Field note · Deliverability is infrastructure →”. 02.2 Data pipeline & signal map (FS) — “Who to reach and the live signals that say when, sourced, verified and kept fresh as a system.” Replaces “A list bought once and worked top to bottom.” Ships · ICP & Signal Map. 02.3 Omnichannel orchestration — “Email, LinkedIn, phone, content and events, routed by signal instead of calendar.” Replaces “Sequences on a timer.” Ships · Orchestration Rules. 02.4 CRM & data hygiene automation — “Objects, stages, dedupe and decay handled by the system, so the record stays true without manual policing.” Replaces “A CRM nobody trusts.” Ships · CRM blueprint · Reading “28% · of a seller's week spent actually selling (7,775 sellers surveyed) · Salesforce, State of Sales, 2022 ↗”. Cut: Outbound engine build, inbox rotation, throttling, volume, list sourcing, Litmus, Pitchbox ×2, Gartner $12.9M, “six disconnected tools”.",
+              "interaction": "Rows are real buttons (aria-expanded/aria-controls); external links announce “opens in a new tab”."
+            },
+            "gtm-intelligence": {
+              "layout": "QA · question → instrument table.",
+              "content": "Label “■ What we install”. Statement [N] “Four questions, / answered every quarter.” Rows [R; nav names K]: “Which signals actually come before revenue?” → 03.1 Signal taxonomy & intent monitoring → Ships Signal taxonomy (account priorities fold in) → feeds Signal Dashboard · “Why do we really win and lose?” → 03.2 Win/loss & objection intelligence → Win/loss interviews, in the buyer's words → Signal Dashboard; the objection answers in the Narrative OS · “Which message version is landing?” → 03.3 Narrative resonance telemetry → Resonance report: reply quality and meetings, not opens → the next narrative version · “What changes next quarter?” → 03.4 Quarterly calibration program → Calibration readout → Rebuild Sequence. Quiet line [N] “The instruments that will automate parts of this are being built at The Lab, and are in development →” (/the-lab). Entropy index removed as a deliverable.",
+              "interaction": "Links."
+            }
+          }
+        },
+        {
+          "id": "capability-specimen",
+          "name": "A page from the asset · document specimen (the signature artifact)",
+          "job": "“What do I actually hold?” — shown, not listed, as a labelled specimen that needs no client data.",
+          "layout": "Varies: DS document / FG figure + rule table / DS slope chart. The page's one paper moment.",
+          "artifact": "Per page; always carries SpecimenTag (≥13.5px).",
+          "content": "Per page (see variants).",
+          "surface": "light",
+          "motion": "Rules draw, then content typesets once.",
+          "interaction": "Per page.",
+          "variants": {
+            "narrative-systems": {
+              "layout": "DS · 1px-ruled sheet cols 1–9, margin readings cols 10–12.",
+              "artifact": "The message matrix, filled in for Kelwin. Columns [N] (the 17% note's traits): The problem, named · The mechanism · The proof · If it fails. Rows: Champion (the founder) · Economic buyer (the CFO) · Skeptic (head of sales). Callouts [N]: Named in the buyer's words · Retells in one sentence · Ordered for a committee · Answers the risk question. The one red: an underline beneath the Champion's mechanism cell.",
+              "content": "Label “■ A page from the Narrative OS” · h3 [N] “The message matrix, filled in for Kelwin.” Lede [N] “Every Narrative OS starts from this sheet: what each person in the deal needs to hear, in what order, and the proof that carries it. This one is filled in for the firm you're reading, so nothing on it belongs to a client.” Cells (from approved Kelwin lines): Champion — “Growth is real, just not predictable yet.” / “Three layers installed in our stack, then run.” / “A written readout before anything is built.” / “The readout is ours either way.” · Economic buyer — “Every quarter pays to relearn the last one.” / “Each quarter deposits into the next.” / “Six assets we own outright.” / “If it stops working the day they leave, they built it wrong.” · Skeptic — “We've hired agencies before.” / “Nothing rented. The system stays in our stack.” / “If they're not the fix, the audit says so.” / “Ten working days, fixed scope.” Margin [K figures, R wording]: “6–10 · decision makers in a typical complex B2B purchase · Gartner, 2019 ↗” · “81% → 31% · likelihood of purchase as the buying group grows from one person to six or more · CEB, Harvard Business Review, 2015 ↗” · “Field note · The 17% window →”. Under [R handover asset 02] “Channel Playbooks — the same claims, written into the plays for email, LinkedIn, phone, content, paid and events.” SpecimenTag “Specimen · the structure every Narrative OS uses, filled in with Kelwin's own positioning. No client data.”",
+              "interaction": "Phone: three stacked listener cards, all visible."
+            },
+            "gtm-infrastructure": {
+              "layout": "FG · left cols 1–5 “Before any rule fires” .ac-spec + small ink TRACE; right cols 6–12 rule table.",
+              "artifact": "The Orchestration Rules sheet. The one red: rule 2's index square (lit at rest).",
+              "content": "Label “■ A page from the Orchestration Rules” · h3 [N] “The rules, as your operator holds them.” Lede [R asset 04] “The logic that routes every next-best touch, written as rules your team can read, edit and hire against.” Before any rule fires [R]: Sending domains separated and aged · SPF, DKIM and DMARC aligned · Suppression honoured · Records verified before send. Rules [N] (When → Then → Channel → Owner): 1 An account in the ICP opens a sales-leadership or RevOps role → it moves to this quarter's priority list, and the account owner gets a brief → Email, then LinkedIn → Account owner · 2 A second person from a priority account replies or books → the champion gets the committee one-pager from the Narrative OS → Email → Account owner · 3 A deal sits in security review for ten working days → the risk-review pack goes to the champion, and a technical call is offered → Email → AE + SE · 4 A reply names a competitor → the objection is logged and answered from the Narrative OS → CRM task → Account owner · 5 A sending domain's complaint rate rises → sending pauses on that domain, and the operator is alerted → — → Operator. SpecimenTag “Specimen · illustrative rules. Every install writes its own from the ICP & Signal Map.”",
+              "interaction": "Each rule row is a real button (aria-pressed); choosing/focusing it plots its route on the small TRACE. Rule text always visible; the drawing is aria-hidden."
+            },
+            "gtm-intelligence": {
+              "layout": "DS · slope chart, two columns (Last quarter | This quarter) with ink lines joining ranks; margin cols 10–12.",
+              "artifact": "A Rebuild Sequence, re-scored. States as words, not colours. The one red: the “Up” line.",
+              "content": "Label “■ A page from the Rebuild Sequence” · h3 [N] “One quarter, re-scored.” Items [N]: Committee one-pager for security buyers 4→1 Up — “win/loss named security review as the stall” · Win/loss interviews on lost deals 2→2 Kept · Route hiring-signal accounts to AEs 3→3 Kept · Retire the “platform” message 1→— Shipped · Second-segment narrative —→4 New · Weekly list refresh 5→— Cut — “no lift in the signal”. Below [K asset 05] “Signal Dashboard — the readouts your GTM decisions run on.” Margin: “45% · of sales leaders highly confident in their forecast accuracy · Gartner, 2020 ↗” (47% sub-claim dropped) · “Field note · Revenue entropy →”. SpecimenTag “Specimen · an illustrative quarter. No client data, and no figures that read as results.”",
+              "interaction": "None."
+            }
+          }
+        },
+        {
+          "id": "capability-runs",
+          "name": "How it runs · through the method",
+          "job": "“Who keeps it running after handover?” — the layer's output at each phase of the homepage method; Calibrate always “run by your operator or with us on retainer”.",
+          "layout": "Varies: PT horizontal phase track / RB vertical runbook / CL 13-week calendar ruler.",
+          "artifact": "Per page.",
+          "content": "Per page (see variants). Link “The method, on one page → /#methodology”.",
+          "surface": "dark",
+          "motion": "Play-once draw.",
+          "interaction": "None.",
+          "variants": {
+            "narrative-systems": {
+              "layout": "PT · five typographic columns on one hairline; Handover a datum; Calibrate runs off the right edge and splits into two lanes. No bars (distinct from the homepage gantt).",
+              "content": "Label “■ How it runs” · h3 [N] “From the readout to your operator.” [N] Diagnose · How the market repeats you today: the narrative readout. · Architect · Positioning and the message matrix, decided with your leadership. · Install · Site, deck, sequences and talk tracks moved onto the system. · Handover · Narrative OS and Channel Playbooks, in your stack, in your language. · Calibrate · Message versions retuned each quarter on what buyers repeat back. Lanes [N] (FC scope): Your operator — edits the Narrative OS as the market argues back; writes new segments and launches inside the system. · With us on retainer — we write and ship the next version, and keep the objection answers current. Under both: “Who owns it · You, in both lanes.”"
+            },
+            "gtm-infrastructure": {
+              "layout": "RB · vertical numbered runbook with a sticky label column, ending in a two-column run-sheet.",
+              "content": "Label “■ How it runs” · h3 [N] “Built once. Kept running.” [N] Diagnose · Where the machine leaks today: the channel orchestration map. · Architect · The route, the data model and the CRM blueprint, decided with your RevOps lead. · Install · Built in your stack and run at low volume with your team before it scales. · Handover · ICP & Signal Map, Orchestration Rules and the runbook; your operators trained. · Calibrate · Placement, data decay and routing tuned as signals shift. Run-sheet [R] (FC): Each month — Inbox placement and domain reputation watched; incidents handled · The data pipeline refreshed, decayed records cleared. Each quarter — Routing rules retuned as signal patterns shift · Capacity planned ahead of demand. Foot [N] “Your operator runs these from the runbook, or we do on retainer. Either way, the machine stays in your stack.”"
+            },
+            "gtm-intelligence": {
+              "layout": "CL · 13-week calendar ruler with a numbered agenda in the right column. Sits BEFORE the specimen on this page.",
+              "artifact": "MEASURE ruler: weekly signal-review ticks, dashed win/loss marks, week 13 “Calibration readout”. The one red: the week-13 tick.",
+              "content": "Label “■ How it runs” · h3 [N] “Calibrate is a standing cadence.” Agenda [R] (FC): 1 What the signal says — monitoring and priorities refreshed. 2 Why deals moved — new win/loss interviews. 3 What held, what to stop — message versions and plays compared. 4 What ships next quarter — the Rebuild Sequence re-scored. Foot [N] “In the room: your operator and your leadership. On retainer, we run it. Before the first quarter, the install builds the signal taxonomy from your closed-won history, stands up the win/loss interviews and puts the dashboard in your stack.”"
+            }
+          }
+        },
+        {
+          "id": "capability-door",
+          "name": "Door · decision band (D1) + sibling strip",
+          "job": "Conversion moment naming what the audit returns for this layer (documented scope only), plus the loop to the other two layers.",
+          "layout": "D1 decision band; ruled seam.",
+          "artifact": "Small object: a mini readout-part sheet. SiblingStrip with the three glyphs, “You are here” on this one. Red: the button.",
+          "content": "Label “■ Starts with the audit”. Doors: red “Request a System Audit” → /audit · quiet “Talk to the team” → /contact.",
+          "surface": "dark",
+          "motion": "Reveal.",
+          "interaction": "Links.",
+          "variants": {
+            "narrative-systems": { "content": "Line [N] (FC) “The audit's narrative readout shows how your market repeats you today, and where the story comes apart.” Siblings [R]: “Carried by · GTM Infrastructure →” · “Measured by · GTM Intelligence →”." },
+            "gtm-infrastructure": { "content": "Line [N] (FC) “The audit's channel orchestration map shows how demand moves across your channels today, and where it leaks.” Siblings: “Carries · Narrative Systems →” · “Read by · GTM Intelligence →”." },
+            "gtm-intelligence": { "content": "Line [N] (FC) “The audit's intelligence gap report shows what your GTM decisions rest on today, and what nobody is measuring.” Siblings: “Feeds · Narrative Systems →” · “Reads · GTM Infrastructure →”." }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/audit",
+      "file": "audit",
+      "title": "The System Audit — Kelwin",
+      "metaDescription": "[R] A fixed-scope diagnostic of the narrative, channel and intelligence layers under your revenue. Ten working days, a written readout you keep — whether or not we go further.",
+      "oneLine": "Forward order: the ten days drawn to scale, what you keep, straight answers, then three questions and a call — the page ends on the gate.",
+      "question": "What exactly do I get in ten days, what does it ask of me, am I a fit, and how do I book?",
+      "template": null,
+      "chrome": "No nav item lights on /audit; the outlined “Audit request ↗” gets aria-current=\"page\" and jumps to #qualify.",
+      "sections": [
+        {
+          "id": "audit-head",
+          "name": "Header · the ten days, to scale",
+          "job": "Pick up the method's Diagnose output and the CTA's ruler; say what you give and get before asking anything.",
+          "layout": "Specimen-sheet header with band kind RU (ten-day ruler).",
+          "artifact": "MEASURE: the homepage CTA's ten-tick ruler drawn large — Day 01 “Kickoff”, Day 10 “Readout” [K]; a “Read-only access” bar through the window; a bracket over days 02–09 “Two 90-minute working sessions, scheduled with you” [R] (no invented days); a dotted continuation past day 10 “After the readout · If installation makes sense, we scope it there. If not, the plan is still yours.” [K]. The one red: the Day 10 tick.",
+          "content": "Label “■ The System Audit” · meta “Phase 01 / 04 · Diagnose” [K homepage CTA]. H1 [N] “The real constraint, / named in writing.” Lede [R] “Ten working days, fixed scope. We read your narrative, channels and data, and you get a written readout naming the constraint and the order to fix it in — yours whether or not we go further.” Facts: You provide · Two 90-minute sessions and read-only access to your CRM and channel stack [K D8] · You receive · A written readout and a sequenced rebuild plan [K AuditSpec] (FC) · Starts with · Three questions ↓ [N] → #qualify.",
+          "surface": "dark",
+          "motion": "Ruler calibrates (20ms tick stagger), then the window fills.",
+          "interaction": "Facts link jumps to #qualify. Phone: ruler stays horizontal; callouts stack below."
+        },
+        {
+          "id": "audit-readout",
+          "name": "What you keep · four sheets",
+          "job": "What the readout is, one part per layer; pays off the homepage's “Find your weakest layer”.",
+          "layout": "FS sheet set (four FOLIO sheets) on paper.",
+          "artifact": "Four FOLIO sheets dealt from a stack, each tagged and linked to its capability page. SpecimenTag “Specimen · structure only.”",
+          "content": "Label “■ What you keep” · h3 [N] “One readout, four parts.” Sheets (reads [K AuditSpec 01 split] → report [K AuditSpec 03] (FC)): 01 Narrative readout — how your market repeats your story → Narrative Systems · 02 Channel orchestration map — how demand actually moves across your channels → GTM Infrastructure · 03 Intelligence gap report — what your GTM decisions are based on → GTM Intelligence · 04 Sequenced rebuild plan — the order to fix things in. Yours either way. Line [N] “The readout names your weakest layer first.” Link [N] “See the shape of a full readout, as a specimen → /reports”. “A 60-minute readout call” appears only if confirmed (FC).",
+          "surface": "light",
+          "motion": "Sheets deal (600ms, 100ms stagger), once.",
+          "interaction": "Sheet links."
+        },
+        {
+          "id": "audit-faq",
+          "name": "Straight answers · the approved FAQ (verbatim)",
+          "job": "Objections answered before the gate; its red now moves FORWARD to #qualify.",
+          "layout": "FQ — the built v5 FAQ (src/components/audit/faq), unchanged.",
+          "artifact": "None (drawing-free by design).",
+          "content": "[K] verbatim: head “Straight answers, / before the call.”, lede, six Q&As, red “Request a System Audit” → /audit#qualify, quiet “Something we didn't cover? Ask the founding team →”.",
+          "surface": "dark",
+          "motion": "[K] ledger: 01 rests open, orchestrated open at 1.6s cancelled by the first click.",
+          "interaction": "[K] one row open at a time; real buttons with aria-expanded/aria-controls; closed answers inert."
+        },
+        {
+          "id": "audit-gate",
+          "name": "Three questions · the gate (#qualify)",
+          "job": "The page's conversion moment: qualify in both directions, then book.",
+          "layout": "GT gate, one question per screen. Ruled seam.",
+          "artifact": "Three-tick mini ruler as progress, with “Question n of 3” in text. Red: “Book the strategic call”, only in the qualified state.",
+          "content": "Label “■ Three questions” · h3 [R] “Three questions, then a call.” Lede [R] “One tap each. Your answers travel with the request, and the gate works in both directions.” Q01–Q03 copy and decline logic [K] (pre-revenue and pure self-serve/PLG decline; Q03 diagnostic only). Answer rows: label + detail ≥13.5px. Q03 “Where the audit looks first” [N]: Not enough pipeline → GTM Infrastructure · Pipeline dies mid-funnel → Narrative Systems · The message isn't landing → Narrative Systems · Honestly unsure → “All three. That's what the audit is for.” (“It still reads all three.”). Declined: h3 [R] “Not a fit yet.” + the option's reason [K] + [R] “Saying so now costs you nothing. When it changes, the audit will be here.” + “Read the field notes meanwhile →” · “Talk to the team anyway →” [K] + “← Change last answer” · “Restart” [K]. Qualified: h3 [R] “Qualified. Let's find a time.” + three-line summary [K] + layer line + [N] “On the call we'll ask one more thing: who inside will own the system.” + red “Book the strategic call” [K] (mailto to audit@kelwin.co, subject/body unchanged) + note [R] “This opens your own mail app with your answers filled in, addressed to audit@kelwin.co. We reply with times within one working day (FC). Thirty minutes, no SDR handoff.” After click [N] “Your mail app should have opened with the request ready. Nothing is sent until you press send. If it didn't open, copy the address: audit@kelwin.co” + Copy. Under-note [R] “Not ready for any of this? Talk to the team — no qualification needed.”",
+          "surface": "dark",
+          "motion": "Step bodies fade in (240ms); none under reduced motion.",
+          "interaction": "Client component. Focus moves to each new question heading; aria-live=\"polite\" announces step and result; answers persist in the URL hash (refresh/Back keep progress); Back on steps 2–3; Change last answer; Restart; MailtoConfirm after booking. No calendar tool, backend or analytics (Privacy coupling)."
+        }
+      ]
+    },
+    {
+      "route": "/contact",
+      "file": "contact",
+      "title": "Talk to the team — Kelwin",
+      "metaDescription": "[K] The general channel — questions, information requests, partnerships, press. Straight to the founding team; no CRM, no sequence.",
+      "oneLine": "The low-intent door, first-class and human: you're writing to a person, here is the memo, plain email if you'd rather, and the audit said once, quietly.",
+      "question": "Who reads this, how fast, and will I end up in a sequence? Can I ask for X?",
+      "template": null,
+      "sections": [
+        {
+          "id": "contact-head",
+          "name": "Header · text sheet (no band)",
+          "job": "Land on the letter's approved line and answer who reads it and when.",
+          "layout": "Specimen-sheet header, band kind TX (no band — the form is the page's object).",
+          "artifact": "None.",
+          "content": "Label “■ Talk to the team” · meta “Contact”. H1 [N from letter K] “Write to us. / A person answers.” Lede [N] “Questions, a document, press, the Lab — or you're not sure yet what you need. This is the channel. It goes to one inbox, a person reads it, and nothing you send enters a CRM or a sequence.” Facts: Read by · The founder (FC) · Reply · Within two working days [K] (FC) · Ready to diagnose? · The System Audit ↗ [N] (quiet). D·01/D·02 cards and the triple “two doors” statement cut.",
+          "surface": "dark",
+          "motion": "Head entrance only.",
+          "interaction": "Link."
+        },
+        {
+          "id": "contact-memo",
+          "name": "The memo · form as a document (#write)",
+          "job": "The page's conversion: write, with honest routing for specific requests.",
+          "layout": "FM form laid out as memo header lines (MemoForm), on paper.",
+          "artifact": "The form + MailtoConfirm.",
+          "content": "Lines (each a real visible label): To · Kelwin, audit@kelwin.co (static) · From · Your name · Company · Reply to · Company email (+ hint [K] “We reply to company addresses — it keeps this channel usable for the real requests.”) · About · Topic · Regarding · ref chip [K] · Message (label/placeholder/required by topic [K]). Required markers as text. Topics grouped with optgroup [R]: Working with Kelwin — Understanding what Kelwin does (default) · Exploring a future engagement | Documents & notes — Requesting a research document · Requesting a readout (was “case dossier”) · Field notes & publications | The Lab — Early access application | Everything else — Partnerships · Press & speaking · Careers & the bench list · Something else. Hints [R]: research “Research documents go out the day they're released. Our reply will tell you where yours stands.” · readout “Client readouts publish only with the client's consent, and none has cleared yet. Tell us what you'd want to see, and we'll send the readout specimen.” · Lab “Applications are read by the people building it. We reply either way.” Submit OUTLINED .ac-btn-o: “Send the message” [K] · “Ask for the document” [R] · “Submit the application” [K]. Note [R] “This opens your own mail app with the message filled in. Nothing leaves your device until you press send. How we handle what you send: Privacy →.”",
+          "surface": "light",
+          "motion": "Reveal; deep-link Regarding highlight (static under reduced motion).",
+          "interaction": "Client component. ?topic= keys dossier→Requesting a readout, research, careers, engagement, lab, + NEW notes→Field notes & publications; unknown → default; visitor's choice overrides. ?ref= chip escaped, length-capped, removable (aria-label “Remove reference”). Deep-link scroll to #write after layout settles. Mailto subject “<Topic>[ — <ref>] — <Company>”, body format [K]. Confirmation state + copy-address fallback [N]."
+        },
+        {
+          "id": "contact-coda",
+          "name": "Coda · plain email and the other door",
+          "job": "The no-form fallback, and the audit door offered quietly.",
+          "layout": "CO coda line.",
+          "artifact": "Copy button.",
+          "content": "[R] “Prefer plain email? audit@kelwin.co” + Copy. Quiet [N] “Already suspect something structural? The audit is the faster door: three questions, then a 30-minute call →” (/audit). No red on this page.",
+          "surface": "dark",
+          "motion": "None.",
+          "interaction": "Copy to clipboard with a visible confirmation."
+        }
+      ]
+    },
+    {
+      "route": "/the-lab",
+      "file": "the-lab",
+      "title": "The Lab — Kelwin",
+      "metaDescription": "[N] Kelwin's R&D: the instruments being built for the systems it installs, each shown at its true stage, and what stays yours.",
+      "oneLine": "R&D under the service: the instruments being built, each at its true stage, what stays yours, and early access as a quiet link beside the audit.",
+      "question": "What is The Lab, does it exist yet, and does it matter to my engagement?",
+      "template": null,
+      "positioningDefault": "R&D that sharpens the installs (founder Q4 decides).",
+      "sections": [
+        {
+          "id": "the-lab-head",
+          "name": "Header · the status board",
+          "job": "Answer “are they a software company?” with honest status at first glance.",
+          "layout": "Specimen-sheet header with band kind SB (status board).",
+          "artifact": "MEASURE status board: rows Signal taxonomy · Account timelines · Routing queue · Narrative resonance scoring · Entropy index; ruler stages Concept · Prototype · Used on engagements · Released; each bar ends at its TRUE stage (FC). The one red: the furthest bar's end tick. No captures, no blur, no version numbers.",
+          "content": "Label “■ The Lab” · meta “R&D”. H1 [N] “The instruments / under the service.” Lede [R] “The Lab is Kelwin's R&D. It builds the tools our architects use to diagnose, install and calibrate revenue systems. Everything on this page is in development, and says how far along it is.” Facts: Status · In development [K] · Access · By application, install clients first (FC) · Your data · Anonymised and aggregated only, under your engagement agreement ↗ (/privacy) [K Privacy L·07].",
+          "surface": "dark",
+          "motion": "Ruler calibrates; bars extend to their stage once.",
+          "interaction": "None."
+        },
+        {
+          "id": "the-lab-why",
+          "name": "Why build them · short essay",
+          "job": "The thesis, trimmed, without re-arguing the homepage.",
+          "layout": "ES short essay, three paragraphs. Ruled seam.",
+          "artifact": "Type only.",
+          "content": "[R] “A CRM records what happened. It doesn't decide what happens next.” · “Data vendor, sequencer, enrichment, dialer, notes: five tools with no shared memory. Whatever a motion learns is scattered across them.” · “A generic model writes the same sentences for you as for your competitors. The useful instrument is one trained on what an engagement teaches — anonymised and aggregated, as the engagement agreement spells out.” Conclusion [R] “So the Lab builds instruments for each layer we install, inside a system the client owns.” Cut: “the end of GTM software”, “filing cabinet wearing a dashboard”, “mathematically dead”, “or it's autocomplete”, T·02.",
+          "surface": "dark",
+          "motion": "Still beat.",
+          "interaction": "None."
+        },
+        {
+          "id": "the-lab-instruments",
+          "name": "The instruments · ledger (the board's legend)",
+          "job": "What each instrument reads, and whether it's used on engagements yet; reconcile with GTM Intelligence.",
+          "layout": "LG ledger that opens in place. Ruled seam.",
+          "artifact": "Type and hairlines.",
+          "content": "Rows [R] (stage and use FC): Signal taxonomy — which signals come before revenue · Account timelines — the whole deal, in one view · Routing queue — proposes the next touch for an operator to approve · Narrative resonance scoring — which message versions buyers repeat · Entropy index — how much a motion keeps from one quarter to the next (links to the definition in /insights/revenue-entropy). Each: stage · used on engagements: yes / not yet. Line [N] “Today the intelligence layer is delivered by the method and the people running it. These instruments are being built to make that work faster. → GTM Intelligence”.",
+          "surface": "dark",
+          "motion": "Row open 360ms.",
+          "interaction": "Real buttons, aria-expanded/aria-controls."
+        },
+        {
+          "id": "the-lab-close",
+          "name": "Early access and the audit · split close (SC)",
+          "job": "Route interest correctly: the application is a quiet link (C5); the audit is the page's one red door.",
+          "layout": "SC split close on paper: early-access terms cols 1–7 · audit door cols 9–12.",
+          "artifact": "Terms as a document (Asks · Returns · Your data). Red: the audit button.",
+          "content": "Asks [K, lightly edited]: A sales-carried B2B motion with live pipeline to instrument · Read access to the signals we measure — anonymised, exportable, yours · One named operator in a working session, twice a month · [R] Tolerance for rough edges while it's being built. Returns [R]: A first look at each instrument · A hand in what ships · A direct line to the people building it. Your data [R Privacy L·07]: Stays yours: the system, the assets, your data, your documents · The Lab keeps: anonymised, aggregated patterns, as your engagement agreement spells out. Quiet .ac-link “Apply for early access →” → /contact?topic=lab&ref=Early%20Access%20Protocol [K, C5]. Note [R] (FC) “Audit and install clients are offered places first. If the fit isn't there yet, we say so.” Right: [N] “The service comes first, and it starts with the audit.” + red “Request a System Audit” + quiet “Talk to the team”. Onward [N] “Where these instruments are used → GTM Intelligence”. Held for founder Q4: P/04 standalone console, founding terms, “partner requests outrank our roadmap”, “cohort one capped small”, “Build 0.5”, “advisory funds the Lab”.",
+          "surface": "light",
+          "motion": "Reveal.",
+          "interaction": "Links; topic=lab copy on /contact must stay in sync."
+        }
+      ]
+    },
+    {
+      "route": "/insights",
+      "file": "insights",
+      "title": "Insights — Kelwin",
+      "metaDescription": "[R] Short field notes on how revenue systems break — each starting from a symptom you can check, each diagnosing one layer, with sources.",
+      "oneLine": "Field notes, published: a register of what each note diagnoses, the note to read first, and everything being written — with honest statuses.",
+      "question": "Does this firm think clearly about my problem, and is there something I can read before I talk to anyone?",
+      "template": null,
+      "sections": [
+        {
+          "id": "insights-head",
+          "name": "Header · the register",
+          "job": "Land on the letter's “Field notes, published” and show which layer each note diagnoses.",
+          "layout": "Specimen-sheet header with band kind RG (register).",
+          "artifact": "Register: three published notes as rows (symptom line, title as a real h2 link, date · read time) × three layer columns headed by glyphs; a filled square marks the layer each note diagnoses. The one red: the “Read first” tag on FN·01.",
+          "content": "Label “■ Insights” · meta “Resources / 01”. H1 [K letter label] “Field notes, / published.” Lede [N] “Short notes on how revenue systems break. Each starts from a symptom you can check in your own company this week, and names its sources.” Facts: Published · Three notes, May–June 2026 [K] · In the works · Three notes, three longer documents · New notes · By email when they ship ↗ (/contact?topic=notes). Rows [N symptoms; K titles/dates]: FN·01 “We need more pipeline.” — Revenue entropy — June 2026 · <n> min — all three layers · FN·02 “Buyers can't retell you.” — The 17% window — June 2026 · <n> min — Narrative Systems · FN·03 “The dashboard says ‘delivered’.” — Deliverability is infrastructure — May 2026 · <n> min — GTM Infrastructure. (Read times per founder Q6.)",
+          "surface": "dark",
+          "motion": "Rows draw, squares seat, once.",
+          "interaction": "Row links. Phone: list rows with layer chips."
+        },
+        {
+          "id": "insights-read-first",
+          "name": "Read first · excerpt sheet",
+          "job": "A real reading taste of the founder's thinking, not a card grid.",
+          "layout": "EX excerpt sheet on paper; margin cols 10–12.",
+          "artifact": "Margin: “Diagnoses · all three layers” + a small split-line teaser of the note's figure.",
+          "content": "FN·01 standfirst and first paragraph [K]; byline “Rameez · June 2026” (FC); “Read the note →”. The band carries no deks, so nothing duplicates the standfirst.",
+          "surface": "light",
+          "motion": "Reveal.",
+          "interaction": "Link."
+        },
+        {
+          "id": "insights-in-the-works",
+          "name": "In the works · static status ledger",
+          "job": "Every unpublished note and research document in one honest list (research moved from /reports).",
+          "layout": "LG static status ledger. Ruled seam.",
+          "artifact": "Type and hairlines.",
+          "content": "[K titles, R statuses]: FN·04 “Signal over sequence” · GTM Intelligence · Drafting · FN·05 “The language committees repeat” · Narrative Systems · Drafting · FN·06 “Q1 resets are a choice” · GTM Intelligence · Drafting · R·01 “The Revenue Entropy Index — 2026 benchmark” · status per founder Q4 (no date until confirmed) · R·02 “Signal-Based Selling — the field spec” · In production · R·03 “The Deliverability Spec Sheet” · Drafting. Each row “Send it to me when it's ready →” (/contact?topic=notes or ?topic=research&ref=R·0n). Note [N] “No publication dates until they're written.”",
+          "surface": "dark",
+          "motion": "Reveal.",
+          "interaction": "Deep links into /contact."
+        },
+        {
+          "id": "insights-door",
+          "name": "Door · statement close (D2)",
+          "job": "Conversion moment.",
+          "layout": "D2 statement close. Ruled seam.",
+          "artifact": "Red: the button.",
+          "content": "Statement [N] “The notes name the layer. / The audit finds yours.” Lede [N] “Ten working days on your own system, and a written readout you keep.” Doors: red · quiet. Onward [N] “What does a readout look like? → Reports”.",
+          "surface": "dark",
+          "motion": "Head entrance.",
+          "interaction": "Links."
+        }
+      ]
+    },
+    {
+      "route": "/insights/{revenue-entropy | the-17-percent-window | deliverability-is-infrastructure}",
+      "file": "article",
+      "title": "<Note title> — Kelwin",
+      "oneLine": "One argument at reading quality, one drawn figure where it turns, its sources, and a way on to its layer and the next note.",
+      "question": "Is my problem really what I think it is, and how would I tell?",
+      "template": "article",
+      "templateRules": "Slugs, titles, dates and metadata titles survive (the approved homepage letter links all three). Fix the missing space after bold lead-ins (6 of 10). <em> at weight 600, never italic. ≤1 pull quote, never repeating adjacent text. Mono “Field reading” panels become 15px Mona margin notes. The shared coda “If this note reads like your quarter…” retires.",
+      "instances": [
+        {
+          "route": "/insights/revenue-entropy",
+          "file": "revenue-entropy",
+          "title": "Revenue entropy: why pipeline problems rarely start in the pipeline — Kelwin",
+          "metaDescription": "[K] How unclear narrative, unrouted signal, and resetting campaigns all present as “not enough leads” — and how to read the difference before fixing the wrong layer.",
+          "oneLine": "One symptom, three causes — and three questions that tell you which layer is broken."
+        },
+        {
+          "route": "/insights/the-17-percent-window",
+          "file": "the-17-percent-window",
+          "title": "The 17% window — Kelwin",
+          "metaDescription": "[R] B2B buyers spend roughly 17% of the journey with sales — every vendor combined. The deal is argued in the other 83%, by people you'll never meet.",
+          "oneLine": "The deal is argued where you aren't — so the narrative has to survive being retold."
+        },
+        {
+          "route": "/insights/deliverability-is-infrastructure",
+          "file": "deliverability-is-infrastructure",
+          "title": "Deliverability is infrastructure — Kelwin",
+          "metaDescription": "[K] Domains, authentication, warmup, and list discipline — the unglamorous mechanics that decide whether your message exists at all.",
+          "oneLine": "“Delivered” isn't “arrived” — the floor under every channel, specified."
+        }
+      ],
+      "sections": [
+        {
+          "id": "article-head",
+          "name": "Header · text sheet",
+          "job": "Title, standfirst and who wrote it; no band.",
+          "layout": "Specimen-sheet header, band kind TX; two-voice H1 at 64–72px.",
+          "artifact": "None.",
+          "content": "Label “■ <Layer>” · meta “Field note · <Month Year>” (<time> element). Lede = standfirst. Facts: Written by · Rameez, founder (FC) · Reading · <n> min (founder Q6) · About · <layer page> ↗.",
+          "surface": "dark",
+          "motion": "Head entrance.",
+          "interaction": "Link.",
+          "variants": {
+            "revenue-entropy": { "content": "Label “■ Diagnosis · all three layers”. H1 [K split] “Revenue entropy: / why pipeline problems rarely start in the pipeline.” Standfirst [K], with “Every founder we audit…” re-voiced per founder Q2." },
+            "the-17-percent-window": { "content": "Label “■ Narrative Systems”. H1 [K] “The 17% window.” + accent [N] “Where the deal is argued.” (display only; the title itself unchanged). Standfirst [R]: “…the other 95%” → “the other 83%” (founder Q6); Gartner named and linked." },
+            "deliverability-is-infrastructure": { "content": "Label “■ GTM Infrastructure” (the “Outbound” chip dropped). H1 [K split] “Deliverability / is infrastructure.” Standfirst [K]." }
+          }
+        },
+        {
+          "id": "article-body",
+          "name": "The note · reading spread with one figure",
+          "job": "The founder's argument at reading quality, with one drawing where it turns.",
+          "layout": "RD reading spread on paper: column cols 3–8 (~66ch, 17–18px); margin cols 10–12 (layer glyph, numbered source sidenotes, “What to look for” notes); one figure spans cols 1–12.",
+          "artifact": "Per note (see variants).",
+          "content": "Body text [K] except the edits listed per note. First-person experience claims worded per founder Q2.",
+          "surface": "light",
+          "motion": "The figure plays once at 40% visible.",
+          "interaction": "Per note.",
+          "variants": {
+            "revenue-entropy": {
+              "artifact": "“One symptom, three causes”: one line “We need more pipeline” splits into Narrative failure → Narrative Systems · Signal failure → GTM Infrastructure · Memory failure → GTM Intelligence; then the note's three questions [K] as a self-check with Yes/No toggles — a “No” lights its layer's glyph. Nothing stored. The bullet list stays in the markup.",
+              "content": "Define “revenue entropy” once here as Kelwin's term (the Lab and R·01 link to it). Cut the pull quote that repeats paragraph 2. Re-voice “In the audits we've run…” (Q2). Fix “A narrative failure.The market…” spacing.",
+              "interaction": "Toggle buttons (aria-pressed), result announced politely."
+            },
+            "the-17-percent-window": {
+              "artifact": "“The retelling”: four hops Demo → Champion → CFO → Committee; two sentences from the note travel through — “They install X, which produces Y” survives every hop; “They help us grow faster” loses words hop by hop until nothing is left. Type only; no CONTOUR, no 17/100 bar.",
+              "content": "One framing (17% all suppliers, ~5% any one, “the other 83%”). Link Gartner (URL already in capability-data.tsx). Cut or re-voice the “strongest single predictor of close… in deals we've instrumented” finding (Q2). “which pages the CFO's office reads” → “which other roles at the account start engaging”.",
+              "interaction": "None."
+            },
+            "deliverability-is-infrastructure": {
+              "artifact": "“Delivered isn't arrived”: a dashboard tile reads “Delivered” over 100 sends; beneath it a MEASURE bar 83.5 inbox · 6.7 spam · 9.8 missing (Validity, 2025, legitimate marketing email, global; linked). Red: the missing segment.",
+              "content": "“The floor, specified” becomes an .ac-spec of four rows [K text]. Add Google and Yahoo 2024 sources with the bulk-sender qualifier; add the Apple Mail Privacy Protection caveat on open rates; re-voice “domains we audit” and “the pattern we see most” (Q2).",
+              "interaction": "None."
+            }
+          }
+        },
+        {
+          "id": "article-sources",
+          "name": "Sources and onward",
+          "job": "Sources in full; the layer this note is about; the next note.",
+          "layout": "SP spec list.",
+          "artifact": "None.",
+          "content": "Sources as .ac-spec: source · year · link ↗ (visually hidden “opens in a new tab”). “This note is about · <Layer> →” · “Next note →” (cycles 01→02→03).",
+          "surface": "dark",
+          "motion": "None.",
+          "interaction": "Links."
+        },
+        {
+          "id": "article-door",
+          "name": "Door · compact decision band (D1)",
+          "job": "Conversion moment with a per-note line.",
+          "layout": "D1 compact. Ruled seam.",
+          "artifact": "Red: the button.",
+          "content": "Doors: red “Request a System Audit” · quiet “Talk to the team”.",
+          "surface": "dark",
+          "motion": "Reveal.",
+          "interaction": "Links.",
+          "variants": {
+            "revenue-entropy": { "content": "Line [N] “The audit's first job is to say which of the three it is.”" },
+            "the-17-percent-window": { "content": "Line [N] (FC) “The audit's narrative readout checks whether your champion can retell you.”" },
+            "deliverability-is-infrastructure": { "content": "Line [N] (FC) “The audit reads your sending setup alongside the rest of your channel stack.”" }
+          }
+        }
+      ]
+    },
+    {
+      "route": "/reports",
+      "file": "reports",
+      "title": "Reports — Kelwin",
+      "metaDescription": "[N] The format of a Kelwin readout, shown in full as a specimen. Client readouts are published only with the client's consent, and none has cleared yet.",
+      "oneLine": "The honest proof surface: none cleared yet, said first — then the exact shape of a readout, as a specimen, and how publishing works.",
+      "question": "Show me proof. Who have you done this for, and can I see a real one?",
+      "template": null,
+      "sections": [
+        {
+          "id": "reports-head",
+          "name": "Header · the sheet deal",
+          "job": "Answer “what would I get?” and state the honest status in the facts.",
+          "layout": "Specimen-sheet header with band kind DL (sheet deal).",
+          "artifact": "FOLIO: six section sheets deal from a stack into a row — The constraint · Narrative readout · Channel orchestration map · Intelligence gap report · Rebuild sequence · Next step — each with its own furniture. The one red: sheet 01's tag. No datum, no dashed→solid (homepage handover's devices).",
+          "content": "Label “■ Reports” · meta “Resources / 02”. H1 [N] “What a readout / looks like.” Lede [N] “Every audit ends in a written readout, and it belongs to the client. We publish one only when a client asks us to, and none has cleared yet. Until one does, this page shows the format in full, as a specimen.” Facts: Cleared for publication · None yet · This page shows · The format, as a specimen · Your own · Starts with the System Audit ↗.",
+          "surface": "dark",
+          "motion": "Sheets deal (600ms, 100ms stagger), once.",
+          "interaction": "None."
+        },
+        {
+          "id": "reports-readout",
+          "name": "The readout, annotated · full document specimen",
+          "job": "The signature artifact: the deliverable shown in full, with no figures that read as results.",
+          "layout": "DS one long sheet cols 2–9, callouts cols 10–12.",
+          "artifact": "Annotated readout. Callouts [N]: One sentence, no hedging · In your buyers' words · Where it leaks · Ordered by what unblocks the rest. SpecimenTag “Specimen · the format only. The examples are written to show the structure. No client data, no figures.”",
+          "content": "Sections (format [N], one “Example” each) (FC structure): 01 The constraint, named — “One sentence: the layer holding revenue back, and the evidence for it.” Example “The committee can't repeat what you do in one sentence, so deals stall at the second meeting.” · 02 Narrative readout — “How your market repeats you today, in buyers' words, across site, deck, sequences and calls.” Example: three one-line descriptions of the company (founder, seller, engineer) that don't match · 03 Channel orchestration map — “Every channel you run, what triggers each touch, and where demand leaks.” Example: a mini TRACE with two leaks marked · 04 Intelligence gap report — “What your GTM decisions rest on today, and what nobody is measuring.” Example: Known · Not written down · Not measured · 05 Rebuild sequence — “The order to fix things in, and what each step needs. Yours either way.” Example: four quarter columns · 06 Next step — “If installation makes sense, we scope it there. If not, the plan is still yours.” [K].",
+          "surface": "light",
+          "motion": "Section rules draw, callouts draw, once.",
+          "interaction": "None."
+        },
+        {
+          "id": "reports-publishing",
+          "name": "How publishing works · spec list",
+          "job": "The publication rule, stated plainly.",
+          "layout": "SP spec list.",
+          "artifact": "Type only.",
+          "content": "Yours by default · Your readout is yours to keep [K sense] · Published only with written consent [R] · Names and figures removed on request [N] (FC) · When one clears, it appears here first [N].",
+          "surface": "dark",
+          "motion": "Reveal.",
+          "interaction": "None."
+        },
+        {
+          "id": "reports-door",
+          "name": "Door · decision band (D1)",
+          "job": "Conversion moment.",
+          "layout": "D1. Ruled seam.",
+          "artifact": "Red: the button.",
+          "content": "Line [R] “Your readout is yours to keep. Publishing it is always your call.” Doors: red “Request a System Audit” · quiet “Talk to the team first” [K]. Link “Field notes, and the research in progress → /insights”. Cut: CS·01/CS·02 and their six metrics, profiles and 2026 windows; “Not testimonials — telemetry”; the terminal; “Request the full dossier”; “Cleared dossiers ship to your company inbox”.",
+          "surface": "dark",
+          "motion": "Reveal.",
+          "interaction": "Links."
+        }
+      ]
+    },
+    {
+      "route": "/privacy | /terms",
+      "file": "legal",
+      "title": "Privacy Policy — Kelwin | Terms of Service — Kelwin",
+      "oneLine": "Plain documents, findable and readable, visibly in draft until counsel signs.",
+      "question": "What happens to my data, and what am I agreeing to by using this site?",
+      "template": "legal",
+      "templateRules": "Clause text verbatim [K] apart from the flagged syncs. “LEGAL · K-PRIV/01” and “L·0n” codes retire. Effective date moves if launch changes content.",
+      "instances": [
+        {
+          "route": "/privacy",
+          "file": "privacy",
+          "title": "Privacy Policy — Kelwin",
+          "metaDescription": "[K] What Kelwin collects (very little), what happens when you write to us, and your rights. No cookies, no trackers, no analytics.",
+          "oneLine": "What we collect: almost nothing — the complete list.",
+          "syncs": "L·02 “the bench clearance request” → “the bench list request” (same day as /careers ships). L·01–L·03 and L·08 rewritten the same day if anything new collects data or calls a third party."
+        },
+        {
+          "route": "/terms",
+          "file": "terms",
+          "title": "Terms of Service — Kelwin",
+          "metaDescription": "[K] The terms that govern use of the Kelwin website — content, specimens, intellectual property, and the boundary between this site and an engagement agreement.",
+          "oneLine": "The short, readable version — including the honesty rule behind every artifact labelled Specimen.",
+          "syncs": "L·03 list [R] → “the readout specimen, the message matrix, orchestration rules and Rebuild Sequence specimens, and any artifact marked Specimen”. L·02 “the audit” links to /audit. L·08 “[JURISDICTION — EDIT ME]” is a go-live blocker (founder Q8)."
+        }
+      ],
+      "sections": [
+        {
+          "id": "legal-head",
+          "name": "Header · contents strip",
+          "job": "Say what the document is, its status and how to ask about it.",
+          "layout": "Specimen-sheet header with band kind IX (contents strip, no drawing).",
+          "artifact": "Clause index 01–09 as .ac-idx links.",
+          "content": "Label “■ Legal” · meta “Privacy policy” / “Terms of service”. H1 [R]: “Privacy policy. / What we collect: almost nothing.” · “Terms of service. / The short, readable version.” Lede: the existing intro [K]. Facts: Effective · July 2026 [K] · Status · Draft, pending legal review [N] (FC) · Questions · audit@kelwin.co [K].",
+          "surface": "dark",
+          "motion": "None.",
+          "interaction": "Index links; phone: the strip becomes an .ac-toggle list.",
+          "variants": {
+            "privacy": { "content": "H1 “Privacy policy. / What we collect: almost nothing.” Lede [K] “Kelwin's whole data practice fits on one page, because the honest answer to ‘what do you collect?’ is: almost nothing. Here is the complete list.”" },
+            "terms": { "content": "H1 “Terms of service. / The short, readable version.” Lede [K] “The short, readable version of what governs this website — including the honesty rule behind every artifact labeled ‘Specimen’.”" }
+          }
+        },
+        {
+          "id": "legal-body",
+          "name": "The clauses · reading column",
+          "job": "The text, verbatim and readable.",
+          "layout": "RD reading column cols 3–9 on paper; plain clause numbers in the margin.",
+          "artifact": "None.",
+          "content": "Clauses verbatim [K] except syncs (see instances[].syncs).",
+          "surface": "light",
+          "motion": "None.",
+          "interaction": "Anchored headings for the index."
+        },
+        {
+          "id": "legal-close",
+          "name": "Quiet close",
+          "job": "Questions route and the sibling document.",
+          "layout": "QC quiet close.",
+          "artifact": "None. No red.",
+          "content": "“Questions about this document → audit@kelwin.co” · “Terms →” / “Privacy →”.",
+          "surface": "dark",
+          "motion": "None.",
+          "interaction": "Links."
+        }
+      ]
+    },
+    {
+      "route": "/404",
+      "file": "not-found",
+      "title": "(approved, unchanged)",
+      "oneLine": "Approved in round 7 (C6); the reference for km-page + Slot + head grammar on every interior page.",
+      "question": "Where did the page go?",
+      "template": null,
+      "sections": [
+        {
+          "id": "not-found-page",
+          "name": "Approved 404",
+          "job": "Unchanged.",
+          "layout": "Approved (src/app/not-found.tsx).",
+          "artifact": "None.",
+          "content": "[K] “Nothing is built / at this address.” · red “Request a System Audit” · “Back to the homepage”.",
+          "surface": "dark",
+          "motion": "[K]",
+          "interaction": "[K]"
+        }
+      ]
+    }
+  ],
+  "shared": [
+    {
+      "id": "shared-interior-head",
+      "name": "InteriorHead · the Specimen sheet (title block retired)",
+      "usedBy": ["every interior page"],
+      "spec": "Solid graphite nav → label row (■ label + mono breadcrumb meta; the only label row with meta) → two-voice h1 (96px at 1440, 64px floor, cols 1–9/10, one .ac-accent) → 48×2 rule → lede (cols 1–6, 20px) → facts ledger (3 rows, cols 9–12, bottom-aligned; page-specific keys; usually one quiet door) → band (cols 1–12, 280–340px, registration frame, ≤4 callouts, ≤1 dimension, exactly one red element; kinds CT TR OR RU BC MX SE SB RG DL; TX = no band; IX = contents strip) → ruled cut. No red button in any header. No “Fig.” title block. Phone: band recomposed, callouts as a keyed list; reviewed at 320/390/834/1024/1440."
+    },
+    {
+      "id": "shared-section-head",
+      "name": "SectionHead",
+      "usedBy": ["every body section"],
+      "spec": "Label row (■ label, no meta) → one-line h3 → optional lede. At most two two-voice statements per page (the h1 plus one)."
+    },
+    {
+      "id": "shared-door",
+      "name": "Door (five variants)",
+      "usedBy": ["capability ×3 (D1)", "reports (D1)", "articles (D1 compact)", "about (D2)", "insights (D2)", "who-we-work-with (D3)", "the-lab (SC)", "careers, contact, legal (QC)"],
+      "spec": "D1 decision band: label + one display sentence (32–42px) naming what the audit returns for this subject (documented scope only) + red “Request a System Audit” → /audit + .ac-link “Talk to the team” → /contact + a small page object + one onward link. D2 statement: 64px two-voice + lede + doors. D3 gate close: honest list left, gate line + doors right. SC split close: two things side by side. QC quiet close: quiet links only, no red. The red plane stays homepage-only."
+    },
+    {
+      "id": "shared-sibling-strip",
+      "name": "SiblingStrip",
+      "usedBy": ["capability ×3"],
+      "spec": "The three capability glyphs (CONTOUR · TRACE · ORBIT) in a row, “You are here” on the current one, each other one a link with its relation verb (Carried by / Measured by / Carries / Read by / Feeds / Reads)."
+    },
+    {
+      "id": "shared-specimen-tag",
+      "name": "SpecimenTag",
+      "usedBy": ["capability specimens", "audit sheets", "reports readout"],
+      "spec": "A mono “Specimen” chip (≥11px) + one support line ≥13.5px naming what is illustrative (“… No client data.”). Every illustrative artifact carries one, which keeps Terms L·03 true."
+    },
+    {
+      "id": "shared-readings",
+      "name": "Readings",
+      "usedBy": ["narrative-systems", "gtm-infrastructure", "gtm-intelligence", "articles"],
+      "spec": "≤2 per page, none of the homepage's four. Number + unit in words + source · year + link (new tab, visually hidden “opens in a new tab”), hedged as the source hedges it. Kept: 6–10 and 81%→31% (Narrative), 1 in 6 and 28% (Infrastructure), 45% (Intelligence). Re-verify every link before launch."
+    },
+    {
+      "id": "shared-mailto-confirm",
+      "name": "MailtoConfirm",
+      "usedBy": ["contact", "careers", "audit booking"],
+      "spec": "After a mailto submit: a confirmation state (“Your mail app should have opened … Nothing is sent until you press send.”) + the address with a Copy button, for visitors with no mail client. No network call (Privacy coupling)."
+    },
+    {
+      "id": "shared-memo-form",
+      "name": "MemoForm",
+      "usedBy": ["contact", "careers"],
+      "spec": "A form laid out as a document on paper: real visible labels, required as text not colour, outlined .ac-btn-o submit (never red), Privacy link at the point of collection."
+    },
+    {
+      "id": "shared-reading-spread",
+      "name": "ReadingSpread",
+      "usedBy": ["articles", "legal"],
+      "spec": "Reading column on the 12-column grid (cols 3–8/9) with a margin for sidenotes; 17–18px; ~66ch; <em> at weight 600; bold lead-in spacing fixed."
+    },
+    {
+      "id": "navbar-capabilities-plate",
+      "name": "Nav · Capabilities plate (approved, two changes)",
+      "usedBy": ["chrome"],
+      "spec": "[K] structure, glyphs, descriptors, rail “The full stack, on one page” → /#s-system. Round-7 C3: the System Audit door is paper with red text. Rename 02.2 “Outbound engine build” → “Data pipeline & signal map” (FS). Service rows read from capability-data so they always quote the pages."
+    },
+    {
+      "id": "navbar-firm-plate",
+      "name": "Nav · The Firm plate (new copy, foot band added)",
+      "usedBy": ["chrome"],
+      "spec": "F·01 About Us [K] — [N] “The founder, the rules the firm runs by, and how it's built today.” (glyph: mini rule matrix, replacing the corner-bracket glyph) · F·02 Who We Work With [K] — [N] “Three situations we're built for, and who we send away.” (glyph: three mini elevations) · F·03 Careers [K] — [N] “No open seats today. The bench list is open.” (glyph: mini seat plan). Foot band: rail [N] “The founder's letter — why Kelwin exists, in his words. →” (/#s-letter) + paper door “The System Audit” [K]. (FS: never reviewed, live today.)"
+    },
+    {
+      "id": "navbar-resources-plate",
+      "name": "Nav · Resources plate (new copy, foot band added)",
+      "usedBy": ["chrome"],
+      "spec": "R·01 Insights [K] — [N] “Field notes on how revenue systems break, one layer at a time.” · R·02 Reports [K] — [N] “What a readout looks like, and the ones clients clear.” · R·03 Talk to the team [R] (was “Get in touch”, untagged) — [N] “Questions, documents, press. A person answers.” Foot band: [K approved nav/S] “Every engagement opens with a fixed-scope audit.” + paper door “The System Audit”. (FS.)"
+    },
+    {
+      "id": "navbar-bar",
+      "name": "Nav · bar",
+      "usedBy": ["chrome"],
+      "spec": "[K] approved bar + round-7 C2 (desktop condensed translucent once scrolled). On /audit: no item lit; outlined “Audit request ↗” gets aria-current and jumps to #qualify. The Lab stays top-level by default (founder Q4). Remove PageCommand special cases from Navbar.css; update the stale “Each plate's one red” comment."
+    },
+    {
+      "id": "footer",
+      "name": "Footer",
+      "usedBy": ["chrome"],
+      "spec": "Unchanged (approved footer/U, verbatim). Every linked route survives; Methodology stays /#methodology. Interior pages render inside main.km-page so .site-grain no longer draws."
+    }
+  ],
+  "founderQuestions": [
+    "Q1 · Who is Kelwin today (D11)? You alone, or other senior people? Interior pages say “Rameez” / “the founder” and /about says “One architect today”; the approved homepage CTA and FAQ say “the founding team” — keep or change? One line of background under your name, or none? Confirm “Founder · Lead Narrative Architect” and “Based · London”. No portrait (rule 6) unless you grant one exception. Is the next seat only a Systems Engineer?",
+    "Q2 · Track record: have any audits or installs run yet, even unpublishable ones? If not, the field notes' “we audit / we've run / we see” lines become your own first-person observation, and the 17% note's “predictor of close” finding is cut (or kept as a stated hypothesis) — which?",
+    "Q3 · The rest of D8 and replies: confirm the readout's four parts (narrative readout, channel orchestration map, intelligence gap report, sequenced rebuild plan) and whether there is a 60-minute readout call — /audit and the /reports specimen are built on them. Reply times: one working day for audit bookings, two for everything else? Bench-list mail to audit@ or a careers address?",
+    "Q4 · The Lab: R&D that sharpens the installs (default) or a product heading to a standalone console? Which instruments exist today and at which stage (concept / prototype / used on engagements / released)? Install clients first? Does the advisory work fund it? Is the Entropy Index benchmark still on for Q4 2026? Keep The Lab top-level in the nav (default), or under The Firm as the footer files it?",
+    "Q5 · Approved copy that would change (yes/no each): (a) header X facts “6-week install, then retainer” → “Scoped at the readout”, “Seven artifacts you own” → the layer's two assets; (b) nav 02.2 “Outbound engine build” → “Data pipeline & signal map”; (c) The Firm and Resources plate copy, incl. “Get in touch” → “Talk to the team”; (d) one quiet “Inside this layer →” link per open System ledger row on the homepage (today the homepage never reaches a capability page).",
+    "Q6 · Your published notes: fix 95% → 83% in the 17% note? The read times show 6/5/5 min but read in about 3/2/2 (also on the homepage letter and evidence door) — correct or keep? Byline “Rameez, founder” on each note?",
+    "Q7 · How you work: is the week on /about (Mon signal review … Thu kill review, Fri written note) how your engagements will run? Careers policies — no juniors, pay published with every role, remote-first and London-based?",
+    "Q8 · Legal (go-live blocker): the governing-law jurisdiction for Terms L·08 and the legal entity name and address, from you or counsel. Until then both legal pages show “Draft, pending legal review” — agreed?"
+  ]
+}
