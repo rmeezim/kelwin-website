@@ -6,11 +6,15 @@
    Every page renders <header.kn> then <main id="main"> (then the footer), so the page-specific
    rules below key on the header's next sibling: `+ main #s-hero` is the homepage,
    `+ main > .pgc:first-child` a page that opens on a PageCommand photograph.
-   Scrolled: the same bar, compact (64px), on flat graphite with a full-bleed bottom hairline.
-   The header keeps its flow height, so nothing below it moves.
+   Scrolled, ≥1024px (round 7, C2): the bar condenses — it squeezes in to the margins, floats
+   8px under the top edge, 56px tall, framed by one hairline with sharp corners, on translucent
+   graphite with a backdrop blur (the founder's one chrome exception to the flat rule). The
+   resting hairline stays where it is and becomes the bar's foot. ≤1023px: the same bar,
+   compact (64px), on flat graphite with a full-bleed bottom hairline.
+   The header keeps its flow height in every state, so nothing below it moves.
    Plates (mega menus): flat --panel, hung from the hairline between the margins, divided by
-   full-height hairlines. One red per plate: the System Audit door (button C's cut corner).
-   No blur, no glow, no radius, no gradients.
+   full-height hairlines. The System Audit door is paper with red text (round 7, C3: one red
+   moment per view), in button C's cut corner. No glow, no radius, no gradients.
    Links carry `.kn` in their selectors: `.km a { color: inherit }` outranks a single class. */
 
 .km.kn {
@@ -71,7 +75,8 @@
 .kn.is-scrolled .kn__bar::after { opacity: 0; }
 .kn.is-scrolled .kn__bar::before { opacity: 1; }
 /* a jump (opening scrolled, back/forward restoring mid-page, landing at the top) changes state without the transition */
-.kn[data-instant] .kn__bar, .kn[data-instant] .kn__bar::before, .kn[data-instant] .kn__bar::after { transition: none; }
+.kn[data-instant] .kn__bar, .kn[data-instant] .kn__bar::before, .kn[data-instant] .kn__bar::after,
+.kn[data-instant] .kn__row, .kn[data-instant] .kn__cta { transition: none; }
 
 .kn__row {
   height: 100%;
@@ -207,17 +212,104 @@
 .kn-mega__rt { flex: none; font-weight: var(--ui-weight); font-size: 15px; line-height: 22px; }
 .kn-mega__rd { flex: 1; min-width: 0; font-size: 15px; line-height: 22px; color: var(--fg-2); }
 
+/* the door: button C inverted onto graphite — the paper-on-red pattern of the red surface (paper
+   fill, red text, pressed paper on hover), so the plate adds no second red to a view whose red
+   is already spoken for (round 7, C3). Red on paper 5.2:1, on pressed paper 4.8:1. */
 .kn .kn-door {
   --kn-cut: 14px;
   display: flex; flex-direction: column; justify-content: center; gap: 8px; min-height: 88px;
-  padding: 18px var(--kn-in); background: var(--accent); color: var(--accent-fg);
+  padding: 18px var(--kn-in); background: var(--c-paper); color: var(--c-red);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--kn-cut)), calc(100% - var(--kn-cut)) 100%, 0 100%);
   transition: background-color 200ms var(--ease-out);
 }
-.kn .kn-door:hover { background: var(--accent-hover); }
+.kn .kn-door:hover { background: var(--c-paper-2); }
 .kn .kn-door:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
 .kn-door__t { font-weight: var(--strong-weight); font-size: 14px; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; }
-.kn-door__d { font-size: 14px; line-height: 20px; color: var(--accent-fg); }   /* full paper: 5.2:1 on the red */
+.kn-door__d { font-size: 14px; line-height: 20px; color: inherit; }
+
+/* ═══ the condensed bar (≥1024px, scrolled) — round 7, C2 ═══════════════════════════════════
+   The bar squeezes in from the viewport edges to the margins (--kn-edge: the stage's content
+   edge), floats --kn-top under the top edge at --kn-hc, and turns to translucent graphite over a
+   backdrop blur, so the page shows through softly as it passes beneath. The founder's chrome-only
+   exception to the flat rule: the plates stay opaque and flat, and with a plate open the bar goes
+   solid so bar and plate read as one flat object. The tint is set so the items (--fg-2) hold
+   ≥5:1 even over pure white (5.2:1 measured over paper; the red band and graphite do better).
+   Its foot is the resting hairline: it holds still while the bar's sides close in on its ends.
+   --kn-edge resolves against the header (a size container), not the bar, so every inset inside
+   the bar stays put while the bar's own width animates (a %-based --edge inside the bar would
+   drift at viewports wider than the stage). At rest it equals --edge exactly. The bar bottoms out
+   at 64px, where html's scroll-padding (80px) expects it. Reduced motion: km-base drops every
+   transition, so the bar takes its state at once; a jump does the same (data-instant). */
+@media (min-width: 1024px) {
+  .km.kn {
+    container-type: inline-size;
+    --kn-edge: max(var(--margin), calc((100cqw - var(--stage)) / 2 + var(--margin)));
+    --kn-top: 8px;
+    --kn-hc: 56px;
+    --kn-pad: clamp(16px, 1.6667vw, 24px);  /* content inset inside the condensed bar: 24px at the stage */
+    --kn-glass: color-mix(in srgb, var(--bg) 74%, transparent);
+  }
+  .kn__bar {
+    transition:
+      left 380ms var(--ease-out), right 380ms var(--ease-out), top 380ms var(--ease-out),
+      height 380ms var(--ease-out), background-color 380ms var(--ease-out),
+      box-shadow 380ms var(--ease-out), backdrop-filter 380ms var(--ease-out);
+  }
+  .kn__bar::after {
+    left: var(--kn-edge); right: var(--kn-edge);
+    transition: left 380ms var(--ease-out), right 380ms var(--ease-out), opacity 320ms var(--ease-out);
+  }
+  .kn__row { padding-inline: var(--kn-edge); transition: padding 380ms var(--ease-out); }
+  .kn .kn__cta { transition: border-color 200ms var(--ease-out), height 380ms var(--ease-out); }
+
+  .kn.is-scrolled .kn__bar {
+    left: var(--kn-edge); right: var(--kn-edge); top: var(--kn-top); height: var(--kn-hc);
+    background-color: var(--kn-glass);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: inset 0 1px 0 var(--line), inset 1px 0 0 var(--line), inset -1px 0 0 var(--line);
+  }
+  .kn.is-scrolled.has-plate .kn__bar { background-color: var(--bg); }
+  .kn.is-scrolled .kn__bar::after { left: 0; right: 0; opacity: 1; }
+  .kn.is-scrolled .kn__bar::before { opacity: 0; }
+  .kn.is-scrolled .kn__row { padding-inline: var(--kn-pad); }
+  .kn.is-scrolled .kn__cta { height: 40px; }
+  /* condensed, the skip chip, the item ring and the action share one 40px height, so every
+     focus ring sits inside the floating frame */
+  .kn.is-scrolled .kn-skip { left: calc(var(--kn-edge) + var(--kn-pad)); top: calc(var(--kn-top) + var(--kn-hc) / 2 - 20px); }
+  .kn.is-scrolled .kn-skip:focus { height: 40px; }
+  /* a nav item fills the bar's height, so the resting ring (6px out) would break the frame's
+     top and foot: condensed, it keeps its 6px either side but sits inside the bar */
+  .kn.is-scrolled .kn__item:focus-visible { outline: 0; }
+  .kn.is-scrolled .kn__item:focus-visible::before {
+    content: ""; position: absolute; inset: calc((var(--kn-hc) - 40px) / 2) -6px;
+    border: 1px solid var(--fg); pointer-events: none;
+  }
+
+  /* the plates hang from the condensed bar's foot, edge to edge with its frame — the same
+     margin-to-margin span they have at rest. Like the hairline, a plate's inset is the mirror of
+     the bar's, on the same 380ms curve, so a plate that is open while the bar changes state
+     holds still on the margins while the bar closes in on it (or opens out from it). */
+  .kn-mega {
+    left: var(--kn-edge); right: var(--kn-edge);
+    transition:
+      clip-path 160ms var(--ease-out), opacity 160ms var(--ease-out), visibility 0s linear 160ms,
+      left 380ms var(--ease-out), right 380ms var(--ease-out);
+  }
+  .kn-mega.is-open {
+    transition:
+      clip-path 360ms var(--ease-out), opacity 200ms var(--ease-out), visibility 0s,
+      left 380ms var(--ease-out), right 380ms var(--ease-out);
+  }
+  .kn.is-scrolled .kn-mega { left: 0; right: 0; max-height: calc(100vh - var(--kn-top) - var(--kn-hc)); }
+  .kn[data-instant] .kn-mega { transition: none; }
+}
+/* no backdrop-filter: the condensed bar is near-opaque graphite instead */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @media (min-width: 1024px) {
+    .kn.is-scrolled .kn__bar { background-color: color-mix(in srgb, var(--bg) 96%, transparent); }
+  }
+}
 
 /* a narrower desktop (1024–1199): the 12px caps cannot shrink with the stage, so the items centre
    between the lockup and the action instead of on the page, on a tighter 24px pitch */

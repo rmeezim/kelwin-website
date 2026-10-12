@@ -22,10 +22,13 @@ import "./Navbar.css";
    right, one margin-to-margin hairline with a + registration mark at each end.
    · Homepage at rest it is the mockup header exactly, in normal flow; its entrance plays with
      the hero (the bar fades, the hairline draws, the two marks register).
-   · Scrolled: the same bar, compact, on flat graphite with a bottom hairline. The header keeps
-     its flow height, so nothing below it moves.
+   · Scrolled, ≥1024px (round 7, C2): the bar condenses into a narrower, shorter floating bar on
+     translucent graphite with a backdrop blur (Navbar.css). ≤1023px: the same bar, compact, on
+     flat graphite with a bottom hairline. The header keeps its flow height, so nothing below it
+     moves.
    · Capabilities / The Firm / Resources open flat graphite plates that hang from the hairline
-     (hover, click or keyboard). Each plate's one red is the System Audit door.
+     (hover, click or keyboard). The Capabilities plate ends on the System Audit door, paper with
+     red text (round 7, C3).
    · ≤1023px: a menu button opens a full-screen graphite sheet with the same items; the three
      plates become expandable groups. Focus is trapped, Escape closes, the page cannot scroll.
    · Its first stop is a skip link to <main id="main">. Links that can point at the page you are
@@ -46,7 +49,7 @@ type MegaDef = {
   id: string;
   /** One strip per column (three columns on the 12-column stage). */
   strips: MegaLink[];
-  /** The plate's foot band: an optional quiet row, then the red System Audit door. */
+  /** The plate's foot band: an optional quiet row, then the System Audit door. */
   rail?: MegaLink;
   door?: MegaLink;
 };
@@ -316,7 +319,8 @@ function Strip({ item, onNavigate }: { item: MegaLink; onNavigate: () => void })
   );
 }
 
-/* The red System Audit door — button C's cut corner, sized as the plate's corner cell. */
+/* The System Audit door — button C's cut corner, sized as the plate's corner cell; paper with red
+   text, so an open plate adds no second red to the view (round 7, C3). */
 function Door({ item, onNavigate, className }: { item: MegaLink; onNavigate: () => void; className?: string }) {
   return (
     <Link href={item.href} className={`kn-door${className ? ` ${className}` : ""}`} onClick={onNavigate}>
@@ -346,7 +350,7 @@ export default function Navbar() {
   const focusFirst = useRef(false);
   const restoreFocus = useRef(false);
 
-  /* scrolled: the compact graphite bar. When the page jumps rather than scrolls — it opens already
+  /* scrolled: the condensed bar (compact on tablet/phone). When the page jumps rather than scrolls — it opens already
      scrolled (reload), back/forward restores a mid-page position after the page has mounted, a
      navigation lands at the top from a scrolled page — the bar takes its new state at once and
      without the transition, so it never shows the resting bar over mid-page content or visibly
@@ -424,6 +428,56 @@ export default function Navbar() {
     return () => mo.disconnect();
   }, []);
 
+  /* Tabbing into the header never scrolls the page. html's scroll-padding-top (globals.css) marks
+     the top 80px of the viewport as covered, so the browser reads a control in the sticky bar as
+     hidden behind itself and scrolls the page about half a viewport up on every Tab to "reveal"
+     it, though the bar is always in view. The scroll position is taken as the Tab goes down;
+     when that Tab lands focus in the header the page is put back at once (Chromium scrolls before
+     focusin) and again on the frame's scroll event (for an engine that scrolls after it), before
+     anything paints. The script focus below (Escape, ArrowDown, the menu button) passes
+     preventScroll. */
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    let from: { x: number; y: number } | null = null;
+    let landed = false;
+    let raf = 0;
+    const putBack = () => {
+      if (from && (window.scrollX !== from.x || window.scrollY !== from.y)) {
+        window.scrollTo({ left: from.x, top: from.y, behavior: "instant" });
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Tab" || e.altKey || e.ctrlKey || e.metaKey) return;
+      from = { x: window.scrollX, y: window.scrollY };
+      landed = false;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        from = null;
+        landed = false;
+      });
+    };
+    const onFocusIn = () => {
+      if (!from) return;
+      landed = true;
+      putBack();
+    };
+    const onScroll = () => {
+      if (landed) putBack();
+    };
+    document.addEventListener("keydown", onKey, true);
+    header.addEventListener("focusin", onFocusIn);
+    // on the document, so it runs ahead of the bar's own scroll handler (on window)
+    document.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      document.removeEventListener("keydown", onKey, true);
+      header.removeEventListener("focusin", onFocusIn);
+      document.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   /* ── plates ── */
   const cancelClose = useCallback(() => {
     window.clearTimeout(closeTimer.current);
@@ -482,7 +536,7 @@ export default function Navbar() {
       openedBy.current = "click";
       cancelClose();
       if (open === id) {
-        document.getElementById(`kn-mega-${id}`)?.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+        document.getElementById(`kn-mega-${id}`)?.querySelector<HTMLElement>(FOCUSABLE)?.focus({ preventScroll: true });
         focusFirst.current = false;
       } else {
         setOpen(id);
@@ -492,7 +546,7 @@ export default function Navbar() {
   useEffect(() => {
     if (!open || !focusFirst.current) return;
     focusFirst.current = false;
-    document.getElementById(`kn-mega-${open}`)?.querySelector<HTMLElement>(FOCUSABLE)?.focus();
+    document.getElementById(`kn-mega-${open}`)?.querySelector<HTMLElement>(FOCUSABLE)?.focus({ preventScroll: true });
   }, [open]);
 
   // focus leaving an open item (Tab past its plate) closes the plate
@@ -516,7 +570,7 @@ export default function Navbar() {
       const refocus = inBar || ((!active || active === document.body) && openedBy.current === "click");
       const id = open;
       closePlate();
-      if (refocus) document.getElementById(`kn-trigger-${id}`)?.focus();
+      if (refocus) document.getElementById(`kn-trigger-${id}`)?.focus({ preventScroll: true });
     };
     document.addEventListener("pointerdown", onDown);
     document.addEventListener("keydown", onKey);
@@ -538,7 +592,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (!sheetOpen) {
-      if (restoreFocus.current) burgerRef.current?.focus();
+      if (restoreFocus.current) burgerRef.current?.focus({ preventScroll: true });
       restoreFocus.current = false;
       return;
     }

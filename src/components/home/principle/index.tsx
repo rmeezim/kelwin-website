@@ -5,7 +5,9 @@ import "./principle.css";
 /* The operating principle · "In a noisy market, the clearest company wins." (approved mockup:
    design/redesign/site/frag/principle/S). A calm paper sheet inside a registration frame: nine lines of market
    noise (CONTOUR) settle into the one line that enters "the clearest", and one clean line leaves it for the red
-   tick on the frame edge. Default markup = the final state (the filtered drawing); behavior.ts plays the settle. */
+   tick on the frame edge. Below 1024 (round 7) the drawing stacks above the statement as one full-width datum:
+   noise → one line → the red tick (the carry / end pieces). Default markup = the final state (the filtered
+   drawing); behavior.ts plays the settle. */
 
 const P = "km-principle";
 const c = (name: string) => `${P}__${name}`;
@@ -68,6 +70,12 @@ export default function Principle() {
                 ))}
               </g>
             </svg>
+
+            {/* ≤1023 only (the stacked sheet): the one line carries on from the field's edge to the red tick on the
+                frame edge, so the drawing above the statement is the desktop's whole datum in one piece — noise →
+                one line → the tick. The statement's own wire and tick stand down there (principle.css). */}
+            <span className={c("carry")} aria-hidden="true" />
+            <span className={c("end")} aria-hidden="true" />
 
             <p className={`${c("tag")} ${c("tag--a")}`} aria-hidden="true">
               <span className="ac-callout__code">A</span>

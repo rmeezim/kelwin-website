@@ -8,9 +8,9 @@
    (302 wide, cols 1–3 are 310), its datum (y 100) on the wire.
    Widths: ≥1024 the 1440 sheet, every coordinate proportional (the datum and the wire gap in em of the
    statement, the tick and the tags' seat scaled with it, the field in % of cols 1–3; the tags tighten below
-   1200) · ≤1023 the drawing
-   lifts out of the statement's row and stacks above it, the statement takes the full width · ≤767 the B tag
-   drops from under the tick to the rule's row (see the bands at the end).
+   1200) · ≤1023 the whole datum lifts out of the statement's row and stacks above it as one drawing (noise →
+   one line → the red tick, A and B at their marks), the statement takes the full width · ≤767 the same, on the
+   phone rhythm (see the bands at the end).
    Motion: keyframe entrances under .km-motion (km-kit §10 holds them at frame 0 until the slot plays); the
    settle itself is behavior.ts (rAF sample interpolation). Default CSS + markup = the final state. */
 
@@ -109,41 +109,80 @@
 .km-motion .km-principle__tag--a { animation: ac-fade 400ms var(--ease-out) 900ms both; }
 .km-motion .km-principle__wire { animation: ac-drawx 800ms var(--ease-inout) 2750ms both; }
 .km-motion .km-principle__tick { animation: km-principle-seat 420ms var(--ease-out) 3450ms both; }
+.km-motion .km-principle__carry { animation: ac-drawx 800ms var(--ease-inout) 2750ms both; }   /* ≤1023 */
+.km-motion .km-principle__end { animation: km-principle-seat 420ms var(--ease-out) 3450ms both; } /* ≤1023 */
 .km-motion .km-principle__tag--b { animation: ac-fade 400ms var(--ease-out) 3600ms both; }
 
 @keyframes km-principle-wipe { from { clip-path: inset(-20px 100% -20px 0); } to { clip-path: inset(-20px 0 -20px 0); } }
 @keyframes km-principle-seat { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 
-/* ── ≤1023 · the stacked sheet ──
+/* ── ≤1023 · the stacked sheet: one drawing, then the statement (round 7, founder call C1) ──
    Below 1024 the statement needs the full width (at col 4 its 14px tags would sit on line 3's glyphs), so the
-   drawing lifts out of the statement's row and stacks above it, flush to the left frame edge: label → noise
-   (A under it) → the statement, its wire still leaving "the clearest" for the red tick on the right frame edge.
-   The field is cropped to the bundle's own extent (y 38 → 159.5 of 200) with negative margins; --nw is its
-   width, resolved against the full-width grid area in each property that uses it. It is 240px (nudged, see --nw) on
-   tablet and phone alike (the stage's drawing-to-type ratio would give 161–215px here, smaller than on a phone). */
+   drawing lifts out of the statement's row and stacks above it. Round 6 lifted only the field: its one line
+   dead-ended in mid-air while a second wire left "the clearest" a few rows lower, and the A/B tags drifted to
+   other rows, so the drawing read in pieces. Now the stacked drawing is the desktop's whole datum in one piece,
+   margin to margin: the field flush to the left frame edge, its one line carried on (.km-principle__carry, an
+   HTML 1px line on the field signal's own pixel row) to the red tick on the right frame edge
+   (.km-principle__end); A seated under the bundle, B under the tick, both flush to the frame edges (the desktop
+   seats); then the statement, whose own wire and tick stand down. The settle still travels the field left →
+   right and the carry draws on from the field's edge to the tick, so the motion runs the width of the sheet.
+   Row 2 holds the whole drawing (every piece spans the full width, so % resolves against the same width);
+   row 3 the statement, 4 the rule, 5 the lede.
+   --nwr: the field's width, a stable share of the sheet (≈ 69% at 390, 51% at 768, 360px cap; 220px floor),
+   nudged into --nw so the datum lands on a half pixel (see --nw). --fig-top: the label row → the bundle's top
+   (y 38 of 200: the field is cropped to the bundle with negative margins). --fig-d: row 2's top → the datum's
+   centre (y 100.5). The tick no longer scales with the statement: 14 → 20px with the viewport. */
+.km-principle__carry, .km-principle__end { display: none; }
+
 @media (max-width: 1023px) {
-  .km-principle__head { --nwr: min(100%, 240px); }
+  .km-principle__head {
+    --nwr: clamp(220px, 40% + 100px, 360px);
+    --fig-top: 40px;
+    --fig-d: calc(var(--fig-top) + var(--nw) * 62.5 / 302);
+    --tick-h: clamp(14px, calc(100vw * 20 / 1024), 20px);
+  }
   .km-principle .km-principle__head > .ac-labelrow { grid-column: 1 / -1; }
-  .km-principle .km-principle__head > .ac-statement { grid-column: 1 / -1; grid-row: 4; }
-  .km-principle .km-principle__head > .ac-rule { grid-column: 1; grid-row: 5; }
-  .km-principle .km-principle__head > .ac-lede { grid-column: 1 / span 9; grid-row: 6; }
+  .km-principle .km-principle__head > .ac-statement { grid-column: 1 / -1; grid-row: 3; margin-top: 44px; }
+  .km-principle .km-principle__head > .ac-rule { grid-column: 1; grid-row: 4; }
+  .km-principle .km-principle__head > .ac-lede { grid-column: 1 / span 9; grid-row: 5; }
+  .km-principle__out { display: none; }
+
   .km-principle .km-principle__noise {
     grid-column: 1 / -1; grid-row: 2; width: var(--nw);
-    margin-top: calc(40px + var(--nw) * -38 / 302);
+    margin-top: calc(var(--fig-top) + var(--nw) * -38 / 302);
+    margin-bottom: calc(var(--nw) * -38 / 302);
   }
+  /* the carry starts 1px inside the field's edge (it covers the signal's last, anti-aliased pixel) */
+  .km-principle .km-principle__carry {
+    display: block; grid-column: 1 / -1; grid-row: 2; align-self: start; height: 1px;
+    margin-top: calc(var(--fig-d) - .5px); margin-left: calc(var(--nw) - 1px);
+    background: var(--fg); transform-origin: 0 50%;
+  }
+  .km-principle .km-principle__end {
+    display: block; grid-column: 1 / -1; grid-row: 2; align-self: start; justify-self: end;
+    width: 4px; height: var(--tick-h); margin-top: calc(var(--fig-d) - var(--tick-h) / 2);
+    background: var(--accent);
+  }
+  /* A under the bundle (its lowest curve reaches datum + 59 field units), B under the tick */
   .km-principle .km-principle__tag--a {
-    grid-column: 1 / -1; grid-row: 3;
-    margin-top: calc(17px + var(--nw) * -40.5 / 302);
+    grid-column: 1 / -1; grid-row: 2; justify-self: start;
+    margin-top: calc(var(--fig-d) + var(--nw) * 59 / 302 + 14px);
   }
-  /* B keeps its place under the tick, in the statement's row (line 3 is short enough to leave it room) */
-  .km-principle .km-principle__tag--b { grid-row: 4; }
+  .km-principle .km-principle__tag--b {
+    grid-column: 1 / -1; grid-row: 2; justify-self: end;
+    margin-top: calc(var(--fig-d) + var(--tick-h) / 2 + 12px);
+  }
 }
 
-/* ── ≤767 · phone ──
-   The statement wraps (kit) and line 3 fills the width, so B cannot sit under the tick without entering line 3's
-   row: it drops to the rule's row, flush right on the frame edge below the tick, centred on the rule. */
+/* ── ≤767 · phone ── the same sheet, tighter: the kit's phone rhythm, the lede full width. Below 400 the tags
+   tighten (14px label / 10px gap at 400 → 12px / 6px at 320, the easing the desktop tags take toward 1024), so B,
+   flush right under the tick, stays clear of the fan's narrowing end on the smallest phones. */
 @media (max-width: 767px) {
+  .km-principle__head {
+    --fig-top: 32px;
+    --tag-fs: clamp(12px, 2.5vw + 4px, 14px);
+    --tag-gap: clamp(6px, 5vw - 10px, 10px);
+  }
+  .km-principle .km-principle__head > .ac-statement { margin-top: 36px; }
   .km-principle .km-principle__head > .ac-lede { grid-column: 1 / -1; }
-  .km-principle .km-principle__noise { margin-top: calc(32px + var(--nw) * -38 / 302); }
-  .km-principle .km-principle__tag--b { grid-row: 5; align-self: end; margin: 0 0 -10px; }
 }
