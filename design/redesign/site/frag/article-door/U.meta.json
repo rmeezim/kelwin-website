@@ -1,0 +1,28 @@
+{
+  "title": "Compact decision band",
+  "direction": "A×C · Round 8 · article template · /insights/deliverability-is-infrastructure",
+  "summary": "The kit's compact D1 after the note: one display sentence on what the audit returns for this note's subject, the red System Audit door with the quiet 'Talk to the team', then the onward link to the layer the note is about.",
+  "reference": {
+    "site": "Approved Kelwin interior kit §12.8, D1 compact (snippets/interior.html 10b)",
+    "mobbin_url": "https://mobbin.com/sites/sections/2aa17c2a-b721-440c-8fe0-83544d7afdd0",
+    "ref_file": "refs/article-tailscale.webp",
+    "borrowed": "A single closing call after the reading, small enough not to shout over the note.",
+    "kelwin": "The kit's compact D1 verbatim: ■ label, one 32px display sentence about what the audit returns for this note's subject, the cut-corner red 'Request a System Audit' + quiet 'Talk to the team', one hairline, the onward link to the note's layer. No red plane."
+  },
+  "motion": [
+    "entrance: the kit's Door reveal — label fades, the line rises, the doors rise 200ms later, the foot hairline draws, the onward link fades in.",
+    "interaction: hover on the doors and the onward link.",
+    "ambient: none.",
+    "on the live site: plays once as the slot scrolls in. Reduced motion: final state."
+  ],
+  "demoMs": 1800,
+  "story": "The one ask on the page, made small and specific: the note diagnosed a layer, the audit is how a reader finds out whether it is theirs. The onward link sends anyone not ready to buy to the layer page instead.",
+  "copy": [
+    "Line [N] (FC): 'The audit reads your sending setup alongside the rest of your channel stack.'",
+    "Label 'Starts with the audit' [kit]",
+    "Doors [K]: 'Request a System Audit' → /audit · 'Talk to the team' → /contact",
+    "Onward [N]: 'This note is about' · GTM Infrastructure → /capabilities/gtm-infrastructure"
+  ],
+  "phone": "Kit composition: ≤1023 the doors drop under the line (cols 1–9), foot last; ≤767 the line is 28px, everything full width.",
+  "notes": "Ruled graphite seam from the sources section. The red button is the view's only red; the shared coda 'If this note reads like your quarter…' is retired."
+}

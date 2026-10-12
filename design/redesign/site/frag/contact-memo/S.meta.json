@@ -1,0 +1,35 @@
+{
+  "title": "The memo",
+  "direction": "A×C · Round 8 · /contact body (FM, the page's one paper moment)",
+  "summary": "The form becomes the memo you write back: memo header lines (To · From · Company · Reply to · About · Regarding) with real labels, a message body and an outlined send, on the kit's document panel, whose honest notes hang in the margin, tied to their line by drawn leaders, so 'where does this go and what happens to it' is answered on the document itself.",
+  "reference": {
+    "site": "In Common With (contact ledger beside its form) · Savor (fields as underlined lines on paper)",
+    "mobbin_url": "https://mobbin.com/sites/sections/dd7619d6-0abf-4c9a-843e-e4cb41a86415",
+    "ref_file": "refs/contact-memo-S.webp",
+    "borrowed": "A contact form read as a ledger of lines rather than a stack of boxes; fields as single hairline rows on paper.",
+    "kelwin": "Recast as a memo, answering the founder's letter (whose own head is a memo: 'Subject · Why Kelwin exists'): the kit's document panel (.ac-doc, head = 'Memo' + the date), mono keys in the left of the sheet, 20px fields on hairlines, and the honest hints moved into the margin as the kit's callouts (anchor square on the sheet edge, leader across col 8). No boxes, no red, outlined submit."
+  },
+  "story": "The page's conversion. The header promised a person; the memo shows exactly where the message goes (To · Kelwin, audit@kelwin.co — the first line, static), asks only what a reply needs, and routes specific requests honestly: pick a topic and the margin says what really happens to it (research documents go out when released; no readout has cleared yet; Lab applications are read by the people building it). The send note says it plainly — your own mail app, nothing leaves your device until you press send — with the Privacy link at the point of collection.",
+  "copy": [
+    "section head: label [N] “Your message” (round-8 fix: was “The memo”, which sat beside the sheet's own name “Memo”) · h2 [N] “Written here, sent from your own mail.”",
+    "memo lines [R from K labels]: To · Kelwin, audit@kelwin.co (static) · From · Your name · Company · Company name · Reply to · Company email · About · Topic · Regarding · Reference (· optional) [N] · Message; required/optional said in words, the marker always kept with the label's last word",
+    "doc head: “Memo” + the visitor's own date (set by the page) [N]",
+    "Reply-to hint [K] “We reply to company addresses — it keeps this channel usable for the real requests.”",
+    "topics, grouped with optgroup [R]: Working with Kelwin — Understanding what Kelwin does (default) · Exploring a future engagement | Documents & notes — Requesting a research document · Requesting a readout (was “case dossier”) · Field notes & publications | The Lab — Early access application (the closed select shows the legacy [K] “The Lab · early access application”, so the Lab hint's “it” has its antecedent) | Everything else — Partnerships · Press & speaking · Careers & the bench list · Something else",
+    "About margin note for a topic without its own hint [N] “Pick the nearest one. Every topic reaches the same inbox.” — shown only while the visitor is choosing; a topic chosen by the link (?topic=careers, notes, engagement) shows no note",
+    "hints [R]: research “Research documents go out the day they’re released. Our reply will tell you where yours stands.” · readout “Client readouts publish only with the client’s consent, and none has cleared yet. Tell us what you’d want to see, and we’ll send the readout specimen.” · Lab “Applications are read by the people building it. We reply either way.”",
+    "message label/placeholder/required by topic [K] (Lab placeholder mentions “the console”, which §7 Q4 holds)",
+    "submit labels: “Send the message” [K] · “Ask for the document” [R] · “Submit the application” [K]",
+    "send note [R] “This opens your own mail app with the message filled in. Nothing leaves your device until you press send.” + “How we handle what you send · Privacy →”",
+    "MailtoConfirm [N]: “Your mail app should have opened. If it didn’t, send it to audit@kelwin.co. [Copy]” — word for word the /careers bench form's confirmation (one shared component, §8); no longer repeats the send note"
+  ],
+  "phone": "≤1023: the sheet takes the full width; each margin note falls in under its field, inside its line (above the line's hairline), leaders hidden; key column 200px. ≤767: 16px inner margin; each line puts its key (mono word + plain name + required) on one row above a full-width 18px field; the topic's value wraps (balanced) rather than clipping — at 320 'Understanding / what Kelwin does'; the chip, the message, the send and its note stack. Between 1024 and 1100 the key column (clamp 152–216px of the stage) and the field size (18.6→20px) scale so the longest topic stays on one line in both skins. No field or note is hidden.",
+  "motion": [
+    "entrance (the page's one body moment, play once): the sheet settles, its head fades, each memo line's hairline draws left to right in turn (90ms apart) as its key and field fade in, then the margin leaders reach out from the sheet edge and the notes fade in.",
+    "interaction: focus inks a line (2px rule under it + key to ink); changing About swaps the margin hint (fade), the message label/placeholder/required state and the send label; the Regarding chip is removable; Copy confirms in words.",
+    "deep link: /contact?topic=…&ref=… scrolls to #write after layout settles, preselects the topic and pins the reference. The pinned line is marked by a change bar on the sheet's edge (2px, vertical, a document's revision mark), drawn once top to bottom as the line arrives; under reduced motion it is simply there. It never reads as focus, which is the horizontal rule under a line: arrive, then focus Company, and only Company is inked.",
+    "on the live site: plays once when the memo scrolls into view; reduced motion = final state, no timers."
+  ],
+  "demoMs": 2800,
+  "notes": "A working form (no specimen tag: nothing on it is illustrative). The sheet is the kit's .ac-doc used as-is (head = .ac-doc__head); lines and margin notes are this fragment's own (kitNeeds: MemoForm). The section root carries id=\"write\" — the kept anchor (/contact#write), an exception to the km-…-S- id prefix. The topic select is native and on top (transparent) for picking, keyboard and assistive tech; the line shows its value as text so long topics wrap instead of clipping. To see the deep-link state on the stitched page: page-contact.html?topic=dossier&ref=Readout%20specimen (or topic=research / lab / notes). The Lab option's value stays the legacy “The Lab · early access application” so mailto subjects keep their prefix. --memo-key and --memo-fs are expressed against --stage (the mockup's stage token); production reads the same values from min(100vw, 1440px)."
+}

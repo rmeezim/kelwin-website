@@ -1,0 +1,548 @@
+<title>Kelwin Redesign · Round 8</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+@font-face { font-family: "Mona Sans Local"; font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; src: url(fonts/MonaSans.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono Local"; font-weight: 400 700; font-display: swap; src: url(fonts/JetBrainsMono.woff2) format("woff2"); }
+/* Round 8: the interior pages. One working page on a graphite stage, in the buyer's reading order:
+   what changed from round 7 → how the site reads now → one card per page (walk it, open it, call it)
+   → the eight questions only the founder can answer → copy the review. Deliberately single-theme,
+   in Kelwin's own v5 system (the page is the brand, as in rounds 3–7). */
+:root {
+  --bg: #141517;
+  --panel: #1A1B1E;
+  --card: #202125;
+  --ink: #FBFAF6;
+  --stone: rgba(251,250,246,0.78);
+  --muted: #B9BCC2;
+  --faint: rgba(251,250,246,0.5);
+  --line: rgba(251,250,246,0.14);
+  --line-strong: rgba(251,250,246,0.3);
+  --red: #BF3A36;
+  --red-deep: #8E2824;
+  --signal: #E8564E;
+  --blush: #F2C9BF;
+  --fog: #B9BCC2;
+  --well: #0E0F11;
+  --f-display: "Mona Sans", "Mona Sans Local", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Mona Sans", "Mona Sans Local", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", "JetBrains Mono Local", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--blush); outline-offset: 3px; }
+img { display: block; max-width: 100%; height: auto; }
+i, em { font-style: normal; }  /* rule 4: no italics anywhere */
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap;
+  padding: 12px clamp(16px, 3vw, 40px); background: var(--bg); border-bottom: 1px solid var(--line); }
+.mark { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.mark .logo { display: inline-block; height: 18px; aspect-ratio: 734 / 152; background: var(--ink); -webkit-mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; }
+.mark span { color: var(--muted); font: 500 11px/1 var(--f-mono); letter-spacing: 0.12em; text-transform: uppercase; }
+.bar-nav { display: flex; gap: 4px 18px; flex-wrap: wrap; font: 500 11px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; }
+.bar-nav a { color: var(--muted); text-decoration: none; padding: 6px 0; }
+.bar-nav a:hover { color: var(--ink); }
+.bar-right { display: flex; align-items: center; gap: 12px 14px; margin-left: auto; flex-wrap: wrap; }
+.prog { display: flex; align-items: center; gap: 10px; font: 500 12px/1 var(--f-mono); color: var(--stone); }
+.meter { width: 96px; height: 3px; background: rgba(251,250,246,0.1); }
+.meter b { display: block; height: 100%; width: 0; background: var(--ink); transition: width .4s ease; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 10px 14px; border: 1px solid var(--line-strong); background: transparent;
+  font: 500 11.5px/1 var(--f-body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); text-decoration: none; }
+.btn:hover { border-color: var(--ink); color: var(--ink); }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn-c { --cut: 12px; border: 0; background: var(--red); color: var(--ink); font-weight: 600; letter-spacing: .1em; padding: 12px 26px 12px 20px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); }
+.btn-c:hover { background: var(--red-deep); color: var(--ink); }
+.btn-c:focus-visible { outline-offset: -5px; outline-color: var(--ink); }
+
+/* page */
+.wrap { padding-inline: clamp(16px, 3vw, 40px); padding-block: 0 96px; }
+.blk { max-width: 1240px; margin: 0 auto; }
+.label { display: flex; align-items: center; gap: 10px; margin: 0; font: 500 11px/1.3 var(--f-body); letter-spacing: 0.18em; text-transform: uppercase; color: var(--stone); }
+.label::before { content: ""; width: 8px; height: 8px; background: var(--signal); flex: none; }
+.label i { font-style: normal; margin-left: auto; font: 500 11px/1 var(--f-mono); letter-spacing: .1em; color: var(--muted); }
+.h2 { margin: 16px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(28px, 3vw, 42px); line-height: 1.05; letter-spacing: -0.018em; text-wrap: balance; }
+.h2 span { font-weight: 300; color: var(--muted); }
+.lede { margin: 14px 0 0; max-width: 66ch; color: var(--stone); font-size: 16px; }
+.sect { margin-top: 88px; padding-top: 28px; border-top: 1px solid var(--line); }
+.sect > .lede + * { margin-top: 28px; }
+
+.intro { padding-block: 64px 8px; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 40px 56px; align-items: end; }
+.intro h1 { margin: 20px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(38px, 5.6vw, 80px); line-height: .98; letter-spacing: -0.018em; text-wrap: balance; }
+.intro h1 span { font-weight: 300; color: var(--muted); }
+.rule { display: block; width: 48px; height: 2px; background: var(--red); margin-top: 28px; }
+.intro .lede { font-size: 17px; margin-top: 22px; }
+.status { display: grid; margin: 0; border: 1px solid var(--line); background: var(--panel); }
+.status div { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 12px; padding: 14px 18px; border-top: 1px solid var(--line); }
+.status div:first-child { border-top: 0; }
+.status dt { margin: 0; font: 500 11px/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.status dd { margin: 0; font-size: 14px; color: var(--stone); }
+.status dd b { color: var(--ink); font-weight: 600; }
+
+/* shared: figures, choices, notes */
+.figs { margin-top: 18px; display: grid; gap: 12px; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); align-items: start; }
+.figs figure { margin: 0; min-width: 0; }
+.figs a { display: block; border: 1px solid var(--line); background: var(--well); }
+.figs a:hover { border-color: var(--line-strong); }
+.figs figcaption { margin-top: 8px; font: 500 11px/1.4 var(--f-mono); letter-spacing: .04em; color: var(--muted); }
+.ctl { display: grid; gap: 10px; align-content: start; }
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.choice { min-height: 46px; padding: 10px 12px; border: 1px solid var(--line-strong); background: transparent; color: var(--stone); font: 500 12px/1.25 var(--f-body); letter-spacing: .08em; text-transform: uppercase; text-align: left; }
+.choice:hover { border-color: var(--ink); color: var(--ink); }
+.choice[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.note { width: 100%; min-height: 76px; padding: 10px 12px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font: 400 14px/1.45 var(--f-body); resize: vertical; }
+.note::placeholder { color: var(--faint); }
+.note:focus { border-color: var(--line-strong); outline: none; }
+.small { font: 500 11px/1.3 var(--f-mono); color: var(--muted); }
+.tag { display: inline-flex; align-items: center; height: 20px; padding: 0 7px; border: 1px solid var(--line-strong); font: 600 10.5px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--fog); white-space: nowrap; }
+.tag.fs { color: var(--blush); border-color: rgba(242,201,191,.45); }
+.tag.stop { color: var(--ink); background: var(--red); border-color: var(--red); }
+
+/* round 7, applied */
+.r7 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.r7 article { padding: 22px 24px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; display: grid; gap: 14px; align-content: start; }
+.r7 h3 { margin: 0; display: flex; gap: 12px; align-items: baseline; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 20px; line-height: 1.2; letter-spacing: -0.01em; }
+.r7 h3 b { font: 600 12px/1 var(--f-mono); letter-spacing: .06em; color: var(--blush); }
+.r7 p { margin: 0; color: var(--stone); font-size: 14.5px; }
+.r7 .figs { margin-top: 0; }
+.kept { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; color: var(--muted); }
+.kept b { color: var(--ink); font-weight: 500; }
+
+/* how the site reads */
+.seq-wrap { overflow-x: auto; }
+table.seq { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14.5px; }
+.seq th, .seq td { text-align: left; padding: 13px 16px 13px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+.seq th { font: 500 11px/1.3 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom-color: var(--line-strong); }
+.seq td.n { font: 500 12px/1 var(--f-mono); color: var(--faint); width: 40px; }
+.seq td.q { color: var(--ink); }
+.seq td.at a { display: inline-block; margin: 0 14px 2px 0; font: 500 12.5px/1.5 var(--f-mono); color: var(--fog); text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 3px; }
+.seq td.at a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+.rules { margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.rules div { padding: 20px 20px 4px 0; min-width: 0; }
+.rules div:not(:nth-child(3n+1)) { padding-left: 20px; border-left: 1px solid var(--line); }
+.rules div:nth-child(n+4) { border-top: 1px solid var(--line); }
+.rules b { display: block; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 18px; line-height: 1.25; }
+.rules p { margin: 8px 0 14px; color: var(--stone); font-size: 14px; }
+
+/* page cards */
+.group { margin-top: 56px; }
+.group:first-of-type { margin-top: 32px; }
+.group-h { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding-bottom: 12px; border-bottom: 1px solid var(--line-strong); }
+.group-h h3 { margin: 0; font: 500 12px/1.3 var(--f-body); letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
+.group-h span { font-size: 14px; color: var(--muted); }
+.pg { padding: 36px 0 40px; border-bottom: 1px solid var(--line); display: grid; gap: 22px; }
+.pg-head { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 4px 0; }
+.pg-n { font: 600 12px/1 var(--f-mono); letter-spacing: .06em; color: var(--blush); padding-top: 10px; }
+.pg-route { margin: 0; font: 500 12px/1.4 var(--f-mono); color: var(--muted); }
+.pg-route span + span::before { content: " · "; color: var(--faint); }
+.pg h3 { margin: 6px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.1; letter-spacing: -0.015em; text-wrap: balance; }
+.pg h3 span { font-weight: 300; color: var(--muted); }
+.pg-q { margin: 12px 0 0; padding-left: 14px; border-left: 2px solid var(--line-strong); color: var(--stone); font-size: 15px; max-width: 70ch; }
+.pg-story { margin: 10px 0 0; color: var(--ink); font-size: 16px; max-width: 70ch; }
+.pg-vis { display: grid; gap: 12px; }
+.pg-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.pg-tools .seg { display: inline-flex; border: 1px solid var(--line-strong); }
+.pg-tools .seg button { min-height: 40px; padding: 0 14px; border: 0; background: transparent; font: 500 11.5px/1 var(--f-body); letter-spacing: .12em; text-transform: uppercase; color: var(--stone); }
+.pg-tools .seg button + button { box-shadow: inset 1px 0 0 var(--line); }
+.pg-tools .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(200px, 23%); gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-color: var(--line-strong) transparent; }
+.strip figure { margin: 0; min-width: 0; }
+.strip a { display: block; border: 1px solid var(--line); background: var(--well); }
+.strip a:hover { border-color: var(--line-strong); }
+.strip img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.strip figcaption { margin-top: 6px; font: 500 11px/1.3 var(--f-mono); color: var(--muted); }
+.stage { position: relative; background: var(--well); border: 1px solid var(--line); overflow: hidden; }
+.stage-in { position: relative; transform-origin: 0 0; }
+.stage iframe { display: block; border: 0; background: var(--bg); }
+.pg-foot { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 24px 40px; }
+.pg-meta { display: grid; gap: 18px; align-content: start; min-width: 0; }
+.pg-meta h4 { margin: 0 0 8px; font: 500 11px/1.3 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.order { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 8px; counter-reset: s; }
+.order li { counter-increment: s; display: inline-flex; align-items: baseline; gap: 8px; padding: 6px 10px; border: 1px solid var(--line); font-size: 13.5px; color: var(--stone); }
+.order li::before { content: counter(s, decimal-leading-zero); font: 500 11px/1 var(--f-mono); color: var(--faint); }
+.sig { margin: 0; color: var(--stone); font-size: 14.5px; max-width: 70ch; }
+.flags { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.flags li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 10px; align-items: baseline; font-size: 14px; color: var(--stone); }
+.flags li a { color: var(--fog); }
+.affects { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.affects a { font: 500 11.5px/1 var(--f-mono); color: var(--fog); padding: 5px 7px; border: 1px solid var(--line); text-decoration: none; }
+.affects a:hover { border-color: var(--line-strong); color: var(--ink); }
+
+/* questions */
+.qs { display: grid; border-top: 1px solid var(--line-strong); }
+.qq { display: grid; grid-template-columns: 64px minmax(0, 1fr) minmax(0, 380px); gap: 16px 32px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.qq-id { font: 600 12px/1 var(--f-mono); letter-spacing: .06em; color: var(--blush); padding-top: 6px; }
+.qq h3 { margin: 0; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 22px; line-height: 1.2; letter-spacing: -0.012em; }
+.qq ul { margin: 12px 0 0; padding-left: 18px; display: grid; gap: 6px; color: var(--stone); font-size: 14.5px; max-width: 66ch; }
+.qq ul li::marker { color: var(--faint); }
+.qq .def { margin: 12px 0 0; font-size: 13.5px; color: var(--muted); max-width: 66ch; }
+.qq .def b { color: var(--stone); font-weight: 500; }
+.qq .affects { margin-top: 14px; }
+.qq .note { min-height: 132px; }
+
+/* next + summary */
+.next { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+.next div { padding: 20px 20px 4px 0; min-width: 0; }
+.next div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.next b { display: block; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 19px; line-height: 1.2; }
+.next p { margin: 8px 0 0; color: var(--stone); font-size: 14px; }
+.general { margin-top: 24px; display: grid; gap: 8px; max-width: 760px; }
+.summary { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 24px; align-items: start; padding: 22px; background: var(--panel); border: 1px solid var(--line); }
+.summary pre { margin: 0; max-height: 520px; overflow: auto; white-space: pre-wrap; word-break: break-word; font: 400 13px/1.6 var(--f-mono); color: var(--stone); min-width: 0; }
+.summary .btn-c { white-space: nowrap; }
+
+@media (max-width: 1023px) {
+  .intro { grid-template-columns: minmax(0, 1fr); }
+  .bar-nav { display: none; }
+  .r7 { grid-template-columns: minmax(0, 1fr); }
+  .rules { grid-template-columns: minmax(0, 1fr); }
+  .rules div:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; }
+  .rules div + div { border-top: 1px solid var(--line); }
+  .pg-foot { grid-template-columns: minmax(0, 1fr); }
+  .qq { grid-template-columns: 48px minmax(0, 1fr); }
+  .qq .ctl { grid-column: 2; }
+  .strip { grid-auto-columns: minmax(200px, 38%); }
+}
+@media (max-width: 767px) {
+  .next { grid-template-columns: minmax(0, 1fr); }
+  .next div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .pg-head { grid-template-columns: minmax(0, 1fr); }
+  .pg-n { padding-top: 0; }
+  .qq { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 24px 0; }
+  .qq .ctl { grid-column: 1; }
+  .qq-id { padding-top: 0; }
+  .figs { grid-template-columns: minmax(0, 1fr); }
+  .summary { grid-template-columns: minmax(0, 1fr); }
+  .bar .mark span { display: none; }
+  .meter { width: 56px; }
+  .status div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .strip { grid-auto-columns: 72%; }
+}
+</style>
+
+<header class="bar">
+  <div class="mark"><span class="logo" role="img" aria-label="Kelwin"></span><span>Round 8 · The interior pages</span></div>
+  <nav class="bar-nav" aria-label="On this page"><a href="#applied">Round 7</a><a href="#reads">How it reads</a><a href="#pages">Pages</a><a href="#questions">Questions</a></nav>
+  <div class="bar-right">
+    <div class="prog" aria-live="polite"><span id="prog-txt">0 answered</span><span class="meter" aria-hidden="true"><b id="prog-bar"></b></span></div>
+    <a class="btn" href="#summary">Copy my review</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="blk">
+
+    <section class="intro" aria-labelledby="t-intro">
+      <div>
+        <p class="label">Round 8 · Mockups</p>
+        <h1 id="t-intro">Every other page, <span>redesigned and retold.</span></h1>
+        <span class="rule" aria-hidden="true"></span>
+        <p class="lede" id="intro-lede"></p>
+      </div>
+      <dl class="status">
+        <div><dt>Where it is</dt><dd><b>Mockups</b>, like the homepage rounds. Nothing here is built into the site or live.</dd></div>
+        <div><dt>Round 7</dt><dd>Your calls C1, C2, C3 and C5 are built into the dev branch. C4 kept, C6 approved.</dd></div>
+        <div><dt>Checked</dt><dd id="checked"></dd></div>
+        <div><dt>Needs you</dt><dd>A call on each page, answers to eight questions, then <b>Copy my review</b>.</dd></div>
+      </dl>
+    </section>
+
+    <!-- 1 · round 7 applied -->
+    <section class="sect" id="applied" aria-labelledby="t-applied">
+      <p class="label">Your round-7 calls <i>built</i></p>
+      <h2 class="h2" id="t-applied">Four changes you asked for. <span>Check they're right.</span></h2>
+      <p class="lede">These are in the built site on the dev branch. They aren't live yet.</p>
+      <div class="r7" id="r7-list"></div>
+      <div class="kept"><span><b>C4</b> Choosing a hero chapter still plays that take once and holds the film still, as you kept it.</span><span><b>C6</b> The 404 is as you approved it.</span></div>
+    </section>
+
+    <!-- 2 · how it reads -->
+    <section class="sect" id="reads" aria-labelledby="t-reads">
+      <p class="label">How the site reads now</p>
+      <h2 class="h2" id="t-reads">Each page answers the question <span>a buyer has at that point.</span></h2>
+      <p class="lede">The homepage makes the argument. The other pages answer what it leaves open, by showing the work instead of describing it. This is the order a serious buyer asks in, and the page that answers each question. The pages below follow the same order.</p>
+      <div class="seq-wrap">
+        <table class="seq">
+          <thead><tr><th scope="col">#</th><th scope="col">The buyer's question</th><th scope="col">Answered by</th></tr></thead>
+          <tbody id="seq-rows"></tbody>
+        </table>
+      </div>
+      <div class="rules" id="rules"></div>
+    </section>
+
+    <!-- 3 · pages -->
+    <section class="sect" id="pages" aria-labelledby="t-pages">
+      <p class="label">The pages <i id="pages-count"></i></p>
+      <h2 class="h2" id="t-pages">One call per page. <span>Walk it, then open it.</span></h2>
+      <p class="lede">Each card shows the page as a visitor scrolls it, one screen per frame. <b>View it here</b> runs the real mockup inside the card, with its animations. <b>Open full size</b> opens it in a new tab, where every link goes to the matching mockup, so you can click through the whole site from any page. Judge them at desktop width; phones get their own check when the pages are built, as in round 7.</p>
+      <div id="groups"></div>
+    </section>
+
+    <!-- 4 · questions -->
+    <section class="sect" id="questions" aria-labelledby="t-questions">
+      <p class="label">Questions only you can answer <i id="q-count"></i></p>
+      <h2 class="h2" id="t-questions">Eight questions. <span>The pages are drafted on the defaults.</span></h2>
+      <p class="lede">Where a page needs a fact only you have, it's built on the most careful default and flagged. Nothing flagged goes live until you've answered. Write as much or as little as you like; a yes or no is often enough.</p>
+      <div class="qs" id="q-list"></div>
+    </section>
+
+    <!-- 5 · next -->
+    <section class="sect" id="next" aria-labelledby="t-next">
+      <p class="label">After this round</p>
+      <h2 class="h2" id="t-next">From mockups to the live site.</h2>
+      <div class="next" style="margin-top:24px">
+        <div><b>Your changes, then a final look</b><p>I make the changes you ask for and apply your answers. If a page changes a lot, you see it again before it's built.</p></div>
+        <div><b>Then the build</b><p>The approved pages go into the real site the way the homepage did: matched to the mockups at desktop width, and laid out properly for tablets and phones.</p></div>
+        <div><b>Then go live, with your yes</b><p>Once the whole site is built and checked, I'll ask you to put it live. Terms needs your legal answer (Q8) first.</p></div>
+      </div>
+    </section>
+
+    <!-- summary -->
+    <section class="sect" id="summary" aria-labelledby="t-summary">
+      <p class="label">Your review</p>
+      <h2 class="h2" id="t-summary">Copy it, <span>paste it to me.</span></h2>
+      <div class="general">
+        <label class="small" for="note-general">Anything else (optional)</label>
+        <textarea class="note" id="note-general" placeholder="Anything across the whole site: tone, order, what's missing"></textarea>
+      </div>
+      <p class="lede" id="save-state">Your answers are kept in this browser. Copy the review and paste it into our chat.</p>
+      <div class="summary">
+        <pre id="summary-pre">Nothing answered yet.</pre>
+        <button class="btn-c btn" type="button" id="copy-btn">Copy my review</button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+const DATA = /*__DATA__*/null;
+const COLL = "review8";
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const PAGE = Object.fromEntries(DATA.pages.map((p) => [p.id, p]));
+const fmt = (n) => Number(n).toLocaleString("en-GB");
+
+// ── items the founder answers: round-7 checks, page calls, questions ──
+const ITEMS = [
+  ...DATA.r7.map((c) => ({ id: c.id, kind: "r7", title: c.title, a: "Looks right", b: "Change it" })),
+  ...DATA.pages.map((p) => ({ id: "P" + p.n, kind: "page", title: p.name, a: "Approve", b: "Change something" })),
+  ...DATA.questions.map((q) => ({ id: q.id, kind: "q", title: q.title })),
+];
+const BY = Object.fromEntries(ITEMS.map((i) => [i.id, i]));
+const review = {};
+let db = null;
+function loadLocal() { try { return JSON.parse(localStorage.getItem("kelwin-review8") || "{}"); } catch (e) { return {}; } }
+function saveLocal() { try { localStorage.setItem("kelwin-review8", JSON.stringify(review)); } catch (e) {} }
+
+// ── intro ──
+$("#intro-lede").textContent = DATA.lede;
+$("#checked").textContent = DATA.checked;
+
+// ── 1 · round 7 applied ──
+const fig = ([src, cap, w, h]) => `<figure><a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${esc(cap)}" width="${w}" height="${h}" loading="lazy"></a><figcaption>${esc(cap)}</figcaption></figure>`;
+const choiceCtl = (it) => `<div class="ctl">
+    <div class="choices" role="group" aria-label="${esc(it.title)}">
+      <button type="button" class="choice" id="a-${it.id}" aria-pressed="false">${esc(it.a)}</button>
+      <button type="button" class="choice" id="b-${it.id}" aria-pressed="false">${esc(it.b)}</button>
+    </div>
+    <label class="small" for="note-${it.id}">Note (optional)</label>
+    <textarea class="note" id="note-${it.id}" placeholder="What should change, or anything to add"></textarea>
+  </div>`;
+$("#r7-list").innerHTML = DATA.r7.map((c) => `<article aria-labelledby="h-${c.id}">
+    <h3 id="h-${c.id}"><b>${c.id}</b>${esc(c.title)}</h3>
+    <p>${c.what}</p>
+    <div class="figs" style="--n:${c.cols || c.figs.length}">${c.figs.map(fig).join("")}</div>
+    ${choiceCtl(BY[c.id])}
+  </article>`).join("");
+
+// ── 2 · how it reads ──
+const pageLink = (id) => { const p = PAGE[id]; return p ? `<a href="#p-${id}">${esc(p.short || p.name)}</a>` : ""; };
+$("#seq-rows").innerHTML = DATA.sequence.map(([n, q, ids]) => `<tr><td class="n">${esc(n)}</td><td class="q">${esc(q)}</td><td class="at">${ids.map(pageLink).join("")}</td></tr>`).join("");
+$("#rules").innerHTML = DATA.rules.map(([t, d]) => `<div><b>${esc(t)}</b><p>${d}</p></div>`).join("");
+
+// ── 3 · pages ──
+const nPages = DATA.pages.reduce((s, p) => s + p.instances.length, 0);
+$("#pages-count").textContent = `${nPages} pages · ${DATA.pages.length} calls`;
+const qLink = (id) => { const q = DATA.questions.find((x) => x.id === id); return q ? `<a href="#q-${id}" title="${esc(q.title)}">${id}</a>` : ""; };
+function strip(inst) {
+  return inst.frames.map((src, i) => `<figure><a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${esc(inst.label)}, screen ${i + 1} of ${inst.frames.length}" width="960" height="600" loading="lazy"></a><figcaption>${String(i + 1).padStart(2, "0")}</figcaption></figure>`).join("");
+}
+function card(p) {
+  const it = BY["P" + p.n];
+  const many = p.instances.length > 1;
+  const inst = p.instances[0];
+  const seg = many ? `<div class="seg" role="group" aria-label="Which page">${p.instances.map((x, i) => `<button type="button" data-i="${i}" aria-pressed="${i === 0}">${esc(x.tab || x.label)}</button>`).join("")}</div>` : "";
+  return `<article class="pg" id="p-${p.id}" aria-labelledby="h-p-${p.id}">
+    <div class="pg-head">
+      <span class="pg-n">P${esc(p.n)}</span>
+      <div style="min-width:0">
+        <p class="pg-route">${p.instances.map((x) => `<span>${esc(x.route)}</span>`).join("")}</p>
+        <h3 id="h-p-${p.id}">${p.h3}</h3>
+        <p class="pg-q">${esc(p.question)}</p>
+        <p class="pg-story">${esc(p.story)}</p>
+      </div>
+    </div>
+    <div class="pg-vis">
+      <div class="pg-tools">
+        ${seg}
+        <button type="button" class="btn" data-live aria-pressed="false">View it here</button>
+        <a class="btn" data-open href="${inst.file}" target="_blank" rel="noopener">Open full size ↗</a>
+        <span class="small" data-dim>${inst.frames.length} screens · ${fmt(inst.height)}px at 1440</span>
+      </div>
+      <div class="strip" data-strip>${strip(inst)}</div>
+      <div class="stage" data-stage hidden><div class="stage-in"><iframe title="${esc(inst.label)} mockup" tabindex="0"></iframe></div></div>
+      ${many ? `<p class="small" data-inst-line>${esc(inst.line || "")}</p>` : ""}
+    </div>
+    <div class="pg-foot">
+      <div class="pg-meta">
+        <div><h4>In order</h4><ol class="order">${p.sections.map((s) => `<li>${esc(s)}</li>`).join("")}</ol></div>
+        <div><h4>Its signature</h4><p class="sig">${esc(p.signature)}</p></div>
+        ${p.flags.length ? `<div><h4>Copy to check</h4><ul class="flags">${p.flags.map(([t, txt]) => `<li><span class="tag ${t === "FS" ? "fs" : ""}">${esc(t)}</span><span>${txt}</span></li>`).join("")}</ul></div>` : ""}
+        ${p.qs.length ? `<div class="affects"><span class="small">Waits on</span>${p.qs.map(qLink).join("")}</div>` : ""}
+      </div>
+      ${choiceCtl(it)}
+    </div>
+  </article>`;
+}
+$("#groups").innerHTML = DATA.groups.map((g) => `<div class="group" aria-label="${esc(g.label)}">
+    <div class="group-h"><h3>${esc(g.label)}</h3><span>${esc(g.note)}</span></div>
+    ${DATA.pages.filter((p) => p.group === g.key).map(card).join("")}
+  </div>`).join("");
+
+// the live stage: one mockup running at a time, at its real 1440 width, scaled to the card
+let live = null;
+function fitStage(art) {
+  const stage = $("[data-stage]", art), inner = $(".stage-in", art), fr = $("iframe", art);
+  const k = Math.min(1, stage.clientWidth / 1440);
+  fr.style.width = "1440px"; fr.style.height = "900px";
+  inner.style.width = "1440px"; inner.style.transform = `scale(${k})`;
+  stage.style.height = Math.round(900 * k) + "px";
+}
+function stopLive() {
+  if (!live) return;
+  const art = live; live = null;
+  const fr = $("iframe", art); fr.removeAttribute("src");
+  $("[data-stage]", art).hidden = true; $("[data-strip]", art).hidden = false;
+  const b = $("[data-live]", art); b.setAttribute("aria-pressed", "false"); b.textContent = "View it here";
+}
+function startLive(art) {
+  stopLive();
+  live = art;
+  const p = PAGE[art.id.slice(2)], inst = p.instances[+(art.dataset.i || 0)];
+  $("[data-strip]", art).hidden = true; $("[data-stage]", art).hidden = false;
+  $("iframe", art).src = inst.file; fitStage(art);
+  const b = $("[data-live]", art); b.setAttribute("aria-pressed", "true"); b.textContent = "Back to the screens";
+}
+$$("article.pg").forEach((art) => {
+  $("[data-live]", art).addEventListener("click", () => (live === art ? stopLive() : startLive(art)));
+  $$(".seg button", art).forEach((b) => b.addEventListener("click", () => {
+    const p = PAGE[art.id.slice(2)], i = +b.dataset.i, inst = p.instances[i];
+    art.dataset.i = i;
+    $$(".seg button", art).forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    $("[data-strip]", art).innerHTML = strip(inst);
+    $("[data-open]", art).href = inst.file;
+    $("[data-dim]", art).textContent = `${inst.frames.length} screens · ${fmt(inst.height)}px at 1440`;
+    $("iframe", art).title = inst.label + " mockup";
+    const line = $("[data-inst-line]", art); if (line) line.textContent = inst.line || "";
+    if (live === art) $("iframe", art).src = inst.file;
+  }));
+});
+addEventListener("resize", () => { if (live) fitStage(live); });
+
+// ── 4 · questions ──
+$("#q-count").textContent = `${DATA.questions.length} questions`;
+$("#q-list").innerHTML = DATA.questions.map((q) => `<article class="qq" id="q-${q.id}" aria-labelledby="h-${q.id}">
+    <span class="qq-id">${q.id}</span>
+    <div style="min-width:0">
+      <h3 id="h-${q.id}">${esc(q.title)}${q.blocker ? ' <span class="tag stop">Blocks go-live</span>' : ""}</h3>
+      <ul>${q.items.map((x) => `<li>${x}</li>`).join("")}</ul>
+      ${q.def ? `<p class="def"><b>Drafted as:</b> ${q.def}</p>` : ""}
+      <div class="affects"><span class="small">Affects</span>${q.affects.map((id) => `<a href="#p-${id}">${esc((PAGE[id] && (PAGE[id].short || PAGE[id].name)) || id)}</a>`).join("")}</div>
+    </div>
+    <div class="ctl">
+      <label class="small" for="note-${q.id}">Your answer</label>
+      <textarea class="note" id="note-${q.id}" placeholder="Answer here, in your own words"></textarea>
+    </div>
+  </article>`).join("");
+
+// ── answers, progress, summary, sync ──
+function answer(it) { const r = review[it.id]; if (!r) return ""; return it.kind === "q" ? (r.note ? "ANSWERED" : "") : (r.choice === "a" ? it.a : r.choice === "b" ? it.b : ""); }
+function done(it) { const r = review[it.id]; return !!r && (it.kind === "q" ? !!r.note : !!r.choice); }
+function line(it) { const r = review[it.id] || {}; return it.kind === "q" ? `${it.id} ${it.title}: ${r.note || "—"}` : `${it.id} ${it.title}: ${r.choice ? answer(it).toUpperCase() : "—"}${r.note ? " — " + r.note : ""}`; }
+function summaryText() {
+  const part = (kind) => ITEMS.filter((i) => i.kind === kind).map(line).join("\n");
+  const extra = review.general && review.general.note ? `\n\nAlso: ${review.general.note}` : "";
+  return "Kelwin redesign — round 8 review (the interior pages)\n\nRound-7 changes, as built\n" + part("r7") + "\n\nPages\n" + part("page") + "\n\nQuestions\n" + part("q") + extra;
+}
+function refresh() {
+  const n = ITEMS.filter(done).length;
+  $("#prog-txt").textContent = `${n} of ${ITEMS.length} answered`;
+  $("#prog-bar").style.width = (100 * n / ITEMS.length) + "%";
+  ITEMS.forEach((it) => {
+    const r = review[it.id];
+    if (it.kind !== "q") {
+      $("#a-" + it.id).setAttribute("aria-pressed", String(!!r && r.choice === "a"));
+      $("#b-" + it.id).setAttribute("aria-pressed", String(!!r && r.choice === "b"));
+    }
+    const ta = $("#note-" + it.id); if (r && r.note && document.activeElement !== ta && !ta.value) ta.value = r.note;
+  });
+  const g = $("#note-general"); if (review.general && review.general.note && document.activeElement !== g && !g.value) g.value = review.general.note;
+  $("#summary-pre").textContent = (n || (review.general && review.general.note)) ? summaryText() : "Nothing answered yet.";
+}
+async function persist(id) {
+  saveLocal();
+  if (!db) return;
+  const it = BY[id], r = review[id];
+  const doc = id === "general"
+    ? { item: "General note", answer: "", status: "note", note: r.note || "", updatedAt: new Date().toISOString() }
+    : { item: id + " · " + it.title, answer: it.kind === "q" ? "" : answer(it), status: it.kind === "q" ? "answered" : (r.choice === "a" ? "approve" : r.choice === "b" ? "changes" : "note"), note: r.note || "", updatedAt: new Date().toISOString() };
+  try {
+    await db.doc(COLL + "/" + id).set(doc);
+    $("#save-state").textContent = "Saved to this page · Claude can read your answers. Copy the review too if you like.";
+  } catch (e) { $("#save-state").textContent = "Couldn't save to the page (" + ((e && e.code) || "error") + "). Your answers are kept in this browser; use Copy my review."; }
+}
+ITEMS.forEach((it) => {
+  if (it.kind !== "q") ["a", "b"].forEach((k) => $(`#${k}-${it.id}`).addEventListener("click", () => {
+    review[it.id] = { choice: k, note: $("#note-" + it.id).value.trim() };
+    persist(it.id); refresh();
+    if (k === "b") setTimeout(() => $("#note-" + it.id).focus(), 0);
+  }));
+  $("#note-" + it.id).addEventListener("change", (e) => {
+    const r = review[it.id] || { choice: "" }; r.note = e.target.value.trim(); review[it.id] = r; persist(it.id); refresh();
+  });
+});
+$("#note-general").addEventListener("change", (e) => { review.general = { note: e.target.value.trim() }; persist("general"); refresh(); });
+$("#copy-btn").addEventListener("click", async (e) => {
+  const btn = e.currentTarget; const t = summaryText();
+  try { await navigator.clipboard.writeText(t); btn.textContent = "Copied"; }
+  catch (err) { const rg = document.createRange(); rg.selectNodeContents($("#summary-pre")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg); btn.textContent = "Selected · press Ctrl/Cmd+C"; }
+  setTimeout(() => { btn.textContent = "Copy my review"; }, 2400);
+});
+
+Object.assign(review, loadLocal());
+refresh();
+(async () => {
+  if (!window.claude || typeof window.claude.use !== "function") return;
+  try { db = await window.claude.use("db"); } catch (e) { db = null; }
+  if (!db) return;
+  $("#save-state").textContent = "Connected · your answers save to this page as you go.";
+  db.collection(COLL).onSnapshot((snap) => {
+    snap.docs.forEach((d) => {
+      const v = d.data(); if (!v) return;
+      if (d.id === "general") { review.general = { note: v.note || "" }; return; }
+      const it = BY[d.id]; if (!it) return;
+      review[d.id] = it.kind === "q" ? { note: v.note || "" } : { choice: v.status === "approve" ? "a" : v.status === "changes" ? "b" : "", note: v.note || "" };
+    });
+    refresh();
+  }, () => { $("#save-state").textContent = "Live sync paused · your answers still save in this browser."; });
+})();
+</script>

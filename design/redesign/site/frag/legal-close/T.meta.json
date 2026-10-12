@@ -1,0 +1,23 @@
+{
+ "title": "Quiet close",
+ "direction": "A×C · Round 8 · legal template · /terms (slot T)",
+ "summary": "The kit's QC as-is: a visible ■ Questions label and two quiet doors on one hairline — the address for questions about this document, then the other legal document asked as the reader's next question ('What happens to my data?') — with no red anywhere. It meets the approved footer exactly as /contact's coda does.",
+ "reference": {
+  "site": "Kit §12.8 QC (snippets/interior.html 10f) and the int-kit/S reference sheet",
+  "borrowed": "QC standalone, verbatim.",
+  "kelwin": "The onward link is phrased as the buyer's side question from the story map's §0 table (‘What happens to my data?’ / ‘What am I agreeing to…?’), split between the two documents."
+ },
+ "motion": [
+  "entrance: the kit's Door entrance only — the label fades, the quiet row rises.",
+  "ambient: none. interaction: hover states on the two .ac-link doors.",
+  "on the live site: plays once when the section scrolls into view. Reduced motion: final state."
+ ],
+ "demoMs": 1800,
+ "notes": "No red, no .ac-btn, no additions: the kit's QC verbatim (snippets 10f). The visible ■ label row keeps it from reading as a stray footer row, and the section meets the approved footer the same way /contact's coda does (no page-local seam; round-8 review). The footer duplicates both doors by design — audit@kelwin.co sits in its Contact column and Privacy | Terms in its legal pair — because the QC is the map's close (§3.3); flagged for the founder. A shared answer for how every graphite interior page meets the graphite footer (e.g. the footer slot taking .ac-sec--ruled on interior pages) is in kitNeeds.",
+ "story": "Beat 3 of 3. Where to ask, and the other document: the reader leaves by the side door they came for, never pushed toward a sale.",
+ "copy": [
+  "[K] ‘Questions about this document?’ → audit@kelwin.co (the legacy foot line, as a quiet door)",
+  "[N] onward question ‘What happens to my data?’ → Privacy policy (from the plan's page question; the map's ‘Privacy →’)"
+ ],
+ "phone": "≤1023 and ≤767: the kit stacks the two doors, each a question over its .ac-link on its own hairline; nothing of the section's own changes."
+}

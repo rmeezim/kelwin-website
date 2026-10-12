@@ -1,0 +1,7 @@
+/* contact-head · S — the /contact header: header X as a TEXT SHEET (band kind TX, no band).
+   Everything is the kit's InteriorHead (§12.1–12.2); this file only tunes the text sheet.
+   No red beyond the label square and the 48×2 rule: /contact is the low-intent door. */
+.km-contact-head-S { --ac-int-end: 128px; }
+/* the mockup's nav menu is only visibility-hidden below 1024 (production swaps in its own bar);
+   keep its hidden box from widening a phone page */
+@media (max-width: 1023px) { :root:not(.km-home) .km-contact-head-S .ac-nav { overflow-x: clip; } }

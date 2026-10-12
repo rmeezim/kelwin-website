@@ -1,0 +1,34 @@
+/* ── legal-head · S · /privacy — the Specimen-sheet header, band kind IX (contents strip) ──
+   Everything here is the kit's InteriorHead (§12.1–12.3) placed for a text page. The only
+   moves are PLACEMENT and the type step:
+   · the h1 is the text-sheet size (72px at 1440, the articles' range), not 96: the drafted
+     two-voice lines are long (the privacy accent, "What we collect: almost nothing.", is
+     1,057px at 72), and the legal pages are the quietest on the site. ≤1023 48px, ≤767 the
+     kit's 40px (wrapping).
+   · ONE size rule for the legal pair (identical in S and T): below 1440 the h1 scales to keep
+     the longer accent line (privacy's, ≈14.7 em wide) inside the margins — divisor 15 — so
+     /privacy and /terms always share one h1 size at every width.
+   · because the accent line runs past col 9, the h1 takes cols 1–12 and the facts ledger
+     drops one row: it spans the rule and lede rows (3–4) instead of the kit's 2–4, and keeps
+     the kit's own alignment — bottom-aligned with the lede, the kit's −11px foot — so its last
+     value sits on the lede's last baseline.
+   · the band is the kit's IX contents strip: no drawing, no red.                         */
+
+/* the section is a size container so the h1 can never outgrow its line: 72px at 1440, and below
+   that whatever keeps the longer accent line inside the margins (production's fluid token) */
+.km-legal-head-S { container-type: inline-size; }
+.km-legal-head-S .ac-head.ac-ihead { --ac-h-sec: min(72px, var(--ac-int-h1), calc((100cqw - 2 * var(--margin)) / 15)); }
+.km-legal-head-S .ac-head.ac-ihead > .ac-statement { grid-column: 1 / -1; }
+.km-legal-head-S .ac-head.ac-ihead > .ac-facts { grid-row: 3 / span 2; }   /* kit: align-self end, margin-bottom −11px */
+
+/* tablet: the h1 steps down so the accent line holds one line at 834 (the kit drops the facts under the lede) */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-legal-head-S .ac-head.ac-ihead { --ac-h-sec: min(48px, var(--ac-int-h1), calc((100cqw - 2 * var(--margin)) / 15)); }
+  /* the kit hides the desktop menu with visibility below 1024 (production swaps in its own
+     menu button); clip its still-measured width so the phone page never scrolls sideways */
+  :root:not(.km-home) .km-legal-head-S { overflow-x: clip; }
+}
+/* phone: the kit's 40px, and the lines wrap (the accent breaks after its colon) — no width cap */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-legal-head-S .ac-head.ac-ihead { --ac-h-sec: var(--ac-int-h1); }
+}

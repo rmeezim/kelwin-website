@@ -1,0 +1,74 @@
+/* insights-read-first · S — EX, the excerpt sheet: the page's one paper moment.
+   The note to read first, set the way the note itself is set: a left margin with who wrote it
+   (cols 1–2), the reading column (cols 3–8: title, standfirst, first paragraph, the way in), and
+   a right margin (cols 10–12) with what it diagnoses and a small look at the note's own figure,
+   one symptom splitting into three causes. Real published writing, so no SpecimenTag. */
+
+.km-insights-read-first-S__sheet {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  margin-top: 56px; align-items: start;
+}
+
+/* left margin */
+.km-insights-read-first-S__by { grid-column: 1 / span 2; padding-top: 10px; display: grid; gap: 8px; }
+.km-insights-read-first-S__name { margin-top: 10px; font-weight: var(--ui-weight); font-size: var(--ac-support); line-height: 1.4; color: var(--fg); }
+
+/* the reading column */
+.km-insights-read-first-S__col { grid-column: 3 / span 6; }
+.km-insights-read-first-S__t { max-width: 20em; text-wrap: balance; }
+.km-insights-read-first-S__sf {
+  margin-top: 28px; font-size: var(--ac-lede); line-height: 1.5; color: var(--fg);
+}
+.km-insights-read-first-S__p {
+  margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line);
+  font-size: clamp(16px, calc(var(--ac-lede) - 2px), 18px); line-height: 1.6; color: var(--fg-2);   /* 18 at 1440; always a step under the standfirst */
+}
+.km-insights-read-first-S__go { margin-top: 32px; }
+
+/* right margin */
+.km-insights-read-first-S__mg { grid-column: 10 / span 3; padding-top: 10px; }
+.km-insights-read-first-S__dx > dd:first-of-type { font-weight: var(--ui-weight); }
+/* the figure is drawn at 310 (the margin's width at 1440) and never scales up: at most 1:1,
+   down to .93 at a 320 phone, so its 14px labels never fall under 13px */
+.km-insights-read-first-S__fig { margin: 40px 0 0; max-width: 310px; }
+.km-insights-read-first-S__svg { width: 100%; height: auto; }
+/* the four plotted lines scale with the figure instead of the kit's non-scaling stroke: the kit's
+   pathLength dash (.ac-plot) is mis-measured on a scaled non-scaling stroke in Chromium and the
+   split would draw short. At ≤ 1:1 the stroke stays 0.93–1px. */
+.km-insights-read-first-S__svg .ac-plot { vector-effect: none; }
+.km-insights-read-first-S__cap { margin-top: 16px; }
+.km-insights-read-first-S__gl path { fill: none; stroke: var(--fg); stroke-width: 1; }
+.km-insights-read-first-S__gl rect { fill: var(--fg); }
+
+/* ── motion: the page's first body moment — the line splits, once ── */
+.is-play .km-insights-read-first-S__sheet > * { animation: ac-up 700ms var(--ease-out) both; }
+.is-play .km-insights-read-first-S__col { animation-delay: 120ms; }
+.is-play .km-insights-read-first-S__mg { animation-delay: 220ms; }
+.is-play .km-insights-read-first-S__gl,
+.is-play .km-insights-read-first-S__bl { animation: ac-fade 400ms var(--ease-out) var(--d, 0ms) both; }
+
+/* ── laptop (≤1279): the byline becomes one line over the title, the reading column takes
+   cols 1–7 and the margin keeps 4 columns (cols 9–12), as the kit asks of margins below 1280 ── */
+@media (max-width: 1279px) {
+  :root:not(.km-home) .km-insights-read-first-S__by { grid-column: 1 / -1; grid-row: 1; padding-top: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+  :root:not(.km-home) .km-insights-read-first-S__name { margin-top: 0; }
+  :root:not(.km-home) .km-insights-read-first-S__col { grid-column: 1 / span 7; grid-row: 2; margin-top: 28px; }
+  :root:not(.km-home) .km-insights-read-first-S__mg { grid-column: 9 / span 4; grid-row: 2; margin-top: 28px; }
+}
+
+/* ── tablet (≤1023): the right margin drops under the reading column ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-insights-read-first-S__col { grid-column: 1 / span 10; }
+  :root:not(.km-home) .km-insights-read-first-S__mg { grid-column: 1 / span 7; grid-row: 3; margin-top: 56px; }
+}
+
+/* ── phone (≤767): one column; the figure keeps its proportions at the column's width ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-insights-read-first-S__sheet { margin-top: 32px; }
+  :root:not(.km-home) .km-insights-read-first-S__col, :root:not(.km-home) .km-insights-read-first-S__mg { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-insights-read-first-S__t { font-size: 26px; }
+  :root:not(.km-home) .km-insights-read-first-S__sf { font-size: 18px; margin-top: 20px; }
+  :root:not(.km-home) .km-insights-read-first-S__p { font-size: 16px; }
+  :root:not(.km-home) .km-insights-read-first-S__mg { margin-top: 48px; }
+  :root:not(.km-home) .km-insights-read-first-S__fig { margin-top: 32px; }
+}

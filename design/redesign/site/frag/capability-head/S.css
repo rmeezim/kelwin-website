@@ -1,0 +1,56 @@
+/* ── capability-head · S · Narrative Systems — header X, the Specimen sheet (approved round 3),
+   title block retired. Kit §12: nav at rest · head · facts · band. The band is CONTOUR: five
+   noisy 1px lines pass through a drawn filter (mouth + two converging hairlines, the C1 guard)
+   and leave as one clean line that meets the frame at the red output tick — the header's one
+   red. Flags 01.1–01.4 stand on the filter's upper hairline; "One voice" measures the clean run.
+   The settle is the page's one orchestrated moment; the clean run's slow drift is the
+   interior's one ambient loop.                                                              */
+
+.km-capability-head-S__ln { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-linecap: butt; }
+.km-capability-head-S__clean { fill: none; stroke: var(--fg); stroke-width: 1; stroke-linecap: butt; }
+.km-capability-head-S__tick { transform-box: fill-box; transform-origin: 50% 50%; }
+
+/* ── entrance (only under .is-play): the head plays the kit choreography; the band follows ── */
+/* the filter draws first (mouth, then its hairlines fade in), then the raw bundle plots left → right */
+.is-play .km-capability-head-S__mo { stroke-dasharray: 1; animation: ac-plot 500ms var(--ease-out) var(--ac-band-d) both; }
+.is-play .km-capability-head-S__fl { animation: ac-fade 700ms var(--ease-out) calc(var(--ac-band-d) + 200ms) both; }
+.is-play .km-capability-head-S__ln,
+.is-play .km-capability-head-S__clean { stroke-dasharray: 1; animation: ac-plot 1100ms var(--ease-inout) calc(var(--ac-band-d) + 60ms) both; }
+.is-play .km-capability-head-S__ln:nth-child(2) { animation-delay: calc(var(--ac-band-d) + 100ms); }
+.is-play .km-capability-head-S__ln:nth-child(3), .is-play .km-capability-head-S__clean { animation-delay: calc(var(--ac-band-d) + 140ms); }
+.is-play .km-capability-head-S__ln:nth-child(4) { animation-delay: calc(var(--ac-band-d) + 180ms); }
+.is-play .km-capability-head-S__ln:nth-child(5) { animation-delay: calc(var(--ac-band-d) + 220ms); }
+.is-play .km-capability-head-S__frame > .ac-dim { animation: none; }
+
+/* JS-held opening state (only while the morph runs): flags, dimension and tick wait for the front */
+.km-capability-head-S__frame.ac-cold *::before, .km-capability-head-S__frame.ac-cold *::after { transition: none !important; }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__f > * { opacity: 0; transition: opacity 420ms var(--ease-out) 200ms; }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__f::before { transform: scaleY(0); transform-origin: 50% 100%; transition: transform 420ms var(--ease-out); }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__f::after { opacity: 0; transition: opacity 200ms var(--ease-out); }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__f.is-in > *,
+.km-capability-head-S__frame.is-pre .km-capability-head-S__f.is-in::after { opacity: 1; }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__f.is-in::before { transform: none; }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__dim { transform: scaleX(0); transition: transform 700ms var(--ease-inout); }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__dim .ac-dim__v { opacity: 0; transition: opacity 400ms var(--ease-out) 450ms; }
+.km-capability-head-S__frame.is-pre.is-dim .km-capability-head-S__dim { transform: none; }
+.km-capability-head-S__frame.is-pre.is-dim .km-capability-head-S__dim .ac-dim__v { opacity: 1; }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__clean { opacity: 0; transition: opacity 700ms var(--ease-inout); }
+.km-capability-head-S__frame.is-pre.is-dim .km-capability-head-S__clean { opacity: 1; }
+.km-capability-head-S__frame.is-pre .km-capability-head-S__tick { transform: scaleY(0); transition: transform 360ms var(--ease-out); }
+.km-capability-head-S__frame.is-pre.is-out .km-capability-head-S__tick { transform: none; }
+
+/* ── tablet / phone: the kit recomposes the head and swaps in the phone drawing (three lines,
+   the filter at 40% of the width); the flags become the visible keyed list. ── */
+
+/* the kit's nav menu is hidden below 1024 but still spans its desktop width; clip it so the
+   phone page never scrolls sideways (production swaps in its own menu button + sheet) */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-head-S { overflow-x: clip; }
+}
+
+/* phone: the keyed list under the drawing runs two to a row (codes and names only) */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-head-S .ac-band__keys { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+  :root:not(.km-home) .km-capability-head-S .ac-band__keys > li:not(:has(.ac-callout__code)) { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-capability-head-S .ac-band__keys > li { align-items: flex-start; gap: 10px; }
+}

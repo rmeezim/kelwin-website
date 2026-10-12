@@ -1,0 +1,35 @@
+/* reports-publishing · S — SP, the spec list: how publishing works, on graphite after the paper
+   sheet (paper → graphite is its own cut, so no ruled seam). Four rows on full-width hairlines:
+   the index (col 1), the rule (cols 2–6, the kit's 24px h4), what it means (cols 7–11, 17px).
+   The last row carries no sentence: it ends on the page's honest status, the same words as the
+   header's facts ("Cleared for publication · None yet"), so the page closes the loop it opened.
+   No red here: the view's red is the Door's button below.                                     */
+
+.km-reports-publishing-S__rules { margin: 64px 0 0; border-top: 1px solid var(--line-2); }
+.km-reports-publishing-S__rule {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: baseline; padding: 28px 0 30px; border-bottom: 1px solid var(--line);
+}
+.km-reports-publishing-S__rule > dt { grid-column: 1 / span 6; display: grid; grid-template-columns: subgrid; align-items: baseline; }
+.km-reports-publishing-S__rule > dt > .ac-idx { grid-column: 1; }
+.km-reports-publishing-S__rule > dt > .ac-h4 { grid-column: 2 / span 5; }
+.km-reports-publishing-S__rule > dd { grid-column: 7 / span 5; margin: 0; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 50ch; }
+.km-reports-publishing-S__st { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; }
+.km-reports-publishing-S__st .ac-cap { color: var(--fg-2); }
+
+/* ── tablet: the rule over what it means, both from col 2 ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-reports-publishing-S__rules { margin-top: 48px; }
+  :root:not(.km-home) .km-reports-publishing-S__rule { row-gap: 10px; padding: 24px 0 26px; }
+  :root:not(.km-home) .km-reports-publishing-S__rule > dt { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-reports-publishing-S__rule > dt > .ac-h4 { grid-column: 2 / -1; }
+  :root:not(.km-home) .km-reports-publishing-S__rule > dd { grid-column: 2 / span 10; }
+}
+/* ── phone: index beside the rule, the meaning under it ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-reports-publishing-S__rules { margin-top: 36px; }
+  :root:not(.km-home) .km-reports-publishing-S__rule { grid-template-columns: 36px minmax(0, 1fr); column-gap: 0; padding: 20px 0 22px; }
+  :root:not(.km-home) .km-reports-publishing-S__rule > dt { grid-column: 1 / -1; grid-template-columns: 36px minmax(0, 1fr); }
+  :root:not(.km-home) .km-reports-publishing-S__rule > dt > .ac-h4 { grid-column: 2; font-size: 20px; }
+  :root:not(.km-home) .km-reports-publishing-S__rule > dd { grid-column: 2; font-size: var(--ac-support); }
+}

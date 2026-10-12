@@ -1,0 +1,27 @@
+{
+  "title": "Six markets, on paper",
+  "direction": "A×C · Round 8 · /who-we-work-with §2 (LG, the paper moment)",
+  "summary": "Where the same three situations break, market by market: six sectors with their two traits, each opening in place to the one line that says where it breaks there — type and hairlines on paper, with the photos, network graphs and AI-image slot gone.",
+  "reference": {
+    "site": "Approved Kelwin system: homepage fit/U (the ledger on paper, the head column at the left)",
+    "borrowed": "The kit ledger that opens in place, one row at a time, with the section's head held in a left column so the rows hang from the heading's first line.",
+    "kelwin": "Same family as the homepage 'Who it's for' it is reached from, but its own job: markets, not criteria. Chips carry each market's two traits; an open row shows its line and nothing else. No drawing, no red, no second statement."
+  },
+  "motion": [
+    "entrance: label, heading and lede rise; the six rows cascade 80ms apart; then I·01 opens (≈1.25s, 360ms) — its open height is kept from the first frame, so nothing below moves. This is one of the page's two body play-once moments (the other is none: the situations and the close are still beats).",
+    "ambient: none.",
+    "interaction: rows are buttons (aria-expanded / aria-controls), one open at a time, clicking the open row closes it; closed panels are inert.",
+    "on the live site: plays once as it scrolls into view. Reduced motion: I·01 open at once, no timers."
+  ],
+  "demoMs": 2200,
+  "story": "Deepens the situations the reader has just recognised with the sector detail the homepage doesn't carry: the same three situations, sharpest in committee-decided markets, so a buyer can find his own market and its typical break before he reaches who is sent away.",
+  "copy": [
+    "[N] h2 'The same three situations, in six markets.' · [N] lede 'Committee-decided deals make all three sharper. These are the markets where they show up most.'",
+    "[K] Six markets, their chips and their 'where it breaks' lines (FirmFit.tsx), except:",
+    "[R] I·01 'The story that wins the champion dies in the committee, where every stakeholder carries a different version of what you do.' ('seven stakeholders' was unsourced)",
+    "[N] I·04 adds 'Product-led with a sales-carried expansion is in scope. Card-at-checkout with no sales conversation is not.'",
+    "Cut: photos, the pending AI image, the network graphs, 'Specialist, not generalist', the noise-cut accent line"
+  ],
+  "phone": "1024–1279: the split stays, but the 312px trait column would squeeze the market names, so the traits drop under the name (as on phones) and every name keeps its line. ≤1023: the head spans the width above the ledger (heading up to 16em, lede 46ch), and the ledger is wide enough for the trait column again. ≤767: heading 28px, lede 16px; ledger rows recompose to index · market · toggle on one line with the two chips wrapping under the market name; open lines at 16px. Checked at 320, 390, 834, 1024, 1180.",
+  "notes": "The page's one paper section (data-surface=light), as the story map names it: 'the markets'. I·04 keeps its [K] 'Outbound only works when it sounds like engineering wrote it.' as instructed, though the site has moved off 'outbound' elsewhere; flagged for the founder. The kit ledger, chips and row padding are used as-is; the fragment adds only a row-head focus ring (the kit has none) and the phone/small-desktop recomposition (kitNeeds). Coherence question for the founder: the [N] heading promises 'the same three situations', but no market line names a situation or layer (five of six break in the narrative). Kept as drafted."
+}

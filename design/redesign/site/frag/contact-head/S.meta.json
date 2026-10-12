@@ -1,0 +1,28 @@
+{
+  "title": "Write to us",
+  "direction": "A×C · Round 8 · /contact header",
+  "summary": "Header X as a text sheet: lands on the founder's letter line ('If you write to us, a person answers.'), answers who reads it and how fast in the facts ledger, and names the other door once, quietly, so the memo below can be the page's object.",
+  "reference": {
+    "site": "Approved interior header X (round 3, 'Specimen sheet'; its title block retired) and the homepage letter/S, whose line this header lands on",
+    "ref_file": "refs/contact-memo-S.webp",
+    "borrowed": "Header X's grammar unchanged: label + mono breadcrumb, two-voice h1, 48×2 rule, lede cols 1–6, three-row facts ledger cols 9–12 bottom-aligned with the lede.",
+    "kelwin": "Text sheet (TX): no band, no drawing, no red beyond the label square and the rule. The facts answer the visitor's first questions (who reads it, how fast) and carry the quiet door to the audit."
+  },
+  "story": "The landing: the homepage letter promised 'If you write to us, a person answers.' The h1 keeps that promise in its own words, the lede says what the channel is for and that nothing enters a CRM or a sequence, the facts say who reads it and when, and the audit is offered once, quietly, for the visitor who arrived at the wrong door.",
+  "copy": [
+    "h1 [N, from the letter's approved line] “Write to us. / A person answers.”",
+    "lede [N] “Questions, a document, press, the Lab — or you’re not sure yet what you need. This is the channel. It goes to one inbox, a person reads it, and nothing you send enters a CRM or a sequence.”",
+    "facts: Read by · The founder (FC, §7 Q1)",
+    "facts: Reply · Within two working days [K] (FC, §7 Q3)",
+    "facts: Ready to diagnose? · The System Audit ↗ [N]",
+    "metadata title [R] “Talk to the team — Kelwin”; description [K]"
+  ],
+  "phone": "≤1023: the kit composes it — the nav menu gives way to production's menu button, the h1 takes the full width, the facts ledger drops under the lede (cols 1–9). ≤767: h1 40px and wraps, lede 17px, facts full width under the lede; the page goes straight into the memo with no band to recompose.",
+  "motion": [
+    "entrance: the kit's head choreography — label fades, the h1 rises line by line, the rule draws, the lede and the facts ledger rise. No band, so no morph: the page's one body moment is the memo's hairlines drawing.",
+    "ambient: none. interaction: hover on the nav, the facts ledger's quiet door.",
+    "on the live site: plays once on load; the nav bar is at rest (production's bar). Reduced motion: final state at once."
+  ],
+  "demoMs": 2200,
+  "notes": "No band by design (STORY-INTERIOR §4.5, §5 TX): the form is this page's object. Resources is lit in the nav because /contact is the Resources plate's R·03 ('Talk to the team')."
+}

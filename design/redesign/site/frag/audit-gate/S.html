@@ -1,0 +1,173 @@
+<section class="km km-audit-gate-S ac-sec ac-sec--ruled" data-surface="dark" id="qualify" aria-labelledby="km-audit-gate-S-h">
+  <div class="ac-wrap">
+
+    <!-- SECTION HEAD: ■ label → one-line h2 → lede (the page's conversion moment; not a statement) -->
+    <div class="ac-shead">
+      <div class="ac-labelrow"><p class="ac-label">Three questions</p></div>
+      <h2 class="ac-h3 ac-h3--lg" id="km-audit-gate-S-h">Three questions, then a call.</h2>
+      <p class="ac-shead__lede">One tap each. Your answers travel with the request, and the gate works in both directions.</p>
+    </div>
+
+    <div class="ac-grid km-audit-gate-S__gate">
+
+      <!-- ═══ the gate (cols 1–7): one question per screen. Logic and copy as today's QualifyFlow:
+           pre-revenue and pure self-serve / PLG decline with their own reason; Q03 is diagnostic only. ═══ -->
+      <div class="km-audit-gate-S__panel">
+        <div class="km-audit-gate-S__prog">
+          <!-- the three-tick mini ruler: one tick per question; the run so far in --fg -->
+          <svg class="ac-svg km-audit-gate-S__ruler" viewBox="0 0 129 13" aria-hidden="true">
+            <path class="ac-s-mute" d="M0.5 6.5H128.5"/>
+            <path class="ac-s-fg km-audit-gate-S__run" data-gate="run" d="M0.5 6.5H128.5"/>
+            <path class="km-audit-gate-S__tick is-on" data-gate="tick" d="M0.5 0V13"/>
+            <path class="km-audit-gate-S__tick" data-gate="tick" d="M64.5 0V13"/>
+            <path class="km-audit-gate-S__tick" data-gate="tick" d="M128.5 0V13"/>
+          </svg>
+          <p class="ac-cap km-audit-gate-S__prog-t" data-gate="prog">Question 1 of 3</p>
+        </div>
+
+        <div class="km-audit-gate-S__screens">
+
+          <!-- Q01 -->
+          <div class="km-audit-gate-S__screen" data-screen="0">
+            <h3 class="km-audit-gate-S__q" id="km-audit-gate-S-q1" tabindex="-1">Where is revenue today?</h3>
+            <div class="km-audit-gate-S__opts" role="group" aria-labelledby="km-audit-gate-S-q1">
+              <button class="km-audit-gate-S__opt" type="button" data-step="0" data-opt="0">
+                <span class="ac-idx">A</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Pre-revenue</span><span class="km-audit-gate-S__detail">Product live or close, first customers still ahead.</span></span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+              <button class="km-audit-gate-S__opt" type="button" data-step="0" data-opt="1">
+                <span class="ac-idx">B</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Post-revenue — real, but lumpy</span><span class="km-audit-gate-S__detail">Deals close, but you can’t predict next quarter from this one.</span></span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+              <button class="km-audit-gate-S__opt" type="button" data-step="0" data-opt="2">
+                <span class="ac-idx">C</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Post-revenue — already predictable</span><span class="km-audit-gate-S__detail">The machine works; you want it calibrated and compounding.</span></span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Q02 -->
+          <div class="km-audit-gate-S__screen" data-screen="1" hidden>
+            <h3 class="km-audit-gate-S__q" id="km-audit-gate-S-q2" tabindex="-1">How do your deals close?</h3>
+            <div class="km-audit-gate-S__opts" role="group" aria-labelledby="km-audit-gate-S-q2">
+              <button class="km-audit-gate-S__opt" type="button" data-step="1" data-opt="0">
+                <span class="ac-idx">A</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Sales-led — a committee decides</span><span class="km-audit-gate-S__detail">Multiple stakeholders, narrative carries the deal.</span></span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+              <button class="km-audit-gate-S__opt" type="button" data-step="1" data-opt="1">
+                <span class="ac-idx">B</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Hybrid — self-serve plus sales</span><span class="km-audit-gate-S__detail">Product motion up front, sales carries the expansion.</span></span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+              <button class="km-audit-gate-S__opt" type="button" data-step="1" data-opt="2">
+                <span class="ac-idx">C</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Pure self-serve / PLG</span><span class="km-audit-gate-S__detail">Card at checkout, no sales conversation.</span></span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="km-audit-gate-S__ctls"><button class="km-audit-gate-S__ctl is-back" type="button" data-gate="back">Back</button></div>
+          </div>
+
+          <!-- Q03 — diagnostic only; each answer says where the audit looks first (it still reads all three) -->
+          <div class="km-audit-gate-S__screen km-audit-gate-S__screen--q3" data-screen="2" hidden>
+            <h3 class="km-audit-gate-S__q" id="km-audit-gate-S-q3" tabindex="-1">What does it feel like from inside?</h3>
+            <p class="km-audit-gate-S__colhead" aria-hidden="true"><span class="ac-cap">Where the audit looks first</span></p>
+            <div class="km-audit-gate-S__opts" role="group" aria-labelledby="km-audit-gate-S-q3">
+              <button class="km-audit-gate-S__opt" type="button" data-step="2" data-opt="0">
+                <span class="ac-idx">A</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Not enough pipeline</span><span class="km-audit-gate-S__detail">The top of the funnel never fills reliably.</span></span>
+                <span class="km-audit-gate-S__first"><span class="ac-sr">The audit looks first at </span>GTM Infrastructure</span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+              <button class="km-audit-gate-S__opt" type="button" data-step="2" data-opt="1">
+                <span class="ac-idx">B</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Pipeline dies mid-funnel</span><span class="km-audit-gate-S__detail">Meetings happen; deals stall in committee.</span></span>
+                <span class="km-audit-gate-S__first"><span class="ac-sr">The audit looks first at </span>Narrative Systems</span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+              <button class="km-audit-gate-S__opt" type="button" data-step="2" data-opt="2">
+                <span class="ac-idx">C</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">The message isn’t landing</span><span class="km-audit-gate-S__detail">Activity is high, resonance is low.</span></span>
+                <span class="km-audit-gate-S__first"><span class="ac-sr">The audit looks first at </span>Narrative Systems</span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+              <button class="km-audit-gate-S__opt" type="button" data-step="2" data-opt="3">
+                <span class="ac-idx">D</span>
+                <span class="km-audit-gate-S__body"><span class="km-audit-gate-S__label">Honestly unsure</span><span class="km-audit-gate-S__detail">Something is off and you want it named.</span></span>
+                <span class="km-audit-gate-S__first"><span class="ac-sr">The audit looks at </span>All three</span>
+                <span class="km-audit-gate-S__arr" aria-hidden="true"></span>
+              </button>
+            </div>
+            <p class="km-audit-gate-S__aside">A starting point only. The audit still reads all three layers.</p>
+            <div class="km-audit-gate-S__ctls"><button class="km-audit-gate-S__ctl is-back" type="button" data-gate="back">Back</button></div>
+          </div>
+
+          <!-- DECLINED — an honest no, with the option's own reason and useful exits -->
+          <div class="km-audit-gate-S__screen" data-screen="declined" hidden>
+            <h3 class="km-audit-gate-S__q" id="km-audit-gate-S-no" tabindex="-1">Not a fit yet.</h3>
+            <p class="km-audit-gate-S__reason" data-gate="reason">There’s no working motion to instrument yet. The audit reads a live system — it can’t read one that hasn’t started. When the first revenue is real, come straight back.</p>
+            <p class="km-audit-gate-S__sub">Saying so now costs you nothing. When it changes, the audit will be here.</p>
+            <div class="km-audit-gate-S__exits">
+              <a class="ac-link" href="/insights">Read the field notes meanwhile</a>
+              <a class="ac-link" href="/contact">Talk to the team anyway</a>
+            </div>
+            <div class="km-audit-gate-S__ctls">
+              <button class="km-audit-gate-S__ctl is-back" type="button" data-gate="back">Change last answer</button>
+              <button class="km-audit-gate-S__ctl" type="button" data-gate="restart">Restart</button>
+            </div>
+          </div>
+
+          <!-- QUALIFIED — the booking: the request beside it is complete; one red, the call -->
+          <div class="km-audit-gate-S__screen" data-screen="qualified" hidden>
+            <h3 class="km-audit-gate-S__q" id="km-audit-gate-S-yes" tabindex="-1">Qualified. Let’s find a time.</h3>
+            <dl class="ac-spec km-audit-gate-S__then">
+              <dt>Looks first</dt><dd data-gate="layer"><a class="km-audit-gate-S__layer" href="/capabilities/narrative-systems">Narrative Systems</a></dd>
+              <dt>On the call</dt><dd>We’ll ask one more thing: who inside will own the system.</dd>
+            </dl>
+            <div class="km-audit-gate-S__book">
+              <a class="ac-btn" data-gate="book" href="mailto:audit@kelwin.co">Book the strategic call</a>
+              <p class="km-audit-gate-S__note" data-gate="note">This opens your own mail app with your answers filled in, addressed to audit@kelwin.co. We reply with times within one working day. Thirty minutes, no SDR handoff.</p>
+              <!-- MailtoConfirm: shown after the click (no network call; nothing is sent from this page) -->
+              <div class="km-audit-gate-S__sent" data-gate="sent" hidden>
+                <p class="km-audit-gate-S__note">Your mail app should have opened with the request ready. Nothing is sent until you press send. If it didn’t open, copy the address: <span class="km-audit-gate-S__addr">audit@kelwin.co</span></p>
+                <button class="km-audit-gate-S__ctl" type="button" data-gate="copy">Copy the address</button>
+              </div>
+            </div>
+            <div class="km-audit-gate-S__ctls"><button class="km-audit-gate-S__ctl is-back" type="button" data-gate="back">Change last answer</button></div>
+          </div>
+        </div>
+
+        <p class="ac-sr" aria-live="polite" data-gate="live"></p>
+      </div>
+
+      <!-- ═══ the request (cols 9–12, under the header's facts column): written as you answer — the exact subject and body the booking
+           opens in your own mail app (today's format, unchanged). Nothing leaves this page. ═══ -->
+      <aside class="ac-doc km-audit-gate-S__req" aria-labelledby="km-audit-gate-S-req">
+        <div class="ac-doc__head"><p class="ac-doc__name" id="km-audit-gate-S-req">Your request</p><p class="ac-cap">Written as you answer</p></div>
+        <div class="ac-doc__body">
+          <dl class="ac-spec km-audit-gate-S__hdr">
+            <dt>To</dt><dd>audit@kelwin.co</dd>
+            <dt>Subject</dt><dd>Audit qualification — booking the strategic call</dd>
+          </dl>
+          <ol class="km-audit-gate-S__sum" aria-label="Qualification summary">
+            <li class="km-audit-gate-S__row" data-gate="row"><p class="km-audit-gate-S__rq">Where is revenue today?</p><p class="km-audit-gate-S__ra is-empty" data-gate="ans"><span class="ac-sr">Not answered yet</span></p></li>
+            <li class="km-audit-gate-S__row" data-gate="row"><p class="km-audit-gate-S__rq">How do your deals close?</p><p class="km-audit-gate-S__ra is-empty" data-gate="ans"><span class="ac-sr">Not answered yet</span></p></li>
+            <li class="km-audit-gate-S__row" data-gate="row"><p class="km-audit-gate-S__rq">What does it feel like from inside?</p><p class="km-audit-gate-S__ra is-empty" data-gate="ans"><span class="ac-sr">Not answered yet</span></p></li>
+            <li class="km-audit-gate-S__row km-audit-gate-S__row--times"><p class="km-audit-gate-S__rq">Preferred times for the call</p><p class="km-audit-gate-S__rt">You add these in your mail app.</p></li>
+          </ol>
+        </div>
+        <div class="ac-doc__foot"><p class="km-audit-gate-S__foot-t" data-gate="foot">Nothing is sent until you press send.</p></div>
+      </aside>
+    </div>
+
+    <!-- under the gate: the low-intent door, no qualification needed -->
+    <div class="km-audit-gate-S__under">
+      <p class="ac-onward"><span class="ac-onward__q">Not ready for any of this?</span><a class="ac-link" href="/contact">Talk to the team</a><span class="ac-onward__q">No qualification needed.</span></p>
+    </div>
+
+  </div>
+</section>

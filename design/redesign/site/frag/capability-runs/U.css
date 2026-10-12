@@ -1,0 +1,64 @@
+/* ── capability-runs · U · GTM Intelligence — CL, the quarter as a 13-week calendar ruler ──
+   One quarter to scale across cols 1–8: a tick for each weekly signal review, a dashed mark for
+   each win/loss interview as deals close or die, and week 13's tall red tick, the calibration
+   readout (this view's one red). The ruler runs on past week 13, faint, into the next quarter.
+   Cols 9–12 hold the readout's standing agenda, numbered. On this page it sits BEFORE the
+   specimen: the cadence first, then a page of what it re-scores.                             */
+
+.km-capability-runs-U__grid { margin-top: 72px; align-items: start; }
+.km-capability-runs-U__quarter { grid-column: 1 / span 8; margin: 0; }
+.km-capability-runs-U__review { grid-column: 9 / span 4; padding-left: var(--gutter); border-left: 1px solid var(--line); }
+
+.km-capability-runs-U__rul { position: relative; }
+.km-capability-runs-U__svg { width: 100%; height: auto; aspect-ratio: 866 / 190; }
+.km-capability-runs-U__svg--sm { position: absolute; inset: 0; visibility: hidden; aspect-ratio: 358 / 190; }
+.km-capability-runs-U__next { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-capability-runs-U__w { font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; fill: var(--fg-3); }
+.km-capability-runs-U__w--next { fill: var(--fg-3); text-transform: uppercase; }
+.km-capability-runs-U__rl { font-family: var(--f-body); font-size: 14px; fill: var(--fg); }
+
+.km-capability-runs-U__legend { display: flex; flex-wrap: wrap; gap: 12px 32px; margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); }
+.km-capability-runs-U__key { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.4; color: var(--fg-2); }
+.km-capability-runs-U__key::before { content: ""; flex: none; width: 1px; height: 14px; background: var(--fg-2); }
+.km-capability-runs-U__key--wl::before { width: 0; height: 18px; background: none; border-left: 1px dashed var(--line-2); }
+.km-capability-runs-U__foot { margin-top: 40px; max-width: 62ch; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); }
+.km-capability-runs-U__more { margin-top: 32px; }
+
+.km-capability-runs-U__rh { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--line-2); }
+.km-capability-runs-U__rt { font-weight: var(--ui-weight); font-size: var(--ac-body); color: var(--fg); }
+.km-capability-runs-U__agenda > li { display: grid; grid-template-columns: 28px minmax(0, 1fr); padding: 16px 0 18px; border-bottom: 1px solid var(--line); }
+.km-capability-runs-U__agenda > li > .ac-idx { line-height: 22px; color: var(--fg-2); }
+.km-capability-runs-U__agenda p { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.km-capability-runs-U__at { display: block; margin-bottom: 2px; font-weight: var(--ui-weight); font-size: var(--ac-body); line-height: 1.35; color: var(--fg); }
+
+/* ── entrance (body moment one on this page): the axis draws, the weekly ticks fall in, the
+   win/loss marks appear, week 13's red tick rises last; the agenda sets item by item ── */
+@keyframes km-capability-runs-U-rise { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.is-play .km-capability-runs-U__axis { stroke-dasharray: 1; animation: ac-plot 1400ms var(--ease-inout) 300ms both; }
+.is-play .km-capability-runs-U__ticks, .is-play .km-capability-runs-U__w { animation: ac-fade 500ms var(--ease-out) 900ms both; }
+.is-play .km-capability-runs-U__rev { animation: ac-fade 700ms var(--ease-out) 1100ms both; }
+.is-play .km-capability-runs-U__wl { animation: ac-fade 700ms var(--ease-out) 1450ms both; }
+.is-play .km-capability-runs-U__next { animation: ac-fade 600ms var(--ease-out) 1600ms both; }
+.is-play .km-capability-runs-U__red { transform-box: fill-box; transform-origin: 50% 100%; animation: km-capability-runs-U-rise 600ms var(--ease-out) 1900ms both; }
+.is-play .km-capability-runs-U__rl { animation: ac-fade 400ms var(--ease-out) 2300ms both; }
+.is-play .km-capability-runs-U__legend, .is-play .km-capability-runs-U__foot, .is-play .km-capability-runs-U__more { animation: ac-up 600ms var(--ease-out) 1200ms both; }
+.is-play .km-capability-runs-U__rh { animation: ac-fade 400ms var(--ease-out) 2000ms both; }
+.is-play .km-capability-runs-U__agenda > li { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(2150ms + var(--i) * 120ms); }
+
+/* ── tablet: the ruler takes the width; the agenda sits under it ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-runs-U__grid { margin-top: 48px; }
+  :root:not(.km-home) .km-capability-runs-U__quarter, :root:not(.km-home) .km-capability-runs-U__review { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-capability-runs-U__review { margin-top: 56px; padding-left: 0; border-left: 0; }
+}
+/* ── phone: the phone ruler (every other week numbered), legend stacked ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-runs-U__svg:not(.km-capability-runs-U__svg--sm) { visibility: hidden; aspect-ratio: 358 / 190; }
+  :root:not(.km-home) .km-capability-runs-U__svg--sm { visibility: visible; }
+  :root:not(.km-home) .km-capability-runs-U__grid { margin-top: 36px; }
+  :root:not(.km-home) .km-capability-runs-U__legend { flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 24px; padding-top: 14px; }
+  :root:not(.km-home) .km-capability-runs-U__foot { margin-top: 24px; font-size: 16px; }
+  :root:not(.km-home) .km-capability-runs-U__more { margin-top: 24px; }
+  :root:not(.km-home) .km-capability-runs-U__review { margin-top: 40px; }
+  :root:not(.km-home) .km-capability-runs-U__agenda > li { padding: 12px 0 14px; }
+}

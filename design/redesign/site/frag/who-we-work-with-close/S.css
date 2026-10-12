@@ -1,0 +1,21 @@
+/* ── who-we-work-with · close · S — who we send away (§4.6, the kit's D3 gate close) ──────────
+   The kit Door as-is; this fragment only adds the – ledger sign in each row's index (the
+   homepage fit "Not for" sign) and the not-sure line under the red ask: a plain question and
+   its quiet .ac-link, so the low-intent door is said once, right beside the high-intent one. */
+
+.km-who-we-work-with-close-S__mk { display: inline-block; width: 1.2em; }
+/* the kit has no focus ring for .ac-link (kitNeeds); the same 1px ring as the kit's .ac-go */
+.km-who-we-work-with-close-S .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+.km-who-we-work-with-close-S__unsure { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; margin-top: 8px; }
+.km-who-we-work-with-close-S__q { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+
+/* entrance: the kit Door's own (list, then the gate 200ms later, then the foot) */
+
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-who-we-work-with-close-S__unsure { flex-direction: column; align-items: flex-start; gap: 4px; }
+  /* the kit sizes the Instead exit to fit one line at 298px; below ≈360 the row's indent leaves
+     less than that, so the exit may wrap (its arrow stays on the last line) rather than run
+     past the margin (kitNeeds: this belongs on .ac-door__row-i > .ac-link) */
+  :root:not(.km-home) .km-who-we-work-with-close-S .ac-door__row-i > .ac-link { white-space: normal; max-width: 100%; align-items: flex-end; line-height: 1.4; }
+}

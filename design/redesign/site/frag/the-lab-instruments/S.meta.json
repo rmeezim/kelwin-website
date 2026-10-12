@@ -1,0 +1,35 @@
+{
+  "title": "The board's legend",
+  "direction": "A×C · Round 8 · /the-lab · ledger that opens in place (LG)",
+  "summary": "The status board read row by row: each instrument with what it reads and its stage in a four-segment gauge; open, what it would do beyond today's hand-made work, which GTM Intelligence service it is built to speed up (03.1–03.4, as that page numbers and names them) and what that service feeds, how the work is done today, and whether it is used on engagements yet.",
+  "story": "Answers the visitor's last question — “does it matter to my engagement?” — honestly and in one model with /capabilities/gtm-intelligence: every instrument is built to speed up a service that page sells (03.1 signal taxonomy & intent monitoring, 03.2 win/loss, 03.3 resonance telemetry, 03.4 quarterly calibration), the work is done by hand today, and none is used on engagements yet. The line under the ledger says the same in one sentence; the close's onward link takes the reader to that page.",
+  "copy": [
+    "[N] h2 “What each one reads, and where it stands.”",
+    "[N] Lede “The board, row by row. Open one for the service it is built to speed up, and how that work is done today.”",
+    "[N] Column heads: Instrument · What it reads · Stage",
+    "[R] Rows: Signal taxonomy — Which signals come before revenue · Account timelines — The whole deal, in one view · Narrative resonance scoring — Which message versions buyers repeat · Entropy index — How much a motion keeps from one quarter to the next",
+    "[R, recast to fit the column — founder flag] Routing queue — “Which account needs which touch next”; the story map's “Proposes the next touch for an operator to approve” opens its row, verbatim",
+    "(FC) Stages as on the board: Account timelines Prototype; the other four Concept",
+    "(FC) On engagements · Not yet (all five)",
+    "[N] Open text per row: what the instrument would do beyond today's hand-made work",
+    "[N, mapping — founder flag] To speed up · Feeds: Signal taxonomy → 03.1 Signal taxonomy & intent monitoring · Signal Dashboard; Account timelines → 03.2 Win/loss & objection intelligence · Signal Dashboard; Routing queue → 03.1 · The operator’s next touch, under your Orchestration Rules; Narrative resonance scoring → 03.3 Narrative resonance telemetry · The next narrative version; Entropy index → 03.4 Quarterly calibration program · Rebuild Sequence (service names and Feeds as GTM Intelligence prints them)",
+    "[N] Today: Built from closed-won history, reviewed by hand each week · Pieced together by hand from the CRM record · Prioritised by hand at the weekly signal review · Calls and replies reviewed by hand for the resonance report · Judged by hand in quarterly calibration",
+    "[N] Entropy index: “Read the definition” → /insights/revenue-entropy (story map §4.11: the note defines the term and the Lab's instrument links to it)",
+    "[N] Line (text only) “Today the intelligence layer is delivered by the method and the people running it. These instruments are being built to make that work faster.” — its → GTM Intelligence is carried by the close's onward link (one link to that page)"
+  ],
+  "phone": "≤1023: the reading drops under the instrument's name (idx · name/reading · stage · toggle); open rows stack the text then the spec. ≤767: the column head goes; each row is the name with its toggle, then what it reads, then the stage gauge and word; every row rests closed on phones (JS, outside the stitched 1440 stage), so the ledger costs 5 short rows; a tap opens one, the text then the spec, full width. The reconciling line drops its indent. Checked at 390 (1,230px; 1,118 at production's 72px padding).",
+  "reference": {
+    "site": "Approved Kelwin faq/U (the ledger that opens in place, 01 resting open) and fit/U",
+    "mobbin_url": "",
+    "ref_file": "",
+    "borrowed": "The approved FAQ's ledger behaviour verbatim: real buttons, one row open at a time, 01 rests open, the + turning to −.",
+    "kelwin": "A table, not a Q&A: a mono column head, a stage column carrying the header's board in miniature (four segments lit to the stage reached), and an open state that keeps the table's columns — the text under the name, the spec (To speed up · Feeds · Today · On engagements) under the reading and the stage. “To speed up” prints the service number in mono, as GTM Intelligence does, so the two pages cross-reference at a glance."
+  },
+  "motion": [
+    "entrance: the kit's section head; the column head fades; the rows cascade in closed (80ms apart); at 1.5s row 01 opens once in place (360ms, the kit's ledger transition) — the page's first body moment. Phones: no auto-open.",
+    "ambient: none. interaction: click a row to open it (one at a time; click again to close).",
+    "on the live site: plays once at 40% visible. Reduced motion: final state (01 open; all closed on phones), no timers."
+  ],
+  "demoMs": 2200,
+  "notes": "One model with GTM Intelligence: each instrument names the 03.x service it is built to speed up and what that service feeds, exactly as capability-services/U prints them; Today lines say how the method does it by hand now (no claim that installs have run). Height 1,206px at 1440 with 01 open. The ledger no longer links GTM Intelligence itself: the close's onward link does, once."
+}

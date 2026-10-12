@@ -1,0 +1,30 @@
+{
+  "title": "Three case files",
+  "direction": "A×C · Round 8 · /who-we-work-with §1 (CF)",
+  "summary": "The page's strongest content moved to the top (it sat ~6,600px down on phones): the three situations as wide case-file rows, each with the header's elevation in miniature, the story in the buyer's own terms, what changes, and the layer that breaks first, linked to its page.",
+  "reference": {
+    "site": "Beside (problem list), via Mobbin",
+    "mobbin_url": "https://mobbin.com/sites/sections/d19fc233-a9d7-460f-86f0-06df400c7655",
+    "ref_file": "refs/who-we-work-with-situations-S.webp",
+    "borrowed": "A numbered list of situations where each row carries its own resolution at the right edge, so the reader scans the left (who) and the right (what changes) before reading the middle.",
+    "kelwin": "Three zones on the real 12-column grid, a hairline per row, mono index, a 32px display title, and a drawn mini elevation per row that repeats the header's fracture, so the band is the map and these rows its legend. No cards, no photos, no audit cue per row."
+  },
+  "motion": [
+    "entrance: the label fades, the three rows rise 140ms apart, then the closing line. Reveal only: a still beat after the header's moment.",
+    "ambient: none.",
+    "interaction: hover or keyboard focus inside a row brightens its mini elevation and moves the header's red fracture to that situation (km:wwww-situation on document); leaving returns it to 01. The 'Breaks first' / 'Spreads to' links go to the capability pages.",
+    "on the live site: plays once as it scrolls into view. Reduced motion: final state."
+  ],
+  "demoMs": 1800,
+  "story": "Delivers the header's promise straight away: the three situations, told from inside, each with what changes and where it breaks. The minis tie every row back to the chart; the closing line ('The audit decides which layer comes first, before anything is built.') keeps 'breaks first' from reading as a prescription, and hands the reader on to the markets.",
+  "copy": [
+    "[K] Vignettes 01 and 03 (tag, title, body, 'What changes'), from FirmFit.tsx",
+    "[K] Vignette 02 title and body after its first sentence; [R] first sentence 'The team is hired, the tools are paid for, and the pipeline chart has been flat for four quarters.'",
+    "[R] 'First install' → 'Breaks first' / 'Spreads to' with the three layer names linked (GTM Infrastructure linked from this page for the first time)",
+    "[N] Section foot 'The audit decides which layer comes first, before anything is built.'",
+    "Presentation only: the 'What changes:' prefix of each turn is set as the mono key above it, so the sentence starts with a capital ('Your instincts…', 'The resets stop…', 'The category gets…'); wording otherwise verbatim.",
+    "Cut: the three per-row audit cues ('Sounds like your Tuesday? Start the audit' etc.)"
+  ],
+  "phone": "≤1023: each row recomposes — who becomes a header strip (index · name · a 61×40 mini, one line), the story spans cols 1–10, and the turn sits under it in two columns (what changes · where it breaks). ≤767: one column in reading order (strip, title at 26px, body 16px, what changes, then 'Breaks first' / 'Spreads to' on their own hairline, each key and its link on one line, the kit's 13px link as-is; at ≈320 a link drops under its key rather than shrink); the closing line at 17px. Checked at 320, 390, 834, 1024, 1180.",
+  "notes": "The section seam above already rules the page, so the label leads straight into the first case file (no second hairline under it). The row ids are the page anchors from the story map's contract (#founder-seller · #plateaued-motion · #misheard-category), not km-prefixed, so the header's elevations and the homepage can deep-link them. No red in this section: the minis' fractures stay ink (their outline is square, as the band's); the header carries the red. Kit gap: .ac-link has no focus ring in the kit; this fragment adds the kit .ac-go's 1px ring (kitNeeds)."
+}

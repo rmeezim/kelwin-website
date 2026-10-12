@@ -1,0 +1,28 @@
+{
+  "title": "Decision band, your blank readout",
+  "direction": "A×C · Round 8 · /reports · D1 decision band",
+  "summary": "The kit's D1 close, made specific to this page: the promise that a readout is yours to keep and yours to publish, beside your own readout's page one, still blank (the constraint named first, its one sentence a dashed line not yet written, the rest in one line; written by day 10), then the red Request a System Audit and the quiet Talk to the team first, with one onward link to the field notes.",
+  "story": "The page's one ask. The visitor has seen the format, then the rule that keeps real ones private; the close turns both into theirs: the same document, blank where their one sentence will go, written for their company by day 10, and theirs to keep or publish. It replaces “Start your own readout” and “Request the full dossier”.",
+  "reference": {
+    "site": "The int-kit D1 reference (kit §12.8) and the capability pages' D1 (the readout's parts as the object)",
+    "borrowed": "D1 verbatim from the kit: label, one display sentence, the small object, the doors, the foot hairline and the onward link.",
+    "kelwin": "The object is this page's own: not a link to a specimen (the page is the specimen) and not a third list of the six sections, but page one of your readout, blank: “01 The constraint, named”, two dashed lines where your one sentence will be written (the kit's not-written-yet grammar), and “02–06 The four parts, then the next step”."
+  },
+  "motion": [
+    "entrance (kit): the label fades, the line rises, the object and doors rise 200ms later, then the two blank lines draw left to right; the foot hairline draws and the onward link fades in.",
+    "ambient: none.",
+    "interaction: kit hovers on the red button, the quiet link and the onward link.",
+    "on the live site: plays once when the section scrolls into view. Reduced motion: final state."
+  ],
+  "demoMs": 2000,
+  "copy": [
+    "[K kit] label “Starts with the audit”",
+    "[R] line “Your readout is yours to keep. Publishing it is always your call.” (from the old coda “Your engagement's readout is yours to keep — publishing it is always your call.”)",
+    "(FC, built on D8) object “Your readout” · “Written by day 10” (ten working days, readout on day 10, as on /audit's ruler)",
+    "[N] object rows “01 · The constraint, named” · (blank: “Your one sentence, not yet written.” for screen readers) · “02–06 · The four parts, then the next step”",
+    "[K] doors “Request a System Audit” → /audit · “Talk to the team first” → /contact (the old reports foot's quiet door)",
+    "[N] onward “Field notes, and the research in progress” → Insights"
+  ],
+  "phone": "≤1023 (kit): the object and doors drop under the line. ≤767: the line is 28px; the object keeps its three lines (≈170px, down from the six-blank grid's ≈260); the doors stack, red over quiet.",
+  "notes": "≈ 640px at 1440. Ruled seam from the spec list (graphite → graphite). The red button is this view's only red. The six section names now appear twice on the page (band, specimen), not three times. The approved footer follows. The old research rows (R·01–R·03) have moved to /insights, which the onward link reaches."
+}

@@ -1,0 +1,41 @@
+/* ── the-lab-why · S · the reasoning — a short essay (ES) ─────────────────────────────────
+   The kit's section head (■ label → one-line h2, cols 1–10). The essay reads in the right half
+   (cols 7–12) beneath it, at the lede size: three paragraphs, each led by its plain claim in
+   --fg and finished in --fg-2, then the conclusion in display type under a hairline, last, so
+   the question, the reasons and the answer read in that order. The left half under the head
+   stays empty on purpose (the still beat between the board and the ledger). No drawing; no
+   motion beyond the kit's head fade and one plain fade of the essay.                        */
+.km-the-lab-why-S__grid {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); margin-top: 48px;
+}
+.km-the-lab-why-S__essay { grid-column: 7 / span 6; }
+.km-the-lab-why-S__p {
+  margin: 0; font-size: var(--ac-lede); line-height: 1.55; color: var(--fg-2); max-width: 31em; text-wrap: pretty;
+}
+.km-the-lab-why-S__p + .km-the-lab-why-S__p { margin-top: 24px; }
+.km-the-lab-why-S__lead { color: var(--fg); }
+/* the answer: last, under a hairline, in display type */
+.km-the-lab-why-S__so {
+  margin: 40px 0 0; padding-top: 24px; border-top: 1px solid var(--line-2);
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-h3); line-height: 1.2; letter-spacing: var(--display-tracking); color: var(--fg);
+  max-width: 18em; text-wrap: balance;
+}
+
+/* entrance (only under .is-play): a still beat — the kit fades the head in and the essay
+   settles with it (a plain fade, no rise, no moment of its own) */
+.is-play .km-the-lab-why-S__essay { animation: ac-fade 700ms var(--ease-out) 200ms both; }
+
+/* ── tablet (≤1023): the essay takes cols 1–9 under the head, in reading order ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-the-lab-why-S__grid { margin-top: 40px; }
+  :root:not(.km-home) .km-the-lab-why-S__essay { grid-column: 1 / span 9; }
+}
+/* ── phone (≤767): one column; reading copy at 17px, the conclusion at 24px ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-the-lab-why-S__grid { margin-top: 28px; }
+  :root:not(.km-home) .km-the-lab-why-S__essay { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-the-lab-why-S__p { font-size: var(--ac-body); }
+  :root:not(.km-home) .km-the-lab-why-S__p + .km-the-lab-why-S__p { margin-top: 18px; }
+  :root:not(.km-home) .km-the-lab-why-S__so { margin-top: 32px; padding-top: 22px; font-size: 24px; }
+}

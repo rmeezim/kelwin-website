@@ -1,0 +1,57 @@
+/* ── legal-body · S · /privacy — the clauses, verbatim, on paper (ReadingSpread, RD) ──
+   The page's one paper moment: the document itself. A reading column on the real grid —
+   the plain clause number in the margin (col 1, the heading's face in the light voice),
+   heading and text in cols 3–8 (the articles' column, 18px/1.6), one hairline over each clause from the
+   margin to the column's edge. Cols 9–12 stay empty: the outer margin of a printed page.
+   Clause 01 is the document's own summary, so it sets at lede size (the
+   reading copy is full ink like the articles', so 01 is set apart by size alone). Still: no motion.     */
+
+.km-legal-body-S__doc { display: grid; row-gap: 72px; }
+.km-legal-body-S__clause {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: first baseline; scroll-margin-top: 112px;
+}
+.km-legal-body-S__rule { grid-column: 1 / span 8; grid-row: 1; height: 1px; background: var(--line); }
+.km-legal-body-S__clause:first-child > .km-legal-body-S__rule { background: var(--line-2); }
+.km-legal-body-S__n {   /* the plain clause number: the heading's own face, in the light voice, on its baseline */
+  grid-column: 1 / span 2; grid-row: 2; margin-top: 28px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 28px; line-height: 1.2; letter-spacing: var(--display-tracking); color: var(--fg-3);
+}
+.km-legal-body-S__h {
+  grid-column: 3 / span 6; grid-row: 2; margin-top: 28px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 28px; line-height: 1.2; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-legal-body-S__text { grid-column: 3 / span 6; grid-row: 3; margin-top: 20px; }
+/* the ReadingSpread text style, shared with the articles (article-body: 18px/1.6, full ink, pretty wrap):
+   cols 3–8 = 644px at 1440, the articles' column: a median 73–76 characters a line (the map's "about 66ch"
+   would need ≈570px — a call for the shared ReadingSpread, both templates at once; see kitNeeds) */
+.km-legal-body-S__text > p { font-size: 18px; line-height: 1.6; color: var(--fg); text-wrap: pretty; hanging-punctuation: first; }
+.km-legal-body-S__text > p + p { margin-top: 1em; }
+.km-legal-body-S__clause--lead .km-legal-body-S__text > p { font-size: var(--ac-lede); line-height: 1.55; color: var(--fg); }
+
+/* an inline link inside running text (the kit's actions are caps; prose needs a quiet underline) */
+.km-legal-body-S__a {
+  color: var(--fg); text-decoration: underline 1px var(--line-2); text-underline-offset: 5px; white-space: nowrap;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+.km-legal-body-S__a:hover { text-decoration-color: var(--fg); }
+.km-legal-body-S__a:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
+
+/* tablet: the column takes cols 3–12; the numbers keep the margin */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-legal-body-S__rule { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-legal-body-S__h, :root:not(.km-home) .km-legal-body-S__text { grid-column: 3 / -1; }
+  :root:not(.km-home) .km-legal-body-S__doc { row-gap: 64px; }
+}
+/* phone: the number leads its heading on one line; the text runs the full measure */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-legal-body-S__clause { grid-template-columns: 36px minmax(0, 1fr); column-gap: 10px; }
+  :root:not(.km-home) .km-legal-body-S__n { grid-column: 1; margin-top: 20px; font-size: 22px; }
+  :root:not(.km-home) .km-legal-body-S__h { grid-column: 2; margin-top: 20px; font-size: 22px; }
+  :root:not(.km-home) .km-legal-body-S__text { grid-column: 1 / -1; margin-top: 16px; }
+  :root:not(.km-home) .km-legal-body-S__text > p { font-size: 17px; line-height: 1.6; }
+  :root:not(.km-home) .km-legal-body-S__clause--lead .km-legal-body-S__text > p { font-size: 18px; }
+  :root:not(.km-home) .km-legal-body-S__doc { row-gap: 56px; }
+}

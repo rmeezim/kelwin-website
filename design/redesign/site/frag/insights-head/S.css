@@ -1,0 +1,162 @@
+/* insights-head · S — the Specimen-sheet header, band kind RG: the register.
+   Head, facts and nav are the kit's (§12.1–12.2). The band is an HTML board in a registration
+   frame (its rows are real h2 links, so it is markup, not an SVG): one row per published note,
+   read left to right — symptom → note → the layer it diagnoses. The three layer columns sit on
+   cols 9–12 under the facts ledger, each headed by its nav glyph, each a 1px line running down
+   the rows; a filled square seats where a note diagnoses that layer. The one red: "Read first". */
+
+.km-insights-head-S { --rh: 72px; overflow-x: clip; }   /* the kit's hidden phone menu still spans ~620px (kitNeeds) */
+
+/* ── the frame ── */
+.km-insights-head-S__frame { padding-block: 12px; }
+
+/* shared 12-column geometry for the column heads and the rows */
+.km-insights-head-S__cols,
+.km-insights-head-S__row {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  position: relative;
+}
+
+/* ── column heads (every head pinned to row 1 and bottom-aligned, so a hidden one never
+   pushes the layer heads onto a second row) ── */
+.km-insights-head-S__cols { align-items: end; grid-template-rows: auto; }
+.km-insights-head-S__cols > * { grid-row: 1; }
+.km-insights-head-S__cols::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--line-2); transform-origin: 0 50%;
+}
+.km-insights-head-S__cols > .ac-cap { padding-bottom: 18px; line-height: 16px; }
+.km-insights-head-S__c-sym { grid-column: 2 / span 3; }
+.km-insights-head-S__c-note { grid-column: 5 / span 2; }
+.km-insights-head-S__c-dx { grid-column: 7 / span 2; justify-self: end; }
+.km-insights-head-S__lays {
+  grid-column: 9 / span 4; align-self: stretch;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.km-insights-head-S__lay {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 0 0 22px;
+}
+/* the layer line starts under its name and runs on through the rows */
+.km-insights-head-S__lay::after {
+  content: ""; position: absolute; left: 50%; bottom: 0; width: 1px; height: 12px;
+  background: var(--line-2); transform-origin: 50% 0;
+}
+.km-insights-head-S__g { width: 72px; height: 48px; color: var(--fg-2); }
+.km-insights-head-S__g path { fill: none; stroke: currentColor; stroke-width: .5; vector-effect: none; }
+/* (the glyph is a 36×24 drawing at 2×: a scaled .5 stroke is 1px, and its plot stays whole —
+   pathLength dashes and non-scaling strokes do not mix in Chromium) */
+.km-insights-head-S__nd { fill: currentColor; }
+/* each name is set on two lines in the same fixed box (Narrative / Systems · GTM / Infrastructure ·
+   GTM / Intelligence), so the three heads stay apart at every width from 768 to 1440 */
+.km-insights-head-S__ln {
+  font-size: 14px; line-height: 18px; color: var(--fg-2); white-space: nowrap; text-align: center;
+  height: 36px;
+}
+.km-insights-head-S__ln > span { display: block; }
+
+/* ── rows ── */
+.km-insights-head-S__rows { margin: 0; padding: 0; list-style: none; }
+.km-insights-head-S__row { min-height: var(--rh); align-items: center; }
+.km-insights-head-S__row::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: var(--line); transform-origin: 0 50%;
+}
+.km-insights-head-S__n { grid-column: 1; }
+.km-insights-head-S__sym { grid-column: 2 / span 3; font-size: var(--ac-body); line-height: 1.4; color: var(--fg-2); }
+.km-insights-head-S__note { grid-column: 5 / span 4; padding-block: 10px; }
+.km-insights-head-S__tl { display: flex; align-items: baseline; gap: 16px; }   /* the tag keeps to the title's first line */
+.km-insights-head-S__t { margin: 0; }
+.km-insights-head-S__a { color: var(--fg); box-shadow: inset 0 -1px 0 transparent; transition: box-shadow 200ms var(--ease-out); }
+.km-insights-head-S__a:hover { box-shadow: inset 0 -1px 0 var(--fg); }
+.km-insights-head-S__a:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+/* the whole row reads as one link target */
+.km-insights-head-S__a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.km-insights-head-S__row:hover .km-insights-head-S__sym { color: var(--fg); }
+.km-insights-head-S__row:hover::after { background: var(--line-2); }
+.km-insights-head-S__when { margin-top: 6px; }
+
+/* the one red: the "Read first" tag on FN·01 */
+.km-insights-head-S__first {
+  display: inline-flex; align-items: center; height: 22px; padding: 0 8px; flex: none;
+  font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: var(--ac-track-idx);
+  text-transform: uppercase; white-space: nowrap; background: var(--accent); color: var(--accent-fg);
+}
+
+/* the diagnosis cells: three layer lines through the row, a filled square where it diagnoses */
+.km-insights-head-S__dx {
+  grid-column: 9 / span 4; align-self: stretch; position: relative;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none;
+}
+.km-insights-head-S__dx > li { position: relative; }
+.km-insights-head-S__dx > li::before {
+  content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+  background: var(--line-2); transform-origin: 50% 0;
+}
+.km-insights-head-S__sq {
+  position: absolute; left: 50%; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -5.5px;
+  background: var(--fg); z-index: 1;
+}
+/* the tie, FN·01 only: one line from its first square (Narrative's line, 1/6 of the cells) to its
+   last (Intelligence's, 5/6): one note, all three layers. Single-layer notes carry only their
+   square, so no row reads as a longer or shorter bar. */
+.km-insights-head-S__row.is-all .km-insights-head-S__dx::after {
+  content: ""; position: absolute; left: calc(100% / 6); top: 50%; height: 1px; margin-top: -.5px;
+  width: calc(100% * 4 / 6); background: var(--fg-2); transform-origin: 0 50%;
+}
+.km-insights-head-S__chips { display: none; }   /* phone only (no entrance, so display is safe) */
+
+/* ── motion: the band's one orchestrated moment, after the head (--ac-band-d) ──
+   rules draw → the layer lines run down the board → the squares seat, row by row (FN·01's tie
+   draws from its first square to its last, seating the other two as it reaches them) → the red
+   tag lands last. --sd is each row's seat time. Final state is the default. */
+.is-play .km-insights-head-S__cols::after { animation: ac-drawx 900ms var(--ease-out) var(--ac-band-d) both; }
+.is-play .km-insights-head-S__cols > .ac-cap { animation: ac-fade 400ms var(--ease-out) calc(var(--ac-band-d) + 100ms) both; }
+.is-play .km-insights-head-S__ln { animation: ac-fade 400ms var(--ease-out) calc(var(--ac-band-d) + 400ms) both; }
+.is-play .km-insights-head-S__nd { animation: ac-fade 300ms var(--ease-out) calc(var(--ac-band-d) + 700ms) both; }
+.is-play .km-insights-head-S__row::after { animation: ac-drawx 900ms var(--ease-out) calc(var(--ac-band-d) + 160ms + var(--i) * 120ms) both; }
+.is-play .km-insights-head-S__n,
+.is-play .km-insights-head-S__sym,
+.is-play .km-insights-head-S__note { animation: ac-up 600ms var(--ease-out) calc(var(--ac-band-d) + 260ms + var(--i) * 120ms) both; }
+.is-play .km-insights-head-S__lay::after { animation: ac-drawy 200ms linear calc(var(--ac-band-d) + 700ms) both; }
+.is-play .km-insights-head-S__dx > li::before { animation: ac-drawy 200ms linear calc(var(--ac-band-d) + 900ms + var(--i) * 200ms) both; }
+/* row by row: each square seats at its row's time; FN·01's tie runs right at a steady pace
+   (440ms for the two cells) and seats its 2nd and 3rd squares as it reaches them */
+.is-play .km-insights-head-S__sq { animation: ac-drop 380ms var(--ease-out) calc(var(--ac-band-d) + 1300ms + var(--sd, 0ms)) both; }
+.is-play .km-insights-head-S__row.is-all .km-insights-head-S__dx::after { animation: ac-drawx 440ms linear calc(var(--ac-band-d) + 1380ms) both; }
+.is-play .km-insights-head-S__row.is-all .km-insights-head-S__dx > li:nth-child(2) .km-insights-head-S__sq { animation-delay: calc(var(--ac-band-d) + 1600ms); }
+.is-play .km-insights-head-S__row.is-all .km-insights-head-S__dx > li:nth-child(3) .km-insights-head-S__sq { animation-delay: calc(var(--ac-band-d) + 1820ms); }
+.is-play .km-insights-head-S__first { animation: ac-fade 500ms var(--ease-out) calc(var(--ac-band-d) + 2400ms) both; }
+
+/* ── laptop and tablet (≤1279, the kit's "below 1280" step; the board is the same down to 768):
+   the symptom moves under the title, and the three layer columns widen to cols 8–12 so each
+   keeps ≥ 98px for its two-line name. The Symptom and Diagnoses heads leave the flow. ── */
+@media (max-width: 1279px) {
+  :root:not(.km-home) .km-insights-head-S__c-sym, :root:not(.km-home) .km-insights-head-S__c-dx { visibility: hidden; position: absolute; }
+  :root:not(.km-home) .km-insights-head-S__c-note { grid-column: 2 / span 6; }
+  :root:not(.km-home) .km-insights-head-S__lays, :root:not(.km-home) .km-insights-head-S__dx { grid-column: 8 / span 5; }
+  :root:not(.km-home) .km-insights-head-S__ln { font-size: 13px; line-height: 16px; height: 32px; }
+  :root:not(.km-home) .km-insights-head-S__row { grid-template-rows: auto auto; align-items: start; padding-block: 18px; }
+  :root:not(.km-home) .km-insights-head-S__n { grid-row: 1; padding-top: 6px; }
+  :root:not(.km-home) .km-insights-head-S__note { grid-column: 2 / span 6; grid-row: 1; padding: 0; }
+  :root:not(.km-home) .km-insights-head-S__sym { grid-column: 2 / span 6; grid-row: 2; margin-top: 10px; font-size: var(--ac-support); }
+  :root:not(.km-home) .km-insights-head-S__dx { grid-row: 1 / span 2; margin-block: -18px; }
+  :root:not(.km-home) .km-insights-head-S__tl { flex-wrap: wrap; row-gap: 8px; }
+}
+
+/* ── phone (≤767): list rows with layer chips; the column board gives way ──
+   index and the layers it diagnoses on one line · the symptom · the title (+ Read first) · date */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-insights-head-S__cols { visibility: hidden; position: absolute; left: 0; top: 0; width: 100%; }
+  :root:not(.km-home) .km-insights-head-S__rows { border-top: 1px solid var(--line-2); }
+  :root:not(.km-home) .km-insights-head-S__row {
+    grid-template-columns: 52px minmax(0, 1fr); grid-template-rows: auto auto auto; column-gap: 0; row-gap: 10px;
+    align-items: center; padding: 18px 0 20px; min-height: 0;
+  }
+  :root:not(.km-home) .km-insights-head-S__n { grid-column: 1; grid-row: 1; padding-top: 0; }
+  :root:not(.km-home) .km-insights-head-S__chips { display: flex; flex-wrap: wrap; gap: 8px; grid-column: 2; grid-row: 1; }
+  :root:not(.km-home) .km-insights-head-S__sym { grid-column: 1 / -1; grid-row: 2; margin-top: 2px; }
+  :root:not(.km-home) .km-insights-head-S__note { grid-column: 1 / -1; grid-row: 3; padding: 0; }
+  :root:not(.km-home) .km-insights-head-S__dx { visibility: hidden; position: absolute; inset: 0; margin: 0; }
+  :root:not(.km-home) .km-insights-head-S__t { font-size: 20px; }
+}

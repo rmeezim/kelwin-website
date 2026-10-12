@@ -1,0 +1,114 @@
+/* ── capability-runs · S · Narrative Systems — PT, a horizontal phase track (typographic) ──
+   One hairline runs left to right through five columns on the 12-col grid. Phases 01–03 hang
+   from short ticks; Handover is a datum (a full-height rule with a hollow node on the line);
+   Calibrate's tick keeps going down as a stem and splits into two lanes that run off the right
+   edge of the page: your operator (solid) and with us on retainer (dotted, the homepage
+   method's retainer lane). No bars, so it never reads as the homepage gantt. No red: the
+   specimen above carries this view's red.                                                     */
+
+.km-capability-runs-S__track { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); margin-top: 72px; }
+.km-capability-runs-S__phases { grid-row: 1; }
+.km-capability-runs-S__phases {
+  grid-column: 1 / -1; position: relative;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  grid-template-rows: auto 41px auto auto auto auto;
+}
+/* phases 01–03 measured to the datum: they run once (the lanes on the right keep running) */
+.km-capability-runs-S__once { grid-row: 5; grid-column: 1 / span 6; align-self: start; width: auto; margin: 40px calc(-1 * var(--gutter)) 0 0; }
+.km-capability-runs-S__once .ac-dim__v { color: var(--fg-2); }
+/* under "Runs once", level with the lanes: who owns both lanes, then the onward link */
+.km-capability-runs-S__key { grid-row: 5 / span 2; grid-column: 1 / span 6; align-self: start; margin-top: 112px; display: flex; flex-direction: column; align-items: flex-start; gap: 40px; }
+.km-capability-runs-S__own { width: 100%; }
+
+/* the hairline: from the first column to the page's right edge (it never ends) */
+.km-capability-runs-S__axis {
+  grid-row: 1; grid-column: 1 / -1; align-self: start; position: relative; z-index: 0;
+  height: 1px; margin-top: 36px; margin-right: calc(-1 * var(--margin)); background: var(--line-2);
+  transform-origin: 0 50%; pointer-events: none;
+}
+.km-capability-runs-S__ph {
+  grid-column: var(--c) / span var(--s, 2); grid-row: 1 / -1;
+  display: grid; grid-template-rows: subgrid; grid-template-columns: minmax(0, 1fr); position: relative; min-width: 0;
+}
+.km-capability-runs-S__ph > * { grid-column: 1; }
+.km-capability-runs-S__ph > :not(span) { padding-left: 20px; }
+.km-capability-runs-S__idx { grid-row: 1; color: var(--fg-3); }
+.km-capability-runs-S__name { grid-row: 3; margin-top: 18px; font-family: var(--f-body); font-weight: var(--ui-weight); font-size: var(--ac-h4); line-height: 1.25; color: var(--fg); }
+.km-capability-runs-S__out { grid-row: 4; margin-top: 10px; max-width: 30ch; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.km-capability-runs-S__tick { grid-row: 2; align-self: center; width: 1px; height: 11px; background: var(--fg-2); }
+
+/* Handover: the datum — one full-height rule, a hollow node where it crosses the line */
+.km-capability-runs-S__datum { grid-row: 1 / -1; position: relative; width: 1px; background: var(--line-2); transform-origin: 50% 0; }
+.km-capability-runs-S__datum::after {
+  content: ""; position: absolute; left: -4px; top: 32px; width: 9px; height: 9px;
+  background: var(--bg); box-shadow: inset 0 0 0 1px var(--fg);
+}
+.km-capability-runs-S__ph--datum .km-capability-runs-S__idx { color: var(--fg-2); }
+
+/* Calibrate: its tick becomes a stem that splits into two lanes running off the edge */
+.km-capability-runs-S__stem { grid-row: 2 / 6; margin-top: 20px; width: 1px; background: var(--fg-2); transform-origin: 50% 0; }
+.km-capability-runs-S__ph--run .km-capability-runs-S__out { max-width: 34ch; }
+.km-capability-runs-S__lane { grid-row: 5; position: relative; margin-top: 40px; padding: 16px 0 4px 20px; }
+.km-capability-runs-S__lane--retainer { grid-row: 6; margin-top: 28px; }
+.km-capability-runs-S__lane::before {
+  content: ""; position: absolute; left: 0; top: 0; right: calc(-1 * var(--margin)); height: 0;
+  border-top: 1px solid var(--fg-2); transform-origin: 0 50%;
+}
+.km-capability-runs-S__lane--retainer::before { border-top-style: dotted; border-top-color: var(--fg-2); }
+/* the stem runs on past the operator's lane and forks the retainer lane too */
+.km-capability-runs-S__lane--retainer::after { content: ""; position: absolute; left: 0; bottom: 100%; width: 1px; height: 28px; background: var(--fg-2); transform-origin: 50% 0; }
+.km-capability-runs-S__lt { font-weight: var(--ui-weight); font-size: var(--ac-body); line-height: 1.35; color: var(--fg); }
+.km-capability-runs-S__ld { margin-top: 6px; max-width: 40ch; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+
+/* ── entrance (the page's second body moment): the line draws to the edge, the phases hang from it
+   one by one, the datum drops, the stem drops and splits, the lanes run out ── */
+.is-play .km-capability-runs-S__axis { animation: ac-drawx 1400ms var(--ease-inout) 300ms both; }
+.is-play .km-capability-runs-S__ph > :not(span):not(.km-capability-runs-S__lane):not(.km-capability-runs-S__own) { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(500ms + var(--i) * 180ms); }
+.is-play .km-capability-runs-S__tick { animation: ac-drawy 300ms var(--ease-out) both; animation-delay: calc(450ms + var(--i) * 180ms); }
+.is-play .km-capability-runs-S__datum { animation: ac-drawy 900ms var(--ease-inout) 1000ms both; }
+.is-play .km-capability-runs-S__datum::after { animation: ac-fade 300ms var(--ease-out) 1100ms both; }
+.is-play .km-capability-runs-S__stem { animation: ac-drawy 700ms var(--ease-inout) 1600ms both; }
+.is-play .km-capability-runs-S__lane::before { animation: ac-drawx 900ms var(--ease-inout) 1950ms both; }
+.is-play .km-capability-runs-S__lane--retainer::before { animation-delay: 2200ms; }
+.is-play .km-capability-runs-S__lane--retainer::after { animation: ac-drawy 250ms linear 2050ms both; }
+.is-play .km-capability-runs-S__lane > * { animation: ac-fade 500ms var(--ease-out) 2300ms both; }
+.is-play .km-capability-runs-S__lane--retainer > * { animation-delay: 2500ms; }
+.is-play .km-capability-runs-S__once .ac-dim__v { animation: ac-fade 400ms var(--ease-out) 2400ms both; }
+.is-play .km-capability-runs-S__key { animation: ac-fade 500ms var(--ease-out) 2700ms both; }
+
+/* ── tablet and phone: the track turns vertical — a spine down the left, each phase hanging off it,
+   the Handover datum a rule across, Calibrate's two lanes stacked under it (nothing bleeds) ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-runs-S__track { display: block; margin-top: 48px; }
+  :root:not(.km-home) .km-capability-runs-S__axis, :root:not(.km-home) .km-capability-runs-S__once { visibility: hidden; position: absolute; }
+  :root:not(.km-home) .km-capability-runs-S__phases { display: block; border-left: 1px solid var(--line-2); }
+  :root:not(.km-home) .km-capability-runs-S__ph { display: block; padding: 0 0 32px; }
+  :root:not(.km-home) .km-capability-runs-S__ph > :not(span) { padding-left: 24px; }
+  :root:not(.km-home) .km-capability-runs-S__tick { position: absolute; left: -1px; top: 7px; width: 12px; height: 1px; }
+  :root:not(.km-home) .km-capability-runs-S__name { margin-top: 8px; font-size: 20px; }
+  :root:not(.km-home) .km-capability-runs-S__out { max-width: 46ch; }
+  :root:not(.km-home) .km-capability-runs-S__ph--datum { padding-top: 28px; }
+  :root:not(.km-home) .km-capability-runs-S__datum { position: absolute; left: -1px; right: 0; top: 0; width: auto; height: 1px; }
+  :root:not(.km-home) .km-capability-runs-S__datum::after { left: -4px; top: -4px; }
+  :root:not(.km-home) .km-capability-runs-S__ph--datum { border-bottom: 1px solid var(--line-2); margin-bottom: 28px; }
+  :root:not(.km-home) .km-capability-runs-S__stem { visibility: hidden; position: absolute; }
+  :root:not(.km-home) .km-capability-runs-S__ph--run { padding-bottom: 0; }
+  :root:not(.km-home) .km-capability-runs-S__lane { margin: 28px 0 0 24px; padding: 14px 0 0 0 !important; }
+  :root:not(.km-home) .km-capability-runs-S__lane--retainer { margin-top: 20px; }
+  :root:not(.km-home) .km-capability-runs-S__lane::before { right: 0; }
+  :root:not(.km-home) .km-capability-runs-S__lane--retainer::after { visibility: hidden; }
+  :root:not(.km-home) .km-capability-runs-S__key { display: flex; margin: 28px 0 0 24px; gap: 32px; }
+}
+/* ── phone: the same spine, set tighter (names at 18px, shorter gaps) ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-runs-S__track { margin-top: 36px; }
+  :root:not(.km-home) .km-capability-runs-S__ph { padding-bottom: 22px; }
+  :root:not(.km-home) .km-capability-runs-S__ph > :not(span) { padding-left: 20px; }
+  :root:not(.km-home) .km-capability-runs-S__name { margin-top: 4px; font-size: 18px; }
+  :root:not(.km-home) .km-capability-runs-S__out { margin-top: 6px; }
+  :root:not(.km-home) .km-capability-runs-S__ph--datum { padding-top: 22px; margin-bottom: 22px; }
+  :root:not(.km-home) .km-capability-runs-S__datum::after { top: -4px; }
+  :root:not(.km-home) .km-capability-runs-S__lane { margin: 20px 0 0 20px; padding-top: 12px !important; }
+  :root:not(.km-home) .km-capability-runs-S__lane--retainer { margin-top: 16px; }
+  :root:not(.km-home) .km-capability-runs-S__key { margin: 24px 0 0 20px; gap: 24px; }
+}

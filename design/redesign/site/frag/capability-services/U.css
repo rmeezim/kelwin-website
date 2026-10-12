@@ -1,0 +1,75 @@
+/* ── capability-services · U · GTM Intelligence — QA, question → instrument table ──
+   The page's second statement, then the four questions this layer answers every quarter, set
+   large in the display face on the left; across the row, the service that answers each one
+   (keyed by the band's station code), what it ships, and where that goes. The key row reads
+   left to right with drawn arrows: question → service → ships → feeds. A quiet line points to
+   The Lab with its true status. No red beyond the label square and the rule.                 */
+
+.km-capability-services-U__table { margin-top: 72px; }
+.km-capability-services-U__keys, .km-capability-services-U__row {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+}
+.km-capability-services-U__keys { padding-bottom: 14px; border-bottom: 1px solid var(--line-2); }
+.km-capability-services-U__k {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-idx); text-transform: uppercase; color: var(--fg-3);
+}
+.km-capability-services-U__k:nth-child(1) { grid-column: 1 / span 5; }
+.km-capability-services-U__k:nth-child(2) { grid-column: 6 / span 3; }
+.km-capability-services-U__k:nth-child(3) { grid-column: 9 / span 2; }
+.km-capability-services-U__k:nth-child(4) { grid-column: 11 / span 2; }
+.km-capability-services-U__k--to::before {
+  content: ""; flex: none; width: 13px; height: 11px; background-color: var(--fg-3);
+  -webkit-mask: var(--km-csu-arr) center / contain no-repeat; mask: var(--km-csu-arr) center / contain no-repeat;
+  --km-csu-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+
+.km-capability-services-U__row { padding: 32px 0 34px; border-bottom: 1px solid var(--line); align-items: start; }
+.km-capability-services-U__q {
+  grid-column: 1 / span 5; padding-right: 24px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 28px; line-height: 1.2; letter-spacing: var(--display-tracking); color: var(--fg); text-wrap: balance;
+}
+.km-capability-services-U__a {
+  grid-column: 6 / span 7; margin: 0;
+  display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr); column-gap: var(--gutter);
+}
+.km-capability-services-U__a > dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.km-capability-services-U__a > dd { margin: 0; padding-top: 6px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.km-capability-services-U__a > dd.km-capability-services-U__svc { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding-top: 2px; font-weight: var(--ui-weight); font-size: var(--ac-body); line-height: 1.35; color: var(--fg); }
+.km-capability-services-U__sub { display: block; margin-top: 2px; font-size: 14px; color: var(--fg-3); }
+.km-capability-services-U__as { font-weight: var(--ui-weight); color: var(--fg); }
+
+.km-capability-services-U__lab { margin-top: 40px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; }
+.km-capability-services-U__labt { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+
+/* ── entrance: the kit statement, then the key row and the four questions set one by one ── */
+.is-play .km-capability-services-U__keys { animation: ac-fade 400ms var(--ease-out) 550ms both; }
+.is-play .km-capability-services-U__row { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(650ms + var(--i) * 130ms); }
+.is-play .km-capability-services-U__lab { animation: ac-fade 500ms var(--ease-out) 1300ms both; }
+
+/* ── tablet: the question takes the row; the answer sits under it in three keyed columns ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-services-U__keys { visibility: hidden; position: absolute; width: 1px; height: 1px; overflow: hidden; }
+  :root:not(.km-home) .km-capability-services-U__rows { border-top: 1px solid var(--line-2); }
+  :root:not(.km-home) .km-capability-services-U__row { row-gap: 20px; }
+  :root:not(.km-home) .km-capability-services-U__q, :root:not(.km-home) .km-capability-services-U__a { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-capability-services-U__q { font-size: 24px; padding-right: 0; }
+  :root:not(.km-home) .km-capability-services-U__a > dt {
+    position: static; width: auto; height: auto; overflow: visible; clip-path: none;
+    grid-row: 1; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-idx); text-transform: uppercase; color: var(--fg-3);
+  }
+  :root:not(.km-home) .km-capability-services-U__a > dd { grid-row: 2; }
+}
+/* ── phone: one column — the question, the service's code beside its name, then ships and feeds
+   as compact keyed pairs ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-services-U__table { margin-top: 40px; }
+  :root:not(.km-home) .km-capability-services-U__row { padding: 20px 0 22px; row-gap: 14px; }
+  :root:not(.km-home) .km-capability-services-U__q { font-size: 21px; }
+  :root:not(.km-home) .km-capability-services-U__a { grid-template-columns: 56px minmax(0, 1fr); column-gap: 12px; row-gap: 8px; }
+  :root:not(.km-home) .km-capability-services-U__a > dt { grid-row: auto; grid-column: 1; padding-top: 4px; }
+  :root:not(.km-home) .km-capability-services-U__a > dt:first-of-type { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  :root:not(.km-home) .km-capability-services-U__a > dd { grid-row: auto; grid-column: 2; padding-top: 0; }
+  :root:not(.km-home) .km-capability-services-U__a > dd.km-capability-services-U__svc { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 12px; margin-bottom: 2px; }
+}

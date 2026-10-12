@@ -1,0 +1,30 @@
+{
+  "title": "The sheet deal",
+  "direction": "A×C · Round 8 · /reports · header X (Specimen sheet), band kind DL",
+  "summary": "Replaces the photograph header and “Not testimonials — telemetry” with the honest answer up front (cleared for publication: none yet) and, in the band, the whole readout as a folio of six sheets dealt from one stack, so the page shows what you would hold before it says anything else.",
+  "story": "Opening beat. The visitor asks for proof; the header says plainly that no readout has cleared, then turns that into a demonstration: here is the shape of the document every audit ends in, six sections, page one on top with its one sentence underlined, the four middle pages measured as the audit's four parts. The next section opens the same document in full and puts the same red underline under the same sentence.",
+  "reference": {
+    "site": "Ramp · spending reports (a report shown as a squared stack of copies) · approved interior/X header",
+    "mobbin_url": "https://mobbin.com/sites/sections/628b1f0f-877d-4940-bfdb-8e5ddf52e696",
+    "ref_file": "refs/reports-head-S.webp",
+    "borrowed": "A report presented as a physical object: a squared stack of sheets whose edges show, so you read “a document with pages” before you read a word.",
+    "kelwin": "No photo, no cover art, no shadow: six 1px-ruled graphite sheets in the header's registration frame, fanned into an overlapping row with page one on top. Each sheet's furniture is a structure-only drawing of its own section (the one sentence and its evidence; three descriptions that don't line up; a route with two leaks; known, unwritten and unmeasured; a sequence with its first step filled; a fork). One dimension measures the four parts. The one red is the editor's underline under page one's sentence, running across its line break exactly as the specimen's underline does under the constraint. It deliberately avoids the handover's datum and dashed→solid, and /insights' red index tab."
+  },
+  "motion": [
+    "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts). Then the band's one orchestrated moment from --ac-band-d (900ms): the corner marks register, the squared stack rises with its page edges peeking out up and to the right, the five pages under page one are dealt out to their places (760ms each, 90ms apart), the dimension draws across the four parts and only then shows its label (so it is never seen squashed mid-draw), and the red underline inks under page one's sentence last, line one then line two (about 3.8s after load).",
+    "ambient: none.",
+    "interaction: none in the band; the facts ledger's door (the System Audit ↗) is the kit's .ac-go.",
+    "on the live site: the deal plays once when the header is 40% visible. Reduced motion shows the laid-out folio at once."
+  ],
+  "demoMs": 4200,
+  "copy": [
+    "[N] Label “Reports” · meta “Resources / 02”; H1 “What a readout / looks like.”",
+    "[N] Lede: “Every audit ends in a written readout, and it belongs to the client. We publish one only when a client asks us to, and none has cleared yet. Until one does, this page shows the format in full, as a specimen.”",
+    "[N] Facts: “Cleared for publication · None yet” (status chip) · “This page shows · The format, as a specimen” · “Your own · Starts with the System Audit ↗”",
+    "[N] Sheet titles: The constraint · Narrative readout · Channel orchestration map · Intelligence gap report · Sequenced rebuild plan · Next step; dimension “The four parts”",
+    "(FC, §7 Q3) the four parts: Narrative readout · Channel orchestration map · Intelligence gap report · Sequenced rebuild plan — named as on /audit, int-kit and the capability doors (the story map's “Rebuild sequence” is retired here: it collides with GTM Intelligence's handover asset “Rebuild Sequence”)",
+    "[N] Metadata description (for the page): “The format of a Kelwin readout, shown in full as a specimen. Client readouts are published only with the client's consent, and none has cleared yet.”"
+  ],
+  "phone": "≤1023: the facts drop under the lede (kit). The folio lays out flat, three sheets to a row (two rows), nothing tucked; the dimension is hidden (the sheets' titles carry the words; the specimen's lede names the four parts at every width) and the deal becomes a rise in place (--deal: 0). ≤767: the folio closes up (≈260px instead of the 2×3 grid's ≈640): page one stays a sheet, with its drawing and its red underline, on a squared stack whose two edges peek out up and to the right (the deal's own start state), and the five pages under it become a short keyed list beside it (index + title, 14px, hairlines, no drawings). The red stays on page one.",
+  "notes": "The band is HTML, not SVG, so the sheet titles stay real text at every width (no scaled-down SVG type below the 11px floor); it sits in the kit's registration frame (.ac-frame + four .ac-reg), not .ac-band__frame. Frame ≈ 320px at 1440. ≤4 callouts (none), one dimension, exactly one red element (the underline, two rects across the line break). Red thread: the band's underline and the specimen's underline (≈850px apart, on different surfaces) are the same mark on the same sentence, deliberately — the readout leads with the constraint (as /audit's foot says: “The readout names your weakest layer first.”). They can share a 1080-tall viewport; that is the one intended exception to one-red-per-view on this page. The facts' first value uses the kit status chip “None yet”. The first facts key is set on two lines (“Cleared for / publication”) so the ledger's door keeps one line at 1440. The kit .ac-dim scales its whole element, so its label is held at opacity 0 until the line has drawn (kit fix logged). Measured: 1,071px at 1440; no page overflow at 320–1440."
+}

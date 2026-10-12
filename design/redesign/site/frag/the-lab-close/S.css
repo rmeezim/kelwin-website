@@ -1,0 +1,42 @@
+/* ── the-lab-close · S · early access and the audit — the split close (SC), on paper ──────
+   The kit's SC verbatim (label h2 · __a cols 1–7 · hairline in col 8 · __b cols 9–12 · foot).
+   The left half is the page's one paper document: the early-access terms as a sheet (the kit's
+   document panel, no SpecimenTag: these are real terms, not an illustration). Asks and
+   Returns are plain lists; Your data splits into what stays yours and what the Lab keeps, side
+   by side on one hairline. The application is the quiet .ac-link in the sheet's foot (round 7,
+   C5); the audit on the right is the page's one red.                                        */
+.km-the-lab-close-S__spec { grid-template-columns: 112px minmax(0, 1fr); }
+.km-the-lab-close-S__spec > dd { color: var(--fg); }
+.km-the-lab-close-S__spec > dt:first-of-type, .km-the-lab-close-S__spec > dd:first-of-type { border-top: 0; padding-top: 0; }
+.km-the-lab-close-S__spec > dd { padding-bottom: 18px; }
+.km-the-lab-close-S__spec > dt { padding-bottom: 18px; }
+.km-the-lab-close-S__spec > dt:last-of-type, .km-the-lab-close-S__spec > dd:last-of-type { padding-bottom: 0; }
+.km-the-lab-close-S__list { display: grid; gap: 4px; }
+.km-the-lab-close-S__list > li { font-size: var(--ac-support); line-height: 1.55; }
+
+/* your data: two sides of one line */
+.km-the-lab-close-S__data { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gutter); }
+.km-the-lab-close-S__side { display: flex; flex-direction: column; gap: 4px; margin: 0; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.km-the-lab-close-S__side + .km-the-lab-close-S__side { padding-left: var(--gutter); box-shadow: inset 1px 0 0 var(--line); }
+.km-the-lab-close-S__dk { font-weight: var(--ui-weight); color: var(--fg); }
+
+/* the sheet's foot: the quiet application link, then the note */
+.km-the-lab-close-S__foot { padding-block: 20px; align-items: center; }
+.km-the-lab-close-S__note { flex: 1 1 260px; max-width: 40ch; margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg-2); }
+
+/* ── tablet (≤1023): the kit stacks the halves; the sheet takes the width ── */
+/* ── phone (≤767): the data sides stack; the foot stacks link over note ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-the-lab-close-S__spec { grid-template-columns: minmax(0, 1fr); }
+  /* tightened for length: keys sit close over their lists, list items run at 2px */
+  :root:not(.km-home) .km-the-lab-close-S__spec > dt { padding-bottom: 4px; }
+  :root:not(.km-home) .km-the-lab-close-S__spec > dd { border-top: 0; padding-top: 0; padding-bottom: 14px; }
+  :root:not(.km-home) .km-the-lab-close-S__spec > dd:last-of-type { padding-bottom: 0; }
+  :root:not(.km-home) .km-the-lab-close-S__spec > dt:not(:first-of-type) { padding-top: 14px; }
+  :root:not(.km-home) .km-the-lab-close-S__list { gap: 2px; }
+  :root:not(.km-home) .km-the-lab-close-S__list > li { line-height: 1.5; }
+  :root:not(.km-home) .km-the-lab-close-S__data { grid-template-columns: minmax(0, 1fr); row-gap: 12px; }
+  :root:not(.km-home) .km-the-lab-close-S__side + .km-the-lab-close-S__side { padding: 12px 0 0; box-shadow: inset 0 1px 0 var(--line); }
+  :root:not(.km-home) .km-the-lab-close-S__foot { flex-direction: column; align-items: flex-start; row-gap: 10px; padding-block: 14px; }
+  :root:not(.km-home) .km-the-lab-close-S__note { flex: none; }
+}

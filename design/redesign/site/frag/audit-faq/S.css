@@ -1,0 +1,107 @@
+/* ── audit-faq · S · the approved FAQ (faq/U, round 4), ported to the System Audit page ──────
+   Verbatim from frag/faq/U (selectors renamed to this slot). Placement only, as production's port
+   (src/components/audit/faq): the doors follow the ledger in source order and the grid lifts them
+   under the lede at the stage size; the ≤1023 / ≤767 composition is production's. The red button
+   now points forward to #qualify, the gate that ends this page.
+   Original header follows.
+   ── faq · X · The ledger, answered (round 2, A×C) ─────────────────────────
+   Round-1 A as the founder picked it: the hero's head at left, a hairline ledger
+   at right, one answer open, both doors in the left column. Harmonised with
+   Cinematic Drafting:
+   · the head is the kit's grammar; the two-line statement runs wide on top, and
+     the red rule shares one line with the ledger's top hairline;
+   · this section is deliberately drawing-free (DIRECTION-AC §5.2): the lead device
+     is TYPE in a ledger that opens in place. The mark toggles (K1–K3 plates and the
+     red core) are gone; the kit's drawn + turns to −, a 1px --fg selection rule
+     draws across the open row, and the answer leads with a wide-cut verdict;
+   · the one red is the primary button (label square + rule are family punctuation). */
+
+.km-audit-faq-S { overflow: hidden; }                      /* follows the paper before/after: a hard surface cut */
+/* the two-line statement's boxes are fractional (≈ 233.3px with the label row); hold the head on whole
+   pixels so the rule and the ledger hairlines land crisp in both skins */
+.km-audit-faq-S__head { min-height: 234px; }
+
+/* ── body: left column (cols 1–5) + ledger (cols 6–12), one shared top line ── */
+.km-audit-faq-S__body { margin-top: 36px; align-items: stretch; grid-template-rows: auto 1fr; }
+.km-audit-faq-S__side { grid-row: 1; display: flex; flex-direction: column; align-items: flex-start; }
+.km-audit-faq-S__side > .ac-lede { margin-top: 28px; max-width: 24em; text-wrap: balance; }   /* two even lines in both skins; stops clear of the ledger */
+.km-audit-faq-S__list { grid-row: 1 / span 2; }
+.km-audit-faq-S__doors { grid-row: 2; align-self: start; margin-top: 36px; display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
+.km-audit-faq-S__ask { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; }
+.km-audit-faq-S__ask > .ac-support { color: var(--fg-3); }
+
+/* ── the ledger (kit .ac-ledger): index · question · toggle ── */
+.km-audit-faq-S .ac-ledger {
+  --ac-row-cols: 56px minmax(0, 1fr) 20px; --ac-row-indent: calc(56px + var(--gutter));
+  position: relative; border-top-color: transparent;
+}
+.km-audit-faq-S__q { font: inherit; }
+.km-audit-faq-S .ac-row { position: relative; border-bottom-color: transparent; }
+
+/* hairlines as drawn lines (static at rest; they draw in under .is-play) */
+.km-audit-faq-S .ac-ledger::before, .km-audit-faq-S .ac-row::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 1px; transform-origin: 0 50%; pointer-events: none;
+}
+.km-audit-faq-S .ac-ledger::before { top: -1px; background: var(--line-2); }
+.km-audit-faq-S .ac-row::after { bottom: -1px; background: var(--line); }
+
+/* the selection rule: 1px --fg across the open row's top edge, drawn left → right */
+.km-audit-faq-S .ac-row::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px; z-index: 1;
+  background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none;
+  transition: transform 280ms var(--ease-inout);
+}
+.km-audit-faq-S .ac-row.is-open::before { transform: scaleX(1); transition: transform 640ms var(--ease-inout); }
+
+/* row states: the open row's index, question and toggle in --fg; closed questions one step quieter */
+.km-audit-faq-S .ac-row__head .ac-idx { color: var(--fg-3); transition: color 300ms var(--ease-inout); }
+.km-audit-faq-S .ac-row__head .ac-h4 { color: var(--fg-2); transition: transform 300ms var(--ease-out), color 300ms var(--ease-inout); }
+.km-audit-faq-S .ac-row__head .ac-toggle { transition: color 300ms var(--ease-inout); }
+.km-audit-faq-S .ac-row__head:hover .ac-h4,
+.km-audit-faq-S .ac-row.is-open .ac-h4, .km-audit-faq-S .ac-row.is-open .ac-idx, .km-audit-faq-S .ac-row.is-open .ac-toggle { color: var(--fg); }
+.km-audit-faq-S .ac-row__head:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* the answer: a wide-cut verdict that rises out of its mask, then the reasoning */
+.km-audit-faq-S .ac-row__in { padding-top: 2px; padding-bottom: 30px; }
+.km-audit-faq-S__p { margin-top: 0; font-size: 17px; line-height: 1.55; color: var(--fg); max-width: 56ch; opacity: 0; transform: translateY(8px); transition: opacity 200ms var(--ease-inout), transform 200ms var(--ease-inout); }
+.km-audit-faq-S .ac-row.is-open .km-audit-faq-S__p { opacity: 1; transform: none; transition: opacity 500ms var(--ease-out) 160ms, transform 600ms var(--ease-out) 160ms; }
+
+/* ── entrance (only under html.is-play). Travels the reading path:
+   label → statement → rule + the ledger's top line (one line, drawn together) → lede →
+   rows 01 → 06 (hairline draws, then index · question · toggle) → 01 opens (JS, 1.6s) →
+   the doors land last, as the verdict settles: the action closes the path. ── */
+.is-play .km-audit-faq-S__side > .ac-rule { animation: ac-drawx 600ms var(--ease-out) 520ms both; }
+.is-play .km-audit-faq-S .ac-ledger::before { animation: ac-drawx 1000ms var(--ease-out) 520ms both; }
+.is-play .km-audit-faq-S__side > .ac-lede { animation: ac-up 600ms var(--ease-out) 600ms both; }
+.is-play .km-audit-faq-S .ac-row::after { animation: ac-drawx 700ms var(--ease-out) both; animation-delay: calc(700ms + var(--i) * 90ms); }
+/* opacity only: the question keeps its kit hover nudge (a transform fill would pin it) */
+.is-play .km-audit-faq-S .ac-row__head > * { animation: ac-fade 500ms var(--ease-out) both; animation-delay: calc(760ms + var(--i) * 90ms); }
+.is-play .km-audit-faq-S__doors > * { animation: km-audit-faq-S-up 600ms var(--ease-out) both; }
+.is-play .km-audit-faq-S__doors > :first-child { animation-delay: 2200ms; }
+.is-play .km-audit-faq-S__doors > :last-child { animation-delay: 2320ms; }
+
+@keyframes km-audit-faq-S-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+/* ── tablet (≤1023) and phone (≤767): production's composition. One column in source order —
+   rule → lede → the ledger → the doors — so the path still ends on the action and focus order is
+   the visual order. The left column dissolves (display: contents; it has no entrance of its own). ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-audit-faq-S__side { display: contents; }
+  :root:not(.km-home) .km-audit-faq-S__side > .ac-rule { grid-column: 1 / -1; grid-row: auto; }
+  :root:not(.km-home) .km-audit-faq-S__side > .ac-lede { grid-column: 1 / span 9; max-width: 30em; }
+  :root:not(.km-home) .km-audit-faq-S__list { grid-column: 1 / -1; grid-row: auto; margin-top: 48px; }
+  :root:not(.km-home) .km-audit-faq-S__doors { grid-column: 1 / -1; grid-row: auto; margin-top: 48px; }
+  :root:not(.km-home) .km-audit-faq-S .ac-h4 { text-wrap: pretty; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-audit-faq-S .ac-ledger { --ac-row-cols: 40px minmax(0, 1fr) 20px; --ac-row-indent: calc(40px + var(--gutter)); }
+  :root:not(.km-home) .km-audit-faq-S__head { min-height: 0; }
+  :root:not(.km-home) .km-audit-faq-S .ac-line { white-space: normal; }
+  :root:not(.km-home) .km-audit-faq-S .ac-statement { font-size: 40px; }
+  :root:not(.km-home) .km-audit-faq-S__body { margin-top: 28px; }
+  :root:not(.km-home) .km-audit-faq-S__side > .ac-lede { grid-column: 1 / -1; margin-top: 20px; max-width: none; font-size: 17px; text-wrap: pretty; }
+  :root:not(.km-home) .km-audit-faq-S__list { margin-top: 40px; }
+  :root:not(.km-home) .km-audit-faq-S .ac-row__in { padding-bottom: 24px; }
+  :root:not(.km-home) .km-audit-faq-S .ac-h4 { font-size: 19px; line-height: 1.3; }
+  :root:not(.km-home) .km-audit-faq-S__doors { margin-top: 40px; gap: 24px; }
+}

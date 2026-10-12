@@ -1,0 +1,31 @@
+{
+  "title": "Read first",
+  "direction": "A×C · Round 8 · /insights · EX excerpt sheet (the page's one paper moment)",
+  "summary": "Instead of a featured card, a real page of the note to read first: its title, its standfirst and its whole first paragraph, set the way the note is set (byline margin, reading column, right margin), with the note's own figure previewed small in the margin.",
+  "story": "Second beat: a taste of the founder's thinking that a buyer can read in a minute, before talking to anyone. It answers the register's red “Read first” tag, and the margin ties it back to the register: it diagnoses all three layers, and one symptom splits into three causes that each end at a layer's glyph.",
+  "reference": {
+    "site": "Gumroad (blog essay opening)",
+    "mobbin_url": "https://mobbin.com/sites/sections/4b325d61-0443-4bdf-810e-99463fe0c77d",
+    "ref_file": "refs/insights-read-first-S.webp",
+    "borrowed": "An essay's opening as it is actually read: title, standfirst, byline, then the first paragraph at reading size.",
+    "kelwin": "Set on paper, on the 12-column grid of the article template, so the excerpt previews the note's own layout. The byline sits in the left margin (index, name, date and read time, as in the homepage letter's margin). The right margin carries a spec row (“Diagnoses · All three layers”) and a small 1px drawing of the note's figure: one symptom splits into narrative, signal and memory failure, each ending at its layer glyph. No photo, no card, no avatar, and no SpecimenTag, because this is real published writing."
+  },
+  "motion": [
+    "entrance: the sheet rises in three columns, 100ms apart. The page's first body moment: in the margin the symptom line plots, then splits into three branches (staggered), then the three causes and their layer glyphs fade in.",
+    "ambient: none.",
+    "interaction: “Read the note →” (kit .ac-link).",
+    "on the live site: plays once as the section enters. Reduced motion shows the final drawing."
+  ],
+  "demoMs": 2400,
+  "copy": [
+    "[N] Label “Read first”",
+    "(FC) Byline “Rameez” · “June 2026 · 6 min” (read time per §7 Q6)",
+    "[K] Title “Revenue entropy: why pipeline problems rarely start in the pipeline”",
+    "[R] Standfirst, re-voiced per §7 Q2 and quoted exactly as the note's own draft (article-head/S): “In my experience, nearly every founder says some version of the same sentence: “we need more pipeline.” It’s almost never the diagnosis. It’s the symptom that three different structural failures share — and the treatment for each one is different.” (was “Every founder we audit says…”). Needs the founder's yes.",
+    "[K] First paragraph “When growth stalls, … so the cycle restarts with a different one.”",
+    "[K] “Read the note”",
+    "[N] Margin “Diagnoses · All three layers”, “One symptom”, “From the note”; [K] “Narrative failure · Signal failure · Memory failure” (the note's terms)"
+  ],
+  "phone": "≤1279: the byline becomes one line above the title (index · name · date), the reading column takes cols 1–7 and the margin keeps 4 columns (cols 9–12), as the kit asks of margins below 1280, so the figure stays at 0.96–1:1 and its labels at ≥ 13.5px. ≤1023: the reading column takes cols 1–10 and the margin drops below it at cols 1–7. ≤767: one column. Title 26px, standfirst 18px, paragraph 16px, then the margin's spec row and the figure. The figure is drawn at 310 and capped at 310px everywhere, so it never scales up and at a 320 phone it is .93 (labels 13px). Checked with production's fluid tokens and fixed 1440 type at 320, 390, 768, 834, 1000, 1024, 1180, 1280, 1366 and 1440: nothing under 11px, no overflow.",
+  "notes": "The page's one paper moment. The section's h2 is the note's title (32px kit .ac-h3), not a separate section heading, so nothing says the same thing twice. The note's own figure (article-body/S) is “One symptom, three causes”. This margin drawing is a small preview of it, not a copy. Its four plotted lines use vector-effect: none (a scaled 1-unit stroke, 0.93–1px since the figure never scales up) instead of the kit's non-scaling stroke, because the kit's pathLength dash is mis-measured on a scaled non-scaling stroke and the split drew short at tablet widths. Labels start at the elbow (x 156) and the layer glyphs sit at x 274, so every label clears its glyph by ≥ 14 units. The paragraph is clamp(16px, lede − 2px, 18px), so it always sits a step under the standfirst at fluid sizes. The CONTOUR glyph keeps its four strokes on phones: it is the nav's layer glyph, which the kit's SiblingStrip also shows at phone width; §1.9's ≤3-strokes rule is for drawn bundles, and this figure is drawn at its phone-native 310 width rather than shrunk."
+}

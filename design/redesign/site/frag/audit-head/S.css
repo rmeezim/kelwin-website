@@ -1,0 +1,86 @@
+/* ── audit-head · S · "The real constraint, named in writing." ─────────────────────────────
+   The approved Specimen-sheet header (interior/X, title block retired) with band kind RU: the
+   homepage CTA's ten-tick ruler drawn large. One working day = one grid column (111.33 frame
+   units), so the ten days ARE the page's grid: Day 01 on col 1, Day 10 on col 10, and cols 10–12
+   hold what comes after the readout (dotted). Read-only access runs the whole window as a bar;
+   the two working sessions are a bracket over days 02–09 (no days drawn: none are fixed).
+   The one red element is the Day 10 tick. Kit classes are placed, never restyled. */
+
+/* in-drawing words and numerals: HTML in frame units, so they keep their size (≥11px) at every width */
+.km-audit-head-S__at { position: absolute; left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); }
+
+/* the scale's numerals: mono, right of each day tick (drafting style) */
+.km-audit-head-S__n {
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-idx);
+  text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.km-audit-head-S__n.is-end { color: var(--fg); }
+
+/* read-only access: the window as a bar, its label inside */
+.km-audit-head-S__fill { fill: var(--panel-2); stroke: none; transform-box: fill-box; transform-origin: 0 50%; }
+.km-audit-head-S__barlab {
+  transform: translateY(-50%);
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-mono);
+  text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+
+/* the sessions bracket's label: the kit's callout code + label, without a leader (the bracket is its leader) */
+.km-audit-head-S__span { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+
+/* after the readout: the dotted continuation's note (cols 10–12) */
+.km-audit-head-S__after { width: calc(278 * var(--u)); display: flex; flex-direction: column; gap: 8px; }
+.km-audit-head-S .ac-facts dd { text-wrap: pretty; }
+.km-audit-head-S__after-t { font-size: var(--ac-anno); line-height: 1.4; color: var(--fg-2); text-wrap: pretty; }
+
+/* motion-only pieces: the playhead is absent at rest (final state = the finished drawing) */
+.km-audit-head-S__head { opacity: 0; }
+.km-audit-head-S__tk, .km-audit-head-S__red { transform-box: fill-box; transform-origin: 50% 0; }
+
+/* the keyed list's 02–09 code stays on one line (placement only) */
+.km-audit-head-S .ac-band__keys .ac-callout__code { flex: none; white-space: nowrap; }
+
+/* phone drawing */
+.km-audit-head-S__sm-fill { fill: var(--panel-2); stroke: var(--line-2); stroke-width: 1; }
+.km-audit-head-S__sm-t { font-size: 14px; }
+.km-audit-head-S__sm-l { font-family: var(--f-body); font-size: 14px; fill: var(--fg); }
+.km-audit-head-S__sm-in { fill: var(--fg-2); }
+
+/* ── the band's one orchestrated moment (only under .is-play):
+   the ruler calibrates — baseline plots while 45 ticks drop in left → right, 20ms apart (900–1.9s) —
+   then the window fills: the read-only bar fills from Day 01 as a 1px playhead runs the ten days
+   (2.0–3.6s), the sessions bracket draws over days 02–09 on the way, and as the playhead reaches
+   Day 10 the red tick drops, "Readout" lands, the playhead fades, and the dotted "after" runs on. */
+.is-play .km-audit-head-S__tk { animation: km-audit-head-S-tick 360ms var(--ease-out) calc(900ms + var(--i, 0) * 20ms) both; }
+.is-play .km-audit-head-S__n { animation: ac-fade 400ms var(--ease-out) calc(1000ms + var(--i, 0) * 20ms) both; }
+.is-play .km-audit-head-S__fill { animation: ac-drawx 1600ms var(--ease-inout) 2000ms both; }
+.is-play .km-audit-head-S__barlab { animation: km-audit-head-S-fade 500ms var(--ease-out) 2100ms both; }
+.is-play .km-audit-head-S__head { animation: km-audit-head-S-sweep 1900ms var(--ease-inout) 2000ms forwards; }   /* forwards: absent during its delay */
+.is-play .km-audit-head-S__con { animation: ac-fade 500ms var(--ease-out) 2500ms both; }
+.is-play .km-audit-head-S__red { animation: km-audit-head-S-tick 320ms var(--ease-out) 3600ms both; }
+.is-play .km-audit-head-S__cont { animation: ac-fade 700ms var(--ease-out) 3800ms both; }
+
+@keyframes km-audit-head-S-tick { from { transform: scaleY(0); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes km-audit-head-S-fade { from { opacity: 0; } to { opacity: 1; } }
+/* 1002 user units = Day 01 → Day 10 (CSS lengths on SVG elements are user units) */
+@keyframes km-audit-head-S-sweep {
+  0% { transform: translateX(0); opacity: 1; }
+  84% { transform: translateX(1002px); opacity: 1; }
+  100% { transform: translateX(1002px); opacity: 0; }
+}
+
+/* ── tablet (≤1023): the kit hides the flags and shows the keyed list; the bracket label and the
+   after note are callouts too, so they give way to the list. Numerals and the bar label stay. ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-audit-head-S__span, :root:not(.km-home) .km-audit-head-S__after { visibility: hidden; max-width: 0; overflow: hidden; }   /* hidden, and no hidden overflow */
+  :root:not(.km-home) .km-audit-head-S__day { display: none; }   /* "Day 01" → "01" where a day is narrower (no entrance on this span) */
+}
+/* ── phone (≤767): the kit swaps in the phone drawing (one tick per day, the ruler stays horizontal:
+   ten ticks fit at 390); its own words are SVG at 14px (≥11px at 320). The desktop HTML words hide. ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-audit-head-S__n, :root:not(.km-home) .km-audit-head-S__barlab { visibility: hidden; }
+  /* the phone drawing names Kickoff and Readout in words over their ticks, so the keyed list keeps
+     only what the drawing can't say: 02–09 (the two sessions) and the after-note (the sentence above
+     still names day 01 and day 10 for screen readers) */
+  :root:not(.km-home) .km-audit-head-S .ac-band__keys > li:nth-child(1),
+  :root:not(.km-home) .km-audit-head-S .ac-band__keys > li:nth-child(3) { display: none; }
+}

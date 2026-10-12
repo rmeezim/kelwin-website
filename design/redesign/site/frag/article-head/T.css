@@ -1,0 +1,30 @@
+/* article-head · T · the text sheet (band kind TX) — /insights/the-17-percent-window
+   Header X's grammar with no band: nav at rest → ■ layer + "Field note · June 2026" →
+   the title as a two-voice h1 at 72px ("The 17% window." unchanged; the accent line "Where the
+   deal is argued." is display only, because the head grammar needs one accent) → 48×2 rule → the standfirst as the lede, cols 1–7 →
+   the facts ledger in cols 9–12, bottom-aligned with the standfirst. The h1 may run the full
+   width because the ledger sits beside the standfirst only. Ends --ac-int-end under the lede;
+   the paper body below is its own cut. Red: the label square and the rule. Placement only:
+   every look is the kit's. */
+
+.km-article-head-T { --ac-int-h1: 72px; }
+.km-article-head-T .ac-head.ac-ihead > .ac-statement { grid-column: 1 / -1; }
+.km-article-head-T .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 7; max-width: 33em; }
+
+/* the source, named and linked inside the standfirst: a quiet underline, sentence case */
+.km-article-head-T__a {
+  color: var(--fg); text-decoration: underline 1px var(--line-2); text-underline-offset: 5px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+.km-article-head-T__a:hover { text-decoration-color: var(--fg); }
+.km-article-head-T__a:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
+
+/* tablet / phone: the kit stacks the ledger under the lede; the h1 steps down with it */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-article-head-T { --ac-int-h1: 52px; }
+  :root:not(.km-home) .km-article-head-T .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 10; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-article-head-T { --ac-int-h1: 36px; }
+  :root:not(.km-home) .km-article-head-T .ac-head.ac-ihead > .ac-lede { grid-column: 1 / -1; }
+}

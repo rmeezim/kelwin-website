@@ -1,0 +1,32 @@
+{
+  "title": "Reading spread, delivered",
+  "direction": "A×C · Round 8 · article template · /insights/deliverability-is-infrastructure",
+  "summary": "The note on paper at reading quality, with the Google and Yahoo 2024 sender rules and their bulk-sender qualifier in the margin, 'The floor, specified' as the kit's spec list, an Apple Mail Privacy Protection caveat on open rates, and one drawing: 'Delivered isn't arrived' — a dashboard tile reports Delivered, 100 of 100 sends; beneath it the same sends as they landed (Validity 2025): 83.5 inbox · 6.7 spam · 9.8 missing, each value set under its own segment, the missing segment in red.",
+  "reference": {
+    "site": "Approved Kelwin letter/S (a reading column with a margin on the 12-column grid) and evidence/T (a sourced figure); Tailscale's blog article for the long-form measure",
+    "mobbin_url": "https://mobbin.com/sites/sections/2aa17c2a-b721-440c-8fe0-83544d7afdd0",
+    "ref_file": "refs/article-tailscale.webp",
+    "borrowed": "A long-form reading column at a real measure with its apparatus beside it rather than inside it (sidenotes in a margin, one wide figure that breaks the column once).",
+    "kelwin": "Paper as the page's one document moment; the column in cols 3–8 and the margin in cols 10–12 of the real 12-column grid; Mona at 18px; the nav's capability glyphs as the layer key; 15px Mona 'What to look for' notes instead of mono 'Field reading' panels; the figure drawn in the kit's 1px language with one red element and no 'Fig.' caption."
+  },
+  "motion": [
+    "entrance (play-once, at 40% visible): the tile appears and its hundred ticks wipe in, '100%' rises; then two dashed measure lines drop from the tile, the bar grows — inbox, spam, then the red missing segment — and the values (labelled in place) and the source rise (≈4.5s).",
+    "interaction: none (links only).",
+    "ambient: none.",
+    "on the live site: the figure waits for 40% of itself in view. Reduced motion: final state at once."
+  ],
+  "demoMs": 5000,
+  "story": "The argument: before a message can be judged it has to arrive, and the silence of a filtered send is what makes it dangerous. The drawing sits right after the silence and the pull quote, putting the dashboard's 'delivered' beside where the mail actually landed; the note then specifies the floor and why it is a system.",
+  "copy": [
+    "Body [K] verbatim except: 'A surprising fraction of the domains we audit fail alignment while believing they pass.' → 'A surprising number of domains fail alignment while their owners believe they pass.' (R, FC, founder Q2)",
+    "'Field reading' → margin 'What to look for' [R] (FC, Q2): 'The pattern we see most:' dropped, 'It is almost always reputation decay —' → 'In my experience it is usually reputation decay:'",
+    "Open-rate caveat [N]: 'Read open rates with care. Since Apple's Mail Privacy Protection, many opens are recorded whether or not anyone reads the mail.' (Apple 2021; link from memory, re-verify)",
+    "Google/Yahoo sources added with the bulk-sender qualifier [N]: 'The strictest rules apply to bulk senders: close to 5,000 or more messages a day to personal Gmail accounts.' / 'Yahoo's matching requirements for bulk senders.' (links from memory, re-verify)",
+    "'The floor, specified' → .ac-spec of four rows [K text; lead-ins become the keys, so the missing spaces disappear]",
+    "Pull quote [K] kept",
+    "Figure copy [N]: 'Delivered isn't arrived', 'The same 100 sends, as the dashboard reports them and as they landed.', 'What the dashboard says' / 'Where it landed', 'Delivered', '100 of 100 sends', value captions; source 3 gloss [N] 'about one in six never reached the inbox' (the Infrastructure page's kept '1 in 6' reading); SpecimenTag [N] 'The tile is illustrative. The split beneath it is Validity's global average, scaled to 100 sends.'",
+    "Layer key 'Diagnoses' [N]"
+  ],
+  "phone": "≥1200: each value sits under its own segment (spam right-aligned to its segment's end at 90.2%, missing to the bar's end); no legend. ≤1199: the two short segments are too narrow to carry a label each, so 'in spam' and 'missing' sit side by side at the bar's end in segment order. ≤1023: column cols 1–8, margin cols 9–12; the drawing's row labels move above their rows and the tile and bar take the full width (100 ticks still legible at 834). ≤767: one column; the tile counts 20 ticks (five sends each) instead of 100 so the strip stays legible, its header stacks, the three values stack under the bar in segment order; the spec list's keys sit above their values.",
+  "notes": "A reading surface: ≈2,500px tall at 1440, over the 1400px cap by design. The tile is the only illustrative piece and carries the SpecimenTag; the split is Validity's published global average (legitimate marketing email, 2024), scaled to 100. Red: the missing segment only — the values are labelled in place, so there is no legend swatch and no second red. No hatching (retired device): spam is a flat --fg-3. 'What to look for' sits in its subsection heading's row (row 8, 'Why this is a systems problem'), tops aligned, and hangs like every other note, so the column runs 56px from the last paragraph to the closing line (it used to span two rows and open a ≈107px hole); with the Apple caveat it ends ≈40px below the closing line at 1440 and stays ≥78px clear of the section's end at 1024 and 834. Source links wrap only before their last word, so '· 2024 ↗' never strands."
+}

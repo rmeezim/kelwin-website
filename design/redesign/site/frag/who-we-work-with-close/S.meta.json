@@ -1,0 +1,28 @@
+{
+  "title": "Who we send away",
+  "direction": "A×C · Round 8 · /who-we-work-with §3 (D3 gate close)",
+  "summary": "The kit's D3 gate close: the honest list of who Kelwin declines, every reason visible with a better door where there is one, beside the gate line, the page's one red ask and the not-sure door — so a buyer leaves knowing which side he's on.",
+  "reference": {
+    "site": "Approved Kelwin system: kit D3 (int-kit/S) and the homepage fit/U 'Not for' ledger",
+    "borrowed": "The D3 composition as built in the interior kit, and the homepage's – ledger sign for the declines.",
+    "kelwin": "No new device: the declines are the homepage's D-01–D-03 with their approved wording plus D-04 from the gate, each with an 'Instead'; the gate side says what the three questions check, using the audit's documented scope only."
+  },
+  "motion": [
+    "entrance: the kit Door's: label fades, the list rises, the gate side rises 200ms later, the foot hairline draws and the onward link fades in. Reveal only.",
+    "ambient: none.",
+    "interaction: links and the button only (hover states).",
+    "on the live site: plays once as it scrolls into view. Reduced motion: final state."
+  ],
+  "demoMs": 1800,
+  "story": "The page's conversion moment, and the end of the promise the homepage made ('…and the honest list of who we send away'). Having recognised his situation and market, the buyer now sees the four declines in plain words, then the gate that checks it both ways, the red ask, and a quiet door if he still isn't sure. The onward link asks the next question: who he'd be working with.",
+  "copy": [
+    "[K] D-01 'Rent-it-forever · We’ll run it on retainer, but if nobody inside will own it, we decline.' (approved P2) · [N] Instead 'Find the owner first. Then the system has somewhere to live.'",
+    "[K] D-02 'Lead-list shopping · Renting activity is the cycle we exist to end. A list vendor is the better call.'",
+    "[K] D-03 'Pure self-serve / PLG · The system assumes a sales-carried deal.' · [N] Instead 'Different machinery, built for checkout.'",
+    "[R] D-04 'Pre-revenue · There’s no working motion to instrument yet. When the first revenue is real, come straight back.' (from the gate) · Instead 'Read the field notes meanwhile →' (/insights)",
+    "[K] 'The audit is a gate, and it works in both directions.' (homepage fit) · [R] 'Its three questions check where revenue is today, how your deals close, and what it feels like from inside.'",
+    "[R] 'Not sure which side you’re on? Talk to the team →' · [N] onward 'Who would you be working with? → About'"
+  ],
+  "phone": "Kit §12.11: ≤1023 the gate side drops under the list (cols 1–9), foot last; ≤767 everything spans, the line drops to 28px, row grids tighten (48px index), 'Instead' lines stack with their links at the kit's 12px. Below ≈360 the D-04 exit 'Read the field notes meanwhile' can't hold one line inside the row's indent, so it wraps (arrow on its last line, underline to the row's edge) instead of running past the margin. The not-sure line stacks its question over its link (the kit link as-is). Checked at 320, 390, 834, 1024, 1180: no overflow.",
+  "notes": "The page's one red ask is this button (→ /audit); the band's red fracture is three sections above, never in the same view. The close follows the paper markets, so it carries no ruled seam: the surface change is the cut (the kit's rule rules graphite→graphite seams only; the plan's 'ruled' would draw a hairline on the paper's edge)."
+}

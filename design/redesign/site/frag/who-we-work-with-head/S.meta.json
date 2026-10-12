@@ -1,0 +1,29 @@
+{
+  "title": "The break chart",
+  "direction": "A×C · Round 8 · /who-we-work-with header (BC)",
+  "summary": "The approved Specimen-sheet header (title block retired) landing on the homepage fit link's own words, with this page's band: the same three-layer revenue system drawn three times, one flat elevation per situation, and a fracture opened in the layer that breaks first.",
+  "reference": {
+    "site": "SAP Good Energy (comparison section)",
+    "mobbin_url": "https://mobbin.com/sites/sections/42a8d25b-c144-4484-ba70-f3a086d365db",
+    "ref_file": "refs/who-we-work-with-head-S.webp",
+    "borrowed": "Three standing columns crossed by the same row rules, the rows named once at the left, so a reader compares the columns row by row at a glance.",
+    "kelwin": "The columns become flat drafting elevations of the three layers (Narrative Systems · GTM Infrastructure · GTM Intelligence, top to bottom, the homepage system's order); each row is named in words at the left and by its nav glyph inside every band; the difference between columns is drawn, not tabled: a 1px fracture opens in the layer that breaks first and runs dashed where it spreads. 1px lines in the kit's drawing classes, the kit's flags, a registration frame, one red."
+  },
+  "motion": [
+    "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts), then from ~900ms the band: the four row rules draw, the three elevations draft left to right (140ms apart) and their layer glyphs settle; then 01, 02, 03 in turn (560ms apart): the break line runs down its layer (320ms), the layer opens 4 units (560ms: the far lip moves off the near one while the two short bridges that closed the outline retract into it, so the outline stays square), the dashed run fades in where it spreads, and that situation's flag lands. The key lands last (3.5s). Played once; nothing cycles.",
+    "ambient: none.",
+    "interaction: the red fracture follows the situation in focus: hover an elevation, or hover/focus a situation row in the next section (it dispatches km:wwww-situation on document); leaving returns it to 01. The matching flag lights. Tapping an elevation jumps to its row (#founder-seller · #plateaued-motion · #misheard-category); those tap targets are tabindex -1 and aria-hidden because the rows themselves are the accessible content.",
+    "on the live site: the band plays once at 40% visible. Reduced motion: the final drawing at once (all three fractures open, 01 red); the red still follows focus."
+  ],
+  "demoMs": 4200,
+  "story": "Opens the page on the buyer's question ('is a company like mine what you're for?') by landing on the homepage fit link's exact words, and answers it at a glance before a word of the body is read: three situations, the same three layers, and where each one breaks first. The rows below are its legend.",
+  "copy": [
+    "[K] H1 'Three situations, / told from inside.' (homepage fit link)",
+    "[R] Lede (…we keep being hired into → …it's built for; 'compounds' → 'pays off')",
+    "[K] Facts 'Built for · Real revenue, felt ceiling · Committee-decided sales' (fit F titles) · [R] 'The real gate · Someone inside will own it' (F-02) · [N] 'Not sure? · Talk to the team ↗'",
+    "[R] Flags and keyed list from the §4.6 callouts; [N] band key words 'Breaks first' · 'Spreads to'; [N] figcaption sentence",
+    "Breadcrumb 'The Firm / 02' as drafted (the Firm plate copy itself is (FS) in §7 Q5c)"
+  ],
+  "phone": "≤1023: nav menu hides (production's menu button), the h1 spans the width, the facts drop under the lede; the band keeps the desktop drawing scaled in its frame with the axis words (13px) and the key still on it, the flags and tap targets hidden (the flags clipped to the frame so they never widen the page), and the keyed list visible under it (the figcaption names the layers top to bottom and each situation's break in words; its lead sentence is set at support size, 15px, so it reads as the drawing's caption, not body copy). ≤767: the kit swaps in the phone drawing (358×212): three narrow elevations of 92 units with no in-band glyphs, 01–03 over each at 14px (≥11px down to 320), the three layer glyphs as the left axis, the same break lines and dashed runs; the desktop axis words and key hide; the keyed list follows. Checked at 320, 390, 834, 1024 and 1180 (no overflow of its own; the kit's hidden nav menu still widens phone previews, see kitNeeds).",
+  "notes": "The one red is a fracture, never a button (no red button in any header). Red follows focus but is never on two fractures at once. Each fracture is drawn in the drafting convention for a break line (straight, one sharp Z, straight), as two lips 4 units apart; the outline stays square: the near piece ends at the crack, the far piece runs from the open lip to the elevation's own edge (no piece steps past the other layers). Every flag is anchored ON its break, where the crack meets the elevation's outer edge: 01 and 03 break in the top layer and hang above; 02 breaks in the bottom layer, so it hangs below the drawing (.ac-flag--b, anchor on GTM Intelligence's bottom edge), on the key's line. The dashed run continues straight into the layer it spreads to. Row rules are the kit's faint lines, solid (dashed means 'spreads' here). Frame 1312×312. Height ≈ 1,026px at 1440."
+}

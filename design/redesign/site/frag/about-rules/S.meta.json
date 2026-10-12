@@ -1,0 +1,30 @@
+{
+  "title": "The rules, on paper",
+  "direction": "A×C · Round 8 · /about · body (TN) · the page's paper",
+  "summary": "The firm's doctrine as its standing document: five rules, all open, on a ruled two-column paper sheet that ends on the exit test set across the full width — the written legend of the matrix drawn in the header.",
+  "story": "The header drew where the rules bind; this is what they say. It is the one thing on the page the homepage doesn't carry, so it gets the page's one paper moment, and it reads in order to its conclusion: if it stops working the day we leave, we built it wrong — the sentence the homepage handover is built on.",
+  "copy": [
+    "[N] h2 “The rules every engagement is built on.”",
+    "[K] 01 Diagnosis before prescription — body [K]",
+    "[K] 02 Assets first — then the retainer — body [K, the approved service model; contains the budgeted 'compounds' sentence, kept verbatim]",
+    "[K] 03 Clarity is infrastructure — body [R] “Most pipeline problems are narrative problems in disguise. We write the language down before we build anything that carries it.”",
+    "[R] 04 Learning is the asset (was “Compounding beats resetting”) — body [R] “What an engagement learns is written into the system, so next quarter starts where this one ended.”",
+    "[K] 05 The exit test — body [K]",
+    "[N] “Binds at · <phase>” chips (the phase names are [K] method); on phones they are read by screen readers only"
+  ],
+  "phone": "≤1023: the two-column sheet holds (two tenets per row), the single column rule still spans both rows, and 05's sentence stacks under its 64px title. ≤767: one column, the column rule hidden, every tenet stays open (no tabs, no accordions): code + title on one row (titles 24px), the body under it; 05's title 44px and its sentence 18px. The “Binds at” chips step back to screen readers on phones: the header's keyed list (~900px above) already sets each rule beside its phases, so on a phone each binding is said once. Measured at 390 with production's 72px padding: 1,267px (was 1,515).",
+  "reference": {
+    "site": "Mobbin, Intercom “How we work” (a principles block set as titled paragraphs in two columns) · approved Kelwin principle/S (the paper surface, ink type) and fit/U (ruled two-column ledgers)",
+    "mobbin_url": "https://mobbin.com/sites/sections/b75e7131-8027-4733-9e06-ae7f76c173f4",
+    "ref_file": "refs/about-rules-S.webp",
+    "borrowed": "Principles set as a title + short paragraph in two columns, read in order.",
+    "kelwin": "No icons, no illustration, no cards: a ruled paper sheet whose hairlines meet at every crossing (one column rule drawn once down both rows), the matrix's square as each tenet's index mark, the phase each rule binds at named in a plain chip, and the last rule set as a poster across the full width."
+  },
+  "motion": [
+    "entrance (reveal only, a still beat): the section head (kit), the sheet fades in, its one column rule draws down both rows, the five tenets rise in order 01 → 05.",
+    "ambient: none. interaction: none.",
+    "on the live site: plays once when the section scrolls into view. Reduced motion: final state at once."
+  ],
+  "demoMs": 1500,
+  "notes": "Not a specimen: the doctrine is the firm's own and real, so it carries no SpecimenTag. The sheet has no column gap: each tenet pads half a gutter either side of the centre, so the row rules run edge to edge and the one column rule (an abspos ::before placed in grid rows 1–2) meets them; checked pixel by pixel (x=720 continuous from the top rule to the rule above 05, both row rules unbroken). The “Binds at” chips are words only (the mini five-cell rows were a third encoding of the band and are gone). 05's index square is ink, not red: the week's red node can share a 900px view with this sheet's foot (§1.5, one red per view), so 05 is carried by its 88px title alone. §4.7 drafted the 05 square red; restoring it is one line (.km-about-rules-S__t--05 .km-about-rules-S__sq { background: var(--accent) }) if the founder prefers it and the week is cut."
+}

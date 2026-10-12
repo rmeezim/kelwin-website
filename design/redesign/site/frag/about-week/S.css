@@ -1,0 +1,78 @@
+/* ── about-week · S · the week an engagement runs on (CL · calendar ruler, #week) ─────────
+   One tape across the working week, measured in hour ticks from 08:00 to 18:00 a day, with
+   a tall tick at each day's edge. Each ritual is a square node at its hour, its time flagged
+   above it; the rituals read underneath in five day columns that start on the day ticks.
+   Wednesday is left empty: the tape goes dashed and carries no ticks — the calendar stays
+   empty. The red is Thursday's node, the kill review, drawn at the header red cell's weight
+   (11px in a faint ring) so the page's reds read alike. Motion (the page's one body moment):
+   the tape measures itself left to right and each node latches as the tape reaches it.     */
+
+.km-about-week-S__cal { margin-top: 72px; }
+.km-about-week-S__tape { position: relative; width: 100%; aspect-ratio: 1312 / 64; }
+.km-about-week-S__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.km-about-week-S__ring { fill: var(--bg); }
+.km-about-week-S__node, .km-about-week-S__halo { transform-box: fill-box; transform-origin: 50% 50%; }
+/* the one red: Thursday's node at the header red cell's weight — 11px in a faint 20px ring */
+.km-about-week-S__halo { stroke: var(--fg-3); }
+.km-about-week-S__at {
+  position: absolute; left: calc(var(--x) / 1312 * 100%); top: 0; transform: translateX(-50%);
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px; letter-spacing: var(--ac-track-idx);
+  color: var(--fg-2); white-space: nowrap;
+}
+.km-about-week-S__at--on { color: var(--fg); }
+
+.km-about-week-S__days { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 28px; }
+.km-about-week-S__day { padding-right: var(--gutter); }
+.km-about-week-S__dn {
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px; letter-spacing: var(--ac-track-mono);
+  text-transform: uppercase; color: var(--fg-3);
+}
+/* the time is drawn on the tape above; in the list it is for screen readers (and phones) */
+.km-about-week-S__tm { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.km-about-week-S__t { margin-top: 14px; font-weight: var(--ui-weight); font-size: 20px; line-height: 1.3; color: var(--fg); }
+.km-about-week-S__l { margin-top: 10px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 30ch; }
+
+.km-about-week-S__note {
+  margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line);
+  font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2);
+}
+
+/* ── entrance (once): the tape measures itself left to right (kit .ac-plot on the baseline and
+   the ticks), Wednesday's empty stretch fades in as the tape crosses it, each node latches as
+   the tape reaches its hour, its time and its column follow ── */
+@keyframes km-about-week-S-latch { from { opacity: 0; transform: scale(.2); } to { opacity: 1; transform: none; } }
+.is-play .km-about-week-S__wed { animation: ac-fade 480ms var(--ease-out) 1260ms both; }
+.is-play .km-about-week-S__ring { animation: ac-fade 300ms var(--ease-out) 300ms both; }
+.is-play .km-about-week-S__lead,
+.is-play .km-about-week-S__at { animation: ac-fade 400ms var(--ease-out) var(--d, 0ms) both; }
+.is-play .km-about-week-S__node { animation: km-about-week-S-latch 360ms var(--ease-out) var(--d, 0ms) both; }
+.is-play .km-about-week-S__red { animation-duration: 480ms; }
+.is-play .km-about-week-S__halo { animation: km-about-week-S-latch 600ms var(--ease-out) var(--d, 0ms) both; }
+.is-play .km-about-week-S__day { animation: ac-up 600ms var(--ease-out) var(--d, 0ms) both; }
+.is-play .km-about-week-S__note { animation: ac-fade 600ms var(--ease-out) 2900ms both; }
+
+/* ── tablet (≤1023): the tape scales (frame proportions kept), the columns tighten ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-about-week-S__cal { margin-top: 56px; }
+  :root:not(.km-home) .km-about-week-S__day { padding-right: 16px; }
+  :root:not(.km-home) .km-about-week-S__t { font-size: 17px; }
+}
+/* ── phone (≤767): the tape folds away and the week becomes a vertical tape — one rule down the
+   left, a node per day (Thursday red, Wednesday hollow on a dashed stretch), times in the list ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-about-week-S__cal { margin-top: 40px; }
+  :root:not(.km-home) .km-about-week-S__tape { aspect-ratio: auto; height: 0; visibility: hidden; }
+  :root:not(.km-home) .km-about-week-S__days { grid-template-columns: minmax(0, 1fr); margin-top: 0; }
+  :root:not(.km-home) .km-about-week-S__day { position: relative; padding: 0 0 28px 28px; border-left: 1px solid var(--line-2); }
+  :root:not(.km-home) .km-about-week-S__day:last-child { padding-bottom: 4px; }
+  :root:not(.km-home) .km-about-week-S__day--wed { border-left-style: dashed; border-left-color: var(--fg-3); }
+  :root:not(.km-home) .km-about-week-S__day::before {
+    content: ""; position: absolute; left: -5px; top: 3px; width: 9px; height: 9px; background: var(--fg);
+  }
+  :root:not(.km-home) .km-about-week-S__day--wed::before { background: var(--bg); box-shadow: inset 0 0 0 1px var(--fg-3); }
+  :root:not(.km-home) .km-about-week-S__day--thu::before { left: -6px; top: 2px; width: 11px; height: 11px; background: var(--accent); outline: 1px solid var(--fg-3); outline-offset: 4px; }
+  :root:not(.km-home) .km-about-week-S__tm { position: static; width: auto; height: auto; overflow: visible; clip-path: none; color: var(--fg-2); }
+  :root:not(.km-home) .km-about-week-S__t { margin-top: 8px; font-size: 18px; }
+  :root:not(.km-home) .km-about-week-S__l { max-width: none; }
+  :root:not(.km-home) .km-about-week-S__note { margin-top: 40px; }
+}

@@ -1,0 +1,27 @@
+{
+  "title": "Sources and next note",
+  "direction": "A×C · Round 8 · article template · /insights/the-17-percent-window",
+  "summary": "The note's end matter on graphite: every source in full as the kit's spec list, and the next note in the register (01 → 02 → 03 → 01) led by its symptom line, so a reader who finished can check the evidence or keep reading before the close asks anything.",
+  "reference": {
+    "site": "Approved Kelwin kit spec list (.ac-spec) and letter/S's field-note rows; /insights register symptom lines",
+    "mobbin_url": "https://mobbin.com/sites/sections/2aa17c2a-b721-440c-8fe0-83544d7afdd0",
+    "ref_file": "refs/article-tailscale.webp",
+    "borrowed": "The end matter of a published paper: the references in full, then where to read next.",
+    "kelwin": "Sources as the kit spec list (number · source · title · year ↗ · what the note takes from it, hedged as the source hedges it); the next note led by its symptom line in the accent voice, as /insights lists it, with the nav glyph of the layer it diagnoses."
+  },
+  "motion": [
+    "entrance: the two label rows fade, the source list and the next-note card rise (play-once with the slot).",
+    "interaction: hover on the source links (new tab, announced) and the next-note link.",
+    "ambient: none.",
+    "on the live site: plays once as the slot scrolls in. Reduced motion: final state."
+  ],
+  "demoMs": 1800,
+  "story": "Closes the reading honestly: what the note rests on, hedged as each source hedges itself, then where to go next if the reader is still reading rather than buying.",
+  "copy": [
+    "Sources [N glosses, K sources]: Gartner · The B2B buying journey · 2019 — every link re-verified before launch",
+    "Next note [N symptom line from the /insights register, K title/date/read time]: Deliverability is infrastructure (“The dashboard says ‘delivered’.”)",
+    "'Next note' label [N]"
+  ],
+  "phone": "≤1023: the sources take the full width and the next note drops below them (cols 1–8). ≤767: one column; the spec keys narrow, the symptom line steps to 24px and the next-note link may wrap (long titles at 320).",
+  "notes": "Paper → graphite needs no ruled seam. S and T have one source each, so their list is a single row; nothing is padded to look fuller. No red beyond the label square."
+}

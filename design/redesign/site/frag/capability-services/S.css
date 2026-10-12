@@ -1,0 +1,62 @@
+/* ── capability-services · S · Narrative Systems — ST, four strips [K X body] + the roll-up ──
+   The page's second two-voice statement (kit .ac-shead--statement), then X's four strips with
+   the band's flag codes. New beneath them: a 1px roll-up. Each strip's artifact drops onto one
+   of the layer's two assets (the handover's 01 Narrative OS · 02 Channel Playbooks); the 01.3
+   drop passes under the Narrative OS bus with a drafting hop. It teaches the taxonomy the
+   header's facts named (two assets per layer) without a sentence. No red here beyond the label
+   square and the rule.                                                                        */
+
+.km-capability-services-S__strips { margin-top: 64px; }
+.km-capability-services-S__strip { padding-top: 0; gap: 18px; }
+.km-capability-services-S__strip::before { top: -4px; }
+.km-capability-services-S__code { align-self: flex-start; }
+.km-capability-services-S__strip .ac-support { max-width: 34ch; }
+.km-capability-services-S__foot { display: flex; flex-direction: column; gap: 8px; }
+/* the words of the roll-up: read by screen readers at every width, shown below the stage (≤1023) */
+.km-capability-services-S__into { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* the roll-up drawing, in its own 1312 × 132 frame (1 unit = 1px at 1440) */
+.km-capability-services-S__wire {
+  position: relative; margin-top: 22px;
+  container-type: inline-size; --u: calc(100cqw / 1312); aspect-ratio: 1312 / 132;
+}
+.km-capability-services-S__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.km-capability-services-S__nd { fill: var(--fg-2); }
+.km-capability-services-S__asset {
+  position: absolute; left: calc(1052 * var(--u)); top: calc(var(--y) * var(--u)); transform: translateY(-50%);
+  display: flex; align-items: baseline; gap: 12px; white-space: nowrap;
+}
+.km-capability-services-S__an { font-weight: var(--ui-weight); font-size: var(--ac-body); line-height: 1.2; color: var(--fg); }
+
+/* ── entrance: the kit statement choreography, then the strips cascade, the roll-up fades in with them ── */
+.is-play .km-capability-services-S__strip { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(600ms + var(--i) * 100ms); }
+.is-play .km-capability-services-S__strip + .km-capability-services-S__strip::before { animation: ac-drawy 700ms var(--ease-out) both; animation-delay: calc(550ms + var(--i) * 100ms); }
+/* the roll-up is a still drawing (the page's two body moments are the specimen's typeset and the track):
+   it fades in as one piece with the last strip */
+.is-play .km-capability-services-S__wire { animation: ac-fade 700ms var(--ease-out) 1000ms both; }
+
+/* ── tablet: strips 2 × 2; the roll-up drawing gives way to its words in each strip ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-services-S__strips { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 48px; }
+  :root:not(.km-home) .km-capability-services-S__strip:nth-child(3)::before { visibility: hidden; }
+  :root:not(.km-home) .km-capability-services-S__strip .ac-h3 { font-size: 28px; }
+  :root:not(.km-home) .km-capability-services-S__into {
+    position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal;
+    display: flex; align-items: center; gap: 10px; font-size: var(--ac-support); line-height: 1.4; color: var(--fg);
+  }
+  :root:not(.km-home) .km-capability-services-S__into::before { content: ""; width: 5px; height: 5px; flex: none; background: var(--fg-2); }
+  :root:not(.km-home) .km-capability-services-S__wire { visibility: hidden; position: absolute; height: 0; margin: 0; }
+}
+/* ── phone: one strip per row, each closed by a hairline; the code sits beside its title and
+   what it ships reads as one short foot ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-services-S__strips { grid-template-columns: minmax(0, 1fr); row-gap: 0; margin-top: 40px; }
+  :root:not(.km-home) .km-capability-services-S__strip {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; row-gap: 10px; align-items: center;
+    padding: 20px 0 22px; border-top: 1px solid var(--line);
+  }
+  :root:not(.km-home) .km-capability-services-S__strip::before { visibility: hidden; }
+  :root:not(.km-home) .km-capability-services-S__strip .ac-h3 { font-size: 22px; }
+  :root:not(.km-home) .km-capability-services-S__strip > .ac-support, :root:not(.km-home) .km-capability-services-S__foot { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-capability-services-S__foot { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px 18px; padding-top: 2px; }
+}

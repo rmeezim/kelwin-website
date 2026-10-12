@@ -1,0 +1,9 @@
+/* article-door · S · D1 compact decision band — /insights/revenue-entropy
+   The kit's compact D1 as drafted: ■ "Starts with the audit", the note's own line (what the
+   audit returns for this note's subject, documented scope only), the two doors on the line's
+   row, then one hairline and the onward link to the layer the note is about. Ruled seam from
+   the sources above. The one red in view is the button. Placement only. */
+.km-article-door-S { padding-block: 112px 120px; }
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-article-door-S { padding-block: 72px 80px; }
+}

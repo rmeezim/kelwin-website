@@ -1,0 +1,30 @@
+{
+  "title": "In the works",
+  "direction": "A×C · Round 8 · /insights · LG static status ledger, two shelves (ruled seam)",
+  "summary": "Everything unpublished in one honest list, with no dates, as two shelves side by side: the next three field notes and the three longer documents moved here from /reports. Each item has the kit's dashed status chip; each shelf ends on one request that names its items.",
+  "story": "Third beat, and deliberately the quietest. After the published notes and a page of one, the page says plainly what is still being written, and that GTM Intelligence gets two of the next three notes. A visitor who is not ready to talk can ask for a shelf by name. Research no longer sits on /reports, so that page is only about the readout.",
+  "reference": {
+    "site": "OpenAI (index page)",
+    "mobbin_url": "https://mobbin.com/sites/sections/1e4d6891-db02-4b62-8ae8-8addb56aa87e",
+    "ref_file": "refs/insights-in-the-works-S.webp",
+    "borrowed": "An index page's quiet ledger: a group name over its entries, mono index, title, one line of state.",
+    "kelwin": "Two shelves on the 12-column grid, “Field notes” (FN·04–06, cols 1–6) and “Longer documents” (R·01–03, cols 7–12), each under a line-2 hairline with its index range on the right. Each row reads: mono index · title, then the note's layer in mono and the kit's dashed status chip using the five allowed words. Each shelf ends on the kit's quiet .ac-link into /contact with the shelf as its ?ref. Type and hairlines only. No dates, no progress bars, nothing implied to be further along than it is. Rows line up across the two shelves."
+  },
+  "motion": [
+    "entrance: the section head fades and rises (kit). Each shelf's rows cascade (kit .ac-cascade, 80ms apart), the documents 120ms after the notes. The ruled seam draws.",
+    "ambient: none.",
+    "interaction: two deep links into /contact (topic=notes&ref=FN·04–06 and topic=research&ref=R·01–03), each with a visually hidden suffix naming its shelf.",
+    "on the live site: plays once as the section enters. Reduced motion shows the final state."
+  ],
+  "demoMs": 1600,
+  "copy": [
+    "[N] Heading “What’s being written next.” · lede “No publication dates until they’re written.” (the lede is the story map's note)",
+    "[N] Shelf names “Field notes” · “Longer documents”",
+    "[K] Titles FN·04 “Signal over sequence” · FN·05 “The language committees repeat” · FN·06 “Q1 resets are a choice” · R·01 “The Revenue Entropy Index — 2026 benchmark” · R·02 “Signal-Based Selling — the field spec” · R·03 “The Deliverability Spec Sheet”",
+    "[R] Layers and statuses: FN·04 GTM Intelligence · Drafting (was “Intelligence · In calibration”); FN·05 Narrative Systems · Drafting; FN·06 GTM Intelligence · Drafting (the “Systems” topic retires); R·02 In production [K]; R·03 Drafting [K]",
+    "(FC) R·01 status shown as “In development” with no date (was “In production · Q4 2026”), the default for §7 Q4 until the founder confirms the benchmark's stage and date",
+    "[N] Shelf request “Send them to me when they’re ready” (the spec's per-row “Send it to me when it’s ready”, one per shelf: founder flag)"
+  ],
+  "phone": "≤1023: the two shelves stack, documents under notes, each row index · title / layer + status, then the shelf's request. ≤767: same, tighter (48px index column, 17px titles, the request at the kit's 12px/.12em phone link size). ≤359: the request may wrap to two lines (as system/T's doors do) rather than overflow. Checked with production's fluid tokens and fixed 1440 type at 320, 360, 390, 768, 834, 1000, 1024, 1180, 1280, 1366 and 1440: no overflow, no overlap.",
+  "notes": "LG as the plan says, kept static: there is nothing true to open in place. Round-8 review fix: the six identical per-row caps links were the loudest thing on the page and made the unpublished list (1,045px) heavier than the published register; they become one request per shelf and the shelves sit side by side (836px at 1440, about 1,076px at 390). The story map drafted a request per row (and int-kit/S shows that pattern); the per-row version is the drafted alternative for the founder, a markup-only revert. Each shelf's ref names its range so /contact can show it as a removable chip."
+}

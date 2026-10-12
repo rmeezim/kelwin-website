@@ -1,0 +1,57 @@
+/* ── capability-head · T · GTM Infrastructure — header X grammar, band TRACE (untangle) ──
+   Plan view, the nav's TRACE drawn large in a variant the homepage never uses (slab 02 is an
+   iso inscription, hero take 02 a film): a knot of tools untangles into one orthogonal route.
+   Its two levels mean something: the market below (the signal it starts from, the buyer it
+   reaches) and the documented route raised above it, which the dimension measures exactly
+   (extension lines drop from the dimension to the two steps). The four service flags hang
+   from the raised run in route order. One packet runs the route once; the buyer node latches
+   red when it arrives — the header's one red.                                                 */
+
+.km-capability-head-T__tr { fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter; stroke-linecap: square; }
+.km-capability-head-T__buyer { fill: var(--accent); stroke: var(--accent); }
+.km-capability-head-T__pk { fill: var(--fg); opacity: 0; }
+.km-capability-head-T__st { font-family: var(--f-mono); font-size: 13px; letter-spacing: .06em; text-transform: uppercase; fill: var(--fg-3); }
+.km-capability-head-T__st--fg { fill: var(--fg); }
+.km-capability-head-T__st--c { fill: var(--fg-2); }
+
+/* the route's two ends: mono caps, frame units like the flags */
+.km-capability-head-T__nl {
+  position: absolute; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u));
+  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px; letter-spacing: var(--ac-track-mono);
+  text-transform: uppercase; color: var(--fg-3); white-space: nowrap; pointer-events: none;
+}
+.km-capability-head-T__nl--end { transform: translateX(-100%); color: var(--fg); }
+
+/* ── entrance: the head choreography, then the band ── */
+.is-play .km-capability-head-T__big { animation: ac-fade 600ms var(--ease-out) var(--ac-band-d) both; }
+.is-play .km-capability-head-T__frame > .ac-dim { animation: none; }
+
+/* JS-held states while the band plays: knot → set (untangled) → run (packet) → out (latched) */
+.km-capability-head-T__frame.ac-cold *, .km-capability-head-T__frame.ac-cold *::before, .km-capability-head-T__frame.ac-cold *::after { transition: none !important; }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__tr { stroke: var(--fg-3); transition: stroke 600ms var(--ease-out); }
+.km-capability-head-T__frame.is-pre.is-set .km-capability-head-T__tr { stroke: var(--fg-2); }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__nl { opacity: 0; transition: opacity 500ms var(--ease-out) 200ms; }
+.km-capability-head-T__frame.is-pre.is-set .km-capability-head-T__nl { opacity: 1; }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__f > * { opacity: 0; transition: opacity 420ms var(--ease-out) 160ms; }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__f::before { transform: scaleY(0); transition: transform 420ms var(--ease-out); }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__f::after { opacity: 0; transition: opacity 200ms var(--ease-out); }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__f.is-in > *, .km-capability-head-T__frame.is-pre .km-capability-head-T__f.is-in::after { opacity: 1; }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__f.is-in::before { transform: none; }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__dim { transform: scaleX(0); transition: transform 900ms var(--ease-inout); }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__dim .ac-dim__v { opacity: 0; transition: opacity 400ms var(--ease-out) 600ms; }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__ext { opacity: 0; transition: opacity 500ms var(--ease-out) 500ms; }
+.km-capability-head-T__frame.is-pre.is-dim .km-capability-head-T__ext { opacity: 1; }
+.km-capability-head-T__frame.is-pre.is-dim .km-capability-head-T__dim { transform: none; }
+.km-capability-head-T__frame.is-pre.is-dim .km-capability-head-T__dim .ac-dim__v { opacity: 1; }
+.km-capability-head-T__frame.is-pre.is-run .km-capability-head-T__pk { opacity: 1; }
+.km-capability-head-T__frame.is-pre:not(.is-out) .km-capability-head-T__buyer { fill: var(--ac-occlude); stroke: var(--fg-2); }
+.km-capability-head-T__frame.is-pre .km-capability-head-T__buyer { transition: fill 300ms var(--ease-out), stroke 300ms var(--ease-out); }
+
+/* the kit's nav menu is hidden below 1024 but keeps its desktop width; clip it on phones.
+   The dimension gives way to the keyed list (kit), so its extension lines go with it. */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-head-T { overflow-x: clip; }
+  :root:not(.km-home) .km-capability-head-T__ext { visibility: hidden; }
+  /* the end names keep their 12px while the frame shrinks, so below the stage they give way to the caption */
+  :root:not(.km-home) .km-capability-head-T__nl { visibility: hidden; }
+}

@@ -1,0 +1,46 @@
+/* article-sources · S · the note's end matter (SP), graphite — /insights/deliverability-is-infrastructure
+   Left, cols 1–7: the sources in full as the kit's spec list (number · source · title · year ↗,
+   then what the note takes from it, hedged as the source hedges it). Right, cols 9–12: the next
+   note (the register cycles 01 → 02 → 03 → 01), led by its symptom line in the accent voice, the
+   way /insights lists it. Paper → graphite: no ruled seam. No red beyond the label square. */
+
+.km-article-sources-U { padding-block: 112px 120px; }
+.km-article-sources-U__g { align-items: start; }
+.km-article-sources-U__src { grid-column: 1 / span 7; }
+.km-article-sources-U__list { margin-top: 28px; }
+.km-article-sources-U__list > dt { min-width: 40px; }
+.km-article-sources-U__list > dd { padding-bottom: 16px; }
+.km-article-sources-U__list > dd:last-of-type, .km-article-sources-U__list > dt:last-of-type { border-bottom: 1px solid var(--line); }
+.km-article-sources-U__what { display: block; margin-top: 6px; max-width: 52ch; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+
+.km-article-sources-U__next { grid-column: 9 / span 4; }
+.km-article-sources-U__card { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line-2); display: flex; flex-direction: column; align-items: flex-start; }
+.km-article-sources-U__glyph { display: block; width: 54px; height: 36px; overflow: visible; color: var(--fg-2); }
+.km-article-sources-U__glyphs { display: flex; gap: 24px; }
+.km-article-sources-U__glyph path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.km-article-sources-U__glyph rect { fill: currentColor; }
+.km-article-sources-U__sym {
+  margin-top: 20px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 28px; line-height: 1.12; letter-spacing: var(--display-tracking); color: var(--fg-2);
+}
+.km-article-sources-U__card > .ac-link { margin-top: 18px; }
+.km-article-sources-U__when { margin-top: 14px; white-space: normal; }
+
+.is-play .km-article-sources-U__src > .ac-labelrow,
+.is-play .km-article-sources-U__next > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-article-sources-U__list,
+.is-play .km-article-sources-U__card { animation: ac-up 600ms var(--ease-out) 150ms both; }
+
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-article-sources-U { padding-block: 88px; }
+  :root:not(.km-home) .km-article-sources-U__src { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-article-sources-U__next { grid-column: 1 / span 8; margin-top: 64px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-article-sources-U { padding-block: 64px; }
+  :root:not(.km-home) .km-article-sources-U__next { grid-column: 1 / -1; margin-top: 56px; }
+  :root:not(.km-home) .km-article-sources-U__list > dt { min-width: 0; }
+  :root:not(.km-home) .km-article-sources-U__sym { font-size: 24px; }
+  :root:not(.km-home) .km-article-sources-U__card > .ac-link { white-space: normal; }
+}

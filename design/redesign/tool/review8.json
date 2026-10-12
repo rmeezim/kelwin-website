@@ -1,0 +1,938 @@
+{
+ "lede": "You asked for every page beyond the homepage to be redesigned in the new system and restructured before anything goes live (round 7, C7). Here are all sixteen as mockups. Each one answers the question a buyer has at that point, shows the work instead of describing it, and ends at one of the two doors: the audit, or the team.",
+ "checked": "Each page was built from the story map, then read by a second designer the way you would read it, then fixed. All of them pass the same build checks as the homepage mockups.",
+ "r7": [
+  {
+   "id": "C1",
+   "title": "The operating principle on phones and tablets",
+   "what": "The noise drawing no longer breaks apart. Below desktop width it is one drawing, edge to edge: the noisy lines converge into one line that runs to the frame's edge and ends on the red tick. The headline sits underneath it, whole. Desktop is unchanged.",
+   "figs": [
+    [
+     "shots/r7-principle.webp",
+     "Phone · before (left) and after (right)",
+     816,
+     631
+    ]
+   ]
+  },
+  {
+   "id": "C2",
+   "title": "The nav draws in as you scroll",
+   "cols": 1,
+   "what": "On desktop, once you scroll, the bar pulls in from the page edges and turns translucent, so the page shows faintly through it. Tablets and phones keep the solid bar. Say in a note if you want it there too.",
+   "figs": [
+    [
+     "shots/r7-nav-graphite.webp",
+     "Scrolled, over a graphite section",
+     1440,
+     300
+    ],
+    [
+     "shots/r7-nav-paper.webp",
+     "Scrolled, over a paper section",
+     1440,
+     300
+    ]
+   ]
+  },
+  {
+   "id": "C3",
+   "title": "The dropdown's audit door is paper",
+   "what": "The System Audit door at the foot of the Capabilities dropdown is now paper with red text. With the dropdown open over the hero, the hero's button is the only red on screen.",
+   "figs": [
+    [
+     "shots/r7-plate-door.webp",
+     "Capabilities dropdown, open over the hero",
+     1440,
+     900
+    ]
+   ]
+  },
+  {
+   "id": "C5",
+   "title": "The Lab's application is a quiet link",
+   "what": "“Apply for early access” is now an underlined link instead of a red button, so every red button on the site leads to the audit.",
+   "figs": [
+    [
+     "shots/r7-lab-link.webp",
+     "The Lab, the early-access close",
+     1440,
+     420
+    ]
+   ]
+  }
+ ],
+ "sequence": [
+  [
+   "1",
+   "What exactly would you build in my company, and what would I hold?",
+   [
+    "narrative-systems",
+    "gtm-infrastructure",
+    "gtm-intelligence"
+   ]
+  ],
+  [
+   "2",
+   "Is a company like mine what you're for?",
+   [
+    "who-we-work-with"
+   ]
+  ],
+  [
+   "3",
+   "Who is behind this, and can I trust them?",
+   [
+    "about"
+   ]
+  ],
+  [
+   "4",
+   "Do they think clearly about my problem?",
+   [
+    "insights",
+    "notes"
+   ]
+  ],
+  [
+   "5",
+   "Show me proof. What do I actually get?",
+   [
+    "reports"
+   ]
+  ],
+  [
+   "6",
+   "What does the first step ask of me, and how do I start?",
+   [
+    "audit"
+   ]
+  ],
+  [
+   "7",
+   "I'm not ready, or I need something specific.",
+   [
+    "contact"
+   ]
+  ],
+  [
+   "—",
+   "Are they hiring? Are they a software company? What happens to my data?",
+   [
+    "careers",
+    "the-lab",
+    "legal"
+   ]
+  ]
+ ],
+ "rules": [
+  [
+   "Your approved header, on every page",
+   "The Specimen-sheet header from round 3, without its title block: a two-voice headline, three facts, and one drawing of what the page is about. The drawing is different on every page."
+  ],
+  [
+   "One signature piece per page",
+   "Each page shows one thing only it has, such as a page of the document a layer delivers, the ten audit days to scale, or the rules the firm runs by."
+  ],
+  [
+   "Every page ends at a door",
+   "The audit for the ready, the team for everyone else. There are five kinds of close, so the endings never read as a template."
+  ],
+  [
+   "One red per screen",
+   "Red buttons lead only to /audit, and none sit in a header. Contact and Careers have no red at all. Each page has one paper section, its one change of surface."
+  ],
+  [
+   "Nothing invented",
+   "Specimens are labelled and hold no client data. Anything not yet true says so: “In development”, “Drafting”, “Not yet published”, “None yet”."
+  ],
+  [
+   "Outside numbers, sourced",
+   "At most two third-party figures per page, each with its source linked and its wording careful."
+  ]
+ ],
+ "groups": [
+  {
+   "key": "build",
+   "label": "What you'd build",
+   "note": "Question 1 · the three capability pages, one template in three shapes"
+  },
+  {
+   "key": "trust",
+   "label": "Fit and trust",
+   "note": "Questions 2 and 3"
+  },
+  {
+   "key": "proof",
+   "label": "Thinking and proof",
+   "note": "Questions 4 and 5"
+  },
+  {
+   "key": "step",
+   "label": "Taking a step",
+   "note": "Questions 6 and 7 · the two doors"
+  },
+  {
+   "key": "side",
+   "label": "Side questions",
+   "note": "Hiring, The Lab, and your data"
+  }
+ ],
+ "pages": [
+  {
+   "id": "narrative-systems",
+   "n": "01",
+   "group": "build",
+   "name": "Narrative Systems",
+   "short": "Narrative Systems",
+   "h3": "Decide what the market <span>hears.</span>",
+   "question": "“What exactly would you build in this layer, what would I hold, and who runs it after?”",
+   "story": "Four pieces of work become one document every channel inherits. The page shows a page of that document, filled in for Kelwin itself, then how the layer runs through the method, then what the audit returns for it.",
+   "signature": "The message matrix, filled in for Kelwin itself and labelled as a specimen, so nothing on it belongs to a client. The header draws the contour from the nav's glyph, large.",
+   "sections": [
+    "Header",
+    "What we install",
+    "A page of what you'd hold",
+    "How it runs",
+    "The door, and the other two layers"
+   ],
+   "flags": [
+    [
+     "FS",
+     "Header facts on all three capability pages: “6-week install, then retainer” becomes “Scoped at the readout”, and “Seven artifacts you own” becomes the layer's own two assets, ending “— yours” (Q5a)."
+    ],
+    [
+     "FC",
+     "The door names what the audit returns for this layer, one of the readout's four parts (Q3)."
+    ],
+    [
+     "N",
+     "One outside figure, “81% → 31%”, is worded from HBR 2015 and is re-checked against the source before launch, like every reading on the site."
+    ]
+   ],
+   "qs": [
+    "Q5",
+    "Q3"
+   ],
+   "instances": [
+    {
+     "name": "narrative-systems",
+     "label": "Narrative Systems",
+     "route": "/capabilities/narrative-systems"
+    }
+   ]
+  },
+  {
+   "id": "gtm-infrastructure",
+   "n": "02",
+   "group": "build",
+   "name": "GTM Infrastructure",
+   "short": "GTM Infrastructure",
+   "h3": "The machine that <span>carries it to buyers.</span>",
+   "question": "“What exactly would you build in this layer, what would I hold, and who runs it after?”",
+   "story": "A tangle of tools becomes one documented route through your own stack. The page shows the rules that route runs on and who keeps it running, and it reads as infrastructure, not as an outbound shop.",
+   "signature": "The Orchestration Rules sheet, as a labelled specimen.",
+   "sections": [
+    "Header",
+    "What we install",
+    "A page of what you'd hold",
+    "How it runs",
+    "The door, and the other two layers"
+   ],
+   "flags": [
+    [
+     "FS",
+     "Header facts on all three capability pages: “6-week install, then retainer” becomes “Scoped at the readout”, and “Seven artifacts you own” becomes the layer's own two assets, ending “— yours” (Q5a)."
+    ],
+    [
+     "FS",
+     "The proposed rename of nav item 02.2, “Outbound engine build” to “Data pipeline & signal map”, already appears in the header drawing, its key and the ledger (Q5b)."
+    ],
+    [
+     "FC",
+     "The door names what the audit returns for this layer, one of the readout's four parts (Q3)."
+    ],
+    [
+     "N",
+     "The knot the header starts from is a deliberately loose scribble. Say if you'd like it tighter."
+    ]
+   ],
+   "qs": [
+    "Q5",
+    "Q3"
+   ],
+   "instances": [
+    {
+     "name": "gtm-infrastructure",
+     "label": "GTM Infrastructure",
+     "route": "/capabilities/gtm-infrastructure"
+    }
+   ]
+  },
+  {
+   "id": "gtm-intelligence",
+   "n": "03",
+   "group": "build",
+   "name": "GTM Intelligence",
+   "short": "GTM Intelligence",
+   "h3": "The loop <span>that learns.</span>",
+   "question": "“What exactly would you build in this layer, what would I hold, and who runs it after?”",
+   "story": "Four questions answered every quarter. This layer is a cadence, so the page draws the quarter itself to scale before it shows a page of the plan that quarter re-scores.",
+   "signature": "A Rebuild Sequence, re-scored, as a labelled specimen.",
+   "sections": [
+    "Header",
+    "What we install",
+    "How it runs",
+    "A page of what you'd hold",
+    "The door, and the other two layers"
+   ],
+   "flags": [
+    [
+     "FS",
+     "Header facts on all three capability pages: “6-week install, then retainer” becomes “Scoped at the readout”, and “Seven artifacts you own” becomes the layer's own two assets, ending “— yours” (Q5a)."
+    ],
+    [
+     "FC",
+     "The door names what the audit returns for this layer, one of the readout's four parts (Q3)."
+    ],
+    [
+     "N",
+     "The headline “The loop / that learns.” retires “What gets measured compounds.”"
+    ],
+    [
+     "N",
+     "The win/loss marks on the 13-week ruler sit at illustrative weeks to show the cadence. They are not data. Say if you want a Specimen label on it."
+    ]
+   ],
+   "qs": [
+    "Q5",
+    "Q3",
+    "Q4"
+   ],
+   "instances": [
+    {
+     "name": "gtm-intelligence",
+     "label": "GTM Intelligence",
+     "route": "/capabilities/gtm-intelligence"
+    }
+   ]
+  },
+  {
+   "id": "who-we-work-with",
+   "n": "04",
+   "group": "trust",
+   "name": "Who We Work With",
+   "short": "Who We Work With",
+   "h3": "Three situations, <span>told from inside.</span>",
+   "question": "“Is a company like mine what Kelwin is for, or will they turn me away?”",
+   "story": "It opens on the homepage's own words and shows, in one drawing, which layer breaks first in each of the three situations. Then it tells each situation from inside, sharpens them by market, and ends on the honest list of who you send away.",
+   "signature": "The break chart: the same three layers drawn once for each situation, with a fracture where each one breaks first.",
+   "sections": [
+    "Header",
+    "The three situations",
+    "By market",
+    "Who we send away"
+   ],
+   "flags": [
+    [
+     "N",
+     "The markets section is headed “The same three situations, in six markets”, but no market line names a situation, and five of the six break in the narrative layer. Keep the heading, or retitle it “Where it breaks, by market”?"
+    ],
+    [
+     "K",
+     "One market keeps “Outbound only works when it sounds like engineering wrote it.” The rest of the site has moved off “outbound”. Keep or cut?"
+    ],
+    [
+     "R",
+     "“Seven stakeholders” is cut from the first market line, because it had no source."
+    ]
+   ],
+   "qs": [
+    "Q5"
+   ],
+   "instances": [
+    {
+     "name": "who-we-work-with",
+     "label": "Who We Work With",
+     "route": "/who-we-work-with"
+    }
+   ]
+  },
+  {
+   "id": "about",
+   "n": "05",
+   "group": "trust",
+   "name": "About",
+   "short": "About",
+   "h3": "The firm behind <span>the signature.</span>",
+   "question": "“Who is actually behind this, can I trust them with my revenue system, and how would they work with us?”",
+   "story": "The person who signed the homepage letter, next to the five rules the firm runs by. The rules are drawn first on the method's own timeline, then written out in full on paper, then shown as the week an engagement runs on. Then the first step.",
+   "signature": "Where the five rules bind: a matrix on the method's time axis, then the rules in full.",
+   "sections": [
+    "Header",
+    "The founder",
+    "The five rules",
+    "The week",
+    "The door"
+   ],
+   "flags": [
+    [
+     "FC",
+     "“Led by · Rameez, Founder · Lead Narrative Architect”, “Based · London”, and “The firm today · One architect; the next seat, a Systems Engineer” (Q1)."
+    ],
+    [
+     "FC",
+     "No background line under your name and no portrait, unless you give one (Q1)."
+    ],
+    [
+     "FC",
+     "The week (Monday signal review through Friday's written note) stays only if that's how your engagements run (Q7)."
+    ],
+    [
+     "FC",
+     "The lede says the firm builds “revenue systems that its clients keep”, which can read as if installs have already run. The careful version: “revenue systems the client keeps after handover” (Q2)."
+    ]
+   ],
+   "qs": [
+    "Q1",
+    "Q2",
+    "Q7"
+   ],
+   "instances": [
+    {
+     "name": "about",
+     "label": "About",
+     "route": "/about"
+    }
+   ]
+  },
+  {
+   "id": "insights",
+   "n": "06",
+   "group": "proof",
+   "name": "Insights",
+   "short": "Insights",
+   "h3": "Field notes, <span>published.</span>",
+   "question": "“Does this firm think clearly about my problem, and is there something I can read before I talk to anyone?”",
+   "story": "It lands on the letter's “Field notes, published”. A register shows which layer each note diagnoses, one note is offered to read first, and everything still being written is listed with an honest status. The research documents that sat on /reports move here.",
+   "signature": "The register: each note set against the layer it diagnoses.",
+   "sections": [
+    "Header",
+    "Read first",
+    "In the works",
+    "The door"
+   ],
+   "flags": [
+    [
+     "FC",
+     "Read times stay at 6, 5 and 5 minutes to match the homepage, though the notes read in about 3, 2 and 2 (Q6)."
+    ],
+    [
+     "FC",
+     "The first note's opening is re-voiced from “Every founder we audit says…” to “In my experience, nearly every founder says…”, because no audit is claimed yet (Q2). The note itself says the same."
+    ],
+    [
+     "FC",
+     "R·01, the Revenue Entropy Index benchmark, shows “In development” with no date. Today's site says “In production · Q4 2026” (Q4)."
+    ],
+    [
+     "N",
+     "“New notes · By email when they ship” promises that you'll email notes to people who ask through /contact. Will you?"
+    ]
+   ],
+   "qs": [
+    "Q6",
+    "Q2"
+   ],
+   "instances": [
+    {
+     "name": "insights",
+     "label": "Insights",
+     "route": "/insights"
+    }
+   ]
+  },
+  {
+   "id": "notes",
+   "n": "07",
+   "group": "proof",
+   "name": "The three field notes",
+   "short": "The field notes",
+   "h3": "One argument each, <span>set for reading.</span>",
+   "question": "“Is my problem really what I think it is, and how would I tell?”",
+   "story": "Each note keeps your text, set for reading, with one drawn figure where its argument turns. Its sources follow in full, then a way on to the layer it's about and to the next note.",
+   "signature": "One drawn figure per note, placed where the argument turns.",
+   "sections": [
+    "Header",
+    "The note",
+    "Sources and onward",
+    "The door"
+   ],
+   "flags": [
+    [
+     "FC",
+     "Lines that claimed audits already run are now your own observation (“In my experience…”), and the 17% note's “strongest single predictor of close” finding is cut (Q2)."
+    ],
+    [
+     "FC",
+     "Each note carries “Written by Rameez, founder” and keeps its published read time (Q6). The 17% note now says 83% throughout."
+    ],
+    [
+     "N",
+     "Revenue entropy: the figure lets the reader answer the note's three questions about their own company and lights the broken layer. It sits right after the paragraph that asks them, so the questions come twice in a row. Keep it there?"
+    ],
+    [
+     "R",
+     "The 17% note: “who else from the account starts visiting, which other roles at the account start engaging” says nearly the same thing twice. Drop the second clause?"
+    ]
+   ],
+   "qs": [
+    "Q6",
+    "Q2"
+   ],
+   "instances": [
+    {
+     "name": "revenue-entropy",
+     "label": "Revenue entropy",
+     "tab": "Revenue entropy",
+     "route": "/insights/revenue-entropy",
+     "line": "Revenue entropy · One symptom, three causes, and three questions that tell you which layer is broken."
+    },
+    {
+     "name": "the-17-percent-window",
+     "label": "The 17% window",
+     "tab": "The 17% window",
+     "route": "/insights/the-17-percent-window",
+     "line": "The 17% window · The deal is argued where you aren't, so the narrative has to survive being retold."
+    },
+    {
+     "name": "deliverability-is-infrastructure",
+     "label": "Deliverability is infrastructure",
+     "tab": "Deliverability",
+     "route": "/insights/deliverability-is-infrastructure",
+     "line": "Deliverability is infrastructure · “Delivered” isn't “arrived”: the floor under every channel, specified."
+    }
+   ]
+  },
+  {
+   "id": "reports",
+   "n": "08",
+   "group": "proof",
+   "name": "Reports",
+   "short": "Reports",
+   "h3": "What a readout <span>looks like.</span>",
+   "question": "“Show me proof. Who have you done this for, and can I see a real one?”",
+   "story": "The honest proof page. It says first that no readout has cleared for publication yet, then shows the full shape of one as a labelled specimen, then how publishing works. The two invented case dossiers are gone.",
+   "signature": "The annotated readout: the whole deliverable as a specimen, with no figures that read as results.",
+   "sections": [
+    "Header",
+    "The readout, annotated",
+    "How publishing works",
+    "The door"
+   ],
+   "flags": [
+    [
+     "FC",
+     "The readout specimen has six sections: the constraint, named, then the four parts, then the next step (Q3)."
+    ],
+    [
+     "N",
+     "Its margin notes describe how you write a readout, for example “If it takes two sentences, it isn't found yet.” and “Quoted as said, never tidied up.” Confirm they match how you work."
+    ],
+    [
+     "N",
+     "The examples speak in an unnamed, invented company's words, under the Specimen label. Example 02 adds a fourth voice, “A buyer · Some kind of CRM add-on?”. Keep or drop?"
+    ],
+    [
+     "FC",
+     "Publishing rule 03: “Names and figures removed on request.”"
+    ]
+   ],
+   "qs": [
+    "Q3",
+    "Q2"
+   ],
+   "instances": [
+    {
+     "name": "reports",
+     "label": "Reports",
+     "route": "/reports"
+    }
+   ]
+  },
+  {
+   "id": "audit",
+   "n": "09",
+   "group": "step",
+   "name": "The System Audit",
+   "short": "The System Audit",
+   "h3": "The real constraint, <span>named in writing.</span>",
+   "question": "“What exactly do I get in ten days, what does it ask of me, am I a fit, and how do I book?”",
+   "story": "Forward order, no selling. The ten days drawn to scale, the four parts of the readout you keep, your approved FAQ (its red button now moves you on to the questions), then three questions and a call. The page ends on the gate.",
+   "signature": "The ten days drawn to scale, then the three-question gate.",
+   "sections": [
+    "Header · the ten days",
+    "What you keep",
+    "Straight answers (your FAQ)",
+    "Three questions"
+   ],
+   "flags": [
+    [
+     "FC",
+     "The readout's four parts, and “A written readout and a sequenced rebuild plan” (Q3). A 60-minute readout call isn't mentioned anywhere until you confirm it."
+    ],
+    [
+     "FC",
+     "“We reply with times within one working day” (Q3)."
+    ],
+    [
+     "K",
+     "Your approved FAQ still says “Ask the founding team”, while other pages say “the founder” (Q1)."
+    ],
+    [
+     "K",
+     "One decline reason keeps “There's no working motion to instrument yet.” Elsewhere the site says the audit reads, never instruments. Change the word?"
+    ],
+    [
+     "N",
+     "In the mockup the three questions answer themselves once as a demo, ending qualified. On the real site they wait for the visitor."
+    ]
+   ],
+   "qs": [
+    "Q1",
+    "Q3"
+   ],
+   "instances": [
+    {
+     "name": "audit",
+     "label": "The System Audit",
+     "route": "/audit"
+    }
+   ]
+  },
+  {
+   "id": "contact",
+   "n": "10",
+   "group": "step",
+   "name": "Talk to the team",
+   "short": "Contact",
+   "h3": "Write to us. <span>A person answers.</span>",
+   "question": "“Who reads this, how fast, and will I end up in a sequence? Can I ask for something specific?”",
+   "story": "The low-intent door, made first-class. It says who reads what you write and when, gives a memo that opens in your own mail app, offers plain email if you'd rather, and mentions the audit once, quietly. There is no red on the page.",
+   "signature": "The memo: the form set as a document, with a margin that says what happens to each kind of request.",
+   "sections": [
+    "Header",
+    "Your message",
+    "Other ways in"
+   ],
+   "flags": [
+    [
+     "FC",
+     "“Read by · The founder” (Q1)."
+    ],
+    [
+     "FC",
+     "“Reply · Within two working days” (Q3)."
+    ],
+    [
+     "N",
+     "The memo shows the visitor's own date at its head. Easy to drop."
+    ],
+    [
+     "K",
+     "The Lab's message prompt mentions “the console”, which waits on your answer to Q4."
+    ]
+   ],
+   "qs": [
+    "Q1",
+    "Q3",
+    "Q4"
+   ],
+   "instances": [
+    {
+     "name": "contact",
+     "label": "Talk to the team",
+     "route": "/contact"
+    }
+   ]
+  },
+  {
+   "id": "careers",
+   "n": "11",
+   "group": "side",
+   "name": "Careers",
+   "short": "Careers",
+   "h3": "No open seats today. <span>The bench list is open.</span>",
+   "question": "“Are they hiring, what is the work held to, and how do I get on their radar?”",
+   "story": "An honest zero-state. No seats today; the firm drawn as it is, with one seat filled and the next one empty; what every seat is held to; then the bench list. No red, and quiet links for buyers who land here.",
+   "signature": "The seat plan: one seat filled, the next drawn and empty, each with a straight line to the client's team.",
+   "sections": [
+    "Header · the seat plan",
+    "What every seat is held to",
+    "The bench list"
+   ],
+   "flags": [
+    [
+     "FC",
+     "“Next seat · Systems Engineer”, and seat 01 as “Founder · Lead Narrative Architect” (Q1)."
+    ],
+    [
+     "FC",
+     "Bench-list entries go to audit@kelwin.co (Q3)."
+    ],
+    [
+     "FC",
+     "The deal: no juniors, pay published with every role, remote-first and London-based (Q7)."
+    ],
+    [
+     "R",
+     "Cut by default: “Documents before meetings” (it repeats “Writing is the job”) and “The best people here are the best writers here” (it describes staff the firm doesn't have yet). Say if you want either back."
+    ]
+   ],
+   "qs": [
+    "Q1",
+    "Q3",
+    "Q7"
+   ],
+   "instances": [
+    {
+     "name": "careers",
+     "label": "Careers",
+     "route": "/careers"
+    }
+   ]
+  },
+  {
+   "id": "the-lab",
+   "n": "12",
+   "group": "side",
+   "name": "The Lab",
+   "short": "The Lab",
+   "h3": "The instruments <span>under the service.</span>",
+   "question": "“What is The Lab, does it exist yet, and does it matter to my engagement?”",
+   "story": "R&D under the service, with true status. A board shows at a glance that nothing is released or used on engagements yet. Then why an advisory firm builds instruments, what each one reads, and early access as a quiet link beside the audit.",
+   "signature": "The status board: five instruments, each at its true stage.",
+   "sections": [
+    "Header · the status board",
+    "Why build them",
+    "The instruments",
+    "Early access and the audit"
+   ],
+   "flags": [
+    [
+     "FC",
+     "Every stage is drafted: Account timelines at Prototype, the other four at Concept, none used on engagements yet (Q4)."
+    ],
+    [
+     "FC",
+     "“By application, audit and install clients first” (Q4)."
+    ],
+    [
+     "R",
+     "“The tools our architects use” became “the tools we'll use”, since /about says one architect today and no instrument is in use yet."
+    ],
+    [
+     "N",
+     "Held back until you answer Q4: the standalone console, founding terms, cohort size, “Build 0.5”, and “the advisory work funds The Lab”."
+    ]
+   ],
+   "qs": [
+    "Q4",
+    "Q1"
+   ],
+   "instances": [
+    {
+     "name": "the-lab",
+     "label": "The Lab",
+     "route": "/the-lab"
+    }
+   ]
+  },
+  {
+   "id": "legal",
+   "n": "13",
+   "group": "side",
+   "name": "Privacy and Terms",
+   "short": "Privacy · Terms",
+   "h3": "Plain documents, <span>visibly in draft.</span>",
+   "question": "“What happens to my data, and what am I agreeing to by using this site?”",
+   "story": "The quietest pages on the site. The text is kept word for word, on paper, with a contents strip to find a clause, and both pages say “Draft, pending legal review” until counsel signs.",
+   "signature": "The contents strip.",
+   "sections": [
+    "Header · contents",
+    "The clauses",
+    "Questions, and the other document"
+   ],
+   "flags": [
+    [
+     "FC",
+     "Terms L·08 still reads “[JURISDICTION — EDIT ME]”, drawn as an unfilled field. Both pages need the legal entity's name and address, and neither has a place for them yet (Q8)."
+    ],
+    [
+     "FC",
+     "Both headers show “Status · Draft, pending legal review” next to “Effective · July 2026”. Together they ask whether the documents are in force yet (Q8)."
+    ],
+    [
+     "FS",
+     "Terms 03's list of illustrative material now names the real specimens (the readout specimen, the message matrix, the orchestration rules and Rebuild Sequence specimens) instead of console readouts and case dossiers that no longer exist."
+    ],
+    [
+     "R",
+     "Privacy 02's “the bench clearance request” becomes “the bench list request”, to match Careers."
+    ],
+    [
+     "N",
+     "The Terms headline “The short, readable version.” is echoed by the lede's first words. Trim the lede, or keep both?"
+    ]
+   ],
+   "qs": [
+    "Q8"
+   ],
+   "instances": [
+    {
+     "name": "privacy",
+     "label": "Privacy policy",
+     "tab": "Privacy",
+     "route": "/privacy",
+     "line": "Privacy · What we collect: almost nothing. The complete list."
+    },
+    {
+     "name": "terms",
+     "label": "Terms of service",
+     "tab": "Terms",
+     "route": "/terms",
+     "line": "Terms · The short, readable version, including the honesty rule behind every artifact labelled Specimen."
+    }
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "id": "Q1",
+   "title": "Who is Kelwin today?",
+   "items": [
+    "Is it you alone, or are there other senior people?",
+    "The pages say “Rameez” and “the founder”, and /about says “One architect today”. Your approved homepage CTA and FAQ say “the founding team”. Keep that, or change it to match?",
+    "One line of your background on /about, or none?",
+    "Confirm “Founder · Lead Narrative Architect” and “Based · London”.",
+    "Is the next seat only a Systems Engineer?"
+   ],
+   "def": "you alone, as the founder. No background line, and no portrait (rule 6) unless you grant one exception.",
+   "affects": [
+    "about",
+    "contact",
+    "careers",
+    "audit",
+    "the-lab"
+   ]
+  },
+  {
+   "id": "Q2",
+   "title": "Track record",
+   "items": [
+    "Have any audits or installs run yet, even ones you can't publish?",
+    "If not, the notes' “we audit”, “we've run” and “we see” lines become your own first-person observation, and the 17% note's “strongest single predictor of close” finding is cut, or kept as a stated hypothesis. Which?"
+   ],
+   "def": "nothing claimed. The notes speak in your own first person (“In my experience…”), the 17% note's finding is cut, and Reports says “Cleared for publication · None yet”.",
+   "affects": [
+    "notes",
+    "reports",
+    "about",
+    "insights"
+   ]
+  },
+  {
+   "id": "Q3",
+   "title": "The readout, and replies",
+   "items": [
+    "Confirm the readout's four parts: narrative readout, channel orchestration map, intelligence gap report, sequenced rebuild plan. /audit and the /reports specimen are built on them.",
+    "Is there a 60-minute readout call? It isn't mentioned anywhere until you say so.",
+    "Reply times: one working day for audit bookings, two for everything else?",
+    "Should bench-list entries go to audit@kelwin.co, or to a careers address?"
+   ],
+   "def": "the four parts as listed, no readout call, one and two working days, audit@kelwin.co.",
+   "affects": [
+    "audit",
+    "reports",
+    "contact",
+    "careers",
+    "narrative-systems"
+   ]
+  },
+  {
+   "id": "Q4",
+   "title": "The Lab",
+   "items": [
+    "Is it R&D that sharpens the installs, or a product heading to a standalone console?",
+    "Which instruments exist today, and at which stage: concept, prototype, used on engagements, or released?",
+    "Do install clients get access first? Does the advisory work fund it?",
+    "Is the Entropy Index benchmark still on for Q4 2026?",
+    "Should The Lab stay top-level in the nav, or move under The Firm, where the footer files it?"
+   ],
+   "def": "R&D under the service, nothing used on engagements yet, top-level in the nav.",
+   "affects": [
+    "the-lab",
+    "gtm-intelligence",
+    "contact",
+    "about"
+   ]
+  },
+  {
+   "id": "Q5",
+   "title": "Approved copy that would change",
+   "items": [
+    "(a) Capability header facts: “6-week install, then retainer” becomes “Scoped at the readout”, and “Seven artifacts you own” becomes the layer's own two assets. Yes or no?",
+    "(b) Nav item 02.2: “Outbound engine build” becomes “Data pipeline & signal map”. Yes or no?",
+    "(c) The Firm and Resources dropdowns: new descriptions (you've never reviewed these; today's are live), including “Get in touch” becoming “Talk to the team”. Yes or no?",
+    "(d) A quiet “Inside this layer →” link in each open row of the homepage's System ledger. Today the homepage never links to a capability page. Yes or no?"
+   ],
+   "def": "the mockups show (a) and (b) as proposed. (c) and (d) change the nav and the homepage, so they wait for your yes.",
+   "affects": [
+    "narrative-systems",
+    "gtm-infrastructure",
+    "gtm-intelligence",
+    "who-we-work-with"
+   ]
+  },
+  {
+   "id": "Q6",
+   "title": "Your published notes",
+   "items": [
+    "The 17% note's standfirst says 95%, while its body argues from “the other 83%”. Use 83% throughout?",
+    "The read times say 6, 5 and 5 minutes, but the notes read in about 3, 2 and 2. They also show on the homepage letter and the evidence door. Correct them, or keep them?",
+    "A byline “Written by Rameez, founder” on each note?"
+   ],
+   "def": "83% throughout, the published read times kept until you say, and the byline shown.",
+   "affects": [
+    "notes",
+    "insights"
+   ]
+  },
+  {
+   "id": "Q7",
+   "title": "How you work",
+   "items": [
+    "Is the week on /about (Monday signal review through Thursday kill review, then Friday's written note) how your engagements will run? If not, that section comes out.",
+    "Careers: no juniors, pay published with every role, remote-first and London-based?"
+   ],
+   "def": "both as drafted.",
+   "affects": [
+    "about",
+    "careers"
+   ]
+  },
+  {
+   "id": "Q8",
+   "title": "Legal",
+   "blocker": true,
+   "items": [
+    "The governing-law jurisdiction for Terms L·08, and the legal entity's name and address, from you or counsel.",
+    "Until then, both legal pages show “Draft, pending legal review”. Agreed?"
+   ],
+   "def": "both pages visibly in draft.",
+   "affects": [
+    "legal"
+   ]
+  }
+ ]
+}

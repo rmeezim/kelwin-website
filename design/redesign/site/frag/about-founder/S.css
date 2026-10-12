@@ -1,0 +1,60 @@
+/* ── about-founder · S · the signature sheet (SG) ─────────────────────────────────────────
+   The homepage letter is signed “Rameez”. This is that sign-off drawn at page scale: the
+   letter's 48px dash, the name in display type, the role in the light accent, and the
+   letter's own way back. On the right, four plain facts as the kit's spec list. Type only:
+   no portrait, no invented team. A still beat (reveal only). Red: the label square only.  */
+
+.km-about-founder-S__grid {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start;
+}
+.km-about-founder-S__lr { grid-column: 1 / -1; }
+
+.km-about-founder-S__sig { grid-column: 1 / span 7; margin-top: 72px; display: flex; flex-direction: column; align-items: flex-start; }
+.km-about-founder-S__dash { display: block; width: 48px; height: 1px; background: var(--fg); transform-origin: 0 50%; }
+.km-about-founder-S__name {
+  display: block; overflow: hidden; margin-top: 28px; padding-block: .06em .12em; margin-block-end: -.12em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 128px; line-height: .9; letter-spacing: -0.03em; color: var(--fg);
+}
+.km-about-founder-S__nm { display: inline-block; }
+.km-about-founder-S__role {
+  margin-top: 20px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 36px; line-height: 1.15; letter-spacing: var(--display-tracking); color: var(--fg-2);
+}
+.km-about-founder-S__letter { margin-top: 56px; }
+
+.km-about-founder-S__spec { grid-column: 8 / span 5; margin-top: 72px; border-bottom: 1px solid var(--line); }
+.km-about-founder-S__spec > dt, .km-about-founder-S__spec > dd { padding-block: 18px 20px; }
+.km-about-founder-S__spec > dd { font-size: var(--ac-body); line-height: 1.5; }
+.km-about-founder-S__spec > dt { line-height: 25.5px; }
+.km-about-founder-S__go { display: flex; width: max-content; margin-top: 10px; }
+.km-about-founder-S__mail { padding-block: 0 6px; }
+
+/* ── entrance (reveal only): the name rises in its mask, the role and the facts follow, and
+   the signature dash draws last ── */
+.is-play .km-about-founder-S__lr { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-about-founder-S__dash { animation: ac-drawx 700ms var(--ease-inout) 1000ms both; }   /* the signing stroke draws last, as the letter's does */
+.is-play .km-about-founder-S__nm { animation: ac-rise 900ms var(--ease-out) 200ms both; }
+.is-play .km-about-founder-S__role { animation: ac-up 600ms var(--ease-out) 520ms both; }
+.is-play .km-about-founder-S__letter { animation: ac-fade 500ms var(--ease-out) 900ms both; }
+.is-play .km-about-founder-S__spec > * { animation: ac-fade 500ms var(--ease-out) calc(420ms + var(--i, 0) * 90ms) both; }
+
+/* ── tablet (≤1023): the facts drop under the signature ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-about-founder-S__sig { grid-column: 1 / -1; margin-top: 48px; }
+  :root:not(.km-home) .km-about-founder-S__name { font-size: 104px; }
+  :root:not(.km-home) .km-about-founder-S__spec { grid-column: 1 / span 9; margin-top: 56px; }
+}
+/* ── phone (≤767): the name at 72px, the role at 22px, each fact as key over value, set
+   tight: the signature and the facts read as one block ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-about-founder-S__sig { margin-top: 32px; }
+  :root:not(.km-home) .km-about-founder-S__name { margin-top: 18px; font-size: 72px; }
+  :root:not(.km-home) .km-about-founder-S__role { margin-top: 12px; font-size: 22px; }
+  :root:not(.km-home) .km-about-founder-S__letter { margin-top: 28px; }
+  :root:not(.km-home) .km-about-founder-S__spec { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr); margin-top: 32px; }
+  :root:not(.km-home) .km-about-founder-S__spec > dt { padding-block: 14px 0; }
+  :root:not(.km-home) .km-about-founder-S__spec > dd { padding-block: 6px 14px; border-top: 0; font-size: 16px; }
+  :root:not(.km-home) .km-about-founder-S__go { margin-top: 8px; }
+}

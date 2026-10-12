@@ -1,0 +1,97 @@
+/* ── capability-specimen · U · GTM Intelligence — DS, a slope chart on paper ──
+   A page from the Rebuild Sequence as it leaves the quarterly review: last quarter's ranked
+   plan on the left, this quarter's on the right, ink lines joining each item's two ranks.
+   States are words, never colours (Shipped · Kept · Up · New · Cut): items that leave end on a
+   bar mid-way, the new item starts on one. The one red: the line that climbs from 4 to 1, the
+   committee one-pager, because win/loss named security review as the stall.                */
+
+/* the sheet takes the full width (the Narrative page keeps its readings in a margin; this one
+   reads its evidence under the sheet): one row beneath it — the Signal Dashboard line, then the
+   reading, its figure beside its words, and the field note */
+.km-capability-specimen-U__spread { margin-top: 104px; align-items: start; row-gap: 56px; }   /* 104: keeps the climb more than one view (900px) below the runs ruler's red tick */
+.km-capability-specimen-U__col { grid-column: 1 / -1; min-width: 0; }
+.km-capability-specimen-U__also { grid-column: 1 / span 5; grid-row: 2; }
+.km-capability-specimen-U__readings { grid-column: 7 / span 6; grid-row: 2; gap: 28px; }
+.km-capability-specimen-U__readings > .ac-reading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); column-gap: var(--gutter); align-items: start; }
+.km-capability-specimen-U__readings .ac-reading__t { margin-top: 6px; }
+.km-capability-specimen-U__readings > .ac-link { justify-self: start; margin-left: calc((100% - var(--gutter)) / 3 + var(--gutter)); }
+
+.km-capability-specimen-U__body {
+  display: grid; grid-template-columns: minmax(0, 1fr) 360px minmax(0, 1fr); column-gap: 24px;
+  grid-template-rows: auto auto; padding: 44px 32px 20px;
+}
+.km-capability-specimen-U__key {
+  grid-row: 1; padding-bottom: 12px; margin-bottom: 30px; border-bottom: 1px solid var(--line-2);
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-idx); text-transform: uppercase; color: var(--fg-3);
+}
+.km-capability-specimen-U__key--l { grid-column: 1 / span 2; }
+.km-capability-specimen-U__key--r { grid-column: 3; text-align: right; }
+.km-capability-specimen-U__list { grid-row: 2; }
+.km-capability-specimen-U__list--l { grid-column: 1; }
+.km-capability-specimen-U__svg { grid-column: 2; grid-row: 2; width: 360px; height: 380px; }
+.km-capability-specimen-U__list--r { grid-column: 3; }
+.km-capability-specimen-U__list > li { display: flex; gap: 14px; height: 76px; }
+.km-capability-specimen-U__list--l > li { justify-content: flex-end; text-align: right; }
+.km-capability-specimen-U__it { font-size: var(--ac-support); line-height: 22px; color: var(--fg); }
+.km-capability-specimen-U__rk { flex: none; width: 14px; font-family: var(--f-mono); font-size: 12px; line-height: 22px; color: var(--fg-3); text-align: center; }
+.km-capability-specimen-U__st { display: flex; align-items: baseline; gap: 10px; margin-top: 4px; font-size: 14px; line-height: 1.4; color: var(--fg-2); }
+.km-capability-specimen-U__list--l .km-capability-specimen-U__st { justify-content: flex-end; }
+.km-capability-specimen-U__st > .ac-cap { color: var(--fg); }
+
+.km-capability-specimen-U__ln { fill: none; stroke-width: 1; stroke-linecap: square; }
+.km-capability-specimen-U__ln--kept { stroke: var(--fg-2); }
+.km-capability-specimen-U__ln--out, .km-capability-specimen-U__ln--new { stroke: var(--fg-3); }
+.km-capability-specimen-U__up { stroke-width: 1.5; }
+
+.km-capability-specimen-U__also { padding-top: 16px; border-top: 1px solid var(--line-2); font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.km-capability-specimen-U__an { font-weight: var(--ui-weight); color: var(--fg); }
+
+/* ── entrance (body moment two): the sheet lands, the two columns set rank by rank, the lines
+   plot between them, the red climb last ── */
+.is-play .km-capability-specimen-U__doc { animation: ac-fade 500ms var(--ease-out) 300ms both; }
+.is-play .km-capability-specimen-U__key { animation: ac-fade 400ms var(--ease-out) 550ms both; }
+.is-play .km-capability-specimen-U__ax { animation: ac-fade 500ms var(--ease-out) 600ms both; }
+.is-play .km-capability-specimen-U__list > li { animation: ac-up 500ms var(--ease-out) both; animation-delay: calc(700ms + var(--i) * 90ms); }
+.is-play .km-capability-specimen-U__ln--kept { stroke-dasharray: 1; animation: ac-plot 700ms var(--ease-inout) 1300ms both; }
+.is-play .km-capability-specimen-U__ln--out, .is-play .km-capability-specimen-U__ln--new { animation: ac-fade 500ms var(--ease-out) 1400ms both; }
+.is-play .km-capability-specimen-U__up { stroke-dasharray: 1; animation: ac-plot 900ms var(--ease-inout) 1900ms both; }
+.is-play .km-capability-specimen-U__also { animation: ac-up 600ms var(--ease-out) 1500ms both; }
+.is-play .km-capability-specimen-U__readings > * { animation: ac-up 600ms var(--ease-out) 1100ms both; }
+
+/* ── below the stage ── */
+@media (max-width: 1279px) {
+  :root:not(.km-home) .km-capability-specimen-U__body { grid-template-columns: minmax(0, 1fr) 200px minmax(0, 1fr); }
+  :root:not(.km-home) .km-capability-specimen-U__svg { width: 200px; }
+}
+/* tablet: the lines need width the sheet no longer has, so it becomes two ranked lists side by
+   side — last quarter, this quarter — every state still in words; the red climb becomes the one
+   red rule beside the item that rose */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-specimen-U__spread { row-gap: 40px; }
+  :root:not(.km-home) .km-capability-specimen-U__also, :root:not(.km-home) .km-capability-specimen-U__readings { grid-column: 1 / -1; grid-row: auto; }
+  :root:not(.km-home) .km-capability-specimen-U__readings > .ac-reading { grid-template-columns: minmax(0, 1fr); }
+  :root:not(.km-home) .km-capability-specimen-U__readings > .ac-link { margin-left: 0; }
+  :root:not(.km-home) .km-capability-specimen-U__body { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; padding: 28px 24px 20px; }
+  :root:not(.km-home) .km-capability-specimen-U__svg { visibility: hidden; position: absolute; width: 1px; height: 1px; }
+  :root:not(.km-home) .km-capability-specimen-U__key { margin-bottom: 8px; text-align: left; }
+  :root:not(.km-home) .km-capability-specimen-U__key--l, :root:not(.km-home) .km-capability-specimen-U__list--l { grid-column: 1; }
+  :root:not(.km-home) .km-capability-specimen-U__key--r, :root:not(.km-home) .km-capability-specimen-U__list--r { grid-column: 2; }
+  :root:not(.km-home) .km-capability-specimen-U__list > li { height: auto; padding: 10px 0 11px; border-bottom: 1px solid var(--line); flex-direction: row; justify-content: flex-start; text-align: left; }
+  :root:not(.km-home) .km-capability-specimen-U__list > li:last-child { border-bottom: 0; }
+  :root:not(.km-home) .km-capability-specimen-U__list--l > li { flex-direction: row-reverse; justify-content: flex-end; }
+  :root:not(.km-home) .km-capability-specimen-U__list--l .km-capability-specimen-U__st { justify-content: flex-start; }
+  :root:not(.km-home) .km-capability-specimen-U__list--r > li:first-child { box-shadow: inset 2px 0 0 var(--accent); padding-left: 12px; }
+}
+/* phone: the two lists stack — last quarter, then this quarter */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-specimen-U__body { display: flex; flex-direction: column; padding: 20px 16px 16px; }
+  :root:not(.km-home) .km-capability-specimen-U__key--l { order: 1; }
+  :root:not(.km-home) .km-capability-specimen-U__list--l { order: 2; }
+  :root:not(.km-home) .km-capability-specimen-U__key--r { order: 3; margin-top: 20px; }
+  :root:not(.km-home) .km-capability-specimen-U__list--r { order: 4; }
+  :root:not(.km-home) .km-capability-specimen-U__list > li { padding: 9px 0 10px; }
+  :root:not(.km-home) .km-capability-specimen-U__list > li:last-child { border-bottom: 1px solid var(--line); }
+  :root:not(.km-home) .km-capability-specimen-U__spread { margin-top: 40px; row-gap: 28px; }
+  :root:not(.km-home) .km-capability-specimen-U__readings > .ac-reading { grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; }
+  :root:not(.km-home) .km-capability-specimen-U__readings .ac-reading__t { margin-top: 0; }
+}

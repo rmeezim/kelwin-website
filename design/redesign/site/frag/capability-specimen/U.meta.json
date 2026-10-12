@@ -1,0 +1,29 @@
+{
+  "title": "One quarter, re-scored",
+  "direction": "A×C · Round 8 · capability template (GTM Intelligence)",
+  "summary": "The page's one paper moment: a page of the Rebuild Sequence as it leaves the quarterly review — last quarter's ranked plan beside this quarter's across the full width, ink lines joining each item's ranks, states in words, one red climb with the reason beside it; the asset line and the reading sit in one row under the sheet.",
+  "story": "Answers “what changes each quarter?” with the document the cadence above produces: a plan re-scored, where one thing shipped, one was cut for no lift, one is new, and the committee one-pager climbs to first because win/loss named security review as the stall — the loop visibly feeding Narrative. The reading says why the re-score matters.",
+  "copy": [
+    "[N] h2 “One quarter, re-scored.”",
+    "[N] the six items, their ranks and states as drafted in §4.3 (Up · Kept · Kept · Shipped · New · Cut) with the two notes",
+    "[K handover asset 05] “Signal Dashboard — the readouts your GTM decisions run on.”",
+    "[K figure, R wording] reading “45% · of sales leaders and sellers highly confident in their organisation’s forecasting accuracy · Gartner, 2020” — the story map's ‘sales leaders’ widened to ‘sales leaders and sellers’ to hedge exactly as the source does; the 47% sub-claim is dropped",
+    "[K] link “Field note · Revenue entropy” → /insights/revenue-entropy",
+    "SpecimenTag “An illustrative quarter. No client data, and no figures that read as results.”"
+  ],
+  "phone": "≤1279: the line field narrows to 200px. ≤1023: the lines need width the sheet no longer has, so it becomes two ranked lists side by side (last quarter · this quarter), every state in words, the item that rose marked by the one red rule; the Signal Dashboard line and the reading stack under it. ≤767: the two lists stack; the reading sets its figure beside its words.",
+  "reference": {
+    "site": "Contra Labs — a ranked leaderboard with plain rank numbers",
+    "mobbin_url": "https://mobbin.com/sites/sections/02d9a4e4-1ba1-43d3-a178-de39ac3d5713",
+    "ref_file": "refs/capability-specimen-U.webp",
+    "borrowed": "Ranked rows with quiet mono rank numbers and the names doing the work.",
+    "kelwin": "Two ranked columns joined by 1px ink lines (a slope chart) on a paper document with its name bar and SpecimenTag; states are words (Shipped, Kept, Up, New, Cut), exits end on a bar mid-way, and the single red line is the climb the win/loss finding caused."
+  },
+  "motion": [
+    "entrance (body moment two, plays once): the sheet lands, the key row appears, both columns set rank by rank, the kept lines plot across, the exit and entry stubs fade in, then the red climb from 4 to 1 plots last.",
+    "interaction: the reading's source and the field-note link (kit hovers).",
+    "on the live site: plays once on scroll; afterwards the sheet is still. Reduced motion: final state."
+  ],
+  "demoMs": 3200,
+  "notes": "1,277px at 1440. Composition differs from Narrative's specimen: the sheet spans cols 1–12 with its evidence in one row beneath (Signal Dashboard line cols 1–5 · the reading cols 7–12), instead of readings in a margin. The space under the climb keeps it more than one 900px view from both the runs ruler's red tick (916px) and the door's red button (958px), measured on the stitched page. One red: the Up line. One reading on this page (≤2)."
+}

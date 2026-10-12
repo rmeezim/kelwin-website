@@ -1,0 +1,113 @@
+/* ── capability-specimen · S · Narrative Systems — DS, the page's one paper moment ──
+   A page from the Narrative OS: the message matrix, filled in for Kelwin itself (so nothing on
+   it belongs to a client). A 1px-ruled sheet in cols 1–9; four editor's marks stand on the
+   sheet's top edge over the columns they explain (the band's flag grammar, on paper); the two
+   Readings sit in the margin (cols 10–12) as the reason there is a row per listener. The one
+   red: the editor's underline beneath the Champion's mechanism — the sentence that has to
+   survive being retold.                                                                      */
+
+.km-capability-specimen-S__spread { margin-top: 64px; align-items: start; }
+.km-capability-specimen-S__col { grid-column: 1 / span 9; min-width: 0; }
+.km-capability-specimen-S__readings { grid-column: 10 / span 3; padding-top: 84px; }
+.km-capability-specimen-S__readings > .ac-link { justify-self: start; }
+
+/* the editor's marks: same columns as the matrix (listener 168px · four equal), standing on the sheet */
+.km-capability-specimen-S__marks {
+  display: grid; grid-template-columns: 168px repeat(4, minmax(0, 1fr)); column-gap: 0;
+  height: 84px; padding: 0 25px;
+}
+.km-capability-specimen-S__mark {
+  grid-column: var(--m); grid-row: 1; position: relative; padding-top: calc(var(--r) * 30px);
+  font-size: 14px; line-height: 20px; color: var(--fg-2); white-space: nowrap;
+}
+.km-capability-specimen-S__mark::before {
+  content: ""; position: absolute; left: 0; top: calc(26px + var(--r) * 30px); bottom: 0; width: 1px; background: var(--line-2); transform-origin: 50% 100%;
+}
+.km-capability-specimen-S__mark::after {
+  content: ""; position: absolute; left: -2px; bottom: -3px; width: 5px; height: 5px; background: var(--fg-2); z-index: 1;
+}
+
+/* the sheet */
+.km-capability-specimen-S__body { padding-top: 24px; padding-bottom: 12px; }
+.km-capability-specimen-S__mx { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.km-capability-specimen-S__mx th, .km-capability-specimen-S__mx td { padding: 16px 20px 20px 0; text-align: left; vertical-align: top; }
+.km-capability-specimen-S__mx thead th {
+  padding-top: 0; padding-bottom: 12px; border-bottom: 1px solid var(--line-2);
+  font-family: var(--f-mono); font-weight: 400; font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-idx);
+  text-transform: uppercase; color: var(--fg-3);
+}
+.km-capability-specimen-S__mx thead th:first-child { width: 168px; }
+.km-capability-specimen-S__mx tbody th, .km-capability-specimen-S__mx td { border-bottom: 1px solid var(--line); }
+.km-capability-specimen-S__mx tbody tr:last-child > * { border-bottom: 0; }
+.km-capability-specimen-S__mx tbody th { font-weight: var(--ui-weight); font-size: var(--ac-body); line-height: 1.35; color: var(--fg); }
+.km-capability-specimen-S__mx tbody th > span { display: block; margin-top: 4px; font-weight: var(--body-weight); font-size: 14px; color: var(--fg-3); }
+.km-capability-specimen-S__mx td { font-size: var(--ac-support); line-height: 1.5; color: var(--fg); }
+/* the sheet's one red: the line that has to survive being retold */
+.km-capability-specimen-S__red {
+  text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 6px;
+}
+
+.km-capability-specimen-S__also { margin-top: 28px; max-width: 70ch; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.km-capability-specimen-S__an { font-weight: var(--ui-weight); color: var(--fg); }
+
+/* ── entrance: the sheet lands, its rows typeset one by one, the marks stand up, the underline last ── */
+@keyframes km-capability-specimen-S-ink { from { text-decoration-color: transparent; } to { text-decoration-color: var(--accent); } }
+.is-play .km-capability-specimen-S__doc { animation: ac-fade 500ms var(--ease-out) 300ms both; }
+.is-play .km-capability-specimen-S__mx thead tr { animation: ac-fade 400ms var(--ease-out) 600ms both; }
+.is-play .km-capability-specimen-S__mx tbody tr { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(800ms + var(--i) * 260ms); }
+.is-play .km-capability-specimen-S__mark { animation: ac-fade 400ms var(--ease-out) both; animation-delay: calc(1700ms + var(--i) * 120ms); }
+.is-play .km-capability-specimen-S__mark::before { animation: ac-drawy 400ms var(--ease-out) both; animation-delay: calc(1700ms + var(--i) * 120ms); }
+.is-play .km-capability-specimen-S__red { animation: km-capability-specimen-S-ink 700ms var(--ease-out) 2400ms both; }
+.is-play .km-capability-specimen-S__also { animation: ac-up 600ms var(--ease-out) 1500ms both; }
+.is-play .km-capability-specimen-S__readings > * { animation: ac-up 600ms var(--ease-out) both; }
+.is-play .km-capability-specimen-S__readings > :nth-child(1) { animation-delay: 1200ms; }
+.is-play .km-capability-specimen-S__readings > :nth-child(2) { animation-delay: 1340ms; }
+.is-play .km-capability-specimen-S__readings > :nth-child(3) { animation-delay: 1480ms; }
+
+/* ── below the stage ── */
+@media (max-width: 1279px) {
+  :root:not(.km-home) .km-capability-specimen-S__col { grid-column: 1 / span 8; }
+  :root:not(.km-home) .km-capability-specimen-S__readings { grid-column: 9 / span 4; }
+}
+/* tablet: the sheet takes the width, the readings sit under it in two columns, the marks become a plain list */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-specimen-S__col, :root:not(.km-home) .km-capability-specimen-S__readings { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-capability-specimen-S__readings { padding-top: 0; margin-top: 56px; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
+  :root:not(.km-home) .km-capability-specimen-S__readings > .ac-link { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-capability-specimen-S__marks { height: auto; padding: 0 0 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px var(--gutter); }
+  :root:not(.km-home) .km-capability-specimen-S__mark { grid-column: auto; grid-row: auto; padding-top: 0; display: flex; align-items: center; gap: 12px; white-space: normal; }
+  :root:not(.km-home) .km-capability-specimen-S__mark::before { visibility: hidden; position: absolute; }
+  :root:not(.km-home) .km-capability-specimen-S__mark::after { position: static; flex: none; order: -1; }
+  :root:not(.km-home) .km-capability-specimen-S__mx thead th:first-child { width: 136px; }
+}
+/* phone: three listener cards, every cell visible. Each cell is a compact keyed pair — a short
+   mono key beside the sentence (the table's full column names stay for screen readers) — so a
+   card reads as four lines of type, not four headed blocks. */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-specimen-S__spread { margin-top: 40px; }
+  :root:not(.km-home) .km-capability-specimen-S__readings { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; row-gap: 28px; margin-top: 40px; }
+  :root:not(.km-home) .km-capability-specimen-S__readings .ac-reading__fig { font-size: 30px; }
+  :root:not(.km-home) .km-capability-specimen-S__readings .ac-reading__t { margin-top: 10px; font-size: 14px; }
+  :root:not(.km-home) .km-capability-specimen-S__readings .ac-reading__src { font-size: 11px; letter-spacing: var(--ac-track-idx); line-height: 18px; }
+  :root:not(.km-home) .km-capability-specimen-S__marks { gap: 8px 16px; padding-bottom: 20px; }
+  :root:not(.km-home) .km-capability-specimen-S__mark { font-size: 13.5px; line-height: 18px; }
+  :root:not(.km-home) .km-capability-specimen-S__body { padding: 4px 16px 6px; }
+  :root:not(.km-home) .km-capability-specimen-S__mx,
+  :root:not(.km-home) .km-capability-specimen-S__mx tbody,
+  :root:not(.km-home) .km-capability-specimen-S__mx tr,
+  :root:not(.km-home) .km-capability-specimen-S__mx th { display: block; width: auto; }
+  :root:not(.km-home) .km-capability-specimen-S__mx thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  :root:not(.km-home) .km-capability-specimen-S__mx tbody tr { padding: 16px 0 12px; border-top: 1px solid var(--line-2); }
+  :root:not(.km-home) .km-capability-specimen-S__mx tbody tr:first-child { border-top: 0; }
+  :root:not(.km-home) .km-capability-specimen-S__mx tbody th { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; padding: 0 0 8px; border: 0; font-size: 17px; }
+  :root:not(.km-home) .km-capability-specimen-S__mx tbody th > span { display: inline; margin: 0; }
+  :root:not(.km-home) .km-capability-specimen-S__mx td {
+    display: grid; grid-template-columns: 92px minmax(0, 1fr); column-gap: 10px; width: auto;
+    padding: 5px 0; border: 0; line-height: 1.45;
+  }
+  :root:not(.km-home) .km-capability-specimen-S__mx td::before {
+    content: attr(data-s); font-family: var(--f-mono); font-size: 11px; line-height: 21px;
+    letter-spacing: var(--ac-track-idx); text-transform: uppercase; color: var(--fg-3);
+  }
+  :root:not(.km-home) .km-capability-specimen-S__also { margin-top: 20px; }
+}

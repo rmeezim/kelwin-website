@@ -1,0 +1,31 @@
+{
+  "title": "The week, measured",
+  "direction": "A×C · Round 8 · /about · body (CL)",
+  "summary": "The engagement week as one measured tape — hour ticks from 08:00 to 18:00 across five days, a node at each ritual's hour, Wednesday left empty, Thursday's kill review in red — so what it is like to work with Kelwin reads at a glance.",
+  "story": "After the person and the rules, the practice: the rules turned into a calendar. It deepens the homepage method's Calibrate (what “keeps running” actually means week to week) and ends on the Friday note, where a client reads what moved. Then the page can ask for the first step.",
+  "copy": [
+    "(FC, §7 Q7) The whole section ships only if this is how engagements run; otherwise the page goes tenets → Door.",
+    "[N] h2 “The week an engagement runs on.”",
+    "[K] Mon 09:00 Signal review — “What the market did over the weekend. 25 minutes, no deck.”",
+    "[K] Tue 10:30 Client working session — “Language decided live on the document — not presented after.”",
+    "[K] Wed No-meeting day — “Systems get built. Notes get written. Calendars stay empty.” ([N] time word “all day”, phones and screen readers only)",
+    "[K] Thu 16:00 Kill review — “What we stop doing this week. The hardest ritual to keep.”",
+    "[R] Fri 15:00 The written note — “What moved this week, in writing.” (drops “Every engagement, every week”)",
+    "[R] Note “An engagement runs on this week. The Friday note is where you read what moved.” (replaces the dead “Friday readout from the methodology” reference). Its first sentence restates the h2; drafted alternative: “The Friday note is where you read what moved.”"
+  ],
+  "phone": "≤1023: the tape keeps its proportions (aspect-ratio) and scales; the four times stay 12px HTML placed by percentage; the five day columns tighten (titles 17px). ≤767: the horizontal tape folds away (visibility + zero height) and the week becomes a vertical tape: one rule down the left, a 9px node per day (Thursday's red node at 11px in a faint ring, as on the tape and in the header; Wednesday hollow on a dashed stretch), each day with its time in the list (“Mon · 09:00”).",
+  "reference": {
+    "site": "Mobbin, Square “An endless evolution” (a horizontal timeline with entries hanging under their markers) · approved Kelwin CTA ten-tick ruler and method/U gantt",
+    "mobbin_url": "https://mobbin.com/sites/sections/40dfaada-0563-453f-9aff-779e4cb58d56",
+    "ref_file": "refs/about-week-S.webp",
+    "borrowed": "One horizontal line carrying markers, with each entry's text hanging in a column beneath it.",
+    "kelwin": "The timeline becomes a measuring tape: real hour ticks, day edges as tall ticks, nodes at true times with flagged hours, and the empty Wednesday drawn as an untouched dashed stretch. Flat 1px drafting, mono times, one red node."
+  },
+  "motion": [
+    "entrance (once, the page's one body moment): Monday–Tuesday's tape and ticks measure themselves left to right, Wednesday's empty dashed stretch fades in as the sweep crosses it, Thursday–Friday measure; each node latches (seats from its centre) as the sweep reaches its hour, its time label and leader fade in with it, and each day's column rises as the sweep reaches the day. The Thursday node latches red. ≈2.7s. The note fades in last.",
+    "ambient: none. interaction: none.",
+    "on the live site: plays once when the section scrolls into view. Reduced motion: final state at once (all nodes latched)."
+  ],
+  "demoMs": 3400,
+  "notes": "Section root carries id=\"week\" (the story map's anchor contract, §8). The four times sit on the tape (aria-hidden); the list repeats each time for screen readers and phones, so nothing is lost when the tape folds away. The red node is drawn at the header red cell's weight (11px inside a faint 20px ring, the ring seating just after the node latches), so the page's two drawn reds read alike; the other nodes stay 9px. It is the only red in its views: the rules sheet above has no red of its own (05's square is ink), and the Door's red button is ~870px below."
+}

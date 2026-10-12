@@ -1,0 +1,96 @@
+<section class="km km-contact-memo-S ac-sec" data-surface="light" id="write" aria-labelledby="km-contact-memo-S-h">
+  <div class="ac-wrap km-contact-memo-S__lay">
+    <div class="ac-shead km-contact-memo-S__shead">
+      <div class="ac-labelrow"><p class="ac-label">Your message</p></div>
+      <h2 class="ac-h3 ac-h3--lg" id="km-contact-memo-S-h">Written here, sent from your own mail.</h2>
+    </div>
+
+    <!-- MemoForm on the kit's document panel (.ac-doc): the form is a memo on the page's one paper.
+         Lines are memo header lines, each with a real visible <label>; "required" is said in words.
+         Margin notes hang off their line into cols 9–12, tied by a drawn leader at ≥1024, and fall
+         in under the field below that. -->
+    <form class="ac-doc km-contact-memo-S__memo" aria-labelledby="km-contact-memo-S-doc" data-memo>
+      <header class="ac-doc__head">
+        <p class="ac-doc__name" id="km-contact-memo-S-doc">Memo</p>
+        <p class="ac-cap"><time class="km-contact-memo-S__date" data-date></time></p>
+      </header>
+
+      <div class="km-contact-memo-S__line km-contact-memo-S__line--to" style="--i:0">
+        <p class="km-contact-memo-S__key"><span class="km-contact-memo-S__k">To</span></p>
+        <p class="km-contact-memo-S__to">Kelwin<span class="km-contact-memo-S__addr">audit@kelwin.co</span></p>
+      </div>
+
+      <div class="km-contact-memo-S__line" style="--i:1">
+        <label class="km-contact-memo-S__key" for="km-contact-memo-S-name"><span class="km-contact-memo-S__k">From</span><span class="km-contact-memo-S__what">Your <span class="km-contact-memo-S__nw">name <span class="km-contact-memo-S__req">· required</span></span></span></label>
+        <input class="km-contact-memo-S__in" id="km-contact-memo-S-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+      </div>
+
+      <div class="km-contact-memo-S__line" style="--i:2">
+        <label class="km-contact-memo-S__key" for="km-contact-memo-S-company"><span class="km-contact-memo-S__k">Company</span><span class="km-contact-memo-S__what">Company <span class="km-contact-memo-S__nw">name <span class="km-contact-memo-S__req">· required</span></span></span></label>
+        <input class="km-contact-memo-S__in" id="km-contact-memo-S-company" name="company" type="text" autocomplete="organization" placeholder="Company name" required>
+      </div>
+
+      <div class="km-contact-memo-S__line km-contact-memo-S__line--noted" style="--i:3">
+        <label class="km-contact-memo-S__key" for="km-contact-memo-S-email"><span class="km-contact-memo-S__k">Reply to</span><span class="km-contact-memo-S__what">Company <span class="km-contact-memo-S__nw">email <span class="km-contact-memo-S__req">· required</span></span></span></label>
+        <input class="km-contact-memo-S__in" id="km-contact-memo-S-email" name="email" type="email" autocomplete="work email" placeholder="you@company.com" required aria-describedby="km-contact-memo-S-n-reply">
+        <p class="km-contact-memo-S__note" id="km-contact-memo-S-n-reply">We reply to company addresses — it keeps this channel usable for the real requests.</p>
+      </div>
+
+      <div class="km-contact-memo-S__line km-contact-memo-S__line--noted km-contact-memo-S__line--about" style="--i:4">
+        <label class="km-contact-memo-S__key" for="km-contact-memo-S-topic"><span class="km-contact-memo-S__k">About</span><span class="km-contact-memo-S__what"><span class="km-contact-memo-S__nw">Topic <span class="km-contact-memo-S__req">· required</span></span></span></label>
+        <!-- the native select stays on top (transparent) for picking and for assistive tech; the
+             line shows its value as text, so a long topic wraps instead of clipping at any width -->
+        <span class="km-contact-memo-S__sel">
+          <span class="km-contact-memo-S__val" aria-hidden="true" data-val>Understanding what Kelwin does</span>
+          <select class="km-contact-memo-S__in" id="km-contact-memo-S-topic" name="topic" required aria-describedby="km-contact-memo-S-n-about">
+            <optgroup label="Working with Kelwin">
+              <option selected>Understanding what Kelwin does</option>
+              <option>Exploring a future engagement</option>
+            </optgroup>
+            <optgroup label="Documents &amp; notes">
+              <option>Requesting a research document</option>
+              <option>Requesting a readout</option>
+              <option>Field notes &amp; publications</option>
+            </optgroup>
+            <optgroup label="The Lab">
+              <option value="The Lab · early access application" data-shown="The Lab · early access application">Early access application</option>
+            </optgroup>
+            <optgroup label="Everything else">
+              <option>Partnerships</option>
+              <option>Press &amp; speaking</option>
+              <option>Careers &amp; the bench list</option>
+              <option>Something else</option>
+            </optgroup>
+          </select>
+        </span>
+        <p class="km-contact-memo-S__note km-contact-memo-S__note--about" id="km-contact-memo-S-n-about" aria-live="polite" data-hint>Pick the nearest one. Every topic reaches the same inbox.</p>
+      </div>
+
+      <div class="km-contact-memo-S__line km-contact-memo-S__line--re" style="--i:5" data-re hidden>
+        <p class="km-contact-memo-S__key"><span class="km-contact-memo-S__k">Regarding</span><span class="km-contact-memo-S__what"><span class="km-contact-memo-S__nw">Reference <span class="km-contact-memo-S__req">· optional</span></span></span></p>
+        <p class="km-contact-memo-S__chipwrap" role="note">
+          <span class="km-contact-memo-S__chip"><span class="km-contact-memo-S__ref" data-ref></span><button class="km-contact-memo-S__x" type="button" aria-label="Remove reference" data-clear></button></span>
+        </p>
+      </div>
+
+      <div class="km-contact-memo-S__line km-contact-memo-S__line--msg" style="--i:6">
+        <label class="km-contact-memo-S__key" for="km-contact-memo-S-message"><span class="km-contact-memo-S__k">Message</span><span class="km-contact-memo-S__what" data-msg-label>What’s on your <span class="km-contact-memo-S__nw">mind <span class="km-contact-memo-S__req">· required</span></span></span></label>
+        <textarea class="km-contact-memo-S__in km-contact-memo-S__ta" id="km-contact-memo-S-message" name="message" rows="7" placeholder="As rough as you like — bullet points are fine." required></textarea>
+      </div>
+
+      <div class="km-contact-memo-S__line km-contact-memo-S__line--noted km-contact-memo-S__line--foot" style="--i:7">
+        <button class="ac-btn-o km-contact-memo-S__send" type="submit" data-send>Send the message</button>
+        <div class="km-contact-memo-S__note km-contact-memo-S__note--send">
+          <p>This opens your own mail app with the message filled in. Nothing leaves your device until you press send.</p>
+          <p class="km-contact-memo-S__pv"><span>How we handle what you send</span><a class="ac-link" href="/privacy">Privacy</a></p>
+        </div>
+        <!-- MailtoConfirm: the same words as /careers' bench form (one shared component, §8) -->
+        <div class="km-contact-memo-S__sent" role="status" data-sent>
+          <div class="km-contact-memo-S__sent-in" hidden data-sent-in>
+            <p class="km-contact-memo-S__sent-t">Your mail app should have opened. If it didn’t, send it to <span class="km-contact-memo-S__mail">audit@kelwin.co.<button class="km-contact-memo-S__copy" type="button" data-copy="audit@kelwin.co">Copy</button></span><span class="ac-sr" aria-live="polite" data-copied></span></p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

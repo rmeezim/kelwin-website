@@ -1179,9 +1179,9 @@ Slugs, titles, dates and metadata titles survive.
     - This page shows · The format, as a specimen;
     - Your own · Starts with the System Audit ↗.
 - **Band: the sheet deal (FOLIO)**
-  - Six section sheets deal from a stack into a row: The constraint · Narrative readout · Channel orchestration map · Intelligence gap report · Rebuild sequence · Next step.
+  - Six section sheets deal from a stack into a row: The constraint · Narrative readout · Channel orchestration map · Intelligence gap report · Sequenced rebuild plan · Next step.
   - Each sheet has its own furniture.
-  - **Red:** the tag on sheet 01.
+  - **Red:** the editor's underline under page one's sentence (as built in round 8).
   - It differs from the homepage handover: no datum, no dashed→solid.
 
 **1 · The readout, annotated (P) · full document specimen, the signature artifact**
@@ -1193,7 +1193,7 @@ Slugs, titles, dates and metadata titles survive.
   | 02 | Narrative readout | How your market repeats you today, in buyers' words, across site, deck, sequences and calls. | Three one-line descriptions of the company (founder, seller, engineer) that don't match — the revenue-entropy self-check |
   | 03 | Channel orchestration map | Every channel you run, what triggers each touch, and where demand leaks. | A mini TRACE with two leaks marked |
   | 04 | Intelligence gap report | What your GTM decisions rest on today, and what nobody is measuring. | Three columns: Known · Not written down · Not measured |
-  | 05 | Rebuild sequence | The order to fix things in, and what each step needs. Yours either way. | Four quarter columns |
+  | 05 | Sequenced rebuild plan | The order to fix things in, and what each step needs. Yours either way. | Four quarter columns |
   | 06 | Next step | — | "If installation makes sense, we scope it there. If not, the plan is still yours." [K] |
 
 - **Callouts** [N]: One sentence, no hedging · In your buyers' words · Where it leaks · Ordered by what unblocks the rest.

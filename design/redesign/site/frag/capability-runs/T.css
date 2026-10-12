@@ -1,0 +1,98 @@
+/* ── capability-runs · T · GTM Infrastructure — RB, the runbook: built once, kept running ──
+   The head and its foot hold cols 1–4 (not sticky: the runbook is short now, so the head stays
+   level with it); the h2's two lines name the
+   two parts on the right. BUILT ONCE is one short line: Diagnose · Architect · Install on a
+   hairline, ending at the Handover datum (a hollow node), with one sentence of what was built
+   and handed over. KEPT RUNNING hangs from the handover: a drop line lands on Calibrate, the
+   runbook's standing page — what is checked each month and each quarter, as a two-column
+   checklist (hollow squares, nothing ticked: it is a schedule, not a record). It is the page's
+   one shape that isn't a row list (the ledger and the rules table sit above). No red here.  */
+
+.km-capability-runs-T__grid { align-items: start; }
+.km-capability-runs-T__side { grid-column: 1 / span 4; display: flex; flex-direction: column; align-items: flex-start; }
+.km-capability-runs-T__head { display: block; }
+.km-capability-runs-T__head > .ac-h3 { margin-top: 28px; }
+.km-capability-runs-T__l { display: block; }
+.km-capability-runs-T__foot { margin-top: 32px; max-width: 34ch; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.km-capability-runs-T__more { margin-top: 28px; }
+
+.km-capability-runs-T__main { grid-column: 6 / span 7; display: grid; grid-template-columns: minmax(0, 1fr); --km-rt-ho: 75%; }
+.km-capability-runs-T__once { grid-row: 1; grid-column: 1; }
+.km-capability-runs-T__built { grid-row: 2; grid-column: 1; }
+.km-capability-runs-T__run { grid-row: 3; grid-column: 1; }
+
+/* built once: four quarters of the column; nodes on one hairline that stops at the handover */
+.km-capability-runs-T__once { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-top: 34px; }
+.km-capability-runs-T__once::before {
+  content: ""; position: absolute; left: 4px; width: calc(var(--km-rt-ho) - 4px); top: 4px; height: 1px; background: var(--fg-2); transform-origin: 0 50%;
+}
+.km-capability-runs-T__ph { position: relative; display: flex; flex-direction: column; gap: 8px; padding-right: 12px; }
+.km-capability-runs-T__ph::before {
+  content: ""; position: absolute; left: 0; top: -34px; width: 9px; height: 9px; background: var(--bg); box-shadow: inset 0 0 0 1px var(--fg-2);
+}
+.km-capability-runs-T__ph--datum::before { box-shadow: inset 0 0 0 1px var(--fg); }
+.km-capability-runs-T__ph--datum .ac-idx { color: var(--fg-2); }
+.km-capability-runs-T__ph--datum > :not(span:empty) { padding-left: 20px; }   /* the drop runs down beside its words */
+.km-capability-runs-T__ph > .ac-idx { color: var(--fg-3); }
+.km-capability-runs-T__nm { font-weight: var(--ui-weight); font-size: var(--ac-body); line-height: 1.3; color: var(--fg); }
+.km-capability-runs-T__built { margin-top: 28px; max-width: calc(var(--km-rt-ho) - var(--gutter)); font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+
+/* kept running: the drop from the handover node lands on the runbook's page */
+.km-capability-runs-T__run { position: relative; margin-top: 56px; border-top: 1px solid var(--fg-2); }
+/* the drop: from the handover node (grid rows 1–2) down onto the run's top rule (its 56px margin) */
+.km-capability-runs-T__drop {
+  grid-row: 1 / 3; grid-column: 1; justify-self: start; align-self: stretch; position: relative;
+  width: 1px; margin: 4px 0 -56px calc(var(--km-rt-ho) + 4px); background: var(--fg-2); transform-origin: 50% 0; pointer-events: none;
+}
+.km-capability-runs-T__drop::after { content: ""; position: absolute; left: -2px; bottom: -3px; width: 5px; height: 5px; background: var(--fg); }
+.km-capability-runs-T__rh { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); column-gap: var(--gutter); align-items: baseline; padding: 28px 0 32px; }
+.km-capability-runs-T__rn { display: flex; align-items: baseline; gap: 16px; font-family: var(--f-body); font-weight: var(--ui-weight); font-size: var(--ac-h4); line-height: 1.1; color: var(--fg); }
+.km-capability-runs-T__rn > .ac-idx { color: var(--fg-2); }
+.km-capability-runs-T__rd { font-size: var(--ac-body); line-height: 1.5; color: var(--fg-2); max-width: 40ch; }
+.km-capability-runs-T__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: calc(2 * var(--gutter)); }
+.km-capability-runs-T__col + .km-capability-runs-T__col { position: relative; }
+.km-capability-runs-T__col + .km-capability-runs-T__col::before { content: ""; position: absolute; left: calc(-1 * var(--gutter)); top: 0; bottom: 0; width: 1px; background: var(--line); }
+.km-capability-runs-T__when {
+  font-family: var(--f-mono); font-weight: 400; font-size: var(--ac-mono); line-height: 16px; letter-spacing: var(--ac-track-mono); text-transform: uppercase; color: var(--fg-2);
+}
+.km-capability-runs-T__items { display: grid; gap: 18px; margin-top: 20px; }
+.km-capability-runs-T__items > li { display: flex; gap: 14px; font-size: var(--ac-body); line-height: 1.45; color: var(--fg); }
+.km-capability-runs-T__items > li::before {                /* a schedule's empty box: nothing is ticked here */
+  content: ""; flex: none; width: 11px; height: 11px; margin-top: 6px; box-shadow: inset 0 0 0 1px var(--fg-2);
+}
+
+/* ── entrance (body moment two): the line draws to the handover, the phases set, the drop falls
+   onto the runbook's page, the page fills in ── */
+.is-play .km-capability-runs-T__side > * { animation: ac-up 600ms var(--ease-out) both; }
+.is-play .km-capability-runs-T__foot { animation-delay: 500ms !important; }
+.is-play .km-capability-runs-T__more { animation-delay: 650ms !important; }
+.is-play .km-capability-runs-T__head { animation: none !important; }
+.is-play .km-capability-runs-T__once::before { animation: ac-drawx 1100ms var(--ease-inout) 300ms both; }
+.is-play .km-capability-runs-T__ph { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(400ms + var(--i) * 200ms); }
+.is-play .km-capability-runs-T__built { animation: ac-fade 600ms var(--ease-out) 1100ms both; }
+.is-play .km-capability-runs-T__drop { animation: ac-drawy 700ms var(--ease-inout) 1300ms both; }
+.is-play .km-capability-runs-T__run { animation: ac-fade 600ms var(--ease-out) 1700ms both; }
+
+/* ── tablet: the label column sits above (no sticky); the runbook takes the width ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-capability-runs-T__side { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-capability-runs-T__main { grid-column: 1 / -1; margin-top: 48px; }
+}
+/* ── phone: the build line keeps its four stops (names only, two to a row of type); the run
+   header and the two cadences stack ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-runs-T__main { margin-top: 40px; }
+  :root:not(.km-home) .km-capability-runs-T__nm { font-size: 15px; }
+  :root:not(.km-home) .km-capability-runs-T__ph { padding-right: 4px; }
+  :root:not(.km-home) .km-capability-runs-T__built { max-width: none; margin-top: 20px; }
+  :root:not(.km-home) .km-capability-runs-T__run { margin-top: 40px; }
+  :root:not(.km-home) .km-capability-runs-T__drop { visibility: hidden; }
+  :root:not(.km-home) .km-capability-runs-T__ph--datum > :not(span:empty) { padding-left: 0; }   /* no drop beside it on a phone */
+  :root:not(.km-home) .km-capability-runs-T__rh { grid-template-columns: minmax(0, 1fr); row-gap: 10px; padding: 20px 0 24px; }
+  :root:not(.km-home) .km-capability-runs-T__rn { font-size: 20px; }
+  :root:not(.km-home) .km-capability-runs-T__cols { grid-template-columns: minmax(0, 1fr); row-gap: 28px; }
+  :root:not(.km-home) .km-capability-runs-T__col + .km-capability-runs-T__col::before { visibility: hidden; }
+  :root:not(.km-home) .km-capability-runs-T__items { gap: 14px; margin-top: 14px; }
+  :root:not(.km-home) .km-capability-runs-T__items > li { font-size: 15px; }
+  :root:not(.km-home) .km-capability-runs-T__foot { max-width: none; }
+}

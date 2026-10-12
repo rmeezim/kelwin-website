@@ -1,0 +1,33 @@
+{
+  "title": "The status board",
+  "direction": "A×C · Round 8 · /the-lab · header (SB)",
+  "summary": "The approved Specimen-sheet header (title block retired) answering “are they a software company, and does any of this exist?” at first glance: five instruments measured against one four-stage ruler, each bar stopping at its true stage, the right half of the board honestly empty.",
+  "story": "Opens the side door from the nav with the plain answer: the service is the product, and the Lab builds the instruments it runs on. The board shows how far along each one is before a word explains it — nothing used on engagements, nothing released, one prototype. The essay below says why they are worth building, the ledger reads the board row by row, and the close puts early access beside the audit.",
+  "copy": [
+    "[N] H1 “The instruments / under the service.”",
+    "[R, edited for honesty — founder flag] Lede “The Lab is Kelwin’s R&D. It builds the tools we’ll use to diagnose, install and calibrate revenue systems. Everything on this page is in development, and says how far along it is.” (the story map's “the tools our architects use” said present use by a team, two inches above a board that shows none is used, and /about says “One architect today”)",
+    "[K] Status · In development (status chip)",
+    "(FC) Access · By application, audit and install clients first (now the same rule as the early-access sheet's note)",
+    "[K Privacy L·07, re-worded so the link names its destination] Your data · Anonymised and aggregated only, as set out in the privacy policy ↗ (/privacy). The story map's “…under your engagement agreement ↗” linked the words “engagement agreement” to the privacy policy; the agreement is still named twice lower down (the essay, the sheet's Your data)",
+    "[R] Band rows: Signal taxonomy · Account timelines · Routing queue · Narrative resonance scoring · Entropy index",
+    "[N] Ruler stages: Concept · Prototype · Used on engagements · Released (story map)",
+    "(FC) Each bar's stage, drafted: Account timelines → Prototype (the furthest, red end tick); Signal taxonomy, Routing queue, Narrative resonance scoring, Entropy index → Concept; none used on engagements, none released",
+    "[N] Dimension “In development”; figcaption sentence and keyed list"
+  ],
+  "phone": "≤1023: the facts drop under the lede (kit) and the keyed list shows under the band (the dimension gives way, kit). 768–1023: the board's OWN tablet composition, not the desktop one scaled: a 704 × 330 drawing with tracks 44 units apart (48px at 834, against 23px when the desktop board was scaled), the same four-stage ruler with its ticks at the quarters; names at 15px break the dashed guide behind them, and below ≈960 “Used on engagements” sets over two lines so it never reads into “Prototype”. ≤767: the kit swaps in the phone drawing (358 × 300): five tracks 52 apart, no shared ruler — each track carries its name on the left (breaking the guide behind it) and its own stage word on the right, with dashed guides at the quarter marks; bars and the red end tick as on desktop; the keyed list folds to screen-reader text under the visible sentence. No bundles (one stroke per track). Checked at 320, 390, 768, 834 and 1023 with the stage overridden: no overflow, no text under 11px.",
+  "reference": {
+    "site": "Linear — roadmap timeline (bars on a time axis with a ‘today’ line); approved Kelwin interior/X header, handover/U (dashed → solid), cta/U (the ten-tick ruler)",
+    "mobbin_url": "https://mobbin.com/sites/sections/f212fe62-7af1-4d5c-91fd-d712e5ab5ac1",
+    "ref_file": "refs/the-lab-head-S.webp",
+    "borrowed": "Linear's roadmap reading: one horizontal axis, each project a bar that ends where it has got to, the axis labels carrying the meaning so the rows need no explanation.",
+    "kelwin": "The axis is not time (no dates, rule 7) but stage: a drafting ruler with four stage ticks on the 12-column grid and nothing between them, because the scale is categorical (no minor graduations, no false precision). Bars are flat 3px rules, the unreached run is the handover's dashed line, the empty half of the board is left empty, and the only colour is the one red end tick. Header X's grammar verbatim around it; the quiet door in the facts goes to /privacy and says so."
+  },
+  "motion": [
+    "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts at +700ms); registration marks register; at 900ms the ruler calibrates — a 1px cursor sweeps left → right in 1s as the baseline grows behind it, and each of the four stage ticks and its word registers as the cursor passes (the page's one orchestrated moment).",
+    "then the dashed tracks, guides and instrument names settle; the bars run out from the origin at one speed (row stagger 70ms), so the four concept bars stop early and the eye follows Account timelines to prototype, where its red end tick lands last (~3.2s); the “In development” bracket draws over the reached half (~3.5s).",
+    "ambient: none. interaction: none (links in the nav and the facts only).",
+    "on the live site: plays once when the header is 40% visible (on load). Reduced motion: the static markup is the final board — no sweep, no timers."
+  ],
+  "demoMs": 4200,
+  "notes": "Height ≈ 1044px at 1440 (nav 96 · head · 330 band · 112 end). Stage ticks sit on the column grid: Concept = end of col 3 (x 310), Prototype = end of col 6 (644), Used on engagements = end of col 9 (978), Released = end of col 12 (1312); an origin tick at 0 and nothing else on the ruler. Stages are drafted (FC) — the founder's answers to §7 Q4 set each bar; a tie for furthest moves the red to one named instrument or to the stage tick. Band: 0 flags, 1 dimension, 1 red. No JS: the entrance is CSS only. The ruler's baseline grows by scaleX rather than the kit's pathLength dash plot: with the kit's non-scaling strokes Chrome measures that dash in screen px, so on the tablet frame (scaled above 1) the plotted baseline stopped short. The tablet drawing carries its own frame unit (--mu = 100cqw / 704) and the shared HTML labels take their tablet positions from --my / --mx."
+}

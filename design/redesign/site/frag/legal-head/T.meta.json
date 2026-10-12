@@ -1,0 +1,31 @@
+{
+ "title": "Contents strip header",
+ "direction": "A×C · Round 8 · legal template · /terms (slot T)",
+ "summary": "Header X at its quietest for /terms: ■ Legal, a two-voice h1 at the text-sheet size, the existing intro as the lede, a facts ledger that says the document is a draft pending legal review, and the clause index as the band — so the reader sees what the document is, its status and its whole contents before the first clause.",
+ "reference": {
+  "site": "Approved interior header X (round 3 'Specimen sheet', title block retired) and the kit's §12 IX contents strip; the homepage letter/S for the reading grammar (margin label, reading column).",
+  "mobbin_url": "https://mobbin.com/screens/77abb025-8ca3-44e7-84ce-59bc812bec79",
+  "ref_file": "qa/r8-legal/ref-aboard-contract.webp",
+  "borrowed": "Aboard's contract view: a plain document that states its own status before the text ('This contract has not yet been sent'), numbered clauses in one calm column, and its unfilled fields left visible as fields ([Country/State]).",
+  "kelwin": "The status moves into header X's facts ledger ('Draft, pending legal review'), the clause index becomes the band (the contents strip, no drawing, no red), the clauses sit on the 12-column grid on paper with light display numerals in the margin, and the one unfilled field (Terms 08's jurisdiction) is drawn with the kit's dashed 'not built yet' edge."
+ },
+ "motion": [
+  "entrance: the kit's head choreography only — the label row fades, the h1 rises line by line, the 48×2 rule draws, the lede and the facts ledger rise; the contents strip rises at 900ms (kit .ac-band--ix). No band morph: legal has no drawing.",
+  "ambient: none.",
+  "interaction: each contents cell is a link to its clause (#km-legal-body-T-c0n; production: a plain anchor per clause); hover lifts the cell's text to full ink. ≤767 the strip folds behind a 'Contents' button with the kit's +/− toggle (KM.init flips aria-expanded; cleanup removes the listeners).",
+  "on the live site: plays once on load; no scroll-linked behaviour. Reduced motion: final state at once."
+ ],
+ "demoMs": 2400,
+ "notes": "Placement only, no kit restyle: the h1 is set at 72px (min(72px, --ac-int-h1)), the articles' text-sheet size, instead of header X's 96px, because the drafted accent lines are long (96px would need three lines) and the legal pages are the quietest on the site. The h1 therefore spans cols 1–12, and the facts ledger drops one row — it spans the rule and lede rows (3–4) instead of the kit's 2–4 — keeping the kit's own alignment (align-self: end, the −11px foot), so its last value sits on the lede's last baseline (measured equal at 1024, 1100, 1280 and 1440). One size rule for the legal pair, identical in S and T: below 1440 the h1 is min(72px, (container width − margins) / 15), sized to keep the longer accent line (privacy's, ≈14.7em) inside the margins, so /privacy and /terms share one h1 size at every width (measured with 32px margins: 64px at 1024 and 69px at 1100 on both pages; 72px at 1280 and 1440). ≤1023 48px; ≤767 the kit's 40px with wrapping. Below 1024 the section clips the kit's hidden desktop menu (still measured at ~600px), or phones would scroll sideways (see kitNeeds). Nav: no item lit (legal belongs to no menu). No red beyond the label square and the rule; no red button in the header.",
+ "story": "Beat 1 of 3. Answers 'what am I looking at?': the terms of service, effective July 2026, still a draft pending legal review, with the address for questions — then the whole clause index as the band, so a reader who came for one clause goes straight to it.",
+ "copy": [
+  "[K] label ‘Legal’ · meta ‘Terms of service’ (story map §3.3)",
+  "[R] h1 “Terms of service. / The short, readable version.” (from the document’s own intro)",
+  "[K] lede “The short, readable version of what governs this website — including the honesty rule behind every artifact labeled ‘Specimen’.” (src/app/terms/page.tsx intro; typographic quotes and apostrophes only)",
+  "[K] Effective · July 2026",
+  "[N] (FC) Status · Draft, pending legal review (rule 7; founder Q8: shown until counsel signs)",
+  "[K] Questions · audit@kelwin.co",
+  "[K] contents strip: the 9 clause titles, verbatim; ‘L·0n’ and ‘LEGAL · K-…/01’ retired for plain 01–09"
+ ],
+ "phone": "≤1023: the kit's composition — the menu hides, the h1 steps to 48px so the accent line holds one line at 834, the facts ledger drops under the lede (the kit's own ≤1023 placement), the contents strip wraps to three columns of cells. ≤767: h1 40px and wraps (the accent breaks after the colon / the comma), lede 17px, facts full width, the strip folds behind one ‘Contents’ row with the +/− toggle and opens as a one-column list (number then title)."
+}

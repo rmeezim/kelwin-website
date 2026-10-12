@@ -1,0 +1,27 @@
+{
+ "title": "The ledger, answered plainly",
+ "direction": "A×C · Round 4 (approved) · ported to /audit, round 8",
+ "summary": "The founder's approved FAQ (faq/U, round 4) on the System Audit page, verbatim: the objections answered between what you keep and the gate, its red now pointing forward to the three questions that end the page.",
+ "reference": {
+  "site": "The approved Kelwin FAQ, faq/U (round 4, founder-approved; already ported to production as src/components/audit/faq)",
+  "mobbin_url": "https://mobbin.com/sites/sections/2d1ea869-c2c4-4d67-ba52-34a76fd84ebd",
+  "ref_file": "refs/faq-A.webp",
+  "borrowed": "Everything: the asymmetric split on graphite (head at left, hairline ledger at right), the mono 01–06 index, one answer open at a time with 01 resting open, both doors in the left column.",
+  "kelwin": "Unchanged as approved. Only the red's destination moves: it points forward to the gate on this page (#qualify) instead of sending the reader back up."
+ },
+ "motion": [
+  "entrance (≈2.9s, travels the reading path): the kit runs the head. The label fades in, 'Straight answers,' rises out of its mask, and 'before the call.' (light) follows 200ms behind. At 520ms the red rule and the ledger's top hairline draw left → right together (600ms / 1000ms), so the shared line is one gesture. The lede fades up 12px at 600ms. The rows then draw in order, 01 → 06: each row's hairline draws left → right (700ms, 90ms stagger from 700ms), with its index, question and + fading in behind it (500ms).",
+  "orchestrated moment (the ledger opening in place, once): at 1.6s, as the last row lands, row 01 opens. Its + turns to −, the vertical hairline rotating 90° onto the horizontal (360ms --ease-inout). A 1px --fg selection rule draws across the row's top edge (640ms), and the answer unfolds in place (360ms). The answer fades up 8px directly under the question (500ms). The audit button and the contact door fade up last (2.2s / 2.3s), so the path ends on the action. The section rests at about 2.9s, with 01 open.",
+  "ambient: none. The section is the page's quiet beat before the red final call.",
+  "interaction: each row is a real button inside an h3 (aria-expanded, aria-controls), and closed answers are inert. One row is open at a time, and clicking the open row closes it. Hovering a closed question lifts it from --fg-2 to --fg and nudges it 6px right (kit). When a row closes, its − turns back to +, its rule retracts (280ms) and its answer folds (200ms) while the new row opens. The audit button deepens to --accent-hover with ↗ moving 2px up-right; the contact underline turns --fg with → moving 3px.",
+  "on the live site: the head and rows draw in once when the section is 40% visible (IntersectionObserver, no pin), and row 01 opens as the rows land. There is no automatic handover; after that the reader drives the ledger. The left column (lede and doors) can stay sticky while the ledger scrolls. With reduced motion, KM.init({reduced:true}) keeps the markup's resting state (01 open) synchronously, with no entrance and no timers."
+ ],
+ "demoMs": 3200,
+ "story": "Straight answers before the gate: once the visitor has seen the ten days and the four parts, the six questions clear the remaining objections, and the red sends them forward to #qualify, the last section on the page (today it sends them back up).",
+ "copy": [
+  "[K] all copy verbatim from the approved faq/U (head, lede, six Q&As, 'Something we didn’t cover? Ask the founding team')",
+  "[K] 'Ask the founding team' — kept as approved; the interior's 'the founder / Rameez' wording waits on §7 Q1 (D11)"
+ ],
+ "phone": "Production's composition (src/components/audit/faq/faq.css): ≤1023 one column in source order — rule → lede → ledger → doors — so the path ends on the action and focus order is the visual order; questions may take two lines (text-wrap: pretty). ≤767 the index column narrows to 40px, the statement wraps at 40px, the lede fills the column.",
+ "notes": "Ported unchanged apart from two placements, both already in production's port: the doors follow the ledger in source order (the grid lifts them under the lede at 1440, so the stage looks exactly as approved), and the red button's href is #qualify (production: /audit#qualify). Its label-row meta 'Q. 01–06' is kept as approved, although STORY-INTERIOR §1.2 says body label rows carry no meta: drop it if that rule should win. This section follows the paper sheets, so its top is a hard surface cut (no rule), as approved."
+}

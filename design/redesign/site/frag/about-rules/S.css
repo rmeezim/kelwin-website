@@ -1,0 +1,88 @@
+/* ── about-rules · S · what we believe — the tenet sheet (TN), the page's one paper moment ──
+   The doctrine as its standing document: ink type on paper, five rules all open, laid out
+   as a ruled two-column sheet that ends on the exit test, set largest across the full
+   width. It is the written legend of the header's matrix: every rule names the phase it
+   binds at, and its index square is the matrix's square. No red of its own beyond the label
+   square: the week's red node can share a viewport with this sheet's foot (one red per view),
+   so 05 is carried by its size alone. A still beat: reveal only.                          */
+
+/* the sheet: no column gap, so every row rule runs edge to edge and meets the column rule */
+.km-about-rules-S__sheet {
+  position: relative;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 0;
+  margin-top: 56px; border-top: 1px solid var(--line-2);
+}
+/* the column rule: ONE hairline at the sheet's centre (col 7's edge), drawn once down both
+   tenet rows (grid rows 1–2, abspos in the grid), so it crosses the middle row rule and
+   lands on the rule above 05 */
+.km-about-rules-S__sheet::before {
+  content: ""; position: absolute; grid-column: 7; grid-row: 1 / 3; top: 0; bottom: 0; left: 0; width: 1px;
+  background: var(--line); transform-origin: 50% 0;
+}
+.km-about-rules-S__t {
+  position: relative; grid-column: span 6; display: flex; flex-direction: column; align-items: flex-start;
+  padding: 32px calc(48px + var(--gutter) / 2) 40px 0; border-bottom: 1px solid var(--line);
+}
+.km-about-rules-S__t:nth-child(even) { padding-right: 0; padding-left: calc(var(--gutter) / 2); }
+
+.km-about-rules-S__idx { display: flex; align-items: center; gap: 12px; }
+.km-about-rules-S__sq { width: 8px; height: 8px; flex: none; background: var(--fg); }
+.km-about-rules-S__title {
+  margin-top: 24px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-h3); line-height: 1.12; letter-spacing: var(--display-tracking); color: var(--fg);
+  text-wrap: balance;
+}
+.km-about-rules-S__body { margin-top: 16px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 46ch; }
+.km-about-rules-S__binds { margin-top: auto; padding-top: 24px; }
+.km-about-rules-S__chip { color: var(--fg-2); }
+
+/* 05 · the exit test: the whole width, set largest; title left, sentence right */
+.km-about-rules-S__t--05 {
+  grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: start; padding: 40px 0 52px; border-bottom: 1px solid var(--line-2);
+}
+.km-about-rules-S__t--05 > .km-about-rules-S__idx { grid-column: 1 / -1; }
+.km-about-rules-S__t--05 > .km-about-rules-S__title { grid-column: 1 / span 6; margin-top: 28px; font-size: 88px; line-height: .96; }
+.km-about-rules-S__t--05 > .km-about-rules-S__body {
+  grid-column: 7 / span 5; margin-top: 36px; max-width: none;
+  font-size: 24px; line-height: 1.42; color: var(--fg);
+}
+.km-about-rules-S__t--05 > .km-about-rules-S__binds { grid-column: 7 / span 5; margin-top: 0; padding-top: 28px; }
+
+/* ── entrance (reveal only): the sheet fades in, its column rule draws down once, the tenets
+   rise in order ── */
+.is-play .km-about-rules-S__sheet { animation: ac-fade 400ms var(--ease-out) 200ms both; }
+.is-play .km-about-rules-S__sheet::before { animation: ac-drawy 1000ms var(--ease-out) 300ms both; }
+.is-play .km-about-rules-S__t { animation: ac-up 600ms var(--ease-out) calc(260ms + var(--i, 0) * 90ms) both; }
+
+/* ── tablet (≤1023): two columns hold; 05 stacks its sentence under its title ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-about-rules-S__sheet { margin-top: 48px; }
+  :root:not(.km-home) .km-about-rules-S__t { padding-right: calc(28px + var(--gutter) / 2); }
+  :root:not(.km-home) .km-about-rules-S__t:nth-child(even) { padding-right: 0; }
+  :root:not(.km-home) .km-about-rules-S__t--05 > .km-about-rules-S__title { grid-column: 1 / -1; font-size: 64px; }
+  :root:not(.km-home) .km-about-rules-S__t--05 > .km-about-rules-S__body,
+  :root:not(.km-home) .km-about-rules-S__t--05 > .km-about-rules-S__binds { grid-column: 1 / span 10; }
+  :root:not(.km-home) .km-about-rules-S__t--05 > .km-about-rules-S__body { margin-top: 24px; font-size: 20px; }
+}
+/* ── phone (≤767): one column, the column rule goes, every tenet stays open (nothing behind a
+   tab). The “Binds at” chips step back to screen readers: on a phone the header's keyed list,
+   ~900px above, already sets each rule beside its phases, so the sheet says each rule once. ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-about-rules-S__sheet { margin-top: 40px; }
+  :root:not(.km-home) .km-about-rules-S__sheet::before { visibility: hidden; }
+  :root:not(.km-home) .km-about-rules-S__t,
+  :root:not(.km-home) .km-about-rules-S__t:nth-child(even) { grid-column: 1 / -1; display: grid; grid-template-columns: 40px minmax(0, 1fr); align-items: baseline; padding: 24px 0 28px; }
+  :root:not(.km-home) .km-about-rules-S__t > .km-about-rules-S__idx { grid-column: 1; grid-row: 1; }
+  :root:not(.km-home) .km-about-rules-S__t > .km-about-rules-S__title { grid-column: 2; grid-row: 1; margin-top: 0; }
+  :root:not(.km-home) .km-about-rules-S__t > .km-about-rules-S__body { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-about-rules-S__idx { gap: 8px; }
+  :root:not(.km-home) .km-about-rules-S__title { font-size: 24px; }
+  :root:not(.km-home) .km-about-rules-S__body { margin-top: 12px; font-size: 16px; }
+  :root:not(.km-home) .km-about-rules-S__binds { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  :root:not(.km-home) .km-about-rules-S__t--05 { grid-template-columns: 40px minmax(0, 1fr); padding: 28px 0 36px; }
+  :root:not(.km-home) .km-about-rules-S__t--05 > .km-about-rules-S__idx { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-about-rules-S__t--05 > .km-about-rules-S__title { grid-column: 1 / -1; grid-row: 2; margin-top: 16px; font-size: 44px; }
+  :root:not(.km-home) .km-about-rules-S__t--05 > .km-about-rules-S__body { grid-column: 1 / -1; font-size: 18px; }
+}

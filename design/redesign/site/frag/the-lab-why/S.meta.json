@@ -1,0 +1,30 @@
+{
+  "title": "Why build them",
+  "direction": "A×C · Round 8 · /the-lab · short essay (ES)",
+  "summary": "The Lab's thesis cut to three short paragraphs and one conclusion: the kit's one-line section head across the top, the essay in the right half beneath it, and the conclusion last, in display type under a hairline.",
+  "story": "The still beat after the board. The header showed what exists; this says why it is worth building, in the reader's own terms (a CRM that only records, five tools with no shared memory, a generic model that writes your competitors' sentences), and only then lands on the page's thesis: instruments for each layer we install, inside a system the client owns. Question → reasons → answer, in reading order. It hands over to the ledger, which reads the board row by row.",
+  "copy": [
+    "[N] Label “The reasoning” (was “Why build them”, which repeated the h2)",
+    "[N] h2 “Why an advisory firm builds instruments.” (answers the side question “are they a software company?”)",
+    "[R from T·01] “A CRM records what happened. It doesn’t decide what happens next.”",
+    "[R from T·03] “Data vendor, sequencer, enrichment, dialer, notes: five tools with no shared memory. Whatever a motion learns is scattered across them.” (the count is fixed: five)",
+    "[R from T·04] “A generic model writes the same sentences for you as for your competitors. The useful instrument is one trained on what an engagement teaches — anonymised and aggregated, as the engagement agreement spells out.”",
+    "[R] Conclusion “So the Lab builds instruments for each layer we install, inside a system the client owns.”",
+    "Cut, per the story map: “the end of GTM software”, “a filing cabinet wearing a dashboard”, “mathematically dead” (T·02), “or it’s autocomplete”"
+  ],
+  "phone": "≤1023: the essay takes cols 1–9 under the head, in reading order, the conclusion last. ≤767: one column; paragraphs at 17px with 18px between them, the conclusion at 24px under its hairline. No drawing to recompose. Checked at 390 (875px; 763px at production's 72px section padding).",
+  "reference": {
+    "site": "Mixpanel — manifesto (short paragraphs at an even cadence, ending on a short line)",
+    "mobbin_url": "https://mobbin.com/sites/sections/7bb336b3-8aa3-4be1-94b1-f89d7c8cb195",
+    "ref_file": "refs/the-lab-why-S.webp",
+    "borrowed": "The cadence: a few short paragraphs, each one idea, ending on a single concluding line set apart from them.",
+    "kelwin": "The kit's one-line section head across the top, then the essay set in the right half (cols 7–12) so the eye steps down from the question into the reasons; each paragraph leads with its plain claim in --fg so the essay skims in three lines; the conclusion closes the column in display type under a hairline. The left half under the head stays empty on purpose. Mona only, no serif, no italics, no numbering."
+  },
+  "motion": [
+    "entrance: a still beat — the kit's section-head fade (label, then heading); the essay and its conclusion settle with it in one plain 700ms fade (no rise, no moment of their own). The ruled seam draws (kit).",
+    "ambient: none. interaction: none.",
+    "on the live site: plays once at 40% visible. Reduced motion: final state."
+  ],
+  "demoMs": 1200,
+  "notes": "A still beat by design (story map §5: the Lab essay is one of the interior's still beats). Height 902px at 1440. The second two-voice statement allowance is left unused on this page: the h1 is the only two-voice statement."
+}

@@ -1,0 +1,101 @@
+/* ── audit-readout · S · "One readout, four parts." ───────────────────────────────────────────
+   The page's one paper moment (a document you could hold): FS, the sheet set. Four folio sheets,
+   one per part of the written readout, each a page on the paper: its index, its name, a line of
+   prose (two faint rules) and a 1px drawing of the part's SHAPE (structure only, never a finding).
+   Under each sheet: what that part reads, then its layer page. The fourth is the plan that puts
+   the other three in order; the first fix is drawn in ink — the readout names your weakest
+   layer first. No red in this section (the view's red is elsewhere: the header's Day 10 tick
+   above, the FAQ's button below). */
+
+.km-audit-readout-S__parts { margin-top: 56px; row-gap: 48px; }
+.km-audit-readout-S__part { grid-column: span 3; display: flex; flex-direction: column; min-width: 0; }
+
+/* the sheet: a portrait page on the paper (outlined, the paper's own colour, flat) */
+.km-audit-readout-S__sheet {
+  position: relative; z-index: calc(4 - var(--k, 0));            /* the stack: 02 on top, 01 at the bottom */
+  display: flex; flex-direction: column; aspect-ratio: 310 / 372;
+  padding: 22px 24px 26px; background: var(--bg); border: 1px solid var(--line-2);
+}
+.km-audit-readout-S__part:first-child .km-audit-readout-S__sheet { z-index: 0; }
+.km-audit-readout-S__no { display: flex; align-items: center; gap: 12px; color: var(--fg-2); }
+.km-audit-readout-S__no::after { content: ""; flex: 0 0 40px; height: 1px; background: var(--line-2); }
+.km-audit-readout-S__name {
+  margin-top: 22px; font-family: var(--f-body); font-weight: var(--ui-weight);
+  font-size: 20px; line-height: 1.25; color: var(--fg); text-wrap: balance;
+  min-height: 2.5em;             /* a two-line title block on every sheet, so the four sheets' rules line up whatever wraps */
+}
+/* a short paragraph under the name, as three faint rules (the page reads as a document, not a card) */
+.km-audit-readout-S__txt { display: flex; flex-direction: column; gap: 9px; margin-top: 18px; }
+.km-audit-readout-S__txt > span { display: block; height: 1px; background: var(--line-2); }
+.km-audit-readout-S__txt > span:nth-child(2) { width: 90%; }
+.km-audit-readout-S__txt > span:nth-child(3) { width: 54%; }
+.km-audit-readout-S__fig { width: 100%; height: auto; margin-top: auto; }
+.km-audit-readout-S__cell { fill: var(--fg-3); }
+.km-audit-readout-S__t { font-size: 13px; fill: var(--fg-2); }    /* the sheet scales: ≥11px from a 1280 stage up (2-up below) */
+
+/* under the sheet: what it reads, then where the layer lives */
+.km-audit-readout-S__reads { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 22px; flex: 1; }
+.km-audit-readout-S__what { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+.km-audit-readout-S__reads > .ac-link { margin-top: auto; }
+
+.km-audit-readout-S__tag { margin-top: 40px; }
+
+/* the foot: one hairline, the line that pays off "Find your weakest layer", and the readout specimen */
+.km-audit-readout-S__foot {
+  position: relative; margin-top: 64px; padding-top: 28px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px 48px;
+}
+.km-audit-readout-S__foot::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
+.km-audit-readout-S__line { color: var(--fg); }
+
+/* ── entrance (only under .is-play): the sheets are dealt from a stack. The stack fades in as one
+   layer (the set's opacity, never a sheet's, so no sheet shows through another), squared up on
+   sheet 01's place, each sheet offset 6px so it reads as a stack. Then 02, 03 and 04 are dealt out
+   to their columns, 100ms apart (640ms each): opaque paper, transform only. The words under them
+   follow; the foot draws last. --km-deal is the travel per column; phones set it to 0 (the set
+   simply fades in place). ── */
+.km-audit-readout-S { --km-deal: calc(100% + var(--gutter)); }
+.is-play .km-audit-readout-S__parts { animation: km-audit-readout-S-stack 360ms var(--ease-out) 240ms both; }
+.is-play .km-audit-readout-S__part:not(:first-child) .km-audit-readout-S__sheet { animation: km-audit-readout-S-deal 640ms var(--ease-out) calc(520ms + (var(--k, 0) - 1) * 100ms) both; }
+.is-play .km-audit-readout-S__reads { animation: ac-up 600ms var(--ease-out) calc(1000ms + var(--k, 0) * 80ms) both; }
+.is-play .km-audit-readout-S__tag { animation: ac-fade 500ms var(--ease-out) 1400ms both; }
+.is-play .km-audit-readout-S__foot::before { animation: ac-drawx 900ms var(--ease-out) 1400ms both; }
+.is-play .km-audit-readout-S__foot > * { animation: ac-fade 500ms var(--ease-out) 1700ms both; }
+
+@keyframes km-audit-readout-S-deal {
+  from { transform: translate(calc(var(--k, 0) * var(--km-deal) * -1 + var(--k, 0) * 6px), calc(var(--k, 0) * -6px)); }
+  to { transform: none; }
+}
+@keyframes km-audit-readout-S-stack { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── ≤1279 and tablet (≤1023): two sheets per row (the set reads 01 02 / 03 04). Phone (≤767): one column
+   of compact rows (see below) — the set simply fades in place. ── */
+@media (max-width: 1279px) {
+  /* below 1280 four sheets would put their drawing words under 11px: two per row instead */
+  :root:not(.km-home) .km-audit-readout-S__part { grid-column: span 6; }
+  :root:not(.km-home) .km-audit-readout-S__name { min-height: 0; }   /* two per row: every name fits one line */
+}
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-audit-readout-S__parts { row-gap: 56px; }
+}
+@media (max-width: 767px) {
+  /* each part becomes one compact row: the sheet is a landscape card (index + name left, its drawing
+     right, 120 wide), its words under it. Drawing words hide (they would fall under 11px). */
+  :root:not(.km-home) .km-audit-readout-S { --km-deal: 0px; }
+  :root:not(.km-home) .km-audit-readout-S__parts { margin-top: 32px; row-gap: 28px; }
+  :root:not(.km-home) .km-audit-readout-S__part { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-audit-readout-S__sheet {
+    display: grid; grid-template-columns: minmax(0, 1fr) 120px; grid-template-rows: auto 1fr; column-gap: 16px;
+    aspect-ratio: auto; padding: 14px 16px;
+  }
+  :root:not(.km-home) .km-audit-readout-S__no { grid-column: 1; grid-row: 1; }
+  :root:not(.km-home) .km-audit-readout-S__name { grid-column: 1; grid-row: 2; margin-top: 10px; font-size: 18px; }
+  :root:not(.km-home) .km-audit-readout-S__txt { visibility: hidden; position: absolute; }
+  :root:not(.km-home) .km-audit-readout-S__fig { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin-top: 0; }
+  :root:not(.km-home) .km-audit-readout-S__t { visibility: hidden; }
+  :root:not(.km-home) .km-audit-readout-S__reads { padding-top: 12px; gap: 6px; }
+  :root:not(.km-home) .km-audit-readout-S__tag { margin-top: 28px; }
+  :root:not(.km-home) .km-audit-readout-S__foot { margin-top: 32px; padding-top: 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  :root:not(.km-home) .km-audit-readout-S__foot > .ac-link { white-space: normal; text-align: left; line-height: 1.5; }
+  :root:not(.km-home) .km-audit-readout-S__line { font-size: 20px; }
+}

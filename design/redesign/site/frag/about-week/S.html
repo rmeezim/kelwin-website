@@ -1,0 +1,74 @@
+<section class="km km-about-week-S ac-sec" id="week" data-surface="dark" aria-labelledby="km-about-week-S-h">
+  <div class="ac-wrap">
+    <div class="ac-shead">
+      <div class="ac-labelrow"><p class="ac-label">The week</p></div>
+      <h2 class="ac-h3 ac-h3--lg" id="km-about-week-S-h">The week an engagement runs on.</h2>
+    </div>
+
+    <!-- CL · the calendar ruler: one tape across the week, 08:00–18:00 a day in hour ticks.
+         Each ritual is a node at its hour; Wednesday is drawn empty; the red is Thursday's
+         kill review. The tape is the drawing (aria-hidden); the list under it says it all. -->
+    <div class="km-about-week-S__cal">
+      <div class="km-about-week-S__tape" aria-hidden="true">
+        <svg class="ac-svg km-about-week-S__svg" viewBox="0 0 1312 64">
+          <!-- the tape: Mon–Tue and Thu–Fri measured, Wednesday left empty -->
+          <path class="ac-s km-about-week-S__base ac-plot" style="--d:300ms;--t:960ms" pathLength="1" d="M0 48.5H524.5"/>
+          <path class="ac-s-mute ac-s-dash km-about-week-S__wed" d="M524.5 48.5H787.5"/>
+          <path class="ac-s km-about-week-S__base ac-plot" style="--d:1740ms;--t:960ms" pathLength="1" d="M787.5 48.5H1312"/>
+          <path class="ac-s-mute km-about-week-S__ticks ac-plot" style="--d:300ms;--t:960ms" pathLength="1" d="M0.5 30V60M26.5 42V48.5M52.5 42V48.5M78.5 42V48.5M104.5 42V48.5M131.5 37V48.5M157.5 42V48.5M183.5 42V48.5M209.5 42V48.5M236.5 42V48.5M262.5 30V60M288.5 42V48.5M314.5 42V48.5M341.5 42V48.5M367.5 42V48.5M393.5 37V48.5M419.5 42V48.5M446.5 42V48.5M472.5 42V48.5M498.5 42V48.5M524.5 30V60"/>
+          <path class="ac-s-mute km-about-week-S__ticks ac-plot" style="--d:1740ms;--t:960ms" pathLength="1" d="M787.5 30V60M813.5 42V48.5M839.5 42V48.5M865.5 42V48.5M892.5 42V48.5M918.5 37V48.5M944.5 42V48.5M970.5 42V48.5M997.5 42V48.5M1023.5 42V48.5M1049.5 30V60M1075.5 42V48.5M1102.5 42V48.5M1128.5 42V48.5M1154.5 42V48.5M1180.5 37V48.5M1207.5 42V48.5M1233.5 42V48.5M1259.5 42V48.5M1285.5 42V48.5M1311.5 30V60"/>
+          <!-- leaders from each time to its node -->
+          <path class="ac-s-mute km-about-week-S__lead" style="--d:350ms" d="M26.5 22V42"/>
+          <path class="ac-s-mute km-about-week-S__lead" style="--d:900ms" d="M328.5 22V42"/>
+          <path class="ac-s-mute km-about-week-S__lead" style="--d:2120ms" d="M997.5 22V37"/>
+          <path class="ac-s-mute km-about-week-S__lead" style="--d:2550ms" d="M1233.5 22V42"/>
+          <!-- nodes latch as the tape passes them; Thursday's red node is drawn as the header's red
+               cell is (11px in a faint 20px ring), so the page's reds read at one weight -->
+          <rect class="ac-s-mute km-about-week-S__ring" x="22" y="44" width="9" height="9"/>
+          <rect class="ac-s-mute km-about-week-S__ring" x="324" y="44" width="9" height="9"/>
+          <rect class="ac-s-mute km-about-week-S__ring" x="992" y="43" width="11" height="11"/>
+          <rect class="ac-s-mute km-about-week-S__ring" x="1229" y="44" width="9" height="9"/>
+          <rect class="ac-f-fg km-about-week-S__node" style="--d:350ms" x="22" y="44" width="9" height="9"/>
+          <rect class="ac-f-fg km-about-week-S__node" style="--d:900ms" x="324" y="44" width="9" height="9"/>
+          <rect class="ac-s-faint km-about-week-S__halo" style="--d:2300ms" x="987.5" y="38.5" width="20" height="20"/>
+          <rect class="ac-f-red km-about-week-S__node km-about-week-S__red" style="--d:2120ms" x="992" y="43" width="11" height="11"/>
+          <rect class="ac-f-fg km-about-week-S__node" style="--d:2550ms" x="1229" y="44" width="9" height="9"/>
+        </svg>
+        <span class="km-about-week-S__at" style="--x:26.5;--d:350ms">09:00</span>
+        <span class="km-about-week-S__at" style="--x:328.5;--d:900ms">10:30</span>
+        <span class="km-about-week-S__at km-about-week-S__at--on" style="--x:997.5;--d:2120ms">16:00</span>
+        <span class="km-about-week-S__at" style="--x:1233.5;--d:2550ms">15:00</span>
+      </div>
+
+      <ol class="km-about-week-S__days">
+        <li class="km-about-week-S__day" style="--d:380ms">
+          <p class="km-about-week-S__dn">Mon<span class="km-about-week-S__tm"> · 09:00</span></p>
+          <h3 class="km-about-week-S__t">Signal review</h3>
+          <p class="km-about-week-S__l">What the market did over the weekend. 25 minutes, no deck.</p>
+        </li>
+        <li class="km-about-week-S__day" style="--d:860ms">
+          <p class="km-about-week-S__dn">Tue<span class="km-about-week-S__tm"> · 10:30</span></p>
+          <h3 class="km-about-week-S__t">Client working session</h3>
+          <p class="km-about-week-S__l">Language decided live on the document — not presented after.</p>
+        </li>
+        <li class="km-about-week-S__day km-about-week-S__day--wed" style="--d:1340ms">
+          <p class="km-about-week-S__dn">Wed<span class="km-about-week-S__tm"> · all day</span></p>
+          <h3 class="km-about-week-S__t">No-meeting day</h3>
+          <p class="km-about-week-S__l">Systems get built. Notes get written. Calendars stay empty.</p>
+        </li>
+        <li class="km-about-week-S__day km-about-week-S__day--thu" style="--d:1820ms">
+          <p class="km-about-week-S__dn">Thu<span class="km-about-week-S__tm"> · 16:00</span></p>
+          <h3 class="km-about-week-S__t">Kill review</h3>
+          <p class="km-about-week-S__l">What we stop doing this week. The hardest ritual to keep.</p>
+        </li>
+        <li class="km-about-week-S__day" style="--d:2300ms">
+          <p class="km-about-week-S__dn">Fri<span class="km-about-week-S__tm"> · 15:00</span></p>
+          <h3 class="km-about-week-S__t">The written note</h3>
+          <p class="km-about-week-S__l">What moved this week, in writing.</p>
+        </li>
+      </ol>
+    </div>
+
+    <p class="km-about-week-S__note">An engagement runs on this week. The Friday note is where you read what moved.</p>
+  </div>
+</section>

@@ -1,0 +1,191 @@
+/* article-body · T · the reading spread (RD) on paper — /insights/the-17-percent-window
+   The page's one paper moment: the note. Reading column cols 3–8 (18px / 1.6), margin cols 10–12
+   (the layer glyph, the numbered Gartner source hedged as Gartner hedges it, a "What to look for"
+   note that replaces the old mono "Field reading" panel), one pull quote in the accent voice, and
+   ONE figure across cols 1–12 after "What survives retelling": "The retelling" — set in type.
+   The two sentences from "A mechanism, not a promise" travel through four retellings (Demo →
+   Champion → CFO → Committee). The mechanism, in the display voice, arrives intact; the promise,
+   in the light voice, loses words hop by hop, each lost word leaving a dashed rule where it was,
+   until nothing of it reaches the committee. Red: the committee's empty rules (what is lost), the
+   figure's one red element; the label square. No CONTOUR, no 17/100 bar (the homepage owns it).
+   Default CSS = final state; the figure plays once at 40% visible (JS adds .is-in). */
+
+.km-article-body-T { padding-block: 120px 144px; }
+
+/* ── the spread ── */
+.km-article-body-T__spread {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  align-items: start;
+}
+.km-article-body-T__spread > * { grid-column: 3 / span 6; }
+/* a margin note hangs from its paragraph's row and never pushes the reading column: its negative
+   bottom margin takes it out of the row's height (notes are spaced so they never meet) */
+.km-article-body-T__spread > .km-article-body-T__note { grid-column: 10 / span 3; margin-bottom: -1200px; }
+.km-article-body-T__spread > .km-article-body-T__fig { grid-column: 1 / -1; }
+/* "What to look for" comments on its whole subsection: it sits in the subsection heading's row
+   (row 8, "Instrumenting the 83%"), its top on the heading's top, and hangs like every other note (it never
+   stretches a row, so the column never gaps before the closing line). Its markup stays after the
+   paragraph, so on phones it still falls in after it. */
+.km-article-body-T__spread > .km-article-body-T__note--look { grid-row: 8; margin-top: 80px; }
+
+/* ── reading type ── */
+.km-article-body-T__p, .km-article-body-T__list > li {
+  font-size: 18px; line-height: 1.6; color: var(--fg); text-wrap: pretty; hanging-punctuation: first;
+}
+.km-article-body-T__p { margin-top: 22px; }
+.km-article-body-T__spread > .km-article-body-T__p:first-child { margin-top: 0; }
+.km-article-body-T__p--after-h { margin-top: 20px; }
+.km-article-body-T strong, .km-article-body-T dfn { font-style: normal; font-weight: var(--strong-weight); }
+.km-article-body-T__h { margin-top: 80px; }
+.km-article-body-T__list { margin-top: 6px; }
+.km-article-body-T__list > li { position: relative; margin-top: 16px; padding-left: 32px; }
+.km-article-body-T__list > li::before {
+  content: ""; position: absolute; left: 0; top: 14px; width: 14px; height: 1px; background: var(--fg-2);
+}
+.km-article-body-T__p--last { margin-top: 56px; }
+/* the end mark: a small ink square closes the note */
+.km-article-body-T__end { display: inline-block; width: 8px; height: 8px; margin-left: 10px; background: var(--fg); vertical-align: 1px; }
+
+/* the source call: a raised mono numeral that jumps to its margin note */
+.km-article-body-T__ref {
+  position: relative; top: -.55em; margin-left: 3px; padding: 0 2px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 0; letter-spacing: 0; color: var(--fg-2);
+  box-shadow: inset 0 -1px 0 var(--line-2); transition: color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.km-article-body-T__ref:hover { color: var(--fg); box-shadow: inset 0 -1px 0 var(--fg); }
+.km-article-body-T__ref:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
+
+/* ── the margin ── */
+.km-article-body-T__note { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line-2); }
+.km-article-body-T__nh {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg);
+}
+.km-article-body-T__num {
+  display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex: none;
+  border: 1px solid var(--line-2); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0; color: var(--fg);
+}
+.km-article-body-T__nt { margin-top: 10px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 34ch; }
+.km-article-body-T__note > .ac-reading__src { margin-top: 10px; }
+/* a source link wraps only before its last word: the word, "· year" and the drawn ↗ stay together */
+.km-article-body-T .ac-reading__src .km-article-body-T__srcl { white-space: nowrap; }
+.km-article-body-T__srcl > .km-article-body-T__lw { white-space: normal; }
+/* the layer this note is about: the nav's CONTOUR glyph, drawn in ink */
+.km-article-body-T__key { margin-top: 0; padding-top: 0; border-top: 0; }
+.km-article-body-T__layer {
+  display: flex; align-items: center; gap: 16px; margin-top: 12px; padding: 14px 0; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line);
+  font-size: var(--ac-support); line-height: 1.4; color: var(--fg);
+}
+.km-article-body-T__g { display: block; flex: none; overflow: visible; width: 54px; height: 36px; color: var(--fg-2); }
+.km-article-body-T__g path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.km-article-body-T__note--src { margin-top: 64px; }
+
+/* the one pull quote, in the accent voice; it never repeats the text beside it */
+.km-article-body-T__pull { margin: 64px 0 0; padding-top: 22px; border-top: 1px solid var(--line-2); }
+.km-article-body-T__pull > p {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 32px; line-height: 1.16; letter-spacing: var(--display-tracking); color: var(--fg-2); text-wrap: balance;
+}
+
+/* ── the figure ── */
+.km-article-body-T__fig { margin-top: 72px; padding: 24px 0 48px; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line); }
+.km-article-body-T__fighead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 14px; }
+.km-article-body-T__fighead > .ac-label { grid-column: 1 / -1; }
+.km-article-body-T__figsub { grid-column: 1 / span 7; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+
+/* four hops on the 12-column grid: each hop is 3 columns; its pieces share rows across hops */
+.km-article-body-T__hops {
+  margin-top: 48px;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter);
+  grid-template-rows: auto auto 16px auto auto auto auto;
+}
+.km-article-body-T__hop { display: contents; }
+.km-article-body-T__hop > * { grid-column: calc(var(--i) + 1); }
+.km-article-body-T__hk { grid-row: 1; display: flex; align-items: baseline; gap: 12px; font-weight: var(--ui-weight); font-size: 20px; line-height: 1.3; color: var(--fg); }
+.km-article-body-T__hd { grid-row: 2; margin-top: 4px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.km-article-body-T__track { grid-row: 3; grid-column: 1 / -1; width: 100%; height: 16px; margin-top: 20px; }
+.km-article-body-T__node { fill: var(--fg); }
+.km-article-body-T__line { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.km-article-body-T__rowk {
+  grid-column: 1 / -1;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-3);
+}
+.km-article-body-T__rowk--m { grid-row: 4; margin-top: 40px; }
+.km-article-body-T__rowk--p { grid-row: 6; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+.km-article-body-T__legend { display: none; }
+.km-article-body-T__s {
+  margin-top: 16px; max-width: 11.5em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-size: 26px; line-height: 1.16;
+  letter-spacing: var(--display-tracking);
+}
+.km-article-body-T__s--m { grid-row: 5; font-weight: var(--display-weight); color: var(--fg); text-wrap: balance; }
+.km-article-body-T__s--p { grid-row: 7; font-weight: var(--light-weight); color: var(--fg-2); }
+.km-article-body-T__w { display: inline-block; border-bottom: 1px dashed transparent; }
+/* a lost word keeps its place as a dashed rule; at the committee the rules are the red */
+.km-article-body-T__w.is-lost { --dash: var(--fg-3); color: transparent; border-bottom-color: var(--dash); }
+.km-article-body-T__s--gone .km-article-body-T__w.is-lost { --dash: var(--signal); }
+
+/* ── entrance: one retelling at a time, left to right; then the promise loses its words ── */
+@keyframes km-article-body-T-lose {
+  from { color: var(--fg-2); border-bottom-color: transparent; }
+  to { color: transparent; border-bottom-color: var(--dash); }
+}
+.is-play .km-article-body-T__fig:not(.is-in) .km-article-body-T__line { stroke-dashoffset: 1; }
+.is-play .km-article-body-T__fig:not(.is-in) :is(.km-article-body-T__hk, .km-article-body-T__hd, .km-article-body-T__s, .km-article-body-T__node, .km-article-body-T__chev, .km-article-body-T__rowk) { opacity: 0; }
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__rowk { animation: ac-fade 500ms var(--ease-out) 100ms both; }
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__line { animation: ac-plot 2600ms var(--ease-inout) 200ms both; }
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__node,
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__chev { animation: ac-fade 300ms var(--ease-out) calc(260ms + var(--i) * 800ms) both; }
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__hk,
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__hd { animation: ac-up 500ms var(--ease-out) calc(300ms + var(--i) * 800ms) both; }
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__s--m { animation: ac-up 500ms var(--ease-out) calc(420ms + var(--i) * 800ms) both; }
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__s--p { animation: ac-up 500ms var(--ease-out) calc(520ms + var(--i) * 800ms) both; }
+.is-play .km-article-body-T__fig.is-in .km-article-body-T__w.is-lost { animation: km-article-body-T-lose 700ms var(--ease-inout) calc(1000ms + var(--i) * 800ms + var(--j, 0) * 180ms) both; }
+
+/* ── tablet (≤1023): the hops stack, one retelling per block, on a left rule with a node each;
+   a two-sample legend replaces the row labels ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-article-body-T { padding-block: 88px 104px; }
+  :root:not(.km-home) .km-article-body-T__spread > * { grid-column: 1 / span 8; }
+  :root:not(.km-home) .km-article-body-T__spread > .km-article-body-T__note { grid-column: 9 / span 4; }
+  :root:not(.km-home) .km-article-body-T__spread > .km-article-body-T__fig { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-article-body-T__figsub { grid-column: 1 / span 10; }
+  :root:not(.km-home) .km-article-body-T__hops { display: block; position: relative; margin-top: 32px; }
+  :root:not(.km-home) .km-article-body-T__track,
+  :root:not(.km-home) .km-article-body-T__rowk { visibility: hidden; position: absolute; top: 0; left: 0; height: 0; margin: 0; padding: 0; border: 0; overflow: hidden; }
+  :root:not(.km-home) .km-article-body-T__legend {
+    display: flex; flex-wrap: wrap; gap: 8px 24px; padding-bottom: 20px;
+    font-family: var(--f-display); font-stretch: var(--display-stretch); font-size: var(--ac-support); line-height: 1.3;
+  }
+  :root:not(.km-home) .km-article-body-T__lm { font-weight: var(--display-weight); color: var(--fg); }
+  :root:not(.km-home) .km-article-body-T__lp { font-weight: var(--light-weight); color: var(--fg-2); }
+  :root:not(.km-home) .km-article-body-T__hop {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gutter);
+    position: relative; padding: 0 0 28px 28px; border-left: 1px solid var(--fg-2);
+  }
+  :root:not(.km-home) .km-article-body-T__hop--last { border-left-color: transparent; padding-bottom: 0; }
+  :root:not(.km-home) .km-article-body-T__hop::before { content: ""; position: absolute; left: -4px; top: 7px; width: 7px; height: 7px; background: var(--fg); }
+  :root:not(.km-home) .km-article-body-T__hop > * { grid-column: 1 / -1; grid-row: auto; }
+  :root:not(.km-home) .km-article-body-T__s { max-width: none; margin-top: 12px; font-size: 22px; }
+  :root:not(.km-home) .km-article-body-T__s--m { grid-column: 1; }
+  :root:not(.km-home) .km-article-body-T__s--p { grid-column: 2; grid-row: 3; }
+}
+
+/* ── phone (≤767): one column; each margin note falls in after its paragraph ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-article-body-T { padding-block: 64px 80px; }
+  :root:not(.km-home) .km-article-body-T__spread > *,
+  :root:not(.km-home) .km-article-body-T__spread > .km-article-body-T__note, :root:not(.km-home) .km-article-body-T__spread > .km-article-body-T__note--look { grid-column: 1 / -1; grid-row: auto; margin-bottom: 0; }
+  :root:not(.km-home) .km-article-body-T__spread > .km-article-body-T__key { order: -1; margin-bottom: 40px; }
+  :root:not(.km-home) .km-article-body-T__p, :root:not(.km-home) .km-article-body-T__list > li { font-size: 17px; }
+  :root:not(.km-home) .km-article-body-T__h { margin-top: 56px; font-size: 26px; }
+  :root:not(.km-home) .km-article-body-T__note, :root:not(.km-home) .km-article-body-T__note--src { margin-top: 24px; }
+  :root:not(.km-home) .km-article-body-T__nt { max-width: none; }
+  :root:not(.km-home) .km-article-body-T__pull > p { font-size: 26px; }
+  :root:not(.km-home) .km-article-body-T__fig { margin-top: 56px; }
+  :root:not(.km-home) .km-article-body-T__hop { grid-template-columns: minmax(0, 1fr); padding-left: 22px; }
+  :root:not(.km-home) .km-article-body-T__s--m, :root:not(.km-home) .km-article-body-T__s--p { grid-column: 1; grid-row: auto; }
+  :root:not(.km-home) .km-article-body-T__s { font-size: 20px; margin-top: 10px; }
+}

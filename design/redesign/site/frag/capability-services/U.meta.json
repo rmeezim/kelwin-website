@@ -1,0 +1,25 @@
+{
+  "title": "Question → instrument",
+  "direction": "A×C · Round 8 · capability template (GTM Intelligence)",
+  "summary": "The four services as the four questions they answer, set large on the left, each answered across its row by the service (keyed by the band's station code), what it ships and where that goes — read left to right like the loop itself.",
+  "story": "The legend to the ring. Each station on the band becomes a question a revenue leader actually asks; the answer is not a dashboard project but a service that ships something and feeds the next turn — the Signal Dashboard, the Narrative OS, the next narrative version, the Rebuild Sequence.",
+  "copy": [
+    "[N] statement “Four questions, / answered every quarter.” (the page's second statement)",
+    "[R from today's services; nav names K] the four rows (question · service · ships · feeds) as drafted in §4.3",
+    "[N] quiet line, re-cut to carry the status chip: “The instruments that will automate parts of this are being built at The Lab.” + chip “In development” + link “The Lab” (§4.3 drafts it as one sentence ending ‘…and are in development →’)",
+    "Removed: the Entropy index as a sold deliverable"
+  ],
+  "phone": "≤1023: each question takes the full row; its answer sits beneath in three keyed columns (Service · Ships · Feeds, keys in mono). ≤767: one column — the question (22px), then Service, Ships and Feeds as keyed lines; the Lab line wraps under.",
+  "reference": {
+    "site": "Approved homepage evidence/T (large statement-led rows) and the kit's head grammar",
+    "borrowed": "A list led by the buyer's own words in display type, with the system's answer set quietly across the row.",
+    "kelwin": "Keyed by the band's station codes (03.1–03.4); a mono key row with drawn arrows (question → service → ships → feeds) states the reading direction once; assets named in the handover's words are set in the UI weight so the wiring between layers is visible."
+  },
+  "motion": [
+    "entrance: the kit statement choreography; the key row fades in; the four questions set one by one (130ms apart); the Lab line fades in.",
+    "interaction: the Lab link (kit hover). No toggles: nothing hides.",
+    "on the live site: reveals once on scroll. Reduced motion: final state."
+  ],
+  "demoMs": 2200,
+  "notes": "≈ 1,000px at 1440. Ruled seam from the header. Status chip uses the allowed word ‘In development’ (§1.6)."
+}

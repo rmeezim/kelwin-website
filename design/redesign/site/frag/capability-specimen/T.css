@@ -1,0 +1,99 @@
+/* ── capability-specimen · T · GTM Infrastructure — FG, figure + rule table (paper) ──
+   A page from the Orchestration Rules, as the operator holds it: on the left what must be true
+   before any rule fires and a small ink TRACE of the chosen rule's route; on the right five
+   When → Then rules. Each rule is a button; hovering or focusing previews its route, choosing
+   keeps it. The one red: the chosen rule's index square (rule 2 at rest). Rules 1, 2 and 4
+   cite other assets (the ICP, the Narrative OS), so the three layers read as wired together. */
+
+.km-capability-specimen-T__doc { margin-top: 64px; }
+.km-capability-specimen-T__body {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  padding: 36px 32px 40px;
+}
+.km-capability-specimen-T__pre { grid-column: 1 / span 4; display: flex; flex-direction: column; }
+.km-capability-specimen-T__rules { grid-column: 5 / span 8; min-width: 0; }
+.km-capability-specimen-T__ph { font-weight: var(--ui-weight); font-size: var(--ac-body); line-height: 1.35; color: var(--fg); }
+.km-capability-specimen-T__checks { margin-top: 16px; }
+.km-capability-specimen-T__checks > dt:last-of-type, .km-capability-specimen-T__checks > dd:last-of-type { border-bottom: 1px solid var(--line); }
+.km-capability-specimen-T__map { margin-top: auto; padding-top: 40px; }
+.km-capability-specimen-T__mapcap { display: flex; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
+.km-capability-specimen-T__which { color: var(--fg); }
+.km-capability-specimen-T__svg { width: 100%; max-width: 380px; height: auto; aspect-ratio: 380 / 236; }
+.km-capability-specimen-T__act { fill: none; stroke: var(--fg); stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: miter; }
+.km-capability-specimen-T__act.is-draw { stroke-dasharray: 1; animation: ac-plot 700ms var(--ease-inout) both; }
+.km-capability-specimen-T__nd { fill: var(--bg); stroke: var(--fg-3); stroke-width: 1; transition: fill 200ms var(--ease-out), stroke 200ms var(--ease-out); }
+.km-capability-specimen-T__nd.is-on { fill: var(--fg); stroke: var(--fg); }
+.km-capability-specimen-T__t { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; fill: var(--fg-3); }
+
+/* the rule table: a header row of mono keys, then five buttons laid out on the same columns */
+.km-capability-specimen-T__rh, .km-capability-specimen-T__rule {
+  display: grid; grid-template-columns: 40px minmax(0, 1.25fr) minmax(0, 1.45fr) minmax(0, .8fr) minmax(0, .7fr); column-gap: 20px;
+}
+.km-capability-specimen-T__rh {
+  padding-bottom: 12px; border-bottom: 1px solid var(--line-2);
+  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-idx); text-transform: uppercase; color: var(--fg-3);
+}
+.km-capability-specimen-T__list > li { border-bottom: 1px solid var(--line); }
+.km-capability-specimen-T__list > li:last-child { border-bottom: 0; }
+.km-capability-specimen-T__rule {
+  width: 100%; padding: 18px 0 20px; text-align: left; align-items: start; transition: background-color 200ms var(--ease-out);
+}
+.km-capability-specimen-T__rule:hover { background: var(--panel); }
+.km-capability-specimen-T__rule[aria-pressed="true"] { background: var(--panel); }
+.km-capability-specimen-T__rule:focus-visible { outline: 1px solid var(--fg); outline-offset: -1px; }
+.km-capability-specimen-T__rule:hover, .km-capability-specimen-T__rule[aria-pressed="true"] { box-shadow: -12px 0 0 var(--panel), 12px 0 0 var(--panel); }
+.km-capability-specimen-T__c { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.km-capability-specimen-T__c:nth-child(2) { color: var(--fg); }
+.km-capability-specimen-T__k { color: var(--fg-2); }
+/* a cite to another asset: weight only, never an underline (it is not a link) */
+.km-capability-specimen-T__cite { font-weight: var(--ui-weight); color: var(--fg); }
+/* the index square: the sheet's one red when its rule is chosen */
+.km-capability-specimen-T__sq {
+  display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin-top: -1px;
+  border: 1px solid var(--line-2); font-family: var(--f-mono); font-size: 12px; color: var(--fg); transition: background-color 200ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out);
+}
+.km-capability-specimen-T__rule[aria-pressed="true"] .km-capability-specimen-T__sq { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.km-capability-specimen-T__hint { font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--ac-track-idx); text-transform: uppercase; color: var(--fg-3); }
+
+/* ── entrance: the sheet lands, the checks and the rules set row by row, the route plots last ── */
+.is-play .km-capability-specimen-T__doc { animation: ac-fade 500ms var(--ease-out) 300ms both; }
+.is-play .km-capability-specimen-T__rh { animation: ac-fade 400ms var(--ease-out) 600ms both; }
+.is-play .km-capability-specimen-T__list > li { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(750ms + var(--i) * 140ms); }
+.is-play .km-capability-specimen-T__checks { animation: ac-up 600ms var(--ease-out) 700ms both; }
+.is-play .km-capability-specimen-T__map { animation: ac-fade 500ms var(--ease-out) 1300ms both; }
+.is-play .km-capability-specimen-T__act { stroke-dasharray: 1; animation: ac-plot 900ms var(--ease-inout) 1700ms both; }
+
+/* ── tablet: the checks and the route side by side, then the rules across the width ── */
+@media (max-width: 1279px) {
+  :root:not(.km-home) .km-capability-specimen-T__pre { grid-column: 1 / span 5; }
+  :root:not(.km-home) .km-capability-specimen-T__rules { grid-column: 6 / span 7; }
+}
+@media (max-width: 1023px) {
+  /* what must be true comes first (checks beside the route), then the rules that fire after it */
+  :root:not(.km-home) .km-capability-specimen-T__body { padding: 28px 24px 32px; row-gap: 48px; }
+  :root:not(.km-home) .km-capability-specimen-T__pre { grid-column: 1 / -1; grid-row: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gutter); }
+  :root:not(.km-home) .km-capability-specimen-T__rules { grid-column: 1 / -1; grid-row: 2; }
+  :root:not(.km-home) .km-capability-specimen-T__ph, :root:not(.km-home) .km-capability-specimen-T__checks { grid-column: 1; }
+  :root:not(.km-home) .km-capability-specimen-T__map { grid-column: 2; grid-row: 1 / span 2; padding-top: 0; margin-top: 0; }
+}
+/* ── phone: the checks, then each rule as a compact card — When, then "Then …" inline, then
+   Channel · Owner on one mono line. The route figure and its hint leave: on a phone the chosen
+   rule's route would sit a screen away from the rule, so the card's own words carry it. ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-capability-specimen-T__body { padding: 20px 16px 8px; row-gap: 32px; }
+  :root:not(.km-home) .km-capability-specimen-T__pre { grid-template-columns: minmax(0, 1fr); }
+  :root:not(.km-home) .km-capability-specimen-T__map,
+  :root:not(.km-home) .km-capability-specimen-T__hint { visibility: hidden; position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0; margin: 0; }
+  :root:not(.km-home) .km-capability-specimen-T__rh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  :root:not(.km-home) .km-capability-specimen-T__rule { grid-template-columns: 36px auto minmax(0, 1fr); column-gap: 0; row-gap: 6px; padding: 14px 0 16px; }
+  :root:not(.km-home) .km-capability-specimen-T__rule:hover, :root:not(.km-home) .km-capability-specimen-T__rule[aria-pressed="true"] { box-shadow: -8px 0 0 var(--panel), 8px 0 0 var(--panel); }
+  :root:not(.km-home) .km-capability-specimen-T__sq { grid-row: 1 / span 3; }
+  :root:not(.km-home) .km-capability-specimen-T__c:nth-child(2), :root:not(.km-home) .km-capability-specimen-T__c:nth-child(3) { grid-column: 2 / -1; }
+  :root:not(.km-home) .km-capability-specimen-T__c:nth-child(3)::before {
+    content: "Then"; margin-right: 8px; font-family: var(--f-mono); font-size: 11px; letter-spacing: var(--ac-track-idx); text-transform: uppercase; color: var(--fg-3);
+  }
+  :root:not(.km-home) .km-capability-specimen-T__k { margin-top: 2px; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-idx); text-transform: uppercase; color: var(--fg-2); }
+  :root:not(.km-home) .km-capability-specimen-T__c:nth-child(4) { grid-column: 2; white-space: nowrap; }
+  :root:not(.km-home) .km-capability-specimen-T__c:nth-child(5) { grid-column: 3; }
+  :root:not(.km-home) .km-capability-specimen-T__c:nth-child(5)::before { content: "·"; margin: 0 8px; color: var(--fg-3); }
+}
