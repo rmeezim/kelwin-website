@@ -18,6 +18,8 @@ Kelwin is not a cheap lead-generation agency. It is a revenue infrastructure, na
    - The `--font-serif` token resolves to a sans face.
 5. **Flat colour.**
    - No gradients, glow shadows, glass/backdrop blur or grain, except inside the hero film (`.km-film`).
+   - One founder exception (round 7, C2): on desktop, once the page scrolls, the nav bar condenses into a narrower,
+     translucent bar with a backdrop blur (a Palantir-style bar). Chrome only — never in sections.
    - The page-level `.site-grain` overlay is legacy and is not drawn on the homepage.
 6. **No static pictures in the v5 system.**
    - Build with type, grid, flat colour, rules, numbers, inline-SVG drawings and motion.
@@ -143,7 +145,12 @@ On the red surface the accents invert: paper is the action colour, and red text 
 - Homepage copy is the approved mockup copy, verbatim.
 - Change it only on the founder's instruction.
 
-## Interior pages (legacy v4 until their own review rounds)
+## Interior pages (legacy v4 — being redesigned in v5, round 8)
+The founder's go-live condition (round 7, C7): every interior page is redesigned in v5 and restructured for visual
+flow, content coherence and storytelling before anything goes live. The approved interior header is the round-3
+"Specimen sheet" (`design/redesign/site/frag/interior/X`): statement at the top of a plain graphite sheet, the page's
+own shape drawn large beneath it (minus its retired title block).
+
 Interior pages still carry v4 "Warm Instrument" bodies:
 - Instrument Sans / Inter;
 - sand `#C7B49D` structure;
@@ -158,7 +165,7 @@ They share the v5 chrome: the Navbar, the Footer, and the cut-corner primary but
 When maintaining them, keep to their v4 patterns. Don't start new v4 work, and don't carry v4 devices into v5 sections. They will be redesigned in v5 through the same mockup → founder review → build loop.
 
 ## Conversion architecture (two doors, always)
-- `/audit` is the high-intent path: a 3-question qualification waterfall that gates, then books the strategic call. Every red CTA leads to `/audit`.
+- `/audit` is the high-intent path: a 3-question qualification waterfall that gates, then books the strategic call. Every red CTA leads to `/audit` (one red moment per view: the nav plate's audit door is paper, and The Lab's application is a quiet link — round 7, C3/C5).
 - `/contact` is the low-intent general channel: questions, info requests, press, through a no-CRM mailto form. The hero secondary action leads to `/contact`.
 - Never collapse the two doors into one "Get in touch".
 
