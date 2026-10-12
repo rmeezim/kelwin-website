@@ -361,3 +361,484 @@
 .is-play .ac-cascade > * { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(var(--d, 900ms) + var(--i, 0) * 80ms); }
 /* JS resets: freeze transitions while a figure is put into its opening state */
 .ac-cold, .ac-cold * { transition: none !important; }
+
+/* ═══ §12 · interior (round 8) ═══════════════════════════════════════════════════════
+   The shared foundation for the interior pages (design/redesign/STORY-INTERIOR.md §1 and
+   interior-plan.json "shared"). APPENDED in round 8: nothing above this line changed, and
+   every class below is new, so the approved homepage fragments render exactly as before.
+   Copy the markup from R/site/snippets/interior.html; see it all in use in frag/int-kit/S.
+   Same contract as the rest of the kit: tokens only, no hex, .ac- prefix, final state by
+   default, entrances only under .is-play (html in a standalone build, the slot when stitched).
+
+   12.0 variables              12.6 Readings (third-party figures)
+   12.1 nav bar, at rest       12.7 document panel (paper)
+   12.2 interior head · .ac-go 12.8 Doors: D1 · D2 · D3 · SC · QC
+   12.3 band + flags · IX      12.9 onward link · SiblingStrip
+   12.4 body section head      12.10 motion
+   12.5 SpecimenTag · status   12.11 tablet (≤1023) and phone (≤767) composition          */
+
+/* ── 12.0 · variables (sizes only) ── */
+:root {
+  --ac-nav-h: 96px;          /* the bar at rest */
+  --ac-int-h1: 96px;         /* interior h1 at 1440 (production floor: 64px) */
+  --ac-int-band: 300;        /* band frame height in frame units (1 = 1px at 1440), 280–340 */
+  --ac-int-end: 112px;       /* space under the band (or under the lede on a text sheet) */
+  --ac-door-line: 40px;      /* D1 · D3 · SC display sentence (spec 32–42) */
+  --ac-door-xl: 64px;        /* D2 two-voice line, and a page's second statement */
+}
+
+/* ── 12.1 · the nav bar at rest — the mockup twin of production's Navbar on an interior page:
+   solid graphite, 96px, lockup · five tracked-caps items · outlined AUDIT REQUEST ↗, one
+   margin-to-margin hairline with a + at each end. The current section's item sits lit on the
+   hairline (.is-current). On /audit no item lights: the outlined action takes .is-current +
+   aria-current="page" and points at #qualify. Interior bars do not animate (production shows
+   them at rest), so there is no entrance here.
+   <header class="ac-nav">…</header> is the FIRST child of the page's header section.        */
+.ac-nav {
+  position: relative; z-index: 2; height: var(--ac-nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding-inline: var(--margin);
+}
+.ac-nav::after {
+  content: ""; position: absolute; left: var(--margin); right: var(--margin); bottom: 0;
+  height: 1px; background: var(--line);
+}
+.ac-nav__brand { display: inline-flex; color: var(--fg); }
+.ac-nav__brand .km-logo { --logo-h: 24px; }
+.ac-nav__menu {
+  position: absolute; left: 50%; top: 0; bottom: 0; transform: translateX(-50%);
+  display: flex; align-items: stretch; gap: 40px; white-space: nowrap;
+}
+.ac-nav__item {
+  position: relative; display: inline-flex; align-items: center;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 12px; line-height: 1;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; white-space: nowrap;
+  color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.ac-nav__item:hover, .ac-nav__item.is-current { color: var(--fg); }
+.ac-nav__item.is-current::after {
+  content: ""; position: absolute; left: 0; right: .18em; bottom: 0; height: 1px; background: var(--fg);
+}
+.ac-nav__brand:focus-visible, .ac-nav__item:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
+.ac-nav__cta { color: var(--fg); }
+.ac-nav__cta.is-current { border-color: var(--fg); }
+.ac-nav__reg { z-index: 3; --y: 100%; }
+.ac-nav__reg--l { --x: var(--margin); }
+.ac-nav__reg--r { --x: calc(100% - var(--margin)); }
+
+/* ── 12.2 · the interior head — header X, the Specimen sheet, title block retired ──
+   <section class="km km-<id>-S ac-int" data-surface="dark"> → .ac-nav → .ac-head.ac-ihead → .ac-band
+   Rows: label (■ label + mono breadcrumb, the page's only meta) · h1 two-voice 96px cols 1–9 ·
+   48×2 rule · lede cols 1–6 · the facts ledger (.ac-facts) cols 9–12, bottom-aligned with the lede.
+   The h1 line beside the ledger must end before col 9 (x ≤ 930 at 1440); keep each fact value
+   to two lines at most. No doors in a header: the one quiet door lives in the ledger (.ac-go). */
+.ac-int { padding-bottom: var(--ac-int-end); }
+.ac-head.ac-ihead { --ac-h-sec: var(--ac-int-h1); --ac-d0: 120ms; padding-top: 36px; }
+.ac-head.ac-ihead > .ac-statement { grid-column: 1 / span 9; }
+.ac-head.ac-ihead > .ac-lede { max-width: 30em; }
+.ac-head.ac-ihead > .ac-facts { grid-column: 9 / span 4; grid-row: 2 / span 3; align-self: end; margin-bottom: -11px; }
+.ac-facts .ac-spec > dt { min-width: 92px; }
+
+/* the quiet inline door: Mona, underlined, drawn ↗ (.ac-go--down → ↓ for an on-page jump).
+   ONLY two places, as approved in header X: the facts ledger's door, and a Readings source
+   (with the D1 object's foot line, which points at the same kind of thing: a document).
+   It is the one sanctioned exception to the kit's three actions (.ac-btn · .ac-btn-o ·
+   .ac-link), because a ledger value and a source are sentence case. Everything else that
+   moves the reader on (rows, exits, "Instead" lines, "send it to me") is an .ac-link →. */
+.ac-go {
+  display: inline-flex; align-items: center; gap: 10px; color: var(--fg);
+  box-shadow: inset 0 -1px 0 var(--line-2); transition: box-shadow 200ms var(--ease-out);
+}
+.ac-go:hover { box-shadow: inset 0 -1px 0 var(--fg); }
+.ac-go::after {
+  content: ""; flex: none; width: 10px; height: 10px; background-color: currentColor;
+  -webkit-mask: var(--ac-go-arr) center / contain no-repeat; mask: var(--ac-go-arr) center / contain no-repeat;
+  --ac-go-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 9.5 9.5 2.5M3.5 2.5h6v6' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  transition: transform 250ms var(--ease-out);
+}
+.ac-go:hover::after { transform: translate(2px, -2px); }
+.ac-go--down::after { --ac-go-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1.5v9M2 6.5l4 4 4-4' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E"); }
+.ac-go--down:hover::after { transform: translateY(2px); }
+.ac-go:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* ── 12.3 · the band — the page's own shape, cols 1–12, in a registration frame ──
+   <figure class="ac-band ac-wrap" aria-labelledby="…"><div class="ac-frame ac-band__frame" style="--fh:300">
+     <svg class="ac-svg ac-band__svg" viewBox="0 0 1312 300">…</svg> flags · ≤1 .ac-dim · 4 × .ac-reg
+   </div><figcaption class="ac-band__key" id="…">description + keyed list</figcaption></figure>
+   Rules: ≤4 callouts, ≤1 dimension, EXACTLY ONE red element, no title block, no "Fig.".
+   Flags and the dimension are aria-hidden: the figcaption carries the words, once.
+   Text sheets (contact, articles) have no band; legal uses the contents strip (.ac-band--ix). */
+.ac-band { margin-top: 64px; }
+/* FRAME UNITS: everything placed in the band is a unitless number in the 1312-wide frame
+   (--fh its height, the flags' --x --y --a, a dimension's --x --y --w, a callout's --x --y):
+   1 unit = 1px at 1440 and scales with the frame below it (production's --u pattern, as in
+   the hero film). The frame keeps the drawing's proportions, so the SVG never distorts.   */
+.ac-band__frame {
+  container-type: inline-size; --u: calc(100cqw / 1312);
+  width: 100%; height: auto; aspect-ratio: 1312 / var(--fh, var(--ac-int-band));
+}
+.ac-band__frame > .ac-dim { left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); width: calc(var(--w, 120) * var(--u)); }
+.ac-band__frame > .ac-dim--v { width: 1px; height: calc(var(--h, 120) * var(--u)); }
+.ac-band__frame > .ac-callout { left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); }
+.ac-band__frame > .ac-callout--l { left: auto; right: calc(100% - var(--x, 0) * var(--u)); }
+.ac-band__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* the phone drawing (§1.9: every band recomposes at ≤767): an optional second <svg> with
+   .ac-band__svg--sm, drawn in its own viewBox, swapped in by 12.11. Swapped with visibility,
+   never display (see 12.11 for why). */
+.ac-band__svg--sm { visibility: hidden; }
+/* the keyed list: the drawing's words for screen readers at every width, and the visible
+   callout list under the band below the stage (≤1023, 12.11), where the flags are hidden. */
+.ac-band__key { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ac-band__keys { display: grid; gap: 10px; }
+.ac-band__keys > li { display: flex; align-items: baseline; gap: 12px; font-size: var(--ac-support); line-height: 1.45; color: var(--fg-2); }
+
+/* IX · the contents strip — the legal header's band (§3.3): no drawing, no red, the clause
+   index as links. One row of cells on two hairlines, each an .ac-idx number over the clause
+   title. On phones (12.11) the row folds behind a "Contents" button with the kit's +/− toggle
+   (a short init in snippets/interior.html, section 2b, flips the button's aria-expanded).
+   <nav class="ac-band ac-band--ix ac-wrap" aria-label="Contents"> button.ac-ix__btn · ol.ac-ix__list */
+.ac-band--ix { margin-top: 64px; }
+.ac-ix__btn { display: none; }   /* phone only; it has no entrance, so display is safe here */
+.ac-ix__list {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+  border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line);
+}
+.ac-ix__list > li + li { box-shadow: inset 1px 0 0 var(--line); }
+.ac-ix__a {
+  display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 18px 16px 20px;
+  font-size: var(--ac-support); line-height: 1.4; color: var(--fg-2); transition: color 200ms var(--ease-out);
+}
+.ac-ix__list > li:first-child > .ac-ix__a { padding-left: 0; }
+.ac-ix__a:hover { color: var(--fg); }
+.ac-ix__a:hover .ac-idx { color: var(--fg-2); }
+.ac-ix__a:focus-visible { outline: 1px solid var(--fg); outline-offset: -1px; }
+/* the flag: code + label in a row, a straight leader down (or up) to its anchor on the drawing.
+   --x anchor x · --y label-row top (default 18) · --a anchor y — unitless frame units.
+   <div class="ac-flag" style="--x:292;--a:104" aria-hidden="true"><span class="ac-callout__code">01.1</span><span class="ac-callout__t">Positioning</span></div>
+   .ac-flag--b hangs the label BELOW the drawing (set --y to the label-row top, --a above it).  */
+.ac-flag {
+  position: absolute; left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 18) * var(--u));
+  display: flex; align-items: center; gap: 10px; white-space: nowrap; pointer-events: none;
+}
+.ac-flag::before {
+  content: ""; position: absolute; left: 0; top: 22px; width: 1px;
+  height: calc((var(--a, 120) - var(--y, 18)) * var(--u) - 22px); background: var(--line-2); transform-origin: 50% 0;
+}
+.ac-flag::after {
+  content: ""; position: absolute; left: -2px; top: calc((var(--a, 120) - var(--y, 18)) * var(--u) - 2.5px);
+  width: 5px; height: 5px; background: var(--fg-2);
+}
+.ac-flag--b::before { top: calc((var(--a, 120) - var(--y, 18)) * var(--u)); height: calc((var(--y, 18) - var(--a, 120)) * var(--u)); transform-origin: 50% 100%; }
+.ac-flag.is-on::before, .ac-flag.is-on::after { background: var(--fg); }
+.ac-flag.is-on .ac-callout__t { color: var(--fg); }
+
+/* ── 12.4 · body section head: ■ label (no meta) → one-line heading → optional lede ──
+   The heading is the kit's own .ac-h3.ac-h3--lg (42px), on an <h2>: the page outline goes
+   h1 → h2. .ac-shead only places it.
+   .ac-shead--statement swaps in the page's SECOND two-voice statement (64px + rule); a page
+   has at most two (the h1 plus one, in a body section OR in a D2 close — never both).       */
+.ac-shead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+.ac-shead > .ac-labelrow { grid-column: 1 / -1; }
+.ac-shead > .ac-h3 { grid-column: 1 / span 10; margin-top: 28px; }
+.ac-shead__lede { grid-column: 1 / span 6; margin-top: 20px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 60ch; }
+.ac-shead--statement > .ac-statement { --ac-h-sec: var(--ac-door-xl); grid-column: 1 / span 11; margin-top: 32px; }
+.ac-shead--statement > .ac-rule { grid-column: 1; margin-top: 32px; }
+.ac-shead--statement > .ac-shead__lede { margin-top: 28px; font-size: var(--ac-lede); line-height: 1.5; }
+
+/* ── 12.5 · SpecimenTag and status chips (rule 7: never fabricate) ──
+   Both are the kit's .ac-chip (22px, mono 11px, .10em) with a modifier: no parallel chip.
+   SpecimenTag: p.ac-specimen > span.ac-chip.ac-chip--specimen "Specimen" + ONE support line
+   (.ac-specimen__t, 14px ≥ the 13.5 floor) naming what is illustrative. Every illustrative
+   artifact on the interior carries one (keeps Terms L·03 true).
+   Status chip: span.ac-chip.ac-chip--status with the allowed words only — In development ·
+   Drafting · In production · Not yet published · None yet. Dashed = not built yet (the
+   handover's dashed→solid); the hollow square says "not live". States are words, never
+   colours; no dates unless the founder confirms.                                            */
+.ac-chip--specimen, .ac-chip--status { flex: none; border-color: var(--fg-3); line-height: 1; }
+.ac-chip--specimen { color: var(--fg); }
+.ac-chip--status { gap: 8px; padding-left: 7px; border-style: dashed; }
+.ac-chip--status::before { content: ""; width: 6px; height: 6px; flex: none; box-shadow: inset 0 0 0 1px currentColor; }
+.ac-specimen { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin: 0; }
+.ac-specimen__t { font-size: 14px; line-height: 1.45; color: var(--fg-2); }
+
+/* ── 12.6 · Readings — a third-party figure: number · its unit in words · source · year ↗ ──
+   ≤2 per page, none of the homepage's four (17% · 95:5 · 77% · 53%). Hedge as the source does.
+   The source link opens a new tab and says so to screen readers (.ac-sr). Re-verify before launch.
+   Bind the year to the source ("Review&nbsp;·&nbsp;2015") so a wrap never strands "· 2015 ↗". */
+.ac-readings { display: grid; gap: 32px; align-content: start; }
+.ac-reading { margin: 0; padding-top: 16px; border-top: 1px solid var(--line-2); }
+.ac-reading__fig {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 44px; line-height: 1; letter-spacing: -0.02em;   /* never tnum: Mona's tabular set is mono-style (slashed 0) */
+  color: var(--fg); white-space: nowrap;
+}
+.ac-reading__u { font-weight: var(--light-weight); color: var(--fg-2); }
+.ac-reading__to {   /* a drawn → inside a figure ("81% → 31%"): <span class="ac-reading__to"><span class="ac-sr">to</span></span> */
+  display: inline-block; width: .5em; height: .36em; margin: 0 .16em; vertical-align: .14em; background-color: var(--fg-3);
+  -webkit-mask: var(--ac-rd-arr) center / contain no-repeat; mask: var(--ac-rd-arr) center / contain no-repeat;
+  --ac-rd-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.2' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.ac-reading__t { margin-top: 12px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); max-width: 34ch; }
+.ac-reading__src {
+  margin-top: 12px; font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 20px;
+  letter-spacing: var(--ac-track-mono); text-transform: uppercase; color: var(--fg-2);
+}
+/* a long source wraps with its ↗ at the end of the last line */
+.ac-reading__src .ac-go { display: inline; box-shadow: none; text-decoration: underline 1px var(--line-2); text-underline-offset: 6px; transition: text-decoration-color 200ms var(--ease-out); }
+.ac-reading__src .ac-go:hover { box-shadow: none; text-decoration-color: var(--fg); }
+.ac-reading__src .ac-go::after { display: inline-block; margin-left: 10px; vertical-align: 0; }
+
+/* ── 12.7 · the document panel — "a document you could hold" ──
+   Each page has exactly ONE paper moment, always a document: put data-surface="light" on its
+   section (or on the panel itself when a sheet lies on graphite). Head: the document's own
+   name + one mono note (never a number, never a title block). Foot: the SpecimenTag.
+   .ac-doc--mini is the D1 object: graphite, outlined, never paper (paper is the page's one). */
+.ac-doc { display: block; position: relative; background: var(--bg); color: var(--fg); border: 1px solid var(--line-2); --ac-occlude: var(--bg); }
+.ac-doc__head {
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  min-height: 52px; padding: 0 24px; border-bottom: 1px solid var(--line);
+}
+.ac-doc__name { font-weight: var(--ui-weight); font-size: var(--ac-support); line-height: 1.3; color: var(--fg); }
+.ac-doc__body { display: block; padding: 32px 24px; }
+.ac-doc__foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap;
+  min-height: 56px; padding: 12px 24px; border-top: 1px solid var(--line);
+}
+.ac-doc--mini .ac-doc__head { min-height: 44px; padding: 0 16px; }
+.ac-doc--mini .ac-doc__body { padding: 8px 16px 12px; }
+.ac-doc--mini .ac-doc__foot { min-height: 0; padding: 12px 16px; }
+
+/* ── 12.8 · Doors — the close, in five variants (never the red plane: that is homepage-only) ──
+   Every Door states what the audit RETURNS for this page's subject (documented scope only; the
+   audit "reads", it never "instruments"). Red = .ac-btn "Request a System Audit" → /audit, and
+   it is the view's only red. Quiet = .ac-link "Talk to the team" → /contact. Every Door ends on
+   the same foot: one hairline, then the onward link (capability pages: the SiblingStrip) —
+   except QC, whose one row of quiet doors ends on the onward link itself (one hairline, total).
+   Headings: a Door's first heading is its h2. D1 and D2: the line / statement is the h2.
+   D3 and SC put h3s before their line, so their visible label is the h2 (h2.ac-label) and the
+   line is an h3.ac-door__line. QC: a visible h2.ac-label, or h3.ac-sr when it sits inside
+   another section (careers).
+   D1 decision band   .ac-door--d1  line left (cols 1–7) · object + doors right (cols 8–12)
+        compact        .ac-door--d1.ac-door--compact  (articles: no object, 32px line)
+   D2 statement close .ac-head.ac-door.ac-door--d2  64px two-voice · rule · lede · doors
+   D3 gate close      .ac-door--d3  the honest list (cols 1–6) · gate line + doors (cols 8–12)
+   SC split close     .ac-door--sc  two things side by side on paper (cols 1–7 | 9–12)
+   QC quiet close     .ac-door--qc  quiet links only, NO red anywhere in it                   */
+.ac-door { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start; }
+.ac-door > .ac-labelrow { grid-column: 1 / -1; grid-row: 1; }
+.ac-door__line {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-door-line); line-height: 1.14; letter-spacing: var(--display-tracking); color: var(--fg);
+  text-wrap: balance;
+}
+.ac-door__sub { font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 46ch; }
+.ac-door__foot {
+  position: relative; grid-column: 1 / -1; margin-top: 80px; padding-top: 28px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px 48px;
+}
+.ac-door__foot::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%;
+}
+.ac-door__foot > .ac-sibs { flex: 1 1 100%; }
+.ac-door:not(.ac-head) > .ac-door__foot { grid-row: 3; }
+/* D1 */
+.ac-door--d1 > .ac-door__line { grid-column: 1 / span 7; grid-row: 2; margin-top: 36px; max-width: 18em; }
+.ac-door--d1 > .ac-door__side { grid-column: 8 / span 5; grid-row: 2; margin-top: 36px; display: flex; flex-direction: column; gap: 32px; }
+.ac-door--d1 .ac-door__side .ac-doors { gap: 20px 32px; }
+.ac-door--compact { --ac-door-line: 32px; }
+.ac-door--compact > .ac-door__line { grid-column: 1 / span 7; }
+.ac-door--compact > .ac-door__side { align-self: end; }
+.ac-door--compact > .ac-door__foot { margin-top: 64px; }
+/* D2: the head grammar at 64px; the foot takes row 6 */
+.ac-head.ac-door--d2 { --ac-h-sec: var(--ac-door-xl); }
+.ac-head.ac-door--d2 > .ac-door__foot { grid-row: 6; }
+.ac-head.ac-door--d2 > .ac-lede { max-width: 40ch; }
+/* D3 */
+.ac-door--d3 > .ac-door__list { grid-column: 1 / span 6; grid-row: 2; margin-top: 36px; }
+.ac-door--d3 > .ac-door__gate { grid-column: 8 / span 5; grid-row: 2; margin-top: 36px; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
+.ac-door--d3 .ac-door__gate .ac-doors { margin-top: 12px; }
+.ac-door__rows { border-top: 1px solid var(--line-2); }
+.ac-door__row {
+  display: grid; grid-template-columns: 56px minmax(0, 1fr); column-gap: var(--gutter);
+  padding: 20px 0 22px; border-bottom: 1px solid var(--line);
+}
+.ac-door__row > .ac-idx { line-height: 26px; }
+.ac-door__row-t { font-weight: var(--ui-weight); font-size: 20px; line-height: 1.3; color: var(--fg); }
+.ac-door__row-b { margin-top: 6px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 52ch; }
+.ac-door__row-i { margin-top: 10px; display: flex; align-items: baseline; gap: 12px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg); }
+.ac-door__row-i > .ac-idx { flex: none; }
+/* SC: two things side by side, divided by one hairline in col 8 */
+.ac-door--sc > .ac-door__a { grid-column: 1 / span 7; grid-row: 2; margin-top: 36px; }
+.ac-door--sc > .ac-door__b { grid-column: 9 / span 4; grid-row: 2; margin-top: 36px; position: relative; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; align-self: stretch; }
+.ac-door--sc > .ac-door__b::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: calc(-1 * (var(--col) / 2 + var(--gutter))); width: 1px;
+  background: var(--line); transform-origin: 50% 0;
+}
+.ac-door--sc .ac-door__b .ac-doors { margin-top: 12px; }
+/* QC: quiet links only — up to three pairs (a plain question, then where it goes) in three
+   columns on ONE hairline. The last pair IS the page's onward link, so QC has no separate
+   foot (no second hairline). Standalone (legal; contact's coda): a visible ■ label row leads,
+   so it never reads as a stray footer row above the site footer. Inside another section
+   (careers: after the bench form, in the paper FM section): .ac-door--inset, no label row,
+   an h3.ac-sr, no section and no ruled seam of its own.                                     */
+.ac-door__quiet {
+  grid-column: 1 / -1; grid-row: 2;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter);
+  border-top: 1px solid var(--line-2);
+}
+.ac-door__quiet > li { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 24px 24px 0 0; }
+.ac-door__q { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.ac-door--qc > .ac-labelrow ~ .ac-door__quiet { margin-top: 36px; }
+.ac-door--qc.ac-door--inset { margin-top: 96px; }
+
+/* ── 12.9 · the onward link and the SiblingStrip ──
+   Onward: ONE per page, the buyer's next question in plain words, then where it goes (.ac-link).
+   <p class="ac-onward"><span class="ac-onward__q">Who would you be working with?</span><a class="ac-link" href="/about">About</a></p>
+   SiblingStrip (capability pages, in the D1 foot, in place of the onward link): the three layers
+   in their fixed order 01 · 02 · 03, each with its glyph and its relation to this page; the
+   current one says "You are here" and is not a link.                                        */
+.ac-onward { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; margin: 0; }
+.ac-onward__q { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.ac-sibs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter); }
+.ac-sib {
+  display: grid; grid-template-columns: 72px minmax(0, 1fr); column-gap: 20px; align-items: center;
+  color: var(--fg-3); transition: color 200ms var(--ease-out);
+}
+.ac-sib__g { grid-row: 1 / span 2; display: block; width: 72px; height: 48px; overflow: visible; }
+.ac-sib__g path, .ac-sib__g .ac-sib__box { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.ac-sib__g .ac-sib__nd { fill: currentColor; stroke: none; }
+.ac-sib__rel {
+  align-self: end; font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-mono);
+  text-transform: uppercase; color: var(--fg-3); white-space: nowrap;
+}
+.ac-sib__name {
+  align-self: start; display: inline-flex; align-items: center; gap: 10px; margin-top: 4px;
+  font-size: var(--ac-body); line-height: 1.35; color: var(--fg-2); white-space: nowrap;
+}
+a.ac-sib .ac-sib__name::after {
+  content: ""; flex: none; width: 13px; height: 11px; background-color: currentColor; transition: transform 250ms var(--ease-out);
+  -webkit-mask: var(--ac-sib-arr) center / contain no-repeat; mask: var(--ac-sib-arr) center / contain no-repeat;
+  --ac-sib-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+a.ac-sib:hover { color: var(--fg); }
+a.ac-sib:hover .ac-sib__name { color: var(--fg); }
+a.ac-sib:hover .ac-sib__name::after { transform: translateX(3px); }
+a.ac-sib:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
+.ac-sib.is-here { color: var(--fg); }
+.ac-sib.is-here .ac-sib__name { color: var(--fg); }
+
+/* ── 12.10 · motion (only under .is-play; reduced motion = no .is-play = this final state) ──
+   The interior head reuses the kit's head choreography (§10) via .ac-head; these add the
+   facts ledger, the section head and the Doors. The band's morph is the page's own (its one
+   orchestrated moment): start it at --ac-band-d (≈900ms) so it follows the head.           */
+:root { --ac-band-d: 900ms; }
+.is-play .ac-head > .ac-facts { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 700ms) both; }
+.is-play .ac-shead > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) var(--ac-d0, 0ms) both; }
+.is-play .ac-shead > .ac-h3 { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 80ms) both; }
+.is-play .ac-band--ix { animation: ac-up 600ms var(--ease-out) var(--ac-band-d) both; }
+.is-play .ac-shead .ac-line > span { animation: ac-rise 800ms var(--ease-out) calc(var(--ac-d0, 0ms) + 80ms) both; }
+.is-play .ac-shead .ac-line + .ac-line > span { animation-delay: calc(var(--ac-d0, 0ms) + 280ms); }
+.is-play .ac-shead > .ac-rule { animation: ac-drawx 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 480ms) both; }
+.is-play .ac-shead > .ac-shead__lede { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 300ms) both; }
+.is-play .ac-door:not(.ac-head) > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) var(--ac-d0, 0ms) both; }
+.is-play .ac-door > .ac-door__line,
+.is-play .ac-door > .ac-door__list,
+.is-play .ac-door > .ac-door__a,
+.is-play .ac-door > .ac-door__quiet { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 120ms) both; }
+.is-play .ac-door > .ac-door__side,
+.is-play .ac-door > .ac-door__gate,
+.is-play .ac-door > .ac-door__b { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 320ms) both; }
+.is-play .ac-door--sc > .ac-door__b::before { animation: ac-drawy 700ms var(--ease-out) calc(var(--ac-d0, 0ms) + 200ms) both; }
+.is-play .ac-door__foot::before { animation: ac-drawx 900ms var(--ease-out) calc(var(--ac-d0, 0ms) + 500ms) both; }
+.is-play .ac-door__foot > * { animation: ac-fade 500ms var(--ease-out) calc(var(--ac-d0, 0ms) + 800ms) both; }
+
+/* ── 12.11 · tablet (≤1023) and phone (≤767) — ONE shared composition, so no page restyles a
+   kit piece to make it fit. The breakpoints are production's (km-kit.css §11) and the story
+   map's (§1.9 ≤767), not the homepage frags' 760.
+   The mockup stage itself is a fixed 1440 (base.css body width = --stage; ipage.py zooms it),
+   so mk.mjs shots and the stitched pages are judged at 1440. These rules are what ports to
+   production, what a page's own phone drawing (.ac-band__svg--sm) must sit in, and what a
+   phone preview shows (set --stage / --margin / --gutter to the phone's values).
+   The stitched pages (html.km-home: a 1440 stage zoomed to the viewer) skip these rules, so a
+   phone opening a stitched page sees the 1440 composition zoomed, never a phone layout
+   squeezed into a 1440 stage. Guard your own phone rules the same way.
+   TRAP: never display:none (or a new animation-name) on anything with an entrance. mk.mjs's
+   full-height capture briefly matches small widths, which restarts that entrance and leaves
+   it blank in the 1440 shot. Hide with visibility, as every rule below does.               */
+@media (max-width: 1023px) {
+  :root:not(.km-home) { --ac-nav-h: 64px; --ac-int-h1: 64px; --ac-door-xl: 52px; }
+  :root:not(.km-home) .ac-nav__menu { visibility: hidden; }   /* the live bar is production's Navbar: menu button + sheet */
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-statement { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 9; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-facts { grid-column: 1 / span 9; grid-row: 5; align-self: start; margin: 40px 0 0; }
+  /* band callouts move with the frame (frame units) but their 14px labels do not shrink, so
+     below 1024 they give way to the keyed list (the figcaption, made visible) */
+  :root:not(.km-home) .ac-band .ac-flag, :root:not(.km-home) .ac-band .ac-callout, :root:not(.km-home) .ac-band .ac-dim { visibility: hidden; }
+  :root:not(.km-home) .ac-band__key { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin-top: 20px; }
+  :root:not(.km-home) .ac-shead > .ac-h3, :root:not(.km-home) .ac-shead--statement > .ac-statement { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-shead__lede { grid-column: 1 / span 9; }
+  :root:not(.km-home) .ac-ix__list { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-columns: auto; border-bottom: 0; }
+  :root:not(.km-home) .ac-ix__list > li, :root:not(.km-home) .ac-ix__list > li + li { box-shadow: inset 0 -1px 0 var(--line); }
+  :root:not(.km-home) .ac-ix__list > li > .ac-ix__a { padding-left: 0; }
+  /* Doors: the right-hand half drops under the left, foot last */
+  :root:not(.km-home) .ac-door--d1 > .ac-door__line, :root:not(.km-home) .ac-door--d3 > .ac-door__list, :root:not(.km-home) .ac-door--sc > .ac-door__a { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-door--d1 > .ac-door__side, :root:not(.km-home) .ac-door--d3 > .ac-door__gate, :root:not(.km-home) .ac-door--sc > .ac-door__b { grid-column: 1 / span 9; grid-row: 3; margin-top: 48px; }
+  :root:not(.km-home) .ac-door:not(.ac-head) > .ac-door__foot { grid-row: 4; }
+  :root:not(.km-home) .ac-door--sc > .ac-door__b { padding-top: 40px; }
+  :root:not(.km-home) .ac-door--sc > .ac-door__b::before { top: 0; bottom: auto; left: 0; right: 0; width: auto; height: 1px; }
+  :root:not(.km-home) .ac-head.ac-door--d2 > .ac-lede, :root:not(.km-home) .ac-head.ac-door--d2 > .ac-doors { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-sibs { grid-template-columns: minmax(0, 1fr); row-gap: 20px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) { --ac-int-h1: 40px; --ac-door-line: 28px; --ac-door-xl: 40px; --ac-int-end: 72px; }
+  /* headlines wrap (production does the same); the line masks still rise */
+  :root:not(.km-home) .ac-ihead .ac-line, :root:not(.km-home) .ac-shead .ac-line, :root:not(.km-home) .ac-door .ac-line { white-space: normal; }
+  :root:not(.km-home) .ac-ihead > .ac-labelrow { flex-wrap: wrap; row-gap: 8px; }
+  :root:not(.km-home) .ac-head.ac-ihead { padding-top: 24px; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-statement, :root:not(.km-home) .ac-head.ac-door--d2 > .ac-statement { margin-top: 24px; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-lede, :root:not(.km-home) .ac-head.ac-ihead > .ac-facts { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-lede { font-size: 17px; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-facts { margin-top: 32px; }
+  :root:not(.km-home) .ac-facts .ac-spec > dt { min-width: 0; }
+  /* band: the page's own phone drawing (callouts are already the keyed list, see ≤1023) */
+  :root:not(.km-home) .ac-band { margin-top: 48px; }
+  /* the phone frame takes the phone drawing's own proportions: --sm-w × --sm-h (its viewBox) */
+  :root:not(.km-home) .ac-band__frame:has(> .ac-band__svg--sm) { aspect-ratio: var(--sm-w, 358) / var(--sm-h, 240); }
+  :root:not(.km-home) .ac-band__frame:has(> .ac-band__svg--sm) > .ac-band__svg:not(.ac-band__svg--sm) { visibility: hidden; }
+  :root:not(.km-home) .ac-band__svg--sm { visibility: visible; }
+  /* IX: the clause row folds behind "Contents" (+/−) */
+  :root:not(.km-home) .ac-ix__btn {
+    display: flex; align-items: center; justify-content: space-between; width: 100%; height: 56px;
+    border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line);
+    font-weight: var(--ui-weight); font-size: 12px; line-height: 1; letter-spacing: var(--label-tracking);
+    text-transform: uppercase; color: var(--fg);
+  }
+  :root:not(.km-home) .ac-ix__btn:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+  :root:not(.km-home) .ac-ix__list { grid-template-columns: minmax(0, 1fr); border-top: 0; }
+  :root:not(.km-home) .ac-ix__a { flex-direction: row; align-items: baseline; gap: 16px; padding: 14px 0; }
+  :root:not(.km-home) .ac-band--ix:has(.ac-ix__btn[aria-expanded="false"]) .ac-ix__list { visibility: hidden; height: 0; overflow: hidden; border: 0; }
+  /* section head */
+  :root:not(.km-home) .ac-shead > .ac-h3 { font-size: 28px; margin-top: 20px; }
+  :root:not(.km-home) .ac-shead__lede, :root:not(.km-home) .ac-shead--statement > .ac-shead__lede { grid-column: 1 / -1; font-size: 16px; }
+  /* document · readings */
+  :root:not(.km-home) .ac-doc__head { flex-wrap: wrap; row-gap: 4px; padding: 12px 16px; }
+  :root:not(.km-home) .ac-doc__body { padding: 24px 16px; }
+  :root:not(.km-home) .ac-doc__foot { padding: 12px 16px; }
+  :root:not(.km-home) .ac-reading__fig { font-size: 40px; }
+  /* Doors */
+  :root:not(.km-home) .ac-door--d1 > .ac-door__side, :root:not(.km-home) .ac-door--d3 > .ac-door__gate, :root:not(.km-home) .ac-door--sc > .ac-door__b { grid-column: 1 / -1; margin-top: 40px; }
+  :root:not(.km-home) .ac-door--d1 > .ac-door__line, :root:not(.km-home) .ac-door--d3 > .ac-door__list, :root:not(.km-home) .ac-door--sc > .ac-door__a { margin-top: 24px; }
+  :root:not(.km-home) .ac-door__foot { margin-top: 56px; }
+  :root:not(.km-home) .ac-door--compact > .ac-door__foot { margin-top: 48px; }
+  :root:not(.km-home) .ac-door__row { grid-template-columns: 48px minmax(0, 1fr); column-gap: 12px; }
+  :root:not(.km-home) .ac-door__row-t { font-size: 18px; }
+  :root:not(.km-home) .ac-door__row-i { flex-direction: column; align-items: flex-start; gap: 4px; }
+  :root:not(.km-home) .ac-door__row-i > .ac-link { font-size: 12px; letter-spacing: .12em; }   /* one line at 298px, as fit/U's phone link */
+  :root:not(.km-home) .ac-door__quiet { grid-template-columns: minmax(0, 1fr); }
+  :root:not(.km-home) .ac-door__quiet > li { padding: 20px 0; }
+  :root:not(.km-home) .ac-door__quiet > li + li { box-shadow: inset 0 1px 0 var(--line); }
+  :root:not(.km-home) .ac-door--qc.ac-door--inset { margin-top: 64px; }
+  :root:not(.km-home) .ac-sib { grid-template-columns: 54px minmax(0, 1fr); column-gap: 16px; }
+  :root:not(.km-home) .ac-sib__g { width: 54px; height: 36px; }
+  :root:not(.km-home) .ac-sib__rel, :root:not(.km-home) .ac-sib__name { white-space: normal; }
+}

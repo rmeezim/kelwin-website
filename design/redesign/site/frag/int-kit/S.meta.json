@@ -1,0 +1,18 @@
+{
+  "title": "Interior kit, in use",
+  "direction": "A×C · Round 8 · shared foundation",
+  "summary": "The reference sheet for the round-8 interior pages: every shared interior component from kit-ac.css §12 (nav at rest, the Specimen-sheet header with its facts ledger and band slot, the legal header's contents strip, the body section head, the paper document panel with its SpecimenTag, Readings, status chips, all five Doors with QC shown standalone and inset, the onward link and the SiblingStrip), each shown with real Kelwin content so a dozen page builders produce one coherent system.",
+  "reference": {
+    "site": "Approved Kelwin system: interior/X (header, round 3), hero/T (nav), cta/U and the 404 (doors and head grammar), evidence/T (figures with sources), letter/S (field-note rows), fit/U (ledgers)",
+    "borrowed": "Header X's Specimen-sheet grammar with its title block retired; the homepage's head grammar, kit actions, ledgers and drawing classes.",
+    "kelwin": "No new devices: the interior kit extends the approved homepage kit and adds only what the story map asks for (STORY-INTERIOR.md §1)."
+  },
+  "motion": [
+    "entrance: the head plays the kit's head choreography (label fades, the h1 rises line by line, the rule draws, the lede rises), the facts ledger rises 700ms after the head starts, the band's registration marks register, its column guides stay, its baseline plots, then its two flags and its dimension land.",
+    "body: section heads fade/rise; each Door rises (line, then the right-hand side 200ms later), its foot hairline draws and its onward link fades in. All play once.",
+    "ambient: none. interaction: hover states only (links, the mini readout sheet, sibling links, contents-strip cells); on phones the contents strip's Contents button opens and closes its list.",
+    "on the live site: each section plays once as it scrolls into view (the stitched page puts .is-play on each slot). The interior nav bar has no entrance: production shows it at rest. Reduced motion: final state at once."
+  ],
+  "demoMs": 2600,
+  "notes": "A builder reference, not a page, and not for the founder's review: it is about 8,200px tall at 1440 and deliberately exceeds the 1400px cap so every component can be seen at full size. The slim mono strips between parts (on --panel-2) are kit annotations naming the component, its classes and where it is used; they carry no section numbers, are not site design and never ship. It carries five red buttons only because it shows every red-carrying Door at once; a real page has one red ask (QC has none). The band is a placeholder slot (column guides, two flags, one dimension, the one red tick, plus its phone drawing), clearly labelled; each page draws its own band kind there. The sheet composes at 1023 and 767 like the kit (checked at 390, 834, 1024 and 1280 by overriding --stage); the matrix table scrolls sideways on phones only because it is a demo artifact. Copy is real Kelwin content from STORY-INTERIOR.md §4 (About header, Privacy clause titles, Narrative Systems specimen and readings, Insights in-the-works rows, and the Doors of Narrative Systems, the 17% note, About, Who we work with, The Lab, Privacy and Careers); (FC)/(FS) items in it are as drafted there and still need the founder's yes. The 81%→31% reading says 'from one to six', narrower than §4.1's 'six or more', pending a check against the HBR article."
+}

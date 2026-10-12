@@ -1,0 +1,481 @@
+<!-- ═══════════════════════════════════════════════════════════════════════════════════════════
+     Kelwin · round 8 · INTERIOR SNIPPETS — copy these verbatim, then fill them in.
+     The styles live in site/kit-ac.css §12 (inlined into every build). See every piece in use:
+     `node tool/mk.mjs int-kit S` → site/shots/int-kit-S.png (the reference sheet; a builder
+     reference, not a page for the founder's review).
+
+     CONVENTIONS (read once)
+     · One fragment per section: site/frag/<section-id>/S.{html,css,js,meta.json}, where
+       <section-id> is the plan's id (interior-plan.json, e.g. about-head, about-founder, about-door).
+       Template instances use S/T/U (capability: narrative S · infrastructure T · intelligence U;
+       article: revenue-entropy S · 17% T · deliverability U; legal: privacy S · terms T).
+       Stitch with `python3 tool/ipage.py <page> [--instance x]` (it appends the approved footer).
+     · Root: <section class="km km-<section-id>-S …" data-surface="dark|light">. Your own classes
+       are km-<section-id>-S__*; every id is prefixed km-<section-id>-S- (ids must be unique on the
+       stitched page). Kit classes (.ac-*) are used as-is: place them, never restyle them.
+     · Surfaces: graphite is the base; every graphite→graphite seam is .ac-sec--ruled; exactly ONE
+       paper section per page (data-surface="light"), always a document. Never more than three
+       graphite sections in a row (three is allowed: /the-lab and GTM Intelligence run three).
+     · Red: label squares and the 48×2 rule, plus ONE red per view — a red button OR the band's one
+       red element. Every red button → /audit. No red button in any header. No red on /contact or
+       /careers (QC only; form submits are .ac-btn-o). The red plane is homepage-only.
+     · Statements: at most TWO two-voice statements per page — the h1, plus one (a body
+       .ac-shead--statement OR a D2 close). Everything else is a one-line section head.
+     · Headings: one h1 (the header). A section's first heading is its h2; h3 sits under it, never
+       before it. Body section heads are h2 (styled .ac-h3.ac-h3--lg). Doors: D1 and D2 → the line /
+       statement is the h2. D3 and SC → the visible label is the h2 (h2.ac-label) and the line is an
+       h3.ac-door__line, because their rows / left half (h3s) come first. QC → h2.ac-label, or an
+       h3.ac-sr when it sits inside another section (careers).
+     · Actions: the kit's three — .ac-btn (red, → /audit only), .ac-btn-o (outlined: nav, form
+       submits), .ac-link (underlined caps →: every "go there", including row exits, "Instead"
+       lines and "Send it to me when it’s ready"). ONE sanctioned exception, from header X: the quiet
+       sentence-case .ac-go (↗) — ONLY for the facts ledger's door, a Readings source and the D1
+       object's foot line. Never use .ac-go anywhere else.
+     · Type: no italics, no serif, nothing under 11px, support copy ≥ 13.5px, mono never as prose.
+       The brand fonts have no arrow glyphs: never type → ↗ ↓ ↔ — use .ac-link (→), .ac-go (↗),
+       .ac-go--down (↓), .ac-btn-o (↗), or .ac-reading__to inside a figure.
+       Display figures: never font-variant-numeric: tabular-nums (Mona's tnum set has a slashed 0
+       and footed 1). Kit .ac-num turns tnum on — override it or use .ac-reading__fig.
+       Apostrophes and quotes are typographic: ’ “ ”.
+     · Copy: never type "KELWIN", "Fig.", "Plurel", stamps, or fabricated proof. Every illustrative
+       artifact carries a SpecimenTag; nothing unbuilt is called live.
+     · Motion: final state by default; entrances only under .is-play (`.is-play .km-<id>-S__x`).
+       The header band's morph is the page's one orchestrated moment: start it at
+       var(--ac-band-d) (900ms). Body: ≤ 2 play-once moments per page. No pins, count-ups, pulses,
+       blinks, marquees. Reduced motion = no .is-play = final state; JS: init(root,{reduced}).
+     · Widths: mk.mjs and ipage.py render a FIXED 1440 stage (base.css), so round-8 mockups are
+       judged at 1440. The kit composes itself below that (§12.11, production's breakpoints:
+       ≤1023 tablet, ≤767 phone): Door halves stack, the facts ledger drops under the lede, band
+       callouts become the visible keyed list, the SiblingStrip and QC stack, the IX strip folds.
+       Your section's own content needs its own ≤1023 / ≤767 rules (use those two breakpoints,
+       not 760), and your band needs its phone drawing (.ac-band__svg--sm, section 2). Guard them
+       like the kit's, so a stitched page (html.km-home, a zoomed 1440 stage) never applies them:
+         @media (max-width: 767px) { :root:not(.km-home) .km-ID-S__x { … } }
+       To look at a phone/tablet width, open your m-*.html in a window that wide and add
+       :root{--stage:<w>px;--margin:16px;--gutter:16px} (the 1440 stage is fixed otherwise).
+     · TRAP: in any media query, never display:none (or change animation-name) on anything with an
+       entrance. mk.mjs's full-height capture briefly matches small widths, which restarts that
+       entrance and leaves it blank in the 1440 shot. Hide with visibility, as the kit does.
+     ═══════════════════════════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────────
+     1 · THE HEADER SECTION (InteriorHead) — nav at rest · head · facts · band
+     Height ≈ 960–1000px at 1440. Ends 112px under the band (--ac-int-end); the next section
+     carries the cut (.ac-sec--ruled if graphite; a paper section is its own cut).
+     · Label row: ■ page label + mono breadcrumb (the ONLY label row on the page with meta).
+     · h1: two .ac-line spans, exactly one .ac-accent (a whole line, as here, or a phrase inside a
+       line: <span class="ac-line"><span>the market <span class="ac-accent">hears.</span></span></span>).
+       96px. The h1 line that sits beside the facts must end before col 9 (x ≤ 930 at 1440).
+     · Lede: one paragraph, ≤ 4 lines at 20px.
+     · Facts: exactly 3 rows; keys belong to the page; values ≤ 2 lines. Usually the last row is
+       the quiet door (.ac-go). On /audit it is "Three questions" with .ac-go--down → #qualify.
+     ─────────────────────────────────────────────────────────────────────────────────────────── -->
+<section class="km km-ID-S ac-int" data-surface="dark" aria-labelledby="km-ID-S-h1">
+
+  <!-- NAV at rest. Put .is-current + aria-current="true" on the page's section item:
+       Capabilities → the three capability pages · The Firm → /about, /who-we-work-with, /careers ·
+       Resources → /insights, articles, /reports, /contact · The Lab → /the-lab · none → legal.
+       /audit: NO item lit; the outlined action becomes the current one (see the variant below).
+       Below 1024 the menu hides (the live site swaps in production's menu button + sheet). -->
+  <header class="ac-nav">
+    <a class="ac-nav__brand" href="/"><span class="km-logo" role="img" aria-label="Kelwin"></span></a>
+    <nav class="ac-nav__menu" aria-label="Primary">
+      <a class="ac-nav__item" href="/capabilities/narrative-systems">Capabilities</a>
+      <a class="ac-nav__item" href="/#methodology">Methodology</a>
+      <a class="ac-nav__item is-current" href="/about" aria-current="true">The Firm</a>
+      <a class="ac-nav__item" href="/insights">Resources</a>
+      <a class="ac-nav__item" href="/the-lab">The Lab</a>
+    </nav>
+    <a class="ac-btn-o ac-nav__cta" href="/audit">Audit request</a>
+    <span class="ac-reg ac-nav__reg ac-nav__reg--l" aria-hidden="true"></span>
+    <span class="ac-reg ac-nav__reg ac-nav__reg--r" aria-hidden="true"></span>
+  </header>
+  <!-- /audit only — replace the action line with:
+    <a class="ac-btn-o ac-nav__cta is-current" href="#qualify" aria-current="page">Audit request</a>  -->
+
+  <div class="ac-head ac-ihead ac-wrap">
+    <div class="ac-labelrow"><p class="ac-label">About</p><p class="ac-meta">The Firm / 01</p></div>
+    <h1 class="ac-statement" id="km-ID-S-h1">
+      <span class="ac-line"><span>The firm behind</span></span>
+      <span class="ac-line ac-accent"><span>the signature.</span></span>
+    </h1>
+    <span class="ac-rule" aria-hidden="true"></span>
+    <p class="ac-lede">Kelwin was founded in 2026 by Rameez. It designs, installs and runs revenue systems that its clients keep. It stays small, so the person who diagnoses your system is the person who answers your email.</p>
+    <aside class="ac-facts" aria-label="The firm at a glance">
+      <dl class="ac-spec">
+        <dt>Founded</dt><dd>2026 — deliberately late to the category</dd>
+        <dt>Led by</dt><dd>Rameez, Founder · Lead Narrative Architect</dd>
+        <dt>Starts with</dt><dd><a class="ac-go" href="/audit">The System Audit</a></dd>
+      </dl>
+    </aside>
+  </div>
+  <!-- /audit facts row: <dt>Starts with</dt><dd><a class="ac-go ac-go--down" href="#qualify">Three questions</a></dd> -->
+
+  <!-- 2 · THE BAND (omit entirely on a text sheet: /contact, the three articles; legal → 2b).
+       FRAME UNITS: every number placed in the band is UNITLESS, in the 1312-wide frame (1 unit =
+       1px at 1440). The frame scales with the page below 1440 and keeps its proportions, so the
+       drawing never distorts and the flags stay on their anchors (production's --u pattern).
+       · Frame: style="--fh:300" (its height, 280–340). Draw in viewBox="0 0 1312 <fh>".
+       · Drawing: the kit's 1px classes (.ac-s, .ac-s-fg, .ac-s-mute, .ac-s-faint, .ac-s-dash,
+         .ac-node, .ac-f-occ); pathLength="1" + .ac-plot for anything that draws. Its ONE red
+         element uses .ac-s-red (a stroke) or .ac-f-red (a face).
+       · ≤ 4 callouts (.ac-flag, or kit .ac-callout), ≤ 1 .ac-dim, the four corner marks, no title
+         block, no "Fig.", no caption band. Callouts and the dimension are aria-hidden="true": the
+         figcaption says the drawing in words, once (screen readers always; visible ≤1023).
+       · .ac-flag: --x anchor x · --a anchor y · --y label-row top (default 18), all unitless.
+         .ac-flag--b hangs the label below (set --y to the label row, --a above it).
+         .ac-dim in the band: --x --y --w unitless too. .ac-callout: --x --y unitless, --len in px.
+       · Phone (≤767): a second <svg class="… ac-band__svg--sm"> with its own composition (§1.9:
+         ≤3 strokes per bundle below 600px) in its own viewBox; give its size on the frame as
+         --sm-w / --sm-h and the kit swaps it in and the frame takes its proportions. -->
+  <figure class="ac-band ac-wrap" aria-labelledby="km-ID-S-band">
+    <div class="ac-frame ac-band__frame" style="--fh:300;--sm-w:358;--sm-h:240">
+      <svg class="ac-svg ac-band__svg" viewBox="0 0 1312 300" aria-hidden="true">
+        <!-- the page's own drawing -->
+        <path class="ac-s-mute ac-plot" style="--d:900ms;--t:1100ms" pathLength="1" d="M0 196.5H1312"/>
+        <path class="ac-s-red" d="M1312 184.5V208.5"/>
+      </svg>
+      <svg class="ac-svg ac-band__svg ac-band__svg--sm" viewBox="0 0 358 240" aria-hidden="true">
+        <!-- the same idea, recomposed for a phone -->
+        <path class="ac-s-mute ac-plot" style="--d:900ms;--t:1100ms" pathLength="1" d="M0 168.5H358"/>
+        <path class="ac-s-red" d="M358 156.5V180.5"/>
+      </svg>
+      <div class="ac-flag ac-in" style="--x:421;--a:196;--d:1200ms" aria-hidden="true"><span class="ac-callout__code">01.1</span><span class="ac-callout__t">Positioning</span></div>
+      <div class="ac-dim" style="--x:900;--y:252;--w:412;--d:1400ms" aria-hidden="true"><span class="ac-dim__v">One voice</span></div>
+      <span class="ac-reg ac-reg--tl" style="--d:600ms" aria-hidden="true"></span>
+      <span class="ac-reg ac-reg--tr" style="--d:660ms" aria-hidden="true"></span>
+      <span class="ac-reg ac-reg--bl" style="--d:720ms" aria-hidden="true"></span>
+      <span class="ac-reg ac-reg--br" style="--d:780ms" aria-hidden="true"></span>
+    </div>
+    <figcaption class="ac-band__key" id="km-ID-S-band">
+      One sentence that says what the drawing shows.
+      <ol class="ac-band__keys">
+        <li><span class="ac-callout__code">01.1</span>Positioning</li>
+        <li>One voice (the dimension, in words)</li>
+      </ol>
+    </figcaption>
+  </figure>
+</section>
+
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────────
+     2b · IX · THE CONTENTS STRIP — the legal header's band (§3.3), in place of the figure.
+     No drawing, no red. The clause index as one row of cells (01–09 as .ac-idx over the clause
+     title). ≤1023 it wraps to three columns; ≤767 it folds behind a "Contents" button (+/−).
+     Put this init in your fragment's .js (KM.init) so the button works on phones:
+
+       window.KM = { init(root) {
+         var off = [];
+         root.querySelectorAll(".ac-ix__btn").forEach(function (b) {
+           function flip() { b.setAttribute("aria-expanded", String(b.getAttribute("aria-expanded") !== "true")); }
+           b.addEventListener("click", flip);
+           off.push(function () { b.removeEventListener("click", flip); });
+         });
+         return function () { off.forEach(function (f) { f(); }); };
+       } };
+     ─────────────────────────────────────────────────────────────────────────────────────────── -->
+<nav class="ac-band ac-band--ix ac-wrap" aria-label="Contents">
+  <button class="ac-ix__btn" type="button" aria-expanded="false" aria-controls="km-ID-S-ix">Contents<span class="ac-toggle" aria-hidden="true"></span></button>
+  <ol class="ac-ix__list" id="km-ID-S-ix">
+    <li><a class="ac-ix__a" href="#km-ID-S-c01"><span class="ac-idx">01</span>The short version</a></li>
+    <li><a class="ac-ix__a" href="#km-ID-S-c02"><span class="ac-idx">02</span>What we collect, and how</a></li>
+    <!-- … one li per clause (Privacy 8, Terms 9) -->
+  </ol>
+</nav>
+
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────────
+     3 · A BODY SECTION with its SECTION HEAD (graphite, ruled seam)
+     ■ label (no meta) → ONE line heading (an h2 wearing the kit's .ac-h3.ac-h3--lg, 42px;
+     ≤ ~45 characters) → optional lede (17px, cols 1–6). Your content follows in the same .ac-wrap.
+     ─────────────────────────────────────────────────────────────────────────────────────────── -->
+<section class="km km-ID-S ac-sec ac-sec--ruled" data-surface="dark" aria-labelledby="km-ID-S-h">
+  <div class="ac-wrap">
+    <div class="ac-shead">
+      <div class="ac-labelrow"><p class="ac-label">How it runs</p></div>
+      <h2 class="ac-h3 ac-h3--lg" id="km-ID-S-h">From the readout to your operator.</h2>
+      <p class="ac-shead__lede">Optional. One or two sentences.</p>
+    </div>
+    <!-- content -->
+  </div>
+</section>
+
+<!-- 3b · the page's SECOND two-voice statement, when a body section carries it (then the page's
+     Door must not be D2). 64px + the 48×2 rule; lede at 20px. -->
+<div class="ac-shead ac-shead--statement">
+  <div class="ac-labelrow"><p class="ac-label">What we install</p></div>
+  <h2 class="ac-statement" id="km-ID-S-h">
+    <span class="ac-line"><span>The story is not copy.</span></span>
+    <span class="ac-line ac-accent"><span>It’s infrastructure.</span></span>
+  </h2>
+  <span class="ac-rule" aria-hidden="true"></span>
+  <p class="ac-shead__lede">Four services, each shipping into one of two assets you own.</p>
+</div>
+
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────────
+     4 · THE PAPER MOMENT — a document panel with its SpecimenTag (and margin Readings)
+     The page's ONE paper section. The panel: its own name + one mono note in the head (never a
+     number or title block), the document in the body, the SpecimenTag in the foot. Readings sit
+     in the margin (cols 10–12 at 1440; give them ≥ 4 columns below 1280 and stack them under the
+     document ≤1023, or "81% → 31%" overflows) or wherever the page places them; ≤ 2 per page.
+     ─────────────────────────────────────────────────────────────────────────────────────────── -->
+<section class="km km-ID-S ac-sec" data-surface="light" aria-labelledby="km-ID-S-h">
+  <div class="ac-wrap">
+    <div class="ac-shead">
+      <div class="ac-labelrow"><p class="ac-label">A page from the Narrative OS</p></div>
+      <h2 class="ac-h3 ac-h3--lg" id="km-ID-S-h">The message matrix, filled in for Kelwin.</h2>
+      <p class="ac-shead__lede">Every Narrative OS starts from this sheet …</p>
+    </div>
+    <div class="ac-grid" style="margin-top:56px; align-items:start">
+      <article class="ac-doc ac-col" style="--c:1;--s:9" aria-labelledby="km-ID-S-doc">
+        <header class="ac-doc__head">
+          <p class="ac-doc__name" id="km-ID-S-doc">Narrative OS · Message matrix</p>
+          <p class="ac-cap">Filled in for Kelwin</p>
+        </header>
+        <div class="ac-doc__body"><!-- the document --></div>
+        <footer class="ac-doc__foot">
+          <!-- 5 · SPECIMENTAG: the kit chip + ONE line (what is illustrative; end on "No client data." where true) -->
+          <p class="ac-specimen"><span class="ac-chip ac-chip--specimen">Specimen</span><span class="ac-specimen__t">The structure every Narrative OS uses, filled in with Kelwin’s own positioning. No client data.</span></p>
+        </footer>
+      </article>
+
+      <!-- 6 · READINGS: the number (unit symbols in .ac-reading__u), its unit IN WORDS, then
+           source · year as a new-tab link that says so. Bind the year with &nbsp;·&nbsp; so a wrap
+           never strands "· 2015 ↗" on its own line. Hedge exactly as the source does.
+           Allowed: 6–10 and 81%→31% (Narrative) · 1 in 6 and 28% (Infrastructure) · 45% (Intelligence).
+           Never 17% · 95:5 · 77% · 53% (the homepage owns them). Re-verify every link before launch.
+           VERIFY BEFORE LAUNCH (81%→31%): the line below says "from one to six", narrower than the
+           story map's "from one person to six or more"; the CEB/HBR 2015 finding is, as recalled,
+           one decision maker against six. It could not be checked from the sandbox (hbr.org
+           unreachable); confirm the wording against the article before it ships. -->
+      <aside class="ac-readings ac-col" style="--c:10;--s:3" aria-label="Readings">
+        <figure class="ac-reading">
+          <p class="ac-reading__fig">6–10</p>
+          <figcaption>
+            <p class="ac-reading__t">decision makers in a typical complex B2B purchase</p>
+            <p class="ac-reading__src"><a class="ac-go" href="https://www.gartner.com/en/sales/insights/b2b-buying-journey" target="_blank" rel="noopener">Gartner&nbsp;·&nbsp;2019<span class="ac-sr"> (opens in a new tab)</span></a></p>
+          </figcaption>
+        </figure>
+        <figure class="ac-reading">
+          <p class="ac-reading__fig">81<span class="ac-reading__u">%</span><span class="ac-reading__to"><span class="ac-sr">to</span></span>31<span class="ac-reading__u">%</span></p>
+          <figcaption>
+            <p class="ac-reading__t">likelihood of purchase as the decision makers grow from one to six</p>
+            <p class="ac-reading__src"><a class="ac-go" href="https://hbr.org/2015/03/making-the-consensus-sale" target="_blank" rel="noopener">CEB · Harvard Business Review&nbsp;·&nbsp;2015<span class="ac-sr"> (opens in a new tab)</span></a></p>
+          </figcaption>
+        </figure>
+        <a class="ac-link" href="/insights/the-17-percent-window">Field note · The 17% window</a>
+      </aside>
+    </div>
+  </div>
+</section>
+<!-- A sheet lying on graphite (instead of a paper section): <article class="ac-doc" data-surface="light"> … -->
+
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────────
+     7 · STATUS CHIP — the kit chip with its status modifier; the five allowed words only:
+     In development · Drafting · In production · Not yet published · None yet
+     Dashed = not built yet; states are words, never colours; no dates unless the founder confirms.
+     ─────────────────────────────────────────────────────────────────────────────────────────── -->
+<span class="ac-chip ac-chip--status">Drafting</span>
+
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────────
+     8 · THE QUIET INLINE DOOR (.ac-go) — sentence case, underlined, drawn ↗ (or ↓ for a jump).
+     ONLY: the facts ledger's door · a Readings source · the D1 object's foot line. Anything else
+     that moves the reader on is an .ac-link →.
+     ─────────────────────────────────────────────────────────────────────────────────────────── -->
+<a class="ac-go" href="/audit">The System Audit</a>
+<a class="ac-go ac-go--down" href="#qualify">Three questions</a>
+
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────────
+     9 · THE ONWARD LINK — ONE per page: the buyer's next question in plain words, then where it
+     goes. It lives in the Door's foot (QC: it is the last of QC's quiet doors; capability pages
+     use the SiblingStrip in the foot instead).
+     Story-map onward lines: who-we-work-with "Who would you be working with? → About" ·
+     about "How does Kelwin think? → Field notes" · insights "What does a readout look like? →
+     Reports" · careers "Who’s at Kelwin today? → About" · the-lab "Where these instruments are
+     used → GTM Intelligence" · reports "Field notes, and the research in progress → Insights".
+     ─────────────────────────────────────────────────────────────────────────────────────────── -->
+<p class="ac-onward"><span class="ac-onward__q">Who would you be working with?</span><a class="ac-link" href="/about">About</a></p>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════════════════
+     10 · DOORS — the close. Each states what the audit RETURNS for this page's subject, using the
+     audit's documented scope only (it reads; it never "instruments"). Red → /audit, quiet → /contact.
+     D1 · D2 · D3 each sit in their own section: <section class="km km-ID-S ac-sec ac-sec--ruled"
+     data-surface="dark">. SC: its own section on paper (data-surface="light", no ruled seam).
+     QC: its own graphite section on legal (and inside contact's coda section), but INSIDE the
+     paper bench-form section on careers (no section, no seam of its own — see 10g).
+     D1 · D2 · D3 · SC end on the same foot: one hairline, then the onward link. QC has no foot:
+     its one row of quiet doors ends on the onward link.
+     ═══════════════════════════════════════════════════════════════════════════════════════════ -->
+
+<!-- 10a · D1 DECISION BAND — capability ×3 · /reports. The line: ONE sentence, 40px, cols 1–7,
+     and the section's h2. Right (cols 8–12): the page's small object above, then the doors on
+     one row. The object is graphite (.ac-doc--mini, outlined), never paper and never red. -->
+<div class="ac-door ac-door--d1 ac-wrap">
+  <div class="ac-labelrow"><p class="ac-label">Starts with the audit</p></div>
+  <h2 class="ac-door__line">The audit’s narrative readout shows how your market repeats you today, and where the story comes apart.</h2>
+  <div class="ac-door__side">
+    <a class="ac-doc ac-doc--mini" href="/reports">
+      <span class="ac-doc__head"><span class="ac-doc__name">The readout</span><span class="ac-cap">Four parts</span></span>
+      <span class="ac-doc__body"><!-- the object's content (your own classes) --></span>
+      <span class="ac-doc__foot"><span class="ac-go">See a full readout, as a specimen</span></span>
+    </a>
+    <div class="ac-doors">
+      <a class="ac-btn" href="/audit">Request a System Audit</a>
+      <a class="ac-link" href="/contact">Talk to the team</a>
+    </div>
+  </div>
+  <div class="ac-door__foot">
+    <!-- capability pages: the SiblingStrip (11) · otherwise: one .ac-onward -->
+  </div>
+</div>
+
+<!-- 10b · D1 COMPACT — the three articles. No object; 32px line; doors on the line's row. -->
+<div class="ac-door ac-door--d1 ac-door--compact ac-wrap">
+  <div class="ac-labelrow"><p class="ac-label">Starts with the audit</p></div>
+  <h2 class="ac-door__line">The audit’s narrative readout checks whether your champion can retell you.</h2>
+  <div class="ac-door__side">
+    <div class="ac-doors">
+      <a class="ac-btn" href="/audit">Request a System Audit</a>
+      <a class="ac-link" href="/contact">Talk to the team</a>
+    </div>
+  </div>
+  <div class="ac-door__foot">
+    <p class="ac-onward"><span class="ac-onward__q">This note is about</span><a class="ac-link" href="/capabilities/narrative-systems">Narrative Systems</a></p>
+  </div>
+</div>
+
+<!-- 10c · D2 STATEMENT CLOSE — /about · /insights. The head grammar at 64px: this IS the page's
+     second two-voice statement (no .ac-shead--statement elsewhere on the page), and its h2. -->
+<div class="ac-head ac-door ac-door--d2 ac-wrap">
+  <div class="ac-labelrow"><p class="ac-label">The first step</p></div>
+  <h2 class="ac-statement">
+    <span class="ac-line"><span>Start where</span></span>
+    <span class="ac-line ac-accent"><span>every engagement starts.</span></span>
+  </h2>
+  <span class="ac-rule" aria-hidden="true"></span>
+  <p class="ac-lede">The System Audit: ten working days, fixed scope, and a written readout you keep.</p>
+  <div class="ac-doors">
+    <a class="ac-btn" href="/audit">Request a System Audit</a>
+    <a class="ac-link" href="/contact">Talk to the team</a>
+  </div>
+  <div class="ac-door__foot">
+    <p class="ac-onward"><span class="ac-onward__q">How does Kelwin think?</span><a class="ac-link" href="/insights">Field notes</a></p>
+    <!-- optional second foot item (about): -->
+    <p class="ac-onward"><span class="ac-onward__q">The Lab · Kelwin’s R&amp;D</span><span class="ac-chip ac-chip--status">In development</span><a class="ac-link" href="/the-lab">What it’s building</a></p>
+  </div>
+</div>
+
+<!-- 10d · D3 GATE CLOSE — /who-we-work-with. The label is the section's h2 (the rows' h3s come
+     before the line). Left (cols 1–6): the honest list, every reason visible; an exit is an
+     .ac-link in .ac-door__row-i. Right (cols 8–12): the gate line (h3, 40px) + one support
+     sentence + the doors. -->
+<div class="ac-door ac-door--d3 ac-wrap">
+  <div class="ac-labelrow"><h2 class="ac-label">Who we send away</h2></div>
+  <div class="ac-door__list">
+    <ol class="ac-door__rows">
+      <li class="ac-door__row">
+        <span class="ac-idx">D-01</span>
+        <div>
+          <h3 class="ac-door__row-t">Rent-it-forever</h3>
+          <p class="ac-door__row-b">We’ll run it on retainer, but if nobody inside will own it, we decline.</p>
+          <p class="ac-door__row-i"><span class="ac-idx">Instead</span>Find the owner first. Then the system has somewhere to live.</p>
+        </div>
+      </li>
+      <!-- … D-02 · D-03 · D-04 — an exit:
+        <p class="ac-door__row-i"><span class="ac-idx">Instead</span><a class="ac-link" href="/insights">Read the field notes meanwhile</a></p> -->
+    </ol>
+  </div>
+  <div class="ac-door__gate">
+    <h3 class="ac-door__line">The audit is a gate, and it works in both directions.</h3>
+    <p class="ac-door__sub">Its three questions check where revenue is today, how your deals close, and what it feels like from inside.</p>
+    <div class="ac-doors">
+      <a class="ac-btn" href="/audit">Request a System Audit</a>
+      <a class="ac-link" href="/contact">Talk to the team</a>
+    </div>
+  </div>
+  <div class="ac-door__foot">
+    <p class="ac-onward"><span class="ac-onward__q">Who would you be working with?</span><a class="ac-link" href="/about">About</a></p>
+  </div>
+</div>
+
+<!-- 10e · SC SPLIT CLOSE — /the-lab, on PAPER (this is the page's one paper moment). The label is
+     the h2; each half is an h3. cols 1–7 (__a) | one hairline in col 8 | cols 9–12 (__b). The red
+     button is the page's one red ask; the early-access action stays a quiet .ac-link (round 7, C5). -->
+<section class="km km-ID-S ac-sec" data-surface="light" aria-labelledby="km-ID-S-h">
+  <div class="ac-door ac-door--sc ac-wrap">
+    <div class="ac-labelrow"><h2 class="ac-label" id="km-ID-S-h">Early access and the audit</h2></div>
+    <div class="ac-door__a">
+      <h3 class="ac-door__row-t">Early access</h3>
+      <!-- the terms: an .ac-spec (Asks · Returns · Your data), then -->
+      <a class="ac-link" href="/contact?topic=lab&amp;ref=Early%20Access%20Protocol">Apply for early access</a>
+    </div>
+    <div class="ac-door__b">
+      <h3 class="ac-door__line">The service comes first, and it starts with the audit.</h3>
+      <div class="ac-doors">
+        <a class="ac-btn" href="/audit">Request a System Audit</a>
+        <a class="ac-link" href="/contact">Talk to the team</a>
+      </div>
+    </div>
+    <div class="ac-door__foot">
+      <p class="ac-onward"><span class="ac-onward__q">Where these instruments are used</span><a class="ac-link" href="/capabilities/gtm-intelligence">GTM Intelligence</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 10f · QC QUIET CLOSE, STANDALONE — legal (its own graphite section after the paper clauses;
+     paper→graphite needs no ruled seam) and contact's coda. NO .ac-btn, no red
+     at all (label squares excepted). A VISIBLE ■ label row always leads, so it never reads as a
+     stray footer row above the site footer. Up to three quiet doors on ONE hairline, each a plain
+     question then its .ac-link; the LAST one is the page's onward link (no separate foot). -->
+<section class="km km-ID-S ac-sec" data-surface="dark" aria-labelledby="km-ID-S-h">
+  <div class="ac-door ac-door--qc ac-wrap">
+    <div class="ac-labelrow"><h2 class="ac-label" id="km-ID-S-h">Questions</h2></div>
+    <ul class="ac-door__quiet">
+      <li><p class="ac-door__q">Questions about this document?</p><a class="ac-link" href="mailto:audit@kelwin.co">audit@kelwin.co</a></li>
+      <li><p class="ac-door__q">The other legal page</p><a class="ac-link" href="/terms">Terms of service</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 10g · QC QUIET CLOSE, INSET — /careers: INSIDE the paper bench-form section (§5 "FM P (+QC)"),
+     after the form's outlined submit. No section, no label row, no seam of its own: an h3.ac-sr
+     (under the section's h2) and .ac-door--inset (96px above). Last door = the onward link. -->
+<div class="ac-door ac-door--qc ac-door--inset ac-wrap">
+  <h3 class="ac-sr">Other ways in</h3>
+  <ul class="ac-door__quiet">
+    <li><p class="ac-door__q">Questions first?</p><a class="ac-link" href="/contact?topic=careers">Talk to the team</a></li>
+    <li><p class="ac-door__q">Here to buy, not to join?</p><a class="ac-link" href="/audit">Request a System Audit</a></li>
+    <li><p class="ac-door__q">Who’s at Kelwin today?</p><a class="ac-link" href="/about">About</a></li>
+  </ul>
+</div>
+
+
+<!-- ───────────────────────────────────────────────────────────────────────────────────────────
+     11 · SIBLINGSTRIP — capability pages only, in the D1 foot (it replaces the onward link).
+     Always in the order 01 Narrative · 02 Infrastructure · 03 Intelligence; the current layer is a
+     <span class="ac-sib is-here"> reading "You are here", the other two are links with their verb:
+       Narrative Systems page:  Carried by · GTM Infrastructure   ·  Measured by · GTM Intelligence
+       GTM Infrastructure page: Carries · Narrative Systems       ·  Read by · GTM Intelligence
+       GTM Intelligence page:   Feeds · Narrative Systems         ·  Reads · GTM Infrastructure
+     Glyphs are the nav's CONTOUR · TRACE · ORBIT (36×24 viewBox, drawn at 72×48, 1px).
+     ─────────────────────────────────────────────────────────────────────────────────────────── -->
+<nav class="ac-sibs" aria-label="The three layers">
+  <span class="ac-sib is-here" aria-current="page">
+    <svg class="ac-sib__g" viewBox="0 0 36 24" aria-hidden="true"><path d="M0 4.5C5 3.5 8 8 13 7.2S20 10.5 24 12H36"/><path d="M0 9.5C4 11.5 8 7.5 12.5 9.5S20 12 24 12"/><path d="M0 14.5C4 12.8 8 17 12.5 14.6S20 12 24 12"/><path d="M0 19.5C5 21 8 15.8 13 16.8S20 13.5 24 12"/></svg>
+    <span class="ac-sib__rel">You are here</span><span class="ac-sib__name">Narrative Systems</span>
+  </span>
+  <a class="ac-sib" href="/capabilities/gtm-infrastructure">
+    <svg class="ac-sib__g" viewBox="0 0 36 24" aria-hidden="true"><path d="M0 18.5H9.5V5.5H25.5V18.5H36"/><rect class="ac-sib__nd" x="8" y="4" width="3" height="3"/><rect class="ac-sib__nd" x="24" y="4" width="3" height="3"/><rect class="ac-sib__nd" x="24" y="17" width="3" height="3"/></svg>
+    <span class="ac-sib__rel">Carried by</span><span class="ac-sib__name">GTM Infrastructure</span>
+  </a>
+  <a class="ac-sib" href="/capabilities/gtm-intelligence">
+    <svg class="ac-sib__g" viewBox="0 0 36 24" aria-hidden="true"><path d="M0 12.5H15"/><path d="M31.8 7.5A9 9 0 1 1 27.1 3.5"/><rect class="ac-sib__nd" x="28.3" y="3.6" width="3" height="3"/></svg>
+    <span class="ac-sib__rel">Measured by</span><span class="ac-sib__name">GTM Intelligence</span>
+  </a>
+</nav>
