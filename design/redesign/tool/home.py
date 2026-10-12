@@ -25,9 +25,12 @@ def read(p: Path) -> str:
     return p.read_text() if p.exists() else ""
 
 
+ORDER_FILE = None
+
+
 def plan():
-    """Section order: story-order.json ([{"id":…, "slot":…}, …]) when present, else the round-2 order in slot X."""
-    so = R / "story-order.json"
+    """Section order: --order FILE, else story-order.json ([{"id":…, "slot":…}, …]) when present, else the round-2 order in slot X."""
+    so = Path(ORDER_FILE) if ORDER_FILE else R / "story-order.json"
     if so.exists():
         return [(x["id"], x.get("slot", "S")) for x in json.loads(so.read_text())]
     return [(sid, SLOT) for sid in ORDER]
@@ -38,7 +41,10 @@ def main():
     ap.add_argument("--only", default="")
     ap.add_argument("--out", default="")
     ap.add_argument("--slot", default="", help="per-section slot overrides, e.g. evidence=V,system=W")
+    ap.add_argument("--order", default="", help="a page order file ([{id, slot}, …]) instead of story-order.json (interior pages)")
     a = ap.parse_args()
+    global ORDER_FILE
+    ORDER_FILE = a.order or None
     only = [x for x in a.only.split(",") if x]
     over = dict(x.split("=", 1) for x in a.slot.split(",") if "=" in x)
     base = read(SITE / "base.css")
