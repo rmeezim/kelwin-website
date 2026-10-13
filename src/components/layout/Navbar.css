@@ -158,7 +158,7 @@
   transition: clip-path 360ms var(--ease-out), opacity 200ms var(--ease-out), visibility 0s;
 }
 
-.kn-mega__strips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kn-mega__strips { display: grid; grid-template-columns: repeat(var(--kn-cols, 3), minmax(0, 1fr)); }
 .kn-strip { display: flex; min-width: 0; }
 .kn-strip + .kn-strip { border-left: 1px solid var(--line); }
 .kn .kn-strip__a {
@@ -201,31 +201,34 @@
 .km-motion .kn-mega.is-open .kn-glyph path { animation: ac-plot 700ms var(--ease-inout) 120ms both; }
 .km-motion .kn-mega.is-open .kn-glyph :is(.kn-glyph__nd, .kn-glyph__box) { animation: ac-fade 240ms var(--ease-out) 560ms both; }
 
-/* the foot band: a quiet row (cols 1–8) and the red door in the plate's corner cell (cols 9–12) */
-.kn-mega__band { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); }
+/* the foot band: a quiet row across every column but the last, and the door in the plate's corner
+   cell (the last column) */
+.kn-mega__band { display: grid; grid-template-columns: repeat(var(--kn-cols, 3), minmax(0, 1fr)); border-top: 1px solid var(--line); }
 .kn .kn-mega__rail {
-  grid-column: span 2; display: flex; align-items: center; gap: 20px; min-height: 88px;
+  grid-column: 1 / -2; display: flex; align-items: center; gap: 20px; min-height: 88px;
   padding: 16px var(--kn-in); color: var(--fg); transition: background-color 200ms var(--ease-out);
 }
 .kn .kn-mega__rail:hover { background: var(--panel-2); }
 .kn .kn-mega__rail:focus-visible { outline: 1px solid var(--fg); outline-offset: -1px; background: var(--panel-2); }
 .kn-mega__rt { flex: none; font-weight: var(--ui-weight); font-size: 15px; line-height: 22px; }
+.kn .kn-mega__rail--note { margin: 0; color: var(--fg-2); }
+.kn .kn-mega__rail--note:hover { background: none; }
+.kn-mega__rail--note .kn-mega__rt { flex: 1; min-width: 0; font-weight: var(--body-weight); }
 .kn-mega__rd { flex: 1; min-width: 0; font-size: 15px; line-height: 22px; color: var(--fg-2); }
 
-/* the door: button C inverted onto graphite — the paper-on-red pattern of the red surface (paper
-   fill, red text, pressed paper on hover), so the plate adds no second red to a view whose red
-   is already spoken for (round 7, C3). Red on paper 5.2:1, on pressed paper 4.8:1. */
+/* the door: button C's cut corner in paper, ink text (round 7, C3: no second red when a plate
+   opens over a red button; round 8: no red text inside the plate either). Pressed paper on hover. */
 .kn .kn-door {
   --kn-cut: 14px;
   display: flex; flex-direction: column; justify-content: center; gap: 8px; min-height: 88px;
-  padding: 18px var(--kn-in); background: var(--c-paper); color: var(--c-red);
+  padding: 18px var(--kn-in); background: var(--c-paper); color: var(--c-ink);
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--kn-cut)), calc(100% - var(--kn-cut)) 100%, 0 100%);
   transition: background-color 200ms var(--ease-out);
 }
 .kn .kn-door:hover { background: var(--c-paper-2); }
 .kn .kn-door:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
 .kn-door__t { font-weight: var(--strong-weight); font-size: 14px; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; }
-.kn-door__d { font-size: 14px; line-height: 20px; color: inherit; }
+.kn-door__d { font-size: 14px; line-height: 20px; color: color-mix(in srgb, var(--c-ink) 76%, transparent); }
 
 /* ═══ the condensed bar (≥1024px, scrolled) — round 7, C2 ═══════════════════════════════════
    The bar squeezes in from the viewport edges to the margins (--kn-edge: the stage's content

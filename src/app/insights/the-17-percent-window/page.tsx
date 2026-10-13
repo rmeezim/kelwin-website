@@ -19,7 +19,7 @@ export default function SeventeenPercentNote() {
             n: "FN·02",
             topics: ["Narrative"],
             date: "June 2026",
-            readTime: "5 min read",
+            readTime: "2 min read",
           }}
           title="The 17% window"
           standfirst="Gartner's buying research puts the time B2B committees spend meeting with potential suppliers at around 17% of the journey — split across every vendor in the deal. The uncomfortable arithmetic: your reps might get 5%. The deal is argued in the other 95%, by people you'll never meet, using whatever words you left them."

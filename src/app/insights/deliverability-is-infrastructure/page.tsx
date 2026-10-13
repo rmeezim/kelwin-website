@@ -19,7 +19,7 @@ export default function DeliverabilityNote() {
             n: "FN·03",
             topics: ["Channels", "Outbound"],
             date: "May 2026",
-            readTime: "5 min read",
+            readTime: "2 min read",
           }}
           title="Deliverability is infrastructure"
           standfirst="Before your message can be judged, it has to exist. For a growing share of B2B outbound, it doesn't — it dies in a filter, unseen, while the dashboard reports it as 'delivered.' Deliverability isn't a growth hack. It's the load-bearing floor under every channel decision you make."

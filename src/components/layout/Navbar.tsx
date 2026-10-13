@@ -27,18 +27,20 @@ import "./Navbar.css";
      flat graphite with a bottom hairline. The header keeps its flow height, so nothing below it
      moves.
    · Capabilities / The Firm / Resources open flat graphite plates that hang from the hairline
-     (hover, click or keyboard). The Capabilities plate ends on the System Audit door, paper with
-     red text (round 7, C3).
+     (hover, click or keyboard). Each plate ends on a foot band: a quiet row, then the System Audit
+     door, paper with ink text (round 7, C3; round 8: no red inside the plate). The Lab sits in The
+     Firm's plate (round 8, Q4).
    · ≤1023px: a menu button opens a full-screen graphite sheet with the same items; the three
      plates become expandable groups. Focus is trapped, Escape closes, the page cannot scroll.
    · Its first stop is a skip link to <main id="main">. Links that can point at the page you are
      on (the lockup, the plain items, the "full stack" rail) are HashLinks, so they always scroll. */
 
-type GlyphName = "contour" | "trace" | "orbit" | "firm" | "fit" | "careers" | "insights" | "reports" | "contact";
+type GlyphName = "contour" | "trace" | "orbit" | "firm" | "fit" | "careers" | "lab" | "insights" | "reports" | "contact";
 
 type MegaLink = {
   title: string;
   desc: string;
+  /** a foot-band row without an href is a plain note */
   href: string;
   tag?: string;
   glyph?: GlyphName;
@@ -49,7 +51,8 @@ type MegaDef = {
   id: string;
   /** One strip per column (three columns on the 12-column stage). */
   strips: MegaLink[];
-  /** The plate's foot band: an optional quiet row, then the System Audit door. */
+  /** The plate's foot band: an optional quiet row (a link, or a note when it has no href), then
+      the System Audit door. */
   rail?: MegaLink;
   door?: MegaLink;
 };
@@ -84,7 +87,7 @@ const NAV: NavItem[] = [
           href: "/capabilities/gtm-infrastructure",
           services: [
             "Deliverability engineering",
-            "Outbound engine build",
+            "Data pipeline & signal map",
             "Omnichannel orchestration",
             "CRM & data hygiene automation",
           ],
@@ -125,24 +128,41 @@ const NAV: NavItem[] = [
           tag: "F·01",
           glyph: "firm",
           title: "About Us",
-          desc: "Why Kelwin exists — and the rebuild cycle we're here to end.",
+          desc: "The founder, and the rules every engagement runs by.",
           href: "/about",
         },
         {
           tag: "F·02",
           glyph: "fit",
           title: "Who We Work With",
-          desc: "The profile and industries we take on — and where we say no.",
+          desc: "Three situations we're built for, and who we send away.",
           href: "/who-we-work-with",
         },
         {
           tag: "F·03",
           glyph: "careers",
           title: "Careers",
-          desc: "No open roles right now — we hire slowly, on purpose.",
+          desc: "No open seats today. The bench list is open.",
           href: "/careers",
         },
+        {
+          tag: "F·04",
+          glyph: "lab",
+          title: "The Lab",
+          desc: "Our R&D, and the GTM intelligence platform it is building. By invitation.",
+          href: "/the-lab",
+        },
       ],
+      rail: {
+        title: "The founder's letter",
+        desc: "Why Kelwin exists, in his words.",
+        href: "/#s-letter",
+      },
+      door: {
+        title: "The System Audit",
+        desc: "Where every engagement begins — fixed scope, ten working days.",
+        href: "/audit",
+      },
     },
   },
   {
@@ -154,26 +174,36 @@ const NAV: NavItem[] = [
           tag: "R·01",
           glyph: "insights",
           title: "Insights",
-          desc: "Field notes from the install base — signal patterns, channel mechanics, narrative ops.",
+          desc: "Field notes on how revenue systems break, one layer at a time.",
           href: "/insights",
         },
         {
           tag: "R·02",
           glyph: "reports",
           title: "Reports",
-          desc: "Engagement readouts, published as clients clear them for release.",
+          desc: "What a readout looks like, and the ones clients clear.",
           href: "/reports",
         },
         {
+          tag: "R·03",
           glyph: "contact",
-          title: "Get in touch",
-          desc: "General queries, information requests, press — straight to the founders.",
+          title: "Talk to the team",
+          desc: "Questions, documents, press. A person answers.",
           href: "/contact",
         },
       ],
+      rail: {
+        title: "Every engagement opens with a fixed-scope audit.",
+        desc: "",
+        href: "",
+      },
+      door: {
+        title: "The System Audit",
+        desc: "Where every engagement begins — fixed scope, ten working days.",
+        href: "/audit",
+      },
     },
   },
-  { label: "The Lab", href: "/the-lab" },
 ];
 
 /* Which item owns the current page — it sits lit on the hairline. */
@@ -183,11 +213,9 @@ function isCurrent(item: NavItem, pathname: string): boolean {
     case "capabilities":
       return /^\/(capabilities|audit)(\/|$)/.test(pathname);
     case "firm":
-      return /^\/(about|who-we-work-with|careers)(\/|$)/.test(pathname);
+      return /^\/(about|who-we-work-with|careers|the-lab)(\/|$)/.test(pathname);
     case "resources":
       return /^\/(insights|reports|contact)(\/|$)/.test(pathname);
-    case "/the-lab":
-      return /^\/the-lab(\/|$)/.test(pathname);
     default:
       return false;
   }
@@ -246,6 +274,15 @@ const GLYPHS: Record<GlyphName, ReactNode> = {
       <path pathLength={1} d="M0 12.5H13" />
       <path pathLength={1} d="M23 12.5H36" />
       <rect className="kn-glyph__box" x="14.5" y="8.5" width="7" height="7" />
+    </>
+  ),
+  /* three instruments at their stages: bars of unequal length on one baseline */
+  lab: (
+    <>
+      <path pathLength={1} d="M0 6.5H22" />
+      <path pathLength={1} d="M0 12.5H12" />
+      <path pathLength={1} d="M0 18.5H30" />
+      <rect className="kn-glyph__nd" x="30" y="17" width="3" height="3" />
     </>
   ),
   insights: <path pathLength={1} d="M0 14.5H8L11 6.5L15 18.5L18 10.5L20 14.5H36" />,
@@ -319,8 +356,8 @@ function Strip({ item, onNavigate }: { item: MegaLink; onNavigate: () => void })
   );
 }
 
-/* The System Audit door — button C's cut corner, sized as the plate's corner cell; paper with red
-   text, so an open plate adds no second red to the view (round 7, C3). */
+/* The System Audit door — button C's cut corner, sized as the plate's corner cell; paper with ink
+   text, so an open plate adds no red to the view (round 7, C3; round 8). */
 function Door({ item, onNavigate, className }: { item: MegaLink; onNavigate: () => void; className?: string }) {
   return (
     <Link href={item.href} className={`kn-door${className ? ` ${className}` : ""}`} onClick={onNavigate}>
@@ -816,7 +853,7 @@ export default function Navbar() {
                             </Link>
                           </li>
                         ))}
-                        {rail && (
+                        {rail?.href && (
                           <li>
                             <HashLink href={rail.href} className="kn-sheet__link" onClick={closeAll}>
                               <span className="ac-idx" />
@@ -861,6 +898,7 @@ function Plate({
     <div
       id={`kn-mega-${def.id}`}
       className={`kn-mega${open ? " is-open" : ""}`}
+      style={{ "--kn-cols": def.strips.length } as CSSProperties}
       role="region"
       aria-label={label}
     >
@@ -871,13 +909,18 @@ function Plate({
       </ul>
       {(def.rail || def.door) && (
         <div className="kn-mega__band">
-          {def.rail && (
-            <HashLink href={def.rail.href} className="kn-mega__rail" onClick={onNavigate}>
-              <span className="kn-mega__rt">{def.rail.title}</span>
-              <span className="kn-mega__rd">{def.rail.desc}</span>
-              <ArrowGo />
-            </HashLink>
-          )}
+          {def.rail &&
+            (def.rail.href ? (
+              <HashLink href={def.rail.href} className="kn-mega__rail" onClick={onNavigate}>
+                <span className="kn-mega__rt">{def.rail.title}</span>
+                <span className="kn-mega__rd">{def.rail.desc}</span>
+                <ArrowGo />
+              </HashLink>
+            ) : (
+              <p className="kn-mega__rail kn-mega__rail--note">
+                <span className="kn-mega__rt">{def.rail.title}</span>
+              </p>
+            ))}
           {def.door && <Door item={def.door} onNavigate={onNavigate} />}
         </div>
       )}

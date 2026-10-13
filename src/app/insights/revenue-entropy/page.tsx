@@ -19,7 +19,7 @@ export default function RevenueEntropyNote() {
             n: "FN·01",
             topics: ["Diagnostics", "Narrative"],
             date: "June 2026",
-            readTime: "6 min read",
+            readTime: "3 min read",
           }}
           title="Revenue entropy: why pipeline problems rarely start in the pipeline"
           standfirst="Every founder we audit says some version of the same sentence: “we need more pipeline.” It's almost never the diagnosis. It's the symptom that three different structural failures share — and the treatment for each one is different."

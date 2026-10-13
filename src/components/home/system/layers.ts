@@ -11,6 +11,8 @@ export type Layer = {
   job: string;
   whatItIs: string;
   inPractice: string;
+  /** the layer's own page (round 8, Q5d: "Inside this layer →" in its open row) */
+  href: string;
   /** the y of the slab's back corner: slabs sit 132 units apart when installed */
   y0: number;
   /** the job drawn on the slab's top face */
@@ -25,6 +27,7 @@ export const LAYERS: Layer[] = [
     n: 1,
     code: "01",
     name: "Narrative Systems",
+    href: "/capabilities/narrative-systems",
     job: "The words buyers repeat",
     whatItIs: "The positioning and language that decide whether buyers can explain you in their own words.",
     inPractice: "We rewrite what your site, deck and reps say until a buyer can repeat it without you.",
@@ -44,6 +47,7 @@ export const LAYERS: Layer[] = [
     n: 2,
     code: "02",
     name: "GTM Infrastructure",
+    href: "/capabilities/gtm-infrastructure",
     job: "The machine that carries it to buyers",
     whatItIs: "Data pipelines, orchestration, and CRM architecture built as one documented machine in your stack.",
     inPractice:
@@ -69,6 +73,7 @@ export const LAYERS: Layer[] = [
     n: 3,
     code: "03",
     name: "GTM Intelligence",
+    href: "/capabilities/gtm-intelligence",
     job: "The loop that learns",
     whatItIs: "The observation layer that feeds what works back into narrative and infrastructure, so the system learns.",
     inPractice: "We instrument every touch, then sit with you each quarter and retune the system against what the signal says.",

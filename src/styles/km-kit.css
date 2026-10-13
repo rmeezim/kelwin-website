@@ -236,8 +236,11 @@
 .ac-row__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 360ms var(--ease-inout); }
 .ac-row__more > * { min-height: 0; overflow: hidden; }
 .ac-row.is-open > .ac-row__more { grid-template-rows: 1fr; }
-.ac-row__in { padding: 0 0 26px var(--ac-row-indent, 0px); opacity: 0; transition: opacity 360ms var(--ease-inout); }
-.ac-row.is-open .ac-row__in { opacity: 1; }
+.ac-row__in {
+  padding: 0 0 26px var(--ac-row-indent, 0px); opacity: 0; visibility: hidden;
+  transition: opacity 360ms var(--ease-inout), visibility 0s linear 360ms;  /* closed: out of the tab order once it has folded */
+}
+.ac-row.is-open .ac-row__in { opacity: 1; visibility: visible; transition: opacity 360ms var(--ease-inout), visibility 0s; }
 
 /* spec list: mono key, Mona value (values are never mono) */
 .ac-spec { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 24px; margin: 0; }

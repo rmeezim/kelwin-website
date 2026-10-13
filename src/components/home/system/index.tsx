@@ -53,7 +53,7 @@ export default function System() {
             pressing a row moves the red to its slab, pressing a slab opens its row */}
         <div className="ac-col km-system__detail" style={vars({ "--c": "9", "--s": "4" })}>
           <Ledger label="The three layers" script={reserveInline()}>
-            {LAYERS.map(({ n, code, name, job, whatItIs, inPractice }, i) => (
+            {LAYERS.map(({ n, code, name, job, whatItIs, inPractice, href }, i) => (
               <li
                 key={n}
                 className={`ac-row${n === 1 ? " is-open is-cur" : ""}`}
@@ -86,6 +86,9 @@ export default function System() {
                         <p className="ac-idx">In practice</p>
                         <p className="ac-support">{inPractice}</p>
                       </div>
+                      <Link className="ac-link km-system__inside" href={href}>
+                        Inside this layer
+                      </Link>
                     </div>
                   </div>
                 </div>

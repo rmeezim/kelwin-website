@@ -105,7 +105,7 @@ export default function Evidence() {
               ))}
             </div>
             <Link className="ac-link km-evidence__door" href="/insights/the-17-percent-window">
-              Field note · The 17% window · 5 min
+              Field note · The 17% window · 2 min
             </Link>
           </div>
         </div>

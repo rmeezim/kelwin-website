@@ -23,9 +23,9 @@ const SYMPTOMS = [
 ];
 
 const NOTES = [
-  { href: "/insights/revenue-entropy", title: "Revenue entropy", meta: "June 2026 · 6 min" },
-  { href: "/insights/the-17-percent-window", title: "The 17% window", meta: "June 2026 · 5 min" },
-  { href: "/insights/deliverability-is-infrastructure", title: "Deliverability is infrastructure", meta: "May 2026 · 5 min" },
+  { href: "/insights/revenue-entropy", title: "Revenue entropy", meta: "June 2026 · 3 min" },
+  { href: "/insights/the-17-percent-window", title: "The 17% window", meta: "June 2026 · 2 min" },
+  { href: "/insights/deliverability-is-infrastructure", title: "Deliverability is infrastructure", meta: "May 2026 · 2 min" },
 ];
 
 export default function Letter() {
