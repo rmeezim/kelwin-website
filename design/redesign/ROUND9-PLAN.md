@@ -160,10 +160,12 @@ sibling strip, no "question? → LINK" rows. Where one onward link earns a place
 1. **Scope.** Every kit and drawing rule above applies to the interior only. The approved homepage and footer do
    not move a pixel; several homepage devices (boxed 01–03 on system, the principle's noise filter, + marks,
    long caps links) are approved there and stay.
-2. **The write-in is a pen, not split letters.** A hard-edged clip sweeps each `.ac-line > span` left to right
-   at one pen speed, line after line, in short hard steps, so only the letter under the pen edge is ever
-   partial. No letter splitting: splitting shifted every h1 by up to 8px (kerning) and destroyed nested accent
-   spans. Only the interior page h1 writes; other heads keep the kit's rise; reading copy never writes.
+2. **The write-in must not move the set type.** The prototype's naive split shifted every h1 by up to 8px
+   (kerning) and destroyed nested accent spans; that version is rejected. The kit keeps a *measured* letter split
+   (lib/turn.js): every glyph keeps its kerned place (measured ≤0.11px), lines are locked to the unsplit type's
+   breaks, nested accents keep their weight and colour, the authored markup comes back at the end, and the
+   accessible name is the h1's own text throughout. (A hard-edged clip sweep was the fallback if those gates had
+   failed.) Only the interior page h1 writes; other heads keep the kit's rise; reading copy never writes.
 3. **Pictures are the founder's call (rules 5 and 6).** The mockups show them because he asked, labelled as a
    proposal. Stand-ins:
    - the hero's frosted stand-in (`img/film-room.webp`) only as crops inside one half of the image — it is a
