@@ -15,6 +15,7 @@ placement shots the data names (paths relative to R; a value starting with TODO 
   · walks each page with walk8.mjs at 1440 (frames -> walk/<name>-NN.webp, 960 wide) unless --no-walk,
     which keeps the walk frames of the previous run
   · packages the footer section's pictures (footer.r8_src and each option's shots[].img_src) as webp
+  · a page entry with "members" is one card for several pages (each member is packaged on its own)
   · keeps the package under --max-files (the artifact takes 255 files per publish): when the frames
     don't fit, every page is capped at the same number of frames, keeping its first and last, and
     the dropped frames are logged
@@ -141,6 +142,8 @@ def main():
     page(SITE / "page-home.html", OUT / "page-home.html", "Homepage", unknown, fallback)
     present = []
     for p in cfg["pages"]:
+        if p.get("members"):     # a card that shows several pages (the field notes, Privacy and Terms): its members carry the files
+            continue
         src = SITE / f"page-{p['id']}.html"
         p["frames"], p["height"] = [], 0
         if not src.exists():

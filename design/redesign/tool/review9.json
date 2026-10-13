@@ -10,31 +10,31 @@
     "go": "See the causes"
    },
    {
-    "quote": "Let's fix it all then.",
-    "answer": "Every cause is fixed on every page: first in the parts all pages share, then page by page.",
+    "quote": "…let's fix it all then.",
+    "answer": "We worked through every cause, first in the parts all pages share, then page by page. Tell us if anything still feels machine-made.",
     "href": "#pages",
     "go": "See the pages"
    },
    {
-    "quote": "Make our website feel a bit more alive and a bit less text-heavy.",
-    "answer": "Ten of the 18 pages now open on one large thing under the headline: the page's own document, a drawing to scale, or a picture. Headlines write themselves in.",
-    "href": "#motion",
-    "go": "Watch it move"
+    "quote": "…make our website feel a bit more alive and a bit less text-heavy.",
+    "answer": "Nine of the 18 pages now open on one large thing under the headline: the page's own document, the 13-week drawing, or a picture or the place held for one. The Audit keeps its approved day ruler. Headlines write themselves in.",
+    "href": "#film-arrive",
+    "go": "Watch a page arrive"
    },
    {
-    "quote": "That flickering logo appears for a short while before switching to the next page.",
+    "quote": "…that flickering logo appears for a short while before switching to the next page.",
     "answer": "The turn: a graphite panel crosses the screen, the Kelwin mark flickers on, and the next page appears. Every mockup here has it.",
-    "href": "#motion",
+    "href": "#film-turn",
     "go": "Watch the turn"
    },
    {
-    "quote": "There should also be a picture area where there are pictures of the team.",
+    "quote": "…there should also be a picture area where there are pictures of the team…",
     "answer": "About now has one: your portrait and one working session, labelled until they are shot. Pictures need a change to standing rule 6, written out for your yes.",
     "href": "#pictures",
     "go": "Read the change"
    },
    {
-    "quote": "We can also have dedicated pages for individual short-term project services.",
+    "quote": "…we can also have dedicated pages for individual short-term project services…",
     "answer": "Six fixed-scope projects proposed and one held. The projects page and the first project page are built as mockups.",
     "href": "#projects",
     "go": "See the projects"
@@ -47,7 +47,7 @@
    },
    {
     "quote": "What if we pull it above it? It feels off being below that line.",
-    "answer": "Done: the footer logo now sits on the legal line, which hides its lower fifth. One alternative puts it fully above.",
+    "answer": "We moved it up onto the legal line, which keeps your round-4 pick and hides the logo's lower fifth. Your version, fully above the line, is shown beside it.",
     "href": "#footer",
     "go": "See the footer"
    }
@@ -58,18 +58,15 @@
     "Mockups, like round 8. Nothing here is live."
    ],
    [
-    "Already in the site's code",
-    "Built this round in the live site's code, on the development branch, not published: the menu, with The Lab under The Firm and the copy you approved; the menu's audit door in ink on paper (your C3 note); the corrected read times and the “Inside this layer” links on the homepage; the footer change."
+    "Already built into the real site (not published)",
+    "The menu, with The Lab under The Firm and the copy you approved; the menu's audit button, its text now ink on paper instead of red, as you asked; the corrected read times and the “Inside this layer” links on the homepage; the footer change."
    ],
    [
-    "How it was checked",
-    "Each page was rebuilt, read again twice against your notes and the eight causes, and fixed. Then checked on desktop, tablet and phone."
-   ],
-   [
-    "Your C5 note",
+    "The Lab's invitation link",
     "The Lab is rebuilt in the new design. Its application is now “Ask for an invitation”, the quiet link beside the red audit button, as on the other pages."
    ]
-  ]
+  ],
+  "kicker": "Round 9 · our answer to your round-8 notes"
  },
  "causes": {
   "lede": "The homepage was composed section by section over seven rounds. The other pages were filled in from one shared rulebook, so the same small devices repeated on all sixteen and added up to a template. These are the eight causes, in plain words. Each one shows a round-8 crop beside the same kind of thing in round 9. Click a picture to see it full size.",
@@ -78,7 +75,7 @@
     "id": "mono-labels",
     "title": "Tiny grey code-font capitals carried words.",
     "plain": "On the homepage the typewriter-style font mostly carries numbers. On the other pages it carried field names, column heads and status words: up to 21 on one Reports screen, and Contact's field names at 12px.",
-    "fix": "Labels are ordinary words in the site's own face, sentence case, 14px and up. The code font is kept for numbers and dates.",
+    "fix": "Field names, column heads and status words are ordinary words in the site's own face, sentence case, at reading size. The code font is kept for numbers and dates. The small capital labels above each section stay, as on the homepage, as do the menu, the footer, the Audit's approved “Phase 01 / 04 · Diagnose” and the small “source” pointers in the field notes' margins. Say if you want those changed too.",
     "caption": "Contact's form. Each field had a small grey code-font name and a second label under it. Now each field has one name in plain words, at reading size, and \"All fields required\" is said once.",
     "before_src": "qa/r9-review/causes/mono-labels-before.webp",
     "before_alt": "Round 8 Contact form: field names TO, FROM, COMPANY and REPLY TO in small grey monospaced capitals, each with a second label marked required",
@@ -99,11 +96,11 @@
    {
     "id": "one-head",
     "title": "Every page opened the same way.",
-    "plain": "A label with a numbered breadcrumb, a headline, a red rule, a lede, a three-row facts box, then a thin framed drawing. Sixteen pages, one recipe.",
+    "plain": "A label with a numbered breadcrumb, a headline, a red rule, a short paragraph, a three-row facts box, then a thin framed drawing. Sixteen pages, one recipe.",
     "fix": "Each headline is set for its page, in size, accent and layout. Under it comes the page's own thing: a document, a drawing with a real measure, a picture, or the content itself.",
     "caption": "Nine page openings, the same nine pages in both. Round 8 is one layout nine times, each with a facts box and a thin drawing. In round 9 the headlines differ, and under each one is that page's own thing: a document, the 13-week drawing, a frame for footage or photographs to come, or the list or form itself.",
     "before_src": "qa/r9-review/causes/one-head-before.webp",
-    "before_alt": "Nine round-8 page openings sharing one layout: label row, headline, red rule, lede, three-row facts box and a thin framed drawing",
+    "before_alt": "Nine round-8 page openings sharing one layout: label row, headline, red rule, short paragraph, three-row facts box and a thin framed drawing",
     "after_src": "qa/r9-review/causes/one-head-after.webp",
     "after_alt": "Nine round-9 page openings with different headline settings and a document, drawing, photo frame, list or form beneath each"
    },
@@ -111,7 +108,7 @@
     "id": "drawings",
     "title": "Drawings illustrated ideas instead of showing things.",
     "plain": "Noise running through a funnel, a knot untangling, a ring: all 1px lines with labels placed by arithmetic. The homepage draws real objects with one solid mass.",
-    "fix": "A drawing stays only where it explains a real thing. It is drawn with weight and carries at most three labels.",
+    "fix": "A drawing stays only where it explains a real thing. New drawings are drawn with weight and carry at most three labels; the field notes' two approved drawings and the Audit's day ruler keep theirs.",
     "caption": "GTM Intelligence's opening drawing. The ring marked \"One quarter\" with four coded labels is now the quarter itself: 13 weeks across, a solid bar for each weekly review, a box for each win/loss call, and the readout week in red. Three labels.",
     "before_src": "qa/r9-review/causes/drawings-before.webp",
     "before_alt": "Round 8 GTM Intelligence drawing: a thin ring marked ONE QUARTER on a tick line, with four boxed codes 03.1 to 03.4",
@@ -143,11 +140,11 @@
    {
     "id": "twice",
     "title": "The writing said things twice.",
-    "plain": "The headline, the lede and the facts box repeated each other. Section heads shared one clipped slogan rhythm, sibling pages shared sentence templates, and pages described themselves.",
+    "plain": "The headline, the paragraph under it and the facts box repeated each other. Section heads shared one clipped slogan rhythm, sibling pages shared sentence templates, and pages described themselves.",
     "fix": "Each thing is said once. Section heads are claims a buyer could disagree with, and every page was cut to a word budget.",
-    "caption": "The opening of Who We Work With. Before, the lede restated the headline and a facts box restated both. Now the headline says it once, one line beside it says who it is for, and one link leads to who we turn away.",
+    "caption": "The opening of Who We Work With. Before, the paragraph under the headline restated it, and a facts box restated both. Now the headline says it once, one line beside it says who it is for, and one link leads to who we turn away.",
     "before_src": "qa/r9-review/causes/twice-before.webp",
-    "before_alt": "Round 8 Who We Work With opening: a headline, a lede that restates it, and a three-row facts box",
+    "before_alt": "Round 8 Who We Work With opening: a headline, a paragraph that restates it, and a three-row facts box",
     "after_src": "qa/r9-review/causes/twice-after.webp",
     "after_alt": "Round 9 Who We Work With opening: a headline, one line beside it with a link, and a stand-in picture below"
    },
@@ -165,7 +162,7 @@
   ]
  },
  "motion": {
-  "lede": "You asked for an animation between pages, like the Palantir recording where the logo flickers before the next page appears. These are real-time recordings of the mockups at desktop width, with no sound. The recorder catches fewer frames than a screen shows, so the quickest moments, the panel moving in and out, look a little stepped here. Open a mockup to see them smooth.",
+  "lede": "You asked for an animation between pages, like the Palantir recording where the logo flickers before the next page appears. These are real-time recordings of the mockups at desktop width, with no sound. The recorder catches fewer frames than a screen shows, so the quickest moments, the panel moving in and out, look a little stepped here. Open a mockup to see them smooth. The sheet slide is not on the mockups; it was recorded on the same pages with the turn swapped for it.",
   "films": [
    {
     "id": "turn",
@@ -220,19 +217,21 @@
     ],
     [
      "neither",
-     "Neither"
+     "Neither: pages just load"
     ]
    ],
    "proposed": "turn"
-  }
+  },
+  "decide_title": "Which page change do you want?",
+  "decide_text": "The turn is on every mockup. The sheet slide would replace it. With neither, a click simply loads the next page, with nothing in between."
  },
  "pictures": {
   "lede": "You asked for pictures of the team on About, and liked how GoNimbly puts a moving picture under each headline. Standing rule 6 forbids pictures today, so the mockups show them as a proposal, on three pages: About, Narrative Systems and Who We Work With. Nothing goes into the site's rules without your yes.",
   "rule_now_title": "Rule 6 today",
-  "rule_now": "No static pictures in the v5 system.\n· Build with type, grid, flat colour, rules, numbers, inline-SVG drawings and motion.\n· The one exception is the hero film (see Homepage).",
+  "rule_now": "No static pictures. The one exception is the homepage film.",
   "amendment_title": "Rule 6, as proposed",
-  "amendment": "Pictures only where they are real.\n· Build with type, grid, flat colour, rules, numbers, inline-SVG drawings and motion.\n· An interior page may open on a plate of frosted or graded footage or stills, full width, directly under its headline, with a different shot on each page. The plate's frost and grade count as the film's treatment under rule 5.\n· About may show real photographs of the team, and of real working sessions, taken with the client's written consent.\n· Never stock photographs of people presented as the team, and never AI-generated photographs.\n· Until real footage or photographs exist, a plate is labelled: a card naming the shot (“Footage to come”, “Photographs to come”), or a frosted crop of the homepage film tagged “Stand-in”. The v4 photographs never return.\n· The hero film stays the homepage's exception (see Homepage).",
-  "brief_lede": "Where a page asks for a picture, it shows a card that names the shot and says how to film it, so the cards are also your shoot list. Two shots moved off their pages and wait here: Careers and The Lab now open without a picture.",
+  "amendment": "Pictures, but only real ones.\n· A page may open on real footage or a photograph, right under its headline, a different shot on each page.\n· Every picture is frosted and graded like the homepage film.\n· About may show the team, and working sessions shot with the client's written consent.\n· Team portraits are added as people join, shot the same way.\n· Never stock photos of people, never AI-made pictures, and the old site's photographs never come back.\n· Until a shot exists, its place shows a card naming the shot, or a blurred crop of the homepage film marked “Stand-in”.",
+  "brief_lede": "Where a page asks for a picture, it shows a card that names the shot and says how to film it, so the cards are also your shoot list.",
   "shots": [
    {
     "page": "about",
@@ -261,20 +260,6 @@
     "how": "A buyer-side working session: two or three people at a table, shot over a shoulder, faces out of focus, a whiteboard or a printed page between them. Frosted and graded like the homepage film.",
     "spec": "Film · 12–16 s · 2.52 : 1 · no sound",
     "now": "Until it is shot, the page shows a frosted crop of the homepage film, tagged “Stand-in”. It reads mostly as a blurred shoulder. If you prefer, a card with this brief replaces it."
-   },
-   {
-    "page": "careers",
-    "name": "A working document, written line by line.",
-    "how": "A silent loop: Kelwin's own positioning document, screen-captured as it is written, an hour in twenty seconds.",
-    "spec": "Film · 20 s · 2.52 : 1",
-    "now": "Not on the page. Careers opens straight onto its seats, with no picture."
-   },
-   {
-    "page": "the-lab",
-    "name": "The first build, out of focus.",
-    "how": "Filmed the day it first runs: one screen in a dark room, focus pulled until nothing on it reads.",
-    "spec": "Film · 8 s · 2.52 : 1",
-    "now": "Not on the page. The Lab opens on the cover of the Revenue Entropy Index instead."
    }
   ],
   "choice": {
@@ -283,15 +268,22 @@
    "options": [
     [
      "approve",
-     "Approve the amendment"
+     "Approve, keep the stand-in on Who We Work With"
     ],
     [
-     "change",
-     "Change it"
+     "approve-card",
+     "Approve, use a shot card there"
+    ],
+    [
+     "keep",
+     "Keep rule 6 as it is"
     ]
    ],
    "proposed": ""
-  }
+  },
+  "later_line": "Later, if wanted: Careers, a working document written line by line, and The Lab, its first build filmed out of focus. Both pages open without a picture today.",
+  "decide_title": "Do you approve the change to rule 6?",
+  "decide_text": "With your yes, the rule goes into the site's standing rules as written and the shots are taken as briefed. Who We Work With opens on a blurred stand-in from the homepage film until its own footage exists; a card with its brief can take that place instead."
  },
  "projects": {
   "offer_name": "Projects",
@@ -363,20 +355,6 @@
     "page": ""
    }
   ],
-  "toggle": [
-   [
-    "keep",
-    "Keep"
-   ],
-   [
-    "drop",
-    "Drop"
-   ],
-   [
-    "hold",
-    "Hold"
-   ]
-  ],
   "only_with_system": [
    "The Orchestration Rules",
    "Narrative resonance testing",
@@ -420,17 +398,36 @@
    {
     "id": "doors",
     "title": "The doors",
-    "text": "Red still means Request a System Audit. A project page's quiet door is Ask for this project, which opens the contact form with the project named.",
+    "text": "Red still means Request a System Audit. A project page's quiet door is Ask for this project, which opens the contact form with the project named. (on the site; in these mockups the form opens without the name)",
     "img_src": ""
    }
   ],
   "pages": [
    "projects",
    "email-deliverability"
-  ]
+  ],
+  "lineup": {
+   "id": "proj-lineup",
+   "title": "Launch these six, and hold Sales narrative?",
+   "options": [
+    [
+     "yes",
+     "Yes, as listed"
+    ],
+    [
+     "change",
+     "Change the line-up (say which)"
+    ]
+   ],
+   "proposed": "yes",
+   "text": "The six cards above go live as written, with their pages built one by one. Sales narrative waits until you confirm the capacity."
+  },
+  "pages_title": "The two project pages built so far",
+  "terms_title": "The terms",
+  "places_title": "Where projects appear on the site"
  },
  "lifecycle": {
-  "lede": "In round 8 you asked for ways to structure the whole lifecycle of an engagement. Here are three, one recommended. All three keep your sequence: the first call, the ten-day audit, the readout call, then the proposal.",
+  "lede": "In round 8 you asked for ways to structure the whole lifecycle of an engagement. Here are three, one recommended. All three keep the order of your calls: the first call, the ten-day audit, the readout call, then the proposal.",
   "spine_title": "Your sequence, the spine of every system engagement",
   "spine": [
    "Three questions",
@@ -469,7 +466,7 @@
      "Each project fits one contractor seat with you reviewing, so you can grow one seat at a time."
     ],
     "cost": [
-     "“Engagement” has to mean the full system only, so About's first rule and the menu's “Where every engagement begins” stay true as written (one question below asks you to confirm).",
+     "“Engagement” keeps meaning the full system only, so About's first rule and the menu's “Where every engagement begins” stay true as written.",
      "A second sales motion while you are solo: a written scope for every project."
     ],
     "recommended": true
@@ -484,13 +481,13 @@
      "A paid audit protects your time."
     ],
     "cost": [
-     "It changes your sequence: the paid moment moves from the proposal to the audit.",
+     "It changes when you are paid: the paid moment moves from the proposal to the audit.",
      "Three to five contracts per client, and a slower path to the full system."
     ],
     "recommended": false
    }
   ],
-  "recommended_line": "Two ways in, one spine answers your wish not to turn small buyers away without adding a third door. Two things borrowed from the ladder: the retainer is priced by the quarter and renewed at the calibration readout, and you can start charging for the audit later if it books out. One named lead stays with each client from the first call to handover.",
+  "recommended_line": "Two ways in, one spine lets small buyers in without adding a third door.",
   "cadence_title": "The cadence, as drafted on About",
   "cadence": [
    {
@@ -524,7 +521,7 @@
     ]
    }
   ],
-  "cadence_line": "On About it sits under “How an engagement runs”, marked “Draft, to be confirmed”, and opens with the claim that the person on your first call runs the engagement through to handover. It replaces round 8's week (Monday 09:00 to Friday 15:00), whose clock times one person serving several clients can't keep. The audit page shows the same calls, and each capability page links to it.",
+  "cadence_line": "On About these steps and this rhythm sit under “How an engagement runs”, marked “Draft, to be confirmed”. The three capability pages draft their own part of the rhythm, marked the same way. This replaces round 8's week, whose clock times one person serving several clients can't keep.",
   "choice": {
    "id": "lifecycle",
    "title": "The engagement lifecycle",
@@ -543,18 +540,21 @@
     ]
    ],
    "proposed": "two-ways"
-  }
+  },
+  "decide_title": "Which structure should the site describe?",
+  "decide_text": "Your pick also confirms the steps and rhythm above, and their “Draft” marks come off."
  },
  "groups": [
   {
    "key": "build",
-   "label": "What you'd build",
-   "note": "The three capability pages"
+   "label": "The three capability pages",
+   "note": ""
   },
   {
    "key": "projects",
-   "label": "New: project pages",
-   "note": "From your idea of short-term project services"
+   "label": "Project pages",
+   "note": "",
+   "home": "projects"
   },
   {
    "key": "trust",
@@ -573,8 +573,8 @@
   },
   {
    "key": "side",
-   "label": "Side questions",
-   "note": "Hiring, The Lab, and your data"
+   "label": "Careers, The Lab and the legal pages",
+   "note": ""
   }
  ],
  "pages": [
@@ -589,27 +589,21 @@
     "note": "I'm not sure what it is, and I'm having a hard time pointing it out, but some parts of this page feel kind of AI-made. It looks good, to be honest, but it still looks AI-made. Could you audit and point out what might be causing this page to feel AI?"
    },
    "changed": [
-    "The opening that read as a template is gone: the facts box, the thin line drawing with its boxed codes, and the “ONE VOICE” mark. Your approved headline now sits beside one short line, with one large picture under it.",
-    "That picture is a placeholder for footage, and doubles as its shoot brief: “A seller’s line, rewritten in the buyer’s words.” It is labelled “Footage to come”, with no fake footage.",
-    "“What we install” became “Where the pitch comes from”. It opens on “Your messaging is decided on sales calls, by whoever is talking.”, then one plain paragraph names the four documents of your Narrative OS. The coded list of services (01.1 to 01.4, each with a “Ships” key) is gone.",
-    "The message matrix is set as a real page on paper, filled in for Kelwin itself and marked Specimen, instead of an app-style window with chips.",
-    "“How it runs” is two plain statements, “We write it once, with your leadership in the room.” and “Then the person who runs it keeps it current.”, with the week, month and quarter beside them. It is marked “Draft, to be confirmed”.",
-    "The page ends on its own line, “We line up every version of your pitch and mark the gaps.”, with the red audit button and one onward link, to the 17% window note. The strip of sibling pages is gone."
+    "The template opening is gone (facts box, thin drawing, “ONE VOICE” mark). Under your headline is one large picture, marked “Footage to come”.",
+    "The coded services list is gone. “Where the pitch comes from” names the four documents of your Narrative OS in one plain paragraph.",
+    "The message matrix is a real page on paper, filled in for Kelwin and marked Specimen, not an app window with chips."
    ],
    "flags": [
     {
      "text": "The message matrix is filled in for Kelwin itself and marked Specimen. Are you happy with its cells? For example, the champion’s problem: “Pipeline still runs through the founder and stalls when they step back.”"
-    },
-    {
-     "text": "The picture under the headline waits for footage: “A seller’s line, rewritten in the buyer’s words.”",
-     "q": "shoot-list"
-    },
-    {
-     "text": "“How it runs” is drafted on the recommended way to run an engagement, and marked “Draft, to be confirmed”.",
-     "q": "cadence"
     }
    ],
-   "plan": "Plate under the head; services as plain named rows (no codes, no roll-up drawing); the message matrix as an open, full-width table at reading scale; How it runs as two large statements; its own door line; a line linking to the layer's projects."
+   "also": [
+    "shoot-list",
+    "cadence",
+    "project-places",
+    "phone-headlines"
+   ]
   },
   {
    "id": "gtm-infrastructure",
@@ -622,29 +616,21 @@
     "note": "I'm not sure what it is, and I'm having a hard time pointing it out, but some parts of this page feel kind of AI-made. It looks good, to be honest, but it still looks AI-made. Could you audit and point out what might be causing this page to feel AI?  Especially the artifacts and the diagrams look kind of AI-made. I'm not sure if we could improve them and how to improve them or redesign them to not make them look AI."
    },
    "changed": [
-    "New headline: “Your stack, wired to sell.” Round 8’s “The machine that carries it to buyers.” borrowed the homepage’s line, and on this page “it” had nothing to point to.",
-    "The diagram you flagged, a knot of tools untangling into one route, is gone. Under the headline is the first page of a real document, the Orchestration Rules: each rule written as “When … then …” in large type, marked Specimen, and cut after the second rule so the opening stays short.",
-    "The four services lost their codes and their “Replaces / Ships” keys. Each is a name and one plain sentence, beside one sourced number: 1 in 6 legitimate marketing emails never reach the inbox (Validity, 2025).",
-    "“How it runs” became “After handover, one person keeps it healthy.”: a standing runbook of weekly, monthly and quarterly checks, marked “Draft, to be confirmed”. The quarterly check says plainly what to compare: your CRM’s stages and fields against how deals actually moved.",
-    "The CRM blueprint example is cut, since it was a second document much like the first. The blueprint is offered instead as a project of its own. The page closes on “Every lost lead leaves a trace in your CRM.”"
+    "New headline, “Your stack, wired to sell.” The knot diagram is gone: the page opens on the Orchestration Rules, written as When and Then.",
+    "The four services lost their codes and their “Replaces / Ships” keys. Each is a name and one plain sentence.",
+    "The CRM blueprint example is cut, since it was a second document much like the first. The blueprint is offered as a project instead."
    ],
    "flags": [
     {
-     "text": "New headline: “Your stack, wired to sell.” Round 8 borrowed the homepage’s “The machine that carries it to buyers”, and on this page “it” had nothing to point to."
-    },
-    {
-     "text": "The Orchestration Rules now open the page as its picture, and the CRM blueprint example is cut. The blueprint is offered as a project instead. Say if you want it back on the page."
-    },
-    {
-     "text": "The line under the headline promises “No new software to license.”, which may not hold when a signal map needs a paid data source.",
-     "q": "licenses"
-    },
-    {
-     "text": "The Orchestration Rules are written for the readout’s invented company, and name real tools such as Salesforce, Outreach and LinkedIn.",
-     "q": "specimens"
+     "text": "The CRM blueprint example is cut, and the blueprint is offered as a project instead. Do you want the example back on the page?"
     }
    ],
-   "plan": "Services without codes or Replaces/Ships keys; the Orchestration Rules as a large When/then sheet, rule text 24–28px, no route graph; the runbook as type; its own door line."
+   "also": [
+    "licenses",
+    "specimens",
+    "cadence",
+    "project-places"
+   ]
   },
   {
    "id": "gtm-intelligence",
@@ -657,23 +643,16 @@
     "note": "I'm not sure what it is, and I'm having a hard time pointing it out, but some parts of this page feel kind of AI-made. It looks good, to be honest, but it still looks AI-made. Could you audit and point out what might be causing this page to feel AI?  Especially the artifacts and the diagrams look kind of AI-made. I'm not sure if we could improve them and how to improve them or redesign them to not make them look AI."
    },
    "changed": [
-    "The ring drawing under the headline is gone. In its place is the quarter drawn to scale: 13 weeks, with the weekly signal review, win/loss calls as deals close, and the calibration readout in week 13 as the one red block.",
-    "The four questions are set large, without quote marks or “Service / Ships / Feeds” keys. Each is answered by the service’s name and one plain sentence.",
-    "“Who runs it” is one big number, 25 min, your operator’s weekly review, and two lines on who does what. It is marked “Draft, to be confirmed”.",
-    "The Rebuild Sequence is a ranked table on a paper page (Rank, Item, Last quarter, Decision, Why), marked Specimen and written for the same invented company as the readout on Reports. It replaces round 8’s last-quarter / this-quarter drawing.",
-    "The Lab is one plain line with a link: “Our R&D, the Lab, is building the platform this loop will run on.” The page closes on its own line: “Signals worth acting on are already in your won deals.”"
+    "The ring drawing is gone. Under the headline is the quarter to scale: 13 weeks, weekly reviews, win/loss calls, and the readout in red.",
+    "The four questions are set large, without quote marks or keys, each answered by the service's name and one plain sentence.",
+    "The Rebuild Sequence is a ranked table on a paper page, marked Specimen, in place of round 8's before-and-after drawing."
    ],
-   "flags": [
-    {
-     "text": "“Who runs it” is drafted on the recommended way to run an engagement, and marked “Draft, to be confirmed”.",
-     "q": "cadence"
-    },
-    {
-     "text": "The Rebuild Sequence is written for the readout’s invented company, a forecasting-software firm.",
-     "q": "specimens"
-    }
-   ],
-   "plan": "The four questions as large lines; the quarter as one big 13 weeks with the readout week called out; the Rebuild Sequence as a ranked table on a sheet; one Lab line per Q4."
+   "flags": [],
+   "also": [
+    "cadence",
+    "specimens",
+    "project-places"
+   ]
   },
   {
    "id": "projects",
@@ -686,27 +665,23 @@
     "note": "Also, I was thinking, since we are giving revenue architecture and the kind of GTM services, we can also have dedicated pages for individual short-term project services that we could provide (like only data services, narrative services, architecture generation services, and stuff like that), rather than a full suite of services. Obviously, we have a preference to get a client that gets the full suite of services, but we can also have subpages somewhere on the website wherever you feel is suitable. You can give me the ideas for it, and we will have dedicated small service pages. If a client really needs it, they can also request that from us rather than them turning away by thinking that we only provide full-scale, full-service rather than small-scale services as well. If you understand what I'm trying to say."
    },
    "changed": [
-    "A new page, from your idea of short-term services: “One piece of the system, on its own.”, scoped in writing before it starts and built to the full install’s spec.",
-    "Under the headline is a written scope for one project, positioning and messaging: what it fixes, what we build, what we don’t, and what you give. It is marked Specimen.",
-    "Six projects, grouped by layer and marked “Proposed, to be confirmed”, each with what you keep. Only Email deliverability has its own page so far. No prices or lengths are published.",
-    "“Some parts only work with the whole system running.” names the four parts sold only with the full install: the Orchestration Rules, narrative resonance testing, the quarterly calibration with its Rebuild Sequence, and the operating retainer. A project ends at handover, with no retainer.",
-    "How a project runs: you hear back within two working days, then a 30-minute call. Week one, five working days, decides whether the build goes ahead or stops, with the reason in writing.",
-    "The close keeps the audit as the main door (“Trouble in more than one layer calls for the audit.”, with the red button) and puts “Ask about a project” beside it, so the full system stays the first choice."
+    "A new page: “One piece of the system, on its own.” Under the headline is a written scope for a positioning project, marked Specimen.",
+    "Six projects by layer, marked “Proposed, to be confirmed”, each with what you keep. No prices or lengths are published.",
+    "It names the four parts sold only with the full system, and closes on the audit, with “Ask about a project” beside it."
    ],
    "flags": [
     {
      "text": "The picture under the headline is a written scope for a positioning project. Its “What you give” reads “Two working sessions with you and the head of sales, and recent call notes to read.” Is that what you would ask a client for?"
-    },
-    {
-     "text": "No prices, and no lengths beyond week one: each is set in the written scope until you decide.",
-     "q": "project-prices"
-    },
-    {
-     "text": "Every project can stop in writing after week one, but the page doesn’t say what that costs the client.",
-     "q": "project-terms"
     }
    ],
-   "plan": "Head with the written scope as a sheet plate; the catalogue by layer; only with the system; how a project runs; the close."
+   "also": [
+    "project-prices",
+    "project-terms",
+    "audit-fee",
+    "who-leads",
+    "engagement-word",
+    "licenses"
+   ]
   },
   {
    "id": "email-deliverability",
@@ -719,24 +694,15 @@
     "note": "Also, I was thinking, since we are giving revenue architecture and the kind of GTM services, we can also have dedicated pages for individual short-term project services that we could provide (like only data services, narrative services, architecture generation services, and stuff like that), rather than a full suite of services. Obviously, we have a preference to get a client that gets the full suite of services, but we can also have subpages somewhere on the website wherever you feel is suitable. You can give me the ideas for it, and we will have dedicated small service pages. If a client really needs it, they can also request that from us rather than them turning away by thinking that we only provide full-scale, full-service rather than small-scale services as well. If you understand what I'm trying to say."
    },
    "changed": [
-    "The first single-project page, and the template the other five would follow: “Email built to pass the checks inboxes run.”",
-    "Under the headline is a spread of the runbook the client keeps: its cover, and the page for when a domain drops. It is marked Specimen.",
-    "Who it’s for: “It fits a company that sends all its email from one domain.”, with the right project and the wrong one side by side. The scope: “Everything we change sits in your sending setup.”, then what’s in and what’s out.",
-    "What it takes: week one reads your setup and can stop the project in writing; what we need from you (admin access, a few hours a week, one owner for the runbook); and one big number, a placement check 30 days after handover.",
-    "“Where it leads” shows the runbook becoming chapter 1 of the full install’s Orchestration Rules, so the project is a first step toward the system, not a dead end.",
-    "No price and no length, and it is marked “Proposed, to be confirmed”. The close, “Outreach and your team’s own email share one reputation.”, carries the red audit button and “Ask for this project”."
+    "The first single-project page, and the pattern for the other five: “Email built to pass the checks inboxes run.”",
+    "Under the headline is a spread of the runbook the client keeps, marked Specimen. Then who it fits, the scope, and what it takes.",
+    "“Where it leads” shows the runbook becoming chapter 1 of the full system's Orchestration Rules. No price and no length."
    ],
-   "flags": [
-    {
-     "text": "No price and no length on the page until you decide.",
-     "q": "project-prices"
-    },
-    {
-     "text": "It promises a placement check 30 days after handover, and a written stop after week one, without saying what either costs.",
-     "q": "project-terms"
-    }
-   ],
-   "plan": "Head with a spread of the runbook as the plate; who it's for (right project, wrong project); the scope, in and not in; what it takes; where it leads; the close."
+   "flags": [],
+   "also": [
+    "project-prices",
+    "project-terms"
+   ]
   },
   {
    "id": "who-we-work-with",
@@ -749,34 +715,28 @@
     "note": "I'm not sure what it is, and I'm having a hard time pointing it out, but some parts of this page feel kind of AI-made. It looks good, to be honest, but it still looks AI-made. Could you audit and point out what might be causing this page to feel AI?  Especially the artifacts and the diagrams look kind of AI-made. I'm not sure if we could improve them and how to improve them or redesign them to not make them look AI."
    },
    "changed": [
-    "The break chart under the headline is gone. In its place is a frosted crop of the homepage film, tagged “Stand-in”. Honestly, it reads as a blurred shoulder: it holds the place until real footage exists, and depends on your call on pictures.",
-    "New headline: “Real revenue, but no system under it.” (round 8: “Three situations, told from inside.”). The three situations follow, the first one open, each ending on the layer where it breaks first, with links.",
-    "The situations and markets lost their dash punchlines and read as plain sentences, for example “You’re still the best rep the company has.”, which no longer ends “— and it’s a trap”.",
-    "The markets lost their codes and chips. Under “Where it breaks, by market.” are six markets, each with one sentence on where it breaks.",
-    "“Who we send away” no longer repeats the homepage’s four columns word for word. It is one short paragraph in this page’s own words, then the close: “One call tells both of us whether we fit.”"
+    "The break chart is gone. Under the new headline, “Real revenue, but no system under it.”, is a stand-in crop of the homepage film.",
+    "The situations and markets read as plain sentences, without dash punchlines, codes or chips: six markets, one sentence each.",
+    "“Who we send away” is one short paragraph in this page's own words, instead of the homepage's four columns."
    ],
    "flags": [
     {
-     "text": "New headline: “Real revenue, but no system under it.” The homepage still links here with round 8’s words, “Three situations, told from inside”, and the situations now sit under the label “Three situations”."
+     "text": "The homepage still links here with round 8’s headline, “Three situations, told from inside”. Change that link to match the new headline, or keep it as approved?"
     },
     {
      "text": "Two of the three stories are folded until opened, which keeps the section short; all three buyer lines still show large. Or show all three stories at once (about 190 words in all)?"
     },
     {
-     "text": "Four market lines are reworded. Cybersecurity: “Every vendor promises the same three outcomes in the same words, to buyers paid to distrust them.” Developer & data infrastructure: “Engineers try the product from the docs, and trust only what sounds like engineering wrote it.” Professional & B2B services: “Growth stops where the partners’ networks end, because nobody wrote the pitch down.” Industrial & deep tech: “Against legacy incumbents, twelve-month deals drift until the narrative that opened them is gone.”"
+     "text": "Four market lines are reworded. Cybersecurity: “Every vendor promises the same three outcomes in the same words, to buyers paid to distrust them.” Developer & data infrastructure: “Engineers try the product from the docs, and trust only what sounds like engineering wrote it.” Professional & B2B services: “Growth stops where the partners’ networks end, because nobody wrote the pitch down.” Industrial & deep tech: “Against legacy incumbents, twelve-month deals drift until the narrative that opened them is gone.” Do they read right?"
     },
     {
-     "text": "Your approved stories are trimmed: the “What changes” labels and the dash endings are gone, the misheard turn is split into two sentences, the founder-seller story drops the 11pm emails and “Revenue is real; it just doesn’t survive your absence.”, and the plateaued story now opens “The team is hired and the tools are paid for.” (“four quarters” belongs to your letter). Keep the trims?"
-    },
-    {
-     "text": "The four “who we send away” columns repeated the homepage word for word. They are now one paragraph: “Four kinds of work we turn away: a system nobody inside will own, lead lists, a product bought at checkout, and a company with no revenue yet. If it’s the last, come back after your first customers.”"
-    },
-    {
-     "text": "The picture is the homepage film’s frosted stand-in until real footage exists.",
-     "q": "wwww-plate"
+     "text": "Your approved stories are trimmed, and their answers rewritten. The “What changes” labels and dash endings are gone. Each answer now says what we do: “We write your instincts down as a language other people can carry into rooms you’re not in.” “We keep the signal, language and learning from each quarter and carry them into the next.” “We design the category around the problem as you name it. Buyers then compare you on your terms.” The founder-seller story drops the 11pm emails and “Revenue is real; it just doesn’t survive your absence.” The plateaued story opens “The team is hired and the tools are paid for.” (“four quarters” belongs to your letter). The misheard story now reads “The product is genuinely different, but the market maps you onto whatever it already knows.” Keep these changes?"
     }
    ],
-   "plan": "A picture plate instead of the break chart; vignettes kept; markets without codes or chips, under “Where it breaks, by market”; a plain close."
+   "also": [
+    "wwww-plate",
+    "shoot-list"
+   ]
   },
   {
    "id": "about",
@@ -789,39 +749,27 @@
     "note": "I feel like there should also be a picture area where there are pictures of the team, at least initially, if there is a need for it. Otherwise, we could remove them later down the line."
    },
    "changed": [
-    "The picture area you asked for replaces the rules drawing at the top: your portrait (upright) and one “A working session” picture (wide, faces out of frame, shot with a client’s written consent). Both are labelled “Photographs to come” until they are taken.",
-    "No team slots, since Kelwin is you today. Under the pictures: your name, one background line (sales and marketing; today the growth and digital strategy lead at a global private-equity group, unnamed) and a link to your letter. No title, no location.",
-    "The facts box is gone, and the line under the headline is one sentence: “Rameez founded Kelwin in 2026 to build revenue systems clients keep.”",
-    "Your rules are said once, as plain sentences: each name followed by one line of explanation, then “The exit test” set large, a size below the headline. The chips and the rules drawing are gone.",
-    "“The week”, with clock times nobody could promise, became “How an engagement runs”: Call 01 → the audit → Call 02, the readout → Call 03, the proposal → Architect → Install → Handover → your operator, or us on retainer. The weekly, monthly, quarterly and yearly rhythm follows, marked “Draft, to be confirmed”.",
-    "The close says it plainly: “Rameez reads every audit request.”"
+    "The picture area you asked for replaces the rules drawing: your portrait and one working session, marked “Photographs to come”.",
+    "No team slots, since Kelwin is you today. Under the pictures: your name, one background line, and a link to your letter.",
+    "“The week”, with clock times nobody could keep, became “How an engagement runs”, marked “Draft, to be confirmed”."
    ],
    "flags": [
     {
-     "text": "Your four rules keep their names, each followed by one line of explanation: “No engagement starts without the audit’s readout.” “What we install is documented in your language and lives in your stack.” “We write the language down first, because pipeline problems usually start in the narrative.” “Each quarter starts where the last one ended.” Do these read right?"
-    },
-    {
-     "text": "Your background line names your current role but not the group.",
-     "q": "employer"
-    },
-    {
-     "text": "Your portrait and the working session are labelled “Photographs to come”, and there are no team slots while you are on your own.",
-     "q": "team-photos"
-    },
-    {
-     "text": "“How an engagement runs” is drafted on the recommended way to run an engagement, and marked “Draft, to be confirmed”.",
-     "q": "cadence"
-    },
-    {
-     "text": "“The person on your first call runs the engagement through to handover.”",
-     "q": "who-leads"
-    },
-    {
-     "text": "“Rameez reads every audit request.”",
-     "q": "promises"
+     "text": "Your four rules keep their names, each followed by one line: “No engagement starts without the audit’s readout.” “What we install is documented in your language and lives in your stack.” “We write the language down first, because every channel and sales call runs on it.” “Each quarter starts where the last one ended.” Do these read right?"
     }
    ],
-   "plan": "The picture area (founder portrait and team slots, honest placeholders) replaces the rules matrix; the founder per Q1; the five rules as type; the week replaced by the cadence; one close."
+   "also": [
+    "employer",
+    "team-photos",
+    "cadence",
+    "who-leads",
+    "promises",
+    "call1",
+    "readout-ahead",
+    "engagement-word",
+    "project-places",
+    "shoot-list"
+   ]
   },
   {
    "id": "insights",
@@ -834,90 +782,73 @@
     "note": "I'm not sure what it is, and I'm having a hard time pointing it out, but some parts of this page feel kind of AI-made. It looks good, to be honest, but it still looks AI-made. Could you audit and point out what might be causing this page to feel AI?  Especially the the way the list is presented of the field notes and stuff like that"
    },
    "changed": [
-    "The list no longer reads like a register: the FN codes, the quoted symptoms, the layer grid, the “Read first” tag and the “Drafting” chips are gone.",
-    "It reads like a contents page: the first note set large, the other two side by side, each with one sentence and one line for layer, month and read time (corrected to 3, 2 and 2 min).",
-    "“In the works” shows only what has a date: the Revenue Entropy Index 2026, due in Q4 2026, with “Send it to me when it’s ready”.",
-    "New headline: “Notes from the field.”, on one line. The close has its own line: “Any symptom in these notes is reason enough for a first call.”"
+    "No more register: the codes, quoted symptoms, layer grid, “Read first” tag and “Drafting” chips are gone.",
+    "It reads like a contents page: the first note set large, each with one sentence and its layer, month and read time.",
+    "The separate “In the works” list is gone. The Revenue Entropy Index sits beside the two other notes, marked “Due in Q4 2026”."
    ],
    "flags": [
     {
-     "text": "New headline: “Notes from the field.” Your letter links here with “Field notes, published”, so the link’s words no longer match the headline it lands on."
+     "text": "Your letter links here as “Field notes, published”, and the page is now headed “Notes from the field.” Change the letter’s link to match, or keep it as approved?"
     },
     {
-     "text": "“In the works” now lists only the Revenue Entropy Index. The five round-8 titles without a date (three notes, two documents) are off the list. Bring any back?"
-    },
-    {
-     "text": "The Index is shown as due in Q4 2026.",
-     "q": "index-date"
+     "text": "The round-8 “In the works” list is gone, with its five undated titles. Only the Index stays. Bring any back?"
     }
    ],
-   "plan": "An editorial index: large titles, a one-sentence dek, layer, month and read time; the first note larger; In the works as one quiet block; no codes, matrix, glyphs or chips."
+   "also": [
+    "index-date"
+   ]
+  },
+  {
+   "id": "notes",
+   "name": "The three field notes",
+   "group": "proof",
+   "members": [
+    "revenue-entropy",
+    "the-17-percent-window",
+    "deliverability-is-infrastructure"
+   ],
+   "r8": {
+    "verdict": "Approve",
+    "short": "okay · correct them · no need for the byline",
+    "note": "Your published notes:\n- okay\n- correct them\n- no need for the byline"
+   },
+   "changed": [
+    "Each note's text is unchanged, as you approved it. The bylines are gone, and the read times are corrected to 3, 2 and 2 min.",
+    "Sources sit in the margin beside their sentences. The Sources lists and the “Next note” cards are cut.",
+    "Each note closes on its own line, instead of a line about the audit."
+   ],
+   "flags": [
+    {
+     "text": "Deliverability is infrastructure has one onward link, to GTM Infrastructure. Should it go to the Email deliverability project page instead?"
+    }
+   ],
+   "also": [
+    "phone-headlines"
+   ]
   },
   {
    "id": "revenue-entropy",
    "name": "Field note: Revenue entropy",
    "route": "/insights/revenue-entropy",
    "group": "proof",
-   "r8": {
-    "verdict": "Approve",
-    "short": "",
-    "note": "Q6 Your published notes: - okay - correct them - no need for the byline"
-   },
-   "changed": [
-    "The note’s text is unchanged, as you approved it.",
-    "No byline, and the read time is corrected to 3 min (it said 6). The facts box is now one line: “All three layers · June 2026 · 3 min”.",
-    "The source sits in the margin beside its sentence. The Sources list, the “Next note” card and the margin note “A Kelwin term · Defined here, once” are cut; the term is still defined in the text.",
-    "The self-check no longer asks the three questions a second time: it is three rows of answers, in plain sentence case, under the paragraph that asks them, with “Where to look first” beside them.",
-    "It closes on its own line, “The pipeline number can’t tell you which layer broke.”, instead of “The audit’s first job is to say which of the three it is.”"
-   ],
-   "flags": [],
-   "plan": "No byline; read time 3 min; the facts box replaced by one meta line; layer names in words."
+   "part_of": "notes",
+   "tab": "Revenue entropy"
   },
   {
    "id": "the-17-percent-window",
    "name": "Field note: The 17% window",
    "route": "/insights/the-17-percent-window",
    "group": "proof",
-   "r8": {
-    "verdict": "Approve",
-    "short": "",
-    "note": "Q6 Your published notes: - okay - correct them - no need for the byline"
-   },
-   "changed": [
-    "The note’s text is unchanged, with 83% throughout. No byline, and the read time is corrected to 2 min (it said 5).",
-    "The headline is just “The 17% window.”; round 8’s second line, “Where the deal is argued.”, is dropped.",
-    "Gartner is cited once, in the margin beside its sentence, instead of a link in the opening line plus a Sources list. The “Next note” card is cut.",
-    "The retelling drawing stays, with a shorter caption. It closes on its own line, “Your champion retells your pitch to a CFO who never met you.”, instead of “The audit’s narrative readout checks whether your champion can retell you.”"
-   ],
-   "flags": [
-    {
-     "text": "The title stands alone: “The 17% window.” Round 8’s second line, “Where the deal is argued.”, is dropped, because the opening paragraph says it a line later."
-    }
-   ],
-   "plan": "No byline; read time 2 min; one meta line; layer names in words."
+   "part_of": "notes",
+   "tab": "The 17% window"
   },
   {
    "id": "deliverability-is-infrastructure",
    "name": "Field note: Deliverability is infrastructure",
    "route": "/insights/deliverability-is-infrastructure",
    "group": "proof",
-   "r8": {
-    "verdict": "Approve",
-    "short": "",
-    "note": "Q6 Your published notes: - okay - correct them - no need for the byline"
-   },
-   "changed": [
-    "The note’s text is unchanged. No byline, and the read time is corrected to 2 min (it said 5).",
-    "The title now sits on one line on desktop and tablet.",
-    "Sources sit in the margin beside the sentences they support; the Sources list and the “Next note” card are cut. The “Delivered isn’t arrived” drawing stays, marked Specimen.",
-    "It closes on its own line, “Replies can fall while every send still shows as delivered.”, instead of “The audit reads your sending setup alongside the rest of your channel stack.”"
-   ],
-   "flags": [
-    {
-     "text": "The note’s one onward link goes to GTM Infrastructure. Or should it go to the Email deliverability project page?"
-    }
-   ],
-   "plan": "No byline; read time 2 min; one meta line; layer names in words."
+   "part_of": "notes",
+   "tab": "Deliverability"
   },
   {
    "id": "reports",
@@ -930,32 +861,24 @@
     "note": "I'm not sure what it is, and I'm having a hard time pointing it out, but some parts of this page feel kind of AI-made. It looks good, to be honest, but it still looks AI-made. Could you audit and point out what might be causing this page to feel AI?  Especially the tthe way the artifact is presented and designed. Also, on this page, we could maybe have a CTA button where visitors can request the audit. If they want to request case studies, we could also ask them for their email so we can send them the case study. On the case study page itself, we only have high-level stuff."
    },
    "changed": [
-    "The readout is set once, as a real document, instead of a row of sketch cards plus an annotated table. Its first page is the picture under the new headline, “A readout, up close.”",
-    "Its four parts follow as two-page spreads you switch between, with running heads and page numbers. The “Example” chips, the margin notes on lines and the code-font labels are gone.",
-    "Every page is written for one invented company, said once, and marked Specimen.",
-    "The red “Request a System Audit” button you asked for closes the page, under “A readout like this one takes ten working days.”",
-    "Case studies, honestly: “No case study goes out without the client’s yes. None has cleared yet.” A work-email field lets a visitor ask to be sent the first one; it opens their own mail app."
+    "The readout is set once, as a real document. Its first page is the picture under the new headline, “A readout, up close.”",
+    "Its four parts follow as two-page spreads you switch between, written for one invented company and marked Specimen.",
+    "The red “Request a System Audit” button you asked for closes the page. Visitors can ask by email for the first cleared case study."
    ],
    "flags": [
     {
-     "text": "New headline: “A readout, up close.” (round 8: “What a readout looks like.”)."
+     "text": "Insights still links here as “What a readout looks like”, round 8’s headline. Change the link to match, or keep it?"
     },
     {
-     "text": "The specimen’s last page offers three ways on at the readout call: the full system, one layer first, or the plan only. That follows the recommended lifecycle, and changes if you pick another."
-    },
-    {
-     "text": "The specimen’s evidence comes only from the working sessions and the CRM, including a lost buyer’s words in a seller’s deal notes. If your audits also talk to lost buyers, the specimen could show that instead."
-    },
-    {
-     "text": "The lede says “We go through it together on a 60-minute call.”, without saying whether the readout arrives before the call.",
-     "q": "readout-ahead"
-    },
-    {
-     "text": "“We’ll email the first one, when a client clears it, to anyone who asks.”",
-     "q": "promises"
+     "text": "The specimen’s evidence comes only from the working sessions and the CRM, including a lost buyer’s words in a seller’s deal notes. Do your audits also talk to lost buyers? If so, the specimen could show that instead."
     }
    ],
-   "plan": "The readout set once as a real document; a red Request a System Audit; a case-study request by email, honest that none is cleared yet."
+   "also": [
+    "readout-ahead",
+    "promises",
+    "mailboxes",
+    "specimens"
+   ]
   },
   {
    "id": "audit",
@@ -965,39 +888,32 @@
    "r8": {
     "verdict": "Approve",
     "short": "",
-    "note": "Q3 The readout, and replies: And yes, the readouts would have the four parts that you mentioned. When it comes to the 60-minute readout call, yes, we will have it. That would essentially be a second call in the sales process. 1. The first call would be analyzing. 2. We prepare those readouts. 3. We conduct a second call in the sales process, where we diagnose and discuss the problems and the solution we could have, and then sign the contract (or the third or fourth call). We are entering the third of four. We would be discussing the final paid proposal with them, along with the pricing and contract."
+    "note": "The readout, and replies: And yes, the readouts would have the four parts that you mentioned. When it comes to the 60-minute readout call, yes, we will have it. That would essentially be a second call in the sales process. 1. The first call would be analyzing. 2. We prepare those readouts. 3. We conduct a second call in the sales process, where we diagnose and discuss the problems and the solution we could have, and then sign the contract (or the third or fourth call). We are entering the third of four. We would be discussing the final paid proposal with them, along with the pricing and contract."
    },
    "changed": [
     "Kept as you approved it: the headline, the facts beside it, the FAQ word for word, and the three questions with their answers.",
-    "Your confirmed sequence is added. The ruler now runs Call 01 (30 minutes) → the ten working days → Call 02, the 60-minute readout call → Call 03, the proposal (scope, price, contract; a fourth call only if your committee needs one). “You receive” now lists the readout call.",
-    "The line under the headline is shorter: “Ten working days, fixed scope. We read your narrative, channels and data, and the plan is yours whether or not we go further.”",
-    "“What you keep” shows four pages from the readout itself, the same pages as on Reports, instead of four outline sketches.",
-    "The three questions sit under a plain label, “Qualify for the audit”, instead of “Three questions, then a call.” and a line describing itself. They open on question 1 and no longer answer themselves as a demo. The “Q. 01–06” label over the FAQ is gone."
+    "Your confirmed sequence is added. The day ruler ends on Call 02 and Call 03, and a new list runs from Call 01 to contract.",
+    "“What you keep” shows four pages from the readout itself, the same pages as on Reports, instead of four outline sketches."
    ],
    "flags": [
     {
      "text": "The readout pages here now match the Reports specimen word for word. For example, “How your market repeats your story.” is now “How your market repeats you today, in its own words.” Keep this, or put the shorter approved lines on both pages?"
     },
     {
-     "text": "The booking email lists your answers under short keys (Revenue, Deals, Feels like, Times) instead of repeating the three questions. The subject is unchanged."
-    },
-    {
      "text": "Two quiet links lead to Contact: the FAQ’s “Ask the founding team” and “Talk to the team · No qualification needed.” beside the questions. Keep both, or only the second?"
-    },
-    {
-     "text": "The FAQ’s link still says “the founding team” while you are on your own.",
-     "q": "team-wording"
-    },
-    {
-     "text": "No page shows a fee for the audit.",
-     "q": "audit-fee"
-    },
-    {
-     "text": "Call 01 is the 30-minute call the three questions book.",
-     "q": "call1"
     }
    ],
-   "plan": "The confirmed sequence (first call, ten days, the 60-minute readout call, the proposal); no Q. 01–06 meta; keys retyped."
+   "also": [
+    "team-wording",
+    "audit-fee",
+    "call1",
+    "mailboxes",
+    "readout-ahead",
+    "who-leads",
+    "project-places",
+    "specimens",
+    "phone-headlines"
+   ]
   },
   {
    "id": "contact",
@@ -1010,26 +926,22 @@
     "note": "the field names themselves are very tiny, and they look almost AI-generated, so maybe we could resize them or improve their typography style in general."
    },
    "changed": [
-    "The memo window with its tiny 12px code-font field names is gone. It is a plain form: field names at 18px in the site’s own type, set above large fields, which is what you asked for.",
-    "Beside the form, three plain steps: your own mail app opens, you send it from your address, and the founder replies within two working days (one for an audit booking).",
-    "The facts box is gone. New headline: “Write to us. A person writes back.”, with the light accent on “person”.",
-    "The topics now include “A fixed-scope project” and “Ask for an invitation to the Lab”.",
-    "A quiet close, “Diagnosis starts with the audit’s three questions.”, with a quiet link to the audit. As in round 8, this page has no red button."
+    "The tiny code-font field names are gone. It is a plain form: field names at reading size in the site's own type, above large fields.",
+    "Beside the form, three plain steps: your mail app opens, you send it, and the founder replies within two working days.",
+    "New headline: “Write to us. A person writes back.” The topics now include a fixed-scope project and a Lab invitation."
    ],
    "flags": [
     {
-     "text": "New headline: “Write to us. A person writes back.” Your letter says “a person answers”, which round 8’s headline used."
-    },
-    {
-     "text": "The page ends on a quiet link to the audit, not the red button.",
-     "q": "quiet-closes"
-    },
-    {
-     "text": "Anyone can pick “Ask for an invitation to the Lab” as a topic.",
-     "q": "lab-invite"
+     "text": "Your letter says “a person answers”, as round 8’s headline did. Keep the new “A person writes back.”, or go back to “answers”?"
     }
    ],
-   "plan": "One form component: labels 18px above each field, inputs 22px; no memo window, mono keys or numbered prompts; a fixed-scope project topic; The Lab topic per Q4."
+   "also": [
+    "lab-invite",
+    "mailboxes",
+    "project-places",
+    "index-date"
+   ],
+   "quiet": "Like round 8, it ends on a quiet link to the audit, without the red button, by design: this page is the other door."
   },
   {
    "id": "careers",
@@ -1042,11 +954,9 @@
     "note": "This looks decent, but I feel like things could be improved. I'm not sure how and where to point. Maybe the artifacts instead, things like that, and the bench list artifact where we add the information and stuff like that, because some label texts are across many sections or aren't. Many other pages look very AI-generated, especially the typography sometimes."
    },
    "changed": [
-    "New headline: “Seats open as the work arrives.” (round 8: “No open seats today. The bench list is open.”). Under it, your terms are said once: remote-first and global, juniors included, and a pay range posted with each seat when it opens.",
-    "The seat-plan drawing is gone, and no picture takes its place: the staffing plan starts right under the headline, so the page opens on content, not an empty frame.",
-    "The plan is a plain list: you as “Founder” (filled, no title), then the six seats you named, each “Not open yet”, with one line on what it owns.",
-    "The four coded slogans (H·01 to H·04) became one rule in large type, “Each seat owns one part of a client’s system.”, and a short paragraph to whoever takes a seat. Nothing implies a team that exists today.",
-    "The bench list is a plain form: 18px field names above large fields, with no “To” window or numbered prompts. It writes to careers@kelwin.co, marked “Address to be confirmed”. The page closes quietly: “Questions about a seat go straight to the founder.”"
+    "New headline: “Seats open as the work arrives.” Under it, your terms said once: remote-first and global, juniors included, a pay range per seat.",
+    "The seat drawing is gone, with no picture in its place: a plain list of you as Founder, then six seats “Not open yet”.",
+    "The four coded slogans became one rule in large type. The bench list is a plain form that writes to careers@kelwin.co."
    ],
    "flags": [
     {
@@ -1057,17 +967,15 @@
     },
     {
      "text": "The bench-list form adds one field, “The seat you’d want” (Not sure yet, or one of the six). Keep it, or go back to round 8’s four questions?"
-    },
-    {
-     "text": "The bench list writes to careers@kelwin.co, marked “Address to be confirmed”.",
-     "q": "mailboxes"
-    },
-    {
-     "text": "All six seats read “Not open yet”.",
-     "q": "seats"
     }
    ],
-   "plan": "The seats as a plain staffing list; the deal per Q7 (juniors, a rough pay range, remote-first and global); the bench entry as a plain form; one close."
+   "also": [
+    "mailboxes",
+    "seats",
+    "who-leads",
+    "promises"
+   ],
+   "quiet": "It ends without the red audit button, by design: it speaks to people who want to join, not to buyers."
   },
   {
    "id": "the-lab",
@@ -1077,99 +985,78 @@
    "r8": {
     "verdict": "Change something",
     "short": "My overall verdict is the same as the previous section.",
-    "note": "My overall verdict is the same as the previous section. — C5 The Lab's application is a quiet link: CHANGE IT — This doesn't seem to match the overall new design language we have established for the website."
+    "note": "My overall verdict is the same as the previous section. — The Lab's application is a quiet link: CHANGE IT — This doesn't seem to match the overall new design language we have established for the website."
    },
    "changed": [
-    "Rebuilt in the new design, as your answers describe it. The status board and the five named instruments are gone, since nothing is ready to name.",
-    "New headline: “An AI platform is coming.” The line under it: “It will cover GTM, revenue strategy and revenue architecture. The Lab’s first benchmark is due in Q4 2026.” The platform itself carries no date.",
-    "The picture is the Lab’s one real object: the cover of the Revenue Entropy Index 2026, marked “Not yet published”. There is no empty placeholder.",
-    "One plain reason it exists, “The Lab’s day job is making our installs sharper.”, and who pays for it: “Our advisory work pays for the Lab.”",
-    "The close: “Access is by invitation, and install clients come first.”, with the red audit button. “Ask for an invitation” stays a quiet link, as you asked in round 7, but it is now the new design’s own link, beside the red button (your C5 note). An onward link reads “What revenue entropy means”."
+    "Rebuilt in the new design. The status board and the five named instruments are gone, since nothing is ready to name.",
+    "New headline: “An AI platform is coming.” The picture is the cover of the Revenue Entropy Index 2026, marked “Not yet published”.",
+    "It closes on “Access is by invitation, and install clients come first.”, with the red button and “Ask for an invitation” beside it."
    ],
    "flags": [
     {
-     "text": "New headline: “An AI platform is coming.” It keeps your “coming soon” and names what is coming, without a date in the headline. Is that the headline you want?"
+     "text": "New headline: “An AI platform is coming.” It keeps your “coming soon” and names what is coming, without a date. Is that the headline you want?"
     },
     {
      "text": "The picture under the headline is the Revenue Entropy Index’s cover, marked “Not yet published”, with the subtitle “How much structure B2B revenue motions lose, quarter to quarter.” Is it fine to show it before it ships?"
     },
     {
-     "text": "The page says publicly: “Our advisory work pays for the Lab.”"
+     "text": "The page says publicly: “Our advisory work pays for the Lab.” Are you happy to say that in public?"
     },
     {
-     "text": "The platform has no name on the page. If it has one, write it in your note."
-    },
-    {
-     "text": "The line under the headline says the Lab’s first benchmark, the Revenue Entropy Index, is due in Q4 2026. The platform itself has no date.",
-     "q": "index-date"
-    },
-    {
-     "text": "“Ask for an invitation” is open to anyone, while access is by invitation.",
-     "q": "lab-invite"
+     "text": "The platform has no name on the page. Does it have one? If so, write it in your note."
     }
    ],
-   "plan": "Rebuilt per Q4: the platform, coming, by invitation; why it exists; the Entropy Index in Q4 2026; close with the red audit and a kit link, Ask for an invitation."
+   "also": [
+    "index-date",
+    "lab-invite",
+    "lab-data"
+   ]
+  },
+  {
+   "id": "legal",
+   "name": "Privacy and Terms",
+   "group": "side",
+   "members": [
+    "privacy",
+    "terms"
+   ],
+   "r8": {
+    "verdict": "Approve",
+    "short": "The legal name is Kelwin, LLC",
+    "note": ""
+   },
+   "changed": [
+    "The text is kept word for word, except for the legal name: “Kelwin, LLC” is now used on both pages.",
+    "One status line replaces each facts box: “Kelwin, LLC · Address to be confirmed · Effective July 2026 · Draft, pending legal review”.",
+    "Governing law in the Terms reads “To be confirmed.” in place of “[JURISDICTION — EDIT ME]”. The clause lists are plain numbered links."
+   ],
+   "flags": [
+    {
+     "text": "Each page’s opening line repeats its headline. May we trim them? Privacy: “Every form on this site opens your own mail app; nothing is sent until you press send.” Terms: “What governs this website, including the honesty rule behind every artifact labeled Specimen.” Both stay as approved until you say."
+    }
+   ],
+   "also": [
+    "legal",
+    "lab-data",
+    "mailboxes"
+   ],
+   "quiet": "Both end without the red audit button, by design, as you approved them in round 8."
   },
   {
    "id": "privacy",
    "name": "Privacy policy",
    "route": "/privacy",
    "group": "side",
-   "r8": {
-    "verdict": "Approve",
-    "short": "The legal name is Kelwin, LLC",
-    "note": ""
-   },
-   "changed": [
-    "The text is kept word for word, except that the legal name now appears, in section 02: “When you write to Kelwin, LLC…”.",
-    "One status line under the headline replaces the facts box: “Kelwin, LLC · Address to be confirmed · Effective July 2026 · Draft, pending legal review”.",
-    "The clause list is plain numbered links, with no code-font labels.",
-    "It closes on one line, “Write to us to see or delete what we hold.”, with the email address and a link to the Terms, instead of “What am I agreeing to by using this site?”. It stays quiet, with no red button, as you approved."
-   ],
-   "flags": [
-    {
-     "text": "May we trim the opening line, which repeats the headline’s “almost nothing”? Proposed: “Every form on this site opens your own mail app; nothing is sent until you press send.” It stays as approved until you say."
-    },
-    {
-     "text": "Section 07 spells “anonymised” the UK way, and the rest of the site uses US spelling. Change it to “anonymized”?"
-    },
-    {
-     "text": "The address reads “To be confirmed”, and a lawyer still has to read the page.",
-     "q": "legal"
-    },
-    {
-     "text": "Section 07 says anything the Lab learns from engagement data is used only in anonymous, aggregated form.",
-     "q": "lab-data"
-    }
-   ],
-   "plan": "Kelwin, LLC; governing law as a plain status line; keys retyped."
+   "part_of": "legal",
+   "tab": "Privacy"
   },
   {
    "id": "terms",
    "name": "Terms of service",
    "route": "/terms",
    "group": "side",
-   "r8": {
-    "verdict": "Approve",
-    "short": "The legal name is Kelwin, LLC",
-    "note": ""
-   },
-   "changed": [
-    "“Kelwin, LLC” is used throughout, as you answered.",
-    "Governing law reads “To be confirmed.” in place of “[JURISDICTION — EDIT ME]” and its sentence about courts.",
-    "The same status line as Privacy: “Kelwin, LLC · Address to be confirmed · Effective July 2026 · Draft, pending legal review”. The clause list is plain numbered links.",
-    "The headline’s light accent is the single word “readable”. It closes quietly on “Quoting us with credit is always fine.”, with “Talk to the team” and a link to the Privacy policy."
-   ],
-   "flags": [
-    {
-     "text": "May we trim the opening line, which repeats the headline’s “The short, readable version”? Proposed: “What governs this website, including the honesty rule behind every artifact labeled Specimen.” It stays as approved until you say."
-    },
-    {
-     "text": "Governing law and the address read “To be confirmed”. This blocks go-live.",
-     "q": "legal"
-    }
-   ],
-   "plan": "Kelwin, LLC; governing law as a plain status line; keys retyped."
+   "part_of": "legal",
+   "tab": "Terms"
   }
  ],
  "qgroups": [
@@ -1182,16 +1069,8 @@
    "label": "The audit, and how an engagement runs"
   },
   {
-   "key": "projects",
-   "label": "Projects, if they launch"
-  },
-  {
    "key": "lab",
    "label": "The Lab"
-  },
-  {
-   "key": "pictures",
-   "label": "Pictures"
   },
   {
    "key": "words",
@@ -1204,7 +1083,7 @@
    "group": "facts",
    "title": "The footer's London clock and “© 2026 Kelwin”",
    "blocker": true,
-   "context": "Every page's footer shows a live London clock and “© 2026 Kelwin · All rights reserved”, but you asked for no location, and the legal name is Kelwin, LLC.",
+   "context": "Every footer shows a live London clock and “© 2026 Kelwin · All rights reserved”, but you asked for no location, and the legal name is Kelwin, LLC.",
    "default": "Take the clock out, and write “© 2026 Kelwin, LLC · All rights reserved”.",
    "options": [
     [
@@ -1222,27 +1101,29 @@
    ],
    "affects": [
     "*"
-   ]
+   ],
+   "home": "footer"
   },
   {
    "id": "legal",
    "group": "facts",
-   "title": "Governing law, courts and the registered address",
+   "title": "Where Kelwin, LLC is registered.",
    "blocker": true,
-   "context": "Privacy and Terms name Kelwin, LLC, but its address and the law and courts behind the Terms read “To be confirmed”, and a lawyer still has to read both pages before go-live.",
+   "context": "Privacy and Terms name Kelwin, LLC, but the address, and the law and courts behind the Terms, read “To be confirmed”. A lawyer still reads both pages before go-live.",
    "default": "",
    "options": [],
    "affects": [
     "privacy",
     "terms"
-   ]
+   ],
+   "placeholder": "State, and the registered address"
   },
   {
    "id": "mailboxes",
    "group": "facts",
    "title": "The two mailboxes",
    "blocker": true,
-   "context": "Every form on the site writes to audit@kelwin.co, privacy and case-study requests included, and the bench list writes to careers@kelwin.co, which the pages still mark “to be confirmed”.",
+   "context": "The bench list and Contact's Careers topic write to careers@kelwin.co, still marked “to be confirmed”. Every other form writes to audit@kelwin.co, privacy and case-study requests included.",
    "default": "Use audit@kelwin.co and careers@kelwin.co. Both must exist, and be read, before go-live.",
    "options": [
     [
@@ -1270,7 +1151,7 @@
    "id": "employer",
    "group": "facts",
    "title": "Your current role on About",
-   "context": "About says that today you are the growth and digital strategy lead at a global private-equity group, which also tells buyers you hold a full-time role elsewhere.",
+   "context": "About says you lead growth and digital strategy at a global private-equity group, which also tells buyers you hold a full-time role elsewhere.",
    "default": "Keep the line, and don't name the group.",
    "options": [
     [
@@ -1294,7 +1175,7 @@
    "id": "seats",
    "group": "facts",
    "title": "Is “Not open yet” still true for all six seats?",
-   "context": "Careers shows you as the one filled seat and the six next seats as “Not open yet”; a seat that opens moves to its own group, with its pay range.",
+   "context": "Careers shows you as the one filled seat, and six seats as “Not open yet”. A seat that opens is listed as open, with its pay range.",
    "default": "Yes, no seat is open today.",
    "options": [
     [
@@ -1314,7 +1195,7 @@
    "id": "audit-fee",
    "group": "audit",
    "title": "Is the System Audit free?",
-   "context": "Your sequence puts the paid moment at the proposal call, so the audit reads as part of the sales process, and no page shows a fee either way.",
+   "context": "Your sequence puts the paid moment at the proposal call, so the audit reads as part of the sales process. No page shows a fee either way.",
    "default": "Free, and no fee shown.",
    "options": [
     [
@@ -1339,7 +1220,7 @@
    "id": "call1",
    "group": "audit",
    "title": "The first call",
-   "context": "You called it the analysis call; the pages treat it as the 30-minute call that the audit's three questions book (“Thirty minutes, no SDR handoff”), as the homepage promises.",
+   "context": "You called it the analysis call. The pages treat it as the 30-minute call the audit’s three questions book, as the homepage promises.",
    "default": "One call, 30 minutes.",
    "options": [
     [
@@ -1364,7 +1245,7 @@
    "id": "readout-ahead",
    "group": "audit",
    "title": "Is the written readout sent before the readout call?",
-   "context": "The audit page has the readout written on day 10, then the 60-minute call; sent a day early, the call becomes a discussion rather than a presentation.",
+   "context": "The audit page has the readout written on day 10, then the 60-minute call. Sent a day early, the call becomes a discussion, not a presentation.",
    "default": "Send it 24 hours before the call.",
    "options": [
     [
@@ -1383,60 +1264,11 @@
    ]
   },
   {
-   "id": "cadence",
-   "group": "audit",
-   "title": "How an engagement runs, as drafted",
-   "context": "About and the three capability pages show the steps and the working rhythm from the Lifecycle section above, each marked “Draft, to be confirmed”.",
-   "default": "Confirm it as drafted, and the marks come off.",
-   "options": [
-    [
-     "proposed",
-     "Confirm it"
-    ],
-    [
-     "change",
-     "Change some of it (say what)"
-    ]
-   ],
-   "affects": [
-    "about",
-    "narrative-systems",
-    "gtm-infrastructure",
-    "gtm-intelligence"
-   ]
-  },
-  {
-   "id": "after-handover",
-   "group": "audit",
-   "title": "The retainer, and clients who run the system themselves",
-   "context": "No page says yet whether the yearly re-read is part of the retainer, what ends a retainer, or what a client who runs the system without us gets after handover.",
-   "default": "The retainer is priced by the quarter and renews at the week-13 calibration readout, with the yearly re-read included. A client who runs it alone gets one check 90 days after handover, and can book a paid calibration session in any quarter.",
-   "options": [
-    [
-     "proposed",
-     "As proposed"
-    ],
-    [
-     "reread",
-     "As proposed, but the re-read is priced as its own audit"
-    ],
-    [
-     "other",
-     "Another way (say how, and any notice period)"
-    ]
-   ],
-   "affects": [
-    "about",
-    "gtm-infrastructure",
-    "gtm-intelligence"
-   ]
-  },
-  {
    "id": "who-leads",
    "group": "audit",
    "title": "Who clients deal with while you're on your own",
-   "context": "About promises that the person on the first call runs the engagement through to handover, the audit form promises no SDR handoff, and contractors are about to join.",
-   "default": "You take every first call, project calls included, and lead each client to handover. Contractors work under Kelwin's name, and the Associate never takes a first call. Until someone else can lead, no more than two audits and two installs run at once.",
+   "context": "About promises the person on the first call runs the engagement to handover, the audit form promises “no SDR handoff”, and contractors are about to join.",
+   "default": "You take every first call and lead each client to handover. Contractors work under Kelwin's name.",
    "options": [
     [
      "proposed",
@@ -1459,32 +1291,10 @@
    ]
   },
   {
-   "id": "engagement-word",
-   "group": "audit",
-   "title": "What “engagement” means, once projects exist",
-   "context": "Two approved lines stop being true for a project, About's first rule (“No engagement starts without the audit's readout”) and the Capabilities menu's “Where every engagement begins”, unless “engagement” means the full system only; the other way is to reword them to “Nothing is built before a diagnosis: the audit for a system, the first week's read for a project.” and “Where every system engagement begins”.",
-   "default": "“Engagement” means the full system only, and a project is never called one, so both lines stay as approved. About already adds “Fixed-scope projects run a shorter path”.",
-   "options": [
-    [
-     "proposed",
-     "Keep both lines"
-    ],
-    [
-     "reword",
-     "Reword both lines"
-    ]
-   ],
-   "affects": [
-    "*",
-    "about",
-    "projects"
-   ]
-  },
-  {
    "id": "project-prices",
    "group": "projects",
    "title": "Prices and lengths",
-   "context": "The project pages publish no price and no length and say each is set in the written scope, the same way your audit FAQ won't quote an install before the audit.",
+   "context": "The project pages publish no price and no length; each is set in the written scope, the way your audit FAQ won’t quote an install before the audit.",
    "default": "Keep both off the site, with no “from” price. Whether a project's fee counts toward a later install is settled in each proposal, never published.",
    "options": [
     [
@@ -1503,13 +1313,15 @@
    "affects": [
     "projects",
     "email-deliverability"
-   ]
+   ],
+   "home": "projects",
+   "sub": "terms"
   },
   {
    "id": "project-terms",
    "group": "projects",
    "title": "The stop after week one, and the check 30 days on",
-   "context": "Every project promises a written stop if week one shows it isn't the fix, and Email deliverability promises a check 30 days after handover, but neither says what it costs the client.",
+   "context": "Every project promises a written stop if week one shows it isn’t the fix, and Email deliverability a check 30 days after handover. Neither says what it costs.",
    "default": "A stop after week one costs week one only, and every project includes one check 30 days after handover.",
    "options": [
     [
@@ -1528,13 +1340,15 @@
    "affects": [
     "projects",
     "email-deliverability"
-   ]
+   ],
+   "home": "projects",
+   "sub": "terms"
   },
   {
    "id": "project-places",
    "group": "projects",
    "title": "Where projects show up beyond their own pages",
-   "context": "As shown under Projects, they appear as a link at the foot of the Capabilities menu and in the footer, one linked sentence on each capability page and on About, and a Contact topic, and a seventh audit FAQ, “Can we buy one piece?”, could point there too.",
+   "context": "Built: a sentence on each capability page and About, and a Contact topic. Proposed: a link in the Capabilities menu and the footer. A seventh audit FAQ could point there.",
    "default": "All of these, and no new FAQ: the approved six stay as they are.",
    "options": [
     [
@@ -1543,7 +1357,7 @@
     ],
     [
      "faq",
-     "All of these, plus the seventh FAQ"
+     "All of these, plus a seventh FAQ, “Can we buy one piece?”"
     ],
     [
      "fewer",
@@ -1558,13 +1372,15 @@
     "about",
     "contact",
     "audit"
-   ]
+   ],
+   "home": "projects",
+   "sub": "places"
   },
   {
    "id": "licenses",
    "group": "projects",
    "title": "Tools and data bought for a client",
-   "context": "The drafted ICP and signal map project licenses its data sources in the client's name, while GTM Infrastructure says “No new software to license”, which may not hold when a signal map needs a paid data source.",
+   "context": "The drafted ICP and signal map project licenses data in the client’s name, while GTM Infrastructure promises “No new software to license”, which may not hold.",
    "default": "Every tool and data license is in the client's name and never resold by us, and GTM Infrastructure's line becomes “Anything licensed is in your name.”",
    "options": [
     [
@@ -1583,7 +1399,9 @@
    "affects": [
     "projects",
     "gtm-infrastructure"
-   ]
+   ],
+   "home": "projects",
+   "sub": "terms"
   },
   {
    "id": "index-date",
@@ -1636,7 +1454,7 @@
    "id": "lab-data",
    "group": "lab",
    "title": "Does client data feed the Lab's platform?",
-   "context": "Privacy section 07 says anything the Lab learns from engagement data is used only in anonymous, aggregated form, as the engagement agreement spells out, while the Lab page says nothing about it.",
+   "context": "Privacy section 07 says anything the Lab learns from engagement data is used only in anonymous, aggregated form. The Lab page says nothing about it.",
    "default": "Yes, as Privacy says, once a lawyer has read it. The Lab page stays silent.",
    "options": [
     [
@@ -1658,74 +1476,10 @@
    ]
   },
   {
-   "id": "wwww-plate",
-   "group": "pictures",
-   "title": "Who We Work With: the film stand-in, or a shot card",
-   "context": "It is the only page that opens on a crop of the homepage film, tagged “Stand-in”, and the crop reads mostly as a blurred shoulder; this only matters if you approve the change to rule 6.",
-   "default": "Keep the stand-in until real footage exists.",
-   "options": [
-    [
-     "proposed",
-     "Keep the stand-in"
-    ],
-    [
-     "card",
-     "A shot card: “A deal, explained by someone other than the founder”"
-    ]
-   ],
-   "affects": [
-    "who-we-work-with"
-   ]
-  },
-  {
-   "id": "shoot-list",
-   "group": "pictures",
-   "title": "The shoot list",
-   "context": "The Pictures section above lists every shot the pages ask for, from Narrative Systems' rewritten line to About's working session, which needs a client's written consent.",
-   "default": "Shoot them as briefed, once rule 6 changes.",
-   "options": [
-    [
-     "proposed",
-     "Shoot them as briefed"
-    ],
-    [
-     "change",
-     "Change some briefs (say which)"
-    ]
-   ],
-   "affects": [
-    "narrative-systems",
-    "about",
-    "who-we-work-with",
-    "careers",
-    "the-lab"
-   ]
-  },
-  {
-   "id": "team-photos",
-   "group": "pictures",
-   "title": "Team pictures on About, as people join",
-   "context": "About shows your portrait and one working session, with no team slots while you are on your own.",
-   "default": "Add one portrait per person as they join, shot the same way as yours.",
-   "options": [
-    [
-     "proposed",
-     "Add them as people join"
-    ],
-    [
-     "founder",
-     "Keep it to you and the working session"
-    ]
-   ],
-   "affects": [
-    "about"
-   ]
-  },
-  {
    "id": "team-wording",
    "group": "words",
    "title": "“The founding team” while you're on your own",
-   "context": "The approved homepage offers “a 30-minute call with the founding team” and the audit FAQ says “Ask the founding team”, while About, Contact and Careers name you or “the founder”.",
+   "context": "The approved homepage offers “a 30-minute call with the founding team” and the audit FAQ says “Ask the founding team”, while About, Contact and Careers name you.",
    "default": "Keep the approved wording, since the team is forming, and keep “Talk to the team” as the name of the second door.",
    "options": [
     [
@@ -1745,7 +1499,7 @@
    "id": "promises",
    "group": "words",
    "title": "Three promises someone has to keep",
-   "context": "About says “Rameez reads every audit request”, Careers says “When a seat opens, this list is read first”, and Reports says “We'll email the first one, when a client clears it, to anyone who asks”, with requests kept in the mailbox and no list.",
+   "context": "About says “Rameez reads every audit request”, Careers “When a seat opens, this list is read first”, and Reports promises the first case study to anyone who asks.",
    "default": "Stand behind all three. About's line changes when a Client Partner joins.",
    "options": [
     [
@@ -1767,7 +1521,7 @@
    "id": "specimens",
    "group": "words",
    "title": "The invented company in the specimens",
-   "context": "The readout, the Orchestration Rules and the Rebuild Sequence are all written for one invented company, founder-led and selling forecasting software, say so on the page, and name real tools in its stack such as Salesforce, Outreach and LinkedIn.",
+   "context": "The readout, Orchestration Rules and Rebuild Sequence are written for one invented founder-led forecasting-software company, and say so. The readout names real tools: Salesforce, Outreach and LinkedIn.",
    "default": "Keep the invented company and the real tool names.",
    "options": [
     [
@@ -1791,83 +1545,10 @@
    ]
   },
   {
-   "id": "status-words",
-   "group": "words",
-   "title": "The labels on what isn't confirmed yet",
-   "context": "Unconfirmed items carry one of three labels: “To be confirmed” for a missing fact, “Draft, to be confirmed” for how we work, and “Proposed, to be confirmed” for the project offer.",
-   "default": "Keep these three, and take each one off as you confirm its item in this review.",
-   "options": [
-    [
-     "proposed",
-     "Keep them"
-    ],
-    [
-     "other",
-     "Other words (say which)"
-    ]
-   ],
-   "affects": [
-    "about",
-    "narrative-systems",
-    "gtm-infrastructure",
-    "gtm-intelligence",
-    "projects",
-    "email-deliverability",
-    "careers",
-    "privacy",
-    "terms"
-   ]
-  },
-  {
-   "id": "quiet-closes",
-   "group": "words",
-   "title": "No red button on Contact, Careers, Privacy and Terms",
-   "context": "These four pages end on a quiet link instead of the red “Request a System Audit”: Contact and Careers are the other door, and the legal pages had none when you approved them in round 8.",
-   "default": "Keep all four quiet.",
-   "options": [
-    [
-     "proposed",
-     "Keep them quiet"
-    ],
-    [
-     "red",
-     "Give all four the red button"
-    ],
-    [
-     "some",
-     "Some of them (say which)"
-    ]
-   ],
-   "affects": [
-    "contact",
-    "careers",
-    "privacy",
-    "terms"
-   ]
-  },
-  {
-   "id": "method-line",
-   "group": "words",
-   "title": "The homepage's “The fourth is the operating retainer”",
-   "context": "The approved homepage calls the method's fourth phase the operating retainer, while everywhere else the system is run by your operator or by us on retainer.",
-   "default": "Keep it as approved.",
-   "options": [
-    [
-     "proposed",
-     "Keep it"
-    ],
-    [
-     "soften",
-     "Soften it: “run by your operator or with us on retainer”"
-    ]
-   ],
-   "affects": []
-  },
-  {
    "id": "phone-headlines",
    "group": "words",
    "title": "Three approved headlines that leave one word alone on small phones",
-   "context": "On a phone, three of your approved headlines end with a word on a line of its own: the note title “Deliverability is / infrastructure.” on every phone; the Audit’s “The real / constraint, / named in writing.” on phones narrower than about 390px, which includes the common 375px iPhones; and Narrative Systems’ “Decide what / the market / hears.” on phones narrower than about 350px. Each is already set as small as a headline can go there; only shorter words would fix it.",
+   "context": "On phones, three approved headlines leave a word alone: “Deliverability is / infrastructure.” on all, the Audit's on small iPhones, Narrative Systems' on the narrowest. These desktop-width mockups can't show it.",
    "default": "Keep your approved words, and accept the lone word on those phones.",
    "options": [
     [
@@ -1887,7 +1568,7 @@
   }
  ],
  "footer": {
-  "lede": "During this round you asked to move the Kelwin logo at the end of the footer above the legal line. It is done, in a way that keeps your round-4 pick. One alternative is shown beside it.",
+  "lede": "You asked to move the footer logo above the legal line. We moved it up onto the line instead, which keeps your round-4 pick, and show your version, fully above the line, beside it.",
   "quote": "And also, one more thing I feel I noticed that feels kind of off is that Kelwin logo at the end of the footer. Right now, it seems to be present below the privacy and terms line and the audit request line. What if we pull it above it? It feels off being below that line. What if we fix that thing as well while you are at it?",
   "r8_src": "qa/r9-review/footer/r8-1440.png",
   "r8_caption": "Round 8: the logo below the legal line, cut off by the page's edge",
@@ -1896,7 +1577,7 @@
     "id": "a",
     "name": "On the line",
     "tag": "Built",
-    "text": "The logo sits on the legal line, which hides its lower fifth. That keeps your round-4 pick: one quiet tone, about 70% of the width, set right, a fifth buried. The legal line is now the page's last edge.",
+    "text": "The logo sits on the legal line, which hides its lower fifth. That keeps your round-4 pick: one quiet tone, about 70% of the width, set right, a fifth buried. The legal row (© · Privacy | Terms · Audit request) is now the page's last edge.",
     "shots": [
      {
       "img_src": "qa/r9-review/footer/a-1440.png",
@@ -1911,7 +1592,7 @@
    {
     "id": "b",
     "name": "Above the line",
-    "tag": "Alternative",
+    "tag": "As you asked",
     "text": "The whole logo sits above the line, with nothing hidden. It reads tidier, but drops the buried fifth you picked in round 4, and the footer grows taller.",
     "shots": [
      {
@@ -1925,7 +1606,7 @@
     ]
    }
   ],
-  "where": "A is on every mockup here, and in the live site's code on the development branch. Nothing is live. B exists only as these pictures.",
+  "where": "A is on every mockup here, and built into the real site, not published. B exists only as these pictures.",
   "choice": {
    "id": "footer-logo",
    "title": "The footer logo",
@@ -1940,6 +1621,28 @@
     ]
    ],
    "proposed": "a"
-  }
+  },
+  "decide_title": "Which footer do you want?",
+  "decide_text": "A is built. B would replace it in the mockups and in the real site."
+ },
+ "later": {
+  "title": "Later, not needed for go-live",
+  "items": [
+   {
+    "title": "The retainer, and clients who run the system themselves",
+    "text": "No page says yet whether the yearly re-read is part of the retainer, what ends a retainer, or what a client who runs the system alone gets after handover. Nothing on the pages depends on it yet."
+   },
+   {
+    "title": "The homepage's “The fourth is the operating retainer”",
+    "text": "The approved homepage calls the method’s fourth phase the operating retainer, while other pages say the system is run by your operator or by us on retainer. It can stay as approved for go-live."
+   }
+  ]
+ },
+ "folded": {
+  "cadence": "lifecycle",
+  "engagement-word": "lifecycle",
+  "wwww-plate": "pictures",
+  "shoot-list": "pictures",
+  "team-photos": "pictures"
  }
 }

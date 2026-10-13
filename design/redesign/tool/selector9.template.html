@@ -6,10 +6,10 @@
 @font-face { font-family: "Mona Sans Local"; font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; src: url(fonts/MonaSans.woff2) format("woff2"); }
 @font-face { font-family: "JetBrains Mono Local"; font-weight: 400 700; font-display: swap; src: url(fonts/JetBrainsMono.woff2) format("woff2"); }
 /* Round 9: the founder's answer to round 8, on one graphite working page in his reading order:
-   what he asked → why the pages read AI-made → the motion → pictures → projects → the lifecycle →
-   every page → the questions → copy the review. Deliberately single-theme, in Kelwin's v5 system.
-   Round 9's own voice: Mona for every word (labels sentence case, 14px and up); JetBrains Mono only
-   for standalone numerals; no invented codes; one cut-corner primary (Copy my review). */
+   what he asked → why the pages read AI-made → every page → the motion → pictures → projects →
+   the lifecycle → the footer → the questions → copy the review. Deliberately single-theme, in Kelwin's
+   v5 system. Round 9's own voice: Mona for every word (labels sentence case, 14px and up); JetBrains
+   Mono only for standalone numerals; no invented codes; one cut-corner primary (Copy my review). */
 :root {
   --bg: #141517;
   --panel: #1C1D20;
@@ -60,6 +60,12 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .saved::before { content: ""; width: 7px; height: 7px; background: var(--fg-3); flex: none; }
 .saved[data-state="db"]::before { background: var(--fg); }
 .saved[data-state="err"]::before { background: var(--signal); }
+/* below 1200px the section links fold into one native list, with each section's count */
+.bar-sel { display: none; min-height: 40px; max-width: 100%; padding: 8px 34px 8px 12px; border: 1px solid var(--line-2); border-radius: 0; background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23C6C7CA' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center;
+  -webkit-appearance: none; appearance: none; font: 500 14px/1.2 var(--f-body); color: var(--fg); cursor: pointer; }
+.bar-sel:hover { border-color: var(--fg); }
+.bar-sel option { background: var(--panel); color: var(--fg); }
+.bar-nav a[aria-current="true"] { color: var(--fg); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 6px; }
 
 /* ── actions: outlined (sentence case), the one cut-corner primary, the underlined link ── */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line-2); background: transparent;
@@ -93,7 +99,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .intro { padding-block: 72px 0; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 48px 64px; align-items: end; }
 .intro h1 { margin: 22px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(44px, 6.4vw, 100px); line-height: .98; letter-spacing: -0.018em; }
 .status { display: grid; margin: 0; border-top: 1px solid var(--line-2); }
-.status div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.status div { display: grid; grid-template-columns: 172px minmax(0, 1fr); gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
 .status dt { margin: 0; font-size: 14px; font-weight: 500; color: var(--fg-2); }
 .status dd { margin: 0; font-size: 15px; color: var(--fg); }
 .asks { margin: 80px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line-2); }
@@ -109,6 +115,7 @@ h1, h2, h3, h4 { text-wrap: balance; }
 .where li a { display: grid; grid-template-columns: minmax(0, 1fr) auto 120px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-size: 15px; }
 .where li a:hover .w-name { text-decoration: underline; text-underline-offset: 4px; }
 .where .num { font-size: 13.5px; color: var(--fg-2); }
+.where .opt-n { font-size: 14px; color: var(--fg-3); }
 .where .meter { width: 100%; }
 
 /* ── shared: figures, choices, notes ── */
@@ -142,7 +149,7 @@ a.frame:hover { border-color: var(--line-2); }
 .cause p { margin: 14px 0 0; font-size: 16px; color: var(--fg-2); max-width: 54ch; }
 .cause .fix { color: var(--fg); }
 .cause .fix b { font-weight: 500; color: var(--fg-2); }
-.cause .cap { margin: 10px 0 0; font-size: 14px; color: var(--fg-3); }
+.cause .cap { margin: 10px 0 0; font-size: 15px; color: var(--fg-2); }
 .cause-note { margin-top: 32px; display: grid; gap: 10px; max-width: 760px; }
 
 /* ── motion ── */
@@ -158,7 +165,7 @@ a.frame:hover { border-color: var(--line-2); }
 .film:first-child figcaption p { font-size: 16.5px; }
 .live { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
 .live p { margin: 0; flex: 1 1 360px; font-size: 16px; color: var(--fg); }
-.reduced { margin: 14px 0 0; font-size: 14px; color: var(--fg-3); }
+.reduced { margin: 14px 0 0; font-size: 15px; color: var(--fg-2); max-width: 78ch; }
 
 /* ── pictures ── */
 .rules6 { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -174,6 +181,8 @@ a.frame:hover { border-color: var(--line-2); }
 .brief-row b { font-weight: 500; color: var(--fg); font-size: 16px; }
 .brief-row .lbl { display: none; }
 .brief-row a { color: var(--fg); }
+.brief-row .meta { display: block; margin-top: 4px; font-size: 15px; color: var(--fg-2); }
+.brief-later { margin: 16px 0 0; max-width: 78ch; font-size: 15px; color: var(--fg-2); }
 
 /* ── projects ── */
 .offer { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 56px; align-items: end; }
@@ -187,8 +196,6 @@ a.frame:hover { border-color: var(--line-2); }
 .card .keeps b { display: block; margin-bottom: 2px; font-size: 14px; font-weight: 500; color: var(--fg-2); }
 .card .st { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 14px; color: var(--fg-3); }
 .card .st .go { font-size: 14px; }
-.card .choices { --n: 3; }
-.card .choice { min-height: 44px; text-align: center; padding: 10px 8px; }
 .held-h { margin: 32px 0 0; font-size: 15px; font-weight: 500; color: var(--fg-2); }
 .cards.held { margin-top: 12px; grid-template-columns: minmax(0, 1fr); }
 .cards.held .card { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 300px); grid-template-rows: auto; gap: 12px 32px; align-items: start; }
@@ -214,7 +221,8 @@ a.frame:hover { border-color: var(--line-2); }
 .place figcaption { margin-top: 12px; }
 .place figcaption b { display: block; font-size: 16px; font-weight: 500; }
 .place figcaption span { display: block; margin-top: 4px; font-size: 15px; color: var(--fg-2); }
-.mocks { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.proj-pages { margin-top: 8px; border-top: 1px solid var(--line-2); }
+.qrows { margin-top: 16px; border-top: 1px solid var(--line-2); }
 
 /* ── lifecycle ── */
 .spine { margin: 20px 0 0; padding: 0; list-style: none; counter-reset: s; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -275,7 +283,7 @@ a.frame:hover { border-color: var(--line-2); }
 .r8 q { display: block; margin-top: 6px; quotes: "“" "”"; font-size: 17px; line-height: 1.45; color: var(--fg); max-width: 60ch; }
 .r8 details { margin-top: 8px; }
 .r8 summary { cursor: pointer; font-size: 14px; color: var(--fg-2); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; width: max-content; max-width: 100%; }
-.r8 details p { margin: 8px 0 0; font-size: 15px; color: var(--fg-2); max-width: 70ch; }
+.r8 details p { margin: 8px 0 0; font-size: 15px; color: var(--fg-2); max-width: 70ch; white-space: pre-line; }
 .pg-vis { display: grid; gap: 12px; min-width: 0; }
 .pg-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
 .strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 23%); gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-color: var(--line-2) transparent; }
@@ -293,7 +301,16 @@ a.frame:hover { border-color: var(--line-2); }
 .pg-meta ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; font-size: 15.5px; color: var(--fg); max-width: 70ch; }
 .pg-meta ul li::marker { color: var(--fg-3); }
 .pg-meta .flags { color: var(--fg-2); }
-.pg-meta .flags a { margin-left: 4px; font-size: 14px; color: var(--fg); text-underline-offset: 3px; }
+.pg-meta .quiet { margin: 10px 0 0; font-size: 15px; color: var(--fg-2); max-width: 70ch; }
+.also { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; font-size: 15px; color: var(--fg-2); max-width: 74ch; }
+.also a { color: var(--fg); text-underline-offset: 3px; text-decoration-color: var(--line-2); }
+.also a:hover { text-decoration-color: var(--fg); }
+.approve-line { margin: 0; font-size: 15px; color: var(--fg-2); }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 1px; max-width: 100%; border: 1px solid var(--line-2); background: var(--line-2); }   /* the gap draws the dividers, wrapped rows too */
+.seg button { flex: 1 1 auto; min-height: 44px; padding: 8px 14px; border: 0; background: var(--bg); font: 500 15px/1.2 var(--f-body); color: var(--fg-2); }
+.seg button:hover { color: var(--fg); }
+.seg button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+.pg-route span + span::before { content: " · "; }
 
 /* ── questions ── */
 .qgroup { margin-top: 56px; }
@@ -308,23 +325,36 @@ a.frame:hover { border-color: var(--line-2); }
 .qq .stop { display: inline-block; margin-left: 10px; padding: 2px 8px; border: 1px solid var(--blush); color: var(--blush); font: 500 14px/1.3 var(--f-body); vertical-align: middle; }
 .affects { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; font-size: 14px; color: var(--fg-3); }
 .affects a { color: var(--fg-2); text-underline-offset: 3px; }
-.qq.see .ctl { align-content: center; }
+.qq.nonum { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); }
 .qq .note.short { min-height: 60px; }
+.later { margin-top: 64px; }
+.later > h3 { margin: 0; padding-bottom: 14px; border-bottom: 1px solid var(--line-2); font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 22px; }
+.later > p { margin: 14px 0 0; font-size: 15px; color: var(--fg-2); }
+.later ul { margin: 0; padding: 0; list-style: none; }
+.later li { padding: 18px 0; border-bottom: 1px solid var(--line); max-width: 86ch; }
+.later li b { display: block; font-weight: 500; font-size: 17px; }
+.later li span { display: block; margin-top: 6px; font-size: 15px; color: var(--fg-2); }
 
 /* ── summary ── */
 .general { margin-top: 32px; display: grid; gap: 10px; max-width: 760px; }
 .summary { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px 28px; align-items: start; padding: 24px; background: var(--panel); border: 1px solid var(--line); }
 .summary pre { margin: 0; max-height: 560px; overflow: auto; white-space: pre-wrap; word-break: break-word; font: 400 14px/1.6 var(--f-body); color: var(--fg-2); min-width: 0; }
 .savedline { margin: 20px 0 0; font-size: 15px; color: var(--fg-2); }
+.copy-msg { margin: 0; grid-column: 1 / -1; font-size: 15px; color: var(--fg); }
+.copy-msg:empty { display: none; }
+.summary pre::selection, .summary pre *::selection { background: var(--blush); color: var(--bg); }
 
 @media (min-width: 1200px) and (max-width: 1439px) { .mark-t { display: none; } .bar-nav { gap: 2px 15px; } }   /* the nav keeps one row on laptops */
 @media (max-width: 1199px) {
   .bar-nav { display: none; }
+  .bar-sel { display: block; }
+  .mark-t { display: none; }
   .fopt { grid-template-columns: minmax(0, 1fr); }
   .fopt-head, .fopt .ffig.is-phone, .fopt .ffig.is-desk { grid-column: 1; grid-row: auto; }
   .fopt .ffig.is-phone { width: min(100%, 220px); }
 }
 @media (max-width: 1023px) {
+  .saved { display: none; }
   .intro, .todo-do, .offer, .two, .cadence, .place-row, .foot-ask { grid-template-columns: minmax(0, 1fr); }
   .cards.held .card { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .asks li { grid-template-columns: minmax(0, 1fr); }
@@ -336,16 +366,16 @@ a.frame:hover { border-color: var(--line-2); }
   .pg-head, .pg-foot { grid-template-columns: minmax(0, 1fr); }
   .qq { grid-template-columns: 32px minmax(0, 1fr); }
   .qq .ctl { grid-column: 2; }
+  .qq.nonum { grid-template-columns: minmax(0, 1fr); }
+  .qq.nonum .ctl { grid-column: 1; }
   .strip { grid-auto-columns: minmax(220px, 40%); }
   .brief-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .brief-row.head { display: none; }
   .brief-row .lbl { display: block; font-size: 14px; font-weight: 500; color: var(--fg-3); }
 }
 @media (max-width: 719px) {
-  html { scroll-padding-top: 120px; }
-  .saved { display: none; }
+  html { scroll-padding-top: 132px; }
   .meter { width: 56px; }
-  .mark-t { display: none; }
   .status div { grid-template-columns: minmax(0, 1fr); }
   .pair, .films, .rules6, .cards, .foot-opts { grid-template-columns: minmax(0, 1fr); }
   .fopt { padding: 22px 18px; }
@@ -354,30 +384,32 @@ a.frame:hover { border-color: var(--line-2); }
   .qq .ctl { grid-column: 1; }
   .qq-n { padding-top: 0; }
   .choices { grid-template-columns: minmax(0, 1fr); }
-  .card .choices { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .summary { grid-template-columns: minmax(0, 1fr); }
   .strip { grid-auto-columns: 78%; }
   .brief-row { grid-template-columns: minmax(0, 1fr); }
   .cadence dl div { grid-template-columns: minmax(0, 1fr); }
   .decide { padding: 20px; }
   .where li a { grid-template-columns: minmax(0, 1fr) auto 64px; }
+  [data-live], .wide-only { display: none !important; }   /* the live view needs a desktop-wide card */
+  .bar { gap: 10px 14px; }
+  .bar-sel { order: 3; flex: 1 1 100%; }
 }
-@media (max-width: 479px) { .bar .meter { display: none; } .bar { gap: 10px 14px; } }
+@media (max-width: 479px) { .bar .meter { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .meter b { transition: none; }
 }
 </style>
 
+
 <header class="bar">
   <a class="mark" href="#top"><span class="logo" role="img" aria-label="Kelwin"></span><span class="mark-t">Round 9 review</span></a>
-  <nav class="bar-nav" aria-label="On this page">
-    <a href="#causes">Causes</a><a href="#motion">Motion</a><a href="#pictures">Pictures</a><a href="#projects">Projects</a><a href="#lifecycle">Lifecycle</a><a href="#footer">Footer</a><a href="#pages">Pages</a><a href="#questions">Questions</a>
-  </nav>
+  <nav class="bar-nav" id="bar-nav" aria-label="On this page"></nav>
+  <select class="bar-sel" id="bar-sel" aria-label="Go to a section"></select>
   <div class="bar-right">
     <div class="prog"><span><span class="num" id="prog-n">0</span> of <span class="num" id="prog-t">0</span></span><span class="meter" aria-hidden="true"><b id="prog-bar"></b></span></div>
-    <span class="saved" id="saved" data-state="local">Kept in this browser</span>
-    <a class="btn" href="#summary">Copy my review</a>
+    <span class="saved" id="saved" data-state="local"></span>
+    <button class="btn" type="button" id="finish-btn">Finish and copy</button>
   </div>
 </header>
 
@@ -387,7 +419,7 @@ a.frame:hover { border-color: var(--line-2); }
     <!-- a · intro -->
     <section class="intro" aria-labelledby="t-intro">
       <div>
-        <p class="kicker">Round 9 · your answer to round 8</p>
+        <p class="kicker" id="intro-kicker"></p>
         <h1 id="t-intro">Every page reworked, <span>from your notes.</span></h1>
         <span class="rule" aria-hidden="true"></span>
         <p class="lede" id="intro-lede"></p>
@@ -398,7 +430,7 @@ a.frame:hover { border-color: var(--line-2); }
     <div class="todo-do">
       <div>
         <p class="big" id="todo-big"></p>
-        <p class="lede">Most take one click. Your answers save as you go. When you're done, copy the review at the end and paste it to me.</p>
+        <p class="lede">Most take one click. <span data-save-msg></span> When you're done, press Finish and copy, and paste your review into our chat.</p>
       </div>
       <ul class="where" id="where" aria-label="Your progress, by section"></ul>
     </div>
@@ -406,7 +438,7 @@ a.frame:hover { border-color: var(--line-2); }
     <!-- b · causes -->
     <section class="sect" id="causes" aria-labelledby="t-causes">
       <p class="kicker">The causes</p>
-      <h2 class="h2" id="t-causes">Why the pages read as AI-made. <span>Eight causes, fixed.</span></h2>
+      <h2 class="h2" id="t-causes">Why the pages read as AI-made: <span>eight causes, and what we changed.</span></h2>
       <p class="lede" id="causes-lede"></p>
       <div class="causes" id="cause-list"></div>
       <div class="cause-note">
@@ -415,7 +447,15 @@ a.frame:hover { border-color: var(--line-2); }
       </div>
     </section>
 
-    <!-- c · motion -->
+    <!-- c · pages -->
+    <section class="sect" id="pages" aria-labelledby="t-pages">
+      <p class="kicker">The pages</p>
+      <h2 class="h2" id="t-pages">Every page, reworked. <span>One call each.</span></h2>
+      <p class="lede">Each card shows the page as a visitor scrolls it, one screen per frame, at desktop width. <span class="wide-only"><b>View it here</b> runs the real mockup inside the card.</span> <b>Open the mockup</b> opens it in a new tab, where every link goes to the matching mockup and turns the page, so you can click through the whole site.</p>
+      <div id="groups"></div>
+    </section>
+
+    <!-- d · motion -->
     <section class="sect" id="motion" aria-labelledby="t-motion">
       <p class="kicker">Motion</p>
       <h2 class="h2" id="t-motion">The page change you asked for. <span>Watch it, then pick.</span></h2>
@@ -427,19 +467,20 @@ a.frame:hover { border-color: var(--line-2); }
       <div class="decide" id="motion-decide"></div>
     </section>
 
-    <!-- d · pictures -->
+    <!-- e · pictures -->
     <section class="sect" id="pictures" aria-labelledby="t-pictures">
       <p class="kicker">Pictures</p>
       <h2 class="h2" id="t-pictures">Pictures under the headline. <span>Rule 6 needs your yes.</span></h2>
       <p class="lede" id="pictures-lede"></p>
       <div class="rules6" id="rules6"></div>
-      <h3 class="sub">The shoot brief</h3>
+      <h3 class="sub">The shoot list</h3>
       <p class="lede" id="brief-lede" style="font-size:16px"></p>
-      <div class="brief" id="brief" role="table" aria-label="The shoot brief"></div>
+      <div class="brief" id="brief" role="table" aria-label="The shoot list"></div>
+      <p class="brief-later" id="brief-later" hidden></p>
       <div class="decide" id="pictures-decide"></div>
     </section>
 
-    <!-- e · projects -->
+    <!-- f · projects -->
     <section class="sect" id="projects" aria-labelledby="t-projects">
       <p class="kicker">Projects</p>
       <h2 class="h2" id="t-projects">Projects, for buyers who need one piece. <span>The full system stays first.</span></h2>
@@ -449,23 +490,28 @@ a.frame:hover { border-color: var(--line-2); }
       </div>
       <div class="cards" id="proj-cards"></div>
       <div id="proj-held"></div>
+      <div class="decide" id="lineup-decide"></div>
+      <h3 class="sub" id="proj-pages-title"></h3>
+      <div class="proj-pages" id="proj-pages"></div>
       <div class="two">
         <div><h3>Only with the system</h3><p id="ows-line"></p><ul class="plain" id="ows"></ul></div>
         <div><h3>How a project runs</h3><p id="path-line"></p><ol class="steps" id="path"></ol></div>
       </div>
-      <h3 class="sub">Where projects appear on the site</h3>
+      <h3 class="sub" id="proj-terms-title"></h3>
+      <div class="qrows" id="proj-terms"></div>
+      <h3 class="sub" id="proj-places-title"></h3>
       <div class="place-row" id="place-row">
         <div class="place" id="place"></div>
         <div class="place-notes" id="place-notes"></div>
       </div>
-      <div class="mocks" id="proj-mocks"></div>
+      <div class="qrows" id="proj-places"></div>
       <div class="general" style="margin-top:40px">
         <label class="key" for="note-projects">Anything on the projects as a whole (optional)</label>
         <textarea class="note" id="note-projects" placeholder="A project to add, a name to change, where they should live"></textarea>
       </div>
     </section>
 
-    <!-- f · lifecycle -->
+    <!-- g · lifecycle -->
     <section class="sect" id="lifecycle" aria-labelledby="t-lifecycle">
       <p class="kicker">The engagement lifecycle</p>
       <h2 class="h2" id="t-lifecycle">How an engagement runs. <span>Three ways to set it up.</span></h2>
@@ -474,13 +520,13 @@ a.frame:hover { border-color: var(--line-2); }
       <ol class="spine" id="spine"></ol>
       <div class="opts" id="opts"></div>
       <p class="recline" id="recline"></p>
-      <div class="decide" id="life-decide"></div>
       <h3 class="sub" id="cad-title"></h3>
       <div class="cadence" id="cadence"></div>
-      <p class="reduced" id="cad-line" style="font-size:15px;color:var(--fg-2);max-width:78ch"></p>
+      <p class="reduced" id="cad-line"></p>
+      <div class="decide" id="life-decide"></div>
     </section>
 
-    <!-- f2 · footer (his note during round 9) -->
+    <!-- h · footer (his note during round 9) -->
     <section class="sect" id="footer" aria-labelledby="t-footer" hidden>
       <p class="kicker">The footer</p>
       <h2 class="h2" id="t-footer">The footer logo, moved up. <span>On the line, or fully above it.</span></h2>
@@ -492,34 +538,30 @@ a.frame:hover { border-color: var(--line-2); }
       <div class="foot-opts" id="foot-opts"></div>
       <p class="foot-where" id="foot-where"></p>
       <div class="decide" id="foot-decide"></div>
+      <h3 class="sub" id="foot-q-title" hidden>Also in the footer</h3>
+      <div class="qrows" id="foot-qs"></div>
     </section>
 
-    <!-- g · pages -->
-    <section class="sect" id="pages" aria-labelledby="t-pages">
-      <p class="kicker">The pages</p>
-      <h2 class="h2" id="t-pages">Every page, reworked. <span>One call each.</span></h2>
-      <p class="lede">Each card shows the page as a visitor scrolls it, one screen per frame, at desktop width. <b>View it here</b> runs the real mockup inside the card. <b>Open the mockup</b> opens it in a new tab, where every link goes to the matching mockup and turns the page, so you can click through the whole site.</p>
-      <div id="groups"></div>
-    </section>
-
-    <!-- h · questions -->
+    <!-- i · questions -->
     <section class="sect" id="questions" aria-labelledby="t-questions">
       <p class="kicker">Questions</p>
       <h2 class="h2" id="t-questions">Questions only you can answer. <span>Each has a proposed default.</span></h2>
       <p class="lede">The pages are drafted on the proposed answer and say nothing they can't stand behind. Pick an answer, or write your own. A yes is often enough.</p>
       <div id="qs"></div>
+      <div class="later" id="later" hidden></div>
     </section>
 
-    <!-- i · summary -->
+    <!-- j · summary -->
     <section class="sect" id="summary" aria-labelledby="t-summary">
       <p class="kicker">Your review</p>
-      <h2 class="h2" id="t-summary">Copy your review, <span>then paste it to me.</span></h2>
+      <h2 class="h2" id="t-summary">Copy your review <span>and paste it into our chat.</span></h2>
       <div class="general">
         <label class="key" for="note-general">Anything else (optional)</label>
         <textarea class="note" id="note-general" placeholder="Anything across the whole site: tone, order, what's missing"></textarea>
       </div>
-      <p class="savedline" id="save-state">Your answers are kept in this browser.</p>
+      <p class="savedline" data-save-msg></p>
       <div class="summary">
+        <p class="copy-msg" id="copy-msg" role="status" aria-live="polite"></p>
         <pre id="summary-pre">Nothing answered yet.</pre>
         <button class="btn-c" type="button" id="copy-btn">Copy my review</button>
       </div>
@@ -537,34 +579,53 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 const isTodo = (s) => typeof s === "string" && /^TODO\b/.test(s);
 const t = (s) => isTodo(s) ? `<span class="todo">To come${s.replace(/^TODO:?/, "").trim() ? ": " + esc(s.replace(/^TODO:?/, "").trim()) : ""}</span>` : esc(s);
 const PAGE = Object.fromEntries(DATA.pages.map((p) => [p.id, p]));
-const fmt = (n) => Number(n || 0).toLocaleString("en-GB");
+const cardOf = (id) => (PAGE[id] && PAGE[id].part_of) || id;                     // a field note or legal page lives on a shared card
+const shortName = (p) => p.name.replace(/, the first project page$/, "");
 const mmss = (s) => { s = Math.round(+s || 0); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+const qHome = (q) => q.home || "questions";
 
-// ── the decisions (counted) and the optional notes (not counted) ──
+// ── the decisions (counted, in the page's order) and the optional notes (not counted) ──
 const ITEMS = [];
 const add = (it) => { ITEMS.push(it); return it; };
-const M = DATA.motion.choice, P = DATA.pictures.choice, L = DATA.lifecycle.choice, F = DATA.footer && DATA.footer.choice;
+const M = DATA.motion.choice, P = DATA.pictures.choice, L = DATA.lifecycle.choice, F = DATA.footer && DATA.footer.choice, LU = DATA.projects.lineup;
+const APPROVE = [["approve", "Approve"], ["change", "Change something"]];
+const qItem = (q, sec) => add({ id: "q-" + q.id, sec, title: q.title, n: q.n, q, options: q.options || [], text: !(q.options || []).length, proposed: (q.options || []).length ? "proposed" : "" });
+const pageCards = (home) => DATA.groups.filter((g) => (g.home || "pages") === home).flatMap((g) => DATA.pages.filter((p) => p.group === g.key && !p.part_of));
+pageCards("pages").forEach((p) => add({ id: "page-" + p.id, sec: "pages", title: p.name, page: p, options: APPROVE }));
 add({ id: M.id, sec: "motion", title: M.title, options: M.options, proposed: M.proposed });
 add({ id: P.id, sec: "pictures", title: P.title, options: P.options, proposed: P.proposed });
-DATA.projects.items.forEach((p) => add({ id: "proj-" + p.slug, sec: "projects", title: p.name, options: DATA.projects.toggle, proposed: p.proposed }));
+if (LU) add({ id: LU.id, sec: "projects", title: LU.title, options: LU.options, proposed: LU.proposed });
+pageCards("projects").forEach((p) => add({ id: "page-" + p.id, sec: "projects", title: shortName(p), page: p, options: APPROVE }));
+const projQs = (sub) => DATA.questions.filter((q) => qHome(q) === "projects" && (q.sub || "terms") === sub);
+[...projQs("terms"), ...projQs("places")].forEach((q) => qItem(q, "projects"));
 add({ id: L.id, sec: "lifecycle", title: L.title, options: L.options, proposed: L.proposed });
 if (F) add({ id: F.id, sec: "footer", title: F.title, options: F.options, proposed: F.proposed });
-DATA.pages.forEach((p) => add({ id: "page-" + p.id, sec: "pages", title: p.name, options: [["approve", "Approve"], ["change", "Change something"]] }));
+DATA.questions.filter((q) => qHome(q) === "footer").forEach((q) => qItem(q, "footer"));
 let qn = 0;
-DATA.questions.forEach((q) => { if (!q.see) { q.n = ++qn; add({ id: "q-" + q.id, sec: "questions", title: q.title, n: q.n, options: q.options || [], text: !(q.options || []).length, proposed: (q.options || []).length ? "proposed" : "" }); } });
+DATA.qgroups.forEach((g) => DATA.questions.filter((q) => qHome(q) === "questions" && q.group === g.key).forEach((q) => { q.n = ++qn; qItem(q, "questions"); }));
 const BY = Object.fromEntries(ITEMS.map((i) => [i.id, i]));
 const NOTES = { causes: "Causes, anything still machine-made", projects: "Projects, overall", general: "Also" };
-const SECS = [["motion", "Motion", "#motion"], ["pictures", "Pictures", "#pictures"], ["projects", "Projects", "#projects"], ["lifecycle", "Lifecycle", "#lifecycle"], ["footer", "Footer", "#footer"], ["pages", "Pages", "#pages"], ["questions", "Questions", "#questions"]].filter(([k]) => k !== "footer" || F);
+const SECS = [["causes", "Causes"], ["pages", "Pages"], ["motion", "Motion"], ["pictures", "Pictures"], ["projects", "Projects"], ["lifecycle", "Lifecycle"], ["footer", "Footer"], ["questions", "Questions"]].filter(([k]) => k !== "footer" || F);
+const count = (sec) => ITEMS.filter((i) => i.sec === sec).length;
 const review = {};
-let db = null, dbState = "local";
-function loadLocal() { try { return JSON.parse(localStorage.getItem("kelwin-review9") || "{}"); } catch (e) { return {}; } }
-function saveLocal() { try { localStorage.setItem("kelwin-review9", JSON.stringify(review)); } catch (e) {} }
 const label = (it, key) => { const o = (it.options || []).find((x) => x[0] === key); return o ? o[1] : ""; };
+function loadLocal() { try { return JSON.parse(localStorage.getItem("kelwin-review9") || "{}"); } catch (e) { return {}; } }
+function saveLocal() { try { localStorage.setItem("kelwin-review9", JSON.stringify(review)); return true; } catch (e) { return false; } }
+
+// where an item is decided now: a question, or a decision folded into a section
+const QBY = Object.fromEntries(DATA.questions.map((q) => [q.id, q]));
+const FOLD = { pictures: [P.title, "#pictures-decide"], lifecycle: [L.title, "#life-decide"] };
+function decidedIn(id) {
+  if (QBY[id]) return [QBY[id].title.replace(/\.$/, ""), "#q-" + id];
+  const f = DATA.folded && DATA.folded[id];
+  return f && FOLD[f] ? FOLD[f] : null;
+}
 
 // one decision control: the proposed answer, the choices, a note
 function ctl(it, opts = {}) {
   const n = it.options.length;
-  const inner = `${!opts.noProposed && it.proposed && label(it, it.proposed) ? `<p class="proposed">Proposed: <b>${esc(label(it, it.proposed))}</b></p>` : ""}
+  const inner = `${opts.lead ? `<p class="approve-line">${esc(opts.lead)}</p>` : ""}
+    ${!opts.noProposed && it.proposed && label(it, it.proposed) ? `<p class="proposed">Proposed: <b>${esc(label(it, it.proposed))}</b></p>` : ""}
     ${n ? `<div class="choices" style="--n:${opts.cols || Math.min(n, 3)}" role="group" aria-label="${esc(it.title)}">${it.options.map(([k, l]) =>
       `<button type="button" class="choice" data-item="${it.id}" data-key="${esc(k)}" aria-pressed="false">${esc(l)}</button>`).join("")}</div>` : ""}
     ${opts.noNote ? "" : `<label class="key" for="note-${it.id}">${esc(opts.noteLabel || (it.text ? "Your answer" : "Note (optional)"))}</label>
@@ -573,13 +634,30 @@ function ctl(it, opts = {}) {
 }
 const decide = (it, h, p, o) => `<div><h3>${esc(h)}</h3>${p ? `<p>${esc(p)}</p>` : ""}</div>${ctl(it, o)}`;
 
+// one question row (numbered in Questions; plain where it sits inside another section)
+const affects = (ids) => ids && ids.length ? `<div class="affects"><span>Affects</span>${[...new Set(ids.map((id) => id === "*" ? "*" : cardOf(id)))].map((id) => id === "*" ? `<span style="color:var(--fg-2)">Every page</span>` : PAGE[id] ? `<a href="#p-${id}">${esc(shortName(PAGE[id]))}</a>` : "").join("")}</div>` : "";
+function qRow(q) {
+  const it = BY["q-" + q.id], num = it.sec === "questions";
+  return `<article class="qq${num ? "" : " nonum"}" id="q-${q.id}" aria-labelledby="h-q-${q.id}">
+      ${num ? `<span class="qq-n">${q.n}</span>` : ""}
+      <div style="min-width:0">
+        <h4 id="h-q-${q.id}">${esc(q.title)}${q.blocker ? `<span class="stop">Blocks go-live</span>` : ""}</h4>
+        <p class="ctx">${esc(q.context)}</p>
+        ${q.default ? `<p class="def"><b>Proposed:</b> ${t(q.default)}</p>` : ""}
+        ${affects(q.affects)}
+      </div>
+      ${ctl(Object.assign({}, it, { proposed: "" }), { cols: 1, short: !it.text, noteLabel: it.text ? "Your answer" : "Your words (optional)", ph: q.placeholder || (it.text ? "Answer here, in your own words" : "Anything to add, or your own answer") })}
+    </article>`;
+}
+
 // ── a · intro ──
+$("#intro-kicker").textContent = DATA.intro.kicker || "Round 9";
 $("#intro-lede").textContent = DATA.intro.lede;
 $("#status").innerHTML = DATA.intro.status.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${t(v)}</dd></div>`).join("");
 $("#asks").innerHTML = DATA.intro.asks.map((a) => `<li><q>${esc(a.quote)}</q><p>${esc(a.answer)}</p><a class="go" href="${esc(a.href)}">${esc(a.go)} →</a></li>`).join("");
-const count = (sec) => ITEMS.filter((i) => i.sec === sec).length;
-$("#todo-big").innerHTML = `${ITEMS.length} decisions. <span>A call on each of the ${count("pages")} pages and the ${count("projects")} projects, the page change, the pictures, the lifecycle${F ? " and the footer" : ""}, and ${count("questions")} questions.</span>`;
-$("#where").innerHTML = SECS.map(([k, name, href]) => `<li><a href="${href}"><span class="w-name">${esc(name)}</span><span class="num" data-where="${k}">0/${count(k)}</span><span class="meter" aria-hidden="true"><b data-wbar="${k}"></b></span></a></li>`).join("");
+$("#todo-big").innerHTML = `${ITEMS.length} decisions. <span>Most have a proposed answer, and a yes is enough.</span>`;
+$("#where").innerHTML = SECS.map(([k, name]) => `<li><a href="#${k}"><span class="w-name">${esc(name)}</span>${count(k) ? `<span class="num" data-where="${k}">0/${count(k)}</span><span class="meter" aria-hidden="true"><b data-wbar="${k}"></b></span>` : `<span class="opt-n" data-where="${k}">Optional note</span><span></span>`}</a></li>`).join("");
+$("#bar-nav").innerHTML = SECS.map(([k, name]) => `<a href="#${k}" data-nav="${k}">${esc(name)}</a>`).join("");
 
 // ── b · causes ──
 $("#causes-lede").textContent = DATA.causes.lede;
@@ -598,9 +676,51 @@ $("#cause-list").innerHTML = DATA.causes.items.map((c) => `<article class="cause
     </div>
   </article>`).join("");
 
-// ── c · motion ──
+// ── c · pages (and the two project pages, which sit in Projects) ──
+const insts = (p) => (p.members || [p.id]).map((id) => PAGE[id]).filter(Boolean);
+function strip(inst) {
+  return (inst.frames || []).map((src, i, all) => `<figure><a href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="${esc(inst.name)}, screen ${i + 1} of ${all.length}" width="960" height="600" loading="lazy"></a><figcaption class="num">${String(i + 1).padStart(2, "0")}</figcaption></figure>`).join("");
+}
+function card(p) {
+  const it = BY["page-" + p.id], all = insts(p), first = all[0] || p, has = all.some((x) => x.file);
+  const v = p.r8.verdict === "New" ? `New this round` : `Your round-8 call: <b>${esc(p.r8.verdict)}</b>`;
+  const seg = all.length > 1 ? `<div class="seg" role="group" aria-label="Which page">${all.map((x, i) => `<button type="button" data-i="${i}" aria-pressed="${i === 0}">${esc(x.tab || x.name)}</button>`).join("")}</div>` : "";
+  const also = [...new Map((p.also || []).map(decidedIn).filter(Boolean).map((x) => [x[1], x])).values()];
+  const lead = p.flags && p.flags.length ? "Approve means yes to everything under “Waiting on you”, as drafted. Use the note for anything you'd change."
+    : "Approve means yes to the page as drafted. Use the note for anything you'd change.";
+  return `<article class="pg" id="p-${p.id}" aria-labelledby="h-p-${p.id}">
+    <div class="pg-head">
+      <div style="min-width:0"><p class="pg-route">${all.map((x) => `<span>${esc(x.route)}</span>`).join("")}</p><h3 id="h-p-${p.id}">${esc(p.name)}</h3></div>
+      <div class="r8"><span class="key">${v}</span>${p.r8.short ? `<q>${esc(p.r8.short)}</q>` : ""}${p.r8.note ? `<details><summary>Your full note</summary><p>${esc(p.r8.note)}</p></details>` : ""}</div>
+    </div>
+    <div class="pg-vis">
+      ${has ? `<div class="pg-tools">
+        ${seg}
+        <button type="button" class="btn" data-live aria-pressed="false">View it here</button>
+        <a class="btn" data-open href="${esc(first.file)}" target="_blank" rel="noopener">Open the mockup ↗</a>
+      </div>
+      <div class="strip" data-strip>${strip(first)}</div>
+      <div class="stage" data-stage hidden><div class="stage-in"><iframe title="${esc(first.name)} mockup" tabindex="0"></iframe></div></div>`
+      : `<p class="pending">This page is still being built. Its frames and mockup appear here when it lands.</p>`}
+    </div>
+    <div class="pg-foot">
+      <div class="pg-meta">
+        <div><span class="key">${p.r8.verdict === "New" ? "What's on the page" : "What changed since round 8"}</span><ul>${(p.changed || []).map((x) => `<li>${t(x)}</li>`).join("")}</ul>${p.quiet ? `<p class="quiet">${esc(p.quiet)}</p>` : ""}</div>
+        ${p.flags && p.flags.length ? `<div><span class="key">Waiting on you</span><ul class="flags">${p.flags.map((f) => `<li>${esc(f.text)}</li>`).join("")}</ul></div>` : ""}
+        ${also.length ? `<p class="also"><span>Also decided in:</span>${also.map(([title, href]) => `<a href="${href}">${esc(title)}</a>`).join("")}</p>` : ""}
+      </div>
+      ${ctl(it, { lead })}
+    </div>
+  </article>`;
+}
+$("#groups").innerHTML = DATA.groups.filter((g) => (g.home || "pages") === "pages").map((g) => { const ps = DATA.pages.filter((p) => p.group === g.key && !p.part_of); return ps.length ? `<div class="group" role="group" aria-label="${esc(g.label)}">
+    <div class="group-h"><h3>${esc(g.label)}</h3>${g.note ? `<span>${esc(g.note)}</span>` : ""}</div>
+    ${ps.map(card).join("")}
+  </div>` : ""; }).join("");
+
+// ── d · motion ──
 $("#motion-lede").textContent = DATA.motion.lede;
-$("#films").innerHTML = DATA.motion.films.map((f) => `<figure class="film">
+$("#films").innerHTML = DATA.motion.films.map((f) => `<figure class="film" id="film-${esc(f.id)}">
     ${f.src ? `<video controls muted playsinline loop preload="metadata" ${f.poster ? `poster="${esc(f.poster)}"` : ""} width="${f.w || 1280}" height="${f.h || 800}" aria-label="${esc(f.title)}, a recording with no sound"><source src="${esc(f.src)}" type="video/mp4"></video>`
       : `<div class="frame empty">${esc(f.title)}: film to come</div>`}
     <figcaption><b>${esc(f.title)}</b>${f.seconds ? `<span class="num">${mmss(f.seconds)}</span>` : "<span></span>"}<p>${esc(f.caption)}</p></figcaption>
@@ -609,47 +729,51 @@ $("#live-line").textContent = DATA.motion.live_line;
 $("#live-links").innerHTML = DATA.motion.try.map((x) => { const p = PAGE[x.page]; return p && p.file ? `<a class="btn" href="${esc(p.file)}" target="_blank" rel="noopener">${esc(x.label)} ↗</a>` : ""; }).join("");
 $("#reduced-line").textContent = DATA.motion.reduced;
 if (DATA.motion.footer_line) { const fl = $("#footer-line"); fl.textContent = DATA.motion.footer_line; fl.hidden = false; }
-$("#motion-decide").innerHTML = decide(BY[M.id], "Which page change do you want?", "The turn is on every mockup. The sheet slide would replace it. Neither keeps plain page loads.");
+$("#motion-decide").innerHTML = decide(BY[M.id], DATA.motion.decide_title || "Which page change do you want?", DATA.motion.decide_text || "");
 
-// ── d · pictures ──
+// ── e · pictures ──
 $("#pictures-lede").textContent = DATA.pictures.lede;
 const ruleBox = (title, text, isNew) => { const [h, ...rest] = String(text).split("\n");
-  return `<article class="rule6${isNew ? " is-new" : ""}"><span class="key">${esc(title)}</span><p class="rh">${esc(h)}</p><ul>${rest.map((l) => `<li>${esc(l.replace(/^·\s*/, ""))}</li>`).join("")}</ul></article>`; };
+  return `<article class="rule6${isNew ? " is-new" : ""}"><span class="key">${esc(title)}</span><p class="rh">${esc(h)}</p>${rest.length ? `<ul>${rest.map((l) => `<li>${esc(l.replace(/^·\s*/, ""))}</li>`).join("")}</ul>` : ""}</article>`; };
 $("#rules6").innerHTML = ruleBox(DATA.pictures.rule_now_title, DATA.pictures.rule_now, false) + ruleBox(DATA.pictures.amendment_title, DATA.pictures.amendment, true);
 $("#brief-lede").textContent = DATA.pictures.brief_lede;
-$("#brief").innerHTML = `<div class="brief-row head" role="row"><span role="columnheader">Shot</span><span role="columnheader">How it's shot</span><span role="columnheader">Spec</span><span role="columnheader">Page, and what it shows now</span></div>` +
+$("#brief").innerHTML = `<div class="brief-row head" role="row"><span role="columnheader">Shot</span><span role="columnheader">How it's shot</span><span role="columnheader">For the photographer</span><span role="columnheader">Page, and what it shows now</span></div>` +
   DATA.pictures.shots.map((s) => { const p = PAGE[s.page];
-    return `<div class="brief-row" role="row"><span role="cell"><span class="lbl">Shot</span><b>${t(s.name)}</b></span><span role="cell"><span class="lbl">How it's shot</span>${t(s.how)}</span><span role="cell"><span class="lbl">Spec</span>${t(s.spec)}</span><span role="cell"><span class="lbl">Page</span>${p ? `<a href="#p-${p.id}">${esc(p.name)}</a>` : esc(s.page)}<br><span class="meta">${t(s.now)}</span></span></div>`; }).join("");
-$("#pictures-decide").innerHTML = decide(BY[P.id], "Do you approve the change to rule 6?", "With your yes it goes into the site's standing rules as written. In your note, say if a shot is wrong, and whether Who We Work With keeps its stand-in or gets a card.");
+    return `<div class="brief-row" role="row"><span role="cell"><span class="lbl">Shot</span><b>${t(s.name)}</b></span><span role="cell"><span class="lbl">How it's shot</span>${t(s.how)}</span><span role="cell"><span class="lbl">For the photographer</span>${t(s.spec)}</span><span role="cell"><span class="lbl">Page</span>${p ? `<a href="#p-${cardOf(p.id)}">${esc(p.name)}</a>` : esc(s.page)}<span class="meta">${t(s.now)}</span></span></div>`; }).join("");
+if (DATA.pictures.later_line) { const bl = $("#brief-later"); bl.textContent = DATA.pictures.later_line; bl.hidden = false; }
+$("#pictures-decide").innerHTML = decide(BY[P.id], DATA.pictures.decide_title || "Do you approve the change to rule 6?", DATA.pictures.decide_text || "", { cols: 1 });
 
-// ── e · projects ──
+// ── f · projects ──
 const PR = DATA.projects;
 $("#offer-name").textContent = `${PR.offer_name}, in full “${PR.offer_full}”`;
 $("#offer-line").textContent = PR.offer_line;
 $("#projects-lede").textContent = PR.lede;
-const projCard = (p) => { const it = BY["proj-" + p.slug], pg = PAGE[p.page];
+const projCard = (p) => { const pg = PAGE[p.page];
   return `<article class="card" id="proj-${p.slug}" aria-labelledby="h-proj-${p.slug}">
     <div><span class="meta">${esc(p.layer)}</span><h3 id="h-proj-${p.slug}">${esc(p.name)}</h3></div>
     <p>${t(p.line)}</p>
     <p class="keeps"><b>You keep</b>${t(p.keeps)}</p>
-    <div class="ctl">
-      <div class="st"><span>${p.proposed === "hold" ? "Proposed to hold" : "Proposed for launch"}</span>${pg ? `<a class="go" href="#p-${pg.id}">See its page</a>` : ""}</div>
-      ${ctl(it, { noNote: true, bare: true, noProposed: true })}
-    </div>
+    <div class="st"><span>${p.proposed === "hold" ? "Proposed to hold" : "Proposed for launch"}</span>${pg ? `<a class="go" href="#p-${pg.id}">See its page</a>` : ""}</div>
   </article>`; };
 const held = PR.items.filter((p) => p.proposed === "hold");
 $("#proj-cards").innerHTML = PR.items.filter((p) => p.proposed !== "hold").map(projCard).join("");
 $("#proj-held").innerHTML = held.length ? `<p class="held-h">Held for now</p><div class="cards held">${held.map(projCard).join("")}</div>` : "";
+if (LU) $("#lineup-decide").innerHTML = decide(BY[LU.id], LU.title, LU.text || "", { cols: 2 }); else $("#lineup-decide").hidden = true;
+$("#proj-pages-title").textContent = PR.pages_title || "The project pages";
+$("#proj-pages").innerHTML = pageCards("projects").map(card).join("");
 $("#ows-line").textContent = PR.only_with_system_line;
 $("#ows").innerHTML = PR.only_with_system.map((x) => `<li>${esc(x)}</li>`).join("");
 $("#path-line").textContent = PR.path_line;
 $("#path").innerHTML = PR.path.map((x) => `<li><span>${esc(x)}</span></li>`).join("");
+$("#proj-terms-title").textContent = PR.terms_title || "The terms";
+$("#proj-terms").innerHTML = projQs("terms").map(qRow).join("");
+$("#proj-places-title").textContent = PR.places_title || "Where projects appear on the site";
 $("#place-notes").innerHTML = PR.placement.filter((x) => !x.img_src).map((x) => `<p><b>${esc(x.title)}</b>${esc(x.text)}</p>`).join("");
 $("#place").innerHTML = PR.placement.filter((x) => x.img_src).map((x) => `<figure>${x.img ? `<a class="frame" href="${esc(x.img)}" target="_blank" rel="noopener"><img src="${esc(x.img)}" alt="${esc(x.title)}" ${x.img_w ? `width="${x.img_w}" height="${x.img_h}"` : ""} loading="lazy"></a>` : `<div class="frame empty">Screenshot to come</div>`}<figcaption><b>${esc(x.title)}</b><span>${esc(x.text)}</span></figcaption></figure>`).join("");
 $("#place-row").classList.toggle("solo", !PR.placement.some((x) => x.img_src) || PR.placement.every((x) => x.img_src));
-$("#proj-mocks").innerHTML = PR.pages.map((id) => { const p = PAGE[id]; return p ? (p.file ? `<a class="btn" href="${esc(p.file)}" target="_blank" rel="noopener">Open ${esc(p.name.replace(/, the first project page$/, ""))} ↗</a>` : `<span class="todo">${esc(p.name)}: mockup to come</span>`) : ""; }).join("");
+$("#proj-places").innerHTML = projQs("places").map(qRow).join("");
 
-// ── f · lifecycle ──
+// ── g · lifecycle ──
 const LC = DATA.lifecycle;
 $("#life-lede").textContent = LC.lede;
 $("#spine-title").textContent = LC.spine_title;
@@ -662,12 +786,12 @@ $("#opts").innerHTML = LC.options.map((o) => `<article class="opt${o.recommended
     <h4>Against it</h4><ul>${o.cost.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
   </article>`).join("");
 $("#recline").textContent = LC.recommended_line;
-$("#life-decide").innerHTML = decide(BY[L.id], "Which structure should the site describe?", "About is drafted on the recommended one, with its link to the projects' shorter path. The project pages exist only if projects go ahead.", { cols: 1 });
 $("#cad-title").textContent = LC.cadence_title;
 $("#cadence").innerHTML = LC.cadence.map((c) => `<div><h4>${esc(c.when)}</h4><dl>${c.rows.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></div>`).join("");
 $("#cad-line").textContent = LC.cadence_line;
+$("#life-decide").innerHTML = decide(BY[L.id], LC.decide_title || "Which structure should the site describe?", LC.decide_text || "", { cols: 1 });
 
-// ── f2 · footer ──
+// ── h · footer ──
 if (F) {
   const FT = DATA.footer;
   $("#footer").hidden = false;
@@ -687,48 +811,15 @@ if (F) {
       ${(o.shots || []).map((x) => ffig(x.img, x.img_w, x.img_h, `${o.name}, ${x.caption.toLowerCase()}`, x.caption, /phone/i.test(x.caption))).join("")}
     </article>`; }).join("");
   $("#foot-where").textContent = FT.where || "";
-  $("#foot-decide").innerHTML = decide(BY[F.id], "Which footer do you want?", "A is built. B would replace it in the mockups and the site's code.");
+  $("#foot-decide").innerHTML = decide(BY[F.id], FT.decide_title || "Which footer do you want?", FT.decide_text || "");
+  const fq = DATA.questions.filter((q) => qHome(q) === "footer");
+  $("#foot-q-title").hidden = !fq.length;
+  $("#foot-qs").innerHTML = fq.map(qRow).join("");
 }
-
-// ── g · pages ──
-const QBY = Object.fromEntries(DATA.questions.map((q) => [q.id, q]));
-function strip(p) {
-  return p.frames.map((src, i) => `<figure><a href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="${esc(p.name)}, screen ${i + 1} of ${p.frames.length}" width="960" height="600" loading="lazy"></a><figcaption class="num">${String(i + 1).padStart(2, "0")}</figcaption></figure>`).join("");
-}
-function card(p) {
-  const it = BY["page-" + p.id], has = !!p.file;
-  const v = p.r8.verdict === "New" ? `New this round` : `Your round-8 call: <b>${esc(p.r8.verdict)}</b>`;
-  return `<article class="pg" id="p-${p.id}" aria-labelledby="h-p-${p.id}">
-    <div class="pg-head">
-      <div style="min-width:0"><p class="pg-route">${esc(p.route)}</p><h3 id="h-p-${p.id}">${esc(p.name)}</h3></div>
-      <div class="r8"><span class="key">${v}</span>${p.r8.short ? `<q>${esc(p.r8.short)}</q>` : ""}${p.r8.note ? `<details><summary>Your full note</summary><p>${esc(p.r8.note)}</p></details>` : ""}</div>
-    </div>
-    <div class="pg-vis">
-      ${has ? `<div class="pg-tools">
-        <button type="button" class="btn" data-live aria-pressed="false">View it here</button>
-        <a class="btn" href="${esc(p.file)}" target="_blank" rel="noopener">Open the mockup ↗</a>
-        <span class="meta">${p.frames.length} screens · ${fmt(p.height)}px tall at 1440 wide</span>
-      </div>
-      <div class="strip" data-strip>${strip(p)}</div>
-      <div class="stage" data-stage hidden><div class="stage-in"><iframe title="${esc(p.name)} mockup" tabindex="0"></iframe></div></div>`
-      : `<p class="pending">This page is still being built. Its frames and mockup appear here when it lands.</p>`}
-    </div>
-    <div class="pg-foot">
-      <div class="pg-meta">
-        <div><span class="key">${p.r8.verdict === "New" ? "What's on the page" : "What changed since round 8"}</span><ul>${(p.changed || []).map((x) => `<li>${t(x)}</li>`).join("")}</ul></div>
-        ${p.flags && p.flags.length ? `<div><span class="key">Waiting on you</span><ul class="flags">${p.flags.map((f) => `<li>${esc(f.text)}${f.q && QBY[f.q] ? ` <a href="#q-${f.q}">See the question</a>` : ""}</li>`).join("")}</ul></div>` : ""}
-      </div>
-      ${ctl(it)}
-    </div>
-  </article>`;
-}
-$("#groups").innerHTML = DATA.groups.map((g) => { const ps = DATA.pages.filter((p) => p.group === g.key); return ps.length ? `<div class="group" role="group" aria-label="${esc(g.label)}">
-    <div class="group-h"><h3>${esc(g.label)}</h3>${g.note ? `<span>${esc(g.note)}</span>` : ""}</div>
-    ${ps.map(card).join("")}
-  </div>` : ""; }).join("");
 
 // the live stage: one mockup running at a time, at its real 1440 width, scaled to the card
 let live = null;
+const instOf = (art) => insts(PAGE[art.id.slice(2)])[+(art.dataset.i || 0)];
 function fitStage(art) {
   const stage = $("[data-stage]", art), inner = $(".stage-in", art), fr = $("iframe", art);
   const k = Math.min(1, stage.clientWidth / 1440);
@@ -745,132 +836,212 @@ function stopLive() {
 }
 function startLive(art) {
   stopLive(); live = art;
-  const p = PAGE[art.id.slice(2)];
   $("[data-strip]", art).hidden = true; $("[data-stage]", art).hidden = false;
-  $("iframe", art).src = p.file; fitStage(art);
+  $("iframe", art).src = instOf(art).file; fitStage(art);
   const b = $("[data-live]", art); b.setAttribute("aria-pressed", "true"); b.textContent = "Back to the screens";
 }
-$$("article.pg").forEach((art) => { const b = $("[data-live]", art); if (b) b.addEventListener("click", () => (live === art ? stopLive() : startLive(art))); });
+$$("article.pg").forEach((art) => {
+  const b = $("[data-live]", art); if (b) b.addEventListener("click", () => (live === art ? stopLive() : startLive(art)));
+  $$(".seg button", art).forEach((sb) => sb.addEventListener("click", () => {
+    art.dataset.i = sb.dataset.i;
+    const inst = instOf(art);
+    $$(".seg button", art).forEach((x) => x.setAttribute("aria-pressed", String(x === sb)));
+    $("[data-strip]", art).innerHTML = strip(inst);
+    $("[data-open]", art).href = inst.file;
+    $("iframe", art).title = inst.name + " mockup";
+    if (live === art) $("iframe", art).src = inst.file;
+  }));
+});
 addEventListener("resize", () => { if (live) fitStage(live); });
 
-// ── h · questions ──
-const affects = (ids) => ids && ids.length ? `<div class="affects"><span>Affects</span>${ids.map((id) => id === "*" ? `<span style="color:var(--fg-2)">Every page</span>` : PAGE[id] ? `<a href="#p-${id}">${esc(PAGE[id].name.replace(/, the first project page$/, ""))}</a>` : "").join("")}</div>` : "";
-$("#qs").innerHTML = DATA.qgroups.map((g) => { const qs = DATA.questions.filter((q) => q.group === g.key); return qs.length ? `<div class="qgroup" role="group" aria-label="${esc(g.label)}"><h3>${esc(g.label)}</h3>
-  ${qs.map((q) => q.see ? `<article class="qq see" id="q-${q.id}" aria-labelledby="h-q-${q.id}">
-      <span class="qq-n" aria-hidden="true"></span>
-      <div style="min-width:0"><h4 id="h-q-${q.id}">${esc(q.title)}</h4><p class="ctx">${esc(q.context)}</p>${affects(q.affects)}</div>
-      <div class="ctl"><a class="go" href="#${esc(q.see)}">Answer it on its card in Projects →</a></div>
-    </article>` : `<article class="qq" id="q-${q.id}" aria-labelledby="h-q-${q.id}">
-      <span class="qq-n">${q.n}</span>
-      <div style="min-width:0">
-        <h4 id="h-q-${q.id}">${esc(q.title)}${q.blocker ? `<span class="stop">Blocks go-live</span>` : ""}</h4>
-        <p class="ctx">${esc(q.context)}</p>
-        ${q.default ? `<p class="def"><b>Proposed:</b> ${t(q.default)}</p>` : ""}
-        ${affects(q.affects)}
-      </div>
-      ${ctl(Object.assign({}, BY["q-" + q.id], { proposed: "" }), { cols: 1, short: !BY["q-" + q.id].text, noteLabel: BY["q-" + q.id].text ? "Your answer" : "Your words (optional)", ph: BY["q-" + q.id].text ? "Answer here, in your own words" : "Anything to add, or your own answer" })}
-    </article>`).join("")}
+// ── i · questions, then what can wait ──
+$("#qs").innerHTML = DATA.qgroups.map((g) => { const qs = DATA.questions.filter((q) => qHome(q) === "questions" && q.group === g.key); return qs.length ? `<div class="qgroup" role="group" aria-label="${esc(g.label)}"><h3>${esc(g.label)}</h3>
+  ${qs.map(qRow).join("")}
   </div>` : ""; }).join("");
-
-// ── answers, progress, summary, sync ──
-const done = (it) => { const r = review[it.id]; return !!r && (!!r.choice || (it.text && !!r.note)); };
-function answerText(it) { const r = review[it.id] || {}; return r.choice ? label(it, r.choice) : (it.text && r.note ? "Answered" : ""); }
-function line(it) {
-  const r = review[it.id] || {};
-  const head = it.n ? `${it.n}. ${it.title}` : it.title;
-  if (it.text) return `${head}: ${r.note || "—"}`;
-  return `${head}: ${r.choice ? answerText(it).toUpperCase() : "—"}${r.note ? " — " + r.note : ""}`;
+if (DATA.later && DATA.later.items && DATA.later.items.length) {
+  const lt = $("#later"); lt.hidden = false;
+  lt.innerHTML = `<h3>${esc(DATA.later.title)}</h3><ul>${DATA.later.items.map((x) => `<li><b>${esc(x.title)}</b><span>${esc(x.text)}</span></li>`).join("")}</ul>`;
 }
-const noteLine = (k) => review[k] && review[k].note ? `${NOTES[k]}: ${review[k].note}` : "";
+
+// ── answers, progress, summary ──
+const valid = (it, k) => (it.options || []).some((o) => o[0] === k);
+const done = (it) => { const r = review[it.id]; return !!r && ((!!r.choice && valid(it, r.choice)) || (it.text && !!(r.note || "").trim())); };
+function answerText(it) { const r = review[it.id] || {}; return r.choice && valid(it, r.choice) ? label(it, r.choice) : (it.text && r.note ? "Answered" : ""); }
+const head = (it) => { const h = (it.n ? `${it.n}. ` : "") + it.title.replace(/\.$/, ""); return /\?$/.test(h) ? h + " " : h + ": "; };
+function line(it) {
+  const r = review[it.id] || {}, note = (r.note || "").trim();
+  if (it.text) return `${head(it)}${note || "—"}`;
+  const ans = r.choice && valid(it, r.choice) ? answerText(it).toUpperCase() : "—";
+  let out = `${head(it)}${ans}${note ? " — " + note : ""}`;
+  const p = it.page;   // a page card: what "Approve" said yes to, so the note can be read against it
+  if (p && p.flags && p.flags.length && (ans !== "—" || note)) out += "\n" + p.flags.map((f) => `    · ${f.text}`).join("\n");
+  return out;
+}
+const noteLine = (k) => review[k] && (review[k].note || "").trim() ? `${NOTES[k]}: ${review[k].note.trim()}` : "";
+const SEC_TITLE = { pages: "Pages", motion: "Motion", pictures: "Pictures", projects: "Projects", lifecycle: "Engagement lifecycle", footer: "Footer", questions: "Questions" };
 function summaryText() {
-  const part = (sec) => ITEMS.filter((i) => i.sec === sec).map(line).join("\n");
   const n = ITEMS.filter(done).length;
-  return [
-    `Kelwin redesign — round 9 review (${n} of ${ITEMS.length} answered)`,
-    "", "Motion\n" + part("motion"),
-    "", "Pictures\n" + part("pictures"),
-    noteLine("causes") ? "\n" + noteLine("causes") : "",
-    "", "Projects\n" + part("projects") + (noteLine("projects") ? "\n" + noteLine("projects") : ""),
-    "", "Engagement lifecycle\n" + part("lifecycle"),
-    F ? "\nFooter\n" + part("footer") : "",
-    "", "Pages\n" + part("pages"),
-    "", "Questions\n" + part("questions"),
-    noteLine("general") ? "\n" + noteLine("general") : "",
-  ].filter((x, i, a) => !(x === "" && a[i + 1] === "")).join("\n").trim();
+  const out = [`Kelwin redesign — round 9 review (${n} of ${ITEMS.length} answered)`];
+  if (noteLine("causes")) out.push("", noteLine("causes"));
+  SECS.forEach(([k]) => {
+    const its = ITEMS.filter((i) => i.sec === k); if (!its.length) return;
+    out.push("", SEC_TITLE[k] || k, ...its.map(line));
+    if (k === "projects" && noteLine("projects")) out.push(noteLine("projects"));
+  });
+  if (noteLine("general")) out.push("", noteLine("general"));
+  return out.join("\n").trim();
 }
 function refresh() {
   const n = ITEMS.filter(done).length;
   $("#prog-n").textContent = n; $("#prog-t").textContent = ITEMS.length;
   $("#prog-bar").style.width = (100 * n / ITEMS.length) + "%";
+  const sel = $("#bar-sel"), cur = sel.value;
+  sel.innerHTML = SECS.map(([k, name]) => { const its = ITEMS.filter((i) => i.sec === k);
+    return `<option value="${k}">${esc(name)}${its.length ? ` · ${its.filter(done).length}/${its.length}` : ""}</option>`; }).join("");
+  sel.value = cur || SECS[0][0];
   SECS.forEach(([k]) => { const its = ITEMS.filter((i) => i.sec === k), d = its.filter(done).length;
-    const el = $(`[data-where="${k}"]`); if (el) el.textContent = `${d}/${its.length}`;
-    const bar = $(`[data-wbar="${k}"]`); if (bar) bar.style.width = (100 * d / its.length) + "%"; });
+    const el = $(`[data-where="${k}"]`); if (el) el.textContent = its.length ? `${d}/${its.length}` : (noteLine(k) ? "Noted" : "Optional note");
+    const bar = $(`[data-wbar="${k}"]`); if (bar) bar.style.width = (its.length ? 100 * d / its.length : 0) + "%"; });
   $$(".choice").forEach((b) => { const r = review[b.dataset.item]; b.setAttribute("aria-pressed", String(!!r && r.choice === b.dataset.key)); });
   [...ITEMS.map((i) => i.id), ...Object.keys(NOTES)].forEach((id) => {
     const ta = document.getElementById("note-" + id), r = review[id];
     if (ta && r && r.note && document.activeElement !== ta && !ta.value) ta.value = r.note;
   });
-  const any = n || Object.keys(NOTES).some((k) => review[k] && review[k].note);
+  const any = n || Object.keys(NOTES).some((k) => noteLine(k)) || ITEMS.some((i) => review[i.id] && (review[i.id].note || "").trim());
   $("#summary-pre").textContent = any ? summaryText() : "Nothing answered yet.";
 }
-function setSaved(state, msg) {
+
+// ── saving: the shared page store when it is there (every change, notes as they are typed), this device always ──
+let db = null, dbState = "local";
+const SAVE_MSG = {
+  db: "Your answers save as you go.",
+  local: "Your answers save on this device only. Copy your review before switching devices.",
+  err: "Your answers couldn't reach the shared page just now, so they are kept on this device. Copy your review to be safe.",
+};
+const CHIP = { db: "Saves as you go", local: "This device only", err: "Not saved online" };
+function setSaved(state) {
   dbState = state;
-  const s = $("#saved"); s.dataset.state = state;
-  s.textContent = state === "db" ? "Saved to this page" : state === "err" ? "Not saved to the page" : "Kept in this browser";
-  if (msg) $("#save-state").textContent = msg;
+  const s = $("#saved"); s.dataset.state = state; s.textContent = CHIP[state];
+  $$("[data-save-msg]").forEach((el) => { el.textContent = SAVE_MSG[state]; });
 }
-async function persist(id) {
-  saveLocal();
-  if (!db) return;
+const sent = {}, busy = {}, again = {};
+function docFor(id) {
   const it = BY[id], r = review[id] || {};
-  const doc = it
-    ? { item: (it.n ? it.n + ". " : "") + it.title, section: it.sec, choice: r.choice || "", answer: answerText(it), note: r.note || "", updatedAt: new Date().toISOString() }
-    : { item: NOTES[id] || id, section: "note", choice: "", answer: "", note: r.note || "", updatedAt: new Date().toISOString() };
-  try {
-    await db.doc(COLL + "/" + id).set(doc);
-    setSaved("db", "Saved to this page as you go. Claude can read your answers, and you can copy the review too.");
-  } catch (e) { setSaved("err", "Couldn't save to the page (" + ((e && e.code) || "error") + "). Your answers are kept in this browser; copy the review to be sure."); }
+  return it
+    ? { item: (it.n ? it.n + ". " : "") + it.title, section: it.sec, choice: r.choice || "", answer: answerText(it), note: (r.note || "").trim() }
+    : { item: NOTES[id] || id, section: "note", choice: "", answer: "", note: (r.note || "").trim() };
 }
+async function pushDoc(id) {        // one write at a time per answer, and only when it changed
+  if (!db) return;
+  if (busy[id]) { again[id] = true; return; }
+  const doc = docFor(id), key = JSON.stringify(doc);
+  if (sent[id] === key) return;
+  busy[id] = true;
+  try {
+    await db.doc(COLL + "/" + id).set(Object.assign({}, doc, { updatedAt: new Date().toISOString() }));
+    sent[id] = key;
+    if (dbState !== "db") setSaved("db");
+  } catch (e) { setSaved("err"); }
+  busy[id] = false;
+  if (again[id]) { again[id] = false; pushDoc(id); }
+}
+function persist(id) { saveLocal(); pushDoc(id); }
+const timers = {};
+function flushNote(id) {
+  clearTimeout(timers[id]); delete timers[id];
+  const ta = document.getElementById("note-" + id); if (!ta) return;
+  const r = review[id] || { choice: "" }; r.note = ta.value; review[id] = r;
+  persist(id); refresh();
+}
+const flushAll = () => Object.keys(timers).forEach(flushNote);
+
 document.addEventListener("click", (e) => {
   const b = e.target.closest && e.target.closest(".choice"); if (!b) return;
   const id = b.dataset.item, k = b.dataset.key, it = BY[id]; if (!it) return;
   const ta = document.getElementById("note-" + id);
   const prev = review[id] || {};
-  review[id] = { choice: prev.choice === k ? "" : k, note: ta ? ta.value.trim() : (prev.note || "") };
+  clearTimeout(timers[id]); delete timers[id];
+  review[id] = { choice: prev.choice === k ? "" : k, note: ta ? ta.value : (prev.note || "") };
   persist(id); refresh();
-  if (ta && review[id].choice && /change|other|name|open|longer|soften|different|fee|both|another/i.test(k + " " + label(it, k)) && !ta.value) setTimeout(() => ta.focus({ preventScroll: true }), 0);
+  if (ta && review[id].choice && /change|other|name|open|longer|soften|different|fee|both|another|card/i.test(k + " " + label(it, k)) && !ta.value) setTimeout(() => ta.focus({ preventScroll: true }), 0);
 });
 [...ITEMS.map((i) => i.id), ...Object.keys(NOTES)].forEach((id) => {
   const ta = document.getElementById("note-" + id); if (!ta) return;
-  ta.addEventListener("change", (e) => { const r = review[id] || { choice: "" }; r.note = e.target.value.trim(); review[id] = r; persist(id); refresh(); });
+  ta.addEventListener("input", () => {   // keep the words in memory at once; save them after a short pause
+    const r = review[id] || { choice: "" }; r.note = ta.value; review[id] = r;
+    clearTimeout(timers[id]); timers[id] = setTimeout(() => flushNote(id), 400);
+  });
+  ta.addEventListener("change", () => flushNote(id));
+  ta.addEventListener("blur", () => { if (timers[id]) flushNote(id); });
 });
-$("#copy-btn").addEventListener("click", async (e) => {
-  const btn = e.currentTarget, txt = summaryText();
-  try { await navigator.clipboard.writeText(txt); btn.textContent = "Copied"; }
-  catch (err) { const rg = document.createRange(); rg.selectNodeContents($("#summary-pre")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg); btn.textContent = "Selected · press Ctrl+C"; }
-  setTimeout(() => { btn.textContent = "Copy my review"; }, 2400);
+addEventListener("pagehide", flushAll);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") flushAll(); });
+
+// ── copying: the clipboard, then the older copy command, then a selection the reader copies by hand ──
+async function copyReview(btn, idle) {
+  flushAll();
+  const txt = summaryText(), msg = $("#copy-msg");
+  let ok = false;
+  try { await navigator.clipboard.writeText(txt); ok = true; } catch (e) {}
+  if (!ok) {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = txt; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0";
+      document.body.appendChild(ta); ta.focus({ preventScroll: true }); ta.select(); ta.setSelectionRange(0, txt.length);
+      ok = document.execCommand("copy"); ta.remove();
+    } catch (e) {}
+  }
+  $("#summary-pre").textContent = txt;
+  if (ok) {
+    btn.textContent = "Copied";
+    msg.textContent = "Copied. Paste it into our chat.";
+  } else {
+    const rg = document.createRange(); rg.selectNodeContents($("#summary-pre")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg);
+    btn.textContent = "Selected";
+    msg.textContent = "Your review is selected below. Copy it, then paste it into our chat. On a phone, if no Copy button shows, press and hold the text, choose Select all, then Copy.";
+  }
+  setTimeout(() => { btn.textContent = idle; }, 2400);
+}
+$("#copy-btn").addEventListener("click", (e) => copyReview(e.currentTarget, "Copy my review"));
+$("#finish-btn").addEventListener("click", async (e) => {
+  await copyReview(e.currentTarget, "Finish and copy");
+  $(".summary").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
 });
 
+// ── the bar: the section list follows the reader ──
+$("#bar-sel").addEventListener("change", (e) => { const el = document.getElementById(e.target.value); if (el) el.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
+function spy() {
+  const y = innerHeight * 0.3; let cur = SECS[0][0];
+  SECS.forEach(([k]) => { const el = document.getElementById(k); if (el && !el.hidden && el.getBoundingClientRect().top <= y) cur = k; });
+  const sel = $("#bar-sel"); if (sel.value !== cur) sel.value = cur;
+  $$("[data-nav]").forEach((a) => a.setAttribute("aria-current", String(a.dataset.nav === cur && document.getElementById(cur).getBoundingClientRect().top <= y)));
+}
+let spyRaf = 0;
+addEventListener("scroll", () => { if (!spyRaf) spyRaf = requestAnimationFrame(() => { spyRaf = 0; spy(); }); }, { passive: true });
+
 Object.assign(review, loadLocal());
-refresh();
+const canDb = !!(window.claude && typeof window.claude.use === "function");
+setSaved(canDb ? "db" : "local");
+refresh(); spy();
 (async () => {
-  if (!window.claude || typeof window.claude.use !== "function") return;
+  if (!canDb) return;
   try { db = await window.claude.use("db"); } catch (e) { db = null; }
-  if (!db) return;
-  setSaved("db", "Connected. Your answers save to this page as you go.");
+  if (!db) { setSaved("local"); return; }
+  setSaved("db");
   let first = true;
   db.collection(COLL).onSnapshot((snap) => {
     const seen = new Set(snap.docs.map((d) => d.id));
-    if (first) {   // answers given in this browser before the page could save them: send them up once
+    if (first && !(snap.metadata && snap.metadata.fromCache)) {   // answers given here before the page could save them: send them up once
       first = false;
-      Object.keys(review).forEach((id) => { const r = review[id]; if (!seen.has(id) && (BY[id] || NOTES[id]) && r && (r.choice || r.note)) persist(id); });
+      Object.keys(review).forEach((id) => { const r = review[id]; if (!seen.has(id) && (BY[id] || NOTES[id]) && r && (r.choice || (r.note || "").trim())) pushDoc(id); });
     }
     snap.docs.forEach((d) => {
-      const v = d.data(); if (!v) return;
-      if (!BY[d.id] && !NOTES[d.id]) return;
+      const v = d.data(); if (!v || (!BY[d.id] && !NOTES[d.id])) return;
+      if (timers[d.id]) return;          // the reader is typing this note; their words win
       review[d.id] = { choice: v.choice || "", note: v.note || "" };
+      sent[d.id] = JSON.stringify(docFor(d.id));
     });
     saveLocal(); refresh();
-  }, () => { setSaved("err", "Live sync paused. Your answers still save in this browser."); });
+  }, () => { setSaved("err"); });
 })();
 </script>
