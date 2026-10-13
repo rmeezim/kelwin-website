@@ -155,3 +155,72 @@ sibling strip, no "question? → LINK" rows. Where one onward link earns a place
   ideas workflow, for his choice.
 - **Engagement lifecycle** (Q7): two or three structures, one recommended.
 - **The turn, the write-in, the plate** across every mockup page, so the review site can be clicked through.
+
+## 7 · Amendments after the synthesis and the adversarial check (binding for the page builds)
+1. **Scope.** Every kit and drawing rule above applies to the interior only. The approved homepage and footer do
+   not move a pixel; several homepage devices (boxed 01–03 on system, the principle's noise filter, + marks,
+   long caps links) are approved there and stay.
+2. **The write-in is a pen, not split letters.** A hard-edged clip sweeps each `.ac-line > span` left to right
+   at one pen speed, line after line, in short hard steps, so only the letter under the pen edge is ever
+   partial. No letter splitting: splitting shifted every h1 by up to 8px (kerning) and destroyed nested accent
+   spans. Only the interior page h1 writes; other heads keep the kit's rise; reading copy never writes.
+3. **Pictures are the founder's call (rules 5 and 6).** The mockups show them because he asked, labelled as a
+   proposal. Stand-ins:
+   - the hero's frosted stand-in (`img/film-room.webp`) only as crops inside one half of the image — it is a
+     mirrored composite, and a wide crop shows the same figure twice;
+   - otherwise a **shot card**: the plate on flat `--panel` with a slate ("Footage to come" / "Photograph to
+     come"), one 32px line naming the shot ("The founder at work."), one 15px line on how it is shot, one mono
+     spec line ("16 s loop · 2.76 : 1 · muted"). The cards double as the shoot brief.
+   - **Never** the v4 photographs (dunes, canyon, beacon, rope, chain, star trails, strata): they are v4 devices
+     and read as stock/generated.
+   - A head plate must not look like the hero: no take/timecode overlay, no boxed 16:9 beside the lede — the
+     full measure under the head, a different shot per page.
+4. **Vary the h1.** Today 15 of 16 interior h1s are cast the same way (white line, then a whole light line,
+   96px, same place). Vary size (88–128px), where the accent falls (a word, a phrase, the second line) and the
+   composition (with or without a lede beside a vertical hairline, GoNimbly's head), page by page.
+5. **Vary the surfaces.** Today every page runs graphite → one paper section → graphite. Paper only where the
+   object is a paper document; a page may have none or two.
+6. **No repeated modules across siblings**: the capability pages' stat sidebar (big number + source + note
+   link) appears at most once across the three, the doors share no sentence, the facts values share no ending.
+7. **Specimens are believable working documents** filled in for Kelwin itself, in plain working language — not
+   homepage slogans recycled inside a table.
+8. **Interaction stays where it earns it**: a kept drawing may have one real control wired to the section under
+   it; specimens carry no "choose a row" hints.
+9. **Audit (approved)** keeps its facts box (the facts are the content), its "Phase 01 / 04 · Diagnose" line
+   ([K] homepage copy), the ten-day ruler and the FAQ. It gains the confirmed sequence: Call 01 (30 min) →
+   Days 01–10 → Call 02, the 60-minute readout → Call 03, the proposal.
+
+## 8 · Project pages (the founder's short-term services; from the ideas workflow, judged)
+- **Offer:** "Projects" (in full "Fixed-scope projects"): one piece of the system, built on its own, to the same
+  spec as the full install. The full system stays the preferred path; the audit stays the main door.
+- **Launch six** (founder to approve): Positioning and messaging · Email deliverability · ICP and signal map · CRM
+  blueprint · Win/loss interviews · The operating model (starts after the audit's readout). Held: Sales
+  narrative.
+- **Only with the system** (said plainly on the index): the Orchestration Rules, narrative resonance testing, the
+  quarterly calibration and Rebuild Sequence, the operating retainer.
+- **Routes:** /projects and /projects/<slug>. Not in the top bar. The Capabilities plate's foot band gains a
+  "Projects" cell (FS); the footer's Capabilities column gains "Projects" (FS); each capability page's services
+  section ends on one sentence linking to /projects#<layer>.
+- **Doors:** red stays "Request a System Audit"; the quiet door is "Ask for this project" → /contact?topic=project
+  &ref=<slug>; the contact memo gains the topic "A fixed-scope project".
+- **The project path** (on the index only): the memo → a reply → a 30-minute call → a written scope → week one,
+  the read (if it isn't the fix, we say so in writing) → build → handover and a 30-day check. No retainer on a
+  single project.
+- **Template:** project-head (sheet plate: a spread of the asset the client keeps) → who it's for → the scope (in /
+  not in) → what it takes (prose) → where it leads → the close. Index: head (the written scope as a sheet) →
+  the catalogue by layer → only with the system → how a project runs → the close.
+- **Honesty:** no prices, no lengths as fact ("Set in your written scope" until he confirms), no proof, no
+  coined names or codes.
+- Mockups this round: the index and the first page (Email deliverability); the other five as copy for review.
+
+## 9 · The engagement lifecycle (Q7; recommended "two ways in, one spine")
+- **The system path** (his Q3 sequence): three questions → Call 01, the 30-minute analysis call → the ten-day
+  audit → Call 02, the 60-minute readout call → Call 03 (and 4 if a committee needs it), the proposal: scope,
+  price, contract → Architect → Install → Handover → his operator, or with us on retainer (renewed by the
+  quarter at the calibration readout).
+- **The project path** beside it (above), so small buyers aren't turned away; red still means the audit.
+- **The cadence** (replaces the /about week he could not confirm): during Architect and Install, one working
+  session and one written note each week; on the retainer, a weekly signal review (25 minutes, no deck), a monthly
+  operating review with the stop list, the quarterly calibration readout in week 13, a yearly re-read.
+- Where it shows: /about "How an engagement runs" (draft for his yes), /audit's sequence strip, capability "How
+  it runs" lines aligned to Each week / Each month / Each quarter.
