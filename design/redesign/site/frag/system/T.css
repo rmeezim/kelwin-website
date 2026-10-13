@@ -168,6 +168,8 @@
 .km-system-T .km-system-T__ledger .ac-row__more { visibility: hidden; transition: grid-template-rows 360ms var(--ease-inout), visibility 0s linear 360ms; }
 .km-system-T .km-system-T__ledger .ac-row.is-open > .ac-row__more { visibility: visible; transition: grid-template-rows 360ms var(--ease-inout), visibility 0s linear 0s; }
 .km-system-T .km-system-T__kv { display: flex; flex-direction: column; gap: 6px; }
+/* round 8, Q5d: each open row reaches its layer's own page */
+.km-system-T .km-system-T__inside { align-self: flex-start; padding-block: 4px; }
 /* the reading path ends on one quiet door (the section's one red stays the slab face) */
 .km-system-T .km-system-T__doors { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
 .km-system-T .km-system-T__tail { max-width: 38ch; }

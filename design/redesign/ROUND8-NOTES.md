@@ -89,3 +89,17 @@ Q8 Legal: The legal name is Kelwin, LLC
 - Q6: 83% throughout; read times corrected (homepage letter and evidence door too); no byline.
 - Q7: the engagement lifecycle is undecided; propose structures. Careers: juniors can be hired; publish a rough pay range, never an exact figure; remote-first and global.
 - Q8: the legal entity is Kelwin, LLC. The governing-law jurisdiction and the address are still open.
+
+## Follow-up messages (verbatim)
+
+**With five GoNimbly screen recordings:** "Here are a few screen recordings I made since I didn't really understand how to do the network access settings thing since I didn't understand what it really meant and how to do it. The instructions weren't clear either, with the link that I tried to access that you gave me. Here are a few screen recordings I added from a few different pages, including the home page and all that stuff."
+
+**With a Palantir screen recording:** "let's fix it all then. Also, when switching from one page to another or entering a new page on the website of Kelvin, I feel like we should have an animation. Kind of like how Balotero has it, showing in this screen recording where that flickering logo appears for a short while before switching to the next page. How about we have something like that?"
+
+## What the recordings show
+- **GoNimbly** (frame study in the round-9 workspace, `refs-r9/GONIMBLY-STUDY.md`): every page puts a large moving picture directly under its headline; the headline writes itself in letter by letter, each letter arriving in fragments; the picture rises as a narrower rectangle and widens to full width; diagrams are a few large interface chips on blurred photography, labelled at 16–20px sentence case; a new page slides in from the right over the old one.
+- **Palantir** ("Balotero"): on a link click a flat panel sweeps across with a slanted leading edge (≈0.15 s); the Palantir mark sits centred and flickers on (≈0.3 s); the panel holds briefly; the new page's surface sweeps in with the same slant (≈0.2 s); the page title assembles letter by letter, each letter flickering at its own grey level, then the background imagery fades up.
+
+## What this adds
+- "Fix it all": every finding of the round-9 audit is fixed, not only proposed.
+- A page-turn animation on every page change and on entering the site, after Palantir: a graphite panel with a slanted edge sweeps in, the Kelwin mark flickers on piece by piece (K3, K2, K1), and the panel sweeps off into the new page, whose headline then writes itself in. The mark here is brand chrome (a loader), not an illustration device. Reduced motion: none of it.
