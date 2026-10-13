@@ -103,3 +103,6 @@ Q8 Legal: The legal name is Kelwin, LLC
 ## What this adds
 - "Fix it all": every finding of the round-9 audit is fixed, not only proposed.
 - A page-turn animation on every page change and on entering the site, after Palantir: a graphite panel with a slanted edge sweeps in, the Kelwin mark flickers on piece by piece (K3, K2, K1), and the panel sweeps off into the new page, whose headline then writes itself in. The mark here is brand chrome (a loader), not an illustration device. Reduced motion: none of it.
+
+**Follow-up (footer, during round 9), verbatim:** "And also, one more thing I feel I noticed that feels kind of off is that Kelwin logo at the end of the footer. Right now, it seems to be present below the privacy and terms line and the audit request line. What if we pull it above it? It feels off being below that line. What if we fix that thing as well while you are at it?"
+→ The footer lockup moves above the legal row (© · Privacy | Terms · Audit request); the legal hairline becomes the page's last edge. The round-5 picks stay: one quiet tone, ~70% of the content width, set right, one-fifth buried — now buried by the legal hairline instead of the page edge. Applied to the mockup (footer/U) and the live site's Footer.
