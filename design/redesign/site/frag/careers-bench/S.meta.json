@@ -1,32 +1,28 @@
 {
-  "title": "The bench list",
-  "direction": "A×C · Round 8 · /careers · FM + QC",
-  "summary": "The page's one paper moment: the bench-list entry laid out as a sheet you write on — four numbered answers, the two long ones on ruled lines, real labels, “required” in words, an outlined submit that opens your own mail app — beside a section head that ends on its lede and stays in view, then the quiet close.",
-  "story": "The page's conversion moment for candidates. The header promised the list is open and read first; here it is, asking only what a reader needs (who you are, where your work lives, the part of a revenue system you'd own and why), with the honest mechanics at the point of collection: your own mail app, nothing sent from this page, a person reads every one, Privacy linked. Buyers who wandered in get two quiet doors (Talk to the team, Request a System Audit — no red on a hiring page) and the onward question “Who’s at Kelwin today? → About”.",
-  "copy": [
-    "[N] label “The bench list” (the legacy label was “Bench clearance”) · [N] h2 “Be read first when a seat opens.”",
-    "[R] lede “Skip the CV summary. Tell us who you are, where your work lives, and the part of a revenue system you’d take personal responsibility for.”",
-    "[N] doc head “Bench list · your entry” · (FC) “To audit@kelwin.co” (recipient per §7 Q3; audit@ by default)",
-    "[R] fields: 01 Name · 02 Current role and company · 03 Something you’ve made — a link, or a few lines about it (textarea) · 04 The part of a revenue system you’d own, and why that one; each “· required” in words",
-    "[R] submit “Join the bench list” (outlined .ac-btn-o, not red) · mailto subject “Bench list — {name}”",
-    "[R] note “This opens your own mail app with your answers filled in. Nothing is sent from this page, and a person reads every one.” + “How we handle it · Privacy →”",
-    "[N] MailtoConfirm “Your mail app should have opened. If it didn’t, send it to audit@kelwin.co.” + Copy",
-    "[K] QC: Questions first? → Talk to the team (/contact?topic=careers) · Here to buy, not to join? → Request a System Audit (quiet .ac-link) · Who’s at Kelwin today? → About (the page's onward link)"
-  ],
-  "phone": "≤1279: the head (cols 1–9) sits above the sheet, which takes the full width (beside a four-column head the heading broke into three lines and the half answers' labels wrapped at 1024); the four answers keep their 2+1+1 layout, the two half answers' rules on one shared bottom whatever their labels do. ≤767: one answer per line, numbers inline with their questions, answers full width (inputs 40px, ruled answers three lines), the send above its note; the quiet doors stack (kit). Checked at 320, 390, 834, 1024, 1280; no overflow, nothing under 11px.",
-  "reference": {
-    "site": "Stripe partner application (head in the left column, the form as a sheet on the right) · Seed careers (answers on single underlines)",
-    "mobbin_url": "https://mobbin.com/sites/sections/5f0251ec-de96-4fb5-97f0-47720a43f668",
-    "ref_file": "refs/careers-bench-S.webp",
-    "borrowed": "Stripe: the section head standing in its own left column while the form sits to the right as one bounded sheet. Seed: fields as single rules on paper, no boxes.",
-    "kelwin": "The sheet is the kit's document panel on the page's one paper, named and addressed in its head; the answers are numbered like a written questionnaire with the numbers hanging in the sheet's margin; the two long answers are ruled like a writing sheet (a mask painted in the --line token: no gradient, no hard-coded colour). Outlined submit, no red, Privacy at the point of collection."
-  },
-  "motion": [
-    "entrance (reveal only): the sheet rises once (200ms) and its four answers fade in, in order, 90ms apart.",
-    "layout: at ≥1280 the head column is a plain sticky column (top 120px) so “Be read first when a seat opens.” stays beside the sheet while the answers are written — no scroll effect, no pin, nothing animates.",
-    "interaction: focus inks an answer's rule (2px) and its number; an empty required answer, after a submit attempt, darkens its “· required” (words, not colour alone) as the browser names the field; the long answers grow as you write; submit builds the mailto and shows MailtoConfirm with a Copy button that confirms in words.",
-    "on the live site: plays once when the sheet scrolls into view; reduced motion = final state, no timers. No network call anywhere."
-  ],
-  "demoMs": 1600,
-  "notes": "A working form (no SpecimenTag: nothing on it is illustrative). The section root carries id=\"bench\" — the anchor the header's facts door targets (an exception to the km-…-S- id prefix, as contact's #write). The margin recap of round 8's first build (a seat glyph + “Next seat · Opens”) is cut: it repeated the header for the third time and was there to fill the column. Tested: an empty submit marks all four answers; a filled submit builds subject “Bench list — {name}” and a body of the two long answers, then name and role, and shows MailtoConfirm (qa/r8-careers/after-submit.png). Height 1130px at 1440. Same-day sync owed elsewhere: Privacy L·02 “the bench clearance request” → “the bench list request”."
+ "title": "Your entry",
+ "direction": "A×C · Round 9 · /careers entry form (#bench)",
+ "summary": "The bench entry: the kit's form to the careers address by mailto, beside a sticky 64px claim. The address's status sits once at the label row's right end, “Address to be confirmed” (coherence pass: never inside the sentence).",
+ "reference": {
+  "site": "the round-9 kit (frag/int-kit/S, 12.9 forms)",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-careers.png",
+  "borrowed": "Few, big, sentence-case labels.",
+  "kelwin": "The kit's .ac-field on graphite (no paper: a form is not a document), outlined submit, no red; the claim held beside the form (sticky) so its column is never empty."
+ },
+ "copy": [
+  "[N] label 'Your entry'",
+  "[R] claim 'When a seat opens, this list is read first.' (from round 8's 'When a seat opens, the bench list is read first.')",
+  "[R] fields: Name · Current role and company · [N] The seat you’d want (Not sure yet + the six seats) · Something you’ve made (hint 'A link, or a few lines about it. No CV needed.') · The part of a revenue system you’d own (hint 'And why that one.')",
+  "[R] submit 'Join the bench list' ('bench list', mention 2 of 2) · 'How we handle it' → /privacy",
+  "[N, Q3] 'Opens your own mail app, addressed to careers@kelwin.co (address to be confirmed).'",
+  "[N] after send: 'Your mail app should have opened. If it didn’t, write to careers@kelwin.co.' + Copy the address"
+ ],
+ "phone": "≤1023 the claim stacks above the form (not sticky); ≤767 the kit's phone form. Checked at 320, 390, 834.",
+ "motion": [
+  "entrance (one moment): the fields rise in turn; the claim is the kit's.",
+  "interaction: the seat select shows its value as text; a missing answer turns its underline to ink; Copy confirms in words.",
+  "on the live site: the claim is position: sticky beside the form (top 128px, under the condensed nav)."
+ ],
+ "demoMs": 1600,
+ "notes": "Round-9 fix pass: the slogan pair ('Write in early' / 'Be read first.'), the intro that restated the fields, the second and third 'read' promises and the in-section close are gone (the close is its own section, careers-close). Founder questions: confirm careers@kelwin.co; keep or drop 'The seat you’d want'. Coherence pass (round 9): see summary."
 }

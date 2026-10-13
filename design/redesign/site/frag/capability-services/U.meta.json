@@ -1,25 +1,16 @@
 {
-  "title": "Question → instrument",
-  "direction": "A×C · Round 8 · capability template (GTM Intelligence)",
-  "summary": "The four services as the four questions they answer, set large on the left, each answered across its row by the service (keyed by the band's station code), what it ships and where that goes — read left to right like the loop itself.",
-  "story": "The legend to the ring. Each station on the band becomes a question a revenue leader actually asks; the answer is not a dashboard project but a service that ships something and feeds the next turn — the Signal Dashboard, the Narrative OS, the next narrative version, the Rebuild Sequence.",
-  "copy": [
-    "[N] statement “Four questions, / answered every quarter.” (the page's second statement)",
-    "[R from today's services; nav names K] the four rows (question · service · ships · feeds) as drafted in §4.3",
-    "[N] quiet line, re-cut to carry the status chip: “The instruments that will automate parts of this are being built at The Lab.” + chip “In development” + link “The Lab” (§4.3 drafts it as one sentence ending ‘…and are in development →’)",
-    "Removed: the Entropy index as a sold deliverable"
-  ],
-  "phone": "≤1023: each question takes the full row; its answer sits beneath in three keyed columns (Service · Ships · Feeds, keys in mono). ≤767: one column — the question (22px), then Service, Ships and Feeds as keyed lines; the Lab line wraps under.",
-  "reference": {
-    "site": "Approved homepage evidence/T (large statement-led rows) and the kit's head grammar",
-    "borrowed": "A list led by the buyer's own words in display type, with the system's answer set quietly across the row.",
-    "kelwin": "Keyed by the band's station codes (03.1–03.4); a mono key row with drawn arrows (question → service → ships → feeds) states the reading direction once; assets named in the handover's words are set in the UI weight so the wiring between layers is visible."
-  },
-  "motion": [
-    "entrance: the kit statement choreography; the key row fades in; the four questions set one by one (130ms apart); the Lab line fades in.",
-    "interaction: the Lab link (kit hover). No toggles: nothing hides.",
-    "on the live site: reveals once on scroll. Reduced motion: final state."
-  ],
-  "demoMs": 2200,
-  "notes": "≈ 1,000px at 1440. Ruled seam from the header. Status chip uses the allowed word ‘In development’ (§1.6)."
+ "title": "Four questions, large",
+ "direction": "A×C · Round 9 · capability template (GTM Intelligence)",
+ "summary": "GTM Intelligence's four questions (coherence pass 2, D5): each question at 56px over ONE plain sentence — the service that answers it run in at its head, then how it is answered.",
+ "reference": {
+  "site": "GoNimbly's large, few labels; the approved FAQ's big question lines on /audit",
+  "borrowed": "The question as the big thing; the answer small beneath it.",
+  "kelwin": "No quote marks, no Service/Ships/Feeds keys, no codes, no Lab chip."
+ },
+ "motion": [
+  "entrance: the four questions rise in turn (kit cascade); the projects line fades in.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2000,
+ "notes": "Coherence pass 2: no longer a question over a name-left/gloss-right row. Round 9 fix: the lines no longer restate the cadence ('watched every week', 'once a deal closes', 're-ranked'); the projects sentence says the offer is still to be confirmed."
 }

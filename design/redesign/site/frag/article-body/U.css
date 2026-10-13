@@ -1,15 +1,20 @@
-/* article-body · U · the reading spread (RD) on paper — /insights/deliverability-is-infrastructure
-   The page's one paper moment: the note. Reading column cols 3–8 (18px / 1.6), margin cols 10–12
-   (the TRACE glyph, the Google and Yahoo 2024 sender rules with the bulk-sender qualifier, a
-   "What to look for" note with the Apple Mail Privacy Protection caveat), one pull quote, "The
-   floor, specified" as the kit's spec list (its four [K] rows), and ONE figure across cols 1–12
-   where the argument turns, after the silence: "Delivered isn't arrived" — an illustrative
-   dashboard tile reads Delivered, 100 of 100 sends, one tick per send; beneath it the same 100
-   sends as they landed (Validity's 2024 global average for legitimate marketing email): 83.5
-   inbox · 6.7 spam · 9.8 missing, with two dashed measure lines dropping from the tile where the
-   readings part; each value is set under its own segment, so there is no legend and no second
-   red. Red: the missing segment, the figure's one red mark.
-   Default CSS = final state; the figure plays once at 40% visible (JS adds .is-in). */
+/* article-body · U · round 9 — /insights/deliverability-is-infrastructure: the note, on paper
+   The reading spread (approved P07): the standfirst at 24px across cols 3–10, the reading column
+   in cols 3–8 (18px / 1.6), the margin in cols 10–12 (the Google and Yahoo 2024 sender rules with
+   the bulk-sender qualifier; the "What to look for" note with the Apple Mail Privacy Protection
+   caveat), one pull quote in the accent voice, "The floor, specified" as the spec list in the key
+   voice (.ac-spec--key: Mona sentence-case keys), and ONE figure across cols 1–12 where the
+   argument turns, after the silence: "Delivered isn't arrived" (approved, and the model for the
+   interior's artifacts) — an illustrative dashboard tile reads Delivered, 100 of 100 sends, one
+   tick per send; beneath it the same 100 sends as they landed (Validity's 2024 global average for
+   legitimate marketing email): 83.5 inbox · 6.7 spam · 9.8 missing, each value under its own
+   segment. Red: the missing segment, the figure's one red mark. Round 9 takes out the TRACE glyph
+   key, the boxed source numerals, the mono source links and the end square; rule 7 (the tile is
+   illustrative) is said once: "Specimen", one word in the key voice at the end of the figure's
+   label row, and one plain line in the foot (no mono chip). Margin notes take their own grid
+   rows: the sources span rows 2–4 (ending before the figure's full-width row), and "What to look
+   for" spans into empty trailing rows, so the paper always contains it. Default CSS = final
+   state; the figure plays once at 40% visible (JS adds .is-in). */
 
 .km-article-body-U { padding-block: 120px 144px; }
 
@@ -19,22 +24,31 @@
   align-items: start;
 }
 .km-article-body-U__spread > * { grid-column: 3 / span 6; }
-/* a margin note hangs from its paragraph's row and never pushes the reading column: its negative
-   bottom margin takes it out of the row's height (notes are spaced so they never meet) */
-.km-article-body-U__spread > .km-article-body-U__note { grid-column: 10 / span 3; margin-bottom: -1200px; }
+.km-article-body-U__spread > .km-article-body-U__sf { grid-column: 3 / span 8; }
+/* a margin note sits in its paragraph's row (auto-placed: its markup follows the paragraph whose
+   calls it answers) and spans the rows it needs, so it never overlaps the next note or the
+   column: the sources (Google, Yahoo) span the two paragraphs and the pull quote (rows 2–4),
+   ending before the figure's full-width row */
+.km-article-body-U__spread > .km-article-body-U__note { grid-column: 10 / span 3; }
+.km-article-body-U__spread > .km-article-body-U__note--src { grid-row-end: span 3; }
 .km-article-body-U__spread > .km-article-body-U__fig { grid-column: 1 / -1; }
-/* "What to look for" comments on its whole subsection: it sits in the subsection heading's row
-   (row 8, "Why this is a systems problem"), its top on the heading's top, and hangs like every other note (it never
-   stretches a row, so the column never gaps before the closing line). Its markup stays after the
-   paragraph, so on phones it still falls in after it. */
-.km-article-body-U__spread > .km-article-body-U__note--look { grid-row: 8; margin-top: 80px; }
+/* "What to look for" comments on its whole subsection: it starts in the subsection heading's row
+   (row 9, "Why this is a systems problem"), its top on the heading's top, and spans to the end of
+   the note and into empty trailing rows (rows 9–14), so the paper always contains it and the
+   column never gaps before the closing line. Its markup stays after the paragraph, so on phones
+   it still falls in after it. */
+.km-article-body-U__spread > .km-article-body-U__note--look { grid-row: 9 / span 6; margin-top: 80px; }
 
 /* ── reading type ── */
+.km-article-body-U__sf {
+  font-size: 24px; line-height: 1.45; color: var(--fg); text-wrap: pretty; hanging-punctuation: first;
+  max-width: 34em; margin-bottom: 16px;
+}
+.km-article-body-U__sf + .km-article-body-U__p { margin-top: 40px; }
 .km-article-body-U__p, .km-article-body-U__list > li {
   font-size: 18px; line-height: 1.6; color: var(--fg); text-wrap: pretty; hanging-punctuation: first;
 }
 .km-article-body-U__p { margin-top: 22px; }
-.km-article-body-U__spread > .km-article-body-U__p:first-child { margin-top: 0; }
 .km-article-body-U__p--after-h { margin-top: 20px; }
 .km-article-body-U strong, .km-article-body-U dfn { font-style: normal; font-weight: var(--strong-weight); }
 .km-article-body-U__h { margin-top: 80px; }
@@ -44,46 +58,12 @@
   content: ""; position: absolute; left: 0; top: 14px; width: 14px; height: 1px; background: var(--fg-2);
 }
 .km-article-body-U__p--last { margin-top: 56px; }
-/* the end mark: a small ink square closes the note */
-.km-article-body-U__end { display: inline-block; width: 8px; height: 8px; margin-left: 10px; background: var(--fg); vertical-align: 1px; }
 
-/* the source call: a raised mono numeral that jumps to its margin note */
-.km-article-body-U__ref {
-  position: relative; top: -.55em; margin-left: 3px; padding: 0 2px;
-  font-family: var(--f-mono); font-size: 11px; line-height: 0; letter-spacing: 0; color: var(--fg-2);
-  box-shadow: inset 0 -1px 0 var(--line-2); transition: color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
-}
-.km-article-body-U__ref:hover { color: var(--fg); box-shadow: inset 0 -1px 0 var(--fg); }
-.km-article-body-U__ref:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
 
-/* ── the margin ── */
-.km-article-body-U__note { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line-2); }
-.km-article-body-U__nh {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 16px;
-  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg);
-}
-.km-article-body-U__num {
-  display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex: none;
-  border: 1px solid var(--line-2); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0; color: var(--fg);
-}
-.km-article-body-U__nt { margin-top: 10px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 34ch; }
-.km-article-body-U__note > .ac-reading__src { margin-top: 10px; }
-/* a source link wraps only before its last word: the word, "· year" and the drawn ↗ stay together */
-.km-article-body-U .ac-reading__src .km-article-body-U__srcl { white-space: nowrap; }
-.km-article-body-U__srcl > .km-article-body-U__lw { white-space: normal; }
-/* the layer this note diagnoses: the nav's TRACE glyph, drawn in ink */
-.km-article-body-U__key { margin-top: 0; padding-top: 0; border-top: 0; }
-.km-article-body-U__layer {
-  display: flex; align-items: center; gap: 16px; margin-top: 12px; padding: 14px 0; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line);
-  font-size: var(--ac-support); line-height: 1.4; color: var(--fg);
-}
-.km-article-body-U__g { display: block; flex: none; overflow: visible; width: 54px; height: 36px; color: var(--fg-2); }
-.km-article-body-U__g path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
-.km-article-body-U__g rect { fill: currentColor; }
+/* ── the margin: the kit's margin note (.ac-sidenote, 12.14) and source call (.ac-ref); placed here ── */
+.km-article-body-U__num { font-family: var(--f-mono); font-weight: 400; font-size: 12px; letter-spacing: 0; color: var(--fg-2); }
 .km-article-body-U__note--src { margin-top: 28px; }
-.km-article-body-U__nh--2 { margin-top: 22px; }
-.km-article-body-U__nt + .km-article-body-U__nt { margin-top: 12px; }
+.km-article-body-U__nh--2 { margin-top: 24px; }
 
 /* the one pull quote, in the accent voice; it never repeats the text beside it */
 .km-article-body-U__pull { margin: 64px 0 0; padding-top: 22px; border-top: 1px solid var(--line-2); }
@@ -100,7 +80,8 @@
 /* ── the figure ── */
 .km-article-body-U__fig { margin-top: 64px; padding: 24px 0 32px; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line); }
 .km-article-body-U__fighead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 14px; }
-.km-article-body-U__fighead > .ac-label { grid-column: 1 / -1; }
+.km-article-body-U__fighead > .ac-labelrow { grid-column: 1 / -1; }
+/* rule 7: the tile is illustrative — "Specimen", once, one word in the key voice at the label row's end */
 .km-article-body-U__figsub { grid-column: 1 / span 7; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
 
 .km-article-body-U__dlv {
@@ -145,10 +126,10 @@
   margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line);
 }
 .km-article-body-U__src { grid-column: 3 / span 6; display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; }
-.km-article-body-U__src > .km-article-body-U__num { position: relative; top: 4px; }
+.km-article-body-U__src > .km-article-body-U__num { line-height: 1.5; }
 .km-article-body-U__srct { flex: 1 1 30ch; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
-.km-article-body-U__src > .ac-reading__src { margin: 0; }
-.km-article-body-U__figfoot > .ac-specimen { grid-column: 3 / span 10; }
+.km-article-body-U__srcl { font-size: var(--ac-support); line-height: 1.5; white-space: nowrap; }
+.km-article-body-U__spt { grid-column: 3 / span 10; font-size: 14px; line-height: 1.45; color: var(--fg-2); }
 
 /* ── entrance: the tile reports, then the measure drops, then the bar shows where it landed ── */
 @keyframes km-article-body-U-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
@@ -183,7 +164,12 @@
 /* ── tablet (≤1023): row labels sit above their rows; the drawing takes the full width ── */
 @media (max-width: 1023px) {
   :root:not(.km-home) .km-article-body-U { padding-block: 88px 104px; }
-  :root:not(.km-home) .km-article-body-U__spread > * { grid-column: 1 / span 8; }
+  :root:not(.km-home) .km-article-body-U__spread > *,
+  :root:not(.km-home) .km-article-body-U__spread > .km-article-body-U__sf { grid-column: 1 / span 8; }
+  :root:not(.km-home) .km-article-body-U__sf { font-size: 22px; }
+  :root:not(.km-home) .km-article-body-U__big { font-size: 44px; }   /* under the h1 (52px at 834; coherence pass 3) */
+  :root:not(.km-home) .km-article-body-U__vn { font-size: 36px; }
+  :root:not(.km-home) .km-article-body-U__vn--s { font-size: 26px; }   /* after __vn: spam and missing stay a step under 83.5% */
   :root:not(.km-home) .km-article-body-U__spread > .km-article-body-U__note { grid-column: 9 / span 4; }
   :root:not(.km-home) .km-article-body-U__spread > .km-article-body-U__fig { grid-column: 1 / -1; }
   :root:not(.km-home) .km-article-body-U__figsub { grid-column: 1 / span 10; }
@@ -192,20 +178,19 @@
   :root:not(.km-home) .km-article-body-U__rk--b { padding-top: 32px; }
   :root:not(.km-home) .km-article-body-U__measure { padding-inline: 25px; }
   :root:not(.km-home) .km-article-body-U__bar { height: 72px; }
-  :root:not(.km-home) .km-article-body-U__src, :root:not(.km-home) .km-article-body-U__figfoot > .ac-specimen { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-article-body-U__src, :root:not(.km-home) .km-article-body-U__spt { grid-column: 1 / -1; }
 }
 
 /* ── phone (≤767): one column; the tile counts 20 ticks (five sends each) so the strip stays
    legible; the three values stack under the bar ── */
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-article-body-U { padding-block: 64px 80px; }
+  :root:not(.km-home) .km-article-body-U { padding-block: 56px 72px; }
   :root:not(.km-home) .km-article-body-U__spread > *,
+  :root:not(.km-home) .km-article-body-U__spread > .km-article-body-U__sf,
   :root:not(.km-home) .km-article-body-U__spread > .km-article-body-U__note, :root:not(.km-home) .km-article-body-U__spread > .km-article-body-U__note--look { grid-column: 1 / -1; grid-row: auto; margin-bottom: 0; }
-  :root:not(.km-home) .km-article-body-U__spread > .km-article-body-U__key { order: -1; margin-bottom: 40px; }
+  :root:not(.km-home) .km-article-body-U__sf { font-size: 20px; margin-bottom: 8px; }
   :root:not(.km-home) .km-article-body-U__p, :root:not(.km-home) .km-article-body-U__list > li { font-size: 17px; }
   :root:not(.km-home) .km-article-body-U__h { margin-top: 56px; font-size: 26px; }
-  :root:not(.km-home) .km-article-body-U__note, :root:not(.km-home) .km-article-body-U__note--src { margin-top: 24px; }
-  :root:not(.km-home) .km-article-body-U__nt { max-width: none; }
   :root:not(.km-home) .km-article-body-U__pull > p { font-size: 26px; }
   :root:not(.km-home) .km-article-body-U__spec { grid-template-columns: minmax(0, 1fr); }
   :root:not(.km-home) .km-article-body-U__spec > dt { padding-bottom: 0; }
@@ -213,12 +198,13 @@
   :root:not(.km-home) .km-article-body-U__fig { margin-top: 56px; }
   :root:not(.km-home) .km-article-body-U__tile { padding: 16px 16px 0; }
   :root:not(.km-home) .km-article-body-U__th { flex-direction: column; gap: 4px; }
-  :root:not(.km-home) .km-article-body-U__big { font-size: 44px; }
+  :root:not(.km-home) .km-article-body-U__big { font-size: 34px; }   /* under the 38px h1 (coherence pass 3) */
+  :root:not(.km-home) .km-article-body-U__vn { font-size: 30px; }   /* under the 34px tile: 34 / 30 / 22 */
+  :root:not(.km-home) .km-article-body-U__vn--s { font-size: 22px; }   /* after __vn, so it wins */
   :root:not(.km-home) .km-article-body-U__strip:not(.km-article-body-U__strip--sm) { visibility: hidden; }
   :root:not(.km-home) .km-article-body-U__strip--sm { visibility: visible; left: 16px; width: calc(100% - 32px); }
   :root:not(.km-home) .km-article-body-U__measure { padding-inline: 17px; }
   :root:not(.km-home) .km-article-body-U__vals { flex-direction: column; gap: 20px; }
   :root:not(.km-home) .km-article-body-U__v--in { margin-right: 0; }
   :root:not(.km-home) .km-article-body-U__v--sm { align-items: flex-start; text-align: left; }
-  :root:not(.km-home) .km-article-body-U__vn { font-size: 36px; }
 }

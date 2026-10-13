@@ -1,0 +1,24 @@
+{
+ "title": "The staffing plan",
+ "direction": "A×C · Round 9 · /careers staffing plan (new)",
+ "summary": "The seats as a plain staffing plan (Q1), typeset large: the founder's seat, then the six next seats, one per row, the name at 56px and what the seat owns beside it in the body voice. Each status is said once, as its group's key ('Filled', 'Not open yet'), and 'What the seat owns' once, as the column head. The page's one ruled list; no cards, bars, chips or codes.",
+ "reference": {
+  "site": "GoNimbly (founder's recordings, refs-r9/GONIMBLY-STUDY.md) · the round-9 kit (frag/int-kit/S)",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/detail-solutions-list.png",
+  "borrowed": "GoNimbly's lists: a name on a track, few big labels in sentence case.",
+  "kelwin": "A typeset roster on graphite, hairline rows, the names in the display voice: the section's one dominant element."
+ },
+ "copy": [
+  "[N] label 'The staffing plan' (h2)",
+  "[N] keys 'Filled' · 'Not open yet' (one statement per status) · column head 'What the seat owns'",
+  "[Q1] Founder: 'Every seat below, for now.' [N]",
+  "[Q1 seats, N lines on what each owns — draft for the founder]: Systems Engineer 'The CRM, data and sending setup an install hands over.' · Narrative Architect 'Positioning, the message matrix, and how each channel uses them.' · Engagement Manager 'One working session and one written note a week, through handover.' · Market Intelligence Analyst 'Signal reviews each week, and the calibration readout in week 13.' · Associate 'Research before first calls, scheduling, and Kelwin’s own pipeline.' · Client Partner 'Each client relationship, from the first call onto the retainer.'"
+ ],
+ "phone": "≤1023 the column head gives way and each seat's line sits under its name (names 44px); ≤767 names 30px, lines 16px. Checked at 320, 390, 834.",
+ "motion": [
+  "entrance (the section's one moment): the row hairlines draw and the rows rise, top to bottom."
+ ],
+ "demoMs": 1600,
+ "notes": "Founder questions: is 'Not open yet' still true for all six seats (Q1 says hiring)? Confirm or rewrite the six lines. The pay range is stated once, in the head's lede (Q7)."
+}

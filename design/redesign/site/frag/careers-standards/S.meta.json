@@ -1,33 +1,26 @@
 {
-  "title": "Held to, in writing",
-  "direction": "A×C · Round 8 · /careers · SP",
-  "summary": "A two-column spec in type only: the four rules every seat works by on their own ruled rows, and beside them the deal as a short block of three terms hung on one hairline, with its own rhythm — the page's still beat between the drawing and the form.",
-  "story": "Answers the visitor's second question — what is the work held to — before asking anything of them. The rules (own systems, write, diagnose out loud, no theater) are the long column; the deal (no juniors, published comp, remote-first and London-based) is the short one beside it, set as terms rather than as partners to the rules, so nothing on the sheet pretends a rule and a term are pairs. A buyer reads the same sheet as how the work on their account will be done. The one link goes to the week the work runs on, on /about.",
-  "copy": [
-    "[N] label “What every seat is held to” (the legacy label was “How we behave”)",
-    "[N] h2 “Four rules, and the deal that comes with them.”",
-    "[N] column heads “The rules” · [K] “The deal”",
-    "[K] titles H·01 “You own systems, not tasks.” · H·02 “Writing is the job.” · H·03 “Diagnose out loud.” · H·04 “No theater.” (“Enforced” cut)",
-    "[R] H·01 body “Everyone is accountable to the thing the engagement leaves behind — not to hours logged against it.” (was “Everyone on a pod”)",
-    "[R] H·02 body ends at “If it isn’t written down in the client’s language, it didn’t happen.” — “The best people here are the best writers here.” is cut by default: it describes staff the firm doesn't have (the honesty ledger's reason for cutting “the people who fit here love it”); flagged",
-    "[K] H·03 and H·04 bodies",
-    "(FC each) the deal, three terms: Juniors · None — nobody learns on a client’s budget [K] · Comp · Published with every role, no ranges withheld [K] · Shape · Remote-first, London-based [R]",
-    "Cut by default, flagged: the deal's “Writing · The job. Documents before meetings” [K] — it repeated H·02 “Writing is the job.” on the same sheet",
-    "[N] link “The week an engagement runs on” → /about#week (only if /about's week ships, §7 Q7)"
-  ],
-  "phone": "≤1023: the deal drops under the rules and becomes a compact spec — key (112px) beside value, hairline rows — then the link stays under the rules. ≤767: each rule keeps its index beside the title (44px column) so nothing stacks needlessly; titles 22px, bodies 16px; the deal's key column narrows to 76px with 16px values; the one long link wraps at 320 instead of overflowing. Checked at 320, 390, 834, 1024, 1280: no overflow, nothing under 11px; the h2 is balanced (no orphan at 1024) and the bodies wrap pretty.",
-  "reference": {
-    "site": "Nite Riot (Mobbin): a credits sheet — position | name rows in two aligned columns",
-    "mobbin_url": "https://mobbin.com/sites/sections/d358ad11-1ac8-4498-a5bb-936ae65e57be",
-    "ref_file": "refs/careers-standards-S.webp",
-    "borrowed": "A main column and a short terms column of a different kind of thing beside it, read as one sheet.",
-    "kelwin": "Rebuilt as a drafting spec: the rules on ruled rows under a mono column head on a strong rule, hanging H·0n indexes, Mona display titles over 17px bodies; the deal as its own short block on one left hairline (the footer's column rule), mono keys over 20px values set close, with no row rules of its own, so its terms never sit on the rules' rows. No cards, no icons, no “Enforced” stamps, no radar."
-  },
-  "motion": [
-    "entrance: the kit's only — the ruled seam draws, the label fades, the heading rises. The sheet itself is still (the story map's still beat).",
-    "ambient: none. interaction: the link.",
-    "on the live site: plays once when the section scrolls into view; reduced motion = final state."
-  ],
-  "demoMs": 1500,
-  "notes": "Height 1115px at 1440. Type only, by design: the header carries the page's drawing and the bench section its one moment. The rules are an ol of h3 titles; the deal is an aside with its own h3 and a dl of three terms. “The rules” column head is aria-hidden (the h2 already says it). Duplicates removed by default (each flagged for the founder): the lede's “nobody learns on a client’s budget” clause (kept in the deal's Juniors row, its [K] source), the deal's Writing row (H·02 says it), and H·02's “best writers here” sentence (staff the firm doesn't have)."
+ "title": "Held to one rule",
+ "direction": "A×C · Round 9 · /careers standards",
+ "summary": "What every seat is held to: “Each seat owns one part of a client’s system.” at 72px, then one plain paragraph pair at 22px addressed to whoever takes a seat.",
+ "reference": {
+  "site": "the round-9 kit (frag/int-kit/S, 12.6 scale)",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-home-lower.png",
+  "borrowed": "GoNimbly's one big headline per scroll, everything else calm and smaller.",
+  "kelwin": "The kit's .ac-claim--xl for the lead rule; no index, keys, codes or row rules (the staffing plan is the page's ruled list)."
+ },
+ "copy": [
+  "[N] label 'What every seat is held to'",
+  "[K] 'You own systems, not tasks.' (lead, 96px) · [R] 'Everyone is accountable to the thing the engagement leaves behind — not to hours logged against it.'",
+  "[K] 'Writing is the job.' · 'If it isn’t written down in the client’s language, it didn’t happen.'",
+  "[K] 'Diagnose out loud.' · 'We show clients our reasoning, including the uncertain parts. The same rule applies inside the firm.'",
+  "[K] 'No theater.' · 'No status meetings that could be a readout, no decks that could be a page, no busyness worn as a badge.'",
+  "[N] link 'How an engagement runs' → /about#cadence"
+ ],
+ "phone": "≤1023 the lead rule takes the measure (64px) and each row stacks title over sentence; ≤767 lead 44px, rows 26px. Checked at 320, 390, 834.",
+ "motion": [
+  "entrance (one moment): the lead rule rises, then the three rows in reading order, then the link."
+ ],
+ "demoMs": 1400,
+ "notes": "Coherence pass 2 (D6): the paragraph is addressed to whoever takes a seat (“You answer for…”, “You show clients your reasoning…”) — no line reads as a team that exists today. Round-9 fix pass: the 2×2 of four equal 48px rules (the stock 'values' block) is gone; one rule leads at the plan's scale. Coherence pass (round 9): see summary. Coherence pass 3: claim recast — “You own systems, not tasks.” was a clipped pair, and at 96px it outranked the h1 at 1024 — and the paragraph's “…, not for hours logged against it.” became “You’re judged on what an engagement leaves behind.”"
 }

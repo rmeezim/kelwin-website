@@ -226,3 +226,16 @@ sibling strip, no "question? → LINK" rows. Where one onward link earns a place
   operating review with the stop list, the quarterly calibration readout in week 13, a yearly re-read.
 - Where it shows: /about "How an engagement runs" (draft for his yes), /audit's sequence strip, capability "How
   it runs" lines aligned to Each week / Each month / Each quarter.
+
+## 10 · Where round 9 lives in this folder
+- The round-9 page orders are `pages-r9/<page>.json` (they supersede the round-8 section lists in
+  `interior-plan.json`); stitch with `python3 tool/home.py --order pages-r9/<page>.json --out page-<page>.html`
+  from a harness copy (tool/ipage.py still reads the round-8 plan).
+- The kit is `site/kit-ac.css` §12 "interior, round 9" and §13 "motion & imagery"; the page turn and the
+  headline write-in are `site/lib/turn.js` (inlined by `tool/home.py`); copy-ready markup is
+  `site/snippets/interior.html`; the reference sheet is `site/frag/int-kit/S`.
+- New pages: `/projects` (projects-*) and `/projects/email-deliverability` (project-*); the other five project
+  pages exist as copy only, in `work/r9/projects-COPY.md`.
+- The lead's binding decisions taken during the build are in `work/r9/COHERENCE-DECISIONS.md`.
+- The founder's review page: `tool/selector9.template.html` + `tool/review9.json`, packaged by `tool/assemble9.py`
+  (films by `tool/film9.mjs`).

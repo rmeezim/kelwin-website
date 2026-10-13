@@ -1,0 +1,22 @@
+[
+ {
+  "id": "who-we-work-with-head",
+  "slot": "S"
+ },
+ {
+  "id": "who-we-work-with-situations",
+  "slot": "S"
+ },
+ {
+  "id": "who-we-work-with-markets",
+  "slot": "S"
+ },
+ {
+  "id": "who-we-work-with-close",
+  "slot": "S"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

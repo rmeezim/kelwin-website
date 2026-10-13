@@ -1,21 +1,24 @@
-/* ── who-we-work-with · close · S — who we send away (§4.6, the kit's D3 gate close) ──────────
-   The kit Door as-is; this fragment only adds the – ledger sign in each row's index (the
-   homepage fit "Not for" sign) and the not-sure line under the red ask: a plain question and
-   its quiet .ac-link, so the low-intent door is said once, right beside the high-intent one. */
-
-.km-who-we-work-with-close-S__mk { display: inline-block; width: 1.2em; }
-/* the kit has no focus ring for .ac-link (kitNeeds); the same 1px ring as the kit's .ac-go */
-.km-who-we-work-with-close-S .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
-
-.km-who-we-work-with-close-S__unsure { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; margin-top: 8px; }
-.km-who-we-work-with-close-S__q { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
-
-/* entrance: the kit Door's own (list, then the gate 200ms later, then the foot) */
-
-@media (max-width: 767px) {
-  :root:not(.km-home) .km-who-we-work-with-close-S__unsure { flex-direction: column; align-items: flex-start; gap: 4px; }
-  /* the kit sizes the Instead exit to fit one line at 298px; below ≈360 the row's indent leaves
-     less than that, so the exit may wrap (its arrow stays on the last line) rather than run
-     past the margin (kitNeeds: this belongs on .ac-door__row-i > .ac-link) */
-  :root:not(.km-home) .km-who-we-work-with-close-S .ac-door__row-i > .ac-link { white-space: normal; max-width: 100%; align-items: flex-end; line-height: 1.4; }
+/* ── who-we-work-with-close · S — round 9 (coherence pass) ──
+   Who we send away: ONE paragraph at 24px (cols 1–8) naming the four declines in this page's
+   own words — the round-9 four-column grid (24px titles over 17px lines) repeated the approved
+   homepage Fit verbatim and was the site's "title over gloss" recipe. Then the kit close
+   (§12.10) — the section's dominant element, its 64px line — 136px below. No red but the button. */
+.km-who-we-work-with-close-S__no {
+  margin: 40px 0 0; max-width: 34em; font-size: 24px; line-height: 1.45; color: var(--fg); text-wrap: pretty;
 }
+.km-who-we-work-with-close-S > #send-away { scroll-margin-top: 112px; }   /* the head's jump clears production's fixed bar */
+.km-who-we-work-with-close-S__close { margin-top: 136px; }
+.km-who-we-work-with-close-S__close .ac-close__line { max-width: 15em; text-wrap: balance; }
+
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-who-we-work-with-close-S__no { font-size: 22px; }
+  :root:not(.km-home) .km-who-we-work-with-close-S__close { margin-top: 104px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-who-we-work-with-close-S__no { margin-top: 28px; font-size: 19px; }
+  :root:not(.km-home) .km-who-we-work-with-close-S__close { margin-top: 72px; }
+}
+
+/* entrance: the label fades, the paragraph rises; the close keeps the kit's own rise */
+.is-play .km-who-we-work-with-close-S > .ac-wrap > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-who-we-work-with-close-S__no { animation: ac-up 600ms var(--ease-out) 160ms both; }

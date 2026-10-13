@@ -216,8 +216,11 @@
 .ac-row__more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 360ms var(--ease-inout); }
 .ac-row__more > * { min-height: 0; overflow: hidden; }
 .ac-row.is-open > .ac-row__more { grid-template-rows: 1fr; }
-.ac-row__in { padding: 0 0 26px var(--ac-row-indent, 0px); opacity: 0; transition: opacity 360ms var(--ease-inout); }
-.ac-row.is-open .ac-row__in { opacity: 1; }
+.ac-row__in {
+  padding: 0 0 26px var(--ac-row-indent, 0px); opacity: 0; visibility: hidden;
+  transition: opacity 360ms var(--ease-inout), visibility 0s linear 360ms;  /* closed: out of the tab order once it has folded */
+}
+.ac-row.is-open .ac-row__in { opacity: 1; visibility: visible; transition: opacity 360ms var(--ease-inout), visibility 0s; }
 
 /* spec list: mono key, Mona value (values are never mono) */
 .ac-spec { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: 24px; margin: 0; }
@@ -362,33 +365,83 @@
 /* JS resets: freeze transitions while a figure is put into its opening state */
 .ac-cold, .ac-cold * { transition: none !important; }
 
-/* ═══ §12 · interior (round 8) ═══════════════════════════════════════════════════════
-   The shared foundation for the interior pages (design/redesign/STORY-INTERIOR.md §1 and
-   interior-plan.json "shared"). APPENDED in round 8: nothing above this line changed, and
-   every class below is new, so the approved homepage fragments render exactly as before.
-   Copy the markup from R/site/snippets/interior.html; see it all in use in frag/int-kit/S.
+/* ═══ §12 · interior, round 9 ═════════════════════════════════════════════════════════════
+   The interior kit, rewritten after the round-9 audit of the 16 round-8 mockups ("they look good
+   but still look AI-made"). Spec: design/redesign/ROUND9-PLAN.md §2 (kit rules) and §3 (motion
+   and imagery, which live in §13 below), as amended by §7 (binding: it wins where they differ).
+   SCOPE (§7.1): every rule, retype and link rule in §12–§13 is for the interior only. Nothing
+   above this section changed, and no rule below matches the approved homepage fragments' markup
+   (every selector is a round-9 class, an interior container, or a modifier the homepage never
+   uses), so the homepage and the footer render exactly as before.
+   Copy the markup from R/site/snippets/interior.html; see it in use in frag/int-kit/S.
    Same contract as the rest of the kit: tokens only, no hex, .ac- prefix, final state by
    default, entrances only under .is-play (html in a standalone build, the slot when stitched).
 
-   12.0 variables              12.6 Readings (third-party figures)
-   12.1 nav bar, at rest       12.7 document panel (paper)
-   12.2 interior head · .ac-go 12.8 Doors: D1 · D2 · D3 · SC · QC
-   12.3 band + flags · IX      12.9 onward link · SiblingStrip
-   12.4 body section head      12.10 motion
-   12.5 SpecimenTag · status   12.11 tablet (≤1023) and phone (≤767) composition          */
+   What changed, in one breath: words leave the mono face (.ac-key); the head loses its facts box
+   and breadcrumb (the Audit keeps both: 12.3) and gains a picture (GoNimbly order: kicker → h1 →
+   rule → lede → one quiet action → the plate), and its h1 is CAST per page (size 88–128, where the
+   accent falls, stacked or side by side); documents are typeset as pages (.ac-sheet), not app
+   windows (.ac-doc); every body section has one big thing (.ac-claim, a big number or a plate);
+   forms get large labels (.ac-form .ac-field) and a 56px outlined submit (.ac-btn-o--lg); a page
+   ends on ONE close (.ac-close); drawings show one recognisable object with one filled mass
+   (.ac-mass) and at most three 15px labels.
+
+   12.0  variables                       12.8  drawings: weights, labels, .ac-mass
+   12.1  nav bar, at rest                12.9  forms: .ac-form · .ac-field · the wrapping select
+   12.2  type voices: .ac-key · .ac-spec 12.10 the close (.ac-close)
+         dt · .ac-numeral · .ac-go ·     12.11 the legal contents strip (IX)
+         .ac-a · the label row's status  12.12 motion (body pieces)
+   12.3  the interior head: casting ·    12.13 tablet (≤1023) and phone (≤767)
+         side · side-wide · --72 ·       12.14 reading pages: the margin note (.ac-sidenote)
+         the Audit's facts head          12.15 ledgers in the interior: heading rows, deep links
+   12.4  plates: film · shot (the
+         viewfinder) · pictures ·
+         sheet · measure
+   12.5  the document sheet (.ac-sheet)  12.L  ROUND-8 PIECES, DEPRECATED — kept working for
+         --sm · exhibits · stacks              pages not yet migrated; do not use in new work
+   12.6  scale: .ac-claim · big numbers
+   12.7  lists: status words · chips · Readings
+
+   COHERENCE PASS (round 9, after the nine page units): every piece two or more units built
+   locally now lives here, and the pages use it — the shot card redrawn as a framed viewfinder
+   (12.4) and the picture area (12.4), .ac-numeral keeping its case (12.2), the label row's status
+   (12.2), the inline text link .ac-a and the wrapping .ac-go--inline / button .ac-go--bare (12.2),
+   the wide side head and the reading-page size --72 (12.3), the small sheet, the exhibit table and
+   the phone stack of sheets (12.5), the measure plate's tablet frame (12.4), the sentence-case
+   segmented control .ac-seg--key (12.7), the wrapping select (12.9), the margin note (12.14),
+   ledger heading rows and deep links (12.15), and the nav twin's clip below 1024 and its ≤359px
+   lockup (12.13). Single requests were judged one by one; each is noted where it landed.
+
+   NUMBERING (plan §2): plain 01–0n only where order is the content (method phases, readout
+   parts, legal clauses, steps, audit days). No letter prefixes (FN·01, R·01, D-01), no decimal
+   service codes (01.1), no range captions, no label-row breadcrumbs ("The Firm / 03").      */
 
 /* ── 12.0 · variables (sizes only) ── */
 :root {
   --ac-nav-h: 96px;          /* the bar at rest */
-  --ac-int-h1: 96px;         /* interior h1 at 1440 (production floor: 64px) */
-  --ac-int-band: 300;        /* band frame height in frame units (1 = 1px at 1440), 280–340 */
-  --ac-int-end: 112px;       /* space under the band (or under the lede on a text sheet) */
-  --ac-door-line: 40px;      /* D1 · D3 · SC display sentence (spec 32–42) */
-  --ac-door-xl: 64px;        /* D2 two-voice line, and a page's second statement */
+  --ac-int-h1: 104px;        /* interior h1 at 1440: the default casting (12.3 casts 88–128, fluid below 1440 down to the phone floor: 12.3 PHONE FLOOR) */
+  --ac-int-end: 112px;       /* space under the head plate */
+  --ac-iplate-gap: 64px;     /* lede row → head plate */
+  --ac-film-h: 520px;        /* film plate at 1440 (plan: 480–560) */
+  --ac-shot-h: 400px;        /* shot card at 1440 (coherence pass: 360–420, so the void stays small) */
+  --ac-shot-name: 44px;      /* the shot's name in a shot card (40–48) */
+  --ac-sheet-plate-h: 560px; /* sheet plate at 1440: the page's first page, cropped by the plate (a page may set it) */
+  --ac-sheet-m: 56px;        /* a sheet's margins (plan: ≥ 48px at 1440) */
+  /* body statements and the door line: their 1440 size, proportional to the stage down to 1024
+     (coherence pass 3) — the h1 is fluid there too, so a 72/96px claim no longer matches or
+     outranks a page h1 at 1024–1439, and the sizes meet the ≤1023 values (52/48/64/48) without a
+     jump at the breakpoint. At 1440 nothing moves. */
+  --ac-claim: calc(var(--stage) * 72 / 1440);      /* body statement (plan: 64–96) */
+  --ac-claim-md: calc(var(--stage) * 64 / 1440); --ac-claim-xl: calc(var(--stage) * 96 / 1440);
+  --ac-close-line: calc(var(--stage) * 64 / 1440); /* the close's door line */
+  --ac-key: 14px;            /* keys, column heads, node labels, state words */
+  /* round-8 sizes (12.L) */
+  --ac-int-band: 300; --ac-door-line: 40px; --ac-door-xl: 64px;
 }
 
 /* ── 12.1 · the nav bar at rest — the mockup twin of production's Navbar on an interior page:
-   solid graphite, 96px, lockup · five tracked-caps items · outlined AUDIT REQUEST ↗, one
+   solid graphite, 96px, lockup · four tracked-caps items (Capabilities · Methodology · The Firm ·
+   Resources; The Lab lives in The Firm's plate) · outlined AUDIT REQUEST ↗, one
    margin-to-margin hairline with a + at each end. The current section's item sits lit on the
    hairline (.is-current). On /audit no item lights: the outlined action takes .is-current +
    aria-current="page" and points at #qualify. Interior bars do not animate (production shows
@@ -426,25 +479,54 @@
 .ac-nav__reg--l { --x: var(--margin); }
 .ac-nav__reg--r { --x: calc(100% - var(--margin)); }
 
-/* ── 12.2 · the interior head — header X, the Specimen sheet, title block retired ──
-   <section class="km km-<id>-S ac-int" data-surface="dark"> → .ac-nav → .ac-head.ac-ihead → .ac-band
-   Rows: label (■ label + mono breadcrumb, the page's only meta) · h1 two-voice 96px cols 1–9 ·
-   48×2 rule · lede cols 1–6 · the facts ledger (.ac-facts) cols 9–12, bottom-aligned with the lede.
-   The h1 line beside the ledger must end before col 9 (x ≤ 930 at 1440); keep each fact value
-   to two lines at most. No doors in a header: the one quiet door lives in the ledger (.ac-go). */
-.ac-int { padding-bottom: var(--ac-int-end); }
-.ac-head.ac-ihead { --ac-h-sec: var(--ac-int-h1); --ac-d0: 120ms; padding-top: 36px; }
-.ac-head.ac-ihead > .ac-statement { grid-column: 1 / span 9; }
-.ac-head.ac-ihead > .ac-lede { max-width: 30em; }
-.ac-head.ac-ihead > .ac-facts { grid-column: 9 / span 4; grid-row: 2 / span 3; align-self: end; margin-bottom: -11px; }
-.ac-facts .ac-spec > dt { min-width: 92px; }
-
-/* the quiet inline door: Mona, underlined, drawn ↗ (.ac-go--down → ↓ for an on-page jump).
-   ONLY two places, as approved in header X: the facts ledger's door, and a Readings source
-   (with the D1 object's foot line, which points at the same kind of thing: a document).
-   It is the one sanctioned exception to the kit's three actions (.ac-btn · .ac-btn-o ·
-   .ac-link), because a ledger value and a source are sentence case. Everything else that
-   moves the reader on (rows, exits, "Instead" lines, "send it to me") is an .ac-link →. */
+/* ── 12.2 · type voices ──
+   The interior speaks in two small voices only: the section label (.ac-label, approved, above
+   a heading) and mono NUMERALS. Every other small word is Mona, sentence case:
+   · .ac-key — every key, column head, node label and state word: Mona 14px, weight 500,
+     sentence case, tracking 0, --fg-2, 20px line. A key that would repeat on every row becomes
+     a column head or folds into the sentence.
+   · the spec list's key takes the .ac-key voice INSIDE THE INTERIOR ONLY: .ac-spec.ac-spec--key
+     (an article's source notes) and the Audit's facts box (.ac-facts .ac-spec). The bare .ac-spec
+     (kit §6: mono key) is untouched, so nothing outside the interior moves.
+   · .ac-numeral — JetBrains Mono ONLY for numerals, dates, durations, counts, units and source
+     lines: 12px, .08em, tabular, set on its own (a folio, a table value, a dimension) — a number
+     inside a sentence stays Mona. It KEEPS ITS CASE (coherence pass): a unit reads as authored
+     ("12 s", "50 mm"), never "12 S". At most 5 mono runs per screen; a measured scale (a ruler's
+     day numbers) or an index column counts as ONE run, and the Audit's approved FAQ index is a
+     recorded exception. Never words-as-labels, never prose, never an email address. (The
+     approved .ac-idx / .ac-cap stay on the homepage.)
+   · .ac-link (tracked caps →) carries at most 4 words, and is kept for the two doors (the head's
+     one action may use it too). A longer destination, every onward destination in a close, and
+     every email address, is an .ac-go: sentence case, underlined, ↗ (a new tab / another app), →
+     with .ac-go--to (another page), ↓ with .ac-go--down (further down this page).
+       .ac-go--inline  a destination INSIDE a sentence: it wraps with its sentence (an inline box,
+                       underlined text) and keeps its arrow at the end of its last line.
+       .ac-go--bare    the quiet text button: .ac-go without the arrow, for small in-form controls
+                       ("Copy the address", "Remove"); works on <button>.
+   · .ac-a — the inline text link for running copy: --fg, underlined in --line-2 (--fg on hover),
+     no arrow, a 1px focus ring. A plain word that happens to link ("Breaks first in Narrative
+     Systems"); an email inside a legal clause. Destinations that need an arrow use .ac-go.
+   · THE LABEL ROW'S STATUS — a section-level status, said once, at the label row's right end:
+       <div class="ac-labelrow"><p class="ac-label">How it runs</p>
+         <p class="ac-status"><span class="ac-state">Draft, to be confirmed</span></p></div>
+     15px --fg-2 (the .ac-state word in --fg, 500); it drops under the label on phones. Never
+     inside a sentence, a running head or a link. The one family of status words (coherence
+     pass): "To be confirmed" (one missing fact) · "Draft, to be confirmed" (a described way of
+     working) · "Proposed, to be confirmed" (the project offer). Outside the family, each a
+     different true condition: Specimen · Not yet published · No date yet · "Draft, pending legal
+     review" · one date wording, "Due in Q4 2026". A figure's "Specimen" may sit here too.     */
+.ac-key {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: var(--ac-key); line-height: 20px;
+  letter-spacing: 0; text-transform: none; color: var(--fg-2);
+}
+.ac-spec--key > dt, .ac-facts .ac-spec > dt {
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: var(--ac-key); line-height: 22px;
+  letter-spacing: 0; text-transform: none; color: var(--fg-2);
+}
+.ac-numeral {
+  font-family: var(--f-mono); font-weight: 400; font-size: 12px; line-height: 20px; letter-spacing: .08em;
+  font-variant-numeric: tabular-nums; color: var(--fg-2); white-space: nowrap;   /* keeps its case: "12 s" */
+}
 .ac-go {
   display: inline-flex; align-items: center; gap: 10px; color: var(--fg);
   box-shadow: inset 0 -1px 0 var(--line-2); transition: box-shadow 200ms var(--ease-out);
@@ -459,43 +541,708 @@
 .ac-go:hover::after { transform: translate(2px, -2px); }
 .ac-go--down::after { --ac-go-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M6 1.5v9M2 6.5l4 4 4-4' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E"); }
 .ac-go--down:hover::after { transform: translateY(2px); }
-.ac-go:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
-
-/* ── 12.3 · the band — the page's own shape, cols 1–12, in a registration frame ──
-   <figure class="ac-band ac-wrap" aria-labelledby="…"><div class="ac-frame ac-band__frame" style="--fh:300">
-     <svg class="ac-svg ac-band__svg" viewBox="0 0 1312 300">…</svg> flags · ≤1 .ac-dim · 4 × .ac-reg
-   </div><figcaption class="ac-band__key" id="…">description + keyed list</figcaption></figure>
-   Rules: ≤4 callouts, ≤1 dimension, EXACTLY ONE red element, no title block, no "Fig.".
-   Flags and the dimension are aria-hidden: the figcaption carries the words, once.
-   Text sheets (contact, articles) have no band; legal uses the contents strip (.ac-band--ix). */
-.ac-band { margin-top: 64px; }
-/* FRAME UNITS: everything placed in the band is a unitless number in the 1312-wide frame
-   (--fh its height, the flags' --x --y --a, a dimension's --x --y --w, a callout's --x --y):
-   1 unit = 1px at 1440 and scales with the frame below it (production's --u pattern, as in
-   the hero film). The frame keeps the drawing's proportions, so the SVG never distorts.   */
-.ac-band__frame {
-  container-type: inline-size; --u: calc(100cqw / 1312);
-  width: 100%; height: auto; aspect-ratio: 1312 / var(--fh, var(--ac-int-band));
+.ac-go--to::after {
+  width: 13px; height: 11px;
+  --ac-go-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
 }
-.ac-band__frame > .ac-dim { left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); width: calc(var(--w, 120) * var(--u)); }
-.ac-band__frame > .ac-dim--v { width: 1px; height: calc(var(--h, 120) * var(--u)); }
-.ac-band__frame > .ac-callout { left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); }
-.ac-band__frame > .ac-callout--l { left: auto; right: calc(100% - var(--x, 0) * var(--u)); }
-.ac-band__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-/* the phone drawing (§1.9: every band recomposes at ≤767): an optional second <svg> with
-   .ac-band__svg--sm, drawn in its own viewBox, swapped in by 12.11. Swapped with visibility,
-   never display (see 12.11 for why). */
-.ac-band__svg--sm { visibility: hidden; }
-/* the keyed list: the drawing's words for screen readers at every width, and the visible
-   callout list under the band below the stage (≤1023, 12.11), where the flags are hidden. */
-.ac-band__key { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.ac-band__keys { display: grid; gap: 10px; }
-.ac-band__keys > li { display: flex; align-items: baseline; gap: 12px; font-size: var(--ac-support); line-height: 1.45; color: var(--fg-2); }
+.ac-go--to:hover::after { transform: translateX(3px); }
+.ac-go:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+/* a destination inside a sentence: wraps with it, its arrow at the end of the last line */
+.ac-go.ac-go--inline {
+  display: inline; box-shadow: none; text-decoration: underline 1px var(--line-2); text-underline-offset: 6px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+.ac-go.ac-go--inline:hover { box-shadow: none; text-decoration-color: var(--fg); }
+.ac-go.ac-go--inline::after { display: inline-block; margin-left: 10px; vertical-align: 0; }
+/* the quiet text button: no arrow (a <button> drops its UA chrome) */
+.ac-go.ac-go--bare { display: inline; }
+.ac-go.ac-go--bare::after { content: none; }
+button.ac-go { padding: 0; border: 0; background: none; cursor: pointer; font: inherit; }
+button.ac-go.ac-go--bare { font-size: var(--ac-support); line-height: 1.5; }
+/* the inline text link in running copy */
+.ac-a {
+  color: var(--fg); text-decoration: underline 1px var(--line-2); text-underline-offset: 5px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+.ac-a:hover { text-decoration-color: var(--fg); }
+.ac-a:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
+/* the label row's status (one per section, at the row's right end) */
+.ac-labelrow > .ac-status { margin: 0; font-size: var(--ac-support); line-height: 20px; color: var(--fg-2); white-space: nowrap; }
 
-/* IX · the contents strip — the legal header's band (§3.3): no drawing, no red, the clause
-   index as links. One row of cells on two hairlines, each an .ac-idx number over the clause
-   title. On phones (12.11) the row folds behind a "Contents" button with the kit's +/− toggle
-   (a short init in snippets/interior.html, section 2b, flips the button's aria-expanded).
+/* ── 12.3 · the interior head — GoNimbly order ──
+   <section class="km km-<id>-S ac-int" data-surface="dark"> → .ac-nav → .ac-head.ac-ihead → the plate
+   · kicker (optional): ONE .ac-label in a .ac-labelrow — an idea, never the page's name, never a
+     number, never meta beside it (one exception: the Audit's "Phase 01 / 04 · Diagnose", below);
+   · h1: two-voice, .ac-statement, cols 1–11; the page's ONE light accent — CAST per page (below);
+   · the kit's 48×2 rule (the head grammar);
+   · lede: ONE paragraph of at most two lines (cols 1–7); it may not reuse a noun phrase of the h1;
+   · at most ONE quiet action (.ac-doors holding one .ac-link or .ac-go), set right, on the lede's
+     last line — never a red button in a head;
+   · the plate (12.4) directly beneath, margin to margin.
+   No facts box (opt-in only where facts ARE the content: the Audit), no breadcrumb meta.
+   Without a kicker the h1 keeps the same place (it starts 88px under the bar either way).
+   Header ≤ 60 visible words. The h1 writes itself in on arrival (§13).
+
+   CASTING (plan §7.4 — no two neighbouring pages cast the h1 the same way). Vary three things:
+   · SIZE: .ac-ihead--88 · --96 · --104 (default) · --112 · --120 · --128 — px at the 1440 stage,
+     fluid below it (straight from the phone floor at a 390 stage to the size at 1440), never
+     under that floor. The floor is set by PHONE FLOOR below: 56px by default (48 below a 360
+     stage — 12.13), or a floor the page casts: at least 40, and at least 36 below 360 (reading
+     pages: READING PAGES below).
+     The size is a unitless --ac-h1; the kit turns it into --ac-int-h1. At the 56px default a phone
+     line holds about ten letters, so keep h1 words short enough to sit on a 358px line; where
+     approved words cannot, the page casts its floor (PHONE FLOOR).
+   · PHONE FLOOR (coherence pass 3): no h1 line may hold a single word at 390 (unless the h1 is one
+     word). Write the words to fit first; where the words are approved and cannot change (the
+     Audit; the homepage's own line on Narrative Systems) or a long phrase needs it, the page casts
+     its floor: --ac-h1-floor (unitless px at a 390 stage; 56 by default, never under 40 on a
+     non-reading page) and, below a 360 stage, --ac-h1-floor-xs (default: the floor, at most 48;
+     never under 36, or 35 on a reading page). A word that still cannot fit at those sizes may
+     stand alone at 320 — the page lists it.
+     The fluid curve then runs from the floor at 390 to the cast size at 1440, so tablets follow.
+       .km-<id> .ac-head.ac-ihead { --ac-h1-floor: 44; --ac-h1-floor-xs: 40; }
+     Body statements stay under the h1 at every width (12.6 sizes are stage-proportional above
+     1023 and step down below it); the 120–200px big number (12.6) is the one planned exception.
+     READING PAGES (a note's or a legal document's plain title): .ac-ihead--72 — 72px at 1440 with
+     a lower phone floor, 38px (unitless --ac-h1-min; fluid from 38px at 390), because a note's
+     long words ("Deliverability", "infrastructure.") cannot sit on a 288px line at 56px. Its h1
+     takes the full measure (cols 1–12). Only reading pages use it.
+   · WHERE THE ACCENT FALLS: the whole second line (.ac-line.ac-accent), a phrase at the end of a
+     line, or one word (<span class="ac-accent"> inside a line's span). Still exactly one.
+   · COMPOSITION: stacked (default: h1 → rule → lede, the action right on the lede's last line), or
+     SIDE (.ac-ihead--side, GoNimbly's head): the h1 in cols 1–7 — its lines wrap there — a 1px
+     vertical hairline in col 8 the height of the h1, and the rule, the lede (≤ 3 short lines,
+     ≈ 110 characters) and the one action in cols 9–12, the action on the h1's last line. Cast it
+     at 88–104, or 112 when its longest line holds about 13 characters or fewer (it must sit in
+     cols 1–7). Below 1024 it stacks like the default.
+     SIDE-WIDE (.ac-ihead--side.ac-ihead--side-wide), for an h1 cast at 120+ whose SECOND line is
+     wider than cols 1–7 but whose first line is short: the h1 keeps the full measure on its two
+     unbroken lines; the hairline stands in col 8 beside line 1 only; the rule and the lede sit in
+     cols 9–12 in the room line 1 leaves; the one action sits right in cols 10–12 on line 2's
+     baseline. It holds only from a 1280 stage up (measured on Narrative Systems: below that the
+     lede runs into line 2), so from 1024 to 1279 it stacks the default way (h1 over the full
+     measure, the rule, the lede in cols 1–7, the action right on the lede's last line); the
+     stitched 1440 review pages always take the wide composition.
+   THE AUDIT'S FACTS HEAD (plan §7.9, approved — the one named exception): the Audit keeps its
+   facts box (.ac-facts holding an .ac-spec; its keys take the key voice), its "Phase 01 / 04 ·
+   Diagnose" line (.ac-meta beside the kicker: [K] homepage copy), and its approved ten-day ruler
+   under the head (the round-8 band markup, styled in 12.L, kept for this one use). A facts head
+   holds its h1 at 96px in cols 1–9 whatever the casting (it is :has()-guarded); below 1440 it
+   follows the same fluid curve, so on phones it too stops at its page's phone floor (PHONE
+   FLOOR: the Audit casts 40, and 36 below 360).                                                */
+.ac-int { padding-bottom: var(--ac-int-end); }
+.ac-ihead { --ac-h1: 104; --ac-h1-min: var(--ac-h1-floor, 56); }
+.ac-ihead.ac-ihead--88 { --ac-h1: 88; }
+.ac-ihead.ac-ihead--96 { --ac-h1: 96; }
+.ac-ihead.ac-ihead--104 { --ac-h1: 104; }
+.ac-ihead.ac-ihead--112 { --ac-h1: 112; }
+.ac-ihead.ac-ihead--120 { --ac-h1: 120; }
+.ac-ihead.ac-ihead--128 { --ac-h1: 128; }
+.ac-ihead.ac-ihead--72 { --ac-h1: 72; --ac-h1-floor: 38; }   /* reading pages only: a lower phone floor */
+.ac-head.ac-ihead {
+  --ac-int-h1: clamp(calc(var(--ac-h1-min, 56) * 1px), calc(var(--ac-h1-min, 56) * 1px + (var(--ac-h1) - var(--ac-h1-min, 56)) * (var(--stage) - 390px) / 1050), calc(var(--ac-h1) * 1px));
+  --ac-h-sec: var(--ac-int-h1); --ac-d0: 120ms; padding-top: 36px;
+}
+.ac-head.ac-ihead > .ac-statement { grid-column: 1 / span 11; }
+.ac-head.ac-ihead > .ac-statement:first-child { margin-top: 52px; }
+.ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 7; max-width: 36em; }
+.ac-head.ac-ihead > .ac-doors { grid-column: 9 / span 4; grid-row: 4; align-self: end; justify-content: flex-end; margin-top: 0; }
+.ac-int > .ac-plate { margin: var(--ac-iplate-gap) var(--margin) 0; }
+/* side: h1 | hairline | rule · lede · action (the hairline is the head's own ::after, a grid item) */
+.ac-head.ac-ihead--side { grid-template-rows: auto auto auto minmax(0, 1fr); }
+.ac-head.ac-ihead--side > .ac-statement { grid-column: 1 / span 7; grid-row: 2 / span 3; }
+.ac-head.ac-ihead--side > .ac-statement .ac-line { white-space: normal; }
+.ac-head.ac-ihead--side > .ac-statement .ac-line > span { text-wrap: balance; }
+.ac-head.ac-ihead--side > .ac-rule { grid-column: 9; grid-row: 2; margin-top: calc(36px + var(--ac-int-h1) * .16); }
+.ac-head.ac-ihead--side > .ac-lede { grid-column: 9 / span 4; grid-row: 3; margin-top: 28px; max-width: none; }
+.ac-head.ac-ihead--side > .ac-doors { grid-column: 9 / span 4; grid-row: 4; align-self: end; justify-content: flex-start; margin: 28px 0 calc(var(--ac-int-h1) * .1); }
+.ac-head.ac-ihead--side::after {
+  content: ""; grid-column: 8; grid-row: 2 / span 3; justify-self: center; width: 1px; margin-top: 36px;
+  background: var(--line-2); transform-origin: 50% 0;
+}
+.ac-head.ac-ihead--side > .ac-statement:first-child ~ .ac-rule { margin-top: calc(52px + var(--ac-int-h1) * .16); }
+.ac-head.ac-ihead--side:has(> .ac-statement:first-child)::after { margin-top: 52px; }
+/* side-wide: the h1 over the full measure, the hairline beside line 1, lede cols 9–12, action on
+   line 2 — from a 1280 stage up, and always on the stitched (zoomed 1440) review pages */
+:root.km-home .ac-head.ac-ihead--side-wide > .ac-statement { grid-column: 1 / -1; grid-row: 2 / span 3; }
+:root.km-home .ac-head.ac-ihead--side-wide > .ac-statement .ac-line { white-space: nowrap; }
+:root.km-home .ac-head.ac-ihead--side-wide::after { grid-column: 8; grid-row: 2 / span 2; margin-bottom: 4px; }
+:root.km-home .ac-head.ac-ihead--side-wide > .ac-rule { grid-column: 9; }
+:root.km-home .ac-head.ac-ihead--side-wide > .ac-lede { grid-column: 9 / span 4; max-width: 22em; }
+:root.km-home .ac-head.ac-ihead--side-wide > .ac-doors { grid-column: 10 / span 3; justify-content: flex-end; }
+@media (min-width: 1280px) {
+  .ac-head.ac-ihead--side-wide > .ac-statement { grid-column: 1 / -1; grid-row: 2 / span 3; }
+  .ac-head.ac-ihead--side-wide > .ac-statement .ac-line { white-space: nowrap; }
+  .ac-head.ac-ihead--side-wide::after { grid-column: 8; grid-row: 2 / span 2; margin-bottom: 4px; }
+  .ac-head.ac-ihead--side-wide > .ac-rule { grid-column: 9; }
+  .ac-head.ac-ihead--side-wide > .ac-lede { grid-column: 9 / span 4; max-width: 22em; }
+  .ac-head.ac-ihead--side-wide > .ac-doors { grid-column: 10 / span 3; justify-content: flex-end; }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root:not(.km-home) .ac-head.ac-ihead--side-wide { grid-template-rows: auto auto auto auto auto; }
+  :root:not(.km-home) .ac-head.ac-ihead--side-wide > .ac-statement { grid-column: 1 / -1; grid-row: 2; }
+  :root:not(.km-home) .ac-head.ac-ihead--side-wide > .ac-statement .ac-line { white-space: nowrap; }
+  :root:not(.km-home) .ac-head.ac-ihead--side-wide > .ac-rule,
+  :root:not(.km-home) .ac-head.ac-ihead--side-wide > .ac-statement:first-child ~ .ac-rule { grid-column: 1; grid-row: 3; margin-top: 36px; }
+  :root:not(.km-home) .ac-head.ac-ihead--side-wide > .ac-lede { grid-column: 1 / span 7; grid-row: 4; margin-top: 28px; max-width: 36em; }
+  :root:not(.km-home) .ac-head.ac-ihead--side-wide > .ac-doors { grid-column: 9 / span 4; grid-row: 4; align-self: end; justify-content: flex-end; margin: 0; }
+  :root:not(.km-home) .ac-head.ac-ihead--side-wide::after { position: absolute; visibility: hidden; }
+}
+/* the reading-page size (--72): the plain title takes the full measure */
+.ac-head.ac-ihead.ac-ihead--72 > .ac-statement { grid-column: 1 / -1; }
+/* the Audit's facts head (the one exception; moved here from 12.L) */
+.ac-head.ac-ihead:has(> .ac-facts) { --ac-h-sec: min(var(--ac-int-h1), 96px); }
+.ac-head.ac-ihead:has(> .ac-facts) > .ac-statement { grid-column: 1 / span 9; }
+.ac-head.ac-ihead:has(> .ac-facts) > .ac-lede { grid-column: 1 / span 6; max-width: 30em; }
+.ac-head.ac-ihead > .ac-facts { grid-column: 9 / span 4; grid-row: 2 / span 3; align-self: end; margin-bottom: -11px; }
+.ac-facts .ac-spec > dt { min-width: 92px; }
+
+/* ── 12.4 · plates — the picture under the head, one of five typed kinds per page ──
+   Every plate is the kit's .ac-plate (§7) with a kind; under a head it sits margin to margin, the
+   full measure (.ac-int > .ac-plate) — never a boxed 16:9 beside the lede, never a take number,
+   timecode or REC overlay (that is the hero's feed) — and it rises and widens on arrival (§13).
+   In a body section a plate is that section's one dominant element (≥ 480px tall). A different
+   shot on every page.
+
+   FILM (.ac-plate--film) — frosted footage, the hero film's treatment (base.css .km-film), 520px
+   at 1440 (plan: 480–560). Until real footage exists it is a crop of the hero's frosted stand-in,
+   img/film-room.webp, and its tag says, plainly, "Stand-in".
+     <figure class="ac-plate ac-plate--film" style="--plate-zoom:3;--plate-x:25%;--plate-y:42%">
+       <div class="km-film" aria-hidden="true"><div class="km-film__plate"></div><div class="km-film__frost"></div></div>
+       <figcaption class="ac-plate__tag">Stand-in</figcaption></figure>
+   THE CROP RULE (§7.3). film-room.webp is a MIRRORED composite — its right half mirrors its left —
+   so a crop must sit entirely inside the LEFT half, and must never match the hero's framings. The
+   kit enforces both: --plate-zoom is the picture's width as a multiple of the plate's, held at
+   2.4 or more (default 2.6), and --plate-x (default 0%) is clamped so the right edge of the crop
+   never passes the image's centre line, at any width. All three of the hero's framings (hero/T)
+   cross that centre line and are wider than any crop the kit allows (≥ 724 image px against at
+   most 667), so a plate can never repeat one. --plate-y (0–100%, default 40%) picks the height.
+   ONE CROP IN USE (coherence pass): every other allowed crop at the zoom floor reads as an
+   unreadable smear (qa/r9-pages/contactcareers/r2/pv-a…d.png), so the film plate is used on ONE
+   page, Who We Work With, and every other page that needs a picture uses the SHOT CARD below.
+   The crop (the window at 1440 in px of the 1920 × 964 picture; the right edge stays left of 960
+   at every width and through the plate's drift — qa/r9-fix/cropcheck.mjs):
+     --plate-zoom:3;--plate-x:25%;--plate-y:42%     the shoulder line, a white shirt, the warm wall    (x 373–907 · y 319–531)
+       on Who We Work With, toned --plate-frost:.1;--plate-grain:.3;--plate-bright:1.04
+   Retired: 2.6 / 10% / 8% (the Careers crop — it frames no one) and 2.8 / 10% / 55% (Narrative's,
+   superseded by its shot card). Tune the frost on the figure: --plate-blur (8px; capped at 12px)
+   --plate-frost (.24) --plate-grain (.42) --plate-bright (.92). Gradients only inside .km-film. No
+   walker silhouette (that is the hero's). film-room.webp is the ONLY picture a plate may hold:
+   never any other file in img/ (those are the v4 site's photographs and read as stock), never
+   stock people as the team, never an AI-generated photograph.
+
+   SHOT (.ac-plate--shot) — THE VIEWFINDER (coherence pass; it replaces the round-9 grey card the
+   lead said read as an empty panel). The stand-in for footage or a photograph not shot yet, and
+   the shoot brief for it, drawn as a camera's viewfinder on flat --panel:
+   · the kit's + registration marks at the card's four corners (24px in);
+   · the shot's FRAME — hairline frame-lines at the shot's stated aspect (--shot-ar, the same
+     number the spec line gives), the largest such frame inside the marks, centred: the area the
+     footage will fill — with a small + marking the middle of the part of the frame the brief
+     leaves EMPTY (coherence pass 2, lead decision D1: the + never crowds the brief). On a
+     landscape card the brief holds the left half, so the + sits at the centre of the right half
+     (--ac-vf-cx 75%, --ac-vf-cy 50%); on a compact or portrait card (.ac-shot--sm) the brief runs
+     across the top, so the + sits at the centre of the lower part (50% / 72%). Below 1024 the
+     brief sits above the frame, so the + returns to the frame's true centre. A page whose brief
+     covers that point drops the + (--ac-vf-plus: none);
+   · the brief set large and FIRST, at the frame's top left: the slate ("Footage to come" /
+     "Photograph to come"), the shot's name at 44px (--ac-shot-name), the how-line at 17px; the
+     brief keeps to the frame's left half (a name of 3 lines and a how-line of ≤ 20 words fit);
+   · the spec line at the frame's foot, right: numerals and units only, in their own case ("12 s ·
+     2.52 : 1"; a word like "silent loop" belongs in the how-line).
+   400px tall at 1440 (--ac-shot-h; the film plate's 520 would only enlarge the void); it keeps the
+   plate rise. No timecode, no take numbers, no REC, no fake footage, no gradient. Each page's
+   brief is specific to it: the cards are the founder's shoot list.
+   Below 1024 it recomposes (12.13): the brief first, then the frame at its aspect under it, then
+   the spec — the words never wait under an empty frame.
+     <figure class="ac-plate ac-plate--shot" style="--shot-ar:2.52" aria-labelledby="…-shot">
+       <span class="ac-shot__frame" aria-hidden="true"></span>
+       <p class="ac-shot__slate">Footage to come</p>
+       <figcaption class="ac-shot__brief"><p class="ac-shot__name" id="…-shot">The first build, out of focus.</p>
+         <p class="ac-shot__how">Filmed the day it first runs: one screen in a dark room, focus pulled until nothing on it reads.</p></figcaption>
+       <p class="ac-shot__spec ac-numeral">8 s · 2.52 : 1</p>
+       <span class="ac-reg ac-reg--tl" aria-hidden="true"></span><span class="ac-reg ac-reg--tr" aria-hidden="true"></span>
+       <span class="ac-reg ac-reg--bl" aria-hidden="true"></span><span class="ac-reg ac-reg--br" aria-hidden="true"></span></figure>
+   .ac-shot--sm — the compact card for a narrow slot (≈ 420 × 232 at 1440) or a PORTRAIT frame
+   (--shot-ar below 1, where a left-half brief would be a sliver): marks 16px in, the name 24px
+   (a page may raise it to 32px with --ac-shot-name-sm on a lead portrait) and the how-line 15px
+   across the frame's full width (two short lines), no slate of its own (its set carries one); its
+   + sits under the brief (50% / 72%).
+   PICTURES (.ac-plate--pictures) — a picture area: shot cards in one head plate that rises as one,
+   one slate for the set at its top ("Photographs to come"), the lead card in cols 1–8 over two rows
+   and the others (.ac-shot--sm) stacked in cols 9–12. (About, coherence pass 2, lead decision D1:
+   TWO cards in one row the page sets itself — the founder's portrait, .ac-shot--sm at 4 : 5 in
+   cols 1–4, and ONE "A working session" card at 16 : 9 in cols 5–12 (the work, not a team claim)
+   — under one slate, and under the portrait his name (≤ 64px at 1440: it never outranks the h1),
+   his background line and the way back to the letter. No "next hire" slot; whether team slots
+   come later is the founder's question.) Rows are
+   --ac-pics-row (232px) × --ac-pics-n (2); every card says its aspect (--shot-ar, 16 : 9 → 1.778;
+   a portrait 4 : 5 → .8).
+     <div class="ac-plate ac-plate--pictures" role="group" aria-labelledby="…-slate">
+       <p class="ac-shot__slate" id="…-slate">Photographs to come</p>
+       <figure class="ac-plate ac-plate--shot" style="--shot-ar:1.778" …> (the lead) </figure>
+       <figure class="ac-plate ac-plate--shot ac-shot--sm" style="--shot-ar:1.778" …> … </figure> ×2 </div>
+
+   SHEET (.ac-plate--sheet) — the page's real document, typeset as a page (.ac-sheet, 12.5),
+   lying on the plate and cropped by its bottom edge; it carries registration marks (four .ac-reg,
+   corners), as the shot card does. Place the page with --sheet-c / --sheet-s (columns; 4 / 6);
+   set --ac-sheet-plate-h on the figure to move the crop (keep it in whitespace or mid-paragraph).
+   A page may let the plate hold a SHORT document whole (height auto, the plate's 64px under it):
+   The Lab's head plate is the Revenue Entropy Index's cover page, a real object "Not yet
+   published" (coherence pass 2, D1), and the body no longer repeats it. A long document is
+   cropped (GTM Infrastructure's Orchestration Rules: the plate ends in the white between rules 3
+   and 4, coherence pass 2 — whole, it made a 2,282px head).
+   WHERE A PAGE HAS NO PLATE (coherence pass 2, D1): Contact, Insights and Careers — the page's
+   first body object (the form, the index, the staffing plan) starts under the head. Plates are
+   earned: a visitor never meets a run of empty cards. In use: Who We Work With (film stand-in),
+   Narrative Systems (shot card), About (picture area), The Lab and Reports, Projects, Email
+   deliverability, GTM Infrastructure (sheets), GTM Intelligence and the Audit (measures).
+   MEASURE (.ac-plate--measure) — a drawing with a real unit, only where the thing IS a measured
+   span: the Audit's confirmed sequence (§7.9) — Call 01 (30 min) → Days 01–10 → Call 02, the
+   60-minute readout → Call 03, the proposal — or GTM Intelligence's quarter. The Audit keeps its
+   approved ten-day ruler under the head (12.3). The drawing follows 12.8; in it the dimension's
+   value is set in the key voice (Mona 15px), not the homepage's mono caps. Frame units as the
+   round-8 band: everything placed is a unitless number in the 1312-wide frame (1 = 1px at 1440):
+     <figure class="ac-plate ac-plate--measure" aria-labelledby="…"><div class="ac-measure" style="--fh:400;--md-w:760;--md-h:300;--sm-w:358;--sm-h:300">
+       <svg class="ac-svg ac-measure__svg" viewBox="0 0 1312 400" aria-hidden="true">…</svg>
+       <svg class="ac-svg ac-measure__svg ac-measure__svg--md" viewBox="0 0 760 300" aria-hidden="true">…</svg>  (tablet, optional)
+       <svg class="ac-svg ac-measure__svg ac-measure__svg--sm" viewBox="0 0 358 300" aria-hidden="true">…</svg>  (phone)
+       ≤ 3 × .ac-callout.ac-callout--plain (--x --y unitless) · ≤ 1 .ac-dim with a unit AND a number
+     </div><figcaption class="ac-measure__key" id="…">the drawing in words</figcaption></figure>
+   TABLET AND PHONE FRAMES. Below 1024 the HTML labels and the dimension give way (they do not
+   shrink with the frame). By default the visible key then says the drawing in words. A page
+   that redraws instead gives the frame a tablet drawing (768–1023: .ac-measure__svg--md, its
+   viewBox as --md-w × --md-h) and a phone drawing (≤ 767: --sm), each with its labels and the
+   dimension DRAWN IN (.ac-t-key text, knocked out of the grid with .ac-t-knock), and adds
+   .ac-measure--drawn on the figure: the key then stays for screen readers only at every width,
+   so the page never says the drawing twice. In a phone frame the kit sets drawn labels at 17
+   units, so they stay ≥ 13.5px down to a 288px frame (a 320 phone).                         */
+.ac-plate--film { height: var(--ac-film-h); }
+.ac-plate--film > .km-film {
+  --film-blur: var(--plate-blur, 8px); --film-frost: var(--plate-frost, .24); --film-grain: var(--plate-grain, .42);
+  --film-bright: var(--plate-bright, .92);
+  --ac-crop-z: max(2.4, var(--plate-zoom, 2.6));   /* ≥ 2.4: tighter than any of the hero's framings */
+}
+.ac-plate--film .km-film__plate {   /* the left half only: x ≤ (½ − 1/z) / (1 − 1/z) */
+  background-size: calc(var(--ac-crop-z) * 100%) auto;
+  background-position: min(var(--plate-x, 0%), calc((.5 - 1 / var(--ac-crop-z)) / (1 - 1 / var(--ac-crop-z)) * 100%)) var(--plate-y, 40%);
+}
+.ac-plate__tag, .ac-shot__slate {
+  position: absolute; left: 24px; top: 20px; z-index: 2; margin: 0;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: var(--ac-key); line-height: 20px; color: var(--fg);
+}
+/* the shot card — the viewfinder. The card is a size container; the frame is the largest box at
+   the shot's aspect inside the marks (--ac-vf-i in), centred; the brief and the spec sit inside
+   the frame (--ac-vf-p in), the brief in its left half. */
+.ac-plate--shot {
+  --ac-vf-ar: var(--shot-ar, 2.52); --ac-vf-i: 24px; --ac-vf-p: 32px;
+  --ac-vf-fw: round(down, min(100cqw - 2 * var(--ac-vf-i), (100cqh - 2 * var(--ac-vf-i)) * var(--ac-vf-ar)), 2px);
+  --ac-vf-fh: round(down, min(100cqh - 2 * var(--ac-vf-i), (100cqw - 2 * var(--ac-vf-i)) / var(--ac-vf-ar)), 2px);
+  --ac-vf-l: round(calc((100cqw - var(--ac-vf-fw)) / 2), 1px);
+  --ac-vf-t: round(calc((100cqh - var(--ac-vf-fh)) / 2), 1px);
+  height: var(--ac-shot-h); container-type: size;
+}
+.ac-shot__frame {
+  position: absolute; left: var(--ac-vf-l); top: var(--ac-vf-t); width: var(--ac-vf-fw); height: var(--ac-vf-fh);
+  box-shadow: inset 0 0 0 1px var(--line-2); pointer-events: none;
+}
+.ac-shot__frame::before, .ac-shot__frame::after {   /* the + : the middle of the frame area the brief leaves empty */
+  content: ""; position: absolute; left: var(--ac-vf-cx, 75%); top: var(--ac-vf-cy, 50%); background: var(--fg-3);
+  display: var(--ac-vf-plus, block);
+}
+.ac-shot__frame::before { width: 13px; height: 1px; margin-left: -6px; }   /* the centre + */
+.ac-shot__frame::after { width: 1px; height: 13px; margin-top: -6px; }
+.ac-plate--shot > .ac-shot__slate { left: calc(var(--ac-vf-l) + var(--ac-vf-p)); top: calc(var(--ac-vf-t) + var(--ac-vf-p) - 4px); }
+.ac-shot__brief {
+  position: absolute; left: calc(var(--ac-vf-l) + var(--ac-vf-p)); top: calc(var(--ac-vf-t) + var(--ac-vf-p) - 8px);
+  width: calc(var(--ac-vf-fw) / 2 - var(--ac-vf-p) - 24px);
+}
+.ac-shot__slate ~ .ac-shot__brief { top: calc(var(--ac-vf-t) + var(--ac-vf-p) + 32px); }
+.ac-shot__name {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-shot-name); line-height: 1.08; letter-spacing: var(--display-tracking); color: var(--fg);
+  text-wrap: balance;
+}
+.ac-shot__how { margin-top: 16px; font-size: var(--ac-body); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+.ac-shot__spec {   /* the frame's foot, at its right (the brief holds its left half) */
+  position: absolute; right: calc(var(--ac-vf-l) + var(--ac-vf-p)); bottom: calc(var(--ac-vf-t) + var(--ac-vf-p) - 6px);
+  margin: 0; line-height: 22px;
+}
+.ac-plate--shot > .ac-reg--tl { left: var(--ac-vf-i); top: var(--ac-vf-i); }
+.ac-plate--shot > .ac-reg--tr { left: calc(100% - var(--ac-vf-i)); top: var(--ac-vf-i); }
+.ac-plate--shot > .ac-reg--bl { left: var(--ac-vf-i); top: calc(100% - var(--ac-vf-i)); }
+.ac-plate--shot > .ac-reg--br { left: calc(100% - var(--ac-vf-i)); top: calc(100% - var(--ac-vf-i)); }
+/* the compact card */
+.ac-plate--shot.ac-shot--sm { --ac-vf-i: 16px; --ac-vf-p: 20px; --ac-vf-cx: 50%; --ac-vf-cy: 72%; }
+.ac-shot--sm .ac-shot__brief { top: calc(var(--ac-vf-t) + var(--ac-vf-p) - 10px); width: calc(var(--ac-vf-fw) - 2 * var(--ac-vf-p)); }
+.ac-shot--sm .ac-shot__name { font-size: var(--ac-shot-name-sm, 24px); line-height: 1.1; }
+.ac-shot--sm .ac-shot__how { margin-top: 6px; font-size: var(--ac-support); line-height: 1.4; }
+/* the picture area: one slate, the lead card cols 1–8 over the rows, the others stacked in 9–12 */
+.ac-plate--pictures {
+  background: transparent; overflow: visible; --ac-occlude: var(--bg);
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto repeat(var(--ac-pics-n, 2), var(--ac-pics-row, 232px));
+  column-gap: var(--gutter); row-gap: var(--gutter);
+}
+.ac-plate--pictures > .ac-shot__slate { position: static; grid-column: 1 / -1; grid-row: 1; margin-bottom: -8px; }
+.ac-plate--pictures > .ac-plate--shot { height: auto; }
+.ac-plate--pictures > .ac-plate--shot:first-of-type { grid-column: 1 / span 8; grid-row: 2 / -1; }
+.ac-plate--pictures > .ac-plate--shot ~ .ac-plate--shot { grid-column: 9 / span 4; }
+.ac-plate--sheet {
+  height: var(--ac-sheet-plate-h); padding-top: 64px;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start;
+}
+.ac-plate--sheet > .ac-sheet { grid-column: var(--sheet-c, 4) / span var(--sheet-s, 6); }
+.ac-plate--sheet > .ac-reg--tl { left: 24px; top: 24px; }
+.ac-plate--sheet > .ac-reg--tr { left: calc(100% - 24px); top: 24px; }
+.ac-plate--sheet > .ac-reg--bl { left: 24px; top: calc(100% - 24px); }
+.ac-plate--sheet > .ac-reg--br { left: calc(100% - 24px); top: calc(100% - 24px); }
+.ac-plate--measure { --ac-occlude: var(--panel); }
+.ac-measure {
+  position: relative; container-type: inline-size; --u: calc(100cqw / 1312);
+  width: 100%; aspect-ratio: 1312 / var(--fh, 400);
+}
+.ac-measure__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ac-measure__svg--sm, .ac-measure__svg--md { visibility: hidden; }
+.ac-measure__svg--sm .ac-t-key { font-size: 17px; }   /* drawn labels in a phone frame: ≥ 13.5px at a 288px frame */
+.ac-measure > .ac-callout { left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); }
+.ac-measure > .ac-callout--l { left: auto; right: calc(100% - var(--x, 0) * var(--u)); }
+.ac-measure > .ac-dim { left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); width: calc(var(--w, 120) * var(--u)); }
+.ac-measure > .ac-dim--v { width: 1px; height: calc(var(--h, 120) * var(--u)); }
+.ac-measure__key { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ac-measure__keys { display: grid; gap: 8px; }
+.ac-measure__keys > li { font-size: var(--ac-support); line-height: 1.45; color: var(--fg-2); }
+.ac-measure > .ac-dim .ac-dim__v {   /* the value in the key voice (the homepage's .ac-dim__v stays mono) */
+  bottom: 10px; font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 15px; line-height: 1;
+  letter-spacing: 0; text-transform: none; color: var(--fg-2);
+}
+
+/* ── 12.5 · the document sheet (.ac-sheet) — a page, not an app window ──
+   Replaces the round-8 .ac-doc (window chrome: title bar, self-describing mono caption, footer
+   chip). A page on paper (data-surface="light" on the sheet), portrait 1:1.414 or a spread,
+   real margins (56px), a running head (who · what, left; "Specimen", right — said ONCE, here),
+   numbered sections (1, 2 …), body as paragraphs at 16px, exhibits captioned "Exhibit 2 · …",
+   a folio. No title bar, no caption describing itself, no footer chip, no callouts restating
+   column heads, no grey placeholder lines at card scale (greeking only at icon size ≤ 120px).
+     <article class="ac-sheet" data-surface="light" aria-label="…">
+       <header class="ac-sheet__run"><span>Kelwin, LLC · System Audit readout</span><span>Specimen</span></header>
+       <div class="ac-sheet__body"> h3.ac-sheet__title · p.ac-sheet__lead · section.ac-sheet__sec … </div>
+       <footer class="ac-sheet__folio"><span class="ac-numeral">1</span></footer></article>
+   Spread: .ac-sheet.ac-sheet--spread holding two .ac-sheet__page (each its own run, body,
+   folio; the fold is a hairline). .ac-sheet--auto lets a long page grow with its content.
+   A spread keeps its print proportion (2 : 1.414) as a MINIMUM and grows when its pages need
+   more (coherence pass: its body no longer clips, so at production widths 1024–1439 the last
+   lines are never silently cut; at 1440 nothing moves where the pages fit).
+   Running heads as print runs them: verso the document (left), recto the part (right) — add
+   .ac-sheet__run--plain so the right slot is not the bold "Specimen" slot (then "Specimen" is
+   said once for the document, on the section's label row, 12.2). A hidden sheet ([hidden], a
+   document viewer's other spreads) is display:none.
+   COHERENCE PASS ADDITIONS
+   · .ac-sheet--sm — a page at card scale (≈ 290–440px wide: the Audit's four readout pages):
+     28px margins, a 24px title, a 16px lead, tighter run/body/folio gaps; 24px margins below 1024.
+   · .ac-sheet__tbl — the exhibit table: column heads in the key voice (th.ac-key) over a
+     --line-2 rule, the row's name (tbody th) in --fg 500, values in --fg-2, 16px on hairline
+     rows (13.5px on .ac-sheet--sm); tr.is-flag shades one row on --panel as an editor marks it
+     (its last cell in --fg). Column widths stay the page's (thead th widths).
+       <table class="ac-sheet__tbl"><thead><tr><th class="ac-key" scope="col">Channel</th>…</tr></thead>
+         <tbody><tr><th scope="row">Founder-led calls</th><td>…</td></tr><tr class="is-flag">…</tr></tbody></table>
+   · .ac-sheets--stack — a set of pages on a phone (≤ 767): one column, each page laid over the
+     one before (the later page on top), every page but the last cropped to --ac-stack-crop
+     (300px) so its running head, title and first lines show; the whole document is one link
+     away. Its children are the pages (an .ac-sheet, or a wrapper holding one); give each child
+     --k (0, 1, 2 …). Above 767 the set is laid out by its page.                              */
+.ac-sheet {
+  position: relative; display: flex; flex-direction: column; min-width: 0;
+  aspect-ratio: 1 / 1.414; padding: var(--ac-sheet-m) var(--ac-sheet-m) 32px;
+  background: var(--bg); color: var(--fg); --ac-occlude: var(--bg);
+  box-shadow: inset 0 0 0 1px var(--line);   /* the page's edge (on paper paper, a sheet still reads) */
+}
+.ac-sheet--spread { aspect-ratio: 2 / 1.414; flex-direction: row; padding: 0; }
+.ac-sheet--spread > .ac-sheet__page {
+  flex: 1 1 0; min-width: 0; display: flex; flex-direction: column;
+  padding: var(--ac-sheet-m) var(--ac-sheet-m) 32px;
+}
+.ac-sheet--spread > .ac-sheet__page + .ac-sheet__page { box-shadow: inset 1px 0 0 var(--line); }
+.ac-sheet--auto { aspect-ratio: auto; }
+.ac-sheet__run {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 24px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  font-size: 13.5px; line-height: 20px; color: var(--fg-2);
+}
+.ac-sheet__run > :last-child { font-weight: var(--ui-weight); color: var(--fg); }
+.ac-sheet__body { flex: 1 1 auto; min-height: 0; padding-top: 40px; overflow: hidden; }
+.ac-sheet--auto .ac-sheet__body { overflow: visible; }
+.ac-sheet__body > :first-child { margin-top: 0; }
+.ac-sheet__title {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 36px; line-height: 1.08; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.ac-sheet__lead { margin-top: 20px; font-size: 22px; line-height: 1.4; color: var(--fg); max-width: 26em; }
+.ac-sheet__sec { margin-top: 36px; }
+.ac-sheet__title + .ac-sheet__sec { margin-top: 28px; }
+.ac-sheet__h { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; font-weight: var(--ui-weight); font-size: 18px; line-height: 1.35; color: var(--fg); }
+.ac-sheet__n { flex: none; min-width: 1.1em; color: var(--fg-3); }
+.ac-sheet__sec > p { font-size: 16px; line-height: 1.55; color: var(--fg-2); max-width: 62ch; }
+.ac-sheet__sec > p + p { margin-top: 12px; }
+.ac-sheet__ex { margin-top: 28px; }
+.ac-sheet__cap { margin-top: 12px; font-size: var(--ac-key); line-height: 20px; color: var(--fg-2); }
+.ac-sheet__exn { font-weight: var(--ui-weight); color: var(--fg); }
+.ac-sheet__folio { display: flex; justify-content: flex-end; margin-top: auto; padding-top: 16px; }
+.ac-sheet--spread > .ac-sheet__page:first-child .ac-sheet__folio { justify-content: flex-start; }
+.ac-sheet__folio .ac-numeral { color: var(--fg-3); }
+.ac-sheet[hidden] { display: none; }
+.ac-sheet__run--plain > :last-child { font-weight: inherit; color: inherit; }
+/* a spread grows when its pages need more (its proportion stays the minimum: aspect-ratio boxes
+   keep a content-based minimum height once nothing inside clips) */
+.ac-sheet--spread .ac-sheet__body { overflow: visible; min-height: auto; }
+/* the small sheet (card scale) */
+.ac-sheet.ac-sheet--sm { --ac-sheet-m: 28px; padding-bottom: 18px; }
+.ac-sheet--sm .ac-sheet__run { padding-bottom: 10px; }
+.ac-sheet--sm .ac-sheet__body { padding-top: 18px; }
+.ac-sheet--sm .ac-sheet__title { font-size: 24px; line-height: 1.12; text-wrap: balance; }
+.ac-sheet--sm .ac-sheet__lead { margin-top: 10px; font-size: 16px; line-height: 1.45; text-wrap: pretty; }
+.ac-sheet--sm .ac-sheet__ex { margin-top: 16px; }
+.ac-sheet--sm .ac-sheet__cap { margin-top: 10px; }
+.ac-sheet--sm .ac-sheet__folio { padding-top: 8px; }
+/* the exhibit table */
+.ac-sheet__tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.ac-sheet__tbl thead th { padding: 0 16px 10px 0; text-align: left; vertical-align: bottom; border-bottom: 1px solid var(--line-2); }
+.ac-sheet__tbl tbody th, .ac-sheet__tbl td {
+  padding: 14px 16px 15px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line);
+  font-size: 16px; line-height: 1.45;
+}
+.ac-sheet__tbl tbody th { font-weight: var(--ui-weight); color: var(--fg); }
+.ac-sheet__tbl td { font-weight: var(--body-weight); color: var(--fg-2); }
+.ac-sheet__tbl :is(th, td):last-child { padding-right: 0; }
+.ac-sheet__tbl tr.is-flag > * { background: var(--panel); }
+.ac-sheet__tbl tr.is-flag > th { padding-left: 12px; }
+.ac-sheet__tbl tr.is-flag > td:last-child { color: var(--fg); padding-right: 12px; }
+.ac-sheet--sm .ac-sheet__tbl thead th { padding: 0 12px 8px 0; }
+.ac-sheet--sm .ac-sheet__tbl tbody th, .ac-sheet--sm .ac-sheet__tbl td { padding: 7px 12px 8px 0; font-size: 13.5px; line-height: 1.38; overflow-wrap: break-word; }
+.ac-sheet--sm .ac-sheet__tbl :is(th, td):last-child { padding-right: 0; }
+.ac-sheet--sm .ac-sheet__tbl tr.is-flag > th { padding-left: 8px; }
+.ac-sheet--sm .ac-sheet__tbl tr.is-flag > td:last-child { padding-right: 8px; }
+
+/* ── 12.6 · scale — every body section has ONE dominant element ──
+   a 64–96px statement (.ac-claim), a 120–200px number (.ac-num.ac-num--prop, --size), or a plate
+   ≥ 480px tall. Everything else steps down at least two sizes. A body section's head is a plain
+   CLAIM with a verb, something a buyer could disagree with (not a slogan, no clipped pair), in
+   one voice: the light accent weight belongs to the h1 alone. At most one 42px .ac-shead per
+   page; the claim head is .ac-shead.ac-shead--claim.
+     <div class="ac-shead ac-shead--claim"><div class="ac-labelrow"><p class="ac-label">…</p></div>
+       <h2 class="ac-claim">Your pipeline problem starts in the story.</h2><p class="ac-shead__lede">…</p></div>
+   Sizes: .ac-claim 72px · .ac-claim--md 64px · .ac-claim--xl 96px at 1440, stage-proportional
+   down to 1024 (12.0), then 52/48/64 on tablets and 36/32/44 on phones. None may match or
+   outrank the page's h1 at any width (the h1plain check): cast .ac-claim--xl only under an h1 of
+   112 or more. CADENCE (coherence pass 3): a claim has a main verb; no "X, not Y" / "X, never Y"
+   pair, no "Most …" generalisation (it echoes the homepage reframe), no em-dash punchline.
+   RECORDED EXCEPTIONS (coherence pass): (Insights' "In the works" block is gone — coherence
+   pass 2 folds its one dated item into the index as a forthcoming entry); a reading page's body (the notes, the legal documents) is the
+   document itself; a full-measure open document on paper (Narrative's message matrix) counts
+   from its running head to its folio.
+   The big number: <p class="ac-num ac-num--prop" style="--size:184px">13<span class="ac-num__u"> weeks</span></p>
+   --size is its size at 1440 (120–200px); the kit owns its smaller sizes (≤1023 ×.74; ≤767 ×.52,
+   72–104px, the unit free to wrap under the figure), so a page never restyles it.              */
+.ac-claim {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-claim); line-height: 1.02; letter-spacing: var(--display-tracking); color: var(--fg);
+  text-wrap: balance; max-width: 15em;
+}
+.ac-claim--md { font-size: var(--ac-claim-md); }
+.ac-claim--xl { font-size: var(--ac-claim-xl); }
+.ac-num--prop { font-variant-numeric: normal; }   /* Mona's tabular set is mono-style (slashed 0, footed 1) */
+.ac-shead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+.ac-shead > .ac-labelrow { grid-column: 1 / -1; }
+.ac-shead > .ac-h3 { grid-column: 1 / span 10; margin-top: 28px; }
+.ac-shead__lede { grid-column: 1 / span 6; margin-top: 20px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 60ch; }
+.ac-shead--claim > .ac-claim { grid-column: 1 / span 11; margin-top: 32px; }
+.ac-shead--claim > .ac-shead__lede { margin-top: 28px; font-size: var(--ac-lede); line-height: 1.5; max-width: 40ch; }
+/* DEPRECATED (12.L): round 8's second two-voice statement (64px + rule). The light accent now
+   belongs to the h1 alone; a body section's big head is .ac-shead--claim. Kept for old pages. */
+.ac-shead--statement > .ac-statement { --ac-h-sec: var(--ac-door-xl); grid-column: 1 / span 11; margin-top: 32px; }
+.ac-shead--statement > .ac-rule { grid-column: 1; margin-top: 32px; }
+.ac-shead--statement > .ac-shead__lede { margin-top: 28px; font-size: var(--ac-lede); line-height: 1.5; }
+
+/* ── 12.7 · lists ──
+   · No chips on rows. A status is a plain word in the support line: <span class="ac-state">Drafting</span>.
+     One statement per status per page ("None yet" once).
+   · At most ONE ruled list per page (the kit's .ac-ledger / .ac-row, or strips). No index column
+     unless order is the content; set --ac-row-cols without it.
+   · THE ROW RECIPE (a large name left, a grey gloss right, on hairlines) appears on at most THREE
+     pages (coherence pass 2, lead decision D5) — where the reader scans a list for the one line
+     that is theirs: Who We Work With's markets, Careers' staffing plan, the Projects catalogue.
+     Every other list takes the form its content has: prose (Narrative Systems' four documents),
+     run-in statements (About's rules), questions each answered by one sentence (GTM
+     Intelligence), two columns (a project's right and wrong fit), an editorial contents list,
+     title over dek (Insights), a table on a sheet. No new devices: all of these are type.
+   · .ac-spec only in an article's source notes and the Audit's facts.
+   · Chips are only the SpecimenTag and the status chip, and only where rule 7 needs them (an
+     illustrative artifact that is not a .ac-sheet — a sheet says "Specimen" in its running head).
+     SpecimenTag: p.ac-specimen > span.ac-chip.ac-chip--specimen + ONE line (.ac-specimen__t).
+     Status words — chip or plain — are the ONE family of 12.2 (coherence pass 2): "To be
+     confirmed" · "Draft, to be confirmed" · "Proposed, to be confirmed", and outside it, each a
+     different true condition: Specimen · Not yet published · No date yet · "Draft, pending legal
+     review" · "Due in Q4 2026". Round 8's "In development · Drafting · In production · None yet"
+     are retired.
+   · Readings (a third-party figure: number · unit in words · source · year ↗), ≤ 2 per page,
+     none of the homepage's four (17% · 95:5 · 77% · 53%). The source line is set as the notes
+     set a source (coherence pass): Mona 15px, sentence case — "Validity, 2025 ↗" — never mono
+     caps.
+   · .ac-seg--key — the segmented control in the interior's key voice (coherence pass): Mona
+     15px, 500, sentence case, tracking 0 (the kit's .ac-seg is 12px tracked caps, a third small
+     caps voice the plan retires). Its height and widths stay the page's. Used by the note's
+     answers (revenue entropy) and the Reports readout's parts.                               */
+.ac-state { font-weight: var(--ui-weight); color: var(--fg); white-space: nowrap; }
+.ac-chip--specimen, .ac-chip--status { flex: none; border-color: var(--fg-3); line-height: 1; }
+.ac-chip--specimen { color: var(--fg); }
+.ac-chip--status { gap: 8px; padding-left: 7px; border-style: dashed; }
+.ac-chip--status::before { content: ""; width: 6px; height: 6px; flex: none; box-shadow: inset 0 0 0 1px currentColor; }
+.ac-specimen { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin: 0; }
+.ac-specimen__t { font-size: 14px; line-height: 1.45; color: var(--fg-2); }
+.ac-readings { display: grid; gap: 32px; align-content: start; }
+.ac-reading { margin: 0; padding-top: 16px; border-top: 1px solid var(--line-2); }
+.ac-reading__fig {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 44px; line-height: 1; letter-spacing: -0.02em;   /* never tnum: Mona's tabular set is mono-style (slashed 0) */
+  color: var(--fg); white-space: nowrap;
+}
+.ac-reading__u { font-weight: var(--light-weight); color: var(--fg-2); }
+.ac-reading__to {   /* a drawn → inside a figure ("81% → 31%"): <span class="ac-reading__to"><span class="ac-sr">to</span></span> */
+  display: inline-block; width: .5em; height: .36em; margin: 0 .16em; vertical-align: .14em; background-color: var(--fg-3);
+  -webkit-mask: var(--ac-rd-arr) center / contain no-repeat; mask: var(--ac-rd-arr) center / contain no-repeat;
+  --ac-rd-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.2' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.ac-reading__t { margin-top: 12px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); max-width: 34ch; }
+.ac-reading__src { margin-top: 12px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+/* a long source wraps with its ↗ at the end of the last line */
+.ac-reading__src .ac-go { display: inline; box-shadow: none; text-decoration: underline 1px var(--line-2); text-underline-offset: 6px; transition: text-decoration-color 200ms var(--ease-out); }
+.ac-reading__src .ac-go:hover { box-shadow: none; text-decoration-color: var(--fg); }
+.ac-reading__src .ac-go::after { display: inline-block; margin-left: 10px; vertical-align: 0; }
+.ac-seg.ac-seg--key > button { font-size: 15px; letter-spacing: 0; text-transform: none; }
+
+/* ── 12.8 · drawings — where a page keeps one ──
+   ONE object the reader recognises (a calendar span, a sheet, a bar, a table), drawn with weight:
+   · 1px construction (.ac-s-faint), 1px --fg-2 outlines (.ac-s), and ONE filled mass for the
+     subject (.ac-mass: a bar, plane or block 6–12px thick or more, ≥ 8% of the drawing's area;
+     .ac-mass--red when it is the view's one red);
+   · at most 3 labels, 15px Mona, anchored to the part they name: .ac-callout.ac-callout--plain
+     in HTML (no code box), or .ac-t-key in SVG text — never a field of codes;
+   · dimension lines (.ac-dim) only with a unit AND a number ("10 working days", "13 weeks");
+   · registration marks only on a framed plate: a sheet plate holding a real document, or the
+     shot card's viewfinder (12.4);
+   · squares: the 8px label marker and the 5px leader anchor only. The three layer glyphs live
+     in the nav plate and the hero chapter strip only — no icon sets, no sibling strip.     */
+.ac-mass { fill: var(--fg); stroke: none; background-color: var(--fg); }
+.ac-mass--red { fill: var(--accent); background-color: var(--accent); }
+.ac-t-key { font-family: var(--f-body); font-weight: var(--body-weight); font-size: 15px; fill: var(--fg-2); }
+.ac-callout--plain .ac-callout__t { font-size: 15px; line-height: 1.35; }
+
+/* ── 12.9 · forms — ONE component for Contact, Careers, the Reports request and the Lab ──
+   NOTE: the bare .ac-field is the kit's figure field (§7, homepage). Inside an .ac-form it is
+   the form field below; never use one outside the other.
+     <form class="ac-form" …><p class="ac-form__note">All fields required.</p>
+       <div class="ac-form__pair"> two .ac-field side by side (stack on phones) </div>
+       <div class="ac-field"><label class="ac-field__label" for="…">Work email</label>
+         <input class="ac-field__input" id="…" type="email" placeholder="name@company.com" aria-describedby="…-hint" required>
+         <p class="ac-field__hint" id="…-hint">optional, 15px</p></div>
+       <div class="ac-field"> label + <span class="ac-field__select"><select class="ac-field__input">…</select></span></div>
+       <div class="ac-field"> label + <textarea class="ac-field__input" rows="4"></textarea></div>
+       <div class="ac-form__actions"><button class="ac-btn-o ac-btn-o--lg" type="submit">Send</button></div></form>
+   Label above the input (Mona 18px, 500, --fg), one per field; input Mona 22px on a 64px row
+   over a 1px --line-2 underline that turns 2px --fg on focus; an optional 15px hint under it;
+   placeholders only for format examples; ONE "All fields required" line above the form; the
+   submit is the outlined action at its 56px size, .ac-btn-o.ac-btn-o--lg (a size modifier of the
+   kit's .ac-btn-o, not a new action: the actions stay exactly three; no red on Contact or
+   Careers). .ac-btn-o--lg is usable wherever a 56px outlined control is needed (the Lab's
+   invitation request is a form submit). No window chrome, no mono keys, no numbered prompts, no
+   ruled-paper textareas.
+   THE WRAPPING SELECT (coherence pass; Contact and Careers built it twice): a native select clips
+   a long option at 22px on a phone ("Ask for an invitation to The Lab"). Add .ac-field__select--wrap
+   and set the chosen value as text under an invisible native select, which stays on top for
+   picking, the keyboard and assistive tech; the text takes the input's voice, underline, hover
+   and focus. The page's script writes the chosen option's text into [data-val] on change (one
+   line: val.textContent = select.options[select.selectedIndex].text).
+     <span class="ac-field__select ac-field__select--wrap">
+       <span class="ac-field__val" aria-hidden="true" data-val>Understanding what Kelwin does</span>
+       <select class="ac-field__input" id="…" name="topic" required>…</select></span>
+   The quiet in-form control ("Copy the address", "Remove") is a <button class="ac-go ac-go--bare">
+   (12.2). A side column beside a long form may be held in view with position: sticky; top: 128px
+   (clear of the condensed bar) — a page's own placement, static below 1024.                 */
+.ac-form { display: grid; row-gap: 40px; }
+.ac-form__note { margin: 0; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.ac-form__pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: 40px; }
+.ac-form .ac-field { height: auto; display: flex; flex-direction: column; min-width: 0; }
+.ac-field__label { font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 18px; line-height: 24px; color: var(--fg); }
+.ac-field__input {
+  display: block; width: 100%; height: 64px; margin: 0; padding: 0; border: 0; border-radius: 0; outline: none;
+  background: transparent; color: var(--fg); -webkit-appearance: none; appearance: none;
+  font-family: var(--f-body); font-weight: var(--body-weight); font-size: 22px; line-height: 1.3;
+  box-shadow: inset 0 -1px 0 var(--line-2); transition: box-shadow 200ms var(--ease-out);
+}
+[data-surface="dark"] .ac-field__input { color-scheme: dark; }
+[data-surface="light"] .ac-field__input { color-scheme: light; }
+.ac-field__input::placeholder { color: var(--fg-3); opacity: 1; }
+.ac-field__input:hover { box-shadow: inset 0 -1px 0 var(--fg-3); }
+.ac-field__input:focus, .ac-field__input:focus-visible { box-shadow: inset 0 -2px 0 var(--fg); }
+.ac-field__input:-webkit-autofill { -webkit-text-fill-color: var(--fg); box-shadow: inset 0 -1px 0 var(--line-2), inset 0 0 0 1000px var(--bg); }
+.ac-field__input:-webkit-autofill:focus { box-shadow: inset 0 -2px 0 var(--fg), inset 0 0 0 1000px var(--bg); }   /* autofilled fields keep the focus underline */
+textarea.ac-field__input { height: auto; min-height: 136px; padding: 18px 0 14px; resize: vertical; }
+.ac-field__select { position: relative; display: block; }
+.ac-field__select > .ac-field__input { padding-right: 40px; cursor: pointer; }
+.ac-field__select::after {
+  content: ""; position: absolute; right: 4px; top: 50%; width: 14px; height: 8px; margin-top: -4px; pointer-events: none;
+  background-color: var(--fg-2); -webkit-mask: var(--ac-chev) center / contain no-repeat; mask: var(--ac-chev) center / contain no-repeat;
+  --ac-chev: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.ac-field__hint { margin: 10px 0 0; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.ac-field__select--wrap { display: grid; }
+.ac-field__select--wrap > .ac-field__val, .ac-field__select--wrap > select { grid-area: 1 / 1; }
+.ac-field__val {
+  display: flex; align-items: center; min-height: 64px; padding: 15px 40px 15px 0; pointer-events: none;
+  font-size: 22px; line-height: 1.3; color: var(--fg);
+  box-shadow: inset 0 -1px 0 var(--line-2); transition: box-shadow 200ms var(--ease-out);
+}
+.ac-field__select--wrap > select { height: 100%; opacity: 0; }
+.ac-field__select--wrap > select option, .ac-field__select--wrap > select optgroup { font-size: 16px; color: var(--fg); background: var(--bg); }
+.ac-field__select--wrap:hover > .ac-field__val { box-shadow: inset 0 -1px 0 var(--fg-3); }
+.ac-field__select--wrap:focus-within > .ac-field__val { box-shadow: inset 0 -2px 0 var(--fg); }
+.ac-form__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 32px; }
+/* the outlined action at 56px — a size of .ac-btn-o (§4), same face, border and ↗ */
+.ac-btn-o.ac-btn-o--lg { height: 56px; padding: 0 24px 0 28px; font-size: 13px; }
+.ac-btn-o.ac-btn-o--lg:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* ── 12.10 · the close (.ac-close) — ONE per page ──
+   The door line (from the page's own argument, ≤ 12 words, never "The audit's X shows…"),
+   the red System Audit button, the quiet "Talk to the team". Where one onward link earns a
+   place it is a plain destination at the right, an .ac-go.ac-go--to in sentence case ("The
+   three layers →", "All projects →") — the tracked caps .ac-link is kept for the two doors
+   only. Nothing else: no mini readout box, no hairline foot, no sibling strip, no "question? →
+   LINK" rows.
+   THE QUIET CLOSE (no red; drop the .ac-btn): /contact (the low-intent door), /careers (the job
+   page), and /privacy and /terms (the two legal documents — their round-8 close, which the
+   founder approved, carried no red). Lead decision D2 (coherence pass 2): this list is the whole
+   exception and it is closed — every other interior page closes on the red System Audit.
+     <section class="km km-<id>-S ac-sec ac-sec--ruled" data-surface="dark" aria-labelledby="…">
+       <div class="ac-close ac-wrap"><h2 class="ac-close__line" id="…">…</h2>
+         <div class="ac-doors"><a class="ac-btn" href="/audit">Request a System Audit</a><a class="ac-link" href="/contact">Talk to the team</a></div>
+         <p class="ac-close__on"><a class="ac-go ac-go--to" href="/insights">Read the field notes</a></p></div></section>
+   An optional kicker (.ac-labelrow > .ac-label) may lead.                                   */
+.ac-close { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: end; }
+.ac-close > .ac-labelrow { grid-column: 1 / -1; grid-row: 1; margin-bottom: 36px; }
+.ac-close__line {
+  grid-column: 1 / span 10; grid-row: 2; max-width: 15em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-close-line); line-height: 1.04; letter-spacing: var(--display-tracking); color: var(--fg);
+  text-wrap: balance;
+}
+.ac-close > .ac-doors { grid-column: 1 / span 8; grid-row: 3; margin-top: 56px; }
+.ac-close__on { grid-column: 9 / span 4; grid-row: 3; justify-self: end; align-self: center; margin: 56px 0 0; }
+
+/* ── 12.11 · the legal contents strip (IX) — the legal head's plate: no drawing, no red, the
+   clause index as links (01–09: order is the content). One row of cells on two hairlines, each
+   a clause number over the clause title. The number is .ac-ix__n, in the body's own voice (Mona
+   display, light, 20px — coherence pass: as .ac-idx mono it put 8–9 mono runs on one screen).
+   On phones it folds behind a "Contents" button with the kit's +/− toggle (a short init in
+   snippets/interior.html flips aria-expanded).
    <nav class="ac-band ac-band--ix ac-wrap" aria-label="Contents"> button.ac-ix__btn · ol.ac-ix__list */
 .ac-band--ix { margin-top: 64px; }
 .ac-ix__btn { display: none; }   /* phone only; it has no entrance, so display is safe here */
@@ -511,11 +1258,284 @@
 .ac-ix__list > li:first-child > .ac-ix__a { padding-left: 0; }
 .ac-ix__a:hover { color: var(--fg); }
 .ac-ix__a:hover .ac-idx { color: var(--fg-2); }
+.ac-ix__n {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--light-weight);
+  font-size: 20px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg-3);
+  transition: color 200ms var(--ease-out);
+}
+.ac-ix__a:hover .ac-ix__n { color: var(--fg-2); }
 .ac-ix__a:focus-visible { outline: 1px solid var(--fg); outline-offset: -1px; }
-/* the flag: code + label in a row, a straight leader down (or up) to its anchor on the drawing.
-   --x anchor x · --y label-row top (default 18) · --a anchor y — unitless frame units.
-   <div class="ac-flag" style="--x:292;--a:104" aria-hidden="true"><span class="ac-callout__code">01.1</span><span class="ac-callout__t">Positioning</span></div>
-   .ac-flag--b hangs the label BELOW the drawing (set --y to the label-row top, --a above it).  */
+
+/* ── 12.12 · motion (body pieces; only under .is-play — reduced motion = no .is-play = final) ──
+   The head, the turn and the plate are §13. Body sections: ≤ 2 play-once moments per page, the
+   kit's restrained entrances (fade, rise, hairline draws). Round 8's "red lands last" formula
+   (a drawing whose one red element arrives as its final beat) is retired.                    */
+:root { --ac-band-d: 900ms; }
+.is-play .ac-shead > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) var(--ac-d0, 0ms) both; }
+.is-play .ac-shead > .ac-h3, .is-play .ac-shead > .ac-claim { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 80ms) both; }
+.is-play .ac-shead .ac-line > span { animation: ac-rise 800ms var(--ease-out) calc(var(--ac-d0, 0ms) + 80ms) both; }
+.is-play .ac-shead .ac-line + .ac-line > span { animation-delay: calc(var(--ac-d0, 0ms) + 280ms); }
+.is-play .ac-shead > .ac-rule { animation: ac-drawx 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 480ms) both; }
+.is-play .ac-shead > .ac-shead__lede { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 300ms) both; }
+.is-play .ac-close > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) var(--ac-d0, 0ms) both; }
+.is-play .ac-close__line { animation: ac-up 700ms var(--ease-out) calc(var(--ac-d0, 0ms) + 80ms) both; }
+.is-play .ac-close > .ac-doors, .is-play .ac-close__on { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 320ms) both; }
+.is-play .ac-band--ix { animation: ac-up 600ms var(--ease-out) var(--ac-band-d) both; }
+
+/* ── 12.13 · tablet (≤1023) and phone (≤767) — ONE shared composition, so no page restyles a
+   kit piece to make it fit: recompose, don't shrink. The breakpoints are production's
+   (km-kit.css §11), not the homepage frags' 760.
+   The mockup stage itself is a fixed 1440 (base.css body width = --stage; ipage.py zooms it),
+   so mk.mjs shots and the stitched pages are judged at 1440. These rules are what ports to
+   production and what a phone preview shows (set --stage / --margin / --gutter to the phone's
+   values; below 1440 the stage IS the viewport, so calc(var(--stage) * .56) reads as 56vw).
+   The stitched pages (html.km-home: a 1440 stage zoomed to the viewer) skip these rules. Guard
+   your own phone rules the same way:  @media (max-width: 767px) { :root:not(.km-home) .km-ID-S__x { … } }
+   TRAP: never display:none (or a new animation-name) on anything with an entrance. mk.mjs's
+   full-height capture briefly matches small widths, which restarts that entrance and leaves
+   it blank in the 1440 shot. Hide with visibility, as every rule below does.
+   THE NAV TWIN (mockups only — production ships its own Navbar with a menu button): below 1024
+   its menu hides with visibility but keeps its width, so the bar clips it (overflow-x: clip) and
+   no page scrolls sideways; at ≤ 359px the lockup steps to 20px and the outlined action tightens
+   (padding 0 12/14, tracking .12em) so the two never touch. No page repeats these.          */
+@media (max-width: 1023px) {
+  :root:not(.km-home) { --ac-nav-h: 64px; --ac-iplate-gap: 48px; --ac-claim: 52px; --ac-claim-md: 48px; --ac-claim-xl: 64px; --ac-close-line: 48px; --ac-sheet-m: 40px; }
+  :root:not(.km-home) .ac-nav__menu { visibility: hidden; }   /* the live bar is production's Navbar: menu button + sheet */
+  :root:not(.km-home) .ac-nav { overflow-x: clip; }            /* …and its hidden width never widens the page */
+  /* head: the h1 (cast size, fluid: 12.3) takes the full measure and its lines may wrap; the quiet
+     action drops under the lede; the side composition stacks the same way (its hairline goes) */
+  :root:not(.km-home) .ac-ihead .ac-line { white-space: normal; }
+  :root:not(.km-home) .ac-ihead .ac-line > span { text-wrap: balance; }   /* no one-word widows */
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-statement { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 9; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-doors { grid-column: 1 / -1; grid-row: 5; justify-content: flex-start; margin-top: 28px; }
+  :root:not(.km-home) .ac-head.ac-ihead--side { grid-template-rows: auto; }
+  :root:not(.km-home) .ac-head.ac-ihead--side > .ac-statement { grid-row: 2; }
+  :root:not(.km-home) .ac-head.ac-ihead--side > .ac-rule,
+  :root:not(.km-home) .ac-head.ac-ihead--side > .ac-statement:first-child ~ .ac-rule { grid-column: 1; grid-row: 3; margin-top: 36px; }
+  :root:not(.km-home) .ac-head.ac-ihead--side > .ac-lede { grid-column: 1 / span 9; grid-row: 4; }
+  :root:not(.km-home) .ac-head.ac-ihead--side > .ac-doors { grid-row: 5; margin: 28px 0 0; }
+  :root:not(.km-home) .ac-head.ac-ihead--side::after { position: absolute; visibility: hidden; }
+  /* plates stay margin to margin and recompose their height */
+  :root:not(.km-home) .ac-plate--film { height: calc(var(--stage) * .5); }
+  /* the shot card recomposes: the brief first, then the frame at its aspect, then the spec */
+  :root:not(.km-home) .ac-plate--shot {
+    height: auto; container-type: inline-size; padding: 48px 40px 40px; --ac-vf-i: 20px;
+    display: flex; flex-direction: column; align-items: flex-start;
+    --ac-vf-cx: 50%; --ac-vf-cy: 50%;   /* the brief sits above the frame: the + is the frame's centre */
+  }
+  :root:not(.km-home) .ac-plate--shot > .ac-shot__slate,
+  :root:not(.km-home) .ac-plate--shot > .ac-shot__brief,
+  :root:not(.km-home) .ac-plate--shot > .ac-shot__spec { position: static; width: auto; max-width: 36em; }
+  :root:not(.km-home) .ac-plate--shot > .ac-shot__slate ~ .ac-shot__brief { margin-top: 14px; }
+  :root:not(.km-home) .ac-plate--shot > .ac-shot__frame {
+    position: relative; left: auto; top: auto; height: auto; aspect-ratio: var(--ac-vf-ar); margin-top: 32px; order: 3;
+    width: min(100%, var(--ac-vf-ar) * 280px);   /* never taller than 280px: the void stays small */
+  }
+  :root:not(.km-home) .ac-plate--shot > .ac-shot__spec { margin-top: 14px; order: 4; }
+  :root:not(.km-home) .ac-shot__name { font-size: 36px; }
+  :root:not(.km-home) .ac-plate--shot.ac-shot--sm { padding: 32px 28px 28px; --ac-vf-i: 14px; }
+  :root:not(.km-home) .ac-shot--sm .ac-shot__name { font-size: 24px; }
+  /* the picture area: the lead card over the full measure, the others side by side under it */
+  :root:not(.km-home) .ac-plate--pictures { grid-template-rows: none; grid-auto-rows: auto; }
+  :root:not(.km-home) .ac-plate--pictures > .ac-plate--shot:first-of-type { grid-column: 1 / -1; grid-row: 2; }
+  :root:not(.km-home) .ac-plate--pictures > .ac-plate--shot ~ .ac-plate--shot { grid-column: span 6; grid-row: 3; }
+  /* the big number: the kit owns its smaller sizes */
+  :root:not(.km-home) .ac-num--prop { font-size: calc(var(--size, 176px) * .74); }
+  :root:not(.km-home) .ac-plate--sheet { height: calc(var(--stage) * .62); padding-top: 48px; }
+  :root:not(.km-home) .ac-plate--sheet > .ac-sheet { grid-column: 2 / span 10; }
+  /* measure: the 15px labels do not shrink with the frame, so they give way to the visible key */
+  :root:not(.km-home) .ac-measure > .ac-callout, :root:not(.km-home) .ac-measure > .ac-dim { visibility: hidden; }
+  :root:not(.km-home) .ac-measure__key { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; padding: 0 24px 24px; }
+  /* …unless the frames carry their own labels (.ac-measure--drawn): the key stays for screen readers */
+  :root:not(.km-home) .ac-measure--drawn .ac-measure__key { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  :root:not(.km-home) .ac-sheet--sm { --ac-sheet-m: 24px; }
+  /* sheets grow with their content below the stage (margins, running head and folio stay) */
+  :root:not(.km-home) .ac-sheet, :root:not(.km-home) .ac-sheet--spread { aspect-ratio: auto; }
+  :root:not(.km-home) .ac-sheet__body { overflow: visible; }
+  :root:not(.km-home) .ac-plate--sheet .ac-sheet { min-height: calc(var(--stage) * .9); }
+  /* scale */
+  :root:not(.km-home) .ac-shead > .ac-h3, :root:not(.km-home) .ac-shead--statement > .ac-statement, :root:not(.km-home) .ac-shead--claim > .ac-claim { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-shead__lede { grid-column: 1 / span 9; }
+  /* the close */
+  :root:not(.km-home) .ac-close__line { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-close > .ac-doors { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-close__on { grid-column: 1 / -1; grid-row: 4; justify-self: start; margin-top: 32px; }
+  /* IX wraps to three columns */
+  :root:not(.km-home) .ac-ix__list { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-columns: auto; border-bottom: 0; }
+  :root:not(.km-home) .ac-ix__list > li, :root:not(.km-home) .ac-ix__list > li + li { box-shadow: inset 0 -1px 0 var(--line); }
+  :root:not(.km-home) .ac-ix__list > li > .ac-ix__a { padding-left: 0; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) { --ac-int-end: 72px; --ac-claim: 36px; --ac-claim-md: 32px; --ac-claim-xl: 44px; --ac-close-line: 34px; --ac-sheet-m: 24px;
+    --ac-h3-lg: 34px; }   /* coherence pass 3: the 42px section head stays under a 40px phone h1 (12.3 PHONE FLOOR) */
+  /* headlines wrap (production does the same); the write-in locks the set lines while it plays (§13) */
+  :root:not(.km-home) .ac-ihead .ac-line, :root:not(.km-home) .ac-shead .ac-line { white-space: normal; }
+  :root:not(.km-home) .ac-head.ac-ihead { padding-top: 24px; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-statement { margin-top: 24px; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-statement:first-child { margin-top: 32px; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-lede { grid-column: 1 / -1; font-size: 17px; }
+  /* plates: full measure, ~56vw tall, never under 240px */
+  :root:not(.km-home) .ac-plate--film { height: max(240px, calc(var(--stage) * .56)); }
+  :root:not(.km-home) .ac-plate__tag { left: 16px; top: 12px; }
+  :root:not(.km-home) .ac-plate--shot { padding: 36px 24px 24px; --ac-vf-i: 12px; }
+  :root:not(.km-home) .ac-plate--shot > .ac-shot__frame { margin-top: 24px; }
+  :root:not(.km-home) .ac-shot__name, :root:not(.km-home) .ac-shot--sm .ac-shot__name { font-size: 26px; line-height: 1.12; }
+  :root:not(.km-home) .ac-shot__how { margin-top: 10px; font-size: var(--ac-support); }
+  :root:not(.km-home) .ac-plate--shot.ac-shot--sm { padding: 32px 24px 24px; --ac-vf-i: 12px; }
+  :root:not(.km-home) .ac-plate--pictures { row-gap: 16px; }
+  :root:not(.km-home) .ac-plate--pictures > .ac-shot__slate { margin-bottom: 0; }
+  :root:not(.km-home) .ac-plate--pictures > .ac-plate--shot ~ .ac-plate--shot { grid-column: 1 / -1; grid-row: auto; }
+  /* the label row's status drops under the label */
+  :root:not(.km-home) .ac-labelrow:has(> .ac-status) { flex-wrap: wrap; row-gap: 10px; }
+  :root:not(.km-home) .ac-labelrow > .ac-status { flex-basis: 100%; white-space: normal; }
+  /* a set of pages: one stack, each page over the one before */
+  :root:not(.km-home) .ac-sheets--stack { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+  :root:not(.km-home) .ac-sheets--stack > * { position: relative; z-index: calc(1 + var(--k, 0)); top: 0; }
+  :root:not(.km-home) .ac-sheets--stack > * + * { margin-top: -28px; }
+  :root:not(.km-home) .ac-sheets--stack > :not(:last-child) > .ac-sheet,
+  :root:not(.km-home) .ac-sheets--stack > .ac-sheet:not(:last-child) { height: var(--ac-stack-crop, 300px); overflow: hidden; }
+  :root:not(.km-home) .ac-sheets--stack > :not(:last-child) .ac-sheet__body { flex: none; }
+  :root:not(.km-home) .ac-sheet--sm .ac-sheet__title { font-size: 22px; }
+  :root:not(.km-home) .ac-num--prop { font-size: clamp(72px, calc(var(--size, 176px) * .52), 104px); white-space: normal; }
+  :root:not(.km-home) .ac-plate--sheet { height: max(240px, calc(var(--stage) * .9)); padding: 24px 16px 0; }
+  :root:not(.km-home) .ac-plate--sheet > .ac-sheet { grid-column: 1 / -1; }
+  :root:not(.km-home) .ac-plate--sheet > .ac-reg { visibility: hidden; }
+  /* measure: the page's own phone drawing (--sm-w × --sm-h, its viewBox) */
+  :root:not(.km-home) .ac-measure:has(> .ac-measure__svg--sm) { aspect-ratio: var(--sm-w, 358) / var(--sm-h, 300); }
+  :root:not(.km-home) .ac-measure:has(> .ac-measure__svg--sm) > .ac-measure__svg:not(.ac-measure__svg--sm) { visibility: hidden; }
+  :root:not(.km-home) .ac-measure__svg--sm { visibility: visible; }
+  :root:not(.km-home) .ac-measure__key { padding: 0 16px 20px; }
+  /* sheets: a spread becomes two pages, one under the other */
+  :root:not(.km-home) .ac-sheet--spread { flex-direction: column; }
+  :root:not(.km-home) .ac-sheet--spread > .ac-sheet__page + .ac-sheet__page { box-shadow: inset 0 1px 0 var(--line); }
+  :root:not(.km-home) .ac-sheet--spread > .ac-sheet__page { padding: var(--ac-sheet-m) var(--ac-sheet-m) 20px; }
+  :root:not(.km-home) .ac-sheet { padding-bottom: 20px; }
+  :root:not(.km-home) .ac-plate--sheet .ac-sheet { min-height: 0; }
+  :root:not(.km-home) .ac-sheet__run { flex-wrap: wrap; row-gap: 2px; }
+  :root:not(.km-home) .ac-sheet__body { padding-top: 24px; }
+  :root:not(.km-home) .ac-sheet__title { font-size: 26px; }
+  :root:not(.km-home) .ac-sheet__lead { font-size: 18px; }
+  :root:not(.km-home) .ac-sheet__sec > p { font-size: 15px; }
+  /* forms: pairs stack */
+  :root:not(.km-home) .ac-form__pair { grid-template-columns: minmax(0, 1fr); }
+  :root:not(.km-home) .ac-form { row-gap: 32px; }
+  /* scale */
+  :root:not(.km-home) .ac-shead > .ac-h3 { font-size: 28px; margin-top: 20px; }
+  :root:not(.km-home) .ac-shead--claim > .ac-claim { margin-top: 24px; }
+  :root:not(.km-home) .ac-shead__lede, :root:not(.km-home) .ac-shead--statement > .ac-shead__lede, :root:not(.km-home) .ac-shead--claim > .ac-shead__lede { grid-column: 1 / -1; font-size: 16px; }
+  :root:not(.km-home) .ac-reading__fig { font-size: 40px; }
+  /* the close */
+  :root:not(.km-home) .ac-close > .ac-doors { margin-top: 36px; }
+  /* IX: the clause row folds behind "Contents" (+/−) */
+  :root:not(.km-home) .ac-ix__btn {
+    display: flex; align-items: center; justify-content: space-between; width: 100%; height: 56px;
+    border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line);
+    font-weight: var(--ui-weight); font-size: 12px; line-height: 1; letter-spacing: var(--label-tracking);
+    text-transform: uppercase; color: var(--fg);
+  }
+  :root:not(.km-home) .ac-ix__btn:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+  :root:not(.km-home) .ac-ix__list { grid-template-columns: minmax(0, 1fr); border-top: 0; }
+  :root:not(.km-home) .ac-ix__a { flex-direction: row; align-items: baseline; gap: 16px; padding: 14px 0; }
+  :root:not(.km-home) .ac-band--ix:has(.ac-ix__btn[aria-expanded="false"]) .ac-ix__list { visibility: hidden; height: 0; overflow: hidden; border: 0; }
+  :root:not(.km-home) .ac-ix__n { font-size: 18px; min-width: 28px; }
+}
+/* the measure plate's tablet frame (768–1023): the page's own drawing, when it has one */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root:not(.km-home) .ac-measure:has(> .ac-measure__svg--md) { aspect-ratio: var(--md-w, 760) / var(--md-h, 300); }
+  :root:not(.km-home) .ac-measure:has(> .ac-measure__svg--md) > .ac-measure__svg:not(.ac-measure__svg--md) { visibility: hidden; }
+  :root:not(.km-home) .ac-measure__svg--md { visibility: visible; }
+}
+/* the nav twin at ≤ 359px: the lockup and the outlined action never touch */
+@media (max-width: 359px) {
+  :root:not(.km-home) .ac-nav__brand .km-logo { --logo-h: 20px; }
+  :root:not(.km-home) .ac-nav__cta { padding: 0 12px 0 14px; letter-spacing: .12em; }
+  /* the page h1 below a 360 stage (coherence pass): a 288px line holds about nine letters at 56px,
+     so a short phrase ("Decide what", "Software for", "Email built to") broke into one-word lines;
+     the floor steps to 48px here, or to the page's own lower floor (12.3 PHONE FLOOR,
+     --ac-h1-floor-xs). Reading pages keep their own 38px floor (--72) unless they cast lower. */
+  :root:not(.km-home) .ac-head.ac-ihead { --ac-h1-min: var(--ac-h1-floor-xs, min(var(--ac-h1-floor, 56), 48)); }
+}
+
+/* ── 12.14 · reading pages — the margin note (.ac-sidenote) and the source call (.ac-ref) ──
+   Built three times in the notes (article-body S/T/U); now the kit's. A note in the reading
+   spread's margin: a --line-2 hairline, a plain head in Mona 15/500 (an optional mono numeral
+   first, for a numbered source), the note at 15px, and an .ac-go source line.
+     <aside class="ac-sidenote" id="…-n1" aria-label="Source 1">
+       <p class="ac-sidenote__h"><span class="ac-sidenote__n">1</span>Gartner</p>
+       <p class="ac-sidenote__t">…</p>
+       <p class="ac-sidenote__src"><a class="ac-go" href="…" target="_blank" rel="noopener">The B2B buying journey, 2019<span class="ac-sr"> (opens in a new tab)</span></a></p></aside>
+   In the text, the call is a raised numeral that jumps to its note:
+     <a class="ac-ref" href="#…-n1" aria-label="Source 1">1</a>
+   PLACEMENT (the page's, in its 12-column spread): a note's markup follows its paragraph, so it
+   auto-places in that paragraph's row and spans the rows it covers (grid-row-end: span n) —
+   it never overlaps the next note or the reading column; the last note spans into empty
+   trailing rows so the paper contains it; no negative margins. Margin cols 10–12 at 1440, 9–12
+   on a tablet, and on a phone it falls in after its paragraph (full measure, grid-row auto).  */
+.ac-sidenote { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line-2); }
+.ac-sidenote__h {
+  display: flex; align-items: baseline; gap: 10px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 15px; line-height: 22px; color: var(--fg);
+}
+.ac-sidenote__n { font-family: var(--f-mono); font-weight: 400; font-size: 12px; letter-spacing: 0; color: var(--fg-2); }
+.ac-sidenote__t { margin-top: 8px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 34ch; }
+.ac-sidenote__t + .ac-sidenote__t { margin-top: 12px; }
+.ac-sidenote__src { margin-top: 10px; font-size: var(--ac-support); line-height: 1.5; }
+.ac-ref {
+  position: relative; top: -.55em; margin-left: 3px; padding: 0 2px;
+  font-family: var(--f-mono); font-size: 11px; line-height: 0; letter-spacing: 0; color: var(--fg-2);
+  box-shadow: inset 0 -1px 0 var(--line-2); transition: color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.ac-ref:hover { color: var(--fg); box-shadow: inset 0 -1px 0 var(--fg); }
+.ac-ref:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
+@media (max-width: 767px) {
+  :root:not(.km-home) .ac-sidenote { margin-top: 24px; }
+  :root:not(.km-home) .ac-sidenote__t { max-width: none; }
+}
+
+/* ── 12.15 · ledgers in the interior — heading rows and deep links ──
+   · A row whose title is a heading wraps its button in one: <h3 class="ac-row__h"><button
+     class="ac-row__head" aria-expanded … aria-controls …>…</button></h3> (the heading keeps the
+     button's type; the +/− turns through [aria-expanded="true"], kit §5).
+   · DEEP LINKS (who-we-work-with built it): a ledger whose rows carry ids opens the row named by
+     the URL's hash on arrival and on hashchange, and keeps it where the anchor put it — the other
+     rows fold at once (the ledger's section takes .is-instant for two frames, so no fold
+     animates), then the row is aligned to its scroll margin, minus the cascade's rise if the
+     slot has just played. The init is in snippets/interior.html (6c); copy it into the page's
+     KM.init. No timers; the same under reduced motion.                                        */
+.ac-row__h { margin: 0; font: inherit; }
+.is-instant .ac-row .ac-row__more, .is-instant .ac-row .ac-row__in { transition: none; }
+
+/* ═══ 12.L · ROUND-8 PIECES — DEPRECATED ═══════════════════════════════════════════════════
+   Kept working, unchanged, so the round-8 pages render until each is rebuilt; DO NOT USE IN NEW
+   WORK. Each line says what replaces it.
+   · the facts head (.ac-ihead holding .ac-facts) is NOT retired: it is the Audit's head, now in
+     12.3 (the one named exception). On any other page → the round-9 head (12.3).
+   · the band (.ac-band + .ac-band__frame, .ac-flag, boxed .ac-callout__code, its keyed list):
+     a framed 1px drawing with corner marks and boxed codes. → a plate (12.4). Kept for ONE use:
+     the Audit's approved ten-day ruler (§7.9).
+   · the document panel (.ac-doc, .ac-doc--mini): window chrome. → .ac-sheet (12.5).
+   · the Doors (.ac-door--d1/--d2/--d3/--sc/--qc, .ac-door__foot): → ONE .ac-close (12.10).
+   · the onward link (.ac-onward) and the SiblingStrip (.ac-sibs/.ac-sib): DO NOT USE. A page
+     earns at most one plain onward destination, inside its close (.ac-close__on).
+   · the second two-voice statement (.ac-shead--statement, styled in 12.6): → .ac-shead--claim.
+   · the 12.1 nav twin keeps working; round 9 lists FOUR items (The Lab sits in The Firm's plate,
+     as production's Navbar does since round 8, Q4) — old pages still show five.            */
+/* the band */
+.ac-band { margin-top: 64px; }
+.ac-band__frame {
+  container-type: inline-size; --u: calc(100cqw / 1312);
+  width: 100%; height: auto; aspect-ratio: 1312 / var(--fh, var(--ac-int-band));
+}
+.ac-band__frame > .ac-dim { left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); width: calc(var(--w, 120) * var(--u)); }
+.ac-band__frame > .ac-dim--v { width: 1px; height: calc(var(--h, 120) * var(--u)); }
+.ac-band__frame > .ac-callout { left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u)); }
+.ac-band__frame > .ac-callout--l { left: auto; right: calc(100% - var(--x, 0) * var(--u)); }
+.ac-band__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ac-band__svg--sm { visibility: hidden; }
+.ac-band__key { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ac-band__keys { display: grid; gap: 10px; }
+.ac-band__keys > li { display: flex; align-items: baseline; gap: 12px; font-size: var(--ac-support); line-height: 1.45; color: var(--fg-2); }
 .ac-flag {
   position: absolute; left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 18) * var(--u));
   display: flex; align-items: center; gap: 10px; white-space: nowrap; pointer-events: none;
@@ -531,68 +1551,7 @@
 .ac-flag--b::before { top: calc((var(--a, 120) - var(--y, 18)) * var(--u)); height: calc((var(--y, 18) - var(--a, 120)) * var(--u)); transform-origin: 50% 100%; }
 .ac-flag.is-on::before, .ac-flag.is-on::after { background: var(--fg); }
 .ac-flag.is-on .ac-callout__t { color: var(--fg); }
-
-/* ── 12.4 · body section head: ■ label (no meta) → one-line heading → optional lede ──
-   The heading is the kit's own .ac-h3.ac-h3--lg (42px), on an <h2>: the page outline goes
-   h1 → h2. .ac-shead only places it.
-   .ac-shead--statement swaps in the page's SECOND two-voice statement (64px + rule); a page
-   has at most two (the h1 plus one, in a body section OR in a D2 close — never both).       */
-.ac-shead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
-.ac-shead > .ac-labelrow { grid-column: 1 / -1; }
-.ac-shead > .ac-h3 { grid-column: 1 / span 10; margin-top: 28px; }
-.ac-shead__lede { grid-column: 1 / span 6; margin-top: 20px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 60ch; }
-.ac-shead--statement > .ac-statement { --ac-h-sec: var(--ac-door-xl); grid-column: 1 / span 11; margin-top: 32px; }
-.ac-shead--statement > .ac-rule { grid-column: 1; margin-top: 32px; }
-.ac-shead--statement > .ac-shead__lede { margin-top: 28px; font-size: var(--ac-lede); line-height: 1.5; }
-
-/* ── 12.5 · SpecimenTag and status chips (rule 7: never fabricate) ──
-   Both are the kit's .ac-chip (22px, mono 11px, .10em) with a modifier: no parallel chip.
-   SpecimenTag: p.ac-specimen > span.ac-chip.ac-chip--specimen "Specimen" + ONE support line
-   (.ac-specimen__t, 14px ≥ the 13.5 floor) naming what is illustrative. Every illustrative
-   artifact on the interior carries one (keeps Terms L·03 true).
-   Status chip: span.ac-chip.ac-chip--status with the allowed words only — In development ·
-   Drafting · In production · Not yet published · None yet. Dashed = not built yet (the
-   handover's dashed→solid); the hollow square says "not live". States are words, never
-   colours; no dates unless the founder confirms.                                            */
-.ac-chip--specimen, .ac-chip--status { flex: none; border-color: var(--fg-3); line-height: 1; }
-.ac-chip--specimen { color: var(--fg); }
-.ac-chip--status { gap: 8px; padding-left: 7px; border-style: dashed; }
-.ac-chip--status::before { content: ""; width: 6px; height: 6px; flex: none; box-shadow: inset 0 0 0 1px currentColor; }
-.ac-specimen { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 14px; margin: 0; }
-.ac-specimen__t { font-size: 14px; line-height: 1.45; color: var(--fg-2); }
-
-/* ── 12.6 · Readings — a third-party figure: number · its unit in words · source · year ↗ ──
-   ≤2 per page, none of the homepage's four (17% · 95:5 · 77% · 53%). Hedge as the source does.
-   The source link opens a new tab and says so to screen readers (.ac-sr). Re-verify before launch.
-   Bind the year to the source ("Review&nbsp;·&nbsp;2015") so a wrap never strands "· 2015 ↗". */
-.ac-readings { display: grid; gap: 32px; align-content: start; }
-.ac-reading { margin: 0; padding-top: 16px; border-top: 1px solid var(--line-2); }
-.ac-reading__fig {
-  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
-  font-size: 44px; line-height: 1; letter-spacing: -0.02em;   /* never tnum: Mona's tabular set is mono-style (slashed 0) */
-  color: var(--fg); white-space: nowrap;
-}
-.ac-reading__u { font-weight: var(--light-weight); color: var(--fg-2); }
-.ac-reading__to {   /* a drawn → inside a figure ("81% → 31%"): <span class="ac-reading__to"><span class="ac-sr">to</span></span> */
-  display: inline-block; width: .5em; height: .36em; margin: 0 .16em; vertical-align: .14em; background-color: var(--fg-3);
-  -webkit-mask: var(--ac-rd-arr) center / contain no-repeat; mask: var(--ac-rd-arr) center / contain no-repeat;
-  --ac-rd-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.2' stroke-linecap='square'/%3E%3C/svg%3E");
-}
-.ac-reading__t { margin-top: 12px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); max-width: 34ch; }
-.ac-reading__src {
-  margin-top: 12px; font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 20px;
-  letter-spacing: var(--ac-track-mono); text-transform: uppercase; color: var(--fg-2);
-}
-/* a long source wraps with its ↗ at the end of the last line */
-.ac-reading__src .ac-go { display: inline; box-shadow: none; text-decoration: underline 1px var(--line-2); text-underline-offset: 6px; transition: text-decoration-color 200ms var(--ease-out); }
-.ac-reading__src .ac-go:hover { box-shadow: none; text-decoration-color: var(--fg); }
-.ac-reading__src .ac-go::after { display: inline-block; margin-left: 10px; vertical-align: 0; }
-
-/* ── 12.7 · the document panel — "a document you could hold" ──
-   Each page has exactly ONE paper moment, always a document: put data-surface="light" on its
-   section (or on the panel itself when a sheet lies on graphite). Head: the document's own
-   name + one mono note (never a number, never a title block). Foot: the SpecimenTag.
-   .ac-doc--mini is the D1 object: graphite, outlined, never paper (paper is the page's one). */
+/* the document panel */
 .ac-doc { display: block; position: relative; background: var(--bg); color: var(--fg); border: 1px solid var(--line-2); --ac-occlude: var(--bg); }
 .ac-doc__head {
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
@@ -607,23 +1566,7 @@
 .ac-doc--mini .ac-doc__head { min-height: 44px; padding: 0 16px; }
 .ac-doc--mini .ac-doc__body { padding: 8px 16px 12px; }
 .ac-doc--mini .ac-doc__foot { min-height: 0; padding: 12px 16px; }
-
-/* ── 12.8 · Doors — the close, in five variants (never the red plane: that is homepage-only) ──
-   Every Door states what the audit RETURNS for this page's subject (documented scope only; the
-   audit "reads", it never "instruments"). Red = .ac-btn "Request a System Audit" → /audit, and
-   it is the view's only red. Quiet = .ac-link "Talk to the team" → /contact. Every Door ends on
-   the same foot: one hairline, then the onward link (capability pages: the SiblingStrip) —
-   except QC, whose one row of quiet doors ends on the onward link itself (one hairline, total).
-   Headings: a Door's first heading is its h2. D1 and D2: the line / statement is the h2.
-   D3 and SC put h3s before their line, so their visible label is the h2 (h2.ac-label) and the
-   line is an h3.ac-door__line. QC: a visible h2.ac-label, or h3.ac-sr when it sits inside
-   another section (careers).
-   D1 decision band   .ac-door--d1  line left (cols 1–7) · object + doors right (cols 8–12)
-        compact        .ac-door--d1.ac-door--compact  (articles: no object, 32px line)
-   D2 statement close .ac-head.ac-door.ac-door--d2  64px two-voice · rule · lede · doors
-   D3 gate close      .ac-door--d3  the honest list (cols 1–6) · gate line + doors (cols 8–12)
-   SC split close     .ac-door--sc  two things side by side on paper (cols 1–7 | 9–12)
-   QC quiet close     .ac-door--qc  quiet links only, NO red anywhere in it                   */
+/* the Doors */
 .ac-door { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start; }
 .ac-door > .ac-labelrow { grid-column: 1 / -1; grid-row: 1; }
 .ac-door__line {
@@ -641,7 +1584,6 @@
 }
 .ac-door__foot > .ac-sibs { flex: 1 1 100%; }
 .ac-door:not(.ac-head) > .ac-door__foot { grid-row: 3; }
-/* D1 */
 .ac-door--d1 > .ac-door__line { grid-column: 1 / span 7; grid-row: 2; margin-top: 36px; max-width: 18em; }
 .ac-door--d1 > .ac-door__side { grid-column: 8 / span 5; grid-row: 2; margin-top: 36px; display: flex; flex-direction: column; gap: 32px; }
 .ac-door--d1 .ac-door__side .ac-doors { gap: 20px 32px; }
@@ -649,11 +1591,9 @@
 .ac-door--compact > .ac-door__line { grid-column: 1 / span 7; }
 .ac-door--compact > .ac-door__side { align-self: end; }
 .ac-door--compact > .ac-door__foot { margin-top: 64px; }
-/* D2: the head grammar at 64px; the foot takes row 6 */
 .ac-head.ac-door--d2 { --ac-h-sec: var(--ac-door-xl); }
 .ac-head.ac-door--d2 > .ac-door__foot { grid-row: 6; }
 .ac-head.ac-door--d2 > .ac-lede { max-width: 40ch; }
-/* D3 */
 .ac-door--d3 > .ac-door__list { grid-column: 1 / span 6; grid-row: 2; margin-top: 36px; }
 .ac-door--d3 > .ac-door__gate { grid-column: 8 / span 5; grid-row: 2; margin-top: 36px; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
 .ac-door--d3 .ac-door__gate .ac-doors { margin-top: 12px; }
@@ -667,7 +1607,6 @@
 .ac-door__row-b { margin-top: 6px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 52ch; }
 .ac-door__row-i { margin-top: 10px; display: flex; align-items: baseline; gap: 12px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg); }
 .ac-door__row-i > .ac-idx { flex: none; }
-/* SC: two things side by side, divided by one hairline in col 8 */
 .ac-door--sc > .ac-door__a { grid-column: 1 / span 7; grid-row: 2; margin-top: 36px; }
 .ac-door--sc > .ac-door__b { grid-column: 9 / span 4; grid-row: 2; margin-top: 36px; position: relative; display: flex; flex-direction: column; gap: 24px; align-items: flex-start; align-self: stretch; }
 .ac-door--sc > .ac-door__b::before {
@@ -675,12 +1614,6 @@
   background: var(--line); transform-origin: 50% 0;
 }
 .ac-door--sc .ac-door__b .ac-doors { margin-top: 12px; }
-/* QC: quiet links only — up to three pairs (a plain question, then where it goes) in three
-   columns on ONE hairline. The last pair IS the page's onward link, so QC has no separate
-   foot (no second hairline). Standalone (legal; contact's coda): a visible ■ label row leads,
-   so it never reads as a stray footer row above the site footer. Inside another section
-   (careers: after the bench form, in the paper FM section): .ac-door--inset, no label row,
-   an h3.ac-sr, no section and no ruled seam of its own.                                     */
 .ac-door__quiet {
   grid-column: 1 / -1; grid-row: 2;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter);
@@ -690,13 +1623,7 @@
 .ac-door__q { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
 .ac-door--qc > .ac-labelrow ~ .ac-door__quiet { margin-top: 36px; }
 .ac-door--qc.ac-door--inset { margin-top: 96px; }
-
-/* ── 12.9 · the onward link and the SiblingStrip ──
-   Onward: ONE per page, the buyer's next question in plain words, then where it goes (.ac-link).
-   <p class="ac-onward"><span class="ac-onward__q">Who would you be working with?</span><a class="ac-link" href="/about">About</a></p>
-   SiblingStrip (capability pages, in the D1 foot, in place of the onward link): the three layers
-   in their fixed order 01 · 02 · 03, each with its glyph and its relation to this page; the
-   current one says "You are here" and is not a link.                                        */
+/* the onward link and the SiblingStrip — DO NOT USE */
 .ac-onward { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 18px; margin: 0; }
 .ac-onward__q { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
 .ac-sibs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--gutter); }
@@ -726,20 +1653,8 @@ a.ac-sib:hover .ac-sib__name::after { transform: translateX(3px); }
 a.ac-sib:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
 .ac-sib.is-here { color: var(--fg); }
 .ac-sib.is-here .ac-sib__name { color: var(--fg); }
-
-/* ── 12.10 · motion (only under .is-play; reduced motion = no .is-play = this final state) ──
-   The interior head reuses the kit's head choreography (§10) via .ac-head; these add the
-   facts ledger, the section head and the Doors. The band's morph is the page's own (its one
-   orchestrated moment): start it at --ac-band-d (≈900ms) so it follows the head.           */
-:root { --ac-band-d: 900ms; }
+/* their motion */
 .is-play .ac-head > .ac-facts { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 700ms) both; }
-.is-play .ac-shead > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) var(--ac-d0, 0ms) both; }
-.is-play .ac-shead > .ac-h3 { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 80ms) both; }
-.is-play .ac-band--ix { animation: ac-up 600ms var(--ease-out) var(--ac-band-d) both; }
-.is-play .ac-shead .ac-line > span { animation: ac-rise 800ms var(--ease-out) calc(var(--ac-d0, 0ms) + 80ms) both; }
-.is-play .ac-shead .ac-line + .ac-line > span { animation-delay: calc(var(--ac-d0, 0ms) + 280ms); }
-.is-play .ac-shead > .ac-rule { animation: ac-drawx 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 480ms) both; }
-.is-play .ac-shead > .ac-shead__lede { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 300ms) both; }
 .is-play .ac-door:not(.ac-head) > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) var(--ac-d0, 0ms) both; }
 .is-play .ac-door > .ac-door__line,
 .is-play .ac-door > .ac-door__list,
@@ -751,36 +1666,12 @@ a.ac-sib:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
 .is-play .ac-door--sc > .ac-door__b::before { animation: ac-drawy 700ms var(--ease-out) calc(var(--ac-d0, 0ms) + 200ms) both; }
 .is-play .ac-door__foot::before { animation: ac-drawx 900ms var(--ease-out) calc(var(--ac-d0, 0ms) + 500ms) both; }
 .is-play .ac-door__foot > * { animation: ac-fade 500ms var(--ease-out) calc(var(--ac-d0, 0ms) + 800ms) both; }
-
-/* ── 12.11 · tablet (≤1023) and phone (≤767) — ONE shared composition, so no page restyles a
-   kit piece to make it fit. The breakpoints are production's (km-kit.css §11) and the story
-   map's (§1.9 ≤767), not the homepage frags' 760.
-   The mockup stage itself is a fixed 1440 (base.css body width = --stage; ipage.py zooms it),
-   so mk.mjs shots and the stitched pages are judged at 1440. These rules are what ports to
-   production, what a page's own phone drawing (.ac-band__svg--sm) must sit in, and what a
-   phone preview shows (set --stage / --margin / --gutter to the phone's values).
-   The stitched pages (html.km-home: a 1440 stage zoomed to the viewer) skip these rules, so a
-   phone opening a stitched page sees the 1440 composition zoomed, never a phone layout
-   squeezed into a 1440 stage. Guard your own phone rules the same way.
-   TRAP: never display:none (or a new animation-name) on anything with an entrance. mk.mjs's
-   full-height capture briefly matches small widths, which restarts that entrance and leaves
-   it blank in the 1440 shot. Hide with visibility, as every rule below does.               */
+/* their tablet and phone composition */
 @media (max-width: 1023px) {
-  :root:not(.km-home) { --ac-nav-h: 64px; --ac-int-h1: 64px; --ac-door-xl: 52px; }
-  :root:not(.km-home) .ac-nav__menu { visibility: hidden; }   /* the live bar is production's Navbar: menu button + sheet */
-  :root:not(.km-home) .ac-head.ac-ihead > .ac-statement { grid-column: 1 / -1; }
-  :root:not(.km-home) .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 9; }
+  :root:not(.km-home) { --ac-door-xl: 52px; }
   :root:not(.km-home) .ac-head.ac-ihead > .ac-facts { grid-column: 1 / span 9; grid-row: 5; align-self: start; margin: 40px 0 0; }
-  /* band callouts move with the frame (frame units) but their 14px labels do not shrink, so
-     below 1024 they give way to the keyed list (the figcaption, made visible) */
   :root:not(.km-home) .ac-band .ac-flag, :root:not(.km-home) .ac-band .ac-callout, :root:not(.km-home) .ac-band .ac-dim { visibility: hidden; }
   :root:not(.km-home) .ac-band__key { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; margin-top: 20px; }
-  :root:not(.km-home) .ac-shead > .ac-h3, :root:not(.km-home) .ac-shead--statement > .ac-statement { grid-column: 1 / -1; }
-  :root:not(.km-home) .ac-shead__lede { grid-column: 1 / span 9; }
-  :root:not(.km-home) .ac-ix__list { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-columns: auto; border-bottom: 0; }
-  :root:not(.km-home) .ac-ix__list > li, :root:not(.km-home) .ac-ix__list > li + li { box-shadow: inset 0 -1px 0 var(--line); }
-  :root:not(.km-home) .ac-ix__list > li > .ac-ix__a { padding-left: 0; }
-  /* Doors: the right-hand half drops under the left, foot last */
   :root:not(.km-home) .ac-door--d1 > .ac-door__line, :root:not(.km-home) .ac-door--d3 > .ac-door__list, :root:not(.km-home) .ac-door--sc > .ac-door__a { grid-column: 1 / -1; }
   :root:not(.km-home) .ac-door--d1 > .ac-door__side, :root:not(.km-home) .ac-door--d3 > .ac-door__gate, :root:not(.km-home) .ac-door--sc > .ac-door__b { grid-column: 1 / span 9; grid-row: 3; margin-top: 48px; }
   :root:not(.km-home) .ac-door:not(.ac-head) > .ac-door__foot { grid-row: 4; }
@@ -790,42 +1681,19 @@ a.ac-sib:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
   :root:not(.km-home) .ac-sibs { grid-template-columns: minmax(0, 1fr); row-gap: 20px; }
 }
 @media (max-width: 767px) {
-  :root:not(.km-home) { --ac-int-h1: 40px; --ac-door-line: 28px; --ac-door-xl: 40px; --ac-int-end: 72px; }
-  /* headlines wrap (production does the same); the line masks still rise */
-  :root:not(.km-home) .ac-ihead .ac-line, :root:not(.km-home) .ac-shead .ac-line, :root:not(.km-home) .ac-door .ac-line { white-space: normal; }
+  :root:not(.km-home) { --ac-door-line: 28px; --ac-door-xl: 40px; }
+  :root:not(.km-home) .ac-door .ac-line { white-space: normal; }
   :root:not(.km-home) .ac-ihead > .ac-labelrow { flex-wrap: wrap; row-gap: 8px; }
-  :root:not(.km-home) .ac-head.ac-ihead { padding-top: 24px; }
-  :root:not(.km-home) .ac-head.ac-ihead > .ac-statement, :root:not(.km-home) .ac-head.ac-door--d2 > .ac-statement { margin-top: 24px; }
-  :root:not(.km-home) .ac-head.ac-ihead > .ac-lede, :root:not(.km-home) .ac-head.ac-ihead > .ac-facts { grid-column: 1 / -1; }
-  :root:not(.km-home) .ac-head.ac-ihead > .ac-lede { font-size: 17px; }
-  :root:not(.km-home) .ac-head.ac-ihead > .ac-facts { margin-top: 32px; }
+  :root:not(.km-home) .ac-head.ac-door--d2 > .ac-statement { margin-top: 24px; }
+  :root:not(.km-home) .ac-head.ac-ihead > .ac-facts { grid-column: 1 / -1; margin-top: 32px; }
   :root:not(.km-home) .ac-facts .ac-spec > dt { min-width: 0; }
-  /* band: the page's own phone drawing (callouts are already the keyed list, see ≤1023) */
   :root:not(.km-home) .ac-band { margin-top: 48px; }
-  /* the phone frame takes the phone drawing's own proportions: --sm-w × --sm-h (its viewBox) */
   :root:not(.km-home) .ac-band__frame:has(> .ac-band__svg--sm) { aspect-ratio: var(--sm-w, 358) / var(--sm-h, 240); }
   :root:not(.km-home) .ac-band__frame:has(> .ac-band__svg--sm) > .ac-band__svg:not(.ac-band__svg--sm) { visibility: hidden; }
   :root:not(.km-home) .ac-band__svg--sm { visibility: visible; }
-  /* IX: the clause row folds behind "Contents" (+/−) */
-  :root:not(.km-home) .ac-ix__btn {
-    display: flex; align-items: center; justify-content: space-between; width: 100%; height: 56px;
-    border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line);
-    font-weight: var(--ui-weight); font-size: 12px; line-height: 1; letter-spacing: var(--label-tracking);
-    text-transform: uppercase; color: var(--fg);
-  }
-  :root:not(.km-home) .ac-ix__btn:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
-  :root:not(.km-home) .ac-ix__list { grid-template-columns: minmax(0, 1fr); border-top: 0; }
-  :root:not(.km-home) .ac-ix__a { flex-direction: row; align-items: baseline; gap: 16px; padding: 14px 0; }
-  :root:not(.km-home) .ac-band--ix:has(.ac-ix__btn[aria-expanded="false"]) .ac-ix__list { visibility: hidden; height: 0; overflow: hidden; border: 0; }
-  /* section head */
-  :root:not(.km-home) .ac-shead > .ac-h3 { font-size: 28px; margin-top: 20px; }
-  :root:not(.km-home) .ac-shead__lede, :root:not(.km-home) .ac-shead--statement > .ac-shead__lede { grid-column: 1 / -1; font-size: 16px; }
-  /* document · readings */
   :root:not(.km-home) .ac-doc__head { flex-wrap: wrap; row-gap: 4px; padding: 12px 16px; }
   :root:not(.km-home) .ac-doc__body { padding: 24px 16px; }
   :root:not(.km-home) .ac-doc__foot { padding: 12px 16px; }
-  :root:not(.km-home) .ac-reading__fig { font-size: 40px; }
-  /* Doors */
   :root:not(.km-home) .ac-door--d1 > .ac-door__side, :root:not(.km-home) .ac-door--d3 > .ac-door__gate, :root:not(.km-home) .ac-door--sc > .ac-door__b { grid-column: 1 / -1; margin-top: 40px; }
   :root:not(.km-home) .ac-door--d1 > .ac-door__line, :root:not(.km-home) .ac-door--d3 > .ac-door__list, :root:not(.km-home) .ac-door--sc > .ac-door__a { margin-top: 24px; }
   :root:not(.km-home) .ac-door__foot { margin-top: 56px; }
@@ -833,7 +1701,7 @@ a.ac-sib:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
   :root:not(.km-home) .ac-door__row { grid-template-columns: 48px minmax(0, 1fr); column-gap: 12px; }
   :root:not(.km-home) .ac-door__row-t { font-size: 18px; }
   :root:not(.km-home) .ac-door__row-i { flex-direction: column; align-items: flex-start; gap: 4px; }
-  :root:not(.km-home) .ac-door__row-i > .ac-link { font-size: 12px; letter-spacing: .12em; }   /* one line at 298px, as fit/U's phone link */
+  :root:not(.km-home) .ac-door__row-i > .ac-link { font-size: 12px; letter-spacing: .12em; }
   :root:not(.km-home) .ac-door__quiet { grid-template-columns: minmax(0, 1fr); }
   :root:not(.km-home) .ac-door__quiet > li { padding: 20px 0; }
   :root:not(.km-home) .ac-door__quiet > li + li { box-shadow: inset 0 1px 0 var(--line); }
@@ -841,4 +1709,136 @@ a.ac-sib:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
   :root:not(.km-home) .ac-sib { grid-template-columns: 54px minmax(0, 1fr); column-gap: 16px; }
   :root:not(.km-home) .ac-sib__g { width: 54px; height: 36px; }
   :root:not(.km-home) .ac-sib__rel, :root:not(.km-home) .ac-sib__name { white-space: normal; }
+}
+
+/* ═══ §13 · motion & imagery (round 9) ═════════════════════════════════════════════════════
+   Spec: ROUND9-PLAN.md §3 (after the founder's Palantir and GoNimbly recordings). Behaviour is
+   in R/site/lib/turn.js (tool/home.py wires it into every stitched page, homepage and interior).
+   All of it only when motion is allowed: reduced motion = none of it (no panel, no split, no
+   rise); no script = no panel (it is hidden unless html carries a turn class); a safety timeout
+   lifts the panel whatever happens. TIMINGS are the custom properties below — one place; the
+   script reads the ones it needs from here.
+
+   13.1 THE TURN — on every page change and on entering the site: a graphite panel with a
+     slanted leading edge covers the page, the Kelwin mark flickers on piece by piece (K3, K2,
+     K1), and the panel sweeps off into the next page. ≈1.2s click to page. The mark is chrome
+     (a loader), never an illustration. States on <html>:
+       km-turning   leaving (an internal link was clicked): the panel sweeps in, the mark flickers on
+       km-arriving  the panel is up from the first paint (+ km-cold when entering the site cold:
+                    the mark flickers on; warm = arrived by a turn: the mark is already on)
+       km-lift      added once the hold is over and the fonts are ready: the mark flickers off,
+                    the panel sweeps off to the right. KMTurn.open resolves here and the slot
+                    boot starts the page's entrances.
+   13.2 THE WRITE-IN — the interior PAGE h1 (.ac-ihead > h1.ac-statement; only it — every other
+     head keeps the kit's rise, and reading copy never writes) writes itself in, letter by letter,
+     left to right, each letter arriving in three hard-stepped fragments (a wipe from its own right
+     edge, 40ms a step), ≈21ms apart, as the panel lifts. ONE PEN (coherence pass, judged by film
+     in qa/r9-coherence/kit/wr/): a set line starts only when the last letter of the line before
+     has landed — the letter order skips ceil(dur / step) − 1 places at each line start
+     (--ac-write-line: 1) — and a letter takes 120ms instead of 240, so about six letters are in
+     flight instead of eleven and a two-line h1 lands in the same time as before (The Lab: 843 →
+     828ms; a three-line h1 ≈ 90ms later). It never alters the set type (§7 b): the script
+     measures every glyph as set and holds each letter there (its kerning given back as a margin),
+     locks the set type's line breaks while it plays (a <br class="ac-br"> where each measured line
+     starts, and .is-writing keeps the lines unbreakable — so a hyphen, a dash or a space can never
+     re-wrap mid-write), keeps nested spans (the .ac-accent) and their voice, keeps the h1's text
+     as its accessible name (aria-label; the letters are aria-hidden), and puts the authored DOM
+     back when the last letter lands (at once if the width changes). The rule, the lede, the
+     action and the plate follow the last letter (--ac-write-end, set by the script); the side
+     head's hairline draws down with the rule.
+   13.3 THE PLATE RISE — the head plate rises as a narrower rectangle and widens to the full
+     measure (already playing inside), after the write-in.
+   Everything else stays the kit's restrained entrances.
+   13.4 IMAGERY (a change to standing rules 5 and 6 — the founder's call, PROPOSED, not yet in
+     CLAUDE.md): frosted or graded footage in head plates, real team photographs on About. Never
+     stock people as the team, never AI-generated photographs, never a v4 photograph. Until real
+     footage exists a plate is either the one crop of the hero's frosted stand-in in use
+     (img/film-room.webp, left half only, never one of the hero's framings — the kit enforces
+     both, 12.4; Who We Work With only), tagged "Stand-in", or a SHOT CARD — the viewfinder
+     (.ac-plate--shot: + marks, the frame at the shot's aspect with its centre +, the slate, the
+     shot's name, how it is shot, a spec line — the shoot brief). No take numbers, no timecode,
+     no REC. Pictures live only in .km-film.                                                     */
+:root {
+  /* 13.1 the turn */
+  --km-turn-in: 260ms;        /* leaving: the panel sweeps across */
+  --km-turn-leave: 560ms;     /* leaving: click → the next page is requested (the mark is on by then) */
+  --km-turn-hold-cold: 420ms; /* entering cold: the mark flickers on and holds; then the lift */
+  --km-turn-hold-warm: 60ms;  /* arriving by a turn: the mark is already on */
+  --km-turn-gap: 180ms;       /* the lift: the mark flickers off, then the panel moves */
+  --km-turn-out: 340ms;       /* the lift: the panel sweeps off */
+  --km-turn-flick: 60ms;      /* between the mark's pieces (K3 → K2 → K1) */
+  --km-turn-slant: -10deg;    /* the panel's leading edge */
+  --km-turn-mark: 44px;
+  --km-turn-ease: cubic-bezier(.6, 0, .4, 1);
+  /* 13.2 the write-in */
+  --ac-write-d0: 120ms;       /* after the slot plays (the slot plays as the panel lifts) */
+  --ac-write-step: 21ms;      /* between letters */
+  --ac-write-dur: 120ms;      /* one letter's three fragments (coherence pass: 240 → 120, so one pen) */
+  --ac-write-line: 1;         /* one pen: a set line starts when the line before has landed (0: back to back) */
+  /* 13.3 the plate */
+  --ac-plate-d: 900ms;        /* without the write-in */
+  --ac-plate-after: 60ms;     /* after the last letter */
+  --ac-plate-t: 1000ms;
+}
+
+/* 13.1 · the turn — <div class="km-turn" data-surface="dark" aria-hidden="true"> (top of <body>) */
+.km-turn { position: fixed; inset: 0; z-index: 1000; pointer-events: none; visibility: hidden; overflow: hidden; }
+html.km-arriving .km-turn, html.km-turning .km-turn { visibility: visible; }
+.km-turn__panel {
+  position: absolute; top: -4%; bottom: -4%; left: -20%; width: 140%;
+  background: var(--panel-2); border-inline: 1px solid var(--line-2);   /* the slanted edges, a hairline */
+  transform: translateX(-110%) skewX(var(--km-turn-slant));
+}
+.km-turn__mark {
+  position: absolute; left: 50%; top: 50%; width: var(--km-turn-mark); height: var(--km-turn-mark);
+  margin: calc(var(--km-turn-mark) / -2) 0 0 calc(var(--km-turn-mark) / -2); fill: var(--fg);
+}
+.km-turn__mark .k { opacity: 0; }
+/* leaving */
+html.km-turning .km-turn__panel { animation: km-turn-in var(--km-turn-in) var(--km-turn-ease) both; }
+html.km-turning .km-turn__mark .k3 { animation: km-flick-on 160ms steps(1, end) calc(var(--km-turn-in) - var(--km-turn-flick)) both; }
+html.km-turning .km-turn__mark .k2 { animation: km-flick-on 160ms steps(1, end) var(--km-turn-in) both; }
+html.km-turning .km-turn__mark .k1 { animation: km-flick-on 200ms steps(1, end) calc(var(--km-turn-in) + var(--km-turn-flick)) both; }
+/* arriving: up from the first paint */
+html.km-arriving .km-turn__panel { transform: translateX(0) skewX(var(--km-turn-slant)); }
+html.km-arriving .km-turn__mark .k { opacity: 1; }
+html.km-arriving.km-cold .km-turn__mark .k3 { animation: km-flick-on 160ms steps(1, end) 0ms both; }
+html.km-arriving.km-cold .km-turn__mark .k2 { animation: km-flick-on 160ms steps(1, end) var(--km-turn-flick) both; }
+html.km-arriving.km-cold .km-turn__mark .k1 { animation: km-flick-on 200ms steps(1, end) calc(2 * var(--km-turn-flick)) both; }
+/* the lift */
+html.km-arriving.km-lift .km-turn__mark .k { animation: km-flick-off 220ms steps(1, end) both; }
+html.km-arriving.km-lift .km-turn__panel { animation: km-turn-out var(--km-turn-out) var(--km-turn-ease) var(--km-turn-gap) both; }
+@keyframes km-turn-in { from { transform: translateX(-110%) skewX(var(--km-turn-slant)); } to { transform: translateX(0) skewX(var(--km-turn-slant)); } }
+@keyframes km-turn-out { from { transform: translateX(0) skewX(var(--km-turn-slant)); } to { transform: translateX(115%) skewX(var(--km-turn-slant)); } }
+@keyframes km-flick-on { 0% { opacity: 0; } 25% { opacity: .9; } 50% { opacity: .2; } 75%, 100% { opacity: 1; } }
+@keyframes km-flick-off { 0% { opacity: 1; } 30% { opacity: .15; } 55% { opacity: .8; } 80%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .km-turn { display: none !important; } }
+
+/* 13.2 · the write-in — the script splits each word into .ac-w > .ac-ch letters (--k = order),
+   puts a <br class="ac-br"> where each set line starts, and adds .ac-write + .is-writing to the
+   h1 (.is-writing goes when the set type is back), .is-write to the head and its section */
+.ac-w { white-space: nowrap; }
+.ac-ch { display: inline-block; white-space: pre; }
+:root .ac-ihead > h1.ac-statement.is-writing .ac-line { white-space: nowrap; }   /* the measured lines, locked */
+.is-play .ac-ihead > .ac-statement.ac-write .ac-line > span { animation: none; }
+.is-play .ac-ihead > .ac-statement.ac-write .ac-ch {
+  animation: ac-write var(--ac-write-dur) steps(3, jump-start) calc(var(--ac-write-d0) + var(--k, 0) * var(--ac-write-step)) both;
+}
+@keyframes ac-write { from { clip-path: inset(-30% -20% -40% 100%); } to { clip-path: inset(-30% -20% -40% -20%); } }
+/* what follows the h1 waits for its last letter */
+.is-play .ac-ihead.is-write > .ac-rule { animation-delay: calc(var(--ac-write-end, 900ms) - 120ms); }
+.is-play .ac-ihead.is-write > .ac-lede { animation-delay: var(--ac-write-end, 900ms); }
+.is-play .ac-ihead.is-write > .ac-doors, .is-play .ac-ihead.is-write > .ac-facts { animation-delay: calc(var(--ac-write-end, 900ms) + 100ms); }
+/* the side head's hairline draws down with the rule (the kit's rise without the write-in) */
+.is-play .ac-head.ac-ihead--side::after { animation: ac-drawy 700ms var(--ease-out) calc(var(--ac-d0, 0ms) + 400ms) both; }
+.is-play .ac-head.ac-ihead--side.is-write::after { animation-delay: calc(var(--ac-write-end, 900ms) - 160ms); }
+.ac-int.is-write { --ac-band-d: calc(var(--ac-write-end, 900ms) + var(--ac-plate-after)); }   /* a round-8 band waits too */
+
+/* 13.3 · the plate rise */
+.is-play .ac-int > .ac-plate { animation: ac-plate-rise var(--ac-plate-t) var(--ease-out) var(--ac-plate-d) both; }
+.is-play .ac-int.is-write > .ac-plate { animation-delay: calc(var(--ac-write-end, 900ms) + var(--ac-plate-after)); }
+@keyframes ac-plate-rise {
+  from { clip-path: inset(22% 18% 0 18%); transform: translateY(48px); opacity: 0; }
+  30% { opacity: 1; }
+  to { clip-path: inset(0 0 0 0); transform: none; opacity: 1; }
 }

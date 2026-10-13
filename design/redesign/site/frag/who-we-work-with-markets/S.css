@@ -1,66 +1,32 @@
-/* ── who-we-work-with · markets · S — where it breaks, by market (§4.6, LG on paper) ───────────
-   The page's one paper moment. A document-like split: the head holds cols 1–4 (■ label, the
-   one-line 42px heading set over three lines, the lede); the kit ledger holds cols 5–12, one
-   row per market: index · market · its two traits as chips · toggle. One row open at a time,
-   I·01 at rest. An open row shows the line and nothing else (his FAQ note: no sub-headings
-   inside an open row). Type and hairlines only.                                              */
-
-.km-who-we-work-with-markets-S__body { align-items: start; }
-.km-who-we-work-with-markets-S__h { margin-top: 28px; }
-.km-who-we-work-with-markets-S__hl { display: block; }   /* three phrases, three lines (it reads by phrase) */
-.km-who-we-work-with-markets-S__lede { margin-top: 24px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 30ch; }
-
-/* the ledger starts on the heading's first line */
-.km-who-we-work-with-markets-S__lg {
-  margin-top: 44px;
-  --ac-row-cols: 72px minmax(0, 1fr) 312px 20px;
-  --ac-row-indent: calc(72px + var(--gutter));
+/* ── who-we-work-with-markets · S — round 9 ──
+   Kit claim head (§12.6, 72px: the section's one dominant element; no label over it), then the
+   six markets as an unruled index on the 12-column grid: the name (32px display) in cols 1–5,
+   one sentence in cols 6–11 at 20px, one voice (--fg) — each in its own shape, so the six never
+   read as a template. Everything under the claim steps down at least two sizes. No rules, codes,
+   chips or toggles. */
+.km-who-we-work-with-markets-S__head > .ac-claim:first-child { margin-top: 0; }
+.km-who-we-work-with-markets-S__ix {
+  margin: 72px 0 0; padding: 0; list-style: none;
+  display: grid; row-gap: 44px;
+  --d: 240ms;   /* the kit cascade (.ac-cascade): entries rise 80ms apart */
 }
-.km-who-we-work-with-markets-S .ac-row__head:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
-.km-who-we-work-with-markets-S__chips { display: flex; flex-wrap: wrap; gap: 8px; }   /* one row: the column fits the widest pair */
-.km-who-we-work-with-markets-S__p { font-size: var(--ac-body); line-height: 1.55; color: var(--fg); max-width: 50ch; text-wrap: pretty; }
-.km-who-we-work-with-markets-S__p--scope { margin-top: 10px; font-size: var(--ac-support); color: var(--fg-2); }
-
-/* ── entrance: label, heading, lede, then the six rows cascade; I·01 opens after them (JS:
-   held in .is-pre until ~1.2s, as the homepage fit ledger). Its open height is kept from the
-   first frame, so nothing below moves. ── */
-.km-who-we-work-with-markets-S .ac-row__in { transition: opacity 360ms var(--ease-inout), transform 360ms var(--ease-out); }
-.km-who-we-work-with-markets-S .ac-row.is-pre .ac-row__in { opacity: 0; transform: translateY(-8px); }
-.km-who-we-work-with-markets-S .ac-row.is-pre .ac-toggle::after { transform: rotate(90deg); }
-.is-play .km-who-we-work-with-markets-S .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
-.is-play .km-who-we-work-with-markets-S__h { animation: ac-up 600ms var(--ease-out) 80ms both; }
-.is-play .km-who-we-work-with-markets-S__lede { animation: ac-up 600ms var(--ease-out) 240ms both; }
-.is-play .km-who-we-work-with-markets-S__lg { animation: ac-fade 400ms var(--ease-out) 300ms both; }
-.is-play .km-who-we-work-with-markets-S__lg > .ac-row { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(380ms + var(--i, 0) * 80ms); }
-
-/* ── small desktop (1024–1279): the split stays, but the ledger's 8 columns can't carry the
-   312px trait column beside a market name, so the traits drop under the name (as on phones)
-   and every name keeps at least two-line room. Tablet (≤1023): the head spans the width over
-   the ledger, which is wide enough for the trait column again. Phone (≤767): the traits drop
-   under the market name; the toggle stays on the name's line. ── */
-@media (min-width: 1024px) and (max-width: 1279px) {
-  :root:not(.km-home) .km-who-we-work-with-markets-S__lg { --ac-row-cols: 72px minmax(0, 1fr) 20px; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S .ac-row__head { row-gap: 12px; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S .ac-row__head > .ac-idx { grid-row: 1; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__chips { grid-column: 2; grid-row: 2; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S .ac-row__head > .ac-toggle { grid-column: 3; grid-row: 1; }
+.km-who-we-work-with-markets-S__m {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: baseline;
 }
+.km-who-we-work-with-markets-S__name {
+  grid-column: 1 / span 5; padding-right: 24px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 32px; line-height: 1.12; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-who-we-work-with-markets-S__p { grid-column: 6 / span 6; font-size: var(--ac-lede); line-height: 1.5; color: var(--fg); max-width: 34em; text-wrap: pretty; }
+
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-who-we-work-with-markets-S__side { grid-column: 1 / -1; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__h { max-width: 16em; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__hl { display: inline; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__lede { max-width: 46ch; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__main { grid-column: 1 / -1; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__lg { margin-top: 40px; }
+  :root:not(.km-home) .km-who-we-work-with-markets-S__ix { margin-top: 56px; row-gap: 36px; }
+  :root:not(.km-home) .km-who-we-work-with-markets-S__name { grid-column: 1 / span 5; font-size: 26px; }
+  :root:not(.km-home) .km-who-we-work-with-markets-S__p { grid-column: 6 / span 7; font-size: 18px; }
 }
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-who-we-work-with-markets-S__h { font-size: 28px; margin-top: 20px; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__lede { font-size: 16px; margin-top: 16px; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__lg { --ac-row-cols: 44px minmax(0, 1fr) 20px; --ac-row-indent: calc(44px + 16px); margin-top: 32px; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S .ac-row__head { column-gap: 16px; row-gap: 10px; padding-block: 18px; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S .ac-row__head > .ac-idx { grid-row: 1; align-self: baseline; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S .ac-row__head > .ac-h4 { font-size: 19px; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__chips { grid-column: 2; grid-row: 2; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S .ac-row__head > .ac-toggle { grid-column: 3; grid-row: 1; }
-  :root:not(.km-home) .km-who-we-work-with-markets-S__p { font-size: 16px; }
+  :root:not(.km-home) .km-who-we-work-with-markets-S__ix { margin-top: 40px; row-gap: 28px; }
+  :root:not(.km-home) .km-who-we-work-with-markets-S__name { grid-column: 1 / -1; padding-right: 0; font-size: 22px; }
+  :root:not(.km-home) .km-who-we-work-with-markets-S__p { grid-column: 1 / -1; margin-top: 8px; font-size: 17px; }
 }

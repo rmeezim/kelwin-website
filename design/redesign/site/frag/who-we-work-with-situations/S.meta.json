@@ -1,30 +1,31 @@
 {
-  "title": "Three case files",
-  "direction": "A×C · Round 8 · /who-we-work-with §1 (CF)",
-  "summary": "The page's strongest content moved to the top (it sat ~6,600px down on phones): the three situations as wide case-file rows, each with the header's elevation in miniature, the story in the buyer's own terms, what changes, and the layer that breaks first, linked to its page.",
-  "reference": {
-    "site": "Beside (problem list), via Mobbin",
-    "mobbin_url": "https://mobbin.com/sites/sections/d19fc233-a9d7-460f-86f0-06df400c7655",
-    "ref_file": "refs/who-we-work-with-situations-S.webp",
-    "borrowed": "A numbered list of situations where each row carries its own resolution at the right edge, so the reader scans the left (who) and the right (what changes) before reading the middle.",
-    "kelwin": "Three zones on the real 12-column grid, a hairline per row, mono index, a 32px display title, and a drawn mini elevation per row that repeats the header's fracture, so the band is the map and these rows its legend. No cards, no photos, no audit cue per row."
-  },
-  "motion": [
-    "entrance: the label fades, the three rows rise 140ms apart, then the closing line. Reveal only: a still beat after the header's moment.",
-    "ambient: none.",
-    "interaction: hover or keyboard focus inside a row brightens its mini elevation and moves the header's red fracture to that situation (km:wwww-situation on document); leaving returns it to 01. The 'Breaks first' / 'Spreads to' links go to the capability pages.",
-    "on the live site: plays once as it scrolls into view. Reduced motion: final state."
-  ],
-  "demoMs": 1800,
-  "story": "Delivers the header's promise straight away: the three situations, told from inside, each with what changes and where it breaks. The minis tie every row back to the chart; the closing line ('The audit decides which layer comes first, before anything is built.') keeps 'breaks first' from reading as a prescription, and hands the reader on to the markets.",
-  "copy": [
-    "[K] Vignettes 01 and 03 (tag, title, body, 'What changes'), from FirmFit.tsx",
-    "[K] Vignette 02 title and body after its first sentence; [R] first sentence 'The team is hired, the tools are paid for, and the pipeline chart has been flat for four quarters.'",
-    "[R] 'First install' → 'Breaks first' / 'Spreads to' with the three layer names linked (GTM Infrastructure linked from this page for the first time)",
-    "[N] Section foot 'The audit decides which layer comes first, before anything is built.'",
-    "Presentation only: the 'What changes:' prefix of each turn is set as the mono key above it, so the sentence starts with a capital ('Your instincts…', 'The resets stop…', 'The category gets…'); wording otherwise verbatim.",
-    "Cut: the three per-row audit cues ('Sounds like your Tuesday? Start the audit' etc.)"
-  ],
-  "phone": "≤1023: each row recomposes — who becomes a header strip (index · name · a 61×40 mini, one line), the story spans cols 1–10, and the turn sits under it in two columns (what changes · where it breaks). ≤767: one column in reading order (strip, title at 26px, body 16px, what changes, then 'Breaks first' / 'Spreads to' on their own hairline, each key and its link on one line, the kit's 13px link as-is; at ≈320 a link drops under its key rather than shrink); the closing line at 17px. Checked at 320, 390, 834, 1024, 1180.",
-  "notes": "The section seam above already rules the page, so the label leads straight into the first case file (no second hairline under it). The row ids are the page anchors from the story map's contract (#founder-seller · #plateaued-motion · #misheard-category), not km-prefixed, so the header's elevations and the homepage can deep-link them. No red in this section: the minis' fractures stay ink (their outline is square, as the band's); the header carries the red. Kit gap: .ac-link has no focus ring in the kit; this fragment adds the kit .ac-go's 1px ring (kitNeeds)."
+ "title": "Three buyer lines",
+ "direction": "A×C · Round 9 · /who-we-work-with §1 (the page's one ruled list)",
+ "summary": "The three situations as the kit ledger that opens in place: the buyer's own line at 64px is each row (three statements in one voice, two lines each — the section's dominant element), the situation's name beside it in the key voice, and the open row's story, then what changes (no key — the sentence says it, set in the answer voice), then one plain line saying where it breaks first and spreads (both layers linked).",
+ "reference": {
+  "site": "GoNimbly solutions list (refs-r9/frames/detail-solutions-list.png) · the kit ledger (§6)",
+  "borrowed": "A short list where one item is open and shows its description, the rest stay a single line you can open.",
+  "kelwin": "The rows are the buyer's sentences, set large in Mona display; the kit's hairlines and +/−; the name in .ac-key (Mona 14, sentence case) in cols 1–2, the line in cols 3–11; no index, thumbnail, mono key, run-in key or red."
+ },
+ "motion": [
+  "entrance: the label fades, the three rows rise 80ms apart (kit cascade) — the page's first body play-once moment.",
+  "ambient: none.",
+  "interaction: rows are buttons (aria-expanded / aria-controls), one open at a time, clicking the open row closes it; closed panels are inert. Closed lines rest in --fg-2 and light to --fg on hover or focus. Arriving on #founder-seller · #plateaued-motion · #misheard-category (or a later hash change) opens that row: the other rows fold at once (.is-instant, no transition), then the row is aligned to its 112px scroll margin, net of the kit cascade's 12px entrance offset — tested on the stitch (qa/r9-pages/wwww/r9fix/deep.mjs): every anchor settles at 112 (100 = 112 × 0.889 on a zoomed 1280 stage), landing and hashchange, with and without reduced motion.",
+  "on the live site: plays once as it scrolls into view. Reduced motion: final state, the founder-seller open."
+ ],
+ "demoMs": 1400,
+ "story": "Delivers the homepage link's promise ('Three situations, told from inside') right under the head: a buyer reads three sentences in his own voice, opens the one that is his, and learns what changes and which layer breaks first — linked to that layer's page.",
+ "copy": [
+  "[K] label 'Three situations' (the homepage fit link's words)",
+  "[K] names and lines, verbatim: 'The founder-seller · You’re still the best rep the company has — and it’s a trap.' · 'The plateaued motion · The playbook that got you here has stopped compounding.' · 'The misheard category · Buyers keep filing you next to the wrong competitors.'",
+  "[R] founder-seller story: '…the important emails get written at 11pm…' and 'Revenue is real; it just doesn’t survive your absence.' cut (11pm belongs to the letter, plan §2; the other sentence restates the h1)",
+  "[R] plateaued story, first sentence: round 8 'The team is hired, the tools are paid for, and the pipeline chart has been flat for four quarters.' → 'The team is hired and the tools are paid for.' ('flat for four quarters' belongs to the letter, plan §2); the rest [K] verbatim",
+  "[K] misheard story verbatim (round 9 fix: restored '— because the market maps you onto whatever it already knows' and 'compare you against')",
+  "[K] what changes, verbatim except the 'What changes:' run-in, which is gone (plan §2: a key repeated on every row folds into the sentence): 'Your instincts get written down as a system — a language other people can carry into rooms you’re not in.' · 'The resets stop. Signal, language, and learning start carrying forward — the quarter deposits instead of evaporating.'",
+  "[R] misheard what changes: 'the category gets architected — the problem named your way, so the comparison happens on your terms.' → 'The category gets architected. The problem is named your way, and the comparison happens on your terms.' (plan §2: no ', so …' tails) — for the founder's yes",
+  "[R] 'Breaks first in X, then spreads to Y.' as one plain sentence, each layer an underlined inline link (no arrow, no mono keys); misheard: 'Breaks first in Narrative Systems.'",
+  "Cut: the 01/02/03 indexes, the mini elevations, the 'Breaks first / Spreads to' mono keys and caps links, the section foot, the km:wwww-situation link to the retired break chart, the 'What changes:' run-in."
+ ],
+ "phone": "≤1023: the name sits over the line, the line takes cols 1–11 at 44px, the toggle rides the name; the open row runs story (cols 1–7) then the turn (cols 8–12, 18px). ≤767: the line spans the full width at 28px, story 17px, then what changes (17px) and the breaks line (16px), one column. Checked 834 · 390 · 320: no overflow; text-wrap: pretty on the open row's three paragraphs.",
+ "notes": "The page's ONE ruled list; its last row carries no rule of its own (the markets seam closes it), so there is no empty ruled band between the sections. Words at rest: 98 (one row open). Three 64px statements in one voice are one element — a list of the buyer's lines, two lines each in cols 3–11 — and the rest steps down to 20/17px. Kit gap: an inline text link in running copy (underlined, no arrow) is built here (kit_requests). Coherence pass 3: the em-dash punchlines are rewritten as plain sentences: “You’re still the best rep the company has.”; “We write your instincts down as a language other people can carry into rooms you’re not in.”; “Signal, language and learning carry over from one quarter to the next.”; “The product is genuinely different, but the market maps you onto whatever it already knows.” Final check: the two other answers no longer open on clipped slogans (‘The resets stop.’, ‘The category gets architected.’); like the founder-seller's, each is now a plain sentence that says what we do: “We keep the signal, language and learning from each quarter and carry them into the next.” and “We design the category around the problem as you name it. Buyers then compare you on your terms.”"
 }

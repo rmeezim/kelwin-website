@@ -1,0 +1,85 @@
+/* ── about-cadence · S · how an engagement runs (round 9, #cadence) ────────────────────────
+   Replaces round 8's week (Mon 09:00 … Fri 15:00), which put one person's diary on a ruler as
+   if it were the client's. ROUND9-PLAN §9 / the lifecycle study: the claim (who you work
+   with: one named lead, no team count) is the section's one dominant element (64px); under it
+   the lifecycle in ONE strip, set as type (eight stops, the kit's drawn arrow between them —
+   the brand fonts carry no arrow glyph), and one quiet destination that keeps the vocabulary
+   straight ("engagement" is the full system; a fixed-scope project runs a shorter path, on
+   /projects); then the cadence, set as type (no ruler: /audit owns the ten-day ruler, GTM
+   Intelligence the 13-week one), while we build and after the handover — with who runs the
+   after-handover rhythm said once. The whole section is a recommendation the founder has not
+   confirmed (Q7), so it carries one plain status, the kit's label-row status (12.2): "Draft, to
+   be confirmed". No clock times,
+   no internal rituals. Motion: the strip's stops arrive left to right, once.               */
+
+.km-about-cadence-S__head > .ac-claim { max-width: 17em; }
+
+/* the strip: one hairline above it, eight stops, an arrow centred in each gap. One row needs
+   about 1,140px of stops and gaps at 52, so the gap is stage-proportional (52 at 1440, 46 at
+   1280: one row still fits production's 1,166px measure there); below 1280 it folds (see 1024–1279) */
+.km-about-cadence-S__strip {
+  --gap: clamp(40px, calc(var(--stage) * 52 / 1440), 52px);
+  display: grid; grid-template-columns: repeat(7, max-content) minmax(0, 1fr); column-gap: var(--gap);
+  margin-top: 80px; padding-top: 28px; border-top: 1px solid var(--line-2);
+}
+.km-about-cadence-S__stop { position: relative; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.km-about-cadence-S__stop + .km-about-cadence-S__stop::before {
+  content: ""; position: absolute; top: 8px; left: calc(var(--gap) / -2 - 6.5px); width: 13px; height: 11px;
+  background-color: var(--fg-3);
+  -webkit-mask: var(--km-cad-arr) center / contain no-repeat; mask: var(--km-cad-arr) center / contain no-repeat;
+  --km-cad-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+}
+.km-about-cadence-S__sn { font-weight: var(--ui-weight); font-size: 20px; line-height: 26px; color: var(--fg); }
+.km-about-cadence-S__sd { font-size: var(--ac-support); line-height: 1.45; color: var(--fg-2); }
+/* the one quiet destination under the strip */
+.km-about-cadence-S__proj { margin: 36px 0 0; font-size: var(--ac-support); line-height: 1.5; }
+
+/* the cadence: two groups, set as type */
+.km-about-cadence-S__rhythm {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start;
+  margin-top: 88px;
+}
+.km-about-cadence-S__grp:first-child { grid-column: 1 / span 5; }
+.km-about-cadence-S__grp:last-child { grid-column: 7 / span 6; }
+.km-about-cadence-S__gt { font-weight: var(--ui-weight); font-size: var(--ac-h4); line-height: 1.25; color: var(--fg); }
+.km-about-cadence-S__who { margin: 8px 0 0; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
+.km-about-cadence-S__dl { display: grid; row-gap: 18px; margin: 28px 0 0; }
+.km-about-cadence-S__row { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: var(--gutter); align-items: baseline; }
+.km-about-cadence-S__row > dt { margin: 0; }
+.km-about-cadence-S__row > dd { margin: 0; font-size: var(--ac-body); line-height: 1.5; color: var(--fg); max-width: 40ch; text-wrap: pretty; }
+
+/* ── entrance: the stops arrive left to right (the section's one moment); the cadence follows ── */
+.is-play .km-about-cadence-S__strip { animation: ac-fade 400ms var(--ease-out) 380ms both; }
+.is-play .km-about-cadence-S__stop { animation: ac-up 600ms var(--ease-out) calc(520ms + var(--i, 0) * 110ms) both; }
+.is-play .km-about-cadence-S__proj { animation: ac-fade 500ms var(--ease-out) 1400ms both; }
+.is-play .km-about-cadence-S__rhythm { animation: ac-up 700ms var(--ease-out) 1500ms both; }
+
+/* ── small desktop (1024–1279): eight stops no longer fit one row (a 933px measure at 1024 in
+   production), so the strip takes the tablet's fold — two rows of four, the row-start arrow
+   hidden — while the two cadence groups keep their desktop columns. Nothing runs off the side. ── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root:not(.km-home) .km-about-cadence-S__strip { --gap: 40px; grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 32px; margin-top: 64px; }
+  :root:not(.km-home) .km-about-cadence-S__stop:nth-child(4n + 1)::before { visibility: hidden; }
+}
+/* ── tablet (≤1023): the strip folds to two rows of four; the groups stack ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-about-cadence-S__strip { --gap: 40px; grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 32px; margin-top: 56px; }
+  :root:not(.km-home) .km-about-cadence-S__stop:nth-child(4n + 1)::before { visibility: hidden; }
+  :root:not(.km-home) .km-about-cadence-S__proj { margin-top: 32px; }
+  :root:not(.km-home) .km-about-cadence-S__rhythm { margin-top: 64px; row-gap: 48px; }
+  :root:not(.km-home) .km-about-cadence-S__grp:first-child,
+  :root:not(.km-home) .km-about-cadence-S__grp:last-child { grid-column: 1 / -1; }
+}
+/* ── phone (≤767): the strip reads down; the arrow turns to point down between stops ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-about-cadence-S__strip { grid-template-columns: minmax(0, 1fr); row-gap: 30px; margin-top: 40px; padding-top: 20px; }
+  :root:not(.km-home) .km-about-cadence-S__stop { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 12px; row-gap: 2px; }
+  :root:not(.km-home) .km-about-cadence-S__stop:nth-child(4n + 1)::before { visibility: visible; }
+  :root:not(.km-home) .km-about-cadence-S__stop + .km-about-cadence-S__stop::before { top: -22px; left: 0; transform: rotate(90deg); }
+  :root:not(.km-home) .km-about-cadence-S__sn { font-size: 18px; line-height: 24px; }
+  :root:not(.km-home) .km-about-cadence-S__proj { margin-top: 28px; }
+  :root:not(.km-home) .km-about-cadence-S__rhythm { margin-top: 48px; row-gap: 40px; }
+  :root:not(.km-home) .km-about-cadence-S__dl { margin-top: 20px; row-gap: 16px; }
+  :root:not(.km-home) .km-about-cadence-S__row { grid-template-columns: minmax(0, 1fr); row-gap: 2px; }
+  :root:not(.km-home) .km-about-cadence-S__row > dd { font-size: 16px; }
+}

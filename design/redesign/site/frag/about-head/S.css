@@ -1,104 +1,52 @@
-/* ── about-head · S · the firm behind the signature ─────────────────────────────────────
-   The approved Specimen-sheet header (kit §12.2), with the page's own band: MX, the rule
-   matrix. Rows are the five rules the firm runs by; columns are the method's phases, laid
-   out as on the homepage gantt (Diagnose · Architect · Install, then Handover as the datum
-   line, then Calibrate, which keeps running). A filled square seats where each rule binds.
-   The one red is 05 × Handover: the exit test, where the homepage handover lands.
-   Axis words are HTML at fixed sizes placed in frame units (--u), so they stay legible as
-   the frame scales; the mesh, the cells and the lanes are the SVG.                        */
+/* ── about-head · S · the firm behind the signature (round 9, coherence pass 2) ──────────────
+   The round-9 interior head (kit §12.3), cast for About: 88px, two lines ("The firm behind /
+   the signature."; coherence pass 3 — the three-line cast left "behind" alone), the accent the
+   one word "signature.", a phone floor of 44 (38 below 360) so line 1 holds, stacked, no kicker, no head
+   action (the plate carries the page's first way on). Its plate is the kit's picture area
+   (.ac-plate--pictures, 12.4) as the lead decided (D1): one slate for the set, then ONE row the
+   page sets itself — the founder's portrait (.ac-shot--sm at 4 : 5, cols 1–4, its brief across
+   the top at 28px) and one "A working session" card (16 : 9, cols 5–12, the kit's brief in the
+   frame's left half) — both --about-pics-h tall; under the portrait, the person it shows: his
+   name at 64px (under the h1 at every width: 56 on tablets, 36 on phones), his background line and the way back to the letter.
+   No "next hire" slot. The plate rises as one (kit §13).                                       */
 
-/* the kit's nav menu is visibility:hidden below 1024 but keeps its 1440 width (production swaps
-   in its own menu button); clip it so the mockup never scrolls sideways at phone widths */
-.km-about-head-S { overflow-x: clip; }
-.km-about-head-S__frame { --keep-x: 1074; }
+/* the h1's phone floor (kit 12.3 PHONE FLOOR) */
+.km-about-head-S .ac-head.ac-ihead { --ac-h1-floor: 44; --ac-h1-floor-xs: 38; }   /* 38 below 360: "The firm behind" holds a 288px line */
+/* the lede sets even when it wraps (no one-word widow) */
+.km-about-head-S .ac-ihead > .ac-lede { text-wrap: balance; }
 
-/* axis words */
-.km-about-head-S__corner,
-.km-about-head-S__ph {
-  position: absolute; top: calc(12 * var(--u)); margin: 0;
-  color: var(--fg-2); pointer-events: none;
+.km-about-head-S__pics { --about-pics-h: 480px; --ac-shot-name-sm: 28px; }
+.km-about-head-S__pics.ac-plate--pictures { grid-template-rows: auto var(--about-pics-h) auto; }
+.km-about-head-S__pics.ac-plate--pictures > .km-about-head-S__portrait { grid-column: 1 / span 4; grid-row: 2; height: var(--about-pics-h); }
+.km-about-head-S__pics.ac-plate--pictures > .km-about-head-S__session { grid-column: 5 / span 8; grid-row: 2; height: var(--about-pics-h); }
+.km-about-head-S__who { grid-column: 1 / span 4; grid-row: 3; padding-top: 16px; }
+.km-about-head-S__name {
+  display: block; overflow: hidden; padding-block: .06em .14em; margin-block-end: -.14em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 64px; line-height: .95; letter-spacing: var(--display-tracking); color: var(--fg);
 }
-.km-about-head-S__corner { left: 0; color: var(--fg-3); }
-.km-about-head-S__ph { left: calc(var(--x) * var(--u)); transform: translateX(-50%); }
-.km-about-head-S__ph--datum { color: var(--fg); }
+.km-about-head-S__bg { margin-top: 20px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg); max-width: 26em; text-wrap: pretty; }
+.km-about-head-S__nb { white-space: nowrap; }   /* never break the line at the hyphen */
+.km-about-head-S__go { margin: 20px 0 0; }
 
-.km-about-head-S__rule {
-  position: absolute; left: 0; top: calc(var(--y) * var(--u)); transform: translateY(-50%); margin: 0;
-  display: flex; align-items: baseline; gap: 18px; white-space: nowrap; pointer-events: none;
-}
-.km-about-head-S__rule > .ac-idx { width: 22px; }
-.km-about-head-S__rt { font-size: var(--ac-support); line-height: 1.3; color: var(--fg-2); }
-.km-about-head-S__rule--05 .km-about-head-S__rt { color: var(--fg); }
-
-/* the dotted lane after handover carries the method's own words */
-.km-about-head-S__keepcap {
-  position: absolute; left: calc(var(--keep-x) * var(--u)); top: calc(306 * var(--u));
-  transform: translateY(calc(-100% - 8px)); margin: 0;
-  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 1; letter-spacing: var(--ac-track-anno);
-  text-transform: uppercase; color: var(--fg-2); white-space: nowrap; pointer-events: none;
-}
-
-/* cells seat from their own centre */
-.km-about-head-S__cell { transform-box: fill-box; transform-origin: 50% 50%; }
-
-/* the keyed list: the drawing in words (screen readers at every width; visible ≤1023 as its
-   legend, and on phones it IS the composition: five rule rows, each with its phase chips) */
-.km-about-head-S__keyt { display: block; }
-.km-about-head-S__keyh { display: none; }   /* phones only (≤767); no entrance, so display is safe */
-.km-about-head-S__keys > li { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; column-gap: 12px; align-items: center; }
-.km-about-head-S__kt { color: var(--fg); }
-.km-about-head-S__kc { display: flex; flex-wrap: wrap; gap: 8px; }
-.km-about-head-S__chip { gap: 8px; padding-left: 7px; }
-.km-about-head-S__chip::before { content: ""; width: 7px; height: 7px; flex: none; background: var(--fg); }
-.km-about-head-S__chip--red::before { background: var(--accent); }
-
-/* ── entrance (only under .is-play): the warped mesh fades in and resolves (JS), the axis
-   words register, cells seat row by row, the red cell lands last ── */
-@keyframes km-about-head-S-seat { from { opacity: 0; transform: scale(.15); } to { opacity: 1; transform: none; } }
-.is-play .km-about-head-S__mesh { animation: ac-fade 500ms var(--ease-out) var(--ac-band-d) both; }
-.is-play .km-about-head-S__corner,
-.is-play .km-about-head-S__ph,
-.is-play .km-about-head-S__rule { animation: ac-fade 500ms var(--ease-out) 1050ms both; }
-.is-play .km-about-head-S__rule { animation-delay: calc(1080ms + var(--i, 0) * 60ms); }
-.is-play .km-about-head-S__cell { animation: km-about-head-S-seat 420ms var(--ease-out) var(--d, 2400ms) both; }
-.is-play .km-about-head-S__red { animation-duration: 520ms; }
-.km-about-head-S__ring { stroke: var(--fg-3); transform-box: fill-box; transform-origin: 50% 50%; }
-.is-play .km-about-head-S__ring { animation: km-about-head-S-seat 600ms var(--ease-out) 3300ms both; }
-.is-play .km-about-head-S__keep { animation: ac-fade 700ms var(--ease-out) 2650ms both; }
-.is-play .km-about-head-S__keepcap { animation: ac-fade 500ms var(--ease-out) 2800ms both; }
-
-/* ── tablet (≤1023): the frame scales; the rule titles give way to the keyed list below it
-   (codes and phase heads stay), as the kit does for flags. The lattice then takes the width
-   the titles freed: every x maps to 1312 + (x − 1312) × k, so the rows start just after the
-   codes (445 → 96) and Calibrate stays near the right edge. Rows, the 02 span and the dotted
-   lane scale from the right edge; stations, cells and the ring translate; the phase heads
-   move with their stations. Strokes stay 1px (non-scaling) and cells keep their size. ── */
+/* ── tablet (≤1023): the two cards side by side (5 + 7), each recomposed by the kit (brief, then
+   frame); the founder under the portrait ── */
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-about-head-S__frame { --k: 1.4025; }
-  :root:not(.km-home) .km-about-head-S__row,
-  :root:not(.km-home) .km-about-head-S__span,
-  :root:not(.km-home) .km-about-head-S__keep { transform-box: view-box; transform-origin: 1312px 0; scale: var(--k) 1; }
-  :root:not(.km-home) .km-about-head-S__st,
-  :root:not(.km-home) .km-about-head-S__cell,
-  :root:not(.km-home) .km-about-head-S__ring { translate: calc((var(--c) - 1312) * (var(--k) - 1) * 1px) 0; }
-  :root:not(.km-home) .km-about-head-S__ph { left: calc((1312 + (var(--x) - 1312) * var(--k)) * var(--u)); }
-  :root:not(.km-home) .km-about-head-S__rt,
-  :root:not(.km-home) .km-about-head-S__keepcap { visibility: hidden; }
-  :root:not(.km-home) .km-about-head-S__keyt { margin-bottom: 16px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 60ch; }
-  :root:not(.km-home) .km-about-head-S__keys { gap: 0; border-top: 1px solid var(--line-2); }
-  :root:not(.km-home) .km-about-head-S__keys > li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  :root:not(.km-home) .km-about-head-S__pics.ac-plate--pictures { grid-template-rows: none; }
+  :root:not(.km-home) .km-about-head-S__pics.ac-plate--pictures > .km-about-head-S__portrait { grid-column: 1 / span 5; grid-row: 2; height: auto; }
+  :root:not(.km-home) .km-about-head-S__pics.ac-plate--pictures > .km-about-head-S__session { grid-column: 6 / span 7; grid-row: 2; height: auto; }
+  :root:not(.km-home) .km-about-head-S__who { grid-column: 1 / span 9; grid-row: 3; padding-top: 8px; }
+  :root:not(.km-home) .km-about-head-S__name { font-size: 56px; }
 }
-/* ── phone (≤767): no 5×5 grid. The frame folds away (visibility + zero height: nothing with
-   an entrance is display:none) and the keyed list is the band: each rule, then its chips.
-   The sentence describes a drawing the phone doesn't show, so it stays for screen readers
-   only; one caption line carries the drawing's own axis words (Rule · Binds at) instead.
-   The rule titles stay: “01” beside a phase chip can't be read at a glance. The tenets
-   below drop their own “Binds at” chips on phones, so each binding is said once. ── */
+/* ── phone (≤767): one column — the portrait, the founder, then the working session ── */
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-about-head-S__frame { aspect-ratio: auto; height: 0; overflow: hidden; visibility: hidden; }
-  :root:not(.km-home) .km-about-head-S__key { margin-top: 0; }
-  :root:not(.km-home) .km-about-head-S__keyt { position: absolute; width: 1px; height: 1px; margin: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-  :root:not(.km-home) .km-about-head-S__keyh { display: block; margin-bottom: 12px; color: var(--fg-3); }
-  :root:not(.km-home) .km-about-head-S__keys > li { grid-template-columns: 40px minmax(0, 1fr); row-gap: 8px; padding: 12px 0; }
-  :root:not(.km-home) .km-about-head-S__kc { grid-column: 2; }
+  :root:not(.km-home) .km-about-head-S__pics.ac-plate--pictures > .km-about-head-S__portrait { grid-column: 1 / -1; grid-row: 2; }
+  :root:not(.km-home) .km-about-head-S__who { grid-column: 1 / -1; grid-row: 3; padding: 4px 0 16px; }
+  :root:not(.km-home) .km-about-head-S__pics.ac-plate--pictures > .km-about-head-S__session { grid-column: 1 / -1; grid-row: 4; }
+  :root:not(.km-home) .km-about-head-S__name { font-size: 36px; }   /* the h1 is 44 here (38 below 360, where the name steps to 32) */
+  :root:not(.km-home) .km-about-head-S__bg { margin-top: 16px; }
+}
+/* below a 360 stage the h1 is 38 (its xs floor), so the name steps to 32 under it */
+@media (max-width: 359px) {
+  :root:not(.km-home) .km-about-head-S__name { font-size: 32px; }
 }

@@ -12,6 +12,11 @@
    on the right fills in as you answer; the screens' height eases between steps instead of jumping;
    a decline closes the request (only the answers given stay) and hides the under-note, whose door
    the declined screen already offers; the booking click shows the MailtoConfirm state with Copy.
+   Round 9: the request on the right is the mail itself (To, Subject, one line per answer under a
+   short key — Revenue, Deals, Feels like — and Times once complete); it is empty until the first
+   answer, shows only the lines answered, and below 1024 shows on the qualified screen only. The
+   mail body carries the same short keys, so the page shows exactly what the mail will say. The
+   qualified screen names the first layer in a sentence, and the answer rows carry no letters.
    MOCKUP ONLY: with no answers in the hash, the gate demos its own flow once (B → A → B, ending
    qualified, ≈6s); the first click or key inside the gate stops the demo and hands it over. */
 
@@ -27,6 +32,7 @@
 window.KM = {
   init(root, { reduced }) {
     var Q = ["Where is revenue today?", "How do your deals close?", "What does it feel like from inside?"];
+    var KEY = ["Revenue", "Deals", "Feels like"];   // the mail's short keys (the page shows the same lines)
     var COUNT = [3, 3, 4];
     var DECLINES = {
       "0:0": "There’s no working motion to instrument yet. The audit reads a live system — it can’t read one that hasn’t started. When the first revenue is real, come straight back.",
@@ -49,6 +55,7 @@ window.KM = {
     var rows = $$('[data-gate="row"]'), reason = $('[data-gate="reason"]'), layer = $('[data-gate="layer"]');
     var book = $('[data-gate="book"]'), note = $('[data-gate="note"]'), sent = $('[data-gate="sent"]');
     var copy = $('[data-gate="copy"]'), live = $('[data-gate="live"]'), foot = $('[data-gate="foot"]');
+    var req = $('[data-gate="req"]'), times = $('[data-gate="times"]');
     var box = $(".km-audit-gate-S__screens");
 
     var answers = [], current = null, off = [], timers = [], fitT = null;
@@ -61,12 +68,12 @@ window.KM = {
     function declineOf(a) { var i = a.length - 1; return i >= 0 ? DECLINES[i + ":" + a[i]] || null : null; }
     function screenOf(a) { return declineOf(a) ? "declined" : a.length >= 3 ? "qualified" : String(a.length); }
 
-    // today's booking request, unchanged: subject + "Qualification summary" + "Preferred times"
+    // the booking request: today's subject, and the body as the page shows it — one line per answer
+    // under its short key, then the times (round 9: short keys instead of the questions repeated)
     function mailto(a) {
       var subject = "Audit qualification — booking the strategic call";
-      var body = ["Qualification summary:"]
-        .concat(Q.map(function (q, i) { return "- " + q + " → " + (a[i] != null ? labelOf(i, a[i]) : "—"); }))
-        .concat(["", "Preferred times for the call:", ""]).join("\n");
+      var body = KEY.map(function (k, i) { return k + ": " + (a[i] != null ? labelOf(i, a[i]) : "—"); })
+        .concat(["", "Times:", ""]).join("\n");
       return "mailto:audit@kelwin.co?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     }
 
@@ -105,31 +112,28 @@ window.KM = {
       run.style.setProperty("--p", String((reached - 1) / 2));
       ticks.forEach(function (t, i) { t.classList.toggle("is-on", i < reached); });
 
-      // the request, written as you answer
+      // the request, written as you answer: only the lines answered; empty before the first answer
+      root.classList.toggle("is-qualified", sc === "qualified");
+      req.classList.toggle("is-blank", !a.length);
       rows.forEach(function (row, i) {
         var ans = row.querySelector('[data-gate="ans"]');
         var v = a[i] != null ? labelOf(i, a[i]) : "";
-        var had = ans.getAttribute("data-v") || "";
-        if (v) {
-          ans.textContent = v;
-          ans.classList.remove("is-empty");
-          if (o.animate && v !== had) { ans.classList.remove("is-new"); void ans.offsetWidth; ans.classList.add("is-new"); }
-        } else {
-          ans.innerHTML = '<span class="ac-sr">Not answered yet</span>';
-          ans.classList.add("is-empty");
-          ans.classList.remove("is-new");
-        }
-        ans.setAttribute("data-v", v);
+        var had = ans.textContent;
+        ans.textContent = v;
+        row.hidden = !v;
+        row.classList.remove("is-new");
+        if (v && o.animate && v !== had) { void row.offsetWidth; row.classList.add("is-new"); }
         row.classList.toggle("is-declined", sc === "declined" && i === a.length - 1);
-        row.classList.toggle("is-unreached", sc === "declined" && i >= a.length);
       });
+      times.hidden = sc !== "qualified";
 
       if (sc === "declined") reason.textContent = declineOf(a);
       foot.textContent = sc === "declined" ? "Closed here. Nothing was sent." : "Nothing is sent until you press send.";
       if (sc === "qualified") {
         book.setAttribute("href", mailto(a));
         var f = FIRST[a[2]];
-        layer.innerHTML = f ? '<a class="ac-link" href="' + f.href + '">' + f.name + "</a>" : "All three. That’s what the audit is for.";
+        layer.innerHTML = f ? 'The audit looks first at <a class="ac-go ac-go--to" href="' + f.href + '">' + f.name + "</a>"
+          : "The audit looks at all three layers.";
         note.hidden = false; sent.hidden = true;
       }
       if (o.announce) {
@@ -217,7 +221,9 @@ window.KM = {
     try { history.replaceState(stateWith(answers), ""); } catch (e) {}
     render(answers, {});
 
-    if (!reduced && !answers.length) {
+    // the demo plays only in the standalone mockup: a stitched page (html.km-home) stays on its
+    // first question, so its settled state is the same with motion and without (coherence pass)
+    if (!reduced && !answers.length && !document.documentElement.classList.contains("km-home")) {
       var seq = [[1500, function () { hover(0, 1); }], [2200, function () { commit([1], { animate: true }); }],
                  [3100, function () { hover(1, 0); }], [3800, function () { commit([1, 0], { animate: true }); }],
                  [4700, function () { hover(2, 1); }], [5400, function () { commit([1, 0, 1], { animate: true }); }],

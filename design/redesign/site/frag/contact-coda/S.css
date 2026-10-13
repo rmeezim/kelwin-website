@@ -1,11 +1,2 @@
-/* contact-coda · S — the coda: the kit's QC quiet close, standalone, after the paper memo
-   (paper→graphite needs no ruled seam). Its only addition is the Copy control beside the address,
-   with its confirmation said in words. No .ac-btn, no red beyond the label square. */
-.km-contact-coda-S__mail { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; }
-.km-contact-coda-S__copy {
-  display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border: 1px solid var(--line-2);
-  font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: var(--ac-track-idx); text-transform: uppercase;
-  color: var(--fg); transition: border-color 200ms var(--ease-out);
-}
-.km-contact-coda-S__copy:hover { border-color: var(--fg); }
-.km-contact-coda-S__copy:focus-visible { outline: 1px solid var(--fg); outline-offset: 2px; }
+/* contact-coda · S — the /contact close: the kit's .ac-close, quiet (no .ac-btn on /contact,
+   kit 12.10). Graphite after the graphite form, so the seam is ruled. Nothing of its own. */

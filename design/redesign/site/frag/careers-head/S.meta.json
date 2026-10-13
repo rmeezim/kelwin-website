@@ -1,33 +1,25 @@
 {
-  "title": "The seat plan",
-  "direction": "A×C · Round 8 · /careers · header (SE)",
-  "summary": "The approved Specimen-sheet header (title block retired) saying the truth at first glance — no open seats, the bench list is open — over the page's own band: a floor plan of the firm as it is, one seat filled, the next one drawn and empty, each leaving through its own doorway on one straight line to the client's team, with nothing in between.",
-  "story": "Opens the page on the honest zero-state and shows the firm's real shape in one drawing that reads as a plan: the firm's room (double-line walls, a lattice floor) with one seat filled (the founder) and the next seat dashed and empty (the one red — what opens next); each seat's line leaves through its own doorway and lands in the wall of the client's floor, a larger room named inside it; the dimension between the two rooms reads “No layer between”. A candidate learns there is no job today, what the firm adds next, and that the work is done straight with the client; a buyer reads the same drawing as a seniority signal. The facts ledger's door jumps to the bench list (#bench), where the page ends.",
-  "copy": [
-    "[K] label “Careers” · meta “The Firm / 03”",
-    "[N] H1 “No open seats today. / The bench list is open.” (86px at 1440, so the accent line ends at x≈922, inside the kit's x ≤ 930 beside the facts)",
-    "[R] Lede “Kelwin adds a person only when the work needs a seat it can’t fill, and only senior people. When a seat opens, the bench list is read first.” — the story map's colon clause “: nobody learns on a client’s budget” is dropped here because the deal's Juniors row says it verbatim one scroll later (flagged)",
-    "[K] Facts: Open seats · None right now · Bench list · Open, read first when a seat opens (↓ #bench)",
-    "(FC) Facts: Next seat · Systems Engineer",
-    "(FC) Band: Seat 01 “Founder · Lead Narrative Architect” · Seat 02 “Systems Engineer · opens next”",
-    "[N] Band room name “The client’s team” (the story map drafted “Your team”; on a page read by candidates “your” reads as the candidate's own team — flagged, either wording drops in) and the dimension “No layer between”",
-    "[N] Figcaption sentence and keyed list, following the room name (screen readers; visible ≤1023)",
-    "(FC, not drawn) a third, fainter seat appears only if the founder names one"
-  ],
-  "phone": "≤1023: the frame scales in frame units; the seat codes (01, 02) and the room's name stay at fixed size (its lattice row is left clear across the whole room, so it fits at any scale); the seat descriptions and the dimension give way to the keyed list under the plan (as the kit does for flags); the facts drop under the lede (kit). 1024–1439: the h1 follows the stage (86px at 1440 down to the kit's 64px) so its long lines never clip. ≤767: the plan turned vertical in its own phone drawing (358×392): the firm's room on top with both seats side by side (codes beside them), two straight lines running down through its doorways into the client's floor below (its name inside), the dimension drawn in the gap with “No layer / between” set in its break, its ticks held off both walls; 1px non-scaling strokes, two lines per bundle. Checked at 320, 390, 834, 1024 with the stage overridden; no overflow, nothing under 11px.",
-  "reference": {
-    "site": "Approved Kelwin: interior/X (header, round 3) · handover/U (dashed = to come, solid = held) · the kit's registration frame and dimension line",
-    "mobbin_url": "https://mobbin.com/sites/sections/bc7affd2-b934-4719-8d32-39e0ec690399",
-    "ref_file": "",
-    "borrowed": "Header X's grammar verbatim (nav at rest with The Firm lit, label + breadcrumb, 96px two-voice h1, rule, lede, facts ledger with its one quiet door, band in a registration frame). From the careers pages on Mobbin (Lyssna, Jeton, Intercom: “no open roles — leave your details”), only the honest order of the message: no roles first, then the way onto the list.",
-    "kelwin": "The empty state is drawn instead of apologised for: an architect's floor plan — double-line walls with doorways, the lattice floor as + marks (the kit's own registration device), a filled seat and a dashed one (the handover's dashed→solid grammar), a room named inside it, and a dimension between the two walls. The lattice runs on a grid the seats and lines sit between, so no + mark ever lands on a line, a tick or a word. No illustration, no mascot, no dot-matrix zero."
-  },
-  "motion": [
-    "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts at +700ms); the registration marks register.",
-    "the band (the page's one orchestrated moment, from 900ms): the firm's walls draw in and its floor resolves column by column; the client's walls and floor follow (from 1.25s) and its name fades in; Seat 01's outline draws and its occupant latches in (2.0s); its line runs out through its doorway to the client's wall (2.15–3.05s) and lands on a square; Seat 02 appears dashed in red (2.7s), its dashed line wipes across (3.05–3.95s) and lands on a hollow square; the dimension “No layer between” wipes open from the firm's wall (3.4s; a wipe, not the kit's scaleX, so its words are never squashed). Final state ≈4.2s.",
-    "ambient: none. interaction: none in the band (the facts ledger's door jumps to #bench).",
-    "on the live site: plays once when the header is 40% visible (on load). Reduced motion: the static drawing is the final state — no timers, no JS."
-  ],
-  "demoMs": 4300,
-  "notes": "Height 994px at 1440 (nav 96 · head · 300 band · 112 end). The h1 is set at 86px here (the kit's 96) so its accent line ends at x≈922, clear of the facts ledger (x ≥ 955) — the copy is the story map's and two 20+ character lines at 96px ran to x≈1022. The band: 3 callouts (two seat tags, the room's name) + 1 dimension; exactly one red element (Seat 02's dashed outline, .ac-s-red + .ac-s-dash). Lattice grid x = 48 + 32k, y = 54 + 32j; seats and the two lines sit between lattice points; the room's name has its lattice row cleared; the dimension runs outside the rooms (y 286) from wall face to wall face (358 → 890), 18 units below the walls. Generated by qa/r8-careers/gen-head2.py. Words on the plan are fixed-size HTML in frame units (--u); the phone words use the phone frame's own unit (--us = 100cqw/358), which the kit lacks (see kitNeeds). Root has overflow-x: clip because the kit's nav menu keeps its 1440 width when hidden below 1024."
+ "title": "Seats open as the work arrives",
+ "direction": "A×C · Round 9 · /careers head (shot card)",
+ "summary": "The /careers head (coherence pass 2): the kit's interior head cast at 112 (stacked, the accent one word ending line 1) and NO plate (D1): the staffing plan starts under the head, as Contact's form and Insights' index do.",
+ "reference": {
+  "site": "GoNimbly (founder's recordings, refs-r9/GONIMBLY-STUDY.md) · the round-9 kit (frag/int-kit/S)",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-careers.png",
+  "borrowed": "GoNimbly's careers page: headline, one line, one quiet action, then a full-width moving picture.",
+  "kelwin": "A shot card (kit 12.4) holding the shoot brief, not stock footage; the shot is the work every seat does (writing), different from About's people shots and the Lab's screen."
+ },
+ "copy": [
+  "[N] h1 'Seats open / as the work arrives.'",
+  "[N, Q7] lede 'Remote-first and global. Juniors and senior people alike; every role is posted with its pay range.' (the terms, without 'hiring': every seat below reads 'Not open yet')",
+  "[R] action 'Join the bench list' ↓ #bench ('bench list', mention 1 of 2)",
+  "[N] shot card: slate 'Footage to come' · 'A working document, written line by line.' · 'Kelwin’s own positioning document, screen-captured as it is written: an hour in twenty seconds, close enough to read.' · spec '20 s loop · 2.52 : 1 · muted'"
+ ],
+ "phone": "the h1 wraps to three lines at 56px (390); the shot card grows with its words (kit). Checked at 320, 390, 834.",
+ "motion": [
+  "entrance: the kit's (§13): the h1 writes in, the rule, lede and action follow, the plate rises and widens.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2600,
+ "notes": "Coherence pass 2: the viewfinder card (“A working document, written line by line.”) is cut; its brief goes to the founder's shot list on the review page. Round-9 fix pass: the film crop the casting named (--plate-zoom:2.6;--plate-x:10%;--plate-y:8%) renders the back of one head, magnified and frosted, as a dark smear with no visible person; the widest allowed crop (2.4 / 0% / 0%, frost .12) does no better (qa/r9-pages/contactcareers/r2/pv-a…d.png). The rest of the left half is the colleague who-we-work-with's crop already shows. So the plate is a shot card until the footage exists. Retired from round 8: the label 'Careers' + 'The Firm / 03', the facts box, the floor-plan band with boxed codes and 'No layer between', the old title and London."
 }

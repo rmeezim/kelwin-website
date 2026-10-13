@@ -1,25 +1,10 @@
 {
-  "title": "Decision band, map lit",
-  "direction": "A×C · Round 8 · capability template (GTM Infrastructure)",
-  "summary": "The kit's D1 close for this layer: what the audit's channel orchestration map shows, the readout's four parts with part 02 lit (a door to the full specimen on /reports), the red Request a System Audit with the quiet Talk to the team, and the three layers underneath.",
-  "story": "The page's one ask, made specific to the RevOps buyer: before anything is built, the audit maps how demand moves across your channels and where it leaks. The SiblingStrip says how this layer relates to the other two: it carries Narrative and is read by Intelligence.",
-  "copy": [
-    "[N] (FC deliverable) “The audit’s channel orchestration map shows how demand moves across your channels today, and where it leaks.”",
-    "(FC, §7 Q3) the readout's four parts, part 02 lit",
-    "[R] siblings “Carries · Narrative Systems” · “Read by · GTM Intelligence”",
-    "[K] doors “Request a System Audit” → /audit · “Talk to the team” → /contact"
-  ],
-  "phone": "≤1023 (kit): the object and doors drop under the line; the SiblingStrip stacks one per row. ≤767: the line is 28px; the readout's four parts stack in one column; the glyphs shrink to 54×36. ≤767: the readout's four parts keep their 2 × 2 (14px), the lit part still first in its row.",
-  "reference": {
-    "site": "The int-kit D1 reference (kit §12.8) and the approved cta/U's one decisive red",
-    "borrowed": "D1 verbatim from the kit: label, one display sentence, the small object, the doors, the foot hairline.",
-    "kelwin": "The object is this page's: the readout's four parts with part 02 (the channel orchestration map) lit. The same object on all three capability pages, lit on each page's own part, is deliberate: the close is the template's constant, so the reader learns the audit's shape once."
-  },
-  "motion": [
-    "entrance (kit): the label fades, the line rises, the object and doors rise 200ms later, the foot hairline draws and the three layers fade in.",
-    "interaction: the readout sheet lifts its border and underline on hover (it is a link to /reports); kit hovers on the doors and the sibling links.",
-    "on the live site: plays once when the section scrolls into view. Reduced motion: final state."
-  ],
-  "demoMs": 2000,
-  "notes": "≈ 740px at 1440. Ruled seam from the runbook. The red button is this view's only red. The approved footer follows."
+ "title": "The close",
+ "direction": "A×C · Round 9 · capability template (GTM Infrastructure)",
+ "summary": "The kit's single close: a line saying what the audit does in this layer (traces real records, read-only, from first signal to the inbox), the red audit button and Talk to the team.",
+ "motion": [
+  "entrance: the kit close."
+ ],
+ "demoMs": 1400,
+ "notes": "Round 8's D1 door is gone. Unchanged in the round-9 fix."
 }

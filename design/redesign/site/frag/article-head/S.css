@@ -1,27 +1,23 @@
-/* article-head · S · the text sheet (band kind TX) — /insights/revenue-entropy
-   Header X's grammar with no band: nav at rest → ■ layer + "Field note · June 2026" →
-   the title as a two-voice h1 at 72px (the accent is the title's own second clause, one
-   .ac-accent wrapping two masked lines) → 48×2 rule → the standfirst as the lede, cols 1–7 →
-   the facts ledger in cols 9–12, bottom-aligned with the standfirst. The h1 may run the full
-   width because the ledger sits beside the standfirst only. Ends --ac-int-end under the lede;
-   the paper body below is its own cut. Red: the label square and the rule. Placement only:
-   every look is the kit's. */
+/* article-head · S · round 9 — /insights/revenue-entropy: a reading page's head
+   The kit's interior head (12.3) cast for a note at the kit's reading-page size (.ac-ihead--72: 72px at 1440, a 38px phone floor): the title (three lines; the accent is
+   the subtitle clause, one .ac-accent wrapping its two lines) → the 48×2 rule → ONE meta line in
+   the key voice (layer in words · month · read time). No kicker, no byline, no facts box, no
+   plate: the paper note follows, opening on its standfirst. Sibling heads are cast differently
+   (the 17% window: one line, a one-word accent; deliverability: two lines, the accent the whole
+   of line 2). Red: the rule. */
 
-.km-article-head-S { --ac-int-h1: 72px; }
-.km-article-head-S .ac-head.ac-ihead > .ac-statement { grid-column: 1 / -1; }
-.km-article-head-S .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 7; max-width: 33em; }
+/* below a 360 stage the title steps to 35px (kit 12.3 --ac-h1-floor-xs; coherence pass 3), so
+   "Revenue entropy:" holds one 288px line instead of breaking into two lone words */
+.km-article-head-S .ac-head.ac-ihead { --ac-h1-floor-xs: 35; }
 .km-article-head-S__acc { display: block; }
+.km-article-head-S__meta { grid-column: 1 / span 8; grid-row: 4; margin-top: 28px; }
 
-/* the accent clause's two lines rise after the first, as the kit's third and fourth lines would */
+/* without the write-in (a standalone build) the accent clause's two lines rise after the first */
 .is-play .km-article-head-S__acc .ac-line > span { animation-delay: calc(var(--ac-d0, 0ms) + 280ms); }
 .is-play .km-article-head-S__acc .ac-line + .ac-line > span { animation-delay: calc(var(--ac-d0, 0ms) + 400ms); }
+.is-play .km-article-head-S__meta { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 600ms) both; }
+.is-play .km-article-head-S .ac-ihead.is-write > .km-article-head-S__meta { animation-delay: var(--ac-write-end, 900ms); }
 
-/* tablet / phone: the kit stacks the ledger under the lede; the h1 steps down with it */
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-article-head-S { --ac-int-h1: 52px; }
-  :root:not(.km-home) .km-article-head-S .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 10; }
-}
-@media (max-width: 767px) {
-  :root:not(.km-home) .km-article-head-S { --ac-int-h1: 36px; }
-  :root:not(.km-home) .km-article-head-S .ac-head.ac-ihead > .ac-lede { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-article-head-S__meta { grid-column: 1 / -1; }
 }

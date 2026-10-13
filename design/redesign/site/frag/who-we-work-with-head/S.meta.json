@@ -1,29 +1,28 @@
 {
-  "title": "The break chart",
-  "direction": "A×C · Round 8 · /who-we-work-with header (BC)",
-  "summary": "The approved Specimen-sheet header (title block retired) landing on the homepage fit link's own words, with this page's band: the same three-layer revenue system drawn three times, one flat elevation per situation, and a fracture opened in the layer that breaks first.",
-  "reference": {
-    "site": "SAP Good Energy (comparison section)",
-    "mobbin_url": "https://mobbin.com/sites/sections/42a8d25b-c144-4484-ba70-f3a086d365db",
-    "ref_file": "refs/who-we-work-with-head-S.webp",
-    "borrowed": "Three standing columns crossed by the same row rules, the rows named once at the left, so a reader compares the columns row by row at a glance.",
-    "kelwin": "The columns become flat drafting elevations of the three layers (Narrative Systems · GTM Infrastructure · GTM Intelligence, top to bottom, the homepage system's order); each row is named in words at the left and by its nav glyph inside every band; the difference between columns is drawn, not tabled: a 1px fracture opens in the layer that breaks first and runs dashed where it spreads. 1px lines in the kit's drawing classes, the kit's flags, a registration frame, one red."
-  },
-  "motion": [
-    "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts), then from ~900ms the band: the four row rules draw, the three elevations draft left to right (140ms apart) and their layer glyphs settle; then 01, 02, 03 in turn (560ms apart): the break line runs down its layer (320ms), the layer opens 4 units (560ms: the far lip moves off the near one while the two short bridges that closed the outline retract into it, so the outline stays square), the dashed run fades in where it spreads, and that situation's flag lands. The key lands last (3.5s). Played once; nothing cycles.",
-    "ambient: none.",
-    "interaction: the red fracture follows the situation in focus: hover an elevation, or hover/focus a situation row in the next section (it dispatches km:wwww-situation on document); leaving returns it to 01. The matching flag lights. Tapping an elevation jumps to its row (#founder-seller · #plateaued-motion · #misheard-category); those tap targets are tabindex -1 and aria-hidden because the rows themselves are the accessible content.",
-    "on the live site: the band plays once at 40% visible. Reduced motion: the final drawing at once (all three fractures open, 01 red); the red still follows focus."
-  ],
-  "demoMs": 4200,
-  "story": "Opens the page on the buyer's question ('is a company like mine what you're for?') by landing on the homepage fit link's exact words, and answers it at a glance before a word of the body is read: three situations, the same three layers, and where each one breaks first. The rows below are its legend.",
-  "copy": [
-    "[K] H1 'Three situations, / told from inside.' (homepage fit link)",
-    "[R] Lede (…we keep being hired into → …it's built for; 'compounds' → 'pays off')",
-    "[K] Facts 'Built for · Real revenue, felt ceiling · Committee-decided sales' (fit F titles) · [R] 'The real gate · Someone inside will own it' (F-02) · [N] 'Not sure? · Talk to the team ↗'",
-    "[R] Flags and keyed list from the §4.6 callouts; [N] band key words 'Breaks first' · 'Spreads to'; [N] figcaption sentence",
-    "Breadcrumb 'The Firm / 02' as drafted (the Firm plate copy itself is (FS) in §7 Q5c)"
-  ],
-  "phone": "≤1023: nav menu hides (production's menu button), the h1 spans the width, the facts drop under the lede; the band keeps the desktop drawing scaled in its frame with the axis words (13px) and the key still on it, the flags and tap targets hidden (the flags clipped to the frame so they never widen the page), and the keyed list visible under it (the figcaption names the layers top to bottom and each situation's break in words; its lead sentence is set at support size, 15px, so it reads as the drawing's caption, not body copy). ≤767: the kit swaps in the phone drawing (358×212): three narrow elevations of 92 units with no in-band glyphs, 01–03 over each at 14px (≥11px down to 320), the three layer glyphs as the left axis, the same break lines and dashed runs; the desktop axis words and key hide; the keyed list follows. Checked at 320, 390, 834, 1024 and 1180 (no overflow of its own; the kit's hidden nav menu still widens phone previews, see kitNeeds).",
-  "notes": "The one red is a fracture, never a button (no red button in any header). Red follows focus but is never on two fractures at once. Each fracture is drawn in the drafting convention for a break line (straight, one sharp Z, straight), as two lips 4 units apart; the outline stays square: the near piece ends at the crack, the far piece runs from the open lip to the elevation's own edge (no piece steps past the other layers). Every flag is anchored ON its break, where the crack meets the elevation's outer edge: 01 and 03 break in the top layer and hang above; 02 breaks in the bottom layer, so it hangs below the drawing (.ac-flag--b, anchor on GTM Intelligence's bottom edge), on the key's line. The dashed run continues straight into the layer it spreads to. Row rules are the kit's faint lines, solid (dashed means 'spreads' here). Frame 1312×312. Height ≈ 1,026px at 1440."
+ "title": "Real revenue, no system",
+ "direction": "A×C · Round 9 · /who-we-work-with head (side, 112, film)",
+ "summary": "The round-9 interior head in GoNimbly's composition: a 104px h1 (“Real revenue, / but no system / under it.”) with the accent in the middle of the sentence, phone floor 48 (42 below 360), the lede and one quiet action at the right, the film stand-in under it.",
+ "reference": {
+  "site": "GoNimbly (the founder's screenshots and recordings, refs-r9/) · kit §12.3 side head, §12.4 film plate",
+  "borrowed": "Headline at the left, a short line behind a vertical rule at the right, and moving footage directly under the head, edge to edge of the measure.",
+  "kelwin": "Kelwin's type and grid: the 48×2 red rule tops the right column, the accent is the light weight (never italic), the plate is the hero's frosted stand-in cropped to the left half of the picture (kit-enforced) with no take, timecode or REC, tagged \"Stand-in\"."
+ },
+ "motion": [
+  "entrance (stitched page, kit §13): the turn lifts, the h1 writes itself in with a hard pen edge, line after line (the accent keeps its weight), then the hairline draws down with the rule, the lede and the action rise, then the plate rises narrower and widens to the measure. Filmed in qa/r9-pages/wwww/look/arrive-sheet.png.",
+  "ambient: the plate's frosted footage drifts slowly (base .km-film).",
+  "interaction: the one quiet action jumps to #send-away (scroll margin clears production's fixed bar).",
+  "on the live site: the same arrival on every visit. Reduced motion: no turn, no write-in, no rise; the final head at once."
+ ],
+ "demoMs": 2400,
+ "story": "Answers the visitor's question ('is a company like mine what Kelwin is for, or will they turn me away?') in two lines: the h1 is the first condition (real revenue, but no system under it), the lede the other two (a committee decides the deal, someone inside will own the build). The one action goes straight to the honest other half: who we send away.",
+ "copy": [
+  "[N] h1 'Real revenue, / but no system under it.' (accent 'no system'; replaces [K] 'Three situations, told from inside.', which now only labels the situations section the homepage link lands on)",
+  "[N] lede 'For companies whose deals a committee decides, with someone inside who will own what we build.' (from the fit criteria F-01–F-03; no noun phrase of the h1 reused)",
+  "[N] action 'Who we send away' (.ac-go--down → #send-away)",
+  "Plate tag 'Stand-in' (kit)",
+  "Cut: the 'Who we work with' kicker (the page's own name), 'The Firm / 02', the facts box (Built for / The real gate / Not sure?), the break chart with its glyphs, flags, codes, key and keyed list."
+ ],
+ "shoot_brief": "Real footage to replace the stand-in: a buyer-side working session, the moment a deal is explained by someone other than the founder — two or three people at a table, shot over a shoulder, faces out of focus, a whiteboard or a printed page between them; frosted and graded like the hero. 12–16 s loop, 2.52 : 1 at 1440 (the plate is 1312 × 520), muted. Never staged stock people, never AI-generated.",
+ "phone": "≤1023 the side head stacks (kit): h1 full width (3 lines at 834: 'Real revenue, / but no system / under it.'), rule, lede, the action under it; film plate 50% of the stage tall. ≤767: h1 at the kit's 56px floor, 4 lines at 390 ('Real revenue, / but no / system / under it.'), 5 at 320; every word fits a 358px line. The hidden kit menu is clipped below 1024 (as careers-, about- and contact-head do), so the head measures 390 at 390 and 320 at 320; at ≤359 the lockup steps to 20px and the outlined action tightens (as article- and insights-head), so they no longer touch.",
+ "notes": "Coherence pass 2: the side lede is cut to two lines (“For companies that sell to committees, with someone inside to own what we build.”). Casting kept as briefed: 112px, side, accent a phrase mid-sentence — set mid-line too ('but no system'), so it never reads as GTM Intelligence's whole-line accent. No red in the head except the kit rule. Crop unchanged (the brief's verified crop) and re-checked with qa/r9-fix/cropcheck.mjs on the stitch and the fragment: window x 373–907 · y 319–531 of the 1920 × 964 picture, right edge 909 through the drift, left half at 1440/834/390. Tone: the blur stays at the founder's 8px floor (round-5 film update: 8–12px); the frost (--plate-frost .10, kit default .24), grain (--plate-grain .30, default .42) and brightness (--film-bright 1.04, base .92) are lifted so the jaw, the neck and the white shirt beyond read as people rather than a brown blur (qa/r9-pages/wwww/r9fix/tone-sheet.png: a = before, d = chosen). The crop is still mostly a shoulder against a lit shape — the real footage is the fix (shoot brief above). The crop is the founder's call (standing rules 5 and 6), labelled as a proposal. No v4 photograph anywhere on the page. Coherence pass 3: cast 104 (was 112: in the side column it broke to “Real / revenue, / but no / system / under it.” at 1024) with a 48px phone floor, so every line holds two or more words from 1440 to 320."
 }

@@ -1,33 +1,28 @@
 {
- "title": "Four sheets, one readout",
- "direction": "A×C · Round 8 · /audit",
- "summary": "What the ten days return, as the page's one paper moment: four folio sheets dealt from a stack, one per part of the written readout, each drawing the SHAPE of its part (structure only) above what it reads and its layer page, so 'a written readout' becomes something you can see and hold.",
+ "title": "The readout, on the desk",
+ "direction": "A×C · Round 9 · /audit",
+ "summary": "The readout on the desk (paper): four cards, one per part, each with its title, first line and exhibit WORD FOR WORD as /reports sets them (coherence pass; Exhibit 2 in its two columns, Exhibit 4 as numbered steps), folios 3, 5, 7, 8 as on /reports; beside them who the specimen was written for and the way to all nine pages; at the foot the confirmed sequence, Call 01 named “the strategic call” as the gate books it.",
  "reference": {
-  "site": "Duolingo research reports (document thumbnails that carry a schematic of their own content) · approved Kelwin handover/U (the six assets as documents you keep)",
+  "site": "Approved round-8 audit-readout (P09: four folio sheets dealt from a stack) · kit 12.5 (.ac-sheet) · GoNimbly study (few, big labels; real-looking objects)",
   "mobbin_url": "https://mobbin.com/sites/sections/064dd9cb-269b-4609-8e99-da32b657f35b",
   "ref_file": "refs/audit-readout-S.webp",
-  "borrowed": "A document shown as a page whose thumbnail is a small drawing of what is inside it, with its title and one line of what it covers beside it.",
-  "kelwin": "No thumbnails or photos: four full-size folio sheets on the paper surface, drawn in the kit's 1px classes, each part's drawing a structural specimen of its own logic (one message fraying into five; channels that reach pipeline and channels that leak; decisions against the evidence they rest on, gaps dashed; three fixes in order, the first in ink). Dealt from a stack, once. Every illustrative mark sits under one SpecimenTag."
+  "borrowed": "A document shown as its own pages lying on a desk, each carrying its real exhibit.",
+  "kelwin": "The readout is built once (reports-readout/S) and reused: the same running head ('Kelwin, LLC · System Audit readout' | 'Specimen'), part titles, first lines and exhibit words, a folio; two columns of pages, the second set 96px lower, on the --panel desk /reports uses. No drawn metaphors, no greeking, no chips, no window chrome. The sequence is a timetable in type: no arrows, no rules."
  },
  "motion": [
-  "entrance: the section head fades and rises (kit). The set fades in as one stack on sheet 01's place (one layer's opacity, so no sheet ever shows through another), squared up and offset 6px per sheet; then 02, 03 and 04 are dealt out to their columns, 100ms apart, 640ms each (0.5–1.3s): opaque paper, transform only. The words under each sheet rise as it lands; the SpecimenTag fades in, then the foot's hairline draws and its line and link fade in (1.4–2.2s).",
-  "ambient: none — the drawings are still once dealt (the page's second play-once body moment is the FAQ's 01 opening).",
-  "interaction: the three layer links and the /reports link (kit hovers).",
-  "on the live site: the deal plays once when the section is 40% visible. Reduced motion: the laid-out set at once."
+  "entrance: the side column (label, the 42px claim, the specimen line and link) fades and rises. The pages fade in as one stack on Part 1's place, then Parts 2–4 are dealt to their places, 100ms apart (640ms each; opaque paper, transform only). The timetable's heading fades, then its four rows rise in order.",
+  "ambient: none. interaction: 'Read all nine pages' (→ /reports).",
+  "on the live site: plays once when the section is 40% visible. Reduced motion: the laid-out desk at once."
  ],
- "demoMs": 2600,
- "story": "Answers 'what exactly do I get?' with the thing itself: the readout's four parts, each tied to the layer it reads, and the plan that orders them, paying off the homepage's 'Find your weakest layer' with 'The readout names your weakest layer first.'",
+ "demoMs": 2200,
+ "story": "Answers 'what exactly do I keep?' with the document itself — the four parts as the specimen's own pages, the same ones /reports prints in full — then 'what happens after?' with the confirmed sequence from the first call to a contract.",
  "copy": [
-  "[N] h2 'One readout, four parts.'",
-  "(FC) [K AuditSpec 03] the four parts: Narrative readout · Channel orchestration map · Intelligence gap report · Sequenced rebuild plan (§7 Q3: confirm the four parts)",
-  "[K AuditSpec 01, split per layer] 'How your market repeats your story.' · 'How demand actually moves across your channels.' · 'What your GTM decisions are based on.'",
-  "[R] 04 'The order to fix things in. Yours either way.' (from AuditSpec's 'Yours to keep, either way.', italics retired), set as the sheet's support line; sheet 04 has no link row",
-  "[N] 'The readout names your weakest layer first.'",
-  "[N] 'See the shape of a full readout, as a specimen' → /reports",
-  "[N] SpecimenTag 'Structure only: the shape of each part, never a finding. No client data.'",
-  "[N] sheet 04 drawing label 'Weakest layer first'",
-  "(FC) 'A 60-minute readout call' NOT shown — it appears only if the founder confirms it (§7 Q3)"
+  "[N] label 'What you keep' · h2 'The readout names your weakest layer first.' (the page's one 42px head, a claim)",
+  "[R = reports-readout/S, verbatim] running head 'Kelwin, LLC · System Audit readout' | 'Specimen'; 'Part 1–4'; titles 'Narrative readout' · 'Channel orchestration map' · 'Intelligence gap report' · 'Sequenced rebuild plan'; first lines 'How your market repeats you today, in its own words.' · 'Where each conversation starts, and where its record ends up.' · 'What your go-to-market decisions were based on in the last two quarters, and what nobody measured.' · 'The order to fix things in, and what each step needs.'; Exhibits 1–4 with their captions, verbatim; folios 2, 4, 6, 8 (each part's opening page)",
+  "[R reports-head] 'Prepared for an invented company: founder-led, selling forecasting software.' · [N] 'Read all nine pages' → /reports",
+  "[Q3] timetable 'From first call to contract': Call 01 · '30 minutes, the analysis call' · Days 01–10 · 'The audit' · Call 02 · '60 minutes, the readout call' · Call 03 · 'The proposal: scope, price, contract. A fourth call only if your committee needs one.'",
+  "retired (rev. b): the four outlined cards and their drawn exhibits (the 1px fan, 7px nodes, dashed boxes, gantt bars), the layer running heads, the AuditSpec first lines (now the Reports text, so the readout reads one way), the caption 'Specimen. The shape of each part, never a finding; no client data.', the arrowed four-step strip; earlier: the held 60-minute line, skeleton bars, mono caps labels, the SpecimenTag chip"
  ],
- "phone": "≤1279 (and tablet): two sheets per row (01 02 / 03 04), words under each; every name fits one line, so the two-line title block is released. ≤767: one column of compact rows, each sheet a landscape card (index + name left, its drawing right, 136 wide; the drawing words hide, they would fall under 11px), its words under it; the deal becomes a fade in place (--km-deal: 0); the foot stacks (line, then the /reports link, which may wrap).",
- "notes": "No red: the view's red is the header's Day 10 tick above and the FAQ's button below. The four drawings are structure-only specimens (no numbers, no names, no findings) under one SpecimenTag. In the 4-up row every sheet's name is a two-line title block (balanced), so the four sheets' rules and drawings line up even though 'Channel orchestration map' takes two lines from 1280 up. Captions wrap only where they must (text-wrap: pretty, no measure cap). Lint warning: the kit's 13px .ac-link label 'See the shape of a full readout…' is counted as prose under 13.5px; it is a link label."
+ "phone": "1280–1439: pages in cols 4–12. ≤1279: the side line, then the pages two-up (no stagger), then the timetable as one row of four. ≤1023: pages grow with their content (kit), timetable 2 × 2. ≤767: the pages become one stack, each lying over the one before (pages 1–3 show their running head, part, title, first line and the start of the exhibit; page 4 shows whole), timetable one column; the deal is a fade in place.",
+ "notes": "KIT GAP (.ac-sheet--sm): a page at card scale — 28px margins, a 24px title, a 16px lead, 13.5px table type — set on this section's own four pages. Every word ≥ 13.5px except the 12px mono folios (numeral voice). The Reports unit owns the text; if its first lines or exhibits change, these pages follow. No red in this section. Height ≈ 1,570px at 1440 (the desk ≈ 1,290px; each page 421 × 596, A4). Coherence pass (round 9): see summary."
 }

@@ -1,34 +1,35 @@
-/* ── legal-head · T · /terms — the Specimen-sheet header, band kind IX (contents strip) ──
-   Everything here is the kit's InteriorHead (§12.1–12.3) placed for a text page. The only
-   moves are PLACEMENT and the type step:
-   · the h1 is the text-sheet size (72px at 1440, the articles' range), not 96: the drafted
-     two-voice lines are long (the privacy accent, "What we collect: almost nothing.", is
-     1,057px at 72), and the legal pages are the quietest on the site. ≤1023 48px, ≤767 the
-     kit's 40px (wrapping).
-   · ONE size rule for the legal pair (identical in S and T): below 1440 the h1 scales to keep
-     the longer accent line (privacy's, ≈14.7 em wide) inside the margins — divisor 15 — so
-     /privacy and /terms always share one h1 size at every width.
-   · because the accent line runs past col 9, the h1 takes cols 1–12 and the facts ledger
-     drops one row: it spans the rule and lede rows (3–4) instead of the kit's 2–4, and keeps
-     the kit's own alignment — bottom-aligned with the lede, the kit's −11px foot — so its last
-     value sits on the lede's last baseline.
-   · the band is the kit's IX contents strip: no drawing, no red.                         */
+/* ── legal-head · T · /terms — round 9 ─────────────────────────────────────────────────────────
+   Approved (P13). Round 9 changes only what the plan names:
+   · the head loses its breadcrumb meta and its facts box (retired, kit 12.L); in their place ONE
+     plain line in the key voice says who issues the document and its status — "Kelwin, LLC"
+     (Q8), the address as a plain status ("to be confirmed"), the effective date, the review status;
+   · no plate: the document is the page. The approved contents strip (kit 12.11) stays, its clause
+     numbers set in the body's own voice (Mona, light) instead of mono;
+   · the nav lists four items.
+   CASTING: a plain document title at the kit's reading-page size (.ac-ihead--72: 72px at 1440,
+   fluid below, a 38px phone floor — coherence pass; it replaces round 8's local 72 and its
+   width cap). Tablet at most 48px so the accent line holds one line at 834. The contents strip's
+   clause numbers are the kit's .ac-ix__n (Mona, light), never mono. */
 
-/* the section is a size container so the h1 can never outgrow its line: 72px at 1440, and below
-   that whatever keeps the longer accent line inside the margins (production's fluid token) */
-.km-legal-head-T { container-type: inline-size; }
-.km-legal-head-T .ac-head.ac-ihead { --ac-h-sec: min(72px, var(--ac-int-h1), calc((100cqw - 2 * var(--margin)) / 15)); }
-.km-legal-head-T .ac-head.ac-ihead > .ac-statement { grid-column: 1 / -1; }
-.km-legal-head-T .ac-head.ac-ihead > .ac-facts { grid-row: 3 / span 2; }   /* kit: align-self end, margin-bottom −11px */
+/* below a 360 stage the title steps to 36px (kit 12.3 --ac-h1-floor-xs; coherence pass 3), so
+   "Terms of service." and "readable version." each hold one 288px line (at 38 they broke into
+   "Terms of / service. / The short, / readable / version.") */
+.km-legal-head-T .ac-head.ac-ihead { --ac-h1-floor-xs: 36; }
+.km-legal-head-T .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 8; max-width: 38em; }
 
-/* tablet: the h1 steps down so the accent line holds one line at 834 (the kit drops the facts under the lede) */
+/* the one status line under the lede */
+.km-legal-head-T__meta { grid-column: 1 / -1; grid-row: 5; margin-top: 28px; }
+
+.is-play .km-legal-head-T__meta { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 700ms) both; }
+.is-play .km-legal-head-T.is-write .km-legal-head-T__meta { animation-delay: calc(var(--ac-write-end, 900ms) + 100ms); }
+
+/* tablet: at most 48px, so the accent line holds one line at 834 (the kit's --72 curve gives ≈ 52) */
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-legal-head-T .ac-head.ac-ihead { --ac-h-sec: min(48px, var(--ac-int-h1), calc((100cqw - 2 * var(--margin)) / 15)); }
-  /* the kit hides the desktop menu with visibility below 1024 (production swaps in its own
-     menu button); clip its still-measured width so the phone page never scrolls sideways */
-  :root:not(.km-home) .km-legal-head-T { overflow-x: clip; }
+  :root:not(.km-home) .km-legal-head-T .ac-head.ac-ihead { --ac-h-sec: min(48px, var(--ac-int-h1)); }
+  :root:not(.km-home) .km-legal-head-T .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 10; }
 }
-/* phone: the kit's 40px, and the lines wrap (the accent breaks after its comma) — no width cap */
+/* phone: the kit's reading-page floor (38px), the lines wrap */
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-legal-head-T .ac-head.ac-ihead { --ac-h-sec: var(--ac-int-h1); }
+  :root:not(.km-home) .km-legal-head-T .ac-head.ac-ihead > .ac-lede { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-legal-head-T__meta { margin-top: 20px; }
 }

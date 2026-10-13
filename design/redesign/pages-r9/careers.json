@@ -1,0 +1,26 @@
+[
+ {
+  "id": "careers-head",
+  "slot": "S"
+ },
+ {
+  "id": "careers-seats",
+  "slot": "S"
+ },
+ {
+  "id": "careers-standards",
+  "slot": "S"
+ },
+ {
+  "id": "careers-bench",
+  "slot": "S"
+ },
+ {
+  "id": "careers-close",
+  "slot": "S"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

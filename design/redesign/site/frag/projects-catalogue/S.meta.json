@@ -1,0 +1,16 @@
+{
+ "title": "Projects, by layer",
+ "direction": "A×C · Round 9 · new page (/projects)",
+ "summary": "The catalogue by layer, marked “Proposed, to be confirmed”: the claim “Nothing here is rebuilt when you add the rest.” as the kit's 64px statement (coherence pass), then the six projects as the page's one ruled list under one column head, “What you keep”.",
+ "reference": {
+  "site": "GoNimbly's solutions list (group heading, large item names, one line each); ROUND9-PLAN §8 and the judged catalogue (UNDERSTAND.txt 304–364)",
+  "borrowed": "A grouped list read like tracks: few, large names and one line each.",
+  "kelwin": "No chips, codes, counts, prices or lengths; the key that would repeat on every row is one column head; links only where a page exists."
+ },
+ "motion": [
+  "entrance: the label fades, the claim rises, the bands rise once in order.",
+  "reduced motion: final state at once."
+ ],
+ "demoMs": 2000,
+ "notes": "Row ids carry the slugs used in tool/review9.json (the-operating-model included); layer ids (#narrative-systems, #gtm-infrastructure, #gtm-intelligence, #across-all-three-layers) are for the capability pages' links. The page's one status line sits beside the label. Coherence pass (round 9): see summary."
+}

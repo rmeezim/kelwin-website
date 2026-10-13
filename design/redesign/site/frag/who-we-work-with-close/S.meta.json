@@ -1,28 +1,30 @@
 {
-  "title": "Who we send away",
-  "direction": "A×C · Round 8 · /who-we-work-with §3 (D3 gate close)",
-  "summary": "The kit's D3 gate close: the honest list of who Kelwin declines, every reason visible with a better door where there is one, beside the gate line, the page's one red ask and the not-sure door — so a buyer leaves knowing which side he's on.",
-  "reference": {
-    "site": "Approved Kelwin system: kit D3 (int-kit/S) and the homepage fit/U 'Not for' ledger",
-    "borrowed": "The D3 composition as built in the interior kit, and the homepage's – ledger sign for the declines.",
-    "kelwin": "No new device: the declines are the homepage's D-01–D-03 with their approved wording plus D-04 from the gate, each with an 'Instead'; the gate side says what the three questions check, using the audit's documented scope only."
-  },
-  "motion": [
-    "entrance: the kit Door's: label fades, the list rises, the gate side rises 200ms later, the foot hairline draws and the onward link fades in. Reveal only.",
-    "ambient: none.",
-    "interaction: links and the button only (hover states).",
-    "on the live site: plays once as it scrolls into view. Reduced motion: final state."
-  ],
-  "demoMs": 1800,
-  "story": "The page's conversion moment, and the end of the promise the homepage made ('…and the honest list of who we send away'). Having recognised his situation and market, the buyer now sees the four declines in plain words, then the gate that checks it both ways, the red ask, and a quiet door if he still isn't sure. The onward link asks the next question: who he'd be working with.",
-  "copy": [
-    "[K] D-01 'Rent-it-forever · We’ll run it on retainer, but if nobody inside will own it, we decline.' (approved P2) · [N] Instead 'Find the owner first. Then the system has somewhere to live.'",
-    "[K] D-02 'Lead-list shopping · Renting activity is the cycle we exist to end. A list vendor is the better call.'",
-    "[K] D-03 'Pure self-serve / PLG · The system assumes a sales-carried deal.' · [N] Instead 'Different machinery, built for checkout.'",
-    "[R] D-04 'Pre-revenue · There’s no working motion to instrument yet. When the first revenue is real, come straight back.' (from the gate) · Instead 'Read the field notes meanwhile →' (/insights)",
-    "[K] 'The audit is a gate, and it works in both directions.' (homepage fit) · [R] 'Its three questions check where revenue is today, how your deals close, and what it feels like from inside.'",
-    "[R] 'Not sure which side you’re on? Talk to the team →' · [N] onward 'Who would you be working with? → About'"
-  ],
-  "phone": "Kit §12.11: ≤1023 the gate side drops under the list (cols 1–9), foot last; ≤767 everything spans, the line drops to 28px, row grids tighten (48px index), 'Instead' lines stack with their links at the kit's 12px. Below ≈360 the D-04 exit 'Read the field notes meanwhile' can't hold one line inside the row's indent, so it wraps (arrow on its last line, underline to the row's edge) instead of running past the margin. The not-sure line stacks its question over its link (the kit link as-is). Checked at 320, 390, 834, 1024, 1180: no overflow.",
-  "notes": "The page's one red ask is this button (→ /audit); the band's red fracture is three sections above, never in the same view. The close follows the paper markets, so it carries no ruled seam: the surface change is the cut (the kit's rule rules graphite→graphite seams only; the plan's 'ruled' would draw a hairline on the paper's edge)."
+ "title": "Who we send away · close",
+ "direction": "A×C · Round 9 · /who-we-work-with §3 and the close",
+ "summary": "Who we send away, in one plain paragraph in this page's own words, then the page's one close: “One call tells both of us whether we fit.”, the red System Audit button and the quiet Talk to the team.",
+ "reference": {
+  "site": "Kit close (§12.10) · the homepage fit's 'Not for' wording",
+  "borrowed": "The approved decline titles and lines, and the kit's one-close grammar.",
+  "kelwin": "No D-0n codes, – marks, 'Instead' keys, gate side, question links or onward rows; the declines are four short paragraphs, the close is the kit's."
+ },
+ "motion": [
+  "entrance: the label fades and the four declines rise (kit cascade, a reveal, not a moment); the close keeps the kit's own rise.",
+  "ambient: none.",
+  "interaction: the button and the link (hover states).",
+  "on the live site: plays once as it scrolls into view. Reduced motion: final state."
+ ],
+ "demoMs": 1400,
+ "story": "Keeps the homepage's promise of 'the honest list of who we send away', plainly, then turns the page's argument (fit is decided, and it can be a no) into the one ask: the audit request asks how your deals close (its second question, 'How do your deals close?') and answers 'Qualified' or 'Not a fit yet' — so the line says exactly that.",
+ "copy": [
+  "[K] label 'Who we send away'",
+  "[K] 'Rent-it-forever · We’ll run it on retainer, but if nobody inside will own it, we decline.' + round-8 'Instead', verbatim, as a sentence: 'Find the owner first. Then the system has somewhere to live.'",
+  "[K] 'Lead-list shopping · Renting activity is the cycle we exist to end. A list vendor is the better call.'",
+  "[K] 'Pure self-serve / PLG · The system assumes a sales-carried deal.' + [R] round-8 'Instead' 'Different machinery, built for checkout.' → 'A product bought at checkout needs different machinery.' — for the founder's yes",
+  "[R] 'Pre-revenue · There’s no working motion to instrument yet. When the first revenue is real, come straight back.' (round 8, from the gate)",
+  "[N] close line 'Tell us how your deals close. We’ll say if we’re a fit.' (12 words; one sentence per line). It names what the audit request asks and what it answers; shares no shape with the sibling doors (About 'Rameez reads every audit request.', Contact 'A diagnosis starts with three questions, not a message.', Careers 'Ask about any seat before you write in.'); no 'Find out…', 'before…', 'If…' or 'three'.",
+  "[K] 'Request a System Audit' (red, → /audit) · 'Talk to the team' (→ /contact)",
+  "Cut: D-01–D-04, the 'Instead' keys, 'Read the field notes meanwhile', 'The audit is a gate, and it works in both directions.' (homepage slogan), 'Not sure which side you’re on?', 'Who would you be working with? → About', the foot hairline, and round 9's first-pass line 'Find out where yours breaks first, before anything is built.' (a sibling template; 'yours' had no antecedent)."
+ ],
+ "phone": "≤1023: declines in two columns; the close per kit. ≤767: one column (titles 20px, lines 16px); close line at the kit's 34px, still one sentence per line (each balances: 'Tell us how your / deals close. / We’ll say if we’re a fit.' at 390). Checked 834 · 390 · 320: no overflow.",
+ "notes": "The view's one red is the button. The close sits on its section's own graphite (no red plane). #send-away is the head action's target (scroll margin 112px). Coherence pass (round 9): see summary. Coherence pass 3: door line recast from “Tell us …, and we’ll …” (an imperative pair) so no two doors share a shape."
 }

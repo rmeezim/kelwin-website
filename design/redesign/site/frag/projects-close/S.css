@@ -1,0 +1,5 @@
+/* ── projects-close · S · /projects, the close (round 9) ──────────────────────────────────
+   The kit's close (.ac-close, §12.10) as it is: the door line, the red cut-corner button to
+   /audit (the view's one red), the quiet link to /contact?topic=project. It follows the
+   graphite path, so the seam is the kit's margin-to-margin hairline (.ac-sec--ruled). */
+.km-projects-close-S .ac-close__line { max-width: 14em; }

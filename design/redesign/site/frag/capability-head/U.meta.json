@@ -1,28 +1,16 @@
 {
-  "title": "Orbit, with stations",
-  "direction": "A×C · Round 8 · capability template (GTM Intelligence)",
-  "summary": "Header X's grammar with this layer's own band: every touch arrives on one line and enters an open ring at the signal taxonomy; a node rides past win/loss and resonance to the quarterly calibration, where the last 40° closes in red and the node comes home to start the next quarter.",
-  "story": "Opens on the homepage's own words for this layer — the loop that learns — and draws the loop literally: four stations, one turn a quarter, closed only by the calibration. Its four stations are the four questions the next section lists.",
-  "copy": [
-    "[K homepage job] h1 “The loop / that learns.” (retires “What gets measured compounds.” and its duplicate H2)",
-    "[K homepage ‘What it is’ + ‘In practice’] lede",
-    "(FS) Facts · Engagement “Scoped at the readout” · Output “Signal Dashboard and Rebuild Sequence — yours”",
-    "[N] the ring's name “One quarter” (at its centre, replacing the diameter dimension); keyed-list glosses (what’s watched · why deals move · what lands · where the loop closes)"
-  ],
-  "phone": "≤1023: callouts and the ring's name give way to the visible keyed list (kit). ≤767: the phone drawing (358×240) keeps the ring centred with a short tape of touches entering at 03.1, the four stations marked in 13px mono codes, and the red closing arc; the h1 wraps at 40px.",
-  "reference": {
-    "site": "Approved interior/X (header grammar) and the nav's ORBIT glyph (a line into an open ring with a node)",
-    "mobbin_url": "https://mobbin.com/sites/sections/f8b93019-f62b-4e58-8f0d-e577baa204f3",
-    "ref_file": "refs/interior-r2-X.webp",
-    "borrowed": "X's sheet: statement, facts ledger, the page's own shape drawn large in a registration frame with callouts and one dimension.",
-    "kelwin": "ORBIT in plan view with flat stations and drafting callouts (one flag, three horizontal leaders), a tape of touches on the entry line, a 40° gap that only the calibration closes. Deliberately not the accretion rings rejected in round 3 and not the homepage's iso slab 03."
-  },
-  "motion": [
-    "entrance: the kit head choreography; registration marks at 600–780ms; the tape of touches fades in and the entry line draws at 900ms; the ring plots clockwise from 03.1 (1.2s); the station nodes appear.",
-    "orchestrated moment (2.3–5.0s): a node rides the ring once from 03.1, each callout registering as it passes its station; at 03.4 the red arc closes the 40° gap (600ms) and the node rides it home to 03.1; then the ring's name, ‘One quarter’, fades in at its centre. No loop.",
-    "interaction: kit hovers only.",
-    "on the live site: plays once at 40% visible. Reduced motion: the closed ring with the node at 03.1, synchronously."
-  ],
-  "demoMs": 5600,
-  "notes": "1,044px at 1440 (band 300 frame units; the 4-line lede is [K]). No dimension: a quarter is a lap, not a length, so the ring is named at its centre instead of measured across its diameter. One red beyond the label square and rule: the closing arc. No ambient loop on this page."
+ "title": "Stacked head, the quarter",
+ "direction": "A×C · Round 9 · capability template (GTM Intelligence)",
+ "summary": "The approved h1 at 96px with its whole second line light, an idea kicker, a one-line lede in cols 7–12 that says who the layer is for, and a measure plate: one quarter drawn to scale as three lanes on thirteen weeks — the weekly review, win/loss interviews as deals close, and the week-13 readout — redrawn for tablets (no label gutter) and phones, each frame carrying its own labels and '13 weeks'.",
+ "reference": {
+  "site": "GoNimbly's gantt-like home band (founder's screenshot) on the approved interior header X",
+  "borrowed": "A plan drawn as bars on a ruled grid, directly under the head, labelled with a few large sentence-case words.",
+  "kelwin": "A real unit (13 weeks) and real cadence instead of an orbit metaphor; one red block, kit drawing weights, flat graphite."
+ },
+ "motion": [
+  "entrance: the h1 writes itself in (kit §13), the rule and lede rise, the plate rises and widens; the drawing has no beat of its own.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2600,
+ "notes": "Round 9 fix: the lede no longer previews the four questions (it has a different job); the kicker no longer echoes the homepage ('what the signal says'); the plate is the page's one statement of the cadence; below 1024 the drawing carries its labels and its unit, so the figcaption is screen-reader only (no caption-plus-key repeat); the section clips its own x-overflow on phones."
 }

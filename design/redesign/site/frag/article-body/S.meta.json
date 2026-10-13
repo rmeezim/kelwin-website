@@ -1,32 +1,28 @@
 {
-  "title": "Reading spread, self-check",
-  "direction": "A×C · Round 8 · article template · /insights/revenue-entropy",
-  "summary": "The note on paper at reading quality — 18px in cols 3–8 with its margin in cols 10–12 (the three layer glyphs, Kelwin's definition of revenue entropy, the Gartner source, a 'What to look for' note) — and one drawing where the argument turns: 'One symptom, three causes', a wire labelled “We need more pipeline.” that splits into the three failures, each ending at its layer and the note's own question, with the two answers that question asks for ('It changes' / 'Nothing lands' for the either/or narrative question, Yes / No for the other two).",
-  "reference": {
-    "site": "Approved Kelwin letter/S (a reading column with a margin on the 12-column grid) and evidence/T (a sourced figure); Tailscale's blog article for the long-form measure",
-    "mobbin_url": "https://mobbin.com/sites/sections/2aa17c2a-b721-440c-8fe0-83544d7afdd0",
-    "ref_file": "refs/article-tailscale.webp",
-    "borrowed": "A long-form reading column at a real measure with its apparatus beside it rather than inside it (sidenotes in a margin, one wide figure that breaks the column once).",
-    "kelwin": "Paper as the page's one document moment; the column in cols 3–8 and the margin in cols 10–12 of the real 12-column grid; Mona at 18px; the nav's capability glyphs as the layer key; 15px Mona 'What to look for' notes instead of mono 'Field reading' panels; the figure drawn in the kit's 1px language with one red element and no 'Fig.' caption."
-  },
-  "motion": [
-    "entrance (play-once, at 40% visible): the symptom rises, its trunk draws to the fork, the fork lands, the three branches plot one after another, the three failure rows rise, the reading block fades in (≈2.8s). From 1280 down the figure stacks and the branches give way to the left trunk and stubs.",
-    "interaction: two answers per question (aria-pressed): 'It changes' / 'Nothing lands' for the narrative question, Yes / No for signal and memory. The answer that points to a failure ('Nothing lands', 'No', 'No'; data-v=\"fail\") lights that branch, that layer's glyph and its square in ink; 'Where to look first' names the lit layers (aria-live polite, atomic). A second press clears an answer. Nothing is stored or sent.",
-    "ambient: none.",
-    "on the live site: the slot plays the reading as it scrolls in; the figure waits for 40% of itself to be visible (its own IntersectionObserver). Reduced motion: final state at once, toggles still work."
-  ],
-  "demoMs": 3600,
-  "story": "The argument itself: the symptom founders name, the condition underneath it (defined here, once), the three failures that share it, why more activity makes it worse, and how to tell them apart. The drawing sits where the note turns from explaining to diagnosing, so the reader answers the three questions about their own company before the closing line.",
-  "copy": [
-    "Body [K] verbatim except: 'In the audits we've run' → 'In my experience' (R, FC, founder Q2)",
-    "Bold lead-ins' missing spaces fixed ('A narrative failure. The market…')",
-    "The pull quote that repeated paragraph 2 is cut (per map)",
-    "'Field reading' → margin 'What to look for' [K text] with 'it is always wider' → 'in my experience it is wider' (R, FC, Q2)",
-    "Margin 'A Kelwin term · Defined here, once. Wherever the site says revenue entropy, it means this.' [N]; the paragraph carries <dfn> and an id for the Lab and R·01 to link to",
-    "Source 1 gloss [N]: 'Buyers spend only a small share of a purchase meeting potential suppliers, all of them combined.' (Gartner 2019; re-verify link)",
-    "Figure copy [N]: 'One symptom, three causes', the sub-line cut to one instruction 'Answer for your own company. An answer that points to a failure lights its layer.' (it no longer restates the questions the paragraph above has just asked), 'The symptom', the narrative row's answers 'It changes' / 'Nothing lands' (the [K] question is either/or, so Yes/No could not answer it), 'Where to look first', 'Answer the three questions.', result lines (layer names, 'so far', 'Nothing flagged so far.', 'No layer flagged.'), 'Nothing you click here is stored or sent.'; questions [K]",
-    "Layer key 'Diagnoses' [N]"
-  ],
-  "phone": "≥1280: the horizontal drawing; its trunk is fluid (5 × (col + gutter) − 72px) and the 72px fork always ends where the failure rows start, and the three rows share one subgrid so the answer controls form one column. ≤1279: the drawing stacks — the symptom on top, then one ink trunk down the left of the three failure rows with a stub into each (≤3 strokes per bundle), the answers in their own column right of the questions, the reading block last. ≤1023: the column takes cols 1–8 and the margin cols 9–12; the layer key stacks one layer per row (glyph + name); the answers drop under each question. ≤767: one column; every margin note falls in after its paragraph, the layer key leads the note; 17px reading type, 26px subheads; the answer buttons run at .12em tracking and 10px padding so 'It changes / Nothing lands' fits at 320.",
-  "notes": "A reading surface: ≈2,500px tall at 1440, over the 1400px cap by design (the whole note). Margin notes hang from their paragraph's row (negative bottom margin) so they never push the column; the definition note is offset below the layer key; 'What to look for' sits in its subsection heading's row (row 6), tops aligned, so it ends before the next heading at every width. Source links wrap only before their last word, so '· year ↗' never strands. FOUNDER CHOICE (placement): the drawing sits under 'Reading the difference', right after the paragraph that asks the three questions, rather than under 'Three failures, one symptom' as the map reads — there the self-check would ask the questions before the text introduces them; here the reader meets the [K] questions twice in a row (once read, once answered). The sub-line no longer restates them. If the founder prefers the map's placement, the figure moves up unchanged. Red: the figure label's square only; lit layers are ink, so several failures never make several reds."
+ "title": "Reading spread, answers",
+ "direction": "A×C · Round 9 · /insights/revenue-entropy · the note on paper",
+ "summary": "The approved note (P07) as a reading page: the standfirst at 24px across cols 3–10, the reading column in cols 3–8 at 18px, the margin in cols 10–12 holding only the source and ‘What to look for’ in Mona, and one real control under the paragraph that asks the note's three questions: three rows, each the paragraph's own tag (Narrative · Signal · Memory) and the two answers its question allows (It changes / Nothing lands · We know / We don’t · Written down / Nowhere), in sentence case. The questions are not repeated: each answer group is labelled by its question inside the paragraph (aria-labelledby). An answer that points to a failure fills the row's 6px bar with ink; ‘Where to look first’ and the layer appear in the margin only once there is something to say.",
+ "story": "The argument itself, verbatim. Round 9 removes the apparatus that read as generated (glyph sidebars, caps note heads, boxed numerals, mono source links, the end square), keeps each source once in the margin, and cuts the self-check's echo: no repeated questions, no 44px symptom quote, no label mirroring the h2, no empty-state line, no storage disclaimer.",
+ "reference": {
+  "site": "Approved P07 (round 8) · Tailscale's blog article for the long-form measure",
+  "mobbin_url": "https://mobbin.com/sites/sections/2aa17c2a-b721-440c-8fe0-83544d7afdd0",
+  "ref_file": "refs/article-tailscale.webp",
+  "borrowed": "A long-form reading column with its sidenotes in a margin, one wide figure that breaks the column once.",
+  "kelwin": "Paper as the note's document surface; Mona everywhere but the numerals; the kit's segmented control, label and spec list."
+ },
+ "motion": [
+  "entrance: the reading column arrives with its slot; the answer rows rise once when 40% of them are in view (their own IntersectionObserver).",
+  "interaction: two answers per question (aria-pressed); a second press clears; the margin result is aria-live and appears only with a flagged layer, or ‘None of the three.’ once all three are answered without one; nothing is stored.",
+  "ambient: none.",
+  "reduced motion: final state at once; the answers still work."
+ ],
+ "demoMs": 3600,
+ "copy": [
+  "Body [K] verbatim (approved P07), with the standfirst moved here from the head; the three questions wrapped in spans (ids for aria-labelledby), words unchanged",
+  "Margin: source 1 (Gartner) in Mona with a sentence-case link; ‘What to look for’ [K]",
+  "Answers: ‘Your answers’ (key) · row tags Narrative / Signal / Memory [K, the paragraph's own] · It changes / Nothing lands [K, from the question] · We know / We don’t · Written down / Nowhere [N] · ‘Where to look first’ · result: the layer name(s) or ‘None of the three.’",
+  "Cut: ‘One symptom, three causes’ (mirrored the h2), the 44px ‘“We need more pipeline.”’ (repeated the standfirst), the repeated questions and per-row failure titles and layer keys, ‘No answers yet.’, ‘Nothing you click here is stored or sent.’, the layer-glyph key, ‘A Kelwin term · Defined here, once…’ (the <dfn> and its id stay), the boxed numeral, the mono source link, the end square."
+ ],
+ "phone": "≤1023: the column takes cols 1–8 and the margin cols 9–12 (the result sits there). ≤767: one column, each margin note right after its paragraph; the answers stack under each tag at full width, two equal halves; the result follows the rows once there is one. No overflow at 834 / 390 / 320; nothing under 11px.",
+ "notes": "A reading surface, taller than the 1400px cap by design (the whole note). Margin notes take their own grid rows from their paragraph's row (no negative margins): a longer note pushes the column apart, never overlaps. Stress-tested with notes grown 4×."
 }

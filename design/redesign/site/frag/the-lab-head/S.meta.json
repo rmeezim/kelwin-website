@@ -1,33 +1,25 @@
 {
-  "title": "The status board",
-  "direction": "A×C · Round 8 · /the-lab · header (SB)",
-  "summary": "The approved Specimen-sheet header (title block retired) answering “are they a software company, and does any of this exist?” at first glance: five instruments measured against one four-stage ruler, each bar stopping at its true stage, the right half of the board honestly empty.",
-  "story": "Opens the side door from the nav with the plain answer: the service is the product, and the Lab builds the instruments it runs on. The board shows how far along each one is before a word explains it — nothing used on engagements, nothing released, one prototype. The essay below says why they are worth building, the ledger reads the board row by row, and the close puts early access beside the audit.",
-  "copy": [
-    "[N] H1 “The instruments / under the service.”",
-    "[R, edited for honesty — founder flag] Lede “The Lab is Kelwin’s R&D. It builds the tools we’ll use to diagnose, install and calibrate revenue systems. Everything on this page is in development, and says how far along it is.” (the story map's “the tools our architects use” said present use by a team, two inches above a board that shows none is used, and /about says “One architect today”)",
-    "[K] Status · In development (status chip)",
-    "(FC) Access · By application, audit and install clients first (now the same rule as the early-access sheet's note)",
-    "[K Privacy L·07, re-worded so the link names its destination] Your data · Anonymised and aggregated only, as set out in the privacy policy ↗ (/privacy). The story map's “…under your engagement agreement ↗” linked the words “engagement agreement” to the privacy policy; the agreement is still named twice lower down (the essay, the sheet's Your data)",
-    "[R] Band rows: Signal taxonomy · Account timelines · Routing queue · Narrative resonance scoring · Entropy index",
-    "[N] Ruler stages: Concept · Prototype · Used on engagements · Released (story map)",
-    "(FC) Each bar's stage, drafted: Account timelines → Prototype (the furthest, red end tick); Signal taxonomy, Routing queue, Narrative resonance scoring, Entropy index → Concept; none used on engagements, none released",
-    "[N] Dimension “In development”; figcaption sentence and keyed list"
-  ],
-  "phone": "≤1023: the facts drop under the lede (kit) and the keyed list shows under the band (the dimension gives way, kit). 768–1023: the board's OWN tablet composition, not the desktop one scaled: a 704 × 330 drawing with tracks 44 units apart (48px at 834, against 23px when the desktop board was scaled), the same four-stage ruler with its ticks at the quarters; names at 15px break the dashed guide behind them, and below ≈960 “Used on engagements” sets over two lines so it never reads into “Prototype”. ≤767: the kit swaps in the phone drawing (358 × 300): five tracks 52 apart, no shared ruler — each track carries its name on the left (breaking the guide behind it) and its own stage word on the right, with dashed guides at the quarter marks; bars and the red end tick as on desktop; the keyed list folds to screen-reader text under the visible sentence. No bundles (one stroke per track). Checked at 320, 390, 768, 834 and 1023 with the stage overridden: no overflow, no text under 11px.",
-  "reference": {
-    "site": "Linear — roadmap timeline (bars on a time axis with a ‘today’ line); approved Kelwin interior/X header, handover/U (dashed → solid), cta/U (the ten-tick ruler)",
-    "mobbin_url": "https://mobbin.com/sites/sections/f212fe62-7af1-4d5c-91fd-d712e5ab5ac1",
-    "ref_file": "refs/the-lab-head-S.webp",
-    "borrowed": "Linear's roadmap reading: one horizontal axis, each project a bar that ends where it has got to, the axis labels carrying the meaning so the rows need no explanation.",
-    "kelwin": "The axis is not time (no dates, rule 7) but stage: a drafting ruler with four stage ticks on the 12-column grid and nothing between them, because the scale is categorical (no minor graduations, no false precision). Bars are flat 3px rules, the unreached run is the handover's dashed line, the empty half of the board is left empty, and the only colour is the one red end tick. Header X's grammar verbatim around it; the quiet door in the facts goes to /privacy and says so."
-  },
-  "motion": [
-    "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts at +700ms); registration marks register; at 900ms the ruler calibrates — a 1px cursor sweeps left → right in 1s as the baseline grows behind it, and each of the four stage ticks and its word registers as the cursor passes (the page's one orchestrated moment).",
-    "then the dashed tracks, guides and instrument names settle; the bars run out from the origin at one speed (row stagger 70ms), so the four concept bars stop early and the eye follows Account timelines to prototype, where its red end tick lands last (~3.2s); the “In development” bracket draws over the reached half (~3.5s).",
-    "ambient: none. interaction: none (links in the nav and the facts only).",
-    "on the live site: plays once when the header is 40% visible (on load). Reduced motion: the static markup is the final board — no sweep, no timers."
-  ],
-  "demoMs": 4200,
-  "notes": "Height ≈ 1044px at 1440 (nav 96 · head · 330 band · 112 end). Stage ticks sit on the column grid: Concept = end of col 3 (x 310), Prototype = end of col 6 (644), Used on engagements = end of col 9 (978), Released = end of col 12 (1312); an origin tick at 0 and nothing else on the ruler. Stages are drafted (FC) — the founder's answers to §7 Q4 set each bar; a tie for furthest moves the red to one named instrument or to the stage tick. Band: 0 flags, 1 dimension, 1 red. No JS: the entrance is CSS only. The ruler's baseline grows by scaleX rather than the kit's pathLength dash plot: with the kit's non-scaling strokes Chrome measures that dash in screen px, so on the tablet frame (scaled above 1) the plotted baseline stopped short. The tablet drawing carries its own frame unit (--mu = 100cqw / 704) and the shared HTML labels take their tablet positions from --my / --mx."
+ "title": "An AI platform is coming",
+ "direction": "A×C · Round 9 · /the-lab · interior head",
+ "summary": "The Lab's head (coherence pass 3): a 120px two-line h1, “An AI platform / is coming.”, the light accent the word “coming.” (D4); lede “It will cover GTM, revenue strategy and revenue architecture. The Lab’s first benchmark is due in Q4 2026.”; phone floor 48 (40 below 360); the plate is the Revenue Entropy Index's cover as a whole sheet, “Not yet published”, its year at .9 of the h1.",
+ "story": "Answers the visitor's first question ('is there anything here yet?') honestly: something is coming, and it is an AI platform. The lede says who builds it and for what (Q4: the Lab, our R&D; GTM, revenue strategy and revenue architecture). The shot card shows nothing on purpose: the brief is a screen too far out of focus to read, which is the tease and is also true (no instrument is named, nothing runs yet).",
+ "copy": [
+  "[K, Q4] h1 “Coming soon: / an AI platform.” (accent: “Coming soon:”, the founder's ‘coming soon’; the subject is his ‘AI intelligence platform’)",
+  "[K, Q4] lede “The Lab, our R&D, is building it for GTM, revenue strategy and revenue architecture.” (no noun phrase of the h1 repeated)",
+  "[N] shot card: slate “Footage to come” · “The first build, out of focus.” · “Filmed the day it first runs: one screen in a dark room, focus pulled until nothing on it reads.” · spec “8 s · 2.52 : 1” (numerals and units only; the plate's own aspect, 1312 × 520)",
+  "Nav: four items, The Firm lit (The Lab sits in The Firm's plate, Q4)."
+ ],
+ "phone": "Kit composition: the h1 holds at 56px at 390 and 320 and wraps by phrase ('Coming / soon: / an AI / platform.'; every word fits a 288px line), the lede takes the full measure at 17px, the shot card grows with its words (min 240px): slate, then the brief, then the spec line at its foot.",
+ "reference": {
+  "site": "GoNimbly (the founder's recordings, refs-r9): Careers and Solutions heads",
+  "borrowed": "A short headline, a line or two of lede, and one big picture directly under the head at full width; the picture carries the page, the type stays calm.",
+  "kelwin": "Kit §12.3/12.4: two-voice h1 with the 48×2 rule, cast 128/stacked with the accent leading (Insights, the other 128, ends on its accent); the picture is a shot card on flat graphite (no footage exists yet), labelled 'Footage to come', no take number, no timecode."
+ },
+ "motion": [
+  "entrance (kit §13): the turn lifts, the h1 writes itself in ('Coming soon:' in the light voice, then 'an AI platform.'), the rule draws and the lede rises, then the shot card rises as a narrower rectangle and widens to the measure.",
+  "ambient: none. interaction: none.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2600,
+ "notes": "Coherence pass 2: the viewfinder card “The first build, out of focus.” is replaced by the Index's cover as a sheet plate (its brief goes to the founder's shot list); the-lab-index no longer repeats the cover and is retired from the page order. h1 “Software for / the whole revenue system.” (whole-line accent) → “An AI platform / for revenue teams.”. Round 8's head is gone: 'The instruments / under the service.', the R&D crumb, the Status/Access/Your data facts box with its IN DEVELOPMENT chip, and the five-bar status board (Q4: no instruments to name). Round 9's first cast, 'Coming / by invitation.', had no subject and left 'by' alone at 320; 'by invitation' now lives in the close. Page CSS: the shot card's brief sits under the slate, and the spec line keeps its units in lower case ('8 s', not '8 S'); both are kit requests. The shot card's copy is a brief for the founder to confirm or rewrite. Coherence pass (round 9): see summary. Coherence pass 3: h1 recast: “An AI platform / for revenue teams.” broke into four lines with two lone words at 390. The lede no longer shares the GTM Intelligence pointer's frame (“Our R&D, the Lab, is building…”). The cover year follows the h1 (108px at 1440, 82 at 1024, 67 at 834, 41 at 390) — at 116/96 it outranked the fluid h1 on tablets and phones. Final check: the lede no longer reads as a Q4 2026 date for the platform (‘…, and its first benchmark is due…’, where ‘its’ was the platform): it is now two sentences, “It will cover GTM, revenue strategy and revenue architecture. The Lab’s first benchmark is due in Q4 2026.”, so the date belongs to the Lab's benchmark (as on Insights and Contact) and the platform stays undated."
 }

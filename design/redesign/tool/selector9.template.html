@@ -1,0 +1,876 @@
+<title>Kelwin Redesign · Round 9</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mona+Sans:wdth,wght@75..125,300..700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+@font-face { font-family: "Mona Sans Local"; font-weight: 200 900; font-stretch: 75% 125%; font-display: swap; src: url(fonts/MonaSans.woff2) format("woff2"); }
+@font-face { font-family: "JetBrains Mono Local"; font-weight: 400 700; font-display: swap; src: url(fonts/JetBrainsMono.woff2) format("woff2"); }
+/* Round 9: the founder's answer to round 8, on one graphite working page in his reading order:
+   what he asked → why the pages read AI-made → the motion → pictures → projects → the lifecycle →
+   every page → the questions → copy the review. Deliberately single-theme, in Kelwin's v5 system.
+   Round 9's own voice: Mona for every word (labels sentence case, 14px and up); JetBrains Mono only
+   for standalone numerals; no invented codes; one cut-corner primary (Copy my review). */
+:root {
+  --bg: #141517;
+  --panel: #1C1D20;
+  --panel-2: #26272B;
+  --well: #0E0F11;
+  --fg: #FBFAF6;
+  --fg-2: #C6C7CA;
+  --fg-3: #9A9DA3;
+  --line: rgba(251,250,246,0.14);
+  --line-2: rgba(251,250,246,0.3);
+  --red: #BF3A36;
+  --red-deep: #8E2824;
+  --signal: #E8564E;
+  --blush: #F2C9BF;
+  --f-display: "Mona Sans", "Mona Sans Local", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Mona Sans", "Mona Sans Local", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "JetBrains Mono", "JetBrains Mono Local", ui-monospace, Menlo, Consolas, monospace;
+  --gut: clamp(16px, 3.4vw, 48px);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--blush); outline-offset: 3px; }
+img, video { display: block; max-width: 100%; height: auto; }
+i, em { font-style: normal; font-weight: 600; }   /* rule 4: no italics anywhere */
+h1, h2, h3, h4 { text-wrap: balance; }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; letter-spacing: 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ── the bar ── */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; display: flex; align-items: center; gap: 10px 24px; flex-wrap: wrap;
+  padding: 12px var(--gut); background: var(--bg); border-bottom: 1px solid var(--line); }
+.mark { display: flex; align-items: center; gap: 14px; min-width: 0; text-decoration: none; }
+.mark .logo { display: inline-block; height: 18px; aspect-ratio: 734 / 152; background: var(--fg); -webkit-mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; mask: url(brand/kelwin-lockup.svg) left center / contain no-repeat; }
+.mark-t { font-size: 14px; font-weight: 500; color: var(--fg-2); white-space: nowrap; }
+.bar-nav { display: flex; gap: 2px 20px; flex-wrap: wrap; font-size: 14px; }
+.bar-nav a { color: var(--fg-2); text-decoration: none; padding: 8px 0; }
+.bar-nav a:hover { color: var(--fg); }
+.bar-right { display: flex; align-items: center; gap: 10px 18px; margin-left: auto; flex-wrap: wrap; }
+.prog { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--fg-2); white-space: nowrap; }
+.prog .num { font-size: 14px; color: var(--fg); }
+.meter { display: block; width: 96px; height: 3px; background: rgba(251,250,246,0.12); }
+.meter b { display: block; height: 100%; width: 0; background: var(--fg); transition: width .4s ease; }
+.saved { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--fg-3); white-space: nowrap; }
+.saved::before { content: ""; width: 7px; height: 7px; background: var(--fg-3); flex: none; }
+.saved[data-state="db"]::before { background: var(--fg); }
+.saved[data-state="err"]::before { background: var(--signal); }
+
+/* ── actions: outlined (sentence case), the one cut-corner primary, the underlined link ── */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 16px; border: 1px solid var(--line-2); background: transparent;
+  font: 500 15px/1.2 var(--f-body); color: var(--fg); text-decoration: none; text-align: center; }
+.btn:hover { border-color: var(--fg); }
+.btn[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.btn-c { --cut: 12px; display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 14px 30px 14px 24px; border: 0; background: var(--red); color: var(--fg);
+  font: 600 14px/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%); }
+.btn-c:hover { background: var(--red-deep); }
+.btn-c:focus-visible { outline: 2px solid var(--fg); outline-offset: -6px; }
+.go { display: inline-flex; gap: 6px; font-size: 15px; font-weight: 500; color: var(--fg); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; }
+.go:hover { text-decoration-color: var(--fg); }
+
+/* ── page frame and the head grammar ── */
+.wrap { padding-inline: var(--gut); padding-block: 0 120px; }
+.blk { max-width: 1280px; margin: 0 auto; }
+.kicker { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 14px; line-height: 1.3; font-weight: 500; color: var(--fg-2); }
+.kicker::before { content: ""; width: 8px; height: 8px; background: var(--signal); flex: none; }
+.h2 { margin: 18px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(30px, 3.7vw, 54px); line-height: 1.04; letter-spacing: -0.018em; max-width: 22ch; }
+.h2 span, h1 span { font-weight: 300; color: var(--fg-2); }
+.rule { display: block; width: 48px; height: 2px; background: var(--red); margin-top: 28px; }
+.lede { margin: 20px 0 0; max-width: 64ch; color: var(--fg-2); font-size: 18px; line-height: 1.5; }
+.sect { margin-top: 128px; padding-top: 32px; border-top: 1px solid var(--line); }
+.sub { margin: 56px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 24px; line-height: 1.2; letter-spacing: -0.01em; }
+.key { display: block; margin: 0; font-size: 14px; line-height: 1.4; font-weight: 500; color: var(--fg-2); }
+.meta { font-size: 14px; color: var(--fg-3); }
+.todo { display: inline-block; padding: 1px 8px; border: 1px dashed rgba(242,201,191,.55); color: var(--blush); font-size: 14px; line-height: 1.5; }
+
+/* ── intro ── */
+.intro { padding-block: 72px 0; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 48px 64px; align-items: end; }
+.intro h1 { margin: 22px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(44px, 6.4vw, 100px); line-height: .98; letter-spacing: -0.018em; }
+.status { display: grid; margin: 0; border-top: 1px solid var(--line-2); }
+.status div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.status dt { margin: 0; font-size: 14px; font-weight: 500; color: var(--fg-2); }
+.status dd { margin: 0; font-size: 15px; color: var(--fg); }
+.asks { margin: 80px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line-2); }
+.asks li { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) 180px; gap: 10px 40px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.asks q { quotes: "“" "”"; font-family: var(--f-display); font-stretch: 105%; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.3; color: var(--fg); }
+.asks p { margin: 0; font-size: 15.5px; color: var(--fg-2); }
+.asks .go { justify-self: end; }
+.todo-do { margin-top: 72px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px 64px; align-items: start; }
+.todo-do .big { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.15; letter-spacing: -0.012em; }
+.todo-do .big span { font-weight: 300; color: var(--fg-2); }
+.todo-do p.lede { margin-top: 14px; font-size: 16px; }
+.where { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line-2); }
+.where li a { display: grid; grid-template-columns: minmax(0, 1fr) auto 120px; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-size: 15px; }
+.where li a:hover .w-name { text-decoration: underline; text-underline-offset: 4px; }
+.where .num { font-size: 13.5px; color: var(--fg-2); }
+.where .meter { width: 100%; }
+
+/* ── shared: figures, choices, notes ── */
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.pair figure, .shot figure { margin: 0; min-width: 0; }
+.frame { display: block; aspect-ratio: 16 / 10; border: 1px solid var(--line); background: var(--well); overflow: hidden; }
+a.frame:hover { border-color: var(--line-2); }
+.frame img { width: 100%; height: 100%; object-fit: contain; }
+.frame.empty { display: grid; place-items: center; padding: 16px; text-align: center; border-style: dashed; border-color: rgba(242,201,191,.4); color: var(--blush); font-size: 14px; }
+.pair figcaption { margin-top: 8px; font-size: 14px; font-weight: 500; color: var(--fg-2); }
+.ctl { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.proposed { margin: 0; font-size: 14px; color: var(--fg-3); }
+.proposed b { color: var(--fg-2); font-weight: 500; }
+.choices { display: grid; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: 8px; }
+.choice { min-height: 50px; padding: 12px 14px; border: 1px solid var(--line-2); background: transparent; color: var(--fg); font: 500 15px/1.25 var(--f-body); text-align: left; }
+.choice:hover { border-color: var(--fg); }
+.choice[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.note { width: 100%; min-height: 84px; padding: 12px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); font: 400 15px/1.5 var(--f-body); resize: vertical; }
+.note::placeholder { color: var(--fg-3); }
+.note:focus { border-color: var(--line-2); outline: none; }
+.note:focus-visible { outline: 2px solid var(--blush); outline-offset: 2px; }
+.decide { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 24px 56px; padding: 28px; background: var(--panel); border: 1px solid var(--line); }
+.decide h3 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 24px; line-height: 1.2; }
+.decide p { margin: 10px 0 0; font-size: 15px; color: var(--fg-2); max-width: 52ch; }
+.decide .note { background: var(--bg); }
+
+/* ── causes ── */
+.causes { margin-top: 48px; border-top: 1px solid var(--line-2); }
+.cause { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 24px 56px; padding: 40px 0; border-bottom: 1px solid var(--line); }
+.cause h3 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(22px, 2.1vw, 28px); line-height: 1.15; letter-spacing: -0.012em; }
+.cause p { margin: 14px 0 0; font-size: 16px; color: var(--fg-2); max-width: 54ch; }
+.cause .fix { color: var(--fg); }
+.cause .fix b { font-weight: 500; color: var(--fg-2); }
+.cause .cap { margin: 10px 0 0; font-size: 14px; color: var(--fg-3); }
+.cause-note { margin-top: 32px; display: grid; gap: 10px; max-width: 760px; }
+
+/* ── motion ── */
+.films { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
+.film { margin: 0; min-width: 0; }
+.film:first-child { grid-column: 1 / -1; }
+.film video { width: 100%; aspect-ratio: 16 / 10; background: var(--well); border: 1px solid var(--line); }
+.film .frame.empty { aspect-ratio: 16 / 10; }
+.film figcaption { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 24px; }
+.film figcaption b { font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 22px; line-height: 1.2; }
+.film figcaption .num { font-size: 13.5px; color: var(--fg-3); padding-top: 6px; }
+.film figcaption p { grid-column: 1 / -1; margin: 0; font-size: 15.5px; color: var(--fg-2); max-width: 70ch; }
+.film:first-child figcaption p { font-size: 16.5px; }
+.live { margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.live p { margin: 0; flex: 1 1 360px; font-size: 16px; color: var(--fg); }
+.reduced { margin: 14px 0 0; font-size: 14px; color: var(--fg-3); }
+
+/* ── pictures ── */
+.rules6 { margin-top: 48px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.rule6 { padding: 28px 28px 24px; background: var(--panel); border: 1px solid var(--line); min-width: 0; }
+.rule6.is-new { border-left: 2px solid var(--signal); }
+.rule6 .rh { margin: 14px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 22px; line-height: 1.25; }
+.rule6 ul { margin: 14px 0 0; padding-left: 18px; display: grid; gap: 8px; font-size: 15.5px; color: var(--fg-2); }
+.rule6.is-new ul { color: var(--fg); }
+.rule6 li::marker { color: var(--fg-3); }
+.brief { margin: 20px 0 0; border-top: 1px solid var(--line-2); }
+.brief-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr) minmax(0, .8fr) minmax(0, .8fr); gap: 8px 24px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--fg-2); }
+.brief-row.head { padding: 12px 0; font-size: 14px; font-weight: 500; color: var(--fg-3); }
+.brief-row b { font-weight: 500; color: var(--fg); font-size: 16px; }
+.brief-row .lbl { display: none; }
+.brief-row a { color: var(--fg); }
+
+/* ── projects ── */
+.offer { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 56px; align-items: end; }
+.offer .stmt { margin: 8px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(28px, 3vw, 42px); line-height: 1.12; letter-spacing: -0.015em; }
+.offer .lede { margin: 0; font-size: 16px; }
+.cards { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.card { display: grid; grid-template-rows: auto auto 1fr auto; gap: 12px; padding: 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); min-width: 0; }
+.card h3 { margin: 4px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 24px; line-height: 1.15; letter-spacing: -0.01em; }
+.card p { margin: 0; font-size: 15px; color: var(--fg-2); }
+.card .keeps { font-size: 15px; color: var(--fg); }
+.card .keeps b { display: block; margin-bottom: 2px; font-size: 14px; font-weight: 500; color: var(--fg-2); }
+.card .st { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: 14px; color: var(--fg-3); }
+.card .st .go { font-size: 14px; }
+.card .choices { --n: 3; }
+.card .choice { min-height: 44px; text-align: center; padding: 10px 8px; }
+.held-h { margin: 32px 0 0; font-size: 15px; font-weight: 500; color: var(--fg-2); }
+.cards.held { margin-top: 12px; grid-template-columns: minmax(0, 1fr); }
+.cards.held .card { grid-template-columns: minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 300px); grid-template-rows: auto; gap: 12px 32px; align-items: start; }
+.two { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px 56px; }
+.two h3 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 22px; line-height: 1.2; }
+.two p { margin: 12px 0 0; font-size: 15px; color: var(--fg-2); max-width: 56ch; }
+.plain { margin: 16px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.plain li { padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.steps { margin: 16px 0 0; padding: 0; list-style: none; counter-reset: s; border-top: 1px solid var(--line); }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+.steps li::before { content: counter(s); font-family: var(--f-mono); font-size: 13.5px; color: var(--fg-3); padding-top: 3px; }
+/* the shots (each at its own proportion) beside the plain notes; one column when either side is empty */
+.place-row { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 32px 48px; align-items: start; }
+.place-row.solo { grid-template-columns: minmax(0, 1fr); }
+.place { display: grid; gap: 32px; min-width: 0; }
+.place .frame { aspect-ratio: auto; }
+.place .frame img { height: auto; }
+.place .frame.empty { aspect-ratio: 16 / 10; }
+.place-notes { display: grid; gap: 0; border-top: 1px solid var(--line); min-width: 0; }
+.place-notes p { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--fg-2); }
+.place-notes b { display: block; margin-bottom: 2px; color: var(--fg); font-weight: 500; }
+.place figure { margin: 0; min-width: 0; }
+.place figcaption { margin-top: 12px; }
+.place figcaption b { display: block; font-size: 16px; font-weight: 500; }
+.place figcaption span { display: block; margin-top: 4px; font-size: 15px; color: var(--fg-2); }
+.mocks { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ── lifecycle ── */
+.spine { margin: 20px 0 0; padding: 0; list-style: none; counter-reset: s; display: flex; flex-wrap: wrap; gap: 8px; }
+.spine li { counter-increment: s; display: inline-flex; align-items: baseline; gap: 10px; padding: 10px 14px; border: 1px solid var(--line); font-size: 15px; }
+.spine li::before { content: counter(s); font-family: var(--f-mono); font-size: 13.5px; color: var(--fg-3); }
+.opts { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.opt { padding: 26px 24px; border: 1px solid var(--line); min-width: 0; display: grid; gap: 12px; align-content: start; }
+.opt.is-rec { border-color: var(--line-2); background: var(--panel); }
+.opt .rec { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--fg); }
+.opt .rec::before { content: ""; width: 8px; height: 8px; background: var(--signal); }
+.opt h3 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 26px; line-height: 1.12; letter-spacing: -0.012em; }
+.opt .s { margin: 0; font-size: 15px; color: var(--fg-2); }
+.opt p { margin: 0; font-size: 15px; }
+.opt h4 { margin: 6px 0 0; font-size: 14px; font-weight: 500; color: var(--fg-2); }
+.opt ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 15px; color: var(--fg-2); }
+.recline { margin: 24px 0 0; max-width: 78ch; font-size: 16px; color: var(--fg); }
+.cadence { margin-top: 20px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 24px 48px; }
+.cadence h4 { margin: 0; font-size: 15px; font-weight: 500; color: var(--fg-2); }
+.cadence dl { margin: 10px 0 0; border-top: 1px solid var(--line); }
+.cadence dl div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 4px 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.cadence dt { margin: 0; font-size: 15px; font-weight: 500; }
+.cadence dd { margin: 0; font-size: 15px; color: var(--fg-2); }
+
+/* ── footer ── */
+.foot-ask { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 56px; align-items: start; }
+.foot-ask .r8 q { font-size: 18px; }
+.ffig { margin: 0; min-width: 0; }
+.ffig a { display: block; border: 1px solid var(--line); background: var(--well); }
+.ffig a:hover { border-color: var(--line-2); }
+.ffig img { width: 100%; height: auto; }
+.ffig figcaption { margin-top: 8px; font-size: 14px; font-weight: 500; color: var(--fg-2); }
+.foot-opts { margin-top: 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.fopt { padding: 26px 24px; border: 1px solid var(--line); min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 170px); gap: 20px 24px; align-content: start; align-items: start; }
+.fopt-head { grid-column: 1; grid-row: 1; display: grid; gap: 12px; min-width: 0; }
+.fopt .ffig.is-phone { grid-column: 2; grid-row: 1; }
+.fopt .ffig.is-desk { grid-column: 1 / -1; }
+.fopt.is-rec { border-color: var(--line-2); background: var(--panel); }
+.fopt .rec { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--fg); }
+.fopt .rec::before { content: ""; width: 8px; height: 8px; background: var(--signal); }
+.fopt .rec.is-alt { color: var(--fg-2); }
+.fopt .rec.is-alt::before { background: var(--fg-3); }
+.fopt h3 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 26px; line-height: 1.12; letter-spacing: -0.012em; }
+.fopt p { margin: 0; font-size: 15px; color: var(--fg-2); max-width: 60ch; }
+.foot-where { margin: 20px 0 0; font-size: 15px; color: var(--fg-2); max-width: 78ch; }
+
+/* ── pages ── */
+.group { margin-top: 72px; }
+.group:first-child { margin-top: 40px; }
+.group-h { display: flex; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; padding-bottom: 14px; border-bottom: 1px solid var(--line-2); }
+.group-h h3 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 22px; line-height: 1.2; }
+.group-h span { font-size: 15px; color: var(--fg-3); }
+.pg { padding: 40px 0 44px; border-bottom: 1px solid var(--line); display: grid; gap: 24px; }
+.pg-head { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 16px 56px; align-items: start; }
+.pg-route { margin: 0; font-size: 14px; color: var(--fg-3); overflow-wrap: anywhere; }
+.pg h3 { margin: 6px 0 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.08; letter-spacing: -0.015em; }
+.r8 { margin: 0; padding-left: 16px; border-left: 2px solid var(--line-2); }
+.r8 .key b { color: var(--fg); font-weight: 500; }
+.r8 q { display: block; margin-top: 6px; quotes: "“" "”"; font-size: 17px; line-height: 1.45; color: var(--fg); max-width: 60ch; }
+.r8 details { margin-top: 8px; }
+.r8 summary { cursor: pointer; font-size: 14px; color: var(--fg-2); text-decoration: underline; text-decoration-color: var(--line-2); text-underline-offset: 4px; width: max-content; max-width: 100%; }
+.r8 details p { margin: 8px 0 0; font-size: 15px; color: var(--fg-2); max-width: 70ch; }
+.pg-vis { display: grid; gap: 12px; min-width: 0; }
+.pg-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 23%); gap: 10px; overflow-x: auto; padding-bottom: 10px; scrollbar-color: var(--line-2) transparent; }
+.strip figure { margin: 0; min-width: 0; }
+.strip a { display: block; border: 1px solid var(--line); background: var(--well); }
+.strip a:hover { border-color: var(--line-2); }
+.strip img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+.strip figcaption { margin-top: 6px; font-size: 13.5px; color: var(--fg-3); }
+.pending { padding: 28px; border: 1px dashed rgba(242,201,191,.4); color: var(--blush); font-size: 15px; }
+.stage { position: relative; background: var(--well); border: 1px solid var(--line); overflow: hidden; }
+.stage-in { position: relative; transform-origin: 0 0; }
+.stage iframe { display: block; border: 0; background: var(--bg); }
+.pg-foot { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: 28px 56px; }
+.pg-meta { display: grid; gap: 22px; align-content: start; min-width: 0; }
+.pg-meta ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; font-size: 15.5px; color: var(--fg); max-width: 70ch; }
+.pg-meta ul li::marker { color: var(--fg-3); }
+.pg-meta .flags { color: var(--fg-2); }
+.pg-meta .flags a { margin-left: 4px; font-size: 14px; color: var(--fg); text-underline-offset: 3px; }
+
+/* ── questions ── */
+.qgroup { margin-top: 56px; }
+.qgroup:first-child { margin-top: 40px; }
+.qgroup > h3 { margin: 0; padding-bottom: 14px; border-bottom: 1px solid var(--line-2); font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 22px; }
+.qq { display: grid; grid-template-columns: 40px minmax(0, 1fr) minmax(0, 420px); gap: 16px 32px; padding: 28px 0; border-bottom: 1px solid var(--line); }
+.qq-n { font-family: var(--f-mono); font-size: 13.5px; color: var(--fg-3); padding-top: 6px; }
+.qq h4 { margin: 0; font-family: var(--f-display); font-stretch: 110%; font-weight: 430; font-size: 21px; line-height: 1.25; letter-spacing: -0.01em; }
+.qq .ctx { margin: 10px 0 0; font-size: 15.5px; color: var(--fg-2); max-width: 64ch; }
+.qq .def { margin: 10px 0 0; font-size: 15px; color: var(--fg); max-width: 64ch; }
+.qq .def b { font-weight: 500; color: var(--fg-2); }
+.qq .stop { display: inline-block; margin-left: 10px; padding: 2px 8px; border: 1px solid var(--blush); color: var(--blush); font: 500 14px/1.3 var(--f-body); vertical-align: middle; }
+.affects { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; font-size: 14px; color: var(--fg-3); }
+.affects a { color: var(--fg-2); text-underline-offset: 3px; }
+.qq.see .ctl { align-content: center; }
+.qq .note.short { min-height: 60px; }
+
+/* ── summary ── */
+.general { margin-top: 32px; display: grid; gap: 10px; max-width: 760px; }
+.summary { margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px 28px; align-items: start; padding: 24px; background: var(--panel); border: 1px solid var(--line); }
+.summary pre { margin: 0; max-height: 560px; overflow: auto; white-space: pre-wrap; word-break: break-word; font: 400 14px/1.6 var(--f-body); color: var(--fg-2); min-width: 0; }
+.savedline { margin: 20px 0 0; font-size: 15px; color: var(--fg-2); }
+
+@media (min-width: 1200px) and (max-width: 1439px) { .mark-t { display: none; } .bar-nav { gap: 2px 15px; } }   /* the nav keeps one row on laptops */
+@media (max-width: 1199px) {
+  .bar-nav { display: none; }
+  .fopt { grid-template-columns: minmax(0, 1fr); }
+  .fopt-head, .fopt .ffig.is-phone, .fopt .ffig.is-desk { grid-column: 1; grid-row: auto; }
+  .fopt .ffig.is-phone { width: min(100%, 220px); }
+}
+@media (max-width: 1023px) {
+  .intro, .todo-do, .offer, .two, .cadence, .place-row, .foot-ask { grid-template-columns: minmax(0, 1fr); }
+  .cards.held .card { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .asks li { grid-template-columns: minmax(0, 1fr); }
+  .asks .go { justify-self: start; }
+  .cause { grid-template-columns: minmax(0, 1fr); }
+  .decide { grid-template-columns: minmax(0, 1fr); }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .opts { grid-template-columns: minmax(0, 1fr); }
+  .pg-head, .pg-foot { grid-template-columns: minmax(0, 1fr); }
+  .qq { grid-template-columns: 32px minmax(0, 1fr); }
+  .qq .ctl { grid-column: 2; }
+  .strip { grid-auto-columns: minmax(220px, 40%); }
+  .brief-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .brief-row.head { display: none; }
+  .brief-row .lbl { display: block; font-size: 14px; font-weight: 500; color: var(--fg-3); }
+}
+@media (max-width: 719px) {
+  html { scroll-padding-top: 120px; }
+  .saved { display: none; }
+  .meter { width: 56px; }
+  .mark-t { display: none; }
+  .status div { grid-template-columns: minmax(0, 1fr); }
+  .pair, .films, .rules6, .cards, .foot-opts { grid-template-columns: minmax(0, 1fr); }
+  .fopt { padding: 22px 18px; }
+  .cards.held .card { grid-template-columns: minmax(0, 1fr); }
+  .qq { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .qq .ctl { grid-column: 1; }
+  .qq-n { padding-top: 0; }
+  .choices { grid-template-columns: minmax(0, 1fr); }
+  .card .choices { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .summary { grid-template-columns: minmax(0, 1fr); }
+  .strip { grid-auto-columns: 78%; }
+  .brief-row { grid-template-columns: minmax(0, 1fr); }
+  .cadence dl div { grid-template-columns: minmax(0, 1fr); }
+  .decide { padding: 20px; }
+  .where li a { grid-template-columns: minmax(0, 1fr) auto 64px; }
+}
+@media (max-width: 479px) { .bar .meter { display: none; } .bar { gap: 10px 14px; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .meter b { transition: none; }
+}
+</style>
+
+<header class="bar">
+  <a class="mark" href="#top"><span class="logo" role="img" aria-label="Kelwin"></span><span class="mark-t">Round 9 review</span></a>
+  <nav class="bar-nav" aria-label="On this page">
+    <a href="#causes">Causes</a><a href="#motion">Motion</a><a href="#pictures">Pictures</a><a href="#projects">Projects</a><a href="#lifecycle">Lifecycle</a><a href="#footer">Footer</a><a href="#pages">Pages</a><a href="#questions">Questions</a>
+  </nav>
+  <div class="bar-right">
+    <div class="prog"><span><span class="num" id="prog-n">0</span> of <span class="num" id="prog-t">0</span></span><span class="meter" aria-hidden="true"><b id="prog-bar"></b></span></div>
+    <span class="saved" id="saved" data-state="local">Kept in this browser</span>
+    <a class="btn" href="#summary">Copy my review</a>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="blk">
+
+    <!-- a · intro -->
+    <section class="intro" aria-labelledby="t-intro">
+      <div>
+        <p class="kicker">Round 9 · your answer to round 8</p>
+        <h1 id="t-intro">Every page reworked, <span>from your notes.</span></h1>
+        <span class="rule" aria-hidden="true"></span>
+        <p class="lede" id="intro-lede"></p>
+      </div>
+      <dl class="status" id="status"></dl>
+    </section>
+    <ol class="asks" id="asks" aria-label="What you asked for, and where it is"></ol>
+    <div class="todo-do">
+      <div>
+        <p class="big" id="todo-big"></p>
+        <p class="lede">Most take one click. Your answers save as you go. When you're done, copy the review at the end and paste it to me.</p>
+      </div>
+      <ul class="where" id="where" aria-label="Your progress, by section"></ul>
+    </div>
+
+    <!-- b · causes -->
+    <section class="sect" id="causes" aria-labelledby="t-causes">
+      <p class="kicker">The causes</p>
+      <h2 class="h2" id="t-causes">Why the pages read as AI-made. <span>Eight causes, fixed.</span></h2>
+      <p class="lede" id="causes-lede"></p>
+      <div class="causes" id="cause-list"></div>
+      <div class="cause-note">
+        <label class="key" for="note-causes">Anything that still reads as machine-made to you? (optional)</label>
+        <textarea class="note" id="note-causes" placeholder="Point at it in your own words, on any page"></textarea>
+      </div>
+    </section>
+
+    <!-- c · motion -->
+    <section class="sect" id="motion" aria-labelledby="t-motion">
+      <p class="kicker">Motion</p>
+      <h2 class="h2" id="t-motion">The page change you asked for. <span>Watch it, then pick.</span></h2>
+      <p class="lede" id="motion-lede"></p>
+      <div class="films" id="films"></div>
+      <div class="live"><p id="live-line"></p><span id="live-links" style="display:flex;flex-wrap:wrap;gap:10px"></span></div>
+      <p class="reduced" id="reduced-line"></p>
+      <p class="reduced" id="footer-line" hidden></p>
+      <div class="decide" id="motion-decide"></div>
+    </section>
+
+    <!-- d · pictures -->
+    <section class="sect" id="pictures" aria-labelledby="t-pictures">
+      <p class="kicker">Pictures</p>
+      <h2 class="h2" id="t-pictures">Pictures under the headline. <span>Rule 6 needs your yes.</span></h2>
+      <p class="lede" id="pictures-lede"></p>
+      <div class="rules6" id="rules6"></div>
+      <h3 class="sub">The shoot brief</h3>
+      <p class="lede" id="brief-lede" style="font-size:16px"></p>
+      <div class="brief" id="brief" role="table" aria-label="The shoot brief"></div>
+      <div class="decide" id="pictures-decide"></div>
+    </section>
+
+    <!-- e · projects -->
+    <section class="sect" id="projects" aria-labelledby="t-projects">
+      <p class="kicker">Projects</p>
+      <h2 class="h2" id="t-projects">Projects, for buyers who need one piece. <span>The full system stays first.</span></h2>
+      <div class="offer">
+        <div><span class="key" id="offer-name"></span><p class="stmt" id="offer-line"></p></div>
+        <p class="lede" id="projects-lede"></p>
+      </div>
+      <div class="cards" id="proj-cards"></div>
+      <div id="proj-held"></div>
+      <div class="two">
+        <div><h3>Only with the system</h3><p id="ows-line"></p><ul class="plain" id="ows"></ul></div>
+        <div><h3>How a project runs</h3><p id="path-line"></p><ol class="steps" id="path"></ol></div>
+      </div>
+      <h3 class="sub">Where projects appear on the site</h3>
+      <div class="place-row" id="place-row">
+        <div class="place" id="place"></div>
+        <div class="place-notes" id="place-notes"></div>
+      </div>
+      <div class="mocks" id="proj-mocks"></div>
+      <div class="general" style="margin-top:40px">
+        <label class="key" for="note-projects">Anything on the projects as a whole (optional)</label>
+        <textarea class="note" id="note-projects" placeholder="A project to add, a name to change, where they should live"></textarea>
+      </div>
+    </section>
+
+    <!-- f · lifecycle -->
+    <section class="sect" id="lifecycle" aria-labelledby="t-lifecycle">
+      <p class="kicker">The engagement lifecycle</p>
+      <h2 class="h2" id="t-lifecycle">How an engagement runs. <span>Three ways to set it up.</span></h2>
+      <p class="lede" id="life-lede"></p>
+      <h3 class="sub" id="spine-title"></h3>
+      <ol class="spine" id="spine"></ol>
+      <div class="opts" id="opts"></div>
+      <p class="recline" id="recline"></p>
+      <div class="decide" id="life-decide"></div>
+      <h3 class="sub" id="cad-title"></h3>
+      <div class="cadence" id="cadence"></div>
+      <p class="reduced" id="cad-line" style="font-size:15px;color:var(--fg-2);max-width:78ch"></p>
+    </section>
+
+    <!-- f2 · footer (his note during round 9) -->
+    <section class="sect" id="footer" aria-labelledby="t-footer" hidden>
+      <p class="kicker">The footer</p>
+      <h2 class="h2" id="t-footer">The footer logo, moved up. <span>On the line, or fully above it.</span></h2>
+      <p class="lede" id="foot-lede"></p>
+      <div class="foot-ask">
+        <div class="r8"><span class="key">What you asked, during this round</span><q id="foot-quote"></q></div>
+        <div id="foot-r8"></div>
+      </div>
+      <div class="foot-opts" id="foot-opts"></div>
+      <p class="foot-where" id="foot-where"></p>
+      <div class="decide" id="foot-decide"></div>
+    </section>
+
+    <!-- g · pages -->
+    <section class="sect" id="pages" aria-labelledby="t-pages">
+      <p class="kicker">The pages</p>
+      <h2 class="h2" id="t-pages">Every page, reworked. <span>One call each.</span></h2>
+      <p class="lede">Each card shows the page as a visitor scrolls it, one screen per frame, at desktop width. <b>View it here</b> runs the real mockup inside the card. <b>Open the mockup</b> opens it in a new tab, where every link goes to the matching mockup and turns the page, so you can click through the whole site.</p>
+      <div id="groups"></div>
+    </section>
+
+    <!-- h · questions -->
+    <section class="sect" id="questions" aria-labelledby="t-questions">
+      <p class="kicker">Questions</p>
+      <h2 class="h2" id="t-questions">Questions only you can answer. <span>Each has a proposed default.</span></h2>
+      <p class="lede">The pages are drafted on the proposed answer and say nothing they can't stand behind. Pick an answer, or write your own. A yes is often enough.</p>
+      <div id="qs"></div>
+    </section>
+
+    <!-- i · summary -->
+    <section class="sect" id="summary" aria-labelledby="t-summary">
+      <p class="kicker">Your review</p>
+      <h2 class="h2" id="t-summary">Copy your review, <span>then paste it to me.</span></h2>
+      <div class="general">
+        <label class="key" for="note-general">Anything else (optional)</label>
+        <textarea class="note" id="note-general" placeholder="Anything across the whole site: tone, order, what's missing"></textarea>
+      </div>
+      <p class="savedline" id="save-state">Your answers are kept in this browser.</p>
+      <div class="summary">
+        <pre id="summary-pre">Nothing answered yet.</pre>
+        <button class="btn-c" type="button" id="copy-btn">Copy my review</button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+const DATA = /*__DATA__*/null;
+const COLL = "review9";
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const isTodo = (s) => typeof s === "string" && /^TODO\b/.test(s);
+const t = (s) => isTodo(s) ? `<span class="todo">To come${s.replace(/^TODO:?/, "").trim() ? ": " + esc(s.replace(/^TODO:?/, "").trim()) : ""}</span>` : esc(s);
+const PAGE = Object.fromEntries(DATA.pages.map((p) => [p.id, p]));
+const fmt = (n) => Number(n || 0).toLocaleString("en-GB");
+const mmss = (s) => { s = Math.round(+s || 0); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+
+// ── the decisions (counted) and the optional notes (not counted) ──
+const ITEMS = [];
+const add = (it) => { ITEMS.push(it); return it; };
+const M = DATA.motion.choice, P = DATA.pictures.choice, L = DATA.lifecycle.choice, F = DATA.footer && DATA.footer.choice;
+add({ id: M.id, sec: "motion", title: M.title, options: M.options, proposed: M.proposed });
+add({ id: P.id, sec: "pictures", title: P.title, options: P.options, proposed: P.proposed });
+DATA.projects.items.forEach((p) => add({ id: "proj-" + p.slug, sec: "projects", title: p.name, options: DATA.projects.toggle, proposed: p.proposed }));
+add({ id: L.id, sec: "lifecycle", title: L.title, options: L.options, proposed: L.proposed });
+if (F) add({ id: F.id, sec: "footer", title: F.title, options: F.options, proposed: F.proposed });
+DATA.pages.forEach((p) => add({ id: "page-" + p.id, sec: "pages", title: p.name, options: [["approve", "Approve"], ["change", "Change something"]] }));
+let qn = 0;
+DATA.questions.forEach((q) => { if (!q.see) { q.n = ++qn; add({ id: "q-" + q.id, sec: "questions", title: q.title, n: q.n, options: q.options || [], text: !(q.options || []).length, proposed: (q.options || []).length ? "proposed" : "" }); } });
+const BY = Object.fromEntries(ITEMS.map((i) => [i.id, i]));
+const NOTES = { causes: "Causes, anything still machine-made", projects: "Projects, overall", general: "Also" };
+const SECS = [["motion", "Motion", "#motion"], ["pictures", "Pictures", "#pictures"], ["projects", "Projects", "#projects"], ["lifecycle", "Lifecycle", "#lifecycle"], ["footer", "Footer", "#footer"], ["pages", "Pages", "#pages"], ["questions", "Questions", "#questions"]].filter(([k]) => k !== "footer" || F);
+const review = {};
+let db = null, dbState = "local";
+function loadLocal() { try { return JSON.parse(localStorage.getItem("kelwin-review9") || "{}"); } catch (e) { return {}; } }
+function saveLocal() { try { localStorage.setItem("kelwin-review9", JSON.stringify(review)); } catch (e) {} }
+const label = (it, key) => { const o = (it.options || []).find((x) => x[0] === key); return o ? o[1] : ""; };
+
+// one decision control: the proposed answer, the choices, a note
+function ctl(it, opts = {}) {
+  const n = it.options.length;
+  const inner = `${!opts.noProposed && it.proposed && label(it, it.proposed) ? `<p class="proposed">Proposed: <b>${esc(label(it, it.proposed))}</b></p>` : ""}
+    ${n ? `<div class="choices" style="--n:${opts.cols || Math.min(n, 3)}" role="group" aria-label="${esc(it.title)}">${it.options.map(([k, l]) =>
+      `<button type="button" class="choice" data-item="${it.id}" data-key="${esc(k)}" aria-pressed="false">${esc(l)}</button>`).join("")}</div>` : ""}
+    ${opts.noNote ? "" : `<label class="key" for="note-${it.id}">${esc(opts.noteLabel || (it.text ? "Your answer" : "Note (optional)"))}</label>
+    <textarea class="note${opts.short ? " short" : ""}" id="note-${it.id}" placeholder="${esc(opts.ph || (it.text ? "Answer here, in your own words" : "What should change, or anything to add"))}"></textarea>`}`;
+  return opts.bare ? inner : `<div class="ctl">${inner}</div>`;
+}
+const decide = (it, h, p, o) => `<div><h3>${esc(h)}</h3>${p ? `<p>${esc(p)}</p>` : ""}</div>${ctl(it, o)}`;
+
+// ── a · intro ──
+$("#intro-lede").textContent = DATA.intro.lede;
+$("#status").innerHTML = DATA.intro.status.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${t(v)}</dd></div>`).join("");
+$("#asks").innerHTML = DATA.intro.asks.map((a) => `<li><q>${esc(a.quote)}</q><p>${esc(a.answer)}</p><a class="go" href="${esc(a.href)}">${esc(a.go)} →</a></li>`).join("");
+const count = (sec) => ITEMS.filter((i) => i.sec === sec).length;
+$("#todo-big").innerHTML = `${ITEMS.length} decisions. <span>A call on each of the ${count("pages")} pages and the ${count("projects")} projects, the page change, the pictures, the lifecycle${F ? " and the footer" : ""}, and ${count("questions")} questions.</span>`;
+$("#where").innerHTML = SECS.map(([k, name, href]) => `<li><a href="${href}"><span class="w-name">${esc(name)}</span><span class="num" data-where="${k}">0/${count(k)}</span><span class="meter" aria-hidden="true"><b data-wbar="${k}"></b></span></a></li>`).join("");
+
+// ── b · causes ──
+$("#causes-lede").textContent = DATA.causes.lede;
+const fig = (src, alt, cap, w, h) => src
+  ? `<figure><a class="frame" href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="${esc(alt)}" ${w ? `width="${w}" height="${h}"` : ""} loading="lazy"></a><figcaption>${esc(cap)}</figcaption></figure>`
+  : `<figure><div class="frame empty">${esc(cap)} image to come</div><figcaption>${esc(cap)}</figcaption></figure>`;
+$("#cause-list").innerHTML = DATA.causes.items.map((c) => `<article class="cause" aria-labelledby="h-c-${c.id}">
+    <div>
+      <h3 id="h-c-${c.id}">${esc(c.title)}</h3>
+      <p>${esc(c.plain)}</p>
+      <p class="fix"><b>Round 9:</b> ${t(c.fix)}</p>
+    </div>
+    <div>
+      <div class="pair">${fig(c.before, c.before_alt, "Round 8", c.before_w, c.before_h)}${fig(c.after, c.after_alt, "Round 9", c.after_w, c.after_h)}</div>
+      <p class="cap">${esc(c.caption)}</p>
+    </div>
+  </article>`).join("");
+
+// ── c · motion ──
+$("#motion-lede").textContent = DATA.motion.lede;
+$("#films").innerHTML = DATA.motion.films.map((f) => `<figure class="film">
+    ${f.src ? `<video controls muted playsinline loop preload="metadata" ${f.poster ? `poster="${esc(f.poster)}"` : ""} width="${f.w || 1280}" height="${f.h || 800}" aria-label="${esc(f.title)}, a recording with no sound"><source src="${esc(f.src)}" type="video/mp4"></video>`
+      : `<div class="frame empty">${esc(f.title)}: film to come</div>`}
+    <figcaption><b>${esc(f.title)}</b>${f.seconds ? `<span class="num">${mmss(f.seconds)}</span>` : "<span></span>"}<p>${esc(f.caption)}</p></figcaption>
+  </figure>`).join("");
+$("#live-line").textContent = DATA.motion.live_line;
+$("#live-links").innerHTML = DATA.motion.try.map((x) => { const p = PAGE[x.page]; return p && p.file ? `<a class="btn" href="${esc(p.file)}" target="_blank" rel="noopener">${esc(x.label)} ↗</a>` : ""; }).join("");
+$("#reduced-line").textContent = DATA.motion.reduced;
+if (DATA.motion.footer_line) { const fl = $("#footer-line"); fl.textContent = DATA.motion.footer_line; fl.hidden = false; }
+$("#motion-decide").innerHTML = decide(BY[M.id], "Which page change do you want?", "The turn is on every mockup. The sheet slide would replace it. Neither keeps plain page loads.");
+
+// ── d · pictures ──
+$("#pictures-lede").textContent = DATA.pictures.lede;
+const ruleBox = (title, text, isNew) => { const [h, ...rest] = String(text).split("\n");
+  return `<article class="rule6${isNew ? " is-new" : ""}"><span class="key">${esc(title)}</span><p class="rh">${esc(h)}</p><ul>${rest.map((l) => `<li>${esc(l.replace(/^·\s*/, ""))}</li>`).join("")}</ul></article>`; };
+$("#rules6").innerHTML = ruleBox(DATA.pictures.rule_now_title, DATA.pictures.rule_now, false) + ruleBox(DATA.pictures.amendment_title, DATA.pictures.amendment, true);
+$("#brief-lede").textContent = DATA.pictures.brief_lede;
+$("#brief").innerHTML = `<div class="brief-row head" role="row"><span role="columnheader">Shot</span><span role="columnheader">How it's shot</span><span role="columnheader">Spec</span><span role="columnheader">Page, and what it shows now</span></div>` +
+  DATA.pictures.shots.map((s) => { const p = PAGE[s.page];
+    return `<div class="brief-row" role="row"><span role="cell"><span class="lbl">Shot</span><b>${t(s.name)}</b></span><span role="cell"><span class="lbl">How it's shot</span>${t(s.how)}</span><span role="cell"><span class="lbl">Spec</span>${t(s.spec)}</span><span role="cell"><span class="lbl">Page</span>${p ? `<a href="#p-${p.id}">${esc(p.name)}</a>` : esc(s.page)}<br><span class="meta">${t(s.now)}</span></span></div>`; }).join("");
+$("#pictures-decide").innerHTML = decide(BY[P.id], "Do you approve the change to rule 6?", "With your yes it goes into the site's standing rules as written. In your note, say if a shot is wrong, and whether Who We Work With keeps its stand-in or gets a card.");
+
+// ── e · projects ──
+const PR = DATA.projects;
+$("#offer-name").textContent = `${PR.offer_name}, in full “${PR.offer_full}”`;
+$("#offer-line").textContent = PR.offer_line;
+$("#projects-lede").textContent = PR.lede;
+const projCard = (p) => { const it = BY["proj-" + p.slug], pg = PAGE[p.page];
+  return `<article class="card" id="proj-${p.slug}" aria-labelledby="h-proj-${p.slug}">
+    <div><span class="meta">${esc(p.layer)}</span><h3 id="h-proj-${p.slug}">${esc(p.name)}</h3></div>
+    <p>${t(p.line)}</p>
+    <p class="keeps"><b>You keep</b>${t(p.keeps)}</p>
+    <div class="ctl">
+      <div class="st"><span>${p.proposed === "hold" ? "Proposed to hold" : "Proposed for launch"}</span>${pg ? `<a class="go" href="#p-${pg.id}">See its page</a>` : ""}</div>
+      ${ctl(it, { noNote: true, bare: true, noProposed: true })}
+    </div>
+  </article>`; };
+const held = PR.items.filter((p) => p.proposed === "hold");
+$("#proj-cards").innerHTML = PR.items.filter((p) => p.proposed !== "hold").map(projCard).join("");
+$("#proj-held").innerHTML = held.length ? `<p class="held-h">Held for now</p><div class="cards held">${held.map(projCard).join("")}</div>` : "";
+$("#ows-line").textContent = PR.only_with_system_line;
+$("#ows").innerHTML = PR.only_with_system.map((x) => `<li>${esc(x)}</li>`).join("");
+$("#path-line").textContent = PR.path_line;
+$("#path").innerHTML = PR.path.map((x) => `<li><span>${esc(x)}</span></li>`).join("");
+$("#place-notes").innerHTML = PR.placement.filter((x) => !x.img_src).map((x) => `<p><b>${esc(x.title)}</b>${esc(x.text)}</p>`).join("");
+$("#place").innerHTML = PR.placement.filter((x) => x.img_src).map((x) => `<figure>${x.img ? `<a class="frame" href="${esc(x.img)}" target="_blank" rel="noopener"><img src="${esc(x.img)}" alt="${esc(x.title)}" ${x.img_w ? `width="${x.img_w}" height="${x.img_h}"` : ""} loading="lazy"></a>` : `<div class="frame empty">Screenshot to come</div>`}<figcaption><b>${esc(x.title)}</b><span>${esc(x.text)}</span></figcaption></figure>`).join("");
+$("#place-row").classList.toggle("solo", !PR.placement.some((x) => x.img_src) || PR.placement.every((x) => x.img_src));
+$("#proj-mocks").innerHTML = PR.pages.map((id) => { const p = PAGE[id]; return p ? (p.file ? `<a class="btn" href="${esc(p.file)}" target="_blank" rel="noopener">Open ${esc(p.name.replace(/, the first project page$/, ""))} ↗</a>` : `<span class="todo">${esc(p.name)}: mockup to come</span>`) : ""; }).join("");
+
+// ── f · lifecycle ──
+const LC = DATA.lifecycle;
+$("#life-lede").textContent = LC.lede;
+$("#spine-title").textContent = LC.spine_title;
+$("#spine").innerHTML = LC.spine.map((s) => `<li>${esc(s)}</li>`).join("");
+$("#opts").innerHTML = LC.options.map((o) => `<article class="opt${o.recommended ? " is-rec" : ""}" aria-labelledby="h-o-${o.id}">
+    ${o.recommended ? `<span class="rec">Recommended</span>` : ""}
+    <div><h3 id="h-o-${o.id}">${esc(o.name)}</h3><p class="s">${esc(o.sub)}</p></div>
+    <p>${esc(o.summary)}</p>
+    <h4>For it</h4><ul>${o.good.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+    <h4>Against it</h4><ul>${o.cost.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+  </article>`).join("");
+$("#recline").textContent = LC.recommended_line;
+$("#life-decide").innerHTML = decide(BY[L.id], "Which structure should the site describe?", "About is drafted on the recommended one, with its link to the projects' shorter path. The project pages exist only if projects go ahead.", { cols: 1 });
+$("#cad-title").textContent = LC.cadence_title;
+$("#cadence").innerHTML = LC.cadence.map((c) => `<div><h4>${esc(c.when)}</h4><dl>${c.rows.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></div>`).join("");
+$("#cad-line").textContent = LC.cadence_line;
+
+// ── f2 · footer ──
+if (F) {
+  const FT = DATA.footer;
+  $("#footer").hidden = false;
+  $("#foot-lede").textContent = FT.lede;
+  $("#foot-quote").textContent = FT.quote;
+  const ffig = (src, w, h, alt, cap, phone) => src
+    ? `<figure class="ffig ${phone ? "is-phone" : "is-desk"}"><a href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="${esc(alt)}" ${w ? `width="${w}" height="${h}"` : ""} loading="lazy"></a><figcaption>${esc(cap)}</figcaption></figure>`
+    : `<figure class="ffig ${phone ? "is-phone" : "is-desk"}"><div class="frame empty">Picture to come</div><figcaption>${esc(cap)}</figcaption></figure>`;
+  $("#foot-r8").innerHTML = FT.r8_src ? ffig(FT.r8, FT.r8_w, FT.r8_h, FT.r8_caption, FT.r8_caption, false) : "";
+  $("#foot-opts").innerHTML = (FT.options || []).map((o) => { const rec = F.proposed === o.id;
+    return `<article class="fopt${rec ? " is-rec" : ""}" aria-labelledby="h-f-${o.id}">
+    <div class="fopt-head">
+      ${o.tag ? `<span class="rec${rec ? "" : " is-alt"}">${esc(o.tag)}</span>` : ""}
+      <h3 id="h-f-${o.id}">${esc(label(BY[F.id], o.id) || o.name)}</h3>
+      <p>${t(o.text)}</p>
+    </div>
+      ${(o.shots || []).map((x) => ffig(x.img, x.img_w, x.img_h, `${o.name}, ${x.caption.toLowerCase()}`, x.caption, /phone/i.test(x.caption))).join("")}
+    </article>`; }).join("");
+  $("#foot-where").textContent = FT.where || "";
+  $("#foot-decide").innerHTML = decide(BY[F.id], "Which footer do you want?", "A is built. B would replace it in the mockups and the site's code.");
+}
+
+// ── g · pages ──
+const QBY = Object.fromEntries(DATA.questions.map((q) => [q.id, q]));
+function strip(p) {
+  return p.frames.map((src, i) => `<figure><a href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="${esc(p.name)}, screen ${i + 1} of ${p.frames.length}" width="960" height="600" loading="lazy"></a><figcaption class="num">${String(i + 1).padStart(2, "0")}</figcaption></figure>`).join("");
+}
+function card(p) {
+  const it = BY["page-" + p.id], has = !!p.file;
+  const v = p.r8.verdict === "New" ? `New this round` : `Your round-8 call: <b>${esc(p.r8.verdict)}</b>`;
+  return `<article class="pg" id="p-${p.id}" aria-labelledby="h-p-${p.id}">
+    <div class="pg-head">
+      <div style="min-width:0"><p class="pg-route">${esc(p.route)}</p><h3 id="h-p-${p.id}">${esc(p.name)}</h3></div>
+      <div class="r8"><span class="key">${v}</span>${p.r8.short ? `<q>${esc(p.r8.short)}</q>` : ""}${p.r8.note ? `<details><summary>Your full note</summary><p>${esc(p.r8.note)}</p></details>` : ""}</div>
+    </div>
+    <div class="pg-vis">
+      ${has ? `<div class="pg-tools">
+        <button type="button" class="btn" data-live aria-pressed="false">View it here</button>
+        <a class="btn" href="${esc(p.file)}" target="_blank" rel="noopener">Open the mockup ↗</a>
+        <span class="meta">${p.frames.length} screens · ${fmt(p.height)}px tall at 1440 wide</span>
+      </div>
+      <div class="strip" data-strip>${strip(p)}</div>
+      <div class="stage" data-stage hidden><div class="stage-in"><iframe title="${esc(p.name)} mockup" tabindex="0"></iframe></div></div>`
+      : `<p class="pending">This page is still being built. Its frames and mockup appear here when it lands.</p>`}
+    </div>
+    <div class="pg-foot">
+      <div class="pg-meta">
+        <div><span class="key">${p.r8.verdict === "New" ? "What's on the page" : "What changed since round 8"}</span><ul>${(p.changed || []).map((x) => `<li>${t(x)}</li>`).join("")}</ul></div>
+        ${p.flags && p.flags.length ? `<div><span class="key">Waiting on you</span><ul class="flags">${p.flags.map((f) => `<li>${esc(f.text)}${f.q && QBY[f.q] ? ` <a href="#q-${f.q}">See the question</a>` : ""}</li>`).join("")}</ul></div>` : ""}
+      </div>
+      ${ctl(it)}
+    </div>
+  </article>`;
+}
+$("#groups").innerHTML = DATA.groups.map((g) => { const ps = DATA.pages.filter((p) => p.group === g.key); return ps.length ? `<div class="group" role="group" aria-label="${esc(g.label)}">
+    <div class="group-h"><h3>${esc(g.label)}</h3>${g.note ? `<span>${esc(g.note)}</span>` : ""}</div>
+    ${ps.map(card).join("")}
+  </div>` : ""; }).join("");
+
+// the live stage: one mockup running at a time, at its real 1440 width, scaled to the card
+let live = null;
+function fitStage(art) {
+  const stage = $("[data-stage]", art), inner = $(".stage-in", art), fr = $("iframe", art);
+  const k = Math.min(1, stage.clientWidth / 1440);
+  fr.style.width = "1440px"; fr.style.height = "900px";
+  inner.style.width = "1440px"; inner.style.transform = `scale(${k})`;
+  stage.style.height = Math.round(900 * k) + "px";
+}
+function stopLive() {
+  if (!live) return;
+  const art = live; live = null;
+  $("iframe", art).removeAttribute("src");
+  $("[data-stage]", art).hidden = true; $("[data-strip]", art).hidden = false;
+  const b = $("[data-live]", art); b.setAttribute("aria-pressed", "false"); b.textContent = "View it here";
+}
+function startLive(art) {
+  stopLive(); live = art;
+  const p = PAGE[art.id.slice(2)];
+  $("[data-strip]", art).hidden = true; $("[data-stage]", art).hidden = false;
+  $("iframe", art).src = p.file; fitStage(art);
+  const b = $("[data-live]", art); b.setAttribute("aria-pressed", "true"); b.textContent = "Back to the screens";
+}
+$$("article.pg").forEach((art) => { const b = $("[data-live]", art); if (b) b.addEventListener("click", () => (live === art ? stopLive() : startLive(art))); });
+addEventListener("resize", () => { if (live) fitStage(live); });
+
+// ── h · questions ──
+const affects = (ids) => ids && ids.length ? `<div class="affects"><span>Affects</span>${ids.map((id) => id === "*" ? `<span style="color:var(--fg-2)">Every page</span>` : PAGE[id] ? `<a href="#p-${id}">${esc(PAGE[id].name.replace(/, the first project page$/, ""))}</a>` : "").join("")}</div>` : "";
+$("#qs").innerHTML = DATA.qgroups.map((g) => { const qs = DATA.questions.filter((q) => q.group === g.key); return qs.length ? `<div class="qgroup" role="group" aria-label="${esc(g.label)}"><h3>${esc(g.label)}</h3>
+  ${qs.map((q) => q.see ? `<article class="qq see" id="q-${q.id}" aria-labelledby="h-q-${q.id}">
+      <span class="qq-n" aria-hidden="true"></span>
+      <div style="min-width:0"><h4 id="h-q-${q.id}">${esc(q.title)}</h4><p class="ctx">${esc(q.context)}</p>${affects(q.affects)}</div>
+      <div class="ctl"><a class="go" href="#${esc(q.see)}">Answer it on its card in Projects →</a></div>
+    </article>` : `<article class="qq" id="q-${q.id}" aria-labelledby="h-q-${q.id}">
+      <span class="qq-n">${q.n}</span>
+      <div style="min-width:0">
+        <h4 id="h-q-${q.id}">${esc(q.title)}${q.blocker ? `<span class="stop">Blocks go-live</span>` : ""}</h4>
+        <p class="ctx">${esc(q.context)}</p>
+        ${q.default ? `<p class="def"><b>Proposed:</b> ${t(q.default)}</p>` : ""}
+        ${affects(q.affects)}
+      </div>
+      ${ctl(Object.assign({}, BY["q-" + q.id], { proposed: "" }), { cols: 1, short: !BY["q-" + q.id].text, noteLabel: BY["q-" + q.id].text ? "Your answer" : "Your words (optional)", ph: BY["q-" + q.id].text ? "Answer here, in your own words" : "Anything to add, or your own answer" })}
+    </article>`).join("")}
+  </div>` : ""; }).join("");
+
+// ── answers, progress, summary, sync ──
+const done = (it) => { const r = review[it.id]; return !!r && (!!r.choice || (it.text && !!r.note)); };
+function answerText(it) { const r = review[it.id] || {}; return r.choice ? label(it, r.choice) : (it.text && r.note ? "Answered" : ""); }
+function line(it) {
+  const r = review[it.id] || {};
+  const head = it.n ? `${it.n}. ${it.title}` : it.title;
+  if (it.text) return `${head}: ${r.note || "—"}`;
+  return `${head}: ${r.choice ? answerText(it).toUpperCase() : "—"}${r.note ? " — " + r.note : ""}`;
+}
+const noteLine = (k) => review[k] && review[k].note ? `${NOTES[k]}: ${review[k].note}` : "";
+function summaryText() {
+  const part = (sec) => ITEMS.filter((i) => i.sec === sec).map(line).join("\n");
+  const n = ITEMS.filter(done).length;
+  return [
+    `Kelwin redesign — round 9 review (${n} of ${ITEMS.length} answered)`,
+    "", "Motion\n" + part("motion"),
+    "", "Pictures\n" + part("pictures"),
+    noteLine("causes") ? "\n" + noteLine("causes") : "",
+    "", "Projects\n" + part("projects") + (noteLine("projects") ? "\n" + noteLine("projects") : ""),
+    "", "Engagement lifecycle\n" + part("lifecycle"),
+    F ? "\nFooter\n" + part("footer") : "",
+    "", "Pages\n" + part("pages"),
+    "", "Questions\n" + part("questions"),
+    noteLine("general") ? "\n" + noteLine("general") : "",
+  ].filter((x, i, a) => !(x === "" && a[i + 1] === "")).join("\n").trim();
+}
+function refresh() {
+  const n = ITEMS.filter(done).length;
+  $("#prog-n").textContent = n; $("#prog-t").textContent = ITEMS.length;
+  $("#prog-bar").style.width = (100 * n / ITEMS.length) + "%";
+  SECS.forEach(([k]) => { const its = ITEMS.filter((i) => i.sec === k), d = its.filter(done).length;
+    const el = $(`[data-where="${k}"]`); if (el) el.textContent = `${d}/${its.length}`;
+    const bar = $(`[data-wbar="${k}"]`); if (bar) bar.style.width = (100 * d / its.length) + "%"; });
+  $$(".choice").forEach((b) => { const r = review[b.dataset.item]; b.setAttribute("aria-pressed", String(!!r && r.choice === b.dataset.key)); });
+  [...ITEMS.map((i) => i.id), ...Object.keys(NOTES)].forEach((id) => {
+    const ta = document.getElementById("note-" + id), r = review[id];
+    if (ta && r && r.note && document.activeElement !== ta && !ta.value) ta.value = r.note;
+  });
+  const any = n || Object.keys(NOTES).some((k) => review[k] && review[k].note);
+  $("#summary-pre").textContent = any ? summaryText() : "Nothing answered yet.";
+}
+function setSaved(state, msg) {
+  dbState = state;
+  const s = $("#saved"); s.dataset.state = state;
+  s.textContent = state === "db" ? "Saved to this page" : state === "err" ? "Not saved to the page" : "Kept in this browser";
+  if (msg) $("#save-state").textContent = msg;
+}
+async function persist(id) {
+  saveLocal();
+  if (!db) return;
+  const it = BY[id], r = review[id] || {};
+  const doc = it
+    ? { item: (it.n ? it.n + ". " : "") + it.title, section: it.sec, choice: r.choice || "", answer: answerText(it), note: r.note || "", updatedAt: new Date().toISOString() }
+    : { item: NOTES[id] || id, section: "note", choice: "", answer: "", note: r.note || "", updatedAt: new Date().toISOString() };
+  try {
+    await db.doc(COLL + "/" + id).set(doc);
+    setSaved("db", "Saved to this page as you go. Claude can read your answers, and you can copy the review too.");
+  } catch (e) { setSaved("err", "Couldn't save to the page (" + ((e && e.code) || "error") + "). Your answers are kept in this browser; copy the review to be sure."); }
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest && e.target.closest(".choice"); if (!b) return;
+  const id = b.dataset.item, k = b.dataset.key, it = BY[id]; if (!it) return;
+  const ta = document.getElementById("note-" + id);
+  const prev = review[id] || {};
+  review[id] = { choice: prev.choice === k ? "" : k, note: ta ? ta.value.trim() : (prev.note || "") };
+  persist(id); refresh();
+  if (ta && review[id].choice && /change|other|name|open|longer|soften|different|fee|both|another/i.test(k + " " + label(it, k)) && !ta.value) setTimeout(() => ta.focus({ preventScroll: true }), 0);
+});
+[...ITEMS.map((i) => i.id), ...Object.keys(NOTES)].forEach((id) => {
+  const ta = document.getElementById("note-" + id); if (!ta) return;
+  ta.addEventListener("change", (e) => { const r = review[id] || { choice: "" }; r.note = e.target.value.trim(); review[id] = r; persist(id); refresh(); });
+});
+$("#copy-btn").addEventListener("click", async (e) => {
+  const btn = e.currentTarget, txt = summaryText();
+  try { await navigator.clipboard.writeText(txt); btn.textContent = "Copied"; }
+  catch (err) { const rg = document.createRange(); rg.selectNodeContents($("#summary-pre")); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(rg); btn.textContent = "Selected · press Ctrl+C"; }
+  setTimeout(() => { btn.textContent = "Copy my review"; }, 2400);
+});
+
+Object.assign(review, loadLocal());
+refresh();
+(async () => {
+  if (!window.claude || typeof window.claude.use !== "function") return;
+  try { db = await window.claude.use("db"); } catch (e) { db = null; }
+  if (!db) return;
+  setSaved("db", "Connected. Your answers save to this page as you go.");
+  let first = true;
+  db.collection(COLL).onSnapshot((snap) => {
+    const seen = new Set(snap.docs.map((d) => d.id));
+    if (first) {   // answers given in this browser before the page could save them: send them up once
+      first = false;
+      Object.keys(review).forEach((id) => { const r = review[id]; if (!seen.has(id) && (BY[id] || NOTES[id]) && r && (r.choice || r.note)) persist(id); });
+    }
+    snap.docs.forEach((d) => {
+      const v = d.data(); if (!v) return;
+      if (!BY[d.id] && !NOTES[d.id]) return;
+      review[d.id] = { choice: v.choice || "", note: v.note || "" };
+    });
+    saveLocal(); refresh();
+  }, () => { setSaved("err", "Live sync paused. Your answers still save in this browser."); });
+})();
+</script>

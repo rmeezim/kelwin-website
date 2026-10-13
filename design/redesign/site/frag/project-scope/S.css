@@ -1,0 +1,36 @@
+/* ── project-scope · S · a project page's scope, in and not in (round 9) ──────────────────
+   Side by side: the claim (.ac-claim--md, 64px — the section's dominant element) in cols 1–5,
+   held at the top; the page's ONE ruled list in cols 7–12, "In the scope" then "Not in the
+   scope", each a column head in the key voice over a --line-2 rule and one 20px line per item
+   over a --line hairline — "in" in --fg, "not in" in --fg-2. Tokens only. */
+
+.km-project-scope-S__grid { align-items: start; }
+.km-project-scope-S__head { grid-column: 1 / span 5; position: sticky; top: 120px; }   /* the claim holds while its list passes */
+.km-project-scope-S__claim { margin-top: 32px; max-width: 9em; }
+.km-project-scope-S__lists { grid-column: 7 / span 6; padding-top: 52px; }
+.km-project-scope-S__h {
+  padding-bottom: 14px; border-bottom: 1px solid var(--line-2);
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 15px; line-height: 20px; color: var(--fg-2);
+}
+.km-project-scope-S__h--out { margin-top: 64px; }
+.km-project-scope-S__list > li {
+  padding: 17px 0 18px; border-bottom: 1px solid var(--line);
+  font-size: 20px; line-height: 1.4; color: var(--fg); text-wrap: pretty;
+}
+.km-project-scope-S__list--out > li { color: var(--fg-2); }
+
+.is-play .km-project-scope-S__head > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-project-scope-S__claim { animation: ac-up 700ms var(--ease-out) 80ms both; }
+.is-play .km-project-scope-S__lists { animation: ac-up 700ms var(--ease-out) 380ms both; }
+
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-project-scope-S__head { grid-column: 1 / -1; position: static; }
+  :root:not(.km-home) .km-project-scope-S__claim { max-width: 13em; }
+  :root:not(.km-home) .km-project-scope-S__lists { grid-column: 1 / -1; padding-top: 56px; }
+  :root:not(.km-home) .km-project-scope-S__list > li { font-size: 18px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-project-scope-S__lists { padding-top: 40px; }
+  :root:not(.km-home) .km-project-scope-S__h--out { margin-top: 44px; }
+  :root:not(.km-home) .km-project-scope-S__list > li { font-size: 17px; padding: 14px 0 15px; }
+}

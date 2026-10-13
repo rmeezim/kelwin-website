@@ -1,6 +1,7 @@
 <section class="km km-audit-head-S ac-int" data-surface="dark" aria-labelledby="km-audit-head-S-h1">
 
-  <!-- NAV at rest. On /audit no item lights: the outlined action is the current one and jumps to the gate. -->
+  <!-- NAV at rest (round 9: four items; The Lab lives in The Firm's plate). On /audit no item lights:
+       the outlined action is the current one and jumps to the gate. -->
   <header class="ac-nav">
     <a class="ac-nav__brand" href="/"><span class="km-logo" role="img" aria-label="Kelwin"></span></a>
     <nav class="ac-nav__menu" aria-label="Primary">
@@ -8,46 +9,54 @@
       <a class="ac-nav__item" href="/#methodology">Methodology</a>
       <a class="ac-nav__item" href="/about">The Firm</a>
       <a class="ac-nav__item" href="/insights">Resources</a>
-      <a class="ac-nav__item" href="/the-lab">The Lab</a>
     </nav>
     <a class="ac-btn-o ac-nav__cta is-current" href="#qualify" aria-current="page">Audit request</a>
     <span class="ac-reg ac-nav__reg ac-nav__reg--l" aria-hidden="true"></span>
     <span class="ac-reg ac-nav__reg ac-nav__reg--r" aria-hidden="true"></span>
   </header>
 
-  <!-- HEAD: the method's Diagnose output, picked up as the page's statement -->
-  <div class="ac-head ac-ihead ac-wrap">
+  <!-- HEAD: the Audit's facts head (kit 12.3, the one named exception, approved P09): kicker + its
+       "Phase 01 / 04 · Diagnose" line, the h1 held at 96 in cols 1–9, a two-line lede, the facts box. -->
+  <div class="ac-head ac-ihead ac-ihead--96 ac-wrap">
     <div class="ac-labelrow"><p class="ac-label">The System Audit</p><p class="ac-meta">Phase 01 / 04 · Diagnose</p></div>
     <h1 class="ac-statement" id="km-audit-head-S-h1">
       <span class="ac-line"><span>The real constraint,</span></span>
       <span class="ac-line ac-accent"><span>named in writing.</span></span>
     </h1>
     <span class="ac-rule" aria-hidden="true"></span>
-    <p class="ac-lede">Ten working days, fixed scope. We read your narrative, channels and data, and you get a written readout naming the constraint and the order to fix it in — yours whether or not we go further.</p>
+    <p class="ac-lede">Ten working days, fixed scope. We read your narrative, channels and data, and the plan is yours whether or not we go further.</p>
     <aside class="ac-facts" aria-label="The audit at a glance">
       <dl class="ac-spec">
         <dt>You provide</dt><dd>Two 90-minute sessions and read-only access to your CRM and channel stack</dd>
-        <dt>You receive</dt><dd>A written readout and a sequenced rebuild plan</dd>
+        <dt>You receive</dt><dd>A written readout, a sequenced rebuild plan and a 60-minute readout call</dd>
         <dt>Starts with</dt><dd><a class="ac-go ac-go--down" href="#qualify">Three questions</a></dd>
       </dl>
     </aside>
   </div>
 
-  <!-- BAND · RU, the ten days to scale. One working day = one grid column: Day 01 sits on col 1, Day 10 on
-       col 10, and cols 10–12 hold what comes after. The one red element is the Day 10 tick (the readout). -->
+  <!-- THE TEN-DAY RULER (approved; kept for this one use of the round-8 band markup). One working day =
+       one grid column: Day 01 on col 1, Day 10 on col 10. Past Day 10 the axis breaks (the homepage
+       method's convention: only the audit is measured) and two indicative marks follow: Call 02, the
+       readout, and Call 03, the proposal. Round 9: no boxed codes, no corner marks, words in the key
+       voice, numerals in the numeral voice. The one red element is the Day 10 tick. -->
   <figure class="ac-band ac-wrap" aria-labelledby="km-audit-head-S-band">
-    <div class="ac-frame ac-band__frame" style="--fh:280;--sm-w:358;--sm-h:222">
-      <svg class="ac-svg ac-band__svg" viewBox="0 0 1312 280" aria-hidden="true">
+    <div class="ac-frame ac-band__frame" style="--fh:272;--sm-w:358;--sm-h:196">
+      <svg class="ac-svg ac-band__svg" viewBox="0 0 1312 272" aria-hidden="true">
         <!-- read-only access: the window, filled as the ten days run -->
-        <rect class="km-audit-head-S__fill" x="0.5" y="214.5" width="1002" height="26"/>
-        <rect class="ac-s-mute ac-plot" style="--d:1700ms;--t:800ms" pathLength="1" x="0.5" y="214.5" width="1002" height="26"/>
+        <rect class="km-audit-head-S__fill" x="0.5" y="214.5" width="1002" height="28"/>
+        <rect class="ac-s-mute ac-plot km-audit-head-S__d" style="--o:800ms;--t:800ms" pathLength="1" x="0.5" y="214.5" width="1002" height="28"/>
         <!-- the two working sessions: somewhere in days 02–09, scheduled with you (no days drawn: none are fixed) -->
         <path class="ac-s-faint ac-s-dash km-audit-head-S__con" d="M111.5 113V160M891.5 113V160"/>
-        <path class="ac-s ac-plot" style="--d:2300ms;--t:800ms" pathLength="1" d="M111.5 112.5V104.5H891.5V112.5"/>
-        <!-- the scale -->
-        <path class="ac-s ac-plot" style="--d:900ms;--t:1000ms" pathLength="1" d="M0.5 164.5H1002.5"/>
-        <path class="ac-s-mute ac-s-dash km-audit-head-S__cont" d="M1002.5 164.5H1312"/>
-        <path class="ac-s-fg km-audit-head-S__tk" style="--i:0" d="M0.5 140V240.5"/>
+        <path class="ac-s ac-plot km-audit-head-S__d" style="--o:1400ms;--t:800ms" pathLength="1" d="M111.5 112.5V104.5H891.5V112.5"/>
+        <!-- the scale, measured over the ten days -->
+        <path class="ac-s ac-plot km-audit-head-S__d" style="--o:0ms;--t:1000ms" pathLength="1" d="M0.5 164.5H1002.5"/>
+        <!-- past Day 10: dotted, broken, indicative -->
+        <g class="km-audit-head-S__after">
+          <path class="ac-s-mute ac-s-dash" d="M1002.5 164.5H1027M1043 164.5H1312"/>
+          <path class="ac-s" d="M1026.5 171L1033.5 158M1036.5 171L1043.5 158"/>
+          <path class="ac-s" d="M1072.5 164.5V173M1296.5 164.5V173"/>
+        </g>
+        <path class="ac-s-fg km-audit-head-S__tk" style="--i:0" d="M0.5 140V242.5"/>
           <path class="ac-s-mute km-audit-head-S__tk" style="--i:1" d="M22.5 164.5V171"/>
           <path class="ac-s-mute km-audit-head-S__tk" style="--i:2" d="M44.5 164.5V171"/>
           <path class="ac-s-mute km-audit-head-S__tk" style="--i:3" d="M66.5 164.5V171"/>
@@ -93,73 +102,67 @@
           <path class="ac-s-mute km-audit-head-S__tk" style="--i:43" d="M957.5 164.5V171"/>
           <path class="ac-s-mute km-audit-head-S__tk" style="--i:44" d="M979.5 164.5V171"/>
         <!-- the playhead runs the window once, kickoff → readout (motion only; absent at rest) -->
-        <path class="ac-s-fg km-audit-head-S__head" d="M0.5 140V240.5"/>
+        <path class="ac-s-fg km-audit-head-S__head" d="M0.5 140V242.5"/>
         <!-- THE red: day 10, the readout -->
-        <path class="ac-s-red km-audit-head-S__red" d="M1002.5 140V240.5"/>
+        <path class="ac-s-red km-audit-head-S__red" d="M1002.5 140V242.5"/>
       </svg>
-      <!-- the phone drawing (≤767): the same ruler at 358, one tick per day, labels in words below -->
-      <svg class="ac-svg ac-band__svg ac-band__svg--sm" viewBox="0 0 358 222" aria-hidden="true"><g transform="translate(0 16)">
-        <rect class="km-audit-head-S__sm-fill" x="0.5" y="160.5" width="300" height="24"/>
-        <path class="ac-s" d="M33.5 68.5V60.5H266.5V68.5"/>
-        <path class="ac-s-faint ac-s-dash" d="M33.5 69V98M266.5 69V98"/>
-        <text class="ac-t-code km-audit-head-S__sm-t" x="33.5" y="50">02–09 · two sessions</text>
-        <text class="km-audit-head-S__sm-l" x="0.5" y="16">Kickoff</text>
-        <path class="ac-s" d="M0.5 101.5H300.5"/>
-        <path class="ac-s-mute ac-s-dash" d="M300.5 101.5H358"/>
+      <!-- the phone drawing (≤767): the same ruler at 358 — one tick per day, numerals at 01, 05 and 10,
+           the break, and the two calls labelled in the drawing. Its words are SVG sized for the scale the
+           drawing is shown at: 17px labels and 14px numerals here are ≥ 13.7px and ≥ 11.2px at 320. -->
+      <svg class="ac-svg ac-band__svg ac-band__svg--sm" viewBox="0 0 358 196" aria-hidden="true">
+        <text class="km-audit-head-S__sm-l" x="0.5" y="18">Kickoff</text>
+        <text class="km-audit-head-S__sm-l" x="250.5" y="18" text-anchor="end">Readout written</text>
+        <text class="km-audit-head-S__sm-l km-audit-head-S__sm-l--2" x="28.5" y="50">Two working sessions</text>
+        <path class="ac-s" d="M28.5 68.5V60.5H222.5V68.5"/>
+        <path class="ac-s-faint ac-s-dash" d="M28.5 69V98M222.5 69V98"/>
+        <path class="ac-s" d="M0.5 101.5H250.5"/>
+        <path class="ac-s-mute ac-s-dash" d="M250.5 101.5H261M277 101.5H358"/>
+        <path class="ac-s" d="M262.5 107L267.5 96M270.5 107L275.5 96"/>
         <path class="ac-s-fg" d="M0.5 26V120"/>
-          <path class="ac-s" d="M33.5 101V110"/>
-          <path class="ac-s" d="M67.5 101V110"/>
-          <path class="ac-s" d="M100.5 101V110"/>
-          <path class="ac-s" d="M133.5 101V110"/>
+          <path class="ac-s" d="M28.5 101V110"/>
+          <path class="ac-s" d="M56.5 101V110"/>
+          <path class="ac-s" d="M83.5 101V110"/>
+          <path class="ac-s" d="M111.5 101V110"/>
+          <path class="ac-s" d="M139.5 101V110"/>
           <path class="ac-s" d="M167.5 101V110"/>
-          <path class="ac-s" d="M200.5 101V110"/>
-          <path class="ac-s" d="M233.5 101V110"/>
-          <path class="ac-s" d="M267.5 101V110"/>
-          <path class="ac-s-red" d="M300.5 26V120"/>
-        <text class="ac-t-code km-audit-head-S__sm-t ac-t-fg" x="4.5" y="138">01</text>
-          <text class="ac-t-code km-audit-head-S__sm-t" x="37.5" y="138">02</text>
-          <text class="ac-t-code km-audit-head-S__sm-t" x="71.5" y="138">03</text>
-          <text class="ac-t-code km-audit-head-S__sm-t" x="104.5" y="138">04</text>
-          <text class="ac-t-code km-audit-head-S__sm-t" x="137.5" y="138">05</text>
-          <text class="ac-t-code km-audit-head-S__sm-t" x="171.5" y="138">06</text>
-          <text class="ac-t-code km-audit-head-S__sm-t" x="204.5" y="138">07</text>
-          <text class="ac-t-code km-audit-head-S__sm-t" x="237.5" y="138">08</text>
-          <text class="ac-t-code km-audit-head-S__sm-t" x="271.5" y="138">09</text>
-          <text class="ac-t-code km-audit-head-S__sm-t ac-t-fg" x="304.5" y="138">10</text>
-        <text class="km-audit-head-S__sm-l" x="300.5" y="16" text-anchor="end">Readout</text>
-        <text class="ac-t-code km-audit-head-S__sm-t km-audit-head-S__sm-in" x="10" y="177">Read-only access</text>
-      </g></svg>
-      <!-- scale numerals and in-drawing words are HTML in frame units, so they never shrink under 11px -->
-      <span class="km-audit-head-S__n km-audit-head-S__at is-end" style="--x:7.5;--y:184;--i:0"><span class="km-audit-head-S__day">Day </span>01</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:118.5;--y:184;--i:5">02</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:230.5;--y:184;--i:10">03</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:341.5;--y:184;--i:15">04</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:452.5;--y:184;--i:20">05</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:564.5;--y:184;--i:25">06</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:675.5;--y:184;--i:30">07</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:786.5;--y:184;--i:35">08</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:898.5;--y:184;--i:40">09</span>
-          <span class="km-audit-head-S__n km-audit-head-S__at is-end" style="--x:1009.5;--y:184;--i:45">10</span>
-      <span class="km-audit-head-S__barlab km-audit-head-S__at" style="--x:12;--y:227.5">Read-only access · your CRM and channel stack</span>
-      <div class="ac-flag ac-in" style="--x:0;--a:140;--d:1100ms" aria-hidden="true"><span class="ac-callout__code">01</span><span class="ac-callout__t">Kickoff</span></div>
-      <div class="km-audit-head-S__span km-audit-head-S__at ac-in" style="--x:111;--y:70;--d:2700ms" aria-hidden="true"><span class="ac-callout__code">02–09</span><span class="ac-callout__t">Two 90-minute working sessions, scheduled with you</span></div>
-      <div class="ac-flag ac-in" style="--x:1002;--a:140;--d:3700ms" aria-hidden="true"><span class="ac-callout__code">10</span><span class="ac-callout__t">Readout</span></div>
-      <div class="km-audit-head-S__after km-audit-head-S__at ac-in" style="--x:1034;--y:73;--d:4000ms;--t:600ms" aria-hidden="true">
-        <p class="ac-cap">After the readout</p>
-        <p class="km-audit-head-S__after-t">If installation makes sense, we scope it there. If not, the plan is still yours.</p>
-      </div>
-      <span class="ac-reg ac-reg--tl" style="--d:600ms" aria-hidden="true"></span>
-      <span class="ac-reg ac-reg--tr" style="--d:660ms" aria-hidden="true"></span>
-      <span class="ac-reg ac-reg--bl" style="--d:720ms" aria-hidden="true"></span>
-      <span class="ac-reg ac-reg--br" style="--d:780ms" aria-hidden="true"></span>
+          <path class="ac-s" d="M194.5 101V110"/>
+          <path class="ac-s" d="M222.5 101V110"/>
+        <path class="ac-s-red" d="M250.5 26V120"/>
+        <text class="km-audit-head-S__sm-t km-audit-head-S__sm-t--on" x="4.5" y="129">01</text>
+        <text class="km-audit-head-S__sm-t" x="115.5" y="129">05</text>
+        <text class="km-audit-head-S__sm-t km-audit-head-S__sm-t--on" x="254.5" y="129">10</text>
+        <!-- after the break, not to scale: Call 02 above the axis, Call 03 below it -->
+        <path class="ac-s" d="M294.5 101V86"/>
+        <rect class="km-audit-head-S__sm-a" x="292" y="99" width="5" height="5"/>
+        <text class="km-audit-head-S__sm-l km-audit-head-S__sm-l--2" x="299" y="84">Call 02</text>
+        <path class="ac-s" d="M344.5 101V134"/>
+        <rect class="km-audit-head-S__sm-a" x="342" y="99" width="5" height="5"/>
+        <text class="km-audit-head-S__sm-l km-audit-head-S__sm-l--2" x="339" y="147" text-anchor="end">Call 03</text>
+        <rect class="km-audit-head-S__sm-fill" x="0.5" y="160.5" width="250" height="28"/>
+        <text class="km-audit-head-S__sm-l km-audit-head-S__sm-l--2" x="10" y="180.5">Read-only access</text>
+      </svg>
+      <!-- the scale's numerals: Day 01, 05 and 10 only (the ticks mark every day); HTML in frame units, so they never shrink under 11px -->
+      <span class="km-audit-head-S__n km-audit-head-S__at is-end" style="--x:7.5;--y:183;--i:0"><span class="km-audit-head-S__day">Day</span> 01</span>
+      <span class="km-audit-head-S__n km-audit-head-S__at" style="--x:452.5;--y:183;--i:20">05</span>
+      <span class="km-audit-head-S__n km-audit-head-S__at is-end" style="--x:1009.5;--y:183;--i:45">10</span>
+      <span class="km-audit-head-S__barlab km-audit-head-S__at" style="--x:14;--y:228.5">Read-only access to your CRM and channel stack</span>
+      <div class="ac-flag km-audit-head-S__flag" style="--x:0;--a:140;--o:200ms" aria-hidden="true"><span class="ac-callout__t">Kickoff</span></div>
+      <div class="km-audit-head-S__span km-audit-head-S__at" style="--x:111;--y:62" aria-hidden="true"><span class="ac-callout__t">Two 90-minute working sessions, scheduled with you</span></div>
+      <div class="ac-flag km-audit-head-S__flag" style="--x:1002;--a:140;--o:2800ms" aria-hidden="true"><span class="ac-callout__t">Readout written</span></div>
+      <!-- after the break, not to scale: Call 02 hangs right of its mark, Call 03 left of its own -->
+      <div class="ac-flag ac-flag--b km-audit-head-S__flag" style="--x:1072;--a:164.5;--y:194;--o:3250ms" aria-hidden="true"><span class="ac-callout__t">Call 02 · readout<span class="km-audit-head-S__x"> call</span></span></div>
+      <div class="ac-flag ac-flag--b km-audit-head-S__flag km-audit-head-S__flag--l" style="--x:1296;--a:164.5;--y:236;--o:3400ms" aria-hidden="true"><span class="ac-callout__t">Call 03 · the proposal</span></div>
     </div>
-    <figcaption class="ac-band__key" id="km-audit-head-S-band">
-      The ten working days, drawn to scale: kickoff on day 01, the readout on day 10, and read-only access to your CRM and channel stack for the whole window.
+    <!-- the drawing in words, for screen readers at every width (the drawing carries its own labels
+         at every width: HTML flags above 768, the phone drawing's own words below) -->
+    <figcaption class="ac-band__key km-audit-head-S__key" id="km-audit-head-S-band">
+      Ten working days, with read-only access to your CRM and channel stack for the whole window, then two calls, not to scale.
       <ol class="ac-band__keys">
-        <li><span class="ac-callout__code">01</span>Kickoff</li>
-        <li><span class="ac-callout__code">02–09</span>Two 90-minute working sessions, scheduled with you</li>
-        <li><span class="ac-callout__code">10</span>Readout</li>
-        <li>After the readout: if installation makes sense, we scope it there. If not, the plan is still yours.</li>
+        <li>Kickoff, day 01</li>
+        <li>Two 90-minute working sessions, scheduled with you</li>
+        <li>Readout written, day 10</li>
+        <li>Call 02, the readout call: 60 minutes</li>
+        <li>Call 03, the proposal: scope, price, contract</li>
       </ol>
     </figcaption>
   </figure>

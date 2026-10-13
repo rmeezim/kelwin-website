@@ -1,0 +1,18 @@
+[
+ {
+  "id": "the-lab-head",
+  "slot": "S"
+ },
+ {
+  "id": "the-lab-why",
+  "slot": "S"
+ },
+ {
+  "id": "the-lab-close",
+  "slot": "S"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

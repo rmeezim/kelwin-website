@@ -1,0 +1,52 @@
+/* careers-seats · S — the staffing plan: type only, on graphite, the section's one dominant element
+   a large typeset list (the page's one ruled list). Each row: the seat's name in the display voice
+   at 56px (cols 1–8), what it owns in the body voice beside it (cols 9–12), baselines aligned.
+   Two groups, each led by its status in the key voice, said once ("Filled", "Not open yet");
+   "What the seat owns" is said once, as the column head over the right-hand column. */
+.km-careers-seats-S__plan {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  margin-top: 64px;
+}
+.km-careers-seats-S__col { grid-column: 9 / span 4; grid-row: 1; align-self: start; margin: 0; }
+.km-careers-seats-S__group { grid-column: 1 / -1; }
+.km-careers-seats-S__group:first-of-type { grid-row: 1; }
+.km-careers-seats-S__group + .km-careers-seats-S__group { margin-top: 56px; }
+.km-careers-seats-S__state { margin: 0 0 16px; }
+
+.km-careers-seats-S__seat {
+  position: relative;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: baseline;
+  padding: 22px 0 26px;
+}
+.km-careers-seats-S__seat::before {   /* the row's hairline (drawn on arrival) */
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line-2); transform-origin: 0 50%;
+}
+.km-careers-seats-S__name {
+  grid-column: 1 / span 8;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 56px; line-height: 1.04; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-careers-seats-S__owns { grid-column: 9 / span 4; font-size: var(--ac-body); line-height: 1.5; color: var(--fg-2); max-width: 34ch; text-wrap: pretty; }
+
+/* entrance (the section's one moment): the hairlines draw and the rows rise, top to bottom */
+.is-play .km-careers-seats-S__state, .is-play .km-careers-seats-S__col { animation: ac-fade 400ms var(--ease-out) 160ms both; }
+.is-play .km-careers-seats-S__seat::before { animation: ac-drawx 800ms var(--ease-out) calc(220ms + var(--i, 0) * 80ms) both; }
+.is-play .km-careers-seats-S__seat > * { animation: ac-up 600ms var(--ease-out) calc(300ms + var(--i, 0) * 80ms) both; }
+
+/* tablet: the name takes the measure, what it owns sits under it; the column head gives way */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-careers-seats-S__plan { margin-top: 48px; }
+  :root:not(.km-home) .km-careers-seats-S__col { position: absolute; visibility: hidden; }
+  :root:not(.km-home) .km-careers-seats-S__group + .km-careers-seats-S__group { margin-top: 56px; }
+  :root:not(.km-home) .km-careers-seats-S__seat { padding: 22px 0 26px; row-gap: 8px; }
+  :root:not(.km-home) .km-careers-seats-S__name { grid-column: 1 / -1; font-size: 44px; }
+  :root:not(.km-home) .km-careers-seats-S__owns { grid-column: 1 / span 9; max-width: 46ch; }
+}
+/* phone */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-careers-seats-S__plan { margin-top: 40px; }
+  :root:not(.km-home) .km-careers-seats-S__group + .km-careers-seats-S__group { margin-top: 44px; }
+  :root:not(.km-home) .km-careers-seats-S__seat { padding: 18px 0 22px; row-gap: 6px; }
+  :root:not(.km-home) .km-careers-seats-S__name { font-size: 30px; line-height: 1.08; }
+  :root:not(.km-home) .km-careers-seats-S__owns { grid-column: 1 / -1; font-size: 16px; }
+}

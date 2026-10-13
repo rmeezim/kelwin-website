@@ -1,25 +1,6 @@
-/* ── capability-door · S · Narrative Systems — D1 decision band + SiblingStrip (kit §12.8–12.9) ──
-   The line names what the audit returns for this layer (its narrative readout, documented scope
-   only). The object is the readout's four parts with this page's part lit — graphite, outlined,
-   never paper and never red. The red button is the view's one red. The foot is the SiblingStrip:
-   Narrative is here; it is carried by Infrastructure and measured by Intelligence.            */
-
-.km-capability-door-S__mini { transition: border-color 200ms var(--ease-out); }
-.km-capability-door-S__mini:hover { border-color: var(--fg-2); }
-.km-capability-door-S__mini:hover .ac-go { box-shadow: inset 0 -1px 0 var(--fg); }
-.km-capability-door-S__mini:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
-.km-capability-door-S__parts { display: grid !important; grid-template-columns: 1fr 1fr; column-gap: var(--gutter); }
-.km-capability-door-S__part {
-  display: flex; align-items: baseline; gap: 14px; padding: 8px 0;
-  font-size: var(--ac-support); line-height: 1.4; color: var(--fg-3);
-}
-.km-capability-door-S__part:nth-child(n+3) { border-top: 1px solid var(--line); }
-.km-capability-door-S__part.is-here { color: var(--fg); }
-.km-capability-door-S__part.is-here .ac-idx { color: var(--fg-2); }
-.km-capability-door-S__mini .ac-doc__foot { display: flex; font-size: 14px; color: var(--fg-2); }
-
-/* phone: the four parts keep their two-by-two (the lit one still reads first), set at 14px */
-@media (max-width: 767px) {
-  :root:not(.km-home) .km-capability-door-S__parts { column-gap: 16px; padding-top: 12px !important; padding-bottom: 12px !important; }
-  :root:not(.km-home) .km-capability-door-S__part { gap: 10px; font-size: 14px; }
-}
+/* ── capability-door · S · Narrative Systems — the close (kit 12.10), round 9 ──
+   One line from this page's argument — what the audit physically does in this layer: it lines up
+   every version of the pitch (the deck, the site, the sequences, recorded calls) and marks where
+   they part ways. Written without the homepage's "repeat" line. Then the red
+   System Audit button, the quiet "Talk to the team", and one onward destination: the field note
+   this layer's work starts from. No mini readout, no sibling strip, no hairline foot.          */

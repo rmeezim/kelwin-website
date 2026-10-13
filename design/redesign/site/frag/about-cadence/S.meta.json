@@ -1,0 +1,32 @@
+{
+ "title": "How an engagement runs",
+ "direction": "A×C · Round 9 · /about · #cadence (replaces the week) · Draft for confirmation",
+ "summary": "How an engagement runs, marked “Draft, to be confirmed” once: the claim “The person on your first call runs the engagement through to handover.” (coherence pass: no implied team of leads), the lifecycle strip, one link to the projects' shorter path, then the cadence — while we build, and after the handover.",
+ "story": "The visitor's last About question — how would they work with us? — answered without a team count and without a clock-time diary.",
+ "copy": [
+  "[N] Label “How an engagement runs” · status “Draft for confirmation”",
+  "[N lifecycle rec] Claim “One named lead runs your engagement, from the first call to the handover.”",
+  "[K Q3] Strip: Call 01 · 30 minutes → The audit · Ten working days → Call 02 · The readout, 60 minutes → Call 03 · The proposal → Architect → Install → Handover → Your operator · or us, on retainer",
+  "[N] Quiet destination “Fixed-scope projects run a shorter path” → /projects (keeps ‘engagement’ = the full system, so rule 01 and /projects agree)",
+  "[N] While we build · Each week: “A working session with whoever will run the system, then a written note on what moved.”",
+  "[N] After the handover · “Your operator runs these. On retainer, we do.”",
+  "[N, kept line] Each week: “The signal review. 25 minutes, no deck.”",
+  "[N] Each month: “The operating review, ending on what to stop.”",
+  "[N] Each quarter: “The calibration readout, in week 13.”",
+  "[N] Each year: “The audit’s four parts, re-read against a year of signal.”"
+ ],
+ "phone": "1024–1279: the strip takes the tablet's fold (two rows of four, the row-start arrow hidden) — eight stops in one row need ≈1,140px and production's measure is 933px at 1024; the two cadence groups keep their desktop columns. 1280–1439: one row, the gap stage-proportional (52 at 1440, 46 at 1280). ≤1023: the strip folds to two rows of four (the row-start arrow hidden); the two groups stack. ≤767: the status drops under the label; the strip reads down with the arrow turned to point down; each cadence key sits over its line.",
+ "reference": {
+  "site": "ROUND9-PLAN §9 · UNDERSTAND.txt LIFECYCLE (cadence, where) · /audit's confirmed sequence",
+  "mobbin_url": "",
+  "ref_file": "",
+  "borrowed": "A process strip set as words with drawn arrows.",
+  "kelwin": "Not a ruler (the Audit owns the ten-day ruler, GTM Intelligence the 13-week one); no clock times; no team size; mono nowhere (numbers inside phrases stay Mona)."
+ },
+ "motion": [
+  "entrance: the claim rises (kit); the strip's stops arrive left to right, 110ms apart (the section's one moment); the cadence follows.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2600,
+ "notes": "Anchor id ‘cadence’ (the head's action and /careers' ‘How an engagement runs’ link point here; careers already retargeted from #week). 118 words at rest (measured). One unit form in the strip (‘minutes’). Height ≈1,084px at 1440. Coherence pass (round 9): see summary. Final check (verify r3): between 1024 and ≈1279 (production margins) the one-row strip ran off the right edge — 'Handover' and 'Your operator / or us, on retainer' cut or off-screen, the page scrolling sideways. Fixed with the 1024–1279 fold and the proportional gap; 1440 does not move."
+}

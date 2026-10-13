@@ -1,35 +1,23 @@
 {
-  "title": "Terms beside the audit",
-  "direction": "A×C · Round 8 · /the-lab · split close (SC), on paper",
-  "summary": "The kit's split close on the page's one paper moment: early access set out as a terms sheet you could hold (Asks · Returns · Your data, with what stays yours and what the Lab keeps side by side) ending on a quiet application link, beside the audit as the page's one red door.",
-  "story": "Routes interest correctly, which is the page's job. A reader who wants a hand in the instruments gets the honest terms and a quiet way to apply (round 7, C5); a reader who wants the service is told plainly that it comes first and starts with the audit, and what the audit returns for this subject. The onward link sends both to where the instruments will be used.",
-  "copy": [
-    "[N] Label (h2) “Early access and the audit”",
-    "[N] Sheet head “Early access” · “By application”",
-    "[K, lightly edited] Asks: A sales-carried B2B motion with live pipeline to instrument · Read access to the signals we measure — anonymised, exportable, yours · One named operator in a working session, twice a month · [R] Tolerance for rough edges while it’s being built",
-    "[R, edited — founder flag D11] Returns: A first look at each instrument · A hand in what ships · A direct line into the build (the story map's “to the people building it” implied a team)",
-    "[R Privacy L·07] Your data: Stays yours — The system, the assets, your data, your documents · The Lab keeps — Anonymised, aggregated patterns, as your engagement agreement spells out",
-    "[K, round-7 C5] Quiet .ac-link “Apply for early access” → /contact?topic=lab&ref=Early%20Access%20Protocol",
-    "[R] (FC) Note “Audit and install clients are offered places first. If the fit isn’t there yet, we say so.”",
-    "[N] Door line (h3) “The service comes first, and it starts with the audit.”",
-    "[N] (FC §7 Q3 for “intelligence gap report”) Door sub “Ten working days, read-only access, and a written readout you keep. Its intelligence gap report names what your system can’t see yet.” (ten days, read-only and the kept readout are confirmed D8 facts)",
-    "[K] Red “Request a System Audit” → /audit · quiet “Talk to the team” → /contact",
-    "[N] Onward “Where these instruments are used” → GTM Intelligence",
-    "Held for founder Q4 (not shown): P/04 standalone console, founding terms, “partner requests outrank our roadmap”, “cohort one capped small”, “Build 0.5”, “advisory funds the Lab”"
-  ],
-  "phone": "≤1023: the kit stacks the halves (the audit drops under the sheet, its divider turning horizontal) and the sheet takes the width. ≤767: the sheet's keys sit close over their values and the lists run at 2px, tightened for length; Your data's two sides stack (what stays yours, then what the Lab keeps, on a hairline); the sheet's foot stacks the application link over the note; the doors wrap under the line (kit). Checked at 390 (1,578px; 1,466 at production's 72px padding).",
-  "reference": {
-    "site": "Approved Kelwin int-kit SC (the kit's split close) and the document panel (§12.7)",
-    "mobbin_url": "",
-    "ref_file": "",
-    "borrowed": "The kit's SC verbatim, with the round-7 C5 call already built in: the application is a quiet link and the audit is the only red.",
-    "kelwin": "The left half becomes the page's one paper document: the terms as a sheet with its own head and foot (no SpecimenTag, as these are real terms), and the data line drawn as two sides of one hairline, so “what stays yours” reads at a glance."
-  },
-  "motion": [
-    "entrance: the kit's door choreography — label fades, the sheet rises (+120ms), the col-8 hairline draws down (+200ms), the audit half rises (+320ms), the foot's hairline draws and the onward link fades in (+500/800ms). The page's second body moment.",
-    "ambient: none. interaction: links only.",
-    "on the live site: plays once at 40% visible. Reduced motion: final state."
-  ],
-  "demoMs": 1800,
-  "notes": "Red: the label square and the one red button (the view's only red). The early-access link keeps its ?topic=lab&ref=… query, so /contact's topic=lab copy must stay in sync with this sheet. Spelling: “anonymised” (British, as the homepage's “prioritised/itemised” and the story map) here and in the essay and header; /privacy restyles L·07 verbatim with “anonymized”, so the founder picks one for both pages. The note and the header's Access fact now give the same priority rule (audit and install clients first)."
+ "title": "One close, invitation",
+ "direction": "A×C · Round 9 · /the-lab · the close (kit §12.10)",
+ "summary": "The kit's one close on graphite: a door line from the page's own argument (how the platform is reached: by invitation, install clients first), the red Request a System Audit, and the quiet kit link 'Ask for an invitation' into /contact's Lab topic (the founder's C5, now a kit link inside a v5 close).",
+ "story": "Ends the tease on the two ways in: become an install client (the audit, red), or ask (the invitation, quiet). The line says how access works in the founder's own terms (Q4: invite-based, install clients get it).",
+ "copy": [
+  "[K, Q4] line “Access is by invitation, and install clients come first.” (9 words; the page's one mention of ‘by invitation’)",
+  "[K] red .ac-btn “Request a System Audit” → /audit",
+  "[N, C5] .ac-link “Ask for an invitation” → /contact?topic=lab (4 words; /contact's topic list carries “Ask for an invitation to The Lab”)"
+ ],
+ "phone": "Kit composition: the line at 34px on the full measure, the red button and the link wrap under it.",
+ "reference": {
+  "site": "Kelwin kit §12.10 (the interior close)",
+  "borrowed": "One line, one red action, one quiet action.",
+  "kelwin": "No paper split, no terms window, no onward row; the quiet action is the kit's tracked-caps .ac-link (≤ 4 words)."
+ },
+ "motion": [
+  "entrance: the kit's: the ruled seam draws, the line rises, then the doors.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 1200,
+ "notes": "Coherence pass 2: one onward destination, “What revenue entropy means →” (moved from the retired the-lab-index section). Round 8's split close on paper (an .ac-doc 'Early access · By application' window with Asks / Returns / Your data, an 'Apply for early access' link, the audit beside it and an onward 'GTM Intelligence' row) is retired: the founder's C5 said its quiet link did not match the v5 language, and Q4 replaced the early-access programme with invitation-only access."
 }

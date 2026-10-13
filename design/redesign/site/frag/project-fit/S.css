@@ -1,0 +1,30 @@
+/* ── project-fit · S · a project page's "who it's for" (round 9, coherence pass 2) ──────────
+   The claim at the kit's 72px (.ac-claim; coherence pass 3 — at 96 it matched the page's 96px
+   h1), who the project fits, a plain sentence with a verb; under it the gate both
+   ways as TWO COLUMNS (lead decision D5: not the name-left row recipe) — "The right project" in
+   cols 1–5 and "The wrong project" in cols 7–11, each a 20px head over its 20px paragraph — so the
+   reader sees both sides at once. No rules (the scope holds the page's one ruled list), no chips.
+   Tokens only. */
+
+.km-project-fit-S__claim { max-width: 15em; }
+.km-project-fit-S__gate { margin-top: 80px; row-gap: 36px; align-items: start; }
+.km-project-fit-S__side { grid-column: 1 / span 5; }
+.km-project-fit-S__side + .km-project-fit-S__side { grid-column: 7 / span 5; }
+.km-project-fit-S__k { font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 20px; line-height: 1.3; color: var(--fg); }
+.km-project-fit-S__p { margin-top: 14px; text-wrap: pretty; font-size: var(--ac-lede); line-height: 1.5; color: var(--fg-2); max-width: 30em; }
+
+.is-play .km-project-fit-S__side { animation: ac-up 600ms var(--ease-out) 420ms both; }
+.is-play .km-project-fit-S__side + .km-project-fit-S__side { animation-delay: 520ms; }
+
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-project-fit-S__gate { margin-top: 56px; }
+  :root:not(.km-home) .km-project-fit-S__side { grid-column: 1 / span 6; }
+  :root:not(.km-home) .km-project-fit-S__side + .km-project-fit-S__side { grid-column: 7 / span 6; }
+  :root:not(.km-home) .km-project-fit-S__p { font-size: 18px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-project-fit-S__gate { margin-top: 40px; row-gap: 32px; }
+  :root:not(.km-home) .km-project-fit-S__side, :root:not(.km-home) .km-project-fit-S__side + .km-project-fit-S__side { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-project-fit-S__k { font-size: 18px; }
+  :root:not(.km-home) .km-project-fit-S__p { margin-top: 10px; font-size: 16px; }
+}

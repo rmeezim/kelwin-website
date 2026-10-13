@@ -1,29 +1,24 @@
 {
-  "title": "The publication rule",
-  "direction": "A×C · Round 8 · /reports · SP (spec list)",
-  "summary": "States, in four plain rows, what it takes for a readout to appear on this page, and ends on the honest status in the header's own words, replacing the old terminal block (“readouts.index — first client releases pending clearance”) and its blinking cursor.",
-  "story": "The hinge between the specimen and the ask. Having seen exactly what a readout is, the sceptic learns why no real one is shown: it is the client's, it is published only on the client's written say-so, it can be stripped of names and numbers, and the first one to clear will appear here. The last row lands on “Cleared for publication · None yet”, closing the loop the header opened.",
+  "title": "Ask for the first case study",
+  "direction": "A×C · Round 9 · /reports · claim head (kit §12.6) + form (kit §12.9)",
+  "summary": "The founder's case-study request, honestly: the publication rule as the section's one big claim, the status said once (none has cleared), and one email field whose outlined submit opens the visitor's mail app with a request to audit@kelwin.co filled in; nothing is stored.",
+  "story": "The hinge between the specimen and the ask. Having seen the document, the sceptic learns why no real one is shown and how to get the first one that clears; the red audit button comes after, in the close.",
   "reference": {
-    "site": "OpenAI research pages (references and footnotes as a ruled two-column register)",
-    "mobbin_url": "https://mobbin.com/sites/sections/97c6e5e9-4bc6-4297-80ff-932ac27f8559",
-    "ref_file": "refs/reports-publishing-S.webp",
-    "borrowed": "A ruled register in two voices: a short term on the left, its plain meaning on the right, hairlines between, nothing else.",
-    "kelwin": "Set on the 12-column grid in the kit's voices (mono index, the 24px h4 for the rule, 17px for its meaning), and the last row swaps its sentence for the kit's dashed status chip, “None yet”."
+    "site": "GoNimbly (one field, large labels) · the kit's Contact form",
+    "borrowed": "A single large field beside the lede, one 56px outlined action.",
+    "kelwin": "The kit's .ac-field (18px label, 22px input on a 64px row) and .ac-btn-o--lg; no window chrome, no mono keys, no red (the page's red is the close's)."
   },
   "motion": [
-    "entrance: the kit's section head (label, then the heading rises); the four rows rise in a cascade, 80ms apart.",
-    "ambient: none.",
-    "interaction: none.",
-    "on the live site: plays once when the section scrolls into view. Reduced motion: final state."
+    "entrance: the kit's claim head (label, claim, lede), then the form rises once (420ms).",
+    "interaction: submit builds mailto:audit@kelwin.co?subject=Case study request with a two-line body and says so in a status line; without script the form's own mailto action does the same.",
+    "reduced motion: final state."
   ],
-  "demoMs": 1600,
+  "demoMs": 1800,
   "copy": [
-    "[N] label “How publishing works” · h2 “What it takes for one to appear here.”",
-    "[K sense] 01 “Yours by default” · [N] “The readout is written for your company and stays with it. Nothing in it is ours to show.” (the old coda “Your engagement's readout is yours to keep” moves to the Door, as the story map has it)",
-    "[R] 02 “Published only with written consent” · [N] “We publish a readout only when its client asks us to, in writing.”",
-    "[N] (FC) 03 “Names and figures removed on request” · [N] “A client can share the format and the lesson, and keep its name and its numbers out of it.”",
-    "[N] 04 “When one clears, it appears here first” · status “Cleared for publication · None yet” (kit status chip)"
+    "[N] label “Published work” · claim (h2) “Every case study waits for the client’s yes.”",
+    "[N] lede “None has cleared yet. We’ll email the first one, when a client clears it, to anyone who asks.” (Q2: none publishable; the one status line on the page)",
+    "[N] field “Your work email” (placeholder name@company.com) · submit “Send me the first one” · support “It opens in your own mail app, addressed to audit@kelwin.co ↗” (the address ends the line, so the ↗ ends it too; address: the one every form uses; founder to confirm the mailbox)"
   ],
-  "phone": "≤1023: each rule sits over its meaning, both from col 2, the index in col 1. ≤767: the index (36px) beside a 20px rule, the meaning under it at 15px; the status row wraps chip under its caption if it must.",
-  "notes": "≈ 640px at 1440. Paper → graphite needs no ruled seam (the paper section is its own cut). No red in this section (label square excepted); the next view's red is the Door's button."
+  "phone": "≤1023: the form drops under the lede (cols 1–9). ≤767: full width, the submit spans the column. Checked at 834 / 390 / 320.",
+  "notes": "Replaces round 8's four-row publication spec list and its status chip. No ruled seam: paper → graphite is its own cut. The id km-reports-publishing-S-ask is the head action's target."
 }

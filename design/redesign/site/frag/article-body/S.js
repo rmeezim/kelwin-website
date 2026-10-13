@@ -1,6 +1,9 @@
-/* article-body · S · the figure plays once at 40% visible; the self-check lights layers
-   (each question has its own two answers; data-v="fail" is the one that points to a failure).
-   Nothing is stored or sent: the answers live in this page's DOM only. Returns a cleanup. */
+/* article-body · S · the answers: the rows rise once at 40% visible; each question has its own
+   two answers (data-v="fail" is the one that points to a failure). An answer that points to a
+   failure fills its row's bar and names the layer in the margin. The margin says nothing until
+   there is something to say: a flagged layer, or "None of the three." once all three are
+   answered without one. A second press clears an answer. Nothing is stored or sent: the answers
+   live in this page's DOM only. Returns a cleanup. */
 window.KM = {
   init(root, { reduced }) {
     var fig = root.querySelector(".km-article-body-S__fig");
@@ -19,39 +22,37 @@ window.KM = {
       io.observe(fig);
     }
 
-    /* the self-check */
     var names = ["Narrative Systems", "GTM Infrastructure", "GTM Intelligence"];
     var causes = Array.prototype.slice.call(fig.querySelectorAll(".km-article-body-S__cause"));
-    var wires = Array.prototype.slice.call(fig.querySelectorAll(".km-article-body-S__w--b"));
-    var out = fig.querySelector(".km-article-body-S__msg");
-    var start = out ? out.textContent : "";
+    var out = fig.querySelector(".km-article-body-S__result");
     var answers = [null, null, null];
 
-    function list(xs) {
-      if (xs.length < 2) return xs.join("");
-      return xs.slice(0, -1).join(", ") + " and " + xs[xs.length - 1];
+    function line(text, sep) {
+      var s = document.createElement("span");
+      if (sep) { var h = document.createElement("span"); h.className = "ac-sr"; h.textContent = sep; s.appendChild(h); }
+      s.appendChild(document.createTextNode(text));
+      return s;
     }
     function render() {
       var lit = [];
       causes.forEach(function (c, i) {
-        var on = answers[i] === "fail";      /* the answer that points to a failure */
+        var on = answers[i] === "fail";
         c.classList.toggle("is-lit", on);
-        if (wires[i]) wires[i].classList.toggle("is-lit", on);
         if (on) lit.push(names[i]);
       });
-      var left = answers.filter(function (a) { return a === null; }).length;
-      var msg;
-      if (left === 3) msg = start;
-      else if (lit.length) msg = list(lit) + (left ? ", so far." : ".");
-      else msg = left ? "Nothing flagged so far." : "No layer flagged.";
-      if (out) out.textContent = msg;
+      var all = answers.every(function (a) { return a !== null; });
+      if (!out) return;
+      out.textContent = "";
+      if (lit.length) lit.forEach(function (n, k) { out.appendChild(line(n, k ? (k === lit.length - 1 ? " and " : ", ") : "")); });
+      else if (all) out.appendChild(line("None of the three."));
+      fig.classList.toggle("is-answered", out.childNodes.length > 0);
     }
 
     causes.forEach(function (c, i) {
       c.querySelectorAll("button[data-v]").forEach(function (b) {
         function click() {
           var v = b.getAttribute("data-v");
-          answers[i] = answers[i] === v ? null : v;            /* a second press clears the answer */
+          answers[i] = answers[i] === v ? null : v;
           c.querySelectorAll("button[data-v]").forEach(function (x) {
             x.setAttribute("aria-pressed", String(answers[i] === x.getAttribute("data-v")));
           });
@@ -65,14 +66,13 @@ window.KM = {
     return function () {
       if (io) io.disconnect();
       off.forEach(function (f) { f(); });
-      fig.classList.remove("is-in");
+      fig.classList.remove("is-in", "is-answered");
       answers = [null, null, null];
       causes.forEach(function (c) {
         c.classList.remove("is-lit");
         c.querySelectorAll("button[data-v]").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
       });
-      wires.forEach(function (w) { w.classList.remove("is-lit"); });
-      if (out) out.textContent = start;
+      if (out) out.textContent = "";
     };
   }
 };

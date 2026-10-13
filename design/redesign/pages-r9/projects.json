@@ -1,0 +1,8 @@
+[
+ {"id": "projects-head", "slot": "S"},
+ {"id": "projects-catalogue", "slot": "S"},
+ {"id": "projects-system", "slot": "S"},
+ {"id": "projects-path", "slot": "S"},
+ {"id": "projects-close", "slot": "S"},
+ {"id": "footer", "slot": "U"}
+]

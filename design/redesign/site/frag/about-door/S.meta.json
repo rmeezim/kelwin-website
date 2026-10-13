@@ -1,28 +1,24 @@
 {
-  "title": "Start where it starts",
-  "direction": "A×C · Round 8 · /about · Door (D2)",
-  "summary": "The kit's D2 statement close: “Start where / every engagement starts.” with the audit in one line, the red ask and the quiet door, then the onward question to the field notes and the Lab at its true status.",
-  "story": "The page has shown the person, the rules and the week; every one of those starts with the audit (rule 01: diagnosis before prescription), so the close says so in the page's second and last two-voice line and asks for it. Readers not ready to buy get two ways on: how Kelwin thinks (field notes) and what it is building (the Lab, in development).",
-  "copy": [
-    "[N] Statement “Start where / every engagement starts.”",
-    "[N] Lede “The System Audit: ten working days, fixed scope, and a written readout you keep.” (D8 facts, confirmed)",
-    "[K] Doors: Request a System Audit → /audit · Talk to the team → /contact",
-    "[N] Onward “How does Kelwin think? → Field notes” (/insights)",
-    "[N] Foot “The Lab · Kelwin’s R&D” + status “In development” → “What it’s building” (/the-lab) — the Lab's status is §7 Q4"
-  ],
-  "phone": "Kit §12.11: ≤1023 the statement drops to 52px, the lede and doors take the full width; ≤767 the statement wraps at 40px and the foot's two onward rows stack, each wrapping its question above its link.",
-  "reference": {
-    "site": "Approved Kelwin kit D2 (interior kit §12.8) · cta/U and the 404 (head grammar as a close)",
-    "mobbin_url": "",
-    "ref_file": "",
-    "borrowed": "The head grammar used as a close: label, two-voice line, rule, lede, doors.",
-    "kelwin": "D2 is the interior's statement close; the red plane stays homepage-only. The foot carries the page's one onward question plus the Lab row the story map asks for."
-  },
-  "motion": [
-    "entrance: the kit's head choreography at 64px (label fades, the two lines rise, the rule draws, the lede and doors rise), the foot hairline draws, the onward rows fade in.",
-    "ambient: none. interaction: hover states only.",
-    "on the live site: plays once when the section scrolls into view. Reduced motion: final state at once."
-  ],
-  "demoMs": 1800,
-  "notes": "Section root is graphite with the ruled seam (the week above is graphite). This view's only red ask is the button; the week's red node sits more than a viewport above it (checked in the walk)."
+ "title": "One close",
+ "direction": "A×C · Round 9 · /about · the close (kit §12.10)",
+ "summary": "The one close: “Rameez reads every audit request.” — from About's own argument (the person behind the signature), in a shape no sibling close uses — then the red Request a System Audit and the quiet Talk to the team. Nothing else.",
+ "story": "The page shows the person, the rules and the rhythm; the close offers the one way to see them at work before any build is bought.",
+ "copy": [
+  "[N] Door line “Rameez reads every audit request.” (true while the founder is alone; a founder question for when the Client Partner joins)",
+  "[K] Request a System Audit → /audit · [K] Talk to the team → /contact"
+ ],
+ "phone": "Kit: the line at 34px on phones, the buttons stack.",
+ "reference": {
+  "site": "Kit §12.10 (the close)",
+  "mobbin_url": "",
+  "ref_file": "",
+  "borrowed": "—",
+  "kelwin": "Round 8's D2 statement close, its second two-voice line, the onward rows and the Lab chip are gone; the accent belongs to the h1 alone."
+ },
+ "motion": [
+  "entrance: the kit's close rise.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 1200,
+ "notes": "Round 9 first pass used “See how we work before you commit to a build.”, which shared the ‘… before … built’ shape with Who We Work With's close and the deliverability note's door; replaced. Checked against every close line in site/frag: no shared shape."
 }

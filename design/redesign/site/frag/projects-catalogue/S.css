@@ -1,0 +1,82 @@
+/* ── projects-catalogue · S · /projects, the catalogue by layer (round 9) ──────────────────
+   The section's dominant element is its claim, set as the kit's 64px statement (.ac-claim--md —
+   coherence pass: the 24px line left the section with nothing larger than the 40px names), then
+   the list: the six project names at 40px display under one column head, "What you keep", said
+   once. Each layer is a band (its name at the left, cols 1–3; its
+   projects at the right, cols 4–12: the name in cols 4–8, the line in cols 9–12). The one row
+   with a page (Email deliverability) is a link with a drawn arrow after its name; the others
+   are plain rows. The operating model's band sits under a heavier rule instead of a gap.
+   The linked row is built here (the kit's ledger row opens in place, as a button): listed in
+   the unit's kit requests. Tokens only. */
+
+.km-projects-catalogue-S__h { margin-top: 28px; max-width: 13em; text-wrap: balance; }
+
+.km-projects-catalogue-S__list { margin-top: 72px; }
+.km-projects-catalogue-S__cols {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); margin: 0 0 14px;
+}
+.km-projects-catalogue-S__cols > .ac-key { grid-column: 9 / span 4; }
+.km-projects-catalogue-S__group {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
+  border-top: 1px solid var(--line-2); scroll-margin-top: 120px;
+}
+.km-projects-catalogue-S__group:last-child { border-bottom: 1px solid var(--line-2); }
+.km-projects-catalogue-S__group--apart { border-top-color: var(--fg-2); }
+.km-projects-catalogue-S__layer {
+  grid-column: 1 / span 3; padding-top: 38px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 15px; line-height: 22px; color: var(--fg-2);
+}
+.km-projects-catalogue-S__rows { grid-column: 4 / span 9; }
+.km-projects-catalogue-S__rows > li { scroll-margin-top: 120px; }
+.km-projects-catalogue-S__rows > li + li { border-top: 1px solid var(--line); }
+
+/* a row: the name (5 of the 9 columns) · the line and the input (4) */
+.km-projects-catalogue-S__row {
+  display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); column-gap: var(--gutter);
+  grid-template-rows: auto 1fr; align-items: start; padding: 30px 0 32px; color: var(--fg);
+}
+.km-projects-catalogue-S__name {
+  grid-column: 1 / span 5; grid-row: 1 / span 2;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 40px; line-height: 1.08; letter-spacing: var(--display-tracking); color: var(--fg); text-wrap: balance;
+}
+.km-projects-catalogue-S__keep { grid-column: 6 / span 4; grid-row: 1; padding-top: 8px; font-size: var(--ac-body); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+.km-projects-catalogue-S__in { grid-column: 6 / span 4; grid-row: 2; margin-top: 10px; font-size: var(--ac-support); line-height: 1.5; font-weight: var(--ui-weight); color: var(--fg); }
+
+/* the one linked row: a drawn arrow after the name (the brand fonts carry none) */
+.km-projects-catalogue-S__row--go .km-projects-catalogue-S__name::after {
+  content: ""; display: inline-block; width: .5em; height: .42em; margin-left: .32em; vertical-align: .06em;
+  background-color: var(--fg-2);
+  -webkit-mask: var(--km-pc-arr) center / contain no-repeat; mask: var(--km-pc-arr) center / contain no-repeat;
+  --km-pc-arr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 6h12M8 1.5 12.5 6 8 10.5' fill='none' stroke='%23000' stroke-width='1.2' stroke-linecap='square'/%3E%3C/svg%3E");
+  transition: transform 250ms var(--ease-out), background-color 200ms var(--ease-out);
+}
+.km-projects-catalogue-S__row--go .km-projects-catalogue-S__keep { color: var(--fg); }
+.km-projects-catalogue-S__row--go:hover .km-projects-catalogue-S__name::after { transform: translateX(6px); background-color: var(--fg); }
+.km-projects-catalogue-S__row--go:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+
+/* entrance: the bands rise once, in order (the label and the claim are the kit's fade/rise) */
+.is-play .km-projects-catalogue-S__head > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-projects-catalogue-S__h { animation: ac-up 600ms var(--ease-out) 80ms both; }
+.is-play .km-projects-catalogue-S__cols, .is-play .km-projects-catalogue-S__group { animation: ac-up 600ms var(--ease-out) both; animation-delay: calc(300ms + var(--i, 0) * 110ms); }
+.km-projects-catalogue-S__group:nth-child(3) { --i: 1; }
+.km-projects-catalogue-S__group:nth-child(4) { --i: 2; }
+.km-projects-catalogue-S__group:nth-child(5) { --i: 3; }
+
+/* tablet: the layer name sits over its projects; phone: the row stacks (name, line, input) */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-projects-catalogue-S__list { margin-top: 56px; }
+  :root:not(.km-home) .km-projects-catalogue-S__cols { visibility: hidden; height: 0; margin: 0; }
+  :root:not(.km-home) .km-projects-catalogue-S__layer { grid-column: 1 / -1; padding-top: 24px; }
+  :root:not(.km-home) .km-projects-catalogue-S__rows { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-projects-catalogue-S__name { font-size: 34px; }
+  :root:not(.km-home) .km-projects-catalogue-S__keep::before { content: "What you keep: "; font-weight: var(--ui-weight); color: var(--fg-2); }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-projects-catalogue-S__h { margin-top: 20px; }
+  :root:not(.km-home) .km-projects-catalogue-S__list { margin-top: 40px; }
+  :root:not(.km-home) .km-projects-catalogue-S__row { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; padding: 18px 0 22px; }
+  :root:not(.km-home) .km-projects-catalogue-S__name { grid-column: 1; grid-row: 1; font-size: 26px; }
+  :root:not(.km-home) .km-projects-catalogue-S__keep { grid-column: 1; grid-row: 2; padding-top: 10px; font-size: 16px; }
+  :root:not(.km-home) .km-projects-catalogue-S__in { grid-column: 1; grid-row: 3; }
+}

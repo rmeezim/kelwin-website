@@ -1,0 +1,65 @@
+/* ── project-leads · S · a project page's "where it leads" (round 9, coherence pass) ───────
+   Paper, because the section holds paper. The kit's 42px head (.ac-shead > .ac-h3--lg, the page's
+   one) with its lede and one quiet destination, then the section's dominant element: chapter one
+   of the Orchestration Rules at sheet scale (the kit's .ac-sheet, portrait 1 : 1.414, cols 1–4,
+   ≈ 590px tall at 1440), set as a chapter opener (running head, the title a third of the way
+   down, the runbook it came from, its first two paragraphs, a folio). Beside it, cols 6–12, the
+   book's plain contents: chapter 1 in ink, then one line in the key voice, "Written in a full
+   install", over chapters 2–4 in --fg-3. (Coherence pass: the three dashed ghost pages read as
+   wireframe placeholders.) No numerals set large, no marker bar. Tokens only. */
+
+.km-project-leads-S__head > .ac-h3 { max-width: 20em; }
+.km-project-leads-S__line { max-width: none; }
+.km-project-leads-S__line > .ac-go { margin-left: 12px; }
+
+.km-project-leads-S__book {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start;
+  margin-top: 72px;
+}
+.km-project-leads-S__page { grid-column: 1 / span 4; aspect-ratio: 1 / 1.414; display: flex; flex-direction: column; box-shadow: inset 0 0 0 1px var(--line-2); }
+.km-project-leads-S__page .ac-sheet__body { flex: 1 1 auto; padding-top: 120px; }
+.km-project-leads-S__ch { font-size: var(--ac-key); line-height: 20px; font-weight: var(--ui-weight); color: var(--fg-2); }
+.km-project-leads-S__t {
+  margin-top: 10px; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 32px; line-height: 1.12; letter-spacing: var(--display-tracking); color: var(--fg); text-wrap: balance;
+}
+.km-project-leads-S__from { margin-top: 12px; }
+.km-project-leads-S__p { margin-top: 16px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); text-wrap: pretty; }
+.km-project-leads-S__from + .km-project-leads-S__p { margin-top: 32px; }
+
+/* the contents: set on the chapter title's line, a third of the way down the page */
+.km-project-leads-S__toc { grid-column: 6 / span 7; padding-top: 168px; }
+.km-project-leads-S__list { margin-top: 16px; border-top: 1px solid var(--line-2); }
+.km-project-leads-S__list > li {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: baseline; padding: 16px 0 18px; border-bottom: 1px solid var(--line);
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 28px; line-height: 1.2; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-project-leads-S__n { font-family: var(--f-body); font-stretch: normal; font-weight: var(--ui-weight); font-size: 15px; letter-spacing: 0; color: var(--fg-2); }
+.km-project-leads-S__later { margin-top: 40px; }
+.km-project-leads-S__list--later > li, .km-project-leads-S__list--later .km-project-leads-S__n { color: var(--fg-3); }
+
+.is-play .km-project-leads-S__head > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-project-leads-S__head > .ac-h3 { animation: ac-up 700ms var(--ease-out) 80ms both; }
+.is-play .km-project-leads-S__line { animation: ac-up 600ms var(--ease-out) 260ms both; }
+.is-play .km-project-leads-S__page { animation: ac-up 700ms var(--ease-out) 420ms both; }
+.is-play .km-project-leads-S__toc { animation: ac-fade 600ms var(--ease-out) 640ms both; }
+
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-project-leads-S__book { margin-top: 48px; row-gap: 40px; }
+  :root:not(.km-home) .km-project-leads-S__page { grid-column: 1 / span 6; }
+  :root:not(.km-home) .km-project-leads-S__page .ac-sheet__body { padding-top: 72px; }
+  :root:not(.km-home) .km-project-leads-S__toc { grid-column: 7 / span 6; padding-top: 96px; }
+  :root:not(.km-home) .km-project-leads-S__list > li { font-size: 22px; grid-template-columns: 36px minmax(0, 1fr); }
+  :root:not(.km-home) .km-project-leads-S__line > .ac-go { display: flex; width: max-content; margin: 16px 0 0; }
+}
+@media (max-width: 767px) {
+  /* the chapter page, then the contents under it */
+  :root:not(.km-home) .km-project-leads-S__book { margin-top: 36px; row-gap: 32px; }
+  :root:not(.km-home) .km-project-leads-S__page { grid-column: 1 / -1; aspect-ratio: auto; }
+  :root:not(.km-home) .km-project-leads-S__page .ac-sheet__body { padding-top: 32px; }
+  :root:not(.km-home) .km-project-leads-S__t { font-size: 26px; }
+  :root:not(.km-home) .km-project-leads-S__toc { grid-column: 1 / -1; padding-top: 0; }
+  :root:not(.km-home) .km-project-leads-S__list > li { font-size: 20px; padding: 12px 0 14px; }
+  :root:not(.km-home) .km-project-leads-S__later { margin-top: 28px; }
+}

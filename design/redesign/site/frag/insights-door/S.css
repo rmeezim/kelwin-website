@@ -1,3 +1,11 @@
-/* insights-door · S — D2, the statement close: the page's second (and last) two-voice statement,
-   the kit's door verbatim. The notes diagnose a layer in general; the audit finds the one that is
-   broken in your company. One red: the button. Onward: the readout, on /reports. */
+/* insights-door · S · round 9 — /insights: the close (kit 12.10, placement only)
+   The door line at the kit's 64px, the red System Audit button and the quiet "Talk to the team",
+   and one plain destination at the right ("What a readout looks like" → /reports). Graphite after
+   graphite: the ruled seam. The one red in view is the button. */
+
+.km-insights-door-S { padding-block: 128px 136px; }
+.km-insights-door-S .ac-close__on { font-size: var(--ac-support); line-height: 1.4; }
+
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-insights-door-S { padding-block: 72px 80px; }
+}

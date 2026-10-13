@@ -1,9 +1,9 @@
-/* article-door · S · D1 compact decision band — /insights/the-17-percent-window
-   The kit's compact D1 as drafted: ■ "Starts with the audit", the note's own line (what the
-   audit returns for this note's subject, documented scope only), the two doors on the line's
-   row, then one hairline and the onward link to the layer the note is about. Ruled seam from
-   the sources above. The one red in view is the button. Placement only. */
-.km-article-door-T { padding-block: 112px 120px; }
+/* article-door · T · round 9 — /insights/the-17-percent-window: the close (kit 12.10, placement only)
+   The door line at the kit's 64px, the red System Audit button and the quiet "Talk to the team",
+   and one plain destination at the right: Narrative Systems. Paper → graphite: no ruled seam. The one red
+   in view is the button. The three notes' lines share no sentence shape (a statement, a
+   conditional, an imperative with "before"). */
+.km-article-door-T { padding-block: 128px 136px; }
 @media (max-width: 767px) {
   :root:not(.km-home) .km-article-door-T { padding-block: 72px 80px; }
 }

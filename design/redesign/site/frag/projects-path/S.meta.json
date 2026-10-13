@@ -1,0 +1,17 @@
+{
+ "title": "How a project runs",
+ "direction": "A×C · Round 9 · new page (/projects)",
+ "summary": "Graphite. One 42px head, \"Week one decides whether the build goes ahead.\", one line for the steps before work starts (a reply within two working days, a 30-minute call, a written scope), then a measure plate: week one drawn as the one filled block over a '5 working days' dimension, the build as a broken outline running to handover, and a branch off the end of week one labelled 'Or a written stop'.",
+ "reference": {
+  "site": "ROUND9-PLAN §2 (a drawing with a real unit, one filled mass, at most three 15px labels) and the approved Audit ruler; GoNimbly's large gantt-like bars",
+  "borrowed": "Time drawn as a few heavy bars with big, few labels.",
+  "kelwin": "Only what is known is measured (five working days); the build's length is a break, because it is set in each written scope. No codes, no ticks per day, no red."
+ },
+ "motion": [
+  "entrance: week one fills left to right, then the build and handover appear, then the stop branch; the labels fade in after their parts.",
+  "tablet and phone: the labels give way to the visible key; the phone draws its own smaller version.",
+  "reduced motion: final state at once."
+ ],
+ "demoMs": 2200,
+ "notes": "Coherence pass 2: the 42px head becomes the kit's 64px claim (.ac-claim--md) so the section has a dominant element (its measure is 440px). Replaces round 9's first build (seven numbered steps beside a week-one note on paper). What a client pays when week one ends on a stop is a founder question, not on the page. Final check (verify r3): between 1024 and ≈1180 the 15px end label “The build, to handover” ran past the plate's right edge (and “Week one: the read” touched its left at production's 1024). From 1024 to 1279 the frame now swaps to a shorter-track drawing of the same parts (week one from 270, handover at 1010; the labels and the dimension follow, their --x now set in the CSS), so every label sits ≥ 24px inside the plate across the band. 1440 does not move."
+}

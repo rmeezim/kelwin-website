@@ -20,6 +20,12 @@
 /* the two-line statement's boxes are fractional (≈ 233.3px with the label row); hold the head on whole
    pixels so the rule and the ledger hairlines land crisp in both skins */
 .km-audit-faq-S__head { min-height: 234px; }
+/* coherence pass 3: the statement follows the stage below 1440 (88px at 1440, 62.6 at 1024), so it
+   stays under the Audit's fluid h1 (73.8 at 1024); 52 on tablets, 34 on phones (the h1: 63.7 at
+   834, 40 at 390). The words are the approved FAQ's, unchanged. */
+.km-audit-faq-S .km-audit-faq-S__head .ac-statement { font-size: min(var(--ac-h-sec), calc(var(--stage) * 88 / 1440)); }
+@media (max-width: 1439px) { .km-audit-faq-S__head { min-height: 0; } }
+@media (max-width: 1023px) { :root:not(.km-home) .km-audit-faq-S .km-audit-faq-S__head .ac-statement { font-size: 52px; } }
 
 /* ── body: left column (cols 1–5) + ledger (cols 6–12), one shared top line ── */
 .km-audit-faq-S__body { margin-top: 36px; align-items: stretch; grid-template-rows: auto 1fr; }
@@ -97,7 +103,7 @@
   :root:not(.km-home) .km-audit-faq-S .ac-ledger { --ac-row-cols: 40px minmax(0, 1fr) 20px; --ac-row-indent: calc(40px + var(--gutter)); }
   :root:not(.km-home) .km-audit-faq-S__head { min-height: 0; }
   :root:not(.km-home) .km-audit-faq-S .ac-line { white-space: normal; }
-  :root:not(.km-home) .km-audit-faq-S .ac-statement { font-size: 40px; }
+  :root:not(.km-home) .km-audit-faq-S .km-audit-faq-S__head .ac-statement { font-size: 34px; }
   :root:not(.km-home) .km-audit-faq-S__body { margin-top: 28px; }
   :root:not(.km-home) .km-audit-faq-S__side > .ac-lede { grid-column: 1 / -1; margin-top: 20px; max-width: none; font-size: 17px; text-wrap: pretty; }
   :root:not(.km-home) .km-audit-faq-S__list { margin-top: 40px; }

@@ -1,0 +1,30 @@
+/* ── project-takes · S · a project page's "what it takes" (round 9) ───────────────────────
+   Text left, number right — the section's dominant element is the big number (.ac-num--prop at
+   200px, kit §12.6: the kit owns its smaller sizes), right-aligned in cols 7–12 with its line
+   under it, so the figure reads into its sentence. Left, cols 1–5: the label and two short
+   paragraphs at the lede size. No claim head (the section above has one; this one is carried by
+   the number). Tokens only. */
+
+.km-project-takes-S__grid { align-items: start; }
+.km-project-takes-S__prose { grid-column: 1 / span 5; }
+.km-project-takes-S__prose > p { margin-top: 28px; font-size: var(--ac-lede); line-height: 1.5; color: var(--fg-2); max-width: 36ch; text-wrap: pretty; }
+.km-project-takes-S__prose > .ac-labelrow + p { margin-top: 40px; color: var(--fg); }
+.km-project-takes-S__check { grid-column: 7 / span 6; display: flex; flex-direction: column; align-items: flex-end; text-align: right; padding-top: 24px; }
+.km-project-takes-S__num { white-space: nowrap; }
+.km-project-takes-S__line { margin-top: 28px; font-size: var(--ac-lede); line-height: 1.5; color: var(--fg); max-width: 26ch; text-wrap: pretty; }
+
+.is-play .km-project-takes-S__prose > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
+.is-play .km-project-takes-S__prose > p { animation: ac-up 600ms var(--ease-out) 200ms both; }
+.is-play .km-project-takes-S__num { animation: ac-up 800ms var(--ease-out) 360ms both; }
+.is-play .km-project-takes-S__line { animation: ac-up 600ms var(--ease-out) 560ms both; }
+
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-project-takes-S__prose { grid-column: 1 / span 10; }
+  :root:not(.km-home) .km-project-takes-S__check { grid-column: 1 / -1; align-items: flex-start; text-align: left; padding: 56px 0 0; }
+  :root:not(.km-home) .km-project-takes-S__line { margin-top: 20px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-project-takes-S__prose { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-project-takes-S__prose > p, :root:not(.km-home) .km-project-takes-S__line { font-size: 17px; }
+  :root:not(.km-home) .km-project-takes-S__check { padding-top: 40px; }
+}

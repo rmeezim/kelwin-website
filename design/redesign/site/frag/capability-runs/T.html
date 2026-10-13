@@ -1,50 +1,31 @@
-<section class="km km-capability-runs-T ac-sec" data-surface="dark" aria-labelledby="km-capability-runs-T-h">
-  <div class="ac-wrap ac-grid km-capability-runs-T__grid">
-    <!-- the label column: the h2's two lines name the two parts on the right -->
-    <div class="km-capability-runs-T__side">
-      <div class="ac-shead km-capability-runs-T__head">
-        <div class="ac-labelrow"><p class="ac-label">How it runs</p></div>
-        <h2 class="ac-h3 ac-h3--lg" id="km-capability-runs-T-h"><span class="km-capability-runs-T__l">Built once.</span> <span class="km-capability-runs-T__l">Kept running.</span></h2>
-      </div>
-      <p class="km-capability-runs-T__foot">Your operator runs these from the runbook, or we do on retainer. Either way, the machine stays in your stack.</p>
-      <a class="ac-link km-capability-runs-T__more" href="/#methodology">The method, on one page</a>
+<section class="km km-capability-runs-T ac-sec ac-sec--ruled" data-surface="dark" aria-labelledby="km-capability-runs-T-h">
+  <div class="ac-wrap">
+    <div class="ac-shead ac-shead--claim">
+      <div class="ac-labelrow"><p class="ac-label">Standing checks</p><p class="ac-status"><span class="ac-state">Draft, to be confirmed</span></p></div>
+      <h2 class="ac-claim ac-claim--md" id="km-capability-runs-T-h">After handover, one person keeps it healthy.</h2>
+      <p class="ac-shead__lede">They work from a runbook we write with your RevOps lead and test at low volume before anything scales. On retainer, the checks are ours.</p>
+      <!-- this page's place for the engagement link: under the lede, as the section's one onward destination -->
+      <p class="km-capability-runs-T__to"><a class="ac-go ac-go--to" href="/about#cadence">How an engagement runs</a></p>
     </div>
 
-    <div class="km-capability-runs-T__main">
-      <!-- built once: the three build phases and the handover on one short line; the runbook hangs from the handover -->
-      <ol class="km-capability-runs-T__once" aria-label="Built once">
-        <li class="km-capability-runs-T__ph" style="--i:0"><span class="ac-idx">01</span><span class="km-capability-runs-T__nm">Diagnose</span></li>
-        <li class="km-capability-runs-T__ph" style="--i:1"><span class="ac-idx">02</span><span class="km-capability-runs-T__nm">Architect</span></li>
-        <li class="km-capability-runs-T__ph" style="--i:2"><span class="ac-idx">03</span><span class="km-capability-runs-T__nm">Install</span></li>
-        <li class="km-capability-runs-T__ph km-capability-runs-T__ph--datum" style="--i:3"><span class="ac-idx">Datum</span><span class="km-capability-runs-T__nm">Handover</span></li>
-      </ol>
-      <p class="km-capability-runs-T__built">Diagnosed from the channel orchestration map, architected with your RevOps lead, and installed in your stack at low volume before it scales. At handover you hold the ICP &amp; Signal Map, the Orchestration Rules and the runbook, and your operators are trained.</p>
-
-      <span class="km-capability-runs-T__drop" aria-hidden="true"></span>
-
-      <!-- kept running: Calibrate, as the runbook's standing page — what is checked each month and each quarter -->
-      <div class="km-capability-runs-T__run">
-        <div class="km-capability-runs-T__rh">
-          <h3 class="km-capability-runs-T__rn"><span class="ac-idx">04</span><span>Calibrate</span></h3>
-          <p class="km-capability-runs-T__rd">Placement, data decay and routing tuned as signals shift.</p>
+    <!-- the runbook's standing page, set as type: its running line, then interval → the checks in the
+         runbook's own words (the draft status is said once, on the section's label row) -->
+    <div class="km-capability-runs-T__book">
+      <p class="km-capability-runs-T__run"><span class="ac-key">Runbook, standing page</span></p>
+      <dl class="km-capability-runs-T__rows ac-cascade" style="--d:300ms">
+        <div class="km-capability-runs-T__row" style="--i:0">
+          <dt class="km-capability-runs-T__when">Each week</dt>
+          <dd class="km-capability-runs-T__do">Read bounce and complaint rates by domain. Pause any domain over its limit.</dd>
         </div>
-        <div class="km-capability-runs-T__cols">
-          <div class="km-capability-runs-T__col">
-            <h4 class="km-capability-runs-T__when">Each month</h4>
-            <ul class="km-capability-runs-T__items">
-              <li>Inbox placement and domain reputation watched; incidents handled</li>
-              <li>The data pipeline refreshed, decayed records cleared</li>
-            </ul>
-          </div>
-          <div class="km-capability-runs-T__col">
-            <h4 class="km-capability-runs-T__when">Each quarter</h4>
-            <ul class="km-capability-runs-T__items">
-              <li>Routing rules retuned as signal patterns shift</li>
-              <li>Capacity planned ahead of demand</li>
-            </ul>
-          </div>
+        <div class="km-capability-runs-T__row" style="--i:1">
+          <dt class="km-capability-runs-T__when">Each month</dt>
+          <dd class="km-capability-runs-T__do">Check inbox placement and domain reputation. Clear decayed records from the pipeline.</dd>
         </div>
-      </div>
+        <div class="km-capability-runs-T__row" style="--i:2">
+          <dt class="km-capability-runs-T__when">Each quarter</dt>
+          <dd class="km-capability-runs-T__do">Retune the Orchestration Rules to the quarter’s signal. Check your CRM’s stages and fields against how deals actually moved.</dd>
+        </div>
+      </dl>
     </div>
   </div>
 </section>

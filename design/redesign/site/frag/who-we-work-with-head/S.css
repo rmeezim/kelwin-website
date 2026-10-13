@@ -1,100 +1,12 @@
-/* ── who-we-work-with · head · S — the break chart (STORY-INTERIOR §4.6, band kind BC) ──────────
-   The kit's InteriorHead (nav at rest · label + breadcrumb · two-voice h1 · rule · lede · facts)
-   with this page's band: three flat elevations of the same three-layer system, one per
-   situation. Rows are the layers (named in words at the left, and by glyph inside every band);
-   columns are the situations; a fracture opens in the layer that breaks first and runs dashed
-   where it spreads. Faint row rules cross the gaps so the three read as one chart.
-   The one red: one fracture at a time (01's at rest; a hovered/focused situation row moves it).
-   Everything placed in the frame is in frame units (1 = 1px at 1440), as the kit's flags.     */
+/* ── who-we-work-with-head · S — round 9 ──
+   Kit §12.3 head, cast: 104px (coherence pass 3, was 112: it broke to lone words at 1024 in the
+   side column), phone floor 48 (42 below 360) so every line holds two or more words, SIDE (GoNimbly's head: the h1 in cols 1–7 · the kit's hairline ·
+   the rule, a one-sentence lede and one quiet action in cols 9–12), the accent a phrase in the
+   middle of the sentence and of its line ("but no system"). The film plate is the kit's (§12.4)
+   with its verified crop (--plate-zoom:3; --plate-x:25%; --plate-y:42%). Nothing here restyles a
+   kit piece. The stand-in's tone is set on the figure with the kit's plate variables (the blur at
+   the founder's 8px floor; a lighter frost .10 and grain .30 and a brighter plate, 1.04, so the
+   jaw, the neck and the white shirt beyond read as people rather than a brown blur). Coherence
+   pass: the nav twin's clip and its ≤359px lockup, and --plate-bright, are the kit's now. */
+.km-who-we-work-with-head-S .ac-head.ac-ihead { --ac-h1-floor: 48; --ac-h1-floor-xs: 42; }
 
-.km-who-we-work-with-head-S .km-who-we-work-with-head-S__fv { display: block; }
-
-/* ── the drawing ── */
-.km-who-we-work-with-head-S__svg .km-who-we-work-with-head-S__lip {
-  fill: none; stroke: var(--fg); stroke-width: 1; stroke-linejoin: miter;
-  transition: stroke 300ms var(--ease-inout), stroke-width 300ms var(--ease-inout);
-}
-/* the one red: the fracture of the situation in focus (01 at rest) */
-.km-who-we-work-with-head-S__frame:not([data-on]) .km-who-we-work-with-head-S__el--1 .km-who-we-work-with-head-S__lip,
-.km-who-we-work-with-head-S__frame[data-on="1"] .km-who-we-work-with-head-S__el--1 .km-who-we-work-with-head-S__lip,
-.km-who-we-work-with-head-S__frame[data-on="2"] .km-who-we-work-with-head-S__el--2 .km-who-we-work-with-head-S__lip,
-.km-who-we-work-with-head-S__frame[data-on="3"] .km-who-we-work-with-head-S__el--3 .km-who-we-work-with-head-S__lip { stroke: var(--signal); stroke-width: 1.5; }
-/* the fracture stands open: the far lip has moved 4 units off the near one. The outline stays
-   square (the far piece is drawn from the open lip to the elevation's own edge); the two short
-   bridges that closed the outline before the break have retracted into the far lip. */
-.km-who-we-work-with-head-S__svg .km-who-we-work-with-head-S__open { transform: translateX(4px); }
-.km-who-we-work-with-head-S__svg.ac-band__svg--sm .km-who-we-work-with-head-S__open { transform: translateX(3px); }
-.km-who-we-work-with-head-S__bridge { transform: scaleX(0); transform-box: fill-box; transform-origin: 100% 50%; }
-.km-who-we-work-with-head-S__svg .km-who-we-work-with-head-S__spread { stroke: var(--fg-2); stroke-dasharray: 3 3; }
-/* plotted strokes start clean (a square cap would show a dot before the line draws) */
-.km-who-we-work-with-head-S__svg .km-who-we-work-with-head-S__band,
-.km-who-we-work-with-head-S__svg .km-who-we-work-with-head-S__guide,
-.km-who-we-work-with-head-S__svg .km-who-we-work-with-head-S__lip { stroke-linecap: butt; }
-/* the layer glyphs (the nav's CONTOUR · TRACE · ORBIT), one per band */
-.km-who-we-work-with-head-S__glyph path { fill: none; stroke: var(--fg-3); stroke-width: 1; }
-.km-who-we-work-with-head-S__glyph rect { fill: var(--fg-3); stroke: none; }
-.km-who-we-work-with-head-S__pcode { font-size: 14px; fill: var(--fg-2); }
-
-/* the figcaption's lead sentence (seen at ≤1023, where the keyed list replaces the flags):
-   support size, like the list under it, so it reads as the drawing's caption, not body copy */
-.km-who-we-work-with-head-S__cap { display: block; margin-bottom: 16px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
-
-/* ── HTML in the frame (frame units): the layer axis, the key, the tap targets ── */
-.km-who-we-work-with-head-S__axis {
-  position: absolute; left: 0; top: calc(var(--y) * var(--u)); transform: translateY(-50%);
-  font-size: var(--ac-anno); line-height: 1.3; color: var(--fg-2); white-space: nowrap; pointer-events: none;
-}
-.km-who-we-work-with-head-S__key {
-  position: absolute; left: calc(var(--x, 0) * var(--u)); top: calc(var(--y, 0) * var(--u));
-  display: flex; align-items: center; gap: 28px; pointer-events: none;
-}
-.km-who-we-work-with-head-S__keyi {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--f-mono); font-size: var(--ac-mono-s); line-height: 16px; letter-spacing: var(--ac-track-mono);
-  text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
-}
-.km-who-we-work-with-head-S__sw { width: 12px; height: 18px; }
-.km-who-we-work-with-head-S__sw path { fill: none; stroke: var(--fg); stroke-width: 1; stroke-linejoin: miter; }
-.km-who-we-work-with-head-S__sw--spread path { stroke: var(--fg-2); stroke-dasharray: 3 3; }
-.km-who-we-work-with-head-S__hit {
-  position: absolute; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u));
-  width: calc(var(--w) * var(--u)); height: calc(var(--h) * var(--u)); cursor: pointer;
-}
-
-/* ── motion: the page's one orchestrated moment, once (from --ac-band-d ≈ 900ms) ──
-   the row rules draw · the three elevations draft left to right · their glyphs settle ·
-   then 01, 02, 03 in turn: the crack runs down its layer, the layer opens, the dashed run
-   shows where it spreads, its flag lands. Nothing cycles; the red stays on 01.
-   (.ac-plot reads --d / --t; set here, they only matter under .is-play.)                      */
-.km-who-we-work-with-head-S__guide { --d: 900ms; --t: 1000ms; }
-.km-who-we-work-with-head-S__el .km-who-we-work-with-head-S__band { --t: 800ms; }
-.km-who-we-work-with-head-S__el--1 { --d: 1050ms; --g: 1500ms; --cd: 1900ms; --od: 2220ms; --sd: 2520ms; }
-.km-who-we-work-with-head-S__el--2 { --d: 1190ms; --g: 1640ms; --cd: 2460ms; --od: 2780ms; --sd: 3080ms; }
-.km-who-we-work-with-head-S__el--3 { --d: 1330ms; --g: 1780ms; --cd: 3020ms; --od: 3340ms; --sd: 3640ms; }
-.km-who-we-work-with-head-S__el .km-who-we-work-with-head-S__lip { --d: var(--cd); --t: 320ms; }
-.is-play .km-who-we-work-with-head-S__glyph,
-.is-play .km-who-we-work-with-head-S__pcode { animation: ac-fade 500ms var(--ease-out) var(--g) both; }
-.is-play .km-who-we-work-with-head-S__open { animation: km-who-we-work-with-head-S-open 560ms var(--ease-out) var(--od) both; }
-.is-play .ac-band__svg--sm .km-who-we-work-with-head-S__open { animation-name: km-who-we-work-with-head-S-open-sm; }
-.is-play .km-who-we-work-with-head-S__bridge { animation: km-who-we-work-with-head-S-shut 560ms var(--ease-out) var(--od) both; }
-.is-play .km-who-we-work-with-head-S__spread { animation: ac-fade 600ms var(--ease-out) var(--sd) both; }
-@keyframes km-who-we-work-with-head-S-open { from { transform: translateX(0); } to { transform: translateX(4px); } }
-@keyframes km-who-we-work-with-head-S-open-sm { from { transform: translateX(0); } to { transform: translateX(3px); } }
-@keyframes km-who-we-work-with-head-S-shut { from { transform: scaleX(1); } to { transform: scaleX(0); } }
-
-/* ── tablet (≤1023): the flags give way to the keyed list (kit); the axis words stay (13px still
-   fits the 240-unit axis column down to 768) and so does the key; the tap targets stand down.
-   Phone (≤767): the kit swaps in the phone drawing (three narrow elevations, the layer glyphs as
-   its axis, 01–03 over each), so the desktop axis words and key go too. Visibility only (kit TRAP). ── */
-@media (max-width: 1023px) {
-  :root:not(.km-home) .km-who-we-work-with-head-S__hit { visibility: hidden; }
-  :root:not(.km-home) .km-who-we-work-with-head-S__axis { font-size: 13px; }
-  :root:not(.km-home) .km-who-we-work-with-head-S .ac-band__keys > li { align-items: flex-start; }
-  /* the hidden flags keep their 14px labels while the frame shrinks: clip them to the frame
-     (8px of margin keeps the corner marks) so they never widen the page */
-  :root:not(.km-home) .km-who-we-work-with-head-S__frame { overflow: clip; overflow-clip-margin: 8px; }
-}
-@media (max-width: 767px) {
-  :root:not(.km-home) .km-who-we-work-with-head-S__axis,
-  :root:not(.km-home) .km-who-we-work-with-head-S__key { visibility: hidden; }
-}

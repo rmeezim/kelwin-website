@@ -31,13 +31,8 @@
 .km-legal-body-S__text > p + p { margin-top: 1em; }
 .km-legal-body-S__clause--lead .km-legal-body-S__text > p { font-size: var(--ac-lede); line-height: 1.55; color: var(--fg); }
 
-/* an inline link inside running text (the kit's actions are caps; prose needs a quiet underline) */
-.km-legal-body-S__a {
-  color: var(--fg); text-decoration: underline 1px var(--line-2); text-underline-offset: 5px; white-space: nowrap;
-  transition: text-decoration-color 200ms var(--ease-out);
-}
-.km-legal-body-S__a:hover { text-decoration-color: var(--fg); }
-.km-legal-body-S__a:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
+/* the kit's inline text link (.ac-a, 12.2); an address in a clause never breaks */
+.km-legal-body-S__a { white-space: nowrap; }
 
 /* tablet: the column takes cols 3–12; the numbers keep the margin */
 @media (max-width: 1023px) {

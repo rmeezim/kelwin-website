@@ -1,69 +1,34 @@
-/* ── careers-standards · S · what every seat is held to ───────────────────────────────────
-   SP, a two-column spec in type only — the page's still beat between the header's drawing and
-   the bench form.
-   · cols 1–7  the rules: four ruled rows, mono index hanging in col 1, title (Mona display
-     28px) over its body; the link to the week below them.
-   · cols 9–12 the deal: a short block with its own rhythm — one left hairline, three terms
-     set close (mono key over a 20px value), no row rules. It starts at the top of the sheet
-     and ends where it ends: its terms never sit on the rules' rows, because a rule and a term
-     are different kinds of thing, not pairs.                                               */
-
-.km-careers-standards-S .ac-shead > .ac-h3 { text-wrap: balance; }
-
-.km-careers-standards-S__sheet {
+/* careers-standards · S — what every seat is held to, in the founder's words and order.
+   The first rule leads, set as the section's one dominant element (the kit's .ac-claim, 72px,
+   cols 1–11; coherence pass 3: "You own systems, not tasks." was a clipped pair at 96px, and at
+   1024 it outranked the h1 — now a plain claim with a verb, and no "not …" in the paragraph). Coherence pass: the other three rules ("Writing is the job." / "Diagnose out loud."
+   / "No theater.") read as clipped slogans over glosses — the site's repeated recipe — so they
+   fold into one plain paragraph pair under the lead, 22px, cols 1–7 (the first in --fg, the
+   second in --fg-2). One onward destination at the foot (→ /about#cadence). Type only. */
+.km-careers-standards-S__lead {
   display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
-  align-items: start; margin-top: 64px;
+  margin-top: 48px;
 }
+.km-careers-standards-S__big { grid-column: 1 / span 11; max-width: 12em; }
+.km-careers-standards-S__body { grid-column: 1 / span 7; margin-top: 40px; max-width: 38em; }
+.km-careers-standards-S__body > p { font-size: 22px; line-height: 1.5; color: var(--fg); text-wrap: pretty; }
+.km-careers-standards-S__body > p + p { margin-top: 20px; color: var(--fg-2); }
+.km-careers-standards-S__more { margin-top: 72px; }
 
-/* the rules */
-.km-careers-standards-S__main { grid-column: 1 / span 7; }
-.km-careers-standards-S__ch { font-weight: var(--body-weight); color: var(--fg-3); }
-.km-careers-standards-S__main > .km-careers-standards-S__ch {
-  padding: 0 0 14px calc(var(--col) + var(--gutter)); border-bottom: 1px solid var(--line-2);
-}
-.km-careers-standards-S__rule {
-  display: grid; grid-template-columns: calc(var(--col) + var(--gutter)) minmax(0, 1fr);
-  padding: 28px 0 32px; border-bottom: 1px solid var(--line);
-}
-.km-careers-standards-S__rule > .ac-idx { line-height: 34px; }
-.km-careers-standards-S__t {
-  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
-  font-size: 28px; line-height: 34px; letter-spacing: var(--display-tracking); color: var(--fg);
-}
-.km-careers-standards-S__b { margin-top: 12px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 50ch; text-wrap: pretty; }
-.km-careers-standards-S__more { margin-top: 32px; padding-left: calc(var(--col) + var(--gutter)); }
+/* entrance (one moment): the lead rule rises, then its paragraphs */
+.is-play .km-careers-standards-S__big { animation: ac-up 700ms var(--ease-out) 160ms both; }
+.is-play .km-careers-standards-S__body { animation: ac-up 700ms var(--ease-out) 360ms both; }
+.is-play .km-careers-standards-S__more { animation: ac-fade 500ms var(--ease-out) 700ms both; }
 
-/* the deal: its own short block, hung on one hairline */
-.km-careers-standards-S__deal { grid-column: 9 / span 4; padding-left: 32px; border-left: 1px solid var(--line-2); }
-.km-careers-standards-S__terms { margin: 0; }
-.km-careers-standards-S__term { margin-top: 28px; }
-.km-careers-standards-S__term > dt {
-  font-family: var(--f-mono); font-size: var(--ac-mono-s); line-height: 16px; letter-spacing: var(--ac-track-idx);
-  text-transform: uppercase; color: var(--fg-3);
-}
-.km-careers-standards-S__term > dd { margin: 8px 0 0; font-size: 20px; line-height: 28px; color: var(--fg); text-wrap: balance; }
-
-/* ── tablet (≤1023): the deal drops under the rules and becomes a compact spec (key beside value) ── */
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-careers-standards-S__main { grid-column: 1 / -1; }
-  :root:not(.km-home) .km-careers-standards-S__deal { grid-column: 1 / span 9; margin-top: 56px; padding-left: 0; border-left: 0; }
-  :root:not(.km-home) .km-careers-standards-S__ch--deal { padding-bottom: 14px; border-bottom: 1px solid var(--line-2); }
-  :root:not(.km-home) .km-careers-standards-S__term { display: grid; grid-template-columns: 112px minmax(0, 1fr); column-gap: var(--gutter); margin: 0; padding: 14px 0 16px; border-bottom: 1px solid var(--line); }
-  :root:not(.km-home) .km-careers-standards-S__term > dt { line-height: 26px; }
-  :root:not(.km-home) .km-careers-standards-S__term > dd { margin: 0; font-size: var(--ac-body); line-height: 26px; max-width: none; }
+  :root:not(.km-home) .km-careers-standards-S__lead { margin-top: 36px; }
+  :root:not(.km-home) .km-careers-standards-S__big { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-careers-standards-S__body { grid-column: 1 / span 10; margin-top: 32px; }
+  :root:not(.km-home) .km-careers-standards-S__body > p { font-size: 20px; }
+  :root:not(.km-home) .km-careers-standards-S__more { margin-top: 56px; }
 }
-/* ── phone (≤767): the index sits beside its title in a narrow column; one column throughout ── */
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-careers-standards-S__sheet { margin-top: 40px; }
-  :root:not(.km-home) .km-careers-standards-S__main > .km-careers-standards-S__ch { padding-left: 52px; }
-  :root:not(.km-home) .km-careers-standards-S__rule { grid-template-columns: 44px minmax(0, 1fr); column-gap: 8px; padding: 20px 0 22px; }
-  :root:not(.km-home) .km-careers-standards-S__rule > .ac-idx { line-height: 28px; }
-  :root:not(.km-home) .km-careers-standards-S__t { font-size: 22px; line-height: 28px; }
-  :root:not(.km-home) .km-careers-standards-S__b { margin-top: 8px; font-size: 16px; }
-  :root:not(.km-home) .km-careers-standards-S__more { margin-top: 24px; padding-left: 52px; }
-  :root:not(.km-home) .km-careers-standards-S__more > .ac-link { white-space: normal; }   /* one long link: wraps at 320 rather than overflow */
-  :root:not(.km-home) .km-careers-standards-S__deal { grid-column: 1 / -1; margin-top: 44px; }
-  :root:not(.km-home) .km-careers-standards-S__term { grid-template-columns: 76px minmax(0, 1fr); column-gap: 12px; padding: 12px 0 14px; }
-  :root:not(.km-home) .km-careers-standards-S__term > dd { font-size: 16px; line-height: 24px; }
-  :root:not(.km-home) .km-careers-standards-S__term > dt { line-height: 24px; }
+  :root:not(.km-home) .km-careers-standards-S__body { grid-column: 1 / -1; margin-top: 24px; }
+  :root:not(.km-home) .km-careers-standards-S__body > p { font-size: 17px; }
+  :root:not(.km-home) .km-careers-standards-S__more { margin-top: 44px; }
 }

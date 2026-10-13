@@ -1,0 +1,22 @@
+[
+ {
+  "id": "about-head",
+  "slot": "S"
+ },
+ {
+  "id": "about-rules",
+  "slot": "S"
+ },
+ {
+  "id": "about-cadence",
+  "slot": "S"
+ },
+ {
+  "id": "about-door",
+  "slot": "S"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

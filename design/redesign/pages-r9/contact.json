@@ -1,0 +1,18 @@
+[
+ {
+  "id": "contact-head",
+  "slot": "S"
+ },
+ {
+  "id": "contact-memo",
+  "slot": "S"
+ },
+ {
+  "id": "contact-coda",
+  "slot": "S"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

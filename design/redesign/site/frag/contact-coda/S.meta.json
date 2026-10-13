@@ -1,25 +1,22 @@
 {
-  "title": "Other ways in",
-  "direction": "A×C · Round 8 · /contact coda (CO + QC quiet close)",
-  "summary": "The page ends quietly: the address for anyone who would rather not use a form (with Copy), and the audit offered once as the faster door for someone who already suspects something structural, in the kit's quiet close, with no red.",
-  "reference": {
-    "site": "Kit QC quiet close (frag/int-kit/S, 'Door QC · quiet close, standalone') and the homepage letter's P.S. line",
-    "ref_file": "refs/contact-memo-S.webp",
-    "borrowed": "The QC grammar as built: a visible ■ label, one hairline, plain questions each followed by where it goes; the last one is the page's onward link.",
-    "kelwin": "Adds only a Copy control beside the address (mono caps, 1px, confirms in words). No red ask on the low-intent door: its conversion is the message."
-  },
-  "story": "The coda. After the memo, two ways out and nothing louder: write from your own mail if a form isn't your thing, or, if this was never a general question, take the audit — three questions, then a 30-minute call. The second line is the page's onward link.",
-  "copy": [
-    "label [N] “Other ways in”",
-    "[R] “Prefer plain email?” · audit@kelwin.co · [Copy] (confirms “Copied” / “Address copied”) [N]",
-    "[N] “Already suspect something structural? The audit is the faster door: three questions, then a 30-minute call.” → The System Audit (/audit) — the onward link"
-  ],
-  "phone": "≤1023: the kit's QC (quiet doors stay in a row of three columns). ≤767: the quiet doors stack, one per row, each with its hairline; the Copy control wraps under the address when the width runs out.",
-  "motion": [
-    "entrance: the kit's Door choreography only — the label fades, the quiet row rises. No body moment here (the page's one is the memo).",
-    "interaction: Copy → 'Copied' for 2.4s with a status line read to screen readers; link hovers.",
-    "on the live site: plays once as it scrolls into view; reduced motion = final state."
-  ],
-  "demoMs": 1600,
-  "notes": "QC standalone, as the kit prescribes for contact's coda. The audit appears twice on the page, both quiet: the header's facts row (for someone who arrived at the wrong door) and this coda line (for someone who read the memo and realised). Both are in the plan; neither is red."
+ "title": "Diagnosis starts with three questions",
+ "direction": "A×C · Round 9 · /contact close",
+ "summary": "The page's one close, quiet as the kit sets for /contact: “Diagnosis starts with the audit’s three questions.” and the quiet link to the audit.",
+ "reference": {
+  "site": "GoNimbly (founder's recordings, refs-r9/GONIMBLY-STUDY.md) · the round-9 kit (frag/int-kit/S)",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-careers.png",
+  "borrowed": "One action after the content, nothing else.",
+  "kelwin": "The kit's close without the red button (no red on /contact): the second reply time said once, here."
+ },
+ "copy": [
+  "[N] close line 'A diagnosis starts with three questions, not a message.' (the page's one antithesis)",
+  "[K] 'Request a System Audit' → /audit (.ac-link, quiet: no red on /contact, kit 12.10)"
+ ],
+ "phone": "kit close; 34px line at 390.",
+ "motion": [
+  "entrance: the kit's close (line, then the link)."
+ ],
+ "demoMs": 1200,
+ "notes": "Round-9 fix pass: the 64px service line 'Audit bookings get a reply within one working day.' is gone; both reply times now sit in the form's step 3. Founder question: should the close carry the red button too? Coherence pass 3: door line recast: “A diagnosis starts with three questions, not a message.” was an “X, not Y” clipped pair."
 }

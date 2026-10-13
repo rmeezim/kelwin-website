@@ -1,27 +1,16 @@
 {
-  "title": "Strips, rolled up",
-  "direction": "A×C · Round 8 · capability template (Narrative Systems)",
-  "summary": "Header X's approved body, kept: the page's second statement and four strips that repeat the band's flag codes. New beneath them is a 1px roll-up, where each strip's artifact drops onto one of the two assets you own, so the taxonomy reads at a glance.",
-  "story": "The legend to the header's map. The band flagged four services; here they are by name, what each ships, and where it lands: three into the Narrative OS, one into the Channel Playbooks — the two assets the facts ledger promised.",
-  "copy": [
-    "[K X] statement “The story is not copy. / It’s infrastructure.” and the four strip lines and Ships values",
-    "[R] support line “Four services, each shipping into one of two assets you own.”",
-    "[N] the roll-up (Narrative OS ← 01.1, 01.2, 01.4 · Channel Playbooks ← 01.3) and its words “Into the Narrative OS / Channel Playbooks”"
-  ],
-  "phone": "≤1023: strips 2 × 2; the roll-up drawing gives way to its words in each strip (“Into the Narrative OS”). ≤767: one strip per row, the code box beside the title (22px), the support line, then ‘Ships · …’ and ‘Into the …’ on one wrapping foot line.",
-  "reference": {
-    "site": "Approved interior/X body (round 3) and the homepage handover's asset numbering (handover/U)",
-    "mobbin_url": "https://mobbin.com/sites/sections/f8b93019-f62b-4e58-8f0d-e577baa204f3",
-    "ref_file": "refs/interior-r2-X.webp",
-    "borrowed": "X's strips under a two-voice statement, the flag codes in the same code boxes.",
-    "kelwin": "The cropped “07 services” meta is gone (body label rows carry no meta); the services are the nav's four; a drafting roll-up shows each artifact landing in one of the handover's two Narrative assets, with a hop where the 01.3 drop crosses the Narrative OS bus."
-  },
-  "motion": [
-    "entrance: the label fades, the statement rises line by line, the rule draws, the support line rises; the strips cascade 01.1 → 01.4 with their hairlines drawing down.",
-    "interaction: none.",
-    "on the live site: plays once when the section scrolls into view. Reduced motion: final state.",
-    "the roll-up drawing is still: it fades in as one piece with the last strip (not plotted), so the page keeps two drawn body moments (the specimen's typeset and the track)."
-  ],
-  "demoMs": 3000,
-  "notes": "≈ 900px at 1440. Ruled seam from the header (graphite → graphite). This is the page's second and last two-voice statement."
+ "title": "Claim and named rows",
+ "direction": "A×C · Round 9 · capability template (Narrative Systems)",
+ "summary": "Narrative Systems' services (coherence pass 2, D5): the 72px claim, then what the layer writes as ONE prose paragraph at 24px — four documents kept as the Narrative OS — and the projects pointer.",
+ "reference": {
+  "site": "The homepage letter's 'Field notes, published' rows (approved), at a larger scale",
+  "borrowed": "Title plus one support line per row, hairline rules, nothing else on the row.",
+  "kelwin": "No codes, no Ships keys, no roll-up drawing; kit claim, kit go-link."
+ },
+ "motion": [
+  "entrance: the claim rises (kit), the rows rise in turn, the foot follows.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2000,
+ "notes": "Coherence pass 2: the four named rows (the site's row recipe) become prose. Round 9 fix: the claim is no longer a precondition (Infrastructure keeps that shape); the matrix row now names the deliverable (a page per buying segment, owned by your marketing lead) instead of re-describing the matrix; 'in what order' is gone from the page; the projects sentence says it is a plan. The section now follows the head (the matrix follows it), so it opens on the seam. Coherence pass 3: the 72px claim no longer leads on “Most …” (it echoed the homepage reframe): “Your messaging is decided on sales calls, by whoever is talking.” — the page's one “whoever”."
 }

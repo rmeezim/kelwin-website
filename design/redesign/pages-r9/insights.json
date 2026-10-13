@@ -1,0 +1,14 @@
+[
+ {
+  "id": "insights-head",
+  "slot": "S"
+ },
+ {
+  "id": "insights-door",
+  "slot": "S"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

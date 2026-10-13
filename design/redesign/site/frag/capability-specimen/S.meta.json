@@ -1,30 +1,16 @@
 {
-  "title": "The matrix, for Kelwin",
-  "direction": "A×C · Round 8 · capability template (Narrative Systems)",
-  "summary": "The page's one paper moment: a page of the Narrative OS you would hold — the message matrix — filled in with Kelwin's own positioning, so it shows the real structure without a single client fact, with editor's marks on the columns and the two readings that explain a row per listener.",
-  "story": "Answers “what do we actually walk away with?” by showing it. The strips said four services; this is the document they become. Each listener gets a row because the deal has many (the readings), and the one red underline marks the sentence a champion must be able to retell.",
-  "copy": [
-    "[N] h2 “The message matrix, filled in for Kelwin.” and its lede",
-    "[N] the four column traits (from the 17% note): The problem, named · The mechanism · The proof · If it fails",
-    "[N] cells built from approved Kelwin lines (homepage hero, letter, handover, system, FAQ)",
-    "[N] editor's marks: Ordered for a committee · Named in the buyer’s words · Retells in one sentence · Answers the risk question",
-    "[K figures, R wording] Readings 6–10 (Gartner, 2019) and 81% → 31% (CEB · HBR, 2015) — wording ‘from one to six’ per the kit, to verify against the HBR article before launch",
-    "[R handover asset 02] “Channel Playbooks — the same claims, written into the plays for email, LinkedIn, phone, content, paid and events.”",
-    "SpecimenTag “The structure every Narrative OS uses, filled in with Kelwin’s own positioning. No client data.”"
-  ],
-  "phone": "≤1023: the sheet takes the width, the readings sit under it in two columns, the marks become a 2 × 2 list. ≤767: three listener cards — the name and role on one line, then the four cells as compact keyed pairs (a short mono key beside each sentence: Problem · Mechanism · Proof · If it fails; the full column names stay in the table head for screen readers); the red underline stays on the Champion's mechanism; the two readings sit side by side with 30px figures, then the field note.",
-  "reference": {
-    "site": "Approved homepage evidence/T (paper, sourced figures with a field-note door) and the int-kit document panel",
-    "mobbin_url": "https://mobbin.com/sites/sections/971c76f8-3b6b-40a4-a007-9290598ad5e9",
-    "ref_file": "refs/capability-specimen-T.webp",
-    "borrowed": "Grammarly Business's style-guide table shown as a product artifact: a real working sheet, columns with plain headers, presented as the thing you would use.",
-    "kelwin": "No product chrome and no shadows: a 1px-ruled document on paper with its own name bar and SpecimenTag, filled in for Kelwin itself; the band's flag grammar returns as four editor's marks standing on the sheet's edge; the evidence section's sourced figures become the margin readings."
-  },
-  "motion": [
-    "entrance (play once): the sheet lands, the header row appears, the three rows typeset one by one (260ms apart), the readings rise in the margin, the four marks stand up on the sheet's edge, and the red underline inks in last under the Champion's mechanism.",
-    "interaction: the readings' sources and the field-note link (kit hovers).",
-    "on the live site: plays once when the section scrolls into view; afterwards the sheet is still. Reduced motion: final state."
-  ],
-  "demoMs": 3400,
-  "notes": "≈ 1,050px at 1440. The page's only paper section. One red beyond the label square: the underline. The two readings are the page's two (≤2)."
+ "title": "The matrix, set open",
+ "direction": "A×C · Round 9 · capability template (Narrative Systems)",
+ "summary": "The message matrix as an open page of the Narrative OS on paper at the full measure: running head with Specimen once, a one-line lead that it is filled in for Kelwin itself, large listener names, plain seller language in the cells, keys as column heads, a folio — no window, no quotes, no callouts, no slogans.",
+ "reference": {
+  "site": "A working messaging document (the kit's .ac-sheet anatomy, opened to the full measure)",
+  "borrowed": "Running head, numbered folio, column heads in the key voice, reading-size cells.",
+  "kelwin": "Filled in for Kelwin itself in plain working language, so it is a believable document and holds no client's work."
+ },
+ "motion": [
+  "entrance: the three listener rows rise in turn (kit cascade).",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2200,
+ "notes": "Round 9 fix: the lead no longer re-describes the matrix (said once on the page); the Skeptic's proof cell no longer rewords the homepage's 'If we're not the fix' line ('Findings tied to records in their own CRM, which they can check'). It now sits between the services and 'How it runs', so the page alternates text and document."
 }

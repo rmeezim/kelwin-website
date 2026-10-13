@@ -1,0 +1,22 @@
+{
+ "title": "Ask first",
+ "direction": "A×C · Round 9 · /careers close",
+ "summary": "The page's one close, quiet as the kit sets for /careers: one line from the page's own argument ('Ask about any seat before you write in.') and the quiet door 'Talk to the team' to the contact form's Careers topic.",
+ "reference": {
+  "site": "the round-9 kit (frag/int-kit/S, 12.10 the close)",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-careers.png",
+  "borrowed": "GoNimbly's single quiet action.",
+  "kelwin": "The kit's close, no red on a hiring page; the quiet door string kept site-wide."
+ },
+ "copy": [
+  "[N] close line 'Ask about any seat before you write in.'",
+  "[K] quiet door 'Talk to the team' → /contact?topic=careers (the topic's questions go to careers@kelwin.co, proposed)"
+ ],
+ "phone": "the kit's close: the line at 48px (tablet) / 34px (phone), the link under it.",
+ "motion": [
+  "entrance: the kit's close (the line rises, then the link)."
+ ],
+ "demoMs": 1200,
+ "notes": "Coherence pass 2 (D6): door line “Questions about a seat go straight to the founder.” (was “Ask about any seat before you write in.”, one of three ‘before you’ doors). Split out of careers-bench in round 9's fix pass, so each section holds one big line. Founder question: should the close carry the red Request a System Audit too (kit 12.10 says no red on /careers)?"
+}

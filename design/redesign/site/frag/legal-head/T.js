@@ -1,4 +1,4 @@
-// legal-head · S — the contents strip's phone toggle (snippets/interior.html §2b, verbatim).
+// legal-head · T — the contents strip's phone toggle (snippets/interior.html §2b, verbatim).
 // At ≥768 the button is hidden and the strip is one row of links; nothing else moves.
 window.KM = {
   init(root) {

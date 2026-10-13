@@ -1,7 +1,15 @@
-/* ── legal-close · S · /privacy — QC, the quiet close (kit §12.8), standalone on graphite ──
-   The kit's QC as-is (snippets/interior.html 10f): a visible ■ label, two quiet doors on one
-   hairline, the last one the page's onward link (the other legal document, asked as the
-   reader's next question). No red anywhere, no additions: like /contact's coda, the visible
-   ■ label row is what keeps the close from reading as a stray footer row, and it meets the
-   approved footer exactly as /contact does. (How a graphite interior page meets the
-   graphite footer is one shared answer for the kit / footer slot — see kitNeeds.)      */
+/* ── legal-close · S — round 9: the page's ONE close, plain (kit 12.10, the quiet variant) ──
+   The round-8 quiet close (QC: a label and "question? → link" rows, kit 12.L) retires. In its
+   place the kit's close: the door line from the document's own argument (clause 06), and ONE
+   channel for it — the address clause 06 names (audit@kelwin.co, the same mailbox the contact
+   form writes to), as an .ac-go mail link, so the page never offers two routes for one request.
+   The other legal document is the one onward destination, a quiet sentence-case .ac-go → (not a
+   second caps link). No red on a legal page. It follows the paper document, so its top is a hard
+   surface cut (no rule). The only local style: the onward link in --fg-2. */
+
+/* the onward destination, one step quieter than the door (--fg-2 until hovered) */
+.km-legal-close-S .ac-close__on .ac-go { color: var(--fg-2); transition: color 200ms var(--ease-out), box-shadow 200ms var(--ease-out); }
+.km-legal-close-S .ac-close__on .ac-go:hover { color: var(--fg); }
+/* tablets: the legal h1 is held at 48px (legal-head), so the door line steps to 40 under it
+   (coherence pass 3: at the kit's 48 it matched the h1) */
+@media (max-width: 1023px) { :root:not(.km-home) .km-legal-close-S .ac-close__line { font-size: min(40px, var(--ac-close-line)); } }

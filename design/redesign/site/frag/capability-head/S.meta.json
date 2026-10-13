@@ -1,29 +1,16 @@
 {
-  "title": "Contour, through a filter",
-  "direction": "A×C · Round 8 · capability template (Narrative Systems)",
-  "summary": "The approved header X, title block retired: the statement, the facts ledger with the two flagged values, and CONTOUR drawn large, where five noisy lines pass through a drawn filter and leave as one clean voice that meets the frame at the red output tick.",
-  "story": "Opens the page on its answer: this layer decides what the market hears. The drawing says it before the copy does (many voices in, one voice out), and its four flags are the four services the next section lists, so the band is the page's map.",
-  "copy": [
-    "(FS) Facts · Engagement “Scoped at the readout” (was “6-week install, then retainer”)",
-    "(FS) Facts · Output “Narrative OS and Channel Playbooks — yours” (was “Seven artifacts you own”)",
-    "[K X] label, breadcrumb, h1, lede, Starts with · The System Audit ↗, flags 01.1–01.4, “One voice”"
-  ],
-  "phone": "≤1023: the facts ledger drops under the lede (kit), the menu hides, the flags and dimension give way to the visible keyed list under the band. ≤767: the phone drawing swaps in (358×240 viewBox, three lines, the filter mouth at the left and its neck at 40% of the width, the red tick at the right edge); the h1 wraps at 40px; the lede drops to 17px. Phone drawing tightened to 358×180 (filter mouth ±68); the keyed list runs two to a row (the codes' names are short).",
-  "reference": {
-    "site": "Approved interior/X (round 3, Specimen sheet), built on Linear's quiet statement over one large 1px drawing",
-    "mobbin_url": "https://mobbin.com/sites/sections/f8b93019-f62b-4e58-8f0d-e577baa204f3",
-    "ref_file": "refs/interior-r2-X.webp",
-    "borrowed": "X's composition, verbatim: solid bar, top-aligned two-voice h1, facts ledger as the quiet door, the page's own shape across cols 1–12 in a registration frame.",
-    "kelwin": "Round 8 changes only: the title block is gone (standing rule 2); the kit's §12 nav, facts and band frame (frame units) replace X's local copies; the bundle now passes through a drawn filter (a mouth at x 150, two dashed hairlines converging to a neck at x 900) that carries the four flags, so it stays a bundle and never reads as the homepage principle's poster (round-7 C1 guard)."
-  },
-  "motion": [
-    "entrance: the kit head choreography (label, h1 lines rise, rule draws, lede and facts rise); the four registration marks register at 600–780ms.",
-    "orchestrated moment (0.9–3.9s): the filter's mouth draws, its hairlines fade in, the five raw lines plot left to right; at 2.0s a settle front travels left → right over 1.9s, the noise decays inside the filter (high harmonics first), each flag registers as the front reaches its station, the clean line and the ‘One voice’ dimension appear past the neck, and the red tick lands when the front meets the frame.",
-    "ambient: the interior's one loop — a 3px tone drifts along the clean run, 12s a cycle; the noise stays still.",
-    "interaction: kit hovers only (nav items, Audit request, The System Audit ↗).",
-    "on the live site: the band morph plays once at 40% visible. Reduced motion: KM.init draws the settled drawing synchronously and starts no loop or timer.",
-    "performance: after the settle, the drift recomputes only the clean line, and pauses while the band is off screen (IntersectionObserver) or the tab is hidden; the cleanup disconnects both."
-  ],
-  "demoMs": 4400,
-  "notes": "Header ≈ 990px at 1440. Exactly one red beyond the label square and rule: the output tick. No red button in the header (the facts ledger carries the quiet door). The static HTML holds the settled drawing generated from KM.geo() (same code as the animation). The caption no longer counts the lines (the phone drawing has three)."
+ "title": "Side head, shot card",
+ "direction": "A×C · Round 9 · capability template (Narrative Systems)",
+ "summary": "The approved h1 cast at 120px in GoNimbly's side composition (lede behind a hairline beside the short first line; the action on line 2's baseline) from a 1280 stage up, stacked below it, with no kicker, no breadcrumb and no facts box, and a full-measure shot card under it that doubles as the shoot brief for the page's footage.",
+ "reference": {
+  "site": "GoNimbly (founder's recordings, refs-r9) on the approved interior header X",
+  "borrowed": "Headline left, a short line behind a vertical hairline, one quiet action, the picture directly under the head at full measure.",
+  "kelwin": "Kit §12.3/12.4: two-voice h1, the 48×2 rule, a shot card instead of footage (no take, no timecode), flat graphite."
+ },
+ "motion": [
+  "entrance: the turn lifts, the h1 writes itself in (kit §13), the hairline draws down with the rule, the lede and action rise, the plate rises and widens.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2600,
+ "notes": "Round 8's CONTOUR band, the facts box and the crumb are gone. Round 9 fix: the side composition collided between 1024 and 1279 (line 2 under the action, the lede's third line into line 2), so it now holds only from 1280 up (and always on the 1440 review stage); the section clips its own x-overflow (the mockup bar's hidden menu). The shot card's brief drops the jargon ('frosted like the homepage film') and its spec line carries numerals and units only ('12 s · 2.52 : 1', unit kept lowercase). The brief is for the founder to confirm or rewrite. Coherence pass 3: h1 words unchanged (the homepage ledger's line); phone floor 40 (kit 12.3) so “the market hears.” holds one line at 390 and 360 — at 56 “hears.” stood alone. At 320 it still does (it would need 35px); listed."
 }

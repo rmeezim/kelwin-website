@@ -1,30 +1,16 @@
 {
-  "title": "Built once, kept running",
-  "direction": "A×C · Round 8 · capability template (GTM Infrastructure)",
-  "summary": "How this layer runs, split the way its h2 is: BUILT ONCE is one short line (Diagnose · Architect · Install to the Handover datum, with one sentence of what is built and handed over); KEPT RUNNING hangs from the handover — a drop line lands on Calibrate, the runbook's standing page of what is checked each month and each quarter.",
-  "story": "After the rules sheet (what you hold) comes who keeps the machine running. The build is told once, briefly; the weight goes to what never stops — the monthly and quarterly checks your operator runs from the runbook, or we run on retainer. It is the page's one section that is not a row list (the ledger and the rules table sit above it).",
-  "copy": [
-    "[N] h2 “Built once. Kept running.”",
-    "[N] the build line: 01 Diagnose · 02 Architect · 03 Install · Datum Handover",
-    "[N] the build sentence (condenses the four [N] phase outputs): “Diagnosed from the channel orchestration map, architected with your RevOps lead, and installed in your stack at low volume before it scales. At handover you hold the ICP & Signal Map, the Orchestration Rules and the runbook, and your operators are trained.”",
-    "[N] Calibrate: “Placement, data decay and routing tuned as signals shift.”",
-    "[R from today's Phase II] (FC scope) run-sheet: Each month — Inbox placement and domain reputation watched; incidents handled · The data pipeline refreshed, decayed records cleared. Each quarter — Routing rules retuned as signal patterns shift · Capacity planned ahead of demand",
-    "[N] foot “Your operator runs these from the runbook, or we do on retainer. Either way, the machine stays in your stack.”",
-    "[K] link “The method, on one page” → /#methodology"
-  ],
-  "phone": "≤1023: the head and its foot sit above; the runbook takes the width (the drop still lands on Calibrate). ≤767: the build line keeps its four stops (names at 15px), the sentence follows, the drop line steps aside, Calibrate's header stacks, and the two cadences stack, each item with its empty check box.",
-  "reference": {
-    "site": "Dovetail — a heading column beside numbered steps on one vertical line",
-    "mobbin_url": "https://mobbin.com/sites/sections/575e3e1c-82e3-4a46-a463-0c769bb8e730",
-    "ref_file": "refs/capability-runs-T.webp",
-    "borrowed": "A heading held to the left of a numbered procedure.",
-    "kelwin": "Split by the h2: a one-line build track that stops at the Handover datum, and a drop line from that node onto Calibrate's standing page — two cadence columns of empty check boxes (a schedule, not a record). No row list, so the page's third section breaks the ledger/table rhythm above it."
-  },
-  "motion": [
-    "entrance (the page's second body moment, plays once): the build line draws to the Handover node (1.1s) as the four stops set (200ms apart); the sentence fades in; the drop line falls from the handover onto the run page (700ms); the run page fades in.",
-    "interaction: the method link (kit hover).",
-    "on the live site: plays once when the section scrolls into view. Reduced motion: final state."
-  ],
-  "demoMs": 2800,
-  "notes": "781px at 1440. No longer sticky (the runbook is short; a sticky head drifted beside the run page in the walk). Paper → graphite needs no ruled seam. No red in this section."
+ "title": "The runbook, as type",
+ "direction": "A×C · Round 9 · capability template (GTM Infrastructure)",
+ "summary": "A 64px claim (after handover, one person keeps it healthy), one lede on how the runbook is made and who does the checks on retainer, the link to How an engagement runs under the lede, then the runbook's standing page as 28px type under a running line that carries the draft status — Each week / Each month / Each quarter in the runbook's own words.",
+ "reference": {
+  "site": "An operator's runbook page",
+  "borrowed": "Interval, then the checks, nothing else.",
+  "kelwin": "Kit claim and key voice; intervals aligned to the recommended cadence on /about#cadence."
+ },
+ "motion": [
+  "entrance: the claim and lede rise (kit), the three intervals rise in turn, the foot fades in.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 1800,
+ "notes": "Coherence pass 2 (D6): the runbook says “Retune the Orchestration Rules…” (was “the routing rules”). Round 9 fix: the label no longer restates the head ('Standing checks'); 'run' is no longer said three times; 'operator' is gone from the prose; the status and the link sit where this page's form puts them (the runbook's running line; under the lede), not in a foot row shared with the siblings. Coherence pass 3: the quarterly runbook line no longer names a document the page never introduces (the CRM blueprint): “Check your CRM’s stages and fields against how deals actually moved.”"
 }

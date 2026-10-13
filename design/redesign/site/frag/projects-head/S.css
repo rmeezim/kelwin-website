@@ -1,0 +1,34 @@
+/* ── projects-head · S · /projects, the head (round 9, coherence pass) ──────────────────────
+   Kit only for the head (§12.3 side head, cast at 104) and the plate (§12.4 sheet plate, §12.5
+   .ac-sheet). This file sets the one page the plate holds: the SCOPE page of a written scope
+   (positioning and messaging) — what it fixes, what we build, what we don't, what you give —
+   one portrait page in cols 3–10, set LARGE so it reads as an object at a glance: four numbered
+   parts, each a part head over one plain sentence. The plate crops the page mid-way, in the
+   white between parts. (Coherence pass: the sign-off page with its blank dates, price and
+   signatures is retired — five empty lines were the new offer's first picture.) Tokens only;
+   the turn, the write-in and the plate rise are the kit's (§13). */
+
+/* the h1's phone floor (coherence pass 3, kit 12.3): at 56 "of the system," broke to a lone
+   "system," at 390; at 50 (44 below 360) its three lines hold on every phone */
+.km-projects-head-S .ac-head.ac-ihead { --ac-h1-floor: 50; --ac-h1-floor-xs: 44; }
+.km-projects-head-S__plate { --sheet-c: 3; --sheet-s: 8; --ac-sheet-plate-h: 676px; }   /* the crop falls in the white under part 4 */
+
+.km-projects-head-S__scope .ac-sheet__body { padding-top: 36px; }
+.km-projects-head-S__part + .km-projects-head-S__part { margin-top: 32px; }
+/* the part heads are h3s (the kit's .ac-sheet__h), set one size up on this large page */
+.km-projects-head-S__scope .ac-sheet__h { margin: 0 0 10px; font-size: 22px; line-height: 1.3; }
+.km-projects-head-S__p { font-size: 19px; line-height: 1.5; color: var(--fg); max-width: 36em; text-wrap: pretty; }
+
+/* tablet and phone (production's breakpoints; a stitched page — a zoomed 1440 stage — skips them) */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-projects-head-S__scope .ac-sheet__h { font-size: 20px; }
+  :root:not(.km-home) .km-projects-head-S__p { font-size: 17px; }
+}
+@media (max-width: 767px) {
+  /* the page is short: the plate holds it whole */
+  :root:not(.km-home) .km-projects-head-S__plate { height: auto; padding-bottom: 16px; }
+  :root:not(.km-home) .km-projects-head-S__scope .ac-sheet__body { padding-top: 24px; }
+  :root:not(.km-home) .km-projects-head-S__part + .km-projects-head-S__part { margin-top: 24px; }
+  :root:not(.km-home) .km-projects-head-S__scope .ac-sheet__h { font-size: 18px; margin-bottom: 8px; }
+  :root:not(.km-home) .km-projects-head-S__p { font-size: 16px; }
+}

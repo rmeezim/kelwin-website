@@ -1,126 +1,52 @@
-/* ── the-lab-head · S · the instruments under the service ───────────────────────────────
-   The approved Specimen-sheet header (kit §12.2) with the page's own band: SB, the status
-   board (MEASURE). Five instruments, each a solid bar measured against one ruler of four
-   stages — Concept · Prototype · Used on engagements · Released — whose stage ticks sit on
-   the page's column grid (the ends of cols 3, 6, 9 and 12). Each bar stops at its true stage
-   (FC); the rest of its track stays dashed, the homepage handover's "not built yet". One
-   dimension brackets what is in development today. The one red is the furthest bar's end
-   tick. Labels are HTML at fixed sizes placed in frame units (--u), so they stay legible as
-   the frame scales; the tracks, bars and ruler are the SVG.                               */
-
-/* the kit's nav menu is visibility:hidden below 1024 but keeps its desktop width; clip it so
-   the mockup never scrolls sideways at phone widths (production swaps in its own menu) */
-.km-the-lab-head-S { overflow-x: clip; }
-/* frame units for the two smaller drawings: --mu the tablet board (704 wide), --su the phone's (358) */
-.km-the-lab-head-S__frame { --mu: calc(100cqw / 704); --su: calc(100cqw / 358); }
-/* the tablet drawing shows only at 768–1023 (below); the kit swaps in the phone one at ≤767 */
-.km-the-lab-head-S__svg--md { visibility: hidden; }
-
-/* instrument names: each sits on its own track, its baseline 8 units above the line */
-.km-the-lab-head-S__row {
-  position: absolute; left: 0; top: calc(var(--y) * var(--u)); transform: translateY(calc(-100% - 8px));
-  margin: 0; font-size: var(--ac-support); line-height: 18px; color: var(--fg-2); white-space: nowrap; pointer-events: none;
+/* ── the-lab-head · S · round 9, coherence pass 2 — the interior head over the Lab's first object ──
+   The kit's parts (§12.1 nav, §12.3 head, §12.4/12.5 the sheet plate, §13 the write-in and the plate
+   rise). Casting (lead decision D4; coherence pass 3): 120px, stacked, two lines, "An AI
+   platform / is coming." — what is coming, the light accent the word "coming." inside line 2, a
+   48px phone floor (40 below 360) so both lines hold on a phone. The lede says what it will
+   cover, then dates the Lab's first benchmark (the platform itself stays undated); it reuses no
+   noun phrase of the h1.
+   The plate (lead decision D1): the Revenue Entropy Index's cover page, a portrait page on paper
+   in cols 5–8, held WHOLE by the plate (height auto, the kit's 64px above and below), so the year
+   at its foot — the cover's one mass — is never cut. The cover's own type is this page's: the
+   title in display at 40px, one line under it, the year — the cover's one mass — at .9 of the
+   page h1 (108px at 1440; coherence pass 3: at 116 it outranked the fluid h1 from 1024 down, and
+   at 96 it was twice the phone h1), so the h1 stays the largest type on the page at every width.
+   Status said once, in the running head. No kicker, no action, no facts box, no breadcrumb.   */
+/* the h1's phone floor (kit 12.3) and the same size as a local value, for the cover year */
+.km-the-lab-head-S .ac-head.ac-ihead { --ac-h1-floor: 48; --ac-h1-floor-xs: 40; }
+.km-the-lab-head-S { --lab-h1: clamp(48px, calc(48px + 72 * (var(--stage) - 390px) / 1050), 120px); }
+.ac-plate--sheet.km-the-lab-head-S__plate { height: auto; padding-bottom: 64px; }
+.km-the-lab-head-S__body { display: flex; flex-direction: column; }
+.km-the-lab-head-S__title {
+  margin: 0; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 40px; line-height: 1.04; letter-spacing: var(--display-tracking); color: var(--fg); max-width: 8.5em;
 }
-.km-the-lab-head-S__row--far { color: var(--fg); }
-
-/* stage words: under the ruler, each ending on its own tick (the bar that reaches a stage ends
-   directly above its word) */
-.km-the-lab-head-S__stage {
-  position: absolute; left: calc(var(--x) * var(--u)); top: calc(302 * var(--u)); transform: translateX(-100%);
-  margin: 0; color: var(--fg-2); pointer-events: none;
+.km-the-lab-head-S__sub { margin: 20px 0 0; font-size: 17px; line-height: 1.45; color: var(--fg-2); max-width: 19em; }
+.km-the-lab-head-S__year {
+  margin: auto 0 8px; padding-top: 32px;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: calc(var(--lab-h1) * .9); line-height: .8; letter-spacing: var(--display-tracking); font-variant-numeric: normal; color: var(--fg);
 }
 
-/* phone labels (≤767 only): name left, stage word right, on each track */
-.km-the-lab-head-S__srow {
-  position: absolute; left: 0; right: 0; top: calc(var(--y) * var(--su)); transform: translateY(calc(-100% - 8px));
-  display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0;
-  visibility: hidden; pointer-events: none;
-}
-.km-the-lab-head-S__srow-n { font-size: 14px; line-height: 18px; color: var(--fg-2); white-space: nowrap; padding-right: 6px; background: var(--ac-occlude, var(--bg)); }   /* breaks the guide behind it */
-.km-the-lab-head-S__srow-s { color: var(--fg-2); }
-.km-the-lab-head-S__srow--far .km-the-lab-head-S__srow-n { color: var(--fg); }
-
-/* bars grow from the origin; ticks seat from their centre */
-/* the bars and the ruler's baseline grow from the origin. (The baseline grows by scaleX, not the
-   kit's pathLength dash plot: with non-scaling strokes Chrome measures that dash in screen px,
-   so a frame scaled above 1 left the baseline short.) */
-.km-the-lab-head-S__bar, .km-the-lab-head-S__base { transform-box: fill-box; transform-origin: 0 50%; }
-.km-the-lab-head-S__end, .km-the-lab-head-S__st { transform-box: fill-box; transform-origin: 50% 0; }
-.km-the-lab-head-S__end { transform-origin: 50% 50%; }
-/* the board's one red: the furthest bar's end tick, a 2-unit signal face so it reads at a glance */
-.km-the-lab-head-S__end--far { fill: var(--signal); stroke: none; }
-
-/* the calibration cursor exists only during the entrance */
-.km-the-lab-head-S__cursor { opacity: 0; }
-
-/* the keyed list (screen readers always; visible ≤1023 as the drawing's legend) */
-.km-the-lab-head-S__keyt { display: block; }
-.km-the-lab-head-S__keys > li { display: grid; grid-template-columns: 148px minmax(0, 1fr); column-gap: 16px; align-items: baseline; }
-.km-the-lab-head-S__kk {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--f-mono); font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-mono);
-  text-transform: uppercase; color: var(--fg);
-}
-.km-the-lab-head-S__kk::before { content: ""; width: 14px; height: 3px; flex: none; background: var(--fg); }
-.km-the-lab-head-S__kk--far::before { width: 2px; height: 12px; background: var(--signal); margin-inline: 6px; }
-
-/* ── entrance (only under .is-play) — the page's one orchestrated moment, after the head:
-   the ruler calibrates (a cursor sweeps left → right as the baseline draws, and each stage
-   tick and its word register as the cursor passes; four stages, so four ticks and no
-   graduations between them: the scale is categorical, not measured), the tracks and
-   names settle, then the bars run out to their stages at one speed, so the eye follows the
-   longest; its red end tick lands last and the "In development" bracket draws over it. ── */
-@keyframes km-the-lab-head-S-sweep {
-  0% { opacity: 0; transform: translateX(0); }
-  6%, 92% { opacity: 1; }
-  100% { opacity: 0; transform: translateX(1311px); }
-}
-@keyframes km-the-lab-head-S-grow { from { transform: scaleX(0); } to { transform: none; } }
-@keyframes km-the-lab-head-S-seat { from { opacity: 0; transform: scaleY(0); } to { opacity: 1; transform: none; } }
-
-.is-play .km-the-lab-head-S__cursor { animation: km-the-lab-head-S-sweep 1000ms linear var(--ac-band-d) both; }
-.is-play .km-the-lab-head-S__base { animation: km-the-lab-head-S-grow 1000ms linear var(--ac-band-d) both; }
-.is-play .km-the-lab-head-S__origin { animation: ac-fade 240ms var(--ease-out) var(--ac-band-d) both; }
-.is-play .km-the-lab-head-S__st { animation: km-the-lab-head-S-seat 300ms var(--ease-out) calc(var(--ac-band-d) + 236ms + var(--i) * 254ms) both; }
-.is-play .km-the-lab-head-S__stage { animation: ac-fade 400ms var(--ease-out) calc(var(--ac-band-d) + 300ms + var(--i) * 254ms) both; }
-.is-play .km-the-lab-head-S__guides { animation: ac-fade 600ms var(--ease-out) calc(var(--ac-band-d) + 600ms) both; }
-.is-play .km-the-lab-head-S__tracks { animation: ac-fade 700ms var(--ease-out) calc(var(--ac-band-d) + 500ms) both; }
-.is-play .km-the-lab-head-S__row { animation: ac-fade 500ms var(--ease-out) calc(var(--ac-band-d) + 700ms + var(--i) * 60ms) both; }
-.is-play .km-the-lab-head-S__bar { animation: km-the-lab-head-S-grow calc(var(--w) * 1.7ms) var(--ease-out) calc(var(--ac-band-d) + 1150ms + var(--i) * 70ms) both; }
-.is-play .km-the-lab-head-S__end { animation: km-the-lab-head-S-seat 260ms var(--ease-out) calc(var(--ac-band-d) + 1150ms + var(--i) * 70ms + var(--w) * 1.7ms - 60ms) both; }
-.is-play .km-the-lab-head-S__end--far { animation-duration: 420ms; }
-.is-play .km-the-lab-head-S__frame > .ac-dim { --d: calc(var(--ac-band-d) + 2450ms); --t: 700ms; }
-.is-play .km-the-lab-head-S__frame > .ac-dim .ac-dim__v { animation: ac-fade 400ms var(--ease-out) calc(var(--ac-band-d) + 2900ms) both; }
-
-/* ── tablet (≤1023): the keyed list shows under the band (the kit hides the dimension) ── */
+/* ── tablet (≤1023): the page in cols 4–9, a little smaller ── */
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-the-lab-head-S__keyt { margin-bottom: 16px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 60ch; }
-  :root:not(.km-home) .km-the-lab-head-S__keys { gap: 0; border-top: 1px solid var(--line-2); }
-  :root:not(.km-home) .km-the-lab-head-S__keys > li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  :root:not(.km-home) .km-the-lab-head-S__plate.ac-plate--sheet { height: auto; padding-bottom: 48px; }
+  :root:not(.km-home) .km-the-lab-head-S__plate.ac-plate--sheet > .ac-sheet { grid-column: 4 / span 6; min-height: 0; aspect-ratio: 1 / 1.414; }
+  :root:not(.km-home) .km-the-lab-head-S__title { font-size: 34px; }
+  :root:not(.km-home) .km-the-lab-head-S__sub { font-size: 16px; }
+  :root:not(.km-home) .km-the-lab-head-S__year { font-size: calc(var(--lab-h1) * .85); }
 }
-/* ── tablet (768–1023): the board's own composition, not the desktop one scaled. A 704 × 330
-   drawing (tracks 44 units apart against 40 on desktop, so a name never crowds the track
-   above at 834), the same four-stage ruler with its ticks at the quarters. The names and
-   stage words are the same HTML, placed in its units (--my, --mx); a name breaks the dashed
-   guide behind it (drafting convention), so a long one never runs into the Concept line. ── */
-@media (min-width: 768px) and (max-width: 1023px) {
-  :root:not(.km-home) .km-the-lab-head-S__frame { aspect-ratio: 704 / 330; }
-  :root:not(.km-home) .km-the-lab-head-S__svg--lg { visibility: hidden; }
-  :root:not(.km-home) .km-the-lab-head-S__svg--md { visibility: visible; }
-  :root:not(.km-home) .km-the-lab-head-S__row { top: calc(var(--my) * var(--mu)); padding-right: 8px; background: var(--ac-occlude, var(--bg)); }
-  /* a quarter is 176px at 768: below about 960 the long stage word breaks over two lines, so it never reads into its neighbour */
-  :root:not(.km-home) .km-the-lab-head-S__stage { left: calc(var(--mx) * var(--mu)); top: calc(302 * var(--mu)); font-size: 11px; line-height: 13px; max-width: calc(124 * var(--mu)); white-space: normal; text-align: right; }
-}
-/* ── phone (≤767): the kit swaps in the phone drawing (358 × 300): five tracks, no shared
-   ruler; each track carries its own stage word at the right, and quarter guides mark the four
-   stages. The desktop names and stage words hide (visibility, never display); the keyed list
-   folds to screen-reader text under the visible sentence ── */
+/* ── phone (≤767): the page across the plate's measure, whole ── */
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-the-lab-head-S__row,
-  :root:not(.km-home) .km-the-lab-head-S__stage { visibility: hidden; }
-  :root:not(.km-home) .km-the-lab-head-S__srow { visibility: visible; }
-  /* the phone drawing names every stage on its own track, so the keyed list stays for screen
-     readers only; the sentence stays visible */
-  :root:not(.km-home) .km-the-lab-head-S__keys { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-  :root:not(.km-home) .km-the-lab-head-S__keyt { margin-bottom: 0; }
+  :root:not(.km-home) .km-the-lab-head-S__plate.ac-plate--sheet { padding: 24px 16px 24px; }
+  :root:not(.km-home) .km-the-lab-head-S__plate.ac-plate--sheet > .ac-sheet { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-the-lab-head-S__title { font-size: 30px; }
+  :root:not(.km-home) .km-the-lab-head-S__year { margin-bottom: 4px; font-size: calc(var(--lab-h1) * .85); }
+}
+@media (max-width: 359px) {
+  :root:not(.km-home) .km-the-lab-head-S { --lab-h1: 40px; }
+}
+/* ── 1024–1279: the cover is narrower than its year at .9 of the h1 ("2026" was cut by the sheet at 1024) ── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root:not(.km-home) .km-the-lab-head-S__year { font-size: calc(var(--lab-h1) * .76); }
 }

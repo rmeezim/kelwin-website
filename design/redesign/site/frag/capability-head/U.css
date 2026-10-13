@@ -1,44 +1,16 @@
-/* ── capability-head · U · GTM Intelligence — header X grammar, band ORBIT (stations) ──
-   Plan view, the nav's ORBIT drawn large in a variant the homepage never uses (slab 03 is an
-   iso inscription): a tape of touches arrives on one line and enters an open ring at 03.1;
-   three more stations sit on the ring with drafting callouts; the last 40° stays open until
-   the quarter is calibrated, then closes in red (the header's one red). A node rides once and
-   comes home to 03.1. No dimension (a quarter is a lap, not a length): the ring is named at its
-   centre, "One quarter", once it has closed. No ambient loop.                                  */
-
-.km-capability-head-U__ring { fill: none; stroke: var(--fg); stroke-width: 1; }
-.km-capability-head-U__nd { fill: var(--fg); }
-.km-capability-head-U__mt { font-family: var(--f-mono); font-size: 13px; letter-spacing: .06em; fill: var(--fg-2); }
-/* the ring's name, at its centre: mono caps, frame units like the callouts */
-.km-capability-head-U__lap {
-  position: absolute; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u)); transform: translate(-50%, -50%);
-  font-family: var(--f-mono); font-size: var(--ac-mono); line-height: 16px; letter-spacing: var(--ac-track-mono);
-  text-transform: uppercase; color: var(--fg-2); white-space: nowrap; pointer-events: none;
-}
-
-/* ── entrance: the head choreography, then the band ── */
-.is-play .km-capability-head-U__tape { animation: ac-fade 700ms var(--ease-out) var(--ac-band-d) both; }
-.is-play .km-capability-head-U__ent { stroke-dasharray: 1; animation: ac-plot 700ms var(--ease-out) var(--ac-band-d) both; }
-.is-play .km-capability-head-U__big .km-capability-head-U__ring { stroke-dasharray: 1; animation: ac-plot 1200ms var(--ease-inout) calc(var(--ac-band-d) + 500ms) both; }
-.is-play .km-capability-head-U__st { animation: ac-fade 300ms var(--ease-out) calc(var(--ac-band-d) + 900ms) both; }
-
-/* JS-held states while the band plays: ride → close (the red arc) → named (is-dim) */
-.km-capability-head-U__frame.ac-cold *, .km-capability-head-U__frame.ac-cold *::before, .km-capability-head-U__frame.ac-cold *::after { transition: none !important; }
-.km-capability-head-U__frame.is-pre .km-capability-head-U__nd { opacity: 0; transition: opacity 300ms var(--ease-out); }
-.km-capability-head-U__frame.is-pre.is-ride .km-capability-head-U__nd { opacity: 1; }
-.km-capability-head-U__frame.is-pre .km-capability-head-U__gap { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 600ms var(--ease-inout); }
-.km-capability-head-U__frame.is-pre.is-close .km-capability-head-U__gap { stroke-dashoffset: 0; }
-.km-capability-head-U__frame.is-pre .km-capability-head-U__co > * { opacity: 0; transition: opacity 420ms var(--ease-out) 120ms; }
-.km-capability-head-U__frame.is-pre .km-capability-head-U__co::before { transform: scaleX(0); transition: transform 420ms var(--ease-out); }
-.km-capability-head-U__frame.is-pre .ac-flag.km-capability-head-U__co::before { transform: scaleY(0); }
-.km-capability-head-U__frame.is-pre .km-capability-head-U__co::after { opacity: 0; transition: opacity 200ms var(--ease-out); }
-.km-capability-head-U__frame.is-pre .km-capability-head-U__co.is-in > *, .km-capability-head-U__frame.is-pre .km-capability-head-U__co.is-in::after { opacity: 1; }
-.km-capability-head-U__frame.is-pre .km-capability-head-U__co.is-in::before { transform: none; }
-.km-capability-head-U__frame.is-pre .km-capability-head-U__lap { opacity: 0; transition: opacity 500ms var(--ease-out) 200ms; }
-.km-capability-head-U__frame.is-pre.is-dim .km-capability-head-U__lap { opacity: 1; }
-
-/* the kit's nav menu is hidden below 1024 but keeps its desktop width; clip it on phones */
-@media (max-width: 1023px) {
-  :root:not(.km-home) .km-capability-head-U { overflow-x: clip; }
-  :root:not(.km-home) .km-capability-head-U__lap { visibility: hidden; }   /* the keyed list names the lap */
-}
+/* ── capability-head · U · GTM Intelligence — round 9 ──
+   Kit §12.3 head, cast (coherence pass, so it no longer matches the Audit's stacked 96 with a
+   whole-line accent): 104px, SIDE (GoNimbly's head: the h1 in cols 1–7, the kit's hairline, the
+   rule and the lede in cols 9–12), two lines, the accent the one word "learns."; the kicker
+   stays. The lede says who the layer is for — a job the drawing and the sections below don't do.
+   The plate is a MEASURE (kit 12.4): one quarter to scale — thirteen week columns, three lanes:
+   the weekly signal review (a filled band, one segment a week), win/loss interviews where deals
+   happen to close (outlined, irregular on purpose), and the calibration readout in week 13 — one
+   red column through all three lanes, because the readout takes in everything the quarter
+   collected (the view's one red). One dimension with its unit, three 15px labels. This plate is
+   the page's one statement of the cadence: "Who runs it" below gives the people and the time,
+   not the intervals again.
+   Below 1024 the drawing redraws with the kit's frames (12.4): a tablet frame (.ac-measure__svg--md,
+   760 × 300, no label gutter) and the phone frame (--sm, 358 × 300), each with its three labels
+   and "13 weeks" drawn in, knocked out of the grid; .ac-measure--drawn keeps the figcaption for
+   screen readers only, so the page never says the quarter twice. Nothing here restyles the kit. */

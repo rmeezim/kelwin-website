@@ -1,32 +1,33 @@
 {
  "title": "Ten days, to scale",
- "direction": "A×C · Round 8 · /audit",
- "summary": "The System Audit's header: the approved Specimen sheet (title block retired) whose band is the homepage CTA's ten-tick ruler drawn large, one grid column per working day, so the visitor sees the whole commitment (kickoff, two sessions, read-only access, the readout on Day 10, and what comes after) before being asked anything.",
+ "direction": "A×C · Round 9 · /audit",
+ "summary": "The System Audit's approved facts head (P09, kit 12.3's one named exception) and its ten-day ruler, retyped for round 9: Day 10 is 'Readout written'; past it the ruler breaks and carries the confirmed calls (Call 02, the readout call; Call 03, the proposal) as indicative marks; the facts' 'You receive' gains the 60-minute readout call (Q3).",
  "reference": {
-  "site": "Approved Kelwin system: interior/X (the Specimen-sheet header), cta/U (the ten-tick ruler: Kickoff → Readout, 'Phase 01 / 04 · Diagnose'), method/U (the Diagnose bar and its tick scale)",
+  "site": "Approved Kelwin system: the round-8 audit head (P09), cta/U (the ten-tick ruler, 'Phase 01 / 04 · Diagnose'), method/U (the axis break: only the audit is measured)",
   "mobbin_url": "",
   "ref_file": "",
-  "borrowed": "Header X's grammar exactly (nav at rest, ■ label + mono breadcrumb, two-voice h1 at 96px, rule, lede, three-row facts ledger, band in a registration frame). The band's subject is the homepage CTA's ruler: the same ten ticks with Kickoff at one end and Readout at the other, and the CTA's meta 'Phase 01 / 04 · Diagnose' as the breadcrumb.",
-  "kelwin": "The ruler is drawn to the page's own grid: one working day per column, so Day 10 lands on column 10 and the last three columns hold the dotted 'after the readout'. Everything on it is documented scope (D8): two 90-minute sessions bracketed over days 02–09 without inventing dates, read-only access as a bar the length of the window, and the CTA's 'At the readout' note verbatim. The one red element is the Day 10 tick."
+  "borrowed": "Header X's facts head as approved, and the homepage method's convention for time: measured ticks over the audit, a '//' break, then an indicative stretch.",
+  "kelwin": "One working day = one grid column, so Day 10 lands on col 10; past the break, Call 02 hangs right of its mark and Call 03 left of its own, both below the line, in the key voice. No boxed codes, no corner marks, numerals alone in mono."
  },
  "motion": [
-  "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts at 820ms); the registration marks register at 600–780ms.",
-  "orchestrated moment (the page's one header morph): the ruler calibrates — the baseline plots while all 45 ticks drop in left to right, 20ms apart, the numerals fading in behind them (0.9–1.9s); Kickoff lands as Day 01 calibrates. Then the window fills: the read-only bar fills from Day 01 while a 1px playhead runs the ten days (2.0–3.6s), the sessions bracket draws over days 02–09 on the way. As the playhead reaches Day 10 the red tick drops, 'Readout' lands, the playhead fades, the dotted continuation runs on and the after-note fades in (3.6–4.6s). Rests at about 4.6s.",
-  "ambient: none. interaction: the facts ledger's 'Three questions' (.ac-go ↓) and the nav's current 'Audit request' both jump to #qualify.",
-  "on the live site: the band plays once when the header is 40% visible (it is on load). Reduced motion: the finished drawing at once, no playhead."
+  "entrance: the turn lifts, the h1 writes itself in (kit §13), then the rule, the lede and the facts.",
+  "orchestrated moment (measured from --ac-band-d, i.e. after the write-in): the ruler calibrates — the baseline plots while 45 ticks drop in left to right, 20ms apart, numerals fading in behind them; 'Kickoff' lands. The window fills: the read-only bar fills from Day 01 as a 1px playhead runs the ten days, the sessions bracket draws over days 02–09. As the playhead reaches Day 10 the red tick drops and 'Readout written' lands; then the dotted continuation, its '//' break and the two calls fade in (Call 02, then Call 03). Rests about 3.6s after the write-in.",
+  "ambient: none. interaction: the facts' 'Three questions' (.ac-go ↓) and the nav's current 'Audit request' jump to #qualify.",
+  "on the live site: the ruler plays once when the head is in view (on load). Reduced motion: the finished drawing at once, no playhead, no write-in."
  ],
  "demoMs": 5200,
- "story": "Opens the page by answering 'what does it ask of me, and what do I get?' before asking anything: the method's Diagnose output becomes the h1, and the homepage CTA's small ruler is drawn at full size so the ten days, the two sessions, the read-only access and the readout are one picture.",
+ "story": "Answers 'what does it ask of me, what do I get, and what happens after?' before asking anything: the ten days, the two sessions, the read-only access and the readout on one ruler, and past it the two calls that turn the readout into a proposal.",
  "copy": [
-  "[N] h1 'The real constraint, / named in writing.' (picks up the method's Diagnose output)",
-  "[R] lede 'Ten working days, fixed scope. We read your narrative, channels and data, and you get a written readout naming the constraint and the order to fix it in — yours whether or not we go further.'",
+  "[K] label 'The System Audit' · meta 'Phase 01 / 04 · Diagnose' (approved, §7.9)",
+  "[K] h1 'The real constraint, / named in writing.' (96px, the facts head's casting)",
+  "[R] lede 'Ten working days, fixed scope. We read your narrative, channels and data, and the plan is yours whether or not we go further.' (two lines; no noun phrase from the h1)",
   "[K D8] You provide · Two 90-minute sessions and read-only access to your CRM and channel stack",
-  "(FC) [K AuditSpec 03] You receive · A written readout and a sequenced rebuild plan",
+  "[K + Q3] You receive · A written readout, a sequenced rebuild plan and a 60-minute readout call",
   "[N] Starts with · Three questions ↓ (#qualify)",
-  "[R] band bracket 'Two 90-minute working sessions, scheduled with you'",
-  "[K] 'Kickoff' · 'Readout' · 'After the readout · If installation makes sense, we scope it there. If not, the plan is still yours.'",
-  "[N] band captions 'Read-only access · your CRM and channel stack', 'Day 01 … 10'"
+  "[K] ruler 'Kickoff' · [R] 'Readout written' (Day 10: the document, so it is not confused with Call 02) · [R] 'Two 90-minute working sessions, scheduled with you' · [N] numerals 'Day 01', '05', '10' only (the ticks mark every day; 4 mono runs on the first screen with the Phase line) · 'Read-only access to your CRM and channel stack'",
+  "[Q3] indicative marks 'Call 02 · readout call' (tablet: 'Call 02 · readout') · 'Call 03 · the proposal'; screen-reader caption: 'Ten working days, with read-only access to your CRM and channel stack for the whole window, then two calls, not to scale.' + five keyed items",
+  "retired: the round-8 'After the readout' note (Call 03 now says it), the boxed codes 01 / 10 / 02–09, the four registration marks, day numerals 02–04 and 06–09, the caption's self-describing sentence as visible text"
  ],
- "phone": "≤1023: the kit drops the facts under the lede and hides the flags; the sessions label and the after-note hide too, and the figcaption becomes the visible keyed list under the ruler (01 Kickoff · 02–09 two sessions · 10 Readout · after the readout). The ruler keeps its numerals and bar label (HTML, 11px, they never shrink). ≤767: the kit swaps in the phone drawing (358×200): the ruler stays horizontal with one tick per day (no minor ticks), 'Kickoff' and 'Readout' over the end ticks, the bracket marked '02–09 · two sessions', the read-only bar under it, Day 10 still the one red; its words are SVG at 14px (≥11px at 320).",
- "notes": "Header height ≈ 1,000px at 1440 (nav 96 + head + 300-unit band + 112 end). No red button in the header: the red is the Day 10 tick only. No day is drawn for the two sessions because none is confirmed. The h1's second line sits beside the facts and ends before col 9."
+ "phone": "768–1023: the drawing keeps its own words (Kickoff, the sessions label, 'Readout written', 'Call 02 · readout', 'Call 03 · the proposal'; the bar's words hang just under the bar); the caption stays screen-reader only (no visible self-describing sentence); the hidden desktop menu is clipped (no sideways scroll). ≤767: the phone drawing (one tick per day; numerals 01, 05, 10 at 14px; 'Kickoff', 'Readout written', 'Two working sessions', 'Call 02', 'Call 03', 'Read-only access' at 17px — sized for the drawing's scale, so ≥ 13.7px words and ≥ 11.2px numerals at 320). h1 at the kit's 56px floor ('constraint,' fits a 358px line).",
+ "notes": "Header ≈ 956px at 1440. No red button in the head: the red is the Day 10 tick only. No day is drawn for the two sessions because none is confirmed. The two calls are not to scale (the axis break says so; the caption says it in words). Header word count exceeds 60 because the facts box is the approved exception (its facts are the content). Coherence pass 3: approved words unchanged; phone floor 40 (36 below 360, kit 12.3) so the two set lines hold at 390 (at 56 they broke to “The real / constraint, / named / in writing.”). At 360 and 320 “constraint,” still stands alone (listed)."
 }

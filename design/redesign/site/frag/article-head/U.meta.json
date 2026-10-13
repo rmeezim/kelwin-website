@@ -1,27 +1,27 @@
 {
-  "title": "Field note, text sheet",
-  "direction": "A×C · Round 8 · article template · /insights/deliverability-is-infrastructure",
-  "summary": "The article head as a text sheet: header X's grammar with no band, so the note's own title and standfirst carry the page — the title as a two-voice h1 at 72px, the standfirst as the lede, and three facts (who wrote it, how long it takes, the layer it is about) in place of the old FN·0n meta and topic chips.",
-  "reference": {
-    "site": "Tailscale blog article (title with a quiet author/contributor column beside it); approved Kelwin interior/X header and letter/S",
-    "mobbin_url": "https://mobbin.com/sites/sections/2aa17c2a-b721-440c-8fe0-83544d7afdd0",
-    "ref_file": "refs/article-tailscale.webp",
-    "borrowed": "A long-form title stacked left, with the byline and facts held in a narrow column beside the standfirst so reading starts at once.",
-    "kelwin": "Built entirely from the approved Specimen-sheet header: graphite, the nav at rest with Resources lit, ■ layer label + mono 'Field note · <month year>', the title as the two-voice h1 with one light accent, the 48×2 red rule, and the kit facts ledger with its quiet ↗ door. No band (TX), no photo, no topic chips, no FN·0n meta."
-  },
-  "motion": [
-    "entrance: the kit's head choreography — the label fades, the title lines rise from their masks, the 48×2 rule draws, the standfirst and the facts ledger rise (≈1.4s).",
-    "ambient: none. interaction: hover on the nav, the standfirst's source link (T) and the ledger's ↗ door.",
-    "on the live site: plays once on load; the nav bar has no entrance (production shows it at rest). Reduced motion: final state at once."
-  ],
-  "demoMs": 2200,
-  "story": "Opens the note the way a published paper opens: the layer it diagnoses (GTM Infrastructure), when it was written, the claim in the title, the standfirst that states the symptom, and who is speaking. It promises one argument and nothing else; the reading starts in the paper section below.",
-  "copy": [
-    "Label 'GTM Infrastructure' (the 'Outbound' chip dropped) · meta 'Field note · May 2026' [K date]",
-    "H1 [K, split] 'Deliverability / is infrastructure.'",
-    "Standfirst [K] verbatim (single quotes made typographic)",
-    "Facts: 'Written by · Rameez, founder' (FC, Q6) · 'Reading · 5 min' (FC, Q6 — reads in about 2) · 'About · GTM Infrastructure ↗' [N]"
-  ],
-  "phone": "≤1023: the h1 steps to 52px, the standfirst takes cols 1–10 and the kit drops the facts ledger under it; the nav menu gives way to production's menu button. ≤767: h1 36px with its lines allowed to wrap (kit), the label row wraps (meta under the label), standfirst full width at 17px, ledger full width below. No band to recompose (TX). Checked at 320, 390, 834 and 1024.",
-  "notes": "Text sheet (TX): no band by design (§1.2), so no header morph; the page's one orchestrated moment is the note's figure. The h1 runs cols 1–12 because the ledger only ever sits beside the standfirst; the standfirst takes cols 1–7 (33em), so the [K] standfirst holds at four to five lines (the kit's lede is four). Kit gap (not mine): at phone widths the mockup nav's visibility-hidden menu still widens scrollWidth; production swaps in its own Navbar."
+ "title": "Note head, phrase accent",
+ "direction": "A×C · Round 9 · /insights/deliverability-is-infrastructure · reading page head",
+ "summary": "A reading page's head: the approved title on ONE line at 72px, the accent its closing phrase “is infrastructure.” → the 48×2 rule → one plain meta line.",
+ "story": "The note's title and the three facts a reader wants (what it is about, when, how long) in one line; everything else is the note.",
+ "reference": {
+  "site": "GoNimbly (the founder's round-8 reference: refs-r9/GONIMBLY-STUDY.md) · the approved homepage letter/S",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-solutions.png",
+  "borrowed": "A publication's article head: title, one dateline, then the text.",
+  "kelwin": "The kit's interior head with --ac-h1: 72 (the notes' size), the key voice for the meta line; each sibling cast differently so the three heads are not one template with the words swapped."
+ },
+ "motion": [
+  "entrance (stitched): the turn lifts, the title writes itself in (kit §13), then the rule and the meta line.",
+  "interaction: none.",
+  "ambient: none.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 1600,
+ "copy": [
+  "[K] Title Deliverability / is infrastructure.",
+  "[K Q6] Meta: GTM Infrastructure · May 2026 · 2 min",
+  "Cut: the label row (layer + “Field note · Month Year”), the facts box (Written by · Reading · About), the byline."
+ ],
+ "phone": "≤1023 the meta line takes the full measure. ≤767 the title steps to 38px (under the kit's 56px floor: the notes' titles are long — “Deliverability”, “infrastructure.” and the revenue-entropy clause would not hold a 358px line at 56px); the three notes keep one phone scale. No overflow at 834 / 390 / 320.",
+ "notes": "Head ≈ 450–610px at 1440; the paper note starts in the first screen. Coherence pass 3: one line from 834 up (two lines left “Deliverability” alone at every width); on a phone one word still stands alone whatever the break (listed)."
 }

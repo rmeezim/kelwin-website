@@ -1,0 +1,16 @@
+{
+ "title": "What the project takes",
+ "direction": "A×C · Round 9 · new template (/projects/<slug>), first instance: Email deliverability",
+ "summary": "Text left, number right: week one's read (and the written stop if sending isn't what's broken) and what the client gives, beside the section's dominant element, a 200px '30 days' — the placement check after handover, once the new domains have aged.",
+ "reference": {
+  "site": "kit §12.6 (a 120–200px number as a section's dominant element)",
+  "borrowed": "One large figure carrying the section.",
+  "kelwin": "A real unit from the offer itself (proposed, for the founder's yes); no price, no project length."
+ },
+ "motion": [
+  "entrance: the prose rises, then the number, then its line.",
+  "reduced motion: final state at once."
+ ],
+ "demoMs": 1400,
+ "notes": " Final check: ‘whoever runs sending’ is said once on the page (the runbook cover's “For whoever runs sending after handover.”); here it is now “From you: admin access, a few hours a week from the team that sends your email today, and one person to own the runbook.” — the team that sends today, during the project (no second ‘person’ beside ‘one person to own the runbook’)."
+}

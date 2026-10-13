@@ -1,0 +1,22 @@
+[
+ {
+  "id": "audit-head",
+  "slot": "S"
+ },
+ {
+  "id": "audit-readout",
+  "slot": "S"
+ },
+ {
+  "id": "audit-faq",
+  "slot": "S"
+ },
+ {
+  "id": "audit-gate",
+  "slot": "S"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

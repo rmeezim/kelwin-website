@@ -1,29 +1,16 @@
 {
-  "title": "Ledger, opened in place",
-  "direction": "A×C · Round 8 · capability template (GTM Infrastructure)",
-  "summary": "The four services as the kit's ledger, keyed by the band's flag codes: each row opens in place to show what it replaces (struck through), what it ships and into which asset, and — on deliverability and CRM — the page's two sourced readings.",
-  "story": "The legend to the route. Each flag on the band becomes a row; opening one answers the RevOps buyer's real question — what does this replace in my stack, and what do I hold afterwards — and the evidence sits where it applies instead of in a stat grid.",
-  "copy": [
-    "[N] statement “Built in your stack. / Documented in your language.” (the page's second statement)",
-    "[R] the four row lines; [N] the four ‘Replaces’ lines",
-    "(FS) 02.2 “Data pipeline & signal map”",
-    "[R] Ships: Deliverability runbook → Orchestration Rules · ICP & Signal Map · Orchestration Rules · CRM blueprint (the record under both assets)",
-    "[K figures, R wording] readings “1 in 6 · legitimate marketing emails that never reach the inbox (global) · Validity, 2025” and “28% · of a seller’s week spent actually selling (7,775 sellers surveyed) · Salesforce, State of Sales, 2022”",
-    "Cut per §4.2: outbound engine build, inbox rotation, throttling, volume, list sourcing, Litmus, Pitchbox ×2, Gartner $12.9M, “six disconnected tools”"
-  ],
-  "phone": "≤1023: the descriptor drops under the title; the open part stacks. ≤767: the two rows that carry the page's readings (02.1, 02.4) rest open and cannot close (no reading behind a toggle; JS keeps aria-expanded true); 02.2 and 02.3 keep the ledger's toggle, closed at rest. Each reading sets its figure beside its words; the long field-note link wraps at 12px.",
-  "reference": {
-    "site": "Approved homepage fit/U and system/T ledgers (kit .ac-ledger) and handover/U's struck-through ‘before’ lines",
-    "mobbin_url": "https://mobbin.com/sites/sections/4d96a952-3dfa-43db-9536-55ebfd1ee9e9",
-    "ref_file": "refs/capability-specimen-T.webp",
-    "borrowed": "The kit's ledger that opens in place, and the handover's before/after strike.",
-    "kelwin": "Rows keyed by the band's code boxes; the open part is a spec (Replaces · Ships → asset) with the reading set beside it, so evidence lives on the service it supports."
-  },
-  "motion": [
-    "entrance: the kit statement choreography (label, two lines rise, rule); the four rows set one by one (110ms apart).",
-    "interaction: each row head is a button; it opens in place (360ms, kit), the + turns to −; 02.1 rests open. Kit hovers on the readings' sources and the field-note link.",
-    "on the live site: reveals once on scroll. Reduced motion: final state, toggles instant."
-  ],
-  "demoMs": 2200,
-  "notes": "≈ 1,000px at 1440 with 02.1 open. The page's two readings live in rows 02.1 (open) and 02.4."
+ "title": "Claim, two by two, one reading",
+ "direction": "A×C · Round 9 · capability template (GTM Infrastructure)",
+ "summary": "A plain 72px claim (nothing is sent until the record and the domains are right), the four services two by two, unruled, each with one sentence on what it puts in place, the one third-party reading on the three capability pages with its field note, and the projects sentence in this page's form: the status first, then the three named as one destination.",
+ "reference": {
+  "site": "GoNimbly's large, few labels; the deliverability note's approved tile voice",
+  "borrowed": "Big sentence-case names, one line each, nothing tiny.",
+  "kelwin": "Kit claim, kit reading, kit go-links; no codes, no keys, no opening rows."
+ },
+ "motion": [
+  "entrance: the claim rises (kit), the four cells rise in turn, the reading and the projects line follow.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2000,
+ "notes": "Coherence pass 2: the projects pointer loses its double colon: “Proposed, to be confirmed: email deliverability, the ICP and signal map, or the CRM blueprint, each bought as a single project →”. Round 9 fix: the label no longer restates the claim ('Order of work'); the orchestration line no longer repeats the specimen's 'your operator can read'; the signal-map line no longer rewords the homepage's 'the live signals that say when'; the cells lost their rules (the runbook is the page's one ruled list); 119 words. Validity's 1 in 6 to be re-verified before launch."
 }

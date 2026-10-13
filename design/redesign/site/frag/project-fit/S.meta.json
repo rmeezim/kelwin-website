@@ -1,0 +1,16 @@
+{
+ "title": "Who the project is for",
+ "direction": "A×C · Round 9 · new template (/projects/<slug>), first instance: Email deliverability",
+ "summary": "A project page's “who it's for”: the 72px claim “It fits a company that sends all its email from one domain.”, then the right and the wrong project as two columns side by side.",
+ "reference": {
+  "site": "The homepage fit's gate both ways; capability-services/T for the line",
+  "borrowed": "Right fit / wrong fit, plainly.",
+  "kelwin": "Two rows, no chips, no ruled list."
+ },
+ "motion": [
+  "entrance: the claim rises, the two rows follow.",
+  "reduced motion: final state at once."
+ ],
+ "demoMs": 1400,
+ "notes": "Coherence pass 2: no longer two name-left rows. Coherence pass 3: claim recast with a main verb (“Sending from the main domain and hoping.” had none) and stepped from 96 to 72 (it matched the page's 96px h1); the right-project column no longer repeats the domain."
+}

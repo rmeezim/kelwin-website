@@ -1,0 +1,16 @@
+{
+ "title": "The scope, in and not in",
+ "direction": "A×C · Round 9 · new template (/projects/<slug>), first instance: Email deliverability",
+ "summary": "Side by side: the claim “Everything we change sits in your sending setup.” held at the left while the page's one ruled list passes at the right — what is in the scope, then what is not.",
+ "reference": {
+  "site": "ROUND9-PLAN §8 (the scope, in / not in)",
+  "borrowed": "A held claim beside a scrolling list.",
+  "kelwin": "One antithesis and one comma-tag on the page, both here; no keys on rows."
+ },
+ "motion": [
+  "entrance: the claim rises, the lists follow; on scroll the claim holds (sticky) while the lists pass (≥1024 only).",
+  "reduced motion: final state at once."
+ ],
+ "demoMs": 1400,
+ "notes": "Coherence pass 3: claim recast: “We fix how mail is sent, never what it says.” was an “X, never Y” clipped pair."
+}

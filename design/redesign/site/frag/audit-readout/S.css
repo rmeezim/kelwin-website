@@ -1,101 +1,131 @@
-/* ── audit-readout · S · "One readout, four parts." ───────────────────────────────────────────
-   The page's one paper moment (a document you could hold): FS, the sheet set. Four folio sheets,
-   one per part of the written readout, each a page on the paper: its index, its name, a line of
-   prose (two faint rules) and a 1px drawing of the part's SHAPE (structure only, never a finding).
-   Under each sheet: what that part reads, then its layer page. The fourth is the plan that puts
-   the other three in order; the first fix is drawn in ink — the readout names your weakest
-   layer first. No red in this section (the view's red is elsewhere: the header's Day 10 tick
-   above, the FAQ's button below). */
+/* ── audit-readout · S · "The readout names your weakest layer first." (round 9, rev. b) ───────────
+   The page's paper moment, because its object is a paper document. The readout is BUILT ONCE (the
+   Reports specimen, reports-readout/S) and reused here: each part as one card at card scale — its
+   title and first line, and its exhibit, word for word as /reports sets them (coherence pass), the
+   same running head ("Kelwin, LLC · System Audit readout", "Specimen" at the right), and the
+   exhibit's folio on /reports (3, 5, 7, 8). No drawn metaphors, no greeking, no chips. The section itself is the desk, as on
+   /reports (--panel; the pages lie on it in --bg). Two columns of pages, the second set 96px lower,
+   as pages lie on a desk — the section's one dominant element (≈ 1290px at 1440). Left of them:
+   the section's head (label, the page's one 42px claim), who the specimen was written for and the
+   way to the whole document; at the foot of that column,
+   the confirmed sequence (Q3) as a timetable — type only, no arrows, no rules.
+   No red in this section (the view's red is the header's Day 10 tick above and the FAQ's button).
+   The pages are the kit's small sheet (.ac-sheet--sm), their exhibits the kit's exhibit table
+   (.ac-sheet__tbl, one row flagged with .is-flag), and on phones the set is the kit's phone stack
+   (.ac-sheets--stack) — coherence pass; this file keeps the desk, the stagger, the deal and the
+   column widths. */
 
-.km-audit-readout-S__parts { margin-top: 56px; row-gap: 48px; }
-.km-audit-readout-S__part { grid-column: span 3; display: flex; flex-direction: column; min-width: 0; }
+.km-audit-readout-S { background: var(--panel); --km-stag: 96px; --km-mx: calc(-100% - var(--gutter)); --km-my: calc(-100% - var(--gutter)); }
 
-/* the sheet: a portrait page on the paper (outlined, the paper's own colour, flat) */
-.km-audit-readout-S__sheet {
-  position: relative; z-index: calc(4 - var(--k, 0));            /* the stack: 02 on top, 01 at the bottom */
-  display: flex; flex-direction: column; aspect-ratio: 310 / 372;
-  padding: 22px 24px 26px; background: var(--bg); border: 1px solid var(--line-2);
+/* the desk: the side column (cols 1–4) and the pages (cols 5–12) share one row */
+.km-audit-readout-S__desk {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
 }
-.km-audit-readout-S__part:first-child .km-audit-readout-S__sheet { z-index: 0; }
-.km-audit-readout-S__no { display: flex; align-items: center; gap: 12px; color: var(--fg-2); }
-.km-audit-readout-S__no::after { content: ""; flex: 0 0 40px; height: 1px; background: var(--line-2); }
-.km-audit-readout-S__name {
-  margin-top: 22px; font-family: var(--f-body); font-weight: var(--ui-weight);
-  font-size: 20px; line-height: 1.25; color: var(--fg); text-wrap: balance;
-  min-height: 2.5em;             /* a two-line title block on every sheet, so the four sheets' rules line up whatever wraps */
+.km-audit-readout-S__side { grid-column: 1 / span 4; grid-row: 1; align-self: start; display: flex; flex-direction: column; align-items: flex-start; }
+.km-audit-readout-S__h { margin-top: 28px; padding-right: 24px; text-wrap: balance; }
+.km-audit-readout-S__for { margin-top: 32px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 30ch; text-wrap: pretty; }
+.km-audit-readout-S__side > .ac-go { margin-top: 16px; }
+.km-audit-readout-S__seq { grid-column: 1 / span 4; grid-row: 1; align-self: end; }
+
+/* the pages: two columns; the second column lies 96px lower */
+.km-audit-readout-S__pages {
+  grid-column: 5 / span 8; grid-row: 1;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gutter);
+  padding-bottom: var(--km-stag);
 }
-/* a short paragraph under the name, as three faint rules (the page reads as a document, not a card) */
-.km-audit-readout-S__txt { display: flex; flex-direction: column; gap: 9px; margin-top: 18px; }
-.km-audit-readout-S__txt > span { display: block; height: 1px; background: var(--line-2); }
-.km-audit-readout-S__txt > span:nth-child(2) { width: 90%; }
-.km-audit-readout-S__txt > span:nth-child(3) { width: 54%; }
-.km-audit-readout-S__fig { width: 100%; height: auto; margin-top: auto; }
-.km-audit-readout-S__cell { fill: var(--fg-3); }
-.km-audit-readout-S__t { font-size: 13px; fill: var(--fg-2); }    /* the sheet scales: ≥11px from a 1280 stage up (2-up below) */
+.km-audit-readout-S__pg { position: relative; z-index: calc(4 - var(--k, 0)); min-width: 0; display: flex; }   /* the stack: Part 1 on top */
+.km-audit-readout-S__sheet { flex: 1 1 auto; }   /* the kit's small sheet (.ac-sheet--sm), filling its slot */
+.km-audit-readout-S__pg:nth-child(even) { top: var(--km-stag); }
 
-/* under the sheet: what it reads, then where the layer lives */
-.km-audit-readout-S__reads { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 22px; flex: 1; }
-.km-audit-readout-S__what { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
-.km-audit-readout-S__reads > .ac-link { margin-top: auto; }
+.km-audit-readout-S__part { margin: 0 0 6px; }
 
-.km-audit-readout-S__tag { margin-top: 40px; }
+/* Exhibit 1 · four voices, as said: who (key voice) over the line; the buyer, the one voice from
+   outside, sits under a full rule */
+.km-audit-readout-S__voices > li { padding: 9px 0 10px; border-bottom: 1px solid var(--line); }
+.km-audit-readout-S__voices > li:first-child { padding-top: 0; }
+.km-audit-readout-S__voices > li.is-out { margin-top: 14px; padding-top: 9px; border-top: 1px solid var(--line-2); }
+.km-audit-readout-S__q { margin-top: 2px; font-size: 15px; line-height: 1.38; color: var(--fg); }
 
-/* the foot: one hairline, the line that pays off "Find your weakest layer", and the readout specimen */
-.km-audit-readout-S__foot {
-  position: relative; margin-top: 64px; padding-top: 28px;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px 48px;
+.km-audit-readout-S__tbl thead th:first-child { width: 29%; }
+.km-audit-readout-S__tbl thead th:nth-child(2) { width: 29%; }
+/* Exhibit 3: what was missing is the finding, in --fg */
+.km-audit-readout-S__tbl--gaps td:last-child { color: var(--fg); }
+.km-audit-readout-S__tbl--gaps thead th:first-child { width: 36%; }
+.km-audit-readout-S__tbl--gaps thead th:nth-child(2) { width: 27%; }
+/* Exhibit 2: two columns, as on /reports */
+.km-audit-readout-S__tbl--two thead th:first-child { width: 36%; }
+/* Exhibit 4: the plan as numbered steps, as on /reports (order is the content): the number in the
+   display face, the step in --fg, what it needs under it in --fg-2 */
+.km-audit-readout-S__steps-ex { border-top: 1px solid var(--line-2); }
+.km-audit-readout-S__steps-ex > li { display: grid; grid-template-columns: 32px minmax(0, 1fr); padding: 10px 0 11px; border-bottom: 1px solid var(--line); }
+.km-audit-readout-S__sn {
+  grid-row: 1 / span 2; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 22px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg);
 }
-.km-audit-readout-S__foot::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line); transform-origin: 0 50%; }
-.km-audit-readout-S__line { color: var(--fg); }
+.km-audit-readout-S__steps-ex p { grid-column: 2; font-size: 15px; line-height: 1.4; color: var(--fg); }
+.km-audit-readout-S__steps-ex p.km-audit-readout-S__need { margin-top: 2px; color: var(--fg-2); }
 
-/* ── entrance (only under .is-play): the sheets are dealt from a stack. The stack fades in as one
-   layer (the set's opacity, never a sheet's, so no sheet shows through another), squared up on
-   sheet 01's place, each sheet offset 6px so it reads as a stack. Then 02, 03 and 04 are dealt out
-   to their columns, 100ms apart (640ms each): opaque paper, transform only. The words under them
-   follow; the foot draws last. --km-deal is the travel per column; phones set it to 0 (the set
-   simply fades in place). ── */
-.km-audit-readout-S { --km-deal: calc(100% + var(--gutter)); }
-.is-play .km-audit-readout-S__parts { animation: km-audit-readout-S-stack 360ms var(--ease-out) 240ms both; }
-.is-play .km-audit-readout-S__part:not(:first-child) .km-audit-readout-S__sheet { animation: km-audit-readout-S-deal 640ms var(--ease-out) calc(520ms + (var(--k, 0) - 1) * 100ms) both; }
-.is-play .km-audit-readout-S__reads { animation: ac-up 600ms var(--ease-out) calc(1000ms + var(--k, 0) * 80ms) both; }
-.is-play .km-audit-readout-S__tag { animation: ac-fade 500ms var(--ease-out) 1400ms both; }
-.is-play .km-audit-readout-S__foot::before { animation: ac-drawx 900ms var(--ease-out) 1400ms both; }
-.is-play .km-audit-readout-S__foot > * { animation: ac-fade 500ms var(--ease-out) 1700ms both; }
+/* ── the timetable: from first call to contract ── */
+.km-audit-readout-S__seq-h { font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 18px; line-height: 24px; color: var(--fg); }
+.km-audit-readout-S__steps { margin-top: 28px; display: grid; row-gap: 26px; }
+.km-audit-readout-S__step { min-width: 0; }
+.km-audit-readout-S__step-n {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 28px; line-height: 1.1; letter-spacing: var(--display-tracking); color: var(--fg); white-space: nowrap;
+}
+.km-audit-readout-S__step-t { margin-top: 6px; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); max-width: 32ch; text-wrap: pretty; }
+
+/* ── entrance (only under .is-play): the pages are dealt from a stack on the desk — the set fades
+   in as one layer on Part 1’s place, then the other three are dealt to theirs, 100ms apart
+   (opaque paper, transform only). The side line fades in; the timetable's rows rise in order. ── */
+.is-play .km-audit-readout-S__pages { animation: ac-fade 360ms var(--ease-out) 240ms both; }
+.is-play .km-audit-readout-S__pg:not(:first-child) > .km-audit-readout-S__sheet { animation: km-audit-readout-S-deal 640ms var(--ease-out) calc(520ms + (var(--k, 0) - 1) * 100ms) both; }
+.is-play .km-audit-readout-S__side > .ac-labelrow { animation: ac-fade 300ms var(--ease-out) 0ms both; }
+.is-play .km-audit-readout-S__h { animation: ac-up 600ms var(--ease-out) 80ms both; }
+.is-play .km-audit-readout-S__for, .is-play .km-audit-readout-S__side > .ac-go { animation: ac-fade 500ms var(--ease-out) 400ms both; }
+.is-play .km-audit-readout-S__seq-h { animation: ac-fade 400ms var(--ease-out) 1100ms both; }
+.is-play .km-audit-readout-S__step { animation: ac-up 600ms var(--ease-out) calc(1200ms + var(--i, 0) * 120ms) both; }
 
 @keyframes km-audit-readout-S-deal {
-  from { transform: translate(calc(var(--k, 0) * var(--km-deal) * -1 + var(--k, 0) * 6px), calc(var(--k, 0) * -6px)); }
+  from { transform: translate(calc(var(--dx, 0) * var(--km-mx) + var(--k, 0) * 4px), calc(var(--dy, 0) * var(--km-my) - var(--off, 0) * var(--km-stag) - var(--k, 0) * 4px)); }
   to { transform: none; }
 }
-@keyframes km-audit-readout-S-stack { from { opacity: 0; } to { opacity: 1; } }
 
-/* ── ≤1279 and tablet (≤1023): two sheets per row (the set reads 01 02 / 03 04). Phone (≤767): one column
-   of compact rows (see below) — the set simply fades in place. ── */
+/* ── 1280–1439: the pages take cols 4–12 (≈ 440px each), the side column cols 1–3 ── */
+@media (max-width: 1439px) {
+  :root:not(.km-home) .km-audit-readout-S__side, :root:not(.km-home) .km-audit-readout-S__seq { grid-column: 1 / span 3; }
+  :root:not(.km-home) .km-audit-readout-S__pages { grid-column: 4 / span 9; }
+  :root:not(.km-home) .km-audit-readout-S__step-n { font-size: 24px; }
+}
+/* ── ≤1279: one column of rows — the side line, then the pages two-up (no stagger; a page keeps
+   its proportion up to 1024 and grows with its content below, as the kit's sheets do), then the
+   timetable as one row of four ── */
 @media (max-width: 1279px) {
-  /* below 1280 four sheets would put their drawing words under 11px: two per row instead */
-  :root:not(.km-home) .km-audit-readout-S__part { grid-column: span 6; }
-  :root:not(.km-home) .km-audit-readout-S__name { min-height: 0; }   /* two per row: every name fits one line */
+  :root:not(.km-home) .km-audit-readout-S { --km-stag: 0px; }
+  :root:not(.km-home) .km-audit-readout-S__desk { row-gap: 48px; }
+  :root:not(.km-home) .km-audit-readout-S__side { grid-column: 1 / span 8; grid-row: 1; }
+  :root:not(.km-home) .km-audit-readout-S__pages { grid-column: 1 / -1; grid-row: 2; max-width: 960px; padding-bottom: 0; }
+  :root:not(.km-home) .km-audit-readout-S__seq { grid-column: 1 / -1; grid-row: 3; margin-top: 32px; }
+  :root:not(.km-home) .km-audit-readout-S__steps { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter); }
+  :root:not(.km-home) .km-audit-readout-S__step-n { font-size: 26px; }
 }
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-audit-readout-S__parts { row-gap: 56px; }
+  :root:not(.km-home) .km-audit-readout-S__pages { max-width: none; }
+  :root:not(.km-home) .km-audit-readout-S__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+  :root:not(.km-home) .km-audit-readout-S__side { grid-column: 1 / span 10; }
 }
+/* ── phone (≤767): the four pages become one stack — each page lies over the one before, so pages
+   1–3 show their top (running head, part, title, first line, the start of the exhibit) and page 4
+   shows whole; the whole document is one link away (≈ 1,250px instead of ≈ 2,700px of pages).
+   The deal becomes a fade in place (the offsets go to zero; no new animation name); the timetable
+   one column. ── */
 @media (max-width: 767px) {
-  /* each part becomes one compact row: the sheet is a landscape card (index + name left, its drawing
-     right, 120 wide), its words under it. Drawing words hide (they would fall under 11px). */
-  :root:not(.km-home) .km-audit-readout-S { --km-deal: 0px; }
-  :root:not(.km-home) .km-audit-readout-S__parts { margin-top: 32px; row-gap: 28px; }
-  :root:not(.km-home) .km-audit-readout-S__part { grid-column: 1 / -1; }
-  :root:not(.km-home) .km-audit-readout-S__sheet {
-    display: grid; grid-template-columns: minmax(0, 1fr) 120px; grid-template-rows: auto 1fr; column-gap: 16px;
-    aspect-ratio: auto; padding: 14px 16px;
-  }
-  :root:not(.km-home) .km-audit-readout-S__no { grid-column: 1; grid-row: 1; }
-  :root:not(.km-home) .km-audit-readout-S__name { grid-column: 1; grid-row: 2; margin-top: 10px; font-size: 18px; }
-  :root:not(.km-home) .km-audit-readout-S__txt { visibility: hidden; position: absolute; }
-  :root:not(.km-home) .km-audit-readout-S__fig { grid-column: 2; grid-row: 1 / span 2; align-self: center; margin-top: 0; }
-  :root:not(.km-home) .km-audit-readout-S__t { visibility: hidden; }
-  :root:not(.km-home) .km-audit-readout-S__reads { padding-top: 12px; gap: 6px; }
-  :root:not(.km-home) .km-audit-readout-S__tag { margin-top: 28px; }
-  :root:not(.km-home) .km-audit-readout-S__foot { margin-top: 32px; padding-top: 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
-  :root:not(.km-home) .km-audit-readout-S__foot > .ac-link { white-space: normal; text-align: left; line-height: 1.5; }
-  :root:not(.km-home) .km-audit-readout-S__line { font-size: 20px; }
+  :root:not(.km-home) .km-audit-readout-S { --km-mx: 0px; --km-my: 0px; }
+  :root:not(.km-home) .km-audit-readout-S__desk { row-gap: 32px; }
+  :root:not(.km-home) .km-audit-readout-S__h { margin-top: 20px; padding-right: 0; font-size: 28px; }
+  :root:not(.km-home) .km-audit-readout-S__for { margin-top: 20px; }
+  :root:not(.km-home) .km-audit-readout-S__side { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-audit-readout-S__seq { margin-top: 16px; }
+  :root:not(.km-home) .km-audit-readout-S__steps { grid-template-columns: minmax(0, 1fr); row-gap: 22px; margin-top: 20px; }
+  :root:not(.km-home) .km-audit-readout-S__step-n { font-size: 24px; }
 }

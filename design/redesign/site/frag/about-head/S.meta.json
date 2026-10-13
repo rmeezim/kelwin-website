@@ -1,32 +1,30 @@
 {
-  "title": "Where the rules bind",
-  "direction": "A×C · Round 8 · /about · header (MX)",
-  "summary": "The approved Specimen-sheet header (title block retired) paying off the letter's signature link, with the page's own band: the five rules drawn against the method's phases as a rule matrix, Handover as the gantt's datum line, so the firm's doctrine reads as a drawing before a word of it is explained.",
-  "story": "Opens the page on the homepage's own words (the letter signed by Rameez, founded 2026) and puts the doctrine up front as one picture: five rules, the phases they bind to, and the one red where the exit test meets Handover. Everything below is that picture explained: the person, the rules in full, the week they run on.",
-  "copy": [
-    "[N] H1 “The firm behind / the signature.”",
-    "[N] (FC, §7 Q2) Lede “Kelwin was founded in 2026 by Rameez. It designs, installs and runs revenue systems that its clients keep. It stays small, so the person who diagnoses your system is the person who answers your email.” — “that its clients keep” can read as installs already running; drafted neutral alternative: “It designs, installs and runs revenue systems the client keeps after handover.”",
-    "[K letter] Founded · 2026 — deliberately late to the category",
-    "[K] (FC) Led by · Rameez, Founder · Lead Narrative Architect — the role repeats under the name in the founder section; drafted alternative: “Led by · Rameez” (the role said once, under the name)",
-    "[K] Rule titles in the band (the tenets' titles; 04 [R] “Learning is the asset”, was “Compounding beats resetting”)",
-    "[K method] Phase names, “Runs once” and “Keeps running”",
-    "[N] Figcaption sentence (screen readers at every width; visible 768–1023 under the drawing)",
-    "[N] Phone key caption “Rule · Binds at” (the drawing's own axis words; phones only, aria-hidden)"
-  ],
-  "phone": "≤1023: the frame scales in frame units; phase heads and rule codes stay (fixed-size HTML); the rule titles and the “Keeps running” caption give way to the keyed list under the band (rule · title · phase chips), as the kit does for flags. The lattice then takes the width the titles freed: every x maps to 1312 + (x − 1312) × 1.4025, so the rows start just after the codes (445 → 96) and Calibrate stays near the right edge; rows, the 02 span and the dotted lane scale from the right edge, stations, cells and the ring translate, the phase heads follow, strokes stay 1px and the cells keep their size (checked at 768 and 834). The facts drop under the lede (kit). ≤767: no 5×5 grid. The frame folds away (visibility + zero height, never display:none) and the keyed list IS the band: one caption line with the drawing's axis words (“Rule · Binds at”), then five rule rows, each code + title with its phase chips under it, each chip led by the cell's square; the one red is the 05 Handover chip's square. The sentence describes a drawing the phone doesn't show, so there it is for screen readers only. The titles stay on purpose: a code beside a chip (“01 · Diagnose”) can't be read at a glance (qa/r8-about/alt-key-code-chips-390.png); the duplicate is removed on the tenet side instead. 1,155px at 390 with production's 72px padding (was 1,246).",
-  "reference": {
-    "site": "Approved Kelwin: interior/X (header, round 3) · method/U (the phase gantt with Handover as the datum and the dotted “with us on retainer” lane) · CTA's ten-tick ruler",
-    "mobbin_url": "",
-    "ref_file": "",
-    "borrowed": "Header X's grammar verbatim (nav at rest, label + breadcrumb, 96px two-voice h1, rule, lede, facts ledger, band in a registration frame); the method gantt's time axis: three phases that run once, Handover as a solid datum, Calibrate continuing as a dotted lane.",
-    "kelwin": "The band kind is new to this page (MX): a responsibility-style matrix turned into a drafting lattice, with squares (the system's own mark) where a rule binds, and the gantt's datum reused so the doctrine and the method share one axis. No flags were needed: the axis words are the drawing's labels; one dimension (“Runs once”) and one caption on the dotted lane."
-  },
-  "motion": [
-    "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts at +700ms); the registration marks register; at 900ms the lattice fades in WARPED (a smooth displacement field bends every row and station line), the axis words register, then the mesh resolves to the true grid over 1.4s (the page's one orchestrated moment).",
-    "then the cells seat row by row (01 Diagnose, 02 Handover → its span draws to Calibrate, 03 Architect, 04 Calibrate); the dimension “Runs once” draws, the dotted lane and its caption fade in; the red 05 × Handover cell lands last (~3.2s).",
-    "ambient: none. interaction: none (links in the nav and facts only).",
-    "on the live site: plays once when the header is 40% visible (on load). Reduced motion: the static HTML is the final drawing — no warp, no timers. init returns a cleanup (cancels the frame loop, restores the grid)."
-  ],
-  "demoMs": 3800,
-  "notes": "Height ≈ 1,064px at 1440 (nav 96 · head · 320 band · 112 end). The rule titles are the tenets' own titles (the story map's 'short titles' fit at full length at 1440; below 1024 they move to the keyed list). The five phase columns sit at one even 173-unit spacing; Handover differs only in its stroke (solid, the gantt's datum, where the others are dashed) and its reach (it runs past the lattice to the dotted lane). The band carries no flags: the five rule titles and five phase heads are the drawing's axes; 'Keeps running' is the method's own lane label, counted as the band's one callout. The h1's first line ends well before col 9 (checked). The lattice starts at col 5 (rule titles get cols 1–4) so the fixed-size titles clear it down to 1024, where the frame is at 73%. Root has overflow-x: clip because the kit's nav menu keeps its 1440 width when hidden below 1024 (see kitNeeds)."
+ "title": "The founder first",
+ "direction": "A×C · Round 9 · /about · head (88, three lines, one-word accent, stacked) + picture-area plate",
+ "summary": "The round-9 interior head cast for About — 88px, two lines (“The firm behind / the signature.”), the accent the one word “signature.”, phone floor 44 (38 below 360) — over the picture area: the founder's portrait card, one “A working session” card, and under the portrait “Rameez”, his background line and the way to his letter.",
+ "story": "The letter on the homepage is signed by a person; this head says so and shows where that person, and the people who join, will be photographed. Nothing is faked: the slots carry no picture until one is taken.",
+ "copy": [
+  "[N, round 8, recast] H1 “The firm / behind / the signature.” (accent: “signature.”; no line ends on the article)",
+  "[N] Lede “Rameez founded Kelwin in 2026 to build revenue systems clients keep.” (one line at 1440)",
+  "[N] Quiet action “How an engagement runs” ↓ #cadence",
+  "[N] Status, once, above the set: “Photographs to come”",
+  "[N] Lead slot: “The founder, at his own desk.” · “At work, in window light.” · 3 : 2 · 50 mm",
+  "[N] Slot: “A working session.” · “Over the shoulder, with the client’s written consent.” · 3 : 2 · 35 mm",
+  "[N] Slot: “The next hire.” · “Where they work, in the same light.” (Q7: remote-first, global) · 3 : 2 · 50 mm"
+ ],
+ "phone": "≤1023: the h1 follows the kit's fluid curve; the action drops under the lede; the founder's slot takes the full measure (50% of the stage tall) and the two team slots sit side by side under it. ≤767: the h1 holds at the 56px floor on three lines (‘the signature.’ measures 354px at 56px, inside a 358px line); the status, then the slots in one column (founder ≈75% of the stage tall, team slots 176px). No overflow at 320.",
+ "reference": {
+  "site": "ROUND9-PLAN §5 (About), §7.3 (shot cards), kit §12.3–12.4; GoNimbly (picture directly under the headline)",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-careers.png",
+  "borrowed": "GoNimbly's order: headline → short lede → one quiet action → a full-width picture directly beneath, rising and widening on arrival.",
+  "kelwin": "The picture is honest: until it is shot, each slot is a flat graphite shot card naming the photograph and how it will be taken (no stock people, no generated faces, no silhouettes, no frosted hero crop on this page). A 12-column picture grid (lead 8 cols, two team slots 4 cols) instead of one plate, so the area reads as a set of portraits, not footage."
+ },
+ "motion": [
+  "entrance (stitched page): the turn lifts, the h1 writes itself in (kit §13.2, line-locked, ≈0.9s), the rule, lede and action follow, then the picture grid rises as a narrower rectangle and widens to the full measure (kit §13.3).",
+  "ambient: none (no picture yet). interaction: none.",
+  "reduced motion: final state at once."
+ ],
+ "demoMs": 2600,
+ "notes": "Coherence pass 2: the 104px “Rameez” beside a single 16 : 9 card (it outranked the 88px h1) becomes a 64px caption under a portrait card; the working-session card returns as the only other picture. Height ≈1,329px at 1440. The status row starts at y≈620 and the cards at y≈656, so the first 900px screen holds the h1, the lede and the top of the founder's and the working-session cards with their briefs; the next-hire card starts at y≈948. Header 57 visible words (h1 5 · lede 11 · action 4 · status 3 · three names 12 · three lines 19 — measured). Photographer's detail kept out of the page (for the founder's brief): side light from a window, eyes on the work not the lens, graded never frosted; the next hire photographed in the founder's light and crop; the working session over the shoulder, two people and one shared document. Kit requests: a picture-area plate (several shot slots in one rising plate, one status for the set); a shot card with its brief at the top; a case-keeping numeral (.ac-numeral uppercases ‘mm’) — built here as km-about-head-S__spec. Coherence pass (round 9): see summary. Coherence pass 3: the three-line cast left “behind” alone on a line at every width; now two lines from 1440 down to 320. “Rameez” steps to 36px on phones (32 below 360) so it stays under the h1."
 }

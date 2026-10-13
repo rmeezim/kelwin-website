@@ -1,0 +1,19 @@
+/* ── projects-system · S · /projects, only with the system (round 9, coherence pass) ──────
+   The claim at the kit's 72px (.ac-claim; coherence pass 3, was 96) across cols 1–10 — the page's one big statement
+   after the h1 — and under it ONE paragraph at 22px (cols 1–8) naming the four pieces that come
+   only with the full system, and that a single project carries no retainer. (The four-up grid of
+   20px names over 17px reasons was the site's repeated "title over gloss" recipe.) No hairlines
+   (the catalogue holds the page's one ruled list). Tokens only. */
+
+.km-projects-system-S__claim { max-width: 13em; }
+.km-projects-system-S__p { margin-top: 56px; max-width: 36em; font-size: 22px; line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+
+/* entrance: the kit's rise for the claim; the paragraph follows once */
+.is-play .km-projects-system-S__p { animation: ac-up 600ms var(--ease-out) 420ms both; }
+
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-projects-system-S__p { margin-top: 40px; font-size: 20px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-projects-system-S__p { margin-top: 28px; font-size: 17px; }
+}

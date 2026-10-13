@@ -1,0 +1,18 @@
+[
+ {
+  "id": "legal-head",
+  "slot": "T"
+ },
+ {
+  "id": "legal-body",
+  "slot": "T"
+ },
+ {
+  "id": "legal-close",
+  "slot": "T"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

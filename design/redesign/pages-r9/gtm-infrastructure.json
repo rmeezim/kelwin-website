@@ -1,0 +1,22 @@
+[
+ {
+  "id": "capability-head",
+  "slot": "T"
+ },
+ {
+  "id": "capability-services",
+  "slot": "T"
+ },
+ {
+  "id": "capability-runs",
+  "slot": "T"
+ },
+ {
+  "id": "capability-door",
+  "slot": "T"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

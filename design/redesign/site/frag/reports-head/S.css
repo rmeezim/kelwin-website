@@ -1,100 +1,46 @@
-/* reports-head · S — the Specimen-sheet header, band kind DL: the sheet deal.
-   Head, facts and nav are the kit's (§12.1–12.2). The band is an HTML folio in a registration
-   frame: the readout's six sections as six sheets, dealt once from one stack into a row that
-   overlaps like pages fanned on a desk (page one on top, each later page tucked under the one
-   before). Each sheet carries its index, its title and its own furniture: a 1px drawing of what
-   that section holds, structure only. One dimension spans the four middle sheets, the audit's
-   four parts. The one red: the editor's underline under page one's sentence, the same mark
-   the specimen below puts under the constraint, so band and sheet agree on what a readout
-   leads with.                                                                                */
+/* reports-head · S — round 9 (second pass). The interior head (kit §12.3) cast at 104, stacked,
+   "A readout, / up close." with the accent the whole second line (coherence pass 3); the plate is a SHEET (kit §12.4): page 1 of the one readout this
+   page shows (pages 2–9 follow in reports-readout). The head, the plate, the sheet, the write-in
+   and the plate rise are the kit's; this file places the page and sets its one large line.
 
-.km-reports-head-S { overflow-x: clip; }   /* the kit's visibility-hidden phone menu still spans ~620px */
-.km-reports-head-S .ac-facts .ac-spec > dd .ac-chip { vertical-align: 1px; }
+   ONE DOCUMENT, ONE SCALE: page 1 is exactly as wide as a page of the spreads below — half of a
+   spread that spans columns 2–11 (≈ 545px at 1440); half the measure below 1024, where the spreads
+   take the full measure; the plate's width on a phone, where the pages stack.
+   THE CROP FALLS IN WHITESPACE at every width: the plate takes its height from the page (not a
+   fixed px), the page runs on 168px below its last line, and pulls the plate's edge 120px up into
+   that run-on (a negative bottom margin) — so the edge always cuts 48px of blank paper under the
+   second paragraph, never a line of text. */
 
-/* ── the frame: a dimension row on top, then the folio ── */
-.km-reports-head-S__frame {
-  --ov: 28px;                                   /* how far each sheet tucks under the one before */
-  --sw: calc((100% + 5 * var(--ov)) / 6);       /* one sheet's width (in the frame's width) */
-  --step: 7px;                                  /* and how far each sits below the one before */
-  padding: 52px 0 24px;
+.km-reports-head-S__plate { --sheet-c: 1; --sheet-s: 12; height: auto; padding-bottom: 0; }
+.km-reports-head-S__plate > .km-reports-head-S__page {
+  justify-self: center;
+  width: calc(((100% - 11 * var(--gutter)) / 12 * 10 + 9 * var(--gutter)) / 2);
+  aspect-ratio: auto; min-height: 0; padding-bottom: 168px; margin-bottom: -120px;
+  container-type: inline-size;   /* the sentence sizes to the page's own measure */
 }
-/* the one dimension: from page one's edge to the end of sheet 05 — the readout's four parts */
-.km-reports-head-S__dim { --x: var(--sw); --y: 30px; --w: calc(4 * var(--sw) - 4 * var(--ov)); }
 
-/* ── the folio ── */
-.km-reports-head-S__folio { display: flex; align-items: flex-start; margin: 0; padding: 0; list-style: none; }
-.km-reports-head-S__sheet {
-  position: relative; z-index: calc(6 - var(--k)); flex: none; width: var(--sw); min-width: 0; height: 216px;
-  margin-top: calc(var(--k) * var(--step));
-  display: flex; flex-direction: column; gap: 10px;
-  padding: 18px 16px 20px calc(var(--ov) + 18px);
-  background: var(--bg); border: 1px solid var(--line-2);
+/* the cover's one line about who it was written for (key voice), then the constraint: 36px on a
+   545px page (the spreads' title size), stepping down with the page's measure, never under 22px */
+.km-reports-head-S__for { margin: 0 0 32px; }
+.km-reports-head-S__one {
+  margin: 12px 0 0;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: clamp(22px, 8.3cqi, 36px); line-height: 1.12; letter-spacing: var(--display-tracking); color: var(--fg);
+  text-wrap: pretty;
 }
-.km-reports-head-S__sheet + .km-reports-head-S__sheet { margin-left: calc(-1 * var(--ov)); }
-.km-reports-head-S__sheet.is-first { padding-left: 18px; border-color: var(--fg-3); }
-.km-reports-head-S__t {
-  display: block; min-height: 42px; max-width: 13em;
-  font-size: var(--ac-support); line-height: 21px; color: var(--fg);
-}
-.km-reports-head-S__fx { margin-top: auto; width: min(190px, 100%); height: auto; }
-.km-reports-head-S__nd { shape-rendering: crispEdges; }
-.km-reports-head-S__open { fill: var(--bg); }
+.km-reports-head-S__one + .ac-sheet__sec { margin-top: 40px; }
 
-/* the one red: the editor's underline under page one's sentence, drawn across its line break */
-.km-reports-head-S__ink { transform-box: fill-box; transform-origin: 0 50%; }
-
-/* ── motion: the band's one orchestrated moment, after the head (--ac-band-d) ──
-   the frame registers → the squared stack rises (pages peek out up and right) → the five
-   pages under page one are dealt out to their places, 90ms apart → the four parts are
-   measured (the label waits for its line, so it is never drawn squashed) → the editor's
-   red underline inks under page one's sentence, last. Final state is the default.
-   ≤1023 sets --deal: 0, so the same animation is a rise in place (never a new animation-name). */
-@keyframes km-reports-head-S-deal {
-  from { transform: translate(calc(var(--deal, 1) * (var(--k) * (var(--ov) - 100%) + var(--k) * 5px)), calc(var(--deal, 1) * var(--k) * (-1 * var(--step) - 5px))); }
-  to { transform: none; }
-}
-@keyframes km-reports-head-S-ink { from { transform: scaleX(0); } to { transform: none; } }
-.is-play .km-reports-head-S__folio { animation: ac-up 600ms var(--ease-out) var(--ac-band-d) both; }
-.is-play .km-reports-head-S__sheet {
-  animation: km-reports-head-S-deal 760ms var(--ease-out) both;
-  animation-delay: calc(var(--ac-band-d) + 700ms + var(--k) * 90ms);
-}
-.is-play .km-reports-head-S__dim .ac-dim__v { animation: ac-fade 300ms var(--ease-out) calc(var(--ac-band-d) + 2100ms) both; }
-.is-play .km-reports-head-S__ink { animation: km-reports-head-S-ink 380ms var(--ease-out) calc(var(--ac-band-d) + 2300ms) both; }
-.is-play .km-reports-head-S__ink.is-2 { animation-duration: 240ms; animation-delay: calc(var(--ac-band-d) + 2680ms); }
-
-/* ── tablet (≤1023): the folio is laid out flat, three sheets to a row, nothing tucked ── */
+/* tablet: the spreads take the full measure, so a page is half of it; the kit's plate height and
+   page minimum give way to the page's own height (the crop rule above) */
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-reports-head-S__frame { --ov: 0px; --step: 0px; --deal: 0; padding-top: 40px; }
-  :root:not(.km-home) .km-reports-head-S__dim { visibility: hidden; }
-  :root:not(.km-home) .km-reports-head-S__folio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px var(--gutter); }
-  :root:not(.km-home) .km-reports-head-S__sheet { width: auto; height: 216px; margin-top: 0; }
-  :root:not(.km-home) .km-reports-head-S__sheet + .km-reports-head-S__sheet { margin-left: 0; }
+  :root:not(.km-home) .km-reports-head-S__plate { height: auto; }
+  :root:not(.km-home) .km-reports-head-S__plate > .km-reports-head-S__page { grid-column: 1 / -1; width: 50%; min-height: 0; }
 }
-
-/* ── phone (≤767): the folio closes up. Page one stays a sheet (its drawing, its red) on a
-   squared stack whose edges peek out up and to the right, as the deal begins on desktop; the
-   five pages under it are read as its contents, a short keyed list beside it. ≈ 260px tall. ── */
+/* phone: the pages stack below, each the full width; page 1 takes the plate's width */
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-reports-head-S__frame { padding: 36px 0 20px; }
-  :root:not(.km-home) .km-reports-head-S__folio {
-    position: relative; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 0 28px; align-items: stretch;
-  }
-  :root:not(.km-home) .km-reports-head-S__folio::before,
-  :root:not(.km-home) .km-reports-head-S__folio::after {
-    content: ""; position: absolute; top: -6px; left: 6px; width: calc((100% - 28px) * 0.4); height: 100%;
-    border: 1px solid var(--line-2); pointer-events: none;
-  }
-  :root:not(.km-home) .km-reports-head-S__folio::after { top: -12px; left: 12px; border-color: var(--line); }
-  :root:not(.km-home) .km-reports-head-S__sheet { height: auto; min-height: 0; padding: 14px 12px 16px; gap: 8px; }
-  :root:not(.km-home) .km-reports-head-S__sheet.is-first { grid-column: 1; grid-row: 1 / span 5; }
-  :root:not(.km-home) .km-reports-head-S__t { min-height: 0; font-size: 14px; line-height: 20px; }
-  :root:not(.km-home) .km-reports-head-S__fx { width: 100%; max-width: 150px; margin-top: 6px; }   /* text at the head of the page, as on paper */
-  :root:not(.km-home) .km-reports-head-S__sheet:not(.is-first) {
-    grid-column: 2; flex-direction: row; align-items: baseline; gap: 10px;
-    padding: 9px 0 10px; background: none; border: 0; border-bottom: 1px solid var(--line);
-  }
-  :root:not(.km-home) .km-reports-head-S__sheet:nth-child(2) { border-top: 1px solid var(--line); }
-  :root:not(.km-home) .km-reports-head-S__sheet:not(.is-first) > .ac-idx { flex: none; width: 20px; }
-  :root:not(.km-home) .km-reports-head-S__sheet:not(.is-first) > .km-reports-head-S__fx { display: none; }
+  :root:not(.km-home) .km-reports-head-S__plate { height: auto; padding-bottom: 0; }
+  :root:not(.km-home) .km-reports-head-S__plate > .km-reports-head-S__page { width: 100%; padding-bottom: 120px; margin-bottom: -88px; }
+  :root:not(.km-home) .km-reports-head-S__for { margin-bottom: 20px; }
+  :root:not(.km-home) .km-reports-head-S__one { line-height: 1.15; }
+  :root:not(.km-home) .km-reports-head-S__one + .ac-sheet__sec { margin-top: 28px; }
 }

@@ -1,13 +1,15 @@
-/* ── int-kit · S · the interior kit, in use (round 8 reference sheet) ─────────────
-   Not a page. Every shared interior component from kit-ac.css §12, each with real Kelwin
-   content from STORY-INTERIOR.md §4, stacked in the order a page uses them: the header
-   (About), the legal header's contents strip, a paper document moment (Narrative Systems
-   §2), status chips (Insights §2), then all five Doors (QC twice: standalone on graphite, and
-   inset in careers' paper form section). The slim mono strips between parts are KIT
-   ANNOTATIONS for builders (component · classes · where it is used); they are not site
-   design, and the sheet is a builder reference, not a page for the founder's review.
-   This file only places things and draws the two demo artifacts (the matrix table, the
-   works ledger); every component's look comes from the kit.                               */
+/* ── int-kit · S · the interior kit, in use (round 9 reference sheet) ─────────────────────
+   Not a page. Every round-9 interior component from kit-ac.css §12–§13, each with real Kelwin
+   content, stacked in the order a page uses them: the head cast three ways (stacked at 104 with
+   a film plate; side at 96 with a shot card; stacked at 128 with a sheet plate), the Audit's
+   facts head and its measure plate (the confirmed sequence), the type voices and lists, a
+   document sheet at reading scale (a spread on paper), the two scale devices (the claim, the big
+   number), the form, the close (with and without red), and the retired round-8 pieces. The slim strips between parts are
+   KIT ANNOTATIONS for builders (component · classes · where it is used); they are not site
+   design and never ship. The turn and the write-in (§13) run on the stitched pages only (they
+   are wired by tool/home.py); this standalone build shows the kit's final states.
+   This file only places things and draws the two demo artifacts (the notes list, the exhibit
+   table); every component's look comes from the kit.                                       */
 
 .km-int-kit-S { overflow: hidden; }
 .km-int-kit-S__part { position: relative; background: var(--bg); color: var(--fg); }
@@ -15,111 +17,82 @@
 /* kit annotation strip (between parts; not site design) */
 .km-int-kit-S__div {
   display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 48px; align-items: center;
-  height: 44px; padding-inline: var(--margin); background: var(--panel-2);
-  font-family: var(--f-mono); font-size: 11px; line-height: 1; letter-spacing: var(--ac-track-idx);
-  text-transform: uppercase; color: var(--fg-2);
+  min-height: 44px; margin: 0; padding: 10px var(--margin); background: var(--panel-2);
+  font-size: 13.5px; line-height: 20px; color: var(--fg-2);
 }
-.km-int-kit-S__div > :first-child { color: var(--fg); }
+.km-int-kit-S__div > :first-child { font-weight: var(--ui-weight); color: var(--fg); }
 .km-int-kit-S__div > :nth-child(2) { justify-self: center; }
 .km-int-kit-S__div > :last-child { justify-self: end; color: var(--fg-3); }
 .km-int-kit-S__div > * { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* ── A · the band slot ── */
-.km-int-kit-S__slot {
-  position: absolute; left: 50%; top: 84px; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 14px 24px;
-  background: var(--bg); text-align: center;
+/* ── A2, B, C · heads without a nav above them on this sheet: start them where a page would ── */
+.km-int-kit-S__part.ac-int > .ac-ihead:first-child { padding-top: calc(var(--ac-nav-h) + 36px); }
+
+/* ── C2 · the measure plate in a body section: the full measure under its claim ── */
+.km-int-kit-S__measure { margin: 64px var(--margin) 0; }
+
+/* ── D · type voices and lists: the notes (cols 1–7) · the facts and the words (cols 9–12) ── */
+.km-int-kit-S__voices { margin-top: 72px; align-items: start; }
+.km-int-kit-S__notes { grid-column: 1 / span 7; border-top: 1px solid var(--line-2); }
+.km-int-kit-S__notes > li { padding: 28px 0 30px; border-bottom: 1px solid var(--line); }
+.km-int-kit-S__nt {
+  display: inline-block; font-weight: var(--ui-weight); font-size: 26px; line-height: 1.2; color: var(--fg);
+  transition: color 200ms var(--ease-out);
 }
-.km-int-kit-S__slot-t { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
-
-/* ── B · the document moment: doc cols 1–9, readings cols 10–12 ── */
-.km-int-kit-S__spec { margin-top: 56px; align-items: start; }
-.km-int-kit-S__doc { grid-column: 1 / span 9; }
-.km-int-kit-S__readings { grid-column: 10 / span 3; }
-.km-int-kit-S__readings > .ac-link { justify-self: start; }
-
-.km-int-kit-S__mx { width: 100%; border-collapse: collapse; table-layout: fixed; }
-.km-int-kit-S__mx th, .km-int-kit-S__mx td { padding: 14px 16px 16px 0; text-align: left; vertical-align: top; }
-.km-int-kit-S__mx thead th {
-  padding-top: 0; padding-bottom: 12px; border-bottom: 1px solid var(--line-2);
-  font-family: var(--f-mono); font-weight: 400; font-size: 11px; line-height: 16px; letter-spacing: var(--ac-track-idx);
-  text-transform: uppercase; color: var(--fg-3);
+.km-int-kit-S__nt:hover { color: var(--fg-2); }
+.km-int-kit-S__nt:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
+.km-int-kit-S__notes > li.is-first .km-int-kit-S__nt {   /* read first, by position: the first note is set larger */
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 44px; line-height: 1.06; letter-spacing: var(--display-tracking);
 }
-.km-int-kit-S__mx thead th:first-child { width: 152px; }
-.km-int-kit-S__mx tbody th, .km-int-kit-S__mx td { border-bottom: 1px solid var(--line); }
-.km-int-kit-S__mx tbody tr:last-child > * { border-bottom: 0; padding-bottom: 4px; }
-.km-int-kit-S__mx tbody th { font-weight: var(--ui-weight); font-size: var(--ac-support); line-height: 1.4; color: var(--fg); }
-.km-int-kit-S__mx tbody th > span { display: block; margin-top: 2px; font-weight: var(--body-weight); font-size: 14px; color: var(--fg-3); }
-.km-int-kit-S__mx td { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
-/* the sheet's one red: the line that has to survive being retold */
-.km-int-kit-S__red { color: var(--fg); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 6px; }
+.km-int-kit-S__dek { margin-top: 10px; font-size: var(--ac-body); line-height: 1.5; color: var(--fg-2); max-width: 48ch; }
+.km-int-kit-S__notes .ac-key { margin-top: 14px; }
+.km-int-kit-S__side { grid-column: 9 / span 4; display: grid; gap: 40px; }
+.km-int-kit-S__works { font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); }
+.km-int-kit-S__wt { display: block; margin-bottom: 4px; font-weight: var(--ui-weight); font-size: var(--ac-body); color: var(--fg); }
+.km-int-kit-S__gos { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
 
-/* ── C · the works ledger (status chips in context) ── */
-.km-int-kit-S__works { margin-top: 48px; border-top: 1px solid var(--line-2); }
-.km-int-kit-S__works > li {
-  display: grid; grid-template-columns: 72px minmax(0, 4.4fr) minmax(0, 2fr) minmax(0, 1.6fr) auto; column-gap: var(--gutter);
-  align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line);
-}
-.km-int-kit-S__works .ac-chip--status { justify-self: start; }
-.km-int-kit-S__wt { font-size: var(--ac-body); line-height: 1.4; color: var(--fg); }
-.km-int-kit-S__legend { margin-top: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.km-int-kit-S__chips { display: flex; flex-wrap: wrap; gap: 10px; }
+/* ── E · the spread ── */
+.km-int-kit-S__spread { margin-top: 64px; }
+.km-int-kit-S__ex { margin-top: 8px; }
+.km-int-kit-S__tbl thead th:first-child { width: 46%; }   /* the kit's exhibit table (12.5); widths are the page's */
+.km-int-kit-S__tbl thead th:nth-child(2) { width: 18%; }
 
-/* ── D · the D1 object: the readout's four parts, this page's part lit ── */
-.km-int-kit-S__mini { display: block; transition: border-color 200ms var(--ease-out); }
-.km-int-kit-S__mini:hover { border-color: var(--fg-2); }
-.km-int-kit-S__parts { display: grid !important; grid-template-columns: 1fr 1fr; column-gap: var(--gutter); }
-.km-int-kit-S__part-row {
-  display: flex; align-items: baseline; gap: 14px; padding: 7px 0;
-  font-size: var(--ac-support); line-height: 1.4; color: var(--fg-3);
-}
-.km-int-kit-S__part-row:nth-child(n+3) { border-top: 1px solid var(--line); }
-.km-int-kit-S__part-row.is-here { color: var(--fg); }
-.km-int-kit-S__part-row.is-here .ac-idx { color: var(--fg-2); }
-.km-int-kit-S__mini .ac-doc__foot { display: flex; font-size: 14px; color: var(--fg-2); }
-.km-int-kit-S__mini:hover .ac-go { box-shadow: inset 0 -1px 0 var(--fg); }
+/* ── F · the big number beside its one line ── */
+.km-int-kit-S__big { align-items: end; }
+.km-int-kit-S__n { grid-column: 1 / span 7; white-space: nowrap; }
+.km-int-kit-S__n .ac-num__u { color: var(--fg-2); }
+.km-int-kit-S__nside { grid-column: 9 / span 4; display: grid; gap: 16px; padding-bottom: 18px; }
+.km-int-kit-S__nt2 { font-size: var(--ac-lede); line-height: 1.5; color: var(--fg-2); max-width: 26ch; }
 
-/* ── A2 · the contents strip, shown on its own (on a page it sits under the legal head) ── */
-.km-int-kit-S__ix { padding-bottom: 96px; }
-.km-int-kit-S__ix > .ac-band--ix { margin-top: 48px; }
+/* ── G · the form (cols 5–12) beside its head (cols 1–3) ── */
+.km-int-kit-S__formhead { grid-column: 1 / span 3; display: grid; gap: 20px; align-content: start; }
+.km-int-kit-S__formt { font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 28ch; }
+.km-int-kit-S__form { grid-column: 5 / span 8; }
+.km-int-kit-S__fnote { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); }
 
-/* ── H · SC on paper: the terms ── */
-.km-int-kit-S__terms { margin-top: 20px; }
-.km-int-kit-S__terms > dd ul { display: grid; gap: 4px; }
-.km-int-kit-S__terms > dd li { font-size: var(--ac-support); line-height: 1.5; color: var(--fg); }
-.km-int-kit-S__apply { margin-top: 28px; }
+/* ── I · retired ── */
+.km-int-kit-S__ret { grid-column: 1 / span 9; }
+.km-int-kit-S__ret > dt { min-width: 140px; }
 
-/* ── J · careers: the bench form's tail (page-specific), then the inset QC ── */
-.km-int-kit-S__submit { display: flex; align-items: center; gap: 32px; padding-top: 32px; border-top: 1px solid var(--line); }
-.km-int-kit-S__note { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); max-width: 52ch; }
-
-@media (max-width: 1279px) {
-  :root:not(.km-home) .km-int-kit-S__doc { grid-column: 1 / span 8; }
-  :root:not(.km-home) .km-int-kit-S__readings { grid-column: 9 / span 4; }
-}
-/* ── below the stage: the sheet's own demo pieces (kit pieces compose themselves, kit §12.11).
+/* ── below the stage: the sheet's own demo pieces (kit pieces compose themselves, kit §12.13).
    No display:none on anything with an entrance (the mk.mjs capture trap). ── */
 @media (max-width: 1023px) {
   :root:not(.km-home) .km-int-kit-S__div { grid-template-columns: minmax(0, 1fr); }
   :root:not(.km-home) .km-int-kit-S__div > :not(:first-child) { visibility: hidden; position: absolute; }
-  :root:not(.km-home) .km-int-kit-S__doc, :root:not(.km-home) .km-int-kit-S__readings { grid-column: 1 / -1; }
-  :root:not(.km-home) .km-int-kit-S__readings { margin-top: 48px; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gutter); }
-  :root:not(.km-home) .km-int-kit-S__readings > .ac-link { grid-column: 1 / -1; }
-  :root:not(.km-home) .km-int-kit-S__doc .ac-doc__body { overflow-x: auto; }
-  :root:not(.km-home) .km-int-kit-S__mx { min-width: 680px; }
-  :root:not(.km-home) .km-int-kit-S__works > li { grid-template-columns: 56px minmax(0, 1fr) auto; row-gap: 8px; }
-  :root:not(.km-home) .km-int-kit-S__works > li > .ac-cap { grid-column: 2; grid-row: 2; }
-  :root:not(.km-home) .km-int-kit-S__works > li > .ac-chip--status { grid-column: 3; grid-row: 1; }
-  :root:not(.km-home) .km-int-kit-S__works > li > .ac-link { grid-column: 2 / -1; grid-row: 3; justify-self: start; }
-  :root:not(.km-home) .km-int-kit-S__legend { flex-direction: column; align-items: flex-start; }
+  :root:not(.km-home) .km-int-kit-S__notes, :root:not(.km-home) .km-int-kit-S__side,
+  :root:not(.km-home) .km-int-kit-S__n, :root:not(.km-home) .km-int-kit-S__nside,
+  :root:not(.km-home) .km-int-kit-S__formhead, :root:not(.km-home) .km-int-kit-S__form, :root:not(.km-home) .km-int-kit-S__ret { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-int-kit-S__side { margin-top: 56px; }
+  :root:not(.km-home) .km-int-kit-S__form { margin-top: 40px; }
+  :root:not(.km-home) .km-int-kit-S__nside { margin-top: 24px; }
 }
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-int-kit-S__slot { top: 48px; width: calc(100% - 32px); padding: 12px; }
-  :root:not(.km-home) .km-int-kit-S__readings { grid-template-columns: minmax(0, 1fr); row-gap: 32px; }
-  :root:not(.km-home) .km-int-kit-S__works > li { grid-template-columns: 48px minmax(0, 1fr); }
-  :root:not(.km-home) .km-int-kit-S__works > li > .ac-chip--status { grid-column: 2; grid-row: 3; justify-self: start; }
-  :root:not(.km-home) .km-int-kit-S__works > li > .ac-link { grid-row: 4; font-size: 12px; letter-spacing: .12em; }   /* one line at 310px, as fit/U */
-  :root:not(.km-home) .km-int-kit-S__parts { grid-template-columns: minmax(0, 1fr) !important; }
-  :root:not(.km-home) .km-int-kit-S__part-row:nth-child(n+2) { border-top: 1px solid var(--line); }
-  :root:not(.km-home) .km-int-kit-S__submit { flex-direction: column; align-items: flex-start; gap: 20px; }
+  :root:not(.km-home) .km-int-kit-S__notes > li.is-first .km-int-kit-S__nt { font-size: 32px; }
+  :root:not(.km-home) .km-int-kit-S__nt { font-size: 22px; }
+  :root:not(.km-home) .km-int-kit-S__n { white-space: normal; }
+  :root:not(.km-home) .km-int-kit-S__measure { margin-top: 40px; }
+  :root:not(.km-home) .km-int-kit-S__spread { margin-top: 40px; }
+  :root:not(.km-home) .km-int-kit-S__tbl thead th:first-child { width: auto; }
+  :root:not(.km-home) .km-int-kit-S__ret > dt { min-width: 0; }
 }

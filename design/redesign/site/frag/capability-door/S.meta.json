@@ -1,25 +1,10 @@
 {
-  "title": "Decision band, readout lit",
-  "direction": "A×C · Round 8 · capability template (Narrative Systems)",
-  "summary": "The kit's D1 close: one sentence on what the audit returns for this layer, the readout's four parts with the narrative readout lit (a door to the full specimen on /reports), the red Request a System Audit with the quiet Talk to the team, and the three layers underneath.",
-  "story": "The page's one ask, made specific: you have seen what this layer builds, what you would hold and how it runs; the audit is where your version starts, and its narrative readout is the part that answers this page. The SiblingStrip sends the reader across the stack instead of back.",
-  "copy": [
-    "[N] (FC deliverable) “The audit’s narrative readout shows how your market repeats you today, and where the story comes apart.”",
-    "(FC, §7 Q3) the readout's four parts: Narrative readout · Channel orchestration map · Intelligence gap report · Sequenced rebuild plan",
-    "[R] siblings “Carried by · GTM Infrastructure” · “Measured by · GTM Intelligence”",
-    "[K] doors “Request a System Audit” → /audit · “Talk to the team” → /contact"
-  ],
-  "phone": "≤1023 (kit): the object and doors drop under the line; the SiblingStrip stacks one per row. ≤767: the line is 28px; the readout's four parts stack in one column; the glyphs shrink to 54×36. ≤767: the readout's four parts keep their 2 × 2 (14px), the lit part still first in its row.",
-  "reference": {
-    "site": "The int-kit D1 reference (kit §12.8) and the approved cta/U's one decisive red",
-    "borrowed": "D1 verbatim from the kit: label, one display sentence, the small object, the doors, the foot hairline.",
-    "kelwin": "The object is this page's: the readout's four parts with part 01 lit, so the close answers this layer, not the firm in general."
-  },
-  "motion": [
-    "entrance (kit): the label fades, the line rises, the object and doors rise 200ms later, the foot hairline draws and the three layers fade in.",
-    "interaction: the readout sheet lifts its border and underline on hover (it is a link to /reports); kit hovers on the doors and the sibling links.",
-    "on the live site: plays once when the section scrolls into view. Reduced motion: final state."
-  ],
-  "demoMs": 2000,
-  "notes": "≈ 640px at 1440. Ruled seam from the runs section. The red button is this view's only red. The approved footer follows."
+ "title": "The close",
+ "direction": "A×C · Round 9 · capability template (Narrative Systems)",
+ "summary": "The kit's single close: a line saying what the audit physically does in this layer (we line up every version of your pitch and mark the gaps), the red audit button, Talk to the team, and one onward field note.",
+ "motion": [
+  "entrance: the kit close (line rises, then the doors)."
+ ],
+ "demoMs": 1400,
+ "notes": "Round 9 fix: the round-9 first line ('Your site, deck and sales calls, read against what buyers repeat') reworded the homepage's Narrative entry; this one is written from the audit's act, with no homepage trio and no 'repeat'."
 }

@@ -1,28 +1,16 @@
 {
-  "title": "One line, two lanes",
-  "direction": "A×C · Round 8 · capability template (Narrative Systems)",
-  "summary": "How this layer runs through the method, set as type on one hairline: three phases hang from it, Handover is a datum, and Calibrate drops into two lanes — your operator, or us on retainer — that run off the edge of the page because they never end.",
-  "story": "Answers “who keeps it running after handover?” for this layer. After the document (what you hold) comes its life: the narrative readout first, the matrix decided with your leadership, the system installed, handed over, then retuned each quarter — and you own it in both lanes.",
-  "copy": [
-    "[N] h2 “From the readout to your operator.”",
-    "[N] the five phase outputs (Diagnose · Architect · Install · Handover · Calibrate) for this layer",
-    "[N] (FC scope) lanes: Your operator — “Edits the Narrative OS as the market argues back; writes new segments and launches inside the system.” · With us on retainer — “We write and ship the next version, and keep the objection answers current.”",
-    "[N] “Who owns it · You, in both lanes.”",
-    "[K] link “The method, on one page” → /#methodology"
-  ],
-  "phone": "≤1023 (and ≤767): the track turns vertical — one spine down the left with each phase hanging off a short tick; Handover becomes a rule across with its hollow node; Calibrate's two lanes stack under it (solid, then dotted), nothing bleeds; ‘Who owns it’ and the method link follow. ≤767 sets it tighter (names 18px, shorter gaps).",
-  "reference": {
-    "site": "Approved homepage method/U (the Handover datum and the dotted ‘With us on retainer’ lane), set without bars",
-    "mobbin_url": "https://mobbin.com/sites/sections/575e3e1c-82e3-4a46-a463-0c769bb8e730",
-    "ref_file": "refs/capability-runs-T.webp",
-    "borrowed": "The method's vocabulary only: four phases, Handover as the datum, a dotted retainer lane.",
-    "kelwin": "Typographic, not a gantt: no bars, no plate, one hairline that bleeds off the page; the Calibrate tick becomes a stem that forks into two lanes, so ‘run by your operator or with us on retainer’ is drawn as a choice, not a sentence."
-  },
-  "motion": [
-    "entrance (the page's second body moment, plays once): the hairline draws left to right to the page edge (1.4s); the phases hang from it one by one (180ms apart); the Handover datum drops with its node; Calibrate's stem drops through both lanes and they run out to the edge, solid then dotted; ‘Who owns it’ and the method link fade in under ‘Runs once’.",
-    "interaction: the method link (kit hover).",
-    "on the live site: plays once when the section scrolls into view. Reduced motion: final state."
-  ],
-  "demoMs": 3400,
-  "notes": "909px at 1440. Under the measured ‘Runs once’ run (cols 1–6), level with the lanes: ‘Who owns it · You, in both lanes.’ and the method link, so the quadrant beside the lanes is not dead. Calibrate's stem now runs on to the dotted lane (it forks both). Paper → graphite needs no ruled seam. No red in this section."
+ "title": "Runs once, keeps running",
+ "direction": "A×C · Round 9 · capability template (Narrative Systems)",
+ "summary": "Two large one-voice statements, each with a main verb — “We write it once, with your leadership in the room.” and “Then the person who runs it keeps it current.” — each with its intervals in the key voice.",
+ "reference": {
+  "site": "The homepage handover's two-lane idea, set as type",
+  "borrowed": "Before/after handover as the section's spine.",
+  "kelwin": "No track, no datum or dimension; intervals aligned to the recommended cadence on /about#cadence."
+ },
+ "motion": [
+  "entrance: the two statements rise in turn; the foot fades in.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 1800,
+ "notes": "Round 9 fix: no shared foot row with the sibling pages — this page says the status and the /about#cadence link in one sentence; 'The method, on one page' is dropped; the quarterly line no longer says 'repeat' (the Narrative OS is rewritten wherever win/loss interviews contradict it). Coherence pass 3: both statements recast with a main verb; the second no longer repeats the services claim's “whoever”."
 }

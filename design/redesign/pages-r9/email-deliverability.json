@@ -1,0 +1,9 @@
+[
+ {"id": "project-head", "slot": "S"},
+ {"id": "project-fit", "slot": "S"},
+ {"id": "project-scope", "slot": "S"},
+ {"id": "project-takes", "slot": "S"},
+ {"id": "project-leads", "slot": "S"},
+ {"id": "project-close", "slot": "S"},
+ {"id": "footer", "slot": "U"}
+]

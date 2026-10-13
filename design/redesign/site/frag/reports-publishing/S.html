@@ -1,29 +1,25 @@
-<section class="km km-reports-publishing-S ac-sec" data-surface="dark" aria-labelledby="km-reports-publishing-S-h">
+<section class="km km-reports-publishing-S ac-sec" data-surface="dark" id="km-reports-publishing-S-ask" aria-labelledby="km-reports-publishing-S-h">
   <div class="ac-wrap">
-    <div class="ac-shead">
-      <div class="ac-labelrow"><p class="ac-label">How publishing works</p></div>
-      <h2 class="ac-h3 ac-h3--lg" id="km-reports-publishing-S-h">What it takes for one to appear here.</h2>
-    </div>
+    <!-- THE CASE-STUDY REQUEST (founder, round 8: "ask them for their email so we can send them the
+         case study"). One claim (the publication rule, the section's one big thing), the honest
+         status said once, and one field. The submit is the kit's outlined action at 56px (no red:
+         the page's red is the close's audit button). It writes a mail, it stores nothing. -->
+    <div class="ac-shead ac-shead--claim km-reports-publishing-S__head">
+      <div class="ac-labelrow"><p class="ac-label">Published work</p></div>
+      <h2 class="ac-claim" id="km-reports-publishing-S-h">No case study goes out without the client’s yes.</h2>
+      <p class="ac-shead__lede">None has cleared yet. We’ll email the first one, when a client clears it, to anyone who asks.</p>
 
-    <!-- SP · the spec list: the publication rule in four lines, each a rule and what it means.
-         The last row ends on the page's honest status, the same words as the header's facts. -->
-    <dl class="km-reports-publishing-S__rules ac-cascade" style="--d:420ms">
-      <div class="km-reports-publishing-S__rule" style="--i:0">
-        <dt><span class="ac-idx">01</span><span class="ac-h4">Yours by default</span></dt>
-        <dd>The readout is written for your company and stays with it. Nothing in it is ours to show.</dd>
-      </div>
-      <div class="km-reports-publishing-S__rule" style="--i:1">
-        <dt><span class="ac-idx">02</span><span class="ac-h4">Published only with written consent</span></dt>
-        <dd>We publish a readout only when its client asks us to, in writing.</dd>
-      </div>
-      <div class="km-reports-publishing-S__rule" style="--i:2">
-        <dt><span class="ac-idx">03</span><span class="ac-h4">Names and figures removed on request</span></dt>
-        <dd>A client can share the format and the lesson, and keep its name and its numbers out of it.</dd>
-      </div>
-      <div class="km-reports-publishing-S__rule is-status" style="--i:3">
-        <dt><span class="ac-idx">04</span><span class="ac-h4">When one clears, it appears here first</span></dt>
-        <dd><span class="km-reports-publishing-S__st"><span class="ac-cap">Cleared for publication</span><span class="ac-chip ac-chip--status">None yet</span></span></dd>
-      </div>
-    </dl>
+      <form class="ac-form km-reports-publishing-S__form" action="mailto:audit@kelwin.co?subject=Case%20study%20request" method="post" enctype="text/plain" aria-label="Ask for the first case study">
+        <div class="ac-field">
+          <label class="ac-field__label" for="km-reports-publishing-S-mail">Your work email</label>
+          <input class="ac-field__input" id="km-reports-publishing-S-mail" name="email" type="email" autocomplete="email" placeholder="name@company.com" required>
+        </div>
+        <div class="ac-form__actions">
+          <button class="ac-btn-o ac-btn-o--lg" type="submit">Send me the first one</button>
+        </div>
+        <p class="ac-support km-reports-publishing-S__note">It opens in your own mail app, addressed to <a class="ac-go" href="mailto:audit@kelwin.co?subject=Case%20study%20request">audit@kelwin.co</a></p>
+        <p class="ac-support km-reports-publishing-S__done" role="status" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
 </section>

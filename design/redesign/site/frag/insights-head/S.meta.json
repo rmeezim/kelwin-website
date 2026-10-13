@@ -1,31 +1,29 @@
 {
-  "title": "The register",
-  "direction": "A×C · Round 8 · /insights · header X (Specimen sheet), band kind RG",
-  "summary": "Lands on the letter's own words, “Field notes, published”, and replaces the photo header and the card grid with a register: each published note as a row read left to right, from the symptom you would hear in your company, to the note, to the layer it diagnoses, under the nav's own layer glyphs.",
-  "story": "Opening beat. Answers the visitor's question at a glance: what has Kelwin published, what does each note diagnose, and where to start. It shows honestly that GTM Intelligence has only the diagnostic note so far, and its one red points at the note to read first, which is the next section.",
-  "reference": {
-    "site": "In Common With (press register) · approved interior/X header",
-    "mobbin_url": "https://mobbin.com/sites/sections/65ea1c96-7729-4ceb-84c7-7f2e053d002c",
-    "ref_file": "refs/insights-head-S.webp",
-    "borrowed": "A press register: ruled rows on full-width hairlines with grouped columns. Every item is one line, and you scan it the way you scan a contents page.",
-    "kelwin": "The register is drawn as a board in the header's registration frame. Its last columns are the three layers, headed by the nav's CONTOUR · TRACE · ORBIT glyphs with each name set on two lines in the same box (Narrative / Systems · GTM / Infrastructure · GTM / Intelligence), and each layer is a 1px line running down the rows. A filled square seats where a note diagnoses a layer and nothing else marks the row, so the board reads as a matrix, never a bar chart; FN·01's three squares are tied by one line (it reads all three). The one red is the “Read first” tag. There are no photos, no cards, no deks (so nothing repeats the excerpt), and the titles are real h2 links."
-  },
-  "motion": [
-    "entrance: the kit's head choreography (label, h1 line by line, rule, lede, facts). Then the band's one orchestrated moment, starting at --ac-band-d (900ms): the corner marks register, the column rule draws and the three glyphs plot, the row hairlines draw and the rows rise, the three layer lines run down the board, and the squares seat row by row: FN·01's first square, then its tie runs right (440ms) seating the other two as it reaches them, then FN·02's, then FN·03's. The “Read first” tag lands last (about 3.3s after load, done by 3.8s).",
-    "ambient: none.",
-    "interaction: each row is one link target (the title is the link; hovering the row brightens its symptom and hairline); focus ring on the title.",
-    "on the live site: the band plays once when the header is 40% visible. Reduced motion shows the final board at once."
-  ],
-  "demoMs": 3900,
-  "copy": [
-    "[K] Label “Insights” · meta “Resources / 01”; H1 “Field notes, / published.” (the letter's label)",
-    "[N] Lede: “Short notes on how revenue systems break. Each starts from a symptom you can check in your own company this week, and names its sources.”",
-    "[K] Facts “Published · Three notes, May–June 2026”; [N] “In the works · Three notes, three longer documents”; [N] “New notes · By email when they ship ↗” (/contact?topic=notes)",
-    "[N] Symptom lines: “We need more pipeline.” · “Buyers can’t retell you.” · “The dashboard says ‘delivered’.”",
-    "[K] Titles and dates; read times 6 / 5 / 5 min shown as on the approved homepage letter: open founder question §7 Q6 (they read in about 3 / 2 / 2)",
-    "[N] Column heads “Symptom · Note · Diagnoses”; tag “Read first”; phone chip “All three layers”",
-    "[R] Metadata description (for the page): “Short field notes on how revenue systems break — each starting from a symptom you can check, each diagnosing one layer, with sources.”"
-  ],
-  "phone": "≤1279 (laptop, the kit's “below 1280” step, down to 768): the symptom moves under its title, so each row is title (+ tag on its first line), date, then symptom in cols 2–7; the three layer columns widen to cols 8–12 (≥ 98px each for the two-line names at 13px), and the Symptom and Diagnoses heads leave the flow so “Note” bottom-aligns with the layer names. ≤1023: the facts drop under the lede (kit); the board is unchanged. ≤767: the board gives way to a list. Each row reads index and layer chip(s) on one line, then the symptom, then the title with its “Read first” tag, then date and read time. The glyph header, lines and squares are hidden by visibility, and the chips carry the diagnosis. Checked with production's fluid tokens and with fixed 1440 type at 320, 390, 768, 834, 1000, 1024, 1180, 1280, 1366 and 1440: no overlap, no overflow, nothing under 11px. The section root clips overflow-x because the kit's visibility-hidden desktop menu still spans about 620px at phone widths.",
-  "notes": "The band is HTML, not SVG, because its rows are real h2 links. It sits in the kit's registration frame (.ac-frame with the four .ac-reg marks), not in .ac-band__frame, whose fixed aspect ratio suits drawings rather than text rows. Frame about 355px tall at 1440. The phone composition is the list described above, not a second drawing. No callouts, no dimension. Exactly one red element: the tag. The glyphs reuse the SiblingStrip's 36×24 paths drawn at 2× with a .5 scaled stroke, so the pathLength plot stays whole (Chromium breaks pathLength dashes on scaled non-scaling strokes). Round-8 review fixes: two-line layer names (they overprinted at 1024–1280), the ≤1279 composition, the column heads pinned to one row, the tag on the title's first line (baseline), and the left-origin leaders dropped (they read as a bar chart)."
+ "title": "Editorial contents",
+ "direction": "A×C · Round 9 · /insights · interior head cast at 128 (no plate)",
+ "summary": "The /insights head (coherence pass 3): “Notes from the field.” on one line at 112px, the accent the last word “field.” (D3), the lede, then the editorial contents page: the lead note at 72px, then two notes and the forthcoming Revenue Entropy Index 2026.",
+ "story": "Opening beat. 'Does this firm think clearly about my problem, and is there something I can read before I talk to anyone?' — answered by putting the three published notes directly under the head, readable at a glance and dated honestly. The first note leads by position, so no tag is needed.",
+ "reference": {
+  "site": "GoNimbly (the founder's round-8 reference: refs-r9/GONIMBLY-STUDY.md) · the approved homepage letter/S",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-solutions.png",
+  "borrowed": "GoNimbly's large, few, sentence-case labels and one orchestrated arrival per page (the headline writes in, then the content rises); a printed magazine's contents page (title left, standfirst and byline right, the lead story set larger) instead of a blog card grid.",
+  "kelwin": "The kit's interior head with no plate (the index is the page's picture), the two-voice h1 at 128px cast light-first with a masthead step on the 12-column grid, Mona titles at 80 / 56px in cols 1–7, the one sentence and the key-voice meta line in cols 9–12, one hairline per row. No codes, no layer matrix, no glyphs, no chips, no mono."
+ },
+ "motion": [
+  "entrance (stitched): the turn lifts, the h1 writes itself in (kit §13: the light 'Published', then the stepped white line), the rule and lede follow; then the three rows rise one by one, each hairline drawing left to right as its row arrives (write-end + 420ms, 140ms apart). Standalone: the kit's head rise, rows from 1000ms.",
+  "interaction: each row is one link (the title, stretched over the row); on hover or focus the row's hairline darkens to --fg, drawn left to right, and the sentence brightens; focus ring around the whole row.",
+  "ambient: none.",
+  "reduced motion: the final page at once."
+ ],
+ "demoMs": 2600,
+ "copy": [
+  "[K] H1 “Published / field notes.” — the homepage letter's P.S. label (“Field notes, published”), so its link lands on its own words; recast light-first so it is not the white-over-light stack split at a comma (flagged: the founder may prefer the page its own headline)",
+  "[N] Lede: “Short pieces on how revenue systems break. Each starts from a symptom you can check in your own company this week.” (no noun phrase from the h1; ‘names its sources’ cut — the notes show them)",
+  "[K] Titles; [K] dek 1 = the note's own subtitle “Why pipeline problems rarely start in the pipeline.”; [N from the standfirsts] deks 2 and 3",
+  "[K] Meta lines per Q6: All three layers · June 2026 · 3 min / Narrative Systems · June 2026 · 2 min / GTM Infrastructure · May 2026 · 2 min",
+  "Cut: kicker “Insights” (the page's name), “Resources / 01”, the facts box, symptom quotes, column heads, FN· codes, the READ FIRST tag, the glyph matrix, the layer chips."
+ ],
+ "phone": "≤1023: the step narrows to two columns; each row stacks (title, then its sentence and meta) at 64 / 44px. ≤767: no step (the h1 at the kit's 56px floor: “Published / field notes.” fits a 358px line at 390 and 288px at 320); titles 44 / 30px. Checked at 834, 390 and 320: no overflow, nothing under 11px; the nav's lockup and outlined action no longer touch at 320 (local, ≤359px).",
+ "notes": "Coherence pass 2: no longer the title-left/dek-right row (D5); the separate “In the works” section and its two undated titles are cut (D6: no publishing schedule the founder hasn't set) — insights-in-the-works is retired from the page order. Section ends 128px under the last entry. One ruled list on the page (this index). Red: the 48×2 rule only; the page's one red button is in the close. Coherence pass 3: h1 recast (“Field notes, published.” left “published.” alone at 834 and on phones); the 17% note's dek no longer leads on “Most …”: “The committee decides your deal in meetings your reps never attend.” Final check: the ‘In the works’ link “Send it to me when it’s ready” now opens /contact?topic=research (‘A research document’, whose hint names the Revenue Entropy Index and Q4 2026), not the hint-less ‘Field notes’."
 }

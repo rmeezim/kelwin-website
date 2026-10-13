@@ -1,7 +1,8 @@
-/* ── about-door · S · D2 statement close ─────────────────────────────────────────────────
-   The kit's D2 verbatim (kit §12.8): the page's second (and last) two-voice statement at
-   64px, the rule, the audit in one line, the red ask and the quiet door, then one hairline
-   and the foot: the onward question (field notes) and the rest of the firm (The Lab, with
-   its true status). Red: the button (and the kit's label square and rule). Nothing to place
-   beyond the kit; this file only keeps the status chip on the onward row's baseline.     */
-.km-about-door-S .ac-onward > .ac-chip--status { align-self: center; }
+/* ── about-door · S · the close (round 9, second pass) ────────────────────────────────────
+   The kit's one close (§12.10), verbatim: the door line from About's own argument — the
+   person behind the signature, who reads the request himself (true while Kelwin is the founder
+   alone; a founder question) — in a shape no sibling close uses (no "… before …", no "Find
+   out", no "The audit …"); the red System Audit button (this view's one red) and the quiet
+   "Talk to the team". No statement head, no lede, no onward rows, no Lab chip. On its own
+   graphite with the ruled seam. Nothing to place beyond the kit.                            */
+.km-about-door-S .ac-close__line { max-width: 13em; }

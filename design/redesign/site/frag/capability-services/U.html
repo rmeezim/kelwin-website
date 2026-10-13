@@ -1,57 +1,31 @@
 <section class="km km-capability-services-U ac-sec ac-sec--ruled" data-surface="dark" aria-labelledby="km-capability-services-U-h">
   <div class="ac-wrap">
-    <div class="ac-shead ac-shead--statement">
-      <div class="ac-labelrow"><p class="ac-label">What we install</p></div>
-      <h2 class="ac-statement" id="km-capability-services-U-h">
-        <span class="ac-line"><span>Four questions,</span></span>
-        <span class="ac-line ac-accent"><span>answered every quarter.</span></span>
-      </h2>
-      <span class="ac-rule" aria-hidden="true"></span>
-    </div>
+    <div class="ac-labelrow"><h2 class="ac-label" id="km-capability-services-U-h">The questions it answers</h2></div>
 
-    <!-- question → the service that answers it → what it ships → where that goes -->
-    <div class="km-capability-services-U__table">
-      <div class="km-capability-services-U__keys" aria-hidden="true">
-        <span class="km-capability-services-U__k">The question</span>
-        <span class="km-capability-services-U__k km-capability-services-U__k--to">Service</span>
-        <span class="km-capability-services-U__k km-capability-services-U__k--to">Ships</span>
-        <span class="km-capability-services-U__k km-capability-services-U__k--to">Feeds</span>
-      </div>
-      <ol class="km-capability-services-U__rows">
-        <li class="km-capability-services-U__row" style="--i:0">
-          <h3 class="km-capability-services-U__q">“Which signals actually come before revenue?”</h3>
-          <dl class="km-capability-services-U__a">
-            <dt>Service</dt><dd class="km-capability-services-U__svc"><span class="ac-callout__code">03.1</span><span>Signal taxonomy &amp; intent monitoring</span></dd>
-            <dt>Ships</dt><dd>Signal taxonomy <span class="km-capability-services-U__sub">account priorities fold in here</span></dd>
-            <dt>Feeds</dt><dd><span class="km-capability-services-U__as">Signal Dashboard</span></dd>
-          </dl>
-        </li>
-        <li class="km-capability-services-U__row" style="--i:1">
-          <h3 class="km-capability-services-U__q">“Why do we really win and lose?”</h3>
-          <dl class="km-capability-services-U__a">
-            <dt>Service</dt><dd class="km-capability-services-U__svc"><span class="ac-callout__code">03.2</span><span>Win/loss &amp; objection intelligence</span></dd>
-            <dt>Ships</dt><dd>Win/loss interviews, in the buyer’s words</dd>
-            <dt>Feeds</dt><dd><span class="km-capability-services-U__as">Signal Dashboard</span>; the objection answers in the <span class="km-capability-services-U__as">Narrative OS</span></dd>
-          </dl>
-        </li>
-        <li class="km-capability-services-U__row" style="--i:2">
-          <h3 class="km-capability-services-U__q">“Which message version is landing?”</h3>
-          <dl class="km-capability-services-U__a">
-            <dt>Service</dt><dd class="km-capability-services-U__svc"><span class="ac-callout__code">03.3</span><span>Narrative resonance telemetry</span></dd>
-            <dt>Ships</dt><dd>Resonance report: reply quality and meetings, not opens</dd>
-            <dt>Feeds</dt><dd>The next <span class="km-capability-services-U__as">narrative version</span></dd>
-          </dl>
-        </li>
-        <li class="km-capability-services-U__row" style="--i:3">
-          <h3 class="km-capability-services-U__q">“What changes next quarter?”</h3>
-          <dl class="km-capability-services-U__a">
-            <dt>Service</dt><dd class="km-capability-services-U__svc"><span class="ac-callout__code">03.4</span><span>Quarterly calibration program</span></dd>
-            <dt>Ships</dt><dd>Calibration readout</dd>
-            <dt>Feeds</dt><dd><span class="km-capability-services-U__as">Rebuild Sequence</span></dd>
-          </dl>
-        </li>
-      </ol>
-      <p class="km-capability-services-U__lab"><span class="km-capability-services-U__labt">The instruments that will automate parts of this are being built at The Lab.</span><span class="ac-chip ac-chip--status">In development</span><a class="ac-link" href="/the-lab">The Lab</a></p>
-    </div>
+    <!-- the four questions are the section's dominant element. Coherence pass 2 (lead decision D5):
+         no longer a question over a "name left, gloss right" row — under each question ONE plain
+         sentence, the service that answers it run in at its head (the nav plate's name) and how
+         it is answered. Order is the content (the fourth weighs the other three), so the list is
+         an ordered one; no numerals are drawn. -->
+    <ol class="km-capability-services-U__qs ac-cascade" style="--d:200ms">
+      <li class="km-capability-services-U__q" style="--i:0">
+        <h3 class="km-capability-services-U__ask">Which signals come before revenue?</h3>
+        <p class="km-capability-services-U__line"><span class="km-capability-services-U__svc">Signal taxonomy &amp; intent monitoring.</span> Your closed-won deals, traced back to the first thing that changed at each account.</p>
+      </li>
+      <li class="km-capability-services-U__q" style="--i:1">
+        <h3 class="km-capability-services-U__ask">Why do we really win and lose?</h3>
+        <p class="km-capability-services-U__line"><span class="km-capability-services-U__svc">Win/loss &amp; objection intelligence.</span> Calls with the buyers who decided, written up in their words, not the rep’s.</p>
+      </li>
+      <li class="km-capability-services-U__q" style="--i:2">
+        <h3 class="km-capability-services-U__ask">Which version of the message is landing?</h3>
+        <p class="km-capability-services-U__line"><span class="km-capability-services-U__svc">Narrative resonance telemetry.</span> Reply quality and meetings booked, by message version. Opens are not counted.</p>
+      </li>
+      <li class="km-capability-services-U__q" style="--i:3">
+        <h3 class="km-capability-services-U__ask">What changes next quarter?</h3>
+        <p class="km-capability-services-U__line"><span class="km-capability-services-U__svc">Quarterly calibration program.</span> The other three answers, weighed with your leadership into one ranked list of what to build, keep and cut.</p>
+      </li>
+    </ol>
+
+    <p class="km-capability-services-U__proj">Proposed, to be confirmed: <a class="ac-go ac-go--to ac-go--inline" href="/projects#gtm-intelligence">one round of win/loss interviews, guide included, bought on its own</a></p>
   </div>
 </section>

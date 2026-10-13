@@ -1,32 +1,28 @@
 {
-  "title": "Reading spread, retelling",
-  "direction": "A×C · Round 8 · article template · /insights/the-17-percent-window",
-  "summary": "The note on paper at reading quality, with its Gartner source hedged in the margin, a 'What to look for' note that replaces the unprovable 'predictor of close' finding, one pull quote, and one drawing set in type: 'The retelling' — the note's two sentences carried through Demo → Champion → CFO → Committee; the mechanism arrives intact, the promise loses words hop by hop until nothing of it reaches the committee.",
-  "reference": {
-    "site": "Approved Kelwin letter/S (a reading column with a margin on the 12-column grid) and evidence/T (a sourced figure); Tailscale's blog article for the long-form measure",
-    "mobbin_url": "https://mobbin.com/sites/sections/2aa17c2a-b721-440c-8fe0-83544d7afdd0",
-    "ref_file": "refs/article-tailscale.webp",
-    "borrowed": "A long-form reading column at a real measure with its apparatus beside it rather than inside it (sidenotes in a margin, one wide figure that breaks the column once).",
-    "kelwin": "Paper as the page's one document moment; the column in cols 3–8 and the margin in cols 10–12 of the real 12-column grid; Mona at 18px; the nav's capability glyphs as the layer key; 15px Mona 'What to look for' notes instead of mono 'Field reading' panels; the figure drawn in the kit's 1px language with one red element and no 'Fig.' caption."
-  },
-  "motion": [
-    "entrance (play-once, at 40% visible): the track plots across the four hops (2.6s) while each hop arrives in turn, 800ms apart — its node and chevron, its name, the mechanism, then the promise — and a beat later the promise's lost words fade to dashed rules (≈4.5s).",
-    "interaction: none.",
-    "ambient: none.",
-    "on the live site: the figure waits for 40% of itself in view. Reduced motion: final state at once."
-  ],
-  "demoMs": 4800,
-  "story": "The argument: the deal is decided in rooms the vendor never enters, so the narrative's job is to survive being retold. The drawing makes 'A mechanism, not a promise' visible at the moment the note states it, then the note turns to what you can equip and watch for in the 83%.",
-  "copy": [
-    "Body [K] verbatim except: 'The research — and every win/loss interview we've run — says otherwise.' → 'The research says otherwise, and so does my own experience of how deals are won and lost.' (R, FC, founder Q2)",
-    "'which pages the CFO's office reads' → 'which other roles at the account start engaging' (R, per map). FOUNDER FLAG: beside 'who else from the account starts visiting' the map's clause says nearly the same thing twice; offered alternatives [R, needs his yes]: drop the clause, or 'whether finance starts asking questions'. Built as the map drafts it.",
-    "'Field reading' (the 'strongest single predictor of close… in deals we've instrumented' finding) → margin 'What to look for' [R] (FC, Q2): 'By the second call, can your champion state the mechanism unaided, in their own words? In my experience, when they can, the internal argument tends to go well. When they can't, more follow-up rarely rescues it.'",
-    "Bold lead-ins' missing spaces fixed",
-    "Pull quote [K] kept; it paraphrases paragraph 2 but does not sit beside it",
-    "Source 1 gloss [N] hedged as Gartner: 'Buyers spend about 17% of a purchase meeting potential suppliers, all of them combined. With several in the running, the time with any one rep may be only 5 or 6%.'",
-    "Figure copy [N]: 'The retelling', the sub-line, hop descriptors 'You're in the room. / Retells it from memory. / Has never heard of you. / Decides without you.', row labels 'A mechanism' / 'A promise'; the two sentences [K]",
-    "Layer key 'Diagnoses' [N]"
-  ],
-  "phone": "≤1023: column cols 1–8, margin cols 9–12; the drawing restacks into one block per retelling on a left rule with a node each, the two sentences side by side in each block, and a two-sample legend ('A mechanism' in the display voice, 'A promise' in the light voice) replaces the row labels and the track. ≤767: one column; the two sentences stack inside each block; margin notes fall in after their paragraphs.",
-  "notes": "A reading surface: ≈2,200px tall at 1440, over the 1400px cap by design. No CONTOUR in the drawing and no 17/100 bar (the homepage owns both). The figure's one red element is the committee's empty rules (what was lost); the 17% figure appears only in the title, the standfirst and the source note, never as a Readings figure. 'What to look for' sits in its subsection heading's row (row 8, 'Instrumenting the 83%'), tops aligned, and hangs like every other note, as on the template's other two notes. The mechanism sentence balances its lines ('They install X, / which produces Y.') so no hop strands a 'Y.'. Source links wrap only before their last word."
+ "title": "Reading spread, retelling",
+ "direction": "A×C · Round 9 · /insights/the-17-percent-window · the note on paper",
+ "summary": "The approved note (P07) as a reading page: the standfirst at 24px across cols 3–10, the reading column in cols 3–8 at 18px, the margin in cols 10–12 holding only sources and ‘What to look for’ in Mona, and one figure where the argument turns — ‘The retelling’, set in type: the note's two sentences through four hops (01 Demo → 02 Champion → 03 CFO → 04 Committee; order is the content), the mechanism intact, the promise (in --fg-2) losing words hop by hop to dashed rules that are red at the committee. The track of squares and arrowheads and the caps row keys are gone.",
+ "story": "The argument itself, verbatim. Round 9 removes the apparatus that read as generated (glyph sidebars, caps note heads, boxed numerals, mono source links, the end square) and says each source once: the Gartner note sits beside the paragraph that calls it and is the only link to the study.",
+ "reference": {
+  "site": "Approved P07 (round 8) · Tailscale's blog article for the long-form measure",
+  "mobbin_url": "https://mobbin.com/sites/sections/2aa17c2a-b721-440c-8fe0-83544d7afdd0",
+  "ref_file": "refs/article-tailscale.webp",
+  "borrowed": "A long-form reading column with its sidenotes in a margin, one wide figure that breaks the column once.",
+  "kelwin": "Paper as the note's document surface; Mona everywhere but the numerals; the kit's segmented control, label and spec list."
+ },
+ "motion": [
+  "entrance: the reading column arrives with its slot; the figure plays once when 40% of it is in view (its own IntersectionObserver).",
+  "interaction: source links only.",
+  "ambient: none.",
+  "reduced motion: final state at once."
+ ],
+ "demoMs": 3600,
+ "copy": [
+  "Body [K] verbatim (approved P07), 83% throughout, with the standfirst moved here from the head; ‘Gartner’s buying research’ is named there, not linked (the source is linked once, in the margin)",
+  "Margin: source 1 (Gartner, linked) beside paragraph 2, where its call is; no gloss (the standfirst already gives 17% and 5%); ‘What to look for’ [K]; one pull quote [K] in the accent voice",
+  "Figure keys ‘A mechanism’ / ‘A promise’ and hop names in Mona",
+  "Cut: the layer-glyph key, the boxed numeral, the mono source link, the end square."
+ ],
+ "phone": "≤1023: the column takes cols 1–8 and the margin cols 9–12; the retelling hops stack on a left rule with a two-sample legend. ≤767: one column, each margin note right after its paragraph, the standfirst 20px, reading 17px. No overflow at 834 / 390 / 320; nothing under 11px.",
+ "notes": "A reading surface, taller than the 1400px cap by design (the whole note). Margin notes take their own grid rows from their paragraph's row (no negative margins); ‘What to look for’ starts in its subsection heading's row and spans into empty trailing rows, so the paper always contains it. Stress-tested with notes grown 4×."
 }

@@ -1,26 +1,16 @@
 {
-  "title": "The quarter, to scale",
-  "direction": "A×C · Round 8 · capability template (GTM Intelligence)",
-  "summary": "How this layer runs, as one quarter drawn to scale: thirteen weeks on a ruler with the weekly signal review, the win/loss interviews as deals close or die, and week 13's red tick — the calibration readout — whose standing agenda sits beside it.",
-  "story": "On this page the cadence comes before the document: the ring said ‘once a quarter’, and here is the quarter itself, week by week, ending in the meeting that re-scores the plan — which the next section shows a page of. Who's in the room and who runs it are said plainly underneath.",
-  "copy": [
-    "[N, echoes approved FAQ Q3] h2 “Calibrate is a standing cadence.”",
-    "[N] legend: Weekly signal review · Win/loss interview, as deals close or die (week 13 is labelled on the drawing itself: “Calibration readout”)",
-    "[R] (FC scope) agenda: 1 What the signal says — monitoring and priorities refreshed · 2 Why deals moved — new win/loss interviews · 3 What held, what to stop — message versions and plays compared · 4 What ships next quarter — the Rebuild Sequence re-scored",
-    "[N] foot “In the room: your operator and your leadership. On retainer, we run it. Before the first quarter, the install builds the signal taxonomy from your closed-won history, stands up the win/loss interviews and puts the dashboard in your stack.”",
-    "[K] link “The method, on one page” → /#methodology"
-  ],
-  "phone": "≤1023: the ruler takes the full width; the agenda sits under it without its side rule. ≤767: a phone ruler swaps in (358×190 viewBox, every other week numbered, the red week-13 tick labelled), the legend stacks, then the foot, the link and the agenda.",
-  "reference": {
-    "site": "Approved homepage cta/U's ten-tick ruler (the audit to scale) and method/U's lanes",
-    "borrowed": "A period drawn to scale as ticks on one rule, with the one decisive tick in red.",
-    "kelwin": "Thirteen weeks instead of ten days; three kinds of mark keyed in a legend (solid weekly ticks, dashed win/loss marks, the red week-13 readout); the ruler runs on, faint, into the next quarter; the readout's standing agenda is the right-hand column."
-  },
-  "motion": [
-    "entrance (body moment one on this page, plays once): the axis draws left to right, the week numbers and weekly ticks fall in, the dashed win/loss marks appear, the faint next-quarter run fades in, week 13's red tick rises last with its label; the agenda sets item by item beside it.",
-    "interaction: the method link (kit hover).",
-    "on the live site: plays once on scroll. Reduced motion: final state."
-  ],
-  "demoMs": 3000,
-  "notes": "≈ 820px at 1440. Third graphite section in a row (head · services · runs) — the allowed maximum; the seam from services is ruled. The win/loss marks show the cadence (‘as deals close or die’), not data. One red: week 13. The win/loss legend key now draws as a dashed hairline (background none), matching the marks on the ruler."
+ "title": "Who runs it, 25 minutes",
+ "direction": "A×C · Round 9 · capability template (GTM Intelligence)",
+ "summary": "Who runs it: one big number (25 min, the operator's weekly review) and beside it the weekly line, one plain paragraph on your leadership's time and ours on retainer (coherence pass: no four-up grid), and the engagement link.",
+ "reference": {
+  "site": "The homepage's big-number moments (approved evidence), here for an operating cost, not a market figure",
+  "borrowed": "One number at poster scale; everything else two sizes down.",
+  "kelwin": "Kit .ac-num--prop; intervals aligned to the recommended cadence on /about#cadence."
+ },
+ "motion": [
+  "entrance: the number and its line rise; the rest fades in.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 1800,
+ "notes": "Round 9 fix: the intervals are no longer listed again (the head's plate draws the quarter); 'we run' now names what it covers; unruled at every width; the Lab line moved to the Rebuild Sequence; 69 words. Coherence pass (round 9): see summary."
 }

@@ -1,21 +1,18 @@
-/* article-head · S · the text sheet (band kind TX) — /insights/deliverability-is-infrastructure
-   Header X's grammar with no band: nav at rest → ■ layer + "Field note · June 2026" →
-   the title split as a two-voice h1 at 72px ("Deliverability / is infrastructure.") → 48×2 rule → the standfirst as the lede, cols 1–7 →
-   the facts ledger in cols 9–12, bottom-aligned with the standfirst. The h1 may run the full
-   width because the ledger sits beside the standfirst only. Ends --ac-int-end under the lede;
-   the paper body below is its own cut. Red: the label square and the rule. Placement only:
-   every look is the kit's. */
+/* article-head · U · round 9 — /insights/deliverability-is-infrastructure: a reading page's head
+   The kit's interior head (12.3) cast for a note at the kit's reading-page size (.ac-ihead--72:
+   72px at 1440, a 38px phone floor): the approved title on ONE line (coherence pass 3: two lines
+   left "Deliverability" alone at every width), the accent its closing phrase, "is
+   infrastructure." (coherence pass: re-cast so it no longer matches the 17% window's one-word
+   accent) → the 48×2 rule → ONE meta line in the key voice (layer in words
+   · month · read time). No kicker, no byline, no facts box, no plate: the paper note follows,
+   opening on its standfirst. Siblings are cast differently (revenue entropy: three lines, a
+   clause; the 17% window: one line, one word). Red: the rule. */
 
-.km-article-head-U { --ac-int-h1: 72px; }
-.km-article-head-U .ac-head.ac-ihead > .ac-statement { grid-column: 1 / -1; }
-.km-article-head-U .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 7; max-width: 33em; }
+.km-article-head-U__meta { grid-column: 1 / span 8; grid-row: 4; margin-top: 28px; }
 
-/* tablet / phone: the kit stacks the ledger under the lede; the h1 steps down with it */
+.is-play .km-article-head-U__meta { animation: ac-up 600ms var(--ease-out) calc(var(--ac-d0, 0ms) + 600ms) both; }
+.is-play .km-article-head-U .ac-ihead.is-write > .km-article-head-U__meta { animation-delay: var(--ac-write-end, 900ms); }
+
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-article-head-U { --ac-int-h1: 52px; }
-  :root:not(.km-home) .km-article-head-U .ac-head.ac-ihead > .ac-lede { grid-column: 1 / span 10; }
-}
-@media (max-width: 767px) {
-  :root:not(.km-home) .km-article-head-U { --ac-int-h1: 36px; }
-  :root:not(.km-home) .km-article-head-U .ac-head.ac-ihead > .ac-lede { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-article-head-U__meta { grid-column: 1 / -1; }
 }

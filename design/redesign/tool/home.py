@@ -8,6 +8,12 @@ Each section keeps its own scoped CSS/JS. Entrance animations are keyed off `.is
 on an ancestor, so every section sits in a .km-slot that gains `is-play` when it scrolls
 into view (the hero plays on load); each fragment's KM.init is captured into a registry
 and called at the same moment. The page is a 1440 stage zoomed to the viewer's width.
+
+Round 9: every stitched page (homepage and interior) carries THE TURN (site/lib/turn.js, kit
+§13): its head part is inlined into <head> (it raises the panel before the first paint), the
+panel markup opens <body>, and its body part runs before the boot, which waits for KMTurn.open
+(the panel lifting) before it plays the first slot. Interior heads (.ac-ihead) also get the
+write-in. --no-turn stitches a page without it (for comparisons).
 """
 import argparse
 import json
@@ -23,6 +29,19 @@ SLOT = "X"
 
 def read(p: Path) -> str:
     return p.read_text() if p.exists() else ""
+
+
+def turn_parts():
+    """(head snippet, panel markup, body script) lifted out of site/lib/turn.js, their single source.
+    Both scripts are inlined, so a stitched page stays self-contained (the review packagers copy
+    brand/ and fonts/ only)."""
+    js = read(SITE / "lib" / "turn.js")
+    head = re.search(r"/\* <km:turn-head> \*/\n(.*?)/\* </km:turn-head> \*/", js, re.S)
+    body = re.search(r"/\* <km:turn-body> \*/\n(.*?)/\* </km:turn-body> \*/", js, re.S)
+    mark = re.search(r"var KM_TURN_MARKUP = '([^']*)';", js)
+    if not (head and body and mark):
+        raise SystemExit("site/lib/turn.js: the km:turn-head / km:turn-body part or KM_TURN_MARKUP is missing")
+    return head.group(1).strip(), mark.group(1), body.group(1).strip()
 
 
 ORDER_FILE = None
@@ -42,6 +61,7 @@ def main():
     ap.add_argument("--out", default="")
     ap.add_argument("--slot", default="", help="per-section slot overrides, e.g. evidence=V,system=W")
     ap.add_argument("--order", default="", help="a page order file ([{id, slot}, …]) instead of story-order.json (interior pages)")
+    ap.add_argument("--no-turn", action="store_true", help="stitch without the round-9 page turn (comparisons only)")
     a = ap.parse_args()
     global ORDER_FILE
     ORDER_FILE = a.order or None
@@ -71,9 +91,16 @@ def main():
     uses_gsap = any(re.search(r"\bgsap\b|ScrollTrigger", x) for x in js)
     libs = ('<script src="lib/gsap.min.js"></script><script src="lib/ScrollTrigger.min.js"></script>'
             '<script>gsap.registerPlugin(ScrollTrigger);</script>') if uses_gsap else ""
+    # the turn (round 9): head snippet before the first paint · panel first in <body> · the body script before the boot
+    turn_head, turn_markup, turn_body = "", "", ""
+    if not a.no_turn:
+        th, tm, tb = turn_parts()
+        turn_head = f"\n<script>{th}</script>"
+        turn_markup = tm + "\n"
+        turn_body = f"<script>/* lib/turn.js · km:turn-body */\n{tb}\n</script>\n"
     page = f"""<!doctype html>
 <html lang="en" data-skin="swiss" class="km-home"><head><meta charset="utf-8">
-<script>(function(){{var d=document.documentElement;if(/kelwin/.test(location.hash))d.setAttribute("data-skin","kelwin");addEventListener("message",function(e){{var m=e.data||{{}};if(m.km==="skin"&&(m.skin==="swiss"||m.skin==="kelwin"))d.setAttribute("data-skin",m.skin);}});}})();</script>
+<script>(function(){{var d=document.documentElement;if(/kelwin/.test(location.hash))d.setAttribute("data-skin","kelwin");addEventListener("message",function(e){{var m=e.data||{{}};if(m.km==="skin"&&(m.skin==="swiss"||m.skin==="kelwin"))d.setAttribute("data-skin",m.skin);}});}})();</script>{turn_head}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:,">
 <title>Kelwin · Homepage prototype</title>
@@ -86,12 +113,13 @@ def main():
 html, body {{ background: var(--c-graphite); }}
 body {{ width: 1440px; zoom: var(--page-zoom, 1); }}
 .km-slot {{ position: relative; width: 1440px; }}
+.km-turn {{ zoom: calc(1 / var(--page-zoom, 1)); }}   /* the turn is chrome: it never shrinks with the zoomed 1440 stage */
 </style></head>
-<body><div class="km-stage" data-km="home">
+<body>{turn_markup}<div class="km-stage" data-km="home">
 {chr(10).join(html)}
 </div>
 {libs}
-<script>
+{turn_body}<script>
 var REG = {{}};
 {chr(10).join(js)}
 (function(){{
@@ -106,7 +134,8 @@ var REG = {{}};
   }}
   var slots = Array.prototype.slice.call(document.querySelectorAll(".km-slot"));
   var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
-  ready.then(function(){{
+  var turned = (window.KMTurn && window.KMTurn.open) || Promise.resolve();   /* the turn's panel lifting (lib/turn.js) */
+  ready.then(function(){{ return turned; }}).then(function(){{
     setTimeout(function(){{ play(slots[0]); }}, 180);
     if (!("IntersectionObserver" in window)) {{ slots.forEach(play); return; }}
     var io = new IntersectionObserver(function(es){{ es.forEach(function(e){{ if (e.isIntersecting) {{ play(e.target); io.unobserve(e.target); }} }}); }}, {{ threshold: 0.22 }});

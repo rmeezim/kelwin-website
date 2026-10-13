@@ -1,89 +1,70 @@
-/* ── who-we-work-with · situations · S — the three case files (STORY-INTERIOR §4.6, CF) ─────────
-   Wide three-zone rows on the 12-column grid, one hairline each:
-   cols 1–3 who (index · name · 72×48 mini elevation) · cols 4–9 the story (32px display title,
-   17px body) · cols 10–12 what changes (15px, ink) then where it breaks (two quiet links).
-   A still beat: the rows rise once, in order; nothing draws, nothing loops, no red.            */
+/* ── who-we-work-with-situations · S — round 9 ──
+   The kit ledger (§6), placed on the 12-column grid: the situation's name (.ac-key) in cols 1–2,
+   the buyer's line in cols 3–11 at 64px (two lines each) (the section's dominant element: three statements in
+   the buyer's voice, plan §2's 64–96 range), the kit's +/− in col 12. The open row: the story
+   (20px, --fg-2) in cols 3–7; in cols 9–12 what changes (20px, --fg — no key, the sentence says
+   it) and the one plain "breaks first" line (17px). Closed lines rest in --fg-2 and light to
+   --fg on hover or focus; the open line is --fg. No numbers, no thumbnails, no red. The last
+   row carries no rule of its own: the next section's seam closes the list. */
+.km-who-we-work-with-situations-S__lg {
+  margin-top: 40px;
+  --ac-row-cols: repeat(12, minmax(0, 1fr)); --ac-row-indent: 0px;
+  --d: 160ms;   /* the kit cascade (.ac-cascade): rows rise 80ms apart */
+}
+.km-who-we-work-with-situations-S__row { scroll-margin-top: 112px; }   /* a deep link clears production's fixed bar */
+.km-who-we-work-with-situations-S__lg > .ac-row:last-child { border-bottom: 0; }   /* the next seam is the list's last rule */
+/* a deep link folds the other rows at once (S.js adds .is-instant: the kit's 12.15 rule) */
+.km-who-we-work-with-situations-S__h > .ac-row__head { align-items: start; padding: 36px 0 40px; cursor: pointer; }
+.km-who-we-work-with-situations-S__who { grid-column: 1 / span 2; padding-top: 14px; color: var(--fg-2); transition: color 200ms var(--ease-out); }
+.km-who-we-work-with-situations-S__line {
+  grid-column: 3 / span 9; max-width: 16em;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 64px; line-height: 1.02; letter-spacing: var(--display-tracking); color: var(--fg-2);
+  text-wrap: balance; transition: color 240ms var(--ease-out);
+}
+.km-who-we-work-with-situations-S__h > .ac-row__head > .ac-toggle { grid-column: 12; justify-self: end; margin-top: 18px; }
+.km-who-we-work-with-situations-S__row.is-open .km-who-we-work-with-situations-S__line,
+.km-who-we-work-with-situations-S__h > .ac-row__head:hover .km-who-we-work-with-situations-S__line,
+.km-who-we-work-with-situations-S__h > .ac-row__head:focus-visible .km-who-we-work-with-situations-S__line { color: var(--fg); }
+.km-who-we-work-with-situations-S__row.is-open .km-who-we-work-with-situations-S__who,
+.km-who-we-work-with-situations-S__h > .ac-row__head:hover .km-who-we-work-with-situations-S__who { color: var(--fg); }
+.km-who-we-work-with-situations-S__h > .ac-row__head:hover .ac-toggle { color: var(--fg); }
+.km-who-we-work-with-situations-S__h > .ac-row__head:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
 
-/* the section seam above already rules the page; the label leads straight into the first file
-   (no second hairline under it), at the kit's label → heading distance */
-.km-who-we-work-with-situations-S__rows { margin-top: 0; }
-.km-who-we-work-with-situations-S__row {
+/* the open row */
+.km-who-we-work-with-situations-S__open {
   display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter);
-  align-items: start; padding: 44px 0 52px; border-bottom: 1px solid var(--line);
-  scroll-margin-top: 112px;
+  padding-bottom: 28px;
 }
+.km-who-we-work-with-situations-S__story { grid-column: 3 / span 5; grid-row: 1 / span 2; font-size: var(--ac-lede); line-height: 1.5; color: var(--fg-2); max-width: 30em; }
+.km-who-we-work-with-situations-S__change { grid-column: 9 / span 4; grid-row: 1; font-size: var(--ac-lede); line-height: 1.5; color: var(--fg); }
+.km-who-we-work-with-situations-S__breaks { grid-column: 9 / span 4; grid-row: 2; margin-top: 20px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); }
+.km-who-we-work-with-situations-S__story, .km-who-we-work-with-situations-S__change, .km-who-we-work-with-situations-S__breaks { text-wrap: pretty; }
 
-/* who: cols 1–3 */
-.km-who-we-work-with-situations-S__who { grid-column: 1 / span 3; display: flex; flex-direction: column; align-items: flex-start; }
-.km-who-we-work-with-situations-S__n { line-height: 20px; }
-.km-who-we-work-with-situations-S__tag {
-  margin-top: 10px; font-weight: var(--ui-weight); font-size: 20px; line-height: 1.3; color: var(--fg);
-}
-.km-who-we-work-with-situations-S__mini { width: 76px; height: 50px; margin-top: 28px; }
-.km-who-we-work-with-situations-S__mini .km-who-we-work-with-situations-S__mb { fill: none; stroke: var(--fg-3); stroke-width: 1; transition: stroke 300ms var(--ease-inout); }
-.km-who-we-work-with-situations-S__mini .km-who-we-work-with-situations-S__mlip { fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-linejoin: miter; transition: stroke 300ms var(--ease-inout); }
-.km-who-we-work-with-situations-S__mini .km-who-we-work-with-situations-S__mspread { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 2 2; }
-/* the row in focus brightens its own drawing (the header's fracture takes the red) */
-.km-who-we-work-with-situations-S__row:hover .km-who-we-work-with-situations-S__mb,
-.km-who-we-work-with-situations-S__row:focus-within .km-who-we-work-with-situations-S__mb { stroke: var(--fg-2); }
-.km-who-we-work-with-situations-S__row:hover .km-who-we-work-with-situations-S__mlip,
-.km-who-we-work-with-situations-S__row:focus-within .km-who-we-work-with-situations-S__mlip { stroke: var(--fg); }
-
-/* story: cols 4–9 */
-.km-who-we-work-with-situations-S__story { grid-column: 4 / span 6; padding-right: 24px; }
-.km-who-we-work-with-situations-S__title { max-width: 19em; text-wrap: balance; margin-top: -4px; }
-.km-who-we-work-with-situations-S__body { margin-top: 22px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 58ch; text-wrap: pretty; }
-
-/* turn: cols 10–12 — what changes, then where it breaks */
-.km-who-we-work-with-situations-S__turn { grid-column: 10 / span 3; }
-.km-who-we-work-with-situations-S__turn > .ac-idx { display: block; line-height: 20px; }
-.km-who-we-work-with-situations-S__change { margin-top: 10px; font-size: var(--ac-support); line-height: 1.55; color: var(--fg); text-wrap: pretty; }
-.km-who-we-work-with-situations-S__brks { margin: 26px 0 0; border-top: 1px solid var(--line); }
-.km-who-we-work-with-situations-S__brk { padding-top: 14px; }
-.km-who-we-work-with-situations-S__brk dt { display: block; }
-.km-who-we-work-with-situations-S__brk dd { margin: 2px 0 0; }
-.km-who-we-work-with-situations-S__brk .ac-link:focus-visible { outline: 1px solid var(--fg); outline-offset: 4px; }
-
-/* the section's one closing line: breaks first is not fixed first */
-.km-who-we-work-with-situations-S__foot {
-  margin-top: 40px; margin-left: calc(3 * (var(--col) + var(--gutter)));
-  font-size: var(--ac-lede); line-height: 1.5; color: var(--fg-2); max-width: 40em;
-}
-
-/* ── entrance (only under .is-play): label, then the rows rise in order, then the foot ── */
-.is-play .km-who-we-work-with-situations-S .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }
-.is-play .km-who-we-work-with-situations-S__row { animation: ac-up 700ms var(--ease-out) both; animation-delay: calc(200ms + var(--i, 0) * 140ms); }
-.is-play .km-who-we-work-with-situations-S__foot { animation: ac-up 600ms var(--ease-out) 700ms both; }
-
-/* ── tablet (≤1023): who becomes a header strip over the story; the turn sits under the story
-   in two columns (what changes · where it breaks). Phone (≤767): one column, in reading order. ── */
+/* tablet: the name sits over the line, the line takes cols 1–11; the open row runs story then turn */
 @media (max-width: 1023px) {
-  :root:not(.km-home) .km-who-we-work-with-situations-S__row { padding: 36px 0 40px; row-gap: 20px; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__who {
-    grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: 16px;
-  }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__tag { margin-top: 0; font-size: 18px; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__mini { margin-top: 0; width: 61px; height: 40px; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__story { grid-column: 1 / span 10; padding-right: 0; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__turn {
-    grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--gutter);
-  }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__turn > .ac-idx { grid-column: 1; grid-row: 1; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__change { grid-column: 1; grid-row: 2; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__brks { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; border-top: 0; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__brk:first-child { padding-top: 0; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__foot { margin-left: 0; font-size: 18px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__h > .ac-row__head { row-gap: 10px; padding: 28px 0 32px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__who { grid-column: 1 / span 10; grid-row: 1; padding-top: 0; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__line { grid-column: 1 / span 11; grid-row: 2; font-size: 44px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__h > .ac-row__head > .ac-toggle { grid-row: 1 / span 2; align-self: start; margin-top: 0; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__story { grid-column: 1 / span 7; grid-row: 1 / span 2; font-size: 18px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__change { grid-column: 8 / span 5; font-size: 18px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__breaks { grid-column: 8 / span 5; }
 }
 @media (max-width: 767px) {
-  :root:not(.km-home) .km-who-we-work-with-situations-S__story { grid-column: 1 / -1; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__title { font-size: 26px; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__body { font-size: 16px; margin-top: 16px; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__turn { grid-template-columns: minmax(0, 1fr); }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__brks { grid-column: 1; grid-row: auto; margin-top: 20px; border-top: 1px solid var(--line); }
-  /* each pair on one line, key then link (the link drops under its key only where it can't fit, at ≈320) */
-  :root:not(.km-home) .km-who-we-work-with-situations-S__brk { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 16px; padding-top: 6px; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__brk:first-child { padding-top: 12px; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__brk dt { flex: 0 0 104px; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__brk dd { margin: 0; }
-  :root:not(.km-home) .km-who-we-work-with-situations-S__foot { font-size: 17px; margin-top: 32px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__lg { margin-top: 28px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__h > .ac-row__head { column-gap: 12px; padding: 24px 0 26px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__who { grid-column: 1 / span 11; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__line { grid-column: 1 / -1; font-size: 28px; line-height: 1.1; max-width: none; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__h > .ac-row__head > .ac-toggle { grid-row: 1; align-self: center; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__open { padding-bottom: 20px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__story,
+  :root:not(.km-home) .km-who-we-work-with-situations-S__change,
+  :root:not(.km-home) .km-who-we-work-with-situations-S__breaks { grid-column: 1 / -1; grid-row: auto; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__story { font-size: 17px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__change { margin-top: 16px; font-size: 17px; }
+  :root:not(.km-home) .km-who-we-work-with-situations-S__breaks { margin-top: 12px; font-size: 16px; }
 }
+
+/* entrance: the label fades, the rows rise (the kit cascade) — one play-once moment */
+.is-play .km-who-we-work-with-situations-S .ac-labelrow { animation: ac-fade 300ms var(--ease-out) both; }

@@ -1,29 +1,28 @@
 {
-  "title": "The audit finds yours",
-  "direction": "A×C · Round 8 · /insights · D2 statement close (ruled seam)",
-  "summary": "The kit's D2 statement close, verbatim. The page's second and last two-voice statement turns reading into diagnosis: the notes name a layer in general, and the audit finds the one that is broken in your company.",
-  "story": "Closing beat and the page's one red ask. It follows from the register's logic (every note diagnoses a layer) to the visitor's own system, states what the audit returns using its documented scope only (ten working days, a written readout you keep), and sends the reader on to the next question: what a readout looks like (/reports).",
-  "reference": {
-    "site": "Approved kit Door D2 (snippets/interior.html 10c; int-kit/S)",
-    "mobbin_url": "",
-    "ref_file": "",
-    "borrowed": "The kit's D2: the head grammar at 64px, rule, lede, the two doors, one hairline, the onward link.",
-    "kelwin": "Page copy only. Nothing added to the kit."
-  },
-  "motion": [
-    "entrance: the kit's head choreography at 64px (label, two lines rise, rule draws, lede and doors rise), then the foot hairline draws and the onward link fades in.",
-    "ambient: none.",
-    "interaction: red “Request a System Audit” → /audit · quiet “Talk to the team” → /contact · onward “Reports →”.",
-    "on the live site: plays once as the section enters. Reduced motion shows the final state."
-  ],
-  "demoMs": 1600,
-  "copy": [
-    "[N] Label “The System Audit”",
-    "[N] Statement “The notes name the layer. / The audit finds yours.”",
-    "[N] Lede “Ten working days on your own system, and a written readout you keep.”",
-    "[K] Doors “Request a System Audit” · “Talk to the team”",
-    "[N] Onward “What does a readout look like? → Reports”"
-  ],
-  "phone": "Kit composition: ≤1023 the lede and doors span the full width and the statement is 52px. ≤767 the statement is 40px and wraps, the doors wrap and stack, and the foot hairline and onward link come last. Checked at 390 and 834.",
-  "notes": "The view's only red is the button. The red plane stays homepage-only."
+ "title": "Close, one line",
+ "direction": "A×C · Round 9 · /insights · the close (kit 12.10)",
+ "summary": "One close: “Any symptom in these notes is reason enough for a first call.”, the red System Audit button, the quiet Talk to the team and one onward destination.",
+ "story": "Last beat: from reading to diagnosing your own system.",
+ "reference": {
+  "site": "GoNimbly (the founder's round-8 reference: refs-r9/GONIMBLY-STUDY.md) · the approved homepage letter/S",
+  "mobbin_url": "",
+  "ref_file": "refs-r9/frames/overview-solutions.png",
+  "borrowed": "One action under a short line.",
+  "kelwin": "The kit's .ac-close as built."
+ },
+ "motion": [
+  "entrance: the kit's close (line rises, then the doors).",
+  "interaction: the three links.",
+  "ambient: none.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 900,
+ "copy": [
+  "[N] Line: “A symptom you recognize is worth tracing to its cause.” (10 words, one voice; American spelling as production)",
+  "[K] Request a System Audit · Talk to the team",
+  "[N] Onward: “What a readout looks like” → /reports (.ac-go: five words)",
+  "Cut: the two-voice “The notes name the layer. / The audit finds yours.” (a clipped pair and a second accent), its lede, the hairline foot and the question-link “What does a readout look like? → Reports”."
+ ],
+ "phone": "The kit's close: line 48 / 34px, doors stack, onward link under them.",
+ "notes": "Coherence pass 2 (D6): door line “Bring the symptom you found to the first call.” (was “A symptom you recognize is worth tracing to its cause.”, one of three ‘trace’ doors). Graphite after graphite: ruled seam. The one red in view. Coherence pass 3: door line recast from an imperative so no two doors share a shape."
 }

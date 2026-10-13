@@ -1,0 +1,18 @@
+[
+ {
+  "id": "article-head",
+  "slot": "U"
+ },
+ {
+  "id": "article-body",
+  "slot": "U"
+ },
+ {
+  "id": "article-door",
+  "slot": "U"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

@@ -1,0 +1,22 @@
+[
+ {
+  "id": "reports-head",
+  "slot": "S"
+ },
+ {
+  "id": "reports-readout",
+  "slot": "S"
+ },
+ {
+  "id": "reports-publishing",
+  "slot": "S"
+ },
+ {
+  "id": "reports-door",
+  "slot": "S"
+ },
+ {
+  "id": "footer",
+  "slot": "U"
+ }
+]

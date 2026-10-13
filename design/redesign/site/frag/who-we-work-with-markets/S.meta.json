@@ -1,27 +1,30 @@
 {
-  "title": "Six markets, on paper",
-  "direction": "A×C · Round 8 · /who-we-work-with §2 (LG, the paper moment)",
-  "summary": "Where the same three situations break, market by market: six sectors with their two traits, each opening in place to the one line that says where it breaks there — type and hairlines on paper, with the photos, network graphs and AI-image slot gone.",
-  "reference": {
-    "site": "Approved Kelwin system: homepage fit/U (the ledger on paper, the head column at the left)",
-    "borrowed": "The kit ledger that opens in place, one row at a time, with the section's head held in a left column so the rows hang from the heading's first line.",
-    "kelwin": "Same family as the homepage 'Who it's for' it is reached from, but its own job: markets, not criteria. Chips carry each market's two traits; an open row shows its line and nothing else. No drawing, no red, no second statement."
-  },
-  "motion": [
-    "entrance: label, heading and lede rise; the six rows cascade 80ms apart; then I·01 opens (≈1.25s, 360ms) — its open height is kept from the first frame, so nothing below moves. This is one of the page's two body play-once moments (the other is none: the situations and the close are still beats).",
-    "ambient: none.",
-    "interaction: rows are buttons (aria-expanded / aria-controls), one open at a time, clicking the open row closes it; closed panels are inert.",
-    "on the live site: plays once as it scrolls into view. Reduced motion: I·01 open at once, no timers."
-  ],
-  "demoMs": 2200,
-  "story": "Deepens the situations the reader has just recognised with the sector detail the homepage doesn't carry: the same three situations, sharpest in committee-decided markets, so a buyer can find his own market and its typical break before he reaches who is sent away.",
-  "copy": [
-    "[N] h2 'The same three situations, in six markets.' · [N] lede 'Committee-decided deals make all three sharper. These are the markets where they show up most.'",
-    "[K] Six markets, their chips and their 'where it breaks' lines (FirmFit.tsx), except:",
-    "[R] I·01 'The story that wins the champion dies in the committee, where every stakeholder carries a different version of what you do.' ('seven stakeholders' was unsourced)",
-    "[N] I·04 adds 'Product-led with a sales-carried expansion is in scope. Card-at-checkout with no sales conversation is not.'",
-    "Cut: photos, the pending AI image, the network graphs, 'Specialist, not generalist', the noise-cut accent line"
-  ],
-  "phone": "1024–1279: the split stays, but the 312px trait column would squeeze the market names, so the traits drop under the name (as on phones) and every name keeps its line. ≤1023: the head spans the width above the ledger (heading up to 16em, lede 46ch), and the ledger is wide enough for the trait column again. ≤767: heading 28px, lede 16px; ledger rows recompose to index · market · toggle on one line with the two chips wrapping under the market name; open lines at 16px. Checked at 320, 390, 834, 1024, 1180.",
-  "notes": "The page's one paper section (data-surface=light), as the story map names it: 'the markets'. I·04 keeps its [K] 'Outbound only works when it sounds like engineering wrote it.' as instructed, though the site has moved off 'outbound' elsewhere; flagged for the founder. The kit ledger, chips and row padding are used as-is; the fragment adds only a row-head focus ring (the kit has none) and the phone/small-desktop recomposition (kitNeeds). Coherence question for the founder: the [N] heading promises 'the same three situations', but no market line names a situation or layer (five of six break in the narrative). Kept as drafted."
+ "title": "Where it breaks, by market",
+ "direction": "A×C · Round 9 · /who-we-work-with §2",
+ "summary": "Six markets as an unruled editorial index under a 72px heading: each market's name at the left, and at the right ONE sentence in one voice that carries the market's two traits and where it breaks there — the approved lines where they already carry both, each in its own shape. No label, codes, chips, toggles or paper.",
+ "reference": {
+  "site": "Kelwin's two-voice statement, applied to reading copy",
+  "borrowed": "An editorial index: the name, then one written sentence — no field structure.",
+  "kelwin": "Kit claim head (.ac-shead--claim, 72px) with no label over it; names in Mona display 32px; 20px sentences in --fg; graphite, because nothing here is a paper document."
+ },
+ "motion": [
+  "entrance: the kit claim head rises; the six entries rise 80ms apart (kit cascade) — the page's second (and last) body play-once moment.",
+  "ambient: none.",
+  "interaction: none (all six read at rest).",
+  "on the live site: plays once as it scrolls into view. Reduced motion: final state."
+ ],
+ "demoMs": 1400,
+ "story": "Lets a buyer find his own market and its typical break before he reaches who is sent away.",
+ "copy": [
+  "[K] heading 'Where it breaks, by market.' (the plan's §5 heading). No label (round 8's 'Six markets' restated the heading).",
+  "Enterprise SaaS — round-8 approved line, verbatim: 'The story that wins the champion dies in the committee, where every stakeholder carries a different version of what you do.' (champion and committee carry 'Sales-carried · Committee buys')",
+  "Cybersecurity — [R] before: 'Every vendor promises the same three outcomes in the same words. Differentiation is a language problem before it’s a product one.' → after: 'Every vendor promises the same three outcomes in the same words, to buyers paid to distrust them.' (folds 'Trust-gated'; drops the aphorism, an antithesis — plan §2 allows one per page and the plateaued 'deposits instead of evaporating' is it)",
+  "FinTech & payments — [K] verbatim: 'Compliance vocabulary smothers the actual story, and deals stall in risk review because nobody armed the champion.' (carries 'Regulated · Risk-averse buyer')",
+  "Developer & data infrastructure — [R] before: 'The buyer reads docs, not decks. Outbound only works when it sounds like engineering wrote it.' → after: 'Engineers try the product from the docs, and trust only what sounds like engineering wrote it.' (folds 'Technical buyer · PLG + sales'; keeps the docs and 'engineering wrote it'; drops the 'not decks' antithesis and 'outbound')",
+  "Professional & B2B services — [K] verbatim: 'Growth stalls where the partners’ networks end — the firm’s knowledge never became a sellable narrative.' (carries 'Relationship-led · Referral ceiling')",
+  "Industrial & deep tech — [R] before: 'Twelve-month deals drift: the narrative that opened the deal isn’t the one that closes it.' → after: 'Against legacy incumbents, twelve-month deals drift until the narrative that opened them is gone.' (folds 'Long cycle · Legacy incumbents'; keeps 'Twelve-month deals drift'; drops the 'isn’t the one' antithesis)",
+  "Cut: I·01–I·06, the 12 boxed mono chips, the open-in-place ledger, the paper surface, the round-8 lede ('Committee-decided deals make all three sharper' — the head lede already says committee), Dev & data's scope note (the PLG decline says it), the 'Six markets' label, the round-9 first pass's clipped trait pairs ('Trust-gated, in a crowded category.' …)."
+ ],
+ "phone": "≤1023: names 26px in cols 1–5, sentences 18px in cols 6–12. ≤767: name (22px) over its sentence (17px), one column. Checked 834 · 390 · 320: no overflow; text-wrap: pretty.",
+ "notes": "Words at rest: 119 (heading, names and sentences; the three ampersands not counted — 122 with them). Six sentence shapes: a where-clause, a trailing 'to buyers…', 'and … because', 'and trust only…', a dash clause, a fronted 'Against…' with 'until'. No antithesis in the section. No ruled list here — the page's one is the situations. Surfaces: the whole page is graphite with ruled seams; there is no paper document on this page (plan §7.5). Coherence pass 3: the services line loses its em-dash turn: “Growth stops where the partners’ networks end, because nobody wrote the pitch down.” (the section stays within its 120 words)"
 }

@@ -1,0 +1,45 @@
+/* ── projects-path · S · /projects, how a project runs (round 9) ──────────────────────────
+   Graphite. The kit's claim head at 64px (.ac-shead--claim > .ac-claim--md; coherence pass 2: the
+   42px head and a 440px plate left the section with no dominant element) and its lede, then a
+   measure plate (kit §12.4 / §12.8), 440px at 1440, drawn in frame
+   units. One filled mass (week one, 320 × 80: five working days), 1px --fg-2 outlines for the
+   build (broken where its length varies), two 1px --fg marks (handover, the stop), three 15px
+   labels anchored to their parts and one dimension with a unit and a number. At ≤1023 the kit
+   swaps the labels for the visible key; at ≤767 the phone drawing (its own viewBox) takes over.
+   Motion, once: week one fills left to right, then the build and handover, then the stop
+   branch. Tokens only. */
+
+.km-projects-path-S__plate { margin-top: 72px; }
+
+/* where the labels and the dimension stand, in frame units (the kit reads --x): the 1440 drawing */
+.km-projects-path-S__dim { --x: 232; }
+.km-projects-path-S__at-week { --x: 226; }
+.km-projects-path-S__at-end { --x: 1089; }
+.km-projects-path-S__at-stop { --x: 681; }
+/* 1024–1279: the labels are 15px whatever the frame, so on the 1440 track "The build, to handover"
+   ran past the plate's right edge (and "Week one: the read" touched its left) below ≈1180. Here the
+   frame swaps to its shorter-track drawing (.km-projects-path-S__svg-mid: week one from 270,
+   handover at 1010) and the labels follow it, so both sit ≥ 24px inside the plate at 1024. */
+.km-projects-path-S__svg-mid { visibility: hidden; }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root:not(.km-home) .km-projects-path-S__plate .ac-measure__svg:not(.km-projects-path-S__svg-mid) { visibility: hidden; }
+  :root:not(.km-home) .km-projects-path-S__svg-mid { visibility: visible; }
+  :root:not(.km-home) .km-projects-path-S__dim { --x: 270; }
+  :root:not(.km-home) .km-projects-path-S__at-week { --x: 264; }
+  :root:not(.km-home) .km-projects-path-S__at-end { --x: 1011; }
+  :root:not(.km-home) .km-projects-path-S__at-stop { --x: 719; }
+}
+
+/* entrance (only under .is-play; reduced motion = final state) */
+.is-play .km-projects-path-S__week { transform-box: fill-box; transform-origin: 0 50%; animation: km-projects-path-S-fill 900ms var(--ease-out) 500ms both; }
+.is-play .km-projects-path-S__build, .is-play .km-projects-path-S__hand { animation: ac-fade 600ms var(--ease-out) 1150ms both; }
+.is-play .km-projects-path-S__stop, .is-play .km-projects-path-S__stopmark { animation: ac-fade 600ms var(--ease-out) 1400ms both; }
+@keyframes km-projects-path-S-fill { from { transform: scaleX(0); } to { transform: none; } }
+
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-projects-path-S__plate { margin-top: 48px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-projects-path-S__plate { margin-top: 32px; }
+  :root:not(.km-home) .km-projects-path-S__plate .ac-measure { margin: 20px 0 8px; }
+}

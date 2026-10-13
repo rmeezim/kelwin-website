@@ -1,29 +1,16 @@
 {
-  "title": "Trace, untangled",
-  "direction": "A×C · Round 8 · capability template (GTM Infrastructure)",
-  "summary": "Header X's grammar with this layer's own band: a knot of disconnected tools untangles into one documented route raised above the market it starts and ends in; one packet runs it once and the buyer node latches red.",
-  "story": "Opens on the job the homepage gave this layer — the machine that carries the story to buyers — and repositions it off ‘outbound’: a signal from the market steps up into one documented route (the four services in order), then steps back down to one buyer. The dimension measures exactly the raised run, so the two levels mean something. Its four flags are the four services the ledger below opens.",
-  "copy": [
-    "[R nav/homepage job] h1 “The machine that / carries it to buyers.”",
-    "[R homepage ‘What it is’] lede",
-    "(FS) Facts · Engagement “Scoped at the readout” · Output “ICP & Signal Map and Orchestration Rules — yours”",
-    "(FS) flag 02.2 “Data pipeline & signal map” (nav rename from “Outbound engine build”)",
-    "[N] the route's two ends “Signal” · “The buyer”; dimension “One documented route” (now measuring only the raised run); the band caption"
-  ],
-  "phone": "≤1023: flags, the dimension (with its extension lines) and the two end names give way to the visible caption and keyed list (kit). ≤767: the phone drawing swaps in (358×290) — the market lane on the left (Signal at the top, the red buyer at the foot) and the raised documented lane on the right carrying the four codes in route order; the keyed list names them, one per line; the h1 wraps at 40px.",
-  "reference": {
-    "site": "Approved interior/X (header grammar) and the nav's TRACE glyph; Height's rule list (refs/capability-specimen-T.webp) for the page's later figure",
-    "mobbin_url": "https://mobbin.com/sites/sections/f8b93019-f62b-4e58-8f0d-e577baa204f3",
-    "ref_file": "refs/interior-r2-X.webp",
-    "borrowed": "X's sheet: statement, facts ledger, the page's own shape drawn large in a registration frame with flags and one dimension.",
-    "kelwin": "TRACE in plan view with an untangle morph (same ten vertices, knot → route), names in mono on the route, flags above and below by level, and a single traversal that ends in the one red. Distinct from homepage slab 02 (iso) and hero take 02 (film)."
-  },
-  "motion": [
-    "entrance: the kit head choreography; registration marks at 600–780ms; the knot fades in at 900ms.",
-    "orchestrated moment (1.7–4.9s): the ten vertices untangle left to right over 1.5s (40ms stagger) into the two-level route; the route brightens, the two end names appear, the four flags register in route order, the dimension draws and its extension lines drop to the two steps; at 3.4s one packet runs Signal → The buyer once (1.5s) and the buyer node latches red. No loop.",
-    "interaction: kit hovers only.",
-    "on the live site: plays once at 40% visible. Reduced motion: the final route with the red buyer, synchronously."
-  ],
-  "demoMs": 5400,
-  "notes": "1,004px at 1440 (band 290 frame units). Words on the drawing: four flags, one dimension and the route's two ends — the duplicate mono station names are gone. One red beyond the label square and rule: the buyer node. No ambient loop on this page."
+ "title": "Your stack, wired to sell",
+ "direction": "A×C · Round 9 · capability template (GTM Infrastructure)",
+ "summary": "GTM Infrastructure's head (coherence pass 3): 104px, stacked, two lines, “Your stack, / wired to sell.”, the accent the noun “stack,” — no longer “The machine that carries your story.”, which shared GTM Intelligence's “The [noun] that [verb]” frame. Lede: “We set up the domains, the data and the routing under your own admin. No new software to license.” The Orchestration Rules sheet is cropped after rule 2 at every width above a phone (rule 1 on a phone).",
+ "reference": {
+  "site": "GoNimbly solutions head (founder's screenshot) on the approved interior header X",
+  "borrowed": "Headline, short lede, one quiet action at the right, the page's picture at full measure under the head.",
+  "kelwin": "The picture is the layer's own document, typeset as a page (kit .ac-sheet), labelled Specimen in its running head."
+ },
+ "motion": [
+  "entrance: the h1 writes itself in (kit §13), then the rule, lede and action; the plate rises and widens.",
+  "reduced motion: final state."
+ ],
+ "demoMs": 2600,
+ "notes": "Coherence pass 2: h1 “The machine / that carries / your story.” (each line holds a phone line at 390; “your message.” broke there). the sheet was held whole (a 2,282px head; 2,499px at 390) — it now runs off the plate's foot after rule 3 (the later rules and the folio are past the crop; the page edge is drawn on three sides). Title “Routing rules” → “Orchestration Rules” (D6: one document, one name). Round 9 fix: the lede no longer rewords the homepage's 'Data pipelines, orchestration, and CRM architecture…' line; the running head names the client as illustrative; the Days allowed column gives the page a measured object (Security review's 14 days is the ten working days rule 3 acts on); the section clips its own x-overflow on phones. Coherence pass (round 9): see summary. Coherence pass 3: h1 recast out of the sibling frame (Intelligence keeps “The loop that learns.”, the layer's homepage name); lede rewritten so it no longer restates the h1; crop after rule 2 at 1440 (was rule 3): the head is 1,602px at 1440 (1,867 in pass 2, 2,282 held whole)."
 }

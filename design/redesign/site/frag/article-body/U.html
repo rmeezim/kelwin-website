@@ -1,32 +1,29 @@
 <section class="km km-article-body-U ac-sec" data-surface="light" aria-label="The note">
-  <!-- The reading spread (RD): the note in cols 3–8, its margin in cols 10–12, one figure across
-       cols 1–12 where the argument turns. Each margin note follows the paragraph it belongs to. -->
+  <!-- The reading spread on paper: the standfirst at 24px, the note in cols 3–8, its margin in
+       cols 10–12, one figure across cols 1–12 where the argument turns. Margin notes follow the
+       paragraph whose calls they answer, so on phones they fall in right after it. Body copy is
+       the approved note, verbatim. -->
   <div class="ac-wrap km-article-body-U__spread">
 
-    <p class="km-article-body-U__p">The 2024 inbox-provider changes made explicit what was already true in practice: bulk senders live or die on authentication, complaint rates, and list quality. Google and Yahoo now enforce hard thresholds<a class="km-article-body-U__ref" href="#km-article-body-U-n1" id="km-article-body-U-r1"><span class="ac-sr">sources </span>1, 2</a> — authenticated domains, sub-0.3% spam-complaint rates, one-click unsubscribe. Below the thresholds you’re a sender; above them you’re noise, and the filter doesn’t send a rejection letter.</p>
-    <aside class="km-article-body-U__note km-article-body-U__key" aria-label="Layer this note diagnoses">
-      <p class="ac-cap">Diagnoses</p>
-      <div class="km-article-body-U__layer">
-        <svg class="km-article-body-U__g" viewBox="0 0 36 24" aria-hidden="true"><path d="M0 18.5H9.5V5.5H25.5V18.5H36"/><rect x="8" y="4" width="3" height="3"/><rect x="24" y="4" width="3" height="3"/><rect x="24" y="17" width="3" height="3"/></svg>
-        <span>GTM Infrastructure</span>
-      </div>
+    <p class="km-article-body-U__sf">Before your message can be judged, it has to exist. For a growing share of B2B outbound, it doesn’t — it dies in a filter, unseen, while the dashboard reports it as ‘delivered.’ Deliverability isn’t a growth hack. It’s the load-bearing floor under every channel decision you make.</p>
+
+    <p class="km-article-body-U__p">The 2024 inbox-provider changes made explicit what was already true in practice: bulk senders live or die on authentication, complaint rates, and list quality. Google and Yahoo now enforce hard thresholds<a class="ac-ref" href="#km-article-body-U-n1" id="km-article-body-U-r1"><span class="ac-sr">sources </span>1, 2</a> — authenticated domains, sub-0.3% spam-complaint rates, one-click unsubscribe. Below the thresholds you’re a sender; above them you’re noise, and the filter doesn’t send a rejection letter.</p>
+
+    <aside class="ac-sidenote km-article-body-U__note km-article-body-U__note--src" id="km-article-body-U-n1" aria-label="Sources 1 and 2">
+      <p class="ac-sidenote__h"><span class="ac-sidenote__n">1</span>Google</p>
+      <p class="ac-sidenote__t">The strictest rules apply to bulk senders: close to 5,000 or more messages a day to personal Gmail accounts.</p>
+      <p class="ac-sidenote__src"><a class="ac-go" href="https://support.google.com/a/answer/81126" target="_blank" rel="noopener">Email sender guidelines, 2024<span class="ac-sr"> (opens in a new tab)</span></a></p>
+      <p class="ac-sidenote__h km-article-body-U__nh--2"><span class="ac-sidenote__n">2</span>Yahoo</p>
+      <p class="ac-sidenote__src"><a class="ac-go" href="https://senders.yahooinc.com/best-practices/" target="_blank" rel="noopener">Sender best practices, 2024<span class="ac-sr"> (opens in a new tab)</span></a></p>
     </aside>
 
     <p class="km-article-body-U__p">What makes this dangerous is the silence. A message that bounces shows up in your data. A message that lands in a folder nobody opens does not. Teams conclude “our messaging isn’t working” and hire a copywriter, when the truthful diagnosis is “our messaging isn’t <em>arriving</em>.”</p>
-    <aside class="km-article-body-U__note km-article-body-U__note--src" id="km-article-body-U-n1" aria-label="Sources 1 and 2">
-      <p class="km-article-body-U__nh"><span class="km-article-body-U__num">1</span>Google</p>
-      <p class="km-article-body-U__nt">The strictest rules apply to bulk senders: close to 5,000 or more messages a day to personal Gmail accounts.</p>
-      <p class="ac-reading__src"><a class="ac-go km-article-body-U__srcl" href="https://support.google.com/a/answer/81126" target="_blank" rel="noopener"><span class="km-article-body-U__lw">Email sender </span>guidelines&nbsp;·&nbsp;2024<span class="ac-sr"> (opens in a new tab)</span></a></p>
-      <p class="km-article-body-U__nh km-article-body-U__nh--2"><span class="km-article-body-U__num">2</span>Yahoo</p>
-      <p class="km-article-body-U__nt">Yahoo’s matching requirements for bulk senders.</p>
-      <p class="ac-reading__src"><a class="ac-go km-article-body-U__srcl" href="https://senders.yahooinc.com/best-practices/" target="_blank" rel="noopener"><span class="km-article-body-U__lw">Sender best </span>practices&nbsp;·&nbsp;2024<span class="ac-sr"> (opens in a new tab)</span></a></p>
-    </aside>
 
     <blockquote class="km-article-body-U__pull">
       <p>You cannot A/B test a message the buyer never saw.</p>
     </blockquote>
 
-    <!-- THE DRAWING · Delivered isn't arrived. What the dashboard reports (an illustrative tile:
+    <!-- THE FIGURE (approved; the model for the interior's artifacts) · Delivered isn't arrived. What the dashboard reports (an illustrative tile:
          "Delivered", 100 of 100 sends, one tick per send) above where the mail landed (Validity's
          2024 global average for legitimate marketing email, scaled to the same 100 sends): 83.5
          inbox · 6.7 spam · 9.8 missing. Two dashed measure lines drop from the tile to the bar
@@ -34,7 +31,7 @@
          Red: the missing segment, the figure's one red mark. -->
     <figure class="km-article-body-U__fig" aria-labelledby="km-article-body-U-figt">
       <figcaption class="km-article-body-U__fighead">
-        <p class="ac-label" id="km-article-body-U-figt">Delivered isn’t arrived</p>
+        <div class="ac-labelrow"><p class="ac-label" id="km-article-body-U-figt">Delivered isn’t arrived</p><p class="ac-status"><span class="ac-state">Specimen</span></p></div>
         <p class="km-article-body-U__figsub">The same 100 sends, as the dashboard reports them and as they landed.<span class="ac-sr"> The dashboard tile reads Delivered: 100 of 100. Measured, 83.5 reached the inbox, 6.7 landed in spam and 9.8 went missing: about one in six never reached the inbox.</span></p>
       </figcaption>
 
@@ -70,14 +67,14 @@
       </div>
 
       <div class="km-article-body-U__figfoot">
-        <p class="km-article-body-U__src"><span class="km-article-body-U__num" id="km-article-body-U-n3">3</span><span class="km-article-body-U__srct">Legitimate marketing email, global average inbox placement in 2024: about one in six never reached the inbox.</span><span class="ac-reading__src"><a class="ac-go km-article-body-U__srcl" href="https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/" target="_blank" rel="noopener">Validity&nbsp;·&nbsp;2025<span class="ac-sr"> (opens in a new tab)</span></a></span></p>
-        <p class="ac-specimen"><span class="ac-chip ac-chip--specimen">Specimen</span><span class="ac-specimen__t">The tile is illustrative. The split beneath it is Validity’s global average, scaled to 100 sends.</span></p>
+        <p class="km-article-body-U__src"><span class="km-article-body-U__num" id="km-article-body-U-n3">3</span><span class="km-article-body-U__srct">Legitimate marketing email, global average inbox placement in 2024: about one in six never reached the inbox.</span><span class="km-article-body-U__srcl"><a class="ac-go" href="https://www.validity.com/resource-center/2025-email-deliverability-benchmark-report/" target="_blank" rel="noopener">Validity, 2025<span class="ac-sr"> (opens in a new tab)</span></a></span></p>
+        <p class="km-article-body-U__spt">The tile is illustrative. The split beneath it is Validity’s global average, scaled to 100 sends.</p>
       </div>
     </figure>
 
     <h2 class="ac-h3 km-article-body-U__h">The floor, specified</h2>
     <p class="km-article-body-U__p km-article-body-U__p--after-h">The components are unglamorous and non-optional. Treated as a spec rather than a checklist, they look like this:</p>
-    <dl class="ac-spec km-article-body-U__spec">
+    <dl class="ac-spec ac-spec--key km-article-body-U__spec">
       <dt>Domain architecture</dt><dd>Sending domains separated from the corporate domain, aged before use, each carrying volume it can defend. Your primary domain’s reputation is not a resource to spend on cold volume.</dd>
       <dt>Authentication</dt><dd>SPF, DKIM, and DMARC actually aligned — not merely present. A surprising number of domains fail alignment while their owners believe they pass.</dd>
       <dt>Warmup and volume discipline</dt><dd>Reputation is earned at low volume and destroyed at high volume. Ramp schedules are boring precisely because they work.</dd>
@@ -86,15 +83,15 @@
 
     <h2 class="ac-h3 km-article-body-U__h">Why this is a systems problem</h2>
     <p class="km-article-body-U__p km-article-body-U__p--after-h">None of these components hold individually. Warmup without list hygiene burns clean domains on dirty data. Authentication without volume discipline authenticates your way into a throttle. This is why we treat deliverability as infrastructure — designed once, instrumented continuously, owned by the system rather than by whoever sent the last campaign.</p>
-    <aside class="km-article-body-U__note km-article-body-U__note--look" aria-label="What to look for">
-      <p class="km-article-body-U__nh">What to look for</p>
-      <p class="km-article-body-U__nt">Reply rates that “mysteriously” decay over 6–10 weeks while open rates hold. It reads like message fatigue. In my experience it is usually reputation decay: the sends are landing progressively deeper in the folder structure. The fix is infrastructural, and no rewrite touches it.</p>
-      <p class="km-article-body-U__nt">Read open rates with care. Since Apple’s Mail Privacy Protection<a class="km-article-body-U__ref" href="#km-article-body-U-n4" id="km-article-body-U-r4"><span class="ac-sr">source </span>4</a>, many opens are recorded whether or not anyone reads the mail.</p>
-      <p class="km-article-body-U__nh km-article-body-U__nh--2" id="km-article-body-U-n4"><span class="km-article-body-U__num">4</span>Apple</p>
-      <p class="ac-reading__src"><a class="ac-go km-article-body-U__srcl" href="https://www.apple.com/newsroom/2021/06/apple-advances-its-privacy-leadership-with-ios-15-ipados-15-macos-monterey-and-watchos-8/" target="_blank" rel="noopener"><span class="km-article-body-U__lw">Mail Privacy </span>Protection&nbsp;·&nbsp;2021<span class="ac-sr"> (opens in a new tab)</span></a></p>
+    <aside class="ac-sidenote km-article-body-U__note km-article-body-U__note--look" aria-label="What to look for">
+      <p class="ac-sidenote__h">What to look for</p>
+      <p class="ac-sidenote__t">Reply rates that “mysteriously” decay over 6–10 weeks while open rates hold. It reads like message fatigue. In my experience it is usually reputation decay: the sends are landing progressively deeper in the folder structure. The fix is infrastructural, and no rewrite touches it.</p>
+      <p class="ac-sidenote__t">Read open rates with care. Since Apple’s Mail Privacy Protection<a class="ac-ref" href="#km-article-body-U-n4" id="km-article-body-U-r4"><span class="ac-sr">source </span>4</a>, many opens are recorded whether or not anyone reads the mail.</p>
+      <p class="ac-sidenote__h km-article-body-U__nh--2" id="km-article-body-U-n4"><span class="ac-sidenote__n">4</span>Apple</p>
+      <p class="ac-sidenote__src"><a class="ac-go" href="https://www.apple.com/newsroom/2021/06/apple-advances-its-privacy-leadership-with-ios-15-ipados-15-macos-monterey-and-watchos-8/" target="_blank" rel="noopener">Mail Privacy Protection, 2021<span class="ac-sr"> (opens in a new tab)</span></a></p>
     </aside>
 
-    <p class="km-article-body-U__p km-article-body-U__p--last">The strategic point: channel decisions sit on top of this floor. Omnichannel orchestration assumes each channel actually transmits. Build the floor first; then the interesting decisions become possible.<span class="km-article-body-U__end" aria-hidden="true"></span></p>
+    <p class="km-article-body-U__p km-article-body-U__p--last">The strategic point: channel decisions sit on top of this floor. Omnichannel orchestration assumes each channel actually transmits. Build the floor first; then the interesting decisions become possible.</p>
 
   </div>
 </section>

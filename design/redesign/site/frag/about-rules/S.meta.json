@@ -1,30 +1,28 @@
 {
-  "title": "The rules, on paper",
-  "direction": "A×C · Round 8 · /about · body (TN) · the page's paper",
-  "summary": "The firm's doctrine as its standing document: five rules, all open, on a ruled two-column paper sheet that ends on the exit test set across the full width — the written legend of the matrix drawn in the header.",
-  "story": "The header drew where the rules bind; this is what they say. It is the one thing on the page the homepage doesn't carry, so it gets the page's one paper moment, and it reads in order to its conclusion: if it stops working the day we leave, we built it wrong — the sentence the homepage handover is built on.",
-  "copy": [
-    "[N] h2 “The rules every engagement is built on.”",
-    "[K] 01 Diagnosis before prescription — body [K]",
-    "[K] 02 Assets first — then the retainer — body [K, the approved service model; contains the budgeted 'compounds' sentence, kept verbatim]",
-    "[K] 03 Clarity is infrastructure — body [R] “Most pipeline problems are narrative problems in disguise. We write the language down before we build anything that carries it.”",
-    "[R] 04 Learning is the asset (was “Compounding beats resetting”) — body [R] “What an engagement learns is written into the system, so next quarter starts where this one ended.”",
-    "[K] 05 The exit test — body [K]",
-    "[N] “Binds at · <phase>” chips (the phase names are [K] method); on phones they are read by screen readers only"
-  ],
-  "phone": "≤1023: the two-column sheet holds (two tenets per row), the single column rule still spans both rows, and 05's sentence stacks under its 64px title. ≤767: one column, the column rule hidden, every tenet stays open (no tabs, no accordions): code + title on one row (titles 24px), the body under it; 05's title 44px and its sentence 18px. The “Binds at” chips step back to screen readers on phones: the header's keyed list (~900px above) already sets each rule beside its phases, so on a phone each binding is said once. Measured at 390 with production's 72px padding: 1,267px (was 1,515).",
-  "reference": {
-    "site": "Mobbin, Intercom “How we work” (a principles block set as titled paragraphs in two columns) · approved Kelwin principle/S (the paper surface, ink type) and fit/U (ruled two-column ledgers)",
-    "mobbin_url": "https://mobbin.com/sites/sections/b75e7131-8027-4733-9e06-ae7f76c173f4",
-    "ref_file": "refs/about-rules-S.webp",
-    "borrowed": "Principles set as a title + short paragraph in two columns, read in order.",
-    "kelwin": "No icons, no illustration, no cards: a ruled paper sheet whose hairlines meet at every crossing (one column rule drawn once down both rows), the matrix's square as each tenet's index mark, the phase each rule binds at named in a plain chip, and the last rule set as a poster across the full width."
-  },
-  "motion": [
-    "entrance (reveal only, a still beat): the section head (kit), the sheet fades in, its one column rule draws down both rows, the five tenets rise in order 01 → 05.",
-    "ambient: none. interaction: none.",
-    "on the live site: plays once when the section scrolls into view. Reduced motion: final state at once."
-  ],
-  "demoMs": 1500,
-  "notes": "Not a specimen: the doctrine is the firm's own and real, so it carries no SpecimenTag. The sheet has no column gap: each tenet pads half a gutter either side of the centre, so the row rules run edge to edge and the one column rule (an abspos ::before placed in grid rows 1–2) meets them; checked pixel by pixel (x=720 continuous from the top rule to the rule above 05, both row rules unbroken). The “Binds at” chips are words only (the mini five-cell rows were a third encoding of the band and are gone). 05's index square is ink, not red: the week's red node can share a 900px view with this sheet's foot (§1.5, one red per view), so 05 is carried by its 88px title alone. §4.7 drafted the 05 square red; restoring it is one line (.km-about-rules-S__t--05 .km-about-rules-S__sq { background: var(--accent) }) if the founder prefers it and the week is cut."
+ "title": "The rules as type",
+ "direction": "A×C · Round 9 · /about · the five rules",
+ "summary": "The five rules as type (coherence pass 2, D5): the four [K] rules as run-in statements at 28px — title in --fg, its one-line gloss after it in --fg-2 — then the exit test as the page's poster line.",
+ "story": "The doctrine, read rather than scanned: four rules in a paragraph's voice, the fifth set large because every engagement is designed backwards from it.",
+ "copy": [
+  "[N] Label/h2 “The rules we work by”",
+  "[K] Diagnosis before prescription. “No engagement starts without the audit’s readout — building before diagnosing sells the same fix to every different problem.” (verbatim; whether ‘engagement’ should become ‘system’ is a founder question, now that projects run without the audit)",
+  "[K] Assets first — then the retainer. “Everything we install is documented in your language and lives in your stack. The operating retainer compounds a system you own — it never becomes the thing you rent.”",
+  "[R] Clarity is infrastructure. “Most pipeline problems are narrative problems in disguise. We write the language down first.” (round 8's [R] second sentence cut to fit the 120-word budget)",
+  "[R] Learning is the asset. “What an engagement learns is written into the system. Next quarter starts where this one ended.”",
+  "[K] The exit test (88px) — “If it stops working the day we leave, we built it wrong. Every engagement is designed backwards from this sentence.”"
+ ],
+ "phone": "≤1023: the four keep two columns at 19px; the exit test 72px. ≤767: one column at 18px; the exit test at min(52px, 14% of the stage) on one line.",
+ "reference": {
+  "site": "Round-8 about-rules (the founder's words and the 88px exit-test poster moment, kept) · ROUND9-PLAN §2/§5",
+  "mobbin_url": "",
+  "ref_file": "",
+  "borrowed": "Editorial run-in heads: a name in the text's own voice running into its sentence, as in a printed manifesto.",
+  "kelwin": "No numbering (order is not the content), no ruled rows, no chips; one dominant line; graphite (the rules are not a paper document)."
+ },
+ "motion": [
+  "entrance: the label fades, the four rise together, then the exit test rises and its sentence follows (the section's one moment).",
+  "reduced motion: final state."
+ ],
+ "demoMs": 1600,
+ "notes": "Coherence pass 2: no longer title-left/gloss-right rows (the row recipe stays on three pages only). 117 words at rest (label 5 · rules 112). Height ≈893px at 1440. No ruled list on the page now. Coherence pass (round 9): see summary. Coherence pass 3: rule 3's gloss no longer opens on “Most …”: “We write the language down first, because pipeline problems usually start in the narrative.” The exit test is set at the kit's claim size (.ac-claim--md: 64px at 1440, 48 tablets, 32 phones) so it never matches or outranks the h1 (it was 88 = the h1 at 1440, 72 > 69.5 at 834). Final check (verify r3): rule 3's gloss echoed the note title “why pipeline problems rarely start in the pipeline” (also the Insights index's first entry); now plainly: “We write the language down first, because every channel and sales call runs on it.” The rule title stays as approved."
 }
