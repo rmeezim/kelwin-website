@@ -1,23 +1,28 @@
-/* ── footer · X · The mark, buried (round 2, A×C) ─────────────────────────
+/* ── footer · U · The mark, on the line (round 9; from round 2 X, A×C) ─────────────
    Round-1 footer A, kept for its language: the red-square label, four hairline
    strips (index · wide title · items) and a hairline band with the legal pair
-   and the outlined audit action. The founder's two fixes:
-   ① the lockup is ONE flat tone: no red core;
-   ② it is buried: set margin to margin, the footer's bottom edge cuts it at
-      half its height, so the page ends inside the brand.
-   The legal row moves above the crop (DIRECTION-AC §5.3) and the FIG. caption
-   goes. One C touch: registration marks where the legal hairline meets the
-   margins, closing the frame the hero opened with the same + marks.
+   and the outlined audit action. The founder's fixes:
+   ① the lockup is ONE flat tone: no red core (round 2);
+   ② it is buried: ~70% of the content width, set right, its lower fifth cut
+      away (rounds 4–5);
+   ③ round 9: it no longer hangs below the legal row. It sits ON the legal
+      hairline, which buries its lower fifth, and the legal row is the page's
+      last edge: sitemap → the lockup → the line → © and the controls.
+   One C touch: registration marks where the legal hairline meets the margins,
+   closing the frame the hero opened with the same + marks.
    Red: the label square only (family punctuation); the mark carries none.   */
 
 .km-footer-U {
   /* Round 4: about 70% of the content width, set right; one-fifth buried; one quiet tone */
   --lk-w: calc((var(--stage) - 2 * var(--margin)) * .7);   /* ≈ 918px */
   --lk-h: calc(var(--lk-w) * 152 / 734);                   /* ≈ 190px, the whole lockup */
-  --lk-vis: calc(var(--lk-h) * .8);                        /* one-fifth buried: the cut lands at y≈122/152,
+  --lk-vis: calc(var(--lk-h) * .8);                        /* one-fifth buried: the line cuts it at y≈122/152,
                                                                so a sliver of the smallest square shows */
   --lk-tone: rgba(251,250,246,.13);                        /* a quiet watermark tone, well under the links */
   padding-top: var(--ac-pad-y);
+  /* the page's foot: one gutter under the legal band, so the controls hang from their line
+     and do not sit on the window's edge (22px above them, 46px below) */
+  padding-bottom: var(--gutter);
   overflow: hidden;
 }
 
@@ -52,9 +57,18 @@
 .km-footer-U__a--ne:hover .km-footer-U__ar { transform: translate(2px, -2px); }
 .km-footer-U__a--go:hover .km-footer-U__ar { transform: translateX(3px); }
 
-/* ── the legal row (88px, the hero band's height), above the crop ── */
+/* ── the lockup, sitting on the legal hairline ──
+   Inside the content wrap, so its box is the content width and the mark sets right on the
+   margin. The box is 80% of the lockup's height and ends exactly where the legal hairline
+   begins: the line is the cut, and the lower fifth is buried behind it. */
+.km-footer-U__bury {
+  position: relative; height: var(--lk-vis); margin-top: 112px; overflow: hidden;
+}
+.km-footer-U__mark { display: block; --logo-h: var(--lk-h); width: var(--lk-w); margin-left: auto; color: var(--lk-tone); }
+
+/* ── the legal row (88px, the hero band's height): the page's last edge ── */
 .km-footer-U__legal {
-  position: relative; margin-top: 112px; height: 88px;
+  position: relative; height: 88px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .km-footer-U__legal::before {
@@ -74,16 +88,10 @@
 .km-footer-U__pair a:hover, .km-footer-U__pair a:focus-visible { background: var(--fg); color: var(--bg); box-shadow: none; outline: none; }
 .km-footer-U__top { min-width: 176px; justify-content: center; }
 
-/* ── the buried lockup: margin to margin, cut by the footer's bottom edge ── */
-.km-footer-U__bury {
-  position: relative; height: var(--lk-vis); margin: 64px var(--margin) 0; overflow: hidden;
-}
-.km-footer-U__mark { display: block; --logo-h: var(--lk-h); width: var(--lk-w); margin-left: auto; color: var(--lk-tone); }
-
 /* ── entrance (html.is-play only), along the reading path:
-      label → strips 01→04 → legal hairline draws left→right and each + registers
-      as the line reaches it → © and controls fade in → LAST, the lockup rises
-      once, slowly, into its crop. Nothing moves after ≈2.9s. ── */
+      label → strips 01→04 → the legal hairline draws left→right, each + registering as
+      the line reaches it, and © then the controls fade in behind the line → LAST, the
+      lockup rises once, slowly, out of the line into its crop. Nothing moves after ≈3.1s. ── */
 @keyframes km-footer-U-fade { from { opacity: 0; } }
 @keyframes km-footer-U-up { from { opacity: 0; transform: translateY(12px); } }
 @keyframes km-footer-U-drawx { from { transform: scaleX(0); } }
@@ -95,10 +103,21 @@
 .is-play .km-footer-U__map > .ac-strip > * { animation: km-footer-U-up 600ms var(--ease-out) both; animation-delay: calc(200ms + var(--i) * 90ms); }
 .is-play .km-footer-U__map > .ac-strip > .ac-h3 { animation-delay: calc(260ms + var(--i) * 90ms); }
 .is-play .km-footer-U__map > .ac-strip > .km-footer-U__ul { animation-delay: calc(330ms + var(--i) * 90ms); }
-.is-play .km-footer-U__legal::before { animation: km-footer-U-drawx 1200ms var(--ease-out) 300ms both; }
-.is-play .km-footer-U__copy, .is-play .km-footer-U__ctl { animation: km-footer-U-fade 500ms var(--ease-out) 800ms both; }
-/* the one orchestrated moment, and the last word: a single slow rise from fully
-   below the edge into its crop (2s --ease-inout from 900ms, so it surfaces
-   only once the legal row is in, and lands by ≈2.9s). It never moves again. */
-.is-play .km-footer-U__mark { animation: km-footer-U-rise 2000ms var(--ease-inout) 900ms both; }
-
+/* the line starts as the last strip's items rise (450ms) and reaches the right margin ≈1.1s */
+.is-play .km-footer-U__legal::before { animation: km-footer-U-drawx 1100ms var(--ease-out) 450ms both; }
+.is-play .km-footer-U__copy { animation: km-footer-U-fade 500ms var(--ease-out) 750ms both; }
+.is-play .km-footer-U__ctl { animation: km-footer-U-fade 500ms var(--ease-out) 1000ms both; }
+/* the one orchestrated moment, and the last word: a single slow rise from fully behind the
+   line into its crop (2s --ease-inout from 1.1s, once the line is drawn under it; it clears
+   the line only as © and the controls settle, and lands by ≈3.1s). It never moves again. */
+.is-play .km-footer-U__mark { animation: km-footer-U-rise 2000ms var(--ease-inout) 1100ms both; }
+/* the end beat waits for the reader: the section plays as its top arrives, and on a phone (or a
+   slow scroll) the legal row is still far below the fold. Until half of it is on screen (U.js sets
+   data-end="wait", then clears it) the hairline, its + marks, © and the controls, and the rise hold
+   at their first frame; then they play in the order above, so the rise out of the line is seen.
+   When the reader is already there, nothing waits. */
+.is-play .km-footer-U[data-end="wait"] .km-footer-U__legal::before,
+.is-play .km-footer-U[data-end="wait"] .km-footer-U__legal > .ac-reg,
+.is-play .km-footer-U[data-end="wait"] .km-footer-U__copy,
+.is-play .km-footer-U[data-end="wait"] .km-footer-U__ctl,
+.is-play .km-footer-U[data-end="wait"] .km-footer-U__mark { animation-play-state: paused; }

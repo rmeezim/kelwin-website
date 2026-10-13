@@ -3,12 +3,14 @@ import Slot from "@/components/home/Slot";
 import HashLink from "@/components/ui/HashLink";
 import "./Footer.css";
 
-/* 11 · Footer — "The mark, quietly buried" (approved mockup: design/redesign/site/frag/footer/U).
-   The coda and the index: the red-square label, four hairline sitemap strips (01 → 04), the
-   legal row on a hairline that closes the frame the hero opened (+ at each margin), and the
-   lockup in one quiet tone, ~70% of the content width, set right, its lower fifth buried by
-   the page's last edge. It plays once as it scrolls into view; the lockup's slow rise is the
-   last thing to move. The London readout is written by footer-behavior.ts.
+/* 11 · Footer — "The mark, on the line" (approved mockup: design/redesign/site/frag/footer/U).
+   The coda and the index: the red-square label, four hairline sitemap strips (01 → 04), then the
+   lockup in one quiet tone, ~70% of the content width, set right, sitting on the legal hairline,
+   which buries its lower fifth (round 9: nothing of the brand hangs below the line). The legal row
+   is the page's last edge; its hairline closes the frame the hero opened (+ at each margin). It
+   plays once as it scrolls into view; the lockup's slow rise out of the line is the last thing to
+   move. footer-behavior.ts holds that end beat (the line, ©, the controls, the rise) until the
+   legal row is on screen, and writes the London readout.
    Its internal links are HashLinks: on the page they point at (Methodology on the homepage, Privacy
    on /privacy …) they scroll there instead of doing nothing. */
 
@@ -110,10 +112,17 @@ export default function Footer() {
             </div>
           </nav>
 
-          {/* the legal row sits above the crop; its hairline closes the frame the hero opened */}
+          {/* the lockup, one quiet tone, ~70% wide and set right. It sits on the legal hairline, which
+              buries its lower fifth. Decoration: the bar's lockup already names the site, so it stays
+              out of the a11y tree, and the © row and controls follow the sitemap in reading order. */}
+          <div className="km-footer__bury" aria-hidden="true">
+            <span className="km-logo km-footer__mark" />
+          </div>
+
+          {/* the legal row is the page's last edge; its hairline closes the frame the hero opened */}
           <div className="km-footer__legal">
-            <span className="ac-reg ac-reg--tl" style={{ "--d": "300ms" } as CSSProperties} aria-hidden="true" />
-            <span className="ac-reg ac-reg--tr" style={{ "--d": "1000ms" } as CSSProperties} aria-hidden="true" />
+            <span className="ac-reg ac-reg--tl" style={{ "--d": "450ms" } as CSSProperties} aria-hidden="true" />
+            <span className="ac-reg ac-reg--tr" style={{ "--d": "1100ms" } as CSSProperties} aria-hidden="true" />
             <p className="ac-cap km-footer__copy">© 2026 Kelwin · All rights reserved</p>
             <div className="km-footer__ctl">
               <div className="km-footer__pair">
@@ -125,12 +134,6 @@ export default function Footer() {
               </HashLink>
             </div>
           </div>
-        </div>
-
-        {/* the lockup, one quiet tone, ~70% wide and set right; the footer's bottom edge buries its lower
-            fifth. Decoration: the bar's lockup already names the site, so it stays out of the a11y tree. */}
-        <div className="km-footer__bury" aria-hidden="true">
-          <span className="km-logo km-footer__mark" />
         </div>
       </footer>
     </Slot>
