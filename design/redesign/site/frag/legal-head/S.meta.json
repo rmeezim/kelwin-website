@@ -1,7 +1,7 @@
 {
  "title": "A document, plainly titled",
  "direction": "A×C · Round 9 · /privacy",
- "summary": "The privacy policy's head, approved (P13) and changed only where round 9 says: no breadcrumb meta and no facts box, one plain line naming Kelwin, LLC (Q8), the address as a plain status, the effective date and the review status; the approved contents strip with its clause numbers in Mona; no plate, because the document is the page.",
+ "summary": "The privacy policy's head, approved (P13) and changed only where round 9 says: no breadcrumb meta and no facts box, one plain line naming Kelwin (Q8), the address as a plain status, the effective date and the review status; the approved contents strip with its clause numbers in Mona; no plate, because the document is the page.",
  "reference": {
   "site": "Approved round-8 legal head (P13) · kit 12.3 / 12.11",
   "mobbin_url": "",
@@ -18,7 +18,7 @@
  "story": "Opens the privacy policy as a document: what it is, who issues it, its status, and where each clause is.",
  "copy": [
   "[K] label 'Legal' · h1 and lede verbatim (P13)",
-  "[Q8] status line 'Kelwin, LLC · Address to be confirmed · Effective July 2026 · Draft, pending legal review'",
+  "[Q8] status line 'Kelwin · Address to be confirmed · Effective July 2026 · Draft, pending legal review'",
   "[K] clause titles verbatim",
   "retired: the 'Privacy policy' / 'Terms of service' breadcrumb, the Effective / Status / Questions facts box (its email moves to the close's /contact door; the body keeps its own address)"
  ],

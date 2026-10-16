@@ -10,7 +10,7 @@ import "./Footer.css";
    is the page's last edge; its hairline closes the frame the hero opened (+ at each margin). It
    plays once as it scrolls into view; the lockup's slow rise out of the line is the last thing to
    move. footer-behavior.ts holds that end beat (the line, ©, the controls, the rise) until the
-   legal row is on screen, and writes the London readout.
+   legal row is on screen, and writes the visitor's local-time readout.
    Its internal links are HashLinks: on the page they point at (Methodology on the homepage, Privacy
    on /privacy …) they scroll there instead of doing nothing. */
 
@@ -101,11 +101,11 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="km-footer__t">
-                  London{" "}
+                  <span data-city="">Your time</span>{" "}
                   <time className="km-footer__clock" data-clock="">
-                    14:32
+                    --:--
                   </time>{" "}
-                  <span data-tz="">BST</span>
+                  <span data-tz="" />
                 </li>
                 <li className="km-footer__t km-footer__t--quiet">Built in-house, no template</li>
               </ul>

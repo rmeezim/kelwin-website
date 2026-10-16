@@ -3,9 +3,24 @@
 ## Company Context
 Kelwin is a premium B2B GTM Partner & Advisory firm. It designs, installs and runs revenue architectures as a service:
 - the narrative, channel and market intelligence systems that turn fragmented growth into repeatable pipeline;
-- after handover, the system is the client's, run by their operator or by Kelwin on retainer.
+- **retainer first** (founder, round 9): Kelwin runs the system for the client on a retainer; what it builds lives in the
+  client's own accounts and documents, and it is handed over only when a client asks.
+
+How it sells (round 9; the details are being set in `design/redesign/work/r10/BUSINESS-MODEL.md`):
+- the free **System Audit** is the main door: one 30-minute first call, ten working days, and the readout presented
+  on a 60-minute call;
+- three packages, **Launch**, **Growth** and **Scaling**, each on a 6-month minimum whose first 3 months are a pilot;
+- fixed-scope **projects** as a smaller way in, and an upsell path into the packages.
+
+Prices are not shown on the site unless the founder decides otherwise.
 
 Kelwin is not a cheap lead-generation agency. It is a revenue infrastructure, narrative strategy and GTM systems partner.
+
+**Identity and voice (founder, round 9):**
+- Say "Kelwin", never "Kelwin, LLC". It is registered in Delaware, with an address in New York, New York, USA.
+- Name no one: no team member and not the founder. Speak as "the founding team" and present a firm, never one person,
+  without inventing people, headcounts, offices or clients.
+- "Reports" are Kelwin's client case studies, under an institutional name.
 
 ## Founder's standing rules (binding — they outrank everything below)
 1. **No Plurel anywhere on the Kelwin website.** That means no sister-company line, no pointer, no link, and no visible copy. Code comments don't count.
@@ -17,13 +32,21 @@ Kelwin is not a cheap lead-generation agency. It is a revenue infrastructure, na
    - Browser-default `<em>`/`<i>` italics are restyled to `font-style: normal` and weight 600.
    - The `--font-serif` token resolves to a sans face.
 5. **Flat colour.**
-   - No gradients, glow shadows, glass/backdrop blur or grain, except inside the hero film (`.km-film`).
+   - No gradients, glow shadows, glass/backdrop blur or grain, except inside the hero film (`.km-film`) and the frosted
+     picture plates that rule 6 allows.
    - One founder exception (round 7, C2): on desktop, once the page scrolls, the nav bar condenses into a narrower,
      translucent bar with a backdrop blur (a Palantir-style bar). Chrome only — never in sections.
    - The page-level `.site-grain` overlay is legacy and is not drawn on the homepage.
-6. **No static pictures in the v5 system.**
-   - Build with type, grid, flat colour, rules, numbers, inline-SVG drawings and motion.
-   - The one exception is the hero film (see Homepage).
+6. **Pictures, but only real ones** (amended by the founder, round 9):
+   - Build mainly with type, grid, flat colour, rules, numbers, inline-SVG drawings and motion.
+   - A page may open on real footage or a photograph, right under its headline, with a different shot on each page.
+     Every picture is frosted and graded like the hero film.
+   - About may show the team, and working sessions shot with the client's written consent. Team portraits are
+     added as people join, shot the same way.
+   - Never stock photos of people, never AI-made pictures, and the old v4 photographs never come back.
+   - Until a shot exists, its place shows a card naming the shot, or a blurred crop of the hero film marked
+     "Stand-in". Who We Work With keeps its stand-in.
+   - The hero film stays the homepage's own exception (see Homepage).
 7. **Never fabricate proof.**
    - Illustrative artifacts are labelled as specimens.
    - Unpublished content carries an explicit status.

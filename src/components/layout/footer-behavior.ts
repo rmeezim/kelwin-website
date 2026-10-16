@@ -9,9 +9,12 @@ import type { Behavior } from "@/components/home/types";
        controls, and the lockup's rise at their first frame; they then play in their order, so
        the lockup's rise out of the line is seen, not finished off-screen. Fail-open: the flag is
        set only once the observer is watching, so if anything here fails nothing is held.
-   2 · The Contact strip's London readout: hours and minutes only, refreshed every 15s. Nothing on
-       the footer loops visibly; under reduced motion it is written once, with no timer, and the
-       end beat is not held (there is no entrance to hold). */
+   2 · The Contact strip's local-time readout (founder, round 9: "only show the clock for whichever
+       location the visitor is actually located in"): the visitor's own browser time zone, no IP
+       lookup; the city is the zone's own city ("America/New_York" → "New York"), UTC when the
+       browser gives none. Hours and minutes only, refreshed every 15s. Nothing on the footer loops
+       visibly; under reduced motion it is written once, with no timer, and the end beat is not
+       held (there is no entrance to hold). */
 export const init: Behavior = (root, { reduced }) => {
   const stops: Array<() => void> = [];
   const cleanup = () => stops.splice(0).forEach((stop) => stop());
@@ -37,26 +40,40 @@ export const init: Behavior = (root, { reduced }) => {
 
   const clock = root.querySelector<HTMLTimeElement>("[data-clock]");
   const tzEl = root.querySelector<HTMLElement>("[data-tz]");
+  const cityEl = root.querySelector<HTMLElement>("[data-city]");
   if (!clock) return cleanup;
 
-  const TZ = "Europe/London";
+  let TZ = "UTC";
+  try {
+    TZ = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  } catch {
+    /* keep UTC */
+  }
+  // browsers may report a legacy zone name (Chromium: Asia/Calcutta); show today's city name
+  const ALIAS: Record<string, string> = { Calcutta: "Kolkata", Saigon: "Ho Chi Minh City", Ho_Chi_Minh: "Ho Chi Minh City", Kiev: "Kyiv", Rangoon: "Yangon", Katmandu: "Kathmandu", Godthab: "Nuuk", Asmera: "Asmara" };
+  const last = TZ.split("/").pop() || "UTC";
+  const city = /^(Etc\/)?(UTC|GMT|UCT|Universal|Zulu)/i.test(TZ) ? "UTC" : (ALIAS[last] || last.replace(/_/g, " "));
+  if (cityEl) cityEl.textContent = city;
+
   let fmt: Intl.DateTimeFormat;
-  let zone: Intl.DateTimeFormat;
+  let zones: Intl.DateTimeFormat[];
   try {
     fmt = new Intl.DateTimeFormat("en-GB", { timeZone: TZ, hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
-    zone = new Intl.DateTimeFormat("en-GB", { timeZone: TZ, timeZoneName: "short" });
+    // a lettered abbreviation where a locale has one (EDT, BST, CET), else the offset (GMT+5)
+    zones = ["en-US", "en-GB"].map((l) => new Intl.DateTimeFormat(l, { timeZone: TZ, timeZoneName: "short" }));
   } catch {
     return cleanup;
   }
+  const zoneName = (now: Date) => {
+    const names = zones.map((z) => z.formatToParts(now).find((x) => x.type === "timeZoneName")?.value || "");
+    return names.find((n) => /^[A-Z]{2,5}$/.test(n)) || names[0];
+  };
 
   const tick = () => {
     const now = new Date();
     clock.textContent = fmt.format(now);
     clock.setAttribute("datetime", now.toISOString());
-    if (tzEl) {
-      const part = zone.formatToParts(now).find((x) => x.type === "timeZoneName");
-      if (part) tzEl.textContent = part.value;
-    }
+    if (tzEl && city !== "UTC") tzEl.textContent = zoneName(now);
   };
 
   tick();
