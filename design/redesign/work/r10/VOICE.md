@@ -1,6 +1,6 @@
 # The Kelwin voice
 
-Round 10 · 16 October 2026 · a draft for the founder's yes
+Round 10 · 16 October 2026 · a draft for the founder's yes · second version
 
 You told us in round 9 that the copy on every page still reads as AI-made, and that a firm presenting itself as a
 high-quality, strategic partner can't sound like that. This guide is the fix. Everyone who writes for the site
@@ -14,6 +14,9 @@ follows it, and every page is checked against it before you see it.
 - The visible text of the 18 round-9 interior pages, about 8,400 words. We pulled 75 lines that read as
   machine-made and named the habit behind each one (section 5.2).
 - A published checklist of AI-writing habits (the Humanizer), narrowed to the ones our pages actually show.
+- A second editor's read of the first version of this guide and of the Narrative Systems rewrite. The first
+  rewrite passed every word-level check and still read as made, because of habits the first guide didn't cover
+  and two habits its own rules caused. Section 5.4 lists them; the rules below now cover them.
 
 **Binding decisions this guide follows:** retainer first, handover only on request (A1); no names, not even the
 founder's, and "the founding team" for people (A7, A8); "Kelwin", never "Kelwin, LLC" (A5); never fabricate proof
@@ -26,8 +29,9 @@ founder's, and "the founding team" for people (A7, A8); "Kelwin", never "Kelwin,
 1. Say who does what to what. "We set up your sending domains" beats "Domains, aligned."
 2. Name real things: the deck, the CRM field, the first email, the 30-minute call.
 3. Use numbers we can stand behind, and no others.
-4. Every section opens with a sentence a ten-year-old could repeat back.
-5. We run what we build, every month. It lives in your accounts, so it's yours.
+4. Say each thing once, where the reader needs it.
+5. Every section opens with a short sentence a ten-year-old could repeat.
+6. We run what we build, every month. Everything we set up for you sits in your accounts and in your name.
 
 ---
 
@@ -50,8 +54,10 @@ about, our internal names. Every section has to answer one of their questions:
 
 - What is this?
 - What exactly do you do, and what do I get?
+- Who does the work day to day, you or my team?
 - What do you need from me: time, access, people, money?
 - What happens if it doesn't work?
+- How do I buy it?
 - Why should I believe you?
 
 ---
@@ -65,10 +71,11 @@ about, our internal names. Every section has to answer one of their questions:
 | A senior operator on a call, explaining how they would fix your pipeline and in what order | A SaaS homepage: "Your stack, wired to sell." |
 | Specific: "We read bounce and complaint rates for each domain every week." | Vague: "After handover, one person keeps it healthy." |
 | Calm and sure of the facts, open about what we don't know | Grand: "We design the category around the problem as you name it." |
-| Plain verbs: write, send, call, check, fix, pay, stop | Verbs borrowed from poetry: carry, land, survive, drift, compound |
-| Reasons: "Domains first, because a message in spam can't be tested." | Slogans: "Clarity is infrastructure." |
+| Plain verbs: write, send, call, check, fix, pay, stop | Verbs borrowed from poetry: carry, land, survive, drift, compound (all on the never list, 4.1) |
+| A reason where the reader would ask why: "Domains first, because a message in spam can't be tested." | Slogans: "Clarity is infrastructure." |
 | Ready to say no: "If the plan is to send more, we're the wrong hire." | A manifesto: "Renting activity is the cycle we exist to end." |
 | Full sentences with a doer | Fragment stacks: "Ten working days. Clear findings. Actionable recommendations." |
+| Each thing said once, in the place it's needed | The same list or promise repeated in every section |
 
 ### 2.2 What we take from the founder's own writing
 
@@ -76,15 +83,15 @@ These are your sentences from the round-9 notes. Each one has the thing the site
 
 - "Our main priority would be to keep clients on a retainer for cash flow purposes." *A plain reason, said out loud.*
 - "The first 3 months of that engagement would be the pilot phase, where we would be testing out different angles."
-  *A number, a name for the stage and what happens in it.*
+  *A number, a name for the stage, and what happens in it.*
 - "If they're signing us for the $8,000-per-month retainer contract for 6 months, the client would pay us around
   $3,500 per month for the first 3 months." *A worked example with real money.*
-- "To equally distribute the risk between both parties." *He thinks about the client's risk as well as ours.*
-- "Reports are case studies, not some random bullshit." *He calls a thing by its name.*
+- "To equally distribute the risk between both parties." *You think about the client's risk as well as ours.*
+- "We only hand over to the clients if they request to be handed over." *A whole policy in one sentence.*
 
 **What we keep:** "we" and "the client", numbers, months, money, risk, the reason behind each decision, and naming
 things plainly. **What we leave out:** the long spoken run-on sentences, the hedges ("I feel like", "kind of",
-"pretty much"), the internal reasons (cash flow, building our data) and the swearing. The site keeps his
+"pretty much"), the internal reasons (cash flow, building our data) and the swearing. The site keeps your
 plainness and says it in short sentences.
 
 ### 2.3 What "strategic" sounds like
@@ -92,134 +99,226 @@ plainness and says it in short sentences.
 A strategic partner sounds strategic through the choices it shows, and adjectives don't do that work. On the page
 that means:
 
-- **The order, and the reason for it.** "We fix sending first. If emails land in spam, no test of the message
+- **The order, and the reason for it.** "We fix sending first. If your emails go to spam, no test of the message
   means anything."
-- **The trade-off.** "Fewer emails, to fewer companies, each showing a reason to buy now."
+- **The trade-off.** "We send fewer emails, to fewer companies, each showing a reason to buy now."
 - **The refusal.** "We don't buy or sell lists. A data vendor is cheaper for that."
 - **What we need from you.** "Two 90-minute sessions and read-only access to your CRM."
 - **What happens if it fails.** "If week one shows sending isn't the problem, the project stops there and you get
   the reason in writing."
+- **A point of view another firm wouldn't sign.** "We write the pitch from your buyers' words first, including
+  buyers who said no, and from your leadership's words second."
+
+A page can pass every rule in this guide and still read as made if the method it describes is weak. A seasoned
+buyer reads the method first: who is heard, in what order, how a winner is picked, what happens when it fails.
 
 ### 2.4 One paragraph in our voice
 
-> Every week we look at which deals moved and ask why. When a deal is won or lost, we call the buyer and ask what
-> decided it. Every 13 weeks we meet your leadership for about two hours and agree what to change: what to do
-> more of, what to fix and what to stop. You don't get a deck. You get one ranked list, with a reason beside each
-> item.
+> Every week we look at which deals moved and ask why. We call buyers from deals you've just won or lost and ask
+> what decided it. Each quarter we meet your leadership for about two hours and agree what to do more of and what
+> to stop. You get one ranked list, with the reason for each item written beside it.
 
 ---
 
 ## 3 · The rules
 
-Twenty rules. Each one has a test that an editor can run on a page and answer yes or no.
+Twenty-four rules. Each one has a test that an editor can run on a page and answer yes or no. Rules 15, 16, 17
+and 23 are new in this version, and most of the others have new or sharper tests. Section 5.4 says why.
 
 **1. Every claim names who does what to what.**
-A claim has a doer (we, you, your head of sales, your CRM) and an object (the domain, the deck, the list).
+A claim has a doer (we, you, your head of sales, your CRM) and an object (the domain, the deck, the list). Where
+work happens day to day, the page says whether Kelwin or the client's team does it: who sends the emails, who
+makes the calls, who publishes the page.
 *Test:* underline the doer and the object in every sentence that makes a claim. If the doer is "the system",
-"it", "something", "the layer", "the loop" or "week one", or if there is no doer at all, rewrite the sentence.
-*Bad:* "Dedupe and decay handled by the system." *Good:* "Your CRM merges duplicate contacts on a schedule."
+"it", "something", "the layer", "the loop" or "week one", or if there is no doer at all, rewrite the sentence. For
+every deliverable that involves sending, calling or publishing, the page names who does it.
+*Bad:* "Your reps' first emails to new accounts come from us." (written by us, or sent by us?) *Good:* "We write
+your reps' first emails and load them into your email tool. Your reps send them."
 
 **2. Name the real thing.**
 Use nouns you could point at on a screen or a desk: the sales deck, the first email, the CRM stage, the sending
 domain, the call, the shared drive, the invoice.
-*Test:* each section has at least three nouns like that. "Narrative", "architecture", "signal", "motion",
+*Test:* each section has at least three nouns like that, and at least one of them is new to that section. A page
+that repeats the same four nouns in every section doesn't pass. "Narrative", "architecture", "signal", "motion",
 "system" and "layer" don't count.
 
 **3. Numbers where we have them, and only real ones.**
 We have plenty of real numbers: 10 working days, a 30-minute first call, a 60-minute readout call, two 90-minute
-sessions, 13 weeks, 25 minutes, a six-month minimum, a three-month pilot, a source's percentage.
+sessions, a quarter, a six-month minimum, a three-month pilot, a source's percentage with its year.
 *Test:* every number on the page is one of three kinds: a policy we've decided, a figure from a named source with
-its year, or a figure inside a labelled specimen. Anything else is cut.
+its year, or a figure inside a labeled specimen. Anything else is cut. Every sourced figure is checked against
+the source itself before the page goes live, and anything we add after it ("the rest of the time, buyers...")
+is either in the source or written as our own reading.
 
 **4. Plain verbs.**
-Write, send, call, read, check, fix, set up, test, pay, stop, run, ask, merge, pause.
+Write, send, call, read, check, fix, set up, test, pay, stop, ask, merge, pause. "Run" is for tools, accounts,
+tests and reviews, never for a document or a pitch (rule 17).
 *Test:* the page has no word from the never list (4.1).
 
-**5. Every section opens with a sentence a ten-year-old could repeat.**
-The first sentence under each section heading says, in words a ten-year-old knows, what happens.
-*Test:* read the sentence to someone outside the business, then ask them what we do. If they can't say it back in
-their own words, rewrite it. Section 4.4 has these sentences for our main offers.
+**5. Every section opens with a short, plain sentence.**
+The first sentence under each section heading says what happens, in words a ten-year-old knows. The sentences in
+4.4 are where writing starts.
+*Test:* the opening sentence has 20 words or fewer. It uses no term from 4.2 or 4.3 without its plain
+explanation. The running copy scores grade 8 or lower on a standard readability check (Flesch-Kincaid), with
+specimens and tables left out.
 
 **6. Explain a term the first time, or cut it.**
 That goes for industry terms (ICP, SPF, win/loss) and for our own names (Narrative OS, Orchestration Rules,
 Rebuild Sequence).
 *Test:* the first time each term appears on a page, a plain explanation sits in the same sentence or the next one.
 
-**7. Give the reason.**
-When the order of steps matters, or when we recommend something, say why.
-*Test:* every step in a process where the order matters, and every recommendation, has a "because", a "so" or a
-"so that" attached.
+**7. Give the reason where a CFO would ask why.**
+A reason belongs where the order of steps matters, or where we recommend or refuse something, and the reader
+would ask "why?". Anywhere else, a reason is padding.
+*Test:* mark every "because", "so" and "so that". Delete each one in turn; if nobody would miss it, leave it
+deleted. Then read each step and recommendation as a CFO would. Wherever they would ask "why?", a reason is there.
+*Calibration, two before-and-afters:*
+- Before: "We call the set your Narrative OS, because everything else is written from it." Nobody asks why a folder
+  has its name, so the reason goes. After: "We keep them in one folder in your own drive, named Narrative OS."
+- Before: "We test first, so nothing gets rebuilt twice." A CFO would ask why we test before rewriting, so the
+  reason stays, but in the right order: "We test before we touch your website or deck, so nothing is rewritten
+  twice."
 
-**8. Say what we need, and what we won't do.**
-*Test:* each offer page answers "What do you need from me?" (hours, access, people) and names at least one thing
-the offer leaves out or one kind of client we turn away.
+**8. Say what we need, what we won't do, what happens if it doesn't work, and how to buy it.**
+*Test:* each offer page answers four questions. What do you need from me (hours, access, people)? What don't you
+do, or who do you turn away? What happens if it doesn't work (the answer needs your yes)? And, once the packages
+are decided, how do I buy it (which package includes it, and whether it is also sold as a project)?
 
 **9. Say the positive thing.**
 Write what is true. Don't build the sentence by knocking down something false first ("X, not Y", "It isn't X.
 It's Y.").
-*Test:* at most one such pair per page, and only when the reader really is choosing between the two.
+*Test:* at most one knock-down pair per page, and only when the reader really is choosing between the two.
+Refusals and limits ("We don't design logos", "It isn't open yet") are not knock-down pairs and don't count. The
+ban is on a negative that exists only to set up a positive.
 
 **10. Lists only when the things are real.**
 A list of three is fine when there are exactly three real things: our three capabilities, the three packages.
 Three adjectives, or three abstract nouns, are a habit and not a list.
 *Test:* for every list of three, ask whether there is a fourth item, and whether one of the three is filler. Never
 list abstract nouns ("the signal, language and learning").
+*Calibration, two before-and-afters:*
+- Before: "We keep the signal, language and learning from each quarter." Three abstract nouns, so it fails. After:
+  "Each quarter we write down which accounts replied, which words buyers used and why deals were lost."
+- Before: "We set up the domains, the data and the routing." Real things, but a reflex three that leaves out a
+  fourth (the CRM). After: "We set up four things: your email domains, your lists of target companies, your CRM,
+  and the rules for who gets contacted next."
 
 **11. Show how it works. Don't reach for a metaphor.**
-If you write "wired", "loop", "keys", "floor", "healthy", "dies", "smothers" or "armed", replace it with what
-actually happens.
-*Test:* at most one metaphor per page, never in the sentence that says what we do, and the next sentence spells out
-the mechanism.
+A metaphor here is a word that describes our work as something it isn't. These count: wired, loop, keys, floor,
+healthy, dies, smothers, armed, machine, engine, OS, places (meaning where buyers see you), speak for you, and
+"run" for a document. The verbs carry, land, survive and drift are on the never list. Fixed names such as
+Narrative OS are exempt, but each is explained the first time it appears on a page.
+*Test:* search the page for every word on this list. At most one hit, never in the sentence that says what we
+do, and the next sentence spells out the mechanism. A hit inside a job title or a specimen quote copied word for
+word doesn't count.
 
-**12. Full sentences.**
-No fragment stacks ("Four numbers. One diagnosis."). No colon reveals ("What we collect: almost nothing."). No
-mic-drop closing lines ("Build for the 83%."). No em dashes in new copy.
-*Test:* search for "—" and find none. Every colon in running text opens a real list of four or more items, or sits
-in a table or a specimen label.
+**12. Full sentences, except where the design expects short phrases.**
+Running copy is full sentences: no fragment stacks ("Four numbers. One diagnosis."), no colon reveals ("What we
+collect: almost nothing."), no mic-drop closing lines ("Build for the 83%."), no em dashes.
+Short phrases are allowed in these places only: the label above a heading, a headline that names the offer ("A
+pitch your buyers can repeat without you."), small sub-headings, spec rows ("From you · one 90-minute session a
+week"), table cells, specimens, folios and captions, and button and link labels. The sentences under a headline
+are always full sentences.
+*Test:* search for "—" and find none. Every colon in running text opens a real list of four or more items. Every
+short phrase sits in one of the places above.
 
-**13. Vary the rhythm.**
-*Test:* in any paragraph of three or more sentences, at least one sentence has fewer than 10 words and one has
-more than 15. No three lines in a row share the same shape. No three sentences in a row start with the same word
-(a schedule such as "Each week / Each month" is exempt). No sentence outside the field notes runs past 28 words.
+**13. Keep sentences short, and let the content set the rhythm.**
+There is no quota of short and long sentences. The first version of this guide had one, and it produced forced
+short answers ("You do." "Yes.") that read as made.
+*Test:* the sentences under a headline and each section's opening sentence have 20 words or fewer. Body sentences
+have 25 or fewer (field notes excepted). A sentence of three words or fewer appears at most once on a page, and
+only as a direct answer to a direct question. No three sentences in a row start with the same word (a schedule
+such as "Each week / Each month" is exempt). No more than three items in a row share one shape (a label, a dot,
+a sentence), except in spec rows and tables.
 
 **14. Make claims at their true size.**
 No grandeur ("deliberately late to the category"). No mystique ("the real constraint", "the one constraint"). No
-softeners that pretend to be strong ("genuinely", "actually", "really", "truly", "precisely", "simply").
-*Test:* search for those words and find none. Any sentence that would still be true about any other consultancy
-gets cut.
+softeners that pretend to be strong ("genuinely", "actually", "really", "truly", "precisely", "simply"). Words
+that claim everything ("every", "everything", "everywhere", "all", "any", "always", "never") must be literally
+true.
+*Test:* search for the softeners and find none. Search for each all-or-nothing word and check it is literally
+true; if it isn't, name the real set instead ("your homepage, product pages, deck and first emails"). Any sentence
+that would still be true about any other consultancy gets cut.
 
-**15. Retainer first.**
-The normal case is that we build it and then run it with you every month. Ownership is stated as a fact about
-where things live (your accounts, your documents). Handover is something you can ask for. It isn't the pitch.
-*Test:* no headline, lede or closing line on any page is about us leaving. Search for "handover", "hand over",
-"leave", "keep", "own", "operator" and "exit". Every hit either puts running it first or is the answer to a
-direct question about handover.
+**15. Say each thing once.**
+A page that repeats itself reads as filler, however clean each sentence is. This was the biggest habit left in
+the first Narrative Systems rewrite.
+*Test:* no list, count or rhythm ("every month", "four documents") appears in more than two places in a page's
+running copy, and the second place adds something the first didn't (detail, who does it, or what you get). No
+section restates the headline or the sentences under it. A label and the heading under it never say the same
+thing. A page never explains or defends its own name ("Why we call it a system").
 
-**16. "We" is the founding team.**
+**16. One rhythm, one unit and one owner for each activity.**
+Each recurring activity has one schedule, said the same way on every page, and one page that describes it. Other
+pages name it and link to it, so a client buying two capabilities never wonders whether they pay twice.
+*Test:* list every recurring activity on the page with its schedule. Each matches the table below. On the page,
+a quarter is "each quarter", never "13 weeks" or "every three months".
+
+| Activity | Schedule | Described on |
+|---|---|---|
+| Calls with buyers after deals are won or lost | The number per quarter is yours to set | GTM Intelligence |
+| The quarterly review with your leadership, about two hours | Each quarter | GTM Intelligence |
+| The weekly pipeline review | Each week | GTM Intelligence |
+| Testing new wording in first emails | Each month, from month 4 | Narrative Systems |
+| Rewriting the messaging documents from the buyer calls | Each quarter | Narrative Systems |
+| Checking sending domains | Each week | GTM Infrastructure |
+
+**17. Every pronoun points at one thing.**
+*Test:* for every "it", "them", "they" and "this", name the thing it points to. If there are two candidates, or the
+thing is more than one sentence back, use the noun. Never "run it" for a document or a pitch: we write, test and
+rewrite documents, and we run tools, accounts, tests and reviews.
+
+**18. Retainer first.**
+The normal case is that we set it up and then run it with you every month. Ownership is stated as a fact about
+where things live (your accounts, your drive, your company's name). Handover is something you can ask for. It
+isn't the pitch.
+*Test:* no headline, lede or closing line on any page is about us leaving. Search for "hand over", "handover",
+"operator", "exit", "leave" and "yours to keep". Every hit either puts running it first, answers a direct question
+about handover, or isn't about us leaving at all ("What we leave out").
+
+**19. "We" is the founding team.**
 *Test:* search for "I ", "my ", "Rameez" and "the founder" (meaning us) and find none. No headcount, no invented
-titles, no "a person reads". The word "founder" may only mean the reader's founder.
+titles, no "a person reads". The word "founder" may only mean the reader's founder, or the founder of the invented
+company in a specimen.
 
-**17. Proof is sourced, labelled or absent.**
+**20. Proof is sourced, labeled or absent.**
 *Test:* every claim about results is one of three things: a third-party figure with its source and year, a
-labelled specimen that says it was written for an invented company, or a promise about what we will do. A promise
+labeled specimen that says it was written for an invented company, or a promise about what we will do. A promise
 about outcomes is never allowed. No "our clients", "trusted by", "proven", "in our experience" or "teams like
 yours see".
+*Honesty test:* read every sentence about Kelwin and ask, "Would this still be true if Kelwin had no past clients
+and no people beyond the founding team?" If not, rewrite it. The first version of our rewrites failed it three
+times: "We can't show a client's documents" (implies there are some), "The work never depends on one person, on
+your side or ours" and "Today the Lab builds the tools we use on client work".
+*Specimens:* a specimen shows Kelwin changing something (a line struck out and rewritten, a gap found), never
+approving what the client already had.
 
-**18. Nothing written for the founder appears on the page.**
-Review notes such as "Draft, to be confirmed" and "Proposed, to be confirmed" never go live. The statuses rule 7
-requires ("Specimen", "Not yet published", "Coming soon") stay, written plainly.
-*Test:* search for "to be confirmed", "Draft" and "Proposed" and find none on a page that is going live.
+**21. Nothing written for the founder appears on the page.**
+Review notes such as "Draft, to be confirmed" and "Proposed, to be confirmed" never go live. The statuses your
+standing rule 7 requires ("Specimen", "Not yet published", "Coming soon") stay, written plainly.
+*Test:* search for the exact string "to be confirmed", and for "Draft," and "Proposed," at the start of a label
+or line. None on a page that is going live. (A search for "draft" alone also hits honest phrases such as "the next
+draft", so it isn't the test.)
 
-**19. The headline and the sentence under it say what the page offers.**
-*Test:* show only the headline and the sentence under it to someone outside the business. They can say what
-Kelwin does for them on this page. A slogan that needs the rest of the page to make sense fails.
+**22. The headline and the sentences under it say what the page offers.**
+*Test:* give only those lines to someone who didn't write the page (another editor, or a reviewer who hasn't seen
+it). They restate the offer in 12 words or fewer, and the restatement matches what the page sells. A slogan that
+needs the rest of the page to make sense fails.
 
-**20. One name, one spelling.**
+**23. One point of view on each offer page.**
+Rule 14 cuts what any firm could say. This rule asks for one thing a competitor wouldn't sign.
+*Test:* each offer page states one choice about how we work that another firm would make differently, with its
+reason. It needs your yes before it goes live. Narrative Systems: "We write the pitch from your buyers' words
+first, including buyers who said no, and from your leadership's words second."
+
+**24. One name, one spelling.**
 "Kelwin", never "Kelwin, LLC". The fixed names stay fixed: Narrative Systems, GTM Infrastructure, GTM
-Intelligence; the System Audit; Launch, Growth and Scaling. Today the pages mix spellings ("honored" and "labeled"
-next to "anonymised" and "prioritised"). We recommend American spelling, since the address on the site is New
-York. **Yours to decide.**
-*Test:* a spell-check in the chosen variant finds nothing, and searching for "LLC" finds nothing.
+Intelligence; the System Audit; Launch, Growth and Scaling. The audit is "the System Audit" ("the free System
+Audit" where free matters) the first time on a page, and "the audit" after that. Today the pages mix spellings
+("honored" and "labeled" next to "anonymised" and "prioritised"). We recommend American spelling, since the
+address on the site is New York. **Yours to decide.**
+*Test:* a spell-check in the chosen variant finds nothing. Searching for "LLC", "free audit", "free check" and "our
+audit" finds nothing.
 
 ---
 
@@ -229,12 +328,13 @@ York. **Yours to decide.**
 
 enable · unlock · leverage · empower · elevate · harness · streamline · optimize · transform / transformative ·
 seamless · robust · holistic · cutting-edge · best-in-class · world-class · game-changing · next-gen · synergy ·
-actionable · insights (as a thing we sell) · solutions · journey · landscape · navigate · delve · foster ·
-facilitate · utilize · comprehensive · compound / compounding · telemetry · resonance · bespoke · tailored ·
-end-to-end · full-funnel · premium · results-driven · data-driven · move the needle · drive growth · at scale
-(without a number) · partner with you · investment (meaning our fee) · affordable · risk-free · guaranteed ·
-genuinely · actually · really · truly · precisely · simply · deeply · deliberately · the real [anything] · the one
-[anything]
+actionable · insights (as a thing we sell) · solutions (except inside a job title) · journey · landscape ·
+navigate · delve · foster · facilitate · utilize · comprehensive · compound / compounding · telemetry · resonance ·
+bespoke · tailored · end-to-end · full-funnel · premium · results-driven · data-driven · move the needle · drive
+growth · at scale (without a number) · partner with you · investment (meaning our fee) · affordable · risk-free ·
+guaranteed · genuinely · actually · really · truly · precisely · simply · deeply · deliberately · the real
+[anything] · the one [anything] · carry · land (as in "emails land in the inbox") · survive · drift · working
+session · walk you through · take you through · talk tracks and sales scripts (say "call guides")
 
 ### 4.2 Use only with a plain explanation the first time on a page
 
@@ -246,19 +346,27 @@ genuinely · actually · really · truly · precisely · simply · deeply · del
 | deliverability | whether your emails reach the inbox |
 | SPF, DKIM, DMARC | the three settings inboxes check before they accept your email |
 | win/loss interview | a call with a buyer after they said yes or no, asking what decided it |
-| readout | the audit's written findings, which we walk you through on a 60-minute call |
+| readout | the audit's written findings, which we present on a 60-minute call |
 | install | set up (use "set up" in body copy) |
 | operator | the person on your team who runs it day to day |
 | motion | how you sell (use "how you sell") |
 | the record | your CRM data (use "your CRM data") |
-| champion, economic buyer | the person inside who wants you; the person who signs the budget |
+| champion | the person pushing to buy from you |
+| economic buyer | the person who signs the budget |
 | calibration | the quarterly review where we change the plan |
+| retainer | a monthly fee for ongoing work, for at least six months (not "fixed": in the pilot the fee includes a per-lead fee and a revenue share) |
+| pilot | the first three months, when we test before we commit |
+| positioning | who you sell to, what they use today and why they should switch to you |
+| message matrix | a page for each kind of buyer, saying what worries them and what to tell them |
+| proof list | each claim a buyer might check, with the evidence behind it |
+| call guides | what reps say on a first call and in a demo, and how they answer common objections |
+| quarter | three months; on the page always "each quarter" |
 
 ### 4.3 Our own names, and the sentence that goes with each
 
 | Name | First use on a page |
 |---|---|
-| Narrative OS | your company's messaging, written down in four documents |
+| Narrative OS | the folder in your own drive that holds the four messaging documents |
 | Channel Playbooks | step-by-step instructions for each channel: email, LinkedIn, phone, content, paid and events |
 | ICP & Signal Map | the list of companies most likely to buy, and the signs that show when each is ready |
 | Orchestration Rules | the written rules for who gets contacted next, how and by whom |
@@ -270,18 +378,19 @@ genuinely · actually · really · truly · precisely · simply · deeply · del
 
 ### 4.4 The ten-year-old sentences
 
-Write these first. Every section about the offer starts from one of them.
+Write these first. Every section about the offer starts from one of them. They are a writer's tool: on the page,
+"every three months" becomes "each quarter".
 
 | Offer | The sentence |
 |---|---|
-| Narrative Systems | We help a company explain what it does in one clear way, so everyone who sells for it says the same thing and buyers can repeat it to their boss. |
-| GTM Infrastructure | We set up the email, the lists and the CRM so messages reach the right people instead of spam, and we keep checking it every week. |
+| Narrative Systems | We write down what a company sells so clearly that its buyers can explain it to someone else. Then we test and fix the words every month. |
+| GTM Infrastructure | We set up the email, the lists and the CRM so your emails reach the right people's inboxes, and we check them every week. |
 | GTM Intelligence | Every week we check which deals are moving and ask buyers why they said yes or no. Every three months we tell you what to do more of and what to stop. |
 | The System Audit | For two weeks we study how your company sells. Then we show you what's holding sales back most and what to fix first. It's free. |
-| The retainer | We build it, and then we run it with you every month. |
+| The retainer | We set it up, and then we run it with you every month. |
 | The pilot | For the first three months we try different approaches and keep the ones that work. In the next three, we put more behind what worked. |
 | Projects | If you need one thing fixed, we can do just that one thing. |
-| Reports | These are short stories about our client work, with the numbers. |
+| Reports | Each report tells one client's case, with the problem, what we did and the numbers. |
 
 ---
 
@@ -294,9 +403,9 @@ the AI feel:
 
 1. **Sentences without a doer.** Verbless fragments and passive chains ("Scoped in writing before it starts")
    leave the reader asking who does it.
-2. **Our own vocabulary.** "System" appears 49 times, "signal" 28, "orchestration" 13 and "calibration" 10, mostly
-   unexplained. The pages read like they were written for us, and the reader is left out.
-3. **Knock-down pairs.** 37 "not", "isn't" and "doesn't" constructions, many of them the "X, not Y" pair.
+2. **Our own vocabulary.** Leaving out the product names, "system" appears 24 times, "signal" 20, "layer" 18 and
+   "install" 19, mostly unexplained. The pages read like they were written for us, and the reader is left out.
+3. **Knock-down pairs.** 37 negations (", not", "isn't", "doesn't", "don't"), many of them the "X, not Y" pair.
 4. **Dashes and colons doing the drama.** 48 em dashes, plus colon reveals in headlines and ledes.
 5. **Metaphor in place of mechanism.** Loops that learn, stacks that are wired, playbooks that compound.
 6. **Strategy left over from round 8.** Handover-first lines, the founder's name, "Kelwin, LLC" (21 times) and 13
@@ -491,6 +600,27 @@ Also from the interior pages: "If the plan is to send more, we're the wrong hire
 rough as you like. Bullet points are fine." (Contact) · "Treat a drop as a sending problem until these steps rule
 it out." (Email deliverability).
 
+### 5.4 What a second read of our own rewrite found
+
+The first Narrative Systems rewrite passed every word-level check: no em dashes, nothing from the never list, no
+"X, not Y". A second editor still scored it 4 out of 10 for reading as machine-made (round 9 was about 7 or 8 out
+of 10). The habits left were structural, and two of them came from the first version of this guide.
+
+| # | Habit | Example from the first rewrite | Now covered by |
+|---|---|---|---|
+| 1 | Saying the same thing again | "website, deck, emails and call scripts" six times; "four short documents" seven times | Rule 15 |
+| 2 | Label grids | Thirteen cells in one shape (a label, a dot, a sentence) | Rules 12 and 13 |
+| 3 | Forced short answers | "You do." and "Yes." | Rule 13 (the old rule asked for a sentence under 10 words in every paragraph, so writers made some) |
+| 4 | Reasons bolted on | "...your Narrative OS, because everything else is written from it." | Rule 7 (the old rule asked for a "because" on every step) |
+| 5 | The page defending its own name | "We call it a system because it has three parts." | Rule 15 |
+| 6 | Counts piling up | Four documents, three parts, four places, three buyers, six channels, three stages | Rule 15; keep two counts a page where possible |
+| 7 | Words that claim everything | "Every page, slide, email and script your buyers see says the same thing," when we rewrite only some of them | Rule 14 |
+| 8 | Hinting at a history we can't show | "We can't show a client's documents, because they belong to the client." | Rule 20, the honesty test |
+| 9 | A method a buyer would question | Buyers first heard in month 7; the client founder's own sentence winning the specimen; a winner picked by replies alone | Section 2.3, rules 20 and 23 |
+| 10 | Unclear who does the work | "Your reps' first emails to new accounts come from us" (written by us, or sent by us?) | Rule 1 |
+| 11 | Pronouns with two meanings | "If you ever want your own team to run them, we hand everything over and walk them through it." | Rule 17 |
+| 12 | Checks marked by the writer alone | Every row of the page's self-check said "Yes", and two were wrong | Section 8, signed by someone who didn't write the page |
+
 ---
 
 ## 6 · How we talk about...
@@ -501,8 +631,9 @@ it out." (Email deliverability).
   question is answered in the business-model proposal. Until you decide, write: "Every engagement is priced per
   month and agreed in writing before work starts."
 - **Talk about the reader's money in real terms:** two SDR salaries, an agency's monthly fee, a quarter of
-  activity, the tools they already pay for. *Write* "It runs on the CRM and email tools you already pay for."
-  *Don't write* "No new software to license."
+  activity, the tools they already pay for. *Write* "We use the CRM and email tools you already pay for, where we
+  can." *Don't write* "No new software to license." Some tools and data are bought in the client's name (A3), so
+  never claim that nothing new is bought.
 - **Say "free" once and plainly.** "The System Audit is free." Never "complimentary" or "no-obligation".
 - **Never write** "investment" (for our fee), "affordable", "value", "ROI", "competitive pricing", "packages for
   every budget" or "can't afford". When a smaller client is the subject, write "when a full package is more than
@@ -510,19 +641,23 @@ it out." (Email deliverability).
 - **If prices go on the site, or in a proposal,** give the exact figure, the period and what changes after month 3:
   - "Launch: from $8,000 a month. Growth: from $15,000. Scaling: from $25,000."
   - "Months 1 to 3 cost about 45% of the monthly fee, plus a fee for each qualified lead and a share of revenue
-    from deals those leads close."
+    from deals that come from those leads."
 
 ### 6.2 Proof
 
 - **The truth today:** no case study can be published (Q2). Say so: "No case study is published yet. Each one
   needs the client's written yes."
-- **Outside research:** name the source and the year every time. "Gartner (2019) found buyers spend about 17% of
-  a purchase with suppliers, all of them combined."
-- **Specimens:** say "Specimen", and say the company is invented, on the specimen itself.
-- **Promise what we'll do, never what will happen.** *Write* "We call the buyer after every lost deal." *Don't
+- **Outside research:** name the source and the year every time, and check the figure against the source before
+  the page goes live. "Gartner (2019) found buyers spend about 17% of a purchase with suppliers, all of them
+  combined." What we conclude from a source is written as our reading, in its own sentence, not under the source's
+  name.
+- **Specimens:** say "Specimen", and say the company is invented, on the specimen itself. Show us changing
+  something, never approving what the company already had.
+- **Promise what we'll do, never what will happen.** *Write* "We call buyers after deals are won or lost." *Don't
   write* "You'll close more deals."
 - **Never write** "our clients", "trusted by", "proven", "results", "track record", "teams like yours see", "in our
-  experience", "again and again" or "in the audits we've run". Each one hints at a history we can't show yet.
+  experience", "again and again" or "in the audits we've run". Each one hints at a history we can't show yet. Run
+  the honesty test in rule 20 on every sentence about Kelwin.
 
 ### 6.3 The team
 
@@ -539,89 +674,117 @@ it out." (Email deliverability).
 
 ### 6.4 Retainer first
 
-- **The order we always say it in:** we build it, then we run it with you every month. It lives in your accounts
-  and documents, so it's yours. If you ever want to run it yourselves, we hand it over.
-- **Give the client's reason for the retainer, in real terms:** lists go stale, sending domains need checking every
-  week, buyers' questions change from quarter to quarter, and each quarter's findings change the plan.
+- **The order we always say it in:** we set it up, then we run it with you every month. Everything we set up for
+  you sits in your accounts and in your name. If you ever want to run it yourselves, we hand it over.
+- **Give the client's reason for the retainer, in real terms:** lists go out of date, sending domains need
+  checking every week, competitors change their pitch and new reps join, and each quarter's findings change the
+  plan.
 - **Never give our own reasons on the site** (cash flow, building data for the platform). Never say client data
   feeds the Lab (Q11 is undecided, and it was taken out of Privacy).
-- **The ownership line:** "Everything we set up lives in your accounts and your documents. It's yours from the
-  first day."
+- **The ownership line:** "Everything we set up for you sits in your accounts and in your name." The site says no
+  more than that. Who owns what, and from when, belongs in the contract. **Yours to settle there.**
 - **Retired lines:** "If we leave, the system stays." · "hands you the keys" · "Assets first, then the retainer."
   · "Nothing needs a retainer to keep running." · "If it stops working the day we leave, we built it wrong." ·
   "run by your operator, or with us on retainer" (it puts us second) · "Owning it is the real gate." · "A single
-  project ends at handover, with no retainer."
+  project ends at handover, with no retainer." · "It's yours from the first day." and "yours from the first draft"
+  (both promise contract terms nobody has set).
 
 ### 6.5 The pilot
 
 Whether the pilot appears on the site is your call, and it is part of the business-model proposal. If it does,
 it reads like this:
 
-> Every engagement starts with a six-month contract. Months 1 to 3 are the pilot: we test different target
+> Every engagement starts with a six-month contract. Months 1 to 3 are the pilot. We test different target
 > accounts, messages and channels, and keep what works. In months 4 to 6 we put more time and budget behind what
 > worked. After that you can renew for three or six months, a year or two years.
 
 If the pilot's pricing is shown, give the reason, which is shared risk:
 
 > During the pilot you pay about 45% of the monthly fee, plus a fee for each qualified lead we bring in and a
-> share of revenue from deals those leads close. We take on more of the risk while we're still learning what
-> works for you.
+> share of revenue from deals that come from those leads. We take on more of the risk while we're still learning
+> what works for you.
 
 - **Call it "the pilot".** Never a trial, a test drive or a proof of concept.
 - **A qualified lead** is "a company that matches the customer profile we agreed with you in writing".
+- **If the pilot doesn't work.** Every offer page needs an answer (rule 8). Proposed, for your yes: "If the pilot
+  shows [the message, sending, the CRM] isn't what's holding sales back, we tell you in writing at the end of
+  month 3, with what we'd fix instead." It promises a written answer, not an exit, so it doesn't decide the
+  early-exit question.
 - **Never mention** an early exit after the pilot (you haven't decided it). Never "risk-free", "no-risk",
   "guaranteed" or "money-back".
 
 ### 6.6 Handover
 
 - Handover happens when you ask for it. It is never a headline or a closing line.
-- It belongs in a direct answer, usually in a FAQ: "If you want to run it yourselves, we hand it over: the
-  documents, the accounts and the rules, with time set aside to walk your team through them."
-- The word "operator" (someone on your team who runs it) appears only in that answer.
+- It belongs in a direct answer, usually in a short question-and-answer: "If your team wants to take the work
+  over, we hand over every document and account. Then we spend a session showing your team how we use each one."
+- The word "operator" (someone on your team who runs it) appears only in that answer, if at all.
 
 ### 6.7 The System Audit
 
-- **Free.** Ten working days. It starts with a 30-minute call. We present the findings on a 60-minute readout
-  call, and we don't send them ahead (A4).
+- **Free.** Ten working days. It starts with three short questions on the audit page, then a 30-minute call. We
+  present the findings on a 60-minute readout call, and we don't send them ahead (A4).
 - **From you:** two 90-minute sessions, and read-only access to your CRM and channel tools.
-- **The plan is yours whether or not you hire us.** That line stays. It is about the audit, not about us leaving.
+- **It covers all three parts of how you sell:** the messaging, the email and CRM setup, and how deals are
+  tracked. A page may name the part it is about, but never says the audit is only that part, or that it "starts
+  with" it.
+- **One name:** "the System Audit", or "the free System Audit" where free matters. Never "our free audit" or "our
+  free check".
+- **The plan is yours whether or not you hire us.** That line stays, because it is about the audit.
+
+### 6.8 Who does the work
+
+Every deliverable says who does it day to day (rule 1). These are the defaults in the round-10 rewrites; change
+them only with a reason on the page.
+
+| Work | Kelwin | Your team |
+|---|---|---|
+| First emails to new accounts | We write them and load them into your email tool | Your reps send them |
+| Website copy | We rewrite the words | Your developer puts them live |
+| Sales deck | We rewrite it slide by slide | Your designer lays it out |
+| Call guides | We write them and train your reps in one session | Your reps use them on calls |
+| Calls with buyers after deals close | We make them | You introduce us to the buyer, if needed |
+| Sending domains, lists, CRM | We set them up in your accounts and check them every week | Your admin gives us access |
+| Sign-off | We bring each change for sign-off | Your marketing lead signs off before anything goes live |
+
+The buyer-call row's "if needed" is a proposal; how buyers are approached is yours to decide.
 
 ---
 
 ## 7 · Twenty-five rewrites from our pages
 
 Each one says what the rewrite fixes. Lines from approved pages aren't in this list. Those wait for your yes
-(5.2 and 5.3).
+(5.2 and 5.3). Rewrites 1 to 6, 8, 10 to 13, 18, 19 and 25 changed after the second read.
 
-**1 · Narrative Systems, the headline and the sentence under it**
+**1 · Narrative Systems, the headline and the sentences under it**
 - Before: "Decide what the market hears." / "One version of your positioning and messaging, for every channel and seller."
-- After: "One clear way to explain your company." / "We write down what you sell, who it's for and why buyers should pick you. Then we rewrite your website, sales deck, emails and call scripts so every one of them says it the same way."
-- Fixes: an outcome slogan becomes the thing itself; a sentence with no verb now has a doer, and the four objects are named.
+- After: "A pitch your buyers can repeat without you." / "With you, we write down what you sell, who it's for and why buyers should pick you. We test the wording in your first emails, then rewrite your website, deck and call guides around the winner. After that, we keep testing new wording every month."
+- Fixes: an outcome slogan becomes the thing itself, with the buyer result the homepage promises; a sentence with no verb now has a doer; the things we rewrite are named once; the order (test, then rewrite) is the strategy.
 
 **2 · Narrative Systems, the four documents**
 - Before: "We write four documents and keep them together as your Narrative OS. Your positioning, with competitors placed around it. A message matrix with one page per buying segment, owned by your marketing lead. The talk tracks, demo story and objection answers, in the matrix's words. And a proof map: the claims a committee will check, and the evidence each one needs."
-- After: "We write four documents and keep them in one folder in your own drive. Together they're your Narrative OS, your company's messaging in one place. (1) Positioning: who you compete with, and where you stand against each. (2) The message matrix: one page for each type of buyer, saying what they care about and what to tell them. (3) Sales scripts: what reps say on calls and in demos, and how they answer the usual objections. (4) The proof list: every claim a buyer will check, and the evidence behind it."
-- Fixes: our name gets a plain explanation; four same-shaped fragments become four numbered items, each with a job; "talk tracks" and "proof map" are explained.
+- After: "The work starts with four short documents. We keep them in one folder in your own drive, named Narrative OS." Then one line each: "One page says who you sell to, what they use today and why they should switch to you." "There's a page for each kind of buyer in your deals, saying what worries them and what to tell them." "These give your reps the words for a first call and a demo, and answers to the objections you hear most." "Each claim a buyer might check sits beside the customer quote, number or document that backs it up."
+- Fixes: our name is explained by what it is (a folder); four same-shaped fragments become four sentences of different shapes; "talk tracks" became call guides and "proof map" the proof list.
 
 **3 · Narrative Systems, the message matrix ("If it goes wrong", the CFO's row)**
 - Before: "Nothing needs a retainer to keep running."
-- After: "Every document sits in your own drive, so you own it from the first draft."
-- Fixes: a promise that works against the retainer becomes a plain fact about ownership (A1).
+- After: "Every document sits in your own drive, in your company's name."
+- Fixes: a promise that works against the retainer becomes a plain fact about where things live (A1), without promising ownership terms the contract hasn't set.
 
 **4 · Narrative Systems, "How it runs"**
 - Before: "We write it once, with your leadership in the room." / "Then the person who runs it keeps it current." / "Your operator edits it, or we write the next edition on retainer."
-- After: **First, we write it with you.** "During the build we hold one working session a week with your CEO and head of sales, and send a written note after each one." **Then we keep it current, every month.** "We test new versions of the message against the replies they get. Each quarter we rewrite any part that lost-deal interviews prove wrong."
-- Fixes: two headings of equal weight get an order (first, then), so the section has a hierarchy; the retainer becomes the default; "your leadership" becomes named roles.
+- After: **We work in three stages, starting with a three-month pilot.** Three stages follow, each with what we do, what you do and what you get. **Months 1 to 3:** "We write the pitch with you and test it." It opens with "Before we write anything, we read your lost-deal notes and call recent buyers, won and lost, to hear how they describe you." **Months 4 to 6:** "We put the winning version where buyers see it." **From month 7, if you renew:** "We keep the documents current."
+- Fixes: two headings of equal weight become one heading over three ordered stages, so the section has a hierarchy; retainer first; "your leadership" becomes named roles; buyers are heard in month 1, not month 7.
 
 **5 · GTM Infrastructure, the headline and the sentence under it**
 - Before: "Your stack, wired to sell." / "We set up the domains, the data and the routing under your own admin. No new software to license."
-- After: "The machine that reaches your buyers." / "We set up four things: your email domains, your lists of target companies, your CRM, and the rules for who gets contacted next. It all runs on software you already pay for, and we run it with you every week."
-- Fixes: the metaphor and the reflex triad become a counted list of real parts; "under your own admin" was unclear; the retainer is stated. "The machine" is the homepage's own word for this layer.
+- After: "We set up your email, lists and CRM, and check them every week." / "We set up four things: your email domains, your lists of target companies, your CRM, and the rules for who gets contacted next. We work in your own accounts, and use the tools you already pay for where we can."
+- Fixes: the metaphor and the reflex triad become a counted list of real parts. The first version's headline, "The machine that reaches your buyers.", put a metaphor in the sentence that says what we do (rule 11). Its "It all runs on software you already pay for" claimed too much, since some tools are bought in the client's name (A3, rule 14).
 
 **6 · GTM Infrastructure, before anything is sent**
 - Before: "Sending domains are separated and aged, SPF, DKIM and DMARC are aligned, suppression is honored, and every record is verified before anything is sent to it."
-- After: "Before we send a single email, we do four things. We set up separate domains for outreach and let them age, so your main domain stays safe. We fix the three settings inboxes check before they accept mail (SPF, DKIM and DMARC). We remove everyone who has opted out. And we check that every address still works."
-- Fixes: a passive chain with no doer becomes "we"; the jargon is explained; the first step gets its reason.
+- After: "Before we send a single email, we do four things. We set up separate domains for outreach, and send small amounts from them for a few weeks first, so your main domain stays safe. We fix the three settings inboxes check before they accept mail (SPF, DKIM and DMARC). We remove everyone who has opted out, and we check that every address still works."
+- Fixes: a passive chain with no doer becomes "we"; the jargon is explained; "let them age" (jargon) became what we do; the first step gets its reason.
 
 **7 · GTM Infrastructure, keeping the CRM clean**
 - Before: "Dedupe and decay handled by the system. Nobody has to police the record."
@@ -630,33 +793,33 @@ Each one says what the rewrite fixes. Lines from approved pages aren't in this l
 
 **8 · GTM Infrastructure, the weekly checks**
 - Before: "After handover, one person keeps it healthy. They work from a runbook we write with your RevOps lead and test at low volume before anything scales. On retainer, the checks are ours."
-- After: "We check it every week. We read bounce and complaint rates for each sending domain and pause any domain that goes over its limit. Each month we test where your emails land and clear dead records out of your CRM. The checklist is written down, so your team can see exactly what we check."
-- Fixes: retainer first (A1); the "healthy" metaphor becomes the actual checks; the schedule is concrete.
+- After: "We check your sending every week. We read bounce and complaint rates for each sending domain. If a domain's spam complaints near 0.3%, the limit Google set for bulk senders in 2024, we pause it. Each month we test whether your emails reach the inbox, and clear dead records out of your CRM. The checklist is written down, so your team can see what we check."
+- Fixes: retainer first (A1); the "healthy" metaphor becomes the actual checks; "its limit" now names the limit and its source. We couldn't open Google's sender guidelines from here, so check the 0.3% against them before it goes on a page.
 
 **9 · GTM Infrastructure, the CRM blueprint**
 - Before: "Proposed, to be confirmed: email deliverability, the ICP and signal map, or the CRM blueprint, each bought as a single project"
-- After: "You can also buy one part as a project. One example is a CRM blueprint: a written plan for how your CRM should work (the stages a deal moves through, the fields each stage needs and who owns what), which we then build into your CRM with your admin."
+- After: "You can also buy one part as a project. One example is a CRM blueprint, which is a written plan for how your CRM should work (the stages a deal moves through, the fields each stage needs and who owns what). We then build it into your CRM with your admin."
 - Fixes: a note meant for you comes off the page; a name you didn't recognise gets one plain sentence.
 
 **10 · GTM Intelligence, the headline and the sentence under it**
 - Before: "The loop that learns." / "For teams whose pipeline report says what happened, and never why."
-- After: "Learn why your deals close." / "Every week we look at which deals moved and ask why. When a deal is won or lost, we call the buyer and ask what decided it. Every 13 weeks you get a short, ranked list of what to change."
-- Fixes: the metaphor becomes the mechanism; it passes the ten-year-old test; the number 13 now means something.
+- After: "Learn why your deals close." / "Every week we look at which deals moved and ask why. We call buyers from deals you've won or lost and ask what decided it. Each quarter you get a short, ranked list of what to change."
+- Fixes: the metaphor becomes the mechanism; it passes the ten-year-old test. The first version said "Every 13 weeks" (rule 16: each quarter) and "When a deal is won or lost, we call the buyer", which promised a call on every deal; how many calls is still yours to set (rule 14).
 
 **11 · GTM Intelligence, which message works**
 - Before: "Narrative resonance telemetry. Reply quality and meetings booked, by message version. Opens are not counted."
-- After: "Which message works best? We run versions of the same message side by side and count the replies and meetings each one gets. We ignore opens, because many email apps now mark a message as opened whether or not anyone read it."
-- Fixes: invented jargon is gone; three fragments become sentences with a doer; the last rule gets its reason.
+- After: "Which message works best? Each week one screen, the Signal Dashboard, shows the replies and meetings each version of your message gets. We ignore opens, because many email apps now mark a message as opened whether or not anyone read it."
+- Fixes: invented jargon is gone; three fragments become sentences with a doer; the last rule gets its reason. The tests themselves are described once, on Narrative Systems, and this page reports their results (rule 16).
 
 **12 · GTM Intelligence, what changes next quarter**
 - Before: "Quarterly calibration program. The other three answers, weighed with your leadership into one ranked list of what to build, keep and cut."
-- After: "What do we change next quarter? Every 13 weeks we meet your leadership for about two hours. We bring what the weekly reviews and the buyer calls showed, and together we agree a ranked list of changes for the next quarter. Anything that didn't help last quarter comes off the list."
-- Fixes: you said this section was unclear. An abstract label and a triad become a meeting, its length, who attends and what comes out of it.
+- After: "What do we change next quarter? Each quarter we meet your leadership for about two hours. We bring what the weekly reviews and the buyer calls showed, and together we agree a ranked list of changes. We take off anything that didn't raise replies or meetings last quarter."
+- Fixes: you said this section was unclear. An abstract label and a triad become a meeting, its length, who attends and what comes out of it. "Every 13 weeks" became "each quarter", and the last sentence now has a doer.
 
 **13 · GTM Intelligence, who runs it**
 - Before: "Your operator's weekly review, straight from the dashboard. No deck." / "Your leadership gives about two hours a quarter, at the readout. On retainer, we run the weekly reviews and the interviews and write each readout."
-- After: "We run it. Each week we spend 25 minutes with whoever owns pipeline on your side, going through the dashboard. We also run the buyer calls and write each quarter's findings. Your leadership gives about two hours a quarter."
-- Fixes: retainer first; the "No deck." fragment is cut; "operator" is gone.
+- After: "Each week we spend 25 minutes with whoever owns pipeline on your side, going through the dashboard. We also make the buyer calls and write up what each quarter showed."
+- Fixes: retainer first; the "No deck." fragment is cut; "operator" is gone. The first version opened with "We run it.", a forced short beat, and repeated the leadership's two hours, which rewrite 12 already gives on the same page (rule 15). (The 25-minute review is the round-9 proposal and still needs your yes.)
 
 **14 · Who We Work With, the headline and the sentence under it**
 - Before: "Real revenue, but no system under it." / "For companies that sell to committees, with someone inside to own what we build."
@@ -678,15 +841,15 @@ Each one says what the rewrite fixes. Lines from approved pages aren't in this l
 - After: "Your product is different, but buyers compare you with the closest thing they already know."
 - Fixes: the softener ("genuinely") and the metaphor ("maps you onto") are gone; "the market" becomes buyers.
 
-**18 · About, the headline and the sentence under it**
+**18 · About, the headline and the sentences under it**
 - Before: "The firm behind the signature." / "Rameez founded Kelwin in 2026 to build revenue systems clients keep."
-- After: "Why Kelwin exists." / "Kelwin started in 2026. Too many good B2B companies were paying an agency for a quarter of activity and ending up where they started. We build the setup behind their sales, and we run it with them every month."
-- Fixes: no name (A7); the history and the frustration you asked for (A16); retainer first; "Why Kelwin exists" reuses your letter's subject line.
+- After: "Why Kelwin exists." / "Kelwin started in 2026 for B2B companies that paid an agency for a quarter of activity and ended where they started. We write their pitch, set up their email and CRM, and track why their deals close. Then we run all three with them every month."
+- Fixes: no name (A7); the history and the frustration you asked for (A16), said as who we're for. The first version opened "Too many good B2B companies were paying an agency...", a claim about the market we can't support, and "the setup behind their sales" was abstract. "Why Kelwin exists" reuses your letter's subject line. The history line is yours to confirm.
 
 **19 · About, two of the rules**
 - Before: "Assets first — then the retainer. What we install is documented in your language and lives in your stack." and "If it stops working the day we leave, we built it wrong."
-- After: "**We run what we build.** Everything we set up lives in your accounts and your documents, so it belongs to you from the first day." and "**We write everything down.** The work never depends on one person, on your side or ours."
-- Fixes: both rules now point the right way (A1); the aphorism becomes a working habit.
+- After: "**We run what we build.** Everything we set up for you sits in your accounts and in your name." and "**We write everything down,** so your team can follow the work without us in the room."
+- Fixes: both rules now point the right way (A1). The first version promised "it belongs to you from the first day" (contract terms nobody has set) and "The work never depends on one person, on your side or ours", which fails the honesty test (rule 20).
 
 **20 · Careers, the headline and the sentence under it**
 - Before: "Seats open as the work arrives." / "Remote-first and global, juniors included. Each seat is posted with its pay range when it opens."
@@ -715,57 +878,73 @@ Each one says what the rewrite fixes. Lines from approved pages aren't in this l
 
 **25 · Reports, the headline and the sentence under it**
 - Before: "A readout, up close." / "Every System Audit ends in a written document that the client keeps. We go through it together on a 60-minute call."
-- After: "Our client work, in numbers." / "Each report is one client's case on a single page: the problem, what we did and what changed. Ask for the full report and we'll email it to you. None is published yet, because each one needs the client's written yes."
-- Fixes: the page now is what you said it is (A14); it gives an honest empty state (rule 7); the ask is plain.
+- After: "Case reports, published with each client's yes." / "Each report tells one client's case, with the problem, what we did and the numbers. Ask for the full report and we'll email it to you. None is published yet, because each one needs the client's written yes."
+- Fixes: the page now is what you said it is (A14); it gives an honest empty state (rule 20); the ask is plain. The first version's headline, "Our client work, in numbers.", promised numbers on a page that has none yet and assumed client work we can't show.
 
 ---
 
 ## 8 · The editor's checklist
 
-Run it on every page, in this order, before the page goes to you. Each check is a yes or a no. A page ships only
-when every answer is yes.
+Run it on every page, in this order, before the page goes to you. Each check is a yes or a no. The writer runs it
+first and records what each search found, not just "yes". Then an editor who didn't write the page runs it again,
+attaches the search results, and signs it. A page goes to you only with both.
 
 **Before writing**
 1. Each section has its ten-year-old sentence written down (4.4), and the section opens with it or with something
    as plain.
 
-**Search the page (find in page)**
+**Search the page (attach the results)**
 2. "LLC", "Rameez", "I ", "my " and "the founder" (meaning us): no hits.
-3. Every word on the never list (4.1): no hits.
-4. "—": no hits in new copy.
-5. ", not ", "isn't", "aren't", "doesn't", "rather than" and "instead of": at most one knock-down pair on the page.
-6. Every colon in running text opens a real list of four or more items, or sits in a table or specimen label.
-7. "to be confirmed", "Draft" and "Proposed": no hits on a page going live.
-8. "handover", "hand over", "leave", "keep", "own", "operator" and "exit": every hit puts running it first, or is the
-   direct answer to a question about handover.
+3. Every word on the never list (4.1): no hits, apart from job titles and specimen quotes copied word for word.
+4. "—": no hits.
+5. ", not ", "isn't", "aren't", "doesn't", "don't", "rather than" and "instead of": at most one pair that knocks
+   something down to set up a positive. Refusals and limits don't count.
+6. Every colon in running text opens a real list of four or more items, or sits in a label, table or specimen.
+7. "to be confirmed", and "Draft," or "Proposed," at the start of a label or line: no hits on a page going live.
+8. "hand over", "handover", "operator", "exit", "leave" and "yours to keep": every hit puts running it first,
+   answers a direct question about handover, or isn't about us leaving.
+9. The metaphor words in rule 11: at most one hit, never in the sentence that says what we do.
+10. "every", "everything", "everywhere", "all", "any", "always" and "never": each one literally true.
+11. "free audit", "free check" and "our audit": no hits.
+12. "13 weeks" and "every three months": no hits. Every recurring activity matches the table in rule 16.
+
+**Count**
+13. Each list, count and rhythm appears in no more than two places, and the second adds something. No section
+    restates the head. No label repeats its heading.
+14. The sentences under the headline and each section's opening sentence: 20 words or fewer. Body sentences: 25
+    or fewer. At most one sentence of three words or fewer, as a direct answer.
+15. Reading level of the running copy: grade 8 or lower.
 
 **Read the page**
-9. The headline and the sentence under it, shown to someone outside the business, tell them what this page offers.
-10. Every claim has a doer and an object you can underline. None of them is "the system", "it", "the layer" or "the
-    loop".
-11. Every term from 4.2 and every name from 4.3 has its plain explanation the first time it appears on the page.
-12. Every list of three holds exactly three real things. No list of abstract nouns.
-13. At most one metaphor on the page, never in the sentence that says what we do, and the next sentence spells out
-    the mechanism.
-14. Rhythm: no three lines in a row of the same shape, no three sentences in a row starting with the same word, and
-    no sentence over 28 words (field notes excepted).
-15. Every step where the order matters, and every recommendation, has its reason.
-16. Read the page aloud. Cut anything you wouldn't say to a CFO on a call.
+16. Someone who didn't write the page restates the offer from the headline and the sentences under it, in 12
+    words or fewer, and gets it right.
+17. Every claim has a doer and an object you can underline. Every deliverable that involves sending, calling or
+    publishing says who does it.
+18. Every term from 4.2 and every name from 4.3 has its plain explanation the first time it appears.
+19. Every list of three holds exactly three real things. No list of abstract nouns.
+20. Every pronoun points at one thing. No "run it" for a document.
+21. A reason sits wherever a CFO would ask why, and no "because" is there only to meet a rule.
 
 **Check the facts**
-17. Every number is a decided policy, a sourced figure with its year, or part of a labelled specimen. There are no
-    results, no client counts and no team counts.
-18. Every specimen says "Specimen" and says the company is invented.
-19. No prices on the page (until you decide otherwise).
-20. The page says what we need from the reader, and names one thing we don't do or one client we turn away.
+22. Every number is a decided policy, a sourced figure with its year (checked against the source), or part of a
+    labeled specimen. There are no results, no client counts and no team counts.
+23. The honesty test: every sentence about Kelwin would be true with no past clients and no people beyond the
+    founding team.
+24. Every specimen says "Specimen", says the company is invented, and shows us changing something.
+25. No prices on the page (until you decide otherwise).
 
 **Check the strategy**
-21. Retainer first: the page never sells our leaving. Ownership is stated as where things live.
-22. The two doors are right: the red button says "Request a System Audit" and goes to the audit; the quiet link
+26. The page says what we need from the reader, names one thing we don't do or one client we turn away, says what
+    happens if it doesn't work (with your yes), and, once decided, how to buy it.
+27. The page states one point of view a competitor wouldn't sign (rule 23), with your yes.
+28. Retainer first: the page never sells our leaving. Ownership is stated as where things live.
+29. The two doors are right: the red button says "Request a System Audit" and goes to the audit; the quiet link
     says "Talk to the team" and goes to contact. Never "Get in touch".
-23. No sentence on this page appears word for word on another page (button labels and fixed names excepted).
-24. One spelling throughout, and "Kelwin" with nothing after it.
+30. No sentence on this page appears word for word on another page (button labels, fixed names and specimen text
+    shared on purpose excepted).
+31. One spelling throughout, and "Kelwin" with nothing after it.
 
 **Sign-off**
-25. Any change to copy you approved (the homepage, Insights, the three field notes, the System Audit, Email
+32. Any change to copy you approved (the homepage, Insights, the three field notes, the System Audit, Email
     deliverability, Privacy and Terms) is listed for your yes before it ships.
+33. Signed by an editor who didn't write the page, with the search results attached.
