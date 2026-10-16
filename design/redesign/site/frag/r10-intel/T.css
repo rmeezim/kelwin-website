@@ -1,0 +1,222 @@
+/* ── r10-intel · T · GTM Intelligence — what happens next quarter (round 10, fix pass; calm, no wow) ──
+   The head's week-13 page, opened: one worked example in three plain steps a ten-year-old can follow.
+     01 We read the calls   six calls with buyers who said no are logged on ONE RULE (the same weeks as the
+                            head's lane: 2, 4, 5, 8, 10, 12): each note drops in on its week; "security" is
+                            underlined in four and their squares fill; the other two dim; the count rises: 4 of 6
+     02 We add one thing    a line runs from the count into the plan; the plan's empty first slot (dashed from
+                            the first frame, so the page never changes height) fills: New; the rows below
+                            renumber; the checks and the calls are marked Kept
+     03 We stop one thing   "Rebuild the contact list every week" is struck and dims: Stopped, 0 replies in 13 weeks
+   Each step's name sits ON the part of the plate it changes (01 over the log; 02 and 03 over the plan), so the
+   words and the change are on screen together at every width; the steps say only the verb (the plate carries
+   the facts). The plan is the head's week-13 page: its red tab says so, in the head's words.
+   STATES are classes on the section, cumulative: .is-s1 .is-s2 .is-s3 (the markup carries all three: the
+   finished example for reduced motion, no script, a screenshot). T.js adds them in order and every piece moves
+   by CSS transition, so a step button can show any step's end, forwards or back (.is-brisk compresses the
+   timings to about a second). A piece's delay below is measured from the moment its step starts; --k scales
+   delays and --kd durations (1, or .3 / .7 when brisk).                                                       */
+
+.km-r10-intel-T { --k: 1; --kd: 1; }
+.km-r10-intel-T.is-brisk { --k: .3; --kd: .7; }
+.km-r10-intel-T__claim { grid-column: 1 / -1; max-width: none; }   /* two lines at 64px: the full measure */
+
+/* ── the plate: the log | the connector's gap | the plan ── */
+.km-r10-intel-T__plate { margin-top: 40px; }
+.km-r10-intel-T__body {
+  position: relative; display: grid; grid-template-columns: minmax(0, 5fr) 88px minmax(0, 6fr);
+  align-items: start; padding: 24px 32px 8px;
+}
+.km-r10-intel-T__zone { position: relative; z-index: 1; min-width: 0; }
+.km-r10-intel-T__zone--saw { grid-column: 1; grid-row: 1; }
+.km-r10-intel-T__zone--plan { grid-column: 3; grid-row: 1; }
+
+/* ── the steps: each one names the part of the plate under it ── */
+.km-r10-intel-T__heads { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: 24px; margin-bottom: 24px; }
+.km-r10-intel-T__heads--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.km-r10-intel-T__step {
+  position: relative; display: flex; align-items: baseline; gap: 12px; width: 100%;
+  padding: 14px 0 4px; text-align: left; color: var(--fg-3);
+}
+.km-r10-intel-T__step::before, .km-r10-intel-T__step::after { content: ""; position: absolute; left: 0; right: 0; top: 0; pointer-events: none; }
+.km-r10-intel-T__step::before { height: 1px; background: var(--line-2); }
+.km-r10-intel-T__step::after { height: 2px; background: var(--fg); transform: scaleX(0); transform-origin: 0 50%; transition: transform 600ms var(--ease-out); }
+.km-r10-intel-T__step.is-cur::after { transform: scaleX(1); }
+.km-r10-intel-T__sn { color: var(--fg-3); transition: color 300ms var(--ease-out); }
+.km-r10-intel-T__sh { font-weight: var(--ui-weight); font-size: 20px; line-height: 28px; color: var(--fg-3); transition: color 300ms var(--ease-out), transform 300ms var(--ease-out); }
+.km-r10-intel-T__step.is-done .km-r10-intel-T__sh, .km-r10-intel-T__step.is-done .km-r10-intel-T__sn,
+.km-r10-intel-T__step.is-cur .km-r10-intel-T__sn { color: var(--fg-2); }
+.km-r10-intel-T__step.is-cur .km-r10-intel-T__sh { color: var(--fg); }
+.km-r10-intel-T__step:hover .km-r10-intel-T__sh { color: var(--fg); transform: translateX(4px); }
+.km-r10-intel-T__step:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
+
+/* ── 01 · the log: six notes tied to one rule ── */
+.km-r10-intel-T__nk { margin: 0; line-height: 28px; }   /* level with the plan's tab */
+.km-r10-intel-T__log { margin: 12px 0 0; padding: 0; list-style: none; }
+.km-r10-intel-T__note { position: relative; display: grid; grid-template-columns: 64px 36px minmax(0, 1fr); align-items: start; padding: 6px 0; }
+.km-r10-intel-T__note:not(:last-child)::before {   /* the rule, node to node */
+  content: ""; position: absolute; left: 69px; width: 1px; top: 17px; bottom: -17px; background: var(--line-2);
+}
+.km-r10-intel-T__wk { line-height: 21px; color: var(--fg-3); }
+.km-r10-intel-T__nd {
+  position: relative; z-index: 1; width: 11px; height: 11px; margin-top: 5px;
+  background: var(--panel); box-shadow: inset 0 0 0 1px var(--fg-2);
+  transition: background-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.km-r10-intel-T__nd::after { content: ""; position: absolute; left: 11px; top: 5px; width: 19px; height: 1px; background: var(--line-2); }   /* the leader */
+.km-r10-intel-T__note.is-hit .km-r10-intel-T__nd { background: var(--fg); box-shadow: inset 0 0 0 1px var(--fg); }
+.km-r10-intel-T__q { font-size: var(--ac-support); line-height: 21px; color: var(--fg); text-wrap: pretty; transition: color 400ms var(--ease-inout); }
+.km-r10-intel-T__note:not(.is-hit) .km-r10-intel-T__q { color: var(--fg-3); }
+.km-r10-intel-T__hl { position: relative; white-space: nowrap; }
+.km-r10-intel-T__hl::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--fg);
+  transform-origin: 0 50%; transition: transform calc(var(--kd) * 220ms) var(--ease-out);
+}
+.km-r10-intel-T__tally { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 16px; margin: 22px 0 0; }
+.km-r10-intel-T__tn {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 48px; line-height: 1; letter-spacing: var(--display-tracking); color: var(--fg); white-space: nowrap;
+}
+.km-r10-intel-T__tk { font-size: var(--ac-support); line-height: 1.4; color: var(--fg-2); }
+
+/* the connector (measured by T.js: right, up the gap, into the plan's first row; down when stacked) */
+.km-r10-intel-T__link { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.km-r10-intel-T__link * { vector-effect: none; }   /* its viewBox is the body's own pixels: a plain 1px stroke, and the pathLength dash stays true */
+.km-r10-intel-T__lk { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset calc(var(--kd) * 250ms) var(--ease-inout); }
+.km-r10-intel-T__lh { opacity: 0; transition: opacity 120ms linear; }
+
+/* ── 02–03 · the plan, on the head's week-13 page ── */
+.km-r10-intel-T__sheet { margin-top: 28px; }   /* room for the tab */
+.km-r10-intel-T__tab {
+  position: absolute; left: 0; bottom: 100%; margin: 0; padding: 4px 12px;
+  background: var(--accent); color: var(--accent-fg);
+  font-size: 13.5px; line-height: 20px; font-weight: var(--ui-weight); white-space: nowrap;
+}
+.km-r10-intel-T__plan { margin: 0; padding: 0; list-style: none; }
+.km-r10-intel-T__row {
+  position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr) 152px; column-gap: 16px;
+  align-items: start; min-height: 73px; padding: 12px 0; border-bottom: 1px solid var(--line);
+}
+.km-r10-intel-T__row:last-child { border-bottom: 0; }
+.km-r10-intel-T__slot {   /* the room made for the new first thing (dashed until it is filled) */
+  position: absolute; left: -10px; right: -10px; top: 6px; bottom: 6px; pointer-events: none;
+  border: 1px dashed var(--line-2); opacity: 0;
+}
+.km-r10-intel-T__rk { position: relative; display: grid; font-family: var(--f-mono); font-size: 14px; line-height: 24px; color: var(--fg-2); transition: color 300ms var(--ease-out); }
+.km-r10-intel-T__rv { grid-area: 1 / 1; transition: opacity calc(var(--kd) * 160ms) linear; }
+.km-r10-intel-T__rv--a, .km-r10-intel-T__row--stop .km-r10-intel-T__rv--b { opacity: 0; }
+.km-r10-intel-T__it { font-size: var(--ac-body); line-height: 24px; color: var(--fg); transition: color 300ms var(--ease-out); }
+.km-r10-intel-T__sw { display: flex; flex-direction: column; padding-top: 2px; font-size: 14px; line-height: 20px; }
+.km-r10-intel-T__w { font-weight: var(--ui-weight); color: var(--fg); }
+.km-r10-intel-T__why { color: var(--fg-2); }
+/* the strike: a line-through, so it holds on every line when the item wraps */
+.km-r10-intel-T__x {
+  text-decoration-line: line-through; text-decoration-thickness: 1.5px; text-decoration-color: var(--fg-2);
+  transition: text-decoration-color calc(var(--kd) * 200ms) var(--ease-out);
+}
+.km-r10-intel-T__row--stop .km-r10-intel-T__it, .km-r10-intel-T__row--stop .km-r10-intel-T__rk { color: var(--fg-3); }
+
+/* the band: the mechanism in a sentence, and Replay */
+.km-r10-intel-T__band { background: var(--panel); padding: 4px 32px 20px; }
+.km-r10-intel-T__cap { margin: 0; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+.km-r10-intel-T__replay { flex: none; }
+.km-r10-intel-T__replay[hidden] { display: none; }
+
+/* ═══ before each step (the rules above are the pieces' resting place once their step is on) ═══ */
+/* armed: the plate waits (T.js, until the log is on screen); then it fades in on the starting plan */
+.km-r10-intel-T__plate { transition: opacity 300ms var(--ease-out); }
+/* until the script has started, a reader who will see the motion never sees the finished frame first
+   (no script, or reduced motion: the finished frame, as authored) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .km-r10-intel-T:not(.is-init) :is(.km-r10-intel-T__plate, .km-r10-intel-T__head) { opacity: 0; transition: none; }
+}
+.km-r10-intel-T.is-armed .km-r10-intel-T__plate { opacity: 0; }
+
+/* step 01 — we read the calls (from its start: notes 0–1000, underlines 1100–1900, misses dim 1800, count 1900) */
+.km-r10-intel-T__note, .km-r10-intel-T__tally { transition: opacity calc(var(--kd) * 220ms) var(--ease-out), transform calc(var(--kd) * 220ms) var(--ease-out); }
+.km-r10-intel-T:not(.is-s1) .km-r10-intel-T__note { opacity: 0; transform: translateY(-8px); }
+.km-r10-intel-T:not(.is-s1) .km-r10-intel-T__tally { opacity: 0; transform: translateY(12px); }
+.km-r10-intel-T:not(.is-s1) .km-r10-intel-T__hl::after { transform: scaleX(0); }
+.km-r10-intel-T:not(.is-s1) .km-r10-intel-T__note.is-hit .km-r10-intel-T__nd { background: var(--panel); box-shadow: inset 0 0 0 1px var(--fg-2); }
+.km-r10-intel-T:not(.is-s1) .km-r10-intel-T__note:not(.is-hit) .km-r10-intel-T__q { color: var(--fg); }
+.km-r10-intel-T.is-s1 .km-r10-intel-T__note {
+  transition: opacity calc(var(--kd) * 300ms) var(--ease-out) calc(var(--k) * var(--i) * 140ms), transform calc(var(--kd) * 300ms) var(--ease-out) calc(var(--k) * var(--i) * 140ms);
+}
+.km-r10-intel-T.is-s1 .km-r10-intel-T__hl::after { transition: transform calc(var(--kd) * 300ms) var(--ease-out) calc(var(--k) * (1100ms + var(--u) * 200ms)); }
+.km-r10-intel-T.is-s1 .km-r10-intel-T__note.is-hit .km-r10-intel-T__nd {
+  transition: background-color calc(var(--kd) * 200ms) var(--ease-out) calc(var(--k) * (1150ms + var(--u) * 200ms)), box-shadow calc(var(--kd) * 200ms) var(--ease-out) calc(var(--k) * (1150ms + var(--u) * 200ms));
+}
+.km-r10-intel-T.is-s1 .km-r10-intel-T__note:not(.is-hit) .km-r10-intel-T__q { transition: color calc(var(--kd) * 400ms) var(--ease-inout) calc(var(--k) * 1800ms); }
+.km-r10-intel-T.is-s1 .km-r10-intel-T__tally {
+  transition: opacity calc(var(--kd) * 400ms) var(--ease-out) calc(var(--k) * 1950ms), transform calc(var(--kd) * 400ms) var(--ease-out) calc(var(--k) * 1950ms);
+}
+
+/* step 02 — we add one thing (connector 0–500, the slot clears 450, the new item rises 500–900, its rank
+   500, the rows below renumber 650, New 900, Kept 1000) */
+.km-r10-intel-T.is-s2 .km-r10-intel-T__lk { stroke-dashoffset: 0; transition: stroke-dashoffset calc(var(--kd) * 500ms) var(--ease-inout); }
+.km-r10-intel-T.is-s2 .km-r10-intel-T__lh { opacity: 1; transition: opacity 120ms linear calc(var(--k) * 480ms); }
+.km-r10-intel-T__slot { transition: opacity calc(var(--kd) * 200ms) linear; }
+.km-r10-intel-T:not(.is-s2) .km-r10-intel-T__slot { opacity: 1; }
+.km-r10-intel-T.is-s2 .km-r10-intel-T__slot { transition: opacity calc(var(--kd) * 300ms) linear calc(var(--k) * 450ms); }
+.km-r10-intel-T__row--new .km-r10-intel-T__it { transition: opacity calc(var(--kd) * 200ms) linear, transform calc(var(--kd) * 200ms) var(--ease-out); }
+.km-r10-intel-T:not(.is-s2) .km-r10-intel-T__row--new .km-r10-intel-T__it { opacity: 0; transform: translateY(10px); }
+.km-r10-intel-T.is-s2 .km-r10-intel-T__row--new .km-r10-intel-T__it {
+  transition: opacity calc(var(--kd) * 400ms) var(--ease-out) calc(var(--k) * 500ms), transform calc(var(--kd) * 400ms) var(--ease-out) calc(var(--k) * 500ms);
+}
+.km-r10-intel-T:not(.is-s2) .km-r10-intel-T__row--new .km-r10-intel-T__rv--b { opacity: 0; }
+.km-r10-intel-T.is-s2 .km-r10-intel-T__row--new .km-r10-intel-T__rv--b { transition: opacity calc(var(--kd) * 200ms) linear calc(var(--k) * 500ms); }
+/* the ranks below: the old number (a) before step 02, the new (b) from it; the stopped row's goes to – (c) at 03 */
+.km-r10-intel-T:not(.is-s2) .km-r10-intel-T__rv--a { opacity: 1; }
+.km-r10-intel-T:not(.is-s2) .km-r10-intel-T__rv--b { opacity: 0; }
+.km-r10-intel-T.is-s2 .km-r10-intel-T__rv--a { transition: opacity calc(var(--kd) * 200ms) linear calc(var(--k) * 650ms); }
+.km-r10-intel-T.is-s2:not(.is-s3) .km-r10-intel-T__row--stop .km-r10-intel-T__rv--b { opacity: 1; }
+.km-r10-intel-T.is-s2 .km-r10-intel-T__row--kept .km-r10-intel-T__rv--b,
+.km-r10-intel-T.is-s2:not(.is-s3) .km-r10-intel-T__row--stop .km-r10-intel-T__rv--b { transition: opacity calc(var(--kd) * 200ms) linear calc(var(--k) * 650ms); }
+.km-r10-intel-T__sw { transition: opacity calc(var(--kd) * 160ms) linear; }
+.km-r10-intel-T:not(.is-s2) :is(.km-r10-intel-T__row--new, .km-r10-intel-T__row--kept) .km-r10-intel-T__sw { opacity: 0; }
+.km-r10-intel-T.is-s2 .km-r10-intel-T__row--new .km-r10-intel-T__sw { transition: opacity calc(var(--kd) * 300ms) var(--ease-out) calc(var(--k) * 900ms); }
+.km-r10-intel-T.is-s2 .km-r10-intel-T__row--kept .km-r10-intel-T__sw { transition: opacity calc(var(--kd) * 300ms) var(--ease-out) calc(var(--k) * 1050ms); }
+
+/* step 03 — we stop one thing (strike 200–500, dim 200–500, rank to – 300, "Stopped" 600) */
+.km-r10-intel-T:not(.is-s3) .km-r10-intel-T__x { text-decoration-color: transparent; }
+.km-r10-intel-T.is-s3 .km-r10-intel-T__x { transition: text-decoration-color calc(var(--kd) * 300ms) var(--ease-out) calc(var(--k) * 200ms); }
+.km-r10-intel-T:not(.is-s3) .km-r10-intel-T__row--stop .km-r10-intel-T__it { color: var(--fg); }
+.km-r10-intel-T:not(.is-s3) .km-r10-intel-T__row--stop .km-r10-intel-T__rk { color: var(--fg-2); }
+.km-r10-intel-T.is-s3 .km-r10-intel-T__row--stop .km-r10-intel-T__it,
+.km-r10-intel-T.is-s3 .km-r10-intel-T__row--stop .km-r10-intel-T__rk { transition: color calc(var(--kd) * 300ms) var(--ease-out) calc(var(--k) * 200ms); }
+.km-r10-intel-T:not(.is-s3) .km-r10-intel-T__rv--c { opacity: 0; }
+.km-r10-intel-T.is-s3 .km-r10-intel-T__rv--c { transition: opacity calc(var(--kd) * 200ms) linear calc(var(--k) * 300ms); }
+.km-r10-intel-T.is-s3 .km-r10-intel-T__row--stop .km-r10-intel-T__rv--b { transition: opacity calc(var(--kd) * 200ms) linear calc(var(--k) * 200ms); }
+.km-r10-intel-T:not(.is-s3) .km-r10-intel-T__sw--stop { opacity: 0; }
+.km-r10-intel-T.is-s3 .km-r10-intel-T__sw--stop { transition: opacity calc(var(--kd) * 300ms) var(--ease-out) calc(var(--k) * 600ms); }
+
+/* ── 1024–1279: the plan's state goes under its item; the step numeral over its verb ── */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root:not(.km-home) .km-r10-intel-T__step { flex-direction: column; gap: 2px; padding-top: 12px; }
+  :root:not(.km-home) .km-r10-intel-T__row { grid-template-columns: 24px minmax(0, 1fr); row-gap: 4px; min-height: 0; }
+  :root:not(.km-home) .km-r10-intel-T__sw { grid-column: 2; flex-direction: row; flex-wrap: wrap; gap: 0 10px; padding-top: 0; }
+}
+/* ── tablet: the plate stacks — the log (with step 01 over it), a connector down, the plan (02 and 03 over it) ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-r10-intel-T__plate { margin-top: 32px; }
+  :root:not(.km-home) .km-r10-intel-T__body { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 64px auto; padding: 20px 24px 4px; }
+  :root:not(.km-home) .km-r10-intel-T__zone--saw { grid-column: 1; grid-row: 1; }
+  :root:not(.km-home) .km-r10-intel-T__zone--plan { grid-column: 1; grid-row: 3; }
+  :root:not(.km-home) .km-r10-intel-T__band { padding: 4px 24px 20px; align-items: flex-start; }
+}
+/* ── phone: the steps put their numeral over the verb; notes wrap to two lines; each plan row puts its state
+   under the item (its space held from the first frame) ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-r10-intel-T__body { grid-template-rows: auto 56px auto; padding: 16px 16px 4px; }
+  :root:not(.km-home) .km-r10-intel-T__heads { column-gap: 16px; margin-bottom: 20px; }
+  :root:not(.km-home) .km-r10-intel-T__step { flex-direction: column; gap: 2px; padding-top: 12px; }
+  :root:not(.km-home) .km-r10-intel-T__sh { font-size: 18px; line-height: 24px; }
+  :root:not(.km-home) .km-r10-intel-T__note { grid-template-columns: 64px 30px minmax(0, 1fr); }
+  :root:not(.km-home) .km-r10-intel-T__nd::after { width: 13px; }
+  :root:not(.km-home) .km-r10-intel-T__tn { font-size: 40px; }
+  :root:not(.km-home) .km-r10-intel-T__row { grid-template-columns: 22px minmax(0, 1fr); column-gap: 10px; row-gap: 4px; min-height: 0; padding: 12px 0; }
+  :root:not(.km-home) .km-r10-intel-T__it { font-size: 16px; line-height: 22px; }
+  :root:not(.km-home) .km-r10-intel-T__rk { line-height: 22px; }
+  :root:not(.km-home) .km-r10-intel-T__sw { grid-column: 2; flex-direction: row; flex-wrap: wrap; gap: 0 10px; padding-top: 0; }
+  :root:not(.km-home) .km-r10-intel-T__slot { left: -6px; right: -6px; }
+  :root:not(.km-home) .km-r10-intel-T__band { flex-direction: column; gap: 10px; padding: 4px 16px 16px; }
+}

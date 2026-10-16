@@ -1,0 +1,20 @@
+{
+ "title": "Where we are",
+ "direction": "A",
+ "summary": "Contact's map, second version: a drafted world map that lights every place where the clock reads 9 to 6 right now (real time zones), marks New York as our address, places the visitor, and under it a ruler of the visitor's own days showing when our reply is due.",
+ "reference": {
+  "site": "Kelwin homepage drawings (method, system)",
+  "borrowed": "hairline drawing with one solid part, labels on leaders, a phase ruler with bars",
+  "kelwin": "a world map drawn as a measured sheet (frame, registration marks, edge ticks), real clock zones, and the method's ruler turned into the visitor's own week"
+ },
+ "motion": [
+  "entrance: the frame plots with its registration marks; the ruler's line and the visitor's days draw",
+  "entrance: a scan line sweeps the map west to east and the land appears behind it",
+  "entrance: where it's 9 to 6 comes in from the east, with its ragged real time-zone edges; New York registers",
+  "wow: the visitor's crosshairs draw in and meet, the red square lands, then the reply bar runs along the visitor's days from now to the end of working day 2: 'We reply by Tue 18:00, your time.'",
+  "after: once a minute the times, the lit area and the ruler move with the clock; point at the map (or use the arrow keys) to read the time anywhere; Replay replays",
+  "on the live site: plays once when the plate is 40% on screen; reduced motion shows the final frame with no timers"
+ ],
+ "demoMs": 7600,
+ "notes": "Built by qa/r10/art/map/src2/gen.mjs from data2/map2.json (src2/bake.cjs: Natural Earth land on a 2° grid; the real time zone of every cell from @photostructure/tz-lookup 11.7.0, whose data is timezone-boundary-builder / OpenStreetMap, merged into 61 groups that keep the same UTC offsets through 2026-2028; the visitor's city from the system zone tables). The harness shot runs in UTC, so it shows no visitor: see qa/r10/art/map/v2/ for shots in set time zones."
+}

@@ -1,0 +1,20 @@
+{
+ "title": "Next quarter, in three steps",
+ "direction": "A×C · Round 10 · GTM Intelligence body (artifact language, key intel; review fix pass)",
+ "summary": "The head's week-13 page, opened: six notes from buyers who said no, logged on one rule at the head's weeks; security underlined in four and counted, 4 of 6; a line from the count into next quarter's plan, whose empty first slot fills with a one-page security answer; the contact-list row struck: 0 replies in 13 weeks. Each step's verb sits over the part of the plate it changes.",
+ "reference": {
+  "site": "The approved homepage handover (handover/U): the old line struck, the new line rising in",
+  "borrowed": "Strike-and-rise as the verb of change; a ruled list on a paper page; leaders to a rule; one solid subject (the count).",
+  "kelwin": "A real mechanism in the client's own material (lost-deal calls → next quarter's plan); the plan is the head's red week-13 page (its tab), its rows the head's lanes in the same words."
+ },
+ "motion": [
+  "entrance: the kit's claim rise; the plate waits, hidden, until the log is half on screen, then fades in on the starting plan (the empty first slot dashed, so the page never changes height).",
+  "step 01 We read the calls (from 400ms): six notes drop in 140ms apart; security is underlined in four and their squares fill (1100–1900); the other two dim (1800); 4 of 6 rises (1950).",
+  "step 02 We add one thing (2.9s later at the earliest, and only once the plan is half on screen): a line runs from the count into the plan's first row; the slot clears and the new item rises in; the rows below renumber; New, then Kept.",
+  "step 03 We stop one thing (2s after step 02): Rebuild the contact list every week is struck and dims; Stopped, 0 replies in 13 weeks. Settled about 1.1s later.",
+  "interaction: each step button shows the end of its step (forwards or back, about a second) and stops the pass for good; keyboard focus stops it too; Replay runs it again; the current step carries aria-current=step; a reader's press is spoken (aria-live).",
+  "reduced motion / no script: the end of step 03; the buttons still switch the plate."
+ ],
+ "demoMs": 8000,
+ "notes": "Illustrative throughout (the label row says so once): every quote, the count and the plan rows. The six weeks and four security calls match the head's lane; the plan rows are the head's lanes in the same words."
+}

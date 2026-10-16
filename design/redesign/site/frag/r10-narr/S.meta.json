@@ -1,0 +1,23 @@
+{
+ "title": "Many voices, one pitch",
+ "direction": "A×C · Round 10 · Narrative Systems body (artifact language prototype, key narr, v2 after review)",
+ "summary": "What a Narrative System is, in one look: a row diagram read left to right (the written page, one red line, five voices of one invented company, what the buyer takes away). Before, the voices sit off any line and five crossed wires leave the buyer holding five different stories; after, each voice is re-set from its own line of the page, the buyer's five notes close into one, and the count falls from 5 different companies to 1.",
+ "reference": {
+  "site": "The approved homepage reframe (reframe/U): a bent surface resolving into a true grid; the system slabs (system/T): a dimension that re-measures (3 layers to 1 system); the handover (handover/U): dashed drafts becoming solid.",
+  "borrowed": "Disorder resolving into a drafted order as the payoff; a measured count that changes as the mechanism works; dashed (a guess) against solid (settled).",
+  "kelwin": "Its own verb, register: every voice is set to one red line and re-set by a caret from the line of the page level with it, and the buyer's notes are re-set the same way and closed into one stack. No strike-and-rise (the head picture and the homepage handover keep that)."
+ },
+ "motion": [
+  "entrance: the kit's claim rise; the stepper rises (100ms cascade) and the plate fades in on its empty state: a dashed frame, 'Nothing written down'.",
+  "step 1 (0–1.3s): the five voices come in (120ms apart), each 24–108px off any line, left of where the line will be.",
+  "step 2 (1.3–2.75s): 'The buyer'; a wire plots from each voice to what the buyer takes from it, five crossed wires to five dashed notes ('An AI platform?', 'A quota tool?' …); the count reads 5 different companies.",
+  "step 3 (2.75–4.0s): the voices, wires and notes dim (never below the third text tone); the page is pushed up into the dashed frame and its five lines write in.",
+  "step 4 (4.0–7.1s, the page's wow): the red line draws; row by row (200ms apart) a leader runs from the page's line to the red line, the part's number lights, the voice slides onto the line and a caret re-sets its sentence; then its note at the buyer is re-set the same way (dashed to solid) and the count falls 5, 4, 3, 2, 1. Last, the five notes close into one stack (only the front note's words travel), the crossed wires straighten into one feed, and the front note turns solid. Settled at 7.1s; nothing loops.",
+  "narrow (≤1023): the same rows; the buyer sits under them, each note naming its voice; the close sets the five notes to one edge, joined by a bracket. Phone (≤767): the page is a strip of its three part names that stays in view while the voices and the buyer pass under it.",
+  "start (stitched page / production): each step waits for its part of the drawing; on a wide screen the pass starts with 82% of the drawing (or 60% of the screen) in view, or after 1.2s with 40% of it in view; on a phone the voices, then the buyer, then the page, then the buyer. A part already scrolled past never holds the pass.",
+  "interaction: each step button shows the end of its step (about a second) and stops the pass for good; keyboard focus finishes the step under way and stops; arrow keys move between steps; a polite live line reads the step after a press; Replay runs it again from nothing.",
+  "reduced motion / no script: the end state (at 1440 the lines are in the markup; below 1200 without a script they are not drawn)."
+ ],
+ "demoMs": 9200,
+ "notes": "Specimen throughout (said once, in the label row): the company, every sentence and the page. The proof line names a kind of evidence, never a result; the count only counts the drawing's own notes. Only transform, opacity, clip-path and custom properties animate; the geometry is the end state's from the first frame (layout shift during the pass: 0 at 1440, 834 and 390)."
+}

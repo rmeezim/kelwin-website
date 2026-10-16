@@ -1,0 +1,212 @@
+/* r10-map · S (v2) — Contact, "Where we are": a drafted world map and the reply ruler under it.
+   Head: the kit's claim head (.ac-shead--claim), nothing live in it (no layout moves on arrival).
+   Plate (.ac-plate, full measure): the map box (three SVG layers in real pixels: the land and its
+   guides; the 9-to-6 area; the frame, marks and crosshairs), a cover that reveals the land, the
+   labels in HTML, then the ruler of the visitor's days, then the caption band.
+   Weights: 1px construction (guides dashed --line, frame and area edge --line-2), land dots 2px
+   (--fg-3, --fg-2 where it's 9 to 6), New York --fg, the visitor the view's one red (--signal, the
+   live mark), and ONE solid part: the reply bar (--fg, 10px), from now to when the reply is due.
+   Motion: CSS only, started by .is-run on the plate (S.js); the default is the finished frame, so
+   reduced motion, no script and a screenshot all show it. Sizes: the map box keeps one aspect ratio
+   (the 1440 drawing is 7px a cell); on phones it is a taller window cut round New York and you. */
+
+/* ── the box: one ratio at any width (S.js draws whole-pixel dots for the width it gets) ── */
+.km-r10-map-S__body { margin-top: var(--ac-iplate-gap); }
+.km-r10-map-S__map { position: relative; aspect-ratio: 187.4286 / 75.4286; outline: none; }
+.km-r10-map-S__map:focus-visible { box-shadow: inset 0 0 0 1px var(--fg-2); }
+.km-r10-map-S__dots, .km-r10-map-S__lit, .km-r10-map-S__over {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: hidden;
+}
+.km-r10-map-S__cover {
+  position: absolute; left: 26px; top: 26px; width: 1260px; height: 476px;
+  background: var(--panel); border-left: 1px solid var(--fg-2); opacity: 0; pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* geometry */
+.km-r10-map-S__mer, .km-r10-map-S__eq { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-r10-map-S__zones { fill: none; stroke: var(--line); stroke-width: 1; shape-rendering: crispEdges; }   /* where clocks differ */
+.km-r10-map-S__land, .km-r10-map-S__litdots { fill: none; stroke: var(--fg-3); stroke-width: 2; shape-rendering: crispEdges; }
+.km-r10-map-S__litdots { stroke: var(--fg-2); }
+.km-r10-map-S__fill { fill: var(--panel-2); shape-rendering: crispEdges; }
+.km-r10-map-S__edge { fill: none; stroke: var(--line-2); stroke-width: 1; shape-rendering: crispEdges; }
+.km-r10-map-S__frame { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 1; }
+.km-r10-map-S__reg { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-r10-map-S__tk { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-r10-map-S__ch { fill: none; stroke: var(--fg-2); stroke-width: 1; stroke-dasharray: 1; }
+.km-r10-map-S__lead { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 1; }
+.km-r10-map-S__nyx { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-r10-map-S__nysq { fill: var(--fg); }
+.km-r10-map-S__you { fill: var(--signal); }
+.km-r10-map-S__probe { fill: none; stroke: var(--fg); stroke-width: 1; visibility: hidden; }
+
+/* words on the map (HTML, placed in the box's own pixels by S.js) */
+.km-r10-map-S__lab {
+  position: absolute; left: 0; top: 0; margin: 0; display: flex; flex-direction: column;
+  white-space: nowrap; pointer-events: none;
+}
+.km-r10-map-S__lab.is-off { visibility: hidden; }
+.km-r10-map-S__name { font-size: var(--ac-anno); line-height: 18px; color: var(--fg); }
+.km-r10-map-S__sub { font-size: var(--ac-anno); line-height: 18px; color: var(--fg-2); }
+.km-r10-map-S__time { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; color: var(--fg-2); }
+.km-r10-map-S__sub > .km-r10-map-S__time { margin-left: 6px; }
+.km-r10-map-S__sub > .km-r10-map-S__time:first-child { margin-left: 0; }
+.km-r10-map-S__lab--day { font-size: var(--ac-anno); line-height: 18px; color: var(--fg-2); }
+.km-r10-map-S__key { display: none; position: absolute; left: 0; top: 5px; width: 8px; height: 8px; }
+.km-r10-map-S__key--ny { background: var(--fg); }
+.km-r10-map-S__key--you { background: var(--signal); }
+.km-r10-map-S__map.is-stack .km-r10-map-S__lab--ny, .km-r10-map-S__map.is-stack .km-r10-map-S__lab--you { padding-left: 18px; }
+.km-r10-map-S__map.is-stack .km-r10-map-S__key { display: block; }
+.km-r10-map-S__probe-t {
+  position: absolute; left: 0; top: 0; margin: 0; display: flex; gap: 10px; padding: 2px 6px;
+  background: var(--panel); white-space: nowrap; pointer-events: none;
+  font-family: var(--f-mono); font-size: 12px; line-height: 18px; letter-spacing: .06em;
+}
+.km-r10-map-S__pt { color: var(--fg); }
+.km-r10-map-S__po { color: var(--fg-2); }
+.km-r10-map-S__probe-t.is-off { visibility: hidden; }
+
+/* the phone's key for the 9-to-6 area (hidden above 767px: the label sits on the map there) */
+.km-r10-map-S__legend {
+  position: absolute; visibility: hidden; margin: 0; display: flex; align-items: center; gap: 10px;
+  font-size: var(--ac-anno); line-height: 20px; color: var(--fg-2);
+}
+.km-r10-map-S__sw { width: 16px; height: 10px; flex: none; background: var(--panel-2); box-shadow: inset 0 0 0 1px var(--line-2); }
+
+/* ── the ruler: the visitor's own days ── */
+.km-r10-map-S__ruler { position: relative; height: 136px; }
+.km-r10-map-S__rsvg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: hidden; }
+.km-r10-map-S__base { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-r10-map-S__past { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 1; }
+.km-r10-map-S__future { fill: none; stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 1; }
+.km-r10-map-S__dt { fill: none; stroke: var(--fg-3); stroke-width: 1; }
+.km-r10-map-S__st { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-r10-map-S__tdy { fill: var(--line-2); shape-rendering: crispEdges; }   /* today: not counted */
+.km-r10-map-S__blk { fill: var(--fg-3); shape-rendering: crispEdges; }       /* working days 1 and 2 */
+.km-r10-map-S__bar { fill: var(--fg); shape-rendering: crispEdges; }
+.km-r10-map-S__nowt { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-r10-map-S__duet { fill: none; stroke: var(--fg); stroke-width: 1; }
+.km-r10-map-S__key-r {
+  position: absolute; left: var(--xa, 26px); top: 0; margin: 0; display: flex; align-items: center; gap: 10px;
+  font-size: var(--ac-anno); line-height: 20px; color: var(--fg-2); white-space: nowrap;
+}
+.km-r10-map-S__rk { width: 8px; height: 8px; flex: none; background: var(--signal); }
+.km-r10-map-S__city { color: var(--fg); }
+.km-r10-map-S__days, .km-r10-map-S__nums { position: absolute; inset: 0; pointer-events: none; }
+.km-r10-map-S__dl {
+  position: absolute; top: 24px; white-space: nowrap;
+  font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: .06em; color: var(--fg-3);
+}
+.km-r10-map-S__bn {
+  position: absolute; font-family: var(--f-mono); font-size: 12px; line-height: 16px; letter-spacing: .06em; color: var(--fg);
+}
+.km-r10-map-S__now { position: absolute; left: 0; top: 0; margin: 0; font-size: var(--ac-anno); line-height: 20px; color: var(--fg-2); white-space: nowrap; }
+.km-r10-map-S__due {
+  position: absolute; left: var(--xa, 26px); top: 102px; margin: 0; white-space: nowrap;
+  font-size: var(--ac-lede); line-height: 26px; color: var(--fg);
+}
+
+/* ── without the script: no time-bound part shows (the area, you, the ruler's days and bar) ── */
+.km-r10-map-S:not(.is-live) .km-r10-map-S__lit,
+.km-r10-map-S:not(.is-live) .km-r10-map-S__lab--day,
+.km-r10-map-S:not(.is-live) .km-r10-map-S__legend,
+.km-r10-map-S:not(.is-live) .km-r10-map-S__past, .km-r10-map-S:not(.is-live) .km-r10-map-S__future,
+.km-r10-map-S:not(.is-live) .km-r10-map-S__now, .km-r10-map-S:not(.is-live) .km-r10-map-S__key-r,
+.km-r10-map-S:not(.is-you) .km-r10-map-S__lab--you, .km-r10-map-S:not(.is-you) .km-r10-map-S__you,
+.km-r10-map-S:not(.is-you) .km-r10-map-S__ch { visibility: hidden; }
+.km-r10-map-S.is-live .km-r10-map-S__base { visibility: hidden; }
+/* until the script has laid the drawing out for the real time, the map and ruler wait unseen (no
+   flash of the build-time drawing); a page without scripts shows them through the <noscript> style */
+.km-r10-map-S:not(.is-live) .km-r10-map-S__map, .km-r10-map-S:not(.is-live) .km-r10-map-S__ruler { visibility: hidden; }
+
+/* caption band */
+.km-r10-map-S__cap { align-items: baseline; gap: 12px 32px; }
+.km-r10-map-S__capt { flex: 1 1 auto; margin: 0; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); max-width: 64ch; }
+.km-r10-map-S__src { margin: 0; font-size: var(--ac-anno); line-height: 1.5; color: var(--fg-3); white-space: nowrap; }
+.km-r10-map-S__replay { flex: none; color: var(--fg); }
+@media (prefers-reduced-motion: reduce) { .km-r10-map-S__replay { display: none; } }
+
+/* ── the reveal (ms from .is-run: the plate is 40% on screen) ──
+   0–800      the frame plots, its registration marks and edge ticks appear; the ruler's line and
+              ticks draw, the days are named
+   500–2300   a scan line sweeps west → east and the land and its guides appear behind it (the cover
+              moves by transform only)
+   2400–3200  where it's 9 to 6: the area comes in from the east, its label
+   3300–3800  New York registers: the +, the square, its leader and label
+   4400–5300  you: crosshairs draw in from the left and top edges and meet, the red square lands, the
+              crosshairs run on to the far edges, your label, and the ruler is keyed "Your time"
+   5600–7050  the reply: your working days, the now line, the bar runs from now to the end of working
+              day 2 (each day's number lights as the bar reaches it), the end line, "We reply by …"  */
+@keyframes km-r10-map-S-on { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-r10-map-S-drop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@keyframes km-r10-map-S-sx { from { transform: scaleX(0); } to { transform: none; } }
+@keyframes km-r10-map-S-sy { from { transform: scaleY(0); } to { transform: none; } }
+@keyframes km-r10-map-S-wipe { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes km-r10-map-S-cover {
+  0% { opacity: 1; transform: translateX(0); }
+  21.74% { opacity: 1; transform: translateX(0); animation-timing-function: linear; }
+  91.3% { opacity: 1; transform: translateX(var(--sweep, 1262px)); }
+  100% { opacity: 0; transform: translateX(var(--sweep, 1262px)); }
+}
+.km-r10-map-S.is-armed .km-r10-map-S__map,
+.km-r10-map-S.is-armed .km-r10-map-S__ruler,
+.km-r10-map-S.is-armed .km-r10-map-S__legend { opacity: 0; }
+.km-r10-map-S__nowt, .km-r10-map-S__duet { transform-box: fill-box; transform-origin: 50% 0; }
+.km-r10-map-S__bar { transform-box: fill-box; transform-origin: 0 50%; }
+.km-r10-map-S__nysq, .km-r10-map-S__you { transform-box: fill-box; }
+
+/* 1 · the frame and the ruler's scaffolding */
+.km-r10-map-S__plate.is-run .km-r10-map-S__frame { animation: ac-plot 700ms var(--ease-inout) 0ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__reg { animation: km-r10-map-S-on 300ms var(--ease-out) 0ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__tk { animation: km-r10-map-S-on 300ms var(--ease-out) 400ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__key-r { animation: km-r10-map-S-on 300ms var(--ease-out) 4950ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__past { animation: ac-plot 300ms var(--ease-in, ease-in) 200ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__future { animation: ac-plot 500ms var(--ease-out) 500ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__st,
+.km-r10-map-S__plate.is-run .km-r10-map-S__dt { animation: km-r10-map-S-on 300ms var(--ease-out) 500ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__dl { animation: km-r10-map-S-on 300ms var(--ease-out) 650ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__tdy { animation: km-r10-map-S-on 300ms var(--ease-out) 800ms both; }
+/* 2 · the land */
+.km-r10-map-S__plate.is-run .km-r10-map-S__cover { animation: km-r10-map-S-cover 2300ms linear 0ms both; }
+/* 3 · where it's 9 to 6 */
+.km-r10-map-S__plate.is-run .km-r10-map-S__lit { animation: km-r10-map-S-wipe 700ms var(--ease-inout) 2400ms both, km-r10-map-S-on 200ms linear 2400ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__lab--day,
+.km-r10-map-S__plate.is-run .km-r10-map-S__legend { animation: km-r10-map-S-on 250ms var(--ease-out) 2950ms both; }
+/* 4 · New York */
+.km-r10-map-S__plate.is-run .km-r10-map-S__nyx { animation: km-r10-map-S-on 150ms var(--ease-out) 3300ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__nysq { animation: km-r10-map-S-drop 250ms var(--ease-out) 3400ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__lead { animation: ac-plot 200ms var(--ease-out) 3450ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__lab--ny { animation: km-r10-map-S-on 250ms var(--ease-out) 3450ms both; }
+/* 5 · you */
+.km-r10-map-S__plate.is-run .km-r10-map-S__ch--a,
+.km-r10-map-S__plate.is-run .km-r10-map-S__ch--b { animation: ac-plot 500ms var(--ease-inout) 4400ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__you { animation: km-r10-map-S-drop 250ms var(--ease-out) 4850ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__ch--c,
+.km-r10-map-S__plate.is-run .km-r10-map-S__ch--d { animation: ac-plot 350ms var(--ease-out) 4850ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__lab--you { animation: km-r10-map-S-on 250ms var(--ease-out) 4900ms both; }
+/* 6 · the reply */
+.km-r10-map-S__plate.is-run .km-r10-map-S__blk { animation: km-r10-map-S-on 300ms var(--ease-out) 5600ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__nowt { animation: km-r10-map-S-sy 250ms var(--ease-out) 5700ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__now { animation: km-r10-map-S-on 300ms var(--ease-out) 5750ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__bar { animation: km-r10-map-S-sx 800ms var(--ease-inout) 5900ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__bn { animation: km-r10-map-S-on 200ms var(--ease-out) var(--d, 6300ms) both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__duet { animation: km-r10-map-S-sy 200ms var(--ease-out) 6700ms both; }
+.km-r10-map-S__plate.is-run .km-r10-map-S__due { animation: km-r10-map-S-on 300ms var(--ease-out) 6750ms both; }
+
+/* ── tablet (≤1023) and phone (≤767): recomposed, never a shrunk 1440 (kit 12.13) ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-r10-map-S__body { margin-top: 48px; }
+  :root:not(.km-home) .km-r10-map-S__cap { flex-wrap: wrap; }
+  :root:not(.km-home) .km-r10-map-S__capt { flex-basis: 100%; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-r10-map-S__body { margin-top: 40px; }
+  /* the phone's map: a taller window cut round New York and you (S.js picks the crop) */
+  :root:not(.km-home) .km-r10-map-S__map { aspect-ratio: 5 / 4; }
+  :root:not(.km-home) .km-r10-map-S__legend { position: static; visibility: inherit; padding: 2px 10px 10px; }
+  :root:not(.km-home) .km-r10-map-S:not(.is-live) .km-r10-map-S__legend { visibility: hidden; }
+  :root:not(.km-home) .km-r10-map-S__ruler { height: 176px; }
+  :root:not(.km-home) .km-r10-map-S__due { top: 122px; white-space: normal; right: 10px; font-size: var(--ac-body); line-height: 24px; }
+  :root:not(.km-home) .km-r10-map-S__cap { flex-direction: column; align-items: flex-start; gap: 6px; padding: 12px 16px 14px; }
+  :root:not(.km-home) .km-r10-map-S__src { white-space: normal; }
+}

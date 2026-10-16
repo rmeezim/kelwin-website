@@ -1,0 +1,1642 @@
+{
+ "_about": "Round 10 review data. A string starting with TODO shows as a marked placeholder on the page. Paths ending _src are relative to R; a path starting REPO: is relative to the repository. assemble10.py fills sitemap.tree and sitemap.cards from sitemap.source and sitemap.doc_src.",
+ "intro": {
+  "kicker": "Round 10",
+  "lede": "In round 9 you asked for a map of the whole site, so we know exactly what we're building, then for research on your business model, copy that no longer reads as AI-made, inside pages that feel alive, and a page turn of our own. This round is four proposals and the next steps. Nothing gets rebuilt until you've decided on them.",
+  "asks": [
+   {
+    "quote": "…design the entire sitemap of the website for Kelwin, so we know exactly what we are doing…",
+    "answer": "Every page the site has, needs or should lose, each with its purpose, how it brings leads and how it shapes the way Kelwin is seen.",
+    "href": "#sitemap",
+    "go": "See the sitemap"
+   },
+   {
+    "quote": "…I feel like we are going off a bit all over the place.",
+    "answer": "So the order changes. Four proposals come first, then the pages are rebuilt against them, in the order set out in the next steps.",
+    "href": "#next",
+    "go": "See the next steps"
+   },
+   {
+    "quote": "…do some deep research on this business model: whether it is competitive enough, smart enough, and luring enough…",
+    "answer": "Your model, researched, then read again by us the way a buyer and an operator and lawyer would read it: what to keep, what to change, the three packages, the pilot, project prices and whether to show prices.",
+    "href": "#business",
+    "go": "See the business model"
+   },
+   {
+    "quote": "Still, the copywriting on all pages looks a lot like AI-generated copywriting…",
+    "answer": "A written Kelwin voice, ten rewrites from real pages, and Narrative Systems rewritten from scratch in it.",
+    "href": "#voice",
+    "go": "See the voice"
+   },
+   {
+    "quote": "A lot of internal pages of the website look very bland…",
+    "answer": "Rules for drawings that move, and the first three built and filmed, the fourth on its way.",
+    "href": "#artifacts",
+    "go": "See the drawings"
+   },
+   {
+    "quote": "I like the turn version of this, but it looks very much exactly like Palantir's version.",
+    "answer": "Two turns of our own, filmed beside today's.",
+    "href": "#turn",
+    "go": "See the turns"
+   }
+  ],
+  "done_title": "Already done, no decision needed",
+  "done": [
+   "The footer shows each visitor's own local time and nearest city, in place of the London clock.",
+   "“Kelwin, LLC” is now just “Kelwin”, and the legal pages give the address as New York, New York, USA.",
+   "Your round-9 answers are written down word for word, and our working rules follow them."
+  ],
+  "in_title": "In this round",
+  "in": [
+   [
+    "The sitemap",
+    "Every page and why it's there, the menu and footer, and how a visitor becomes a lead.",
+    "#sitemap"
+   ],
+   [
+    "The business model",
+    "Your packages, pilot and prices, researched and tested.",
+    "#business"
+   ],
+   [
+    "Drawings and the turn",
+    "The drawing rules, the first three drawings, and two turns of our own.",
+    "#artifacts"
+   ],
+   [
+    "The voice",
+    "How Kelwin writes, and one page rewritten in it.",
+    "#voice"
+   ],
+   [
+    "The next steps",
+    "What happens after your answers, in order.",
+    "#next"
+   ],
+   [
+    "One question about your time",
+    "How many hours you can give, and who is lined up.",
+    "#questions"
+   ]
+  ],
+  "asks_title": "What you asked for in round 9, in your words, and where each is answered"
+ },
+ "sitemap": {
+  "source": "qa/r10/sitemap.json",
+  "doc_src": "REPO:design/redesign/work/r10/SITEMAP.md",
+  "lede": "You asked for the whole map: what to add, leave out, remove and keep, with each page's purpose, its part in bringing leads and its part in how Kelwin is seen. Two decisions: approve the sitemap, and say whether the site may store what visitors send.",
+  "short": [
+   "26 pages at launch: 20 already designed, 5 project pages written but not yet designed, and one brand-new page, Engagements.",
+   "Engagements says what working with Kelwin involves: retainer first, six months, the pilot, the packages and what you own. It takes Methodology's place in the top bar.",
+   "Nothing is cut that a buyer would miss. What goes is copy and clutter: the handover-first lines, your name, “LLC”, “no open seats”, the Lab's invented instruments and the invented case studies.",
+   "Some pages wait until they're real, each with a stated condition (the table at the end).",
+   "The two doors stay, five honest sign-ups are added, and people write every follow-up.",
+   "No prices on any page until you decide how to show them, in the business model."
+  ],
+  "tests_title": "Every page passes three tests",
+  "tests": [
+   "A serious buyer would miss it if it were gone.",
+   "It ends in one of the two doors: the red System Audit, or the quiet Talk to the team.",
+   "It says nothing we can't stand behind today."
+  ],
+  "map_lede": "Open any page for its card: what it's for, how it brings leads, how it shapes perception, and its doors.",
+  "status_help": {
+   "new": "New page or screen",
+   "rework": "Kept, and reworked",
+   "keep": "Approved, small changes at most",
+   "merged": "Folded into another page",
+   "later": "Waits until it's real",
+   "removed": "Removed"
+  },
+  "menu": {
+   "lede": "The menu keeps its shape: four items and the audit button. One item changes, and several one-line descriptions change to match your round-9 answers.",
+   "bar": [
+    {
+     "name": "Capabilities",
+     "plate": true
+    },
+    {
+     "name": "Engagements",
+     "new": true
+    },
+    {
+     "name": "The Firm",
+     "plate": true
+    },
+    {
+     "name": "Resources",
+     "plate": true
+    }
+   ],
+   "button": "Audit request ↗",
+   "bar_note": "One change, for your yes: Engagements takes Methodology's place. That link only scrolls back down the homepage; Engagements answers how long, what's included and what it commits a buyer to.",
+   "plates": [
+    {
+     "name": "Capabilities",
+     "rows": [
+      [
+       "Narrative Systems",
+       "What the market hears, made deliberate.",
+       ""
+      ],
+      [
+       "GTM Infrastructure",
+       "The machine that carries it to buyers.",
+       ""
+      ],
+      [
+       "GTM Intelligence",
+       "The loop that makes it compound.",
+       ""
+      ]
+     ],
+     "foot": [
+      "Projects: one problem, fixed on its own.",
+      "Replaces “The full stack, on one page”"
+     ],
+     "door": "The System Audit · Where every engagement begins. Free, ten working days."
+    },
+    {
+     "name": "The Firm",
+     "rows": [
+      [
+       "About Us",
+       "What we believe, how the firm is built, and what we're building.",
+       "Replaces “The founder, and the rules…”"
+      ],
+      [
+       "Who We Work With",
+       "Three situations we're built for, and who we send away.",
+       ""
+      ],
+      [
+       "Careers",
+       "Six roles, all open now. Remote, worldwide.",
+       "Replaces “No open seats today…”"
+      ],
+      [
+       "The Lab",
+       "We're building an AI platform for revenue teams. Ask for an invitation.",
+       "New line"
+      ]
+     ],
+     "foot": [
+      "Why Kelwin exists",
+      "Replaces “The founder's letter, in his words”"
+     ],
+     "door": "The System Audit"
+    },
+    {
+     "name": "Resources",
+     "rows": [
+      [
+       "Insights",
+       "Field notes on how revenue systems break, one layer at a time.",
+       ""
+      ],
+      [
+       "Reports",
+       "Our client work, with the numbers. Published only with the client's written yes.",
+       "Replaces “What a readout looks like…”"
+      ],
+      [
+       "Talk to the team",
+       "Questions, projects, press. We reply within two working days.",
+       "Replaces “A person answers”"
+      ]
+     ],
+     "foot": [
+      "Every engagement opens with a fixed-scope audit.",
+      ""
+     ],
+     "door": "The System Audit"
+    }
+   ],
+   "plates_note": "The audit door in each menu stays paper, so a screen never shows two reds. A phone gets the same items in the same order.",
+   "footer": [
+    {
+     "name": "Capabilities",
+     "items": [
+      "Narrative Systems",
+      "GTM Infrastructure",
+      "GTM Intelligence",
+      "Engagements",
+      "Projects",
+      "The System Audit ↗"
+     ],
+     "new": [
+      "Engagements",
+      "Projects"
+     ]
+    },
+    {
+     "name": "The Firm",
+     "items": [
+      "About Us",
+      "Who We Work With",
+      "The Lab",
+      "Careers"
+     ],
+     "new": []
+    },
+    {
+     "name": "Resources",
+     "items": [
+      "Insights",
+      "Reports",
+      "Talk to the Team →"
+     ],
+     "new": []
+    },
+    {
+     "name": "Contact",
+     "items": [
+      "audit@kelwin.co",
+      "The visitor's local time, with the nearest city",
+      "Built in-house, no template",
+      "Kelwin on LinkedIn, once the company page exists"
+     ],
+     "new": []
+    }
+   ],
+   "legal": "© 2026 Kelwin · Privacy | Terms · Audit request",
+   "footer_changes": [
+    "“Methodology” leaves, because Engagements does its job.",
+    "Engagements and Projects join (Projects as approved in round 9).",
+    "careers@kelwin.co appears on Careers only, so the footer keeps one address.",
+    "No sign-up line: you said to keep the footer as it is."
+   ],
+   "plates_fold": "The three menus, opened"
+  },
+  "leads": {
+   "lede": "One red door and one quiet door, five honest sign-ups for visitors who aren't ready, and people write every follow-up.",
+   "doors": [
+    {
+     "kind": "red",
+     "name": "Request a System Audit",
+     "to": "The System Audit",
+     "text": "The only red action on the site. It appears twice on the homepage (the hero and the final call), and closes every capability, engagement, project, firm and resources page. Never on Contact, Careers, Privacy or Terms."
+    },
+    {
+     "kind": "quiet",
+     "name": "Talk to the team",
+     "to": "Contact",
+     "text": "Beside every red button. When the page knows why you're writing (a package, a project, a role), the form opens with that reason chosen."
+    }
+   ],
+   "ways": [
+    [
+     "A package",
+     "Three questions → a 30-minute first call → ten working days → the readout, presented on the second call → the proposal call → the pilot (months 1 to 3) → the full run (months 4 to 6) → renewal."
+    ],
+    [
+     "A project",
+     "An enquiry on Contact → a 30-minute call → a written scope → the stop after week one → the build, with a check 30 days on → upkeep, or the free audit and then a package."
+    ]
+   ],
+   "signups_title": "Five sign-ups, each for something real",
+   "signups": [
+    [
+     "The next field note",
+     "Insights, and each note",
+     "Only when a note publishes, at most once a month."
+    ],
+    [
+     "The first report",
+     "Reports",
+     "One email when the first report is cleared."
+    ],
+    [
+     "The Lab invitation",
+     "The Lab",
+     "One email when invitations open."
+    ],
+    [
+     "“Tell me when the Index is out”",
+     "Insights and The Lab",
+     "One email when it's published. No date promised."
+    ],
+    [
+     "“Tell me when it fits”",
+     "The audit's “not a fit yet” screen",
+     "The notes, then one check-in about six months later."
+    ]
+   ],
+   "never": "Not offered: a self-check quiz, an e-book, webinars, templates or a price list behind a form. Each would compete with the free audit.",
+   "behind_title": "What has to be behind the site",
+   "behind_lede": "Today every form only opens the visitor's email app, and nothing is kept, so Careers can't take a CV and Reports can't keep an address.",
+   "behind": [
+    [
+     "At launch",
+     [
+      "A form service that accepts file uploads (CVs), filters spam and sends each submission to audit@ or careers@ and on to the CRM. For example Formspree or Basin.",
+      "A light CRM for Kelwin's own pipeline, with where each lead came from. For example HubSpot's free tier or Attio.",
+      "An email list with tags, a confirm-your-address step and one-click unsubscribe. For example Buttondown or Kit.",
+      "Cookie-free analytics, so no cookie banner is needed. For example Plausible or Fathom.",
+      "kelwin.co, with audit@ and careers@ live and read every working day, and email settings that pass the inbox checks.",
+      "Privacy and Terms rewritten the same day these go live, and read by a lawyer."
+     ]
+    ],
+    [
+     "Soon after",
+     [
+      "A calendar for the 30-minute first call, shown only after the three questions qualify a visitor. For example Cal.com or Calendly."
+     ]
+    ],
+    [
+     "Later",
+     [
+      "Automatic delivery of reports, once there are several; an applicant-tracking tool, if applications outgrow an inbox."
+     ]
+    ]
+   ],
+   "fallback": "Without them, the site can still launch: Careers then says “send your CV to careers@kelwin.co”, and Reports asks for an email the visitor writes.",
+   "rules_title": "The follow-up rules",
+   "rules": [
+    "A lead that fits gets a person. Everyone else gets the writing.",
+    "No automated email pretends to be a person.",
+    "No follow-up runs past three emails. After that, we write only through the notes list, and only to people who joined it.",
+    "Every list says how often it writes, and keeps to it.",
+    "Anyone who books the audit leaves the marketing emails and is handled as a prospective client.",
+    "Leaving takes one click, everywhere, and nothing suggests false urgency."
+   ],
+   "signups_fold": true
+  },
+  "launch": {
+   "title": "Pages that wait until they're real",
+   "lede": "The launch order is in the next steps. These come later.",
+   "later": [
+    [
+     "A report, one per case",
+     "A client's written yes, with the numbers checked"
+    ],
+    [
+     "Market pages",
+     "A cleared report from that market"
+    ],
+    [
+     "The Revenue Entropy Index",
+     "Real data, a written method, and your decision on client data"
+    ],
+    [
+     "Package pages",
+     "Research showing the packages differ in kind, not just volume"
+    ],
+    [
+     "One page per role",
+     "Enough applications to justify them"
+    ],
+    [
+     "Sales narrative",
+     "Delivery capacity, or the Narrative Architect role filled"
+    ],
+    [
+     "A client-data page",
+     "Your decision on client data, and a lawyer"
+    ],
+    [
+     "Automatic report delivery",
+     "Several reports"
+    ]
+   ]
+  },
+  "approve": {
+   "id": "sm-approve",
+   "title": "Approve the sitemap",
+   "text": "Approve means yes to the map, the menu and footer, the lead path and the launch order as shown. That includes:",
+   "list": [
+    "Engagements in Methodology's place, in the top bar and the footer;",
+    "Projects in place of “The full stack, on one page” at the foot of the Capabilities menu;",
+    "the audit described as “Free, ten working days”;",
+    "“CRM blueprint” renamed “CRM setup plan”;",
+    "the deliverability note linking to the Email deliverability project as well."
+   ],
+   "after": "Use the note for anything you'd add, cut or change."
+  },
+  "decisions": [
+   {
+    "id": "sm-addresses",
+    "title": "Can the site store what visitors send?",
+    "context": "Yes means a form service, a light CRM, an email list and cookie-free analytics at launch, a calendar soon after, and Privacy rewritten the same day. Without them, Careers can't take a CV and Reports can't keep the address of someone who asks for one.",
+    "options": [
+     [
+      "yes",
+      "Yes, set them up"
+     ],
+     [
+      "notyet",
+      "Not yet: forms keep opening the visitor's email app"
+     ]
+    ],
+    "proposed": "yes"
+   }
+  ],
+  "go_approve": "Ready to decide? Approve the sitemap ↓",
+  "legend": {
+   "new": "6 pages, plus 9 confirmation screens and technical items"
+  },
+  "left": [
+   [
+    "Not added, on purpose",
+    [
+     "A team page",
+     "Industry pages",
+     "Landing pages for the three situations",
+     "Comparison pages",
+     "A pricing page",
+     "A self-check quiz",
+     "A blog archive",
+     "Press or logo pages"
+    ]
+   ],
+   [
+    "Kept, though a leaner cut was possible",
+    [
+     "Who We Work With",
+     "The five new project pages",
+     "Reports, before any report exists",
+     "The Lab",
+     "Insights and the three notes",
+     "The two separate doors"
+    ]
+   ]
+  ]
+ },
+ "business": {
+  "doc_src": "REPO:design/redesign/work/r10/BUSINESS-MODEL.md",
+  "status": "",
+  "lede": "You asked whether your model is competitive, smart and attractive enough for clients to sign with us over another agency, what each package should include, project prices and how to show prices. A first draft was then read twice more by us: once as a buyer comparing four firms would read it, once as an operator and a lawyer would. Neither was a real buyer or lawyer. This is the revised version.",
+  "short": [
+   "Your prices fit the market, and six months is a normal minimum for firms like Kelwin. Keep the packages, the term, the pilot and a revenue share.",
+   "In the pilot: 65% of the retainer, plus $250 for each held first meeting with a buyer who fits, capped at three full months.",
+   "Drop the per-lead fee after month 3. One 3% revenue share. An exit at day 90, on written targets.",
+   "Projects at fixed fees; $3,500 a month becomes upkeep. Prices stay off the site, and are said on the first call."
+  ],
+  "trust_head": "Figures as reported, to be re-checked before you quote them.",
+  "trust": " We could read only search-engine summaries of each source, not the pages themselves, so every outside figure is “as reported” until checked. The main comparison, RevPartners' prices, may date from about 2022. Legal points need a US lawyer's read.",
+  "buyer": "In that buyer's-eye read, six months as first written was a no; the pilot with these changes was a yes.",
+  "levers_title": "What changes, and why",
+  "levers_head": [
+   "",
+   "You proposed",
+   "We recommend",
+   "Why"
+  ],
+  "levers": [
+   [
+    "The pilot fee",
+    "About 45% of the retainer",
+    "65% of the retainer",
+    "The pilot is the costliest quarter to run (about 45–70 hours a month on Launch). At 45% the fee jumps 2.2× at month 4, just when the client decides whether to stay."
+   ],
+   [
+    "During the pilot",
+    "$200–300 for each qualified lead",
+    "$250 for each held first meeting our outreach created, capped over the quarter",
+    "A “lead” invites arguments about what counts. A held meeting with a buyer who fits is easy to check, and the cap keeps the pilot under full price."
+   ],
+   [
+    "After month 3",
+    "$150 for each lead",
+    "The full retainer, with no per-lead or meeting fee",
+    "Its purpose, making up for the pilot discount, ends at month 4. It turns an “$8,000 package” into $10,100–10,700, and it reads like an appointment-setting agency."
+   ],
+   [
+    "The revenue share",
+    "4% in the pilot, then 3%, capped at $50,000 or $100,000",
+    "One rate of 3% on a signed list of companies, capped at half of six months' fees, never above $50,000 on Launch and Growth, or $100,000 on Scaling",
+    "The two rates differ by about $540 on a typical Launch client. A list both sides sign ends arguments about credit."
+   ],
+   [
+    "An exit after the pilot",
+    "Undecided; on good faith",
+    "At day 90, judged on written targets. Leaving for any other reason costs at most the discount already given",
+    "Buyer guides tell buyers to demand a 60–90-day exit. A written test can be enforced; “good faith” can't."
+   ],
+   [
+    "Projects",
+    "From $3,500–4,000 a month",
+    "Fixed fees of $6,000–25,000; $3,500 a month becomes upkeep",
+    "Buyers compare projects by fixed fee. $3,500 a month would undercut work that sells for $10–30k."
+   ],
+   [
+    "Prices on the site",
+    "Kept off the site",
+    "Kept off the site; the starting price given on the first call",
+    "The buyer hears the starting price before giving ten days to the audit, and no low number sits on a page."
+   ]
+  ],
+  "worked": {
+   "title": "Launch at $8,000, month by month",
+   "text": "One typical Launch client on your terms and on ours. The meeting counts are invented for the example; tools and the revenue share are left out.",
+   "head": [
+    "",
+    "Held meetings",
+    "Your terms",
+    "Recommended"
+   ],
+   "rows": [
+    [
+     "Month 1",
+     "0",
+     "$3,600",
+     "$5,200"
+    ],
+    [
+     "Month 2",
+     "6",
+     "$5,100",
+     "$6,700"
+    ],
+    [
+     "Month 3",
+     "10",
+     "$6,100",
+     "$7,700"
+    ],
+    [
+     "Month 4",
+     "14",
+     "$10,100",
+     "$8,000"
+    ],
+    [
+     "Month 5",
+     "16",
+     "$10,400",
+     "$8,000"
+    ],
+    [
+     "Month 6",
+     "18",
+     "$10,700",
+     "$8,000"
+    ]
+   ],
+   "totals": [
+    [
+     "The pilot, months 1 to 3",
+     "",
+     "$14,800",
+     "$19,600"
+    ],
+    [
+     "Six months",
+     "",
+     "$46,000",
+     "$43,600"
+    ]
+   ],
+   "terms_note": "Your terms: 45%, $250 a lead in the pilot, then $150 a lead, no cap. Recommended: 65%, $250 a held meeting in the pilot only, capped over the quarter.",
+   "shows": [
+    "The first quarter brings $4,800 more, in the quarter that costs most to deliver.",
+    "The step at month 4 is +4% instead of +66%, just when the client decides whether to stay.",
+    "Over six months your terms earn $2,400 more, all from the $150 fee, but the “$8,000 package” bills $10,100–10,700. Launch at $10,000 brings about the same as one number.",
+    "A busy pilot stops at $24,000, exactly three full months."
+   ],
+   "compare": "Six months of Launch at $8,000, with the pilot at 65%, come to $39,600 before meeting fees, against $64,100 for RevPartners' entry tier (as reported; its price page may date from about 2022)."
+  },
+  "model": {
+   "kept": [
+    "The three price bands: Launch $8–12k, Growth $15–23k, Scaling from $25k. They match what systems partners charge.",
+    "The six-month minimum. Firms that build systems use it; outbound vendors run shorter terms.",
+    "Sharing the risk in the pilot. It can be a real reason to choose Kelwin, if it is simple and visibly fair.",
+    "Your rates, inside your own ranges: 3%, and your $50,000 and $100,000 as the outer ceilings.",
+    "Prices off the site, projects as the way up into the packages, and the names Launch, Growth and Scaling."
+   ],
+   "changed": [
+    "The pilot fee, from 45% to 65% of the retainer.",
+    "$250 per held meeting, the middle of your $200–300 per lead.",
+    "What is paid for: a held first meeting with a buyer who fits.",
+    "A cap on meeting fees over the whole pilot, so it never costs more than three full months.",
+    "The revenue share: one rate, on a list of companies both sides sign, capped in proportion to the fees.",
+    "Ranges inside a package become a base price plus named add-ons; Scaling shows as “from $25,000”.",
+    "Projects at fixed fees; $3,500 a month becomes the price of upkeep.",
+    "The exit: at day 90, judged on written targets.",
+    "Renewal: the 3-month option goes; 6, 12 or 24 months, or month to month.",
+    "Billing: one invoice a month, and a deposit of one month's retainer at signing.",
+    "Proposals offer only what can be staffed by the start date, each role named with its hours."
+   ],
+   "dropped": [
+    "The $150 per-lead fee after month 3. Its reason, making up for the pilot discount, ends at month 4.",
+    "“Good faith” as the exit test.",
+    "Two revenue-share rates. They differ by about $540 on a typical Launch client and add a line to argue over.",
+    "Fees on the client's own inbound requests.",
+    "Pricing projects per month."
+   ]
+  },
+  "packages": [
+   {
+    "name": "Launch",
+    "tag": "One market, two channels",
+    "price": "$8,000 a month base, up to $12,000 with named add-ons. Pilot months at 65%: $5,200–7,800, plus $250 for each held meeting. The pilot quarter costs at most three full months ($24,000 at $8,000).",
+    "for": "One product sold into one market. Past first revenue; the founder still sells most deals; committees decide. The buyer is weighing Kelwin against a first sales or GTM-engineering hire.",
+    "includes": [
+     "Positioning and messages written down for one market and its three listeners: the champion, the person who signs and the skeptic. Two or three angles tested in the pilot.",
+     "Up to 500 target accounts chosen from the deals you've won and ranked in your CRM, with up to 3 buying signals.",
+     "Email and LinkedIn campaigns we write and run, from domains and inboxes bought in your name. LinkedIn from one profile, with its owner's written yes.",
+     "Replies routed to the right person, and one or two automatic follow-ups when a buying signal appears. Up to 3 campaigns live at once.",
+     "A live dashboard and a written note every week; written readouts in week 11 and month 6.",
+     "Named add-ons up to $12,000 a month: a second market (about +$2,000), a second LinkedIn sender (+$1,000), calling (+$2,000), a second language (+$2,000).",
+     "Tools bought in your name and paid by you: typically a few hundred to about $2,500 a month."
+    ],
+    "scope": "1 market · 2 channels · 1 LinkedIn sender · up to 5 sending domains and 15 inboxes · about 2,000 new contacts a month · 3 live campaigns · 3 buying signals · 500 named accounts · 1 CRM. Capacity limits, not promised results.",
+    "cadence": "A written note every week, a 60-minute working session every two weeks, a 30-minute monthly review against the written targets, and written readouts in week 11 and month 6.",
+    "team": "An engagement lead from the founding team (about 15–20 hours a month), with a Systems Engineer and a Narrative Architect as contractors: about 45–70 hours a month in the pilot, 35–50 after. One pilot at a time until a Systems Engineer is under contract."
+   },
+   {
+    "name": "Growth",
+    "tag": "Up to two markets, up to four channels",
+    "price": "$15,000 a month base, up to about $23,000 with named add-ons. Pilot months at 65%: $9,750–14,950, plus $250 for each held meeting, capped at three full months.",
+    "for": "A sales team exists, and pipeline has to stop depending on the founder; often a second market or product line is coming. The buyer is weighing Kelwin against a small in-house team or a RevOps firm.",
+    "includes": [
+     "Everything in Launch, for up to two markets sharing one team.",
+     "The sales story your reps use: call guides, the demo story and answers to the objections that keep coming back (the held Sales narrative project, included here).",
+     "Campaigns on 3–4 channels: email, LinkedIn from up to 3 of your team's profiles, follow-up of inbound requests, and calling.",
+     "Up to 1,500 target accounts and 5–8 buying signals, refreshed weekly.",
+     "Routing and follow-up rules built into your CRM, with a light CRM blueprint.",
+     "A weekly signal review, a monthly operating review, and a quarterly review that sets next quarter's plan.",
+     "Up to 6 buyer interviews a quarter on why deals were won or lost.",
+     "No work for a competitor you name, during the contract and for 6 months after.",
+     "Named add-ons up to about $23,000 a month: extra LinkedIn senders (about +$1,000 each), a second interview round (+$3,000), paid retargeting (+$2,000)."
+    ],
+    "scope": "Up to 2 markets on one team · 3–4 channels · 3 LinkedIn senders · up to 10 domains and 30 inboxes · about 5,000 new contacts a month · 6 live campaigns · 5–8 signals · 1,500 named accounts · 1 CRM · 6 buyer interviews a quarter.",
+    "cadence": "A 45–60-minute working session every week, a weekly 25-minute signal review, a monthly operating review, a quarterly review with next quarter's plan, and a buyer-interview readout each quarter.",
+    "team": "An engagement lead from the founding team, a Systems Engineer, a Narrative Architect, an Associate and a part-time Market Intelligence Analyst: about 100–140 hours a month. Offered only once the Systems Engineer and the Associate are under contract."
+   },
+   {
+    "name": "Scaling",
+    "tag": "Two or more markets, each with its own team",
+    "price": "From $25,000 a month: the base covers 2 markets at $25,000–30,000, and each extra market adds about $12,000–18,000. Custom above about $45–50k; your $100,000 ceiling is about 6 markets. Pilot months from $16,250.",
+    "for": "Several segments, regions, product lines or languages, an established sales and marketing team, and often a board that wants a quarterly readout. The buyer is weighing Kelwin against a full-service demand-generation firm.",
+    "includes": [
+     "Growth's scope run separately for each market, each with its own story, sending, campaigns and Associate.",
+     "A dedicated Engagement Manager.",
+     "One-to-one plays for a named list of up to about 100 top accounts.",
+     "Paid retargeting, included (an add-on on Growth).",
+     "Up to 12 buyer interviews a quarter.",
+     "A monthly brief on the market and competitors, and a quarterly readout ready for the board.",
+     "No work for named competitors, as standard."
+    ],
+    "scope": "Each market has Growth's limits. The base covers 2 markets; above 3, it is scoped as custom.",
+    "cadence": "Working sessions twice a week (or weekly per market), a weekly signal review per market, a monthly leadership review, a monthly market brief and a quarterly readout for the board.",
+    "team": "A Client Partner from the founding team, an Engagement Manager, a Systems Engineer, a Narrative Architect, a Market Intelligence Analyst and an Associate per market. Kelwin can't staff this today, so it stays out of proposals, and off the site or marked “not yet taking clients”, until the Engagement Manager and Systems Engineer roles are filled."
+   }
+  ],
+  "compare": [
+   [
+    "In one line",
+    "One market, two channels",
+    "Up to two markets, up to four channels",
+    "Two or more markets, each with its own team"
+   ],
+   [
+    "Monthly fee",
+    "$8,000 base, up to $12,000 with named add-ons",
+    "$15,000 base, up to about $23,000",
+    "From $25,000"
+   ],
+   [
+    "Pilot months, at 65%",
+    "$5,200–7,800, plus $250 a held meeting",
+    "$9,750–14,950, plus $250 a held meeting",
+    "From $16,250, plus $250 a held meeting"
+   ],
+   [
+    "Channels",
+    "Email and one LinkedIn profile",
+    "Email, LinkedIn, follow-up of inbound requests, and calls",
+    "Growth's channels, with paid retargeting included (an add-on on Growth)"
+   ],
+   [
+    "Meetings with us",
+    "Every two weeks, plus a monthly review",
+    "Weekly, plus a weekly signal review",
+    "Twice a week, plus weekly reviews per market"
+   ],
+   [
+    "Can Kelwin staff it today?",
+    "One pilot at a time; two once a Systems Engineer is contracted",
+    "Once a Systems Engineer and an Associate are contracted",
+    "Not yet"
+   ]
+  ],
+  "pilot": {
+   "say": "Months 1–3: 65% of the monthly fee, plus $250 for each held meeting, and never more than three months at the full fee.",
+   "say_note": "How to say it to a buyer."
+  },
+  "levers_detail_title": "Each term in detail",
+  "levers_detail": [
+   {
+    "key": "meeting_fee",
+    "title": "The meeting fee",
+    "text": "$250 for each held meeting, in months 1 to 3 only. The total over the quarter is capped at 105% of one month's retainer ($8,400 on Launch at $8,000, about 33 meetings), so the pilot never costs more than three full months. A monthly cap would give us a reason to push meetings into the next month."
+   },
+   {
+    "key": "counts",
+    "title": "What counts as a held meeting",
+    "text": "A first meeting the buyer attended, with someone at a company that matches your written customer profile, where our outreach made the first contact. Your own inbound requests are logged and never billed. You can reject a meeting within 5 working days, for one of five stated reasons, and a list of companies you already know is signed at kickoff and never counts."
+   },
+   {
+    "key": "after",
+    "title": "After month 3",
+    "text": "The full retainer, with no per-lead or meeting fee. If you want the $2,000–3,000 a month the $150 fee would have brought, set the retainer higher inside your own band, for example Launch at $10,000: one number to budget, and no per-meeting invoice."
+   },
+   {
+    "key": "share",
+    "title": "The revenue share",
+    "text": "One rate, 3%, on companies on the list of meetings we sourced, signed by both sides, for first contracts they sign by the end of month 18. It counts first-year contract value, and is capped at half of six months' fees (Launch at $8,000: $24,000), never above $50,000 on Launch and Growth, or $100,000 on Scaling. Renewals are retainer only. On a typical Launch client it adds about 15% to six months of fees: a bonus, never payroll."
+   },
+   {
+    "key": "deposit",
+    "title": "The deposit and billing",
+    "text": "Month 1's fee plus a deposit of one month's retainer at signing ($13,200 on Launch at $8,000), applied to month 6. One invoice a month by bank transfer, due on the 1st. Kickoff waits for payment, so contractors are never paid before the client pays."
+   },
+   {
+    "key": "renewal",
+    "title": "Renewal",
+    "text": "No automatic renewal into a new fixed term. Renewal is proposed at month 5. If nothing new is signed by the end of month 6, it runs month to month at list price, with 30 days' notice either side. Or renew for 6 months at list price, 12 months at 10% off, or 24 months at 15% off with a stated 5% rise in year 2."
+   }
+  ],
+  "exit": {
+   "recommendation": "Offer an exit at day 90, judged on written targets. Anyone who leaves for another reason pays back the pilot discount, never more than full price.",
+   "terms": [
+    "The written pilot readout in week 11 opens a window of 5 working days, which closes before month 4 is invoiced.",
+    "In that window the client may end the contract at the end of month 3, with no exit fee, if Kelwin missed a written pilot target (a deliverable, or the meetings minimum adjusted for any client delays), or if Kelwin says in writing it can't deliver. That is your “things we discover we can't fulfill” case.",
+    "Leaving for any other reason costs the pilot discount back: on Launch at $8,000, $4,400 in the typical case and $8,400 at most. It never takes the pilot above three full months.",
+    "Kelwin has the matching right if the client didn't provide access, data, purchases or approvals.",
+    "However the client leaves, everything built stays in its own accounts."
+   ],
+   "why": "Buyer guides tell buyers to demand a 60–90-day exit; in our buyer's-eye read, it is what made six months acceptable.",
+   "if_not": "If you'd rather offer no exit, call months 1 to 3 “the testing quarter”, and expect buyers to push the pilot fee back toward 45–50%."
+  },
+  "projects": {
+   "text": "Fixed fees with a typical length, which is how buyers compare projects. Paid 20% on signing, 50% at the written go and 30% at handover; if a package follows within 60 days, up to half the fee is credited against month 6.",
+   "head": [
+    "Project",
+    "Fee",
+    "Length",
+    "Afterwards"
+   ],
+   "rows": [
+    {
+     "name": "Positioning and messaging",
+     "fee": "$15,000–20,000 fixed",
+     "length": "4–6 weeks",
+     "after": "Next step: Launch."
+    },
+    {
+     "name": "Email deliverability",
+     "fee": "$6,000 fixed ($5,000–7,500 by number of domains)",
+     "length": "3–4 weeks, plus the check 30 days on",
+     "after": "Upkeep from $3,500 a month."
+    },
+    {
+     "name": "ICP and signal map, with the Clay build",
+     "fee": "$9,000–12,000 fixed",
+     "length": "3–4 weeks",
+     "after": "Upkeep from $3,500 a month, re-scored monthly."
+    },
+    {
+     "name": "CRM blueprint",
+     "fee": "$10,000–18,000 for one HubSpot; Salesforce from about $20,000",
+     "length": "4–8 weeks",
+     "after": "Upkeep from $3,500 a month."
+    },
+    {
+     "name": "Win/loss interviews",
+     "fee": "$12,000–18,000 for 10–12 interviews",
+     "length": "6–8 weeks",
+     "after": "A round a quarter from $3,500 a month; in Growth."
+    },
+    {
+     "name": "The operating model",
+     "fee": "$15,000–25,000 fixed",
+     "length": "6–8 weeks, from the audit's readout",
+     "after": "Leads straight to the proposal call.",
+     "ask": "Is it priced high enough for the leadership time it takes?"
+    },
+    {
+     "name": "Upkeep of a finished piece",
+     "fee": "From $3,500 a month, up to about 15 hours",
+     "length": "3 months minimum, then month to month",
+     "after": "Priced below the Launch pilot."
+    }
+   ],
+   "notes": [
+    [
+     "Sales narrative (held)",
+     "Included in Growth for now. Later, as a project, about $12,000–18,000, once the Narrative Architect role is filled."
+    ],
+    [
+     "A Clay table on its own",
+     "Not sold alone, because selling single tables would put Kelwin among freelancers at $1,000–5,000. It is sold inside the ICP and signal map."
+    ],
+    [
+     "Email-only outbound",
+     "Not a project: it is the Launch pilot. A separate outbound sprint at $3,500–4,000 a month would undercut the pilot."
+    ]
+   ],
+   "notes_title": "Not sold as projects"
+  },
+  "showing": {
+   "text": "Three ways to handle prices, one recommended.",
+   "options": [
+    {
+     "id": "1",
+     "name": "No numbers on the site; the starting price on the first call",
+     "text": "The booking confirmation, or the first five minutes of the first call, says: “Engagements start at $8,000 a month on a six-month term, and the first three months cost less. Single projects start at about $6,000.”",
+     "for": "The buyer hears the starting price before giving ten days to the audit, and no low number sits on a page.",
+     "against": "Many buyers want prices on the page, and the starting price will travel in forwarded emails.",
+     "recommended": true
+    },
+    {
+     "id": "2",
+     "name": "A starting price and a term per package, on the site",
+     "text": "“Launch · from $8,000 a month · 6 months, the first 3 a pilot.” Growth from $15,000, Scaling from $25,000, projects from $6,000.",
+     "for": "The market's usual shorthand. It turns away buyers below $8,000 before they use up a free audit.",
+     "against": "It invites side-by-side comparison, and a published price is hard to raise before any proof exists.",
+     "recommended": false
+    },
+    {
+     "id": "3",
+     "name": "The full rate card",
+     "text": "Every range, the pilot percentage, the meeting fee, the revenue share and every project's price.",
+     "for": "Fully open: buyers judge their own fit and see that the risk-sharing is fair.",
+     "against": "It reads as a pay-per-meeting agency, and the pilot price becomes the headline.",
+     "recommended": false
+    }
+   ]
+  },
+  "lifecycle": {
+   "text": "You picked “two ways in, one spine” only because nothing else fitted. It is now two ways in, one proposal and one contract shape.",
+   "ways": [
+    {
+     "name": "Audit, then a package",
+     "door": "The red door",
+     "steps": [
+      "The three questions on the audit page, plus a proposed fourth about size, with no money in it. Buyers below Launch are sent to Projects, not to “not a fit”.",
+      "A booking confirmation: what to expect, a one-page NDA, and what data the audit reads.",
+      "The first call, 30 minutes: fit, and the starting price in the first five minutes.",
+      "The System Audit: free, ten working days, read-only access.",
+      "The readout call, 60 minutes, presented on the call. Proposed: send the written readout afterwards, whether or not they sign.",
+      "The proposal call: “What's fair about this” on page one, the package the readout points to plus one step down, the team by role and hours, and the fee schedule.",
+      "Signing: month 1's fee and the deposit. Kickoff waits for payment.",
+      "Kickoff in week 1: access, the written customer profile, the list of companies that don't count, and domains and inboxes bought in the client's name.",
+      "The pilot, months 1 to 3: the build in weeks 1–4, the test in weeks 5–10, the written pilot readout in week 11, then the exit window.",
+      "The full run, months 4 to 6: more behind what won, a monthly review, renewal proposed at month 5, the month-6 readout.",
+      "After month 6: renew for 6, 12 or 24 months, step up or down, or run month to month.",
+      "Handover only when the client asks: the notice month is the handover month, at no extra fee."
+     ]
+    },
+    {
+     "name": "A project, then a package",
+     "door": "The quiet door",
+     "steps": [
+      "“Ask for this project” opens Contact with the project named; a reply within two working days.",
+      "A 30-minute call decides between the project and the audit. If more than one part is breaking, it's the audit. Project prices are said here.",
+      "A written scope: the fixed fee, a typical length, what is in and out.",
+      "Payment: 20% on signing, 50% at the written go, 30% at handover.",
+      "Week one, then a written go or stop. A stop costs week one only.",
+      "The build, through to handover, with a check 30 days later.",
+      "Then upkeep from $3,500 a month, or the audit and a package (with part of the fee credited), or done."
+     ]
+    }
+   ],
+   "meet": "Every package starts at the proposal call and the pilot. A project client who wants more goes through the free audit; after the operating model project, which already includes a readout, a client can go straight to the proposal call.",
+   "capacity_title": "While Kelwin is the founding team plus contractors",
+   "capacity": [
+    "One pilot at a time until a Systems Engineer is under contract; then at most two.",
+    "At most two free audits a month. Each audit and proposal takes about 25–35 hours unpaid.",
+    "Growth only with a Systems Engineer and an Associate under contract.",
+    "Scaling only once the Engagement Manager role is filled.",
+    "Contractors on 30 days' notice, with a named backup for each role, before pilot dates are set."
+   ],
+   "flows": [
+    [
+     "Audit, then a package",
+     "Three questions → the first call, with the starting price → the free audit → the readout call → the proposal call → signing and a deposit → the pilot, months 1 to 3 → the exit window → the full run, months 4 to 6 → renewal"
+    ],
+    [
+     "A project, then a package",
+     "An enquiry on Contact → a 30-minute call → a written scope → the stop after week one → the build, with a check 30 days on → upkeep, or the free audit and then a package"
+    ]
+   ],
+   "steps_title": "Every step, in full"
+  },
+  "decisions": {
+   "packages": {
+    "id": "bm-packages",
+    "title": "Approve the three packages?",
+    "text": "Approve means yes to what each package includes, its scope, how often we meet and who does the work, as proposed, including no work for a competitor the client names (standard on Growth and Scaling, on request on Launch). If you'd rather call the top package “Scale”, say so in the note."
+   },
+   "pilot_fee": {
+    "id": "bm-pilot-fee",
+    "title": "The pilot fee",
+    "text": "65% of the retainer in months 1 to 3, against your 45%. The reasons are in the table above.",
+    "options": [
+     [
+      "65",
+      "65%, as recommended"
+     ],
+     [
+      "45",
+      "Keep 45%"
+     ]
+    ],
+    "proposed": "65"
+   },
+   "terms": {
+    "id": "bm-terms",
+    "title": "The other money terms, as recommended?",
+    "text": "$250 for each held first meeting our outreach created (your own inbound requests never count), capped so the pilot never costs more than three full months; nothing per meeting after month 3; one 3% revenue share on a signed list of companies, capped at half of six months' fees; a deposit of one month's retainer at signing; after month 6, renew for 6, 12 or 24 months, or run month to month. We read your “every inbound qualified lead that we bring in” as meetings our outreach creates. Say so if you meant otherwise.",
+    "options": [
+     [
+      "yes",
+      "Yes, as recommended"
+     ],
+     [
+      "some",
+      "Change some (say which)"
+     ]
+    ],
+    "proposed": "yes"
+   },
+   "exit": {
+    "id": "bm-exit",
+    "title": "Offer an exit after the pilot?",
+    "text": "Until you decide, the site never mentions an exit.",
+    "options": [
+     [
+      "offer",
+      "Offer the day-90 exit"
+     ],
+     [
+      "no",
+      "No exit: “the testing quarter”"
+     ]
+    ],
+    "proposed": "offer"
+   },
+   "projects": {
+    "id": "bm-projects",
+    "title": "Approve the project fees?",
+    "text": "Approve means yes to every fee and length in the table, and to upkeep at $3,500 a month. Name any change in the note."
+   },
+   "showing": {
+    "id": "bm-showing",
+    "title": "How should the site handle prices?",
+    "text": "Until you decide, every page is built with no prices.",
+    "options": [
+     [
+      "1",
+      "1 · Starting price on the first call"
+     ],
+     [
+      "2",
+      "2 · Starting prices on the site"
+     ],
+     [
+      "3",
+      "3 · The full rate card"
+     ]
+    ],
+    "proposed": "1"
+   },
+   "lifecycle": {
+    "id": "bm-lifecycle",
+    "title": "Approve the lifecycle?",
+    "text": "Approve means yes to the two ways in and the steps as shown, including a fourth audit question about size (sales team or revenue, never money) and sending the written readout after the readout call, whether or not they sign."
+   }
+  }
+ },
+ "artifacts": {
+  "lede": "You said the inside pages look bland and asked for drawings that hold attention, with a few wow moments. We wrote one set of rules for every drawing, then built the first three and filmed them: real-time recordings of working prototypes, with no sound.",
+  "rules_title": "The twelve rules every drawing follows",
+  "rules": [
+   "Each drawing shows one real thing we do, with the real objects: a domain, an inbox, a CRM record, a quarter on a calendar. No funnels, rockets or brains.",
+   "It plays in the order things happen, three to six steps, and settles in four to seven seconds. It plays once.",
+   "Thin lines for everything, one solid part for the thing that matters, and red for at most one thing on screen.",
+   "Parts are named on the drawing in plain words, up to six labels.",
+   "A ten-year-old can follow it. One plain sentence beside it carries the idea.",
+   "The last frame explains everything, even with motion turned off or in a screenshot.",
+   "Anything that isn't a real Kelwin fact is marked once: illustrative, specimen or worked example. Never an invented client, office, person or result.",
+   "One wow per page at most, and it goes to the page's main idea.",
+   "Each drawing is redrawn for the phone, not shrunk.",
+   "Where there's something to explore, the reader can press it, and the drawing stops playing on its own.",
+   "Kelwin's own drawing language: rulers, measured lines, paper only for paper documents. No app windows, glow, icons, 3D or bounce.",
+   "Each drawing waits until it's on screen, and never plays twice."
+  ],
+  "items": [
+   {
+    "id": "art-infra",
+    "title": "How we build it",
+    "page": "GTM Infrastructure",
+    "asked": "You said “Order of work” should be several small sections with animated artifacts, “so it looks more proprietary than just a whole bunch of text slapped into one place.”",
+    "explains": "“Order of work” becomes four small drawings, one per part of the build: new sending addresses warming up (one gets paused for complaints), 1,200 companies sorted down to the 38 worth a message, the written rules checked one by one until one fires, and every email and call landing on one company's record.",
+    "wow": "The routing rules: an event runs down the ladder of rules, each one that doesn't match gets a “No”, the match closes a red block, and the next thing goes out as a drawn object (a one-page summary, or an address paused). Press any of the three events.",
+    "label": "The numbers in the drawings are illustrative, and marked so.",
+    "films": [
+     {
+      "id": "infra-1",
+      "label": "The four drawings",
+      "caption": "The whole run at desktop width: the sending setup, data and signals, the routing rules and the CRM record, each playing as it reaches you.",
+      "src": "qa/r10/art/infra/final/r10-infra-1440.mp4",
+      "phone_src": "qa/r10/art/infra/final/r10-infra-390.mp4",
+      "poster_src": "qa/r10/art/infra/final/r10-infra-1440.webp"
+     },
+     {
+      "id": "infra-2",
+      "label": "The routing rules, up close",
+      "caption": "The wow on its own: the rules read top to bottom, a “No” on each miss, the match firing, and the next step sent out.",
+      "src": "qa/r10/art/infra/final/r10-infra-834-bay3.mp4",
+      "poster_src": "qa/r10/art/infra/final/r10-infra-834-bay3.webp"
+     }
+    ],
+    "proto_note": "The drawing alone; its words are drafts.",
+    "protos_src": [
+     {
+      "src": "site/m-r10-infra-S.html",
+      "label": "Try the drawing"
+     }
+    ]
+   },
+   {
+    "id": "art-intel",
+    "title": "One quarter, step by step",
+    "page": "GTM Intelligence",
+    "asked": "You said the drawing under the headline “just looks like it kind of gets to size and just stays there”, and that “what happens next quarter” should be clear to a ten-year-old.",
+    "explains": "Under the headline, one quarter plays in order: a check every week, calls with buyers who said no, and on week 13 everything is written down on one red page. That page then changes next quarter's plan: one new thing added, one thing that never worked crossed out.",
+    "wow": "The red page writing itself, then forking into next quarter's rows.",
+    "label": "The calls, quotes and plan are illustrative, and marked so.",
+    "films": [
+     {
+      "id": "intel-1",
+      "label": "The quarter",
+      "caption": "The drawing under the headline, played from the start.",
+      "src": "qa/r10/art/intel/v2/film/intel-head-quarter-1440.mp4",
+      "phone_src": "qa/r10/art/intel/v2/film/intel-head-quarter-phone-390.mp4",
+      "poster_src": "qa/r10/art/intel/v2/film/intel-head-quarter-1440.webp"
+     },
+     {
+      "id": "intel-2",
+      "label": "Next quarter",
+      "caption": "What happens next quarter, in three plain steps over one worked example.",
+      "src": "qa/r10/art/intel/v2/film/intel-next-quarter-1440.mp4",
+      "poster_src": "qa/r10/art/intel/v2/film/intel-next-quarter-1440.webp"
+     }
+    ],
+    "proto_note": "The drawing alone; its words are drafts.",
+    "protos_src": [
+     {
+      "src": "site/m-r10-intel-S.html",
+      "label": "Try the quarter",
+      "hide": [
+       ".km-r10-intel-S > .ac-nav",
+       ".km-r10-intel-S .ac-ihead > .ac-statement",
+       ".km-r10-intel-S .ac-ihead > .ac-rule",
+       ".km-r10-intel-S .ac-ihead > .ac-lede"
+      ]
+     },
+     {
+      "src": "site/m-r10-intel-T.html",
+      "label": "Try next quarter"
+     }
+    ]
+   },
+   {
+    "id": "art-map",
+    "title": "Where we work",
+    "page": "Talk to the team",
+    "asked": "You asked for “a map, or some artifact like a map” that shows our global footprint, while the company works fully remotely.",
+    "explains": "A drawn map of the world's time zones: it lights up where it's 9 to 6 right now, places the visitor in their own time zone, and marks New York as our address. No offices are shown, because there are none.",
+    "wow": "The map finding you, then drawing along your own calendar exactly when we'll write back.",
+    "label": "The visitor's place comes from their device's time zone. Nothing is looked up or stored.",
+    "films": [
+     {
+      "id": "map-1",
+      "label": "Seen from Karachi",
+      "caption": "A visitor in Karachi, at desktop width.",
+      "src": "qa/r10/art/map/v2/film/map-1440-karachi.mp4",
+      "phone_src": "qa/r10/art/map/v2/film/map-390-london.mp4",
+      "poster_src": "qa/r10/art/map/v2/film/map-1440-karachi.webp"
+     },
+     {
+      "id": "map-2",
+      "label": "Seen from Tokyo, on a tablet",
+      "caption": "The same map recomposed for a tablet, for a visitor in Tokyo.",
+      "src": "qa/r10/art/map/v2/film/map-834-tokyo.mp4",
+      "poster_src": "qa/r10/art/map/v2/film/map-834-tokyo.webp"
+     }
+    ],
+    "proto_note": "The drawing alone; its words are drafts.",
+    "protos_src": [
+     {
+      "src": "site/m-r10-map-S.html",
+      "label": "Try the map",
+      "fix": [
+       [
+        "Remote by design, registered in New York.",
+        "Remote by design, with an address in New York."
+       ],
+       [
+        "New York · registered office",
+        "New York · our address"
+       ],
+       [
+        "New York, registered office",
+        "New York, our address"
+       ],
+       [
+        "New York is marked as the registered office",
+        "New York is marked as our address"
+       ],
+       [
+        "Registered address",
+        "Our address"
+       ],
+       [
+        "registered address",
+        "our address"
+       ]
+      ]
+     }
+    ],
+    "ask": "One promise to confirm: the map turns “within two working days” into a day and time in the visitor's own time (for example “We reply by Tue 18:00, your time”). Keep that exact promise, count New York working days instead, or show only the day?"
+   },
+   {
+    "id": "art-narr",
+    "early": true,
+    "early_label": "An early look, no decision this round",
+    "title": "Many voices, one pitch",
+    "page": "Narrative Systems",
+    "explains": "Five voices of one invented company (a founder's call, a rep's email, the website, a post, a proposal) each describe it differently, and the buyer takes away five different guesses. Then one written page appears, every voice is set to the same line, and the buyer's guesses collapse into one clear answer.",
+    "note": "It comes back with the Narrative Systems mockup, for your decision then.",
+    "films": [
+     {
+      "id": "narr-1",
+      "label": "The early look",
+      "caption": "The drawing on its own, played from the start.",
+      "src": "qa/r10/art/narr/film-v2/narr-wow-1440.mp4",
+      "phone_src": "qa/r10/art/narr/film-v2/narr-wow-phone-390.mp4",
+      "poster_src": "qa/r10/art/narr/film-v2/narr-wow-1440.webp"
+     }
+    ],
+    "protos_src": [
+     {
+      "src": "site/m-r10-narr-S.html",
+      "label": "See the early look"
+     }
+    ]
+   }
+  ],
+  "turn": {
+   "lede": "You said today's turn looks very much like Palantir's. Here it is beside two of our own, each filmed in real time on the same click: from the homepage's red “Request a System Audit” into the System Audit page.",
+   "options": [
+    {
+     "id": "today",
+     "name": "Today's turn",
+     "text": "A graphite panel with a slanted edge slides across, the mark flickers on piece by piece, and the panel lifts off the next page.",
+     "src": "qa/r10/art/turn/v2/films/today-home-to-audit.mp4",
+     "poster_at": 1.4
+    },
+    {
+     "id": "a",
+     "name": "Variant A: On the line",
+     "text": "Two flat panels close, a red line is ruled along where they meet, and the Kelwin logo rises out of the line at full size, as in your footer. On the next page the logo sinks back, the panels part, and the line travels onto the short red rule under the headline.",
+     "src": "qa/r10/art/turn/v2/films/A-home-to-audit.mp4",
+     "phone_src": "qa/r10/art/turn/v2/films/A-audit-to-insights-390.mp4",
+     "poster_at": 1.95
+    },
+    {
+     "id": "b",
+     "name": "Variant B: The ruled edge",
+     "text": "No panel and no logo: one flat sheet with a red line along its top slides up over the page. On the next page it slides down, and the page catches the line as its headline rule.",
+     "src": "qa/r10/art/turn/v2/films/B-home-to-audit.mp4",
+     "phone_src": "qa/r10/art/turn/v2/films/B-audit-to-insights-390.mp4",
+     "poster_at": 1.45
+    }
+   ],
+   "decide": {
+    "id": "art-turn",
+    "title": "Which page turn do you want?",
+    "text": "It plays on every page change, and never for anyone whose device asks for less motion. We recommend A as the most clearly Kelwin's own: it uses your footer's logo on the line, and the line becomes the page's red rule. With A or B, the short red line under each headline is already in place when the headline writes itself in.",
+    "proposed": "a"
+   }
+  },
+  "decide": {
+   "id": "art-drawings",
+   "title": "Approve the drawing rules and the three drawings?",
+   "text": "Approve means every interior drawing follows the twelve rules, at most one wow a page, and the three drawings are built into their pages as shown. A note on one drawing goes in the box beside it."
+  },
+  "rules_fold": true
+ },
+ "voice": {
+  "doc_src": "REPO:design/redesign/work/r10/VOICE.md",
+  "ns_src": "REPO:design/redesign/work/r10/copy-narrative-systems.md",
+  "lede": "You said the copy still reads as AI-made, which a strategic partner can't afford. We wrote a voice guide for everyone who writes for the site, rewrote Narrative Systems in it, then read it again ourselves as a skeptical buyer would.",
+  "short_title": "The voice, in six lines",
+  "short": [
+   "Say who does what to what. “We set up your sending domains” beats “Domains, aligned.”",
+   "Name real things: the deck, the CRM field, the first email, the 30-minute call.",
+   "Use numbers we can stand behind, and no others.",
+   "Say each thing once, where the reader needs it.",
+   "Every section opens with a short sentence a ten-year-old could repeat.",
+   "We run what we build, every month. Everything we set up for you sits in your accounts and in your name."
+  ],
+  "why_title": "Why our copy read as AI-made",
+  "why": [
+   [
+    "Sentences without a doer",
+    "Nobody does anything, so the reader asks who does it."
+   ],
+   [
+    "Our own vocabulary",
+    "“System” 24 times, “signal” 20, “layer” 18, mostly unexplained."
+   ],
+   [
+    "Knock-down pairs",
+    "37 negations, many built as “X, not Y”."
+   ],
+   [
+    "Dashes and colons doing the drama",
+    "48 long dashes, and reveals after a colon."
+   ],
+   [
+    "Metaphor in place of how it works",
+    "Loops that learn, stacks that are wired."
+   ],
+   [
+    "Leftovers from round 8",
+    "Handover-first lines, your name, “Kelwin, LLC” 21 times."
+   ]
+  ],
+  "rules_title": "All 24 rules, in plain words",
+  "rules": [
+   "Every claim says who does what to what.",
+   "Name the real thing you could point at.",
+   "Only numbers we've decided, sourced or labeled as an example.",
+   "Plain verbs: write, send, call, check, fix, pay, stop.",
+   "Every section opens with a short, plain sentence.",
+   "Explain a term the first time, or cut it.",
+   "Give the reason where a CFO would ask why, and nowhere else.",
+   "Say what we need, what we won't do, what happens if it doesn't work, and how to buy it.",
+   "Say the positive thing, without knocking down a false one first.",
+   "Lists only when the things are real.",
+   "Show how it works; don't reach for a metaphor.",
+   "Full sentences, except in labels, tables and buttons. No long dashes.",
+   "Short sentences, with the rhythm set by the content.",
+   "Make claims at their true size. No “genuinely”, no “every” unless it's true.",
+   "Say each thing once.",
+   "One schedule for each recurring activity, said the same way everywhere.",
+   "Every “it” and “they” points at one thing.",
+   "Retainer first: we set it up, then run it with you. Handover only when asked.",
+   "“We” is the founding team. Never a name, never “I”, never a headcount.",
+   "Proof is sourced, labeled as a specimen, or left out.",
+   "Nothing written for you appears on a live page.",
+   "The headline says what the page offers.",
+   "One point of view on each offer page that a competitor wouldn't sign.",
+   "One name, one spelling: “Kelwin”, nothing after it."
+  ],
+  "rewrites_title": "Ten rewrites from our pages, one shown",
+  "rewrites_lede": "From pages you haven't approved yet.",
+  "rewrites": [
+   {
+    "page": "Narrative Systems, the headline",
+    "before": "Decide what the market hears. One version of your positioning and messaging, for every channel and seller.",
+    "after": "A pitch your buyers can repeat without you. With you, we write down what you sell, who it's for and why buyers should pick you. We test the wording in your first emails, then rewrite your website, deck and call guides around the winner. After that, we keep testing new wording every month.",
+    "fixes": "A slogan becomes the thing itself; the order (test, then rewrite) is the strategy."
+   },
+   {
+    "page": "GTM Infrastructure, the headline",
+    "before": "Your stack, wired to sell. We set up the domains, the data and the routing under your own admin. No new software to license.",
+    "after": "We set up your email, lists and CRM, and check them every week. We set up four things: your email domains, your lists of target companies, your CRM, and the rules for who gets contacted next. We work in your own accounts, and use the tools you already pay for where we can.",
+    "fixes": "The metaphor and the habit of listing three things become a counted list of real parts."
+   },
+   {
+    "page": "GTM Infrastructure, before anything is sent",
+    "before": "Sending domains are separated and aged, SPF, DKIM and DMARC are aligned, suppression is honored, and every record is verified before anything is sent to it.",
+    "after": "Before we send a single email, we do four things. We set up separate domains for outreach, and send small amounts from them for a few weeks first, so your main domain stays safe. We fix the three settings inboxes check before they accept mail (SPF, DKIM and DMARC). We remove everyone who has opted out, and we check that every address still works.",
+    "fixes": "A sentence where nobody does anything now has “we” doing it, and the jargon is explained."
+   },
+   {
+    "page": "GTM Intelligence, the headline",
+    "before": "The loop that learns. For teams whose pipeline report says what happened, and never why.",
+    "after": "Learn why your deals close. Every week we look at which deals moved and ask why. We call buyers from deals you've won or lost and ask what decided it. Each quarter you get a short, ranked list of what to change.",
+    "fixes": "The metaphor becomes how it works, and a ten-year-old can follow it."
+   },
+   {
+    "page": "GTM Intelligence, what changes next quarter",
+    "before": "Quarterly calibration program. The other three answers, weighed with your leadership into one ranked list of what to build, keep and cut.",
+    "after": "What do we change next quarter? Each quarter we meet your leadership for about two hours. We bring what the weekly reviews and the buyer calls showed, and together we agree a ranked list of changes. We take off anything that didn't raise replies or meetings last quarter.",
+    "fixes": "You said this was unclear. An abstract label becomes a meeting: how long, who's there and what comes out of it."
+   },
+   {
+    "page": "Who We Work With, the headline",
+    "before": "Real revenue, but no system under it. For companies that sell to committees, with someone inside to own what we build.",
+    "after": "For companies whose sales still depend on a few people. You already have paying customers, and several people sign off on each deal you win. But most new deals still need the founder, or one strong rep, in the room.",
+    "fixes": "An abstract “system” becomes a situation the reader recognizes; the handover test is gone."
+   },
+   {
+    "page": "About, the headline",
+    "before": "The firm behind the signature. Rameez founded Kelwin in 2026 to build revenue systems clients keep.",
+    "after": "Why Kelwin exists. Kelwin started in 2026 for B2B companies that paid an agency for a quarter of activity and ended where they started. We write their pitch, set up their email and CRM, and track why their deals close. Then we run all three with them every month.",
+    "fixes": "No name; the history and the frustration you asked for, said as who we're for. The history line is yours to confirm."
+   },
+   {
+    "page": "Careers, the headline",
+    "before": "Seats open as the work arrives. Remote-first and global, juniors included. Each seat is posted with its pay range when it opens.",
+    "after": "Six roles, open now. We work remotely, across time zones, and hire at every level, juniors included. Each role below shows its pay range. Apply with the form at the end of the page.",
+    "fixes": "True to your answer that all six are open; the sentence says what to do next."
+   },
+   {
+    "page": "Projects, the headline",
+    "before": "One piece of the system, on its own. Scoped in writing before it starts, and built to the full install's spec.",
+    "after": "One problem, fixed on its own. When a full package is more than you need, we can take on one piece, such as your email setup or your messaging. We agree the scope in writing before we start. A project can run once, or every month on a retainer.",
+    "fixes": "You said this page wasn't clear. It now says who it's for, and that a project can run on a retainer."
+   },
+   {
+    "page": "Reports, the headline",
+    "before": "A readout, up close. Every System Audit ends in a written document that the client keeps. We go through it together on a 60-minute call.",
+    "after": "Case reports, published with each client's yes. Each report tells one client's case, with the problem, what we did and the numbers. Ask for the full report and we'll email it to you. None is published yet, because each one needs the client's written yes.",
+    "fixes": "The page is now what you said it is: case studies, with an honest empty state."
+   }
+  ],
+  "ns": {
+   "title": "Narrative Systems, rewritten",
+   "lede": "The whole page, rewritten. The first screen says what we write, what we rewrite and that we test first; “How it runs” is one heading over three stages.",
+   "label": "Narrative Systems",
+   "headline": [
+    "A pitch your buyers",
+    "can repeat without you."
+   ],
+   "sentences": "With you, we write down what you sell, who it's for and why buyers should pick you. We test the wording in your first emails, then rewrite your website, deck and call guides around the winner. After that, we keep testing new wording every month.",
+   "facts": [
+    [
+     "From you",
+     "Your CEO and head of sales, in our working session (every two weeks on Launch, weekly on Growth)"
+    ],
+    [
+     "Where it lives",
+     "A folder in your own drive, in your company's name"
+    ],
+    [
+     "How long",
+     "Six months to start, then you can renew"
+    ],
+    [
+     "Who sends the emails",
+     "We do, from inboxes in your company's name; your reps take the replies"
+    ]
+   ],
+   "sections_title": "The page, top to bottom",
+   "sections": [
+    [
+     "The head",
+     "We write down what a company sells so clearly that its buyers can explain it to someone else."
+    ],
+    [
+     "What it is",
+     "Everyone who sells for a company should work from one written pitch, built from what buyers say."
+    ],
+    [
+     "What we write",
+     "We write down what to say to each kind of buyer, then rewrite what buyers read and hear."
+    ],
+    [
+     "How it runs",
+     "We write your pitch with you, then test and fix it every month."
+    ],
+    [
+     "An example",
+     "Here is a filled-in page for a pretend company."
+    ],
+    [
+     "The close",
+     "The free System Audit shows you how your team and your lost buyers describe you."
+    ]
+   ],
+   "sections_note": "Each section opens from the sentence beside it, one a ten-year-old could repeat.",
+   "link": "Read the rewritten page",
+   "spec": "The first screen, as rewritten."
+  },
+  "homepage": {
+   "title": "Homepage lines that clash with your round-9 answers",
+   "lede": "The homepage copy is yours, and it stays word for word until you say otherwise. Each of these lines goes against a round-9 answer: retainer first, or no names.",
+   "head": [
+    "Section",
+    "The line today",
+    "What we'd write"
+   ],
+   "rows": [
+    [
+     "The letter",
+     "“From the founder”, “I started Kelwin…”, signed “Rameez, Founder, Kelwin”",
+     "Signed “The founding team”, with the letter in “we”"
+    ],
+    [
+     "The letter",
+     "“one that installs the system, then hands you the keys”",
+     "New line, for your yes"
+    ],
+    [
+     "The handover",
+     "“If we leave, the system stays.”",
+     "“Everything we set up sits in your accounts and in your name, and we run it with you every month.”"
+    ],
+    [
+     "The method",
+     "“Install first, then an operating retainer, on a system you own.”",
+     "Rewritten for the pilot, matching the steps on Engagements"
+    ],
+    [
+     "Who it's for",
+     "“After handover the system is yours, run by your operator, or with us on retainer. Owning it is the real gate.”",
+     "New line, for your yes"
+    ],
+    [
+     "Who it's for",
+     "“Rent-it-forever · Dependency by design. We'll run it on retainer, but if nobody inside will own it, we decline.”",
+     "Cut, or replaced with a line you approve"
+    ],
+    [
+     "The final call",
+     "“What we build, you keep.”",
+     "New line, for your yes"
+    ]
+   ]
+  },
+  "decisions": {
+   "voice": {
+    "id": "vo-voice",
+    "title": "Approve the voice?",
+    "text": "Approve means every page is written and checked against this guide before it reaches you, written in American spelling, as the guide recommends (say “British” in the note if you prefer)."
+   },
+   "ns": {
+    "id": "vo-ns",
+    "title": "Approve the Narrative Systems rewrite?",
+    "text": "Approve means yes to the page's words and to all 11 recommended choices listed at the end of the rewritten page. One number is yours to set: how many recent buyers we call in month 1. Put it in the note. The page is then built and comes back to you as a mockup."
+   },
+   "homepage": {
+    "id": "vo-homepage",
+    "title": "May we rewrite these homepage lines?",
+    "text": "Each new line comes back to you before it goes on the page.",
+    "options": [
+     [
+      "all",
+      "Yes, rewrite all of them"
+     ],
+     [
+      "some",
+      "Only some (say which)"
+     ],
+     [
+      "keep",
+      "Keep them as they are"
+     ]
+    ],
+    "proposed": "all"
+   }
+  },
+  "rewrites_show": 1,
+  "why_fold": true
+ },
+ "next": {
+  "src": "REPO:design/redesign/work/r10/NEXT-STEPS.md",
+  "short": [
+   "You said we're going off all over the place, and you're right: we kept redesigning pages before what they depend on was settled. From here, we lock the foundations once, in order, then design and build. Each stage ends with one review from you."
+  ],
+  "stages": [
+   {
+    "title": "Lock the offer",
+    "when": "This round",
+    "text": "You decide the business model; we write it up as a one-page offer sheet."
+   },
+   {
+    "title": "Lock the map",
+    "when": "This round",
+    "text": "You approve the sitemap: every page with one job and one door."
+   },
+   {
+    "title": "Lock the message and the voice",
+    "when": "This round, then a short follow-up",
+    "text": "You approve the voice; we write a one-page message sheet every page draws on."
+   },
+   {
+    "title": "Lock the look",
+    "when": "This round",
+    "text": "You approve the drawing rules and choose the page turn."
+   },
+   {
+    "title": "Write every page before designing it",
+    "when": "Next round",
+    "text": "Every page's words written out in full, and approved in one sitting."
+   },
+   {
+    "title": "Design and build, group by group",
+    "when": "After the words are approved",
+    "text": "Mockups in the sitemap's order, each approved group built into the real site.",
+    "more_title": "The launch order",
+    "more_ordered": true,
+    "more": [
+     "the homepage's new lines;",
+     "Engagements;",
+     "the three capability pages;",
+     "Projects and the six project pages;",
+     "Contact and the audit;",
+     "Careers;",
+     "Reports;",
+     "About, Who We Work With and The Lab;",
+     "Insights;",
+     "legal, the menu and the footer, then everything goes live at once, with your go-ahead."
+    ]
+   },
+   {
+    "title": "What has to be behind the site",
+    "when": "Alongside stages 5 and 6",
+    "text": "The forms, list, CRM and analytics, set up with you."
+   },
+   {
+    "title": "Proof",
+    "when": "From your first pilot",
+    "text": "Reports is the page that most shapes how we're seen; each pilot records its starting numbers on day 1."
+   },
+   {
+    "title": "Footage and photographs",
+    "when": "Any time before launch",
+    "text": "One half-day shoot; until then, labeled stand-ins."
+   },
+   {
+    "title": "Launch",
+    "when": "With your go-ahead",
+    "text": "Search basics, redirects, and accessibility and speed checks, then everything goes live at once."
+   }
+  ],
+  "after": "After launch: one field note a month, Kelwin's LinkedIn company page, and a look each quarter at which pages bring audits and which don't.",
+  "how_title": "How we'll work from here",
+  "how": [
+   [
+    "One review per stage,",
+    "with your decisions recorded once."
+   ],
+   [
+    "Nothing reopens",
+    "unless one of your decisions changes."
+   ],
+   [
+    "Each review asks only what we can't decide ourselves,",
+    "with a proposed answer."
+   ]
+  ],
+  "decide": {
+   "id": "nx-order",
+   "title": "Approve this order",
+   "text": "Approve means we start stage 1 as soon as your answers are in. Use the note to move or add a stage."
+  }
+ },
+ "questions": {
+  "lede": "Everything else waits for the page it affects, or is already settled.",
+  "items": [
+   {
+    "id": "q-capacity",
+    "title": "How many hours a week can you give to delivery today, and which contractors are lined up?",
+    "context": "It decides how many pilots can run at once and when Growth can be offered. Also: have you checked your employment contract's clauses on outside work and inventions?",
+    "text": true,
+    "placeholder": "Hours a week, the contractors lined up, and the contract check"
+   }
+  ],
+  "lists": [
+   {
+    "title": "What we need from you, whenever you're ready",
+    "items": [
+     "Kelwin's company LinkedIn page. The footer links to it only once it exists.",
+     "A US lawyer and accountant: the lawyer for Privacy, Terms and the client contract, the accountant for state taxes. Also: is any owner of Kelwin not a US person, and will Kelwin register to do business in New York?",
+     "May we ask the companies behind your past audits whether we can quote what the audit found, anonymized, in a field note? Reports stays for client case studies with results."
+    ],
+    "note": "Answer any of these in the note at the end, whenever you're ready."
+   },
+   {
+    "title": "Asked later, with the page they affect",
+    "items": [
+     "The regions the Contact map shows, and About's history: when those pages are written.",
+     "A pay range for each of the six roles: with the Careers copy.",
+     "Which address sends the field notes: when the list is set up.",
+     "Saying “our advisory work pays for the Lab”: with the Lab's copy. Until then it stays out.",
+     "Regulated clients, and client data for the platform: when the contract is drafted."
+    ]
+   },
+   {
+    "title": "Settled without a decision",
+    "items": [
+     "The Index cover stays off The Lab until the Index ships, as your “no extra shenanigans” says.",
+     "We re-check every outside figure before a proposal quotes it."
+    ]
+   }
+  ]
+ },
+ "summary": {
+  "note_label": "Anything else (optional)",
+  "note_ph": "Anything across the whole site or this round"
+ }
+}

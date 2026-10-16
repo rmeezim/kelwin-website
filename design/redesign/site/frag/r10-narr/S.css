@@ -1,0 +1,287 @@
+/* r10-narr · S — "What it is" (Narrative Systems), v2. A row diagram read left to right:
+   the written page → one red line → five voices → what the buyer takes away.
+   Default CSS = the end state (reduced motion, no script, a screenshot). S.js measures it and plays the
+   four steps into it, animating transform, opacity, clip-path and a few custom properties only (the
+   geometry is the final one from the first frame, so nothing reflows while it plays).
+   WIDE (≥ 1024, and always on the stitched 1440 pages): a 5-column grid — page · gutter · voices · wires ·
+   buyer — whose rows are shared (subgrid) by the page and the voices, so each line of the page sits level
+   with the voice it feeds and its leader runs straight across. Every row's line is 49px under the row top.
+   NARROW (768–1023): the page, the line and the voices keep their rows; the buyer moves under them.
+   PHONE (≤ 767): one column — the page as a strip (its three part names, copy folded), the voices on the
+   line, the buyer at the foot. Wires and leaders are not drawn there; each note names its voice.          */
+
+.km-r10-narr-S { --narr-mode: wide; --row-y: 49px; }
+
+/* ── head ── */
+.km-r10-narr-S__head > .ac-claim { grid-column: 1 / -1; max-width: none; }
+.km-r10-narr-S__cl { display: block; white-space: nowrap; }
+.km-r10-narr-S__head .ac-status { white-space: nowrap; }
+
+/* ── the stepper: four buttons on the 12-column grid (3 columns each) ── */
+.km-r10-narr-S__steps {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter);
+  margin-top: 56px;
+}
+.km-r10-narr-S__step {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 12px;
+  padding: 22px 8px 4px 0; text-align: left; color: var(--fg-2);
+  transition: color 300ms var(--ease-out);
+}
+.km-r10-narr-S__step::before, .km-r10-narr-S__step::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--line);
+}
+.km-r10-narr-S__step::after {   /* the current step: a 2px bar that fills left → right */
+  height: 2px; top: -.5px; background: var(--fg); transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform 600ms var(--ease-out);
+}
+.km-r10-narr-S__step.is-cur { color: var(--fg); }
+.km-r10-narr-S__step.is-cur::after { transform: scaleX(1); }
+.km-r10-narr-S__step:hover { color: var(--fg); }
+.km-r10-narr-S__step:focus-visible { outline: 1px solid var(--fg); outline-offset: 6px; }
+.km-r10-narr-S__sn { color: var(--fg-3); transition: color 300ms var(--ease-out); }
+.km-r10-narr-S__step.is-cur .km-r10-narr-S__sn { color: var(--fg); }
+.km-r10-narr-S__st { font-size: var(--ac-body); line-height: 1.5; text-wrap: pretty; max-width: 30ch; }
+
+/* ── the plate and its grid ── */
+.km-r10-narr-S__plate { margin-top: 40px; }
+.km-r10-narr-S__field {
+  position: relative; padding: 24px 24px 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 280fr) minmax(0, 104fr) minmax(0, 352fr) minmax(0, 152fr) minmax(0, 376fr);
+  grid-template-rows: auto repeat(5, auto) 18px;   /* keys · five rows · the page's foot */
+  row-gap: 8px;
+}
+
+/* every line on the drawing (S.js sets its box 1:1 with the field) */
+.km-r10-narr-S__wires { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.km-r10-narr-S__feed { --dim: 0; }
+.km-r10-narr-S__fd { fill: none; stroke: color-mix(in srgb, var(--line-2) calc(var(--dim) * 100%), var(--fg-3)); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.km-r10-narr-S__brace { visibility: hidden; }   /* narrow and phone only */
+.km-r10-narr-S__ld, .km-r10-narr-S__hg, .km-r10-narr-S__br { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.km-r10-narr-S__nd { fill: var(--fg-2); }
+.km-r10-narr-S__nd--e { fill: var(--fg); }      /* a line of the page that has fed its voice */
+.km-r10-narr-S__nd--t { fill: var(--fg-3); }    /* a wire's end at a note */
+
+/* the column keys */
+.km-r10-narr-S__vkey { grid-column: 3; grid-row: 1; align-self: end; margin-left: 16px; padding-bottom: 12px; position: relative; z-index: 2; }
+.km-r10-narr-S__bkey { grid-column: 5; grid-row: 1; align-self: end; padding-bottom: 12px; position: relative; z-index: 2; }
+
+/* the place the page will go, before it exists (steps 1–2) */
+.km-r10-narr-S__hole {
+  grid-column: 1; grid-row: 1 / -1; position: relative; z-index: 1;
+  border: 1px dashed var(--line-2); opacity: 0; visibility: hidden;
+}
+.km-r10-narr-S__holek { position: absolute; left: 20px; top: 18px; font-size: var(--ac-key); line-height: 20px; color: var(--fg-3); }
+
+/* the written page: its rows are the field's rows */
+.km-r10-narr-S__os.ac-sheet {
+  grid-column: 1; grid-row: 1 / -1; z-index: 2;
+  display: grid; grid-template-rows: subgrid; padding: 0 22px;
+}
+.km-r10-narr-S__run.ac-sheet__run { grid-row: 1; align-self: end; padding-top: 18px; font-size: 14px; }
+.km-r10-narr-S__e { --lit: 1; min-width: 0; padding-top: 12px; }
+/* a part's number turns to ink once it has fed its voice (step 4) */
+.km-r10-narr-S__os .ac-sheet__n { color: color-mix(in srgb, var(--fg) calc(var(--lit) * 100%), var(--fg-3)); }
+.km-r10-narr-S__e[data-r="1"] { grid-row: 2; } .km-r10-narr-S__e[data-r="2"] { grid-row: 3; }
+.km-r10-narr-S__e[data-r="3"] { grid-row: 4; } .km-r10-narr-S__e[data-r="4"] { grid-row: 5; }
+.km-r10-narr-S__e[data-r="5"] { grid-row: 6; }
+.km-r10-narr-S__e--sub { padding-top: 38px; }   /* its line level with the voice's (12 + 20 + 6) */
+.km-r10-narr-S__os .ac-sheet__h { margin: 0 0 6px; font-size: 15px; line-height: 20px; gap: 10px; }
+.km-r10-narr-S__et { font-size: 15px; line-height: 22px; color: var(--fg-2); text-wrap: pretty; }
+.km-r10-narr-S__who { font-weight: var(--ui-weight); color: var(--fg); }
+
+/* the one line: from the first voice's top to the last voice's foot, at the voices' left edge */
+.km-r10-narr-S__datum {
+  grid-column: 3; grid-row: 2 / 7; justify-self: start; position: relative; z-index: 3;
+  width: 2px; margin-left: -1px; background: var(--signal); transform-origin: 50% 0;
+}
+
+/* the five voices */
+.km-r10-narr-S__voices {
+  grid-column: 3; grid-row: 2 / 7; display: grid; grid-template-rows: subgrid; min-width: 0;
+}
+.km-r10-narr-S__v {
+  --dim: 0;
+  position: relative; z-index: 3; margin-left: 16px; padding: 12px 14px 14px;
+  background: var(--panel);
+  border: 1px solid color-mix(in srgb, var(--line) calc(var(--dim) * 100%), var(--line-2));
+}
+.km-r10-narr-S__src {
+  font-weight: var(--ui-weight); font-size: var(--ac-key); line-height: 20px;
+  color: color-mix(in srgb, var(--fg-3) calc(var(--dim) * 100%), var(--fg-2));
+}
+/* the sentence: the old one and the new one share one box (it is as tall as the longer); the caret
+   re-sets it: --sw 0 → 1 moves the caret left → right, the new words left of it, the old right of it */
+.km-r10-narr-S__say {
+  --sw: 1;
+  position: relative; display: grid; margin-top: 6px; font-size: 15px; line-height: 22px;
+  color: color-mix(in srgb, var(--fg-3) calc(var(--dim) * 100%), var(--fg));
+}
+.km-r10-narr-S__was, .km-r10-narr-S__now { grid-area: 1 / 1; text-wrap: pretty; }
+.km-r10-narr-S__was { clip-path: inset(-4px -4px -4px calc(var(--sw) * 100%)); }
+.km-r10-narr-S__now { clip-path: inset(-4px calc((1 - var(--sw)) * 100%) -4px -4px); }
+.km-r10-narr-S__caret {   /* a box as wide as the sentence, drawn as its left edge, moved by transform */
+  position: absolute; top: -4px; bottom: -4px; left: -.5px; width: 100%;
+  border-left: 1px solid var(--fg); transform: translateX(calc(var(--sw) * 100%)); opacity: 0; pointer-events: none;
+}
+
+/* the buyer: the notes (a stack) and the count */
+.km-r10-narr-S__buyer {
+  grid-column: 5; grid-row: 4; align-self: start; position: relative; z-index: 3;
+  display: flex; align-items: flex-start; gap: 24px; height: 50px;   /* fixed: the count's wording never moves a row */
+  margin-top: calc(var(--row-y) - 17px);   /* the stack's centre on the middle row's line */
+}
+.km-r10-narr-S__stack { position: relative; flex: none; width: 240px; height: 50px; }
+.km-r10-narr-S__tag {
+  --sw: 1; --fill: 0; --dim: 0; --k: 0; --row: 0;
+  position: absolute; left: 0; top: 0; z-index: calc(5 - var(--k));
+  display: flex; align-items: center; gap: 8px; width: 224px; height: 34px; padding: 0 11px;
+  translate: calc(var(--k) * 4px) calc(var(--k) * 4px);
+  background: color-mix(in srgb, var(--fg) calc(var(--fill) * 100%), var(--panel));
+  font-size: 15px; line-height: 20px; white-space: nowrap;
+}
+.km-r10-narr-S__tag[data-k="1"] { --k: 1; } .km-r10-narr-S__tag[data-k="2"] { --k: 2; }
+.km-r10-narr-S__tag[data-k="3"] { --k: 3; } .km-r10-narr-S__tag[data-k="4"] { --k: 4; }
+.km-r10-narr-S__tag[data-v="2"] { --row: 1; } .km-r10-narr-S__tag[data-v="3"] { --row: 2; }
+.km-r10-narr-S__tag[data-v="4"] { --row: 3; } .km-r10-narr-S__tag[data-v="5"] { --row: 4; }
+.km-r10-narr-S__tag.is-front { --fill: 1; }   /* the front note: the one story, solid */
+.km-r10-narr-S__tag:not(.is-front) { --txt: 0; }   /* the notes behind it show only their edges */
+.km-r10-narr-S__tag > * { opacity: var(--txt, 1); }
+.km-r10-narr-S__tag::before, .km-r10-narr-S__tag::after {   /* dashed (a guess) → solid (the story) */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+}
+.km-r10-narr-S__tag::before {
+  border: 1px dashed color-mix(in srgb, var(--line-2) calc(var(--dim) * 100%), var(--fg-3));
+  clip-path: inset(-1px -1px -1px calc(var(--sw) * 100%));
+}
+.km-r10-narr-S__tag::after {
+  border: 1px solid var(--fg-2);
+  clip-path: inset(-1px calc((1 - var(--sw)) * 100%) -1px -1px);
+}
+.km-r10-narr-S__tsrc { position: absolute; visibility: hidden; }   /* wide: the wires say which voice it came from */
+.km-r10-narr-S__tt { position: relative; display: grid; min-width: 0; }
+.km-r10-narr-S__tw, .km-r10-narr-S__tn { grid-area: 1 / 1; }
+.km-r10-narr-S__tw { clip-path: inset(-4px -4px -4px calc(var(--sw) * 100%)); color: color-mix(in srgb, var(--fg-3) calc(var(--dim) * 100%), var(--fg-2)); }
+.km-r10-narr-S__tn {
+  clip-path: inset(-4px calc((1 - var(--sw)) * 100%) -4px -4px);
+  color: color-mix(in srgb, var(--bg) calc(var(--fill) * 100%), var(--fg));
+}
+.km-r10-narr-S__tag .km-r10-narr-S__caret { top: -7px; bottom: -7px; }
+
+/* the count: how many different companies the buyer hears */
+.km-r10-narr-S__read { display: flex; flex-direction: column; gap: 6px; margin-top: -10px; min-width: 0; }
+.km-r10-narr-S__rn {
+  display: block; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 56px; line-height: 50px; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-r10-narr-S__ru { display: block; font-size: var(--ac-key); line-height: 20px; color: var(--fg-2); max-width: 11ch; }
+
+/* the band */
+.km-r10-narr-S__band { align-items: flex-start; padding-top: 6px; }
+.km-r10-narr-S__cap { font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); max-width: 70ch; }
+.km-r10-narr-S__replay { flex: none; }
+
+/* ── entrance (is-play only): the stepper rises, the plate fades in; S.js plays the rest ── */
+.is-play .km-r10-narr-S__step { animation: ac-up 600ms var(--ease-out) calc(380ms + var(--i, 0) * 100ms) both; }
+.is-play .km-r10-narr-S__plate { animation: ac-fade 500ms var(--ease-out) 520ms both; }
+
+/* ═══ small laptops (1024–1199): the same drawing, tighter ═══ */
+@media (max-width: 1199px) {
+  /* the markup's lines are 1440's: without the script, below 1200 they are not drawn */
+  :root:not(.km-home) .km-r10-narr-S__wires:not(.is-live) { visibility: hidden; }
+  :root:not(.km-home) .km-r10-narr-S__field {
+    grid-template-columns: minmax(0, 220fr) minmax(0, 76fr) minmax(0, 300fr) minmax(0, 96fr) minmax(0, 360fr);
+  }
+  :root:not(.km-home) .km-r10-narr-S__buyer { gap: 16px; }
+  :root:not(.km-home) .km-r10-narr-S__stack { width: 212px; }
+  :root:not(.km-home) .km-r10-narr-S__tag { width: 200px; font-size: 14px; padding: 0 9px; }
+  :root:not(.km-home) .km-r10-narr-S__buyer { gap: 14px; }
+  :root:not(.km-home) .km-r10-narr-S__rn { font-size: 44px; line-height: 40px; }
+  :root:not(.km-home) .km-r10-narr-S__read { margin-top: -4px; }
+  :root:not(.km-home) .km-r10-narr-S__ru { max-width: 9ch; }
+}
+
+/* ═══ narrow (768–1023): the buyer moves under the rows ═══ */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-r10-narr-S { --narr-mode: narrow; }
+  :root:not(.km-home) .km-r10-narr-S__cl { display: inline; white-space: normal; }
+  /* the stepper: four compact rows */
+  :root:not(.km-home) .km-r10-narr-S__steps { grid-template-columns: minmax(0, 1fr); margin-top: 40px; }
+  :root:not(.km-home) .km-r10-narr-S__step { display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: baseline; gap: 0; padding: 14px 0; }
+  :root:not(.km-home) .km-r10-narr-S__st { max-width: 52ch; }
+  :root:not(.km-home) .km-r10-narr-S__plate { margin-top: 28px; }
+  :root:not(.km-home) .km-r10-narr-S__band { flex-wrap: wrap; row-gap: 8px; }
+
+  :root:not(.km-home) .km-r10-narr-S__field {
+    grid-template-columns: minmax(0, 250fr) minmax(0, 40fr) minmax(0, 432fr);
+    grid-template-rows: auto repeat(5, auto) 18px auto auto;
+  }
+  :root:not(.km-home) .km-r10-narr-S__os.ac-sheet, :root:not(.km-home) .km-r10-narr-S__hole { grid-row: 1 / 8; }
+  :root:not(.km-home) .km-r10-narr-S__feed { visibility: hidden; }
+  :root:not(.km-home) .km-r10-narr-S__brace { visibility: visible; }
+  :root:not(.km-home) .km-r10-narr-S__v { width: calc(100% - 16px - 56px); }
+  :root:not(.km-home) .km-r10-narr-S__bkey { grid-column: 1 / -1; grid-row: 8; margin-top: 28px; padding-bottom: 14px; }
+  :root:not(.km-home) .km-r10-narr-S__buyer {
+    grid-column: 1 / -1; grid-row: 9; margin-top: 0; gap: 40px; align-items: center; height: auto;
+  }
+  /* the notes, one row per voice: ragged and different before, set to one edge and one story after */
+  :root:not(.km-home) .km-r10-narr-S__stack { width: min(440px, calc(100% - 160px)); height: 194px; margin-left: 14px; }
+  :root:not(.km-home) .km-r10-narr-S__tag {
+    --txt: 1; --fill: 0; top: calc(var(--row) * 40px); translate: none; z-index: 1;
+    width: calc(100% - 30px); font-size: 15px; padding: 0 11px;
+  }
+  :root:not(.km-home) .km-r10-narr-S__tsrc { position: static; visibility: visible; flex: none; color: var(--fg-3); font-size: var(--ac-key); }
+  :root:not(.km-home) .km-r10-narr-S__read { margin-top: 0; }
+  :root:not(.km-home) .km-r10-narr-S__rn { font-size: 56px; line-height: 50px; }
+  :root:not(.km-home) .km-r10-narr-S__ru { max-width: 11ch; }
+}
+
+/* ═══ phone (≤ 767): one column ═══ */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-r10-narr-S { --narr-mode: phone; --row-y: 43px; --strip-h: 150px; --strip-top: 0px; }
+  /* the page strip stays in view while the voices and the buyer pass under it, so the page, the voice it
+     feeds and the buyer are seen together; it leaves with the plate. (Production pins it under the site's
+     sticky bar: --strip-top = the bar's height, 64–72px. The mockup has no bar.) */
+  :root:not(.km-home) .km-r10-narr-S__plate { overflow: clip; }
+  :root:not(.km-home) .km-r10-narr-S__head .ac-status { white-space: normal; }
+  :root:not(.km-home) .km-r10-narr-S__step { grid-template-columns: 36px minmax(0, 1fr); padding: 12px 0; }
+  :root:not(.km-home) .km-r10-narr-S__st { font-size: 16px; }
+
+  :root:not(.km-home) .km-r10-narr-S__field {
+    grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto auto auto;
+    padding: 16px 14px 20px;
+  }
+  :root:not(.km-home) .km-r10-narr-S__leads, :root:not(.km-home) .km-r10-narr-S__nd--e { visibility: hidden; }
+  /* the page: a strip, its three part names (the copy folded) */
+  :root:not(.km-home) .km-r10-narr-S__os.ac-sheet, :root:not(.km-home) .km-r10-narr-S__hole {
+    grid-row: 1 / 5; align-self: start; position: sticky; top: var(--strip-top); height: var(--strip-h);
+  }
+  :root:not(.km-home) .km-r10-narr-S__os.ac-sheet { display: block; padding: 0 16px 14px; z-index: 6; }
+  :root:not(.km-home) .km-r10-narr-S__hole { z-index: 5; background: var(--panel); }
+  :root:not(.km-home) .km-r10-narr-S__run.ac-sheet__run { padding-top: 14px; padding-bottom: 10px; }
+  :root:not(.km-home) .km-r10-narr-S__e { padding-top: 10px; }
+  :root:not(.km-home) .km-r10-narr-S__os .ac-sheet__h { margin: 0; }
+  :root:not(.km-home) .km-r10-narr-S__et, :root:not(.km-home) .km-r10-narr-S__e--sub { position: absolute; visibility: hidden; }
+  :root:not(.km-home) .km-r10-narr-S__holek { left: 16px; top: 14px; }
+  /* the voices on the line */
+  :root:not(.km-home) .km-r10-narr-S__vkey { grid-column: 1; grid-row: 2; margin: calc(var(--strip-h) + 20px) 0 0 14px; padding-bottom: 10px; }
+  :root:not(.km-home) .km-r10-narr-S__voices, :root:not(.km-home) .km-r10-narr-S__datum { grid-column: 1; grid-row: 3; }
+  :root:not(.km-home) .km-r10-narr-S__voices { display: flex; flex-direction: column; gap: 6px; }
+  :root:not(.km-home) .km-r10-narr-S__v { margin-left: 14px; width: calc(100% - 14px - 28px); padding: 9px 12px 11px; }
+  :root:not(.km-home) .km-r10-narr-S__say { margin-top: 4px; line-height: 21px; }
+  /* the buyer at the foot: the key and the count on one row, the notes under them */
+  :root:not(.km-home) .km-r10-narr-S__bkey { grid-column: 1; grid-row: 4; align-self: start; margin-top: 32px; padding-bottom: 0; }
+  :root:not(.km-home) .km-r10-narr-S__buyer { grid-column: 1; grid-row: 4; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 40px auto; gap: 10px; align-items: start; margin-top: 22px; height: auto; }
+  :root:not(.km-home) .km-r10-narr-S__read { grid-row: 1; justify-self: end; flex-direction: row; align-items: baseline; gap: 8px; margin-top: 0; }
+  :root:not(.km-home) .km-r10-narr-S__rn { font-size: 40px; line-height: 40px; }
+  :root:not(.km-home) .km-r10-narr-S__ru { max-width: none; }
+  :root:not(.km-home) .km-r10-narr-S__stack { grid-row: 2; width: calc(100% - 14px); height: 186px; margin-left: 14px; }
+  :root:not(.km-home) .km-r10-narr-S__tag { top: calc(var(--row) * 38px); width: calc(100% - 26px); height: 34px; padding: 0 10px; }
+  :root:not(.km-home) .km-r10-narr-S__band { padding-inline: 14px; }
+}
+
+/* ═══ small phones (≤ 359): each note keeps only its words (they sit in the voices' order) ═══ */
+@media (max-width: 359px) {
+  :root:not(.km-home) .km-r10-narr-S__tsrc { position: absolute; visibility: hidden; }
+  :root:not(.km-home) .km-r10-narr-S__tag { font-size: 14px; padding: 0 9px; }
+}

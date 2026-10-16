@@ -1,0 +1,218 @@
+/* ── r10-intel · S · GTM Intelligence head — one quarter, and what it changes (round 10, fix pass) ──
+   The founder: the head drawing "just gets to size and stays there"; it should reveal "step by step, as a
+   process". The review: the payoff was an empty red slab, next quarter a clone, the labels trade terms, the
+   payoff too late. So the quarter now ENDS IN A WRITTEN PAGE, and the page VISIBLY CHANGES next quarter:
+     PHASE 1 (.is-run on the drawing shown; .is-run-lg on the measure for the 1440 frame's HTML words)
+       0–450     the dimension and the three lane lines draw left to right; the plate fades in (300)
+       200–2475  a playhead walks the 13 weeks (175ms a week): each week's hairline drops and its numeral
+                 appears; a check lands on lane A (grey: logged, not yet read); a call lands on lane B when a
+                 deal was lost; a hollow square lands on lane C (the contact list, rebuilt every week). Each
+                 lane's label arrives with its first item.
+       2475–3300 THE GATHER (the page's wow, kept slow): a 2px wire runs along each lane into the page (800ms,
+                 linear) and lights what it passes — every check goes white, four calls fill (they named the
+                 security review), the two others stay outlines, the list squares stay hollow. On the stacked
+                 drawings the wires then drop down week 13's bus into the page (300ms).
+       tp        the red page grows up from its baseline (500ms) — lg 2925, stacked 3425 — and writes itself:
+                 a heading bar, then nine lines, one after another; its label, "Week 13: what we learned,
+                 written down".
+     PHASE 2 (.is-run2 / .is-run2-lg, added by S.js at the frame's data-t2 — lg 3875, stacked 4375 — and only
+       once next quarter's part of the drawing is on screen):
+       lg        next quarter's dashed weeks fade in; the page forks into every row of it: an arrow into a NEW
+                 solid row that runs from week 1 off the plate; arrows into the checks and the calls (dashed:
+                 carried on); an end-stop on the contact-list lane, whose own name is struck and dims (as the
+                 homepage handover strikes an old line): "Stopped: 0 replies in 13 weeks". Settled at lg 5.1s.
+       stacked   a return line runs from the page back to week 1 of next quarter (drawn under this one on the
+                 same week scale), then the same fork. Settled at 6.1s.
+   Timings are relative to the run start (the h1's last letter − 250ms, so the plate draws while the last
+   letters land; 700ms standalone). The CSS default is the finished frame, with no playhead: reduced motion,
+   no script and a screenshot all show the whole thing.                                                      */
+
+/* the plate, out of the kit's rise: the kit's gap, margin to margin */
+.km-r10-intel-S__pw { margin: var(--ac-iplate-gap) var(--margin) 0; }
+.km-r10-intel-S__plate { --ac-occlude: var(--panel); }
+/* armed (S.js, before the run) and during the arrival: the plate waits, hidden */
+.km-r10-intel-S.is-armed .km-r10-intel-S__plate,
+:root.km-arriving .km-r10-intel-S__plate { opacity: 0; }
+/* until the script has started, a reader who will see the motion never sees the finished frame first
+   (no script, or reduced motion: the finished frame, as authored) */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .km-r10-intel-S:not(.is-init) .km-r10-intel-S__plate { opacity: 0; }
+}
+.km-r10-intel-S.is-go .km-r10-intel-S__plate { animation: ac-fade 300ms var(--ease-out) both; }
+
+/* frame clocks (the 1440 frame's HTML words read the measure's) */
+.km-r10-intel-S__m, .km-r10-intel-S__d {
+  --t0: 200ms; --wk: 175ms; --tq: calc(var(--t0) + 13 * var(--wk));
+  --tp: calc(var(--tq) + 450ms);
+}
+.km-r10-intel-S__d--st { --tp: calc(var(--tq) + 950ms); }
+.km-r10-intel-S__m, .km-r10-intel-S__d--lg { --ph-x: 676px; }
+.km-r10-intel-S__d--md { --ph-x: 650px; }
+.km-r10-intel-S__d--sm { --ph-x: 325px; }
+
+/* ── drawing weights ── */
+.km-r10-intel-S__box { fill: none; stroke: none; pointer-events: none; }
+.km-r10-intel-S__d .km-r10-intel-S__wire { fill: none; stroke: var(--fg); stroke-width: 2; stroke-linecap: butt; }
+.km-r10-intel-S__gcol, .km-r10-intel-S__glane { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 4; }
+.km-r10-intel-S__ghost { fill: none; stroke: var(--fg-3); stroke-width: 1; stroke-dasharray: 3 3; }
+.km-r10-intel-S__d .km-r10-intel-S__node--hit { fill: var(--fg); stroke: var(--fg); }   /* named the security review */
+.km-r10-intel-S__sq { fill: var(--panel); stroke: var(--fg-2); stroke-width: 1; }       /* the list rebuilt: nothing back */
+.km-r10-intel-S__fold { fill: none; stroke: var(--accent-fg); stroke-width: 1; }
+.km-r10-intel-S__wr { fill: none; stroke: var(--accent-fg); stroke-width: 1; }
+.km-r10-intel-S__wr--h { fill: var(--accent-fg); stroke: none; }
+/* the stopped activity: its own name is struck (as the homepage handover strikes the old line) and dims; its
+   lane in next quarter is an empty dashed stub after the end-stop */
+.km-r10-intel-S__lx { fill: none; stroke: var(--fg-2); stroke-width: 1.5; }
+.km-r10-intel-S__d .km-r10-intel-S__ll--x { fill: var(--fg-3); }
+.km-r10-intel-S__hl--x { color: var(--fg-3); }
+.km-r10-intel-S__hl--x::after {
+  content: ""; position: absolute; left: -2px; right: 6px; top: 55%; height: 1.5px; background: var(--fg-2);
+  transform-origin: 0 50%;
+}
+.km-r10-intel-S__hd, .km-r10-intel-S__stop { stroke-linecap: square; }
+.km-r10-intel-S__ph { pointer-events: none; }
+.km-r10-intel-S__phv { opacity: 0; }                       /* the finished frame has no playhead */
+/* transforms on drawing parts are measured from their own box */
+.km-r10-intel-S__col, .km-r10-intel-S__lane, .km-r10-intel-S__dimg, .km-r10-intel-S__wire, .km-r10-intel-S__bus,
+.km-r10-intel-S__pg, .km-r10-intel-S__wr, .km-r10-intel-S__f1, .km-r10-intel-S__trunk, .km-r10-intel-S__br,
+.km-r10-intel-S__r1, .km-r10-intel-S__r2, .km-r10-intel-S__nw, .km-r10-intel-S__lx { transform-box: fill-box; }
+.km-r10-intel-S__col, .km-r10-intel-S__bus, .km-r10-intel-S__r1 { transform-origin: 50% 0; }
+.km-r10-intel-S__d--st .km-r10-intel-S__trunk { transform-origin: 50% 0; }
+.km-r10-intel-S__d--lg .km-r10-intel-S__trunk--up { transform-origin: 50% 100%; }   /* the trunk grows both ways from the page's line */
+.km-r10-intel-S__d--lg .km-r10-intel-S__trunk--dn { transform-origin: 50% 0; }
+.km-r10-intel-S__pg { transform-origin: 50% 100%; }
+/* lines draw as a left-anchored scaleX, never a pathLength dash: Chrome mis-scales a pathLength dash on a
+   non-scaling stroke once the drawing is scaled */
+.km-r10-intel-S__lane, .km-r10-intel-S__dimg, .km-r10-intel-S__wire, .km-r10-intel-S__wr, .km-r10-intel-S__f1,
+.km-r10-intel-S__br, .km-r10-intel-S__nw, .km-r10-intel-S__lx { transform-origin: 0 50%; }
+.km-r10-intel-S__r2 { transform-origin: 100% 50%; }       /* the return runs right to left, back to week 1 */
+
+/* drawn words (tablet and phone frames): keys 15 units; 18 on the phone (≥ 14px at a 288px frame) */
+.km-r10-intel-S__d--sm .km-r10-intel-S__tx--sm { font-size: 18px; }
+.km-r10-intel-S__pgl, .km-r10-intel-S__stl { fill: var(--fg-2); }
+.km-r10-intel-S__pgl--a, .km-r10-intel-S__nwl { fill: var(--fg); }
+.km-r10-intel-S__num { font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; fill: var(--fg-2); }
+.km-r10-intel-S__num--sm { font-size: 14px; letter-spacing: 0; }
+.km-r10-intel-S__gnum { fill: var(--fg-3); }
+.km-r10-intel-S__nql { fill: var(--fg-2); }
+
+/* ── the 1440 frame's words (HTML, positioned in frame units; they keep their size from 1024 up) ── */
+.km-r10-intel-S__hl--t, .km-r10-intel-S__hl--pg {
+  position: absolute; left: calc(var(--x) * var(--u)); top: calc(var(--y) * var(--u));
+  margin: 0; font-size: 15px; line-height: 20px; color: var(--fg-2); white-space: nowrap;
+}
+.km-r10-intel-S__hl--t { transform: translateY(-100%); padding-right: 8px; background: var(--panel); }   /* knocks out the hairlines */
+.km-r10-intel-S__hl--nw { color: var(--fg); }
+.km-r10-intel-S__hl--nq { background: none; }
+.km-r10-intel-S__hl--pg > span { display: block; }
+.km-r10-intel-S__pga { color: var(--fg); }
+.km-r10-intel-S__hl--nums { position: absolute; left: 0; right: 0; top: calc(var(--y) * var(--u)); height: 0; margin: 0; }
+.km-r10-intel-S__wn { position: absolute; left: calc(var(--x) * var(--u)); top: 0; transform: translate(-50%, -50%); line-height: 1; }
+.km-r10-intel-S__wn--g { color: var(--fg-3); }
+
+/* ── the band: the mechanism in a sentence, and Replay ── */
+.km-r10-intel-S__cap { margin: 0; font-size: var(--ac-support); line-height: 1.5; color: var(--fg-2); text-wrap: pretty; }
+.km-r10-intel-S__replay { flex: none; }
+.km-r10-intel-S__replay[hidden] { display: none; }
+
+/* ═══ the run ═══════════════════════════════════════════════════════════════════════════════════════════ */
+@keyframes km-r10-intel-S-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-r10-intel-S-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes km-r10-intel-S-dropy { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes km-r10-intel-S-drawx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+/* the hand-off's hairlines start from a hair, not from nothing: a 1px non-scaling stroke under an exactly
+   zero scale is a degenerate case that can stall the page for seconds while it renders */
+@keyframes km-r10-intel-S-drawx2 { from { transform: scaleX(.002); } to { transform: scaleX(1); } }
+@keyframes km-r10-intel-S-dropy2 { from { transform: scaleY(.002); } to { transform: scaleY(1); } }
+@keyframes km-r10-intel-S-drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes km-r10-intel-S-walk { from { transform: translateX(0); } to { transform: translateX(var(--ph-x)); } }
+@keyframes km-r10-intel-S-lit { from { fill: var(--fg-3); } to { fill: var(--fg); } }
+@keyframes km-r10-intel-S-nlit { from { fill: var(--panel); stroke: var(--fg-2); } to { fill: var(--fg); stroke: var(--fg); } }
+@keyframes km-r10-intel-S-dimf { from { fill: var(--fg-2); } to { fill: var(--fg-3); } }
+@keyframes km-r10-intel-S-dimc { from { color: var(--fg-2); } to { color: var(--fg-3); } }
+
+/* phase 2's parts wait, hidden, while phase 1 plays */
+.km-r10-intel-S__d.is-run:not(.is-run2) :is(.km-r10-intel-S__nqg, .km-r10-intel-S__stg, .km-r10-intel-S__lx, .km-r10-intel-S__f1,
+  .km-r10-intel-S__trunk, .km-r10-intel-S__br, .km-r10-intel-S__hd, .km-r10-intel-S__stop, .km-r10-intel-S__nw,
+  .km-r10-intel-S__r1, .km-r10-intel-S__r2, .km-r10-intel-S__nwl, .km-r10-intel-S__stl) { opacity: 0; }
+.km-r10-intel-S__m.is-run-lg:not(.is-run2-lg) :is(.km-r10-intel-S__hl--nq, .km-r10-intel-S__hl--nw, .km-r10-intel-S__hl--st, .km-r10-intel-S__wn--g) { opacity: 0; }
+.km-r10-intel-S__d.is-run:not(.is-run2) .km-r10-intel-S__ll--x { fill: var(--fg-2); }
+.km-r10-intel-S__m.is-run-lg:not(.is-run2-lg) > .km-r10-intel-S__hl--x { color: var(--fg-2); }
+.km-r10-intel-S__m.is-run-lg:not(.is-run2-lg) > .km-r10-intel-S__hl--x::after { transform: scaleX(0); }
+
+/* ── phase 1 · 0–450: the measure and the lanes are laid out ── */
+.km-r10-intel-S__d.is-run .km-r10-intel-S__lane { animation: km-r10-intel-S-drawx 450ms var(--ease-out) calc(var(--j) * 60ms) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__dimg { animation: km-r10-intel-S-drawx 450ms var(--ease-out) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__dimt { animation: km-r10-intel-S-fade 300ms var(--ease-out) 150ms both; }
+.km-r10-intel-S__m.is-run-lg > .km-r10-intel-S__hl--dim { animation: ac-drawx 450ms var(--ease-out) 0ms both; }
+/* ── 200–2475: the playhead walks the weeks; each week lays down as it enters ── */
+.km-r10-intel-S__d.is-run .km-r10-intel-S__ph { animation: km-r10-intel-S-walk calc(13 * var(--wk)) linear var(--t0) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__phv {
+  animation: km-r10-intel-S-fade 150ms linear calc(var(--t0) - 150ms) both, km-r10-intel-S-out 240ms linear calc(var(--tq) + 250ms) forwards;
+}
+.km-r10-intel-S__d.is-run .km-r10-intel-S__col { animation: km-r10-intel-S-dropy 200ms var(--ease-out) calc(var(--t0) + var(--i) * var(--wk)) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__col--end { animation: km-r10-intel-S-dropy 200ms var(--ease-out) var(--tq) both; }   /* no --i: a full declaration */
+.km-r10-intel-S__d.is-run .km-r10-intel-S__num:not(.km-r10-intel-S__gnum) { animation: km-r10-intel-S-fade 150ms linear calc(var(--t0) + var(--i) * var(--wk) + 40ms) both; }
+.km-r10-intel-S__m.is-run-lg .km-r10-intel-S__wn:not(.km-r10-intel-S__wn--g) { animation: km-r10-intel-S-fade 150ms linear calc(var(--t0) + var(--i) * var(--wk) + 40ms) both; }
+/* the checks land grey ("logged"), the calls as outlines, the list as hollow squares; the gather reads them */
+.km-r10-intel-S__d.is-run .km-r10-intel-S__bar {
+  animation: km-r10-intel-S-drop 240ms var(--ease-out) calc(var(--t0) + var(--i) * var(--wk) + 40ms) both,
+             km-r10-intel-S-lit 160ms linear calc(var(--tq) + var(--g)) both;
+}
+.km-r10-intel-S__d.is-run .km-r10-intel-S__node { animation: km-r10-intel-S-drop 240ms var(--ease-out) calc(var(--t0) + var(--i) * var(--wk) + 60ms) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__node--hit {
+  animation: km-r10-intel-S-drop 240ms var(--ease-out) calc(var(--t0) + var(--i) * var(--wk) + 60ms) both,
+             km-r10-intel-S-nlit 200ms linear calc(var(--tq) + var(--g)) both;
+}
+.km-r10-intel-S__d.is-run .km-r10-intel-S__sq { animation: km-r10-intel-S-drop 240ms var(--ease-out) calc(var(--t0) + var(--i) * var(--wk) + 100ms) both; }
+/* each lane's label arrives with its first item */
+.km-r10-intel-S__d.is-run .km-r10-intel-S__ll { animation: km-r10-intel-S-fade 300ms var(--ease-out) calc(var(--t0) + var(--ld)) both; }
+.km-r10-intel-S__m.is-run-lg > .km-r10-intel-S__hl--ll { animation: km-r10-intel-S-fade 300ms var(--ease-out) calc(var(--t0) + var(--ld)) both; }
+/* ── THE GATHER (the wow): the wires read the quarter into the page; the page grows and writes itself ── */
+.km-r10-intel-S__d.is-run .km-r10-intel-S__wire { animation: km-r10-intel-S-drawx 800ms linear calc(var(--tq) + var(--j) * 50ms) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__bus { animation: km-r10-intel-S-dropy 300ms var(--ease-inout) calc(var(--tq) + 850ms) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__pg { animation: km-r10-intel-S-dropy 500ms var(--ease-out) var(--tp) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__fold { animation: km-r10-intel-S-fade 200ms var(--ease-out) calc(var(--tp) + 380ms) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__wr { animation: km-r10-intel-S-drawx 150ms var(--ease-out) calc(var(--tp) + 300ms + var(--n) * 50ms) both; }
+.km-r10-intel-S__d.is-run .km-r10-intel-S__pgl { animation: km-r10-intel-S-fade 300ms var(--ease-out) calc(var(--tp) + 450ms) both; }
+.km-r10-intel-S__m.is-run-lg > .km-r10-intel-S__hl--pg { animation: km-r10-intel-S-fade 300ms var(--ease-out) calc(var(--tp) + 450ms) both; }
+
+/* ── phase 2 · lg: the page forks into every row of next quarter ── */
+.km-r10-intel-S__d--lg.is-run2 .km-r10-intel-S__nqg { animation: km-r10-intel-S-fade 300ms var(--ease-out) both; }
+.km-r10-intel-S__d--lg.is-run2 .km-r10-intel-S__f1 { animation: km-r10-intel-S-drawx2 150ms var(--ease-out) both; }
+.km-r10-intel-S__d--lg.is-run2 .km-r10-intel-S__trunk { animation: km-r10-intel-S-dropy2 250ms var(--ease-inout) 150ms both; }
+.km-r10-intel-S__d--lg.is-run2 .km-r10-intel-S__br { animation: km-r10-intel-S-drawx2 150ms var(--ease-out) calc(400ms + var(--n) * 40ms) both; }
+.km-r10-intel-S__d--lg.is-run2 .km-r10-intel-S__hd { animation: km-r10-intel-S-fade 120ms linear calc(520ms + var(--n) * 40ms) both; }
+.km-r10-intel-S__d--lg.is-run2 .km-r10-intel-S__stop { animation: km-r10-intel-S-fade 120ms linear 560ms both; }
+.km-r10-intel-S__d--lg.is-run2 .km-r10-intel-S__nw { animation: km-r10-intel-S-drawx 600ms var(--ease-out) 500ms both; }
+.km-r10-intel-S__d--lg.is-run2 .km-r10-intel-S__stg { animation: km-r10-intel-S-fade 300ms var(--ease-out) 560ms both; }
+.km-r10-intel-S__m.is-run2-lg > .km-r10-intel-S__hl--x { animation: km-r10-intel-S-dimc 300ms var(--ease-out) 700ms both; }
+.km-r10-intel-S__m.is-run2-lg > .km-r10-intel-S__hl--x::after { animation: km-r10-intel-S-drawx 350ms var(--ease-out) 650ms both; }
+.km-r10-intel-S__m.is-run2-lg > :is(.km-r10-intel-S__hl--nq) { animation: km-r10-intel-S-fade 300ms var(--ease-out) both; }
+.km-r10-intel-S__m.is-run2-lg .km-r10-intel-S__wn--g { animation: km-r10-intel-S-fade 300ms var(--ease-out) both; }
+.km-r10-intel-S__m.is-run2-lg > .km-r10-intel-S__hl--nw { animation: km-r10-intel-S-fade 300ms var(--ease-out) 800ms both; }
+.km-r10-intel-S__m.is-run2-lg > .km-r10-intel-S__hl--st { animation: km-r10-intel-S-fade 300ms var(--ease-out) 950ms both; }
+/* ── phase 2 · stacked: a return line back to week 1 of next quarter, then the same fork ── */
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__nqg { animation: km-r10-intel-S-fade 300ms var(--ease-out) both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__r1 { animation: km-r10-intel-S-dropy2 120ms var(--ease-out) both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__r2 { animation: km-r10-intel-S-drawx2 450ms var(--ease-inout) 120ms both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__trunk { animation: km-r10-intel-S-dropy2 250ms var(--ease-out) 570ms both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__br { animation: km-r10-intel-S-drawx2 150ms var(--ease-out) calc(820ms + var(--n) * 40ms) both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__hd { animation: km-r10-intel-S-fade 120ms linear calc(940ms + var(--n) * 40ms) both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__stop { animation: km-r10-intel-S-fade 120ms linear 980ms both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__nw { animation: km-r10-intel-S-drawx 600ms var(--ease-out) 950ms both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__nwl { animation: km-r10-intel-S-fade 300ms var(--ease-out) 1200ms both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__stg { animation: km-r10-intel-S-fade 300ms var(--ease-out) 1000ms both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__lx { animation: km-r10-intel-S-drawx2 350ms var(--ease-out) calc(1100ms + var(--n) * 120ms) both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__ll--x { animation: km-r10-intel-S-dimf 300ms var(--ease-out) 1150ms both; }
+.km-r10-intel-S__d--st.is-run2 .km-r10-intel-S__stl { animation: km-r10-intel-S-fade 300ms var(--ease-out) 1400ms both; }
+
+/* ── tablet and phone: the frames' own stacked drawings (the kit switches the frames); the 1440 frame's
+   HTML words give way with it ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-r10-intel-S__hl { visibility: hidden; }
+  :root:not(.km-home) .km-r10-intel-S__band { align-items: flex-start; padding: 8px 24px 16px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-r10-intel-S__band { flex-direction: column; gap: 10px; padding: 10px 16px 16px; }
+}

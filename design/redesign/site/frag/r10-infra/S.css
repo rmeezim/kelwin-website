@@ -1,0 +1,297 @@
+/* ── r10-infra · S · "How we build it" (GTM Infrastructure, round 10, second build) ─────────────
+   Four small sections ("bays"), each a working drawing of one real mechanism, in build order.
+   Default CSS = the FINAL frame: every bay finished, bay 03 on its first event. The script only
+   reveals it in order (Web Animations created when a bay starts and cancelled when it settles, so
+   the page always rests on this CSS).
+   Every drawing sits in a registration frame (.ac-frame + four .ac-reg marks) on the section's own
+   graphite, the way the homepage's system drawing does: drafting, not an app window.
+   Drawings are chosen by the FRAME's width (container queries), not the viewport:
+     lg ≥ 1240 (the 1440 stage: 1312) · md 600–1239 (tablets, narrow desktops) · sm 340–599 (phones)
+     · xs < 340 (the smallest phones). Bays 01 and 02 ship one SVG per geometry (only the visible one
+     is animated); bays 03 and 04 are HTML drawings that recompose.
+   Hidden geometries use visibility (never display:none), so nothing restarts an entrance.
+
+   THE LOAD-TIME HOLD. The stitcher starts this fragment late (22% of it on screen), so a bay below the
+   fold would otherwise sit finished and then replay. The script marks the root .is-held when it is
+   parsed (motion allowed only), and a bay's drawing stays at opacity 0 until that bay starts (.is-live
+   is set in the same task that creates its opening state). Opacity on the wrapper cannot be undone by
+   a child (round one's visibility could). No script → no .is-held → the finished frames show.
+   PRODUCTION: key the same rule to html.km-motion instead of .is-held (the Slot, not km-home).      */
+
+.km-r10-infra-S { padding-top: 112px; padding-bottom: 112px; }
+.km-r10-infra-S__head > .ac-claim { margin-top: 28px; white-space: nowrap; max-width: none; }
+.km-r10-infra-S__head > .ac-shead__lede { margin-top: 24px; grid-column: 1 / span 7; max-width: 36em; }
+@media (prefers-reduced-motion: no-preference) {
+  .km-r10-infra-S.is-held .km-r10-infra-S__bay:not(.is-live) .km-r10-infra-S__hold { opacity: 0; }
+}
+
+/* ── a bay: name · one sentence · status (and Replay) on one row, then the drawing ── */
+.km-r10-infra-S__bays { margin-top: 80px; }
+.km-r10-infra-S__bay { position: relative; scroll-margin-top: 96px; }
+.km-r10-infra-S__bay + .km-r10-infra-S__bay { margin-top: 88px; }
+.km-r10-infra-S__bhead { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: start; }
+.km-r10-infra-S__bname { grid-column: 1 / span 4; display: flex; align-items: baseline; gap: 16px; margin: 0; font: inherit; }
+.km-r10-infra-S__bno { color: var(--fg-3); }
+.km-r10-infra-S__say { grid-column: 5 / span 6; font-size: var(--ac-lede); line-height: 1.5; color: var(--fg-2); max-width: 34em; margin-top: 2px; }
+.km-r10-infra-S__side { grid-column: 11 / span 2; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-top: 8px; text-align: right; }
+.km-r10-infra-S__status { font-size: var(--ac-support); line-height: 20px; color: var(--fg); font-weight: var(--ui-weight); white-space: nowrap; }
+.km-r10-infra-S__replay { color: var(--fg-2); }
+.km-r10-infra-S__replay:hover { color: var(--fg); }
+/* Replay is drawn in from the start (so nothing moves when it arrives) but stays invisible and out of
+   reach until the script arms the section; without a script, or with reduced motion, it never shows */
+.km-r10-infra-S__replay { visibility: hidden; }
+.km-r10-infra-S.is-armed .km-r10-infra-S__replay { visibility: visible; }
+
+/* ── the frame: registration marks at its corners; its width chooses the drawing ── */
+.km-r10-infra-S__fig { position: relative; margin-top: 32px; container: kmri / inline-size; }
+.km-r10-infra-S__geos { position: relative; }
+.km-r10-infra-S__geo { position: absolute; left: 0; top: 0; width: 100%; visibility: hidden; }
+.km-r10-infra-S__geo .km-r10-infra-S__svg { display: block; width: 100%; height: auto; margin-inline: auto; }
+.km-r10-infra-S__geo--xs { position: relative; visibility: visible; }
+@container kmri (min-width: 340px) {
+  .km-r10-infra-S__geo--xs { position: absolute; visibility: hidden; }
+  .km-r10-infra-S__geo--sm { position: relative; visibility: visible; }
+  .km-r10-infra-S__geo--sm .km-r10-infra-S__svg { max-width: 448px; }
+}
+@container kmri (min-width: 600px) {
+  .km-r10-infra-S__geo--sm { position: absolute; visibility: hidden; }
+  .km-r10-infra-S__geo--md { position: relative; visibility: visible; }
+  .km-r10-infra-S__geo--md .km-r10-infra-S__svg { max-width: 720px; }
+}
+@container kmri (min-width: 1240px) {
+  .km-r10-infra-S__geo--md { position: absolute; visibility: hidden; }
+  .km-r10-infra-S__geo--lg { position: relative; visibility: visible; }
+}
+
+/* ── drawing voices (inline SVG): Mona for words, JetBrains Mono for numerals only ── */
+.km-r10-infra-S__svg text { font-family: var(--f-body); }
+.km-r10-infra-S__t { font-size: 15px; fill: var(--fg-2); }
+.km-r10-infra-S__t14 { font-size: 14px; }
+.km-r10-infra-S__t3 { fill: var(--fg-3); }
+.km-r10-infra-S__tfg { fill: var(--fg); }
+.km-r10-infra-S__st { font-weight: var(--ui-weight); }
+.km-r10-infra-S__ton { fill: var(--bg); font-weight: var(--ui-weight); }
+.km-r10-infra-S__knock { paint-order: stroke; stroke: var(--ac-occlude, var(--bg)); stroke-width: 12px; stroke-linejoin: round; }
+.km-r10-infra-S__svg .km-r10-infra-S__tnum { font-family: var(--f-mono); font-size: 14px; letter-spacing: .04em; fill: var(--fg-3); }
+.km-r10-infra-S__svg .km-r10-infra-S__tbig {
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: 40px; letter-spacing: -0.02em; fill: var(--fg);
+}
+.km-r10-infra-S__gone { opacity: 0; }
+.km-r10-infra-S__sq { fill: var(--fg-2); }
+.km-r10-infra-S__lit { fill: var(--fg); }
+.km-r10-infra-S__bar, .km-r10-infra-S__gfill, .km-r10-infra-S__rseg, .km-r10-infra-S__cover { transform-box: fill-box; }
+.km-r10-infra-S__bar { transform-origin: 50% 100%; }
+.km-r10-infra-S__gfill { transform-origin: 0 50%; }
+.km-r10-infra-S__rseg { transform-origin: 0 50%; }
+.km-r10-infra-S__rsegv { transform-origin: 50% 100%; }
+.km-r10-infra-S__flash, .km-r10-infra-S__ph { opacity: 0; }
+/* bay 02: the grid of 1,200 (one pattern), its wipe, the holes the 38 leave */
+.km-r10-infra-S__gsq { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-r10-infra-S__cover { fill: var(--ac-occlude, var(--bg)); opacity: 0; transform-origin: 100% 50%; }
+.km-r10-infra-S__hole { fill: var(--ac-occlude, var(--bg)); }
+/* bay 03's sent objects: paper only for paper documents */
+.km-r10-infra-S__paper { fill: var(--fg); stroke: none; }
+.km-r10-infra-S__ink { fill: var(--bg); }
+.km-r10-infra-S__inkline { stroke: var(--bg); stroke-width: 1.5; opacity: .55; }
+.km-r10-infra-S__occ { fill: var(--ac-occlude, var(--bg)); }
+
+/* ═══ bay 03 · the routing rules ════════════════════════════════════════════════════════════
+   Phones and tablets (default): the events, then the ladder; the fired rule opens in place and
+   shows its red block, the object it sends and the words. Desktop (frame ≥ 1240): three columns —
+   the events · the ladder · what happens next — and the fired block sits on its own rule's rung.  */
+.km-r10-infra-S__b3 { position: relative; padding: 20px 16px 24px; }
+.km-r10-infra-S__k { font-size: 15px; line-height: 22px; font-weight: var(--ui-weight); color: var(--fg-2); }
+.km-r10-infra-S__evs { display: grid; gap: 8px; margin-top: 12px; }
+.km-r10-infra-S__evb {
+  position: relative; display: block; width: 100%; min-height: 60px; padding: 12px 16px; text-align: left;
+  border: 1px solid var(--line-2); font-size: 15px; line-height: 1.4; color: var(--fg-2); cursor: pointer; text-wrap: balance;
+}
+.km-r10-infra-S__evb:hover { color: var(--fg); border-color: var(--fg-3); }
+.km-r10-infra-S__evb[aria-checked="true"] { color: var(--fg); border-color: var(--fg); }
+.km-r10-infra-S__evb[aria-checked="true"]::after {   /* the event's token, at the edge that leads to the rules */
+  content: ""; position: absolute; left: 50%; bottom: -5px; width: 9px; height: 9px; margin-left: -4.5px; background: var(--fg);
+}
+.km-r10-infra-S__evb:focus-visible { outline: 1px solid var(--fg); outline-offset: 3px; }
+.km-r10-infra-S__evs[inert] .km-r10-infra-S__evb { cursor: default; }
+.km-r10-infra-S__entry { position: absolute; left: 0; top: 0; visibility: hidden; }
+.km-r10-infra-S__lad { position: relative; margin-top: 28px; }
+.km-r10-infra-S__ladk { display: flex; justify-content: space-between; gap: 16px; }
+.km-r10-infra-S__rows { position: relative; margin-top: 10px; padding-top: 16px; }
+.km-r10-infra-S__rows::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: var(--line-2); }
+.km-r10-infra-S__rows::after { content: ""; position: absolute; left: -.25px; top: 0; width: 1.5px; height: 16px; background: var(--fg); transform-origin: 50% 0; }
+.km-r10-infra-S__row {
+  position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr) 52px; grid-template-rows: auto auto auto;
+  padding: 12px 0 14px;
+}
+.km-r10-infra-S__row::after {   /* the trail through a rule that was read and passed */
+  content: ""; position: absolute; left: -.25px; top: 0; bottom: 0; width: 1.5px; background: var(--fg); opacity: 0; transform-origin: 50% 0;
+}
+.km-r10-infra-S__row[data-st="no"]::after { opacity: 1; }
+.km-r10-infra-S__seg {   /* the trail into the rule that fired: from the row's top to its rung */
+  grid-row: 1 / 3; grid-column: 1; justify-self: start; width: 1.5px; margin: -12px 0 0 -.25px; background: var(--fg);
+  opacity: 0; transform-origin: 50% 0;
+}
+.km-r10-infra-S__row[data-st="yes"] .km-r10-infra-S__seg { opacity: 1; }
+.km-r10-infra-S__rn { grid-row: 1; grid-column: 1; padding-left: 16px; font-family: var(--f-mono); font-size: 14px; line-height: 22px; color: var(--fg-3); }
+.km-r10-infra-S__rt { grid-row: 1; grid-column: 2; font-size: 15px; line-height: 22px; color: var(--fg-2); }
+.km-r10-infra-S__row:not([data-st]) .km-r10-infra-S__rt, .km-r10-infra-S__row[data-st=""] .km-r10-infra-S__rt { color: var(--fg-3); }
+.km-r10-infra-S__row[data-st="yes"] .km-r10-infra-S__rt { color: var(--fg); }
+.km-r10-infra-S__ans { grid-row: 1; grid-column: 3; text-align: right; font-size: 15px; line-height: 22px; }
+.km-r10-infra-S__no, .km-r10-infra-S__yes { display: none; }
+.km-r10-infra-S__row[data-st="no"] .km-r10-infra-S__no { display: inline; color: var(--fg-3); }
+.km-r10-infra-S__row[data-st="yes"] .km-r10-infra-S__yes { display: inline; color: var(--fg); font-weight: var(--ui-weight); }
+.km-r10-infra-S__rung { grid-row: 2; grid-column: 1 / -1; position: relative; height: 0; margin-top: 12px; border-top: 1px dashed var(--line-2); }
+.km-r10-infra-S__rung::before {   /* the rule's node on the rail */
+  content: ""; position: absolute; left: -4px; top: -4.5px; width: 8px; height: 8px; border: 1px solid var(--fg-3); background: var(--bg);
+}
+.km-r10-infra-S__row[data-st="yes"] .km-r10-infra-S__rung::before { border-color: var(--fg); background: var(--fg); }
+.km-r10-infra-S__probe { position: absolute; left: 0; right: 0; top: -1.25px; height: 1.5px; background: var(--fg); opacity: 0; transform-origin: 0 50%; }
+.km-r10-infra-S__row[data-st="yes"] .km-r10-infra-S__probe { opacity: 1; }
+/* what the fired rule does: a red block closes and sends out the next thing */
+.km-r10-infra-S__act { display: none; position: relative; grid-row: 3; grid-column: 2 / -1; margin-top: 22px;
+  grid-template-columns: 112px 16px auto; align-items: center; justify-content: start; }
+.km-r10-infra-S__row[data-st="yes"] .km-r10-infra-S__act { display: grid; }
+.km-r10-infra-S__act::before {   /* the drop from the rung to the block */
+  content: ""; position: absolute; left: 55.25px; top: -22px; width: 1.5px; height: 22px; background: var(--signal); transform-origin: 50% 0;
+}
+.km-r10-infra-S__fireb { position: relative; width: 112px; height: 48px; border: 1px dashed var(--line-2); }
+.km-r10-infra-S__fh { position: absolute; top: -1px; bottom: -1px; width: calc(50% + 1px); background: var(--accent); }
+.km-r10-infra-S__fh--l { left: -1px; transform-origin: 0 50%; }
+.km-r10-infra-S__fh--r { right: -1px; transform-origin: 100% 50%; }
+.km-r10-infra-S__ft { position: absolute; inset: 0; display: grid; place-items: center; font-size: 14px; line-height: 1; font-weight: var(--ui-weight); color: var(--accent-fg); white-space: nowrap; }
+.km-r10-infra-S__conn { height: 1.5px; background: var(--signal); transform-origin: 0 50%; }
+.km-r10-infra-S__objw { display: block; }
+.km-r10-infra-S__obj { display: block; overflow: visible; }
+.km-r10-infra-S__actt { grid-column: 1 / -1; margin-top: 14px; }
+.km-r10-infra-S__then { font-size: 15px; line-height: 1.5; color: var(--fg); max-width: 30em; }
+.km-r10-infra-S__who { margin-top: 4px; font-size: 14px; line-height: 1.45; color: var(--fg-3); }
+.km-r10-infra-S__out { display: none; }
+.km-r10-infra-S__tok { position: absolute; left: -4.5px; top: 0; width: 9px; height: 9px; background: var(--fg); opacity: 0; pointer-events: none; }
+@container kmri (min-width: 600px) {
+  .km-r10-infra-S__b3 { padding: 24px; }
+  .km-r10-infra-S__evs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .km-r10-infra-S__evb { min-height: 88px; }
+}
+@container kmri (min-width: 1240px) {
+  .km-r10-infra-S__b3 { display: grid; grid-template-columns: 248px 40px 520px 32px minmax(0, 1fr); align-items: start; height: 416px; padding: 24px; }
+  .km-r10-infra-S__ev { grid-column: 1; }
+  .km-r10-infra-S__evs { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-top: 16px; }
+  .km-r10-infra-S__evb { height: 88px; min-height: 0; padding: 12px 18px; }
+  .km-r10-infra-S__evb[aria-checked="true"]::after { left: auto; right: -5px; bottom: auto; top: 50%; margin: -4.5px 0 0; }
+  .km-r10-infra-S__entry { position: static; grid-column: 2; visibility: visible; }
+  .km-r10-infra-S__ent { opacity: 0; }
+  .km-r10-infra-S__b3[data-fire="3"] .km-r10-infra-S__ent[data-e="1"],
+  .km-r10-infra-S__b3[data-fire="4"] .km-r10-infra-S__ent[data-e="2"],
+  .km-r10-infra-S__b3[data-fire="5"] .km-r10-infra-S__ent[data-e="3"] { opacity: 1; }
+  .km-r10-infra-S__lad { grid-column: 3; margin-top: 0; }
+  .km-r10-infra-S__row { height: 64px; padding: 12px 0 0; grid-template-rows: 22px 13px; }
+  .km-r10-infra-S__act { position: absolute; left: calc(100% + 32px); top: 18px; height: 56px; margin: 0; grid-row: auto; grid-column: auto; }
+  .km-r10-infra-S__fireb { width: 136px; height: 56px; }
+  .km-r10-infra-S__ft { font-size: 15px; }
+  .km-r10-infra-S__obj { width: 70px; height: auto; }
+  .km-r10-infra-S__obj--addr { width: 148px; }
+  .km-r10-infra-S__row[data-st="yes"] .km-r10-infra-S__act { display: flex; align-items: center; }
+  .km-r10-infra-S__act::before { left: auto; right: 100%; top: 27.25px; width: 32px; height: 1.5px; transform-origin: 0 50%; }
+  .km-r10-infra-S__conn { width: 40px; }
+  .km-r10-infra-S__actt { display: none; }
+  .km-r10-infra-S__out { display: block; grid-column: 5; }
+  .km-r10-infra-S__oc { display: none; margin-top: 16px; }
+  .km-r10-infra-S__b3[data-fire="3"] .km-r10-infra-S__oc[data-r="3"],
+  .km-r10-infra-S__b3[data-fire="4"] .km-r10-infra-S__oc[data-r="4"],
+  .km-r10-infra-S__b3[data-fire="5"] .km-r10-infra-S__oc[data-r="5"] { display: block; }
+  .km-r10-infra-S__oc .km-r10-infra-S__then { font-size: 17px; line-height: 1.5; }
+  .km-r10-infra-S__oc .km-r10-infra-S__who { margin-top: 10px; font-size: 15px; }
+}
+
+/* ═══ bay 04 · the CRM record: a ledger strip the touches land on ════════════════════════════
+   Desktop and tablets: the keys in a column, fourteen days across. Phones: each key over its lane,
+   the labels above or below their marks so neighbours never collide.                            */
+.km-r10-infra-S__b4 { padding: 20px 16px 24px; }
+.km-r10-infra-S__rec { color: var(--fg-2); }
+.km-r10-infra-S__led { margin-top: 16px; }
+.km-r10-infra-S__lr { display: grid; grid-template-columns: minmax(0, 1fr); }
+.km-r10-infra-S__lk { margin: 0; font-size: 15px; line-height: 20px; color: var(--fg); }
+.km-r10-infra-S__lt { position: relative; }
+.km-r10-infra-S__lr--ruler .km-r10-infra-S__lk { font-size: 14px; color: var(--fg-3); }
+.km-r10-infra-S__lr--ruler .km-r10-infra-S__lt { height: 34px; }
+.km-r10-infra-S__lr--ruler .km-r10-infra-S__lt::before { content: ""; position: absolute; left: 0; right: 0; bottom: 4px; height: 1px; background: var(--fg-3); transform-origin: 0 50%; }
+.km-r10-infra-S__day {
+  position: absolute; left: calc((var(--d) - .5) / 14 * 100%); top: 2px; transform: translateX(-50%);
+  font-family: var(--f-mono); font-size: 14px; line-height: 20px; color: var(--fg-3); visibility: hidden;
+}
+.km-r10-infra-S__day--key { visibility: visible; }
+.km-r10-infra-S__day::after { content: ""; position: absolute; left: 50%; top: 24px; width: 1px; height: 5px; background: var(--fg-3); visibility: visible; }
+.km-r10-infra-S__lane .km-r10-infra-S__lk { margin-top: 10px; }
+.km-r10-infra-S__lane .km-r10-infra-S__lt { height: 64px; }
+.km-r10-infra-S__lane .km-r10-infra-S__lt::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line-2); transform-origin: 0 50%; }
+.km-r10-infra-S__who4 { position: relative; align-self: flex-start; }
+.km-r10-infra-S__lane[data-left] .km-r10-infra-S__who4 { color: var(--fg-3); }
+.km-r10-infra-S__lane[data-left] .km-r10-infra-S__who4::after {
+  content: ""; position: absolute; left: -2px; right: -2px; top: 50%; height: 1px; background: var(--fg-2); transform-origin: 0 50%;
+}
+.km-r10-infra-S__left { margin-left: 12px; font-size: 14px; color: var(--fg-3); }
+.km-r10-infra-S__mk { position: absolute; left: calc((var(--d) - .5) / 14 * 100%); top: 50%; }
+.km-r10-infra-S__sq4 { position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; background: var(--fg); }
+.km-r10-infra-S__ml { position: absolute; left: -4px; display: grid; white-space: nowrap; font-size: 14px; line-height: 20px; color: var(--fg-2); }
+.km-r10-infra-S__ml > * { grid-area: 1 / 1; }
+.km-r10-infra-S__mk[data-ph="up"] .km-r10-infra-S__ml { bottom: 8px; }
+.km-r10-infra-S__mk[data-ph="dn"] .km-r10-infra-S__ml { top: 8px; }
+.km-r10-infra-S__ml-lg { display: none; }
+.km-r10-infra-S__mk--plan .km-r10-infra-S__sq4 { background: transparent; border: 1px dashed var(--fg-3); }
+.km-r10-infra-S__mk--plan::after { content: ""; position: absolute; left: -9px; width: 18px; top: -.5px; height: 1px; background: var(--fg-2); transform-origin: 0 50%; }
+.km-r10-infra-S__mk--plan .km-r10-infra-S__ml { left: auto; right: -4px; justify-items: end; color: var(--fg-3); }
+.km-r10-infra-S__ml-a { opacity: 0; }
+.km-r10-infra-S__lr--stage .km-r10-infra-S__lk { margin-top: 14px; }
+.km-r10-infra-S__lr--stage .km-r10-infra-S__lt { height: 44px; }
+.km-r10-infra-S__stg { position: absolute; top: 8px; left: calc((var(--d0) - 1) / 14 * 100%); width: calc((var(--d1) - var(--d0)) / 14 * 100% - 3px); }
+.km-r10-infra-S__stgb { display: block; height: 12px; transform-origin: 0 50%; }
+.km-r10-infra-S__stgt { display: block; margin-top: 6px; font-size: 14px; line-height: 18px; color: var(--fg-2); white-space: nowrap; }
+.km-r10-infra-S__lr--dup .km-r10-infra-S__lk { margin-top: 14px; color: var(--fg-3); }
+.km-r10-infra-S__lr--dup .km-r10-infra-S__lt { height: 64px; }
+.km-r10-infra-S__dupbox { position: absolute; top: 6px; height: 22px; left: calc((var(--d0) - 1) / 14 * 100%); width: calc((var(--d1) - var(--d0)) / 14 * 100%); border: 1px dashed var(--line-2); }
+.km-r10-infra-S__dupt { position: absolute; left: 0; top: 30px; display: grid; font-size: 14px; line-height: 20px; color: var(--fg-3); white-space: nowrap; }
+.km-r10-infra-S__dupt > * { grid-area: 1 / 1; }
+.km-r10-infra-S__dupt-a { opacity: 0; }
+@container kmri (min-width: 600px) {
+  .km-r10-infra-S__b4 { padding: 24px; }
+  .km-r10-infra-S__lr { grid-template-columns: 168px minmax(0, 1fr); align-items: center; }
+  .km-r10-infra-S__lk, .km-r10-infra-S__lane .km-r10-infra-S__lk, .km-r10-infra-S__lr--stage .km-r10-infra-S__lk, .km-r10-infra-S__lr--dup .km-r10-infra-S__lk { margin-top: 0; }
+  .km-r10-infra-S__lr--stage .km-r10-infra-S__lk { align-self: start; margin-top: 6px; }
+  .km-r10-infra-S__day { visibility: visible; }
+  .km-r10-infra-S__lane .km-r10-infra-S__lt { height: 56px; }
+  .km-r10-infra-S__lane[data-left] .km-r10-infra-S__lk { display: flex; flex-direction: column; }
+  .km-r10-infra-S__left { margin-left: 0; }
+  .km-r10-infra-S__mk[data-ph] .km-r10-infra-S__ml { left: 12px; right: auto; top: -10px; bottom: auto; }
+  .km-r10-infra-S__mk--plan[data-ph] .km-r10-infra-S__ml { left: auto; right: 12px; }
+  .km-r10-infra-S__lr--dup .km-r10-infra-S__lt { height: 40px; }
+  .km-r10-infra-S__dupbox { top: 9px; }
+  .km-r10-infra-S__dupt { left: calc(100% + 14px); top: 0; }
+}
+@container kmri (min-width: 1240px) {
+  .km-r10-infra-S__lr { grid-template-columns: 208px minmax(0, 1fr); }
+  .km-r10-infra-S__ml-lg { display: block; }
+  .km-r10-infra-S__ml-sm { display: none; }
+}
+
+/* ── tablet and phone: the bay's head stacks (the stitched 1440 pages skip these: kit 12.13) ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-r10-infra-S { padding-top: 88px; padding-bottom: 88px; }
+  :root:not(.km-home) .km-r10-infra-S__head > .ac-claim { white-space: normal; }
+  :root:not(.km-home) .km-r10-infra-S__bays { margin-top: 56px; }
+  :root:not(.km-home) .km-r10-infra-S__bay + .km-r10-infra-S__bay { margin-top: 72px; }
+  :root:not(.km-home) .km-r10-infra-S__bhead { grid-template-columns: minmax(0, 1fr) auto; row-gap: 12px; }
+  :root:not(.km-home) .km-r10-infra-S__bname { grid-column: 1; }
+  :root:not(.km-home) .km-r10-infra-S__side { grid-column: 2; grid-row: 1; margin-top: 4px; }
+  :root:not(.km-home) .km-r10-infra-S__say { grid-column: 1 / -1; grid-row: 2; max-width: 36em; }
+  :root:not(.km-home) .km-r10-infra-S__fig { margin-top: 24px; }
+}
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-r10-infra-S { padding-top: 72px; padding-bottom: 72px; }
+  :root:not(.km-home) .km-r10-infra-S__bhead { grid-template-columns: minmax(0, 1fr); }
+  :root:not(.km-home) .km-r10-infra-S__side { grid-column: 1; grid-row: 3; flex-direction: row; justify-content: space-between; align-items: baseline; margin-top: 0; text-align: left; }
+  :root:not(.km-home) .km-r10-infra-S__say { grid-row: 2; font-size: 18px; }
+  :root:not(.km-home) .km-r10-infra-S__h3 { font-size: 28px; }
+  :root:not(.km-home) .km-r10-infra-S__fig { margin-top: 20px; }
+}
+.km-r10-infra-S__svg [data-a="ring"] { transform-box: fill-box; transform-origin: 50% 50%; }

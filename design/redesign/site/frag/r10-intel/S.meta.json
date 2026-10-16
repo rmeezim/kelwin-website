@@ -1,0 +1,23 @@
+{
+ "title": "The quarter, and what it changes",
+ "direction": "A×C · Round 10 · GTM Intelligence head (artifact language, key intel; review fix pass)",
+ "summary": "One quarter laid down week by week in plain words (we check the companies you sell to; when a deal is lost, we ask the buyer why; we rebuild the contact list), wired into one red page that writes itself in week 13, and that page visibly changing next quarter: a new solid row (a one-page security answer) runs from week 1 off the plate, the checks and calls carry on, the contact-list activity is struck: 0 replies.",
+ "reference": {
+  "site": "The approved homepage method (method/U), handover/U and system/T",
+  "borrowed": "A real calendar span to scale; one solid subject (the red page, written like system/T's red slab); the strike of an old line (handover); a bar that runs off the plate (method).",
+  "kelwin": "The quarter itself is the object and the motion is the verb: weeks lay down, the gather reads them into a written page, the page sets next quarter. The headline's claim, the loop that learns, is drawn as the difference between two quarters."
+ },
+ "motion": [
+  "start: the h1's last letter − 250ms on a stitched page (the plate draws as the last letters land), 700ms standalone; only once the plate is 40% on screen. The plate fades in (300ms).",
+  "0–450: the 13-week dimension and the three lane lines draw left to right.",
+  "200–2475: a playhead walks the weeks at 175ms a week; each week's hairline and numeral; a check (grey) on lane A, a call on lane B in weeks 2, 4, 5, 8, 10, 12, a hollow square on lane C; each lane's label arrives with its first item.",
+  "2475–3300 (the wow, kept slow): a 2px wire runs along each lane into the page (800ms, linear) and lights what it passes: every check, the four calls that named the security review; the other two calls stay outlines and the list squares stay hollow.",
+  "1440 2925 / stacked 3425: the red page grows from its baseline (500ms) and writes itself, a heading bar then nine lines; its label.",
+  "phase 2 (1440 3875 / stacked 4375, and only once next quarter's part is on screen): next quarter's weeks fade in dashed; 1440: the page forks into each row; stacked: a return line runs back to week 1 of next quarter, drawn under this one, then the fork. A new solid row runs from week 1 off the plate; the checks and calls carry on (dashed); the contact-list activity's name is struck and dims; Stopped: 0 replies in 13 weeks. Settled 5.1s (1440) / 6.1s (stacked) after the run starts; on the stitched page about 6.4s after load, the red page landing at about 4.4s. Nothing loops.",
+  "interaction: Replay (the band) runs it again from week 1.",
+  "tablet / phone: their own stacked drawings (706 and 358 wide), next quarter under this quarter on the same week scale; only the drawing on screen plays.",
+  "reduced motion / no script: the finished frame, no playhead, no Replay."
+ ],
+ "demoMs": 7800,
+ "notes": "Geometry from qa/r10/art/intel/gen-S2.mjs (three frames). Illustrative, said once in the head's label row (Specimen quarter): the weeks of the calls, which four named security, the 0 replies. The calls and the plan agree with T, word for word."
+}

@@ -1,0 +1,19 @@
+{
+ "title": "The page turn, two proposals",
+ "direction": "A×C · Round 10 · the page turn made Kelwin's own (artifact language, key turn, second pass) — a review specimen",
+ "summary": "The two proposals for Kelwin's own page turn side by side, each played in a small screen at real speed between two approved pages: A 'On the line' closes the page onto a ruled red line with the lockup rising out of it as in the footer, then hands the line to the next page's red rule; B 'The ruled edge' slides a ruled sheet up over the page and down off the next, which catches its red line as its rule.",
+ "reference": {
+  "site": "Round 9's turn (lib/turn.js, after the founder's Palantir recording) and the approved footer 'A · On the line' (footer/U)",
+  "borrowed": "The idea of a short branded pause between pages, and the footer's lockup standing on a ruled line with its lower fifth buried.",
+  "kelwin": "No slant, no sideways sweep, no flicker, no small logo centred on a panel: a ruled red line with registration marks, the footer's signature at full size (A), and in both the line becomes the next page's own 48×2 red rule."
+ },
+ "motion": [
+  "entrance: the kit's claim head; the two screens rise in (500 / 620ms).",
+  "the pass (40% in view; at once in a standalone build): A, then B. Each screen: held cover → the lift onto the System Audit (A: the lockup sinks, the shutters part 140–460 and the line travels onto the rule 140–700; B: the sheet slides down 0–760 and the page catches its line) → 1.4s → a click turns it → the lift onto Insights → 1.4s; A ends on its held frame. About 12s for both.",
+  "interaction: each Play button stops the pass for good and plays that screen.",
+  "reduced motion / no script: A's held frame and B's catch (the sheet half down, the line become the rule); Play switches a screen between its still and the Audit page.",
+  "on the live site: the real turns are qa/r10/art/turn/turn-a.js and turn-b.js (films of real click-throughs between approved pages in qa/r10/art/turn/v2/films)."
+ ],
+ "demoMs": 12400,
+ "notes": "A review specimen for the founder, not a section of any page. The small screens' pages are the System Audit's and Insights' heads as approved, drawn small; their headlines rise in instead of writing in (the write-in itself is unchanged in both proposals; see the films)."
+}

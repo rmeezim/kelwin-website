@@ -1,0 +1,19 @@
+{
+ "title": "How we build it",
+ "direction": "Cinematic Drafting (round 10 artifact language)",
+ "summary": "GTM Infrastructure's order of work as four engineered drawings in registration frames: a day ruler where two sending addresses warm up and one is paused at the weekly complaint check; 1,200 companies, one square each, where one is worked out against the line of three reasons and 38 are carried to this week's tray; a ladder of written rules that an event is read down, each miss marked no, until the match fires a red block that sends out the next thing (the page's one wow, and a control); and a ledger strip by person and day where touches land, a duplicate is merged and a leaver is taken off the sends.",
+ "reference": {
+  "site": "Kelwin homepage (system/T, method/U, reframe/U, handover/U)",
+  "borrowed": "registration frames, dimension lines with a value, a measured ruler, one solid subject, labels tied to parts, motion in the order things happen, the final frame as the explanation",
+  "kelwin": "interior bays at the homepage's bar: real objects (addresses, a day ruler, a census grid, written rules, a record), plain words, one red moment per view"
+ },
+ "motion": [
+  "bay 01 (≈6.9 s): the main address plots and fills; routes run to two sending addresses; the three ID checks are named and light lane by lane; the day ruler and the '21 days, 5 → 40 emails a day' dimension draw; today's line sweeps 28 days while a bar rises each day; at each weekly check the complaint gauges move; at day 14 example.org passes the limit (its gauge turns red), it is paused, its route goes dashed and its plan stays a ghost; the other address goes on to 'Sending'",
+  "bay 02 (≈6.9 s): 1,200 squares plot in under their dimension; the daily check sweeps and 38 light; one is ringed and its three reasons stack up to the line at three; the 38 leave for this week's tray, nearest first, each leaving a hole",
+  "bay 03 (the wow, ≈5.5 s): the event's line runs to the rail; a token goes down the ladder, stopping at each rule while a probe reads it and 'No' is written; at the match 'Yes', the token runs along the rung, the red block closes ('Rule 3 fires') and sends out a one-page summary; then the words. The other two events are the reader's: a press, tap or arrow key reads the ladder again for that event",
+  "bay 04 (≈7.2 s): the ledger draws; five touches land on their person and day, 800 ms apart, while the stage bar runs from New to Talking to Evaluating; a planned email appears; the duplicate shows below and its form moves up into the record ('merged'); the sales manager is struck and the planned email is taken off",
+  "on the live site: each bay starts when 40% of its drawing is on screen and plays once; two never play in the same view. Before a bay plays its drawing is held at opacity 0 (set when the script is parsed; production keys it to html.km-motion), so no finished frame shows and then replays. Standalone builds play all four 600 ms apart (add #reader to wait for the reader). Replay restarts a bay. Reduced motion: the final frames, no timers; the events still switch. No script: the final frames, Replay invisible, events inert"
+ ],
+ "demoMs": 11000,
+ "notes": "Generated markup: edit qa/r10/art/infra/gen2.mjs (replaces round one's gen.mjs), then run it. Bays 01–02 ship one SVG per geometry, chosen by the frame's width with container queries: lg 1312 (≥1240) / md 640 (600–1239, shown at most 720 wide) / sm 358 / xs 288. Bays 03–04 are HTML drawings that recompose at 600 and 1240. Every drawing sits in a registration frame on the section's graphite. Illustrative addresses are the reserved example.com / example.net / example.org."
+}

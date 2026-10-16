@@ -1,0 +1,157 @@
+/* ── r10-turn · S · The page turn, two proposals (round 10, a review specimen, second pass) ──────
+   Two small screens, side by side (cols 1–6 · 7–12), each playing one proposal at real speed with
+   the timings of qa/r10/art/turn/turn-a.js and turn-b.js, between two approved pages (the System
+   Audit and Insights heads, drawn small): the page uncovers, the red line becomes its rule, a click
+   turns it again. Everything inside a screen is sized in its own width (cqw), so the screen is the
+   same picture at 1440, 834 and 390; text on it keeps its floors (11px label, 14px lede; the lede
+   and label step out on phones). Flat colour; the red line is the only red in the view, and it
+   becomes the rule.
+   States on each screen (S.js): is-held (the cover closed) · is-lift (A: the cover opening) ·
+   is-leave (the cover closing) · is-open; B's lift is a Web Animation. On a page: is-on (shown),
+   is-in (its entrance), is-landed (the line has become its rule).
+   The markup's still (reduced motion, no script, a screenshot): A held (the lockup on the line),
+   B caught (the sheet half down, the line become the rule).                                     */
+.km-r10-turn-S { --ac-d0: 0ms; }
+.km-r10-turn-S__pair { margin-top: 64px; row-gap: 56px; }
+.km-r10-turn-S__fig { grid-column: span 6; min-width: 0; }
+.km-r10-turn-S__plate { padding: 20px; }
+
+/* ── the screen: a page at 16:10, drawn in its own width ── */
+.km-r10-turn-S__scr {
+  position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg);
+  outline: 1px solid var(--line); container-type: inline-size;
+}
+.km-r10-turn-S__pg { position: absolute; inset: 0; visibility: hidden; }
+.km-r10-turn-S__pg.is-on { visibility: visible; }
+.km-r10-turn-S__pg > * { position: absolute; margin: 0; }
+.km-r10-turn-S__lock { left: 4cqw; top: 3.2cqw; --logo-h: max(11px, 2.3cqw); color: var(--fg); }
+.km-r10-turn-S__nav { left: 4cqw; right: 4cqw; top: 8.4cqw; height: 1px; background: var(--line); }
+.km-r10-turn-S__lbl {
+  left: 4cqw; top: 12cqw; display: flex; align-items: center; gap: 8px;
+  font-family: var(--f-body); font-weight: var(--ui-weight); font-size: 11px; line-height: 14px;
+  letter-spacing: var(--label-tracking); text-transform: uppercase; color: var(--fg-2); white-space: nowrap;
+}
+.km-r10-turn-S__lbl::before { content: ""; width: 6px; height: 6px; background: var(--signal); }
+.km-r10-turn-S__h1 {
+  left: 4cqw; top: 15.6cqw; font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: max(20px, 5.8cqw); line-height: .98; letter-spacing: var(--display-tracking); color: var(--fg); white-space: nowrap;
+}
+.km-r10-turn-S__ln { display: block; overflow: hidden; padding-block: .1em .14em; margin-block: -.1em -.14em; }
+.km-r10-turn-S__ln > span { display: inline-block; }
+.km-r10-turn-S__acc { font-weight: var(--light-weight); color: var(--fg-2); }
+.km-r10-turn-S__rule { left: 4cqw; top: 30.6cqw; width: max(16px, 3.4cqw); height: 2px; background: var(--signal); opacity: 0; }
+.km-r10-turn-S__lede { left: 4cqw; top: 33.6cqw; font-size: 14px; line-height: 1.45; color: var(--fg-2); white-space: nowrap; }
+/* Insights: one line, no label */
+.km-r10-turn-S__pg--one .km-r10-turn-S__h1 { top: 13.6cqw; }
+.km-r10-turn-S__pg--one .km-r10-turn-S__rule { top: 23.2cqw; }
+.km-r10-turn-S__pg--one .km-r10-turn-S__lede { top: 26.2cqw; }
+/* the rule is the line's: it shows when the line has landed on it */
+.km-r10-turn-S__pg.is-landed .km-r10-turn-S__rule { opacity: 1; }
+/* the page's entrance as it is uncovered: the label, the headline's lines rising (a stand-in for
+   the write-in, which is unchanged in both proposals), then the lede */
+.km-r10-turn-S__pg.is-in .km-r10-turn-S__lbl { animation: km-r10-turn-S-fade 300ms var(--ease-out) 180ms both; }
+.km-r10-turn-S__pg.is-in .km-r10-turn-S__ln > span { animation: km-r10-turn-S-rise 700ms var(--ease-out) 300ms both; }
+.km-r10-turn-S__pg.is-in .km-r10-turn-S__ln + .km-r10-turn-S__ln > span { animation-delay: 460ms; }
+.km-r10-turn-S__pg.is-in .km-r10-turn-S__lede { animation: km-r10-turn-S-up 600ms var(--ease-out) 900ms both; }
+
+/* ── the turns' shared parts ── */
+.km-r10-turn-S__ta, .km-r10-turn-S__tb { position: absolute; inset: 0; overflow: hidden; pointer-events: none; visibility: hidden; --m: 4cqw; }
+.km-r10-turn-S__scr:is(.is-held, .is-lift, .is-leave, .is-catch) > * > :is(.km-r10-turn-S__ta, .km-r10-turn-S__tb),
+.km-r10-turn-S__scr:is(.is-held, .is-lift, .is-leave, .is-catch) > :is(.km-r10-turn-S__ta, .km-r10-turn-S__tb) { visibility: visible; }
+.km-r10-turn-S__line, .km-r10-turn-S__edge { position: absolute; left: var(--m); right: var(--m); height: 2px; background: var(--signal); transform-origin: 0 50%; }
+.km-r10-turn-S__reg { position: absolute; width: 13px; height: 13px; }
+.km-r10-turn-S__reg::before, .km-r10-turn-S__reg::after { content: ""; position: absolute; background: var(--fg-2); }
+.km-r10-turn-S__reg::before { left: 0; right: 0; top: 6px; height: 1px; }
+.km-r10-turn-S__reg::after { top: 0; bottom: 0; left: 6px; width: 1px; }
+.km-r10-turn-S__reg--l { left: calc(var(--m) - 6px); }
+.km-r10-turn-S__reg--r { left: calc(100% - var(--m) - 7px); }
+
+/* ── A · on the line: the seam at 56%; the shutters graphite, a hairline on the seam side; the
+   lockup set right, standing on the line, its lower fifth buried behind it ── */
+.km-r10-turn-S__ta { --y: 56%; }
+.km-r10-turn-S__sh { position: absolute; left: 0; right: 0; background: var(--bg); }
+.km-r10-turn-S__sh--t { top: 0; height: var(--y); box-shadow: inset 0 -1px 0 var(--line-2); transform: translateY(-101%); }
+.km-r10-turn-S__sh--b { top: var(--y); bottom: 0; box-shadow: inset 0 1px 0 var(--line-2); transform: translateY(101%); }
+.km-r10-turn-S__lk { position: absolute; right: var(--m); bottom: calc(100% - var(--y) + 1px); width: calc((100% - 2 * var(--m)) * .7); aspect-ratio: 734 / 121.6; overflow: hidden; color: var(--line-2); }
+.km-r10-turn-S__lk > .km-logo { display: block; width: 100%; height: auto; transform: translateY(101%); }
+.km-r10-turn-S__ta .km-r10-turn-S__reg { top: calc(var(--y) - 7px); opacity: 0; }
+.km-r10-turn-S__ta .km-r10-turn-S__line { top: calc(var(--y) - 1px); transform: scaleX(0); }
+/* held: closed, the line ruled, the lockup up */
+.km-r10-turn-S__scr--a:is(.is-held, .is-lift) :is(.km-r10-turn-S__sh, .km-r10-turn-S__line),
+.km-r10-turn-S__scr--a:is(.is-held, .is-lift) .km-r10-turn-S__lk > .km-logo { transform: none; }
+.km-r10-turn-S__scr--a:is(.is-held, .is-lift) .km-r10-turn-S__reg { opacity: 1; }
+/* the lift: 0–180 the lockup sinks · 140–460 the shutters part · 140– the + marks fade (the line: S.js) */
+.km-r10-turn-S__scr--a.is-lift .km-r10-turn-S__lk > .km-logo { animation: km-r10-turn-S-sink 180ms cubic-bezier(.5, 0, .75, 0) both; }
+.km-r10-turn-S__scr--a.is-lift .km-r10-turn-S__sh--t { animation: km-r10-turn-S-open-t 320ms cubic-bezier(.6, 0, .4, 1) 140ms both; }
+.km-r10-turn-S__scr--a.is-lift .km-r10-turn-S__sh--b { animation: km-r10-turn-S-open-b 320ms cubic-bezier(.6, 0, .4, 1) 140ms both; }
+.km-r10-turn-S__scr--a.is-lift .km-r10-turn-S__reg { animation: km-r10-turn-S-off 160ms linear 140ms both; }
+/* leaving: 0–280 the shutters close · 260–480 the line is ruled · 380–620 the lockup rises */
+.km-r10-turn-S__scr--a.is-leave .km-r10-turn-S__sh--t { animation: km-r10-turn-S-close-t 280ms cubic-bezier(.6, 0, .4, 1) both; }
+.km-r10-turn-S__scr--a.is-leave .km-r10-turn-S__sh--b { animation: km-r10-turn-S-close-b 280ms cubic-bezier(.6, 0, .4, 1) both; }
+.km-r10-turn-S__scr--a.is-leave .km-r10-turn-S__reg--l { animation: km-r10-turn-S-fade 80ms linear 250ms both; }
+.km-r10-turn-S__scr--a.is-leave .km-r10-turn-S__line { animation: km-r10-turn-S-draw 220ms cubic-bezier(.3, 0, .2, 1) 260ms both; }
+.km-r10-turn-S__scr--a.is-leave .km-r10-turn-S__reg--r { animation: km-r10-turn-S-fade 80ms linear 440ms both; }
+.km-r10-turn-S__scr--a.is-leave .km-r10-turn-S__lk > .km-logo { animation: km-r10-turn-S-lkrise 240ms cubic-bezier(.2, .7, .3, 1) 380ms both; }
+
+/* ── B · the ruled edge: one graphite sheet, a hairline on its top edge, its red line (and a + at
+   each end) ruled a little below it ── */
+.km-r10-turn-S__tb { --e: max(8px, 1.6cqw); }
+.km-r10-turn-S__sheet { position: absolute; left: 0; right: 0; top: 0; height: 100%; background: var(--bg); box-shadow: inset 0 1px 0 var(--line-2); transform: translateY(101%); }
+.km-r10-turn-S__tb .km-r10-turn-S__reg { top: calc(var(--e) - 7px); opacity: 0; }
+.km-r10-turn-S__tb :is(.km-r10-turn-S__edge, .km-r10-turn-S__line) { top: calc(var(--e) - 1px); }
+.km-r10-turn-S__edge { transform: scaleX(0); }
+.km-r10-turn-S__tb .km-r10-turn-S__line { visibility: hidden; }
+/* held: the sheet up, its line ruled */
+.km-r10-turn-S__scr--b:is(.is-held, .is-lift) :is(.km-r10-turn-S__sheet, .km-r10-turn-S__edge) { transform: none; }
+.km-r10-turn-S__scr--b:is(.is-held, .is-lift, .is-catch) .km-r10-turn-S__reg { opacity: 1; }
+/* the still: the sheet half down; its line has been caught as the page's rule */
+.km-r10-turn-S__scr--b.is-catch .km-r10-turn-S__sheet { transform: translateY(66%); }
+.km-r10-turn-S__scr--b.is-catch .km-r10-turn-S__edge { visibility: hidden; }
+/* leaving: 0–420 the sheet slides up · its line is ruled as it comes (120–420) */
+.km-r10-turn-S__scr--b.is-leave .km-r10-turn-S__sheet { animation: km-r10-turn-S-sheet-up 420ms cubic-bezier(.6, 0, .4, 1) both; }
+.km-r10-turn-S__scr--b.is-leave .km-r10-turn-S__reg--l { animation: km-r10-turn-S-fade 80ms linear 100ms both; }
+.km-r10-turn-S__scr--b.is-leave .km-r10-turn-S__edge { animation: km-r10-turn-S-draw 300ms cubic-bezier(.3, 0, .2, 1) 120ms both; }
+.km-r10-turn-S__scr--b.is-leave .km-r10-turn-S__reg--r { animation: km-r10-turn-S-fade 80ms linear 380ms both; }
+
+/* ── the caption under each screen: the name, one sentence, Play ── */
+.km-r10-turn-S__cap { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 24px; margin-top: 24px; }
+.km-r10-turn-S__name {
+  display: flex; align-items: baseline; gap: 14px; grid-column: 1; margin: 0;
+  font-family: var(--f-display); font-stretch: var(--display-stretch); font-weight: var(--display-weight);
+  font-size: var(--ac-h3); line-height: 1.1; letter-spacing: var(--display-tracking); color: var(--fg);
+}
+.km-r10-turn-S__ix { color: var(--fg-3); }
+.km-r10-turn-S__txt { grid-column: 1; margin-top: 12px; font-size: var(--ac-body); line-height: 1.55; color: var(--fg-2); max-width: 34em; }
+.km-r10-turn-S__play { grid-column: 2; grid-row: 1; align-self: center; font-size: var(--ac-support); }
+
+/* ── keyframes ── */
+@keyframes km-r10-turn-S-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes km-r10-turn-S-off { from { opacity: 1; } to { opacity: 0; } }
+@keyframes km-r10-turn-S-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes km-r10-turn-S-rise { from { transform: translateY(105%); } to { transform: none; } }
+@keyframes km-r10-turn-S-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes km-r10-turn-S-close-t { from { transform: translateY(-101%); } to { transform: none; } }
+@keyframes km-r10-turn-S-close-b { from { transform: translateY(101%); } to { transform: none; } }
+@keyframes km-r10-turn-S-open-t { from { transform: none; } to { transform: translateY(-101%); } }
+@keyframes km-r10-turn-S-open-b { from { transform: none; } to { transform: translateY(101%); } }
+@keyframes km-r10-turn-S-lkrise { from { transform: translateY(101%); } to { transform: none; } }
+@keyframes km-r10-turn-S-sink { from { transform: none; } to { transform: translateY(101%); } }
+@keyframes km-r10-turn-S-sheet-up { from { transform: translateY(101%); } to { transform: none; } }
+
+/* the section's own entrance: the kit's head; the two screens rise in after it */
+.is-play .km-r10-turn-S__fig { animation: km-r10-turn-S-up 700ms var(--ease-out) 500ms both; }
+.is-play .km-r10-turn-S__fig + .km-r10-turn-S__fig { animation-delay: 620ms; }
+
+/* ── tablet (≤1023): the two screens stack, margin to margin ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-r10-turn-S__fig { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-r10-turn-S__pair { margin-top: 48px; }
+}
+/* ── phone (≤767): a thinner frame; the screen's label and lede step out (its headline and rule stay) ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-r10-turn-S__plate { padding: 12px; }
+  :root:not(.km-home) .km-r10-turn-S__lede, :root:not(.km-home) .km-r10-turn-S__lbl { visibility: hidden; }
+  :root:not(.km-home) .km-r10-turn-S__cap { grid-template-columns: minmax(0, 1fr); }
+  :root:not(.km-home) .km-r10-turn-S__play { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 12px; }
+  :root:not(.km-home) .km-r10-turn-S__name { font-size: 26px; }
+}
