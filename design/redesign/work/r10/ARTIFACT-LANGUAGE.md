@@ -1,11 +1,10 @@
 # Round 10 · The artifact language for the interior pages
 
 What this is: the rules every drawing and animation on the interior pages follows from round 10 on, so the
-inside of the site reaches the bar the approved homepage already sets. It answers the founder's round-9 notes:
+inside of the site reaches the bar the approved homepage already sets. It answers your round-9 notes:
 the interior pages are "very bland, with almost minimal artifacts"; the site should "feel alive with artifacts
 that keep grabbing the attention", with "a few wow moments about how we have engineered those artifacts to
-actually convey the ideas", understandable "by even a 5-year-old or a 10-year-old" (ROUND9-NOTES.md, verbatim;
-ROUND10-PLAN.md A17–A20, A24).
+actually convey the ideas", understandable "by even a 5-year-old or a 10-year-old" (your round-9 notes, verbatim).
 
 Studied for this: the six approved homepage drawings (hero, reframe, evidence, system, handover, method: their
 markup, styles, scripts, notes and shots), the stitched homepage, the walk-through frames of every round-9
@@ -18,7 +17,7 @@ interior page (`site/walk8/`), the interior kit (kit §12–§13) and the round-
 **Each one draws a real object, and the object is the idea.** Three slabs stacked are "three layers, one
 system". A ruler with phase bars is the engagement. Six documents crossing one line is ownership changing hands.
 A warped lattice that snaps to a true grid over a cut block is "you're fixing the surface, not the
-architecture". Nobody needs a legend: you recognise the thing, then you watch it work.
+architecture". Nobody needs a legend: you recognize the thing, then you watch it work.
 
 | Homepage drawing | The real thing drawn | What the motion shows | The solid part | How it plays | Settled |
 |---|---|---|---|---|---|
@@ -27,12 +26,12 @@ architecture". Nobody needs a legend: you recognise the thing, then you watch it
 | Structural evidence | four published numbers and one measured bar | a number becomes a share of 100 | the numerals, a 10 px bar | numbers rise 120 ms apart, text writes in, the bar extends in 0.7 s | 2.6 s, then one reading every 3.3 s |
 | The system | three slabs | layers go in one by one, close up into one system, the bottom feeds back to the top | the selected slab's red face | a slab every 1.25 s, close-up, the return line draws in 1 s, red goes home | 6.5 s |
 | The handover | six documents and one line | dashed drafts cross the line and become solid pages; the old problem is struck, the new line rises | none: dashed against solid carries it | stack, fan out (1.1 s a sheet), strike and rise 01 to 06 | 4.3 s |
-| The method | a phase track on a ruler | phases run once in order; the last one runs off the page | red audit bar, grey build bars, a white bar | ruler, ticks settle, bars extend phase by phase, the handover line, the bar runs off the page | 5.1 s |
+| The method | a phase track on a ruler | phases run once in order; the last one runs off the page | red audit bar, gray build bars, a white bar | ruler, ticks settle, bars extend phase by phase, the handover line, the bar runs off the page | 5.1 s |
 
 What they share, looked at closely:
 
 - **Drawing weights.** Almost everything is a 1 px line that stays 1 px at any size: faint for construction
-  (often dashed), mid-grey for the object, white for the one that is selected. Against that, one solid part
+  (often dashed), mid-gray for the object, white for the one that is selected. Against that, one solid part
   carries the subject: a red face, a bar, a set of numerals. The solid part is never decoration; it is the
   thing the sentence is about. Red appears once per view.
 - **How labels sit.** Labels live outside the object and are tied to it: a leader from a 5 px square on the
@@ -55,11 +54,11 @@ What they share, looked at closely:
 ## 2 · What the interior pages lack (from the round-9 walk-through)
 
 1. **The picture under the headline doesn't move in steps.** GTM Intelligence's quarter is drawn complete and
-   the frame simply rises and widens: it "gets to size and stays there", as the founder put it. GTM
+   the frame simply rises and widens: it "gets to size and stays there", as you put it. GTM
    Infrastructure's picture is a document (the rules sheet), which reads as more text.
 2. **After the head, the pages are type.** Service lists, runbooks, ledgers and two large statements.
    Infrastructure's "Order of work" is four short text blocks and a statistic; "Standing checks" is a
-   three-row runbook. The founder: "a whole bunch of text slapped into one place".
+   three-row runbook. In your words: "a whole bunch of text slapped into one place".
 3. **Round 9's cure went too far.** To stop drawings looking machine-made (funnels, knots, rings, boxed
    codes), round 9 allowed one object, one solid part and three labels. The clutter went, and so did the
    mechanism: the drawings now show that something exists, never how it works.
@@ -123,8 +122,8 @@ The fix is not more decoration. It is drawing the real things we build and letti
 |---|---|---|---|
 | infra | GTM Infrastructure | "How we build it": four small sections (the sending setup, data and signals, the routing rules, the CRM record), each with its own working drawing | the routing rules: an event arrives, a written rule fires, the next action goes out |
 | intel | GTM Intelligence | (a) one quarter laid down week by week, gathered into the week-13 readout and fed into the next quarter; (b) "what happens next quarter" in three plain steps with one worked example | (a) the gather into the readout |
-| narr | Narrative Systems | one company, five voices drifting apart; the written source appears; every voice snaps onto one line | the snap onto the line |
-| map | Contact | a drafted world map: the working day as it moves round the world, New York as the registered office, the visitor placed live with the time difference measured | the visitor appearing, measured against New York |
+| narr | Narrative Systems | "Many voices, one pitch": one invented company's five voices (the founder on a sales call, the website, a rep's email, a post, a proposal) each say something different; one written pitch appears; every sentence is crossed out and rewritten from that one page (an early look; it comes back with the Narrative Systems mockup) | every sentence, the founder's included, crossed out and rewritten from the one page |
+| map | Contact | a drafted world map: the working day as it moves round the world, New York marked as our address, the visitor placed live with the time difference measured | the visitor appearing, measured against New York |
 | turn | every page change | two Kelwin-own alternatives to the Palantir-like turn: "On the line" and "The register" | (chrome, not a page wow) |
 
 ## 5 · For the builders (the numbers)
@@ -142,7 +141,7 @@ The fix is not more decoration. It is drawing the real things we build and letti
 - **Start:** an IntersectionObserver per artifact at 0.4 (not the slot: a fragment holding several artifacts
   starts each on its own); a head picture starts at `--ac-write-end` + 60 ms. Standalone builds (no
   `html.km-home`) play every artifact at once, staggered 600 ms, so the mk shot shows the finished state.
-- **Behaviour:** `window.KM = { init(root, { reduced }) { …; return cleanup } }`. Timers and listeners in one
+- **Behavior:** `window.KM = { init(root, { reduced }) { …; return cleanup } }`. Timers and listeners in one
   list the cleanup clears. Reduced motion: no timers, final state, controls still work. Replay: reset with
   `.ac-cold`, then run from step 1.
 - **Phone:** three geometries (1440, ~760, 358 wide), chosen by CSS with visibility (never `display: none` on

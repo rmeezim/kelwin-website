@@ -1,12 +1,12 @@
 # Kelwin's business model: packages, pilot, pricing and projects
 
-Round 10 · 16 October 2026 · a proposal for the founder's decision
+Round 10 · 16 October 2026 · a proposal for your decision
 
-You asked whether your model is competitive, smart and attractive enough for buyers to choose Kelwin over other firms, what each package should include, how projects should be priced, and whether prices belong on the site. This is our answer. It keeps your model wherever it holds up, and says plainly where we would change it and why. A first draft was stress-tested by two reviewers, one reading as a buyer and one as an operator and lawyer; this version answers everything major they raised. How far to trust the figures is set out at the start of section 2.
+You asked whether your model is competitive, smart and attractive enough for buyers to choose Kelwin over other firms, what each package should include, how projects should be priced, and whether prices belong on the site. This is our answer. It keeps your model wherever it holds up, and says plainly where we would change it and why. A first draft was then read twice more by us: once as a buyer comparing four firms would read it, once as an operator and a lawyer would. Neither was a real buyer or lawyer. This is the revised version, and it answers everything major those two reads raised. How far to trust the figures is set out at the start of section 2.
 
 ## 1 · The short answer
 
-Your prices fit the market, and a six-month minimum is normal for firms like Kelwin. Keep the three packages, the six months, the pilot and a share of revenue. Charge 65% of the retainer in the pilot, not 45%, plus $250 for each first meeting held with a buyer who fits and whom our outreach reached first, capped so the pilot never costs more than three full months. Take one revenue share, 3%, on companies on a signed list, capped at half of six months' fees and never above your $50,000 or $100,000. Drop the per-lead fee after month 3. Offer an exit at day 90 judged on written targets; leaving for any other reason costs at most the discount already given. Price projects at fixed fees of $6,000–25,000; $3,500 a month becomes upkeep. Keep prices off the site, but give the starting price on the first call.
+Your prices fit the market, and a six-month minimum is normal for firms like Kelwin. Keep the three packages, the six months, the pilot and a share of revenue. Charge 65% of the retainer in the pilot, not 45%, plus $250 for each first meeting held with a buyer who fits and whom our outreach reached first, capped so the pilot never costs more than three full months. Take one revenue share, 3%, on companies on a signed list, capped at half of six months' fees and never above $50,000 on Launch and Growth, or $100,000 on Scaling. Drop the per-lead fee after month 3. Offer an exit at day 90 judged on written targets; leaving for any other reason costs at most the discount already given. Price projects at fixed fees of $6,000–25,000; $3,500 a month becomes upkeep. Keep prices off the site, but give the starting price on the first call.
 
 ## 2 · Your model: kept, changed, dropped
 
@@ -14,13 +14,13 @@ In brief: your prices are competitive, and sharing the risk is a smart idea. As 
 
 ### How far to trust the figures
 
-- Every outside price and market figure was gathered on 2026-10-16 from search-engine summaries of the pages cited. Direct page loads were blocked by the network. When this revision ran, later the same day, the search budget was already used up, so nothing could be checked again. Treat each figure as “as reported”.
-- Laws, FTC rules, tax rules and card fees come from our reviewers' own knowledge, up to mid-2026. None of those pages could be opened.
+- Every outside price and market figure was gathered on 2026-10-16. We could read only search-engine summaries of each source, not the pages themselves, and this revision could not check them again. Treat each figure as “as reported” until it is checked. The main comparison, RevPartners' prices, may date from about 2022.
+- Laws, FTC rules, tax rules and card fees come from our own knowledge, up to mid-2026. None of those pages could be opened.
 - Where a figure is a firm's own marketing, a competitor's estimate or our own arithmetic, we say so.
 
 ### How this version was tested
 
-A first draft went to two reviewers. One read it as a buyer: the CEO and head of sales of a $5–50M founder-led company, comparing four firms. The other read it as an operator and a lawyer. The buyer said he would not sign six months as first written, but would sign the pilot after the changes below. Every major point either of them raised is answered in this version.
+We read a first draft twice more ourselves. Once as a buyer would: the CEO and head of sales of a $5–50M founder-led company, comparing four firms. Once as an operator and a lawyer would. Neither read was by a real buyer or lawyer, so treat them as our own stress test, not as evidence. In that buyer's-eye read, six months as first written was a no; the pilot with the changes below was a yes. This version answers every major point either read raised.
 
 ### Keep
 
@@ -36,30 +36,30 @@ A first draft went to two reviewers. One read it as a buyer: the CEO and head of
 - Growth ($15–23k) matches RevPartners' middle tiers at $14,500–23,000 (same page), Refine Labs' paid-media tier at $14,000 on a 6-month minimum (refinelabs.com/pricing, its own page) and Directive at $15–35k (marketerhire.com/blog/best-abm-agencies-for-b2b-saas, 2026, a third party).
 - Scaling's floor ($25k) matches Refine Labs Full Service at $26,000 a month and RevPartners' top tier at $27,000.
 
-2. The six-month minimum. Firms that build systems use it: RevPartners has a 6-month initial term, Refine Labs 6 months on both tiers, and Go Nimbly shows a 6-month minimum in Clay's directory (clay.com/experts/partner/go-nimbly). Outbound vendors run shorter terms: SalesHive and Sales.co are month to month, and Clay partners ask for 3 months. The buyer's verdict: six months is acceptable only with the day-90 exit below. Answer the pushback with the exit, not with a bigger discount.
+2. The six-month minimum. Firms that build systems use it: RevPartners has a 6-month initial term, Refine Labs 6 months on both tiers, and Go Nimbly shows a 6-month minimum in Clay's directory (clay.com/experts/partner/go-nimbly). Outbound vendors run shorter terms: SalesHive and Sales.co are month to month, and Clay partners ask for 3 months. In our buyer's-eye read, six months was acceptable only with the day-90 exit below. Answer the pushback with the exit, not with a bigger discount.
 
 3. Sharing the risk in the pilot. It can be a real reason to choose Kelwin.
 - Firms at your price mostly charge flat. Paying for results is usually a top-up on a fixed fee: 76% of enterprise buyers say they are open to outcome-based pricing, but only 5% have such a contract (HFS Research 2026, hfsresearch.com/research/outcome-based-pricing-effort-based-contracts).
 - A peer-reviewed experiment with 437 professional buyers found that whether a gain-sharing deal felt fair, not how risky it felt, decided whether they would take it (Keränen et al., Industrial Marketing Management 115, 2023, jyx.jyu.fi/handle/123456789/89707).
-- So simple and visibly fair beats generous. The buyer reviewer confirmed it: the meeting fee “attracts me, because it means a bad pilot costs me less”.
+- So simple and visibly fair beats generous. In our buyer's-eye read, the meeting fee was the part that attracted, because a bad pilot then costs the buyer less.
 
 4. Your rates, inside your own ranges.
-- $250 per held meeting is the middle of your $200–300. For a held meeting with a buyer who fits, it sits inside the $150–400 that vendors quote for SMB and mid-market meetings (prospeo.io/s/appointment-setting-pricing, 2026, a vendor), and well under the $550–1,700 per appointment that salesar.io (a vendor) attributes to Clutch (unverified).
+- $250 is the middle of your $200–300 per lead, paid per held meeting (point 8). For a held meeting with a buyer who fits, it sits inside the $150–400 that vendors quote for SMB and mid-market meetings (prospeo.io/s/appointment-setting-pricing, 2026, a vendor), and well under the $550–1,700 per appointment that salesar.io (a vendor) attributes to Clutch (unverified).
 - 3% is inside your 3–4%, and low next to the 5–15% of new annual revenue that vendors cite (saashero.net/strategy/b2b-agency-pricing-models, a vendor, updated 27 Aug 2026).
 - Your $50,000 and $100,000 stay, as the outer ceilings on the share.
 
 5. Prices off the site, projects as the way up into the packages, and the names Launch, Growth and Scaling. Give each package a short descriptor, because Clay names its own plans “Launch” ($185 a month) and “Growth” (landbase.com/blog/clay-pricing, 31 Mar 2026).
 
-6. Renewal for six months, one year or two years.
+6. Longer renewals: six months, one year or two years. The 3-month option goes (point 15).
 
 ### Change
 
 7. The pilot fee: 45% → 65% of the retainer.
-- The deepest pilot discount we found anywhere was 33%, and only through a startup-perk marketplace (superscout.co/perk/demand-inc). Longer terms usually earn about 10% off (genesysgrowth.com/pricing.md, July 2026; SalesHive on annual terms). Pilots in this market lower the risk with short or cancellable terms, not discounts: Martal runs a 3–4-month pilot, then goes monthly (cleverly.co/blog/martal-group-review, 17 Jul 2026, written by a competitor).
+- The deepest pilot discount we found anywhere was 33%, and only through a startup-perk marketplace (superscout.co/perk/demand-inc). Longer terms usually earn about 10% off (genesysgrowth.com/pricing.md, July 2026; SalesHive on annual terms). Pilots in this market lower the risk with short or cancelable terms, not discounts: Martal runs a 3–4-month pilot, then goes monthly (cleverly.co/blog/martal-group-review, 17 Jul 2026, written by a competitor).
 - The pilot is the quarter that costs most to deliver: about 45–70 hours a month on Launch (our estimate). Contract GTM engineers ask $80–120 an hour (a Clay community job post, self-published). At 45%, $3,600 a month may not cover the people.
 - At 45% the fee jumps 2.2× at month 4, just when the client decides whether to stay. At 65% the step is 1.5×, and with meeting fees the typical Launch client goes from $7,700 to $8,000 (+4%).
-- Six months of Launch retainer at 65% come to $39,600: still under two-thirds of RevPartners' six-month entry ($64,100 with its $5,000 onboarding fee) and a quarter of Refine Labs' ($156,000).
-- The buyer accepted 65% only because the exit exists. Without the exit, expect buyers to push back toward 45–50%.
+- Six months of Launch at $8,000, with the pilot at 65%, come to $39,600 before meeting fees, against $64,100 for RevPartners' entry tier with its $5,000 onboarding fee (as reported; its price page may date from about 2022).
+- In our buyer's-eye read, 65% was acceptable only with the exit. Without the exit, expect buyers to push back toward 45–50%.
 
 8. What counts. Not a “lead” but a held first meeting: someone who fits the written ICP (the written description of the companies and people you sell to) actually attended, and our outreach reached them first. As a contact who merely replied, $250 would sit at the top of the $50–250 pay-per-lead range (salesar.io and other 2025–26 vendor guides) and cause arguments. Full definition in the pilot section.
 
@@ -79,15 +79,15 @@ A first draft went to two reviewers. One read it as a buyer: the CEO and head of
 
 16. Billing. One invoice a month, by bank transfer, with a deposit of one month's retainer at signing. Kickoff only after payment. See the pilot section.
 
-17. Who we say does the work. Proposals offer only what can be staffed by the start date and name each seat by role and hours. “Make Growth the expected choice” and “show Scaling but don't sell it” are dropped: both offer something Kelwin can't deliver today, which breaks rule 7.
+17. Who we say does the work. Proposals offer only what can be staffed by the start date and name each seat by role and hours. “Make Growth the expected choice” and “show Scaling but don't sell it” are dropped: both offer something Kelwin can't deliver today, which would claim a team it doesn't have.
 
-18. Your data reason for retainers (A1). Prospects in a client's CRM are personal data. California's privacy law (covering business contacts since 1 January 2023) and the EU's GDPR let a service provider use a client's data only to serve that client. The future platform can use only anonymised, combined figures, under a separate clause the client may decline. Plan the platform on the assumption that many will decline.
+18. Your data reason for retainers. Prospects in a client's CRM are personal data. California's privacy law (covering business contacts since 1 January 2023) and the EU's GDPR let a service provider use a client's data only to serve that client. The future platform can use only anonymized, combined figures, under a separate clause the client may decline. Plan the platform on the assumption that many will decline.
 
 ### Drop
 
 19. The $150 per-lead fee after month 3. Your own reason for it was to make up for the pilot discount, and that reason ends at month 4.
 - It is how appointment-setting agencies price, and it contradicts the first answer in Kelwin's own FAQ (“An agency rents you activity…”).
-- It rewards volume over fit: Cleverly says loose qualification is the most common reason pay-per-appointment programmes fail (cleverly.co/blog/pay-per-appointment-lead-generation, 10 Jun 2026, a vendor).
+- It rewards volume over fit: Cleverly says loose qualification is the most common reason pay-per-appointment programs fail (cleverly.co/blog/pay-per-appointment-lead-generation, 10 Jun 2026, a vendor).
 - It turns an “$8,000 package” into $10,100–10,700 a month in the typical case. Set the retainer higher inside your own band instead.
 
 20. “Good faith” as the exit test. Guarantees that are specific and trigger on their own create more value than broad ones the customer has to claim (Meyer, Gremler and Hogreve, Journal of Service Research, 2014, via csl.wpcarey.asu.edu/do-service-guarantees-guarantee-greater-market-value).
@@ -108,7 +108,7 @@ Every package includes all three layers (Narrative Systems, GTM Infrastructure, 
 | Monthly fee | $8,000 base, up to $12,000 | $15,000 base, up to about $23,000 | From $25,000 |
 | Pilot months (65%) | $5,200–7,800 + $250 a held meeting | $9,750–14,950 + $250 a held meeting | From $16,250 + $250 a held meeting |
 | Markets | 1 | Up to 2, one shared team | 2 in the base, each with its own team |
-| Channels | Email + one LinkedIn profile | Email, LinkedIn, inbound follow-up, calls | All of Growth's, plus calling and paid retargeting |
+| Channels | Email + one LinkedIn profile | Email, LinkedIn, inbound follow-up, calls | Growth's channels, with paid retargeting included (an add-on on Growth) |
 | People sending under their own name | 1 | Up to 3 | Up to 3 per market |
 | Meetings with us | Every two weeks, plus a monthly review | Weekly, plus a weekly signal review | Twice a week, plus weekly reviews per market |
 | Written reports | A weekly note; readouts in week 11 and month 6 | Weekly note; monthly and quarterly reviews | Plus a monthly market brief and a quarterly board readout |
@@ -175,7 +175,7 @@ All limits are capacity limits, not promised results.
 - Growth's scope, run separately for each market: its own version of the story, its own sending, its own campaigns and its own Associate. The base covers 2 markets.
 - A dedicated Engagement Manager.
 - One-to-one plays for a named list of up to about 100 top accounts.
-- Calling, and coordination with paid retargeting.
+- Paid retargeting, included (an add-on on Growth).
 - Standing buyer interviews, up to 12 a quarter.
 - A monthly brief on the market and competitors.
 - A quarterly readout ready for the board.
@@ -190,7 +190,7 @@ All limits are capacity limits, not promised results.
 
 ## 4 · The pilot and the levers
 
-All outside figures were gathered on 2026-10-16 from search summaries and could not be re-checked (see the verdict). Legal points come from our reviewers' own knowledge and need a US lawyer's read.
+All outside figures were gathered on 2026-10-16 from search summaries and could not be re-checked (see “How far to trust the figures”). Legal points come from our own knowledge and need a US lawyer's read.
 
 ### How to say it to a buyer
 
@@ -234,7 +234,7 @@ All outside figures were gathered on 2026-10-16 from search summaries and could 
 
 ### The two lists (instead of a CRM field)
 
-The first draft decided credit by a “locked” original-source field in the client's CRM. That doesn't work. In HubSpot, Original Source is filled automatically from the first touch, so it can never read “Kelwin”. In Salesforce, Lead Source can be changed by anyone with edit rights. (Both from our reviewer's knowledge, not re-checked.) We hold admin access while we run the system, so a client could fairly say we marked our own homework. After the client leaves, we can't see the CRM at all.
+The first draft decided credit by a “locked” original-source field in the client's CRM. That doesn't work. In HubSpot, Original Source is filled automatically from the first touch, so it can never read “Kelwin”. In Salesforce, Lead Source can be changed by anyone with edit rights. (Both from our own knowledge, not re-checked.) We hold admin access while we run the system, so a client could fairly say we marked our own homework. After the client leaves, we can't see the CRM at all.
 - The do-not-count list, signed at kickoff: current customers, open pipeline, anyone contacted in the last 12 months, partners, investors, the client founder's existing LinkedIn connections, and any company the client already knows from outside the CRM (events, referrals). Counted by company, with its affiliates.
 - The sourcing list: every company with a held meeting that our outreach created, built month by month from the meeting statements (statements continue in months 4–6, without fees). Each statement line is final after 5 working days. Both sides sign the full list at the end of month 6, and at a day-90 exit.
 - The two lists, not the live CRM, decide both the meeting fees and the revenue share. A custom “Kelwin-sourced” field with change history stays in the CRM as a backup only.
@@ -244,7 +244,7 @@ The first draft decided credit by a “locked” original-source field in the cl
 - What Kelwin delivers: Narrative OS v1 approved by week 4; sending live by week 5; dashboard live by week 6; 2–3 angles tested by week 10; the written readout in week 11.
 - One minimum for held meetings in weeks 5–10, set from the audit. For example, 8 on Launch (illustrative).
 - What the client does: access in week 1; domains, inboxes and tool accounts bought within 3 working days of kickoff (sending can't warm up before they exist); approvals within 2 working days; a named owner; meetings marked held or not within 5 working days.
-- When the client is late: each working day late moves the dates that depend on it by a day. The meetings minimum shrinks in proportion to the sending weeks lost, and is never simply cancelled. It is cancelled only if access is still missing at the end of week 2. The readout stays in week 11; a target whose date moved past it because of a client delay can't count as missed.
+- When the client is late: each working day late moves the dates that depend on it by a day. The meetings minimum shrinks in proportion to the sending weeks lost, and is never simply canceled. It is canceled only if access is still missing at the end of week 2. The readout stays in week 11; a target whose date moved past it because of a client delay can't count as missed.
 
 ### The full run (months 4–6)
 
@@ -266,7 +266,7 @@ The first draft decided credit by a “locked” original-source field in the cl
 - What is counted: first-year contract value only, on everything a listed customer signs in its first 12 months (so a small first contract that grows within the year is covered). Payments made up front for later years don't count.
 - The window: first contracts signed by the end of month 18, which is 12 months after month 6, whether or not the client renews. It is not tied to the end of the contract, so a renewal doesn't stretch it.
 - Invoicing: the client sends each signed order form within 30 days of signing. Kelwin invoices half when that customer pays its first invoice, and half six months later if it is still a customer. Due in 30 days, with interest on late payment and recovery of collection costs.
-- Checking: no CRM access after the contract ends. Once, after the window closes, Kelwin may ask an independent accountant to check the signed order forms of listed companies only. Kelwin pays for it unless it finds underpayment of more than 5% (the usual pattern in royalty contracts, per our reviewer). The client keeps its records until a year after the window, and the clause survives the contract.
+- Checking: no CRM access after the contract ends. Once, after the window closes, Kelwin may ask an independent accountant to check the signed order forms of listed companies only. Kelwin pays for it unless it finds underpayment of more than 5% (the usual pattern in royalty contracts, from our own knowledge). The client keeps its records until a year after the window, and the clause survives the contract.
 - Why a window matters: tails of 12–24 months are the norm for success fees (corporatefinanceinstitute.com/resources/wealth-management/fee-tail); SEC-filed agreements use 12 months (sec.gov/Archives/edgar/data/0001369568/000095014406008469/g02464a1exv10w10.htm, 2006); courts read vague tails unpredictably (dwpv.com/Insights/Publications/2019/Success-Fees-in-Advisory-Agreements, 2019, a Canadian firm). Median sales cycles are about 84 days for SMB, 170 for mid-market and 192 for enterprise (Ebsta and Pavilion 2024, quoted second-hand; joinpavilion.com/resource/2024-b2b-sales-benchmarks), so a deal sourced in month 2 of a mid-market pilot closes around month 7–8.
 - Renewals are retainer only by default. A new share can be written into a renewal if both sides want one.
 - Late payers are normal: 97% of 273 US agency leaders chase late payments (Ignition, 2025, ignitionapp.com/2025-agency-pricing-cashflow-report). Plan for the share as a bonus, never as payroll.
@@ -275,7 +275,7 @@ The first draft decided credit by a “locked” original-source field in the cl
 
 - On signing: month 1's fee plus a deposit of one month's full retainer. On Launch at $8,000 that is $5,200 + $8,000 = $13,200. Kickoff starts only once it is paid, so contractors are never paid before the client pays.
 - The deposit is applied to month 6's invoice, or first to an exit fee or an unpaid invoice. It is refunded after a fee-free exit.
-- One invoice a month, sent 10 days before the month and due on the 1st, by bank transfer or automatic bank debit (ACH). It carries the retainer and last month's meeting fees as separate lines. Cards are accepted with the card fee added where that is lawful. Stripe's standard US card fee is 2.9% + 30¢, about $232 a month on $8,000; an ACH debit is 0.8%, capped at $5 (stripe.com/pricing; our reviewer's knowledge, not re-checked).
+- One invoice a month, sent 10 days before the month and due on the 1st, by bank transfer or automatic bank debit (ACH). It carries the retainer and last month's meeting fees as separate lines. Cards are accepted with the card fee added where that is lawful. Stripe's standard US card fee is 2.9% + 30¢, about $232 a month on $8,000; an ACH debit is 0.8%, capped at $5 (stripe.com/pricing; our own knowledge, not re-checked).
 - Month 4's invoice goes out the day after the exit window closes.
 - The revenue share is invoiced per deal, separately.
 - Late payment: work pauses 10 days after a missed due date; the contract may be ended after 30.
@@ -299,22 +299,22 @@ The first draft decided credit by a “locked” original-source field in the cl
 
 - Outside the day-90 window and before the end of month 6: the lower of the remaining minimum-term retainer or two months' retainer, described as covering contractor commitments and capacity held for the client. The deposit is applied first.
 - Either side may end the contract for a serious breach not fixed within 30 days.
-- Delaware enforces a set exit fee only when the loss was hard to estimate at signing and the fee is a reasonable forecast of it (our reviewer's knowledge). Fees tied to a discount actually received, or to committed costs, are the safer shape.
+- Delaware enforces a set exit fee only when the loss was hard to estimate at signing and the fee is a reasonable forecast of it (our own reading). Fees tied to a discount actually received, or to committed costs, are the safer shape.
 
 ### The contract itself
 
 - Three documents, drafted once by a US lawyer and reused: a master agreement, an order form and the one-page fee schedule. Attached to the order form: the pilot targets and duties page, the sending schedule and the data terms.
-- Every contract, proposal, invoice and signature block says “Kelwin, LLC, a Delaware limited liability company”, signed for the company with your name and title. Delaware law requires an LLC's name to include “LLC” (6 Del. C. § 18-102, delcode.delaware.gov/title6/c018), and someone who signs for a company the other side doesn't know is an LLC can be held personally liable. The site keeps plain “Kelwin” (A5).
+- Every contract, proposal, invoice and signature block says “Kelwin, LLC, a Delaware limited liability company”, signed for the company with your name and title. Delaware law requires an LLC's name to include “LLC” (6 Del. C. § 18-102, delcode.delaware.gov/title6/c018), and someone who signs for a company the other side doesn't know is an LLC can be held personally liable. The site keeps plain “Kelwin”.
 - Delaware law and Delaware courts, with the client consenting to those courts. Delaware's rule that a contract of $100,000 or more may choose Delaware law (6 Del. C. § 2708, delcode.delaware.gov/title6/c027) doesn't cover six months of Launch, but the choice should still hold because Kelwin is formed in Delaware. Don't name New York courts unless Kelwin registers in New York: an unregistered out-of-state company can't bring a case there (NY LLC Law § 808, nysenate.gov/legislation/laws/LLC/808), and registering brings New York's six-week newspaper publication rule (§ 802).
 - Ownership: the client owns the work made for it once paid in full. Kelwin keeps its own templates, methods and tools, and lets the client use them inside the work. Accounts, domains and data belong to the client from day one, and Kelwin never holds the only admin login. A handover is included once, in a notice month given at least 30 days ahead; a handover asked for mid-term is priced as a project.
 - People: the client contract allows subcontractors and names them on request, with a fee if the client hires one directly. One contractor agreement for every seat: all work assigned to Kelwin as it is made; confidentiality, with the same data and security terms as the client contract; 30 days' notice; no direct work for Kelwin's clients for 12 months. Contract with the contractor's own company where possible; in California, someone doing a firm's core work counts as an employee unless they pass the “ABC” test (Labor Code § 2775, leginfo.legislature.ca.gov).
 - Sending: a sending schedule in every contract. The client confirms the target countries and the legal basis for contacting them; Kelwin keeps unsubscribes and suppression lists working; no sending into countries that require consent (Germany's UWG § 7, Canada's CASL) unless consent exists; each side covers the other for what it controls. Under CAN-SPAM, both the company promoted and the sender can be liable, at up to $53,088 per email (FTC 2025 adjustment, ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business).
 - LinkedIn: its User Agreement bans bots and letting anyone else into your account (linkedin.com/legal/user-agreement, section 8.2). So: tools where the profile owner signs in personally; every message under a person's name uses wording that person approved; volumes stay within the written limits; the owner can pause at any time and acknowledges in writing that a platform may restrict an account; Kelwin says what it does if that happens; sending from a rep's profile stops when the rep leaves.
-- Liability: capped, for example at the fees paid in the previous 6 months (our reviewer's proposal). Before the first contract: professional liability and cyber insurance, and a one-page security policy (two-factor login, client-owned accounts, least access, access removed within a day of someone leaving). Mid-market buyers will ask for both.
-- Data: personal data is used only to serve that client and is deleted or returned at the end. The platform may use only anonymised, combined figures (for example reply rates by segment), in a separate clause the client may decline: never sold, never naming the client, and “saying no changes nothing in price or service”. Privacy terms cover California, where business contacts have been covered since the B2B exemption ended on 1 January 2023 (Cal. Civ. Code § 1798.140, cppa.ca.gov), and Europe, where a supplier that uses client data for its own purposes is treated as if the data were its own (GDPR Art. 28(10), gdpr-info.eu/art-28-gdpr), with EU transfer terms wherever contractors outside Europe handle European contacts.
+- Liability: capped, for example at the fees paid in the previous 6 months (our proposal). Before the first contract: professional liability and cyber insurance, and a one-page security policy (two-factor login, client-owned accounts, least access, access removed within a day of someone leaving). Mid-market buyers will ask for both.
+- Data: personal data is used only to serve that client and is deleted or returned at the end. The platform may use only anonymized, combined figures (for example reply rates by segment), in a separate clause the client may decline: never sold, never naming the client, and “saying no changes nothing in price or service”. Privacy terms cover California, where business contacts have been covered since the B2B exemption ended on 1 January 2023 (Cal. Civ. Code § 1798.140, cppa.ca.gov), and Europe, where a supplier that uses client data for its own purposes is treated as if the data were its own (GDPR Art. 28(10), gdpr-info.eu/art-28-gdpr), with EU transfer terms wherever contractors outside Europe handle European contacts.
 - Competitors: no work for a competitor the client names at signing, during the contract and for 6 months after. Standard on Growth and Scaling; on request on Launch.
 - Case studies: every contract lets Kelwin publish a factual case study, whatever the result, once the client approves the text; the client may choose not to be named. Don't trade a discount for one. A fee cut in exchange for publishing is a material connection that must be disclosed (FTC Endorsement Guides, 16 CFR Part 255, revised 2023, ecfr.gov), and the FTC's rule on reviews and testimonials bans paying for testimonials that must be positive (16 CFR Part 465, in force since 21 October 2024). The first draft's idea of a 45% pilot in exchange for a case study is withdrawn.
-- Regulated clients: flat fees only, with no meeting fee and no revenue share, for US healthcare companies that bill federal programmes, broker-dealers, investment advisers and insurers. Spot them on the first call. The federal safe harbour for service fees needs the total fee set in advance (42 CFR 1001.952(d), ecfr.gov). The HHS Inspector General has called percentage pay “inherently problematic” (opinions 98-1 and 98-4 per our reviewer; Advisory Opinion 06-02 per a findlaw.com summary: corporate.findlaw.com/law-library/latest-advisory-opinion-questions-percentage-fee-arrangement-with.html). Broker-dealers may not pay deal-based fees to unregistered people (FINRA Rule 2040, finra.org); paid referrals of investment-adviser clients fall under the SEC Marketing Rule; most states bar sharing insurance commissions with unlicensed people. For these clients, a flat pilot fee of about 80% of the retainer, roughly what the typical case bills with meeting fees (our estimate). A US lawyer should confirm the citations before any document uses them.
+- Regulated clients: flat fees only, with no meeting fee and no revenue share, for US healthcare companies that bill federal programs, broker-dealers, investment advisers and insurers. Spot them on the first call. The federal safe harbor for service fees needs the total fee set in advance (42 CFR 1001.952(d), ecfr.gov). The HHS Inspector General has called percentage pay “inherently problematic” (opinions 98-1 and 98-4 from our own knowledge; Advisory Opinion 06-02 per a findlaw.com summary: corporate.findlaw.com/law-library/latest-advisory-opinion-questions-percentage-fee-arrangement-with.html). Broker-dealers may not pay deal-based fees to unregistered people (FINRA Rule 2040, finra.org); paid referrals of investment-adviser clients fall under the SEC Marketing Rule; most states bar sharing insurance commissions with unlicensed people. For these clients, a flat pilot fee of about 80% of the retainer, roughly what the typical case bills with meeting fees (our estimate). A US lawyer should confirm the citations before any document uses them.
 - Taxes: prices exclude taxes. Some states tax this work: Texas taxes data processing and information services on 80% of the charge (comptroller.texas.gov); Washington widened sales tax to many business services from 1 October 2025 (ESSB 5814, dor.wa.gov). If any owner of Kelwin is not a US person, a single-owner LLC files Form 5472 every year, with a $25,000 penalty for missing it (irs.gov/forms-pubs/about-form-5472). Delaware charges LLCs $300 a year, due 1 June (corp.delaware.gov/paytaxes). A US accountant should say which parts of the work are taxable in each client's state.
 - The client's runway: Launch buyers are often young, investor-funded companies. Ask about funding stage or runway on the proposal call, never on the site. The deposit, advance billing and the right to pause protect you.
 
@@ -405,7 +405,7 @@ What the comparison shows:
 
 - Kelwin Launch: $39,600 at 65% ($34,800 at 45%). The most it can reach, with meeting fees: $48,000.
 - RevPartners' entry tier: $64,100, which is 6 × $9,850 plus a $5,000 onboarding fee (revpartners.io/pricing, its own page).
-- Refine Labs Full Service: $156,000, which is 6 × $26,000 (refinelabs.com/pricing, its own page).
+- Refine Labs Full Service: $156,000, which is 6 × $26,000 (refinelabs.com/pricing, its own page). It is full-service demand generation, so not like for like.
 
 ## 6 · The early exit
 
@@ -416,19 +416,19 @@ Recommendation: offer an exit at day 90, judged on written targets, not on good 
 - The written pilot readout is held in week 11. It opens a window of 5 working days, which closes before month 4 is invoiced.
 - In that window the client may end the contract at the end of month 3, by written notice and with no exit fee, if:
   - (a) Kelwin missed a written pilot target: a deliverable, or the meetings minimum as adjusted for any client delays; or
-  - (b) Kelwin says in writing that it cannot deliver. That is your “things we discover we can't fulfil” case.
+  - (b) Kelwin says in writing that it cannot deliver. That is your “things we discover we can't fulfill” case.
 - After a fee-free exit: month 4 is never invoiced; the deposit pays month 3's meeting fees and the rest is refunded. Pilot fees already paid are not refunded; leaving is the client's only remedy for missed pilot targets. Both sides sign the sourcing list as a condition of the exit, and the revenue share still applies to the companies on it.
 - Leaving at day 90 for any other reason (a change of mind, a budget cut): the discount falls away: the client pays the difference between what was billed in months 1–3 and three months at the full retainer. On Launch at $8,000 that is $4,400 in the typical case, $6,650 in the slow case and $8,400 at most. It never takes the pilot above full price. The deposit is applied first. This is your protection against being “ripped off”.
 - Kelwin's matching right: if the client didn't provide access, data, purchases or approvals, Kelwin may end the contract at day 90, and the same top-up is due.
 - At any time: if the engagement lead changes, the client may leave on 30 days' notice with no exit fee.
 - However the client leaves, everything built stays in its own accounts and is its own.
-- After month 6: month to month, 30 days' notice either side. If the client wants to run the system itself, the notice month is the handover month, at no extra fee (A1: handover only on request).
+- After month 6: month to month, 30 days' notice either side. If the client wants to run the system itself, the notice month is the handover month, at no extra fee (handover only on request).
 
 ### Why
 
-1. Buyers are told to demand an exit. Buyer guides recommend a 60–90-day pilot with an exit (leadhaste.com/blog/best-sdr-outsourcing-agency-2026, a vendor) and list “six- or twelve-month retainer agreements without performance benchmarks or exit clauses” as a red flag (saashero.net/strategy/performance-marketing-agency-pricing, updated 1 Aug 2026, a vendor). The buyer reviewer said the exit is what makes six months acceptable to him.
+1. Buyers are told to demand an exit. Buyer guides recommend a 60–90-day pilot with an exit (leadhaste.com/blog/best-sdr-outsourcing-agency-2026, a vendor) and list “six- or twelve-month retainer agreements without performance benchmarks or exit clauses” as a red flag (saashero.net/strategy/performance-marketing-agency-pricing, updated 1 Aug 2026, a vendor). In our buyer's-eye read, the exit is what made six months acceptable.
 2. Specific promises are worth more than broad ones. Guarantees that are specific and trigger on their own create more value than broad ones the customer must claim (Meyer, Gremler and Hogreve, Journal of Service Research, 2014). “Good faith” is the broad kind, and hard to enforce either way.
-3. Neither results alone nor deliverables alone work. Contract guides warn that exits tied only to results are hard to enforce (stackmatix.com/blog/what-to-look-for-in-a-marketing-agency-contract). An exit tied only to deliverables Kelwin controls is the same trap in reverse: the buyer could never use it. So the test mixes deliverables with one meetings minimum, and a client delay moves the dates instead of cancelling the minimum.
+3. Neither results alone nor deliverables alone work. Contract guides warn that exits tied only to results are hard to enforce (stackmatix.com/blog/what-to-look-for-in-a-marketing-agency-contract). An exit tied only to deliverables Kelwin controls is the same trap in reverse: the buyer could never use it. So the test mixes deliverables with one meetings minimum, and a client delay moves the dates instead of canceling the minimum.
 4. The window timing. A readout in week 12 with a 10-day window would close around day 92–98, after month 4 had been charged. Week 11 and 5 working days close it before.
 5. The top-up is fair, and safer. The first draft's fee of one full month's retainer charged more than full price whenever meetings had been held (on typical Launch, $19,600 + $8,000 = $27,600 against $24,000 at full price). A buyer's lawyer would call that a penalty. Repaying a discount actually received is easier to defend (our reading; a US lawyer should confirm).
 6. It is the market norm. Martal runs a 3–4-month pilot, then goes monthly (cleverly.co, 17 Jul 2026, a competitor). UK contract guidance names “an exit after a milestone” as the usual compromise (sprintlaw.co.uk/articles/termination-convenience-clauses-uk).
@@ -440,14 +440,14 @@ Don't call months 1–3 a pilot. Call them “the testing quarter”, and expect
 
 ## 7 · Projects and their prices
 
-Fixed fees with a typical length, never “per month”. Upkeep is the monthly option for a finished piece. None of these figures goes on the site (A3).
+Fixed fees with a typical length, never “per month”. Upkeep is the monthly option for a finished piece. None of these figures goes on the site.
 
 | Project | Price | Typical length |
 |---|---|---|
 | Positioning and messaging | $15,000–20,000 fixed. | 4–6 weeks, set by customers' calendars. |
 | Email deliverability | $6,000 fixed ($5,000–7,500 by number of domains). | 3–4 weeks, plus the check 30 days after handover (approved). |
 | ICP and signal map (Clay build included) | $9,000–12,000 fixed. | 3–4 weeks. |
-| CRM blueprint | $10,000–18,000 for one HubSpot instance. | 4–8 weeks. A heavily customised instance takes longer, and the first call says so. |
+| CRM blueprint | $10,000–18,000 for one HubSpot instance. | 4–8 weeks. A heavily customized instance takes longer, and the first call says so. |
 | Win/loss interviews | $12,000–18,000 for 10–12 interviews. | 6–8 weeks. If too few buyers agree to talk, the project stops after week one, and only week one is billed (approved). |
 | The operating model | $15,000–25,000 fixed. | 6–8 weeks, starting from the audit's readout. |
 | Upkeep (keeping a finished piece running) | From $3,500 a month (your floor), for up to about 15 hours a month. | 3 months minimum, then month to month. |
@@ -483,13 +483,13 @@ Fixed fees with a typical length, never “per month”. Upkeep is the monthly o
 
 **Price.** $10,000–18,000 for one HubSpot instance. Salesforce quoted after the first call, from about $20,000. Market estimates, unverified: HubSpot partner clean-ups about $5–25k, Salesforce $15–75k+. CRM migrations run $40–200k (genflows.com, 2026, a vendor).
 
-**Length.** 4–8 weeks. A heavily customised instance takes longer, and the first call says so.
+**Length.** 4–8 weeks. A heavily customized instance takes longer, and the first call says so.
 
 **Afterwards.** Upkeep from $3,500 a month: the dedupe and decay rules kept running, with a monthly hygiene report.
 
 ### Win/loss interviews
 
-**Price.** $12,000–18,000 for 10–12 interviews. Thank-you payments to buyers passed through at cost. Market estimate, unverified: $1,000–2,500 per interview from specialist firms; year-round programmes on platforms such as Clozd or Klue run $30–100k+ a year.
+**Price.** $12,000–18,000 for 10–12 interviews. Thank-you payments to buyers passed through at cost. Market estimate, unverified: $1,000–2,500 per interview from specialist firms; year-round programs on platforms such as Clozd or Klue run $30–100k+ a year.
 
 **Length.** 6–8 weeks. If too few buyers agree to talk, the project stops after week one, and only week one is billed (approved).
 
@@ -509,7 +509,7 @@ Fixed fees with a typical length, never “per month”. Upkeep is the monthly o
 
 **Length.** 3 months minimum, then month to month.
 
-**Afterwards.** This is the project retainer A3 asked for. It sits below the Launch pilot ($5,200) and full Launch ($8,000), so the cheaper option never undercuts the better one. It is also a way up into a package.
+**Afterwards.** This is the project retainer you asked for in round 9. It sits below the Launch pilot ($5,200) and full Launch ($8,000), so the cheaper option never undercuts the better one. It is also a way up into a package.
 
 ### Sales narrative (held)
 
@@ -541,7 +541,7 @@ Fixed fees with a typical length, never “per month”. Upkeep is the monthly o
 
 **How it reads.** The Engagements page (the sitemap's proposed new page): “Three packages, sized by how many markets and channels the system covers. Launch: one market, two channels. Growth: up to two markets, up to four channels. Scaling: two or more markets, each with its own team. Every engagement runs at least six months. The first three are a pilot at a reduced fee, and part of what we earn follows the pipeline we source. We tell you where engagements start on the first call, and the exact fee on the proposal call.” Projects: “Fixed fee, set in the written scope before work starts.” A new Audit FAQ row answers “What does it cost?” the same way. Off the site, in the audit booking confirmation or the first five minutes of Call 1: “Engagements start at $8,000 a month on a six-month term, and the first three months cost less. Single projects start at about $6,000.”
 
-**For.** The buyer learns the starting price before giving ten days of audit time and CRM access, which answers the buyer reviewer's main objection without putting a number on a page. Most premium firms publish no fee: Belkins, ColdIQ/Frontal, Understory, Growth Engine X and Winning by Design (leadhaste.com/blog/belkins-review); Haus Research (2026, seen only via an audiobook listing's summary, audible.fr/en_GB/pd/B0HMNZ8HSZ) found 3 GTM-engineering firms that publish a figure and 8 that don't. No low number, such as a pilot month or a project floor, becomes the price visitors remember. No number has to stand without proof: price is read as a sign of quality most where buyers have few other cues (Rao and Monroe, Journal of Marketing Research, 1989), and Kelwin has nothing publishable yet. Nothing to take back while the exit and the caps are undecided.
+**For.** The buyer learns the starting price before giving ten days of audit time and CRM access, which answers the main objection in our buyer's-eye read without putting a number on a page. Most premium firms publish no fee: Belkins, ColdIQ/Frontal, Understory, Growth Engine X and Winning by Design (leadhaste.com/blog/belkins-review); Haus Research (2026, seen only via an audiobook listing's summary, audible.fr/en_GB/pd/B0HMNZ8HSZ) found 3 GTM-engineering firms that publish a figure and 8 that don't. No low number, such as a pilot month or a project floor, becomes the price visitors remember. No number has to stand without proof: price is read as a sign of quality most where buyers have few other cues (Rao and Monroe, Journal of Marketing Research, 1989), and Kelwin has nothing publishable yet. Nothing to take back while the exit and the caps are undecided.
 
 **Against.** Buyers want prices on the page: in TrustRadius's 2022 survey of 2,185 tech buyers, 81% wanted pricing on vendor sites (via marketingprofs.com), and SAP's 2025 commerce report says hidden pricing frustrates 39% of buyers. The starting price will travel in forwarded emails. Some visitors will still book the audit before hearing it, so add the proposed size question to the audit.
 
@@ -571,7 +571,7 @@ Two ways in, one proposal and one contract shape.
 2. The booking confirmation: what to expect, a one-page NDA, a short note on what data the audit reads, where it is kept and when access ends (at the readout), and where engagements start.
 3. Call 1, 30 minutes (approved). Fit, the starting price in the first five minutes, and a check for regulated sectors (flat fees only).
 4. The System Audit: free, ten working days, read-only access.
-5. Call 2, the 60-minute readout, presented on the call (approved). Proposed: send the written readout after the call, whether or not they sign. A4 rules out only sending it before, and it makes “the diagnosis others charge for” believable.
+5. Call 2, the 60-minute readout, presented on the call (approved). Proposed: send the written readout after the call, whether or not they sign. Your round-9 answer rules out only sending it before, and it makes “the diagnosis others charge for” believable.
 6. Call 3, the proposal:
 - Page one, “What's fair about this”: no setup fee; tools and domains in your name from day one; the pilot quarter never costs more than three full months; no meeting fee after month 3; a day-90 exit on written targets; leaving for any other reason costs at most the discount you got; written targets for months 4–6; your data used only to serve you unless you say yes separately; a handover month at no extra fee.
 - The options: the package the readout points to, if Kelwin can staff it by the start date, plus one step down (Launch with add-ons, upkeep or a project). Recommend what the readout points to; don't steer to a default. If the right package can't be staffed yet, say so with a real date.
@@ -599,7 +599,7 @@ Two ways in, one proposal and one contract shape.
 - Renewal proposed at month 5.
 - The month-6 readout with next quarter's plan; the sourcing list signed by both sides.
 11. After month 6: renew for 6 months, 12 months (10% off) or 24 months (15% off). Or step up a package, or step down to upkeep. With nothing signed, it runs month to month at list price, 30 days' notice either side.
-12. Handover only when the client asks (A1). Everything installed already lives in the client's own accounts and documents. If the client gives notice and asks for it, the notice month is the handover month: their operator trained and the six documents brought up to date, at no extra fee. A handover asked for mid-term is priced as a project.
+12. Handover only when the client asks. Everything installed already lives in the client's own accounts and documents. If the client gives notice and asks for it, the notice month is the handover month: their operator trained and the six documents brought up to date, at no extra fee. A handover asked for mid-term is priced as a project.
 
 ### Way 2 · project → package (the quiet door)
 
@@ -623,54 +623,56 @@ Two ways in, one proposal and one contract shape.
 ### Capacity rules while Kelwin is the founding team plus contractors
 
 - One pilot at a time until a Systems Engineer is under contract; then at most two.
-- At most two free audits a month, with the size question on /audit. Each audit takes about 20–30 hours and each proposal about 5 (our reviewer's estimate), so if one audit in three becomes a client (our assumption), each signed client costs 60–90 unpaid hours first.
+- At most two free audits a month, with the size question on /audit. Each audit takes about 20–30 hours and each proposal about 5 (our estimate), so if one audit in three becomes a client (our assumption), each signed client costs 60–90 unpaid hours first.
 - Growth only with a Systems Engineer and an Associate under contract.
 - Scaling only once the Engagement Manager seat is filled.
 - Contractors on 30 days' notice, with a named backup for each seat, before pilot dates are set.
 
 ## 10 · What the website must change because of this
 
-- Retainer first (A1) changes approved copy. Lines to rewrite: the homepage handover section (“If we leave, the system stays.”, “Owned by you”); the homepage methodology (“Install first, then an operating retainer — on a system you own.”, “run by your operator or with us on retainer”); Fit (“After handover the system is yours — run by your operator, or with us on retainer.”, “Owning it is the real gate.”, “Not for: Rent-it-forever — Dependency by design”); About's “The exit test”; the capability pages' “After handover…” and “Nothing needs a retainer to keep running”; Audit FAQ rows 1, 3 and 5; Projects' “A single project ends at handover, with no retainer”. The proposed line everywhere: what we install lives in your own accounts and documents, so it's yours, and we run it with you every month. Each change needs your yes, because it is approved copy.
+- Retainer first changes approved copy. Lines to rewrite: the homepage handover section (“If we leave, the system stays.”, “Owned by you”); the homepage methodology (“Install first, then an operating retainer — on a system you own.”, “run by your operator or with us on retainer”); Fit (“After handover the system is yours — run by your operator, or with us on retainer.”, “Owning it is the real gate.”, “Not for: Rent-it-forever — Dependency by design”); About's “The exit test”; the capability pages' “After handover…” and “Nothing needs a retainer to keep running”; Audit FAQ rows 1, 3 and 5; Projects' “A single project ends at handover, with no retainer”. The proposed line everywhere: what we install lives in your own accounts and documents, so it's yours, and we run it with you every month. Each change needs your yes, because it is approved copy.
 - Audit FAQ row 1 also has to change because of the pilot meeting fee. “An agency rents you activity, and the results stop the day the contract does” sits badly beside a proposal that charges $250 a meeting. Proposed answer, for the voice pass: “A lead generation agency sells activity: emails sent, meetings booked. We build what that activity runs on (your positioning, your target accounts, your campaigns and your reporting), set up in your own accounts, and we run it with you every month. Everything we set up is yours from the first day.”
 - Audit FAQ: add “What does an engagement cost?” Answer: “We tell you where engagements start on the first call, and the exact fee on the proposal call, after the readout, once we know how many markets and channels the system has to cover. Every engagement runs at least six months, and the first three are a pilot at a reduced fee. The audit itself costs nothing.” Rewrite row 3, “How long does an install take?”, for the pilot and the six-month term.
 - Promise no exit until you decide on one. The working About's “Contracts: Fixed scope, exit built in” goes. If you take the day-90 exit, the site may say at most: “The first three months are a pilot, with a written check at the end of it.”
-- The Engagements page the sitemap proposes: the three packages by scope with no prices; a descriptor for each on the same measures (Launch: one market, two channels; Growth: up to two markets, up to four channels; Scaling: two or more markets, each with its own team), so “Launch” isn't read as Clay's $185 plan; plain words first and Kelwin's names second (“your positioning and messages, written down (the Narrative OS)”); a comparison of about 8 rows in the buyer's terms: markets, channels, people sending under their own name, meetings with us each week, written reports, team on the account, hours a month; the six-month term with the three-month pilot at a reduced fee; the renewal options; and “we tell you where engagements start on the first call”. Every limit is labelled a capacity limit, never an expected result (rule 7). Scaling is shown as “not yet taking clients”, or left off, until its seats are filled. Of the sitemap's three pricing variants, this is C.
+- The Engagements page the sitemap proposes: the three packages by scope with no prices; a descriptor for each on the same measures (Launch: one market, two channels; Growth: up to two markets, up to four channels; Scaling: two or more markets, each with its own team), so “Launch” isn't read as Clay's $185 plan; plain words first and Kelwin's names second (“your positioning and messages, written down (the Narrative OS)”); a comparison of about 8 rows in the buyer's terms: markets, channels, people sending under their own name, meetings with us each week, written reports, team on the account, hours a month; the six-month term with the three-month pilot at a reduced fee; the renewal options; and “we tell you where engagements start on the first call”. Every limit is labeled a capacity limit, never an expected result . Scaling is shown as “not yet taking clients”, or left off, until its seats are filled. This is way 1 in section 8.
 - Never publish the meeting fee or the revenue-share rate, and never write “pay per lead” or “pay for results”. If the site says anything, one sentence: “Part of what we earn follows the pipeline we source.” That is a commercial term, not a claim about results.
-- The voice guide's money and pilot sections (work/r10/VOICE.md §6.1 and §6.5) still describe the 45% pilot and “a fee for each qualified lead”. They must follow whatever you approve here, say “held meeting”, never “lead”, and keep the fee figures out of site copy.
-- Projects index: replace “A single project ends at handover, with no retainer” with two lines: a project can be kept running on monthly upkeep and can lead into a package; and “Fixed fee, set in the written scope before work starts.” Prices and lengths stay off, as you decided. Say plainly who the page is for (A21): one piece of the system, at a fixed fee, for teams not ready for a package. Don't list “Clay tables” or “email outbound” as projects.
+- The voice guide's money and pilot sections (6.1 and 6.5) now follow this proposal: 65%, “held meeting”, never “lead”. They change with whatever you approve here, and keep the meeting fee and the revenue-share rate out of site copy.
+- Projects index: replace “A single project ends at handover, with no retainer” with two lines: a project can be kept running on monthly upkeep and can lead into a package; and “Fixed fee, set in the written scope before work starts.” Prices and lengths stay off, as you decided. Say plainly who the page is for: one piece of the system, at a fixed fee, for teams not ready for a package. Don't list “Clay tables” or “email outbound” as projects.
 - Audit qualification: a proposed fourth question about size, with no money in it (sales team size or annual revenue). Buyers below the Launch floor go to Projects instead of “Not a fit”. This protects audit time while Kelwin is the founding team. It changes the approved three-question flow, so it needs your yes.
 - The audit page: say what the booking confirmation sends (a one-page NDA, a note on what data the audit reads and when access ends), and, if you agree, that the written readout is sent after the readout call whether or not you hire us.
 - Contact: add a field, “What are you looking for?” (a package, a single project, a question, press). No budget field.
-- Reports (A14): case studies come from a standard clause in every contract (publish a factual study, whatever the result, once the client approves the text), never from a discount. Until one is cleared, the page says honestly that none is published yet.
-- Privacy and Terms: say nothing about fees, pilots or exits; those live in the proposal. The client-data line stays out (A5). How client prospects' data is handled lives in the client agreement's data terms, not the site's Privacy page.
-- Legal name: the site keeps plain “Kelwin” (A5), but every contract, proposal, invoice and signature block says “Kelwin, LLC, a Delaware limited liability company”. Nothing on the site changes because of this.
+- Reports: case studies come from a standard clause in every contract (publish a factual study, whatever the result, once the client approves the text), never from a discount. Until one is cleared, the page says honestly that none is published yet.
+- Privacy and Terms: say nothing about fees, pilots or exits; those live in the proposal. The client-data line stays out. How client prospects' data is handled lives in the client agreement's data terms, not the site's Privacy page.
+- Legal name: the site keeps plain “Kelwin”, but every contract, proposal, invoice and signature block says “Kelwin, LLC, a Delaware limited liability company”. Nothing on the site changes because of this.
 - Directories: if Kelwin lists on Clutch, choose a minimum project size of $25,000+. The floor shown off the site then matches the six-month cost of starting Launch (about $39,600), not the project floor.
 - Careers and packages should tell the same story: Growth needs the Associate and Market Intelligence Analyst seats, Scaling the Engagement Manager. Careers shows its own pay ranges, a separate number only you can supply.
 
 ## 11 · Risks
 
-- The evidence is thin in places. Every market figure was gathered on 2026-10-16 from search-engine summaries, because direct page loads were blocked, and this revision could not re-check any of them because the search budget was used up. Many figures are firms' own marketing or competitors' estimates. RevPartners' price page may date from about 2022, and Walker Sands bought the firm in June 2026. Legal, tax and card-fee points come from our reviewers' knowledge, not from pages opened today. Re-check every figure before one goes into a proposal.
-- Capacity, and your time. Kelwin is you plus contractors, and you told us in round 8 that you also hold a full-time role elsewhere. On our reviewer's estimates a Launch client needs 15–20 hours a month of founding-team time, each free audit 20–30 and each proposal about 5. Two pilots plus two audits a month come to about 100 hours a month before sales and Kelwin's own marketing. A late contractor can make Kelwin miss a pilot target, which gives the client a fee-free exit. Check your employment contract's outside-work and invention clauses before signing a client: a broad clause could claim the frameworks Kelwin sells.
-- Selling what can't be staffed. Offering Growth or Scaling before their seats are filled breaks rule 7, and a signed proposal that claims a team Kelwin doesn't have lets a client argue it was misled. Proposals show only what can be staffed by the start date.
+- The evidence is thin in places. Every market figure was gathered on 2026-10-16 from search-engine summaries of each source, not the pages themselves, and none could be checked again in this revision. Many figures are firms' own marketing or competitors' estimates. RevPartners' price page may date from about 2022, and Walker Sands bought the firm in June 2026. Legal, tax and card-fee points come from our own knowledge, not from pages opened today. Re-check every figure before one goes into a proposal.
+- Capacity, and your time. Kelwin is you plus contractors, and you told us in round 8 that you also hold a full-time role elsewhere. On our estimates a Launch client needs 15–20 hours a month of founding-team time, each free audit 20–30 and each proposal about 5. Two pilots plus two audits a month come to about 100 hours a month before sales and Kelwin's own marketing. A late contractor can make Kelwin miss a pilot target, which gives the client a fee-free exit. Check your employment contract's outside-work and invention clauses before signing a client: a broad clause could claim the frameworks Kelwin sells.
+- Selling what can't be staffed. Offering Growth or Scaling before their seats are filled claims a team Kelwin doesn't have, and a signed proposal that claims a team Kelwin doesn't have lets a client argue it was misled. Proposals show only what can be staffed by the start date.
 - Cash timing. Most of the revenue share arrives after the contract ends (months 8–19), and depends on a company reporting its own revenue to a former supplier. Many Launch buyers are young companies that may not last the window. 97% of agencies chase late payments (Ignition 2025). Treat the share as a bonus, never as payroll.
 - Deposit pushback. Some finance teams will resist paying $13,200 on signing for Launch. The fallback is a deposit of half a month, but don't start kickoff before the first payment.
 - Arguments over credit. Without the two signed lists, “sourced” and “touched” get confused, and Launch clients often have messy CRMs. The do-not-count list and the monthly statements must exist from week 1.
 - Looking like a lead-generation agency. Any per-meeting fee reads like appointment setting, and it sits beside the FAQ's own line about agencies. Keep the fee to the pilot, call it a held meeting, keep it off the site, and rewrite FAQ row 1.
-- Volume over fit. Meeting fees reward volume in the very months meant for testing. The quarter cap, the written ICP with levels and the one-third rule limit this; loose definitions are the most common reason such programmes fail (Cleverly, a vendor).
-- Sending in the client's name. Both Kelwin and the client can be liable under CAN-SPAM, at up to $53,088 per email (FTC 2025), and Germany and Canada require consent. Google and Yahoo have enforced bulk-sender rules since February 2024 (help.close.com/docs/requirements-for-bulk-email-senders) and Microsoft's Outlook since 5 May 2025 (Microsoft's Tech Community blog, April 2025, per our reviewer; not re-checked). Selling more volume than the inbox limits allow would damage clients' domains.
+- Volume over fit. Meeting fees reward volume in the very months meant for testing. The quarter cap, the written ICP with levels and the one-third rule limit this; loose definitions are the most common reason such programs fail (Cleverly, a vendor).
+- Sending in the client's name. Both Kelwin and the client can be liable under CAN-SPAM, at up to $53,088 per email (FTC 2025), and Germany and Canada require consent. Google and Yahoo have enforced bulk-sender rules since February 2024 (help.close.com/docs/requirements-for-bulk-email-senders) and Microsoft's Outlook since 5 May 2025 (Microsoft's Tech Community blog, April 2025, from our own knowledge; not re-checked). Selling more volume than the inbox limits allow would damage clients' domains.
 - LinkedIn. Launch sends from the client founder's own profile. LinkedIn bans bots and account sharing; if a profile is restricted, the founder loses their main selling channel and Kelwin's name suffers. Written consent, owner sign-in tools, written limits and a pause right reduce, but don't remove, the risk.
 - Haggling at month 4 and churn at month 6. Lower with a 65% pilot (a 1.5× step) than with 45% (2.2×), and lower still with a written readout and written targets for months 4–6.
 - Pushback on six months from buyers used to month-to-month outbound vendors (SalesHive, Sales.co). The day-90 exit is the answer.
-- Legal exposure. Per-meeting and percentage fees can be unlawful for US healthcare clients that bill federal programmes, broker-dealers, investment advisers and insurers. Vague tails are read unpredictably. New York's commission law likely doesn't protect Kelwin (NY Labor Law § 191-a covers only sales reps of manufacturers, nysenate.gov/legislation/laws/LAB/191-A). Kelwin can't sue in New York courts unless registered there. Some states tax this work. A US lawyer and accountant should review once, before the first contract.
-- The platform plan. Privacy law limits what client data can feed a future platform: only anonymised, combined figures, with each client's separate yes. Mixing that into fee terms would slow every legal review. Many clients will decline.
+- Legal exposure. Per-meeting and percentage fees can be unlawful for US healthcare clients that bill federal programs, broker-dealers, investment advisers and insurers. Vague tails are read unpredictably. New York's commission law likely doesn't protect Kelwin (NY Labor Law § 191-a covers only sales reps of manufacturers, nysenate.gov/legislation/laws/LAB/191-A). Kelwin can't sue in New York courts unless registered there. Some states tax this work. A US lawyer and accountant should review once, before the first contract.
+- The platform plan. Privacy law limits what client data can feed a future platform: only anonymized, combined figures, with each client's separate yes. Mixing that into fee terms would slow every legal review. Many clients will decline.
 - Contractor ownership. Kelwin can only promise the client “it's yours” if every contractor has signed their work over to Kelwin first.
-- Price ahead of proof. With nothing publishable yet (round 8, Q2), a premium price reads as a claim. Buyers will compare Launch with $5k agencies unless every proposal shows all three layers in plain words.
-- Low-fee projects take founding-team hours away from retainers, which A1 puts first. The project fees and the upkeep floor protect that time.
+- Price ahead of proof. With nothing publishable yet (round 8), a premium price reads as a claim. Buyers will compare Launch with $5k agencies unless every proposal shows all three layers in plain words.
+- Low-fee projects take founding-team hours away from retainers, which you put first. The project fees and the upkeep floor protect that time.
 - Complexity. Even simplified, the model has a retainer, a pilot rate, a meeting fee with a quarter cap, one revenue-share rate with a cap and a window, a deposit and an exit. Every proposal needs the one-page fee schedule and a worked example, or the complexity that breaks these schemes returns (TrinityP3, trinityp3.com/fee-models-performance/reasons-performance-based-often-fails, undated; a Gartner abstract, 2026, gartner.com/en/documents/7500153).
 
 ## 12 · Questions only you can answer
 
-1. The pilot fee: 65% (recommended), or keep your 45%? (Buyers accepted 65% because of the exit.)
+The review page asks these as seven decisions and one question about your time; questions 14 to 16 are asked later, when the contract is drafted. This list keeps the detail behind them.
+
+1. The pilot fee: 65% (recommended), or keep your 45%? (In our buyer's-eye read, 65% was acceptable only with the exit.)
 2. The meeting fee: keep $250 per held meeting in the pilot (recommended), or replace it with one pilot success fee, for example $4,200 on Launch at $8,000 if the written targets are met (half the pilot discount; the pilot quarter then comes to $19,800)? And one rate for all, or a higher rate (for example $400) for Scaling clients who sell to VP-level buyers? VP+ meetings go for $400–700 (Prospeo, a vendor).
 3. When you wrote “every inbound qualified lead that we bring in”, did you mean meetings our outreach creates? We recommend billing only those, never the client's own inbound requests.
 4. The exit: do you accept a day-90 exit on written targets, with the top-up to full price for any other reason?
@@ -684,15 +686,15 @@ Two ways in, one proposal and one contract shape.
 12. The audit's fourth question, about size with no money in it: yes? And send the written readout after the readout call, whether or not they sign?
 13. How many hours a week can you give to delivery today, and which contractors are lined up? Have you checked your employment contract's outside-work and invention clauses?
 14. Who will be Kelwin's US lawyer and accountant? Is any owner of Kelwin not a US person (that decides Form 5472)? Is Kelwin registered to do business in New York, or will it be?
-15. Any target clients in regulated fields: US healthcare that bills federal programmes, broker-dealers, investment advisers, insurers? They would get flat fees only.
-16. The platform: are you comfortable that client data can feed it only as anonymised, combined figures, and only with each client's separate yes?
+15. Any target clients in regulated fields: US healthcare that bills federal programs, broker-dealers, investment advisers, insurers? They would get flat fees only.
+16. The platform: are you comfortable that client data can feed it only as anonymized, combined figures, and only with each client's separate yes?
 17. The competitor rule: standard on Growth and Scaling, and on request on Launch?
 18. Keep the name “Scaling”, or use “Scale” so the three names read alike? (Months 4–6 become “the full run” either way.)
-19. Re-run this research with web access to verify the figures before they go into proposals? A new message gives a fresh search budget.
+19. Checking the figures: not a question for you. We re-check every outside figure at its source before any proposal quotes it.
 
 ## 13 · Sources
 
-Every source cited above. Market and buyer sources were read through search-engine summaries on 2026-10-16 and not re-checked; the legal, tax and payment sources come from our reviewers' own knowledge and were not opened. Links are given as host and path; add https:// to open them.
+Every source cited above. Market and buyer sources were read through search-engine summaries on 2026-10-16 and not re-checked; the legal, tax and payment sources come from our own knowledge and were not opened. Links are given as host and path; add https:// to open them.
 
 ### Market prices and terms (search summaries, 2026-10-16; not re-checked)
 
@@ -741,7 +743,7 @@ Every source cited above. Market and buyer sources were read through search-engi
 - `clay.com/experts/partner/salescaptain` — SalesCaptain $5,450 on its own Clay profile.
 - `audible.fr/en_GB/pd/B0HMNZ8HSZ` — Haus Research 2026 comparison (3 firms publish a figure, 8 don't; Sales.co $5,500), seen only through a listing summary.
 
-### Buyer behaviour, pricing and contracts (search summaries, 2026-10-16; not re-checked)
+### Buyer behavior, pricing and contracts (search summaries, 2026-10-16; not re-checked)
 
 - `hfsresearch.com/research/outcome-based-pricing-effort-based-contracts` — 76% open to outcome-based pricing, 5% have it. HFS Research 2026.
 - `jyx.jyu.fi/handle/123456789/89707` — Keränen et al., Industrial Marketing Management 115 (2023): fairness drives acceptance of gain-sharing. Peer-reviewed.
@@ -761,15 +763,15 @@ Every source cited above. Market and buyer sources were read through search-engi
 - `contentful.bynder.com/m/4aea46bf3c5ab99/original/PRM-006-FY26-Q2-GLB-SAP-GTM-Projects-PRM-FY26-Q2-EMEA-B2B-Commerce-Report.pdf` — SAP 2025: hidden pricing frustrates 39% of buyers.
 - `help.close.com/docs/requirements-for-bulk-email-senders` — Google and Yahoo bulk-sender rules since February 2024.
 - `gartner.com/en/documents/7500153` — Gartner abstract, 2026: hidden complexity makes outcome-based pricing impractical.
-- `corporate.findlaw.com/law-library/latest-advisory-opinion-questions-percentage-fee-arrangement-with.html` — HHS OIG on percentage fees (Advisory Opinion 06-02, as summarised). Citation to be checked.
+- `corporate.findlaw.com/law-library/latest-advisory-opinion-questions-percentage-fee-arrangement-with.html` — HHS OIG on percentage fees (Advisory Opinion 06-02, as summarized). Citation to be checked.
 - `nysenate.gov/legislation/laws/LAB/191-A` — NY Labor Law § 191-a covers only sales reps of manufacturers.
 
-### Research papers cited without a page link (from our reviewers' knowledge)
+### Research papers cited without a page link (from our own knowledge)
 
 - `doi:10.1177/002224378902600309` — Rao and Monroe, Journal of Marketing Research 26(3), 1989: price as a quality cue.
 - `doi:10.1126/science.185.4157.1124` — Tversky and Kahneman, Science 185, 1974: anchoring.
 
-### Law, tax and payments (our reviewers' own knowledge to mid-2026; pages not opened on 2026-10-16)
+### Law, tax and payments (our own knowledge to mid-2026; pages not opened on 2026-10-16)
 
 - `delcode.delaware.gov/title6/c018` — 6 Del. C. § 18-102: an LLC's name must include “LLC”.
 - `delcode.delaware.gov/title6/c027` — 6 Del. C. § 2708: choice of Delaware law for contracts of $100,000 or more.
@@ -777,7 +779,7 @@ Every source cited above. Market and buyer sources were read through search-engi
 - `cppa.ca.gov` — Cal. Civ. Code § 1798.140; the B2B exemption ended 1 January 2023.
 - `gdpr-info.eu/art-28-gdpr` — GDPR Art. 28(10): a processor using data for its own purposes is treated as controller.
 - `ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business` — CAN-SPAM: up to $53,088 per email (2025 adjustment).
-- `linkedin.com/legal/user-agreement` — Section 8.2: no bots or unauthorised automation; no account sharing.
+- `linkedin.com/legal/user-agreement` — Section 8.2: no bots or unauthorized automation; no account sharing.
 - `ecfr.gov` — 42 CFR 1001.952(d) (fees set in advance); 16 CFR Part 255 (Endorsement Guides, 2023); 16 CFR Part 465 (reviews and testimonials, from 21 October 2024).
 - `finra.org` — FINRA Rule 2040: no deal-based fees to unregistered people.
 - `leginfo.legislature.ca.gov` — California Labor Code § 2775: the ABC test.
@@ -791,9 +793,9 @@ Every source cited above. Market and buyer sources were read through search-engi
 ### Kelwin's own files
 
 - `design/redesign/ROUND9-NOTES.md` — Your model, in your words.
-- `design/redesign/ROUND10-PLAN.md` — A1–A3: retainer first, engagements, projects.
-- `design/redesign/ROUND8-NOTES.md` — Q1 (who Kelwin is today), Q2 (nothing publishable), Q3 (the call sequence).
+- `design/redesign/ROUND10-PLAN.md` — Your round-9 answers on retainer first, engagements and projects.
+- `design/redesign/ROUND8-NOTES.md` — Who Kelwin is today, nothing publishable yet, and the call sequence.
 - `src/components/audit/faq/data.ts` — The live Audit FAQ rows.
 - `src/components/home/method/index.tsx, src/components/home/fit/data.ts` — Homepage lines that retainer-first changes.
 - `design/redesign/work/r10/VOICE.md` — The voice guide's money and pilot sections.
-- `scratchpad redesign/qa/r9-pages/projects/COPY.md and redesign/tool/review9.json` — The project catalogue and the round-9 lifecycle.
+- The round-9 project pages and review — The project catalog and the round-9 lifecycle.

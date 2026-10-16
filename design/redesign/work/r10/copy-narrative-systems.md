@@ -1,19 +1,19 @@
 # Narrative Systems, rewritten
 
-Round 10 · 16 October 2026 · a copy deck for the founder's yes · second version
+Round 10 · 16 October 2026 · the page's words, for your yes · second version
 
-This is the Narrative Systems page rewritten from scratch, following the voice guide (VOICE.md). It is a copy
-deck, not a mockup: it gives the order of the sections, the exact words for each one, and a note on the drawing
+This is the Narrative Systems page rewritten from scratch, following the voice guide. It is the
+page's words written out in full, not a mockup: it gives the order of the sections, the exact words for each one, and a note on the drawing
 each section needs. The page gets built once you've said yes.
 
 **How to read it.** Lines in a quote block (`>`) are the exact words that go on the page. Everything else is a
 note for you or for the people building the page. The site copy uses American spelling, which the voice guide
 recommends and leaves for you to decide.
 
-**Why there is a second version.** A second editor, who didn't write the first version, read it as a skeptical
-buyer would and looked for anything that still sounded machine-made. The first version was clean but repeated
+**Why there is a second version.** We read the first version again ourselves, the way a skeptical buyer would,
+and looked for anything that still sounded machine-made. The first version was clean but repeated
 itself, and parts of the method it described would not survive a seasoned buyer's questions. What changed, and
-the few places we disagreed with the editor, are at the end ("What changed after the second read").
+the few places we kept the first version, are at the end ("What changed after the second read").
 
 ---
 
@@ -33,7 +33,7 @@ the few places we disagreed with the editor, are at the end ("What changed after
 
 | # | Section | The sentence a ten-year-old could repeat | Surface | Drawing |
 |---|---|---|---|---|
-| 1 | The head (first screen) | We write down what a company sells so clearly that its buyers can explain it to someone else. | Dark | "Four answers, one sentence", animated |
+| 1 | The head (first screen) | We write down what a company sells so clearly that its buyers can explain it to someone else. | Dark | "Many voices, one pitch", animated |
 | 2 | What it is | Everyone who sells for a company should work from one written pitch, built from what buyers say. | Dark, ruled | None. A short reading section. |
 | 3 | What we write | We write down what to say to each kind of buyer, then rewrite what buyers read and hear. | Dark | "The folder", animated |
 | 4 | How it runs | We write your pitch with you, then test and fix it every month. | Dark | "The timeline", drawn step by step |
@@ -76,16 +76,15 @@ line, with who does what.*
 
 **The four facts** (one spec row of four, directly under the sentences; short phrases by design)
 
-> **From you** · One 90-minute session a week, in months 1 to 3
+> **From you** · Your CEO and head of sales, in our working session (every two weeks on Launch, weekly on Growth)
 
 > **Where it lives** · A folder in your own drive, in your company's name
 
 > **How long** · Six months to start, then you can renew
 
-> **Who sends the emails** · Your reps, from your own email tool
+> **Who sends the emails** · We do, from inboxes in your company's name; your reps take the replies
 
-*If the pilot stays off the site (decision 2), the first and third facts become "One 90-minute session a week,
-while we write and test" and "Agreed in writing before we start".*
+*If the pilot stays off the site (decision 2), the third fact becomes "Agreed in writing before we start".*
 
 **Other headlines we considered**
 - "One pitch for / everyone who sells." This was the first version's pick. It is clear, but it states a result
@@ -103,34 +102,29 @@ three sentences beside it on the right. The four facts sit in one row below, and
 the bottom quarter of the screen. On a phone the first screen holds the headline (three lines) and the sentences
 under it. The four facts follow, two to a row.
 
-### The drawing: "Four answers, one sentence"
+### The drawing: "Many voices, one pitch"
 
-It replaces the "Footage to come" card. Footage can show a pen on paper, but it can't explain the idea. This
-drawing does, in four steps, and plays once when it scrolls into view (about six seconds, with hard steps rather
-than a smooth slide).
+It replaces the "Footage to come" card. Footage can show a pen on paper, but it can't explain the idea; this
+drawing does. It is built already, as an early look: it comes back with this page's mockup, and nothing about it
+is decided this round. It plays once when it scrolls into view.
 
-1. **Four answers.** Four cards fade in, left to right, each with a role and a quote. The roles and quotes are
-   copied word for word from the audit example, for the same invented company:
-   - The founder: "We give revenue teams a forecast the board can trust."
-   - Head of sales: "We're a data layer on top of your CRM."
-   - Solutions engineer: "We sync pipeline data between your tools."
-   - A lost buyer, from the deal notes: "Some kind of CRM add-on?"
-2. **One new sentence.** Thin lines draw from the four cards to a point in the middle. All four quotes get a
-   single strike-through, the lost buyer's last. A new sentence writes itself in at large size, letter by letter:
-   "We rebuild your sales forecast from your CRM every day, so sales and finance plan from the same number."
-3. **Where it goes.** Four lines draw out from that sentence to four small frames labeled Website, Sales deck,
-   First email and Call guide. The sentence writes itself into each frame.
-4. **Month by month.** A ruler draws under the frames, marked month 1 to month 6, with a dotted line going on
-   after it. From month 4 each month gets a small tick, and each quarter gets a mark labeled "rewrite". There are
-   no counts, bars or percentages, because they would read as results.
+1. **Many voices.** Five voices of one invented company sit on a line that runs to the buyer: the founder on a
+   call, a rep's email, a post, a proposal and the website. Each says something different, so the buyer hears
+   five different companies (an AI platform, a quota tool, a spreadsheet fix, a data project, an all-in-one
+   suite).
+2. **One written pitch.** One page appears beside them: who it's for, what to say to each kind of buyer (the head
+   of sales, the CFO, the ops team) and the proof.
+3. **Every sentence rewritten from that page.** Each voice's sentence is crossed out and rewritten from its own
+   line on the one page, and the buyer now hears one company: "A forecast my CFO can sign."
 
-- **Label:** one small "Specimen · invented company" tag on the drawing's top edge. No figure number.
-- **Reduced motion:** the drawing shows its final state, all four steps at once.
-- **Phone:** it stacks top to bottom (the four quotes as a list, then the sentence, then the four frames two by
-  two). The ruler is left out.
-- **The wow moment** is step 2. All four answers are struck out, the founder's included, and a sentence nobody in
-  the company had said takes their place. It answers the lost buyer's question by saying what the product does.
-  That is the page's point of view in two seconds.
+Four short steps above the drawing say the same in words: today everyone tells your story their own way; so a
+buyer hears five different companies and trusts none of them; we write the story down once; now every call,
+email, page and post says the same thing.
+
+- **Label:** one "Specimen: an invented forecasting-software company" tag. No figure number.
+- **Reduced motion:** the drawing shows its final state, every sentence already rewritten.
+- **The wow moment** is step 3. Every sentence is crossed out, the founder's included, and rewritten from the one
+  page. That is the page's point of view in a few seconds.
 - **The footage** ("A seller's line, rewritten in the buyer's words") isn't lost. It moves to section 4, stage 3,
   once it's shot. Until then, no placeholder card goes on the live page.
 
@@ -178,7 +172,7 @@ make. It needs your yes (decision 7).*
 ### The artifact
 
 No drawing here, and the section is short on purpose. It sits between two drawings, and the head drawing has
-already shown four people giving four answers. It is set as a reading spread: the heading at section size, the
+already shown five voices saying five different things. It is set as a reading spread: the heading at section size, the
 three paragraphs at lede size in one column, the source in the margin. The 17% stays a sentence with its source,
 not a big number, because the homepage and the field note already show it large.
 
@@ -255,7 +249,7 @@ path), which shows where the documents live rather than saying it again.
   of six tabs draws in under the folder: Email, LinkedIn, Phone, Content, Paid, Events, the six playbooks the
   homepage lists. Three tabs fill and three stay as outlines, because a client only gets playbooks for the
   channels they use. The copy names four of them as examples and gives no count. It plays once.
-- **No fake text:** every line on a sheet is readable and true to the document. No grey placeholder bars.
+- **No fake text:** every line on a sheet is readable and true to the document. No gray placeholder bars.
 - **Label:** "Specimen". The path is an example of where the folder lives.
 - **Reduced motion:** the sheets lie fanned out and the tabs show, all at once.
 - **Phone:** the folder sits above the list; the sheets fan in a column.
@@ -293,12 +287,12 @@ we rewrite anything." and the sentence under it is left out.*
 
 > **What we do** · Before we write anything, we read your lost-deal notes and call recent buyers, won and lost, to
 > hear how they describe you. Then we write the four documents with you and draft two or three versions of the
-> message. Your reps split their new accounts between the versions, in emails and on first calls. We count which
+> message. We split new accounts between the versions in the first emails we send for you and in your reps' first calls. We count which
 > version brings more replies and second meetings from the companies you want. We test before we touch your
 > website or deck, so nothing is rewritten twice.
 
-> **What you do** · Your CEO and head of sales join one 90-minute session a week, together, to review the test
-> results and agree the next draft. We also need read-only access to your CRM, and notes or recordings from
+> **What you do** · Your CEO and head of sales join our working session (every two weeks on Launch, weekly on
+> Growth) to review the test results and agree the next draft. We also need read-only access to your CRM, and notes or recordings from
 > recent sales calls.
 
 > **What you get** · The documents in your drive, a short note after each session, and a written comparison of
@@ -441,7 +435,7 @@ translate twice (a page about our pitch, on a page selling the service), and two
 round-9 answers ("Nothing needs a retainer to keep running." and "Pipeline still runs through the founder...").
 The invented company already appears in the audit example, the Reports specimen and the Rebuild Sequence. Using
 it here lets a reader see the problem on one page (four answers) and the fix on this one (a new sentence and the
-matrix built from it). You told us to keep the invented company as it is (Q14), and this uses it unchanged.
+matrix built from it). You told us to keep the invented company as it is, and this uses it unchanged.
 
 **Why a new sentence wins.** In the first version the company founder's own sentence won ("kept from the
 audit"). That told the reader we make a team repeat its boss, and a founder would fairly ask why they'd need a
@@ -483,7 +477,7 @@ connect.
 > The 17% window, a field note →
 
 *"Free" appears once on the page, here. The 60-minute call is the readout call, where the findings are presented
-(A4). The close says "compare" rather than "starts with", because the audit starts with three short questions and
+. The close says "compare" rather than "starts with", because the audit starts with three short questions and
 a 30-minute call. It names the part of the audit this page is about; the audit also looks at the email and CRM
 setup and at how deals are tracked.*
 
@@ -502,7 +496,7 @@ setup and at how deals are tracked.*
 
 ## Numbers and promises on this page
 
-Rule 3 says every number is a decided policy, a sourced figure, or part of a labeled specimen. This is where each
+The voice guide's rule 3 says every number is a decided policy, a sourced figure, or part of a labeled specimen. This is where each
 one stands.
 
 | Number or promise | Where | Kind | Status |
@@ -510,17 +504,17 @@ one stands.
 | Four documents | Sections 3 and 4 | How we work | Stands, as on the round-9 page and the homepage |
 | 17% (Gartner, 2019) | Section 2 | Sourced figure | Stands, as on the homepage and the field note |
 | "Most of the rest" goes on research and talking among themselves | Section 2 | Sourced claim | Check against Gartner's split before it goes live |
-| At least six months; months 1 to 3 the pilot; months 4 to 6 | Head, section 4 | Policy | Decided by you (A2). Showing it on the site waits on decision 2. |
-| "From month 7, if you renew" | Section 4 | Policy | Follows from A2 |
+| At least six months; months 1 to 3 the pilot; months 4 to 6 | Head, section 4 | Policy | Decided by you. Showing it on the site waits on decision 2. |
+| "From month 7, if you renew" | Section 4 | Policy | Follows from your six-month minimum |
 | Buyer calls in month 1, and how many | Section 4 | Method | New. The number is yours to set (decision 5). |
-| One 90-minute session a week in the pilot, CEO and head of sales together | Head, section 4 | What we ask for | Round 9 marked it "Draft, to be confirmed". Needs your yes (decision 4). |
+| Your CEO and head of sales in our working session: every two weeks on Launch, weekly on Growth | Head, section 4 | What we ask for | Follows each package's meeting rhythm in the business model (decision 4) |
 | Two or three versions tested in the pilot | Section 4 | Method | Needs your yes |
 | One new line tested each month from month 4 | Head, section 4 | Cadence | New. Needs your yes. |
 | One training session for the reps | Section 4 | Method | Needs your yes |
 | About two hours a quarter, at the quarterly review | Section 4 | What we ask for | Round 9 draft (GTM Intelligence). Needs your yes. |
 | A new edition of the documents each quarter | Section 4 | Cadence | Round 9 draft ("each quarter, rewritten"). Needs your yes. |
 | A written answer at the end of month 3 if the message isn't the problem | Section 4 | Promise | New. Needs your yes (decision 6). |
-| A 60-minute call | Close | Policy | Decided (Q3, A4) |
+| A 60-minute call | Close | Policy | Decided |
 | "A month before", "every day", "slide 2", "two minutes" | Section 5 | Specimen | Labeled specimen figures for the invented company |
 
 ---
@@ -536,9 +530,8 @@ one stands.
    company, with all four of the audit's answers struck out and a new sentence in their place (recommended). Or
    keep it filled in for Kelwin; if so, at least two cells change anyway, because they go against retainer first
    and "the founding team".
-4. **The numbers in section 4** (the table above). We recommend a weekly session through the pilot, because each
-   one reviews the latest test results as well as the documents. If that is more than you want to ask of a CEO,
-   the sessions can move to every two weeks once the documents are agreed.
+4. **The numbers in section 4** (the table above). The working session keeps each package's rhythm, said the same
+   way everywhere on the site: every two weeks on Launch, weekly on Growth.
 5. **Buyers first, and who runs the buyer calls.** Stage 1 now starts with calls to recent buyers, won and lost.
    How many is yours to set. After that, the buyer calls are one activity, described on GTM Intelligence, and this
    page uses what buyers said. If a package includes Narrative Systems without GTM Intelligence, the calls come
@@ -583,7 +576,7 @@ were wrong, so this time each row says what was found.
 | 14 | Sentence lengths | Openers 20 words or fewer (longest 20, stage 3); body 25 or fewer (longest 25, stage 1's "What you get"). One answer of three words or fewer ("Yes.") |
 | 15 | Reading level | Grade 7.5 on the running copy (Flesch-Kincaid, by script). The specimen table is left out of the score |
 | 16 | Headline plus the sentences under it, restated by a cold reader | Not yet run by someone who didn't write it. Our own restatement: "they write my pitch, test it, rewrite my site and deck, monthly" (12 words) |
-| 17 | A doer and an object in every claim; who sends, calls, publishes | Yes. Reps send the emails, the developer publishes the website, the designer lays out the deck, we make the buyer calls |
+| 17 | A doer and an object in every claim; who sends, calls, publishes | Yes. We send the emails from inboxes in your company's name and your reps take the replies, the developer publishes the website, the designer lays out the deck, we make the buyer calls |
 | 18 | Terms and our names explained at first use | Yes. Retainer, pilot, Narrative OS, positioning, message matrix, call guides, proof list, Channel Playbooks |
 | 19 | Lists of three are real | Yes. Who, what and why in positioning; the three buyers in the specimen; the three stages |
 | 20 | Pronouns point at one thing; no "run it" for a document | Yes. "Runs" appears only in the label "How it runs" and the link "How an engagement runs", both about the service |
@@ -599,7 +592,7 @@ were wrong, so this time each row says what was found.
 | 30 | No sentence repeated from another page | Yes. The four quotes repeat the audit example on purpose, as specimen text for the same invented company |
 | 31 | One spelling, Kelwin alone | Yes, American |
 | 32 | Approved copy changed | None. The homepage's line for this layer stays as approved |
-| 33 | Signed by an editor who didn't write the page | Not yet. The editor who read the first version runs this list again on this one, with the search results attached |
+| 33 | Signed by an editor who didn't write the page | Not yet. We run this list again on this version in a separate read, with the search results attached |
 
 ---
 
@@ -610,10 +603,10 @@ were wrong, so this time each row says what was found.
   now appears in the head and in section 3. "Why we call it a system" and its three parts are gone. The four head
   answers that repeated the sentence above them became four facts the first screen otherwise lacked.
 - **The method holds up.** Buyers are heard in month 1, before anything is written. The specimen's winning
-  sentence is new, not the company founder's. A version test is described as it would happen (reps split their
-  new accounts between versions), and the winner is picked by replies and meetings from the companies you want,
+  sentence is new, not the company founder's. A version test is described as it would happen (we split new
+  accounts between versions), and the winner is picked by replies and meetings from the companies you want,
   not by replies alone.
-- **The facts a buyer asks about are on the page.** Who sends the emails (your reps, from your tool). What happens
+- **The facts a buyer asks about are on the page.** Who sends the emails (we do, from inboxes in your company's name; your reps take the replies). What happens
   monthly (one new line tested) and quarterly (the documents rewritten from buyer calls). What a retainer is.
   What happens if the pilot shows the message isn't the problem (for your yes).
 - **Claims are at their true size.** "Every page, slide, email and script your buyers see" claimed more than we
@@ -623,26 +616,26 @@ were wrong, so this time each row says what was found.
   session", "walk them through" and "the places buyers meet you" are gone. The audit has one name, the System
   Audit.
 
-**Where we didn't follow the editor, and why**
-1. **The retainer's plain meaning.** The editor suggested "a fixed fee each month". During the pilot the fee isn't
-   fixed (about 45% of the retainer, plus a fee per qualified lead and a revenue share), so the page says "a
+**Where we kept the first version, and why**
+1. **The retainer's plain meaning.** The second read suggested "a fixed fee each month". During the pilot the fee isn't
+   fixed (65% of the retainer, plus a fee per held meeting, and a revenue share), so the page says "a
    monthly fee for ongoing work".
-2. **The row under the headline.** The editor asked both to replace the four answers and to drop the row. We kept
+2. **The row under the headline.** The second read asked both to replace the four answers and to drop the row. We kept
    a row of four, as short facts that answer what the first screen didn't (what you give, where it lives, how
-   long, who sends). "What we don't do", which the editor proposed for the row, stays in section 3, where it
+   long, who sends). "What we don't do", which the second read proposed for the row, stays in section 3, where it
    already is.
 3. **"Give the list once."** The head needs the list in summary and section 3 needs it in detail, with who does
    what. The voice guide now allows two places, as long as the second adds something.
-4. **The Gartner sentence.** The editor's version ("Your website, deck and reps speak for you in that time") uses
+4. **The Gartner sentence.** The second read's version ("Your website, deck and reps speak for you in that time") uses
    a metaphor and puts reps in conversations they aren't part of. Ours says where buyers' knowledge comes from,
-   and names competitors and peers as the editor asked.
+   and names competitors and peers as the second read asked.
 5. **"Each quarter something changes."** That is a general claim we can't show. The stage now opens with the
    events that make the documents change: a competitor's new pitch, a feature, new reps.
-6. **The section 4 heading.** The editor proposed "We write your pitch with you, then test and fix it every
+6. **The section 4 heading.** The second read proposed "We write your pitch with you, then test and fix it every
    month." It is now that section's ten-year-old sentence rather than its heading, because "every month" already
    appears twice on the page and the heading's job is to show the three stages.
-7. **The weekly session.** The editor read it as padding. We kept it, and the copy now says what each session is
-   for (the latest test results and the next draft). The number stays yours (decision 4).
+7. **The working session.** The second read took it as padding. We kept it, and the copy now says what each
+   session is for (the latest test results and the next draft). It follows each package's rhythm (decision 4).
 
 ---
 
@@ -745,12 +738,12 @@ fixes, by rule number from the voice guide. Seven were changed after the second 
 - Before: "Rameez / His background is in sales and marketing. Today he is the growth and digital strategy lead at a
   global private-equity group."
 - After: "The founding team's background is in B2B sales and marketing."
-- Fixes: rule 19 (no name), A9 (no employer, no current role).
+- Fixes: rule 19 (no name), your About answer (no employer, no current role).
 
 **14 · About, the closing line**
 - Before: "Rameez reads every audit request."
 - After: "We reply to every audit request within one working day."
-- Fixes: rule 19 and A13 (no name, nobody named as reading the mail), rule 3 (a decided number, from Q3).
+- Fixes: rule 19 and your Contact answer (no name, nobody named as reading the mail), rule 3 (a decided number, from your round-8 answer).
 
 **15 · About, "How an engagement runs"**
 - Before: "After the handover / Your operator runs these. On retainer, we do."
@@ -760,7 +753,7 @@ fixes, by rule number from the voice guide. Seven were changed after the second 
 **16 · Careers, the application**
 - Before: "Join the bench list / When a seat opens, this list is read first."
 - After: "Apply / All six roles are open now. Apply for one below, or tell us which you'd want and why."
-- Fixes: A12 (every role is open; no bench list), rule 1 (a passive line with no doer).
+- Fixes: your Careers answer (every role is open; no bench list), rule 1 (a passive line with no doer).
 
 **17 · Careers, the Systems Engineer role**
 - Before: "The CRM, data and sending setup an install hands over."
@@ -772,7 +765,7 @@ fixes, by rule number from the voice guide. Seven were changed after the second 
   first."
 - After: "We're building an AI platform for B2B sales planning in the Lab. It isn't open yet. Anyone can ask for an
   invitation."
-- Fixes: rule 11 ("day job"), rule 6 ("installs"), A15 (anyone may ask), rule 20. The first version said "Today
+- Fixes: rule 11 ("day job"), rule 6 ("installs"), your Lab answer (anyone may ask), rule 20. The first version said "Today
   the Lab builds the tools we use on client work", which isn't true: you told us in round 8 there are no tools
   yet.
 
@@ -788,7 +781,7 @@ fixes, by rule number from the voice guide. Seven were changed after the second 
 - After: "Three things come only in a package. / They need us running your messaging, email and CRM together, so we
   offer them only as part of a package. The three are the rules for who gets contacted next, testing which message
   gets replies, and the quarterly review that sets the next plan."
-- Fixes: rule 4 ("resonance"), rule 6 (the names become what they do), A3 (a project can now run on a retainer, so
+- Fixes: rule 4 ("resonance"), rule 6 (the names become what they do), your Projects answer (a project can now run on a retainer, so
   the retainer is no longer package-only). Which package includes which of the three is for the business-model
   proposal.
 
@@ -801,7 +794,7 @@ fixes, by rule number from the voice guide. Seven were changed after the second 
   back as a plain label ("Narrative Systems").
 - **Drawings:** inline SVG with the kit's 1px drawing classes, inside a plate with registration marks. Motion runs
   through the section's `init(root, { reduced })`, plays once on entry (slot `.is-play`), and the cleanup clears
-  timers. Reduced motion shows the final state. No figure numbers, no greyed placeholder text, no counts.
+  timers. Reduced motion shows the final state. No figure numbers, no grayed placeholder text, no counts.
 - **Write-in:** the new sentence in the head drawing and in the specimen uses the same write-in as the headlines
   (`lib/turn.js`), so it reads as one family.
 - **Section 2:** a reading spread, one column at lede size, the source in the margin. No strips and no big

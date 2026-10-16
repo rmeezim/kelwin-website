@@ -1,6 +1,6 @@
 # Next steps: locking in the website
 
-Round 10 · for the founder's yes
+Round 10 · for your yes
 
 ## The short answer
 
@@ -26,7 +26,7 @@ review from you, and nothing behind it reopens unless you change a decision.
 
 ### Stage 3 · Lock the message and the voice (this round, then one short follow-up)
 - Approve the voice guide. Its sample is the Narrative Systems page, rewritten.
-- We then write a one-page **message house**:
+- We then write a one-page **message sheet**:
   - who we serve;
   - the problem in their words;
   - what we build;
@@ -36,19 +36,19 @@ review from you, and nothing behind it reopens unless you change a decision.
   Every page's words come from it, so the pages stop contradicting each other.
 
 ### Stage 4 · Lock the look (this round)
-- Approve the artifact language (the animated, engineered drawings) and choose the page turn.
+- Approve the drawing rules and the three drawings, and choose the page turn.
 - We fold them into the shared design kit, so every page gets them the same way.
 
 ### Stage 5 · Write every page before designing it (next round)
-- Every page in the sitemap gets a **copy deck** like Narrative Systems: the sections, the exact words, and the
-  drawing each section needs.
-- One writer drafts. A second editor, who didn't write it, checks it against the voice checklist.
+- Every page in the sitemap gets its words written out in full, like Narrative Systems: the sections, the exact
+  words, and the drawing each section needs.
+- We draft each page, then check it in a separate read against the voice guide's checklist.
 - You review all the copy at once, in one sitting, and approve the words before any page is designed. This is the
   step we skipped before. Most of the "AI-made" and "vague" feedback was about words, and we kept fixing it in
   design.
 
 ### Stage 6 · Design and build, page group by page group
-- Mockups follow the approved copy and the artifact language, in the sitemap's order:
+- Mockups follow the approved words and the drawing rules, in the sitemap's order:
   1. the homepage's new lines;
   2. Engagements;
   3. the three capability pages;
@@ -79,12 +79,13 @@ address of someone who asks for a report. Before launch we need:
 We set these up with you. You only need to create the accounts that must be in Kelwin's name.
 
 ### Stage 8 · Proof (starts with your first pilot)
-Reports is our biggest perception lever, and the only page we can't fill by writing. Three steps:
-- **Every client contract gets a publication clause** (anonymised by default, named with consent). That makes a
+Reports is the page that most shapes how we're seen, and the only page we can't fill by writing. Three steps:
+- **Every client contract gets a publication clause** (anonymized by default, named with consent). That makes a
   report possible.
 - **On day 1 of every pilot we record the baseline** (meetings, pipeline, reply rates), so the report at month 3–6
   has real before-and-after numbers.
-- **We ask the companies behind the audits you've already run** whether an anonymised version can be cleared.
+- **With your yes, we ask the companies behind your past audits** whether we can quote what the audit found,
+  anonymized, in a field note. Reports stays for client case studies with results.
 
 Until then, Reports launches honestly: the report format, and "send me the first report".
 
@@ -94,7 +95,7 @@ The approved pictures rule needs real shots. The shot list is ready:
 - About's portrait card and working session (named shots, no faces of people who haven't agreed);
 - Who We Work With's real shot.
 
-One half-day shoot covers them. Until then the pages carry their labelled stand-ins.
+One half-day shoot covers them. Until then the pages carry their labeled stand-ins.
 
 ### Stage 10 · Launch
 - Search basics: titles and descriptions, sitemap.xml, link previews, redirects from today's addresses.
@@ -116,9 +117,11 @@ One half-day shoot covers them. Until then the pages carry their labelled stand-
   proposed answer.
 
 ## What we need from you now
-- The decisions in this round's review: the sitemap, the business model, the artifacts and the page turn, the
-  voice, and this order.
+- The 16 decisions on this round's review page: the sitemap, the business model, the drawings and the page turn,
+  the voice, this order, and one question about your time.
 - When you're ready:
   - the accounts that must be in Kelwin's name (the domain, the mailboxes, the form service, the CRM);
-  - a lawyer for Privacy and Terms;
+  - a US lawyer and accountant (the lawyer reads Privacy and Terms and drafts the client contract);
+  - Kelwin's company LinkedIn page;
+  - your yes to ask the companies behind your past audits about quoting what the audit found;
   - a date for the shoot.

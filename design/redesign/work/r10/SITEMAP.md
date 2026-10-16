@@ -2,11 +2,11 @@
 
 Round 10 · 16 October 2026 · a proposal for your yes
 
-In round 9 you asked for the whole sitemap: every page we have made and every page we still need, what to add, what to leave out, what to remove and what to keep. You asked that each page carry its purpose, how it helps lead generation, and how it builds the way Kelwin is seen, so that nothing is added or removed for its own sake. This is that map. It was built from an inventory of every page as it stands (the public site, the working version and the round-9 mockups), three complete drafts, and a review that picked one and borrowed the best of the other two. Your round-9 answers and the round-10 decisions (A1–A28) are binding throughout.
+In round 9 you asked for the whole sitemap: every page we have made and every page we still need, what to add, what to leave out, what to remove and what to keep. You asked that each page carry its purpose, how it helps lead generation, and how it builds the way Kelwin is seen, so that nothing is added or removed for its own sake. This is that map. It was built from an inventory of every page as it stands (the public site, the unpublished draft of the site and the round-9 mockups) and three complete drafts, of which we chose one and borrowed the best of the other two. Your round-9 answers are binding throughout.
 
 ## 1 · The short answer
 
-- **26 pages at launch.** That is the 25 that exist today in some form (20 designed, 5 written as copy), plus one new page, **Engagements**. Two small extras sit beside them: a confirmation page the sign-up emails link to, and a forward at /capabilities.
+- **26 pages at launch:** 20 already designed, 5 project pages written but not yet designed, and one brand-new page, **Engagements**. Two small extras sit beside them: a confirmation page the sign-up emails link to, and a forward at /capabilities.
   - **New (6):** Engagements, and the five project pages whose copy already exists.
   - **Reworked (13):** the homepage (new lines only), the three layer pages, Projects, Who We Work With, About, Careers, The Lab, Reports, Contact, Privacy and Terms.
   - **Kept as approved, with small changes at most (7):** Insights, the three field notes, the System Audit, Email deliverability and the page-not-found.
@@ -14,12 +14,12 @@ In round 9 you asked for the whole sitemap: every page we have made and every pa
 - **Nothing is cut that a buyer would miss.** What goes is copy and clutter: the handover-first lines, your name, “LLC”, “no open seats”, the Lab's invented instruments, the nine-page readout on Reports, the specimen case studies with invented numbers, and the London clock.
 - **Some pages wait until they're real:** individual reports, market pages, the Revenue Entropy Index, package pages, role pages and Sales narrative. Each has a stated condition.
 - **The site starts keeping leads, quietly.** The two doors stay. Five honest sign-ups are added, and the follow-up is written by people. That needs a form service, an email list, a light CRM and cookie-free analytics at launch, a calendar soon after, and Privacy rewritten the same day. Without them, Careers can't take a CV and Reports can't keep the address of someone who asks for one.
-- **Prices:** every page is built with no prices, your standing answer, until the pricing proposal is approved. Each page that would change has its three versions ready.
-- **What we need from you:** the decisions in section 9. Five of them come before any rebuild.
+- **Prices:** every page is built with no prices, your standing answer, until you choose one of the three ways to show prices in the business model. Each page that would change has a version ready for each way.
+- **What we need from you:** two decisions, answered on the review page: approve the sitemap, and say whether the site may store what visitors send. Section 9 lists what is asked later, and when.
 
 ## 2 · How we chose
 
-The lean, premium firm. Buyers choose Kelwin for its judgement, not its volume, so the site should feel like the firm: few pages, each one deep. The homepage makes the whole argument once. An interior page exists only where a serious buyer needs more depth before saying yes, and each one answers a single question:
+The lean, premium firm. Buyers choose Kelwin for its judgment, not its volume, so the site should feel like the firm: few pages, each one deep. The homepage makes the whole argument once. An interior page exists only where a serious buyer needs more depth before saying yes, and each one answers a single question:
 
 - What do you build? The three capability pages.
 - What does working with you involve, and what does it commit me to? Engagements.
@@ -35,25 +35,25 @@ Every page passes three tests:
 
 1. A serious buyer would miss it if it were gone.
 2. It ends in one of the two doors: the red System Audit, or the quiet Talk to the team.
-3. It says nothing we can't stand behind today (rule 7).
+3. It says nothing we can't stand behind today.
 
 Nothing is added for search engines, to copy other firms' sites, or to look bigger. When a gap needs filling, it goes into the page the buyer is already reading. A premium advisory site normally has 17 things Kelwin lacks today. Only one becomes a new page (Engagements). The rest become sections of existing pages or quiet sign-up fields, or wait as later pages until there is something real to show.
 
 The site does start collecting leads, quietly. It keeps one red door and one quiet door. It adds five honest sign-ups: the next field note, the first report, the Lab invitation, “Tell me when the Index is out” and “Tell me when it fits”. Behind them sits a follow-up written by people. It never asks for an email on every page, and it never puts a price behind a form.
 
-The result is 26 pages at launch: the 25 that exist today in some form, plus Engagements. Two small extras sit beside them: a confirmation page the sign-up emails link to, and a forward at /capabilities.
+The result is 26 pages at launch: 20 already designed, 5 project pages written but not yet designed, and Engagements. Two small extras sit beside them: a confirmation page the sign-up emails link to, and a forward at /capabilities.
 
 ### The approaches we weighed
 
-We drew up three complete sitemaps and had a fourth reviewer choose between them:
+We drew up three complete sitemaps, compared them and chose one:
 
 - The lean firm (chosen): few pages, each one deep; one new page.
 - The demand engine: the site as Kelwin's own pipeline system, with about 20 new addresses. It had three situation landing pages, three comparison pages, six market pages, a self-check quiz, an Index questionnaire, subscribe pages, and an email field on every page. Its follow-up discipline was right, and we kept it. The rest commits a small founding team to a writing and upkeep load it can't keep, and it reads like a demand-generation agency, the opposite of the perception you want.
-- The productized offer: the site organised as a menu of what you can buy, with Launch, Growth and Scaling as top-bar items, separate package pages, six role pages and a price guide sent by email. It told the offer most clearly. But it reads like SaaS pricing, it sidelines the capability pages that carry the proprietary depth, and it leans toward showing prices against your standing answer.
+- The productized offer: the site organized as a menu of what you can buy, with Launch, Growth and Scaling as top-bar items, separate package pages, six role pages and a price guide sent by email. It told the offer most clearly. But it reads like SaaS pricing, it sidelines the capability pages that carry the proprietary depth, and it leans toward showing prices against your standing answer.
 
 What the lean map borrowed from the other two:
 
-- The Lab stays its own page (you moved it under The Firm in round 8, and A15 asked for a tease, not a removal).
+- The Lab stays its own page (you moved it under The Firm in round 8, and in round 9 you asked for a simple “coming soon”, not a removal).
 - On Engagements: the six-month ruler drawing; the method's four steps placed on the months; a short FAQ about terms; one section on other kinds of help.
 - The “Ask about Launch” and “Ask for this project” links that open the contact form with the choice made.
 - The follow-up rules.
@@ -81,7 +81,7 @@ Every address, grouped as the menu groups them. **Screen** means a confirmation 
 ├─ /#s-system                                     The system (a section)            KEEP     launch
 └─ /#methodology                                  Methodology (leaves the menu)     MERGED   launch
 CAPABILITIES                                      a menu group
-├─ /capabilities                                  A forward to /#s-system           MERGED   launch
+├─ /capabilities                                  No page: sends visitors to the homepage's system section  MERGED   launch
 ├─ /capabilities/narrative-systems                Narrative Systems                 REWORK   launch
 ├─ /capabilities/gtm-infrastructure               GTM Infrastructure                REWORK   launch
 └─ /capabilities/gtm-intelligence                 GTM Intelligence                  REWORK   launch
@@ -143,7 +143,7 @@ Each card gives the page's purpose, its part in lead generation, its part in how
 
 **Lead generation.** The site's busiest door. It has two red “Request a System Audit” buttons (the hero and the red final call), each with a quiet “Talk to the team” beside it. Every section offers a curious reader one step deeper: a layer page, a field note, Who We Work With. Section 07, rewritten for retainer-first, now names the shape of an engagement (pilot, scale, renewal) and links to Engagements. A convinced reader can then see the commitment before asking for the audit.
 
-**Perception.** Sets the tone for the whole site: an architecture firm with a thesis and sourced evidence, not an agency selling leads. The film, the drawn system and the letter do the premium work here, which lets the interior pages stay plain-spoken.
+**Perception.** Sets the tone for the whole site: an architecture firm with a thesis and sourced evidence. The film, the drawn system and the letter do the premium work here, which lets the interior pages stay plain-spoken.
 
 **Audience.** Founders and CEOs of B2B companies with real revenue and no system under it; heads of sales, marketing and RevOps; anyone one of them forwards the link to.
 
@@ -151,16 +151,16 @@ Each card gives the page's purpose, its part in lead generation, its part in how
 
 **How we'd know it works.** The share of homepage visitors who reach /audit, the most important number on the site. Also: how many scroll to the final call, and which section's onward link is used most. All three come from cookie-free analytics.
 
-**Waits on.** Your word on each new line below. Approved homepage copy changes only on your instruction. A1 and A7 give that instruction “wherever appropriate”, but each new line still comes back to you. Also: the voice guide; the visitor's own local time in the footer (A25); and Engagements, which must exist before the new link goes in.
+**Waits on.** Your word on each new line below. Approved homepage copy changes only on your instruction. Your round-9 answers (retainer first, no names) give that instruction “wherever appropriate”, but each new line still comes back to you. Also: the voice guide; the visitor's own local time in the footer; and Engagements, which must exist before the new link goes in.
 
 **Notes.**
 
 Copy changes only; the structure and order stay as approved.
 
-1. Section 07, “If we leave, the system stays.”, is reframed for retainer-first (A1). Proposed line: “Everything we set up lives in your accounts. You own it, and we run it.” It names the shape (a three-month pilot, three months of scale, then renewal) and links to Engagements. The six assets keep “Owned by you”, which stays true.
+1. Section 07, “If we leave, the system stays.”, is reframed for retainer-first. Proposed line: “Everything we set up sits in your accounts and in your name, and we run it with you every month.” It names the shape (a three-month pilot, the full run to month 6, then renewal) and links to Engagements. The six assets keep “Owned by you”, which stays true.
 2. “Not for: Rent-it-forever — Dependency by design” is cut or replaced, because Kelwin now leads with the retainer.
-3. Section 08's “The fourth is the operating retainer” is rewritten for the pilot (A28). Its four steps are the same four drawn on the Engagements timeline, so the two pages tell one story.
-4. The letter is signed “The founding team”. Your name and its link to About go (A7).
+3. Section 08's “The fourth is the operating retainer” is rewritten for the pilot. Its four steps are the same four drawn on the Engagements timeline, so the two pages tell one story.
+4. The letter is signed “The founding team”. Your name and its link to About go.
 5. The fit link “Three situations, told from inside” takes Who We Work With's new headline.
 6. “Find your weakest layer” in the system section keeps its approved link to the audit.
 
@@ -186,7 +186,7 @@ Already honest as it stands: the four evidence numbers are third-party and sourc
 
 **Waits on.** Engagements, built; your yes to the menu change.
 
-**Notes.** The section itself stays. Its only change is the A28 line in the homepage card. Two other homepage sections stay menu destinations: the system section (“The full stack, on one page”, now reached through the /capabilities forward) and the letter (renamed “Why Kelwin exists” in The Firm menu).
+**Notes.** The section itself stays. Its only change is the new line for the pilot, in the homepage card. Two other homepage sections stay menu destinations: the system section (“The full stack, on one page”, now reached through the /capabilities forward) and the letter (renamed “Why Kelwin exists” in The Firm menu).
 
 ---
 
@@ -220,9 +220,9 @@ Already honest as it stands: the four evidence numbers are third-party and sourc
 
 **Purpose.** Answers plainly: what does Kelwin build for a company's story, and how do we keep it current while we run it? It shows the four documents of the Narrative OS (the company's messaging, written down) and the message matrix, for a buyer weighing this layer.
 
-**Lead generation.** A buyer who recognised “everyone tells it differently” on the homepage gets enough depth here to justify the audit. The close names what the audit's readout will show for this layer. A buyer not ready for a package is pointed to Positioning and messaging, the smaller first step, so the visit isn't lost.
+**Lead generation.** A buyer who recognized “everyone tells it differently” on the homepage gets enough depth here to justify the audit. The close names what the audit's readout will show for this layer. A buyer not ready for a package is pointed to Positioning and messaging, the smaller first step, so the visit isn't lost.
 
-**Perception.** Narrative work as engineering, not copywriting: documents, rules, and a matrix that governs every channel. This is where “proprietary” has to be visible, through the moving artifacts you asked for (A17).
+**Perception.** Narrative work as engineering, not copywriting: documents, rules, and a matrix that governs every channel. This is where “proprietary” has to be visible, through the moving artifacts you asked for.
 
 **Audience.** Founders who still carry the pitch themselves; heads of marketing; the internal champion who has to retell the story to a CFO.
 
@@ -230,18 +230,18 @@ Already honest as it stands: the four evidence numbers are third-party and sourc
 
 **How we'd know it works.** Clicks to /audit from this page. How far readers get past the matrix. Clicks to the project page, which signal a smaller buyer we would otherwise lose.
 
-**Waits on.** The artifact language and its motion; the voice guide (this page is its worked rewrite); the retainer-first reframe (A1); Engagements, which replaces the old link to About's draft.
+**Waits on.** The artifact language and its motion; the voice guide (this page is its worked rewrite); the retainer-first reframe; Engagements, which replaces the old link to About's draft.
 
 **Notes.**
 
 Round-9 fixes:
 
-- Say plainly what this is in the first screen (A18).
+- Say plainly what this is in the first screen.
 - Give “How it runs” one clear order of headings: on the retainer, we run it with your team.
-- Cut “Nothing needs a retainer to keep running” and every handover-first line (A1).
-- Take “Kelwin, LLC” off the specimen header (A5).
+- Cut “Nothing needs a retainer to keep running” and every handover-first line.
+- Take “Kelwin, LLC” off the specimen header.
 
-The matrix stays filled in for Kelwin itself and labelled Specimen.
+The matrix stays filled in for Kelwin itself and labeled Specimen.
 
 ---
 
@@ -261,11 +261,11 @@ The matrix stays filled in for Kelwin itself and labelled Specimen.
 
 **How we'd know it works.** Clicks to /audit. Clicks to each infrastructure project. Fewer first calls spent explaining what the CRM blueprint is.
 
-**Waits on.** The artifact language and its motion; the voice guide; the A1 reframe; the CRM blueprint project page, which answers your question “what is the CRM blueprint?”.
+**Waits on.** The artifact language and its motion; the voice guide; the retainer-first reframe; the CRM blueprint project page, which answers your question “what is the CRM blueprint?”.
 
 **Notes.**
 
-Round-9 fixes (A19):
+Round-9 fixes:
 
 - A picture, or a moving drawing, replaces the sheet under the headline.
 - “Order of work” becomes several short sections, each with its own moving drawing.
@@ -285,11 +285,11 @@ Two lines change:
 
 `/capabilities/gtm-intelligence` · **Keep, reworked, at launch** · Sits under: Capabilities (a menu group; no page at /capabilities)
 
-**Purpose.** Explains how the system learns every quarter, simply enough for a ten-year-old (A20). Every week we check which deals are moving and ask buyers why they said yes or no. Every three months we say what to do more of and what to stop. It also says who runs that work: on the retainer, we do.
+**Purpose.** Explains how the system learns every quarter, simply enough for a ten-year-old. Every week we check which deals are moving and ask buyers why they said yes or no. Every three months we say what to do more of and what to stop. It also says who runs that work: on the retainer, we do.
 
 **Lead generation.** This page sells the retainer, because it shows why the work doesn't end once things are set up. It offers the Win/loss interviews project as a smaller start, and The Lab as what this work is building toward.
 
-**Perception.** Results that build quarter on quarter, not one-off campaigns. Of the three layers, this one carries retainer-first (A1) most naturally. It is also the bridge to Kelwin's bigger goal, the platform.
+**Perception.** Results that build quarter on quarter, not one-off campaigns. Of the three layers, this one carries retainer-first most naturally. It is also the bridge to Kelwin's bigger goal, the platform.
 
 **Audience.** CEOs and revenue leaders tired of rebuilding the plan every quarter, and the board members and investors who read over their shoulder.
 
@@ -297,9 +297,9 @@ Two lines change:
 
 **How we'd know it works.** Clicks to /audit and to Engagements. How many readers reach the end of the quarter drawing. Clicks to the Win/loss project.
 
-**Waits on.** The artifact language, so the drawing under the headline reveals step by step; the voice guide; your decision on client data (Q11), so the line about the Lab promises nothing it can't.
+**Waits on.** The artifact language, so the drawing under the headline reveals step by step; the voice guide; your decision on client data, so the line about the Lab promises nothing it can't.
 
-**Notes.** Rewrite “What happens next quarter” so a ten-year-old could follow it. The drawing under the headline builds step by step, as a process, instead of growing into place (A20). The line about the Lab links to /the-lab. It must not suggest that client data feeds the platform, which is undecided (Q11). The Rebuild Sequence stays labelled as a specimen.
+**Notes.** Rewrite “What happens next quarter” so a ten-year-old could follow it. The drawing under the headline builds step by step, as a process, instead of growing into place. The line about the Lab links to /the-lab. It must not suggest that client data feeds the platform, which is undecided. The Rebuild Sequence stays labeled as a specimen.
 
 ---
 
@@ -311,11 +311,11 @@ Two lines change:
 
 **Purpose.**
 
-The one page that answers “what does working with you actually involve?”. Today none of it is public; it exists only as a draft on About and in your notes (A2, A28). In order, the page covers:
+The one page that answers “what does working with you actually involve?”. Today none of it is public; it exists only as a draft on About and in your notes. In order, the page covers:
 
-- What Kelwin is to a client: retainer first. We set the system up in your accounts and run it with you every month, and we hand it over only if you ask (A1).
-- The two ways in. Every package starts with the free audit. A project can start from a scoped enquiry instead, with the week-one stop in place of the audit, and grows into Launch at its 30-day check.
-- The six months, drawn. The method's four steps (Diagnose, Architect, Install, Calibrate) sit on one timeline: the audit, then the pilot (months 1–3), the scale phase (months 4–6) and renewal (3–6 months, one year or two).
+- What Kelwin is to a client: retainer first. We set the system up in your accounts and run it with you every month, and we hand it over only if you ask.
+- The two ways in. Every package starts with the free audit. A project starts from an enquiry on Contact: a 30-minute call, a written scope, the stop after week one, then the build, with a check 30 days on. After that comes upkeep, or the free audit and then a package.
+- The six months, drawn. The method's four steps (Diagnose, Architect, Install, Calibrate) sit on one timeline: the audit, then the pilot (months 1–3), the full run (months 4–6) and renewal for 6, 12 or 24 months, or month to month.
 - The three packages, Launch, Growth and Scaling: what each includes, layer by layer, and how often we meet.
 - Your accounts, your data: what you own, what we can see, and how it is held.
 - Other kinds of help: an agency, a senior hire, a fractional leader, and when each is the better choice.
@@ -323,7 +323,7 @@ The one page that answers “what does working with you actually involve?”. To
 
 **Lead generation.** It answers the questions that stop a ready buyer from requesting the audit: how long, how big a commitment, who carries the risk, and what they will own. The pilot is a conversion argument in itself, because the risk is shared in the first three months. Each package has a quiet “Ask about Launch” (or Growth, or Scaling) that opens the contact form with that package already chosen. Buyers who can't commit to six months are sent to Projects rather than lost. The free audit isn't cheapened, because the buyer reaches it already knowing the shape of the commitment.
 
-**Perception.** A firm with a real operating model and commercial discipline: a minimum term, a pilot, renewals and a fixed rhythm of reviews. Sharing the risk says “we're confident”. A six-month minimum says “we don't do one-off campaigns”. Retainer-first reads as stewardship, not dependency, because ownership is spelled out on the page. And saying when an agency or a hire is the better choice is what makes “not a lead-generation agency” believable.
+**Perception.** A firm with a real operating model and commercial discipline: a minimum term, a pilot, renewals and a fixed rhythm of reviews. Sharing the risk says “we're confident”. A six-month minimum says “we don't do one-off campaigns”. Retainer first reads as stewardship, because ownership is spelled out on the page. And saying when an agency or a hire is the better choice is what makes “not a lead-generation agency” believable.
 
 **Audience.** Buyers who have read the homepage and a layer page; the economic buyer (CEO or CFO) the champion forwards it to; procurement-minded readers.
 
@@ -331,27 +331,21 @@ The one page that answers “what does working with you actually involve?”. To
 
 **How we'd know it works.** The share of audit requests whose visitor read this page first. Clicks from here to /audit and to /projects. Package enquiries through Contact, and which package is asked about most. Fewer first calls spent explaining terms (a one-line note from the team after each call).
 
-**Waits on.** The business-model research: what each package includes, its cadence and its maximum scope, and the pilot terms. Your choice of price variant, and your decision on an exit after the pilot. The lifecycle redesign (A28). What the contract will actually promise about client data. The voice guide and the artifact language.
+**Waits on.** The business-model research: what each package includes, its cadence and its maximum scope, and the pilot terms. How you decide to show prices, and your decision on an exit after the pilot. The lifecycle redesign. What the contract will actually promise about client data. The voice guide and the artifact language.
 
 **Notes.**
 
-Prices come in three variants. Until the pricing proposal is approved, the page is built as C, your standing answer (“keep them off the site”):
-
-- A, prices shown: each package with its monthly range; the pilot at about 45% of the retainer, plus a per-lead fee and a capped revenue share; renewal terms.
-- B, a floor only: “Engagements start from $8,000 a month”. Packages are described by what they include. The pilot is explained in words: a reduced retainer for three months, with part of our fee tied to the leads and revenue it produces.
-- C, no prices (the default): packages by contents and cadence; the pilot and the minimum explained in words; “Priced in your proposal, after the readout.”
-
-For the pricing team: Launch's pilot (about 45% of $8,000, roughly $3,600 a month) costs about the same as a project's floor ($3,500–4,000 a month). If both prices are ever shown, buyers will compare them directly.
+Prices follow the three ways to show prices in the business model (1, 2 and 3). Until you decide, the page is built as 1: the packages by contents and cadence, the six-month minimum and the pilot explained in words, and “We tell you where engagements start on the first call.”
 
 The exit after the pilot, two versions. If you offer it, one plain sentence gives its conditions. If not, the page states the six-month minimum and presents the reduced pilot as the shared risk.
 
-The engineered moment (A17) is a six-month ruler drawn above the three layers. The pilot is shaded, the scale phase solid, and renewal dotted. Choosing a package lights up the services it includes in each layer, so the commercial page becomes a drawing rather than a wall of terms.
+The engineered moment is a six-month ruler drawn above the three layers. The pilot is shaded, the full run solid, and renewal dotted. Choosing a package lights up the services it includes in each layer, so the commercial page becomes a drawing rather than a wall of terms.
 
 Questions about terms, a short FAQ: the minimum term; why the pilot costs less; what you own; tools and data licensed in your name (approved); what happens if you ask for the handover; renewal lengths. Questions about cost on the audit page link here. The audit keeps its approved six questions.
 
 Other kinds of help, one section rather than separate pages. It covers a lead-generation agency, a senior in-house hire and a fractional revenue leader. For each: what it commits to, what you own at the end, who runs it, and when it is the better choice. It compares kinds of help, never named firms, and claims no results for either side.
 
-Your accounts, your data, in place of a separate data page. It says only what is true now: read-only access to your CRM during the audit; tools and data licensed in your name; everything we build lives in your accounts; handover on request. Nothing about the Lab using client data until you decide (Q11).
+Your accounts, your data, in place of a separate data page. It says only what is true now: read-only access to your CRM during the audit; tools and data licensed in your name; everything we build lives in your accounts; handover on request. Nothing about the Lab using client data until you decide.
 
 Each package is a section of this page that other pages can link to directly. Separate package pages wait (see the next card).
 
@@ -387,9 +381,9 @@ Honest before proof: no results promised, no client counts, and package contents
 
 `/projects` · **Keep, reworked, at launch** · Sits under: / (the foot of the Capabilities menu, and the footer)
 
-**Purpose.** Says plainly what this is (A21): if you need one thing fixed, we can do just that one thing. Six projects, each one piece of the system, for companies with one clear problem or not ready for a package. Each says what is in it, what is not, and what the client keeps. A project can run once, or every month on a retainer, and it can grow into a package (A3).
+**Purpose.** Says plainly what this is: if you need one thing fixed, we can do just that one thing. Six projects, each one piece of the system, for companies with one clear problem or not ready for a package. Each says what is in it, what is not, and what the client keeps. A project can run once, or every month on a retainer, and it can grow into a package.
 
-**Lead generation.** Catches the buyer who would otherwise leave thinking Kelwin only sells the whole system. Every project enquiry arrives as a named lead with the project already chosen. This is the second way in: a project starts from an enquiry, not the audit. We reply with a written scope, and the stop after week one takes the audit's place. At the 30-day check, the conversation turns to Launch.
+**Lead generation.** Catches the buyer who would otherwise leave thinking Kelwin only sells the whole system. Every project enquiry arrives as a named lead with the project already chosen. This is the second way in: an enquiry on Contact, a 30-minute call, a written scope, the stop after week one, then the build, with a check 30 days on. After that comes upkeep, or the free audit and then a package.
 
 **Perception.** The craft in miniature. Even a small piece of work is scoped in writing, with a stop after week one and a check 30 days on. It shows Kelwin isn't all-or-nothing, while the full system stays the preferred path.
 
@@ -399,19 +393,15 @@ Honest before proof: no results promised, no client counts, and package contents
 
 **How we'd know it works.** Project enquiries a month, by project. The share of project clients who move to a package within two quarters. Visitors who go from Projects to Engagements.
 
-**Waits on.** The price variant. The A3 copy fix. A “project” reason on the contact form (the working version doesn't have one yet). The five new project pages.
+**Waits on.** How you decide to show prices. The fix to “A single project ends at handover”. A “project” reason on the contact form (the draft has none yet). The five new project pages.
 
 **Notes.**
 
-Fix “A single project ends at handover, with no retainer”. Projects can run monthly and grow into a package (A3).
+Fix “A single project ends at handover, with no retainer”. Projects can run monthly and grow into a package.
 
-Prices, three variants (built as C until the pricing proposal is approved):
+Prices follow the three ways to show prices in the business model (1, 2 and 3). Until you decide, the page is built as 1: scope only, and “Fixed fee, set in the written scope before work starts.”
 
-- A: a starting price on each project;
-- B: “Projects start from $3,500 a month”, said once, on this page only;
-- C: scope only, priced in the written scope (today's page).
-
-You confirmed the line-up (“Yes, as listed”), so the “Proposed, to be confirmed” labels come off. The written scope under the headline stays labelled Specimen; your round-9 question on its “What you give” line is asked again at the rebuild. If a project page isn't built by go-live, its row opens in place and nothing links to a missing page.
+You confirmed the line-up (“Yes, as listed”), so the “Proposed, to be confirmed” labels come off. The written scope under the headline stays labeled Specimen; your round-9 question on its “What you give” line is asked again at the rebuild. If a project page isn't built by go-live, its row opens in place and nothing links to a missing page.
 
 ---
 
@@ -431,15 +421,15 @@ You confirmed the line-up (“Yes, as listed”), so the “Proposed, to be conf
 
 **How we'd know it works.** Project enquiries that name this page. Arrivals from the deliverability field note. Clicks to the GTM Infrastructure layer.
 
-**Waits on.** The contact form's “project” reason; the price variant (variant A only).
+**Waits on.** The contact form's “project” reason; how you decide to show prices (only the full rate card puts a price on this page).
 
 **Notes.**
 
-Approved (A10). Before launch:
+Approved. Before launch:
 
-- “Kelwin, LLC” comes off the specimen header (A5);
-- “Where it leads” adds that the project can run monthly and grow into a package (A3);
-- any “after handover” wording is reframed for retainer-first (A1).
+- “Kelwin, LLC” comes off the specimen header;
+- “Where it leads” adds that the project can run monthly and grow into a package;
+- any “after handover” wording is reframed for retainer-first.
 
 Kelwin's own email must pass the checks this page describes, because a buyer will look.
 
@@ -453,7 +443,7 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 **Lead generation.** Catches companies approaching a raise, a launch or a first sales hire whose every message still runs through the founder. That moment comes before they are ready for a package. The project leads into the Narrative Systems layer.
 
-**Perception.** Narrative as a document with rules (“Words we use, words we don't”), not a branding exercise. It shows the Kelwin difference in a small piece of work.
+**Perception.** Narrative as a document with rules (“Words we use, words we don't”). It shows the Kelwin difference in a small piece of work.
 
 **Audience.** Founders before a raise, a launch or a first sales hire; heads of marketing.
 
@@ -461,9 +451,9 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 **How we'd know it works.** Enquiries for this project. Clicks onward to Narrative Systems. Projects that become a Launch package.
 
-**Waits on.** The copy written in round 9 (COPY.md); the voice guide; the artifact language; the page design, built on Email deliverability's approved template; the price variant (variant A only).
+**Waits on.** The copy written in round 9; the voice guide; the artifact language; the page design, built on Email deliverability's approved template; how you decide to show prices (only the full rate card puts a price on this page).
 
-**Notes.** The specimen pages are filled in for Kelwin itself and labelled; “Kelwin, LLC” never appears. The one-line “handover session” is reframed per A1 (handover on request). “Where it leads” names the package it can grow into, not only the layer (A3).
+**Notes.** The specimen pages are filled in for Kelwin itself and labeled; “Kelwin, LLC” never appears. The one-line “handover session” is reframed for retainer first (handover on request). “Where it leads” names the package it can grow into, not only the layer.
 
 ---
 
@@ -483,9 +473,9 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 **How we'd know it works.** Enquiries for this project. Clicks onward to GTM Infrastructure.
 
-**Waits on.** The copy in COPY.md; the voice guide; the artifact language; the price variant (variant A only).
+**Waits on.** The copy written in round 9; the voice guide; the artifact language; how you decide to show prices (only the full rate card puts a price on this page).
 
-**Notes.** Data subscriptions are licensed in the client's name (approved in round 9). The values in the signal table are labelled as working settings, never as results. This is where list-building work like the Clay tables you mentioned lives.
+**Notes.** Data subscriptions are licensed in the client's name (approved in round 9). The values in the signal table are labeled as working settings, never as results. This is where list-building work like the Clay tables you mentioned lives.
 
 ---
 
@@ -493,7 +483,7 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 `/projects/crm-blueprint` · **New, at launch** · Sits under: /projects
 
-**Purpose.** One project: a written plan for how the client's CRM should work (the deal stages, the required fields, who owns what), built into the CRM with clean-up rules that run on a schedule. This page is also the plain answer to your round-9 question, “what is the CRM blueprint?” (A19).
+**Purpose.** One project: a written plan for how the client's CRM should work (the deal stages, the required fields, who owns what), built into the CRM with clean-up rules that run on a schedule. This page is also the plain answer to your round-9 question, “what is the CRM blueprint?”.
 
 **Lead generation.** Catches the leader whose board number and CRM number disagree: a frequent and urgent trigger. It leads into GTM Infrastructure, where the blueprint becomes the record everything else runs on.
 
@@ -505,9 +495,9 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 **How we'd know it works.** Enquiries for this project. Arrivals from GTM Infrastructure, which links here to explain the blueprint.
 
-**Waits on.** The copy in COPY.md; your decision on the name; the voice guide; the artifact language; the price variant (variant A only).
+**Waits on.** The copy written in round 9; your decision on the name; the voice guide; the artifact language; how you decide to show prices (only the full rate card puts a price on this page).
 
-**Notes.** You didn't recognise the name in round 9, so the first line says in plain words what the blueprint is. A plainer name is worth your decision, for example “CRM setup plan”. The specimen shows the clean-up rules and “Who owns what” rather than the stages, so it doesn't repeat GTM Infrastructure. Roles are named, never people.
+**Notes.** You didn't recognize the name in round 9, so the first line says in plain words what the blueprint is. A plainer name is worth your decision, for example “CRM setup plan”. The specimen shows the clean-up rules and “Who owns what” rather than the stages, so it doesn't repeat GTM Infrastructure. Roles are named, never people.
 
 ---
 
@@ -527,7 +517,7 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 **How we'd know it works.** Enquiries for this project. Clicks onward to GTM Intelligence.
 
-**Waits on.** The copy in COPY.md; the voice guide; the artifact language; the price variant (variant A only).
+**Waits on.** The copy written in round 9; the voice guide; the artifact language; how you decide to show prices (only the full rate card puts a price on this page).
 
 **Notes.** The specimen shows the guide's structure and our own five questions, never a buyer's answers.
 
@@ -549,9 +539,9 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 **How we'd know it works.** Readout calls that end in this project rather than no deal. Clients of this project who later take a package.
 
-**Waits on.** Engagements, which replaces this page's link to About's draft; the copy in COPY.md; the price variant (variant A only).
+**Waits on.** Engagements, which replaces this page's link to About's draft; the copy written in round 9; how you decide to show prices (only the full rate card puts a price on this page).
 
-**Notes.** Here the “owner after handover” column stays true, because this project is for teams that run the system themselves. A1 doesn't bend it.
+**Notes.** Here the “owner after handover” column stays true, because this project is for teams that run the system themselves. Retainer first doesn't change that.
 
 ---
 
@@ -571,9 +561,9 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 **How we'd know it works.** Not applicable until it is listed.
 
-**Waits on.** Delivery capacity you confirm, or the Narrative Architect role filled (A3).
+**Waits on.** Delivery capacity you confirm, or the Narrative Architect role filled.
 
-**Notes.** Not on the projects page at launch and not linked anywhere. Its copy already exists in COPY.md.
+**Notes.** Not on the projects page at launch and not linked anywhere. Its copy was written in round 9.
 
 ---
 
@@ -585,21 +575,21 @@ Kelwin's own email must pass the checks this page describes, because a buyer wil
 
 **Purpose.**
 
-Shows who is behind Kelwin without naming anyone (A7, A16):
+Shows who is behind Kelwin without naming anyone:
 
 - the thesis: revenue is an architectural problem;
 - the philosophy: the four rules, each with its one line;
 - a brief, true history;
 - the frustration we exist to end: growth that has to be rebuilt every few quarters;
-- the founding team, shown as labelled photograph placeholders;
+- the founding team, shown as labeled photograph placeholders;
 - the background the firm is built on: B2B sales and marketing;
 - one line on The Lab, with a link.
 
 **Lead generation.** The trust check before the audit, often read by the person who signs the budget. It ends on the red door and offers two other routes: Careers (six roles open) and The Lab.
 
-**Perception.** A firm with a thesis and a bigger goal (A8): a founding team, a platform in the making, and six roles open. Never one person, and nothing untrue.
+**Perception.** A firm with a thesis and a bigger goal: a founding team, a platform in the making, and six roles open. Never one person, and nothing untrue.
 
-**Audience.** Economic buyers, sceptics, candidates and investors doing due diligence.
+**Audience.** Economic buyers, skeptics, candidates and investors doing due diligence.
 
 **Doors.** Main: Request a System Audit → /audit. Second: Talk to the team → /contact. Onward: Why Kelwin exists (the homepage letter); Careers; The Lab.
 
@@ -611,14 +601,14 @@ Shows who is behind Kelwin without naming anyone (A7, A16):
 
 Remove:
 
-- your name, “Why he started Kelwin” (it becomes “Why Kelwin exists”) and “Rameez reads every audit request” (A7, A8);
-- your current employer and role (A9);
-- “The exit test” as worded (A1);
-- the working version's registry (“Fixed scope, exit built in”, A2), its signed memo, and the portrait whose image file is missing.
+- your name, “Why he started Kelwin” (it becomes “Why Kelwin exists”) and “Rameez reads every audit request”;
+- your current employer and role;
+- “The exit test” as worded;
+- the draft's registry (“Fixed scope, exit built in”), its signed memo, and the portrait whose image file is missing.
 
 Move: “How an engagement runs” goes to Engagements, and About links there.
 
-Honest: the photograph placeholders are labelled “Photographs to come” and are never filled with stock faces. No headcount. The history uses only facts you confirm, for example: founded in 2026; registered in Delaware; address New York, New York, USA. The background reads “The founding team's background is in B2B sales and marketing.”
+Honest: the photograph placeholders are labeled “Photographs to come” and are never filled with stock faces. No headcount. The history uses only facts you confirm, for example: founded in 2026; registered in Delaware; address New York, New York, USA. The background reads “The founding team's background is in B2B sales and marketing.”
 
 ---
 
@@ -626,11 +616,11 @@ Honest: the photograph placeholders are labelled “Photographs to come” and a
 
 `/who-we-work-with` · **Keep, reworked, at launch** · Sits under: / (The Firm, in the menu)
 
-**Purpose.** Lets a buyer recognise their situation (three situations), their market (six one-line notes) and the work we turn away. It is the honest “is this for me?” page, and it does the job six industry pages would otherwise do.
+**Purpose.** Lets a buyer recognize their situation (three situations), their market (six one-line notes) and the work we turn away. It is the honest “is this for me?” page, and it does the job six industry pages would otherwise do.
 
 **Lead generation.** It screens buyers before the audit's three questions. Each situation names where it breaks first and links to that layer, so a reader leaves knowing which page to read next. That means fewer poor-fit audit requests and a better fit among those who do ask. A company without revenue yet is offered the field notes rather than a dead end.
 
-**Perception.** Selective: a firm that knows its buyer well enough to say no. You want it less bland, so it gets engineered, moving artifacts and one moment that stops the scroll (A17).
+**Perception.** Selective: a firm that knows its buyer well enough to say no. You want it less bland, so it gets engineered, moving artifacts and one moment that stops the scroll.
 
 **Audience.** Founders and revenue leaders checking fit; investors and advisers sending the link to a company they back.
 
@@ -640,7 +630,7 @@ Honest: the photograph placeholders are labelled “Photographs to come” and a
 
 **Waits on.** The artifact language; the voice guide; the homepage fit link updated to this page's new headline.
 
-**Notes.** Keeps the frosted film stand-in, labelled (A11). You sent the three stories and six market lines back without answers, so the round-9 versions stand. “Who we send away” becomes a drawing, not a paragraph. Honest: the three situations are composites, labelled as situations, never presented as clients. No client names or logos.
+**Notes.** Keeps the frosted film stand-in, labeled. You sent the three stories and six market lines back without answers, so the round-9 versions stand. “Who we send away” becomes a drawing, not a paragraph. Honest: the three situations are composites, labeled as situations, never presented as clients. No client names or logos.
 
 ---
 
@@ -670,11 +660,11 @@ Honest: the photograph placeholders are labelled “Photographs to come” and a
 
 `/careers` · **Keep, reworked, at launch** · Sits under: / (The Firm, in the menu)
 
-**Purpose.** Fill the six open roles quickly (A12): Systems Engineer, Narrative Architect, Engagement Manager, Market Intelligence Analyst, Associate and Client Partner. Each role opens in place with what it owns and a rough pay range, remote-first and worldwide. Then the standards, in one short section. Then one application form for all six.
+**Purpose.** Fill the six open roles quickly: Systems Engineer, Narrative Architect, Engagement Manager, Market Intelligence Analyst, Associate and Client Partner. Each role opens in place with what it owns and a rough pay range, remote-first and worldwide. Then the standards, in one short section. Then one application form for all six.
 
 **Lead generation.** These aren't buyer leads, but they are the capacity the packages need. Growth and Scaling can only be sold as fast as the roles fill, and filling the Narrative Architect role releases the held Sales narrative project. The form keeps a talent pool, with consent. Buyers who see the page see a firm that is hiring.
 
-**Perception.** A team building toward a bigger goal (A8): remote-first, worldwide, with its standards written down. No “founder seat filled” and no “seats are held”.
+**Perception.** A team building toward a bigger goal: remote-first, worldwide, with its standards written down. No “founder seat filled” and no “seats are held”.
 
 **Audience.** Operators and specialists anywhere in the world, juniors welcome (round 8).
 
@@ -700,7 +690,7 @@ The application asks for:
 
 Each role has its own link (for example kelwin.co/careers#associate). The link opens that role and picks it in the form, so a LinkedIn job post can point straight at it.
 
-Remove: the bench list, “Filled · Founder”, “Not open yet”, the menu's “No open seats today”, the working version's “0 seats” and “Juniors: None”, and “Questions about a seat go straight to the founder”. The round-9 standards paragraph stays, rewritten in the voice guide. Applications go to careers@, not audit@.
+Remove: the bench list, “Filled · Founder”, “Not open yet”, the menu's “No open seats today”, the draft's “0 seats” and “Juniors: None”, and “Questions about a seat go straight to the founder”. The round-9 standards paragraph stays, rewritten in the voice guide. Applications go to careers@, not audit@.
 
 ---
 
@@ -752,11 +742,11 @@ Remove: the bench list, “Filled · Founder”, “Not open yet”, the menu's 
 
 `/the-lab` · **Keep, reworked, at launch** · Sits under: / (The Firm, in the menu)
 
-**Purpose.** A simple “coming soon” (A15). Kelwin is building an AI platform for GTM and revenue planning. It has no name and no date yet, and anyone may ask for an invitation. One screen, nothing more.
+**Purpose.** A simple “coming soon”. Kelwin is building an AI platform for GTM and revenue planning. It has no name and no date yet, and anyone may ask for an invitation. One screen, nothing more.
 
 **Lead generation.** A waiting list. The invitation form asks for name, work email, company, role and, optionally, what they'd use it for, and each request is tagged “Lab”. When invitations open, they hear first, and they hear nothing else unless they also chose the field notes. The people who ask are likely revenue leaders and operators, so the list overlaps with future buyers.
 
-**Perception.** A firm building toward something bigger than client hours (A1, A8), handled with restraint: a plain promise, and no invented instruments.
+**Perception.** A firm building toward something bigger than client hours, handled with restraint: a plain promise, and no invented instruments.
 
 **Audience.** Revenue leaders and operators curious about AI for sales and revenue planning; prospective clients; possible partners and investors.
 
@@ -768,11 +758,11 @@ Remove: the bench list, “Filled · Founder”, “Not open yet”, the menu's 
 
 **Notes.**
 
-It stays its own small page under The Firm, where you placed it in round 8, rather than being folded into About. A15 asked for a tease, not a removal, and the page carries the spin-out ambition behind the retainer (A1). About keeps one line and a link here.
+It stays its own small page under The Firm, where you placed it in round 8, rather than being folded into About. In round 9 you asked for a simple “coming soon”, not a removal, and the page carries the spin-out ambition behind the retainer. About keeps one line and a link here.
 
-Remove: “due in Q4 2026” (A15). Also remove the working version's briefing: “Build 0.5 · active”, the four theses, the redacted instrument captures, the deployment protocols and the “Early Access Protocol”. It describes instruments that don't exist.
+Remove: “due in Q4 2026”. Also remove the draft's briefing: “Build 0.5 · active”, the four theses, the redacted instrument captures, the deployment protocols and the “Early Access Protocol”. It describes instruments that don't exist.
 
-Two round-9 questions are still open. Should the Index cover show before the Index ships? We recommend not: it is an extra, and it advertises a different thing. Should the page say in public that “our advisory work pays for the Lab”? It stays only with your yes. Nothing about client data (Q11). The platform gets a name on the page only once it has one.
+The Index cover stays off until the Index ships: your “no extra shenanigans” already answers that. Whether to say in public that “our advisory work pays for the Lab” is asked with the Lab's copy; until then the line stays out. Nothing about client data. The platform gets a name on the page only once it has one.
 
 ---
 
@@ -786,7 +776,7 @@ Two round-9 questions are still open. Should the Index cover show before the Ind
 
 **Lead generation.** Home of the one standing list. “Get the next field note” is an email field with a confirm-your-address step. It sits at a link the team can share in LinkedIn posts and email signatures (kelwin.co/insights#notes). “Tell me when the Index is out” joins the same list, tagged. Every note ends at its layer and the audit.
 
-**Perception.** Rigour: short, specific and sourced. Until client proof exists, this is the main evidence that Kelwin understands the problem.
+**Perception.** Rigor: short, specific and sourced. Until client proof exists, this is the main evidence that Kelwin understands the problem.
 
 **Audience.** Revenue leaders arriving from a shared note; buyers doing research; people not ready for a call.
 
@@ -798,12 +788,12 @@ Two round-9 questions are still open. Should the Index cover show before the Ind
 
 **Notes.**
 
-Approved (A10). Small changes:
+Approved. Small changes:
 
-- take “Due in Q4 2026” off the Index (A15);
+- take “Due in Q4 2026” off the Index;
 - replace “Send it to me when it's ready”, which today only opens the contact form, with the real sign-up;
 - add the “Get the next field note” sign-up;
-- reword the “What a readout looks like” link, because Reports is now case studies (your round-9 question; we propose relabelling it for Reports).
+- reword the “What a readout looks like” link, because Reports is now case studies (your round-9 question; we propose relabeling it for Reports).
 
 Publish a note only when it's worth sending: no calendar of filler, and no tags or archive until there are many more notes.
 
@@ -893,7 +883,7 @@ Publish a note only when it's worth sending: no calendar of filler, and no tags 
 
 **Waits on.** Someone with time to write them, in the voice guide; a sourced argument worth sending.
 
-**Notes.** No fixed schedule, no filler, and nothing written only for search rankings. The list promises “at most one email a month, only when a note publishes”, and keeps to it. No byline (round 8, Q6).
+**Notes.** No fixed schedule, no filler, and nothing written only for search rankings. The list promises “at most one email a month, only when a note publishes”, and keeps to it. No byline (round 8).
 
 ---
 
@@ -913,9 +903,9 @@ Publish a note only when it's worth sending: no calendar of filler, and no tags 
 
 **How we'd know it works.** Requests for the full Index; press mentions; requesters who go on to request the audit.
 
-**Waits on.** The research itself, from a sample large enough to mean something, with a written method; your decision on client data (Q11); the form service and CRM; your go-ahead.
+**Waits on.** The research itself, from a sample large enough to mean something, with a written method; your decision on client data; the form service and CRM; your go-ahead.
 
-**Notes.** No date is shown anywhere until it ships (A15). The sample size goes on the cover. Until then, it is one undated line on Insights and The Lab.
+**Notes.** No date is shown anywhere until it ships. The sample size goes on the cover. Until then, it is one undated line on Insights and The Lab.
 
 ---
 
@@ -923,13 +913,13 @@ Publish a note only when it's worth sending: no calendar of filler, and no tags 
 
 `/reports` · **Keep, reworked, at launch** · Sits under: / (Resources, in the menu)
 
-**Purpose.** Kelwin's case studies, under a more institutional name (A14). An index of reports. Each report shows a short public version (the situation, what we set up, the numbers before and after), and the full report is sent on request.
+**Purpose.** Kelwin's case studies, under a more institutional name. An index of reports. Each report shows a short public version (the situation, what we set up, the numbers before and after), and the full report is sent on request.
 
 **Lead generation.** Each full-report request is a lead, kept and tagged: name, work email, company, role and consent. It then gets the short report follow-up described under “How a visitor becomes a lead”. Before any report clears, “Send me the first report” collects interest honestly.
 
 **Perception.** Proof, and discretion. The clearance rule, “No report is published without the client's written yes”, tells a buyer their own numbers are safe with us. To a premium buyer that matters as much as the proof.
 
-**Audience.** The sceptic looking for proof; the economic buyer; advisers and investors.
+**Audience.** The skeptic looking for proof; the economic buyer; advisers and investors.
 
 **Doors.** Main: Request a System Audit → /audit. Second: Send me the first report (a quiet email field); later, “Request the full report” on each report.
 
@@ -939,7 +929,7 @@ Publish a note only when it's worth sending: no calendar of filler, and no tags 
 
 **Notes.**
 
-How it launches honestly. No report has cleared (round 8, Q2), so the page shows:
+How it launches honestly. No report has cleared (round 8), so the page shows:
 
 - the clearance rule;
 - the shape every report will follow (the situation, the problem the audit found, what we set up, the numbers before and after, the client's sign-off), drawn with its fields visibly empty;
@@ -950,9 +940,9 @@ It never shows invented numbers.
 
 Once reports exist, a person sends each full report after a quick check, because the client cleared it for serious readers, not competitors. Terms gains a line: full reports are confidential and for the requester's own use.
 
-Remove: the nine-page readout specimen (the audit keeps its four pages), and the working version's two specimen dossiers and three research documents.
+Remove: the nine-page readout specimen (the audit keeps its four pages), and the draft's two specimen dossiers and three research documents.
 
-The fastest real proof: ask the companies behind the audits already run whether an anonymised report can be cleared. For the business-model team: a publication clause in client contracts, optionally with a small fee reduction in exchange for a publishable report. Logos and quotes appear only when real and permitted, and only here.
+Reports stays for client case studies with results. An audit has no before and after, so it never becomes a report; with your yes, we ask the companies behind your past audits whether we can quote what the audit found, anonymized, in a field note. Every client contract gets a publication clause, never in exchange for a discount. Logos and quotes appear only when real and permitted, and only here.
 
 ---
 
@@ -1004,11 +994,11 @@ The fastest real proof: ask the companies behind the audits already run whether 
 
 `/contact` · **Keep, reworked, at launch** · Sits under: / (Resources, in the menu; the quiet door beside every red button)
 
-**Purpose.** The low-intent door, for questions, project and package enquiries, press and partnerships. It asks enough to reply well the first time (A13), and shows where Kelwin works on a true coverage map.
+**Purpose.** The low-intent door, for questions, project and package enquiries, press and partnerships. It asks enough to reply well the first time, and shows where Kelwin works on a true coverage map.
 
 **Lead generation.** It catches everyone not ready for the audit. The richer form sorts each message by reason, and every message is kept in the CRM with its reason and where the visitor came from. Visitors from a project, a package, Careers or Insights arrive with the reason already chosen, so the context comes with the message.
 
-**Perception.** A firm that answers properly, without saying who reads the mail (A13). The map shows a team that works remotely across time zones, with a registered address in New York: global, without inventing a single office.
+**Perception.** A firm that answers properly, without saying who reads the mail. The map shows a team that works remotely across time zones, with an address in New York: global, without inventing a single office.
 
 **Audience.** Buyers with a question; project and package buyers; press; partners; candidates with a question.
 
@@ -1016,7 +1006,7 @@ The fastest real proof: ask the companies behind the audits already run whether 
 
 **How we'd know it works.** Messages a month, by reason. The share that become audit requests, project scopes or package proposals. Replies sent within two working days. The share of messages with enough context to answer without a follow-up question.
 
-**Waits on.** The form service and CRM; the regions and working hours you confirm for the map; the price variant (for a budget field); the Privacy rewrite.
+**Waits on.** The form service and CRM; the regions and working hours you confirm for the map; how you decide to show prices (for a budget field); the Privacy rewrite.
 
 **Notes.**
 
@@ -1034,17 +1024,17 @@ The form asks for:
 
 Every form, this one included, quietly records which page and source the visitor came from, and Privacy says so.
 
-Budget field, by price variant: A, bands matching the packages; B, one band below the floor, which points to Projects; C (the default), no budget field.
+Budget field: none while prices stay off the site (way 1, the default). Under way 2, one band below the starting price, which points to Projects; under way 3, bands matching the packages.
 
 The map shows only what is true:
 
-- the registered address in New York, labelled as an address, never a headquarters;
+- our address in New York, labeled as an address, never a headquarters;
 - the line “We work remotely, across time zones”;
-- the visitor's own city, and how its working hours overlap ours, using the same local-time detection as the footer (A25).
+- the visitor's own city, and how its working hours overlap ours, using the same local-time detection as the footer.
 
 No office dots, and never a pin where no one works.
 
-Remove: “The founder reads it” and “A person writes back” (A13). The voice guide's line is “We reply within two working days, or within one if you're booking the audit.” Retire “Nothing you send enters a CRM” the day the form goes live, and retire the “dossier” reason.
+Remove: “The founder reads it” and “A person writes back”. The voice guide's line is “We reply within two working days, or within one if you're booking the audit.” Retire “Nothing you send enters a CRM” the day the form goes live, and retire the “dossier” reason.
 
 ---
 
@@ -1052,7 +1042,7 @@ Remove: “The founder reads it” and “A person writes back” (A13). The voi
 
 `/contact · screen: message sent` · **New, at launch** · Sits under: /contact
 
-**Purpose.** Confirms the message arrived and says when to expect a reply (within two working days), without saying who reads it (A13).
+**Purpose.** Confirms the message arrived and says when to expect a reply (within two working days), without saying who reads it.
 
 **Lead generation.** Offers a next step that matches the reason. A package enquiry is pointed to the audit, where every package starts. A project enquiry is told a written scope comes back. A question is offered the field notes.
 
@@ -1088,20 +1078,20 @@ Remove: “The founder reads it” and “A person writes back” (A13). The voi
 
 **How we'd know it works.** Requests per visit. The share that qualify. Booked calls that happen. Readout, then proposal, then signed pilot, tracked in the CRM. The answers to “How did you hear about us?”.
 
-**Waits on.** The form service and CRM; the calendar (soon after launch); your yes on saying “free”; your yes on the A1 rewording of two FAQ answers.
+**Waits on.** The form service and CRM; the calendar (soon after launch); your yes on saying “free”; your yes on the retainer-first rewording of two FAQ answers.
 
 **Notes.**
 
-Approved (A10). Small changes:
+Approved. Small changes:
 
-- FAQ answers 01 and 05 (“If it stops working the day we leave…”) are reworded for retainer-first (A1).
+- FAQ answers 01 and 05 (“If it stops working the day we leave…”) are reworded for retainer-first.
 - The booking details ask for name, work email, company, website or LinkedIn, role, and an optional “How did you hear about us?”. The three questions stay three.
 - “Read all nine pages” comes off, because that specimen leaves Reports.
 - Questions about cost and terms link to Engagements. The approved six FAQs stay six.
-- “Free” in the facts. A4 decided the audit is free. We recommend saying so in every price variant: hiding it costs requests, and the three questions keep it premium. Your call (decisions).
+- “Free” in the facts. You decided in round 9 that the audit is free. We recommend saying so whichever way prices are shown: hiding it costs requests, and the three questions keep it premium. It is part of approving the sitemap.
 - “Kelwin, LLC” comes off the readout specimens.
 
-The four specimen readout pages stay. The first call is 30 minutes, and the readout is presented on the second call (A4). Both quiet links to Contact stay (your round-9 question went unanswered, so the default stands).
+The four specimen readout pages stay. The first call is 30 minutes, and the readout is presented on the second call. Both quiet links to Contact stay (your round-9 question went unanswered, so the default stands).
 
 ---
 
@@ -1135,7 +1125,7 @@ The four specimen readout pages stay. The first call is 30 minutes, and the read
 
 **Lead generation.** Removes the slowest step on the high-intent path, the back-and-forth over times, which matters while the team is small.
 
-**Perception.** Organised and ready from the first minute.
+**Perception.** Organized and ready from the first minute.
 
 **Audience.** Qualified buyers.
 
@@ -1197,7 +1187,7 @@ Rewrite it the day any form service, list, analytics tool or calendar goes live;
 
 The rewrite covers: forms and the form service; the email list, with its confirm step and unsubscribe; the CRM; cookie-free analytics and the record of which page a visitor came from; the calendar; CVs and how long they are kept; the visitor's local clock, which reads the browser's time-zone setting and collects no location.
 
-No “LLC”: it reads “Kelwin, New York, New York, USA” (A5, A22). The Lab-data line goes (A5). Client data is a contract matter, summarised on Engagements, not here.
+No “LLC”: it reads “Kelwin, New York, New York, USA”. The Lab-data line goes. Client data is a contract matter, summarized on Engagements, not here.
 
 ---
 
@@ -1205,11 +1195,11 @@ No “LLC”: it reads “Kelwin, New York, New York, USA” (A5, A22). The Lab-
 
 `/terms` · **Keep, reworked, at launch** · Sits under: / (the footer's legal row)
 
-**Purpose.** Sets out what governs the website, including the honesty rule behind every artifact labelled “Specimen”. It also carries a short accessibility section and the rule for full reports.
+**Purpose.** Sets out what governs the website, including the honesty rule behind every artifact labeled “Specimen”. It also carries a short accessibility section and the rule for full reports.
 
 **Lead generation.** None directly.
 
-**Perception.** Completeness and plain dealing. The specimen clause shows rule 7 in public.
+**Perception.** Completeness and plain dealing. The specimen clause shows our rule against invented proof, in public.
 
 **Audience.** Careful buyers, lawyers and procurement.
 
@@ -1221,7 +1211,7 @@ No “LLC”: it reads “Kelwin, New York, New York, USA” (A5, A22). The Lab-
 
 **Notes.**
 
-No “LLC”; the address reads “New York, New York, USA” (A5, A22). Governing law moves from “To be confirmed” to the lawyer's wording. Two additions:
+No “LLC”; the address reads “New York, New York, USA”. Governing law moves from “To be confirmed” to the lawyer's wording. Two additions:
 
 - a short accessibility section (the standard we build to, known gaps, and how to report a barrier), in place of a separate page;
 - a line saying full reports are confidential and for the requester's own use.
@@ -1312,7 +1302,7 @@ No “LLC”; the address reads “New York, New York, USA” (A5, A22). Governi
 
 **Waits on.** The kelwin.co domain, with the old GitHub address forwarding to it.
 
-**Notes.** Basic upkeep, not pages built for search engines. The preview cards are made from each page's headline in type and flat colour, keeping to rule 6. The confirmation page, the confirmation screens and the developer previews stay out of the sitemap file. Company details for search engines read “Kelwin, New York, New York, USA”, with no LLC.
+**Notes.** Basic upkeep, not pages built for search engines. The preview cards are made from each page's headline in type and flat color, with no pictures. The confirmation page, the confirmation screens and the developer previews stay out of the sitemap file. Company details for search engines read “Kelwin, New York, New York, USA”, with no LLC.
 
 ---
 
@@ -1354,18 +1344,18 @@ One change to the approved bar, for your yes: Engagements takes the slot “Meth
 
 ### The Firm plate
 
-- About Us: “What we believe, how the firm is built, and what we're building.” (replaces “The founder, and the rules…”, A8)
+- About Us: “What we believe, how the firm is built, and what we're building.” (replaces “The founder, and the rules…”)
 - Who We Work With: “Three situations we're built for, and who we send away.” (approved)
-- Careers: “Six roles, all open now. Remote, worldwide.” (replaces “No open seats today…”, A12)
+- Careers: “Six roles, all open now. Remote, worldwide.” (replaces “No open seats today…”)
 - The Lab: “We're building an AI platform for revenue teams. Ask for an invitation.” → /the-lab
-- Foot row: “Why Kelwin exists” → /#s-letter (replaces “The founder's letter — in his words”, A7, A8)
+- Foot row: “Why Kelwin exists” → /#s-letter (replaces “The founder's letter — in his words”)
 - Paper door: The System Audit.
 
 ### The Resources plate
 
 - Insights: “Field notes on how revenue systems break, one layer at a time.” (approved)
-- Reports: “Our client work, with the numbers. Published only with the client's written yes.” (replaces “What a readout looks like…”, A14)
-- Talk to the team: “Questions, projects, press. We reply within two working days.” (replaces “A person answers”, A13)
+- Reports: “Our client work, with the numbers. Published only with the client's written yes.” (replaces “What a readout looks like…”)
+- Talk to the team: “Questions, projects, press. We reply within two working days.” (replaces “A person answers”)
 - Foot row (a plain note, approved): “Every engagement opens with a fixed-scope audit.”
 - Paper door: The System Audit.
 
@@ -1375,12 +1365,12 @@ No email field in any plate.
 
 The same items in the same order; Engagements is a plain row. The paper audit door stays at the foot of each plate, so the menu never adds a second red.
 
-### Footer (the approved footer, with the lockup on the line, A25)
+### Footer (the approved footer, with the lockup on the line)
 
 - 01 Capabilities: Narrative Systems · GTM Infrastructure · GTM Intelligence · Engagements · Projects · The System Audit ↗
 - 02 The Firm: About Us · Who We Work With · The Lab · Careers
 - 03 Resources: Insights · Reports · Talk to the Team →
-- 04 Contact: audit@kelwin.co · the visitor's own local time with the nearest city (replaces the London clock, A25) · “Built in-house, no template” · Kelwin on LinkedIn, only once the company page exists
+- 04 Contact: audit@kelwin.co · the visitor's own local time with the nearest city (replaces the London clock) · “Built in-house, no template” · Kelwin on LinkedIn, only once the company page exists
 - Legal row: © 2026 Kelwin · Privacy | Terms · Audit request
 
 Changes from today's footer:
@@ -1409,13 +1399,13 @@ Nothing else changes.
 
 ### The two doors (never merged)
 
-1. Red: Request a System Audit → /audit. The only high-intent door, and the only red action on the site. It appears on the homepage (twice), the three layer pages, Engagements, Projects and the six project pages, Who We Work With, About, the close of The Lab, Insights and the three notes, Reports, and the page-not-found. It never appears on Contact, Careers, Privacy or Terms. In the menu the audit door is paper, so each view has one red moment.
+1. Red: Request a System Audit → /audit. The only high-intent door, and the only red action on the site. It appears twice on the homepage (the hero and the final call), and on the three layer pages, Engagements, Projects and the six project pages, Who We Work With, About, the close of The Lab, Insights and the three notes, Reports, and the page-not-found. It never appears on Contact, Careers, Privacy or Terms. In the menu the audit door is paper, so each view has one red moment.
 2. Quiet: Talk to the team → /contact. It sits beside every red button. When the context is known, the form opens with the reason already chosen: a package (which one), a project (which one), a question about a role, research. The link carries the choice, which works on the site as it is hosted today.
 
-### Two ways in (A28)
+### Two ways in
 
-- Every package starts with the free audit: three questions → a 30-minute first call → ten working days → the readout, presented on the second call → the proposal call → the pilot (months 1–3) → scale (months 4–6) → renewal.
-- A project can start from an enquiry on Contact instead. We reply with a written scope, and the stop after week one takes the audit's place. A project grows into Launch at its 30-day check.
+- Every package starts with the free audit: three questions → a 30-minute first call → ten working days → the readout, presented on the second call → the proposal call → the pilot (months 1–3) → the full run (months 4–6) → renewal.
+- A project starts from an enquiry on Contact instead: a 30-minute call → a written scope → the stop after week one → the build, with a check 30 days on → upkeep, or the free audit and then a package.
 
 ### Sign-up fields are not a third door
 
@@ -1466,13 +1456,13 @@ Every field that keeps an address has a one-line consent and a link to Privacy, 
 5. Report requests. Before any report exists: one email when the first report clears. Afterwards: the full report, sent by a person after a quick check; a week later, the field note on the same layer; for a company that fits, a short personal note offering the audit. They join the notes list only if they agreed.
 6. “Not a fit yet”: the notes, then one check-in about six months later (“Has revenue arrived? The three questions are here.”).
 7. The Lab list: one email when invitations open, and nothing else unless they chose the notes.
-8. Project enquiries: a person replies with a written scope. After the 30-day check comes an offer of the audit or the Launch package (A3).
+8. Project enquiries: a reply within two working days, a 30-minute call, then a written scope. After the 30-day check comes an offer of upkeep, or of the audit and then a package.
 9. Package enquiries: a person replies and points to the audit, where every package starts.
 10. Applicants: an acknowledgement from careers@, and a reply either way only if someone will send it. They stay in a talent pool for 12 months, with consent.
 
 ### What has to be behind it
 
-Today the site is a set of fixed pages on GitHub Pages with no server. Every form only opens the visitor's own mail app, and nothing is kept. That works for the two doors. It can't carry a CV (A12), and it can't keep the address of someone who asks for a report (A14). The pages can stay fixed pages on the same hosting and send their forms to outside services.
+Today the site is a set of fixed pages on GitHub Pages with no server. Every form only opens the visitor's own mail app, and nothing is kept. That works for the two doors. It can't carry a CV, and it can't keep the address of someone who asks for a report. The pages can stay fixed pages on the same hosting and send their forms to outside services.
 
 At launch:
 
@@ -1500,13 +1490,13 @@ If the tools aren't ready, the site can still launch on today's mail-app forms, 
 - Removed from the menu and footer: “Methodology”, which pointed at a homepage section. Engagements takes the slot. The homepage methodology section itself stays.
 - Replaced: “The full stack, on one page” at the foot of the Capabilities plate, by Projects (approved in round 9). The homepage system section is still one click away, and /capabilities forwards to it.
 - Moved: About's “How an engagement runs” and its cadence, to Engagements, the one place the engagement is described. Every link to the old draft now points there.
-- Removed: the nine-page readout specimen on Reports, and the audit's link “Read all nine pages”. Reports is case studies now (A14). The audit keeps its four specimen pages, and the full readout is presented on the call (A4).
-- Removed: the working version's two specimen case dossiers and three research documents on Reports. Invented numbers on a proof page read as proof even when labelled (rule 7). The Revenue Entropy Index survives as one undated line on Insights and The Lab.
-- Removed: the working version's Lab briefing (“Build 0.5”, the theses, the redacted captures, the deployment protocols and the “Early Access Protocol”). It describes instruments that don't exist. The Lab becomes a plain “coming soon” with an invitation form (A15). It stays its own page.
-- Removed from Careers: the bench list, “Filled · Founder”, “Not open yet”, the menu's “No open seats today”, the working version's “0 seats” and “Juniors: None”, and “Questions about a seat go straight to the founder”. Six open roles and a real application replace them (A12).
-- Removed from About: your name, “Why he started Kelwin”, “Rameez reads every audit request”, your current employer and role, “The exit test” as worded, the working version's registry (“Fixed scope, exit built in”), its signed memo, and the portrait whose image file is missing (A1, A2, A7–A9).
-- Removed: the London clock in the footer, replaced by the visitor's own local time (A25).
-- Rewritten wherever they stand (inventory §6): “Rent-it-forever”, “If we leave, the system stays”, “Nothing needs a retainer to keep running”, “After handover, one person keeps it healthy”, “A single project ends at handover, with no retainer”, “Kelwin, LLC”, “Rameez”, “in his words”, “The founder reads it”, “A person writes back” and “Due in Q4 2026”. The sections that hold them stay; the claims change.
+- Removed: the nine-page readout specimen on Reports, and the audit's link “Read all nine pages”. Reports is case studies now. The audit keeps its four specimen pages, and the full readout is presented on the call.
+- Removed: the draft's two specimen case dossiers and three research documents on Reports. Invented numbers on a proof page read as proof even when labeled. The Revenue Entropy Index survives as one undated line on Insights and The Lab.
+- Removed: the draft's Lab briefing (“Build 0.5”, the theses, the redacted captures, the deployment protocols and the “Early Access Protocol”). It describes instruments that don't exist. The Lab becomes a plain “coming soon” with an invitation form. It stays its own page.
+- Removed from Careers: the bench list, “Filled · Founder”, “Not open yet”, the menu's “No open seats today”, the draft's “0 seats” and “Juniors: None”, and “Questions about a seat go straight to the founder”. Six open roles and a real application replace them.
+- Removed from About: your name, “Why he started Kelwin”, “Rameez reads every audit request”, your current employer and role, “The exit test” as worded, the draft's registry (“Fixed scope, exit built in”), its signed memo, and the portrait whose image file is missing.
+- Removed: the London clock in the footer, replaced by the visitor's own local time.
+- Rewritten wherever they stand: “Rent-it-forever”, “If we leave, the system stays”, “Nothing needs a retainer to keep running”, “After handover, one person keeps it healthy”, “A single project ends at handover, with no retainer”, “Kelwin, LLC”, “Rameez”, “in his words”, “The founder reads it”, “A person writes back” and “Due in Q4 2026”. The sections that hold them stay; the claims change.
 - Retired on the day the forms start keeping addresses, never left standing: Contact's “Nothing you send enters a CRM”, and Privacy's “no CRM, marketing platform, or automated sequence” and “no analytics”.
 - Replaced: the mail-app-only forms, and Insights' old “Get notes as they ship” mail link. Real forms take over, and the plain addresses stay as a fallback.
 - Removed: the “dossier” reason on the contact form, since the dossiers are gone. “A package” and “a project” are added.
@@ -1516,19 +1506,19 @@ If the tools aren't ready, the site can still launch on today's mail-app forms, 
 
 - Not added: a /capabilities overview page. The homepage system section and the Capabilities plate already do that job, and the address forwards to the system section.
 - Not added: a standalone Methodology page, or a separate “how it runs” page. Engagements carries the method and the lifecycle; a third telling would repeat the homepage.
-- Not added: a team page. With no names (A7) and no invented people, it would be empty. About carries the labelled photograph placeholders, and Careers carries the roles.
+- Not added: a team page. With no names and no invented people, it would be empty. About carries the labeled photograph placeholders, and Careers carries the roles.
 - Not added at launch: a page for each open role. Each role opens in place on Careers with its own link, and one form serves all six. Role pages come later if applications justify them.
 - Not added at launch: industry pages. Who We Work With carries six market lines. A market page comes only once a report from that market has cleared.
-- Not added: landing pages for the three situations. Who We Work With carries them and is made richer (A17).
+- Not added: landing pages for the three situations. Who We Work With carries them and is made richer.
 - Not added: comparison pages against agencies, hires or fractional leaders. One section on Engagements, “Other kinds of help”, makes that argument where the CFO reads it.
 - Not added: a self-check quiz. It would be a cheaper third door competing with the free audit, which already is the diagnosis. Revisit only if analytics show many visitors leaving without using either door.
-- Not added: a separate pricing page, or an engagement guide sent in exchange for an email. Whichever price variant is chosen, prices live on Engagements and Projects. Putting the price behind an email gate is an agency move.
-- Not added yet: a separate client-data page. One section on Engagements says only what is true today, until you decide on client data (Q11) and a lawyer has read it.
+- Not added: a separate pricing page, or an engagement guide sent in exchange for an email. However you decide to show prices, they live on Engagements and Projects. Putting the price behind an email gate is an agency move.
+- Not added yet: a separate client-data page. One section on Engagements says only what is true today, until you decide on client data and a lawyer has read it.
 - Not added: a separate accessibility page. It becomes a short section in Terms.
 - Not added: press, partner or tool-logo pages, a logo strip or testimonials. Press is a reason on the contact form. Client logos appear only with permission, and only on Reports.
 - Not added: thank-you pages at their own addresses, or subscribe and unsubscribe pages. Each form confirms in place on its own page, and one /confirmed page receives the sign-up confirmation link.
 - Not added: a sign-up line in the footer or an email field in the menu. You asked to keep the footer as it is, and asking for an email on every page reads as an agency.
-- Not added before launch: the Revenue Entropy Index as its own page with a questionnaire. It depends on your client-data decision (Q11), a written method and a minimum sample.
+- Not added before launch: the Revenue Entropy Index as its own page with a questionnaire. It depends on your client-data decision, a written method and a minimum sample.
 - Not added: a “Report 00” about Kelwin's own pipeline. Reports are client case studies, and a young firm's own early pipeline is not client proof.
 - Not added: a blog archive, tags or categories. Insights is the archive, and three notes don't need more.
 
@@ -1540,33 +1530,33 @@ What not to remove, though a leaner cut was possible:
 - The five new project pages: you asked for small-service pages in round 8 and approved the line-up in round 9. Each has its own buyer and its own honest “wrong project”.
 - Reports, even with no report yet: its clearance rule is a trust signal, and its sign-up is the only honest way to collect interest before proof.
 - The Lab: small, but it holds the platform ambition and a waiting list.
-- Insights and the three notes: the main evidence of judgement while client proof is missing.
+- Insights and the three notes: the main evidence of judgment while client proof is missing.
 - The two separate doors. Merging them would make every lead look the same.
 - The Specimen system: how the site shows depth without fake proof.
 - The homepage's handover section: reframed for retainer-first, not removed.
 - The page-not-found.
-- The Survey hero: it stays on the bench in the design folder (rule 8). It isn't a page, so nothing about it changes.
+- The Survey hero: it stays on the bench in the design folder, as you decided. It isn't a page, so nothing about it changes.
 
 ### Honest before proof
 
-How each page launches honestly before there is proof (rule 7):
+How each page launches honestly before there is proof:
 
 - Reports: the clearance rule, an empty report shape and a sign-up; never invented numbers.
-- About: labelled photograph placeholders, no headcount, and only history you confirm.
-- Contact: the map shows remote coverage and the New York registered address, never invented offices.
+- About: labeled photograph placeholders, no headcount, and only history you confirm.
+- Contact: the map shows remote coverage and our address in New York, never invented offices.
 - Careers: six open roles, which is true, with ranges only you can give.
 - Engagements: terms, never promised results.
 - The Lab: “coming soon”, with no date and no name.
-- Who We Work With: situations labelled as situations, not clients.
+- Who We Work With: situations labeled as situations, not clients.
 - The Index, market pages and individual reports wait until they are real.
 
-The fastest route to real proof: ask the companies behind the audits already run whether an anonymised report can be cleared.
+The route to real proof is the first pilot: on its first day we record the starting numbers, so its report has a real before and after. Meanwhile, with your yes, what a past audit found can be quoted, anonymized, in a field note.
 
 ## 8 · What launches first, and what waits
 
 Before any page is rebuilt:
 
-1. Your decisions in the list below, above all the price variant and your yes to the site keeping addresses.
+1. Your decisions on the review page, above all how to show prices and your yes to the site storing what visitors send.
 2. Choose and set up the form service, CRM, list tool and cookie-free analytics. Have Privacy and Terms rewritten and read by a lawyer, ready to go live the same day.
 3. kelwin.co, with audit@ and careers@ live and read, and the domain's email settings passing the inbox checks.
 4. The voice guide and the artifact language, the two other round-10 proposals, approved.
@@ -1598,36 +1588,41 @@ Later, each when its condition is met:
 |---|---|
 | A report, one per case | A client's written yes, with the numbers checked |
 | Market pages | A cleared report from that market |
-| The Revenue Entropy Index | Real data, a written method, your client-data decision (Q11) |
+| The Revenue Entropy Index | Real data, a written method, your client-data decision |
 | Package pages | Research showing the packages differ in kind, not just volume |
 | One page per role | Enough applications to justify them |
 | Sales narrative | Delivery capacity, or the Narrative Architect role filled |
-| A client-data page | Your client-data decision (Q11) and a lawyer |
+| A client-data page | Your client-data decision and a lawyer |
 | Automatic report delivery | Several reports |
 
 ## 9 · Decisions only you can make
 
-### Before any rebuild
+Answer them on the review page. Two come before any rebuild:
 
-1. Engagements takes Methodology's place in the top bar and the footer.
-2. Prices: variant A (shown), B (a floor only) or C (none). Every page is built as C, your standing answer, until the pricing proposal is approved. Also: whether to offer an exit after the pilot.
-3. The site may now keep addresses: yes to a form service, a light CRM, an email list, cookie-free analytics and, soon after launch, a calendar, with Privacy rewritten the same day.
-4. The audit: say “free” on the page? We recommend yes, in every price variant.
-5. A rough pay range for each of the six roles.
+1. **Approve the sitemap.** It means yes to the map, the menu and footer, the lead path and the launch order as shown, including:
+   - Engagements in Methodology's place in the top bar and the footer;
+   - Projects in place of “The full stack, on one page” at the foot of the Capabilities menu;
+   - the audit described as “Free, ten working days”;
+   - “CRM blueprint” renamed “CRM setup plan”;
+   - the deliverability note linking to the Email deliverability project as well as the layer page.
+2. **Can the site store what visitors send?** Yes means a form service, a light CRM, an email list and cookie-free analytics at launch, a calendar soon after, and Privacy rewritten the same day. Not yet means the forms keep opening the visitor's email app, so Careers can't take a CV and Reports can't keep the address of someone who asks for one.
 
-### Before the page in question is rebuilt
+How to show prices, and whether to offer an exit after the pilot, are decided in the business model. The new homepage lines are asked in the voice part of the review.
 
-6. Projects replaces “The full stack, on one page” at the foot of the Capabilities menu. The homepage section stays one click away.
-7. The new homepage lines for A1 and A7: section 07, section 08's retainer line, the “Not for” row, and the letter's signature.
-8. What the Contact map may show: the regions you take clients from, and the working hours the team keeps.
-9. About's history: the facts you're happy to state (for example: founded in 2026, registered in Delaware, New York, New York, USA).
-10. A plainer name for “CRM blueprint”, for example “CRM setup plan”.
-11. Which address the field notes are sent from: audit@, or a third address such as notes@ (beyond the two approved mailboxes).
-12. The Lab: show the Index cover before the Index ships (we recommend not)? Say in public that “our advisory work pays for the Lab”?
-13. The deliverability note's onward link: to the Email deliverability project as well as the layer? (Unanswered in round 9; we recommend yes.)
+### Asked later, with the page they affect
 
-### Whenever you're ready
+- A rough pay range for each of the six roles: with the Careers copy, next round.
+- What the Contact map may show (the regions you take clients from, the hours the team keeps), and the facts About may state as history: when Contact and About are written.
+- Which address sends the field notes: when the list is set up.
+- Whether to say in public that “our advisory work pays for the Lab”: with the Lab's copy. Until then it stays out.
+- Client data, and clients in regulated fields: when the contract is drafted.
 
-14. Asking the companies behind the audits already run whether an anonymised report can be cleared, and adding a publication clause to client contracts (for the business-model team).
-15. Creating Kelwin's company LinkedIn page. The footer links to it only once it exists.
-16. A lawyer for Privacy and Terms, including governing law.
+### What we need from you, whenever you're ready
+
+- Kelwin's company LinkedIn page. The footer links to it only once it exists.
+- A US lawyer and accountant. The lawyer reads Privacy and Terms (including which law governs them) and drafts the client contract once.
+- Your yes to ask the companies behind your past audits whether we can quote what the audit found, anonymized, in a field note. Reports stays for client case studies with results.
+
+### Settled without a decision
+
+- The Index cover stays off The Lab until the Index ships: your “no extra shenanigans” already answers it.
