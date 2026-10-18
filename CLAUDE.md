@@ -9,10 +9,13 @@ Kelwin is a premium B2B GTM Partner & Advisory firm. It designs, installs and ru
 How it sells (round 9; the details are being set in `design/redesign/work/r10/BUSINESS-MODEL.md`):
 - the free **System Audit** is the main door: one 30-minute first call, ten working days, and the readout presented
   on a 60-minute call;
-- three packages, **Launch**, **Growth** and **Scaling**, each on a 6-month minimum whose first 3 months are a pilot;
-- fixed-scope **projects** as a smaller way in, and an upsell path into the packages.
+- two families of engagement (founder, round 10):
+  - the comprehensive engagements, three packages, **Launch**, **Growth** and **Scaling**, each on a 6-month
+    minimum whose first 3 months are a pilot, with a day-90 exit offered;
+  - smaller, fixed-scope engagements (replacing "projects"; the name is being set in round 11) as a cheaper way in
+    and an upsell path into the packages.
 
-Prices are not shown on the site unless the founder decides otherwise.
+No prices are shown on the site (founder, round 10): the starting price is given on the first call.
 
 Kelwin is not a cheap lead-generation agency. It is a revenue infrastructure, narrative strategy and GTM systems partner.
 
