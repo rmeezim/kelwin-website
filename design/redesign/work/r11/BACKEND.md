@@ -98,8 +98,8 @@ the founding team can open.
 
 **What changes for you.**
 - You review drafts at a private address instead of the public github.io preview.
-- The github.io preview goes dark once the project goes private (SITEMAP decision 2, SECURITY decision 1). The old
-  preview addresses then answer "not found". Nothing public links to them.
+- The github.io preview is dark since you made the project private on 19 October. The old preview addresses answer
+  "not found". Nothing public links to them.
 - When kelwin.co goes live, Cloudflare's own spare address for the site is switched off, so there's never a second
   public copy of Kelwin.
 
@@ -291,7 +291,8 @@ Your approved follow-up rules, plus two new ones at the end.
 6. Leaving takes one click, everywhere. Nothing suggests false urgency.
 7. The two doors are never merged. Sign-ups are not a third door.
 8. We promise only what we keep: one working day for the audit; one working day for a Contact message that names an
-   engagement (the sitemap's proposal); two working days for anything else. We aim faster.
+   engagement (the sitemap's proposal, now adopted by the lifecycle); two working days for anything else. We aim
+   faster.
 9. **New:** every submission is saved before anything else happens.
 10. **New:** every automation has an owner, named in the tables below.
 
@@ -314,7 +315,7 @@ gets, where it sits in the CRM, and what follows, with the timing.
 
 | | |
 |---|---|
-| They send | The three answers (plus the size question, if the offer adopts it); name, work email, company, website or LinkedIn, role; how they heard (optional) |
+| They send | The three answers (plus the size question, if you agree to it: DECISIONS.md, decision 3); name, work email, company, website or LinkedIn, role; how they heard (optional) |
 | It goes to | Saved first. Then the CRM: the person, their company, and a deal at **Audit requested**, holding the answers, the score, its band and the weakest part they named (4.5) |
 | Who hears | **Band A:** you, on your phone, within a minute, and a CRM task due in one working hour. **Bands B and C:** whoever holds audit@ that day, by email and a CRM task. The email's subject reads "[Audit · A] Company · Role · weakest part" |
 | What they get | On screen: "Request received", as the sitemap describes. Within a minute, from audit@: their three answers, so they can see what we read; what happens next and by when (times for the 30-minute first call within one working day; then ten working days; then the readout on a 60-minute call); a link to the capability their answers point to; how client data is handled. Signed "The Kelwin team". A reply reaches audit@ |
@@ -332,8 +333,9 @@ gets, where it sits in the CRM, and what follows, with the timing.
 | CRM stage | Contact: subscriber, "not yet" |
 | What follows | The field notes. Then **one** check-in about six months later, signed "The Kelwin team": "Has revenue arrived? The three questions are here." Then nothing |
 
-If the offer adopts the size question, a company that sells but is below a package's size isn't told "not a fit". It
-sees "Start with one piece", which opens Contact with "A fixed-scope engagement" chosen, and continues as door 3.
+If you agree to the size question (DECISIONS.md, decision 3), a company that sells but is below a package's size isn't
+told "not a fit". It sees "Start with one piece", which opens Contact with "A fixed-scope engagement" chosen, and
+continues as door 3.
 
 **Door 3 · Contact ("Talk to the team"), including "Ask about this engagement"**
 
@@ -369,7 +371,7 @@ engagement named.
 | They send | Name, email, the role (filled in from the role's own link), LinkedIn, a link to their work, socials (optional), a message, a CV (PDF or Word, up to 10 MB), and a separate unticked box to stay in the talent pool for 12 months |
 | It goes to | The CV into Kelwin's private storage. A row in the **talent pool**, a private sheet in Kelwin's Google account. **Not the sales CRM**: an applicant isn't a lead |
 | Who hears | careers@, with a short summary and a link to the CV that opens only for a signed-in member of the hiring team. The CV is never attached to an email |
-| What they get | On screen: "Application received". Within a minute, from careers@: received, and what happens next. "We reply either way" only if you agree to it (decision 3) |
+| What they get | On screen: "Application received". Within a minute, from careers@: received, and what happens next, and "We reply either way" (decision 3, settled as proposed) |
 | CRM stage | None |
 | What follows | A person reviews it, with a first look within five working days. The CV is deleted on the date Privacy states (SECURITY decision 4) |
 
@@ -404,7 +406,7 @@ engagement named.
 | Who hears | A daily summary to the founding team at 9:00 a.m. New York, never an instant alert. Each month a person reviews the waitlist for companies that fit (sitemap) |
 | What they get | "One click confirms your place on the waitlist", then the confirm email, then /confirmed/ with the Lab's own line |
 | CRM stage | Contact: "Lab waitlist". No deal and no sales email: they asked about the Lab, not for a pitch |
-| What follows | An email only when the Lab page changes, **at most once a quarter**, plus first word when early access opens (decision 4) |
+| What follows | An email only when the Lab page changes, **at most once a quarter**, plus first word when early access opens (decision 4, settled as proposed) |
 
 **Door 8 · Field-notes sign-up ("Get new field notes")**
 
@@ -510,9 +512,9 @@ that cap, so a third strong request is a conversation about timing, not a surpri
 | Door | What the site promises | What we aim for |
 |---|---|---|
 | The audit | One working day (approved) | Band A: one working hour. B: the same working day. C: one working day |
-| Contact, an engagement named | One working day (the sitemap's proposal) | The same working day |
+| Contact, an engagement named | One working day (the sitemap's proposal, adopted) | The same working day |
 | Contact, anything else | Two working days (approved) | One working day |
-| Careers | An acknowledgement at once; a reply either way only if you agree (decision 3) | A first look within five working days |
+| Careers | An acknowledgement at once; a reply either way, within ten working days | A first look within five working days |
 | A full report (later) | Within one working day (sitemap) | The same |
 | The lists | At most one email a month (notes); at most once a quarter (Lab) | Kept |
 | A request to see or delete data | As Privacy will state | Ten working days; the law's limit is one month for Europe (the lawyer confirms) |
@@ -594,7 +596,7 @@ invited with the smallest role that works (SECURITY.md).
 | # | When | Account | Why this order | Your time |
 |---|---|---|---|---|
 | 1 | This week | **The password manager** (Bitwarden Teams), and order **two security keys** | Every login below goes into it from the start. Use the phone's passkey or an authenticator app until the keys arrive | 20 minutes |
-| 2 | This week | **The GitHub organization**, on GitHub Team | The project is public today (SECURITY.md, finding 1). We move it in and make it private | 15 minutes |
+| 2 | This week | **The GitHub organization**, on GitHub Team | The project is private on your personal account since 19 October; on the free plan its live branch can't be protected. We move it in (DECISIONS.md, decision 13) | 15 minutes |
 | 3 | This week | **The registrar** that holds kelwin.co: not a new account, but secure it | Two-step sign-in, the transfer lock, auto-renew, and a recovery email outside kelwin.co | 15 minutes |
 | 4 | Week 1 | **Google Workspace**, Business Starter: your seat, then the spare admin seat | Every account after this one is opened with a kelwin.co address | 30 minutes, with us |
 | 5 | Week 1 | **Cloudflare** | Then you change kelwin.co's nameservers at the registrar to Cloudflare's | 15 minutes, with us |
@@ -609,7 +611,7 @@ Also: make sure Kelwin's LinkedIn company page has at least two admins, each wit
 
 | When | You | Us |
 |---|---|---|
-| **This week** | Accounts 1–3; the free GitHub settings in SECURITY.md (about ten minutes) | Move the project into the organization and make it private; protect the live branch |
+| **This week** | Accounts 1–3; the free GitHub settings in SECURITY.md (about ten minutes) | Move the project into the organization (it is already private); protect the live branch |
 | **Week 1** | Accounts 4–5 | audit@, careers@, notes@, security@ and dmarc@; SPF, DKIM, DMARC at "report only"; encrypted-delivery settings; Google's mail-reputation reports; the domain's protections on Cloudflare; the private preview address; deploys to Cloudflare, preview only |
 | **Week 2** | Account 6; invite the GTM engineer | The CRM pipeline and fields; the list, its tags and the /confirmed/ pages; the bot check; private CV storage with its deletion rule; the talent-pool sheet |
 | **Weeks 2–4** | Approve the words of each acknowledgement | Build and test the form program on the private preview; the alerts; the Monday numbers; the blogging system (BLOG.md) |
@@ -667,7 +669,7 @@ All last known around mid-2026, **not re-checked**. The pages to check are in Ap
   plan: Workers preview addresses with an alias per branch, behind Cloudflare Access (to test in set-up). Fallback: a
   second Worker on `preview.kelwin.co`, behind Access. Either way, `X-Robots-Tag: noindex` on every preview response.
 - **The spare address:** `workers_dev = false` on the production Worker at go-live, so no second public copy exists.
-- **The old preview:** the github.io addresses answer 404 once the project is private (SITEMAP decision 2). Only if
+- **The old preview:** the github.io addresses answer 404 since the project went private (19 October). Only if
   you ask: a tiny separate public repository with one forwarding page per old path.
 - **Cloudflare plan:** Free. Turn on: the Free Managed Ruleset, DNSSEC, Certificate Transparency alerts to audit@,
   "Always use HTTPS", the minimum TLS version at 1.2. Leave off: managed robots.txt and "Block AI bots", or set them
@@ -833,6 +835,9 @@ comparison, stay in the working folder.
 
 ## Decisions for the founder
 
+**Reconciled:** decision 1 is now part of DECISIONS.md, decision 12 (with the security keys and the spare admin);
+decision 2 is part of decision 6 (who does what); decisions 3 and 4 are settled as proposed.
+
 **1. Approve the services, and move the site to Cloudflare?**
 - **Proposed:** yes. Cloudflare for hosting, our own form program, Resend, HubSpot's free CRM, Buttondown, Cal.com,
   Plausible and Google Workspace, about $25–27 a month at launch for these services. You create the accounts in
@@ -862,3 +867,15 @@ comparison, stay in the working folder.
 - **Why:** you said "As the vision or the idea for the product becomes much clearer, we can tease a bit more through
   the waitlist", so "one email when invitations open" was too little. A fixed ceiling keeps the waitlist a promise we
   can keep.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026). The decisions
+now sit in DECISIONS.md.
+- The project is private since 19 October and the github.io preview is dark (sections 2, 6, 7, Appendix A). Moving it
+  into the organization is DECISIONS.md, decision 13.
+- The one-working-day reply for a message that names an engagement is adopted by the lifecycle (4.1, 4.7).
+- Careers "We reply either way" (decision 3) and the Lab's quarterly email (decision 4) are settled as proposed.
+- The size question now points to DECISIONS.md, decision 3.

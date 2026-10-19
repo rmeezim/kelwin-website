@@ -666,9 +666,16 @@ in the business model's pilot plan), and it is small enough for Launch's hours. 
 first edition leans more on the lost-deal notes, and the pilot's written readout says so. This is our own reasoning
 from the business model, not an outside figure.
 
+**Reconciled.** The offer now proposes about six calls with recent buyers in Launch's first month, as part of
+DECISIONS.md, decision 2, so stage 1 holds on every package.
+
 ---
 
 ## Decisions for you
+
+**Reconciled:** these are now part of the one list for this round, DECISIONS.md. Decisions 1 to 6 are part of
+decision 11 there (decision 5 also follows decision 6, who is in the room); decision 7 is part of decision 10, the
+standards sheet.
 
 1. **The headline.** "What each buyer hears from you, built from your won and lost deals." (recommended), or "One
    record of what you tell buyers, kept true to your won and lost deals."
@@ -773,3 +780,11 @@ spellings, and every quote of yours word for word against your notes.
 - **Every drawing** plays once, when it is about 40% in view, shows its final state with reduced motion, and has no
   figure number, no gray placeholder text and no counts.
 - **Typography:** use typographic apostrophes and quotes on the page (this document uses plain ones).
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026).
+- The first-month buyer calls this page needs on Launch are now in the offer's proposal (DECISIONS.md, decision 2).
+- The page's decisions now point to DECISIONS.md. No line on the page changed.

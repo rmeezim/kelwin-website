@@ -2,9 +2,9 @@
 
 Round 11 · 19 October 2026 · for your yes
 
-**Handling.** Two of the weaknesses listed here are still live on today's public preview until the next deploy, and
-the project's files are public today (finding 1). Keep this file out of any public copy until both are closed. It
-describes each weakness in general terms only.
+**Handling.** The project's files are private since 19 October 2026 (finding 1, closed), and the public preview is
+dark, so the two weaknesses still on `main` (findings 3 and 4) can't be reached until a deploy, which will carry their
+fixes. This file describes each weakness in general terms only; keep it out of any public copy.
 
 This answers the third of your additions to the order of work: "Make the website fully secure so there are no chances
 of potential cyberattacks or cybersecurity-related risks." It also covers the security side of "Can the site store
@@ -51,7 +51,7 @@ from other companies.
 | # | What | Why | Cost | Who |
 |---|---|---|---|---|
 | 1 | **Lock every account:** security keys or passkeys on Google, GitHub, Cloudflare and the registrar; one password manager; recovery codes on paper | A stolen login is the most likely attack, and it gets around everything else | About $50–110 once for two keys; about $4 a person a month for the password manager | You, with us |
-| 2 | **Make the project private,** in a GitHub organization in Kelwin's name, on GitHub Team | Your notes, the prices and your first name are public today (finding 1). A private project on GitHub's free plan loses the protected live branch [17] | About $4 a person a month | You decide; we move it |
+| 2 | **Move the project, private since 19 October, into a GitHub organization** in Kelwin's name, on GitHub Team | Finding 1 is closed, but a private project on GitHub's free plan can't protect its live branch [17] | About $4 a person a month | You decide (DECISIONS.md, decision 13); we move it |
 | 3 | **Move to Cloudflare and send the security settings with every page,** including a rule that lists exactly which scripts each page may run | GitHub Pages can't send them. Our rule passed on every page of today's site, with nothing broken | $0 | Us |
 | 4 | **Make kelwin.co's mail impossible to fake:** SPF, DKIM, then DMARC at "reject" | Stops fake invoices sent in our name. "We sell exactly this, so our own setup must pass" (NEXT-STEPS) | $0 | You add the mailbox; we set the records |
 | 5 | **Guard every form on our own server** | Stops spam and floods, and stops our forms being used to send mail to strangers | $0 | Us |
@@ -68,8 +68,9 @@ last known around mid-2026, to check. BACKEND.md has the full budget.
 **What we'd tell a buyer:** "Our own site and accounts are run to the standard we'd hold yours to: every login on a
 security key, mail that can't be faked in our name, and nothing you send us kept longer than we say."
 
-**What we need from you:** decision 1 this week, and the free GitHub settings in Part 3 (about ten minutes). The
-other three decisions can wait for the account set-up in BACKEND.md.
+**What we need from you:** DECISIONS.md, decision 13 this week, and the GitHub settings in Part 3 that the free plan
+still allows (about five minutes). The keys, the password manager and the spare admin are part of DECISIONS.md,
+decision 12.
 
 ---
 
@@ -400,16 +401,17 @@ insurance:** we ask for a quote when the first client signs, because a buyer's s
 ### This week, free, about ten minutes (finding 8)
 
 Today the live branch has no protection: anyone holding a key with write access, a stolen one included, could push a
-change that deploys at once. Your rule "never push to main without the founder's go-ahead" is written down, but
-GitHub doesn't enforce it yet. In GitHub's settings:
+change to `main`. Your rule "never push to main without the founder's go-ahead" is written down, but GitHub doesn't
+enforce it, and on the free plan a private project can't. (While the project is private on the free plan, `main` also
+has no GitHub Pages site to publish to, so a push changes nothing public until the move to Cloudflare.) In GitHub's
+settings now:
 1. a passkey or security key on your GitHub account;
-2. protection on `main`: changes only through a pull request, no force-push, no deletion;
-3. update alerts and security updates on;
-4. secret scanning with push protection on (free while the project is public);
-5. the deploy environment limited to `main`.
+2. update alerts and security updates on.
 
-Once the project moves into the organization (decision 1), we set the same rules there. **Meanwhile, we push no new
-documents with prices or your notes** until you decide.
+Once the project moves into the organization on GitHub Team (DECISIONS.md, decision 13), we add protection on `main`
+(changes only through a pull request, no force-push, no deletion) and the deploy environment limited to `main`.
+Secret scanning is a paid extra on a private project, so the leaked-key check in every build (gitleaks, 2.7) does
+that job.
 
 ### The routine
 
@@ -442,14 +444,14 @@ build in a real browser. "Not real" means it could not be made to happen, or nob
 
 | # | What we found | Real? | How serious | When we fix it | Where it stands |
 |---|---|---|---|---|---|
-| 1 | The project's files on GitHub are public. The working branch, one click from the default page, holds your verbatim notes, the business model with its prices and research, your first name in about 20 files and your city in three. The default branch is clean. Nobody has copied the project yet | Yes, reproduced | **High** | **Now:** your decision 1, not at launch | Waiting for you. Meanwhile, no new documents with prices or notes are pushed |
+| 1 | The project's files on GitHub were public until 19 October 2026. The working branch, one click from the default page, holds your verbatim notes, the business model with its prices and research, your first name in about 20 files and your city in three. The default branch is clean. Nobody has copied the project yet | Yes, reproduced | **High** | Closed by you on 19 October 2026: the project is private | Closed. What was public before may have been copied; that can't be undone |
 | 2 | Next.js 16.2.4 carries 30 published security notices, three of them critical. None can reach the live site, which is finished pages only; the one live path was a developer's laptop running the preview server on a shared network | Yes, on a laptop only | Low | Now, on the working branch | Part 1 |
 | 3 | A crafted link could make the live Contact page fail to load | Yes, reproduced on the live branch | Low | Already fixed on the working branch | Live with the next deploy |
 | 4 | A crafted link could pin any sentence, highlighted, on the Contact page, which could help a phishing email look real, and a very long one could break the layout. The first proposed fix was wrong: it would have dropped five real links from Reports. The corrected fix was tested | Yes, reproduced | Low | Now, with the corrected fix | Part 1. When Reports is rebuilt, its new links join the list |
 | 5 | The deploy script grants more access than it needs, keeps its key on disk, and names its building blocks by labels that can be moved | Yes | Low | Now; it runs only once it reaches the live branch | Part 1 |
 | 6 | GitHub Pages can't send the security settings. No attack works today: a framed page can only open the visitor's own mail program with text they can see | A real gap, no attack today | Low today; required at launch | At launch, with Cloudflare | Tested clean on every page (2.1) |
 | 7 | Notices on build-only tools, about crashes on crafted input; the only input is our own files | Not a real risk | — | Rides along with finding 2 | Part 1 |
-| 8 | The live branch has no protection, so any push deploys at once; update alerts and secret scanning couldn't be checked | Yes, partly checked | Low | Your settings this week (Part 3); the update-alerts file with the next change to the live branch | Waiting for you |
+| 8 | The live branch has no protection, so any push deploys at once; update alerts and secret scanning couldn't be checked | Yes, partly checked | Low | With the move to the organization (DECISIONS.md, decision 13); the update-alerts file with the next change to the live branch | Waiting for decision 13 |
 | 9 | Job applications go to audit@, not careers@ | Not a security risk | — | When the careers form is built, once careers@ is confirmed | BACKEND.md door 4 |
 | 10 | Old preview pages and the retired photographs sit in a local build folder; they were never deployed | Not real | — | One rule: deploy only from the clean build | Part 3 |
 
@@ -691,14 +693,18 @@ SEARCH-BUILD.md, BACKEND.md and BLOG.md; the round-10 NEXT-STEPS.md.
 
 ## Decisions for the founder
 
-**1. Make the project private this week, in a GitHub organization in Kelwin's name, on GitHub Team?**
+**Reconciled:** the project is already private, so decision 1 is now DECISIONS.md, decision 13 (the organization and
+the preview); decisions 2 and 3 are part of DECISIONS.md, decision 12; decision 4 (CVs) is settled as proposed, with
+the period confirmed by the lawyer.
+
+**1. Move the project, now private, into a GitHub organization in Kelwin's name, on GitHub Team?**
 - **Proposed:** yes, this week. About $4 a person a month (to check): you now, the GTM engineer when work starts. This
-  is the same question as SITEMAP decision 2, so one answer covers both.
-- **Why:** your notes, the prices and your first name are readable by anyone today, which voids "no prices on the
-  site" and "name no one". On GitHub's free plan a private project loses the protected live branch [17]; GitHub Team
-  keeps it, and also lets today's preview keep running from the private project, at a new address and hidden from
-  search, until the private preview on Cloudflare is ready (our knowledge, to confirm when we move it). What was
-  already public may have been copied; we can't undo that.
+  is what remains of SITEMAP decision 2, and it is DECISIONS.md, decision 13.
+- **Why:** the project went private on 19 October, which closed finding 1. On GitHub's free plan a private project
+  loses the protected live branch [17]; GitHub Team keeps it. Team could also serve a preview from the private project
+  until the private preview on Cloudflare is ready, but that preview site is itself public, only hidden from search
+  (our knowledge, to confirm when we move it), so we propose waiting for Cloudflare's. What was already public may
+  have been copied; we can't undo that.
 
 **2. Security keys and one password manager?**
 - **Proposed:** yes. Two security keys for you now (about $50–110 for the pair), two for each person with admin rights
@@ -719,3 +725,17 @@ SEARCH-BUILD.md, BACKEND.md and BLOG.md; the round-10 NEXT-STEPS.md.
 - **Why:** both formats are what applicants send; refusing Word would turn good applicants away, and opening it in
   Google Docs takes away its main risk. Short, stated periods keep the least data for the least time, which is what
   the law in Europe asks and what we'd promise any applicant.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026). The decisions
+now sit in DECISIONS.md.
+- Finding 1 is closed: the founder made the project private on 19 October. The handling note, the ten things (item 2),
+  Part 3, the findings table and decision 1 follow. What is left is the GitHub organization on GitHub Team, which
+  brings back the protected live branch (DECISIONS.md, decision 13).
+- Part 3 now lists only the settings the free plan allows on a private project; secret scanning is a paid extra on a
+  private project, so the gitleaks check in the build does that job (2.7 already said so).
+- Decisions 2 and 3 are part of DECISIONS.md, decision 12; decision 4 (CVs) is settled as proposed.
+- Part 1's "commit: [ ]" fields are left for the lead.

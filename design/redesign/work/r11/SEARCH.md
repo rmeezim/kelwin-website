@@ -27,8 +27,9 @@ judgment" means our own reading, not a measurement. Section 8 lists what we stil
 - **Off the site:** one approved description of Kelwin, used word for word everywhere. Then mentions we earn, never
   ones we buy. In one study of about 75,000 brands, how often a brand was mentioned across the web was the strongest
   link to being named in Google's AI answers [2].
-- **Two things to close now:** today's public preview, and the project's files on GitHub, which anyone can read. They
-  hold your name, our prices and our working notes (the sitemap's decision 2).
+- **Closed on 19 October:** you made the project's files on GitHub private, so they no longer show your name, our
+  prices or our working notes, and today's public preview is dark. Where the project lives next is DECISIONS.md,
+  decision 13.
 - **How we'll know:** visits from AI assistants, counted; "An AI assistant" as an answer on our forms; Google's and
   Bing's own reports; and a monthly check, by hand, of what five assistants say about Kelwin.
 - **What we won't do:** location pages, doorway pages, pages about named rivals, "best agencies" lists, a price page
@@ -63,7 +64,7 @@ All of these are in the sitemap, with a card each.
 | "Kelwin at a glance", a block on About | At launch | "What is Kelwin? Where is it based? How does work start?" |
 | "Security and access", a section of Engagements | At launch | "Is Kelwin secure? Who holds our CRM data?" |
 | The glossary | Soon after launch | "What is revenue entropy?", "What is a System Audit?", "What is Narrative OS?" |
-| Problem notes (the pace is the sitemap's decision 4b) | Soon after launch | "Reply rates fell but every email shows delivered", "Our forecast doesn't match the CRM" |
+| Problem notes (the pace is part of DECISIONS.md, decision 14) | Soon after launch | "Reply rates fell but every email shows delivered", "Our forecast doesn't match the CRM" |
 | Reports, the Revenue Entropy Index, role pages, market pages | Later, each when real | The Index is the most quotable thing Kelwin could own: original data, with its method, sample and date on the page. |
 
 The topic hubs already exist. The three capability pages each list their newest notes, and every note links back up to
@@ -105,7 +106,7 @@ headline, so we keep them few.
 - **The search kind** looks pages up to answer a question: ChatGPT's, Claude's, Perplexity's, Apple's, and Google's and
   Bing's own. **We let all of them in.** Blocking one takes Kelwin out of that assistant's answers.
 - **The training kind** collects pages to teach the next model. Google and OpenAI each say blocking theirs doesn't
-  affect search [9]. Whether to let them read kelwin.co is the sitemap's decision 3. We propose yes.
+  affect search [9]. Whether to let them read kelwin.co is DECISIONS.md, decision 9 (the sitemap's decision 3). We propose yes.
 
 **What machines read, in plain words** (our list for building it is in SEARCH-BUILD.md):
 - a list of every page we want found, with the date each one really changed;
@@ -126,9 +127,8 @@ headline, so we keep them few.
 - **Every address is chosen once, before launch.** Google follows a forward from an old address, but a forward made
   by the page itself is a weaker signal than one made by the server, and any forward takes time to be picked up [11].
   So we don't rename after launch.
-- **Now, if you agree (the sitemap's decision 2):** the project's files on GitHub become private, in a GitHub
-  organization in Kelwin's name, and today's preview goes dark (or stays on GitHub's paid plan, hidden from search,
-  until the private preview exists). This is the same step the work on what sits behind the site proposes.
+- **Done on 19 October:** the project's files on GitHub became private, and today's preview went dark. Moving the
+  project into a GitHub organization in Kelwin's name is DECISIONS.md, decision 13.
 - **The new host** is that work's choice. Whatever it chooses, every address in the sitemap stays the same.
 - **At launch:** the old preview addresses answer "not found". That costs nothing, because nothing public links to
   them. The new host's own spare address for the site is switched off or hidden from search, so there is never a
@@ -160,15 +160,15 @@ the list it fills.
 |---|---|---|
 | Name | Kelwin, with no legal suffix | Everywhere |
 | What it is | "GTM systems partner" (the voice work and the message sheet, for your yes) | Page titles, About, the LinkedIn tagline, Crunchbase, what machines read |
-| One line | The message sheet's proposal: "Kelwin is a GTM systems partner for B2B companies. We build the system their revenue runs on, in their own accounts and documents, and run it with their team." (for your yes) | The LinkedIn "About" first line, Crunchbase, the homepage's description, what machines read |
+| One line | The message sheet's line: "Kelwin is a GTM systems partner for B2B companies. We build and run the system behind what their buyers hear, whom they approach and why their deals close. It lives in their own accounts and documents." (for your yes: DECISIONS.md, decision 11) | The LinkedIn "About" first line, Crunchbase, the homepage's description, what machines read |
 | Short description (about 60 words) | From the voice work | LinkedIn "About", Crunchbase, the fact sheet for assistants, About |
 | Address | New York, New York, USA | The footer, Privacy, LinkedIn, Crunchbase |
 | Registered | Delaware | About, Terms |
 | Founded | [to confirm] | About, LinkedIn, Crunchbase |
 | Website | https://kelwin.co | Every profile |
 | How work starts | The System Audit, with no fee: a 30-minute first call, ten working days, the readout on a 60-minute call | About, Engagements, LinkedIn |
-| What it sells | Launch, Growth and Scaling (Scaling's status as the sitemap's decision 5 says); fixed-scope engagements (the offer's proposed name) | Engagements, LinkedIn "Services" |
-| The term | "We recommend six months; the first three are a pilot. Month to month is possible, at a higher fee." (wording follows the offer) | Engagements, the fact sheet for assistants |
+| What it sells | Launch, Growth and Scaling, the retained engagements (Scaling's status as DECISIONS.md, decision 2 sets it); fixed-scope engagements (the names in DECISIONS.md, decision 1) | Engagements, LinkedIn "Services" |
+| The term | "We recommend six months. The first three are the pilot, which ends at day 90 with a written readout against the targets we agreed. Month to month is also possible." (the offer's sentence, as the voice allows it: no fees) | Engagements, the fact sheet for assistants |
 | Who speaks | "The founding team", never a named person, on the site | All copy |
 
 Today the site uses three phrases for what Kelwin is: "Revenue Infrastructure" in its page titles, "GTM systems
@@ -237,9 +237,9 @@ Kelwin being named.
 
 **What good looks like.** These are our estimates, not promises:
 - within 90 days of launch, all five assistants describe Kelwin correctly when asked by name;
-- in the same period, no answer adds a legal suffix or names a person. That holds only if the project's files are
-  private (decision 2) and your own LinkedIn profile doesn't name you as behind Kelwin (section 7). If it does, an
-  assistant may name you, and that is true;
+- in the same period, no answer adds a legal suffix or names a person. The project's files are private now, so this
+  holds as long as your own LinkedIn profile doesn't name you as behind Kelwin (section 7). If it does, an assistant
+  may name you, and that is true;
 - being cited for questions about what Kelwin is (question 7) takes longer, and depends on the notes, the Index and
   mentions elsewhere.
 
@@ -263,7 +263,7 @@ assistant.
 
 | When | What | Who |
 |---|---|---|
-| Now | Close the preview and make the project private, with your go-ahead; fill in LinkedIn from the approved facts | The GTM engineer, with you creating the accounts in Kelwin's name |
+| Now | Fill in LinkedIn from the approved facts (the project is already private) | The GTM engineer, with you creating the accounts in Kelwin's name |
 | While pages are written | The writing rules in 3.2 on every page; the comparison note; the standards page | Our copywriters |
 | While pages are built | The shared setup for search, then each page's part of it | The GTM engineer |
 | Launch | The files, the titles and descriptions, the launch-day checks; Google's and Bing's reports; the analytics group; the form option; Crunchbase, if you say yes | The GTM engineer and our copywriters |
@@ -272,13 +272,13 @@ assistant.
 
 ## 7 · Decisions, and quick answers
 
-**In the sitemap's decisions:**
-- decision 2: close today's preview and the public project files now;
-- decision 3: let the AI companies' training crawlers read kelwin.co;
-- decision 4: the byline ("By Kelwin", or none) and the pace of notes;
-- decision 5: how Scaling shows, which every fact sheet and profile repeats.
+**Now in DECISIONS.md,** the one list for this round:
+- the public files: settled (private since 19 October); where the project lives next is decision 13;
+- decision 9: let the AI companies' training crawlers read kelwin.co (the sitemap's decision 3);
+- the byline: settled, none, as you decided in round 8; the pace of notes is part of decision 14;
+- decision 2: how Scaling shows, which every fact sheet and profile repeats.
 
-**Three quick answers, now** (the same three as in the sitemap):
+**Three quick answers, now** (the same three as in the sitemap, now at the end of DECISIONS.md's list):
 1. Which company-size band should Kelwin's LinkedIn page show? It is a statement about headcount, so it must be true;
    the site itself never states a team size.
 2. Does your own LinkedIn profile list Kelwin? If it does, assistants may say who is behind it.
@@ -358,3 +358,16 @@ Also used, without a figure in the text:
 Dropped this round: Grow and Convert's study of conversion by kind of search. Only a category page of its site was
 found (growandconvert.com/category/conversion-rate-optimization/), not the study itself, so we no longer rely on its
 figure.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026). The decisions
+now sit in DECISIONS.md.
+- The public project files: settled, private since 19 October (sections 1, 3.4, 5, 6 and 7). What is left is
+  DECISIONS.md, decision 13.
+- The one line in 4.1 is now the message sheet's own sentence; the old one used two lines the voice retired ("the
+  system their revenue runs on", "run it with their team").
+- The term line drops "at a higher fee" (the voice keeps fees off the site) and follows the offer's sentence.
+- Scaling's status, the names and the crawler decision now point to DECISIONS.md; the byline is settled (none).

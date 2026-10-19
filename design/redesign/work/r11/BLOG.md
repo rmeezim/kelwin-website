@@ -42,12 +42,12 @@ time to set up.
 **Runner-up: Decap CMS with Decap Turbo,** if copywriters must edit without their own GitHub accounts [4]. The two
 editors read almost the same settings, so switching later is cheap.
 
-**What we'd tell a buyer:** "Our field notes are dated, sourced and signed by the firm, and every one is published
-first on our own site."
+**What we'd tell a buyer:** "Our field notes are dated and sourced, and every one is published first on our own
+site."
 
-**Two related decisions are in SITEMAP.md,** and this system works with either answer: the byline (decision 4a,
-proposed "By Kelwin", never a person) and the pace (decision 4b, proposed two notes a month for the first six
-months). Four decisions of our own are at the end of this document.
+**Two related points from SITEMAP.md.** Notes carry no byline, as you decided in round 8; the markup names the firm,
+Kelwin, as the author (decision 4a, settled). The pace (decision 4b, two notes a month for the first six months) is
+part of DECISIONS.md, decision 14, with the four decisions at the end of this document.
 
 ---
 
@@ -91,7 +91,7 @@ link.
 
 **What a reader sees** (SITEMAP.md, "Insights is the blog"), top to bottom:
 - the topic, the headline, and one sentence on what the note argues;
-- the byline as you decide it (SITEMAP decision 4a), linked to About;
+- no byline, as you decided in round 8;
 - the date, and "Updated" only when the content really changed, with one line saying what changed;
 - the reading time, counted from the words, never typed;
 - the note itself: every outside number with its source beside it, every Kelwin term defined once, every fact in a
@@ -270,7 +270,7 @@ One file per note: `content/insights/<address>.md`. The file name is the note's 
 | `share.linkedin`, `share.x`, `share.instagram` | Writer or copywriter | The post texts; the slide lines | X: about 250 characters, leaving room for the link |
 | `picture` | Optional | A real photograph, its description, and the real-picture tick | Founder rule 6 |
 
-**Never fields, so they can't be got wrong:** the byline (fixed in the page design, as SITEMAP decision 4a sets it),
+**Never fields, so they can't be got wrong:** the byline (there is none on the page; the markup names the firm),
 the reading time (about 230 words a minute, rounded up), the address, the preview picture and the markup.
 
 **"In the works"** becomes one small settings file in the editor: a title, a topic and a status per line ("Drafting",
@@ -356,7 +356,7 @@ The note, in Markdown.
   inside the JSON (SEARCH-BUILD.md). If the short llms.txt is adopted, each published note is added to it.
 - **The daily build:** `schedule: - cron: "5 13 * * *"` in the deploy file (9:05 a.m. New York in summer, 8:05 in
   winter). GitHub runs scheduled builds "only on the default branch", and turns them off after 60 days without
-  activity in a public repository; that stops mattering once the project is private [13]. Timed builds can start some
+  activity in a public repository; the project is private now, so that no longer applies [13]. Timed builds can start some
   minutes late. The loader compares each note's `date` with the build time. Then ask Bing to read the new address
   (IndexNow), as SEARCH-BUILD.md plans.
 - **Previews:** a pull-request job builds with drafts included, deploys a preview version (BACKEND.md, Appendix A),
@@ -443,6 +443,8 @@ page and the homepage's note links (for the reading times).
 
 ## Decisions for the founder
 
+**Reconciled:** these four, with the pace of notes (SITEMAP decision 4b), are now DECISIONS.md, decision 14.
+
 **1. The editor: Sveltia CMS?**
 - **Proposed:** yes. Notes as plain files in Kelwin's own project, written at kelwin.co/admin/, with a private preview
   of every draft and your Publish as the go-ahead.
@@ -469,3 +471,13 @@ page and the homepage's note links (for the reading times).
 - **Why:** LinkedIn articles reach people who never click a link, and a week's wait lets the search engines see
   kelwin.co as the original first. The alternative is short posts with links only, which is safe but reaches fewer
   people.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026).
+- The byline: none, as the founder decided in round 8 ("no need for the byline"); the markup names the firm as the
+  author. The buyer line no longer says notes are "signed by the firm".
+- The project is private now, so the 60-day rule for scheduled builds no longer applies.
+- The four decisions and the pace are DECISIONS.md, decision 14.

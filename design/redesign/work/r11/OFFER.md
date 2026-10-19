@@ -103,7 +103,7 @@ backup. How much we take on is set in hours, from each contractor's confirmed ho
 | "an additional setup/infrastructure readiness fee on top of month 1's retainer and the deposit. Or we could discount the deposit" | Discount the deposit. No setup fee on six-month terms. A readiness fee on month to month, and on a day-90 exit when we met every target. Infrastructure passes through at cost. | 7.1, 7.2 |
 | Renewal at month 5; month to month after month 6 at the premium; "a little bit" off for 6–12 months | Yes, written on the order form from day one: one month's grace at the fee, then month to month at +10%; six months at the fee; 12 months 10% off; 24 months 15% off. | 7.5 |
 | "OFFER THE DAY-90 EXIT" | Kept, with one rule per way to start. | 5.4, 7.6 |
-| Research the project prices, and whether more are needed | Mostly right. Win/loss drops; positioning is priced by company size; the CRM blueprint's floor is tied to its hours. Three new ones. | 4 |
+| Research the project prices, and whether more are needed | Mostly right. Win/loss drops; positioning is priced by company size; the CRM setup plan's floor is tied to its hours. Three new ones. | 4 |
 | No prices on the site; the starting price on the first call | Kept. | 10 |
 
 ## What stays as you approved it
@@ -144,7 +144,7 @@ Each change below is in the decision list (section 12) for your yes.
 | A calling channel on Launch (+$2,000) | The same price. We write and check the calls; the client's reps or a named calling partner make them, the partner at cost | No callers are lined up |
 | An engagement lead from the founding team | The specialist leads, as a contractor, committed for the client's whole term, with a named backup. The founding team is in the room at eight moments | You sell full time (B14) |
 | The audit: about 20–30 hours of our time | About 10 contractor hours on a set template; the founding team runs the working sessions and the readout, as part of the sale | Each free audit is now paid contractor time (2.2) |
-| Projects at $6,000–25,000 | Fixed-scope engagements. Win/loss $10,000–15,000; positioning priced by company size; the CRM blueprint's $10,000 only up to about 40 architect hours | 4 |
+| Projects at $6,000–25,000 | Fixed-scope engagements. Win/loss $10,000–15,000; positioning priced by company size; the CRM setup plan's $10,000 only up to about 40 architect hours | 4 |
 
 ## 2 · Two families of engagement
 
@@ -175,7 +175,7 @@ Each change below is in the decision list (section 12) for your yes.
 - **The credit toward a package** (LIFECYCLE 4.4). Half the fee, up to one month of the package's full fee, in equal
   parts on months 4, 5 and 6, if the package is signed within 90 days of handover. Only our fee counts; outside costs
   and upkeep don't. Only work the package reuses earns it: deliverability, positioning, the ICP and signal map, the CRM
-  blueprint, win/loss, the operating model and the outbound build. Events don't. On Growth, at most $5,000 until the
+  setup plan, win/loss, the operating model and the outbound build. Events don't. On Growth, at most $5,000 until the
   first Growth client's hours are known. It lapses by itself at a day-90 exit.
 - **Who the fixed-scope builds are for.** A buyer who wants positioning, the ICP map and outbound all together pays
   less through the Launch pilot ($22,600 even if it leaves at day 90 without cause) than buying the three separately
@@ -281,7 +281,9 @@ $14,500–23,000 (R10).
 5. The diagnosis first, free, where others charge $3,200–35,000 for it.
 6. The founding team at the moments that matter, and a day-to-day lead who answers to written targets.
 7. A day-90 check on written targets, an exit if we miss them, and everything a buyer could ever pay on one line.
-8. No work for a competitor the client names (standard on Growth and Scaling, on request on Launch, R10).
+8. No work for a competitor of the client at the same time. Today: standard on Growth and Scaling, on request on
+   Launch (R10). If the standards sheet is published with the competitor rule (DECISIONS.md, decision 10), it covers
+   every engagement, Launch and the fixed-scope engagements included.
 
 **Should any price change?**
 
@@ -300,7 +302,7 @@ $14,500–23,000 (R10).
    above $25,000, or the base scope shrinks (for example 5 one-to-one accounts, the rest an add-on). It stays "not yet
    taking clients" until then.
 4. **Lower the cost of starting.** On Launch, $8,800 at signing on the fixed option, against $13,200 in round 10.
-5. **Fixed-scope prices:** three change, and the CRM blueprint's floor is tied to its hours (section 4).
+5. **Fixed-scope prices:** three change, and the CRM setup plan's floor is tied to its hours (section 4).
 6. **Never sell on the per-meeting arithmetic,** and never name a competitor on the site.
 
 **Which package fits which buyer** (said on the first call). Launch for a company where the founder still sells most
@@ -315,8 +317,7 @@ the Associate seat before selling to companies above about $10M of revenue.
 - The fixed pilot: Launch from $4,400 a month in months 1–3, plus $250 per held meeting.
 - Everything a buyer could ever pay us, on one line in every option (5.4).
 
-What we'd tell a buyer: "You can rent meetings for less. We build what makes them, in your accounts, and run it with
-you."
+What we'd tell a buyer: "You can rent meetings for less. We build what makes them, in your accounts, and run it."
 
 ### 3.2 Each item you raised, and where it sits
 
@@ -374,6 +375,9 @@ we'd tell a buyer: "Your reps learn the story from the people who wrote it."
   - Conference activation for one show per six-month term, run as one of the 3 live campaigns.
   - The 500 named accounts described as what they are: an account-based, one-to-many program.
   - A one-hour briefing in month 1 for whoever sells, on the messages and the objection answers.
+  - About six calls in month 1 with recent buyers the client introduces, won and lost, so the first Narrative OS
+    starts from buyers' own words on every package, as the Narrative Systems page says (Growth and Scaling already
+    include interviews). Their hours join the costing before the first Launch proposal (DECISIONS.md, decision 2).
 - Add-ons: a second market or set of buyers +$2,000 a month; a second LinkedIn sender +$1,000 a month; calling +$2,000 a
   month (the calls made by the client's reps or a named partner at cost, 3.2); a second language +$2,000 a month (all
   four prices from R10); an extra show $5,000; a webinar $7,500, once a production partner is named.
@@ -384,7 +388,7 @@ with monthly add-ons**
 
 - Included, as approved: everything in Launch for up to two markets on one team; the sales narrative; email, LinkedIn
   from up to 3 profiles, follow-up of inbound requests, and calls; up to 1,500 accounts and 5–8 signals; full routing
-  and a light CRM blueprint; a weekly session, a weekly signal review, monthly and quarterly reviews; up to 6 buyer
+  and a light CRM setup plan; a weekly session, a weekly signal review, monthly and quarterly reviews; up to 6 buyer
   interviews a quarter; no work for a named competitor.
 - Newly included:
   - Conference activation for one show a quarter.
@@ -409,7 +413,8 @@ with monthly add-ons**
   executive dinners $12,000 each; extra shows $5,000; webinars $7,500; half-days $7,500.
 - Later, once a producer is under contract and two dinners have run as add-ons: consider including one dinner every six
   months on Scaling, venue at cost.
-- Not offered until its seats are filled (section 9) and its price is set.
+- Not offered until its seats are filled (section 9) and its price is set. On the site it is described in full and
+  marked "not yet taking clients" until then (DECISIONS.md, decision 2).
 
 **Every tier:** text and WhatsApp reminders only to people who said yes, tools at cost; tools, domains and data in the
 client's name; outside costs billed at cost, never marked up.
@@ -493,7 +498,7 @@ pilots.
 | Email deliverability | $6,000 ($5,000–7,500 by number of domains) | 3–4 weeks + the 30-day check | Audit $1,000–4,000; audit and build $5,000–10,000; setup bundles $299–1,499 | About 57% | Keep. Sell it as diagnosis and repair, never setup | Yes |
 | Positioning and messaging | $15,000 under about $10M of revenue; $20,000 above | 4–6 weeks | $10,000 / $20,000 / $30,000 by company size (Fletch PMM); $15,000 (Genesys Growth) | About 53% at $15,000 | Keep; now tied to size | Yes |
 | ICP and signal map | $9,000–12,000; up to $15,000 for two markets | 3–4 weeks | One Clay table $1,200–5,000; system builds $9,000–25,000 | About 57% at $9,000 | Keep; top raised for two markets | Yes |
-| CRM blueprint | $10,000 for a written scope of up to about 40 architect hours; $14,000–18,000 above that, for one HubSpot; Salesforce from about $20,000 | 4–8 weeks | HubSpot's own onboarding $1,500 / $3,500; partners $2,000–13,500; small Salesforce $10,000–25,000 | About 31% at $10,000 and 40 hours; 36% at $14,000 | Keep; the floor tied to hours | Yes |
+| CRM setup plan | $10,000 for a written scope of up to about 40 architect hours; $14,000–18,000 above that, for one HubSpot; Salesforce from about $20,000 | 4–8 weeks | HubSpot's own onboarding $1,500 / $3,500; partners $2,000–13,500; small Salesforce $10,000–25,000 | About 31% at $10,000 and 40 hours; 36% at $14,000 | Keep; the floor tied to hours | Yes |
 | Win/loss interviews | $10,000–15,000 for 10–12, thank-you payments at cost | 6–8 weeks | $8,648 for 10 all in (WON Studio); Clozd median $50,100 a year | About 40% at $10,000; 52% at $12,500 | Lower the floor from $12,000 | Yes |
 | The operating model | $15,000–25,000 | 6–8 weeks from the audit's readout | Fractional CROs $10,000–25,000 a month (R10) | About 30% at $15,000; 47% at $20,000 | Keep; price toward $20,000 unless the scope is small | Yes |
 | **The outbound build** (new) | About $15,000 ($12,000–18,000) | 5–6 weeks + the 30-day check | Buildouts $5,000–10,000; build projects $5,000–25,000 | About 52% | Add | Yes |
@@ -542,7 +547,7 @@ selling time.
   partners $5,000+ a month on three-month minimums (clay.com directory). All M.
 - Then: upkeep (the signals re-scored monthly) or Launch.
 
-**CRM blueprint**
+**CRM setup plan**
 - What it is: how your CRM should work (the deal stages, required fields, who owns what, routing and clean-up rules),
   written down and built in.
 - Length: 4–8 weeks; a heavily customized instance takes longer, and the first call says so.
@@ -552,8 +557,8 @@ selling time.
 - Market: HubSpot's own onboarding fee $1,500 (Sales Professional) or $3,500 (Enterprise) (hubspot.com/pricing/sales);
   partners $2,000–13,500 (insidea.com, vestalhub.com, thisisaspect.com); small Salesforce work $10,000–25,000
   (solutions4sf.com). All M. A buyer who knows HubSpot's $1,500 will compare, so never call this onboarding.
-- Name: the map proposes a plainer name. We would avoid "setup", which the voice work lists as an agency verb. The scope
-  doesn't change.
+- Name: "CRM setup plan", the plainer name you approved with the round-10 map. It names a written plan, never a
+  setup service, and is never called onboarding. The scope doesn't change.
 - Then: upkeep (a monthly hygiene report), or Growth, where the same routing runs.
 
 **Win/loss interviews**
@@ -1328,7 +1333,7 @@ round 10: **you can't also be the engagement lead.** Round 10 gave that seat abo
 | Founding-team sponsor | You | The first call, the readout, the proposal, the kickoff, day 90, the renewal talk, the last meeting and any bad-news call; reads every Friday note. About 2 hours a month per package after signing, plus the sale (LIFECYCLE 3.1) |
 | Systems Engineer | The GTM engineer | Domains, Clay, the CRM, campaigns. Every package and most fixed-scope work waits on this seat |
 | Narrative Architect | The specialist, with the copywriters | Releases the held sales narrative once confirmed |
-| CRM and routing | The systems architects | The CRM blueprint, the operating model, Growth's routing |
+| CRM and routing | The systems architects | The CRM setup plan, the operating model, Growth's routing |
 | Associate (replies, research, scheduling) | Not lined up | Needed for Growth. A copywriter with about 30–40 hours a month could hold it |
 | Market Intelligence Analyst (part time) | Not lined up | Growth. The specialist can cover it at first |
 | Engagement Manager | Not lined up | Scaling |
@@ -1351,7 +1356,7 @@ round 10: **you can't also be the engagement lead.** Round 10 gave that seat abo
 | Executive dinner (once) | 18–22 | 12–16 | 20–22 | — (plus a producer) |
 | Positioning (once) | 30–40 | — | 20–30 | — |
 | Win/loss (once) | 30–40 | — | 10–15 | — |
-| CRM blueprint (once) | 4–6 | 5–10 | — | 40–70 |
+| CRM setup plan (once) | 4–6 | 5–10 | — | 40–70 |
 | The operating model (once) | 40–60 | 5–10 | — | 15–25 |
 | A webinar (once, production by a partner) | 3–5 | 6–10 | 8–12 | — |
 | One-to-few accounts on Growth, a month | 6–10 | 6–10 | 12–20 | — |
@@ -1420,16 +1425,17 @@ account, so it can't fund the gap.
 
 - Proposals offer only what a named person can deliver by the start date, each seat by role and hours, marked founding
   team or contractor, with its backup (R10).
-- No proposal says the engagement is led by the founding team. It may say the founding team is in the room at the
-  start, at day 90 and at the end.
+- No proposal says the engagement is led by the founding team. Proposals and the site use one sentence for who is in
+  the room: "The founding team presents your readout, and is in the room at the kickoff, at day 90 and at each
+  renewal." (DECISIONS.md, decision 6).
 - The lead is committed in writing for the client's whole term. If the lead changes to anyone but the named backup, or
   the client rejects the replacement within 10 working days of meeting them, the client may leave on 30 days' notice
   with no fee (7.6). A lead's departure can't then empty the whole book at once.
 - An add-on that needs a partner is quoted only once the partner is named.
 - Events are sold with their lead times: 8–10 weeks for a show, 10–12 for a dinner. Included shows are dated at
   signing.
-- The site may say "we run a limited number of engagements at once", because these limits make it policy. It gives no
-  number.
+- The site never says "a limited number of engagements": the voice retires it as the calm version of "limited spots".
+  The limits show where a buyer can check them: in each proposal's start date and its seat-load line.
 
 ## 10 · What the website must say, and not say
 
@@ -1438,43 +1444,46 @@ account, so it can't fund the gap.
 engagements start at about $5,000 to $6,000, at a fixed fee. You get the exact fee on the proposal call."
 
 **Names**
-- "Retained engagements" and "fixed-scope engagements" in the Engagements menu and on the Engagements page. Never
-  "micro", never "projects" for the family.
+- "Retained engagements" and "fixed-scope engagements" in the Engagements menu and on the Engagements page
+  (DECISIONS.md, decision 1). Never "micro", never "projects" for the family, and never "package" or "tier" on the
+  site (the voice). "The packages" stays fine in conversation and in these working documents.
 - "Account-based" and "named accounts" may be used from Launch up. "One-to-one" only for Scaling's most important
   accounts.
 - "Held meeting" if the subject ever comes up. Never "lead", "pay per lead", "pay for results" or "guaranteed".
 - Never name Belkins or any competitor.
 
 **Terms the site may state, true for every option, without numbers**
-- "We recommend six months: the first three are a pilot at a reduced fee, with a written check at the end, and an exit
-  if we miss the targets we agreed. Month to month is possible, at a higher fee." The old line "every engagement runs
-  at least six months" is no longer true, since month to month is offered.
-- At most one sentence on the share, or none. The voice work flags "Part of what we earn follows the pipeline we
-  source." as an agency tell, so it decides.
-- A refusal the voice work may want: "We don't text or message anyone who hasn't asked to hear from you."
+- "We recommend six months. The first three are the pilot, which ends at day 90 with a written readout against the
+  targets we agreed, and an exit if we missed them. Month to month is also possible." The old line "every engagement
+  runs at least six months" is no longer true, since month to month is offered. The pilot's lower fee and the
+  month-to-month premium are said on the first call and in the proposal, never on the site (VOICE 6.3).
+- No sentence on the revenue share on the site. Like the meeting fee, it is a proposal term.
+- No refusal about texts or WhatsApp on the site. Channel consent goes in the contract and the Privacy notice; naming
+  texts would tell a premium reader that we send them (VOICE, "Needed from the other work").
 - Never the meeting fee, the revenue-share rate, the pilot percentages, the deposit or the readiness fee. Never gifts.
 
 **Pages affected**
 - **Engagements (/engagements/):** both families side by side; the three retained engagements by scope; the new
   inclusions in plain words (a show each term or quarter, training on what we wrote, named accounts); add-ons as rows in
   each package's section, named, with no prices ("Executive dinners, on Growth and Scaling"); the term sentence above;
-  Scaling shown as "not yet taking clients", or left off, until its seats are filled and its price is set.
+  Scaling described in full and shown as "not yet taking clients" until its seats are filled and its price is set
+  (DECISIONS.md, decision 2).
 - **The fixed-scope index (/engagements/fixed-scope/, formerly Projects):** the launched engagements; "a fixed fee, set
   in writing before work starts"; that each begins with a free scope check; upkeep as a section; cold calling as one row
   that says it is a channel inside the packages.
 - **One page each,** on the map's four tests: email deliverability, positioning and messaging, the ICP and signal map,
-  the CRM blueprint, win/loss interviews, the operating model, the outbound build and conference activation. The
+  the CRM setup plan, win/loss interviews, the operating model, the outbound build and conference activation. The
   outbound build's page may carry the words buyers search for ("cold email"), as the map proposes, so long as the page
   describes the build, not a monthly sending service. The executive dinner page waits until the first dinner has run.
-  That is one page fewer at launch than the map's count of 31. The sales narrative and the named-account plan come
-  later.
+  The map counts 28 pages confirmed at launch, and 30 with the outbound build and conference activation (DECISIONS.md,
+  decision 3). The sales narrative and the named-account plan come later.
 - **The audit page:** the "What does an engagement cost?" answer with no numbers; the size question sends buyers below
-  the Launch floor to the fixed-scope engagements, not to "not a fit" (R10); the security pack linked for buyers who need
-  it.
+  the Launch floor to the fixed-scope engagements, not to "not a fit" (R10; DECISIONS.md, decision 3); the security pack
+  linked for buyers who need it.
 - **Contact:** "What are you looking for?" lists a retained engagement, each fixed-scope engagement by name, a question,
   press.
 - **The three capability pages:** onward links to their fixed-scope engagements (Narrative Systems to positioning;
-  GTM Infrastructure to deliverability, the ICP and signal map, the CRM blueprint and the outbound build; GTM
+  GTM Infrastructure to deliverability, the ICP and signal map, the CRM setup plan and the outbound build; GTM
   Intelligence to win/loss). The closing chip "Fixed-scope install" changes (2.3).
 - **About and the homepage:** no new claim that the founding team leads each engagement (9.5).
 - **Privacy and Terms:** nothing about fees, pilots or exits (R10).
@@ -1548,6 +1557,10 @@ marked R10 were already open in round 10.
 
 ## 12 · Decisions for you
 
+**Reconciled.** These fourteen decisions and five questions are now merged, with the rest of this round's work, into
+one list for you: DECISIONS.md, beside this document. Its last section shows where each one went; the numbers below
+stay, because LIFECYCLE.md points to them.
+
 One list for both documents. Each has a proposed answer. A note on the research: the selling, service and gift practice
 rests on published books and studies, not live web research, because search ran out this round. We check the five
 items listed in LIFECYCLE's sources before any client sees the gift policy or the reminders.
@@ -1565,7 +1578,7 @@ items listed in LIFECYCLE's sources before any client sees the gift policy or th
 5. **The fixed-scope catalog.** Proposed: nine at launch (your six, the outbound build, conference activation, and
    executive dinners on request); hold the sales narrative, the named-account plan and a webinar series; win/loss at
    $10,000–15,000 with upkeep of 8 interviews a quarter; positioning at $15,000 or $20,000 by company size; the ICP and
-   signal map up to $15,000 for two markets; the CRM blueprint at $10,000 only up to about 40 architect hours; a dinner's
+   signal map up to $15,000 for two markets; the CRM setup plan at $10,000 only up to about 40 architect hours; a dinner's
    middle payment due once 8 guests have accepted; no cold calling or monthly cold email on their own.
 6. **Three ways to start.** Proposed: six months fixed at 55%, six months open at day 90 at 65% (recommended), and month
    to month at the full fee plus 10% with a readiness fee. One $250 meeting fee and one cap on both pilots. At day 90,
@@ -1683,3 +1696,24 @@ none was opened at its source. Links are host and path; add https:// to open.
   (B1, B3–B8, B14) · design/redesign/work/r11/LIFECYCLE.md · the map stream's draft sitemap and the voice stream's notes
   on agency language, both this round · src/components/sections/CapabilityDetail.tsx (the "Fixed-scope install" chip).
 - **Our arithmetic** is in two scripts kept with the working files: the offer's model and its stress-test check.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026). The decisions
+now sit in DECISIONS.md.
+- "CRM blueprint" is now "CRM setup plan" everywhere, the name approved with the round-10 map (also Growth's "light
+  CRM setup plan"). The scope and the price don't change.
+- Launch gains about six calls with recent buyers in month 1, so the Narrative Systems page holds on every package;
+  their hours join the costing (DECISIONS.md, decision 2).
+- Scaling shows on the site as "not yet taking clients", described in full, until it is costed and staffed (was "or
+  left off"; the map proposed "by arrangement"). One proposal, in DECISIONS.md, decision 2.
+- Who is in the room: one sentence for proposals and the site, the voice's (section 9.5). "A limited number of
+  engagements" is no longer allowed on the site.
+- Section 10: the term sentence drops "at a reduced fee" and "at a higher fee" (the voice keeps fees to the first call
+  and the proposal); no revenue-share sentence on the site; no texts or WhatsApp refusal on the site; "package" and
+  "tier" never on the site; the page count now follows the map (28 confirmed, 30 with the catalog).
+- The competitor rule (3.1, point 8) covers every engagement if the standards sheet is published with it.
+- One buyer line loses "run it with you" (the voice retires "run it with your team").
+- Section 12 now points to DECISIONS.md.

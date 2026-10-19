@@ -5,25 +5,28 @@ Round 11 · 19 October 2026 · our list for building what SEARCH.md describes. N
 The plan in plain words is SEARCH.md; the pages and addresses are in SITEMAP.md. This file was the appendix of SEARCH.md
 until this revision.
 
-**Today.** Next.js 16.2.4, static export (`output: "export"`, `trailingSlash: true`, `images: { unoptimized: true }`),
-published to GitHub Pages under the base path `/kelwin-website` from a public repository on a personal account.
+**Today.** Next.js 16.3.8 on the working branch (16.2.4 on `main` until the next deploy; SECURITY.md, Part 1), static
+export (`output: "export"`, `trailingSlash: true`, `images: { unoptimized: true }`), built for GitHub Pages under the
+base path `/kelwin-website` from a repository on a personal account. The repository is private since 19 October
+2026, and GitHub Pages serves nothing from a private repository on the free plan, so the preview is dark and a deploy
+from `main` has nowhere to publish until the hosting changes.
 
 **Proposed by the work on what sits behind the site.** Cloudflare Workers with static assets for kelwin.co, a small
-form handler on the same address, and the repository made private inside a GitHub organization in Kelwin's name. Where
+form handler on the same address, and the repository moved into a GitHub organization in Kelwin's name
+(DECISIONS.md, decision 13). Where
 an item differs by host, both are written. "Read at source" means checked in the Next.js documentation shipped in
 `node_modules/next/dist/docs/`, in Next's own code, or in Cloudflare's documentation source.
 
 ## A0 · The cutover, one sequence with the work on what sits behind the site
 
-**Now (SITEMAP decision 2, if the founder agrees).**
-1. The founder creates the Kelwin GitHub organization (free, with a passkey). The repository moves into it and is made
-   private, with its history.
-2. GitHub Pages stops serving on the free plan, so the preview goes dark and the github.io addresses answer 404. A
-   transfer also changes the github.io address; whether GitHub forwards the old Pages address is not checked, so we
-   assume it doesn't.
-3. If the founder chooses to keep the preview until the private preview exists: GitHub Pro (about $4 a month, the
-   behind-the-site figure, not checked), Pages from the private repository, and a "do not index" tag on every preview
-   page through a build flag (A7).
+**Done, and next (SITEMAP decision 2, settled; DECISIONS.md, decision 13).**
+1. Done on 19 October 2026: the repository is private, on the founder's personal account. GitHub Pages stops serving
+   on the free plan, so the preview is dark and the github.io addresses answer 404.
+2. Next, if the founder agrees: he creates the Kelwin GitHub organization (with a passkey) on GitHub Team, and the
+   repository moves into it with its history. A transfer also changes the github.io address; whether GitHub forwards
+   the old Pages address is not checked, so we assume it doesn't.
+3. Only if the founder chooses decision 13's interim preview: Pages from the private repository on GitHub Team (the
+   site itself is still public there), with a "do not index" tag on every preview page through a build flag (A7).
 4. What was public stays seen. Forks, clones, caches and crawls keep it. We promise no history rewrite.
 
 **Before launch.**
@@ -97,7 +100,7 @@ an item differs by host, both are written. "Read at source" means checked in the
 - [ ] `public/llms.txt`, written by hand, about 40 lines, from the approved facts (draft in Appendix C).
 - [ ] It says nothing the site doesn't: no prices, no names, no terms still being set (the pilot options, the revenue
   share).
-- [ ] It carries Scaling's status exactly as decision 5 sets it, and the term as the offer words it.
+- [ ] It carries Scaling's status exactly as DECISIONS.md, decision 2 sets it, and the term as the offer words it.
 - [ ] Reviewed whenever a listed page changes. "None published yet" changes the day the first report clears.
 - [ ] Lowest priority: dropped first if launch is tight.
 
@@ -133,13 +136,13 @@ an item differs by host, both are written. "Read at source" means checked in the
 - [ ] **Homepage:** `WebSite` with `name: Kelwin` and `url` (Google's site-name guide, as reported). No search action.
 - [ ] **Capability pages, each package section on Engagements, and each fixed-scope engagement:** `Service` with
   `name` in buyer words, `description` (the page's opening sentence), `provider: { "@id": "https://kelwin.co/#org" }`,
-  `url`. No `offers`, no price. **Scaling's `description` carries its status** as decision 5 sets it ("by arrangement",
-  or "not yet taking clients"), or Scaling has no `Service` if it is left off.
+  `url`. No `offers`, no price. **Scaling's `description` carries its status** as DECISIONS.md, decision 2 sets it
+  ("not yet taking clients", as proposed, or "by arrangement"), or Scaling has no `Service` if it is left off.
 - [ ] **Field notes:** `BlogPosting` with `headline`, `description`, `datePublished` and `dateModified` (the dates the
   page shows), `author: { "@type": "Organization", "name": "Kelwin", "url": "https://kelwin.co/about/" }`,
   `publisher: { "@id": "https://kelwin.co/#org" }`, `image` (the preview card), `articleSection` (the topic),
-  `mainEntityOfPage` (Google's article guide, as reported). The author is the firm whichever way decision 4a goes, so
-  the code and the visible byline never disagree.
+  `mainEntityOfPage` (Google's article guide, as reported). The author is the firm. The page shows no byline (the
+  founder's round-8 decision), so nothing visible disagrees with it.
 - [ ] **Reports,** once real: `Article`, the same fields, the client unnamed unless they approved it.
 - [ ] **BreadcrumbList only where the page shows a visible trail** in its label row (for example Engagements ›
   Fixed-scope engagements › Email deliverability). If the design shows no trail on a page, that page carries no
@@ -173,7 +176,8 @@ an item differs by host, both are written. "Read at source" means checked in the
 ## A11 · The field-note page
 
 - [ ] The published date and, only if changed, the updated date, each in a `<time datetime>`.
-- [ ] The byline as decision 4a sets it: "By Kelwin", linked to `/about/`, or none. A link to `/insights/standards/`.
+- [ ] No byline (the founder's round-8 decision). A link to `/insights/standards/`, which says who drafts and checks
+  the notes.
 - [ ] Read time; the topic (The system, Narrative Systems, GTM Infrastructure, GTM Intelligence); a sources list with
   links and the date each was read; three related notes (same topic first, then newest).
 - [ ] Share links as plain addresses (LinkedIn's share address, X's post address, `mailto:`, copy link). No
@@ -288,14 +292,14 @@ trail (A8).
 | /capabilities/gtm-infrastructure/ | GTM Infrastructure: CRM, signals, outreach and deliverability | Service, Breadcrumb | Yes |
 | /capabilities/gtm-intelligence/ | GTM Intelligence: what's working, reviewed every quarter | Service, Breadcrumb | Yes |
 | /capabilities/ | (forward) | — | No |
-| /engagements/ | Engagements: how working with Kelwin works | Service (one per engagement; Scaling per decision 5), Breadcrumb | Yes |
+| /engagements/ | Engagements: how working with Kelwin works | Service (one per engagement; Scaling per DECISIONS.md, decision 2), Breadcrumb | Yes |
 | /engagements/fixed-scope/ | Fixed-scope engagements (the family's final name): one part of the system, on its own | Breadcrumb | Yes |
 | /engagements/email-deliverability/ | Email deliverability audit and repair \* | Service, Breadcrumb | Yes |
 | /engagements/positioning-and-messaging/ | B2B positioning and messaging | Service, Breadcrumb | Yes |
 | /engagements/icp-and-signal-map/ | Ideal customer profile and buying signals | Service, Breadcrumb | Yes |
 | /engagements/crm-setup-plan/ | CRM setup plan: pipeline stages, fields and clean-up rules \* | Service, Breadcrumb | Yes |
 | /engagements/operating-model/ | The operating model: your GTM plan, written down | Service, Breadcrumb | Yes |
-| /engagements/win-loss-interviews/ | Win/loss interviews with your recent buyers | Service, Breadcrumb | Yes, if launched |
+| /engagements/win-loss-interviews/ | Win/loss interviews with your recent buyers | Service, Breadcrumb | Yes |
 | /engagements/cold-email/ | Cold email setup, built for your team to run \* | Service, Breadcrumb | Yes, if launched |
 | /engagements/conference-activation/ | Conference activation: meetings set before the show \* | Service, Breadcrumb | Yes, if launched |
 | /engagements/executive-dinners/ | Executive dinners for your target accounts | Service, Breadcrumb | Once its page exists |
@@ -325,7 +329,7 @@ trail (A8).
 | Title | The word | Why search needs it | The voice's rule |
 |---|---|---|---|
 | Email deliverability audit and repair | "audit" | Buyers type "email deliverability audit" | "Audit" names only the System Audit. Proposed: in the title only, never in the page's copy |
-| CRM setup plan | "setup" | Buyers type "CRM setup"; the name was approved in round 10 | "Setup" reads as an agency verb (the offer flags it). Kept as approved unless the voice proposes a plainer name |
+| CRM setup plan | "setup" | Buyers type "CRM setup"; the name was approved in round 10 | The voice's rule is on "set up" as our task verb, not on a name the founder approved. Kept; every document now uses it |
 | Cold email setup, built for your team to run | "setup" | Buyers type "cold email setup" | As above. Alternative: "Cold email, built for your team to run" |
 | Conference activation: meetings set before the show | "meetings" | Buyers look for meetings at a show | No "meetings" in a headline. Alternative: "Conference activation, before the show" |
 | Reports: Kelwin's client case studies | "case studies" | Buyers type "case studies"; the founder calls them that | "Case study" is on the never list. Proposed: in the title only; the page says "Reports" |
@@ -351,18 +355,20 @@ match the site word for word.
 ```
 # Kelwin
 
-> Kelwin is a GTM systems partner for B2B companies. It builds the system their revenue runs on, in their own
-> accounts and documents, and runs it with their team: the company's story (Narrative Systems), the machinery that
-> carries it to buyers (GTM Infrastructure) and the quarterly review of what works (GTM Intelligence).
+> Kelwin is a GTM systems partner for B2B companies. We build and run the system behind what their buyers hear, whom
+> they approach and why their deals close. It lives in their own accounts and documents.
+
+- Its three parts, run as one system: Narrative Systems, GTM Infrastructure and GTM Intelligence.
 
 - Name: Kelwin. Registered in Delaware. Address: New York, New York, USA. Founded [year to confirm].
 - Who it is for: B2B companies with real revenue whose growth has to be rebuilt every few quarters. Not for
   pre-revenue companies, or products bought only at a checkout.
 - How work starts: the System Audit, with no fee: a 30-minute first call, ten working days, then the readout
   presented on a 60-minute call.
-- Launch, Growth and Scaling: the whole system, run on a retainer. Six months is recommended, the first three a
-  pilot; month to month is possible at a higher fee. [Scaling: as decision 5 sets it, for example "taken on by
-  arrangement".]
+- Launch, Growth and Scaling [the retained engagements, the name in DECISIONS.md, decision 1]: the whole system, run
+  on a retainer. Six months is recommended; the first three are the pilot, which ends at day 90 with a written
+  readout. Month to month is also possible. [Scaling: as DECISIONS.md, decision 2 sets it, for example "not yet
+  taking clients".]
 - Fixed-scope engagements [the family's final name]: one part of the system at a fixed fee, set in a written scope.
   Each begins with a free scope check.
 - Prices are not published. The starting price is given on the first call.
@@ -376,7 +382,7 @@ match the site word for word.
 
 ## What Kelwin builds
 - [Narrative Systems](https://kelwin.co/capabilities/narrative-systems/): positioning, messages and proof as one written system
-- [GTM Infrastructure](https://kelwin.co/capabilities/gtm-infrastructure/): the CRM, lists, signals, outreach and email deliverability, set up in the client's own tools
+- [GTM Infrastructure](https://kelwin.co/capabilities/gtm-infrastructure/): which accounts to approach, and when, built into the client's own CRM and tools
 - [GTM Intelligence](https://kelwin.co/capabilities/gtm-intelligence/): the weekly and quarterly review of what is working
 
 ## Ways to start
@@ -409,8 +415,8 @@ Canonical: https://kelwin.co/.well-known/security.txt
 Policy: https://kelwin.co/engagements/#security
 ```
 
-`security@kelwin.co` is an alias the work on what sits behind the site sets up, pointing at whoever owns audit@ that
-day; if it doesn't, use audit@kelwin.co. The Policy line points to "Security and access" on Engagements; its anchor
+`security@kelwin.co` is the alias BACKEND.md (3.8) sets up, delivered to audit@ and read by whoever holds it that
+day. The Policy line points to "Security and access" on Engagements; its anchor
 follows the built page.
 
 ## Sources
@@ -434,3 +440,18 @@ follows the built page.
 - security.txt: RFC 9116, rfc-editor.org/rfc/rfc9116 (our knowledge; not opened this round).
 - The repository itself: `next.config.ts`, the publishing job, `src/app/layout.tsx`, `src/app/fonts/`, every page's
   metadata, and a local export's `out/` folder.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026). The decisions
+now sit in DECISIONS.md.
+- "Today" and A0 follow the facts: Next.js 16.3.8 on the working branch; the repository private since 19 October, the
+  preview dark, and a deploy from `main` with nowhere to publish until the hosting changes. GitHub Team, not GitHub
+  Pro, for the organization (one plan name with SECURITY.md and BACKEND.md).
+- llms.txt: the summary is the message sheet's sentence word for word (the old one used "the system their revenue runs
+  on" and "runs it with their team", both retired by the voice); the term drops "at a higher fee"; GTM
+  Infrastructure's line no longer says "lists" or "set up".
+- Scaling's status, the family names and the byline follow DECISIONS.md (no byline: the founder's round-8 decision).
+- Win/loss is in the sitemap at launch. The CRM setup plan keeps its approved name. security@ is settled.

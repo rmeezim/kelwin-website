@@ -149,7 +149,7 @@ No new names this round. Every name below is already on the homepage you approve
 | The method | "the method"; the four phases Diagnose, Architect, Install, Calibrate | What each phase produces | process, framework, playbook, "how it works" |
 | The door | "the System Audit", then "the audit" | Ten working days on your own CRM and deal notes, ending in the readout | free audit, our audit, a strategy call, a discovery call |
 | The audit's output | "the readout" | The audit's findings, ranked, presented on a 60-minute call | report (Reports are case studies), deck, recommendations |
-| The full engagements | Launch, Growth and Scaling; "engagement" for each; "retained engagements" for the family, if you take the offer work's name (decision 4) | Its scope, on Engagements only | package, tier, plan, bundle, "comprehensive" |
+| The retained engagements | Launch, Growth and Scaling; "engagement" for each; "retained engagements" for the family, the offer work's name (decision 4; DECISIONS.md, decision 1) | Its scope, on Engagements only | package, tier, plan, bundle, "comprehensive", "full engagements" |
 | The smaller engagements | "Fixed-scope engagements", the offer work's proposal (runner-up "standalone engagements"); decision 4 | A written scope and a fixed fee, with the same method | micro, mini, lite, starter, quick win, one-off, sprint, projects |
 | The fee form | "the retainer", only where the fee is explained (Engagements, the proposal); "the operating retainer" in the homepage's approved lines. Elsewhere, "the engagement" | No explanation; a CFO knows the word | subscription, investment |
 | Months 1 to 3 | "the pilot" | The first three months, which end at day 90 with the first Rebuild Sequence. The lower fee is said on the first call and in the proposal | trial, test drive, proof of concept |
@@ -169,8 +169,8 @@ and this one passes all three. It doesn't shrink the work ("micro", "mini", "lit
 channel word ("sprint", "campaign", "done-for-you"). And it says how the work is bought, with the same firm and the
 same method. One clash: the homepage calls the System Audit "A fixed-scope diagnostic" and "10 Working days · fixed
 scope". One name, one thing (rule 24), so with this name the audit's two tags change (decision 4). "Comprehensive",
-your working word for the full engagements, is on the never list, and it claims size; "full engagements" says the
-same thing plainly.
+your working word for Launch, Growth and Scaling, is on the never list, because it claims size; "retained" says how
+they are bought, as "fixed-scope" does for the others.
 
 ### 2.5 One paragraph in our voice
 
@@ -222,8 +222,8 @@ written in their own document this round.
 - **Before:** "From you · Your CEO and head of sales, in our working session (every two weeks on Launch, weekly on
   Growth)" and "Each week we spend 25 minutes with whoever owns pipeline on your side, going through the dashboard."
 - **After** (once, on Engagements): "Every engagement has a weekly review and a quarterly review with your
-  leadership." On GTM Intelligence: "Each week we review the Signal Dashboard with whoever owns pipeline on your
-  side." Meeting lengths and per-package rhythms go in the proposal.
+  leadership." On GTM Intelligence: "Each week we review the Signal Dashboard and write down what moved." Meeting
+  lengths, who attends and per-package rhythms go in the proposal.
 - **Why.** Meetings and their lengths read as account management. The buyer pictures a calendar, not senior people
   working on their revenue, and starts asking for a cheaper tier with fewer meetings.
 
@@ -348,8 +348,8 @@ written in their own document this round.
 
 - **Before:** "If you write to us, a person answers. That isn't a feature. That's the point." (homepage letter, not
   among the seven lines; listed for a later yes)
-- **After:** the reply time stays on Contact as a plain promise ("We reply within two working days, or within one
-  if you're booking the audit."), never on the standards sheet. The close-service line is about who is in the room
+- **After:** the reply time stays on Contact as a plain promise ("We reply within one working day if you're booking
+  the audit or asking about an engagement, and within two otherwise."), never on the standards sheet. The close-service line is about who is in the room
   when the client decides something: "The founding team presents your readout, and is in the room at the kickoff, at
   day 90 and at each renewal." (decision 1)
 - **Why.** "A person answers" and a reply time are what a buyer expects from any supplier. Close service, to a
@@ -411,7 +411,7 @@ has standards it keeps, people it puts in the room and a record it writes. Those
    - We present the readout live, on a 60-minute call, and don't send it ahead.
    - The audit needs two 90-minute sessions and read-only access to your CRM. We read the rest.
    - The system lives in your own accounts and documents.
-   - We call only buyers you introduce us to (needs your yes with the Narrative Systems page).
+   - We call only buyers you introduce us to (DECISIONS.md, decision 10).
 
    Reply times are a plain promise on Contact, never a standard (T14).
 3. **The written record, which is also continuity.** "Each edition of Narrative OS records what changed and why."
@@ -674,8 +674,11 @@ headline or a first-screen fact.
 | A new edition of Narrative OS | "each quarter" | Narrative Systems | |
 | Checking sending domains | "each week" | GTM Infrastructure | Thresholds |
 
-The weekly and quarterly reviews are written as a standard of every engagement. The offer sheet must confirm that
-every engagement, including the smaller ones where they apply, has both.
+The weekly and quarterly reviews are written as a standard of every engagement. **Reconciled:** on every package,
+the weekly review is ours, written up in the Friday note (LIFECYCLE 3.4 and 3.5), with working sessions as each
+proposal sets them; the quarterly review with your leadership is the week-11 and month-6 readouts on Launch, and the
+quarterly review on Growth and Scaling. A fixed-scope engagement has the Friday note and no quarterly review, so pages
+about the fixed-scope engagements don't claim one.
 
 **17. Every pronoun points at one thing.** *Kept.*
 *Test:* for every "it", "them", "they" and "this", name the thing. If there are two candidates, or the thing is more
@@ -852,10 +855,14 @@ firms charge, so a buyer who has fired one will file us with them the moment the
 the site doesn't solve that; the proposal needs its own sentence, and the sentence comes after the work. The rule:
 every proposal shows the audit's findings and the six assets before any fee. Then, once (for your yes):
 
-> In the pilot, part of our fee is paid for each first meeting held with an account on the agreed ICP & Signal Map.
-> It shares the risk while the system is new, and it stops when the pilot ends.
+> In the pilot, part of our fee is paid for each first meeting our outreach creates and that takes place with an
+> account on the agreed ICP & Signal Map. It shares the risk while the system is new, and it stops when the pilot
+> ends.
 
-Never "per lead". The last clause holds if you take the offer work's proposal that meeting fees end with month 3.
+Never "per lead". The sentence matches the contract's "held meeting" (our outreach made the first contact; the
+client's own inbound never counts, OFFER 6.3), and its last clause holds on every way to start: no meeting fee after
+month 3, and none on month to month (OFFER 5.4). Settled when this round's work was put together, so it is no longer a
+separate decision.
 
 **Proof.** No case study is published yet, and the site says so: "No report is published yet. Each one needs the
 client's written yes." Outside research carries its source and year, checked against the source; our reading of it
@@ -1052,7 +1059,7 @@ packages) will pull toward the shapes every agency and software site uses.
 3. Draw the work's rhythm as a calendar or a ruler (weeks, quarters, editions), never as numbered steps.
 4. Set the standards sheet as numbered plain text on a sheet.
 5. Give big numbers only to decided policy (10 working days, 60 minutes) or to a sourced reading with its source.
-6. Show the full engagements as rows of one spec list, and the smaller engagements as rows of one list that opens in
+6. Show the retained engagements as rows of one spec list, and the smaller engagements as rows of one list that opens in
    place.
 7. Keep drawings dense on desktop and recompose them on the phone.
 8. Let motion show the mechanism once: a line struck and rewritten, a ruler drawn, a plan re-ranked.
@@ -1076,7 +1083,9 @@ packages) will pull toward the shapes every agency and software site uses.
 
 ## 8 · Decisions for you
 
-Four decisions only you can make. Each changes what the site may say.
+Four decisions only you can make. Each changes what the site may say. **Reconciled:** they now sit in DECISIONS.md,
+the one list for this round: decision 1 here is part of decision 6 there, decisions 2 and 3 are decision 10, and
+decision 4 is decision 1.
 
 **1. Who is in the room.**
 May the site say who from Kelwin is in the room?
@@ -1103,7 +1112,9 @@ May the site publish these as Kelwin's standards, numbered, on About and Engagem
 7. Each review ends with its decisions written down.
 
 *Proposed:* yes to all seven. Items 2 to 6 follow decisions you have already made or lines you approved. Items 1 and
-7 are new standards. With a yes to decision 3, the competitor rule joins them as item 8.
+7 are new standards. With a yes to decision 3, the competitor rule joins them as item 8, and "We call only buyers you
+introduce us to." (Narrative Systems' decision 7) as item 9. The competitor rule then covers every engagement, Launch
+and the fixed-scope engagements included (OFFER 3.1, point 8).
 *Why:* firms that sell close service show it as rules they keep, not adjectives. The first item also explains,
 honestly, why the site shows no client names, without hinting at clients we can't show. The first draft had a reply
 time as item 3; it moves to Contact (T14), because a reply time on a sheet of firm standards reads as a supplier's
@@ -1153,6 +1164,13 @@ Not decisions for you. The voice depends on these, and four places in the other 
 - **The homepage:** the seven lines you said yes to are rewritten against this guide in their own document, with the
   other homepage lines that clash, each proposed for a later yes.
 
+**Reconciled in round 11.** Each item above is now settled in the other documents: who sends (OFFER 3.4: on every
+package Kelwin runs the outreach, from domains in the client's name; the outbound build is the exception); both
+reviews on every engagement (rule 16 above); meeting fees end with month 3 on every option (6.3); "a limited number of
+engagements" is gone from OFFER 9.5; the texts refusal and the pilot's "reduced fee" are gone from OFFER 10; the
+lifecycle uses decision 1's sentence; the sitemap uses "with the same method". The revenue share alone can't carry the
+pilot's shared risk: it is paid mostly in months 8 to 19, and the meeting fee was your own proposal (B4).
+
 ---
 
 ## Sources
@@ -1187,3 +1205,21 @@ Kelwin's own documents: `design/redesign/ROUND10-NOTES.md`, `design/redesign/ROU
 `design/redesign/work/r10/copy-narrative-systems.md`, `design/redesign/work/r10/BUSINESS-MODEL.md`,
 `design/redesign/tool/review10.json`, the approved homepage in `design/redesign/site/frag/` and the approved audit FAQ
 (`design/redesign/site/frag/audit-faq/S.html`).
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026). The decisions
+now sit in DECISIONS.md.
+- The packages' family is "retained engagements" in this guide too (2.4, 7.3); "full engagements" joins the never
+  column, so one thing has one name.
+- T3 and rule 16: the weekly review is ours, written up in the Friday note on every package; the quarterly review is
+  with the client's leadership. "With whoever owns pipeline on your side" goes, because Launch has no weekly meeting.
+- T14: the Contact promise is one working day for the audit or a named engagement, two otherwise (the lifecycle now
+  adopts the map's proposal).
+- 6.3: the meeting-fee sentence now matches the contract's "held meeting" (our outreach made the first contact); it
+  holds on every way to start, so it is settled rather than asked.
+- Decision 2 gains item 9 (buyers you introduce us to) with decision 3; the competitor rule then covers every
+  engagement.
+- "Needed from the other work" is marked resolved, item by item.

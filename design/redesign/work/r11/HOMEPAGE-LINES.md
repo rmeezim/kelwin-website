@@ -213,7 +213,8 @@ lines, same light second line. On a phone (44px) the second line is 319px wide i
   homepage.
 - "On a system you own" goes. Where the system lives is said once on the page, in section 07.
 - "Operating retainer" is the homepage's approved name for the fee.
-- It doesn't say what the retainer includes, so it leaves room for the setup fee you raised in round 10.
+- It doesn't say what the retainer includes, so it leaves room for the readiness fee the offer proposes on month to
+  month (OFFER 7.1).
 - Once the Engagements page exists, this note is a natural place for its link. The sitemap work settles that.
 
 **How it fits.** 75 characters, against 64. Still two lines in the note's column (15px, 32 characters wide): "After
@@ -434,6 +435,9 @@ two readers above read the first draft; the lines as they now stand still need t
 
 ## Decisions for you
 
+**Reconciled:** these are now part of the one list for this round, DECISIONS.md, decision 11. Decision 2 here also
+follows decision 6 there (who is in the room), and lines 01d and 10c follow decision 1 (the names).
+
 1. **The seven new lines.** *Proposed:* yes to each recommended line above. Or pick one of its other options.
 2. **The letter's last paragraph.** It says where the founding team is: every readout, the kickoff, day 90 and each
    renewal. That is the voice guide's decision 1 ("Who is in the room"). *Proposed:* yes. If you say no there, the
@@ -462,3 +466,12 @@ two readers above read the first draft; the lines as they now stand still need t
 The letter's signature can stay a link to About, or become plain text as the round-10 sitemap proposed when it took
 out your name. Either works with the new line. Problem 02 changes in two files at once, so the letter and section 07
 stay word for word the same.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026).
+- The method note's reasoning now names the offer's readiness fee; round 10's setup fee is not proposed on six-month
+  terms (OFFER 7.1).
+- The decisions now point to DECISIONS.md. No proposed line changed.

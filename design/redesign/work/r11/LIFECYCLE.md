@@ -115,7 +115,7 @@ note every Friday, and if something goes wrong you hear it from us first, by pho
 
 | Step | Packages | Fixed-scope engagements | The same for both |
 |---|---|---|---|
-| 1 · First reply | An audit request | A message on Contact, with the engagement named | A personal reply. The site promises one working day for the audit and two for anything else (approved). We aim for one working hour |
+| 1 · First reply | An audit request | A message on Contact, with the engagement named | A personal reply. The site promises one working day for the audit and for a message that names an engagement, two for anything else. We aim for one working hour |
 | 2 · First call | 30 minutes | 30 minutes | The same agenda, the starting price early, a dated next step, and a written recap within one working day |
 | 3 · Diagnosis | The System Audit: free, ten working days, read-only | A scope check: free, up to three working days, read-only, on the one piece | We read before we recommend, and change nothing in their systems |
 | 4 · Readout | 60 minutes, presented live | 30 minutes, presented live | The goals and measures agreed in their words, the written readout after the call, and a handwritten note |
@@ -150,18 +150,18 @@ How we sell is part of what we sell.
 
 | How they arrive | What they did | What happens next | How fast |
 |---|---|---|---|
-| **The audit door** (/audit) | Answered the three questions, plus a fourth about size if you agree (decision 14), and asked for the audit | A personal reply with times for the first call. Soon after launch, a calendar replaces the times (sitemap) | Within one working day, as the site promises. We aim for one working hour |
-| **The contact door** (/contact) | Wrote with a reason: a package, a fixed-scope engagement (named, from that engagement's page), a question, press | A personal reply. A package question is pointed to the audit, where every package starts. An engagement request goes to the first call | Within two working days, as the site promises. We aim for the same working day |
+| **The audit door** (/audit) | Answered the three questions, plus a fourth about size if you agree (DECISIONS.md, decision 3), and asked for the audit | A personal reply with times for the first call. Soon after launch, a calendar replaces the times (sitemap) | Within one working day, as the site promises. We aim for one working hour |
+| **The contact door** (/contact) | Wrote with a reason: a package, a fixed-scope engagement (named, from that engagement's page), a question, press | A personal reply. A package question is pointed to the audit, where every package starts. An engagement request goes to the first call | Within one working day when an engagement is named, two otherwise, as the site promises. We aim for the same working day |
 | **A field note** | Read a note, and may have joined "Get the next field note" | Each note ends on the audit. The list sends one email when a note is published, at most once a month, and nothing else (sitemap). A reader who writes to us comes in through the contact door | No reply needed |
 | **A referral** | Someone introduced them by email | A reply to both: a thank-you to the person who made the introduction, and times for the first call. No fee is ever paid for a referral (section 3.11) | The same working day |
-| **The Lab waitlist** | Asked for an invitation | One email when invitations open, and nothing else unless they chose the field notes (sitemap). We don't sell to the waitlist. If someone on it also asks for the audit, they go the same way as everyone else | No reply needed |
+| **The Lab waitlist** | Asked for an invitation | An email only when the Lab page changes, at most once a quarter, and first word when early access opens; nothing else unless they chose the field notes (sitemap; BACKEND door 7). We don't sell to the waitlist. If someone on it also asks for the audit, they go the same way as everyone else | No reply needed |
 | **Our own outreach** | Replied to the founding team's own email or LinkedIn messages | The first call. Our own outreach keeps the rules we sell: we write only to people who fit, and give nothing for a meeting | The same working day |
 
 **Not a fit yet.**
 - A visitor whose answers show they are pre-revenue, or sell only self-serve, sees the "not a fit yet" screen and can
   leave an address. One check-in follows about six months later (sitemap).
 - With the fourth question, a buyer below the Launch floor is offered the fixed-scope engagements, not "not a fit"
-  (R10, decision 14).
+  (R10; DECISIONS.md, decision 3).
 - Nobody reaches a dead end.
 
 ### 2.2 The first reply
@@ -179,11 +179,13 @@ How we sell is part of what we sell.
   - one line on price: "On the call, we'll tell you where engagements start."
 
   For a fixed-scope engagement, the same note, sized to the one piece.
-- **How fast:** one working day for the audit and two for anything else, as the site already promises (confirmed in
-  round 8). In practice we aim for one working hour on weekdays. In an audit of 2,241 US companies, firms that
-  answered within an hour were nearly 7 times as likely to qualify the lead as firms that answered an hour later, and
-  more than 60 times as likely as firms that waited a day or longer (Oldroyd, McElheran and Elkington, HBR, 2011, K).
-- **In the room:** no call yet. The reply comes from the founding team.
+- **How fast:** one working day for the audit (confirmed in round 8) and for a message that names an engagement (the
+  map's proposal, adopted here), and two for anything else. These promises sit on Contact. In practice we aim for one
+  working hour on weekdays. In an audit of 2,241 US companies, firms that answered within an hour were nearly 7 times
+  as likely to qualify the lead as firms that answered an hour later, and more than 60 times as likely as firms that
+  waited a day or longer (Oldroyd, McElheran and Elkington, HBR, 2011, K).
+- **In the room:** no call yet. A strong audit request gets its reply from the founding team; the rest from the named
+  contractor who holds audit@ that day (DECISIONS.md, decision 6; BACKEND 4.5).
 - **If it isn't a fit:** the "not a fit yet" screen and a check-in in about six months, as in 2.1.
 
 ### 2.3 The first call (30 minutes)
@@ -278,7 +280,7 @@ firms charge:
 **What happens.** The same idea as the audit, sized to one piece:
 - read-only access to the one thing:
   - email deliverability: the domains' records and a placement test;
-  - a CRM blueprint: how the CRM is set up;
+  - a CRM setup plan: how the CRM is set up;
   - positioning and messaging: the website, the sales deck and a few recorded calls;
 - about 3 hours of contractor time (OFFER 9.2);
 - a short written finding, and a 30-minute readout.
@@ -327,8 +329,8 @@ minutes. The 60-minute agenda:
 
 - **The buyer:** what they couldn't see themselves, and goals written in their own words.
 - **We send:**
-  - the written readout within one working day after the call, whether or not they hire us (R10's proposal,
-    decision 14);
+  - the written readout within one working day after the call, whether or not they hire us (R10's proposal, settled
+    in the reconciliation: it follows the live readout and is never sent ahead);
   - a printed copy only if they ask ("Would a printed copy help for your board?"). A readout holds their CRM's and
     pipeline's problems, and many offices are empty or have clean-desk rules;
   - the plan to decide;
@@ -440,9 +442,9 @@ Buyer line: "We'll walk you through it, and tell you which one we'd choose in yo
   standard (access removed within a day of someone leaving, and confirmed in writing at the end); and the certificates
   for professional liability and cyber insurance.
 
-**References.** We don't yet have client references we can share (please confirm, OFFER 12), and we never invent one
-(standing rule 7). We say so plainly: "We're early, so here is the person who will run your account, what they did
-before us, and your right to leave if they change."
+**References.** We don't yet have client references we can share (please confirm: DECISIONS.md, quick answers), and we
+never invent one (standing rule 7). We say so plainly: "We're early, so here is the person who will run your account,
+what they did before us, and your right to leave if they change."
 
 What we offer instead:
 - the person who will run their account, met before signing, and, with that person's and the former client's consent,
@@ -478,7 +480,7 @@ Never:
   - The master agreement, the order form and the fee schedule are signed electronically. The site, proposals and
     emails say only "Kelwin". The contract's party line and signature block use the registered legal name, as the
     lawyer advises, because someone who signs for a company the other side doesn't know is an LLC can be held
-    personally liable (R10; please confirm, OFFER 12).
+    personally liable (R10; settled in the reconciliation, as the lawyer advises).
   - The first payment: month 1, plus a deposit of one pilot month: $8,800 at signing on Launch, fixed, or $10,400 on
     the open option. Later invoices are paid by automatic bank debit, authorized at signing, or by bank transfer if
     their finance team requires it (OFFER 7.3).
@@ -547,7 +549,7 @@ package.
   within 10 working days of meeting them, the client may leave on 30 days' notice, with no exit fee.
 - Every contractor seat has a named backup, identified in the proposal and introduced at kickoff.
 
-Buyer line: "The person who sold you this is in the room at the start, at day 90 and at the end."
+Buyer line: "The founding team presents your readout, and is in the room at the kickoff, at day 90 and at each renewal."
 
 ### 3.2 The days after signing, and the kickoff
 
@@ -641,6 +643,10 @@ Buyer line: "For the first few weeks you'll see us building, not sending. Here's
 | Milestones | Week 11 and month 6 | Week 11 and month 6 | Week 11 and month 6 | The week-one go or stop; the handover; the check 30 days later |
 
 - After every working session, a written note of decisions, owners and dates goes out within one working day.
+- The voice guide's "a weekly review and a quarterly review" on every engagement means this: each week we review the
+  Signal Dashboard and write up what moved in the Friday note, on every package; the quarterly review with the
+  client's leadership is the week-11 and month-6 readouts on Launch, and the quarterly review on Growth and Scaling. A
+  fixed-scope engagement has the Friday note, and no quarterly review.
 - Scaling can't be staffed yet (R10). It is shown here only so the rhythm is complete.
 - Training on what we wrote is included: one briefing in month 1 on Launch, one session a quarter on Growth, one a
   month on Scaling (OFFER 3.3). Those sessions are booked at kickoff too, with any included show.
@@ -881,7 +887,7 @@ trap (our research on premium practice).
 | Positioning and messaging | The words are written, but nothing runs them | Launch, where the positioning becomes the Narrative OS unchanged (R10) |
 | Conference activation | The meetings worked, and they want the same outreach all year | Launch |
 | An executive dinner, or a series | The follow-up turned guests into opportunities | Growth or Scaling, where dinners become an add-on |
-| The CRM blueprint, or the ICP and signal map | The system now counts correctly, but the pipeline is thin | Launch or Growth |
+| The CRM setup plan, or the ICP and signal map | The system now counts correctly, but the pipeline is thin | Launch or Growth |
 
 ### 4.2 What the client has seen by then
 
@@ -922,7 +928,7 @@ period.
   signed within 90 days of handover.
 - **How it's paid:** in three equal parts, on the invoices for months 4, 5 and 6.
 - **What counts:** only our fee, and only for work the package reuses: deliverability, positioning, the ICP and signal
-  map, the CRM blueprint, win/loss, the operating model and the outbound build. Events (conference activation,
+  map, the CRM setup plan, win/loss, the operating model and the outbound build. Events (conference activation,
   dinners) earn no credit, and neither do upkeep fees or outside costs passed through at cost.
 - **On Growth:** at most $5,000 until the first Growth client's hours are known (OFFER 5.5).
 
@@ -1060,29 +1066,31 @@ A dinner we plan for a client is the client's hospitality to its guests, not a g
 These are promises we can keep with the team lined up (B14): the founding team selling full time, and the contractors
 delivering. "A working day" means Monday to Friday, New York time, except US public holidays.
 
-The site keeps what it already says: one working day for an audit booking, two for anything else (confirmed in round
-8). In practice we aim faster. Promise less on the page, and do more.
+The site says: one working day for an audit booking (confirmed in round 8) and for a message that names an
+engagement, two working days for anything else. These sit on Contact only, never on the standards sheet (the voice,
+T14). In practice we aim faster. Promise less on the page, and do more.
 
 | Standard | What we promise | Who keeps it | On the site? |
 |---|---|---|---|
-| Reply to an audit request | Within one working day; we aim for one working hour | The founding team | Yes, already approved |
-| Reply to any other message on Contact | Within two working days; we aim for the same working day | The founding team | Yes, already approved |
+| Reply to an audit request | Within one working day; we aim for one working hour | The founding team for strong requests; the named contractor on audit@ for the rest (DECISIONS.md, decision 6) | Yes, on Contact and the audit page (approved) |
+| Reply to a message that names an engagement | Within one working day; we aim for the same working day | Whoever holds audit@ that day | Yes, on Contact (adopted from the map) |
+| Reply to any other message on Contact | Within two working days; we aim for the same working day | Whoever holds audit@ that day | Yes, on Contact (approved) |
 | Reply to a referral | The same working day | The founding team | No |
-| Recap after every call in the sale | Within one working day: what we heard, in five lines, and the next step with its date | Kelwin's sponsor | After your yes |
+| Recap after every call in the sale | Within one working day: what we heard, in five lines, and the next step with its date | Kelwin's sponsor | No: in the proposal |
 | The audit | Ten working days from access, with the readout presented on a 60-minute call | Kelwin's sponsor runs the sessions and presents; the engagement lead reads | Yes, already approved |
 | The security pack | Sent before the audit starts, to anyone who asks | The founding team | No |
-| The written readout | Within one working day after the readout call, whether or not they hire us | Kelwin's sponsor | After decision 14 |
-| The scope check | Up to three working days from access, then a 30-minute readout | The engagement lead | After decision 11 |
+| The written readout | Within one working day after the readout call, whether or not they hire us | Kelwin's sponsor | Yes, on the audit page (settled) |
+| The scope check | Up to three working days from access, then a 30-minute readout | The engagement lead | Yes, on each fixed-scope page (settled: one sale for both families) |
 | The proposal | Presented live within 5 working days of the readout (2 for a fixed-scope engagement; under about $10,000, sent with the scope readout) | Kelwin's sponsor and the engagement lead | No |
 | Questions during the sale | Answered in writing within two working days | The founding team | No |
 | Welcome and kickoff | A welcome note within one working day of signing; the kickoff within five working days of payment | Kelwin's sponsor | No |
 | Every meeting of the term | Booked on both calendars at the kickoff | The engagement lead | No |
-| The Friday note | Every Friday, one page, five headings, for both families | The engagement lead; Kelwin's sponsor reads it first | After your yes |
+| The Friday note | Every Friday, one page, five headings, for both families | The engagement lead; Kelwin's sponsor reads it first | Once, on Engagements, as a rhythm (the voice, rule 16) |
 | Notes after working sessions | Decisions, owners and dates, within one working day | The engagement lead | No |
 | Messages during an engagement | Acknowledged the same working day; answered within one working day, or given a date for the answer | The engagement lead | No |
 | Something urgent | A call within two working hours of our knowing | The engagement lead, then Kelwin's sponsor | No |
-| Bad news | A call within one working day of our knowing; five lines in writing within 24 hours | Kelwin's sponsor | After your yes |
-| The founding team at the moments that matter | The first call, the readout, the proposal, the kickoff, day 90, the renewal talk, the last meeting, and any bad news | Kelwin's sponsor | After decision 10, said by role |
+| Bad news | A call within one working day of our knowing; five lines in writing within 24 hours | Kelwin's sponsor | No: in the proposal |
+| The founding team at the moments that matter | The first call, the readout, the proposal, the kickoff, day 90, the renewal talk, the last meeting, and any bad news | Kelwin's sponsor | After DECISIONS.md, decision 6, in one sentence: "The founding team presents your readout, and is in the room at the kickoff, at day 90 and at each renewal." |
 | The renewal reminders | In writing, on the lawyer's schedule (for example 45 and 30 days before month 6 ends) | The engagement lead | No |
 | The end | Access removed and confirmed in writing on the last day; data returned or deleted | The build team | No |
 
@@ -1100,12 +1108,13 @@ The site keeps what it already says: one working day for an audit booking, two f
   term.
 - The site never states a team size, and no number of clients until one is real and you approve it.
 
-**Lines the site may carry after your yes.** They come back with the page copy in stage 5, once we have kept them for
-the first clients:
-- "We look before we quote, for every engagement, large or small."
-- "A written note every Friday."
-- "If something goes wrong, you hear it from us first, by phone."
-- "The founding team is on the first call, the readout, the kickoff, day 90 and the last meeting."
+**What the site carries from this section.** The public standards are the voice's standards sheet (VOICE 8.2;
+DECISIONS.md, decision 10). Who is in the room is one sentence, used everywhere: "The founding team presents your
+readout, and is in the room at the kickoff, at day 90 and at each renewal." (DECISIONS.md, decision 6). The reply
+times sit on Contact only. The other standards in the table stay in proposals and the contract, where a client can
+hold us to them; on a page, the voice reads them as a supplier's service levels (T14). Two may appear once on
+Engagements, in the voice's words, when that page is written: that every engagement starts with a look at the thing
+itself, and that each week ends with a written note.
 
 **Never on the site:**
 - the gifts;
@@ -1130,7 +1139,7 @@ Fixed-scope engagements in brackets where they differ.
 
 | Stage | What the buyer gets | What we do | The gift, if any |
 |---|---|---|---|
-| Arrives (audit, contact, field note, referral, our own outreach) | A personal reply with times for a call | Reply within one working day for the audit, two for anything else; aim for one working hour | — |
+| Arrives (audit, contact, field note, referral, our own outreach) | A personal reply with times for a call | Reply within one working day for the audit and for a named engagement, two for anything else; aim for one working hour | — |
 | First call, 30 minutes | Where engagements start, early; a straight answer on fit | The same agenda; a recap within one working day; the next step dated | — |
 | Diagnosis | The free System Audit, ten working days (a free scope check, up to three working days) | Read-only, or from exports; nothing changed; a Friday note during the audit | — |
 | Readout, 60 minutes (30) | What's broken, where, and what it costs; goals agreed in their words | Presented live; the written readout within one working day | A handwritten note (the readout printed only if they ask) |
@@ -1153,14 +1162,17 @@ Fixed-scope engagements in brackets where they differ.
 ## 8 · Decisions for you
 
 The decisions from both documents are listed once, in the offer (OFFER.md, section 12). Five of them come from this
-document. Here they are with their reasons, under the same numbers.
+document. Here they are with their reasons, under the same numbers. **Reconciled:** all of them are now in the one
+list for this round, DECISIONS.md: 10 is part of decision 6 there, 12 is decision 7, 13 is part of decision 5, 14's
+size question is part of decision 3, and 11 and the rest of 14 were settled as proposed.
 
 **10. Who is in the room** (one decision with the offer's "who leads, and how much we take on").
 - **Proposed:** a founding-team sponsor at the first call, the readout, the proposal, the kickoff, day 90, the renewal
   talk, the last meeting and any bad news: about 2 hours a month per package after signing, plus the sale. Day to day,
   the GTM and revenue-architecture specialist leads, marked as a contractor in every proposal, committed for the
-  client's whole term, with a named backup. The site may then say that the founding team is on the first call, the
-  readout, the kickoff, day 90 and the last meeting, but not that the founding team runs every engagement.
+  client's whole term, with a named backup. The site then says it in one sentence, "The founding team presents your
+  readout, and is in the room at the kickoff, at day 90 and at each renewal.", and never that the founding team runs
+  every engagement.
 - **Why:** you are selling 12–15 hours a day. Round 10's engagement lead from the founding team (15–20 hours a month
   per client) no longer fits. Buyers judge a firm sold by senior people and staffed by others harshly, so the proposal
   says who does what, and the buyer meets the lead before signing.
@@ -1335,3 +1347,22 @@ $25 rule, and the HBR 2011 figures on reply speed.
 - `design/redesign/work/r11/OFFER.md`: the offer, with every price and term this document uses.
 - This round's four research notes for the offer (selling, service and gifts; the money terms; other firms; the
   fixed-scope market): working files, which we have asked to be kept with these documents.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026). The decisions
+now sit in DECISIONS.md.
+- Reply times: one working day for the audit and for any message that names an engagement (the map's proposal, now
+  adopted), two for anything else, on Contact only (2.0, 2.1, 2.2, 6, 7). Who replies follows DECISIONS.md, decision 6.
+- The Lab waitlist: an email only when the Lab page changes, at most once a quarter, plus first word when early access
+  opens (was "one email when invitations open"), matching the map and BACKEND door 7.
+- Who is in the room, on the site: the voice's one sentence (3.1 buyer line, 6, 8) replaces "the first call, the
+  readout, the kickoff, day 90 and the last meeting" and "at the start, at day 90 and at the end".
+- Section 6: the public standards are the voice's standards sheet; the service standards here stay in proposals and
+  the contract; the "On the site?" column follows that.
+- "CRM blueprint" is now "CRM setup plan", the name approved in round 10.
+- 3.4: what "a weekly review and a quarterly review" means on each engagement, so the voice guide's rule 16 holds.
+- The written readout after the call, the scope check and the contract's legal name are settled as proposed; the size
+  question is DECISIONS.md, decision 3; references are a quick answer there.

@@ -1,6 +1,6 @@
 # The offer sheet
 
-Round 11 · 19 October 2026 · internal · proposed, pending your decisions (OFFER.md, section 12)
+Round 11 · 19 October 2026 · internal · proposed, pending your decisions (DECISIONS.md)
 
 Every page and every first call quotes this sheet. No price goes on the site; the numbers sit in the last block only.
 
@@ -19,8 +19,8 @@ but hard to predict. Not for: pre-revenue companies, checkout-only products, lis
 
 **Launch · one market, two channels**
 - For: a company where the founder still sells most deals.
-- Includes: positioning; up to 500 named accounts with buying signals; email and one LinkedIn sender; a live
-  dashboard; one show per term.
+- Includes: positioning, starting from about six calls with recent buyers in month 1; up to 500 named accounts with
+  buying signals; email and one LinkedIn sender; a live dashboard; one show per term.
 - Term: six months, the first three a pilot; or month to month.
 
 **Growth · up to two markets, up to four channels**
@@ -32,14 +32,14 @@ but hard to predict. Not for: pre-revenue companies, checkout-only products, lis
 **Scaling · two or more markets, each with its own team**
 - For: several markets, and a board that wants a quarterly readout.
 - Includes: Growth for each market; about 10 accounts worked one to one.
-- Term: not yet taking clients.
+- Term: not yet taking clients. The site describes it in full and says so (DECISIONS.md, decision 2).
 
 **Add-ons,** at most three per proposal: a second market or sender, calling, extra shows, executive dinners, webinars,
 retargeting, team training.
 
 ## Fixed-scope engagements
 
-Email deliverability · positioning and messaging · the ICP and signal map · the CRM blueprint · win/loss interviews ·
+Email deliverability · positioning and messaging · the ICP and signal map · the CRM setup plan · win/loss interviews ·
 the operating model · the outbound build · conference activation · executive dinners, on request. Each starts with a
 free scope check; upkeep keeps a finished piece running.
 
@@ -51,8 +51,8 @@ free scope check; upkeep keeps a finished piece running.
 
 ## The money terms
 
-- **Held meetings:** in months 1–3 only, a fee per first meeting our outreach creates with someone who fits, capped so
-  the pilot never costs more than three full months.
+- **Held meetings:** in months 1–3 only, a fee per held first meeting (one our outreach creates, with someone inside
+  the written customer profile), capped so the pilot never costs more than three full months. Never "per lead".
 - **Revenue share:** a small share of the first year of deals closed within 12 months of a meeting we created; never
   more than three quarters of the fees paid in the first six months.
 - **Setup fee:** none on six months. Tools are bought in the client's name.
@@ -71,6 +71,8 @@ keep.
 
 ## What we never do
 
+Our own rules. The site carries only the standards sheet (VOICE 8.2; DECISIONS.md, decision 10).
+
 Prices on the site · cold texts or WhatsApp · guarantees or pay per lead · markups · naming a competitor, or a client
 without its yes · a full engagement when one piece is the problem · gifts while a decision is open.
 
@@ -88,3 +90,15 @@ engagements start at about $5,000 to $6,000, at a fixed fee. You get the exact f
 Readiness fee $3,000 / $5,000; $250 per held meeting; 3% revenue share; 12 months 10% off, 24
 months 15% off; Scaling not quoted. Fixed-scope fees run from $5,000 (deliverability) to $25,000 (the operating model),
 each in OFFER 4.1; upkeep from $3,500 a month.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026).
+- "The CRM blueprint" is now "the CRM setup plan", the name approved in round 10.
+- Launch's positioning starts from about six buyer calls in month 1 (DECISIONS.md, decision 2).
+- Scaling: "not yet taking clients", described in full on the site (one proposal across the offer and the map).
+- The meeting fee is "per held first meeting", in the contract's terms, never "per lead".
+- "What we never do" is marked as our own rules; the site carries the standards sheet instead.
+- The decisions now point to DECISIONS.md.

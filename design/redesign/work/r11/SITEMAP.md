@@ -9,52 +9,58 @@ decisions come first. The plan for search and AI answers is in SEARCH.md, beside
 
 **How to read this**
 - **The names.** You called the smaller family "micro engagements". The offer work recommends "fixed-scope
-  engagements", and "retained engagements" for Launch, Growth and Scaling. You choose the names there. This map uses
+  engagements", and "retained engagements" for Launch, Growth and Scaling. You choose the names in DECISIONS.md, decision 1. This map uses
   "fixed-scope engagements" as the working name throughout. Its address, /engagements/fixed-scope/, stays the same
   whatever the final name.
 - **Sources.** A number in square brackets points to the sources at the end. Some outside pages would not open from
   here. For those we read a search engine's summary, and the sources list marks them "as reported". "Our judgment"
   means we haven't measured it. Every outside figure is checked at its source before a page uses it.
 - **Status words.** New, Reworked, Kept (approved, small changes at most), Merged, Later, Removed. **Launch\*** means
-  at launch if the offer confirms it.
+  at launch if you confirm the offer's catalog (DECISIONS.md, decision 3).
 
 ## 1 · The short answer
 
 - **Engagements becomes two families, under one Engagements menu.** Launch, Growth and Scaling stay on the
   Engagements page, which now also sets both families side by side. The fixed-scope engagements replace Projects.
   They get their own index page and, where a buyer needs one, a page each.
-- **A page only where a buyer needs one.** At launch: your six, plus cold email and conference activation if the
-  offer confirms them. Win/loss waits on the offer naming who runs the calls. Executive dinners are sold on request,
+- **A page only where a buyer needs one.** At launch: your six, plus cold email (the offer's outbound build) and
+  conference activation if you confirm the offer's catalog. Win/loss launches with the specialist running the calls
+  (OFFER 9.2). Executive dinners are sold on request,
   with a page once the first dinner has run, as the offer proposes. Cold calling stays inside the packages, as one row
   on the index that says so.
 - **Every web address is fixed before launch, so nothing has to move later.**
 - **The Lab becomes a tease and a waitlist.** One plain sentence about the platform. No name, no date, no screenshots.
   The waitlist promises only what we can keep, and has its own link to share.
 - **Insights becomes the blog.** Field notes are its posts, with topics, dates, sources, related notes, share links
-  and a feed. We propose each note is signed "By Kelwin", never a person (decision 4). A one-screen page, "How we
+  and a feed. Notes carry no byline, as you decided in round 8 (decision 4a, settled). A one-screen page, "How we
   research and write", says who drafts the notes and who checks them.
 - **Search and AI answers: very little was missing.** We add the fixed-scope pages, the standards page and one
   comparison note. We write every page so Google and the AI assistants can read it and quote it correctly. The
   technical basics are ours to do and need no decision from you.
-- **Two things outside the site need closing now:** today's public preview, and the project's files on GitHub,
-  which anyone can read today. They hold your name, our prices and our working notes (decision 2).
-- **27 pages confirmed at launch, up to 30** with the three the offer may confirm. Round 10 had 26.
-- **What we need from you:** five decisions and three quick answers, next.
+- **The project's files are private now** (you closed them on 19 October), so today's public preview is dark. What
+  is left is where the project lives next, and how you see drafts until the private preview exists (decision 2).
+- **28 pages confirmed at launch, 30** with the outbound build and conference activation. Round 10 had 26.
+- **What we need from you:** the decisions are now in one list for this round, DECISIONS.md. Section 2 says where
+  each of this map's decisions went.
 
 ## 2 · Decisions for you
 
 Five decisions, each with our proposal. Everything else follows from your round-10 answers or waits for the offer.
+**Reconciled:** they now sit in DECISIONS.md, the one list for this round. Each heading below says where its decision
+went, or how it was settled.
 
 ### Decision 1 · Approve the map, version 2
 
-*Proposed: approve.* It means yes to four choices.
+*Proposed: approve.* It means yes to four choices. **Now:** choices 1 and 3 carry out your round-10 asks and are
+settled; choice 2 follows the offer's catalog (DECISIONS.md, decision 3); choice 4's comparison note is DECISIONS.md,
+decision 8.
 
 1. **Engagements as a menu with both families.** One Engagements page explains how working with us works and holds
    Launch, Growth and Scaling in full. The fixed-scope engagements get an index at /engagements/fixed-scope/. Each one
    gets an address in the buyer's own words, for example /engagements/email-deliverability/. No address changes
    when the family is named.
-2. **Which fixed-scope engagements get a page.** Your six (win/loss once the offer names who runs the calls), plus
-   cold email and conference activation if the offer confirms them. Executive dinners are sold on request until the
+2. **Which fixed-scope engagements get a page.** Your six (win/loss with the specialist running the calls), plus
+   cold email and conference activation if you confirm the offer's catalog. Executive dinners are sold on request until the
    first one has run. Cold calling stays inside the packages, with no page of its own. A page is built only where
    buyers search for the thing, we deliver it today, it has enough to say, and it ends at a door (section 3.1).
 3. **The Lab as a tease with a waitlist,** with the promises in section 3.2.
@@ -67,69 +73,60 @@ Five decisions, each with our proposal. Everything else follows from your round-
 
 The menu, the footer and the launch order follow from these four (sections 6 and 9).
 
-### Decision 2 · Close today's preview and the public project files now
+### Decision 2 · Close today's preview and the public project files (settled)
 
-*Proposed: yes, now.*
+**Settled by you.** You made the project private on 19 October 2026. Its files are no longer public, and the
+github.io preview is dark, because a private project on GitHub's free plan serves no preview. The old preview
+addresses answer "not found". Nothing public links to them, so nothing is lost. If you have sent the preview link to
+anyone, tell us, and we'll leave a one-page note there. Anything already copied or collected stays where it is;
+newer, consistent facts on kelwin.co replace it over time.
 
-- **What is public today.** The preview at rmeezim.github.io/kelwin-website still shows your name, "the founder's
-  memo" and the handover-first lines. The project's files on GitHub are public too. Anyone can read your review notes
-  word for word, the business model with its prices and pilot terms, and your name, in more than twenty files.
-  Search engines and the AI companies' crawlers read GitHub as well (our knowledge).
-- **What we'd do.** Make the project private, and move it into a GitHub organization in Kelwin's name. The work on
-  what sits behind the site proposes the same thing, so one answer covers both.
-- **What it costs.** GitHub serves a site from a private project only on a paid plan (about $4 a month; the
-  behind-the-site work's figure, not yet checked), so the preview goes dark that day. You'd review drafts on a
-  private preview address instead. It exists once you have created the hosting account and we have set it up, about
-  a day of our work.
-- **The old preview addresses** then answer "not found". Nothing public links to them, so nothing is lost. If you
-  have sent the preview link to anyone, tell us, and we'll leave a one-page note there.
-- **What it can't undo.** Anything already copied or collected stays where it is. Newer, consistent facts on
-  kelwin.co replace it over time.
-
-*Options:* yes, now · yes, and keep the preview on GitHub's paid plan, hidden from search, until the private preview
-exists · not until launch.
+**What is left for you** is where the project lives next (a GitHub organization in Kelwin's name, which brings back
+the protected live branch) and how you see drafts until the private preview exists: DECISIONS.md, decision 13.
 
 ### Decision 3 · Let the AI companies' training crawlers read kelwin.co
 
-*Proposed: yes.*
+*Proposed: yes.* **Now:** DECISIONS.md, decision 9.
 
 - The AI companies send two kinds of reader. One looks pages up to answer a question. We let that one in either way,
   because blocking it takes Kelwin out of that assistant's answers. The other collects pages to train the next model.
   This decision is about the second kind only.
 - Allowing it means the assistants' own knowledge includes Kelwin. kelwin.co will hold only what we publish on
-  purpose. (The working notes on GitHub are a separate matter: decision 2.) Blocking it doesn't change search. It only
+  purpose. (The working notes on GitHub are private now: decision 2, settled.) Blocking it doesn't change search. It only
   makes the models' picture of Kelwin thinner and older.
 - The cost: our words may be used to train models without credit.
 
 ### Decision 4 · Field notes: the byline, and the pace
 
-**4a · The byline.** In round 8 you said "no need for the byline". *Proposed: sign each note with the firm's name
-only, "By Kelwin", never a person.* Readers and Google look for who wrote a page [1]. The firm's name answers that
-truthfully: writers who work with us draft the notes, the founding team checks them, and the standards page says so.
-*Or: keep no byline.* Search engines still read Kelwin as the publisher.
+**4a · The byline (settled).** In round 8 you said "no need for the byline", so notes carry none. Readers and Google
+look for who wrote a page [1]. The standards page, linked from every note, answers that truthfully (writers who work
+with us draft the notes, and the founding team checks them), and the code for machines names the firm, Kelwin, as
+the author. Nothing to decide.
 
 **4b · The pace.** Round 10 said no fixed schedule, and no filler. *Proposed: aim for two notes a month for the first
 six months, about twelve in all, and publish only what is worth reading.* A note that answers one buyer's problem is
 the page most likely to bring a buyer from search. The copywriters you have lined up draft them. You approve each one,
-in about ten minutes. The email still goes out at most once a month. *Or: keep no fixed pace.*
+in about ten minutes. The email still goes out at most once a month. *Or: keep no fixed pace.* **Now:** part of
+DECISIONS.md, decision 14.
 
 ### Decision 5 · How Scaling shows on the site
 
-Scaling needs an Engagement Manager, who isn't lined up yet (the offer's decision 8). How should the site show it
+Scaling needs an Engagement Manager, who isn't lined up yet (the offer's decision 10). How should the site show it
 until then?
 
-- **By arrangement** *(proposed)*. Scaling is described in full, with one line: "Scaling is taken on by arrangement.
-  The first call says when we could start." All three stay visible as a ladder, which keeps how Launch and Growth are
-  seen.
-- **Not yet taking clients.** Described in full and marked plainly, with "Tell me when Scaling opens" in place of
-  "Ask about Scaling".
+- **By arrangement.** Scaling is described in full, with one line: "Scaling is taken on by arrangement. The first call
+  says when we could start." All three stay visible as a ladder, which keeps how Launch and Growth are seen.
+- **Not yet taking clients** *(proposed, reconciled with the offer)*. Described in full and marked plainly, with "Tell
+  me when Scaling opens" in place of "Ask about Scaling".
 - **Left off** until the Engagement Manager is contracted. The page shows Launch and Growth only.
 
-The risk in our proposal: a buyer asks for Scaling before we can staff it. The first call then says so honestly, and
-offers Growth until Scaling can start. Whichever you choose, the same words go everywhere machines read about Kelwin,
-so no assistant tells a buyer Scaling is open when it isn't.
+**Reconciled.** This map first proposed "by arrangement", to keep the ladder. The offer withdraws Scaling's price
+until it is costed seat by seat, and it can't be staffed yet, so "by arrangement" would invite requests the first call
+must turn down. "Not yet taking clients" keeps the ladder visible and says what is true. It is now part of
+DECISIONS.md, decision 2. Whichever you choose, the same words go everywhere machines read about Kelwin, so no
+assistant tells a buyer Scaling is open when it isn't.
 
-### Three quick answers we need now
+### Three quick answers we need now (now at the end of DECISIONS.md's list)
 
 1. Which company-size band should Kelwin's LinkedIn page show? It is a statement about headcount, so it must be true.
    The site itself never states a team size.
@@ -203,7 +200,7 @@ spam [2]. A candidate that fails becomes a row on the index that opens in place,
 | Positioning and messaging | Yes: "B2B positioning consultant", "messaging framework" | Yes, the specialist and the copywriters | Page (written in round 9) |
 | ICP and signal map | Yes, in buyer words: "ideal customer profile", "buying signals" | Yes, the GTM engineer | Page (written) |
 | CRM setup plan | Yes: "HubSpot pipeline stages", "CRM cleanup" | Yes, the systems architects | Page (written) |
-| Win/loss interviews | Yes: "win/loss analysis", "win/loss interviews" | Once the offer confirms who runs the calls (its hours sit with the specialist) | Page, launch\* (written) |
+| Win/loss interviews | Yes: "win/loss analysis", "win/loss interviews" | Yes: the specialist runs the calls (OFFER 9.2) | Page, at launch (written) |
 | The operating model | Rarely | Yes | Page, by the exception above (written) |
 | Cold email (the offer's "outbound build") | Yes: "cold email setup", "cold email infrastructure" | Yes, the GTM engineer and the copywriters | Page, launch\* |
 | Conference activation | Yes: "conference activation", "pre-event outreach" | The outreach, yes. Help on the floor is left out, or a partner at cost | Page, launch\* |
@@ -231,7 +228,7 @@ a free scope check: up to three working days on the one piece, then a 30-minute 
   seven times as likely to qualify the lead as those that answered later [3]. So we propose a reply **within one
   working day for any message that names an engagement**, the audit's standard, instead of the two working days for
   general questions. Once the calendar is live, soon after launch, the acknowledgement email also carries a link to
-  book the 30-minute first call. This needs the lifecycle's yes.
+  book the 30-minute first call. The lifecycle now adopts this (LIFECYCLE 2.2 and 6).
 - **"How it runs"** on the page describes the scope check, so the page needs no form of its own.
 - **The red audit door in the close says what it is for here,** in the voice work's words, along the lines of "More
   than one part breaking? That is what the System Audit is for." A buyer with one problem isn't sent to a ten-day
@@ -267,8 +264,8 @@ posts and email signatures: **kelwin.co/the-lab/#waitlist**.
 - Its button, "Join the waitlist", is the form's own and is not red. The red audit door appears once, in the close.
 - Each entry goes to the CRM at once, tagged "Lab waitlist", and to the email list, tagged "Lab", once the person
   confirms from their inbox. Privacy says both.
-- It promises only what we can keep: an email only when the Lab page changes, at most once a quarter (the work on what
-  sits behind the site proposes this; it is that work's decision 6). First word when early access opens, with
+- It promises only what we can keep: an email only when the Lab page changes, at most once a quarter (BACKEND door 7;
+  settled this round, in line with your note to "tease a bit more through the waitlist"). First word when early access opens, with
   invitations in small groups. Joining doesn't guarantee a place in the first group. Leaving takes one click.
 
 **From round 10.** "Anyone may ask for an invitation" becomes "anyone may join the waitlist". Who is invited first
@@ -287,8 +284,8 @@ different platforms".
 - **Four topics,** matching how the site is built: **The system** (the whole, and how to choose help for it),
   Narrative Systems, GTM Infrastructure and GTM Intelligence. Every note carries one as a label from launch. They
   become filters once there are nine notes; before that, a filter would show near-empty lists.
-- **Each note.** The topic, the headline and one sentence on what it argues. The byline (proposed "By Kelwin",
-  decision 4a), linked to About. The date, and "Updated" only when the content really changed. The read time. The
+- **Each note.** The topic, the headline and one sentence on what it argues. No byline (decision 4a,
+  settled). The date, and "Updated" only when the content really changed. The read time. The
   note itself: every outside number with its source beside it, every Kelwin term defined once, every fact in a drawing
   also written in the text, any illustrative figure labeled Specimen. The sources, with links and the date each was
   read. "How we research and write", and "Report an error". Three related notes. Share links for LinkedIn, X, email
@@ -362,8 +359,8 @@ buyers, two additions:
   - a data-processing agreement on request;
   - how to report a security problem.
 
-  It claims no certification we don't hold. The one-page security note the lifecycle sends before a proposal is built
-  from the same words, so a buyer reads one story. An assistant asked "Is Kelwin secure? Who holds our CRM data?" then
+  It claims no certification we don't hold. The security pack the offer and the lifecycle send before the audit starts
+  (OFFER 7.7) is built from the same words, so a buyer reads one story. An assistant asked "Is Kelwin secure? Who holds our CRM data?" then
   has something true to quote.
 - **The standard file that tells researchers where to report a weakness** goes live at launch, beside the other files
   for machines.
@@ -394,7 +391,7 @@ ENGAGEMENTS                                     a menu group (round 10: a plain 
    ├─ /engagements/icp-and-signal-map/          ICP and signal map                          NEW      launch
    ├─ /engagements/crm-setup-plan/              CRM setup plan (was CRM blueprint)          NEW      launch
    ├─ /engagements/operating-model/             The operating model                         NEW      launch
-   ├─ /engagements/win-loss-interviews/         Win/loss interviews                         NEW      launch*
+   ├─ /engagements/win-loss-interviews/         Win/loss interviews                         NEW      launch
    ├─ /engagements/cold-email/                  Cold email (the outbound build)             NEW      launch*
    ├─ /engagements/conference-activation/       Conference activation                       NEW      launch*
    ├─ /engagements/executive-dinners/           Executive dinners (on request until then)   LATER    after the first dinner
@@ -439,8 +436,8 @@ LEGAL AND SYSTEM
 ├─ screen on any sign-up                        Check your inbox                            NEW      launch
 ├─ /admin/                                      The editor for field notes (hidden)         NEW      launch
 ├─ files for machines                           For search engines, assistants, researchers NEW      launch
-├─ rmeezim.github.io/kelwin-website             Today's public preview                      REMOVED  now (decision 2)
-├─ the project's files on GitHub                Public today                                REMOVED  now: made private (decision 2)
+├─ rmeezim.github.io/kelwin-website             Today's public preview                      REMOVED  done: dark
+├─ the project's files on GitHub                Private since 19 October 2026               REMOVED  done
 └─ /preview/hero/ · /preview/principle/         Developer previews                          REMOVED  never public
 ```
 
@@ -463,24 +460,24 @@ out, with its own link; "Security and access"; and a short "Other kinds of help"
 
 **Purpose,** in order:
 
-- **What Kelwin is to a client:** retainer first. We build the system in the client's own accounts and run it with
-  their team every month, and hand it over only if they ask.
+- **What Kelwin is to a client:** retainer first. We build the system in the client's own accounts and run it, and
+  hand it over only if they ask.
 - **Two ways to work with us,** as a short table of text. Launch, Growth and Scaling: the whole system, run on a
   retainer, starting with the System Audit. The fixed-scope engagements: one piece, a fixed scope and a fixed fee,
   starting with a free scope check. For each: what it covers, how it starts, how it is priced and what you keep.
-- **The term,** in the offer's words (the wording follows the offer): "We recommend six months: the first three are a
-  pilot at a reduced fee, with a written check at the end, and an exit if we miss the targets we agreed. Month to
-  month is possible, at a higher fee." Round 10's "six months at least" stops being true once month to month is
+- **The term,** in the offer's words, as the voice allows them: "We recommend six months. The first three are the
+  pilot, which ends at day 90 with a written readout against the targets we agreed, and an exit if we missed them.
+  Month to month is also possible." Round 10's "six months at least" stops being true once month to month is
   offered.
 - **How an engagement runs** (#how-it-runs): the six months, drawn, with the method's four steps on the timeline and
   the same facts in text. The audit, the pilot (months 1–3), the full run (months 4–6), renewal.
 - **Launch, Growth and Scaling** (#launch, #growth, #scaling): what each includes in each capability, the add-ons it
   can take (named, without prices), and how often we meet. Every limit is labeled a capacity limit, never an expected
   result. Scaling is shown as decision 5 says.
-- **How fees work,** with no numbers: a monthly retainer; a pilot at a reduced fee in the first three months; month
-  to month at a higher fee; tools and data bought in the client's name, at cost; the starting price given on the first
-  call. If the revenue share is mentioned at all, it is one sentence, stated as a term of the contract. The voice work
-  writes it, and has retired round 10's line about pipeline.
+- **How fees work,** with no numbers: a monthly retainer; the pilot in the first three months; month to month is
+  possible; tools and data bought in the client's name, at cost; the starting price, and how the pilot and month to
+  month are priced, given on the first call. Nothing on the revenue share: like the meeting fee, it is a proposal term
+  (reconciled with the offer and the voice).
 - **Your accounts, your data,** with "Security and access" (section 3.5).
 - **Start smaller:** the fixed-scope engagements, each linked, then the index.
 - **Other kinds of help:** a short summary of when an agency, a senior hire or a fractional leader is the better
@@ -508,7 +505,7 @@ outside services, from the work on what sits behind the site.
 **Notes.**
 - No prices, as you decided. "We give the starting price on the first call."
 - The day-90 exit, offered: one plain sentence gives its conditions.
-- The site never shows the per-lead fee (the offer calls it the fee per held meeting), the revenue-share rate, the
+- The site never shows the fee per held meeting (your "per lead"), the revenue-share rate, the
   pilot percentages, the deposit or a setup or readiness fee. The offer and the voice keep all of these for the
   proposal.
 - The engineered moment is the six-month ruler above the three capabilities. Choosing an engagement lights up what it
@@ -527,12 +524,12 @@ free scope check. Rows for what is asked for but sold another way.
 **Purpose,** in order:
 
 - **What this is,** in the voice work's sentence: "When one part of the system matters most now, we take that part on
-  by itself, to the same standard."
+  by itself, with the same method."
 - **The list,** as rows in one ledger, never a grid of cards, grouped by capability:
   - Narrative Systems: Positioning and messaging.
   - GTM Infrastructure: Email deliverability, Cold email\*, ICP and signal map, CRM setup plan, Conference
     activation\*, Executive dinners (on request; its row opens in place until its page exists).
-  - GTM Intelligence: Win/loss interviews\*.
+  - GTM Intelligence: Win/loss interviews.
   - After the audit: The operating model.
 - **How one runs,** the same for every one, from the offer's lifecycle: the free scope check, the written scope, the
   stop after week one, the build, and the check 30 days on.
@@ -548,7 +545,7 @@ free scope check. Rows for what is asked for but sold another way.
   - Paid ads: retargeting the named accounts only, an add-on on Growth and part of Scaling. We don't run broader paid
     programs.
   - LinkedIn outreach: a channel inside the packages, not sold on its own.
-  - Texts and WhatsApp: only reminders to people who said yes. We never text or message anyone cold.
+  - Texts and WhatsApp: only reminders, inside a package, to people who agreed to them.
   - A single Clay table: built inside the ICP and signal map, never on its own.
   - A paid CRM or RevOps audit: the System Audit covers it.
 
@@ -621,8 +618,8 @@ work's new register. Each waits on its copy in the new voice and its page design
 |---|---|---|---|
 | Positioning and messaging | /engagements/positioning-and-messaging/ | "B2B positioning consultant", "messaging framework" | "Where it leads" names the package it can grow into. Specimens filled in for Kelwin itself, labeled |
 | ICP and signal map | /engagements/icp-and-signal-map/ | "ideal customer profile", "buying signals" | The title in buyer words first: "Ideal customer profile and buying signals". It says plainly that we don't sell lists. The Clay work lives here |
-| CRM setup plan | /engagements/crm-setup-plan/ | "HubSpot pipeline stages", "CRM cleanup" | Renamed from "CRM blueprint" (approved in round 10; the offer still uses the old name). Never called "onboarding" |
-| Win/loss interviews (launch\*) | /engagements/win-loss-interviews/ | "win/loss analysis", "why we lose deals" | The offer adds the rewrite of the sales story that follows the interviews. Waits on who runs the calls. The specimen shows our questions, never a buyer's answers |
+| CRM setup plan | /engagements/crm-setup-plan/ | "HubSpot pipeline stages", "CRM cleanup" | Renamed from "CRM blueprint" (approved in round 10; every document now uses it). Never called "onboarding" |
+| Win/loss interviews | /engagements/win-loss-interviews/ | "win/loss analysis", "why we lose deals" | The offer adds the rewrite of the sales story that follows the interviews. The specialist runs the calls. The specimen shows our questions, never a buyer's answers |
 | The operating model | /engagements/operating-model/ | Rarely: it is sent after an audit's readout (the stated exception) | The only one that starts after the audit. "The owner after handover" stays true here, because this one is for teams that run the system themselves |
 
 ---
@@ -767,12 +764,12 @@ studies.
 
 `/insights/<note>/` · **New template, at launch** · Sits under: /insights/
 
-**Since round 10.** New as a template: the byline (decision 4a), both dates, sources, related notes, share links and
-the feed. Section 3.3 lists it from the top.
+**Since round 10.** New as a template: no byline (decision 4a, settled), both dates, sources, related notes, share
+links and the feed. Section 3.3 lists it from the top.
 
 **Found by.** The problem the note answers, in the words a buyer types.
 
-**Waits on.** The blogging system (the work on what sits behind the site); your answer on the byline.
+**Waits on.** The blogging system (DECISIONS.md, decision 14).
 
 ---
 
@@ -868,8 +865,7 @@ audit's three questions." → /audit/.
 **How we'd know it works.** Messages a month, by reason; the share that become audits, scope checks or proposals;
 replies on time (one working day when an engagement is named, two otherwise).
 
-**Waits on.** The form service and CRM; the globe (the look work); the Privacy rewrite; the lifecycle's yes on the
-one-working-day reply.
+**Waits on.** The form service and CRM; the globe (the look work); the Privacy rewrite.
 
 **Notes.** No budget field, since prices stay off the site. The reason is read from the link (for example
 /contact/?topic=launch), so each page can open the form with its reason chosen. Remove "The founder reads it", "A
@@ -926,17 +922,18 @@ legal suffix, no founder and no headcount. Our list is in SEARCH-BUILD.md.
 
 ### Today's public preview, and the public project files
 
-`rmeezim.github.io/kelwin-website` and the project on GitHub · **Removed: now, if you agree (decision 2)**
+`rmeezim.github.io/kelwin-website` and the project on GitHub · **Removed: done (decision 2, settled)**
 
 **Since round 10.** New card. The preview is what crawlers see of Kelwin today, and the project's files sit one click
 from it.
 
-**Why it matters.** Decision 2 has the detail. The 90-day goal in SEARCH.md, that no assistant names a person, can't
-be met while the files stay public.
+**Why it mattered.** The files held your name, your notes and our prices. With them private, the 90-day goal in
+SEARCH.md (no assistant names a person) depends on what kelwin.co and the profiles say, and on your own LinkedIn
+profile.
 
 **The sequence, one plan with the work on what sits behind the site.**
-1. Now: the project becomes private, in a GitHub organization in Kelwin's name. The preview goes dark, unless you
-   choose to keep it on GitHub's paid plan, hidden from search, until the private preview exists.
+1. Done on 19 October: the project is private, and the preview is dark. Next, if you agree, the project moves into a
+   GitHub organization in Kelwin's name (DECISIONS.md, decision 13).
 2. Then: you review drafts on a private preview address that only the founding team can open, hidden from search.
 3. At launch: kelwin.co goes live on the new host. The old preview addresses answer "not found", which costs nothing,
    because nothing public links to them. The new host's own spare address for the site is switched off or hidden from
@@ -971,16 +968,16 @@ All new lines are drafts for the voice work, written in its words.
   because the fixed-scope engagements move to the Engagements plate. Paper door: the System Audit.
 - **Engagements (new).**
   - How we work together → /engagements/: "The retainer, the pilot, and what stays yours."
-  - Launch, Growth and Scaling → /engagements/#launch: "The whole system, built in your accounts and run with your
-    team."
+  - Launch, Growth and Scaling → /engagements/#launch: "The whole system, built in your own accounts. We run it."
   - Fixed-scope engagements → /engagements/fixed-scope/: "When one part matters most now, we take it on by itself."
   - Foot row: How an engagement runs → /engagements/#how-it-runs.
   - Paper door: the System Audit.
 - **The Firm.** About Us and Who We Work With, as approved. Careers: "Open roles. Remote, worldwide." (or "Send us
   your work. Remote, worldwide." when no named role is open). The Lab: "A platform that sits above the tools a revenue
   team already uses. Join the waitlist." Foot row: "Why Kelwin exists" → /#s-letter. Paper door: the System Audit.
-- **Resources.** Insights and Reports, as approved. Talk to the team: "Questions, engagements, press. We reply within
-  two working days." The foot row changes (below). Paper door: the System Audit.
+- **Resources.** Insights and Reports, as approved. Talk to the team: "Questions, engagements, press." The reply
+  times now sit on Contact only (one working day for the audit or a named engagement, two otherwise), so the plate
+  drops round 10's "We reply within two working days". The foot row changes (below). Paper door: the System Audit.
 
 No email field in any plate. The phone menu has the same items in the same order, and the paper audit door stays at
 the foot of each plate, so the menu never adds a second red.
@@ -1007,8 +1004,9 @@ the wrong family (the offer's finding). All six are reworded once the offer sett
 - 01 Capabilities: Narrative Systems · GTM Infrastructure · GTM Intelligence · Engagements · Fixed-scope engagements
   (the family's final name) · The System Audit ↗
 - 02 The Firm: About Us · Who We Work With · The Lab · Careers
-- 03 Resources: Insights · Reports · Talk to the Team →
-- 04 Contact: audit@kelwin.co · the visitor's own local time · "Built in-house, no template" · Kelwin on LinkedIn
+- 03 Resources: Insights · Reports · Talk to the team → (one spelling, homepage line 11b)
+- 04 Contact: audit@kelwin.co · the visitor's own local time · Kelwin on LinkedIn ("Built in-house, no template" goes
+  if you say yes to the homepage lines, line 11a: DECISIONS.md, decision 11)
   (once you resend the link), then X and Instagram
 - Legal row: © 2026 Kelwin · Privacy | Terms · Audit request
 
@@ -1047,7 +1045,7 @@ on the pages stay the same whichever way it lands.
 
 - **Launch, Growth and Scaling:** the audit's questions → a 30-minute first call → ten working days → the readout, on
   a 60-minute call → the proposal → the pilot (months 1–3) → the full run (months 4–6) → renewal.
-- **A fixed-scope engagement:** "Ask about this engagement" → a reply within one working day (proposed) → the
+- **A fixed-scope engagement:** "Ask about this engagement" → a reply within one working day (adopted) → the
   30-minute first call → the free scope check, up to three working days → a 30-minute readout → the written scope →
   the stop after week one → the build, with a check 30 days on → upkeep, or the audit and then a package.
 
@@ -1111,8 +1109,8 @@ anyone who books the audit leaves the marketing emails; leaving takes one click,
 - The Projects link at the foot of the Capabilities plate moves to the Engagements plate, and "The full stack, on one
   page" returns.
 - The Lab: the invitation becomes a waitlist with its own link, the page becomes a tease, and the Index line leaves it.
-- Insights becomes the blog: topics, a post template, a feed, a standards page, and a byline that names no one if you
-  agree.
+- Insights becomes the blog: topics, a post template, a feed, a standards page, and and no byline, as you decided in
+  round 8.
 - One comparison field note (a reversal of round 10, in decision 1).
 - Engagements gains "Security and access".
 - Contact's map becomes a globe, "Global footprint", with no city but our address.
@@ -1160,17 +1158,17 @@ and the standards page says only what is true.
 
 ## 9 · Launch: the count, the order, and what waits
 
-### The page count: 27 confirmed, up to 30
+### The page count: 28 confirmed, up to 30
 
 | Kind | Count | Pages |
 |---|---|---|
-| New, confirmed | 7 | Engagements; Positioning and messaging; ICP and signal map; CRM setup plan; The operating model; the comparison note; How we research and write |
-| New, if the offer confirms (launch\*) | up to 3 | Win/loss interviews; Cold email; Conference activation |
+| New, confirmed | 8 | Engagements; Positioning and messaging; ICP and signal map; CRM setup plan; The operating model; Win/loss interviews; the comparison note (DECISIONS.md, decision 8); How we research and write |
+| New, with the offer's catalog (launch\*) | up to 2 | Cold email; Conference activation |
 | Reworked | 14 | The homepage; the three capability pages; the fixed-scope index; About; Who We Work With; Careers; The Lab; Insights; Reports; Contact; Privacy; Terms |
 | Kept, small changes at most | 6 | The three field notes; the System Audit; Email deliverability; the page not found |
 
-7 new, 14 reworked and 6 kept make **27 confirmed**. The three launch\* pages bring it to **30**. Round 10's 26 lose
-win/loss to launch\*, and gain the comparison note and the standards page. Executive dinners waits for its first
+8 new, 14 reworked and 6 kept make **28 confirmed**. The two launch\* pages bring it to **30**. Round 10's 26 gain
+the comparison note and the standards page. Executive dinners waits for its first
 dinner, so it is not counted.
 
 Of the 30: 20 are already designed; 5 are written but not yet designed (Positioning and messaging, ICP and signal map,
@@ -1243,20 +1241,21 @@ before anything goes live.
 - The family names: "fixed-scope engagements" is the working name in the menu, the footer, the index heading and
   what machines read. No address depends on it.
 - Which fixed-scope engagements launch, and for each: its scope, who delivers it, and its "How is it priced?" line.
-  Who runs the win/loss calls.
+  Who runs the win/loss calls (settled: the specialist, OFFER 9.2).
 - What each package includes, its add-ons, and whether the packages now differ in kind.
 - The terms Engagements explains without numbers: the pilot options, month to month and renewal.
-- Scaling's status (decision 5 and the offer's decision 8).
-- The lifecycle: the scope check, and the one-working-day reply for messages that name an engagement.
+- Scaling's status (decision 5; now DECISIONS.md, decision 2).
+- The lifecycle: the scope check, and the one-working-day reply for messages that name an engagement (both now
+  adopted).
 - The audit's size question, and whether companies below a package's size go to the fixed-scope engagements.
-- The CRM setup plan's name. Round 10 approved "CRM setup plan"; the offer still writes "CRM blueprint".
+- The CRM setup plan's name. Round 10 approved "CRM setup plan"; every document now uses it.
 
 **The voice.**
 - The category phrase ("GTM systems partner", the message sheet's proposal) and the one approved description of
   Kelwin, used word for word on the site and everywhere machines read.
 - Every page's words, the menu drafts in section 6, the five reworded lines, and the red door's line on the fixed-scope
   pages.
-- The one sentence on the revenue share, or none.
+- The one sentence on the revenue share, or none (settled: none on the site).
 - A few search titles need a word the voice keeps for something else ("audit", "case studies", "setup", "meetings").
   SEARCH-BUILD.md lists them, each with its reason, for the voice work to approve or replace.
 
@@ -1272,7 +1271,7 @@ before anything goes live.
 - The form service, CRM, list, analytics, calendar, blogging system and its editor, feed, automations and security.
 - The new host, and the cutover in the preview card's sequence.
 - The final list of outside services, for Privacy and for "Security and access".
-- The Lab's email pace (its decision 6).
+- The Lab's email pace (settled: at most once a quarter, BACKEND door 7).
 - Google's and Bing's site-owner reports on kelwin.co.
 
 ## 11 · The other pages, as approved in round 10
@@ -1301,10 +1300,10 @@ Each stands as approved in round 10, plus the small changes listed. None needs a
 | Reports | /reports/ | Reworked | Each report, once real, carries its date for search engines |
 | Reports: request received | /reports/ (screen) | New | — |
 | A report | /reports/<report>/ | Later | — |
-| The System Audit | /audit/ | Kept | "An AI assistant" in "How did you hear about us?". Questions about cost link to "How fees work". One headline's joined-words fix |
+| The System Audit | /audit/ | Kept | "An AI assistant" in "How did you hear about us?". Questions about cost link to "How fees work". A link to the security pack for buyers who need it (OFFER 7.7). One headline's joined-words fix |
 | Audit: request received | /audit/ (screen) | New | — |
 | Audit: pick a time | /audit/ (step) | New, soon after | — |
-| Audit: not a fit yet | /audit/ (screen) | Reworked | A second route, "Start with one piece", for a company selling but below a package's size, if the offer adopts the size question |
+| Audit: not a fit yet | /audit/ (screen) | Reworked | A second route, "Start with one piece", for a company selling but below a package's size, if you agree to the size question (DECISIONS.md, decision 3) |
 | Terms of service | /terms/ | Reworked | — |
 | Page not found | (any unknown address) | Kept | Its line "where every engagement begins" reworded (section 6). A check after launch that it answers "not found", not "OK" |
 | Sign-up confirmed | /confirmed/ | New | The Lab version confirms a place on the waitlist |
@@ -1334,4 +1333,31 @@ link, are in SEARCH.md and our two research notes on search and on AI answers.
 Kelwin's own documents, read directly: your notes from rounds 8, 9 and 10 (the byline, "Prices and lengths: KEEP
 THEM OFF THE SITE", and this round's answers); this round's offer, lifecycle, voice guide and message sheet; the work
 on what sits behind the site; the look work's films of the page turn. From the project itself: its visibility on
-GitHub (public, checked 19 October 2026), the menu's and the page not found's current lines, and the footer clock.
+GitHub (public when checked on 19 October 2026, and private since that day), the menu's and the page not found's current lines, and the footer clock.
+
+---
+
+## Reconciled in round 11
+
+Changes made when this round's five pieces of work were put together (19 October 2026). The decisions
+now sit in DECISIONS.md.
+- Decision 2 (the public files and preview) is settled: you made the project private on 19 October. What is left
+  (the GitHub organization, and how you see drafts) is DECISIONS.md, decision 13. The tree, the preview card and the
+  short answer follow.
+- Decision 4a (the byline) is settled by your round-8 note: no byline; the code names the firm as author, and the
+  standards page says who drafts and checks.
+- Decision 5 (Scaling) now proposes "not yet taking clients", described in full, matching the offer; it is part of
+  DECISIONS.md, decision 2.
+- Win/loss launches with the specialist running the calls (OFFER 9.2), so it leaves launch\*. The count is now 28
+  pages confirmed, 30 with the outbound build and conference activation.
+- Engagements: the term sentence and "How fees work" drop the pilot's "reduced fee" and month to month's "higher fee"
+  (the voice keeps fees to the first call); no revenue-share sentence on the site; "run it with their team" becomes
+  "run it" (also in the Engagements plate).
+- The fixed-scope index uses the voice's "with the same method"; its texts and WhatsApp row no longer carries a
+  refusal (the voice puts channel consent in the contract and Privacy).
+- The reply promise for messages that name an engagement is adopted by the lifecycle; the Resources plate drops its
+  reply time, which now sits on Contact only.
+- "Security and access" is built from the security pack the offer and lifecycle send (the same name throughout); the
+  audit page links it.
+- Cross-references now point to DECISIONS.md; the Lab's quarterly email pace and the CRM setup plan's name are settled;
+  the footer follows the homepage lines (11a, 11b).
