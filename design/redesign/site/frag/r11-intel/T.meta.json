@@ -1,0 +1,21 @@
+{
+ "title": "Next quarter, on the phone",
+ "direction": "A×C · Round 11 · GTM Intelligence body, recomposed for the phone (1440 and tablet as approved in round 10)",
+ "summary": "The approved worked example (six calls with buyers who said no read together; one thing added to next quarter's plan, one thing stopped), recomposed for the phone: each step its own full-width row, each note a dated entry (the week over the quote, the quote across the full measure), the paper plan with phone margins; same words, same order, same red tab.",
+ "reference": {
+  "site": "The approved homepage handover (handover/U): the old line struck, the new line rising in",
+  "borrowed": "Strike-and-rise as the verb of change; a ruled list on a paper page; leaders to a rule; one solid subject (the count).",
+  "kelwin": "A real mechanism in the client's own material (lost-deal calls → next quarter's plan); the plan is the head's red week-13 page (its tab), its rows the head's lanes in the same words."
+ },
+ "motion": [
+  "entrance: the kit's claim rise; the plate waits, hidden, until the log is half on screen, then fades in on the starting plan (the empty first slot dashed, so the page never changes height).",
+  "step 01 We read the calls (from 400ms): six notes drop in 140ms apart; security is underlined in four and their squares fill (1100–1900); the other two dim (1800); 4 of 6 rises (1950).",
+  "step 02 We add one thing (2.9s later at the earliest, and only once the plan is half on screen): a line runs from the count into the plan's first row; the slot clears and the new item rises in; the rows below renumber; New, then Kept.",
+  "step 03 We stop one thing (2s after step 02): Rebuild the contact list every week is struck and dims; Stopped, 0 replies in 13 weeks. Settled about 1.1s later.",
+  "interaction: each step button shows the end of its step (forwards or back, about a second) and stops the pass for good; keyboard focus stops it too; Replay runs it again; the current step carries aria-current=step; a reader's press is spoken (aria-live).",
+  "reduced motion: the end of step 03; the buttons still switch the plate. No script: the end of step 03 without the connector (it is drawn only once T.js has measured it).",
+  "phone (round 11): the same three steps and timings; each step's row is full width (numeral and verb on one line, 20px); notes are dated entries, the week over the quote; plan items wrap without a one-word last line."
+ ],
+ "demoMs": 8000,
+ "notes": "Illustrative throughout (the label row says so once): every quote, the count and the plan rows. The six weeks and four security calls match the head's lane; the plan rows are the head's lanes in the same words. Round 11: 1440 and tablet pixel-identical to r10-intel/T; only the phone rules changed."
+}

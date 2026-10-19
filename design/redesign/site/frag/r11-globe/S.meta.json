@@ -1,0 +1,20 @@
+{
+ "title": "Global footprint",
+ "direction": "A",
+ "summary": "Contact's globe (round 11): an orthographic globe drawn in hairlines with a dot-matrix land, turning slowly east, while a red line flows west in arches from point to point along a ring of hour marks, as the working day moves round the world; New York, our address, is the one place shown and named.",
+ "reference": {
+  "site": "Kelwin's approved round-10 map (r10-map/S) and the homepage drawings",
+  "borrowed": "the map's dot land, its registration marks, New York's crosshair and label, the plate and caption band; the homepage's one red line",
+  "kelwin": "the world redrawn as a globe on a 15° graticule (an hour of time a line), and the working day as one red line flowing in arcs from hour mark to hour mark"
+ },
+ "motion": [
+  "entrance: the outline plots (0.7 s), the graticule comes in, a scan line sweeps the land in west to east (1.6 s) as the caption rises in (1.2 s), the hour marks and New York register (2.3–3.0 s)",
+  "ambient: from 3 s a red line flows west in arches from point to point (2.2–3.3 s an arch), slowing to 45% of its pace at each point but never stopping, its red running on through the point; the arches it has finished stay as hairlines for about 3.6 s, then fade; the point it passes through fills, then empties",
+  "ambient: three lines run the same route a third of the world apart, so one is always crossing the middle of the face; a line is red only there (within 54° of the middle, gone by 68°, so the red hands over to the next line in a short crossfade at about 60°) and a hairline towards the edges, so the view holds one red line at a time; each arch is its ground path bowed towards the pole by a third of its span, so it flattens at the edge instead of flaring",
+  "ambient: the globe turns east at 4° a second (one turn in 90 s)",
+  "interaction: Pause / Play in the caption band; it also pauses off screen and in a hidden tab",
+  "on the live site: starts when the globe is 40% on screen; reduced motion shows one still frame (the line arriving at New York), no timers"
+ ],
+ "demoMs": 9500,
+ "notes": "Built by qa/r11/look/globe/src/gen.mjs: land from Natural Earth 110m (world-atlas 2.0.2) baked as a 0.5° mask (5679 characters); the canvas builds its dot matrix for its own size (7 px pitch at the centre). Route: New York and nine hour marks on the 45th parallel north (-105°, -150°, 180°, 150°, 105°, 75°, 30°, 0°, -45°), hops of 2, 3, 2, 2, 3, 2, 3, 2, 3, 2 hours. The no-script still is SVG (1445 dots at a 2.2° pitch)."
+}

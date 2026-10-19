@@ -1,0 +1,100 @@
+/* r11-globe · S — Contact, "Global footprint": the globe.
+   Head: the kit's claim head (.ac-shead--claim), as on the approved round-10 map.
+   Plate: a square drawing box (the globe, registration marks at its corners) in a --panel plate on the
+   right of the grid, its source line and Pause under it in a ruled band; the one caption sits
+   bottom-left on wide screens and under the globe on tablets and phones.
+   The globe is a canvas (S.js draws it for the size it gets); a page without its script shows the
+   baked SVG still instead (the <noscript> style). New York's label is HTML, moved by transform only.
+   Weights: 1px hairlines (the outline and the equator --line-2, the graticule --line), land dots
+   2px --fg-3, the hour marks as 5px hollow squares (filled --fg a moment as the line passes), New York
+   a solid --fg square with its crosshair, finished arcs as --fg-2 hairlines, and the view's one red:
+   the line now moving (--signal, 1.5px).
+   Sizes: the box is a square (no layout shift); 680px at 1440, the full plate on phones. */
+
+/* ≥1024: the head down the left (cols 1–5) with the caption at the foot of that column, the globe's
+   plate on the right (cols 6–12). The figure spans the whole grid with a bare plate: its panel and
+   band carry the --panel ground, the caption sits on the section, its last line level with the band's.
+   The head overlays the figure's empty top-left cell (same grid row), so the two read as one sheet. */
+.km-r11-globe-S__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+.km-r11-globe-S__head { grid-column: 1 / span 5; grid-row: 1; align-self: start; position: relative; z-index: 1; }
+.km-r11-globe-S__head > .ac-claim, .km-r11-globe-S__head > .ac-shead__lede { grid-column: 1 / -1; }
+.km-r11-globe-S__head > .ac-shead__lede { text-wrap: balance; }
+.km-r11-globe-S__fig {
+  grid-column: 1 / -1; grid-row: 1;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); grid-template-rows: auto auto;
+}
+.km-r11-globe-S__panel { grid-column: 6 / -1; grid-row: 1; background: var(--panel); padding: 36px; }
+.km-r11-globe-S__globe { position: relative; width: min(100%, 680px); aspect-ratio: 1; margin-inline: auto; }
+.km-r11-globe-S__cv, .km-r11-globe-S__cvs, .km-r11-globe-S__still {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block;
+}
+/* the still waits unseen: a page with its script draws the canvas; without, <noscript> shows it */
+.km-r11-globe-S__still { visibility: hidden; overflow: visible; }
+.km-r11-globe-S__still * { vector-effect: non-scaling-stroke; }
+.km-r11-globe-S__limb { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-r11-globe-S__grat { fill: none; stroke: var(--line); stroke-width: 1; }
+.km-r11-globe-S__eq { fill: none; stroke: var(--line-2); stroke-width: 1; }
+.km-r11-globe-S__land { fill: none; stroke: var(--fg-3); stroke-width: 2; stroke-linecap: square; }
+.km-r11-globe-S__trace { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-r11-globe-S__red { fill: none; stroke: var(--signal); stroke-width: 1.5; }
+.km-r11-globe-S__nd { fill: var(--panel); stroke: var(--fg-2); stroke-width: 1; }
+.km-r11-globe-S__nyx { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+.km-r11-globe-S__nysq { fill: var(--fg); }
+
+/* the registration marks: the drawing's square */
+.km-r11-globe-S__globe > .ac-reg { z-index: 1; }
+
+/* New York's label: below the point, to the south-east (every hour mark and arc is to its north) */
+.km-r11-globe-S__ny {
+  position: absolute; left: var(--x); top: var(--y); margin: 0;
+  display: flex; flex-direction: column; padding: 0 6px 2px; background: var(--panel);
+  white-space: nowrap; pointer-events: none; z-index: 2;
+}
+.km-r11-globe-S__nyn { font-size: var(--ac-anno); line-height: 18px; color: var(--fg); }
+.km-r11-globe-S__nys { font-size: var(--ac-anno); line-height: 18px; color: var(--fg-2); }
+.km-r11-globe-S__ny.is-west { align-items: flex-end; }
+.km-r11-globe-S.is-live .km-r11-globe-S__ny { left: 0; top: 0; opacity: 0; will-change: transform, opacity; }
+.km-r11-globe-S:not(.is-live) .km-r11-globe-S__ny { visibility: hidden; }
+
+/* the band: the source, and Pause */
+.km-r11-globe-S__band { grid-column: 6 / -1; grid-row: 2; background: var(--panel); align-items: baseline; gap: 6px 32px; padding: 14px 36px 16px; }
+.km-r11-globe-S__src { margin: 0; font-size: var(--ac-anno); line-height: 1.5; color: var(--fg-3); }
+.km-r11-globe-S__pause { flex: none; color: var(--fg); }
+.km-r11-globe-S__pause[hidden] { display: none; }
+.km-r11-globe-S:not(.is-run) .km-r11-globe-S__pause { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) { .km-r11-globe-S__pause { display: none; } }
+
+/* the caption: one plain sentence, at the foot of the left column */
+.km-r11-globe-S__capt {
+  grid-column: 1 / span 4; grid-row: 1 / span 2; align-self: end; margin: 0; padding-bottom: 16px;
+  font-size: var(--ac-support); line-height: 1.55; color: var(--fg-2); max-width: 34ch; text-wrap: pretty;
+}
+/* it arrives as the land sweeps in (the canvas plays its own pass: S.js), before the line sets off */
+.km-r11-globe-S.is-run .km-r11-globe-S__capt { animation: ac-up 500ms var(--ease-out) 1200ms both; }
+
+/* ── tablet (≤1023): one column: the head, then the plate (globe, caption, band) as one block ── */
+@media (max-width: 1023px) {
+  :root:not(.km-home) .km-r11-globe-S__head { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-r11-globe-S__head > .ac-shead__lede { grid-column: 1 / span 9; }
+  :root:not(.km-home) .km-r11-globe-S__fig { grid-column: 1 / -1; grid-row: 2; margin-top: 48px; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  :root:not(.km-home) .km-r11-globe-S__panel { grid-column: 1; grid-row: 1; padding: 32px 24px 8px; }
+  :root:not(.km-home) .km-r11-globe-S__globe { width: min(100%, 560px); }
+  :root:not(.km-home) .km-r11-globe-S__capt {
+    grid-column: 1; grid-row: 2; align-self: auto; max-width: none; background: var(--panel); padding: 16px 24px 18px;
+  }
+  :root:not(.km-home) .km-r11-globe-S__band { grid-column: 1; grid-row: 3; padding: 12px 24px 14px; }
+}
+/* ── phone (≤767): the globe edge to edge in the plate ── */
+@media (max-width: 767px) {
+  :root:not(.km-home) .km-r11-globe-S__head > .ac-shead__lede { grid-column: 1 / -1; }
+  :root:not(.km-home) .km-r11-globe-S__fig { margin-top: 40px; }
+  :root:not(.km-home) .km-r11-globe-S__panel { padding: 16px 0 4px; }
+  :root:not(.km-home) .km-r11-globe-S__globe { width: 100%; }
+  /* the marks step inside the plate's edge */
+  :root:not(.km-home) .km-r11-globe-S__globe > .ac-reg--tl { left: 12px; top: 12px; }
+  :root:not(.km-home) .km-r11-globe-S__globe > .ac-reg--tr { left: calc(100% - 12px); top: 12px; }
+  :root:not(.km-home) .km-r11-globe-S__globe > .ac-reg--bl { left: 12px; top: calc(100% - 12px); }
+  :root:not(.km-home) .km-r11-globe-S__globe > .ac-reg--br { left: calc(100% - 12px); top: calc(100% - 12px); }
+  :root:not(.km-home) .km-r11-globe-S__capt { padding: 12px 16px 14px; }
+  :root:not(.km-home) .km-r11-globe-S__band { padding: 10px 16px 14px; }
+}
