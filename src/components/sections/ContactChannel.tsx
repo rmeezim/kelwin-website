@@ -36,6 +36,12 @@ const TOPIC_PARAM_MAP: Record<string, string> = {
   lab: "The Lab · early access application",
 };
 
+// The only references the site itself links here: the Lab's application (LabBriefing) and the
+// Reports dossiers and research documents (CaseStudies). Any other ?ref= is ignored, so a crafted
+// link cannot pin its own text on this page or in the email.
+const KNOWN_REFS = new Set(["Early Access Protocol", "CS·01", "CS·02", "R·01", "R·02", "R·03"]);
+const knownRef = (ref: string | null) => (ref && KNOWN_REFS.has(ref) ? ref : null);
+
 // The page's query string. A static export renders without one, so the server snapshot is
 // empty and the client re-renders with the real one right after hydration.
 const subscribeToHistory = (onChange: () => void) => {
@@ -62,11 +68,11 @@ export default function ContactChannel() {
       ? TOPIC_PARAM_MAP[topicParam]
       : TOPICS[0]);
   const [regardingCleared, setRegardingCleared] = useState(false);
-  const regarding = regardingCleared ? null : params.get("ref");
+  const regarding = regardingCleared ? null : knownRef(params.get("ref"));
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
-    if (query.get("topic") || query.get("ref")) {
+    if (query.get("topic") || knownRef(query.get("ref"))) {
       // Land the visitor on the form itself. Delayed until after layout
       // (fonts, reveals) settles so the scroll target is stable, then a
       // brief pulse on the pinned reference shows what got preselected.
